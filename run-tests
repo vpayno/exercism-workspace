@@ -1,0 +1,27 @@
+#!/bin/bash
+
+export BATS_RUN_SKIPPED=true
+
+printf "Manually testing program(s):\n\t"
+
+# Capture debug tests.
+if compgen -G ./*[.]sh; then
+	for f in ./*[.]sh; do
+		printf "\n[%s]\n\n" "${f}"
+		echo bash "${f}" "$@"
+		printf "\n"
+		time { DEBUG=true bash "${f}" "$@"; }
+	done |& tee ./run-tests-debug.txt
+fi
+
+printf "\n"
+printf "Running automated test file(s):\n\t"
+
+if compgen -G ./*.bats; then
+	for f in ./*bats; do
+		printf "\n[%s]\n\n" "${f}"
+		echo bats "${f}"
+		printf "\n"
+		time bats "${f}"
+	done |& tee ./run-tests-bats.txt
+fi
