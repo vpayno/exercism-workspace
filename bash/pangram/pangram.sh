@@ -1,24 +1,79 @@
 #!/usr/bin/env bash
 
-# The following comments should help you get started:
-# - Bash is flexible. You may use functions or write a "raw" script.
-#
-# - Complex code can be made easier to read by breaking it up
-#   into functions, however this is sometimes overkill in bash.
-#
-# - You can find links about good style and other resources
-#   for Bash in './README.md'. It came with this exercise.
-#
-#   Example:
-#   # other functions here
-#   # ...
-#   # ...
-#
-#   main () {
-#     # your main function code here
-#   }
-#
-#   # call main with all of the positional arguments
-#   main "$@"
-#
-# *** PLEASE REMOVE THESE COMMENTS BEFORE SUBMITTING YOUR SOLUTION ***
+# Enable/Disable debug output.
+declare DEBUG="false"
+
+# Function: printf to stderr if DEBUG is set to true
+# Input : same as printf
+# Output: same as printf, except it goes to stderr instead of stdout
+# Return: from printf
+eprintf()
+{
+    # Pass all the printf arguments and redirect stdout to stderr.
+    # shellcheck disable=SC2059
+    ${DEBUG} && printf "$@" >&2
+}
+
+# Function: check the validity of the script's arguments.
+# Input : script arguments
+# Output: error messages
+# Return: 0 (valid) or >=1 (one or more input problems found)
+check_args()
+{
+    # Capture the script's arguments.
+    local -a vargs=( "$@" )
+
+    # Variable used to track the return codes from each of the checks.
+    local -i retval=0
+
+    # Was only one argument passed?
+    if [[ ${#vargs[@]} -ne 1 ]]; then
+        eprintf "ERROR: wrong number of arguments were passed [%s](%d)\n" "${vargs[*]}" "${#vargs[@]}"
+        show_usage
+        (( retval++ ))
+    fi
+
+    # If a non-zero value is returned, it means that one or more tests have failed.
+    return "${retval}"
+}
+
+# Function: print the scripts usage help message.
+# Input : none
+# Output: usage help screen
+# Return: 1 (always)
+show_usage()
+{
+    printf "Usage: %s \"<string1>\"" "$0"
+}
+
+# Check the inputs for validity and exit if the checks fail.
+check_args "$@" || exit "$?"
+
+# Function: main function
+# Input : script argument(s)
+# Output: exercise output
+# Return: 0 (success) or >=1 (error)
+main()
+{
+    # Capture the input string and lower case it.
+    local input="${1,,}"
+
+    local letter
+    local result="true" # true or false
+
+    # Walk the letters of the alphabet and check the string for them.
+    for letter in {a..z}; do
+        if [[ ! ${input} =~ ${letter} ]]; then
+            result="false"
+            break
+        fi
+    done
+
+    eprintf "\n"
+    eprintf "Input : %s\n" "${input}"
+    eprintf "\nIs Pangram: "
+    printf "%s\n" "${result}"
+}
+
+# Run the main function.
+main "${@}"
