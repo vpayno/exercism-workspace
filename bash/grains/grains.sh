@@ -87,29 +87,40 @@ main()
         mode="total"
     fi
 
-    eprintf " #    grains in square             total grains\n"
+    # If we're in debug mode, do it the long way.
+    if ${DEBUG}; then
+        eprintf " #    grains in square             total grains\n"
 
-    # Walk the letters of the first string and compare them to the second string.
-    for (( index=1; index <= 64; index++ )); do
-        # This will overflow on square 64.
-        #(( total+=grains ))
+        # Walk the letters of the first string and compare them to the second string.
+        for (( index=1; index <= 64; index++ )); do
+            # This will overflow on square 64.
+            #(( total+=grains ))
 
-        total="$(bc <<< "${total} + ${grains}")"
+            total="$(bc <<< "${total} + ${grains}")"
 
-        # Don't use %d for the grains and total columns.
-        eprintf "[%2d] [%26s] [%26s]\n" "${index}" "$(pp "${grains}")" "$(pp "${total}")"
+            # Don't use %d for the grains and total columns.
+            eprintf "[%2d] [%26s] [%26s]\n" "${index}" "$(pp "${grains}")" "$(pp "${total}")"
 
-        if [[ ${mode} == square ]]; then
-            if [[ ${index} -eq ${input} ]]; then
-                break
+            if [[ ${mode} == square ]]; then
+                if [[ ${index} -eq ${input} ]]; then
+                    break
+                fi
             fi
+
+            # This will overflow on square 64.
+            #(( grains*=2 ))
+
+            grains="$(bc <<< "${grains} * 2")"
+        done
+
+    # Not in debug mode, use the faster methods.
+    else
+        if [[ ${mode} == square ]]; then
+            grains="$(bc <<< "2^(${input} - 1)")"
+        else
+            total="$(bc <<< "(2^64) - 1")"
         fi
-
-        # This will overflow on square 64.
-        #(( grains*=2 ))
-
-        grains="$(bc <<< "${grains} * 2")"
-    done
+    fi
 
     eprintf "\n"
     if [[ ${mode} == square ]]; then
