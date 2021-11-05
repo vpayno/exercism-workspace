@@ -1,4 +1,13 @@
 #!/usr/bin/env bash
+#
+# Bash Reference Manual (HTML)        : https://www.gnu.org/software/bash/manual/
+# Bash Reference Manual (PDF)         : https://www.gnu.org/s/bash/manual/bash.pdf
+#
+# Bash Guide for Beginners (HTML)     : https://tldp.org/LDP/Bash-Beginners-Guide/html/Bash-Beginners-Guide.html
+# Bash Guide for Beginners (PDF)      : https://tldp.org/LDP/Bash-Beginners-Guide/Bash-Beginners-Guide.pdf
+#
+# Advanced Bash-Scripting Guide (HTML): https://tldp.org/LDP/abs/html/
+# Advanced Bash-Scripting Guide (PDF) : https://tldp.org/LDP/abs/abs-guide.pdf
 
 # Enable/Disable debug output.
 # This syntax let's us run it like this: DEBUG=true bash ./atbash_cipher.sh encode "message"
