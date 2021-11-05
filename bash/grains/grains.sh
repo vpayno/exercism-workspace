@@ -1,7 +1,16 @@
 #!/usr/bin/env bash
 
 # Enable/Disable debug output.
-declare DEBUG="false"
+# This syntax let's us run it like this: DEBUG=true bash ./atbash_cipher.sh encode "message"
+: "${DEBUG:=false}"
+
+# Protect oursevles from code injection.
+if [[ ! ${DEBUG,,} =~ ^(false|true)$ ]]; then
+    DEBUG="false"
+fi
+
+# Lowercase the string and add /bin/ to the start of the string.
+DEBUG="/bin/${DEBUG,,}"
 
 # Function: printf to stderr if DEBUG is set to true
 # Input : same as printf
