@@ -5,7 +5,7 @@ declare name="${1:-}"
 
 show_usage()
 {
-    local script_name="${1:-${vargs[0]}}"
+    local script_name="${0}"
 
     printf "Usage: %s <person>\n" "${script_name}"
     exit 1
@@ -14,7 +14,7 @@ show_usage()
 check_args()
 {
     local -i retval=0
-    local -i global_arg_count="(( "${#vargs[@]}" - 1 ))"
+    local -i global_arg_count="(( ${#vargs[@]} - 1 ))"
 
     if [[ ${global_arg_count} -ne 1 ]]; then
         (( retval++ ))
@@ -23,7 +23,7 @@ check_args()
     return "${retval}"
 }
 
-check_args || show_usage
+check_args "$@" || show_usage "${@}"
 
 say_hello()
 {
