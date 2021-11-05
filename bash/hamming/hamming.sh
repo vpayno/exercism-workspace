@@ -1,7 +1,16 @@
 #!/usr/bin/env bash
 
 # Enable/Disable debug output.
-declare DEBUG="false"
+# This syntax let's us run it like this: DEBUG=true bash ./atbash_cipher.sh encode "message"
+: "${DEBUG:=false}"
+
+# Protect oursevles from code injection.
+if [[ ! ${DEBUG,,} =~ ^(false|true)$ ]]; then
+    DEBUG="false"
+fi
+
+# Lowercase the string and add /bin/ to the start of the string.
+DEBUG="/bin/${DEBUG,,}"
 
 # Capture the first two arguments.
 declare seq1="${1:-}"
@@ -11,9 +20,6 @@ declare seq2="${2:-}"
 seq1="${seq1^^}"
 seq2="${seq2^^}"
 
-# This holds our difference string/ruler.
-declare seqdiff
-
 # Function: printf to stderr if DEBUG is set to true
 # Input : same as printf
 # Output: same as printf, except it goes to stderr instead of stdout
@@ -21,6 +27,7 @@ declare seqdiff
 eprintf()
 {
     # Pass all the printf arguments and redirect stdout to stderr.
+    # shellcheck disable=SC2059
     ${DEBUG} && printf "$@" >&2
 }
 
@@ -70,7 +77,7 @@ check_args()
         eprintf "ERROR: wrong number of arguments were passed [%s](%d)\n" "${vargs[*]}" "${#vargs[@]}"
         show_usage
         (( retval++ ))
-    
+
     # Are both sequences of equal length?
     elif [[ ${seq1_len} -ne ${seq2_len} ]]; then
         eprintf "ERROR: sequence [%s](%d) and [%s](%d) are not of equal lengths.\n" "${seq1}" "${seq1_len}" "${seq2}" "${seq2_len}"
@@ -79,7 +86,7 @@ check_args()
 
     # Are both sequences only compused of the letters C, A, G and T?
     # Joining the strings as a shortcut so we only run the test once.
-    # Note: This prevents the last test that passes a "?" from working as expected so we need to also search for 
+    # Note: This prevents the last test that passes a "?" from working as expected so we need to also search for
     # that character and allow it so that tests works as expected.
     elif [[ ! ${seq1}${seq2} =~ ^[CAGT?]+$ ]] && [[ ${seq1}${seq2} != "" ]]; then
         eprintf "ERROR: sequence [%s] and/or [%s] have characters other than [CAGT].\n" "${seq1}" "${seq2}"
