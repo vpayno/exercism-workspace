@@ -81,37 +81,27 @@ check_args "$@" || exit "$?"
 # Return: 0
 get_dart_score()
 {
-    # Don't use Bash integers here.
+    # Don't use Bash integers for the coordinates.
     local x="${1}"
     local y="${2}"
 
     local -i score
 
-    # This is used as a float and a string. Multiplied by a factor of 100 so
-    # the fractional part can be part of the integer. Multiplying by 10 doesn't
-    # give us enough precision.
+    # This is used as a float and a string.
     local radius
-
-    # The sign doesn't matter. Using absolute values is good enough.
-    x="${x//-/}"
-    y="${y//-/}"
 
     # Figure out where the dart landed using it's (x, y) coordinate.
     # r^2 = (x – h)^2 + (y – k)^2
-    radius="$(bc <<< "scale=4; r=sqrt( (${x} - 0)^2 + (${y} - 0)^2 ); r * 100")"
-    eprintf "Radius (float): %s\n" "${radius}"
+    radius="$(bc <<< "scale=4; r=sqrt( (${x} - 0)^2 + (${y} - 0)^2 ); r")"
+    eprintf "Radius (float): %0.2f\n" "${radius}"
 
-    # Get the floor value of the radius.
-    radius="$(bc <<< "scale=0; ${radius} / 1")"
-    eprintf "Radius (int)  : %s\n" "${radius}"
-
-    if [[ ${radius} -le 100 ]]; then
+    if [[ $(bc <<< "${radius} <= 1") -eq 1 ]]; then
         # On or within the innter cicle with radius of 1
         score="10"
-    elif [[ ${radius} -le 500 ]]; then
+    elif [[ $(bc <<< "${radius} <= 5") -eq 1 ]]; then
         # On or within the middle cicle with radius of 5
         score="5"
-    elif [[ ${radius} -le 1000 ]]; then
+    elif [[ $(bc <<< "${radius} <= 10") -eq 1 ]]; then
         # On or within the outer cicle with radius of 10
         score="1"
     else
