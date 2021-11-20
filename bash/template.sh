@@ -10,7 +10,7 @@
 # Advanced Bash-Scripting Guide (PDF) : https://tldp.org/LDP/abs/abs-guide.pdf
 
 # Enable/Disable debug output.
-# This syntax let's us run it like this: DEBUG=true bash ./atbash_cipher.sh encode "message"
+# This syntax let's us run it like this: DEBUG=true bash ./script_name.sh parameters
 : "${DEBUG:=false}"
 
 # Protect oursevles from code injection.
@@ -46,7 +46,7 @@ check_args()
     local -i retval=0
 
     # Two arguments?
-    if [[ ${#vargs[@]} -ne 1 ]]; then
+    if [[ ${#vargs[@]} -ne 2 ]]; then
         eprintf "ERROR: wrong number of arguments were passed [%s](%d)\n" "${vargs[*]}" "${#vargs[@]}"
         show_usage
         (( retval++ ))
