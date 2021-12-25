@@ -1,0 +1,46 @@
+
+[./word_count.sh]
+
+bash ./word_count.sh One two three three six two four\nfive 'six' one!
+
+Original input text: one two three three six two four\nfive 'six' one!
+
+1st input clean up: one two three three six two four\nfive 'six' one! 
+
+2nd input clean up: one two three three six two four\nfive 'six' one  
+
+3rd input clean up: one two three three six two four five 'six' one  
+
+before [one]
+ after [one]
+before [two]
+ after [two]
+before [three]
+ after [three]
+before [three]
+ after [three]
+before [six]
+ after [six]
+before [two]
+ after [two]
+before [four]
+ after [four]
+before [five]
+ after [five]
+before ['six']
+ after [six]
+before [one]
+ after [one]
+
+4th input clean up: one two three three six two four five six one
+
+five: 1
+two: 2
+three: 2
+four: 1
+six: 2
+one: 2
+
+real	0m0.207s
+user	0m0.058s
+sys	0m0.144s

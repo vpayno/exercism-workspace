@@ -100,23 +100,16 @@ word_count()
 
     eprintf "Original input text: %s\n" "${raw_text}"
 
-    input_text="$(tr '\n' ' ' <<< "${raw_text}")"
+    input_text="$(tr '\n' ' ' <<< "${input_text}")"
 
     eprintf "\n1st input clean up: %s\n" "${input_text}"
 
-    input_text="$(sed -r -e "s/([^a-z0-9\']| )/ /g" <<< "${input_text}")"
+    input_text="$(sed -r -e "s/(\n|[^a-z0-9\']| )/ /g" <<< "${raw_text}")"
 
     eprintf "\n2nd input clean up: %s\n" "${input_text}"
 
-    # This was added for test No. 5.
-    # shellcheck disable=SC2059
-    input_text="$(printf "${input_text}" | tr '\n' ' ')"
-
-    eprintf "\n3rd input clean up: %s\n" "${input_text}"
-
     read -r -a raw_words <<< "${input_text}"
 
-    eprintf "\n"
     for word in "${raw_words[@]}"; do
         eprintf "before [%s]\n" "${word}"
 
@@ -129,14 +122,12 @@ word_count()
         words+=( "${word}" )
     done
 
-    eprintf "\n4th input clean up: %s\n" "${words[*]}"
+    eprintf "\n3rd input clean up: %s\n" "${words[*]}"
 
     for word in "${words[@]}"; do
         word="${word//\'/__}"
         (( counter[${word}]++ ))
     done
-
-    eprintf "\n"
 
     for word in "${!counter[@]}"; do
         printf "%s: %d\n" "${word//__/\'}" "${counter[${word}]}"
