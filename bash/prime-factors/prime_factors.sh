@@ -74,58 +74,22 @@ show_usage()
 # Check the inputs for validity and exit if the checks fail.
 check_args "$@" || exit "$?"
 
-# Function: uses seive of eratosthenes algorithm to find the prime numbers in a sequence
-# Input : number greather than or equals to 2
-# Output: a newline delimeted list of prime numbers
-# Return: 0
-find_primes()
+# Function: trim whitespace at the end of the string.
+# Input : string
+# Output: string with no leading or traling whitespace
+# Return: 0 (trimmed) or 1 (not trimmed)
+trim()
 {
-    local -i upper_limit="${1}"
+    local line="${1}"
 
-    local -i index
-    local -A sequence
-    local -a primes
-    local -i inner
-    local -i outer
+    # remove traling whitespace
+    line="${line#"${line%%[![:space:]]*}"}"
 
-    for index in $(seq 2 "${upper_limit}"); do
-        sequence["${index}"]="unknown"
-    done
+    # remove leading whitespace
+    line="${line%"${line##*[![:space:]]}"}"
 
-    # The keys aren't guaranteed to be sorted.
-    for outer in $(printf "%d\n" "${!sequence[@]}" | sort -n); do
-        #eprintf "outer=%d\n" "${outer}"
-
-        inner="${outer}"
-        step="${outer}"
-        while [[ ${inner} -le ${upper_limit} ]]; do
-        #for inner in $(seq "${outer}" "${outer}" "${upper_limit}"); do
-            #eprintf "\tinner=%d\n" "${inner}"
-
-            if [[ ${outer} == "${inner}" ]] && [[ ${sequence[${inner}]} == "unknown" ]]; then
-                sequence["${inner}"]="prime"
-                primes+=( "${inner}" )
-                printf "%s\n" "${inner}"
-                #eprintf "\t\t%d => %s\n" "${inner}" "prime"
-
-            elif [[ ${sequence[${inner}]} == unknown ]]; then
-                sequence["${inner}"]="not_prime"
-                #eprintf "\t\t%d => %s\n" "${inner}" "not a prime"
-
-            fi
-
-            (( inner+=step ))
-        done
-    done
-
-    #eprintf "Prime numbers: "
-    #eprintf "%s, " "${primes[@]}"
-    #eprintf "\n"
-
-    #printf "%s\n" "${primes[@]}"
-
-    return 0
-} # find_primes()
+    printf "%s" "${line}"
+} # trim()
 
 # Function: Returns the prime factors for a given number.
 # Input : An integer.
@@ -155,14 +119,25 @@ prime_factors()
     if [[ ${number} -gt 9999 ]]; then
         # seq takes forever on really large numbers so let's use coproc
         coproc coproc_seq (
-            find_primes "${number}"
+            local -i next=3
+            local -i end="${number}"
+
+            # Except for 2, the rest of the prime numbers are odd.
+            # So just print 2 and then only print odd numbers. This shaves at
+            # least 10 seconds from the tests.
+            printf "%d\n" 2
+
+            while [[ ${next} -le ${end} ]]; do
+                printf "%d\n" "${next}"
+                (( next+=2 ))
+            done
         )
 
         while read -r factor <& "${coproc_seq[0]}" &>/dev/null && (( number > 1 )); do
             _prime_factors
         done
     else
-        for factor in $(find_primes "${number}"); do
+        for factor in $(seq 2 "${number}"); do
             _prime_factors
             (( number == 1 )) && break
         done
