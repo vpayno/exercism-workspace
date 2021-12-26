@@ -74,23 +74,6 @@ show_usage()
 # Check the inputs for validity and exit if the checks fail.
 check_args "$@" || exit "$?"
 
-# Function: trim whitespace at the end of the string.
-# Input : string
-# Output: string with no leading or traling whitespace
-# Return: 0 (trimmed) or 1 (not trimmed)
-trim()
-{
-    local line="${1}"
-
-    # remove traling whitespace
-    line="${line#"${line%%[![:space:]]*}"}"
-
-    # remove leading whitespace
-    line="${line%"${line##*[![:space:]]}"}"
-
-    printf "%s" "${line}"
-} # trim()
-
 # Function: Returns the prime factors for a given number.
 # Input : An integer.
 # Output: A space separated list of prime factors.
@@ -101,7 +84,6 @@ prime_factors()
 
     local factor
     local -a result
-    local -i end
 
     _prime_factors()
     {
@@ -111,50 +93,20 @@ prime_factors()
             eprintf "%d is divisible by %d\n" "${number}" "${factor}"
             (( number /= factor ))
 
-            # Dynamically moving the end shaved another 10 seconds.
-            end="${number}"
-
             result+=( "${factor}" )
         done
     } # _prime_factors()
 
-    end="${number}"
+    # Don't use seq to generate factors, instead use a while loop. It's a lot faster.
 
-    # We need to use the coproc to generate numbers for really large sequences.
-    # (lazy generation) - but if we don't use it for a large enough number it
-    # won't work since it runs really fast (sleeps don't help).
-    if [[ ${number} -gt 9999 ]]; then
-        # seq takes forever on really large numbers so let's use coproc
-        coproc coproc_seq (
-            local -i next=3
+    factor=2
+    _prime_factors
 
-            # Except for 2, the rest of the prime numbers are odd.
-            # So just print 2 and then only print odd numbers. This shaves at
-            # least 10 seconds from the tests.
-            printf "%d\n" 2
-
-            while [[ ${next} -le ${end} ]]; do
-                printf "%d\n" "${next}"
-                (( next+=2 ))
-            done
-        )
-
-        while read -r factor <& "${coproc_seq[0]}" &>/dev/null && (( number > 1 )); do
-            _prime_factors
-        done
-    else
-        # Except for 2, the rest of the prime numbers are odd.
-        # So just print 2 and then only print odd numbers. This shaves at
-        # least 10 seconds from the tests.
-        factor=2
+    factor=3
+    while (( number > 1 )); do
         _prime_factors
-
-        factor=3
-        while (( number > 1 )); do
-            _prime_factors
-            (( factor += 2 ))
-        done
-    fi
+        (( factor += 2 ))
+    done
 
     printf "%s" "${result[*]}"
 } # prime_factors()
