@@ -146,9 +146,13 @@ prime_factors()
         # Except for 2, the rest of the prime numbers are odd.
         # So just print 2 and then only print odd numbers. This shaves at
         # least 10 seconds from the tests.
-        for factor in 2 $(seq 3 2 "${end}"); do
+        factor=2
+        _prime_factors
+
+        factor=3
+        while (( number > 1 )); do
             _prime_factors
-            (( number == 1 )) && break
+            (( factor += 2 ))
         done
     fi
 
