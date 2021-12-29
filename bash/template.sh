@@ -68,7 +68,11 @@ check_args()
 # Return: 1 (always)
 show_usage()
 {
-    printf "Usage: %s \"<string>\"" "$0"
+    {
+        printf "%s\n\n" "Description"
+        printf "Usage: %s \"<string>\"" "$0"
+        printf "\n"
+    } >&2
 } # show_usage()
 
 # Check the inputs for validity and exit if the checks fail.
