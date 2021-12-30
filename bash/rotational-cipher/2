@@ -96,62 +96,44 @@ rot_cipher_encode()
 {
     local input_text="${1}"
     local -i key="${2}"
+    local -i rot_seed="${3:-13}"
 
     local -A in_lower
     local -A in_upper
     local -A out_lower
     local -A out_upper
     local -i i
-    local c
     local -i index
     local -i outdex
-    local in_char
-    local out_char
+    local char
     local output_text
 
     i=0
-    for c in {a..z}; do
-        in_lower["${c,,}"]="${i}"
-        in_upper["${c^^}"]="${i}"
-
-        out_lower["${i}"]="${c,,}"
-        out_upper["${i}"]="${c^^}"
-
-        #eprintf "[%s](%d)\n" "${c}" "${i}"
+    for char in {a..z}; do
+        in_lower["${char,,}"]="${i}"
+        in_upper["${char^^}"]="${i}"
+        out_lower["${i}"]="${char,,}"
+        out_upper["${i}"]="${char^^}"
         (( i++ ))
     done
 
-    #eprintf "in_lower: [%s]\n" "${in_lower[*]}"
-    #eprintf "in_upper: [%s]\n" "${in_upper[*]}"
-    #eprintf "out_lower: [%s]\n" "${out_lower[*]}"
-    #eprintf "out_upper: [%s]\n" "${out_upper[*]}"
-    #eprintf "\n"
-
     for (( i=0; i < ${#input_text}; i++ )); do
-        in_char="${input_text:${i}:1}"
+        char="${input_text:${i}:1}"
 
-        if [[ ${in_char} =~ ^[[:upper:]]$ ]]; then
-            index="${in_upper["${in_char}"]}"
-            (( outdex = (index + key) % 26 ))
-            out_char="${out_upper[${outdex}]}"
-            eprintf "upper: [%s](%2d) => [%s](%2d)\n" "${in_char}" "${index}" "${out_char}" "${outdex}"
-
-        elif [[ ${in_char} =~ ^[[:lower:]]$ ]]; then
-            index="${in_lower["${in_char}"]}"
-            (( outdex = (index + key) % 26 ))
-            out_char="${out_lower[${outdex}]}"
-            eprintf "lower: [%s](%2d) => [%s](%2d)\n" "${in_char}" "${index}" "${out_char}" "${outdex}"
-
+        if [[ ${char} =~ ^[:upper:]$ ]]; then
+            index="${upper["${char}"]}"
+            (( outdex = index % (rot_seed + key) ))
+            output_text="${output_text}${upper[${outdex}]}"
+        elif [[ ${char} =~ ^[:lower:]$ ]]; then
+            index="${lower["${char}"]}"
+            (( outdex = index % (rot_seed + key) ))
+            output_text="${output_text}${lower[${outdex}]}"
         else
-            out_char="${in_char}"
-            #eprintf " pass: [%s] => [%s]\n" "${in_char}" "${out_char}"
-
+            output_text="${output_text}${char}"
         fi
 
-        output_text="${output_text}${out_char}"
     done
 
-    eprintf "\n"
     printf "%s" "${output_text}"
 } # rot_cipher_encode()
 
