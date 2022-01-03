@@ -228,8 +228,28 @@ queen_attack()
 # Return: 0
 main()
 {
-    local wqxy="${2}"
-    local bqxy="${4}"
+    local OPTIND
+    local arg
+
+    local wqxy
+    local bqxy
+
+    while getopts ":w:b:" arg; do
+        case "${arg}" in
+            w)
+                wqxy="${OPTARG}"
+                ;;
+
+            b)
+                bqxy="${OPTARG}"
+                ;;
+
+            *)
+                show_usage
+                return 1
+                ;;
+        esac
+    done
 
     local output
 
