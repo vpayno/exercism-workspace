@@ -1,0 +1,273 @@
+
+[./change.sh]
+
+bash ./change.sh 21 2 5 10 20 50
+
+               Money: [21]
+Change Denominations: [2 5 10 20 50]
+
+last_coin = [2]
+Change if we use the least number of coins:
+i=5
+coin = [50]
+(( 0 = 21 / 50 ))
+(( 21 = 21 % 50 ))
+
+coin = [20]
+(( 1 = 21 / 20 ))
+(( 1 = 21 % 20 ))
+
+	Checking to see if we need to borrow (coin=20, coin_count=1)...
+k=4
+		Do the remaining coins, [20 10 5 2], fit in [1]?
+      coin [50 20 10 5 2]
+coin slice [20 10 5 2]
+for (( l = 4; 0 < 5; l++ )); do
+		Checking to see if change [1] fits in [2]
+		coin (2) <= remaining_change (1)
+		Borrowing from current coin [20].
+		Change Before: [1]	Change After: [21]
+		Count for [20]: Before (1)	After (0)
+
+	coin [20], count [0]
+	20 x 0 = 0, remainder = 21 (change)
+
+coin = [10]
+(( 2 = 21 / 10 ))
+(( 1 = 21 % 10 ))
+
+	Checking to see if we need to borrow (coin=10, coin_count=2)...
+k=3
+		Do the remaining coins, [10 5 2], fit in [1]?
+      coin [50 20 10 5 2]
+coin slice [10 5 2]
+for (( l = 3; 5 < 5; l++ )); do
+		Checking to see if change [1] fits in [5]
+		coin (5) <= remaining_change (1)
+		Checking to see if change [1] fits in [2]
+		coin (2) <= remaining_change (1)
+		Borrowing from current coin [10].
+		Change Before: [1]	Change After: [11]
+		Count for [10]: Before (2)	After (1)
+
+	coin [10], count [1]
+	10 x 1 = 10, remainder = 11 (change)
+
+coin = [5]
+(( 2 = 11 / 5 ))
+(( 1 = 11 % 5 ))
+
+	Checking to see if we need to borrow (coin=5, coin_count=2)...
+k=2
+		Do the remaining coins, [5 2], fit in [1]?
+      coin [50 20 10 5 2]
+coin slice [5 2]
+for (( l = 2; 5 < 5; l++ )); do
+		Checking to see if change [1] fits in [10]
+		coin (10) <= remaining_change (1)
+		Checking to see if change [1] fits in [5]
+		coin (5) <= remaining_change (1)
+		Checking to see if change [1] fits in [2]
+		coin (2) <= remaining_change (1)
+		Borrowing from current coin [5].
+		Change Before: [1]	Change After: [6]
+		Count for [5]: Before (2)	After (1)
+
+	coin [5], count [1]
+	5 x 1 = 5, remainder = 6 (change)
+
+coin = [2]
+(( 3 = 6 / 2 ))
+(( 0 = 6 % 2 ))
+	2 x 3 = 6, remainder = 0 (change)
+
+register = [10 5 2 2 2]
+change = [0], register = [10 5 2 2 2]
+tracker => count (5) : register [10 5 2 2 2]
+
+i=4
+coin = [20]
+(( 1 = 21 / 20 ))
+(( 1 = 21 % 20 ))
+
+	Checking to see if we need to borrow (coin=20, coin_count=1)...
+k=4
+		Do the remaining coins, [20 10 5 2], fit in [1]?
+      coin [50 20 10 5 2]
+coin slice [20 10 5 2]
+for (( l = 4; 5 < 5; l++ )); do
+		Checking to see if change [1] fits in [2]
+		coin (2) <= remaining_change (1)
+		Borrowing from current coin [20].
+		Change Before: [1]	Change After: [21]
+		Count for [20]: Before (1)	After (0)
+
+	coin [20], count [0]
+	20 x 0 = 0, remainder = 21 (change)
+
+coin = [10]
+(( 2 = 21 / 10 ))
+(( 1 = 21 % 10 ))
+
+	Checking to see if we need to borrow (coin=10, coin_count=2)...
+k=3
+		Do the remaining coins, [10 5 2], fit in [1]?
+      coin [50 20 10 5 2]
+coin slice [10 5 2]
+for (( l = 3; 5 < 5; l++ )); do
+		Checking to see if change [1] fits in [5]
+		coin (5) <= remaining_change (1)
+		Checking to see if change [1] fits in [2]
+		coin (2) <= remaining_change (1)
+		Borrowing from current coin [10].
+		Change Before: [1]	Change After: [11]
+		Count for [10]: Before (2)	After (1)
+
+	coin [10], count [1]
+	10 x 1 = 10, remainder = 11 (change)
+
+coin = [5]
+(( 2 = 11 / 5 ))
+(( 1 = 11 % 5 ))
+
+	Checking to see if we need to borrow (coin=5, coin_count=2)...
+k=2
+		Do the remaining coins, [5 2], fit in [1]?
+      coin [50 20 10 5 2]
+coin slice [5 2]
+for (( l = 2; 5 < 5; l++ )); do
+		Checking to see if change [1] fits in [10]
+		coin (10) <= remaining_change (1)
+		Checking to see if change [1] fits in [5]
+		coin (5) <= remaining_change (1)
+		Checking to see if change [1] fits in [2]
+		coin (2) <= remaining_change (1)
+		Borrowing from current coin [5].
+		Change Before: [1]	Change After: [6]
+		Count for [5]: Before (2)	After (1)
+
+	coin [5], count [1]
+	5 x 1 = 5, remainder = 6 (change)
+
+coin = [2]
+(( 3 = 6 / 2 ))
+(( 0 = 6 % 2 ))
+	2 x 3 = 6, remainder = 0 (change)
+
+register = [10 5 2 2 2]
+change = [0], register = [10 5 2 2 2]
+tracker => count (5) : register [10 5 2 2 2]
+
+i=3
+coin = [10]
+(( 2 = 21 / 10 ))
+(( 1 = 21 % 10 ))
+
+	Checking to see if we need to borrow (coin=10, coin_count=2)...
+k=4
+		Do the remaining coins, [20 10 5 2], fit in [1]?
+      coin [50 20 10 5 2]
+coin slice [20 10 5 2]
+for (( l = 4; 5 < 5; l++ )); do
+		Checking to see if change [1] fits in [2]
+		coin (2) <= remaining_change (1)
+		Borrowing from current coin [10].
+		Change Before: [1]	Change After: [11]
+		Count for [10]: Before (2)	After (1)
+
+	coin [10], count [1]
+	10 x 1 = 10, remainder = 11 (change)
+
+coin = [5]
+(( 2 = 11 / 5 ))
+(( 1 = 11 % 5 ))
+
+	Checking to see if we need to borrow (coin=5, coin_count=2)...
+k=3
+		Do the remaining coins, [10 5 2], fit in [1]?
+      coin [50 20 10 5 2]
+coin slice [10 5 2]
+for (( l = 3; 5 < 5; l++ )); do
+		Checking to see if change [1] fits in [5]
+		coin (5) <= remaining_change (1)
+		Checking to see if change [1] fits in [2]
+		coin (2) <= remaining_change (1)
+		Borrowing from current coin [5].
+		Change Before: [1]	Change After: [6]
+		Count for [5]: Before (2)	After (1)
+
+	coin [5], count [1]
+	5 x 1 = 5, remainder = 6 (change)
+
+coin = [2]
+(( 3 = 6 / 2 ))
+(( 0 = 6 % 2 ))
+	2 x 3 = 6, remainder = 0 (change)
+
+register = [10 5 2 2 2]
+change = [0], register = [10 5 2 2 2]
+tracker => count (5) : register [10 5 2 2 2]
+
+i=2
+coin = [5]
+(( 4 = 21 / 5 ))
+(( 1 = 21 % 5 ))
+
+	Checking to see if we need to borrow (coin=5, coin_count=4)...
+k=4
+		Do the remaining coins, [20 10 5 2], fit in [1]?
+      coin [50 20 10 5 2]
+coin slice [20 10 5 2]
+for (( l = 4; 5 < 5; l++ )); do
+		Checking to see if change [1] fits in [2]
+		coin (2) <= remaining_change (1)
+		Borrowing from current coin [5].
+		Change Before: [1]	Change After: [6]
+		Count for [5]: Before (4)	After (3)
+
+	coin [5], count [3]
+	5 x 3 = 15, remainder = 6 (change)
+
+coin = [2]
+(( 3 = 6 / 2 ))
+(( 0 = 6 % 2 ))
+	2 x 3 = 6, remainder = 0 (change)
+
+register = [5 5 5 2 2 2]
+change = [0], register = [5 5 5 2 2 2]
+tracker => count (6) : register [5 5 5 2 2 2]
+
+i=1
+coin = [2]
+(( 10 = 21 / 2 ))
+(( 1 = 21 % 2 ))
+
+	Checking to see if we need to borrow (coin=2, coin_count=10)...
+k=4
+		Do the remaining coins, [20 10 5 2], fit in [1]?
+      coin [50 20 10 5 2]
+coin slice [20 10 5 2]
+for (( l = 4; 5 < 5; l++ )); do
+		Checking to see if change [1] fits in [2]
+		coin (2) <= remaining_change (1)
+		Borrowing from previous coin [2].
+		Change Before: [1]	Change After: [3]
+		Count for [2]: Before (3)	After (3)
+
+	coin [2], count [10]
+(( 11 = 3 / 2 ))
+(( 1 = 3 % 2 ))
+	2 x 11 = 22, remainder = 1 (change)
+
+register = [2 2 2 2 2 2 2 2 2 2 2]
+change = [1], register = [2 2 2 2 2 2 2 2 2 2 2]
+change_maker(): Didn't find a solution, skipping.
+declare -A tracker=([6]="5 5 5 2 2 2" [5]="10 5 2 2 2" )
+
+winner: [5]
+output: [10 5 2 2 2]
+2 2 2 5 10
+
+real	0m0.625s
+user	0m0.212s
+sys	0m0.462s

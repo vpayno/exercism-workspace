@@ -62,10 +62,10 @@ check_args()
 
     # First argument: 0
     elif [[ ${money} =~ ^0$ ]]; then
-        eprintf "INFO: No coins make 0 change.\n" "${change}"
-        #show_usage
-        #(( retval++ ))
-		exit 0
+        eprintf "ERROR: change [%s] needs to be a + integer.\n" "${change}"
+        printf "%s\n" "no coins make 0 change"
+        show_usage
+        (( retval++ ))
 
     # Second argument: contains at least one element?
     elif [[ ${#coins[@]} -lt 1 ]]; then
@@ -182,18 +182,16 @@ change_maker()
 				eprintf "      coin [%s]\n" "${coins[*]}"
 				eprintf "coin slice [%s]\n" "${coins[*]: -${k}}"
 
-				length="${#coins[@]}"
-
-				eprintf "for (( l = %d; %d < %d; l++ )); do\n" "${k}" "${l}" "${length}"
+				length="${#coins[@]} - ${k}"
 
 				for (( l = k; l < length; l++ )); do
 					item="${coins[${l}]}"
 
 					eprintf "\t\tChecking to see if change [%d] fits in [%d]\n" "${remaining_change}" "${item}"
 
-					eprintf "\t\tcoin (%d) <= remaining_change (%d)\n" "${item}" "${remaining_change}"
+					eprintf "\t\tremaining_change (%d) >= coin (%d)\n" "${remaining_change}" "${item}"
 
-					if [[ ${item} -le ${remaining_change} ]]; then
+					if [[ ${remaining_change} -le "${item}" ]]; then
 						eprintf "\t\tDon't need to borrow. [%d] fits in [%d].\n" "${remaining_change}" "${item}"
 
 						# If it fits in at least one of the remaining coins, stop checking, we don't need to borrow.
@@ -248,16 +246,6 @@ change_maker()
 
 				eprintf "\tcoin [%d], count [%d]\n" "${coin}" "${coin_count}"
 
-				if [[ ${last_coin} == "${coin}" ]] && [[ ${change} -gt 0 ]]; then
-					(( coin_count += (change / coin) ))
-					eprintf "(( %d = %d / %d ))\n" "${coin_count}" "${change}" "${coin}"
-
-					(( remaining_change = change % coin ))
-					eprintf "(( %d = %d %% %d ))\n" "${remaining_change}" "${change}" "${coin}"
-
-					change="${remaining_change}"
-				fi
-
 				for (( j=1; j <= "${coin_count}"; j++ )); do
 					register+=( "${coin}" )
 				done
@@ -284,14 +272,12 @@ change_maker()
 
 		eprintf "register = [%s]\n" "${register[*]}"
 
-		eprintf "change = [%d], register = [%s]\n" "${change}" "${register[*]}"
-
-		if [[ ${change} -eq 0 ]] && [[ ${#register[@]} -gt 0 ]]; then
+		if [[ ${change} -eq 0 ]] && [[ ${#register} -gt 0 ]]; then
 			tracker[$(wc -w <<< "${register[*]}")]="${register[*]}"
 			eprintf "tracker => count (%d) : register [%s]\n" "$(wc -w <<< "${register[*]}")" "${register[*]}"
 			eprintf "\n"
 		else
-			eprintf "change_maker(): Didn't find a solution, skipping.\n"
+			eprintf "Didn't find a solution, skipping.\n"
 		fi
 	done
 
@@ -329,12 +315,6 @@ main()
     eprintf "\n"
 
     mapfile -t output < <(change_maker "${money}" "${coins[@]}")
-
-	if [[ ${output[0]} -eq 0 ]]; then
-		eprintf "No solution found.\n"
-		printf "Error: %s\n" "can't make target with given coins"
-		exit 1
-	fi
 
     for (( i=0; i < "${#output[@]}"; i++ )); do
         printf "%s" "${output[${i}]}"
