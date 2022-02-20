@@ -1,0 +1,174 @@
+
+[./forth.bats]
+
+bats ./forth.bats
+
+1..49
+ok 1 numbers_only
+ok 2 addition_ok
+ok 3 addition_no_args
+ok 4 addition_one_args
+ok 5 subtraction_ok
+ok 6 subtraction_no_args
+ok 7 subtraction_one_args
+ok 8 multiplication_ok
+ok 9 multiplication_no_args
+ok 10 multiplication_one_args
+ok 11 division_ok
+ok 12 division_int_result
+ok 13 division_no_args
+ok 14 division_one_args
+ok 15 division_by_zero
+ok 16 add_and_subtract
+ok 17 multiply_and_divide
+ok 18 dup_1
+ok 19 dup_2
+ok 20 dup_empty
+ok 21 drop_1
+ok 22 drop_2
+ok 23 drop_empty
+ok 24 swap_1
+ok 25 swap_2
+ok 26 swap_empty
+ok 27 swap_1arg
+ok 28 over_1
+ok 29 over_2
+ok 30 over_empty
+ok 31 over_1arg
+not ok 32 macro_with_builtin
+# (from function `assert_success' in file bats-extra.bash, line 409,
+#  in test file forth.bats, line 301)
+#   `assert_success' failed
+# 
+# -- command failed --
+# status : 1
+# output : empty macro definition
+# --
+# 
+not ok 33 macro_maintain_order
+# (from function `assert_success' in file bats-extra.bash, line 409,
+#  in test file forth.bats, line 311)
+#   `assert_success' failed
+# 
+# -- command failed --
+# status : 1
+# output : empty macro definition
+# --
+# 
+not ok 34 macro_can_override_macro
+# (from function `assert_success' in file bats-extra.bash, line 409,
+#  in test file forth.bats, line 322)
+#   `assert_success' failed
+# 
+# -- command failed --
+# status : 1
+# output : empty macro definition
+# --
+# 
+not ok 35 macro_can_override_builtin
+# (from function `assert_success' in file bats-extra.bash, line 409,
+#  in test file forth.bats, line 332)
+#   `assert_success' failed
+# 
+# -- command failed --
+# status : 1
+# output : empty macro definition
+# --
+# 
+not ok 36 macro_can_override_operator
+# (from function `assert_success' in file bats-extra.bash, line 409,
+#  in test file forth.bats, line 342)
+#   `assert_success' failed
+# 
+# -- command failed --
+# status : 1
+# output (2 lines):
+#   forth.sh: line 142: macros: bad array subscript
+#   empty macro definition
+# --
+# 
+not ok 37 macro_expand_in_macro_definition
+# (from function `assert_success' in file bats-extra.bash, line 409,
+#  in test file forth.bats, line 354)
+#   `assert_success' failed
+# 
+# -- command failed --
+# status : 1
+# output : empty macro definition
+# --
+# 
+ok 38 macro_empty_definition
+not ok 39 macro_expand_in_macro_redefinition
+# (from function `assert_success' in file bats-extra.bash, line 409,
+#  in test file forth.bats, line 374)
+#   `assert_success' failed
+# 
+# -- command failed --
+# status : 1
+# output : empty macro definition
+# --
+# 
+not ok 40 macro_cannot_redefine_non_negative_numbers
+# (from function `assert_output' in file bats-extra.bash, line 386,
+#  in test file forth.bats, line 384)
+#   `assert_output --partial "illegal operation"' failed
+# 
+# -- output does not contain substring --
+# substring (1 lines):
+#   illegal operation
+# output (2 lines):
+#   forth.sh: line 142: macros: bad array subscript
+#   empty macro definition
+# --
+# 
+not ok 41 macro_cannot_redefine_negative_numbers
+# (from function `assert_output' in file bats-extra.bash, line 386,
+#  in test file forth.bats, line 393)
+#   `assert_output --partial "illegal operation"' failed
+# 
+# -- output does not contain substring --
+# substring (1 lines):
+#   illegal operation
+# output (2 lines):
+#   forth.sh: line 142: macros: bad array subscript
+#   empty macro definition
+# --
+# 
+not ok 42 macro_undefined
+# (from function `assert_failure' in file bats-extra.bash, line 190,
+#  in test file forth.bats, line 401)
+#   `assert_failure' failed
+# 
+# -- command succeeded, but it was expected to fail --
+# output : 
+# --
+# 
+ok 43 macro_missing_semicolon
+ok 44 case_dup
+ok 45 case_drop
+ok 46 case_swap
+ok 47 case_over
+not ok 48 case_macro_names
+# (from function `assert_success' in file bats-extra.bash, line 409,
+#  in test file forth.bats, line 459)
+#   `assert_success' failed
+# 
+# -- command failed --
+# status : 1
+# output : empty macro definition
+# --
+# 
+not ok 49 case_macro_definitions
+# (from function `assert_success' in file bats-extra.bash, line 409,
+#  in test file forth.bats, line 469)
+#   `assert_success' failed
+# 
+# -- command failed --
+# status : 1
+# output : empty macro definition
+# --
+# 
+
+real	0m4.400s
+user	0m3.108s
+sys	0m1.664s
