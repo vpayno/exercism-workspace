@@ -1,0 +1,32 @@
+
+[./roman_numerals.sh]
+
+bash ./roman_numerals.sh 1234
+
+ 1234 /  1000 ==    1 -> false
+M x 1 -> M
+remainder:  234 =  1234 %  1000
+ 234 /  500 ==    0 -> true
+ 234 >=  500 -  100 -> false
+
+ 234 /  100 ==    2 -> false
+C x 2 -> MCC
+remainder:   34 =  234 %  100
+  34 /   50 ==    0 -> true
+  34 >=   50 -   10 -> false
+
+  34 /   10 ==    3 -> false
+X x 3 -> MCCXXX
+remainder:    4 =   34 %   10
+   4 /    5 ==    0 -> true
+   4 >=    5 -    1 -> true
+I + V -> MCCXXXIV
+remainder:    0 =    4 - (   5 -    1)
+
+remainder (0) <= 0
+Decimal Number: [1234]
+ Roman Numeral: [MCCXXXIV]
+
+real	0m0.154s
+user	0m0.045s
+sys	0m0.109s
