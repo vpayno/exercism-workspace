@@ -53,7 +53,7 @@ check_args()
 
     # First argument: A number?
     elif [[ ! ${input} =~ ^[[:digit:]]+$ ]] || [[ ${input} -lt 2 ]]; then
-        eprintf "ERROR: can only be a positive input [%s].\n" "${input}"
+        eprintf "ERROR: can only be a positive input greater than or equals to 2 [%s].\n" "${input}"
         #show_usage
         (( retval++ ))
 
@@ -69,7 +69,11 @@ check_args()
 # Return: 1 (always)
 show_usage()
 {
-    printf "Usage: %s <number larger than 2>" "$0"
+    {
+        printf "\n%s\n\n" "Given a number n, determine what the nth prime is."
+        printf "Usage: %s <number greater than or equals to 2>" "$0"
+        printf "\n"
+    } >&2
 } # show_usage()
 
 # Check the inputs for validity and exit if the checks fail.
@@ -79,51 +83,66 @@ show_usage()
 check_args "$@" || exit 0
 
 # Function: uses seive of eratosthenes algorithm to find the prime numbers in a sequence
-# Input : number greather than or equals to 2
+# Input : number greater than or equals to 2
 # Output: a newline delimeted list of prime numbers
 # Return: 0
 find_primes()
 {
     local -i upper_limit="${1}"
+    local -n __primes="${2}"
 
     local -i index
     local -A sequence
-    local -a primes
     local -i inner
     local -i outer
+    local -i step
 
-    for index in $(seq 2 "${upper_limit}"); do
+    # 1st optimization: only add odd numbers to the sequence
+    index="2"
+    sequence["${index}"]="unknown"
+    index="3"
+    step=2
+
+    # 2nd optimization: don't use seq since it's very slow
+    while [[ ${index} -le ${upper_limit} ]]; do
         sequence["${index}"]="unknown"
+        index+="${step}"
     done
 
     # The keys aren't guaranteed to be sorted.
     for outer in $(printf "%d\n" "${!sequence[@]}" | sort -n); do
         eprintf "outer=%d\n" "${outer}"
 
-        for inner in $(seq "${outer}" "${outer}" "${upper_limit}"); do
-            eprintf "\tinner=%d\n" "${inner}"
+        # 2nd optimization: don't use seq since it's very slow
+        inner="${outer}"
+        step="${outer}"
+        while [[ ${inner} -le "${upper_limit}" ]]; do
+            # eprintf "\tinner=%d\n" "${inner}"
 
             if [[ ${outer} == "${inner}" ]] && [[ ${sequence[${inner}]} == "unknown" ]]; then
                 sequence["${inner}"]="prime"
-                primes+=( "${inner}" )
+                __primes+=( "${inner}" )
                 eprintf "\t\t%d => %s\n" "${inner}" "prime"
 
             elif [[ ${sequence[${inner}]} == unknown ]]; then
                 sequence["${inner}"]="not_prime"
-                eprintf "\t\t%d => %s\n" "${inner}" "not a prime"
+                # eprintf "\t\t%d => %s\n" "${inner}" "not a prime"
 
             fi
+
+            inner+="${step}"
         done
     done
 
     eprintf "Prime numbers: "
-    eprintf "%s, " "${primes[@]}"
+    eprintf "%s, " "${__primes[@]}"
     eprintf "\n"
 
-    printf "%s\n" "${primes[@]}"
+    # This is now returned by reference.
+    # printf "%s\n" "${__primes[@]}"
 
     return 0
-} # is_prime()
+} # find_primes()
 
 # Function: main function
 # Input : script argument(s)
@@ -131,12 +150,12 @@ find_primes()
 # Return: 0
 main()
 {
-    local input="${1}"
+    local -i input="${1}"
 
-    local -a primes
+    local -a -i primes
 
-    # shellcheck disable=SC2046
-    read -r -d "\n" -a primes < <(find_primes "${input}")
+    #read -r -d "\n" -a primes < <(find_primes "${input}")
+    find_primes "${input}" "primes"
 
     # Don't forget to trim the traling white space so the tests pass.
     printf "%s " "${primes[@]}" | sed -r -e 's/ +$//g'
