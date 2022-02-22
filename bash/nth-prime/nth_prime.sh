@@ -102,44 +102,39 @@ find_primes_soe_2()
     local -i loop
     local -i square
 
-    #if [[ ${upper_limit} -ge 1 ]]; then
-        #__primes3=( 2 )
-    #fi
-
-    #if [[ ${upper_limit} -ge 2 ]]; then
-        #__primes3+=( 3 )
-    #fi
-
     outer=2
+    # for 10,001 this takes 21s
     while [[ ${outer} -le "${upper_limit}" ]]; do
-        sequence[${outer}]=0  # true
-        outer+="1"
+        sequence[$(( outer++ ))]=0  # true
     done
 
     outer=2
     sqrt_limit="$(bc <<< "scale=4; n=sqrt(${upper_limit}); scale=0; n/1 + 1")"
 
+    # for 10,001 this takes 41s
     while [[ ${outer} -le "${sqrt_limit}" ]]; do
 
-        if [[ ${sequence[${outer}]} -eq 0 ]]; then
+        if [[ ${sequence[${outer}]:-1} -eq 0 ]]; then
 
             loop=2
             square="${outer} * ${outer}"
             inner="${square} + (${outer} * (${loop} - 2))"
+            #inner="${square}"
 
             while [[ ${inner} -le "${upper_limit}" ]]; do
 
-                sequence["${inner}"]=1  # false
+                #sequence["${inner}"]=1  # false
+                unset "sequence[${inner}]"
 
                 loop+="1"
                 inner="${square} + (${outer} * (${loop} - 2))"
+                #inner="${inner} + ${outer}"
             done
 
         fi
 
         outer+=1
     done
-
 
     for outer in $(printf "%d\n" "${!sequence[@]}" | sort -n); do
 
