@@ -83,11 +83,80 @@ show_usage()
 # Also, we don't output anything for the same test.
 check_args "$@" || exit 1
 
-# Function: uses sieve of eratosthenes algorithm to find the prime numbers in a sequence
+# Function: brute force to find large nth primes
 # Input : number greather than or equals to 2
 # Output: a newline delimeted list of prime numbers
 # Return: 0
-find_primes_soe()
+# Time  : 108 seconds for 10,001th prime
+find_primes_soe_2()
+{
+    local -i upper_limit="${1}"
+    local -n __primes3="${2}"
+
+    local -i outer
+    local -i inner
+    local -A -i sequence
+    local -i step
+    local -i index
+    local -i sqrt_limit
+    local -i loop
+    local -i square
+
+    #if [[ ${upper_limit} -ge 1 ]]; then
+        #__primes3=( 2 )
+    #fi
+
+    #if [[ ${upper_limit} -ge 2 ]]; then
+        #__primes3+=( 3 )
+    #fi
+
+    outer=2
+    while [[ ${outer} -le "${upper_limit}" ]]; do
+        sequence[${outer}]=0  # true
+        outer+="1"
+    done
+
+    outer=2
+    sqrt_limit="$(bc <<< "scale=4; n=sqrt(${upper_limit}); scale=0; n/1 + 1")"
+
+    while [[ ${outer} -le "${sqrt_limit}" ]]; do
+
+        if [[ ${sequence[${outer}]} -eq 0 ]]; then
+
+            loop=2
+            square="${outer} * ${outer}"
+            inner="${square} + (${outer} * (${loop} - 2))"
+
+            while [[ ${inner} -le "${upper_limit}" ]]; do
+
+                sequence["${inner}"]=1  # false
+
+                loop+="1"
+                inner="${square} + (${outer} * (${loop} - 2))"
+            done
+
+        fi
+
+        outer+=1
+    done
+
+
+    for outer in $(printf "%d\n" "${!sequence[@]}" | sort -n); do
+
+        if [[ ${sequence["${outer}"]} -eq 0 ]]; then
+            __primes3+=( "${outer}" )
+        fi
+    done
+
+    eprintf "primes: ["; eprintf "%s," "${__primes3[@]}"; eprintf "]\n"
+} # find_primes_soe_2()
+
+# Function: uses sieve of eratosthenes algorithm to find the prime numbers in a sequence
+# Input : number greather than or equals to 2
+# Output: __primes array is a reference
+# Return: 0
+# Time  : 125 seconds for 10,001th prime
+find_primes_soe_1()
 {
     local -i upper_limit="${1}"
     local -i stop_limit="${2:-${upper_limit}}"
@@ -109,7 +178,6 @@ find_primes_soe()
     while [[ ${index} -le ${upper_limit} ]]; do
         sequence["${index}"]="unknown"
         index+="${step}"
-        #(( index+=2 ))
     done
 
     # The keys aren't guaranteed to be sorted.
@@ -141,6 +209,7 @@ find_primes_soe()
 
             inner+="${step}"
         done
+
     done
 
     eprintf "Prime numbers: "
@@ -151,112 +220,7 @@ find_primes_soe()
     # printf "%s\n" "${primes[@]}"
 
     return 0
-} # find_primes_soe()
-
-# Function: uses sieve of atkin algorithm to find the prime numbers in a sequence
-# Input : number greater than or equals to 1
-# Output: a newline delimited list of prime numbers
-# Return: 0
-find_primes_soa()
-{
-    local -i upper_limit="${1}"
-    local -n __primes2="${2}"
-
-    local -i inner
-    local -i outer
-    local -i n
-    local -A -i sequence
-    local -i index
-    local -i step
-
-    # known prime
-    if [[ ${upper_limit} -gt 2 ]]; then
-        __primes2+=( 2 )
-    fi
-
-    # known prime
-    if [[ ${upper_limit} -gt 3 ]]; then
-        __primes2+=( 3 )
-    fi
-
-    # 0: true, 1: false
-    index=0
-    while [[ ${index} -lt ${upper_limit} ]]; do
-        sequence["${index}"]="1"  # false
-        index+="1"
-    done
-
-    outer="1"
-    while (( outer * outer < upper_limit )); do
-
-        inner="1"
-        while (( inner * inner < upper_limit )); do
-
-            n="(4 * outer * outer) + (inner * inner)"
-            eprintf "(4 * %d * %d) + (%d * %d) = %d\n" "${outer}" "${outer}" "${inner}" "${inner}" "${n}"
-
-            if (( (n <= upper_limit) && (n % 12 == 1 || n % 12 == 5) )); then
-                sequence["${n}"]="1 - ${sequence[${n}]}"  # toggle boolean at n
-            fi
-
-            n="(3 * outer * outer) + (inner * inner)"
-            eprintf "(3 * %d * %d) + (%d * %d) = %d\n" "${outer}" "${outer}" "${inner}" "${inner}" "${n}"
-
-            if (( (n <= upper_limit) && (n % 12 == 7) )); then
-                sequence["${n}"]="1 - ${sequence[${n}]}"  # toggle boolean at n
-            fi
-
-            n="(3 * outer * outer) - (inner * inner)"
-            eprintf "(3 * %d * %d) - (%d * %d) = %d\n" "${outer}" "${outer}" "${inner}" "${inner}" "${n}"
-
-            if (( (outer > inner) && (n <= upper_limit) && (n % 12 == 11) )); then
-                # toggle boolean at n
-                sequence["${n}"]="1 - ${sequence[${n}]}"
-            fi
-
-            inner+=1
-        done
-
-        outer+=1
-
-    done
-
-    # Mark all multiples of squares as non-primes.
-    outer=5
-    while (( outer * outer < upper_limit )); do
-
-        if [[ ${sequence[${outer}]} -eq 0 ]]; then
-
-            inner="${outer} * ${outer}"
-            step="${outer} * ${outer}"
-            while (( inner < upper_limit )); do
-                sequence["${inner}"]="1" # False
-
-                eprintf "sequence[%d]=1\n" "${inner}"
-
-                inner+="${step}"
-            done
-
-        fi
-
-        outer+="1"
-
-    done
-
-    index=0
-    while [[ ${index} -lt ${upper_limit} ]]; do
-        if [[ ${sequence[${index}]} -eq 0 ]]; then
-            __primes2+=( "${index}" )
-            eprintf "__primes2+=( \"%d\" )\n" "${index}"
-        fi
-    done
-
-    eprintf "Prime numbers (%d): " "${#__primes2[@]}"
-    eprintf "%s, " "${__primes2[@]}"
-    eprintf "\n"
-
-    return 0
-} # find_primes_soa()
+} # find_primes_soe_1()
 
 # Function: use either soe or soa algorithims to find a prime number based on the size of n.
 # Input : number greater than or equals to 1
@@ -281,12 +245,14 @@ find_primes()
 
         eprintf "Using Sieve of Eratosthenes algorithim.\n"
 
-        # read -r -d "\n" -a primes < <(find_primes_soe "${search_size}" "${n}")
-        find_primes_soe "${search_size}" "${n}" "primes"
+        # read -r -d "\n" -a primes < <(find_primes_soe_1 "${search_size}" "${n}")
+        #find_primes_soe_1 "${search_size}" "${n}" "primes"
+        find_primes_soe_2 "${search_size}" "primes"
 
         # 3rd optimization: only return the last element
         # printf "%s\n" "${primes[@]: -1}"
-        __prime="${primes[*]: -1}"
+        #__prime="${primes[*]: -1}"
+        __prime="${primes[$(( n - 1 ))]}"
 
         (( search_size *= 10 ))
     done
