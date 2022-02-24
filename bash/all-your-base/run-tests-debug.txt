@@ -1,0 +1,57 @@
+
+[./all_your_base.sh]
+
+bash ./all_your_base.sh 2 1 0 1 0 1 0 16
+
+numbers=( 1 0 1 0 1 0 )
+Using positional notation to convert the source number to decimal.
+result=1 * 2 ^ (6 - 1)
+32=32+0
+
+result=0 * 2 ^ (5 - 1)
+32=0+32
+
+result=1 * 2 ^ (4 - 1)
+40=8+32
+
+result=0 * 2 ^ (3 - 1)
+40=0+40
+
+result=1 * 2 ^ (2 - 1)
+42=2+40
+
+result=0 * 2 ^ (1 - 1)
+42=0+42
+
+Decimal intermediate: [42]
+
+Converting decimal intermediate to base [16]
+2 = 42 / 16
+10 = 42 % 16
+0 = 2 / 16
+2 = 2 % 16
+
+Base [16] number: [2 10]
+
+  Source Base: [2]
+Source Number: [101010]
+
+  Target Base: [16]
+Target Number: [2 10]
+
+Formatting Base [16] number...
+
+declare -A letter2int=([Z]="26" [Y]="25" [X]="24" [W]="23" [V]="22" [U]="21" [T]="20" [S]="19" [R]="18" [Q]="17" [P]="16" [O]="15" [N]="14" [M]="13" [L]="12" [K]="11" [J]="10" [I]="9" [H]="8" [G]="7" [F]="6" [E]="5" [D]="4" [C]="3" [B]="2" [A]="1" )
+
+declare -A int2letter=([9]="I" [8]="H" [7]="G" [6]="F" [5]="E" [4]="D" [3]="C" [2]="B" [1]="A" [18]="R" [19]="S" [12]="L" [13]="M" [10]="J" [11]="K" [16]="P" [17]="Q" [14]="N" [15]="O" [26]="Z" [25]="Y" [24]="X" [23]="W" [22]="V" [21]="U" [20]="T" )
+
+Number Before Formating: [2 10]
+ Number After Formating: [2 A]
+Pretty Print Target Number: [2 A]
+
+[101010](2) == [2A](16)
+
+
+real	0m0.257s
+user	0m0.098s
+sys	0m0.176s
