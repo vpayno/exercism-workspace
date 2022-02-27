@@ -1,0 +1,31 @@
+
+[./variable_length_quantity.sh]
+
+bash ./variable_length_quantity.sh encode 2000
+
+
+Command: [encode]
+
+Input  : [ 2000 ]
+
+Numbers: [ 2000 ]
+
+binary="$(bc <<< "obase=2; ibase=16; 2000")
+[2000](16) -> [10000000000000](2)
+
+words=( 1000000 0000000 )
+
+7-bit: [ 1000000]
+8-bit: [11000000]
+decimal="$(bc <<< "obase=10; ibase=2; 11000000")
+[11000000](2) -> [192](10) -> [C0](16)
+
+7-bit: [ 0000000]
+8-bit: [00000000]
+[00000000](2) -> [192](10) -> [00](16)
+
+[2000] ->encode-> [C0 00]
+
+real	0m0.200s
+user	0m0.074s
+sys	0m0.082s
