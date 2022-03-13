@@ -6,9 +6,10 @@
 # 4. Add types.
 # 5. Improve variable names and add comments.
 # 6. Move code to functions and code improvements.
+# 7. Make html an array.
 
 declare line
-declare html
+declare -a html
 declare inside_a_list
 
 mark_bold_text()
@@ -34,7 +35,7 @@ mark_italic_text()
 mark_heading_or_paragraph_text()
 {
 	local -n __line="${1}"
-	local -n __html="${2}"
+	local -n __html1="${2}"
 
 	local -i heading_level    # was 'n'
 	local heading             # was 'HEAD'
@@ -50,12 +51,15 @@ mark_heading_or_paragraph_text()
 		done
 
 		# Step: Add <h#> & </h#> around the heading entry.
-		__html+="<h${heading_level}>${heading}</h${heading_level}>"
+		__html1+=( "<h${heading_level}>${heading}</h${heading_level}>" )
 
 	else
 
-		# Step: Add paragraph elements around paragraphs.
-		__html+="<p>${__line}</p>"
+		# Empty lines don't need to be wrapped in <p>|</p> tags.
+		if [[ ${#__line} -gt 0 ]]; then
+			# Step: Add paragraph elements around paragraphs.
+			__html1+=( "<p>${__line}</p>" )
+		fi
 
 	fi
 } # mark_heading_or_paragraph_text()
@@ -63,7 +67,7 @@ mark_heading_or_paragraph_text()
 mark_list_text()
 {
 	local -n __line="${1}"
-	local -n __html="${2}"
+	local -n __html2="${2}"
 
 	#
 	# Step: Check for unordered lists.
@@ -76,7 +80,7 @@ mark_list_text()
 		#
 
 		if [[ ${inside_a_list:-no} != yes ]]; then
-			html+="<ul>"
+			__html2+=( "<ul>" )
 			inside_a_list="yes"
 		fi
 
@@ -84,12 +88,12 @@ mark_list_text()
 		# Step: Add <li> & </li> around list entry.
 		#
 
-		html+="<li>${line#??}</li>"
+		__html2+=( "<li>${line#??}</li>" )
 
 	else
 
 		if [[ ${inside_a_list:-no} == yes ]]; then
-			html+="</ul>"
+			__html2+=( "</ul>" )
 			inside_a_list="no"
 		fi
 
@@ -116,11 +120,12 @@ done < "${1}"  # {} around variables
 #
 
 if [[ ${inside_a_list:-no} == yes ]]; then
-	html+="</ul>"
+	html+=( "</ul>" )
 fi
 
 #
 # Step: Output the rendered HTML.
 #
 
-echo "${html}"
+printf "%s" "${html[@]}"
+printf "\n"
