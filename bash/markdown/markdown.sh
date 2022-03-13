@@ -5,200 +5,108 @@
 # 3. Style clean up.
 # 4. Add types.
 # 5. Improve variable names and add comments.
+# 6. Move code to functions and code improvements.
 
-declare orig
 declare line
-declare match_again         # was 'pre'
-declare string_pre          # new & was 'one'
-declare string_post         # was 'post'
-declare string_to_bold      # new
+declare html
 declare inside_a_list
-declare html  # was 'h'
-declare string_filter       # was 'two'
-declare -i heading_level    # was 'n'
-declare heading             # was 'HEAD'
 
-while IFS= read -r line; do
+mark_bold_text()
+{
+	local -n __line="${1}"
 
-	#
-	# Step: Checking for bold test.
-	#
+	# Step: Check for bold text.
+	if grep -q '__..*__' <<< "${__line}"; then
+		__line="$(sed -E 's,__([^_]+)__,<strong>\1</strong>,g' <<< "${__line}")"
+	fi
+} # mark_bold_text()
 
-	while true; do
+mark_italic_text()
+{
+	local -n __line="${1}"
 
-		# {} braces and double quotes
-		orig="${line}"
+	# Step: Check for italic text.
+	if grep -q '_..*_' <<< "${__line}"; then
+		__line="$(sed -E 's,_([^_]+)_,<em>\1</em>,g' <<< "${__line}")"
+	fi
+} # mark_italic_text()
 
-		# {} around variables
-		if [[ ${line} =~ ^(.+)__(.*) ]]; then
+mark_heading_or_paragraph_text()
+{
+	local -n __line="${1}"
+	local -n __html="${2}"
 
-			# double quotes, breakup line
-			match_again="${BASH_REMATCH[1]}"
-			string_post="${BASH_REMATCH[2]}"
+	local -i heading_level    # was 'n'
+	local heading             # was 'HEAD'
 
-			# {} around variables
-			if [[ ${match_again} =~ ^(.*)__(.+) ]]; then
+	heading_level="$(expr "${__line}" : "#\{1,\}")"
 
-				string_pre="${BASH_REMATCH[1]}"
-				string_to_bold="${BASH_REMATCH[2]}"
+	if [[ ${heading_level} -gt 0 ]] && [[ 7 -gt ${heading_level} ]]; then
 
-				# {} around variables
-				printf -v line "%s<strong>%s</strong>%s" "${string_pre}" "${string_to_bold}" "${string_post}"
+		heading="${__line:heading_level}"
 
-			fi
+		while [[ ${heading} == " "* ]]; do
+			heading="${heading# }"
+		done
 
-		fi
+		# Step: Add <h#> & </h#> around the heading entry.
+		__html+="<h${heading_level}>${heading}</h${heading_level}>"
 
-		# If the line didn't change
-		# use [[ ]] instead of [ ], add {} to variables
-		[[ ${line} != "${orig}" ]] || break
+	else
 
-	done
+		# Step: Add paragraph elements around paragraphs.
+		__html+="<p>${__line}</p>"
+
+	fi
+} # mark_heading_or_paragraph_text()
+
+mark_list_text()
+{
+	local -n __line="${1}"
+	local -n __html="${2}"
 
 	#
 	# Step: Check for unordered lists.
 	#
 
-	# Check exit code directly with e.g. 'if mycmd;', not indirectly with $?. [SC2181]
-	# use -q instead of the redirect to null for stdout
-	# add {} to line
-	if echo "${line}" | grep -q '^\*' 2> /dev/null; then
+	if grep -q '^\*' 2> /dev/null <<< "${line}"; then
 
 		#
 		# Step: Found an unordered list, start the HTML for it.
 		#
 
-		# Double quote to prevent globbing and word splitting. [SC2086]
-		# use [[ ]] instead of [ ]
-		# use a default value instead of pre-pending an X
 		if [[ ${inside_a_list:-no} != yes ]]; then
-
-			# {} around variables
-			html="${html}<ul>"
-
-			# quote right-hand side of variable assignments
+			html+="<ul>"
 			inside_a_list="yes"
-
 		fi
-
-		#
-		# Step: Check for italic text.
-		#
-
-		# {} around variables
-		while [[ ${line} == *_*?_* ]]; do
-
-			# quote right-hand side of the variable assignment
-			string_post="${line#*_}"
-			string_filter="${string_post#*_}"
-
-			# Double quote to prevent globbing and word splitting. [SC2086] - shellcheck misssed this one
-			# Prefer [ p ] && [ q ] as [ p -a q ] is not well defined. [SC2166]
-			# use [[ ]] instead of [ ]
-			if [[ ${#string_filter} -lt ${#string_post} ]] && [[ ${#string_post} -lt ${#line} ]]; then
-
-				# Expansions inside ${..} need to be quoted separately, otherwise they match as patterns. [SC2295]
-				line="${line%%_"${string_post}"}<em>${string_post%%_"${string_filter}"}</em>${string_filter}"
-
-			fi
-
-		done
 
 		#
 		# Step: Add <li> & </li> around list entry.
 		#
 
-		# {} around variables
-		html="${html}<li>${line#??}</li>"
+		html+="<li>${line#??}</li>"
 
 	else
 
-		# Double quote to prevent globbing and word splitting. [SC2086] - shellcheck missed this one
-		# use [[ ]] instead of [ ]
-		# use a default value instead of pre-pending an X
-		# use == instead of =
 		if [[ ${inside_a_list:-no} == yes ]]; then
-
-			# {} around variables
-			html="${html}</ul>"
-
-			# quote right-hand side of the variable assignment
+			html+="</ul>"
 			inside_a_list="no"
-
 		fi
 
-		# Use $(...) notation instead of legacy backticks `...`. [SC2006]
-		# {} around variables
-		# Get the heading level. (int >= 0)
-		heading_level="$(expr "${line}" : "#\{1,\}")"
+		# return 1 after closing a list
+		return 1
 
-		# Double quote to prevent globbing and word splitting. [SC2086]
-		# Prefer [ p ] && [ q ] as [ p -a q ] is not well defined. [SC2166]
-		# {} around variables
-		# use [[ ]] instead of [ ]
-		if [[ ${heading_level} -gt 0 ]] && [[ 7 -gt ${heading_level} ]]; then
+	fi
+} # mark_list_text()
 
-			#
-			# Step: Check for italic text.
-			#
+while IFS= read -r line; do
 
-			# {} around variables
-			while [[ ${line} == *_*?_* ]]; do
+	mark_bold_text "line"
 
-				# quote right-hand side of variable assignments
-				string_post="${line#*_}"
-				string_filter="${string_post#*_}"
+	mark_italic_text "line"
 
-				# Double quote to prevent globbing and word splitting. [SC2086] - shellcheck misssed this one
-				# Prefer [ p ] && [ q ] as [ p -a q ] is not well defined. [SC2166]
-				# use [[ ]] instead of [
-				if [[ ${#string_filter} -lt ${#string_post} ]] && [[ ${#string_post} -lt ${#line} ]]; then
-
-					# Expansions inside ${..} need to be quoted separately, otherwise they match as patterns. [SC2295]
-					# {} around variables
-					line="${line%%_"${string_post}"}<em>${string_post%%_"${string_filter}"}</em>${string_post}"
-
-				fi
-
-			done
-
-			# quote right-hand side of the variable
-			heading="${line:heading_level}"
-
-			while [[ ${heading} == " "* ]]; do
-
-				# quote right-hand side of the variable assignment
-				heading="${heading# }"
-
-			done
-
-			#
-			# Step: Add <h#> & </h#> around the heading entry.
-			#
-
-			# {} around variables
-			html="${html}<h${heading_level}>${heading}</h${heading_level}>"
-
-		else
-
-			#
-			# Step: Check for italic text.
-			#
-
-			# Use $(...) notation instead of legacy backticks `...`. [SC2006]
-			# {} around variables
-			# use -q instead of redirect of stdout
-			grep -q '_..*_' <<< "${line}" && line="$(echo "${line}" | sed -E 's,_([^_]+)_,<em>\1</em>,g')"
-
-			#
-			# Step: Add paragraph elements around paragraphs.
-			#
-
-			# {} around variables
-			html="${html}<p>${line}</p>"
-
-		fi
-
+	if ! mark_list_text "line" "html"; then
+		mark_heading_or_paragraph_text "line" "html"
 	fi
 
 done < "${1}"  # {} around variables
@@ -207,20 +115,12 @@ done < "${1}"  # {} around variables
 # Step: If we end while processing a list, close it.
 #
 
-# Double quote to prevent globbing and word splitting. [SC2086] - shellcheck misssed this one
-# use [[ ]] instead of [ ]
-# use a default value instead of pre-pending an X
-# use == instead of =
 if [[ ${inside_a_list:-no} == yes ]]; then
-
-	# {} around variables
-	html="${html}</ul>"
-
+	html+="</ul>"
 fi
 
 #
 # Step: Output the rendered HTML.
 #
 
-# {} around variables
 echo "${html}"
