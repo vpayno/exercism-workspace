@@ -5,7 +5,11 @@ If you need help running the tests or submitting your code, check out `HELP.md`.
 
 ## Instructions
 
-Refactor a Markdown parser.
+Refactor __a__ _Markdown_ parser.
+
+List:
+* one __two__ three
+* one _two_ three
 
 The markdown exercise is a refactoring exercise. There is code that parses a
 given string with [Markdown
