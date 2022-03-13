@@ -7,10 +7,36 @@
 # 5. Improve variable names and add comments.
 # 6. Move code to functions and code improvements.
 # 7. Make html an array.
+# 8. Add debugging.
 
-declare line
+declare DEBUG
+
 declare -a html
+declare line
 declare inside_a_list
+
+# Enable/Disable debug output.
+# This syntax let's us run it like this: DEBUG=true bash ./script_name.sh parameters
+: "${DEBUG:=false}"
+
+# Protect oursevles from code injection.
+if [[ ! ${DEBUG,,} =~ ^(false|true)$ ]]; then
+    DEBUG="false"
+fi
+
+# Lowercase the string and add /bin/ to the start of the string.
+DEBUG="/bin/${DEBUG,,}"
+
+# Function: printf to stderr if DEBUG is set to true
+# Input : same as printf
+# Output: same as printf, except it goes to stderr instead of stdout
+# Return: from printf
+eprintf()
+{
+    # Pass all the printf arguments and redirect stdout to stderr.
+    # shellcheck disable=SC2059
+    ${DEBUG} && printf "$@" >&2
+} # eprintf()
 
 mark_bold_text()
 {
@@ -103,7 +129,28 @@ mark_list_text()
 	fi
 } # mark_list_text()
 
+output_html()
+{
+	local -n __html3="${1}"
+
+	local sformat
+
+	if ${DEBUG}; then
+		sformat="%s\n"
+	else
+		sformat="%s"
+	fi
+
+	# shellcheck disable=SC2059
+	printf "${sformat}" "${__html3[@]}"
+	${DEBUG} && printf "\n"
+
+	return 0
+} # output_html()
+
 while IFS= read -r line; do
+
+	eprintf "before line=[%s]\n" "${line}"
 
 	mark_bold_text "line"
 
@@ -112,6 +159,12 @@ while IFS= read -r line; do
 	if ! mark_list_text "line" "html"; then
 		mark_heading_or_paragraph_text "line" "html"
 	fi
+
+	if [[ ${#line} -gt 0 ]]; then
+		eprintf " after line=[%s]\n" "${html[@]: -1}"
+	fi
+
+	eprintf "\n"
 
 done < "${1}"  # {} around variables
 
@@ -127,5 +180,4 @@ fi
 # Step: Output the rendered HTML.
 #
 
-printf "%s" "${html[@]}"
-printf "\n"
+output_html "html"
