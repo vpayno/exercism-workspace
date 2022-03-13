@@ -4,21 +4,25 @@
 # 2. Address all shellcheck (v0.8.0) issues.
 # 3. Style clean up.
 # 4. Add types.
+# 5. Improve variable names and add comments.
 
 declare orig
 declare line
-declare post
-declare pre
+declare match_again         # was 'pre'
+declare string_pre          # new & was 'one'
+declare string_post         # was 'post'
+declare string_to_bold      # new
 declare inside_a_list
-declare h
-declare one
-declare two
-declare -i n
-declare -i s
-declare -i t
-declare HEAD
+declare html  # was 'h'
+declare string_filter       # was 'two'
+declare -i heading_level    # was 'n'
+declare heading             # was 'HEAD'
 
 while IFS= read -r line; do
+
+	#
+	# Step: Checking for bold test.
+	#
 
 	while true; do
 
@@ -29,29 +33,40 @@ while IFS= read -r line; do
 		if [[ ${line} =~ ^(.+)__(.*) ]]; then
 
 			# double quotes, breakup line
-			post="${BASH_REMATCH[2]}"
-			pre="${BASH_REMATCH[1]}"
+			match_again="${BASH_REMATCH[1]}"
+			string_post="${BASH_REMATCH[2]}"
 
 			# {} around variables
-			if [[ ${pre} =~ ^(.*)__(.+) ]]; then
+			if [[ ${match_again} =~ ^(.*)__(.+) ]]; then
+
+				string_pre="${BASH_REMATCH[1]}"
+				string_to_bold="${BASH_REMATCH[2]}"
 
 				# {} around variables
-				printf -v line "%s<strong>%s</strong>%s" "${BASH_REMATCH[1]}" "${BASH_REMATCH[2]}" "${post}"
+				printf -v line "%s<strong>%s</strong>%s" "${string_pre}" "${string_to_bold}" "${string_post}"
 
 			fi
 
 		fi
 
+		# If the line didn't change
 		# use [[ ]] instead of [ ], add {} to variables
 		[[ ${line} != "${orig}" ]] || break
 
 	done
+
+	#
+	# Step: Check for unordered lists.
+	#
 
 	# Check exit code directly with e.g. 'if mycmd;', not indirectly with $?. [SC2181]
 	# use -q instead of the redirect to null for stdout
 	# add {} to line
 	if echo "${line}" | grep -q '^\*' 2> /dev/null; then
 
+		#
+		# Step: Found an unordered list, start the HTML for it.
+		#
 
 		# Double quote to prevent globbing and word splitting. [SC2086]
 		# use [[ ]] instead of [ ]
@@ -59,34 +74,42 @@ while IFS= read -r line; do
 		if [[ ${inside_a_list:-no} != yes ]]; then
 
 			# {} around variables
-			h="${h}<ul>"
+			html="${html}<ul>"
 
 			# quote right-hand side of variable assignments
 			inside_a_list="yes"
 
 		fi
 
+		#
+		# Step: Check for italic text.
+		#
+
 		# {} around variables
 		while [[ ${line} == *_*?_* ]]; do
 
 			# quote right-hand side of the variable assignment
-			one="${line#*_}"
-			two="${one#*_}"
+			string_post="${line#*_}"
+			string_filter="${string_post#*_}"
 
 			# Double quote to prevent globbing and word splitting. [SC2086] - shellcheck misssed this one
 			# Prefer [ p ] && [ q ] as [ p -a q ] is not well defined. [SC2166]
 			# use [[ ]] instead of [ ]
-			if [[ ${#two} -lt ${#one} ]] && [[ ${#one} -lt ${#line} ]]; then
+			if [[ ${#string_filter} -lt ${#string_post} ]] && [[ ${#string_post} -lt ${#line} ]]; then
 
 				# Expansions inside ${..} need to be quoted separately, otherwise they match as patterns. [SC2295]
-				line="${line%%_"${one}"}<em>${one%%_"${two}"}</em>${two}"
+				line="${line%%_"${string_post}"}<em>${string_post%%_"${string_filter}"}</em>${string_filter}"
 
 			fi
 
 		done
 
+		#
+		# Step: Add <li> & </li> around list entry.
+		#
+
 		# {} around variables
-		h="${h}<li>${line#??}</li>"
+		html="${html}<li>${line#??}</li>"
 
 	else
 
@@ -97,7 +120,7 @@ while IFS= read -r line; do
 		if [[ ${inside_a_list:-no} == yes ]]; then
 
 			# {} around variables
-			h="${h}</ul>"
+			html="${html}</ul>"
 
 			# quote right-hand side of the variable assignment
 			inside_a_list="no"
@@ -106,62 +129,83 @@ while IFS= read -r line; do
 
 		# Use $(...) notation instead of legacy backticks `...`. [SC2006]
 		# {} around variables
-		n="$(expr "${line}" : "#\{1,\}")"
+		# Get the heading level. (int >= 0)
+		heading_level="$(expr "${line}" : "#\{1,\}")"
 
 		# Double quote to prevent globbing and word splitting. [SC2086]
 		# Prefer [ p ] && [ q ] as [ p -a q ] is not well defined. [SC2166]
 		# {} around variables
 		# use [[ ]] instead of [ ]
-		if [[ ${n} -gt 0 ]] && [[ 7 -gt ${n} ]]; then
+		if [[ ${heading_level} -gt 0 ]] && [[ 7 -gt ${heading_level} ]]; then
+
+			#
+			# Step: Check for italic text.
+			#
 
 			# {} around variables
 			while [[ ${line} == *_*?_* ]]; do
 
 				# quote right-hand side of variable assignments
-				s="${line#*_}"
-				t="${s#*_}"
+				string_post="${line#*_}"
+				string_filter="${string_post#*_}"
 
 				# Double quote to prevent globbing and word splitting. [SC2086] - shellcheck misssed this one
 				# Prefer [ p ] && [ q ] as [ p -a q ] is not well defined. [SC2166]
 				# use [[ ]] instead of [
-				if [[ ${#t} -lt ${#s} ]] && [[ ${#s} -lt ${#line} ]]; then
+				if [[ ${#string_filter} -lt ${#string_post} ]] && [[ ${#string_post} -lt ${#line} ]]; then
 
 					# Expansions inside ${..} need to be quoted separately, otherwise they match as patterns. [SC2295]
 					# {} around variables
-					line="${line%%_"${s}"}<em>${s%%_"${t}"}</em>${t}"
+					line="${line%%_"${string_post}"}<em>${string_post%%_"${string_filter}"}</em>${string_post}"
 
 				fi
 
 			done
 
 			# quote right-hand side of the variable
-			HEAD="${line:n}"
+			heading="${line:heading_level}"
 
-			while [[ ${HEAD} == " "* ]]; do
+			while [[ ${heading} == " "* ]]; do
 
 				# quote right-hand side of the variable assignment
-				HEAD="${HEAD# }"
+				heading="${heading# }"
 
 			done
 
+			#
+			# Step: Add <h#> & </h#> around the heading entry.
+			#
+
 			# {} around variables
-			h="${h}<h${n}>${HEAD}</h${n}>"
+			html="${html}<h${heading_level}>${heading}</h${heading_level}>"
 
 		else
+
+			#
+			# Step: Check for italic text.
+			#
 
 			# Use $(...) notation instead of legacy backticks `...`. [SC2006]
 			# {} around variables
 			# use -q instead of redirect of stdout
 			grep -q '_..*_' <<< "${line}" && line="$(echo "${line}" | sed -E 's,_([^_]+)_,<em>\1</em>,g')"
 
+			#
+			# Step: Add paragraph elements around paragraphs.
+			#
+
 			# {} around variables
-			h="${h}<p>${line}</p>"
+			html="${html}<p>${line}</p>"
 
 		fi
 
 	fi
 
 done < "${1}"  # {} around variables
+
+#
+# Step: If we end while processing a list, close it.
+#
 
 # Double quote to prevent globbing and word splitting. [SC2086] - shellcheck misssed this one
 # use [[ ]] instead of [ ]
@@ -170,9 +214,13 @@ done < "${1}"  # {} around variables
 if [[ ${inside_a_list:-no} == yes ]]; then
 
 	# {} around variables
-	h="${h}</ul>"
+	html="${html}</ul>"
 
 fi
 
+#
+# Step: Output the rendered HTML.
+#
+
 # {} around variables
-echo "${h}"
+echo "${html}"
