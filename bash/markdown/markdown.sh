@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 # 1. Clean up whitespace.
+# 2. Address all shellcheck (v0.8.0) issues.
 
 while IFS= read -r line; do
 
@@ -24,11 +25,12 @@ while IFS= read -r line; do
 
 	done
 
-	echo "$line" | grep '^\*' > /dev/null 2>&1
+	# Check exit code directly with e.g. 'if mycmd;', not indirectly with $?. [SC2181]
+	if echo "$line" | grep '^\*' > /dev/null 2>&1; then
 
-	if [ $? -eq 0 ]; then
 
-		if [ X$inside_a_list != Xyes ]; then
+		# Double quote to prevent globbing and word splitting. [SC2086]
+		if [ "X$inside_a_list" != Xyes ]; then
 
 			h="$h<ul>"
 			inside_a_list=yes
@@ -40,9 +42,12 @@ while IFS= read -r line; do
 			one=${line#*_}
 			two=${one#*_}
 
-			if [ ${#two} -lt ${#one} -a ${#one} -lt ${#line} ]; then
+			# Double quote to prevent globbing and word splitting. [SC2086] - shellcheck misssed this one
+			# Prefer [ p ] && [ q ] as [ p -a q ] is not well defined. [SC2166]
+			if [ "${#two}" -lt "${#one}" ] && [ "${#one}" -lt "${#line}" ]; then
 
-				line="${line%%_$one}<em>${one%%_$two}</em>$two"
+				# Expansions inside ${..} need to be quoted separately, otherwise they match as patterns. [SC2295]
+				line="${line%%_"$one"}<em>${one%%_"$two"}</em>$two"
 
 			fi
 
@@ -52,25 +57,32 @@ while IFS= read -r line; do
 
 	else
 
-		if [ X$inside_a_list = Xyes ]; then
+		# Double quote to prevent globbing and word splitting. [SC2086] - shellcheck missed this one
+		if [ "X$inside_a_list" = Xyes ]; then
 
 			h="$h</ul>"
 			inside_a_list=no
 
 		fi
 
-		n=`expr "$line" : "#\{1,\}"`
+		# Use $(...) notation instead of legacy backticks `...`. [SC2006]
+		n="$(expr "$line" : "#\{1,\}")"
 
-		if [ $n -gt 0 -a 7 -gt $n ]; then
+		# Double quote to prevent globbing and word splitting. [SC2086]
+		# Prefer [ p ] && [ q ] as [ p -a q ] is not well defined. [SC2166]
+		if [ "$n" -gt 0 ] && [ 7 -gt "$n" ]; then
 
 			while [[ $line == *_*?_* ]]; do
 
 				s=${line#*_}
 				t=${s#*_}
 
-				if [ ${#t} -lt ${#s} -a ${#s} -lt ${#line} ]; then
+				# Double quote to prevent globbing and word splitting. [SC2086] - shellcheck misssed this one
+				# Prefer [ p ] && [ q ] as [ p -a q ] is not well defined. [SC2166]
+				if [ "${#t}" -lt "${#s}" ] && [ "${#s}" -lt "${#line}" ]; then
 
-					line="${line%%_$s}<em>${s%%_$t}</em>$t"
+					# Expansions inside ${..} need to be quoted separately, otherwise they match as patterns. [SC2295]
+					line="${line%%_"$s"}<em>${s%%_"$t"}</em>$t"
 
 				fi
 
@@ -88,7 +100,8 @@ while IFS= read -r line; do
 
 		else
 
-			grep '_..*_' <<<"$line" > /dev/null && line=`echo "$line" | sed -E 's,_([^_]+)_,<em>\1</em>,g'`
+			# Use $(...) notation instead of legacy backticks `...`. [SC2006]
+			grep '_..*_' <<<"$line" > /dev/null && line="$(echo "$line" | sed -E 's,_([^_]+)_,<em>\1</em>,g')"
 
 			h="$h<p>$line</p>"
 
@@ -98,7 +111,8 @@ while IFS= read -r line; do
 
 done < "$1"
 
-if [ X$inside_a_list = Xyes ]; then
+# Double quote to prevent globbing and word splitting. [SC2086] - shellcheck misssed this one
+if [ "X$inside_a_list" = Xyes ]; then
 
 	h="$h</ul>"
 
