@@ -3,6 +3,20 @@
 # 1. Clean up whitespace.
 # 2. Address all shellcheck (v0.8.0) issues.
 # 3. Style clean up.
+# 4. Add types.
+
+declare orig
+declare line
+declare post
+declare pre
+declare inside_a_list
+declare h
+declare one
+declare two
+declare -i n
+declare -i s
+declare -i t
+declare HEAD
 
 while IFS= read -r line; do
 
