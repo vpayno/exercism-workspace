@@ -8,12 +8,9 @@
 # 6. Move code to functions and code improvements.
 # 7. Make html an array.
 # 8. Add debugging.
+# 9. Add a main() function.
 
 declare DEBUG
-
-declare -a html
-declare line
-declare inside_a_list
 
 # Enable/Disable debug output.
 # This syntax let's us run it like this: DEBUG=true bash ./script_name.sh parameters
@@ -148,36 +145,47 @@ output_html()
 	return 0
 } # output_html()
 
-while IFS= read -r line; do
+main()
+{
+	local input_file="${1}"
 
-	eprintf "before line=[%s]\n" "${line}"
+	local -a html
+	local line
+	local inside_a_list
 
-	mark_bold_text "line"
+	while IFS= read -r line; do
 
-	mark_italic_text "line"
+		eprintf "before line=[%s]\n" "${line}"
 
-	if ! mark_list_text "line" "html"; then
-		mark_heading_or_paragraph_text "line" "html"
+		mark_bold_text "line"
+
+		mark_italic_text "line"
+
+		if ! mark_list_text "line" "html"; then
+			mark_heading_or_paragraph_text "line" "html"
+		fi
+
+		if [[ ${#line} -gt 0 ]]; then
+			eprintf " after line=[%s]\n" "${html[@]: -1}"
+		fi
+
+		eprintf "\n"
+
+	done < "${input_file}"  # {} around variables
+
+	#
+	# Step: If we end while processing a list, close it.
+	#
+
+	if [[ ${inside_a_list:-no} == yes ]]; then
+		html+=( "</ul>" )
 	fi
 
-	if [[ ${#line} -gt 0 ]]; then
-		eprintf " after line=[%s]\n" "${html[@]: -1}"
-	fi
+	#
+	# Step: Output the rendered HTML.
+	#
 
-	eprintf "\n"
+	output_html "html"
+} # main()
 
-done < "${1}"  # {} around variables
-
-#
-# Step: If we end while processing a list, close it.
-#
-
-if [[ ${inside_a_list:-no} == yes ]]; then
-	html+=( "</ul>" )
-fi
-
-#
-# Step: Output the rendered HTML.
-#
-
-output_html "html"
+main "$@"
