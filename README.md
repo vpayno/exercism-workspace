@@ -7,6 +7,7 @@ Exercism Workspace (https://exercism.org/docs/tracks)
 
 ## Active Tracks
 [bash](bash/README.md)
+[go](go/README.md)
 
 
 ## Automation
