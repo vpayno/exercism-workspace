@@ -5,10 +5,12 @@
 [My Profile](https://exercism.org/profiles/vpayno)
 
 
+## Tools
+
+[for_each](./for_each)
+[run-tests](./run-tests)
+
+
 ## Completed Exercises
-
-
-
-## Started/In-Progress Exercises
 
 [hello-world](hello-world/README.md)
