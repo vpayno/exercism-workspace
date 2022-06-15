@@ -51,3 +51,9 @@ phenomenon, go watch [this youtube video][video].
 ### Based on
 
 JavaRanch Cattle Drive, exercise 3 - http://www.javaranch.com/leap.jsp
+
+### My Solution
+
+- [solution](./leap.sh)
+- [check-solution](./run-tests-bats.txt)
+- [debug-check](./run-tests-debug.txt)

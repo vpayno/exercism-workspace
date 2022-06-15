@@ -25,3 +25,9 @@ Two clocks that represent the same time should be equal to each other.
 ### Based on
 
 Pairing session with Erin Drummond - https://twitter.com/ebdrummond
+
+### My Solution
+
+- [solution](./clock.sh)
+- [check-solution](./run-tests-bats.txt)
+- [debug-check](./run-tests-debug.txt)

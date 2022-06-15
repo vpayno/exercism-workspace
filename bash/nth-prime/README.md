@@ -27,3 +27,9 @@ numbers, pretend they don't exist and implement them yourself.
 ### Based on
 
 A variation on Problem 7 at Project Euler - http://projecteuler.net/problem=7
+
+### My Solution
+
+- [solution](./nth_prime.sh)
+- [check-solution](./run-tests-bats.txt)
+- [debug-check](./run-tests-debug.txt)

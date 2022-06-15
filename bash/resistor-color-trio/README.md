@@ -64,3 +64,9 @@ So an input of `"orange", "orange", "orange"` should return:
 ### Based on
 
 Maud de Vries, Erik Schierboom - https://github.com/exercism/problem-specifications/issues/1549
+
+### My Solution
+
+- [solution](./resistor_color_trio.sh)
+- [check-solution](./run-tests-bats.txt)
+- [debug-check](./run-tests-debug.txt)

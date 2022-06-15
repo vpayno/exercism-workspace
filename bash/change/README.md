@@ -37,3 +37,9 @@ that the sum of the coins' value would equal the correct amount of change.
 ### Based on
 
 Software Craftsmanship - Coin Change Kata - https://web.archive.org/web/20130115115225/http://craftsmanship.sv.cmu.edu:80/exercises/coin-change-kata
+
+### My Solution
+
+- [solution](./change.sh)
+- [check-solution](./run-tests-bats.txt)
+- [debug-check](./run-tests-debug.txt)

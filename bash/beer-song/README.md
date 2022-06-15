@@ -341,3 +341,9 @@ experiment make the code better? Worse? Did you learn anything from it?
 ### Based on
 
 Learn to Program by Chris Pine - http://pine.fm/LearnToProgram/?Chapter=06
+
+### My Solution
+
+- [solution](./beer_song.sh)
+- [check-solution](./run-tests-bats.txt)
+- [debug-check](./run-tests-debug.txt)

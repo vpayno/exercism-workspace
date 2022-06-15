@@ -93,3 +93,9 @@ Finding MMI for `a = 15`:
 ### Based on
 
 Wikipedia - http://en.wikipedia.org/wiki/Affine_cipher
+
+### My Solution
+
+- [solution](./affine_cipher.sh)
+- [check-solution](./run-tests-bats.txt)
+- [debug-check](./run-tests-debug.txt)

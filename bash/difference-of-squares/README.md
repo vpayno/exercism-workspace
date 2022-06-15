@@ -43,3 +43,9 @@ algorithm for the problem is a key skill in software engineering.
 ### Based on
 
 Problem 6 at Project Euler - http://projecteuler.net/problem=6
+
+### My Solution
+
+- [solution](./difference_of_squares.sh)
+- [check-solution](./run-tests-bats.txt)
+- [debug-check](./run-tests-debug.txt)

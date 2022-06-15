@@ -86,3 +86,9 @@ If you'd like, handle exponentials.
 ### Based on
 
 Inspired by one of the generated questions in the Extreme Startup game. - https://github.com/rchatley/extreme_startup
+
+### My Solution
+
+- [solution](./wordy.sh)
+- [check-solution](./run-tests-bats.txt)
+- [debug-check](./run-tests-debug.txt)

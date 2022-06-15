@@ -39,3 +39,9 @@ challenge, find a way to implement this with plain bash.
 ### Based on
 
 Inspired by an exercise created by a professor Della Paolera in Argentina
+
+### My Solution
+
+- [solution](./darts.sh)
+- [check-solution](./run-tests-bats.txt)
+- [debug-check](./run-tests-debug.txt)

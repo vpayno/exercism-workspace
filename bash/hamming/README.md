@@ -49,3 +49,9 @@ exception vs returning a special value) may differ between languages.
 ### Based on
 
 The Calculating Point Mutations problem at Rosalind - http://rosalind.info/problems/hamm/
+
+### My Solution
+
+- [solution](./hamming.sh)
+- [check-solution](./run-tests-bats.txt)
+- [debug-check](./run-tests-debug.txt)

@@ -45,3 +45,9 @@ For example:
 ### Based on
 
 The Calculating DNA Nucleotides_problem at Rosalind - http://rosalind.info/problems/dna/
+
+### My Solution
+
+- [solution](./nucleotide_count.sh)
+- [check-solution](./run-tests-bats.txt)
+- [debug-check](./run-tests-debug.txt)

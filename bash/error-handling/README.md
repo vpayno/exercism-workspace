@@ -33,3 +33,9 @@ for your track to see what's exactly required.
 - @sjwarner-bp
 - @Smarticles101
 - @ZapAnton
+
+### My Solution
+
+- [solution](./error_handling.sh)
+- [check-solution](./run-tests-bats.txt)
+- [debug-check](./run-tests-debug.txt)

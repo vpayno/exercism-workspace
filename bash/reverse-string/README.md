@@ -30,3 +30,9 @@ output: "looc"
 ### Based on
 
 Introductory challenge to reverse an input string - https://medium.freecodecamp.org/how-to-reverse-a-string-in-javascript-in-3-different-ways-75e4763c68cb
+
+### My Solution
+
+- [solution](./reverse_string.sh)
+- [check-solution](./run-tests-bats.txt)
+- [debug-check](./run-tests-debug.txt)

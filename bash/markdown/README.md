@@ -33,3 +33,10 @@ important thing is to make the code better!
 
 - @guygastineau
 - @IsaacG
+
+
+### My Solution
+
+- [solution](./markdown.sh)
+- [check-solution](./run-tests-bats.txt)
+- [debug-check](./run-tests-debug.txt)

@@ -51,3 +51,9 @@ programming languages are designed to roll dice. One such language is [Troll].
 ### Based on
 
 Simon Shine, Erik Schierboom - https://github.com/exercism/problem-specifications/issues/616#issuecomment-437358945
+
+### My Solution
+
+- [solution](./dnd_character.sh)
+- [check-solution](./run-tests-bats.txt)
+- [debug-check](./run-tests-debug.txt)

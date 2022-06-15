@@ -56,3 +56,9 @@ should all produce the output
 ### Based on
 
 Event Manager by JumpstartLab - http://tutorials.jumpstartlab.com/projects/eventmanager.html
+
+### My Solution
+
+- [solution](./phone_number.sh)
+- [check-solution](./run-tests-bats.txt)
+- [debug-check](./run-tests-debug.txt)

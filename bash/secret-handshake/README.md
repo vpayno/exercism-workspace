@@ -49,3 +49,9 @@ has caused the array to be reversed.
 ### Based on
 
 Bert, in Mary Poppins - http://www.imdb.com/title/tt0058331/quotes/qt0437047
+
+### My Solution
+
+- [solution](./secret_handshake.sh)
+- [check-solution](./run-tests-bats.txt)
+- [debug-check](./run-tests-debug.txt)

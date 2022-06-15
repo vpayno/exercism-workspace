@@ -58,3 +58,9 @@ fled: 1
 ### Based on
 
 This is a classic toy problem, but we were reminded of it by seeing it in the Go Tour.
+
+### My Solution
+
+- [solution](./word_count.sh)
+- [check-solution](./run-tests-bats.txt)
+- [debug-check](./run-tests-debug.txt)

@@ -22,3 +22,9 @@ Recall also that natural numbers are positive real whole numbers (i.e. 1, 2, 3 a
 ### Based on
 
 wolf99 - https://github.com/exercism/problem-specifications/pull/1582
+
+### My Solution
+
+- [solution](./square_root.sh)
+- [check-solution](./run-tests-bats.txt)
+- [debug-check](./run-tests-debug.txt)

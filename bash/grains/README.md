@@ -50,3 +50,9 @@ experiment make the code better? Worse? Did you learn anything from it?
 ### Based on
 
 JavaRanch Cattle Drive, exercise 6 - http://www.javaranch.com/grains.jsp
+
+### My Solution
+
+- [solution](./grains.sh)
+- [check-solution](./run-tests-bats.txt)
+- [debug-check](./run-tests-debug.txt)

@@ -44,3 +44,9 @@ Bob's conversational partner is a purist when it comes to written communication 
 ### Based on
 
 Inspired by the 'Deaf Grandma' exercise in Chris Pine's Learn to Program tutorial. - http://pine.fm/LearnToProgram/?Chapter=06
+
+### My Solution
+
+- [solution](./bob.sh)
+- [check-solution](./run-tests-bats.txt)
+- [debug-check](./run-tests-debug.txt)

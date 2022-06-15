@@ -34,3 +34,9 @@ the largest product for a series of 6 digits is 23520.
 ### Based on
 
 A variation on Problem 8 at Project Euler - http://projecteuler.net/problem=8
+
+### My Solution
+
+- [solution](./largest_series_product.sh)
+- [check-solution](./run-tests-bats.txt)
+- [debug-check](./run-tests-debug.txt)
