@@ -12,4 +12,4 @@ Exercism Workspace (https://exercism.org/docs/tracks)
 
 ## Automation
 
-[run-tests](run-tests)
+[Bash run-tests](./bash/run-tests)
