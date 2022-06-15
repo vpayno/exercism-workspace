@@ -1,0 +1,111 @@
+#!/bin/bash
+
+print_ruler()
+{
+	printf "\n"
+	printf "=%.0s" {1..79}; printf "\n"
+	printf "\n"
+} # print_ruler()
+
+get_go_package_name()
+{
+	awk '/^package / { print $NF }' ./*.go | head -n 1
+} # get_go_package_name()
+
+main()
+{
+	printf "Running automated test file(s):\n\n"
+
+	mapfile -t packages < <(get_go_package_name)
+	printf "Go packages: "; printf "%s " "${packages[@]}"; printf "\n\n"
+
+	print_ruler
+
+	if ! golint -h >& /dev/null; then
+		echo go install golang.org/x/lint/golint@latest
+		time go install golang.org/x/lint/golint@latest
+		printf "\n"
+	fi
+
+	echo golint "${packages[@]}"
+	time golint "${packages[@]}"
+
+	print_ruler
+
+	if ! go list ... |& grep -q cmd/cover; then
+		echo go install golang.org/x/tools/cmd/cover@latest
+		time go install golang.org/x/tools/cmd/cover@latest
+	fi
+
+	echo go test -v -covermode=count -coverprofile coverage.out "${packages[@]}"
+	time go test -v -covermode=count -coverprofile coverage.out "${packages[@]}"
+
+	print_ruler
+
+	echo go tool cover -func=coverage.out
+	time go tool cover -func=coverage.out
+
+	print_ruler
+
+	echo go test -v -race -covermode=atomic "${packages[@]}"
+	time go test -v -race -covermode=atomic "${packages[@]}"
+
+	print_ruler
+
+	echo go test --bench . --benchmem
+	time go test --bench . --benchmem
+
+	print_ruler
+
+	echo go test -tags bonus
+	time go test -tags bonus
+
+	print_ruler
+
+	echo go vet "${packages[@]}"
+	time go vet "${packages[@]}"
+
+	print_ruler
+
+	echo go fix "${packages[@]}"
+	time go fix "${packages[@]}"
+
+	print_ruler
+
+	if ! gosec -h >& /dev/null; then
+		echo go install github.com/securego/gosec/cmd/gosec@latest
+		time go install github.com/securego/gosec/cmd/gosec@latest
+		printf "\n"
+	fi
+
+	gosec_target="./$(basename "${PWD}")"
+	cd .. || return
+	echo gosec "${gosec_target}"
+	time gosec "${gosec_target}"
+	cd - >& /dev/null|| return
+
+	print_ruler
+
+	if ! gomarkdoc -h >& /dev/null; then
+		echo go install github.com/princjef/gomarkdoc/cmd/gomarkdoc@latest
+		time go install github.com/princjef/gomarkdoc/cmd/gomarkdoc@latest
+		printf "\n"
+	fi
+
+	for package in "${packages[@]}"; do
+		echo gomarkdoc --output "${package}"-doc.md
+		time gomarkdoc --output "${package}"-doc.md
+	done
+
+	print_ruler
+
+	for package in "${packages[@]}"; do
+		echo go doc -all "${package}"
+		time go doc -all "${package}" |& tee "${package}"-doc.txt
+		printf "\n"
+	done
+
+	print_ruler
+} # main()
+
+time main "$@" |& tee ./run-tests-go.txt
