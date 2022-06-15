@@ -7,10 +7,10 @@
 
 ## Tools
 
-[for_each](./for_each)
-[run-tests](./run-tests)
+- [for_each](./for_each)
+- [run-tests](./run-tests)
 
 
 ## Completed Exercises
 
-[hello-world](hello-world/README.md)
+- [hello-world](hello-world/README.md)
