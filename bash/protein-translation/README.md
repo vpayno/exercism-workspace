@@ -62,3 +62,9 @@ Learn more about [protein translation on Wikipedia](http://en.wikipedia.org/wiki
 ### Based on
 
 Tyler Long
+
+### My Solution
+
+- [solution](./protein_translation.sh)
+- [check-solution](./run-tests-bats.txt)
+- [debug-check](./run-tests-debug.txt)

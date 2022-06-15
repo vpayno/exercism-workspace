@@ -74,3 +74,9 @@ E·······E
 ### Based on
 
 Seb Rose - http://claysnow.co.uk/recycling-tests-in-tdd/
+
+### My Solution
+
+- [solution](./diamond.sh)
+- [check-solution](./run-tests-bats.txt)
+- [debug-check](./run-tests-debug.txt)

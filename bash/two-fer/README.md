@@ -52,3 +52,9 @@ Here are some examples:
 ### Based on
 
 https://github.com/exercism/problem-specifications/issues/757
+
+### My Solution
+
+- [solution](./two_fer.sh)
+- [check-solution](./run-tests-bats.txt)
+- [debug-check](./run-tests-debug.txt)

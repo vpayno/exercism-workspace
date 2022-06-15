@@ -88,3 +88,9 @@ Sum the digits
 ### Based on
 
 The Luhn Algorithm on Wikipedia - http://en.wikipedia.org/wiki/Luhn_algorithm
+
+### My Solution
+
+- [solution](./luhn.sh)
+- [check-solution](./run-tests-bats.txt)
+- [debug-check](./run-tests-debug.txt)

@@ -38,3 +38,9 @@ YouTube video](http://www.youtube.com/watch?v=Z_2gbGXzFbs).
 ### Based on
 
 Partially inspired by Chapter 1 in Chris Pine's online Learn to Program tutorial. - http://pine.fm/LearnToProgram/?Chapter=01
+
+### My Solution
+
+- [solution](./space_age.sh)
+- [check-solution](./run-tests-bats.txt)
+- [debug-check](./run-tests-debug.txt)

@@ -50,3 +50,9 @@ Here are examples of integers as 32-bit values, and the variable length quantiti
 ### Based on
 
 A poor Splice developer having to implement MIDI encoding/decoding. - https://splice.com
+
+### My Solution
+
+- [solution](./variable_length_quantity.sh)
+- [check-solution](./run-tests-bats.txt)
+- [debug-check](./run-tests-debug.txt)

@@ -46,3 +46,9 @@ each nucleotide with its complement:
 ### Based on
 
 Hyperphysics - http://hyperphysics.phy-astr.gsu.edu/hbase/Organic/transcription.html
+
+### My Solution
+
+- [solution](./rna_transcription.sh)
+- [check-solution](./run-tests-bats.txt)
+- [debug-check](./run-tests-debug.txt)

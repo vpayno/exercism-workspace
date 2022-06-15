@@ -48,3 +48,9 @@ I think you got the idea!
 - @guygastineau
 - @IsaacG
 - @kotp
+
+### My Solution
+
+- [solution](./all_your_base.sh)
+- [check-solution](./run-tests-bats.txt)
+- [debug-check](./run-tests-debug.txt)

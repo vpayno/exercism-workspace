@@ -50,3 +50,9 @@ language).
 ### Based on
 
 Sieve of Eratosthenes at Wikipedia - http://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
+
+### My Solution
+
+- [solution](./sieve.sh)
+- [check-solution](./run-tests-bats.txt)
+- [debug-check](./run-tests-debug.txt)

@@ -39,3 +39,9 @@ Examples:
 
 - @guygastineau
 - @IsaacG
+
+### My Solution
+
+- [solution](./sublist.sh)
+- [check-solution](./run-tests-bats.txt)
+- [debug-check](./run-tests-debug.txt)

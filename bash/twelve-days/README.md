@@ -49,3 +49,9 @@ On the twelfth day of Christmas my true love gave to me: twelve Drummers Drummin
 ### Based on
 
 Wikipedia - http://en.wikipedia.org/wiki/The_Twelve_Days_of_Christmas_(song)
+
+### My Solution
+
+- [solution](./twelve_days.sh)
+- [check-solution](./run-tests-bats.txt)
+- [debug-check](./run-tests-debug.txt)

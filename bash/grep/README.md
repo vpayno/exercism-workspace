@@ -111,3 +111,9 @@ To solve this exercise, you'll need to:
 ### Based on
 
 Conversation with Nate Foster. - http://www.cs.cornell.edu/Courses/cs3110/2014sp/hw/0/ps0.pdf
+
+### My Solution
+
+- [solution](./grep.sh)
+- [check-solution](./run-tests-bats.txt)
+- [debug-check](./run-tests-debug.txt)

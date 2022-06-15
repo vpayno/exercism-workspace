@@ -58,3 +58,9 @@ secret s.
 ### Based on
 
 Wikipedia, 1024 bit key from www.cryptopp.com/wiki. - http://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange
+
+### My Solution
+
+- [solution](./diffie_hellman.sh)
+- [check-solution](./run-tests-bats.txt)
+- [debug-check](./run-tests-debug.txt)
