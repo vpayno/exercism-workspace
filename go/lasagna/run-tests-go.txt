@@ -1,0 +1,199 @@
+Running automated test file(s):
+
+Go packages: lasagna 
+
+
+===============================================================================
+
+golint lasagna
+
+real	0m0.097s
+user	0m0.070s
+sys	0m0.077s
+
+===============================================================================
+
+go test -v -covermode=count -coverprofile coverage.out lasagna
+=== RUN   TestOvenTime
+=== RUN   TestOvenTime/Calculates_how_many_minutes_the_lasagna_should_be_in_the_oven
+--- PASS: TestOvenTime (0.00s)
+    --- PASS: TestOvenTime/Calculates_how_many_minutes_the_lasagna_should_be_in_the_oven (0.00s)
+=== RUN   TestRemainingOvenTime
+=== RUN   TestRemainingOvenTime/Remaining_minutes_in_oven
+--- PASS: TestRemainingOvenTime (0.00s)
+    --- PASS: TestRemainingOvenTime/Remaining_minutes_in_oven (0.00s)
+=== RUN   TestPreparationTime
+=== RUN   TestPreparationTime/Preparation_time_in_minutes_for_one_layer
+=== RUN   TestPreparationTime/Preparation_time_in_minutes_for_multiple_layers
+--- PASS: TestPreparationTime (0.00s)
+    --- PASS: TestPreparationTime/Preparation_time_in_minutes_for_one_layer (0.00s)
+    --- PASS: TestPreparationTime/Preparation_time_in_minutes_for_multiple_layers (0.00s)
+=== RUN   TestElapsedTime
+=== RUN   TestElapsedTime/Total_time_in_minutes_for_one_layer
+=== RUN   TestElapsedTime/Total_time_in_minutes_for_multiple_layers
+--- PASS: TestElapsedTime (0.00s)
+    --- PASS: TestElapsedTime/Total_time_in_minutes_for_one_layer (0.00s)
+    --- PASS: TestElapsedTime/Total_time_in_minutes_for_multiple_layers (0.00s)
+=== RUN   ExampleRemainingOvenTime
+--- PASS: ExampleRemainingOvenTime (0.00s)
+=== RUN   ExamplePreparationTime
+--- PASS: ExamplePreparationTime (0.00s)
+=== RUN   ExampleElapsedTime
+--- PASS: ExampleElapsedTime (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	lasagna	0.010s	coverage: 100.0% of statements
+
+real	0m0.508s
+user	0m0.547s
+sys	0m0.375s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+lasagna/lasagna.go:7:	RemainingOvenTime	100.0%
+lasagna/lasagna.go:12:	PreparationTime		100.0%
+lasagna/lasagna.go:17:	ElapsedTime		100.0%
+total:			(statements)		100.0%
+
+real	0m0.088s
+user	0m0.044s
+sys	0m0.104s
+
+===============================================================================
+
+go test -v -race -covermode=atomic lasagna
+=== RUN   TestOvenTime
+=== RUN   TestOvenTime/Calculates_how_many_minutes_the_lasagna_should_be_in_the_oven
+--- PASS: TestOvenTime (0.00s)
+    --- PASS: TestOvenTime/Calculates_how_many_minutes_the_lasagna_should_be_in_the_oven (0.00s)
+=== RUN   TestRemainingOvenTime
+=== RUN   TestRemainingOvenTime/Remaining_minutes_in_oven
+--- PASS: TestRemainingOvenTime (0.00s)
+    --- PASS: TestRemainingOvenTime/Remaining_minutes_in_oven (0.00s)
+=== RUN   TestPreparationTime
+=== RUN   TestPreparationTime/Preparation_time_in_minutes_for_one_layer
+=== RUN   TestPreparationTime/Preparation_time_in_minutes_for_multiple_layers
+--- PASS: TestPreparationTime (0.00s)
+    --- PASS: TestPreparationTime/Preparation_time_in_minutes_for_one_layer (0.00s)
+    --- PASS: TestPreparationTime/Preparation_time_in_minutes_for_multiple_layers (0.00s)
+=== RUN   TestElapsedTime
+=== RUN   TestElapsedTime/Total_time_in_minutes_for_one_layer
+=== RUN   TestElapsedTime/Total_time_in_minutes_for_multiple_layers
+--- PASS: TestElapsedTime (0.00s)
+    --- PASS: TestElapsedTime/Total_time_in_minutes_for_one_layer (0.00s)
+    --- PASS: TestElapsedTime/Total_time_in_minutes_for_multiple_layers (0.00s)
+=== RUN   ExampleRemainingOvenTime
+--- PASS: ExampleRemainingOvenTime (0.00s)
+=== RUN   ExamplePreparationTime
+--- PASS: ExamplePreparationTime (0.00s)
+=== RUN   ExampleElapsedTime
+--- PASS: ExampleElapsedTime (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	lasagna	(cached)	coverage: 100.0% of statements
+
+real	0m0.374s
+user	0m0.438s
+sys	0m0.421s
+
+===============================================================================
+
+go test --bench . --benchmem
+PASS
+ok  	lasagna	0.018s
+
+real	0m0.530s
+user	0m0.608s
+sys	0m0.420s
+
+===============================================================================
+
+go test -tags bonus
+PASS
+ok  	lasagna	0.003s
+
+real	0m0.444s
+user	0m0.505s
+sys	0m0.429s
+
+===============================================================================
+
+go vet lasagna
+
+real	0m0.358s
+user	0m0.419s
+sys	0m0.360s
+
+===============================================================================
+
+go fix lasagna
+
+real	0m0.067s
+user	0m0.035s
+sys	0m0.068s
+
+===============================================================================
+
+gosec ./lasagna
+[gosec] 2022/06/15 20:57:37 Including rules: default
+[gosec] 2022/06/15 20:57:37 Excluding rules: default
+[gosec] 2022/06/15 20:57:37 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/lasagna
+[gosec] 2022/06/15 20:57:38 Checking package: lasagna
+[gosec] 2022/06/15 20:57:38 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/lasagna/lasagna.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 19
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.255s
+user	0m0.280s
+sys	0m0.181s
+
+===============================================================================
+
+gomarkdoc --output lasagna-doc.md
+
+real	0m0.029s
+user	0m0.019s
+sys	0m0.014s
+
+===============================================================================
+
+go doc -all lasagna
+package lasagna // import "lasagna"
+
+
+CONSTANTS
+
+const OvenTime = 40
+    OvenTime is the amount of time the lasagna should bake for.
+
+
+FUNCTIONS
+
+func ElapsedTime(numberOfLayers, actualMinutesInOven int) int
+    ElapsedTime calculates the total time needed to create and bake a lasagna.
+
+func PreparationTime(numberOfLayers int) int
+    PreparationTime calculates the time needed to prepare the lasagna based on
+    the amount of layers.
+
+func RemainingOvenTime(actualMinutesInOven int) int
+    RemainingOvenTime returns the remaining minutes based on the `actual`
+    minutes already in the oven.
+
+
+real	0m0.125s
+user	0m0.054s
+sys	0m0.135s
+
+
+===============================================================================
+
