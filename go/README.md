@@ -14,8 +14,8 @@
 ## Completed Exercises
 
 - [hello-world](hello-world/README.md)
+- [lasagna](lasagna/README.md)
 
 
 ## In-Progress Exercises
 
-- [lasagna](lasagna/README.md)

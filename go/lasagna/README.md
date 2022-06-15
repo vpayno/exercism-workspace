@@ -149,3 +149,9 @@ ElapsedTime(3, 20)
 - @ekingery
 - @andrerfcsantos
 - @bobtfish
+
+### My Solution
+
+- [solution](./lasagna.go)
+- [run-tests](./run-tests-go.txt)
+- [documentation](./lasagna-doc.md)
