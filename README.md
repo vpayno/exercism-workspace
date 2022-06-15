@@ -9,6 +9,7 @@ Exercism Workspace (https://exercism.org/docs/tracks)
 
 [BASH Workflow](../.github/workflows/bash.yml)
 [Git Fixup Blocker Workflow](../.github/workflows/git.yml)
+[Go Workflow](../.github/workflows/go.yml)
 [Link Checker Workflow](../.github/workflows/links.yml)
 
 
@@ -20,3 +21,4 @@ Exercism Workspace (https://exercism.org/docs/tracks)
 ## Automation
 
 [Bash run-tests](./bash/run-tests)
+[Go run-tests](./go/run-tests)
