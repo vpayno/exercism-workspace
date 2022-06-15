@@ -1,0 +1,144 @@
+Running automated test file(s):
+
+Go packages: greeting 
+
+
+===============================================================================
+
+golint greeting
+
+real	0m0.082s
+user	0m0.059s
+sys	0m0.066s
+
+===============================================================================
+
+go test -v -covermode=count -coverprofile coverage.out greeting
+=== RUN   TestHelloWorld
+--- PASS: TestHelloWorld (0.00s)
+=== RUN   ExampleHelloWorld
+--- PASS: ExampleHelloWorld (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	greeting	0.014s	coverage: 100.0% of statements
+
+real	0m0.462s
+user	0m0.499s
+sys	0m0.344s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+greeting/hello_world.go:4:	HelloWorld	100.0%
+total:				(statements)	100.0%
+
+real	0m0.084s
+user	0m0.034s
+sys	0m0.084s
+
+===============================================================================
+
+go test -v -race -covermode=atomic greeting
+=== RUN   TestHelloWorld
+--- PASS: TestHelloWorld (0.00s)
+=== RUN   ExampleHelloWorld
+--- PASS: ExampleHelloWorld (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	greeting	(cached)	coverage: 100.0% of statements
+
+real	0m0.374s
+user	0m0.419s
+sys	0m0.326s
+
+===============================================================================
+
+go test --bench . --benchmem
+goos: linux
+goarch: amd64
+pkg: greeting
+cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+BenchmarkHelloWorld-4   	1000000000	         0.3201 ns/op	       0 B/op	       0 allocs/op
+PASS
+ok  	greeting	0.437s
+
+real	0m0.925s
+user	0m1.110s
+sys	0m0.350s
+
+===============================================================================
+
+go test -tags bonus
+PASS
+ok  	greeting	0.015s
+
+real	0m0.496s
+user	0m0.582s
+sys	0m0.346s
+
+===============================================================================
+
+go vet greeting
+
+real	0m0.284s
+user	0m0.313s
+sys	0m0.297s
+
+===============================================================================
+
+go fix greeting
+
+real	0m0.061s
+user	0m0.037s
+sys	0m0.075s
+
+===============================================================================
+
+gosec ./hello-world
+[gosec] 2022/06/15 20:58:37 Including rules: default
+[gosec] 2022/06/15 20:58:37 Excluding rules: default
+[gosec] 2022/06/15 20:58:37 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/hello-world
+[gosec] 2022/06/15 20:58:38 Checking package: greeting
+[gosec] 2022/06/15 20:58:38 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/hello-world/hello_world.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 6
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.253s
+user	0m0.236s
+sys	0m0.199s
+
+===============================================================================
+
+gomarkdoc --output greeting-doc.md
+
+real	0m0.024s
+user	0m0.019s
+sys	0m0.009s
+
+===============================================================================
+
+go doc -all greeting
+package greeting // import "greeting"
+
+
+FUNCTIONS
+
+func HelloWorld() string
+    HelloWorld greets the world.
+
+
+real	0m0.103s
+user	0m0.038s
+sys	0m0.112s
+
+
+===============================================================================
+
