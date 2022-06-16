@@ -99,4 +99,4 @@ fmt.Println(CanFreePrisoner(knightIsAwake, archerIsAwake, prisonerIsAwake, petDo
 
 - [solution](./annalyns-infiltration.go)
 - [run-tests](./run-tests-go.txt)
-- [documentation](./annalyns-infiltration.md)
+- [documentation](./annalyn-doc.md)
