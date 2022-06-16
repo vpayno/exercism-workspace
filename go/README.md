@@ -20,3 +20,4 @@
 
 ## In-Progress Exercises
 
+- [cars-assemble](./cars-assemble/README.md)
