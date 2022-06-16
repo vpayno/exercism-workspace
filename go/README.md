@@ -21,3 +21,4 @@
 
 ## In-Progress Exercises
 
+- [weather-forecast](./weather-forecast/README.md)
