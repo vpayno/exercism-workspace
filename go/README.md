@@ -17,6 +17,7 @@
 - [lasagna](lasagna/README.md)
 - [annalyns-infiltration](./annalyns-infiltration/README.md)
 - [cars-assemble](./cars-assemble/README.md)
+- [weather-forecast](./weather-forecast/README.md)
 
 
 ## In-Progress Exercises

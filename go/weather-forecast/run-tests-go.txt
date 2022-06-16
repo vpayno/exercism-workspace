@@ -1,0 +1,150 @@
+Running automated test file(s):
+
+Go packages: weather 
+
+
+===============================================================================
+
+golint weather
+
+real	0m0.141s
+user	0m0.155s
+sys	0m0.115s
+
+===============================================================================
+
+go test -v -covermode=count -coverprofile coverage.out weather
+=== RUN   TestComments
+--- PASS: TestComments (0.00s)
+=== RUN   ExampleForecast
+--- PASS: ExampleForecast (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	weather	0.006s	coverage: 100.0% of statements
+
+real	0m0.624s
+user	0m0.751s
+sys	0m0.512s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+weather/weather_forecast.go:11:	Forecast	100.0%
+total:				(statements)	100.0%
+
+real	0m0.105s
+user	0m0.052s
+sys	0m0.127s
+
+===============================================================================
+
+go test -v -race -covermode=atomic weather
+=== RUN   TestComments
+--- PASS: TestComments (0.00s)
+=== RUN   ExampleForecast
+--- PASS: ExampleForecast (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	weather	0.047s	coverage: 100.0% of statements
+
+real	0m0.671s
+user	0m0.804s
+sys	0m0.447s
+
+===============================================================================
+
+go test --bench . --benchmem
+PASS
+ok  	weather	0.013s
+
+real	0m0.695s
+user	0m0.799s
+sys	0m0.493s
+
+===============================================================================
+
+go test -tags bonus
+PASS
+ok  	weather	0.014s
+
+real	0m0.518s
+user	0m0.691s
+sys	0m0.344s
+
+===============================================================================
+
+go vet weather
+
+real	0m0.330s
+user	0m0.437s
+sys	0m0.328s
+
+===============================================================================
+
+go fix weather
+
+real	0m0.057s
+user	0m0.039s
+sys	0m0.046s
+
+===============================================================================
+
+gosec ./weather-forecast
+[gosec] 2022/06/16 08:29:35 Including rules: default
+[gosec] 2022/06/16 08:29:35 Excluding rules: default
+[gosec] 2022/06/16 08:29:35 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/weather-forecast
+[gosec] 2022/06/16 08:29:35 Checking package: weather
+[gosec] 2022/06/16 08:29:35 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/weather-forecast/weather_forecast.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 14
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.306s
+user	0m0.305s
+sys	0m0.217s
+
+===============================================================================
+
+gomarkdoc --output weather-doc.md
+
+real	0m0.027s
+user	0m0.014s
+sys	0m0.016s
+
+===============================================================================
+
+go doc -all weather
+package weather // import "weather"
+
+Package weather is a library for forcasting weather conditions in various
+cities in Goblinocus.
+
+VARIABLES
+
+var CurrentCondition string
+    CurrentCondition stores the current weather conditions for a city.
+
+var CurrentLocation string
+    CurrentLocation stores the current city we're forcasting for.
+
+
+FUNCTIONS
+
+func Forecast(city, condition string) string
+    Forecast returns a string with the weather conditions for a city.
+
+
+real	0m0.111s
+user	0m0.035s
+sys	0m0.120s
+
+
+===============================================================================
+
