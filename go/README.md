@@ -22,4 +22,4 @@
 
 ## In-Progress Exercises
 
-- [weather-forecast](./weather-forecast/README.md)
+- [welcome-to-tech-palace](./welcome-to-tech-palace/README.md)
