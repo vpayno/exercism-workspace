@@ -33,3 +33,9 @@ like Portable Network Graphics to its acronym (PNG).
 ### Based on
 
 Julien Vanier - https://github.com/monkbroc
+
+### My Solution
+
+- [solution](./acronym.sh)
+- [check-solution](./run-tests-bats.txt)
+- [debug-check](./run-tests-debug.txt)

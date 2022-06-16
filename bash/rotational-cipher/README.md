@@ -51,3 +51,9 @@ Ciphertext is written out in the same formatting as the input including spaces a
 ### Based on
 
 Wikipedia - https://en.wikipedia.org/wiki/Caesar_cipher
+
+### My Solution
+
+- [solution](./rotational_cipher.sh)
+- [check-solution](./run-tests-bats.txt)
+- [debug-check](./run-tests-debug.txt)

@@ -25,3 +25,9 @@ and nested correctly.
 ### Based on
 
 Ginna Baker
+
+### My Solution
+
+- [solution](./matching_brackets.sh)
+- [check-solution](./run-tests-bats.txt)
+- [debug-check](./run-tests-debug.txt)

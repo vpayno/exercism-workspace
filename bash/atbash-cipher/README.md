@@ -53,3 +53,9 @@ things based on word boundaries.
 ### Based on
 
 Wikipedia - http://en.wikipedia.org/wiki/Atbash
+
+### My Solution
+
+- [solution](./atbash_cipher.sh)
+- [check-solution](./run-tests-bats.txt)
+- [debug-check](./run-tests-debug.txt)

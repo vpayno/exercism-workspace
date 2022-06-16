@@ -34,3 +34,9 @@ insensitive. Input will not contain non-ASCII symbols.
 ### Based on
 
 Wikipedia - https://en.wikipedia.org/wiki/Pangram
+
+### My Solution
+
+- [solution](./pangram.sh)
+- [check-solution](./run-tests-bats.txt)
+- [debug-check](./run-tests-debug.txt)

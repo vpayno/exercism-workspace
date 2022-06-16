@@ -50,3 +50,9 @@ score is 257, your program should only report the eggs (1) allergy.
 ### Based on
 
 Jumpstart Lab Warm-up - http://jumpstartlab.com
+
+### My Solution
+
+- [solution](./allergies.sh)
+- [check-solution](./run-tests-bats.txt)
+- [debug-check](./run-tests-debug.txt)

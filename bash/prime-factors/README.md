@@ -50,3 +50,9 @@ You can check this yourself:
 ### Based on
 
 The Prime Factors Kata by Uncle Bob - http://butunclebob.com/ArticleS.UncleBob.ThePrimeFactorsKata
+
+### My Solution
+
+- [solution](./prime_factors.sh)
+- [check-solution](./run-tests-bats.txt)
+- [debug-check](./run-tests-debug.txt)

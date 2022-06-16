@@ -1,0 +1,26 @@
+#!/bin/bash
+
+declare pkg_name
+declare d
+
+get_go_package_names()
+{
+	awk '/^package / { print $NF }' ./*.go | sort -Vu
+} # get_go_package_names()
+
+time for d in ./*; do
+	[[ -d ${d} ]] || continue
+	cd "${d}" || continue
+	printf "[dir: %s]\n\n" "${PWD}"
+
+	for pkg_name in $(get_go_package_names); do
+		printf "[pkg: %s]\n\n" "${pkg_name}"
+
+		echo "${@//pkg_name/${pkg_name}}"
+		time "${@//pkg_name/${pkg_name}}"
+
+		printf "\n"
+	done
+
+	cd - || break
+done

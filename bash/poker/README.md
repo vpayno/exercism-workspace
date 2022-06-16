@@ -24,3 +24,9 @@ overview of poker hands.
 ### Based on
 
 Inspired by the training course from Udacity. - https://www.udacity.com/course/viewer#!/c-cs212/
+
+### My Solution
+
+- [solution](./poker.sh)
+- [check-solution](./run-tests-bats.txt)
+- [debug-check](./run-tests-debug.txt)

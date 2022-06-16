@@ -58,3 +58,9 @@ readable as we can.
 ### Based on
 
 Chapter 9 in Chris Pine's online Learn to Program tutorial. - http://pine.fm/LearnToProgram/?Chapter=09
+
+### My Solution
+
+- [solution](./gigasecond.sh)
+- [check-solution](./run-tests-bats.txt)
+- [debug-check](./run-tests-debug.txt)

@@ -126,3 +126,9 @@ that lay in the house that Jack built.
 ### Based on
 
 British nursery rhyme - http://en.wikipedia.org/wiki/This_Is_The_House_That_Jack_Built
+
+### My Solution
+
+- [solution](./house.sh)
+- [check-solution](./run-tests-bats.txt)
+- [debug-check](./run-tests-debug.txt)

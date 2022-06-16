@@ -60,3 +60,9 @@ echo "after: ${my_array[*]}"     # => after: d e f a b c
 ### Contributed to by
 
 - @kotp
+
+### My Solution
+
+- [solution](./list_ops.sh)
+- [check-solution](./run-tests-bats.txt)
+- [debug-check](./run-tests-debug.txt)

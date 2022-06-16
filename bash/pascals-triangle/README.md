@@ -34,3 +34,9 @@ the right and left of the current position in the previous row.
 ### Based on
 
 Pascal's Triangle at Wolfram Math World - http://mathworld.wolfram.com/PascalsTriangle.html
+
+### My Solution
+
+- [solution](./pascals_triangle.sh)
+- [check-solution](./run-tests-bats.txt)
+- [debug-check](./run-tests-debug.txt)

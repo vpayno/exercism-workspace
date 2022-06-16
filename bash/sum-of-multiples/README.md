@@ -28,3 +28,9 @@ The sum of these multiples is 78.
 ### Based on
 
 A variation on Problem 1 at Project Euler - http://projecteuler.net/problem=1
+
+### My Solution
+
+- [solution](./sum_of_multiples.sh)
+- [check-solution](./run-tests-bats.txt)
+- [debug-check](./run-tests-debug.txt)

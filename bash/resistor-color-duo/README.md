@@ -53,3 +53,9 @@ brown-green-violet should return 15 too, ignoring the third color.
 ### Based on
 
 Maud de Vries, Erik Schierboom - https://github.com/exercism/problem-specifications/issues/1464
+
+### My Solution
+
+- [solution](./resistor_color_duo.sh)
+- [check-solution](./run-tests-bats.txt)
+- [debug-check](./run-tests-debug.txt)

@@ -42,3 +42,9 @@ Words are case-insensitive.
 - @guygastineau
 - @IsaacG
 - @kotp
+
+### My Solution
+
+- [solution](./forth.sh)
+- [check-solution](./run-tests-bats.txt)
+- [debug-check](./run-tests-debug.txt)

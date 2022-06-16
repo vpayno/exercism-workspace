@@ -66,3 +66,9 @@ See also: [http://www.novaroma.org/via_romana/numbers.html](http://www.novaroma.
 ### Based on
 
 The Roman Numeral Kata - http://codingdojo.org/cgi-bin/index.pl?KataRomanNumerals
+
+### My Solution
+
+- [solution](./roman_numerals.sh)
+- [check-solution](./run-tests-bats.txt)
+- [debug-check](./run-tests-debug.txt)

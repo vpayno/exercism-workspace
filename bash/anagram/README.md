@@ -33,3 +33,9 @@ Given `"listen"` and a list of candidates like `"enlists" "google"
 ### Based on
 
 Inspired by the Extreme Startup game - https://github.com/rchatley/extreme_startup
+
+### My Solution
+
+- [solution](./anagram.sh)
+- [check-solution](./run-tests-bats.txt)
+- [debug-check](./run-tests-debug.txt)
