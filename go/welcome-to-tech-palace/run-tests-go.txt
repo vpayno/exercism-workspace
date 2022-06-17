@@ -1,0 +1,188 @@
+Running automated test file(s):
+
+Go packages: techpalace 
+
+
+===============================================================================
+
+golint techpalace
+
+real	0m0.159s
+user	0m0.152s
+sys	0m0.144s
+
+===============================================================================
+
+go test -v -covermode=count -coverprofile coverage.out techpalace
+=== RUN   TestWelcomeMessage
+=== RUN   TestWelcomeMessage/Welcome_message_for_customer_with_first_letter_capitalized
+=== RUN   TestWelcomeMessage/Welcome_message_for_customer_with_only_lowercase_letters
+=== RUN   TestWelcomeMessage/Welcome_message_for_customer_with_dash_in_name
+=== RUN   TestWelcomeMessage/Welcome_message_for_customer_with_only_uppercase_letters
+--- PASS: TestWelcomeMessage (0.00s)
+    --- PASS: TestWelcomeMessage/Welcome_message_for_customer_with_first_letter_capitalized (0.00s)
+    --- PASS: TestWelcomeMessage/Welcome_message_for_customer_with_only_lowercase_letters (0.00s)
+    --- PASS: TestWelcomeMessage/Welcome_message_for_customer_with_dash_in_name (0.00s)
+    --- PASS: TestWelcomeMessage/Welcome_message_for_customer_with_only_uppercase_letters (0.00s)
+=== RUN   TestAddBorder
+=== RUN   TestAddBorder/Add_border_with_10_stars_per_line
+=== RUN   TestAddBorder/Add_border_with_2_stars_per_line
+--- PASS: TestAddBorder (0.00s)
+    --- PASS: TestAddBorder/Add_border_with_10_stars_per_line (0.00s)
+    --- PASS: TestAddBorder/Add_border_with_2_stars_per_line (0.00s)
+=== RUN   TestCleanupMessage
+=== RUN   TestCleanupMessage/Cleanup_message_with_many_stars_and_leading_and_trailing_whitespace
+=== RUN   TestCleanupMessage/Cleanup_message_without_leading_or_trailing_whitespace
+=== RUN   TestCleanupMessage/Cleanup_message_without_leading_whitespace
+--- PASS: TestCleanupMessage (0.00s)
+    --- PASS: TestCleanupMessage/Cleanup_message_with_many_stars_and_leading_and_trailing_whitespace (0.00s)
+    --- PASS: TestCleanupMessage/Cleanup_message_without_leading_or_trailing_whitespace (0.00s)
+    --- PASS: TestCleanupMessage/Cleanup_message_without_leading_whitespace (0.00s)
+=== RUN   ExampleWelcomeMessage
+--- PASS: ExampleWelcomeMessage (0.00s)
+=== RUN   ExampleAddBorder
+--- PASS: ExampleAddBorder (0.00s)
+=== RUN   ExampleCleanupMessage
+--- PASS: ExampleCleanupMessage (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	techpalace	0.006s	coverage: 100.0% of statements
+
+real	0m0.618s
+user	0m0.633s
+sys	0m0.596s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+techpalace/welcome_to_tech_palace.go:9:		WelcomeMessage	100.0%
+techpalace/welcome_to_tech_palace.go:14:	AddBorder	100.0%
+techpalace/welcome_to_tech_palace.go:21:	CleanupMessage	100.0%
+total:						(statements)	100.0%
+
+real	0m0.276s
+user	0m0.264s
+sys	0m0.271s
+
+===============================================================================
+
+go test -v -race -covermode=atomic techpalace
+=== RUN   TestWelcomeMessage
+=== RUN   TestWelcomeMessage/Welcome_message_for_customer_with_first_letter_capitalized
+=== RUN   TestWelcomeMessage/Welcome_message_for_customer_with_only_lowercase_letters
+=== RUN   TestWelcomeMessage/Welcome_message_for_customer_with_dash_in_name
+=== RUN   TestWelcomeMessage/Welcome_message_for_customer_with_only_uppercase_letters
+--- PASS: TestWelcomeMessage (0.00s)
+    --- PASS: TestWelcomeMessage/Welcome_message_for_customer_with_first_letter_capitalized (0.00s)
+    --- PASS: TestWelcomeMessage/Welcome_message_for_customer_with_only_lowercase_letters (0.00s)
+    --- PASS: TestWelcomeMessage/Welcome_message_for_customer_with_dash_in_name (0.00s)
+    --- PASS: TestWelcomeMessage/Welcome_message_for_customer_with_only_uppercase_letters (0.00s)
+=== RUN   TestAddBorder
+=== RUN   TestAddBorder/Add_border_with_10_stars_per_line
+=== RUN   TestAddBorder/Add_border_with_2_stars_per_line
+--- PASS: TestAddBorder (0.00s)
+    --- PASS: TestAddBorder/Add_border_with_10_stars_per_line (0.00s)
+    --- PASS: TestAddBorder/Add_border_with_2_stars_per_line (0.00s)
+=== RUN   TestCleanupMessage
+=== RUN   TestCleanupMessage/Cleanup_message_with_many_stars_and_leading_and_trailing_whitespace
+=== RUN   TestCleanupMessage/Cleanup_message_without_leading_or_trailing_whitespace
+=== RUN   TestCleanupMessage/Cleanup_message_without_leading_whitespace
+--- PASS: TestCleanupMessage (0.00s)
+    --- PASS: TestCleanupMessage/Cleanup_message_with_many_stars_and_leading_and_trailing_whitespace (0.00s)
+    --- PASS: TestCleanupMessage/Cleanup_message_without_leading_or_trailing_whitespace (0.00s)
+    --- PASS: TestCleanupMessage/Cleanup_message_without_leading_whitespace (0.00s)
+=== RUN   ExampleWelcomeMessage
+--- PASS: ExampleWelcomeMessage (0.00s)
+=== RUN   ExampleAddBorder
+--- PASS: ExampleAddBorder (0.00s)
+=== RUN   ExampleCleanupMessage
+--- PASS: ExampleCleanupMessage (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	techpalace	0.033s	coverage: 100.0% of statements
+
+real	0m0.654s
+user	0m0.683s
+sys	0m0.514s
+
+===============================================================================
+
+go test --bench . --benchmem
+PASS
+ok  	techpalace	0.021s
+
+real	0m0.551s
+user	0m0.635s
+sys	0m0.419s
+
+===============================================================================
+
+go test -tags bonus
+PASS
+ok  	techpalace	0.012s
+
+real	0m0.589s
+user	0m0.664s
+sys	0m0.459s
+
+===============================================================================
+
+go vet techpalace
+
+real	0m0.401s
+user	0m0.439s
+sys	0m0.344s
+
+===============================================================================
+
+go fix techpalace
+
+real	0m0.161s
+user	0m0.165s
+sys	0m0.151s
+
+===============================================================================
+
+gosec ./welcome-to-tech-palace
+[gosec] 2022/06/16 21:03:18 Including rules: default
+[gosec] 2022/06/16 21:03:18 Excluding rules: default
+[gosec] 2022/06/16 21:03:18 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/welcome-to-tech-palace
+2022/06/16 21:03:18 internal error: package "fmt" without types was imported from "command-line-arguments"
+
+real	0m0.523s
+user	0m0.528s
+sys	0m0.384s
+
+===============================================================================
+
+gomarkdoc --output techpalace-doc.md
+
+real	0m0.029s
+user	0m0.013s
+sys	0m0.013s
+
+===============================================================================
+
+go doc -all techpalace
+package techpalace // import "techpalace"
+
+
+FUNCTIONS
+
+func AddBorder(welcomeMsg string, numStarsPerLine int) string
+    AddBorder adds a border to a welcome message.
+
+func CleanupMessage(oldMsg string) string
+    CleanupMessage cleans up an old marketing message.
+
+func WelcomeMessage(customer string) string
+    WelcomeMessage returns a welcome message for the customer.
+
+
+real	0m0.266s
+user	0m0.222s
+sys	0m0.252s
+
+
+===============================================================================
+

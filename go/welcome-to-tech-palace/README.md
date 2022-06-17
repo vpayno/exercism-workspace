@@ -24,7 +24,7 @@ fullName := "Jane" + " " + "Austen"
 Some special characters need to be escaped with a leading backslash, such as `\t` for a tab and `\n` for a new line in strings.
 
 ```go
-Dialogue := "How is the weather today?\nIt's sunny"  
+Dialogue := "How is the weather today?\nIt's sunny"
 // "How is the weather today?
 // It's sunny"
 ```
@@ -112,3 +112,9 @@ CleanUpMessage(message)
 ### Contributed to by
 
 - @kekimaker
+
+### My Solution
+
+- [solution](./welcome_to_tech_palace.go)
+- [run-tests](./run-tests-go.txt)
+- [documentation](./techplace.md)
