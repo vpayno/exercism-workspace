@@ -1,0 +1,181 @@
+Running automated test file(s):
+
+Go packages: partyrobot 
+
+
+===============================================================================
+
+golint partyrobot
+
+real	0m0.188s
+user	0m0.234s
+sys	0m0.206s
+
+===============================================================================
+
+go test -v -covermode=count -coverprofile coverage.out partyrobot
+=== RUN   TestWelcome
+=== RUN   TestWelcome/Greet_Chihiro_with_a_welcoming_message
+=== RUN   TestWelcome/Greet_Xuân_Jing_with_a_welcoming_message
+--- PASS: TestWelcome (0.00s)
+    --- PASS: TestWelcome/Greet_Chihiro_with_a_welcoming_message (0.00s)
+    --- PASS: TestWelcome/Greet_Xuân_Jing_with_a_welcoming_message (0.00s)
+=== RUN   TestHappyBirthday
+=== RUN   TestHappyBirthday/Wish_Chihiro_Happy_Birthday_with_name_and_age
+=== RUN   TestHappyBirthday/Wish_Xuân_Jing_Happy_Birthday_with_name_and_age
+--- PASS: TestHappyBirthday (0.00s)
+    --- PASS: TestHappyBirthday/Wish_Chihiro_Happy_Birthday_with_name_and_age (0.00s)
+    --- PASS: TestHappyBirthday/Wish_Xuân_Jing_Happy_Birthday_with_name_and_age (0.00s)
+=== RUN   TestAssignTable
+=== RUN   TestAssignTable/Greet_Chihiro_and_give_them_directions_to_their_seat
+=== RUN   TestAssignTable/Greet_Xuân_Jing_and_give_them_directions_to_their_seat
+=== RUN   TestAssignTable/Greet_Paula_and_give_them_directions_to_their_seat
+--- PASS: TestAssignTable (0.00s)
+    --- PASS: TestAssignTable/Greet_Chihiro_and_give_them_directions_to_their_seat (0.00s)
+    --- PASS: TestAssignTable/Greet_Xuân_Jing_and_give_them_directions_to_their_seat (0.00s)
+    --- PASS: TestAssignTable/Greet_Paula_and_give_them_directions_to_their_seat (0.00s)
+=== RUN   ExampleWelcome
+--- PASS: ExampleWelcome (0.00s)
+=== RUN   ExampleHappyBirthday
+--- PASS: ExampleHappyBirthday (0.00s)
+=== RUN   ExampleAssignTable
+--- PASS: ExampleAssignTable (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	partyrobot	0.014s	coverage: 100.0% of statements
+
+real	0m0.621s
+user	0m0.620s
+sys	0m0.439s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+partyrobot/party_robot.go:8:	Welcome		100.0%
+partyrobot/party_robot.go:13:	HappyBirthday	100.0%
+partyrobot/party_robot.go:18:	AssignTable	100.0%
+total:				(statements)	100.0%
+
+real	0m0.247s
+user	0m0.260s
+sys	0m0.191s
+
+===============================================================================
+
+go test -v -race -covermode=atomic partyrobot
+=== RUN   TestWelcome
+=== RUN   TestWelcome/Greet_Chihiro_with_a_welcoming_message
+=== RUN   TestWelcome/Greet_Xuân_Jing_with_a_welcoming_message
+--- PASS: TestWelcome (0.00s)
+    --- PASS: TestWelcome/Greet_Chihiro_with_a_welcoming_message (0.00s)
+    --- PASS: TestWelcome/Greet_Xuân_Jing_with_a_welcoming_message (0.00s)
+=== RUN   TestHappyBirthday
+=== RUN   TestHappyBirthday/Wish_Chihiro_Happy_Birthday_with_name_and_age
+=== RUN   TestHappyBirthday/Wish_Xuân_Jing_Happy_Birthday_with_name_and_age
+--- PASS: TestHappyBirthday (0.01s)
+    --- PASS: TestHappyBirthday/Wish_Chihiro_Happy_Birthday_with_name_and_age (0.00s)
+    --- PASS: TestHappyBirthday/Wish_Xuân_Jing_Happy_Birthday_with_name_and_age (0.00s)
+=== RUN   TestAssignTable
+=== RUN   TestAssignTable/Greet_Chihiro_and_give_them_directions_to_their_seat
+=== RUN   TestAssignTable/Greet_Xuân_Jing_and_give_them_directions_to_their_seat
+=== RUN   TestAssignTable/Greet_Paula_and_give_them_directions_to_their_seat
+--- PASS: TestAssignTable (0.00s)
+    --- PASS: TestAssignTable/Greet_Chihiro_and_give_them_directions_to_their_seat (0.00s)
+    --- PASS: TestAssignTable/Greet_Xuân_Jing_and_give_them_directions_to_their_seat (0.00s)
+    --- PASS: TestAssignTable/Greet_Paula_and_give_them_directions_to_their_seat (0.00s)
+=== RUN   ExampleWelcome
+--- PASS: ExampleWelcome (0.00s)
+=== RUN   ExampleHappyBirthday
+--- PASS: ExampleHappyBirthday (0.00s)
+=== RUN   ExampleAssignTable
+--- PASS: ExampleAssignTable (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	partyrobot	0.059s	coverage: 100.0% of statements
+
+real	0m0.738s
+user	0m0.833s
+sys	0m0.435s
+
+===============================================================================
+
+go test --bench . --benchmem
+PASS
+ok  	partyrobot	0.036s
+
+real	0m0.471s
+user	0m0.542s
+sys	0m0.293s
+
+===============================================================================
+
+go test -tags bonus
+PASS
+ok  	partyrobot	0.004s
+
+real	0m0.488s
+user	0m0.553s
+sys	0m0.347s
+
+===============================================================================
+
+go vet partyrobot
+
+real	0m0.346s
+user	0m0.336s
+sys	0m0.316s
+
+===============================================================================
+
+go fix partyrobot
+
+real	0m0.194s
+user	0m0.198s
+sys	0m0.140s
+
+===============================================================================
+
+gosec ./party-robot
+[gosec] 2022/06/16 22:24:41 Including rules: default
+[gosec] 2022/06/16 22:24:41 Excluding rules: default
+[gosec] 2022/06/16 22:24:41 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/party-robot
+2022/06/16 22:24:41 internal error: package "fmt" without types was imported from "command-line-arguments"
+
+real	0m0.485s
+user	0m0.509s
+sys	0m0.321s
+
+===============================================================================
+
+gomarkdoc --output partyrobot-doc.md
+
+real	0m0.021s
+user	0m0.017s
+sys	0m0.010s
+
+===============================================================================
+
+go doc -all partyrobot
+package partyrobot // import "partyrobot"
+
+
+FUNCTIONS
+
+func AssignTable(name string, table int, neighbor, direction string, distance float64) string
+    AssignTable assigns a table to each guest.
+
+func HappyBirthday(name string, age int) string
+    HappyBirthday wishes happy birthday to the birthday person and exclaims
+    their age.
+
+func Welcome(name string) string
+    Welcome greets a person by name.
+
+
+real	0m0.278s
+user	0m0.174s
+sys	0m0.326s
+
+
+===============================================================================
+
