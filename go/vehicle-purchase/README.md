@@ -147,3 +147,9 @@ CalculateResellPrice(1000, 15)
 ### Created by
 
 - @kahgoh
+
+### My Solution
+
+- [solution](./vehicle_purchase.go)
+- [run-tests](./run-tests-go.txt)
+- [documentation](./purchase-doc.md)
