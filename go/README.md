@@ -22,3 +22,4 @@
 - [welcome-to-tech-palace](./welcome-to-tech-palace/README.md)
 - [party-robot](./party-robot/README.md)
 - [vehicle-purchase](./vehicle-purchase/README.md)
+- [blackjack](./blackjack/README.md)
