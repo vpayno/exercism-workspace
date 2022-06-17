@@ -118,3 +118,9 @@ CanFinish(car, raceTrack)
 ### Contributed to by
 
 - @oanaOM
+
+### My Solution
+
+- [solution](./need_for_speed.go)
+- [run-tests](./run-tests-go.txt)
+- [documentation](./speed-doc.md)
