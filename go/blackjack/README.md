@@ -108,3 +108,9 @@ FirstTurn("five", "queen", "ace") == "H"
 - @tehsphinx
 - @andrerfcsantos
 - @norbs57
+
+### My Solution
+
+- [solution](./blackjack.go)
+- [run-tests](./run-tests-go.txt)
+- [documentation](./blackjack-doc.md)
