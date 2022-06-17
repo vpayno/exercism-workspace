@@ -67,6 +67,6 @@ Goblinocus forecast operators want to know what the `Forecast()` function does (
 
 ### My Solution
 
-- [solution](./weather_forcast.go)
+- [solution](./weather_forecast.go)
 - [run-tests](./run-tests-go.txt)
 - [documentation](./weather-doc.md)

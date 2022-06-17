@@ -117,4 +117,4 @@ CleanUpMessage(message)
 
 - [solution](./welcome_to_tech_palace.go)
 - [run-tests](./run-tests-go.txt)
-- [documentation](./techplace.md)
+- [documentation](./techpalace-doc.md)
