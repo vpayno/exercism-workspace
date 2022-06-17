@@ -1,0 +1,242 @@
+Running automated test file(s):
+
+Go packages: speed 
+
+
+===============================================================================
+
+golint speed
+
+real	0m0.096s
+user	0m0.041s
+sys	0m0.102s
+
+===============================================================================
+
+go test -v -covermode=count -coverprofile coverage.out speed
+=== RUN   TestNewCar
+=== RUN   TestNewCar/Create_a_new_car.
+--- PASS: TestNewCar (0.00s)
+    --- PASS: TestNewCar/Create_a_new_car. (0.00s)
+=== RUN   TestNewTrack
+=== RUN   TestNewTrack/Create_a_new_track.
+=== RUN   TestNewTrack/Create_a_new_track.#01
+--- PASS: TestNewTrack (0.00s)
+    --- PASS: TestNewTrack/Create_a_new_track. (0.00s)
+    --- PASS: TestNewTrack/Create_a_new_track.#01 (0.00s)
+=== RUN   TestDrive
+=== RUN   TestDrive/Drive_the_car_with_full_battery.
+=== RUN   TestDrive/Drive_when_battery_percentage_is_below_battery_drain
+=== RUN   TestDrive/Drive_the_car_with_battery_drained.
+=== RUN   TestDrive/Drive_the_car_with_positive_initial_distance_and_battery_drained
+=== RUN   TestDrive/Drive_the_car_with_positive_initial_distance_and_full_battery
+--- PASS: TestDrive (0.00s)
+    --- PASS: TestDrive/Drive_the_car_with_full_battery. (0.00s)
+    --- PASS: TestDrive/Drive_when_battery_percentage_is_below_battery_drain (0.00s)
+    --- PASS: TestDrive/Drive_the_car_with_battery_drained. (0.00s)
+    --- PASS: TestDrive/Drive_the_car_with_positive_initial_distance_and_battery_drained (0.00s)
+    --- PASS: TestDrive/Drive_the_car_with_positive_initial_distance_and_full_battery (0.00s)
+=== RUN   TestCanFinish
+=== RUN   TestCanFinish/Car_can_easily_finish_the_track_distance.
+=== RUN   TestCanFinish/Car_can_finish_the_track_distance_just_as_the_battery_is_drained.
+=== RUN   TestCanFinish/Car_cannot_finish_the_track_distance.
+=== RUN   TestCanFinish/Car_can_finish_the_track_distance_with_initial_battery_less_than_100%
+=== RUN   TestCanFinish/Car_cannot_finish_the_track_distance_with_initial_battery_less_than_100%
+--- PASS: TestCanFinish (0.00s)
+    --- PASS: TestCanFinish/Car_can_easily_finish_the_track_distance. (0.00s)
+    --- PASS: TestCanFinish/Car_can_finish_the_track_distance_just_as_the_battery_is_drained. (0.00s)
+    --- PASS: TestCanFinish/Car_cannot_finish_the_track_distance. (0.00s)
+    --- PASS: TestCanFinish/Car_can_finish_the_track_distance_with_initial_battery_less_than_100% (0.00s)
+    --- PASS: TestCanFinish/Car_cannot_finish_the_track_distance_with_initial_battery_less_than_100% (0.00s)
+=== RUN   ExampleNewCar
+--- PASS: ExampleNewCar (0.00s)
+=== RUN   ExampleNewTrack
+--- PASS: ExampleNewTrack (0.00s)
+=== RUN   ExampleDrive
+--- PASS: ExampleDrive (0.00s)
+=== RUN   ExampleCanFinish
+--- PASS: ExampleCanFinish (0.00s)
+PASS
+coverage: 93.3% of statements
+ok  	speed	0.015s	coverage: 93.3% of statements
+
+real	0m0.558s
+user	0m0.572s
+sys	0m0.432s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+speed/need_for_speed.go:12:	NewCar		100.0%
+speed/need_for_speed.go:29:	NewTrack	100.0%
+speed/need_for_speed.go:35:	Drive		100.0%
+speed/need_for_speed.go:45:	CanFinish	87.5%
+total:				(statements)	93.3%
+
+real	0m0.081s
+user	0m0.041s
+sys	0m0.068s
+
+===============================================================================
+
+go test -v -race -covermode=atomic speed
+=== RUN   TestNewCar
+=== RUN   TestNewCar/Create_a_new_car.
+--- PASS: TestNewCar (0.00s)
+    --- PASS: TestNewCar/Create_a_new_car. (0.00s)
+=== RUN   TestNewTrack
+=== RUN   TestNewTrack/Create_a_new_track.
+=== RUN   TestNewTrack/Create_a_new_track.#01
+--- PASS: TestNewTrack (0.00s)
+    --- PASS: TestNewTrack/Create_a_new_track. (0.00s)
+    --- PASS: TestNewTrack/Create_a_new_track.#01 (0.00s)
+=== RUN   TestDrive
+=== RUN   TestDrive/Drive_the_car_with_full_battery.
+=== RUN   TestDrive/Drive_when_battery_percentage_is_below_battery_drain
+=== RUN   TestDrive/Drive_the_car_with_battery_drained.
+=== RUN   TestDrive/Drive_the_car_with_positive_initial_distance_and_battery_drained
+=== RUN   TestDrive/Drive_the_car_with_positive_initial_distance_and_full_battery
+--- PASS: TestDrive (0.02s)
+    --- PASS: TestDrive/Drive_the_car_with_full_battery. (0.00s)
+    --- PASS: TestDrive/Drive_when_battery_percentage_is_below_battery_drain (0.00s)
+    --- PASS: TestDrive/Drive_the_car_with_battery_drained. (0.00s)
+    --- PASS: TestDrive/Drive_the_car_with_positive_initial_distance_and_battery_drained (0.00s)
+    --- PASS: TestDrive/Drive_the_car_with_positive_initial_distance_and_full_battery (0.00s)
+=== RUN   TestCanFinish
+=== RUN   TestCanFinish/Car_can_easily_finish_the_track_distance.
+=== RUN   TestCanFinish/Car_can_finish_the_track_distance_just_as_the_battery_is_drained.
+=== RUN   TestCanFinish/Car_cannot_finish_the_track_distance.
+=== RUN   TestCanFinish/Car_can_finish_the_track_distance_with_initial_battery_less_than_100%
+=== RUN   TestCanFinish/Car_cannot_finish_the_track_distance_with_initial_battery_less_than_100%
+--- PASS: TestCanFinish (0.01s)
+    --- PASS: TestCanFinish/Car_can_easily_finish_the_track_distance. (0.00s)
+    --- PASS: TestCanFinish/Car_can_finish_the_track_distance_just_as_the_battery_is_drained. (0.00s)
+    --- PASS: TestCanFinish/Car_cannot_finish_the_track_distance. (0.00s)
+    --- PASS: TestCanFinish/Car_can_finish_the_track_distance_with_initial_battery_less_than_100% (0.00s)
+    --- PASS: TestCanFinish/Car_cannot_finish_the_track_distance_with_initial_battery_less_than_100% (0.00s)
+=== RUN   ExampleNewCar
+--- PASS: ExampleNewCar (0.00s)
+=== RUN   ExampleNewTrack
+--- PASS: ExampleNewTrack (0.00s)
+=== RUN   ExampleDrive
+--- PASS: ExampleDrive (0.00s)
+=== RUN   ExampleCanFinish
+--- PASS: ExampleCanFinish (0.00s)
+PASS
+coverage: 93.3% of statements
+ok  	speed	0.047s	coverage: 93.3% of statements
+
+real	0m0.666s
+user	0m0.770s
+sys	0m0.387s
+
+===============================================================================
+
+go test --bench . --benchmem
+PASS
+ok  	speed	0.015s
+
+real	0m0.425s
+user	0m0.482s
+sys	0m0.399s
+
+===============================================================================
+
+go test -tags bonus
+PASS
+ok  	speed	0.010s
+
+real	0m0.505s
+user	0m0.596s
+sys	0m0.371s
+
+===============================================================================
+
+go vet speed
+
+real	0m0.413s
+user	0m0.398s
+sys	0m0.299s
+
+===============================================================================
+
+go fix speed
+
+real	0m0.086s
+user	0m0.034s
+sys	0m0.039s
+
+===============================================================================
+
+gosec ./need-for-speed
+[gosec] 2022/06/17 00:39:40 Including rules: default
+[gosec] 2022/06/17 00:39:40 Excluding rules: default
+[gosec] 2022/06/17 00:39:40 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/need-for-speed
+[gosec] 2022/06/17 00:39:40 Checking package: speed
+[gosec] 2022/06/17 00:39:40 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/need-for-speed/need_for_speed.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 65
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.330s
+user	0m0.343s
+sys	0m0.219s
+
+===============================================================================
+
+gomarkdoc --output speed-doc.md
+
+real	0m0.025s
+user	0m0.019s
+sys	0m0.008s
+
+===============================================================================
+
+go doc -all speed
+package speed // import "speed"
+
+
+FUNCTIONS
+
+func CanFinish(car Car, track Track) bool
+    CanFinish checks if a car is able to finish a certain track.
+
+
+TYPES
+
+type Car struct {
+	// Has unexported fields.
+}
+    Car struct
+
+func Drive(car Car) Car
+    Drive drives the car one time. If there is not enough battery to drive on
+    more time, the car will not move.
+
+func NewCar(speed, batteryDrain int) Car
+    NewCar creates a new remote controlled car with full battery and given
+    specifications.
+
+type Track struct {
+	// Has unexported fields.
+}
+    Track struct
+
+func NewTrack(distance int) Track
+    NewTrack created a new track
+
+
+real	0m0.110s
+user	0m0.061s
+sys	0m0.112s
+
+
+===============================================================================
+
