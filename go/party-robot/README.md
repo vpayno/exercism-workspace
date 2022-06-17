@@ -141,3 +141,9 @@ AssignTable("Christiane", 27, "Frank", "on the left", 23.7834298)
 
 - @oanaOM
 - @bobtfish
+
+### My Solution
+
+- [solution](./party_robot.go)
+- [run-tests](./run-tests-go.txt)
+- [documentation](./partyrobot-doc.md)

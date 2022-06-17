@@ -12,7 +12,7 @@
 - [update_readmes](./update_readmes)
 
 
-## Completed Exercises
+## Exercises
 
 - [hello-world](hello-world/README.md)
 - [lasagna](lasagna/README.md)
@@ -20,7 +20,4 @@
 - [cars-assemble](./cars-assemble/README.md)
 - [weather-forecast](./weather-forecast/README.md)
 - [welcome-to-tech-palace](./welcome-to-tech-palace/README.md)
-
-
-## In-Progress Exercises
-
+- [party-robot](./party-robot/README.md)
