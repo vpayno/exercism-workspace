@@ -249,3 +249,9 @@ scaledQuantities := ScaleRecipe(quantities, 4)
 ### Contributed to by
 
 - @sougat818
+
+### My Solution
+
+- [solution](./lasagna_master.go)
+- [run-tests](./run-tests-go.txt)
+- [documentation](./lasagna-doc.md)
