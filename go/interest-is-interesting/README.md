@@ -92,3 +92,9 @@ Note that the value returned is an `int`.
 ### Created by
 
 - @erikschierboom
+
+### My Solution
+
+- [solution](./interest_is_interesting.go)
+- [run-tests](./run-tests-go.txt)
+- [documentation](./interest-doc.md)

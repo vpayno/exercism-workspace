@@ -1,0 +1,290 @@
+Running automated test file(s):
+
+Go packages: interest 
+
+
+===============================================================================
+
+golint interest
+/home/vpayno/git_vpayno/exercism-workspace/go/interest-is-interesting/interest_is_interesting.go:4:6: func name will be used as interest.InterestRate by other packages, and that stutters; consider calling this Rate
+
+real	0m0.119s
+user	0m0.105s
+sys	0m0.078s
+
+===============================================================================
+
+go test -v -covermode=count -coverprofile coverage.out interest
+=== RUN   TestInterestRate
+=== RUN   TestInterestRate/Minimal_first_interest_rate
+=== RUN   TestInterestRate/Tiny_first_interest_rate
+=== RUN   TestInterestRate/Maximum_first_interest_rate
+=== RUN   TestInterestRate/Minimal_second_interest_rate
+=== RUN   TestInterestRate/Tiny_second_interest_rate
+=== RUN   TestInterestRate/Maximum_second_interest_rate
+=== RUN   TestInterestRate/Minimal_third_interest_rate
+=== RUN   TestInterestRate/Tiny_third_interest_rate
+=== RUN   TestInterestRate/Large_third_interest_rate
+=== RUN   TestInterestRate/Rate_on_minimal_negative_balance
+=== RUN   TestInterestRate/Rate_on_small_negative_balance
+=== RUN   TestInterestRate/Rate_on_regular_negative_balance
+=== RUN   TestInterestRate/Rate_on_large_negative_balance
+--- PASS: TestInterestRate (0.00s)
+    --- PASS: TestInterestRate/Minimal_first_interest_rate (0.00s)
+    --- PASS: TestInterestRate/Tiny_first_interest_rate (0.00s)
+    --- PASS: TestInterestRate/Maximum_first_interest_rate (0.00s)
+    --- PASS: TestInterestRate/Minimal_second_interest_rate (0.00s)
+    --- PASS: TestInterestRate/Tiny_second_interest_rate (0.00s)
+    --- PASS: TestInterestRate/Maximum_second_interest_rate (0.00s)
+    --- PASS: TestInterestRate/Minimal_third_interest_rate (0.00s)
+    --- PASS: TestInterestRate/Tiny_third_interest_rate (0.00s)
+    --- PASS: TestInterestRate/Large_third_interest_rate (0.00s)
+    --- PASS: TestInterestRate/Rate_on_minimal_negative_balance (0.00s)
+    --- PASS: TestInterestRate/Rate_on_small_negative_balance (0.00s)
+    --- PASS: TestInterestRate/Rate_on_regular_negative_balance (0.00s)
+    --- PASS: TestInterestRate/Rate_on_large_negative_balance (0.00s)
+=== RUN   TestInterest
+=== RUN   TestInterest/Interest_on_negative_balance
+=== RUN   TestInterest/Interest_on_small_balance
+=== RUN   TestInterest/Interest_on_medium_balance
+=== RUN   TestInterest/Interest_on_large_balance
+--- PASS: TestInterest (0.00s)
+    --- PASS: TestInterest/Interest_on_negative_balance (0.00s)
+    --- PASS: TestInterest/Interest_on_small_balance (0.00s)
+    --- PASS: TestInterest/Interest_on_medium_balance (0.00s)
+    --- PASS: TestInterest/Interest_on_large_balance (0.00s)
+=== RUN   TestAnnualBalanceUpdate
+=== RUN   TestAnnualBalanceUpdate/Annual_balance_update_for_empty_start_balance
+=== RUN   TestAnnualBalanceUpdate/Annual_balance_update_for_small_positive_start_balance
+=== RUN   TestAnnualBalanceUpdate/Annual_balance_update_for_average_positive_start_balance
+=== RUN   TestAnnualBalanceUpdate/Annual_balance_update_for_large_positive_start_balance
+=== RUN   TestAnnualBalanceUpdate/Annual_balance_update_for_huge_positive_start_balance
+=== RUN   TestAnnualBalanceUpdate/Annual_balance_update_for_small_negative_start_balance
+=== RUN   TestAnnualBalanceUpdate/Annual_balance_update_for_large_negative_start_balance
+--- PASS: TestAnnualBalanceUpdate (0.00s)
+    --- PASS: TestAnnualBalanceUpdate/Annual_balance_update_for_empty_start_balance (0.00s)
+    --- PASS: TestAnnualBalanceUpdate/Annual_balance_update_for_small_positive_start_balance (0.00s)
+    --- PASS: TestAnnualBalanceUpdate/Annual_balance_update_for_average_positive_start_balance (0.00s)
+    --- PASS: TestAnnualBalanceUpdate/Annual_balance_update_for_large_positive_start_balance (0.00s)
+    --- PASS: TestAnnualBalanceUpdate/Annual_balance_update_for_huge_positive_start_balance (0.00s)
+    --- PASS: TestAnnualBalanceUpdate/Annual_balance_update_for_small_negative_start_balance (0.00s)
+    --- PASS: TestAnnualBalanceUpdate/Annual_balance_update_for_large_negative_start_balance (0.00s)
+=== RUN   TestYearsBeforeDesiredBalance
+=== RUN   TestYearsBeforeDesiredBalance/Years_before_desired_balance_for_small_start_balance
+=== RUN   TestYearsBeforeDesiredBalance/Years_before_desired_balance_for_average_start_balance
+=== RUN   TestYearsBeforeDesiredBalance/Years_before_desired_balance_for_large_start_balance
+=== RUN   TestYearsBeforeDesiredBalance/Years_before_large_difference_between_start_and_target_balance
+--- PASS: TestYearsBeforeDesiredBalance (0.00s)
+    --- PASS: TestYearsBeforeDesiredBalance/Years_before_desired_balance_for_small_start_balance (0.00s)
+    --- PASS: TestYearsBeforeDesiredBalance/Years_before_desired_balance_for_average_start_balance (0.00s)
+    --- PASS: TestYearsBeforeDesiredBalance/Years_before_desired_balance_for_large_start_balance (0.00s)
+    --- PASS: TestYearsBeforeDesiredBalance/Years_before_large_difference_between_start_and_target_balance (0.00s)
+=== RUN   ExampleInterestRate
+--- PASS: ExampleInterestRate (0.00s)
+=== RUN   ExampleInterest
+--- PASS: ExampleInterest (0.00s)
+=== RUN   ExampleAnnualBalanceUpdate
+--- PASS: ExampleAnnualBalanceUpdate (0.00s)
+=== RUN   ExampleYearsBeforeDesiredBalance
+--- PASS: ExampleYearsBeforeDesiredBalance (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	interest	0.029s	coverage: 100.0% of statements
+
+real	0m0.534s
+user	0m0.644s
+sys	0m0.370s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+interest/interest_is_interesting.go:4:	InterestRate			100.0%
+interest/interest_is_interesting.go:23:	Interest			100.0%
+interest/interest_is_interesting.go:28:	AnnualBalanceUpdate		100.0%
+interest/interest_is_interesting.go:33:	YearsBeforeDesiredBalance	100.0%
+total:					(statements)			100.0%
+
+real	0m0.096s
+user	0m0.046s
+sys	0m0.108s
+
+===============================================================================
+
+go test -v -race -covermode=atomic interest
+=== RUN   TestInterestRate
+=== RUN   TestInterestRate/Minimal_first_interest_rate
+=== RUN   TestInterestRate/Tiny_first_interest_rate
+=== RUN   TestInterestRate/Maximum_first_interest_rate
+=== RUN   TestInterestRate/Minimal_second_interest_rate
+=== RUN   TestInterestRate/Tiny_second_interest_rate
+=== RUN   TestInterestRate/Maximum_second_interest_rate
+=== RUN   TestInterestRate/Minimal_third_interest_rate
+=== RUN   TestInterestRate/Tiny_third_interest_rate
+=== RUN   TestInterestRate/Large_third_interest_rate
+=== RUN   TestInterestRate/Rate_on_minimal_negative_balance
+=== RUN   TestInterestRate/Rate_on_small_negative_balance
+=== RUN   TestInterestRate/Rate_on_regular_negative_balance
+=== RUN   TestInterestRate/Rate_on_large_negative_balance
+--- PASS: TestInterestRate (0.02s)
+    --- PASS: TestInterestRate/Minimal_first_interest_rate (0.00s)
+    --- PASS: TestInterestRate/Tiny_first_interest_rate (0.00s)
+    --- PASS: TestInterestRate/Maximum_first_interest_rate (0.00s)
+    --- PASS: TestInterestRate/Minimal_second_interest_rate (0.00s)
+    --- PASS: TestInterestRate/Tiny_second_interest_rate (0.00s)
+    --- PASS: TestInterestRate/Maximum_second_interest_rate (0.00s)
+    --- PASS: TestInterestRate/Minimal_third_interest_rate (0.00s)
+    --- PASS: TestInterestRate/Tiny_third_interest_rate (0.00s)
+    --- PASS: TestInterestRate/Large_third_interest_rate (0.00s)
+    --- PASS: TestInterestRate/Rate_on_minimal_negative_balance (0.00s)
+    --- PASS: TestInterestRate/Rate_on_small_negative_balance (0.00s)
+    --- PASS: TestInterestRate/Rate_on_regular_negative_balance (0.00s)
+    --- PASS: TestInterestRate/Rate_on_large_negative_balance (0.00s)
+=== RUN   TestInterest
+=== RUN   TestInterest/Interest_on_negative_balance
+=== RUN   TestInterest/Interest_on_small_balance
+=== RUN   TestInterest/Interest_on_medium_balance
+=== RUN   TestInterest/Interest_on_large_balance
+--- PASS: TestInterest (0.00s)
+    --- PASS: TestInterest/Interest_on_negative_balance (0.00s)
+    --- PASS: TestInterest/Interest_on_small_balance (0.00s)
+    --- PASS: TestInterest/Interest_on_medium_balance (0.00s)
+    --- PASS: TestInterest/Interest_on_large_balance (0.00s)
+=== RUN   TestAnnualBalanceUpdate
+=== RUN   TestAnnualBalanceUpdate/Annual_balance_update_for_empty_start_balance
+=== RUN   TestAnnualBalanceUpdate/Annual_balance_update_for_small_positive_start_balance
+=== RUN   TestAnnualBalanceUpdate/Annual_balance_update_for_average_positive_start_balance
+=== RUN   TestAnnualBalanceUpdate/Annual_balance_update_for_large_positive_start_balance
+=== RUN   TestAnnualBalanceUpdate/Annual_balance_update_for_huge_positive_start_balance
+=== RUN   TestAnnualBalanceUpdate/Annual_balance_update_for_small_negative_start_balance
+=== RUN   TestAnnualBalanceUpdate/Annual_balance_update_for_large_negative_start_balance
+--- PASS: TestAnnualBalanceUpdate (0.01s)
+    --- PASS: TestAnnualBalanceUpdate/Annual_balance_update_for_empty_start_balance (0.00s)
+    --- PASS: TestAnnualBalanceUpdate/Annual_balance_update_for_small_positive_start_balance (0.00s)
+    --- PASS: TestAnnualBalanceUpdate/Annual_balance_update_for_average_positive_start_balance (0.00s)
+    --- PASS: TestAnnualBalanceUpdate/Annual_balance_update_for_large_positive_start_balance (0.00s)
+    --- PASS: TestAnnualBalanceUpdate/Annual_balance_update_for_huge_positive_start_balance (0.00s)
+    --- PASS: TestAnnualBalanceUpdate/Annual_balance_update_for_small_negative_start_balance (0.00s)
+    --- PASS: TestAnnualBalanceUpdate/Annual_balance_update_for_large_negative_start_balance (0.00s)
+=== RUN   TestYearsBeforeDesiredBalance
+=== RUN   TestYearsBeforeDesiredBalance/Years_before_desired_balance_for_small_start_balance
+=== RUN   TestYearsBeforeDesiredBalance/Years_before_desired_balance_for_average_start_balance
+=== RUN   TestYearsBeforeDesiredBalance/Years_before_desired_balance_for_large_start_balance
+=== RUN   TestYearsBeforeDesiredBalance/Years_before_large_difference_between_start_and_target_balance
+--- PASS: TestYearsBeforeDesiredBalance (0.00s)
+    --- PASS: TestYearsBeforeDesiredBalance/Years_before_desired_balance_for_small_start_balance (0.00s)
+    --- PASS: TestYearsBeforeDesiredBalance/Years_before_desired_balance_for_average_start_balance (0.00s)
+    --- PASS: TestYearsBeforeDesiredBalance/Years_before_desired_balance_for_large_start_balance (0.00s)
+    --- PASS: TestYearsBeforeDesiredBalance/Years_before_large_difference_between_start_and_target_balance (0.00s)
+=== RUN   ExampleInterestRate
+--- PASS: ExampleInterestRate (0.00s)
+=== RUN   ExampleInterest
+--- PASS: ExampleInterest (0.00s)
+=== RUN   ExampleAnnualBalanceUpdate
+--- PASS: ExampleAnnualBalanceUpdate (0.00s)
+=== RUN   ExampleYearsBeforeDesiredBalance
+--- PASS: ExampleYearsBeforeDesiredBalance (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	interest	(cached)	coverage: 100.0% of statements
+
+real	0m0.384s
+user	0m0.394s
+sys	0m0.408s
+
+===============================================================================
+
+go test --bench . --benchmem
+PASS
+ok  	interest	0.025s
+
+real	0m0.552s
+user	0m0.604s
+sys	0m0.378s
+
+===============================================================================
+
+go test -tags bonus
+PASS
+ok  	interest	0.012s
+
+real	0m0.480s
+user	0m0.567s
+sys	0m0.339s
+
+===============================================================================
+
+go vet interest
+
+real	0m0.513s
+user	0m0.699s
+sys	0m0.411s
+
+===============================================================================
+
+go fix interest
+
+real	0m0.052s
+user	0m0.021s
+sys	0m0.042s
+
+===============================================================================
+
+gosec ./interest-is-interesting
+[gosec] 2022/06/17 21:03:39 Including rules: default
+[gosec] 2022/06/17 21:03:39 Excluding rules: default
+[gosec] 2022/06/17 21:03:39 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/interest-is-interesting
+[gosec] 2022/06/17 21:03:39 Checking package: interest
+[gosec] 2022/06/17 21:03:39 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/interest-is-interesting/interest_is_interesting.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 43
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.269s
+user	0m0.224s
+sys	0m0.233s
+
+===============================================================================
+
+gomarkdoc --output interest-doc.md
+
+real	0m0.027s
+user	0m0.020s
+sys	0m0.017s
+
+===============================================================================
+
+go doc -all interest
+package interest // import "interest"
+
+
+FUNCTIONS
+
+func AnnualBalanceUpdate(balance float64) float64
+    AnnualBalanceUpdate calculates the annual balance update, taking into
+    account the interest rate.
+
+func Interest(balance float64) float64
+    Interest calculates the interest for the provided balance.
+
+func InterestRate(balance float64) float32
+    InterestRate returns the interest rate for the provided balance.
+
+func YearsBeforeDesiredBalance(balance, targetBalance float64) int
+    YearsBeforeDesiredBalance calculates the minimum number of years required to
+    reach the desired balance:
+
+
+real	0m0.119s
+user	0m0.052s
+sys	0m0.134s
+
+
+===============================================================================
+
