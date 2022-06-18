@@ -99,3 +99,9 @@ Write a function `ShuffleAnimals` that returns a slice with the eight animals in
 ### Created by
 
 - @norbs57
+
+### My Solution
+
+- [solution](./animal_magic.go)
+- [run-tests](./run-tests-go.txt)
+- [documentation](./chance-doc.md)
