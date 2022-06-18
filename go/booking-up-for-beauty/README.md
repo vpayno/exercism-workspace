@@ -73,3 +73,9 @@ AnniversaryDate()
 ### Created by
 
 - @jamessouth
+
+### My Solution
+
+- [solution](./booking_up_for_beauty.go)
+- [run-tests](./run-tests-go.txt)
+- [documentation](./booking-doc.md)
