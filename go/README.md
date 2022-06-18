@@ -14,8 +14,8 @@
 
 ## Exercises
 
-- [hello-world](hello-world/README.md)
-- [lasagna](lasagna/README.md)
+- [hello-world](./hello-world/README.md)
+- [lasagna](./lasagna/README.md)
 - [annalyns-infiltration](./annalyns-infiltration/README.md)
 - [cars-assemble](./cars-assemble/README.md)
 - [weather-forecast](./weather-forecast/README.md)
