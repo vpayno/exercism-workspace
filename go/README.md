@@ -26,3 +26,4 @@
 - [need-for-speed](./need-for-speed/README.md)
 - [card-tricks](./card-tricks/README.md)
 - [animal-magic](./animal-magic/README.md)
+- [bird-watcher](./bird-watcher/README.md)
