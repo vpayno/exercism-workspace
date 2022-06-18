@@ -24,3 +24,4 @@
 - [vehicle-purchase](./vehicle-purchase/README.md)
 - [blackjack](./blackjack/README.md)
 - [need-for-speed](./need-for-speed/README.md)
+- [card-tricks](./card-tricks/README.md)

@@ -224,3 +224,9 @@ fmt.Println(cards)
 ### Contributed to by
 
 - @norbs57
+
+### My Solution
+
+- [solution](./card_tricks.go)
+- [run-tests](./run-tests-go.txt)
+- [documentation](./cards-doc.md)

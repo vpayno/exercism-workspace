@@ -1,0 +1,269 @@
+Running automated test file(s):
+
+Go packages: cards 
+
+
+===============================================================================
+
+golint cards
+
+real	0m0.192s
+user	0m0.153s
+sys	0m0.171s
+
+===============================================================================
+
+go test -v -covermode=count -coverprofile coverage.out cards
+=== RUN   TestFavoriteCards
+--- PASS: TestFavoriteCards (0.00s)
+=== RUN   TestGetItem
+=== RUN   TestGetItem/Retrieve_item_from_slice_by_index
+=== RUN   TestGetItem/Get_first_item_from_slice
+=== RUN   TestGetItem/Get_last_item_from_slice
+=== RUN   TestGetItem/Index_out_of_bounds
+=== RUN   TestGetItem/Negative_index
+--- PASS: TestGetItem (0.00s)
+    --- PASS: TestGetItem/Retrieve_item_from_slice_by_index (0.00s)
+    --- PASS: TestGetItem/Get_first_item_from_slice (0.00s)
+    --- PASS: TestGetItem/Get_last_item_from_slice (0.00s)
+    --- PASS: TestGetItem/Index_out_of_bounds (0.00s)
+    --- PASS: TestGetItem/Negative_index (0.00s)
+=== RUN   TestSetItem
+=== RUN   TestSetItem/Overwrite_an_existing_item
+=== RUN   TestSetItem/Overwrite_first_item
+=== RUN   TestSetItem/Overwrite_last_item
+=== RUN   TestSetItem/Index_out_of_bounds
+=== RUN   TestSetItem/Negative_index
+--- PASS: TestSetItem (0.00s)
+    --- PASS: TestSetItem/Overwrite_an_existing_item (0.00s)
+    --- PASS: TestSetItem/Overwrite_first_item (0.00s)
+    --- PASS: TestSetItem/Overwrite_last_item (0.00s)
+    --- PASS: TestSetItem/Index_out_of_bounds (0.00s)
+    --- PASS: TestSetItem/Negative_index (0.00s)
+=== RUN   TestPrependItems
+=== RUN   TestPrependItems/Prepend_one_item
+=== RUN   TestPrependItems/Prepend_two_items
+=== RUN   TestPrependItems/prepend_nil
+=== RUN   TestPrependItems/prepend_zero_items
+=== RUN   TestPrependItems/Prepend_slice_to_itself
+--- PASS: TestPrependItems (0.00s)
+    --- PASS: TestPrependItems/Prepend_one_item (0.00s)
+    --- PASS: TestPrependItems/Prepend_two_items (0.00s)
+    --- PASS: TestPrependItems/prepend_nil (0.00s)
+    --- PASS: TestPrependItems/prepend_zero_items (0.00s)
+    --- PASS: TestPrependItems/Prepend_slice_to_itself (0.00s)
+=== RUN   TestRemoveItem
+=== RUN   TestRemoveItem/Remove_an_item
+=== RUN   TestRemoveItem/Remove_the_first_item
+=== RUN   TestRemoveItem/Remove_the_last_item
+=== RUN   TestRemoveItem/Remove_out_of_bounds_index
+=== RUN   TestRemoveItem/Remove_negative_index
+--- PASS: TestRemoveItem (0.00s)
+    --- PASS: TestRemoveItem/Remove_an_item (0.00s)
+    --- PASS: TestRemoveItem/Remove_the_first_item (0.00s)
+    --- PASS: TestRemoveItem/Remove_the_last_item (0.00s)
+    --- PASS: TestRemoveItem/Remove_out_of_bounds_index (0.00s)
+    --- PASS: TestRemoveItem/Remove_negative_index (0.00s)
+=== RUN   ExampleFavoriteCards
+--- PASS: ExampleFavoriteCards (0.00s)
+=== RUN   ExampleGetItem
+--- PASS: ExampleGetItem (0.00s)
+=== RUN   ExampleSetItem
+--- PASS: ExampleSetItem (0.00s)
+=== RUN   ExamplePrependItems
+--- PASS: ExamplePrependItems (0.00s)
+=== RUN   ExampleRemoveItem
+--- PASS: ExampleRemoveItem (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	cards	0.047s	coverage: 100.0% of statements
+
+real	0m0.721s
+user	0m0.778s
+sys	0m0.527s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+cards/card_tricks.go:4:		FavoriteCards	100.0%
+cards/card_tricks.go:10:	GetItem		100.0%
+cards/card_tricks.go:24:	SetItem		100.0%
+cards/card_tricks.go:35:	PrependItems	100.0%
+cards/card_tricks.go:47:	RemoveItem	100.0%
+total:				(statements)	100.0%
+
+real	0m0.109s
+user	0m0.074s
+sys	0m0.087s
+
+===============================================================================
+
+go test -v -race -covermode=atomic cards
+=== RUN   TestFavoriteCards
+--- PASS: TestFavoriteCards (0.00s)
+=== RUN   TestGetItem
+=== RUN   TestGetItem/Retrieve_item_from_slice_by_index
+=== RUN   TestGetItem/Get_first_item_from_slice
+=== RUN   TestGetItem/Get_last_item_from_slice
+=== RUN   TestGetItem/Index_out_of_bounds
+=== RUN   TestGetItem/Negative_index
+--- PASS: TestGetItem (0.00s)
+    --- PASS: TestGetItem/Retrieve_item_from_slice_by_index (0.00s)
+    --- PASS: TestGetItem/Get_first_item_from_slice (0.00s)
+    --- PASS: TestGetItem/Get_last_item_from_slice (0.00s)
+    --- PASS: TestGetItem/Index_out_of_bounds (0.00s)
+    --- PASS: TestGetItem/Negative_index (0.00s)
+=== RUN   TestSetItem
+=== RUN   TestSetItem/Overwrite_an_existing_item
+=== RUN   TestSetItem/Overwrite_first_item
+=== RUN   TestSetItem/Overwrite_last_item
+=== RUN   TestSetItem/Index_out_of_bounds
+=== RUN   TestSetItem/Negative_index
+--- PASS: TestSetItem (0.00s)
+    --- PASS: TestSetItem/Overwrite_an_existing_item (0.00s)
+    --- PASS: TestSetItem/Overwrite_first_item (0.00s)
+    --- PASS: TestSetItem/Overwrite_last_item (0.00s)
+    --- PASS: TestSetItem/Index_out_of_bounds (0.00s)
+    --- PASS: TestSetItem/Negative_index (0.00s)
+=== RUN   TestPrependItems
+=== RUN   TestPrependItems/Prepend_one_item
+=== RUN   TestPrependItems/Prepend_two_items
+=== RUN   TestPrependItems/prepend_nil
+=== RUN   TestPrependItems/prepend_zero_items
+=== RUN   TestPrependItems/Prepend_slice_to_itself
+--- PASS: TestPrependItems (0.00s)
+    --- PASS: TestPrependItems/Prepend_one_item (0.00s)
+    --- PASS: TestPrependItems/Prepend_two_items (0.00s)
+    --- PASS: TestPrependItems/prepend_nil (0.00s)
+    --- PASS: TestPrependItems/prepend_zero_items (0.00s)
+    --- PASS: TestPrependItems/Prepend_slice_to_itself (0.00s)
+=== RUN   TestRemoveItem
+=== RUN   TestRemoveItem/Remove_an_item
+=== RUN   TestRemoveItem/Remove_the_first_item
+=== RUN   TestRemoveItem/Remove_the_last_item
+=== RUN   TestRemoveItem/Remove_out_of_bounds_index
+=== RUN   TestRemoveItem/Remove_negative_index
+--- PASS: TestRemoveItem (0.00s)
+    --- PASS: TestRemoveItem/Remove_an_item (0.00s)
+    --- PASS: TestRemoveItem/Remove_the_first_item (0.00s)
+    --- PASS: TestRemoveItem/Remove_the_last_item (0.00s)
+    --- PASS: TestRemoveItem/Remove_out_of_bounds_index (0.00s)
+    --- PASS: TestRemoveItem/Remove_negative_index (0.00s)
+=== RUN   ExampleFavoriteCards
+--- PASS: ExampleFavoriteCards (0.00s)
+=== RUN   ExampleGetItem
+--- PASS: ExampleGetItem (0.00s)
+=== RUN   ExampleSetItem
+--- PASS: ExampleSetItem (0.00s)
+=== RUN   ExamplePrependItems
+--- PASS: ExamplePrependItems (0.00s)
+=== RUN   ExampleRemoveItem
+--- PASS: ExampleRemoveItem (0.01s)
+PASS
+coverage: 100.0% of statements
+ok  	cards	0.042s	coverage: 100.0% of statements
+
+real	0m0.634s
+user	0m0.716s
+sys	0m0.418s
+
+===============================================================================
+
+go test --bench . --benchmem
+PASS
+ok  	cards	0.025s
+
+real	0m0.513s
+user	0m0.608s
+sys	0m0.383s
+
+===============================================================================
+
+go test -tags bonus
+PASS
+ok  	cards	0.007s
+
+real	0m0.459s
+user	0m0.516s
+sys	0m0.343s
+
+===============================================================================
+
+go vet cards
+
+real	0m0.343s
+user	0m0.353s
+sys	0m0.302s
+
+===============================================================================
+
+go fix cards
+
+real	0m0.046s
+user	0m0.030s
+sys	0m0.037s
+
+===============================================================================
+
+gosec ./card-tricks
+[gosec] 2022/06/17 17:44:14 Including rules: default
+[gosec] 2022/06/17 17:44:14 Excluding rules: default
+[gosec] 2022/06/17 17:44:14 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/card-tricks
+[gosec] 2022/06/17 17:44:14 Checking package: cards
+[gosec] 2022/06/17 17:44:14 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/card-tricks/card_tricks.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 57
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.324s
+user	0m0.338s
+sys	0m0.272s
+
+===============================================================================
+
+gomarkdoc --output cards-doc.md
+
+real	0m0.029s
+user	0m0.015s
+sys	0m0.018s
+
+===============================================================================
+
+go doc -all cards
+package cards // import "cards"
+
+
+FUNCTIONS
+
+func FavoriteCards() []int
+    FavoriteCards returns a slice with the cards 2, 6 and 9 in that order.
+
+func GetItem(slice []int, index int) int
+    GetItem retrieves an item from a slice at given position. If the index is
+    out of range, we want it to return -1.
+
+func PrependItems(slice []int, value ...int) []int
+    PrependItems adds an arbitrary number of values at the front of a slice.
+
+func RemoveItem(slice []int, index int) []int
+    RemoveItem removes an item from a slice by modifying the existing slice.
+
+func SetItem(slice []int, index, value int) []int
+    SetItem writes an item to a slice at given position overwriting an existing
+    value. If the index is out of range the value needs to be appended.
+
+
+real	0m0.127s
+user	0m0.057s
+sys	0m0.132s
+
+
+===============================================================================
+

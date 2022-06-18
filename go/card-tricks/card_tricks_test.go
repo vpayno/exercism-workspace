@@ -143,8 +143,8 @@ func TestSetItem(t *testing.T) {
 					got[i] = -1
 				}
 				if reflect.ValueOf(got).Pointer() != reflect.ValueOf(tt.args.slice).Pointer() {
-					t.Errorf("SetItem(slice:%v, index:%v) does not return the modified input slice)", tt.args.slice,
-						tt.args.value)
+					t.Errorf("SetItem(slice:%v, index:%v, value:%v) does not return the modified input slice)",
+						tt.args.slice, tt.args.index, tt.args.value)
 				}
 			}
 		})
