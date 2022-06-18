@@ -1,0 +1,160 @@
+Running automated test file(s):
+
+Go packages: chance 
+
+
+===============================================================================
+
+golint chance
+
+real	0m0.158s
+user	0m0.154s
+sys	0m0.148s
+
+===============================================================================
+
+go test -v -covermode=count -coverprofile coverage.out chance
+=== RUN   TestSeedWithTime
+--- PASS: TestSeedWithTime (0.00s)
+=== RUN   TestRollADie
+--- PASS: TestRollADie (0.00s)
+=== RUN   TestWandEnergy
+--- PASS: TestWandEnergy (0.00s)
+=== RUN   TestShuffleAnimals
+--- PASS: TestShuffleAnimals (0.00s)
+=== RUN   ExampleRollADie
+--- PASS: ExampleRollADie (0.00s)
+=== RUN   ExampleGenerateWandEnergy
+--- PASS: ExampleGenerateWandEnergy (0.00s)
+=== RUN   ExampleShuffleAnimals
+--- PASS: ExampleShuffleAnimals (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	chance	0.012s	coverage: 100.0% of statements
+
+real	0m0.794s
+user	0m0.895s
+sys	0m0.575s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+chance/animal_magic.go:9:	SeedWithTime		100.0%
+chance/animal_magic.go:14:	RollADie		100.0%
+chance/animal_magic.go:19:	GenerateWandEnergy	100.0%
+chance/animal_magic.go:24:	ShuffleAnimals		100.0%
+total:				(statements)		100.0%
+
+real	0m0.240s
+user	0m0.285s
+sys	0m0.212s
+
+===============================================================================
+
+go test -v -race -covermode=atomic chance
+=== RUN   TestSeedWithTime
+--- PASS: TestSeedWithTime (0.00s)
+=== RUN   TestRollADie
+--- PASS: TestRollADie (0.00s)
+=== RUN   TestWandEnergy
+--- PASS: TestWandEnergy (0.00s)
+=== RUN   TestShuffleAnimals
+--- PASS: TestShuffleAnimals (0.01s)
+=== RUN   ExampleRollADie
+--- PASS: ExampleRollADie (0.00s)
+=== RUN   ExampleGenerateWandEnergy
+--- PASS: ExampleGenerateWandEnergy (0.00s)
+=== RUN   ExampleShuffleAnimals
+--- PASS: ExampleShuffleAnimals (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	chance	0.045s	coverage: 100.0% of statements
+
+real	0m0.670s
+user	0m0.708s
+sys	0m0.469s
+
+===============================================================================
+
+go test --bench . --benchmem
+PASS
+ok  	chance	0.004s
+
+real	0m0.461s
+user	0m0.509s
+sys	0m0.359s
+
+===============================================================================
+
+go test -tags bonus
+PASS
+ok  	chance	0.009s
+
+real	0m0.590s
+user	0m0.764s
+sys	0m0.415s
+
+===============================================================================
+
+go vet chance
+
+real	0m0.338s
+user	0m0.471s
+sys	0m0.285s
+
+===============================================================================
+
+go fix chance
+
+real	0m0.129s
+user	0m0.115s
+sys	0m0.135s
+
+===============================================================================
+
+gosec ./animal-magic
+[gosec] 2022/06/17 18:12:22 Including rules: default
+[gosec] 2022/06/17 18:12:22 Excluding rules: default
+[gosec] 2022/06/17 18:12:22 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/animal-magic
+2022/06/17 18:12:22 internal error: package "math/rand" without types was imported from "command-line-arguments"
+
+real	0m0.494s
+user	0m0.547s
+sys	0m0.350s
+
+===============================================================================
+
+gomarkdoc --output chance-doc.md
+
+real	0m0.028s
+user	0m0.023s
+sys	0m0.010s
+
+===============================================================================
+
+go doc -all chance
+package chance // import "chance"
+
+
+FUNCTIONS
+
+func GenerateWandEnergy() float64
+    GenerateWandEnergy returns a random float64 f with 0.0 <= f < 12.0
+
+func RollADie() int
+    RollADie returns a random int d with 1 <= d <= 20
+
+func SeedWithTime()
+    SeedWithTime seeds math/rand with the current computer time
+
+func ShuffleAnimals() []string
+    ShuffleAnimals returns a slice with all eight animal strings in random order
+
+
+real	0m0.221s
+user	0m0.181s
+sys	0m0.197s
+
+
+===============================================================================
+
