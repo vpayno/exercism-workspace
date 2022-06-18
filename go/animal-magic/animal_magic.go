@@ -12,12 +12,12 @@ func SeedWithTime() {
 
 // RollADie returns a random int d with 1 <= d <= 20
 func RollADie() int {
-	return 1 + rand.Intn(20)
+	return 1 + rand.Intn(20) // #nosec G404
 }
 
 // GenerateWandEnergy returns a random float64 f with 0.0 <= f < 12.0
 func GenerateWandEnergy() float64 {
-	return float64(rand.Intn(12))
+	return float64(rand.Intn(12)) // #nosec G404
 }
 
 // ShuffleAnimals returns a slice with all eight animal strings in random order
