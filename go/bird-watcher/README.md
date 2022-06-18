@@ -96,3 +96,9 @@ FixBirdCountLog(birdsPerDay)
 ### Contributed to by
 
 - @andrerfcsantos
+
+### My Solution
+
+- [solution](./bird_watcher.go)
+- [run-tests](./run-tests-go.txt)
+- [documentation](./birdwatcher-doc.md)

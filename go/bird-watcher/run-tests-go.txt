@@ -1,0 +1,207 @@
+Running automated test file(s):
+
+Go packages: birdwatcher 
+
+
+===============================================================================
+
+golint birdwatcher
+
+real	0m0.119s
+user	0m0.120s
+sys	0m0.110s
+
+===============================================================================
+
+go test -v -covermode=count -coverprofile coverage.out birdwatcher
+=== RUN   TestTotalBirdCount
+=== RUN   TestTotalBirdCount/calculates_the_correct_total_number_of_birds
+=== RUN   TestTotalBirdCount/works_for_a_short_bird_count_list
+=== RUN   TestTotalBirdCount/works_for_a_long_bird_count_list
+--- PASS: TestTotalBirdCount (0.00s)
+    --- PASS: TestTotalBirdCount/calculates_the_correct_total_number_of_birds (0.00s)
+    --- PASS: TestTotalBirdCount/works_for_a_short_bird_count_list (0.00s)
+    --- PASS: TestTotalBirdCount/works_for_a_long_bird_count_list (0.00s)
+=== RUN   TestBirdsInWeek
+=== RUN   TestBirdsInWeek/calculates_the_number_of_birds_in_the_first_week
+=== RUN   TestBirdsInWeek/calculates_the_number_of_birds_for_a_week_in_the_middle_of_the_log
+=== RUN   TestBirdsInWeek/works_when_there_is_only_one_week
+--- PASS: TestBirdsInWeek (0.00s)
+    --- PASS: TestBirdsInWeek/calculates_the_number_of_birds_in_the_first_week (0.00s)
+    --- PASS: TestBirdsInWeek/calculates_the_number_of_birds_for_a_week_in_the_middle_of_the_log (0.00s)
+    --- PASS: TestBirdsInWeek/works_when_there_is_only_one_week (0.00s)
+=== RUN   TestFixBirdCount
+=== RUN   TestFixBirdCount/returns_a_bird_count_list_with_the_corrected_values
+=== RUN   TestFixBirdCount/works_for_a_short_bird_count_list
+=== RUN   TestFixBirdCount/works_for_a_long_bird_count_list
+--- PASS: TestFixBirdCount (0.00s)
+    --- PASS: TestFixBirdCount/returns_a_bird_count_list_with_the_corrected_values (0.00s)
+    --- PASS: TestFixBirdCount/works_for_a_short_bird_count_list (0.00s)
+    --- PASS: TestFixBirdCount/works_for_a_long_bird_count_list (0.00s)
+=== RUN   TestFixBirdCountDoesNotCreateNewSlice
+--- PASS: TestFixBirdCountDoesNotCreateNewSlice (0.00s)
+=== RUN   ExampleTotalBirdCount
+--- PASS: ExampleTotalBirdCount (0.00s)
+=== RUN   ExampleBirdsInWeek
+--- PASS: ExampleBirdsInWeek (0.00s)
+=== RUN   ExampleFixBirdCountLog
+--- PASS: ExampleFixBirdCountLog (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	birdwatcher	0.009s	coverage: 100.0% of statements
+
+real	0m0.683s
+user	0m0.711s
+sys	0m0.477s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+birdwatcher/bird_watcher.go:4:	sum		100.0%
+birdwatcher/bird_watcher.go:16:	TotalBirdCount	100.0%
+birdwatcher/bird_watcher.go:22:	BirdsInWeek	100.0%
+birdwatcher/bird_watcher.go:34:	FixBirdCountLog	100.0%
+total:				(statements)	100.0%
+
+real	0m0.092s
+user	0m0.050s
+sys	0m0.079s
+
+===============================================================================
+
+go test -v -race -covermode=atomic birdwatcher
+=== RUN   TestTotalBirdCount
+=== RUN   TestTotalBirdCount/calculates_the_correct_total_number_of_birds
+=== RUN   TestTotalBirdCount/works_for_a_short_bird_count_list
+=== RUN   TestTotalBirdCount/works_for_a_long_bird_count_list
+--- PASS: TestTotalBirdCount (0.00s)
+    --- PASS: TestTotalBirdCount/calculates_the_correct_total_number_of_birds (0.00s)
+    --- PASS: TestTotalBirdCount/works_for_a_short_bird_count_list (0.00s)
+    --- PASS: TestTotalBirdCount/works_for_a_long_bird_count_list (0.00s)
+=== RUN   TestBirdsInWeek
+=== RUN   TestBirdsInWeek/calculates_the_number_of_birds_in_the_first_week
+=== RUN   TestBirdsInWeek/calculates_the_number_of_birds_for_a_week_in_the_middle_of_the_log
+=== RUN   TestBirdsInWeek/works_when_there_is_only_one_week
+--- PASS: TestBirdsInWeek (0.00s)
+    --- PASS: TestBirdsInWeek/calculates_the_number_of_birds_in_the_first_week (0.00s)
+    --- PASS: TestBirdsInWeek/calculates_the_number_of_birds_for_a_week_in_the_middle_of_the_log (0.00s)
+    --- PASS: TestBirdsInWeek/works_when_there_is_only_one_week (0.00s)
+=== RUN   TestFixBirdCount
+=== RUN   TestFixBirdCount/returns_a_bird_count_list_with_the_corrected_values
+=== RUN   TestFixBirdCount/works_for_a_short_bird_count_list
+=== RUN   TestFixBirdCount/works_for_a_long_bird_count_list
+--- PASS: TestFixBirdCount (0.00s)
+    --- PASS: TestFixBirdCount/returns_a_bird_count_list_with_the_corrected_values (0.00s)
+    --- PASS: TestFixBirdCount/works_for_a_short_bird_count_list (0.00s)
+    --- PASS: TestFixBirdCount/works_for_a_long_bird_count_list (0.00s)
+=== RUN   TestFixBirdCountDoesNotCreateNewSlice
+--- PASS: TestFixBirdCountDoesNotCreateNewSlice (0.00s)
+=== RUN   ExampleTotalBirdCount
+--- PASS: ExampleTotalBirdCount (0.00s)
+=== RUN   ExampleBirdsInWeek
+--- PASS: ExampleBirdsInWeek (0.00s)
+=== RUN   ExampleFixBirdCountLog
+--- PASS: ExampleFixBirdCountLog (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	birdwatcher	(cached)	coverage: 100.0% of statements
+
+real	0m0.617s
+user	0m0.658s
+sys	0m0.419s
+
+===============================================================================
+
+go test --bench . --benchmem
+PASS
+ok  	birdwatcher	0.020s
+
+real	0m0.625s
+user	0m0.719s
+sys	0m0.434s
+
+===============================================================================
+
+go test -tags bonus
+PASS
+ok  	birdwatcher	0.009s
+
+real	0m0.739s
+user	0m0.865s
+sys	0m0.461s
+
+===============================================================================
+
+go vet birdwatcher
+
+real	0m0.652s
+user	0m0.885s
+sys	0m0.518s
+
+===============================================================================
+
+go fix birdwatcher
+
+real	0m0.063s
+user	0m0.026s
+sys	0m0.065s
+
+===============================================================================
+
+gosec ./bird-watcher
+[gosec] 2022/06/17 19:14:40 Including rules: default
+[gosec] 2022/06/17 19:14:40 Excluding rules: default
+[gosec] 2022/06/17 19:14:40 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/bird-watcher
+[gosec] 2022/06/17 19:14:40 Checking package: birdwatcher
+[gosec] 2022/06/17 19:14:40 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/bird-watcher/bird_watcher.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 40
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.267s
+user	0m0.252s
+sys	0m0.203s
+
+===============================================================================
+
+gomarkdoc --output birdwatcher-doc.md
+
+real	0m0.025s
+user	0m0.018s
+sys	0m0.010s
+
+===============================================================================
+
+go doc -all birdwatcher
+package birdwatcher // import "birdwatcher"
+
+
+FUNCTIONS
+
+func BirdsInWeek(birdsPerDay []int, week int) int
+    BirdsInWeek returns the total bird count by summing only the items belonging
+    to the given week.
+
+func FixBirdCountLog(birdsPerDay []int) []int
+    FixBirdCountLog returns the bird counts after correcting the bird counts for
+    alternate days.
+
+func TotalBirdCount(birdsPerDay []int) int
+    TotalBirdCount return the total bird count by summing the individual day's
+    counts.
+
+
+real	0m0.115s
+user	0m0.067s
+sys	0m0.117s
+
+
+===============================================================================
+
