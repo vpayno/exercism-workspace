@@ -29,3 +29,4 @@
 - [bird-watcher](./bird-watcher/README.md)
 - [interest-is-interesting](./interest-is-interesting/README.md)
 - [lasagna-master](./lasagna-master/README.md)
+- [booking-up-for-beauty](./booking-up-for-beauty/README.md)
