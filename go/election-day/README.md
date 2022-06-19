@@ -299,3 +299,10 @@ finalResults["Mary"]
 ### Created by
 
 - @andrerfcsantos
+
+### My Solution
+
+- [solution](./election_day.go
+election_result.go)
+- [run-tests](./run-tests-go.txt)
+- [documentation](./electionday-doc.md)
