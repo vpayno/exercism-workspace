@@ -159,3 +159,9 @@ WithinLimit("hello❗", 6)
 
 - @sudomateo
 - @tehsphinx
+
+### My Solution
+
+- [solution](./logs_logs_logs.go)
+- [run-tests](./run-tests-go.txt)
+- [documentation](./logs-doc.md)

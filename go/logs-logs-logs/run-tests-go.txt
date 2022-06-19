@@ -1,0 +1,206 @@
+Running automated test file(s):
+
+Go packages: logs 
+
+
+===============================================================================
+
+golint logs
+
+real	0m0.147s
+user	0m0.082s
+sys	0m0.169s
+
+===============================================================================
+
+go test -v -covermode=count -coverprofile coverage.out logs
+=== RUN   TestApplication
+=== RUN   TestApplication/single_character_recommendation
+=== RUN   TestApplication/single_character_search
+=== RUN   TestApplication/single_character_weather
+=== RUN   TestApplication/no_characters_default
+=== RUN   TestApplication/multiple_characters_recommendation(1/3)
+=== RUN   TestApplication/multiple_characters_recommendation(2/3)
+=== RUN   TestApplication/multiple_characters_recommendation(3/3)
+--- PASS: TestApplication (0.00s)
+    --- PASS: TestApplication/single_character_recommendation (0.00s)
+    --- PASS: TestApplication/single_character_search (0.00s)
+    --- PASS: TestApplication/single_character_weather (0.00s)
+    --- PASS: TestApplication/no_characters_default (0.00s)
+    --- PASS: TestApplication/multiple_characters_recommendation(1/3) (0.00s)
+    --- PASS: TestApplication/multiple_characters_recommendation(2/3) (0.00s)
+    --- PASS: TestApplication/multiple_characters_recommendation(3/3) (0.00s)
+=== RUN   TestReplace
+=== RUN   TestReplace/single_occurrence_of_replacement
+=== RUN   TestReplace/multiple_occurrences_of_replacement
+=== RUN   TestReplace/no_occurrences_of_replacement
+--- PASS: TestReplace (0.00s)
+    --- PASS: TestReplace/single_occurrence_of_replacement (0.00s)
+    --- PASS: TestReplace/multiple_occurrences_of_replacement (0.00s)
+    --- PASS: TestReplace/no_occurrences_of_replacement (0.00s)
+=== RUN   TestWithinLimit
+=== RUN   TestWithinLimit/exact_limit
+=== RUN   TestWithinLimit/under_limit
+=== RUN   TestWithinLimit/over_limit
+--- PASS: TestWithinLimit (0.00s)
+    --- PASS: TestWithinLimit/exact_limit (0.00s)
+    --- PASS: TestWithinLimit/under_limit (0.00s)
+    --- PASS: TestWithinLimit/over_limit (0.00s)
+=== RUN   ExampleApplication
+--- PASS: ExampleApplication (0.00s)
+=== RUN   ExampleReplace
+--- PASS: ExampleReplace (0.00s)
+=== RUN   ExampleWithinLimit
+--- PASS: ExampleWithinLimit (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	logs	0.025s	coverage: 100.0% of statements
+
+real	0m0.684s
+user	0m0.685s
+sys	0m0.515s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+logs/logs_logs_logs.go:9:	Application	100.0%
+logs/logs_logs_logs.go:32:	Replace		100.0%
+logs/logs_logs_logs.go:38:	WithinLimit	100.0%
+total:				(statements)	100.0%
+
+real	0m0.205s
+user	0m0.129s
+sys	0m0.222s
+
+===============================================================================
+
+go test -v -race -covermode=atomic logs
+=== RUN   TestApplication
+=== RUN   TestApplication/single_character_recommendation
+=== RUN   TestApplication/single_character_search
+=== RUN   TestApplication/single_character_weather
+=== RUN   TestApplication/no_characters_default
+=== RUN   TestApplication/multiple_characters_recommendation(1/3)
+=== RUN   TestApplication/multiple_characters_recommendation(2/3)
+=== RUN   TestApplication/multiple_characters_recommendation(3/3)
+--- PASS: TestApplication (0.00s)
+    --- PASS: TestApplication/single_character_recommendation (0.00s)
+    --- PASS: TestApplication/single_character_search (0.00s)
+    --- PASS: TestApplication/single_character_weather (0.00s)
+    --- PASS: TestApplication/no_characters_default (0.00s)
+    --- PASS: TestApplication/multiple_characters_recommendation(1/3) (0.00s)
+    --- PASS: TestApplication/multiple_characters_recommendation(2/3) (0.00s)
+    --- PASS: TestApplication/multiple_characters_recommendation(3/3) (0.00s)
+=== RUN   TestReplace
+=== RUN   TestReplace/single_occurrence_of_replacement
+=== RUN   TestReplace/multiple_occurrences_of_replacement
+=== RUN   TestReplace/no_occurrences_of_replacement
+--- PASS: TestReplace (0.00s)
+    --- PASS: TestReplace/single_occurrence_of_replacement (0.00s)
+    --- PASS: TestReplace/multiple_occurrences_of_replacement (0.00s)
+    --- PASS: TestReplace/no_occurrences_of_replacement (0.00s)
+=== RUN   TestWithinLimit
+=== RUN   TestWithinLimit/exact_limit
+=== RUN   TestWithinLimit/under_limit
+=== RUN   TestWithinLimit/over_limit
+--- PASS: TestWithinLimit (0.00s)
+    --- PASS: TestWithinLimit/exact_limit (0.00s)
+    --- PASS: TestWithinLimit/under_limit (0.00s)
+    --- PASS: TestWithinLimit/over_limit (0.00s)
+=== RUN   ExampleApplication
+--- PASS: ExampleApplication (0.00s)
+=== RUN   ExampleReplace
+--- PASS: ExampleReplace (0.00s)
+=== RUN   ExampleWithinLimit
+--- PASS: ExampleWithinLimit (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	logs	0.040s	coverage: 100.0% of statements
+
+real	0m0.773s
+user	0m0.890s
+sys	0m0.501s
+
+===============================================================================
+
+go test --bench . --benchmem
+PASS
+ok  	logs	0.007s
+
+real	0m0.472s
+user	0m0.615s
+sys	0m0.347s
+
+===============================================================================
+
+go test -tags bonus
+PASS
+ok  	logs	0.009s
+
+real	0m0.536s
+user	0m0.599s
+sys	0m0.417s
+
+===============================================================================
+
+go vet logs
+
+real	0m0.388s
+user	0m0.455s
+sys	0m0.383s
+
+===============================================================================
+
+go fix logs
+
+real	0m0.136s
+user	0m0.099s
+sys	0m0.141s
+
+===============================================================================
+
+gosec ./logs-logs-logs
+[gosec] 2022/06/18 23:30:55 Including rules: default
+[gosec] 2022/06/18 23:30:55 Excluding rules: default
+[gosec] 2022/06/18 23:30:55 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/logs-logs-logs
+2022/06/18 23:30:55 internal error: package "strings" without types was imported from "command-line-arguments"
+
+real	0m0.406s
+user	0m0.434s
+sys	0m0.272s
+
+===============================================================================
+
+gomarkdoc --output logs-doc.md
+
+real	0m0.029s
+user	0m0.018s
+sys	0m0.015s
+
+===============================================================================
+
+go doc -all logs
+package logs // import "logs"
+
+
+FUNCTIONS
+
+func Application(log string) string
+    Application identifies the application emitting the given log.
+
+func Replace(log string, oldRune, newRune rune) string
+    Replace replaces all occurrences of old with new, returning the modified log
+    to the caller.
+
+func WithinLimit(log string, limit int) bool
+    WithinLimit determines whether or not the number of characters in log is
+    within the limit.
+
+
+real	0m0.197s
+user	0m0.150s
+sys	0m0.155s
+
+
+===============================================================================
+
