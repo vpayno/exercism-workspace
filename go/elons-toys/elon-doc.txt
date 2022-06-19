@@ -1,0 +1,29 @@
+package elon // import "elon"
+
+
+TYPES
+
+type Car struct {
+	// Has unexported fields.
+}
+    Car implements a remote controlled car.
+
+func NewCar(speed, batteryDrain int) *Car
+    NewCar creates a new car with given specifications.
+
+func (car *Car) CanFinish(trackDistance int) bool
+    CanFinish returns true if the car can finish by testing the given
+    trackDistance (`int`).
+
+func (car *Car) DisplayBattery() string
+    DisplayBattery returns the battery percentage as displayed on the LED
+    display as a `string`.
+
+func (car *Car) DisplayDistance() string
+    DisplayDistance returns the distance as displayed on the LED display as a
+    `string`.
+
+func (car *Car) Drive() bool
+    Drive updates the number of meters driven based on the car's speed (`int`),
+    and reduces the battery (`int`) according to the battery drainage.
+

@@ -1,0 +1,210 @@
+Running automated test file(s):
+
+Go packages: elon 
+
+
+===============================================================================
+
+golint elon
+
+real	0m0.235s
+user	0m0.232s
+sys	0m0.223s
+
+===============================================================================
+
+go test -v -covermode=count -coverprofile coverage.out elon
+=== RUN   TestDrive
+=== RUN   TestDrive/Drive_the_car_once.
+=== RUN   TestDrive/Drive_when_battery_percentage_is_below_battery_drain
+--- PASS: TestDrive (0.00s)
+    --- PASS: TestDrive/Drive_the_car_once. (0.00s)
+    --- PASS: TestDrive/Drive_when_battery_percentage_is_below_battery_drain (0.00s)
+=== RUN   TestDisplayDistance
+=== RUN   TestDisplayDistance/Car_displays_driven_distance
+--- PASS: TestDisplayDistance (0.00s)
+    --- PASS: TestDisplayDistance/Car_displays_driven_distance (0.00s)
+=== RUN   TestDisplayBattery
+=== RUN   TestDisplayBattery/Display_battery_percentage
+--- PASS: TestDisplayBattery (0.00s)
+    --- PASS: TestDisplayBattery/Display_battery_percentage (0.00s)
+=== RUN   TestCanFinish
+=== RUN   TestCanFinish/Car_has_100%_battery._Car_can_finish_the_race
+=== RUN   TestCanFinish/Car_has_40%_battery._Car_can_finish_the_race
+=== RUN   TestCanFinish/Car_has_30%_battery._Car_cannot_finish_the_race
+--- PASS: TestCanFinish (0.00s)
+    --- PASS: TestCanFinish/Car_has_100%_battery._Car_can_finish_the_race (0.00s)
+    --- PASS: TestCanFinish/Car_has_40%_battery._Car_can_finish_the_race (0.00s)
+    --- PASS: TestCanFinish/Car_has_30%_battery._Car_cannot_finish_the_race (0.00s)
+=== RUN   ExampleDrive
+--- PASS: ExampleDrive (0.00s)
+=== RUN   ExampleDisplayDistance
+--- PASS: ExampleDisplayDistance (0.00s)
+=== RUN   ExampleDisplayBattery
+--- PASS: ExampleDisplayBattery (0.00s)
+=== RUN   ExampleCanFinish
+--- PASS: ExampleCanFinish (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	elon	0.018s	coverage: 100.0% of statements
+
+real	0m0.757s
+user	0m0.857s
+sys	0m0.539s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+elon/car.go:13:		NewCar		100.0%
+elon/elons_toys.go:9:	Drive		100.0%
+elon/elons_toys.go:23:	DisplayDistance	100.0%
+elon/elons_toys.go:28:	DisplayBattery	100.0%
+elon/elons_toys.go:33:	CanFinish	100.0%
+total:			(statements)	100.0%
+
+real	0m0.333s
+user	0m0.309s
+sys	0m0.279s
+
+===============================================================================
+
+go test -v -race -covermode=atomic elon
+=== RUN   TestDrive
+=== RUN   TestDrive/Drive_the_car_once.
+=== RUN   TestDrive/Drive_when_battery_percentage_is_below_battery_drain
+--- PASS: TestDrive (0.00s)
+    --- PASS: TestDrive/Drive_the_car_once. (0.00s)
+    --- PASS: TestDrive/Drive_when_battery_percentage_is_below_battery_drain (0.00s)
+=== RUN   TestDisplayDistance
+=== RUN   TestDisplayDistance/Car_displays_driven_distance
+--- PASS: TestDisplayDistance (0.00s)
+    --- PASS: TestDisplayDistance/Car_displays_driven_distance (0.00s)
+=== RUN   TestDisplayBattery
+=== RUN   TestDisplayBattery/Display_battery_percentage
+--- PASS: TestDisplayBattery (0.00s)
+    --- PASS: TestDisplayBattery/Display_battery_percentage (0.00s)
+=== RUN   TestCanFinish
+=== RUN   TestCanFinish/Car_has_100%_battery._Car_can_finish_the_race
+=== RUN   TestCanFinish/Car_has_40%_battery._Car_can_finish_the_race
+=== RUN   TestCanFinish/Car_has_30%_battery._Car_cannot_finish_the_race
+--- PASS: TestCanFinish (0.00s)
+    --- PASS: TestCanFinish/Car_has_100%_battery._Car_can_finish_the_race (0.00s)
+    --- PASS: TestCanFinish/Car_has_40%_battery._Car_can_finish_the_race (0.00s)
+    --- PASS: TestCanFinish/Car_has_30%_battery._Car_cannot_finish_the_race (0.00s)
+=== RUN   ExampleDrive
+--- PASS: ExampleDrive (0.00s)
+=== RUN   ExampleDisplayDistance
+--- PASS: ExampleDisplayDistance (0.00s)
+=== RUN   ExampleDisplayBattery
+--- PASS: ExampleDisplayBattery (0.00s)
+=== RUN   ExampleCanFinish
+--- PASS: ExampleCanFinish (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	elon	0.046s	coverage: 100.0% of statements
+
+real	0m0.918s
+user	0m1.052s
+sys	0m0.677s
+
+===============================================================================
+
+go test --bench . --benchmem
+PASS
+ok  	elon	0.017s
+
+real	0m0.592s
+user	0m0.597s
+sys	0m0.420s
+
+===============================================================================
+
+go test -tags bonus
+PASS
+ok  	elon	0.013s
+
+real	0m0.623s
+user	0m0.756s
+sys	0m0.375s
+
+===============================================================================
+
+go vet elon
+# elon
+./elons_toys_2_test.go:7:1: ExampleDrive refers to unknown identifier: Drive
+./elons_toys_2_test.go:25:1: ExampleDisplayDistance refers to unknown identifier: DisplayDistance
+./elons_toys_2_test.go:35:1: ExampleDisplayBattery refers to unknown identifier: DisplayBattery
+./elons_toys_2_test.go:45:1: ExampleCanFinish refers to unknown identifier: CanFinish
+
+real	0m0.523s
+user	0m0.505s
+sys	0m0.541s
+
+===============================================================================
+
+go fix elon
+
+real	0m0.194s
+user	0m0.182s
+sys	0m0.159s
+
+===============================================================================
+
+gosec ./elons-toys
+[gosec] 2022/06/19 13:05:36 Including rules: default
+[gosec] 2022/06/19 13:05:36 Excluding rules: default
+[gosec] 2022/06/19 13:05:36 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/elons-toys
+2022/06/19 13:05:36 internal error: package "fmt" without types was imported from "command-line-arguments"
+
+real	0m0.637s
+user	0m0.659s
+sys	0m0.474s
+
+===============================================================================
+
+gomarkdoc --output elon-doc.md
+
+real	0m0.034s
+user	0m0.029s
+sys	0m0.014s
+
+===============================================================================
+
+go doc -all elon
+package elon // import "elon"
+
+
+TYPES
+
+type Car struct {
+	// Has unexported fields.
+}
+    Car implements a remote controlled car.
+
+func NewCar(speed, batteryDrain int) *Car
+    NewCar creates a new car with given specifications.
+
+func (car *Car) CanFinish(trackDistance int) bool
+    CanFinish returns true if the car can finish by testing the given
+    trackDistance (`int`).
+
+func (car *Car) DisplayBattery() string
+    DisplayBattery returns the battery percentage as displayed on the LED
+    display as a `string`.
+
+func (car *Car) DisplayDistance() string
+    DisplayDistance returns the distance as displayed on the LED display as a
+    `string`.
+
+func (car *Car) Drive() bool
+    Drive updates the number of meters driven based on the car's speed (`int`),
+    and reduces the battery (`int`) according to the battery drainage.
+
+
+real	0m0.281s
+user	0m0.224s
+sys	0m0.306s
+
+
+===============================================================================
+
