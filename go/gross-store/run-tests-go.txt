@@ -1,0 +1,233 @@
+Running automated test file(s):
+
+Go packages: gross 
+
+
+===============================================================================
+
+golint gross
+
+real	0m0.097s
+user	0m0.045s
+sys	0m0.075s
+
+===============================================================================
+
+go test -v -covermode=count -coverprofile coverage.out gross
+=== RUN   TestUnits
+--- PASS: TestUnits (0.00s)
+=== RUN   TestAddItem
+=== RUN   TestAddItem/Invalid_measurement_unit
+=== RUN   TestAddItem/Valid_measurement_unit
+=== RUN   TestAddItem/check_quantity_of_item_added_twice
+--- PASS: TestAddItem (0.00s)
+    --- PASS: TestAddItem/Invalid_measurement_unit (0.00s)
+    --- PASS: TestAddItem/Valid_measurement_unit (0.00s)
+    --- PASS: TestAddItem/check_quantity_of_item_added_twice (0.00s)
+=== RUN   TestRemoveItem
+=== RUN   TestRemoveItem/Item_Not_found_in_bill
+=== RUN   TestRemoveItem/Invalid_measurement_unit
+=== RUN   TestRemoveItem/Resulted_qty_less_than_0
+=== RUN   TestRemoveItem/Should_delete_the_item_if_0
+=== RUN   TestRemoveItem/Should_reduce_the_qty
+--- PASS: TestRemoveItem (0.00s)
+    --- PASS: TestRemoveItem/Item_Not_found_in_bill (0.00s)
+    --- PASS: TestRemoveItem/Invalid_measurement_unit (0.00s)
+    --- PASS: TestRemoveItem/Resulted_qty_less_than_0 (0.00s)
+    --- PASS: TestRemoveItem/Should_delete_the_item_if_0 (0.00s)
+    --- PASS: TestRemoveItem/Should_reduce_the_qty (0.00s)
+=== RUN   TestNewBill
+=== RUN   TestNewBill/Should_reset_customerbill
+--- PASS: TestNewBill (0.00s)
+    --- PASS: TestNewBill/Should_reset_customerbill (0.00s)
+=== RUN   TestGetItem
+=== RUN   TestGetItem/Item_Not_found_in_bill
+=== RUN   TestGetItem/Success
+--- PASS: TestGetItem (0.00s)
+    --- PASS: TestGetItem/Item_Not_found_in_bill (0.00s)
+    --- PASS: TestGetItem/Success (0.00s)
+=== RUN   ExampleUnits
+--- PASS: ExampleUnits (0.00s)
+=== RUN   ExampleNewBill
+--- PASS: ExampleNewBill (0.00s)
+=== RUN   ExampleAddItem
+--- PASS: ExampleAddItem (0.00s)
+=== RUN   ExampleRemoveItem
+--- PASS: ExampleRemoveItem (0.00s)
+=== RUN   ExampleGetItem
+--- PASS: ExampleGetItem (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	gross	0.009s	coverage: 100.0% of statements
+
+real	0m0.653s
+user	0m0.746s
+sys	0m0.589s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+gross/gross_store.go:4:		Units		100.0%
+gross/gross_store.go:18:	NewBill		100.0%
+gross/gross_store.go:25:	inMap		100.0%
+gross/gross_store.go:32:	AddItem		100.0%
+gross/gross_store.go:54:	RemoveItem	100.0%
+gross/gross_store.go:77:	GetItem		100.0%
+total:				(statements)	100.0%
+
+real	0m0.108s
+user	0m0.059s
+sys	0m0.075s
+
+===============================================================================
+
+go test -v -race -covermode=atomic gross
+=== RUN   TestUnits
+--- PASS: TestUnits (0.00s)
+=== RUN   TestAddItem
+=== RUN   TestAddItem/Invalid_measurement_unit
+=== RUN   TestAddItem/Valid_measurement_unit
+=== RUN   TestAddItem/check_quantity_of_item_added_twice
+--- PASS: TestAddItem (0.00s)
+    --- PASS: TestAddItem/Invalid_measurement_unit (0.00s)
+    --- PASS: TestAddItem/Valid_measurement_unit (0.00s)
+    --- PASS: TestAddItem/check_quantity_of_item_added_twice (0.00s)
+=== RUN   TestRemoveItem
+=== RUN   TestRemoveItem/Item_Not_found_in_bill
+=== RUN   TestRemoveItem/Invalid_measurement_unit
+=== RUN   TestRemoveItem/Resulted_qty_less_than_0
+=== RUN   TestRemoveItem/Should_delete_the_item_if_0
+=== RUN   TestRemoveItem/Should_reduce_the_qty
+--- PASS: TestRemoveItem (0.00s)
+    --- PASS: TestRemoveItem/Item_Not_found_in_bill (0.00s)
+    --- PASS: TestRemoveItem/Invalid_measurement_unit (0.00s)
+    --- PASS: TestRemoveItem/Resulted_qty_less_than_0 (0.00s)
+    --- PASS: TestRemoveItem/Should_delete_the_item_if_0 (0.00s)
+    --- PASS: TestRemoveItem/Should_reduce_the_qty (0.00s)
+=== RUN   TestNewBill
+=== RUN   TestNewBill/Should_reset_customerbill
+--- PASS: TestNewBill (0.00s)
+    --- PASS: TestNewBill/Should_reset_customerbill (0.00s)
+=== RUN   TestGetItem
+=== RUN   TestGetItem/Item_Not_found_in_bill
+=== RUN   TestGetItem/Success
+--- PASS: TestGetItem (0.00s)
+    --- PASS: TestGetItem/Item_Not_found_in_bill (0.00s)
+    --- PASS: TestGetItem/Success (0.00s)
+=== RUN   ExampleUnits
+--- PASS: ExampleUnits (0.00s)
+=== RUN   ExampleNewBill
+--- PASS: ExampleNewBill (0.00s)
+=== RUN   ExampleAddItem
+--- PASS: ExampleAddItem (0.00s)
+=== RUN   ExampleRemoveItem
+--- PASS: ExampleRemoveItem (0.00s)
+=== RUN   ExampleGetItem
+--- PASS: ExampleGetItem (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	gross	0.048s	coverage: 100.0% of statements
+
+real	0m0.792s
+user	0m0.896s
+sys	0m0.494s
+
+===============================================================================
+
+go test --bench . --benchmem
+PASS
+ok  	gross	0.036s
+
+real	0m0.479s
+user	0m0.602s
+sys	0m0.349s
+
+===============================================================================
+
+go test -tags bonus
+PASS
+ok  	gross	0.008s
+
+real	0m0.541s
+user	0m0.611s
+sys	0m0.391s
+
+===============================================================================
+
+go vet gross
+
+real	0m0.339s
+user	0m0.404s
+sys	0m0.377s
+
+===============================================================================
+
+go fix gross
+
+real	0m0.058s
+user	0m0.032s
+sys	0m0.035s
+
+===============================================================================
+
+gosec ./gross-store
+[gosec] 2022/06/18 18:34:07 Including rules: default
+[gosec] 2022/06/18 18:34:07 Excluding rules: default
+[gosec] 2022/06/18 18:34:07 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/gross-store
+[gosec] 2022/06/18 18:34:07 Checking package: gross
+[gosec] 2022/06/18 18:34:07 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/gross-store/gross_store.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 89
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.278s
+user	0m0.272s
+sys	0m0.237s
+
+===============================================================================
+
+gomarkdoc --output gross-doc.md
+
+real	0m0.029s
+user	0m0.018s
+sys	0m0.013s
+
+===============================================================================
+
+go doc -all gross
+package gross // import "gross"
+
+
+FUNCTIONS
+
+func AddItem(bill, units map[string]int, item, unit string) bool
+    AddItem adds an item to customer bill.
+
+func GetItem(bill map[string]int, item string) (int, bool)
+    GetItem returns the quantity of an item that the customer has in his/her
+    bill.
+
+func NewBill() map[string]int
+    NewBill creates a new bill.
+
+func RemoveItem(bill, units map[string]int, item, unit string) bool
+    RemoveItem removes an item from customer bill.
+
+func Units() map[string]int
+    Units stores the Gross Store unit measurements.
+
+
+real	0m0.127s
+user	0m0.063s
+sys	0m0.151s
+
+
+===============================================================================
+

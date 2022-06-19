@@ -158,3 +158,9 @@ fmt.Println(ok)
 ### Contributed to by
 
 - @MiroslavGatsanoga
+
+### My Solution
+
+- [solution](./gross_store.go)
+- [run-tests](./run-tests-go.txt)
+- [documentation](./gross-doc.md)
