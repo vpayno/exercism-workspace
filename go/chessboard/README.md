@@ -185,3 +185,9 @@ CountOccupied(board)
 
 - @brugnara
 - @tehsphinx
+
+### My Solution
+
+- [solution](./chessboard.go)
+- [run-tests](./run-tests-go.txt)
+- [documentation](./chessboard-doc.md)

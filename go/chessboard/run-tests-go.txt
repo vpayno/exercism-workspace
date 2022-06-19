@@ -1,0 +1,187 @@
+Running automated test file(s):
+
+Go packages: chessboard 
+
+
+===============================================================================
+
+golint chessboard
+
+real	0m0.186s
+user	0m0.122s
+sys	0m0.151s
+
+===============================================================================
+
+go test -v -covermode=count -coverprofile coverage.out chessboard
+=== RUN   TestCountInRank
+--- PASS: TestCountInRank (0.00s)
+=== RUN   TestCountInFile
+--- PASS: TestCountInFile (0.00s)
+=== RUN   TestCountAll
+--- PASS: TestCountAll (0.00s)
+=== RUN   TestCountOccupied
+--- PASS: TestCountOccupied (0.00s)
+=== RUN   ExampleCountInRank
+--- PASS: ExampleCountInRank (0.00s)
+=== RUN   ExampleCountInFile
+--- PASS: ExampleCountInFile (0.00s)
+=== RUN   ExampleCountAll
+--- PASS: ExampleCountAll (0.00s)
+=== RUN   ExampleCountOccupied
+--- PASS: ExampleCountOccupied (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	chessboard	0.016s	coverage: 100.0% of statements
+
+real	0m1.301s
+user	0m1.289s
+sys	0m0.838s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+chessboard/chessboard.go:11:	CountInRank	100.0%
+chessboard/chessboard.go:25:	CountInFile	100.0%
+chessboard/chessboard.go:38:	CountAll	100.0%
+chessboard/chessboard.go:51:	CountOccupied	100.0%
+total:				(statements)	100.0%
+
+real	0m0.111s
+user	0m0.046s
+sys	0m0.078s
+
+===============================================================================
+
+go test -v -race -covermode=atomic chessboard
+=== RUN   TestCountInRank
+--- PASS: TestCountInRank (0.00s)
+=== RUN   TestCountInFile
+--- PASS: TestCountInFile (0.00s)
+=== RUN   TestCountAll
+--- PASS: TestCountAll (0.00s)
+=== RUN   TestCountOccupied
+--- PASS: TestCountOccupied (0.00s)
+=== RUN   ExampleCountInRank
+--- PASS: ExampleCountInRank (0.00s)
+=== RUN   ExampleCountInFile
+--- PASS: ExampleCountInFile (0.00s)
+=== RUN   ExampleCountAll
+--- PASS: ExampleCountAll (0.00s)
+=== RUN   ExampleCountOccupied
+--- PASS: ExampleCountOccupied (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	chessboard	0.062s	coverage: 100.0% of statements
+
+real	0m1.497s
+user	0m1.282s
+sys	0m0.987s
+
+===============================================================================
+
+go test --bench . --benchmem
+PASS
+ok  	chessboard	0.028s
+
+real	0m1.167s
+user	0m1.519s
+sys	0m0.818s
+
+===============================================================================
+
+go test -tags bonus
+PASS
+ok  	chessboard	0.005s
+
+real	0m0.673s
+user	0m0.819s
+sys	0m0.463s
+
+===============================================================================
+
+go vet chessboard
+
+real	0m0.446s
+user	0m0.555s
+sys	0m0.352s
+
+===============================================================================
+
+go fix chessboard
+
+real	0m0.070s
+user	0m0.037s
+sys	0m0.049s
+
+===============================================================================
+
+gosec ./chessboard
+[gosec] 2022/06/18 22:26:33 Including rules: default
+[gosec] 2022/06/18 22:26:33 Excluding rules: default
+[gosec] 2022/06/18 22:26:33 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/chessboard
+[gosec] 2022/06/18 22:26:33 Checking package: chessboard
+[gosec] 2022/06/18 22:26:33 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/chessboard/chessboard.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 63
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.322s
+user	0m0.299s
+sys	0m0.287s
+
+===============================================================================
+
+gomarkdoc --output chessboard-doc.md
+
+real	0m0.028s
+user	0m0.021s
+sys	0m0.011s
+
+===============================================================================
+
+go doc -all chessboard
+package chessboard // import "chessboard"
+
+
+FUNCTIONS
+
+func CountAll(cb Chessboard) int
+    CountAll should count how many squares are present in the chessboard
+
+func CountInFile(cb Chessboard, file int) int
+    CountInFile returns how many squares are occupied in the chessboard, within
+    the given file
+
+func CountInRank(cb Chessboard, rank string) int
+    CountInRank returns how many squares are occupied in the chessboard, within
+    the given rank
+
+func CountOccupied(cb Chessboard) int
+    CountOccupied returns how many squares are occupied in the chessboard
+
+
+TYPES
+
+type Chessboard map[string]Rank
+    Chessboard contains a map of eight Ranks, accessed with keys from "A" to "H"
+
+type Rank []bool
+    Rank stores if a square is occupied by a piece - this will be a slice of
+    bools
+
+
+real	0m0.146s
+user	0m0.062s
+sys	0m0.123s
+
+
+===============================================================================
+
