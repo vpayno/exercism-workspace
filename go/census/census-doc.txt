@@ -1,0 +1,29 @@
+package census // import "census"
+
+Package census simulates a system used to collect census data.
+
+FUNCTIONS
+
+func Count(residents []*Resident) int
+    Count counts all residents that have provided the required information.
+
+
+TYPES
+
+type Resident struct {
+	Name    string
+	Age     int
+	Address map[string]string
+}
+    Resident represents a resident in this city.
+
+func NewResident(name string, age int, address map[string]string) *Resident
+    NewResident registers a new resident in this city.
+
+func (r *Resident) Delete()
+    Delete deletes a resident's information.
+
+func (r *Resident) HasRequiredInfo() bool
+    HasRequiredInfo determines if a given resident has all of the required
+    information.
+

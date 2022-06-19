@@ -35,3 +35,4 @@
 - [chessboard](./chessboard/README.md)
 - [logs-logs-logs](./logs-logs-logs/README.md)
 - [elons-toys](./elons-toys/README.md)
+- [census](./census/README.md)

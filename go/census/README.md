@@ -133,3 +133,9 @@ Count(residents)
 ### Contributed to by
 
 - @tehsphinx
+
+### My Solution
+
+- [solution](./census.go)
+- [run-tests](./run-tests-go.txt)
+- [documentation](./census-doc.md)
