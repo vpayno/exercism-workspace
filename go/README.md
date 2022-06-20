@@ -39,3 +39,4 @@
 - [parsing-log-files](./parsing-log-files/README.md)
 - [the-farm](./the-farm/README.md)
 - [expenses](./expenses/README.md)
+- [sorting-room](./sorting-room/README.md)

@@ -161,3 +161,10 @@ fmt.Println(DescribeAnything("some string"))
 ### Contributed to by
 
 - @junedev
+
+### My Solution
+
+- [solution](./sorting_room.go)
+- [examples](./sorting_room_examples_test.go)
+- [run-tests](./run-tests-go.txt)
+- [documentation](./greeting-doc.md)
