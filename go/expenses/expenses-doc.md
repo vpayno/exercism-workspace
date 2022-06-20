@@ -8,10 +8,10 @@ import "expenses"
 
 ## Index
 
-- [func ByCategory(c string) func(Record) bool](<#func-bycategory>)
-- [func ByDaysPeriod(p DaysPeriod) func(Record) bool](<#func-bydaysperiod>)
-- [func CategoryExpenses(in []Record, p DaysPeriod, c string) (float64, error)](<#func-categoryexpenses>)
-- [func TotalByPeriod(in []Record, p DaysPeriod) float64](<#func-totalbyperiod>)
+- [func ByCategory(category string) func(Record) bool](<#func-bycategory>)
+- [func ByDaysPeriod(period DaysPeriod) func(Record) bool](<#func-bydaysperiod>)
+- [func CategoryExpenses(in []Record, period DaysPeriod, category string) (float64, error)](<#func-categoryexpenses>)
+- [func TotalByPeriod(in []Record, period DaysPeriod) float64](<#func-totalbyperiod>)
 - [type DaysPeriod](<#type-daysperiod>)
 - [type Record](<#type-record>)
   - [func Filter(in []Record, predicate func(Record) bool) []Record](<#func-filter>)
@@ -20,34 +20,176 @@ import "expenses"
 ## func [ByCategory](<https://github.com/vpayno/exercism-workspace/blob/main/go/expenses/expenses.go#L44>)
 
 ```go
-func ByCategory(c string) func(Record) bool
+func ByCategory(category string) func(Record) bool
 ```
 
 ByCategory returns predicate function that returns true when the category of the record is the same as the provided category and false otherwise
 
+<details><summary>Example</summary>
+<p>
+
+```go
+{
+	records := []Record{
+		{Day: 1, Amount: 15, Category: "groceries"},
+		{Day: 11, Amount: 300, Category: "utility-bills"},
+		{Day: 12, Amount: 28, Category: "groceries"},
+		{Day: 26, Amount: 300, Category: "university"},
+		{Day: 28, Amount: 1300, Category: "rent"},
+	}
+
+	results := Filter(records, ByCategory("groceries"))
+
+	fmt.Println("[")
+	for _, result := range results {
+		fmt.Printf(" %#v,\n", result)
+	}
+	fmt.Println("]")
+
+}
+```
+
+#### Output
+
+```
+[
+ expenses.Record{Day:1, Amount:15, Category:"groceries"},
+ expenses.Record{Day:12, Amount:28, Category:"groceries"},
+]
+```
+
+</p>
+</details>
+
 ## func [ByDaysPeriod](<https://github.com/vpayno/exercism-workspace/blob/main/go/expenses/expenses.go#L33>)
 
 ```go
-func ByDaysPeriod(p DaysPeriod) func(Record) bool
+func ByDaysPeriod(period DaysPeriod) func(Record) bool
 ```
 
 ByDaysPeriod returns predicate function that returns true when the day of the record is inside the period of day and false otherwise
 
+<details><summary>Example</summary>
+<p>
+
+```go
+{
+	records := []Record{
+		{Day: 1, Amount: 15, Category: "groceries"},
+		{Day: 11, Amount: 300, Category: "utility-bills"},
+		{Day: 12, Amount: 28, Category: "groceries"},
+		{Day: 26, Amount: 300, Category: "university"},
+		{Day: 28, Amount: 1300, Category: "rent"},
+	}
+
+	period := DaysPeriod{From: 1, To: 15}
+
+	results := Filter(records, ByDaysPeriod(period))
+
+	fmt.Println("[")
+	for _, result := range results {
+		fmt.Printf(" %#v,\n", result)
+	}
+	fmt.Println("]")
+
+}
+```
+
+#### Output
+
+```
+[
+ expenses.Record{Day:1, Amount:15, Category:"groceries"},
+ expenses.Record{Day:11, Amount:300, Category:"utility-bills"},
+ expenses.Record{Day:12, Amount:28, Category:"groceries"},
+]
+```
+
+</p>
+</details>
+
 ## func [CategoryExpenses](<https://github.com/vpayno/exercism-workspace/blob/main/go/expenses/expenses.go#L70>)
 
 ```go
-func CategoryExpenses(in []Record, p DaysPeriod, c string) (float64, error)
+func CategoryExpenses(in []Record, period DaysPeriod, category string) (float64, error)
 ```
 
 CategoryExpenses returns total amount of expenses for records in category c that are also inside the period p\. An error must be returned only if there are no records in the list that belong to the given category\, regardless of period of time\.
 
+<details><summary>Example</summary>
+<p>
+
+```go
+{
+	records := []Record{
+		{Day: 1, Amount: 15, Category: "groceries"},
+		{Day: 11, Amount: 300, Category: "utility-bills"},
+		{Day: 12, Amount: 28, Category: "groceries"},
+		{Day: 26, Amount: 300, Category: "university"},
+		{Day: 28, Amount: 1300, Category: "rent"},
+	}
+
+	p1 := DaysPeriod{From: 1, To: 30}
+	p2 := DaysPeriod{From: 31, To: 60}
+
+	t, e := CategoryExpenses(records, p1, "entertainment")
+	fmt.Printf("total: %v, error: %#v\n", t, e)
+	t, e = CategoryExpenses(records, p1, "rent")
+	fmt.Printf("total: %v, error: %#v\n", t, e)
+	t, e = CategoryExpenses(records, p2, "rent")
+	fmt.Printf("total: %v, error: %#v\n", t, e)
+
+}
+```
+
+#### Output
+
+```
+total: 0, error: &errors.errorString{s:"unknown category"}
+total: 1300, error: <nil>
+total: 0, error: <nil>
+```
+
+</p>
+</details>
+
 ## func [TotalByPeriod](<https://github.com/vpayno/exercism-workspace/blob/main/go/expenses/expenses.go#L54>)
 
 ```go
-func TotalByPeriod(in []Record, p DaysPeriod) float64
+func TotalByPeriod(in []Record, period DaysPeriod) float64
 ```
 
 TotalByPeriod returns total amount of expenses for records inside the period p
+
+<details><summary>Example</summary>
+<p>
+
+```go
+{
+	records := []Record{
+		{Day: 15, Amount: 16, Category: "entertainment"},
+		{Day: 32, Amount: 20, Category: "groceries"},
+		{Day: 40, Amount: 30, Category: "entertainment"},
+	}
+
+	p1 := DaysPeriod{From: 1, To: 30}
+	p2 := DaysPeriod{From: 31, To: 60}
+
+	fmt.Println(TotalByPeriod(records, p1))
+	fmt.Println(TotalByPeriod(records, p2))
+
+}
+```
+
+#### Output
+
+```
+16
+50
+```
+
+</p>
+</details>
 
 ## type [DaysPeriod](<https://github.com/vpayno/exercism-workspace/blob/main/go/expenses/expenses.go#L13-L16>)
 
@@ -79,6 +221,37 @@ func Filter(in []Record, predicate func(Record) bool) []Record
 ```
 
 Filter returns the records for which the predicate function returns true\.
+
+<details><summary>Example</summary>
+<p>
+
+```go
+{
+	records := []Record{
+		{Day: 1, Amount: 15, Category: "groceries"},
+		{Day: 11, Amount: 300, Category: "utility-bills"},
+		{Day: 12, Amount: 28, Category: "groceries"},
+		{Day: 26, Amount: 300, Category: "university"},
+		{Day: 28, Amount: 1300, Category: "rent"},
+	}
+
+	predicate := func(record Record) bool {
+		return record.Day == 1
+	}
+
+	fmt.Printf("%#v\n", Filter(records, predicate))
+
+}
+```
+
+#### Output
+
+```
+[]expenses.Record{expenses.Record{Day:1, Amount:15, Category:"groceries"}}
+```
+
+</p>
+</details>
 
 
 

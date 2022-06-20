@@ -17,22 +17,22 @@ type DaysPeriod struct {
 
 // Filter returns the records for which the predicate function returns true.
 func Filter(in []Record, predicate func(Record) bool) []Record {
-	var results []Record = []Record{}
+	var out []Record = []Record{}
 
 	for _, record := range in {
 		if predicate(record) {
-			results = append(results, record)
+			out = append(out, record)
 		}
 	}
 
-	return results
+	return out
 }
 
 // ByDaysPeriod returns predicate function that returns true when
 // the day of the record is inside the period of day and false otherwise
-func ByDaysPeriod(p DaysPeriod) func(Record) bool {
-	predicate := func(r Record) bool {
-		return p.From <= r.Day && p.To >= r.Day
+func ByDaysPeriod(period DaysPeriod) func(Record) bool {
+	predicate := func(record Record) bool {
+		return period.From <= record.Day && period.To >= record.Day
 	}
 
 	return predicate
@@ -41,9 +41,9 @@ func ByDaysPeriod(p DaysPeriod) func(Record) bool {
 // ByCategory returns predicate function that returns true when
 // the category of the record is the same as the provided category
 // and false otherwise
-func ByCategory(c string) func(Record) bool {
-	predicate := func(r Record) bool {
-		return r.Category == c
+func ByCategory(category string) func(Record) bool {
+	predicate := func(record Record) bool {
+		return record.Category == category
 	}
 
 	return predicate
@@ -51,12 +51,12 @@ func ByCategory(c string) func(Record) bool {
 
 // TotalByPeriod returns total amount of expenses for records
 // inside the period p
-func TotalByPeriod(in []Record, p DaysPeriod) float64 {
+func TotalByPeriod(in []Record, period DaysPeriod) float64 {
 	var total float64
 
-	pe := Filter(in, ByDaysPeriod(p))
+	expenses := Filter(in, ByDaysPeriod(period))
 
-	for _, record := range pe {
+	for _, record := range expenses {
 		total += record.Amount
 	}
 
@@ -67,17 +67,17 @@ func TotalByPeriod(in []Record, p DaysPeriod) float64 {
 // in category c that are also inside the period p.
 // An error must be returned only if there are no records in the list that belong
 // to the given category, regardless of period of time.
-func CategoryExpenses(in []Record, p DaysPeriod, c string) (float64, error) {
-	ce := Filter(in, ByCategory(c))
+func CategoryExpenses(in []Record, period DaysPeriod, category string) (float64, error) {
+	expenses := Filter(in, ByCategory(category))
 
-	var t float64 = 0
-	var e error = nil
+	var total float64 = 0
+	var err error = nil
 
-	if len(ce) == 0 {
-		t, e = 0, errors.New("unknown category")
+	if len(expenses) == 0 {
+		total, err = 0, errors.New("unknown category")
 	} else {
-		t, e = TotalByPeriod(ce, p), nil
+		total, err = TotalByPeriod(expenses, period), nil
 	}
 
-	return t, e
+	return total, err
 }
