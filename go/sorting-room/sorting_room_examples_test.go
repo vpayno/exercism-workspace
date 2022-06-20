@@ -26,16 +26,8 @@ func ExampleDescribeNumberBox() {
 	// This is a box containing the number 12.0
 }
 
-type exampleFancyNumberBox struct {
-	n string
-}
-
-func (i exampleFancyNumberBox) Value() string {
-	return i.n
-}
-
 func ExampleExtractFancyNumber() {
-	fnb := exampleFancyNumberBox{"12"}
+	fnb := FancyNumber{"12"}
 
 	fmt.Println(ExtractFancyNumber(fnb))
 	// Output:
@@ -43,7 +35,7 @@ func ExampleExtractFancyNumber() {
 }
 
 func ExampleDescribeFancyNumberBox() {
-	fnb := exampleFancyNumberBox{"12"}
+	fnb := FancyNumber{"12"}
 
 	fmt.Println(DescribeFancyNumberBox(fnb))
 	// Output:
@@ -51,7 +43,7 @@ func ExampleDescribeFancyNumberBox() {
 }
 
 func ExampleDescribeAnything() {
-	fnb := exampleFancyNumberBox{"12"}
+	fnb := FancyNumber{"12"}
 
 	fmt.Println(DescribeAnything(fnb))
 	// Output:

@@ -19,7 +19,7 @@ import "sorting"
 - [type NumberBox](<#type-numberbox>)
 
 
-## func [DescribeAnything](<https://github.com/vpayno/exercism-workspace/blob/main/go/sorting-room/sorting_room.go#L60>)
+## func [DescribeAnything](<https://github.com/vpayno/exercism-workspace/blob/main/go/sorting-room/sorting_room.go#L67>)
 
 ```go
 func DescribeAnything(i interface{}) string
@@ -32,7 +32,7 @@ DescribeAnything should return a string describing whatever it contains\.
 
 ```go
 {
-	fnb := exampleFancyNumberBox{"12"}
+	fnb := FancyNumber{"12"}
 
 	fmt.Println(DescribeAnything(fnb))
 
@@ -48,7 +48,7 @@ This is a fancy box containing the number 12.0
 </p>
 </details>
 
-## func [DescribeFancyNumberBox](<https://github.com/vpayno/exercism-workspace/blob/main/go/sorting-room/sorting_room.go#L53>)
+## func [DescribeFancyNumberBox](<https://github.com/vpayno/exercism-workspace/blob/main/go/sorting-room/sorting_room.go#L60>)
 
 ```go
 func DescribeFancyNumberBox(fnb FancyNumberBox) string
@@ -61,7 +61,7 @@ DescribeFancyNumberBox should return a string describing the FancyNumberBox\.
 
 ```go
 {
-	fnb := exampleFancyNumberBox{"12"}
+	fnb := FancyNumber{"12"}
 
 	fmt.Println(DescribeFancyNumberBox(fnb))
 
@@ -146,7 +146,7 @@ ExtractFancyNumber should return the integer value for a FancyNumber and 0 if an
 
 ```go
 {
-	fnb := exampleFancyNumberBox{"12"}
+	fnb := FancyNumber{"12"}
 
 	fmt.Println(ExtractFancyNumber(fnb))
 
