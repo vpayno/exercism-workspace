@@ -281,3 +281,9 @@ CategoryExpenses(records, p2, "rent")
 
 - @antklim
 - @andrerfcsantos
+
+### My Solution
+
+- [solution](./expenses.go)
+- [run-tests](./run-tests-go.txt)
+- [documentation](./expenses-doc.md)
