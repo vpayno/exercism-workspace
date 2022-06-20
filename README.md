@@ -35,7 +35,7 @@ Exercism Workspace (https://exercism.org/docs/tracks)
 - [go](go/README.md)
 
 
-## Automation
+## Tools/Scripts
 
 - [Bash run-tests](./bash/run-tests)
 - [Go run-tests](./go/run-tests)
