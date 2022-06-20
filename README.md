@@ -25,8 +25,8 @@ Exercism Workspace (https://exercism.org/docs/tracks)
 - [Go Workflow](.github/workflows/go.yml)
 - [Link Checker Workflow](.github/workflows/links.yml)
 - [CodeQL Workflow](.github/workflows/codeql-analysis.yml)
-- [Woke PR](.github/workflow/woke-pr.yml)
-- [Woke Push](.github/workflow/woke-push.yml)
+- [Woke PR](.github/workflows/woke-pr.yml)
+- [Woke Push](.github/workflows/woke-push.yml)
 
 
 ## Active Tracks
