@@ -36,3 +36,4 @@
 - [logs-logs-logs](./logs-logs-logs/README.md)
 - [elons-toys](./elons-toys/README.md)
 - [census](./census/README.md)
+- [parsing-log-files](./parsing-log-files/README.md)

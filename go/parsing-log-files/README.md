@@ -269,3 +269,9 @@ You can assume that:
 ### Created by
 
 - @norbs57
+
+### My Solution
+
+- [solution](./parsing_log_files.go)
+- [run-tests](./run-tests-go.txt)
+- [documentation](./parsinglogfiles-doc.md)
