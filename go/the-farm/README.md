@@ -229,3 +229,9 @@ fodder, err := DivideFood(twentyFodderNoError, -5)
 ### Contributed to by
 
 - @junedev
+
+### My Solution
+
+- [solution](./the_farm.go)
+- [run-tests](./run-tests-go.txt)
+- [documentation](./thefarm-doc.md)

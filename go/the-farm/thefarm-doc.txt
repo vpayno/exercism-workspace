@@ -1,0 +1,35 @@
+package thefarm // import "thefarm"
+
+
+VARIABLES
+
+var ErrDivisionByZero = errors.New("division by zero")
+    ErrDivisionByZero indicates a divide by zero error.
+
+var ErrNegativeFodder = errors.New("negative fodder")
+    ErrNegativeFodder indicates that we owe fodder???
+
+var ErrScaleMalfunction = errors.New("sensor error")
+    ErrScaleMalfunction indicates an error with the scale.
+
+
+FUNCTIONS
+
+func DivideFood(weightFodder WeightFodder, cows int) (float64, error)
+    DivideFood computes the fodder amount per cow for the given cows.
+
+
+TYPES
+
+type SillyNephewError struct {
+	// Has unexported fields.
+}
+    SillyNephewError struct for catching negative cow counts.
+
+func (e *SillyNephewError) Error() string
+
+type WeightFodder interface {
+	FodderAmount() (float64, error)
+}
+    WeightFodder returns the amount of available fodder.
+

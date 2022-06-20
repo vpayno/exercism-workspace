@@ -1,0 +1,212 @@
+Running automated test file(s):
+
+Go packages: thefarm 
+
+
+===============================================================================
+
+golint thefarm
+
+real	0m0.165s
+user	0m0.189s
+sys	0m0.172s
+
+===============================================================================
+
+go test -v -covermode=count -coverprofile coverage.out thefarm
+=== RUN   TestDivideFood
+=== RUN   TestDivideFood/100_fodder_for_10_cows
+=== RUN   TestDivideFood/10_fodder_for_10_cows
+=== RUN   TestDivideFood/10.5_fodder_for_2_cows
+=== RUN   TestDivideFood/5_fodder_for_2_cows
+=== RUN   TestDivideFood/0_fodder_for_2_cows
+=== RUN   TestDivideFood/Generic_error_from_the_scale_is_returned
+=== RUN   TestDivideFood/Negative_fodder_with_generic_error_from_the_scale_is_returned
+=== RUN   TestDivideFood/Scale_returns_10_with_ErrScaleMalfunction_for_2_cows
+=== RUN   TestDivideFood/Scale_returns_1_with_ErrScaleMalfunction_for_10_cows
+=== RUN   TestDivideFood/Negative_fodder
+=== RUN   TestDivideFood/Negative_fodder_with_ScaleError
+=== RUN   TestDivideFood/Zero_cows
+--- PASS: TestDivideFood (0.00s)
+    --- PASS: TestDivideFood/100_fodder_for_10_cows (0.00s)
+    --- PASS: TestDivideFood/10_fodder_for_10_cows (0.00s)
+    --- PASS: TestDivideFood/10.5_fodder_for_2_cows (0.00s)
+    --- PASS: TestDivideFood/5_fodder_for_2_cows (0.00s)
+    --- PASS: TestDivideFood/0_fodder_for_2_cows (0.00s)
+    --- PASS: TestDivideFood/Generic_error_from_the_scale_is_returned (0.00s)
+    --- PASS: TestDivideFood/Negative_fodder_with_generic_error_from_the_scale_is_returned (0.00s)
+    --- PASS: TestDivideFood/Scale_returns_10_with_ErrScaleMalfunction_for_2_cows (0.00s)
+    --- PASS: TestDivideFood/Scale_returns_1_with_ErrScaleMalfunction_for_10_cows (0.00s)
+    --- PASS: TestDivideFood/Negative_fodder (0.00s)
+    --- PASS: TestDivideFood/Negative_fodder_with_ScaleError (0.00s)
+    --- PASS: TestDivideFood/Zero_cows (0.00s)
+=== RUN   TestDivideFoodSillyNephewError
+=== RUN   TestDivideFoodSillyNephewError/Negative_ten_cows
+=== RUN   TestDivideFoodSillyNephewError/Negative_seven_cows
+--- PASS: TestDivideFoodSillyNephewError (0.00s)
+    --- PASS: TestDivideFoodSillyNephewError/Negative_ten_cows (0.00s)
+    --- PASS: TestDivideFoodSillyNephewError/Negative_seven_cows (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	thefarm	0.014s	coverage: 100.0% of statements
+
+real	0m0.765s
+user	0m0.866s
+sys	0m0.598s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+thefarm/the_farm.go:15:	Error		100.0%
+thefarm/the_farm.go:26:	DivideFood	100.0%
+total:			(statements)	100.0%
+
+real	0m0.247s
+user	0m0.216s
+sys	0m0.287s
+
+===============================================================================
+
+go test -v -race -covermode=atomic thefarm
+=== RUN   TestDivideFood
+=== RUN   TestDivideFood/100_fodder_for_10_cows
+=== RUN   TestDivideFood/10_fodder_for_10_cows
+=== RUN   TestDivideFood/10.5_fodder_for_2_cows
+=== RUN   TestDivideFood/5_fodder_for_2_cows
+=== RUN   TestDivideFood/0_fodder_for_2_cows
+=== RUN   TestDivideFood/Generic_error_from_the_scale_is_returned
+=== RUN   TestDivideFood/Negative_fodder_with_generic_error_from_the_scale_is_returned
+=== RUN   TestDivideFood/Scale_returns_10_with_ErrScaleMalfunction_for_2_cows
+=== RUN   TestDivideFood/Scale_returns_1_with_ErrScaleMalfunction_for_10_cows
+=== RUN   TestDivideFood/Negative_fodder
+=== RUN   TestDivideFood/Negative_fodder_with_ScaleError
+=== RUN   TestDivideFood/Zero_cows
+--- PASS: TestDivideFood (0.01s)
+    --- PASS: TestDivideFood/100_fodder_for_10_cows (0.00s)
+    --- PASS: TestDivideFood/10_fodder_for_10_cows (0.00s)
+    --- PASS: TestDivideFood/10.5_fodder_for_2_cows (0.00s)
+    --- PASS: TestDivideFood/5_fodder_for_2_cows (0.00s)
+    --- PASS: TestDivideFood/0_fodder_for_2_cows (0.00s)
+    --- PASS: TestDivideFood/Generic_error_from_the_scale_is_returned (0.00s)
+    --- PASS: TestDivideFood/Negative_fodder_with_generic_error_from_the_scale_is_returned (0.00s)
+    --- PASS: TestDivideFood/Scale_returns_10_with_ErrScaleMalfunction_for_2_cows (0.00s)
+    --- PASS: TestDivideFood/Scale_returns_1_with_ErrScaleMalfunction_for_10_cows (0.00s)
+    --- PASS: TestDivideFood/Negative_fodder (0.00s)
+    --- PASS: TestDivideFood/Negative_fodder_with_ScaleError (0.00s)
+    --- PASS: TestDivideFood/Zero_cows (0.00s)
+=== RUN   TestDivideFoodSillyNephewError
+=== RUN   TestDivideFoodSillyNephewError/Negative_ten_cows
+=== RUN   TestDivideFoodSillyNephewError/Negative_seven_cows
+--- PASS: TestDivideFoodSillyNephewError (0.00s)
+    --- PASS: TestDivideFoodSillyNephewError/Negative_ten_cows (0.00s)
+    --- PASS: TestDivideFoodSillyNephewError/Negative_seven_cows (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	thefarm	0.047s	coverage: 100.0% of statements
+
+real	0m0.844s
+user	0m1.056s
+sys	0m0.600s
+
+===============================================================================
+
+go test --bench . --benchmem
+PASS
+ok  	thefarm	0.011s
+
+real	0m0.846s
+user	0m0.974s
+sys	0m0.598s
+
+===============================================================================
+
+go test -tags bonus
+PASS
+ok  	thefarm	0.009s
+
+real	0m0.571s
+user	0m0.689s
+sys	0m0.364s
+
+===============================================================================
+
+go vet thefarm
+
+real	0m0.387s
+user	0m0.429s
+sys	0m0.435s
+
+===============================================================================
+
+go fix thefarm
+
+real	0m0.159s
+user	0m0.159s
+sys	0m0.151s
+
+===============================================================================
+
+gosec ./the-farm
+[gosec] 2022/06/19 21:35:00 Including rules: default
+[gosec] 2022/06/19 21:35:00 Excluding rules: default
+[gosec] 2022/06/19 21:35:00 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/the-farm
+2022/06/19 21:35:00 internal error: package "errors" without types was imported from "command-line-arguments"
+
+real	0m0.569s
+user	0m0.721s
+sys	0m0.410s
+
+===============================================================================
+
+gomarkdoc --output thefarm-doc.md
+
+real	0m0.027s
+user	0m0.017s
+sys	0m0.013s
+
+===============================================================================
+
+go doc -all thefarm
+package thefarm // import "thefarm"
+
+
+VARIABLES
+
+var ErrDivisionByZero = errors.New("division by zero")
+    ErrDivisionByZero indicates a divide by zero error.
+
+var ErrNegativeFodder = errors.New("negative fodder")
+    ErrNegativeFodder indicates that we owe fodder???
+
+var ErrScaleMalfunction = errors.New("sensor error")
+    ErrScaleMalfunction indicates an error with the scale.
+
+
+FUNCTIONS
+
+func DivideFood(weightFodder WeightFodder, cows int) (float64, error)
+    DivideFood computes the fodder amount per cow for the given cows.
+
+
+TYPES
+
+type SillyNephewError struct {
+	// Has unexported fields.
+}
+    SillyNephewError struct for catching negative cow counts.
+
+func (e *SillyNephewError) Error() string
+
+type WeightFodder interface {
+	FodderAmount() (float64, error)
+}
+    WeightFodder returns the amount of available fodder.
+
+
+real	0m0.271s
+user	0m0.239s
+sys	0m0.239s
+
+
+===============================================================================
+
