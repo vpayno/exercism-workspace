@@ -1,0 +1,22 @@
+package parsinglogfiles // import "parsinglogfiles"
+
+
+FUNCTIONS
+
+func CountQuotedPasswords(lines []string) int
+    CountQuotedPasswords returns the count of quoted passwords from the array of
+    log lines.
+
+func IsValidLine(text string) bool
+    IsValidLine returns true if the text starts with one of [TRC], [DBG], [INF],
+    [WRN], [ERR], [FTL].
+
+func RemoveEndOfLineText(text string) string
+    RemoveEndOfLineText returns a string without `end-of-line[0-9]+`.
+
+func SplitLogLine(text string) []string
+    SplitLogLine returns a string slice of fields from the passed text.
+
+func TagWithUserName(lines []string) []string
+    TagWithUserName returns a slice of strings with user mentions.
+

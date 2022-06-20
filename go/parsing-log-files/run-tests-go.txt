@@ -1,0 +1,234 @@
+Running automated test file(s):
+
+Go packages: parsinglogfiles 
+
+
+===============================================================================
+
+golint parsinglogfiles
+
+real	0m0.161s
+user	0m0.125s
+sys	0m0.143s
+
+===============================================================================
+
+go test -v -covermode=count -coverprofile coverage.out parsinglogfiles
+=== RUN   TestIsValidLine
+=== RUN   TestIsValidLine/Valid_ERR_message
+=== RUN   TestIsValidLine/Valid_INF_message
+=== RUN   TestIsValidLine/Invalid_ERR_message
+=== RUN   TestIsValidLine/Invalid_INF_message
+=== RUN   TestIsValidLine/Invalid_tag
+--- PASS: TestIsValidLine (0.00s)
+    --- PASS: TestIsValidLine/Valid_ERR_message (0.00s)
+    --- PASS: TestIsValidLine/Valid_INF_message (0.00s)
+    --- PASS: TestIsValidLine/Invalid_ERR_message (0.00s)
+    --- PASS: TestIsValidLine/Invalid_INF_message (0.00s)
+    --- PASS: TestIsValidLine/Invalid_tag (0.00s)
+=== RUN   TestSplitLogLine
+=== RUN   TestSplitLogLine/three_sections
+=== RUN   TestSplitLogLine/three_sections_with_different_symbols_inside_angular_brackets
+=== RUN   TestSplitLogLine/two_sections_with_no_characters_between_angular_brackets
+=== RUN   TestSplitLogLine/single_section_with_some_angular_brackets
+=== RUN   TestSplitLogLine/empty_text
+--- PASS: TestSplitLogLine (0.00s)
+    --- PASS: TestSplitLogLine/three_sections (0.00s)
+    --- PASS: TestSplitLogLine/three_sections_with_different_symbols_inside_angular_brackets (0.00s)
+    --- PASS: TestSplitLogLine/two_sections_with_no_characters_between_angular_brackets (0.00s)
+    --- PASS: TestSplitLogLine/single_section_with_some_angular_brackets (0.00s)
+    --- PASS: TestSplitLogLine/empty_text (0.00s)
+=== RUN   TestCountQuotedPasswords
+=== RUN   TestCountQuotedPasswords/text_with_two_matches
+=== RUN   TestCountQuotedPasswords/text_with_no_matches
+--- PASS: TestCountQuotedPasswords (0.00s)
+    --- PASS: TestCountQuotedPasswords/text_with_two_matches (0.00s)
+    --- PASS: TestCountQuotedPasswords/text_with_no_matches (0.00s)
+=== RUN   TestRemoveEndOfLineText
+=== RUN   TestRemoveEndOfLineText/INF_message
+--- PASS: TestRemoveEndOfLineText (0.00s)
+    --- PASS: TestRemoveEndOfLineText/INF_message (0.00s)
+=== RUN   TestTagWithUserName
+=== RUN   TestTagWithUserName/INF_message
+--- PASS: TestTagWithUserName (0.00s)
+    --- PASS: TestTagWithUserName/INF_message (0.00s)
+=== RUN   ExampleIsValidLine
+--- PASS: ExampleIsValidLine (0.00s)
+=== RUN   ExampleSplitLogLine
+--- PASS: ExampleSplitLogLine (0.00s)
+=== RUN   ExampleCountQuotedPasswords
+--- PASS: ExampleCountQuotedPasswords (0.00s)
+=== RUN   ExampleRemoveEndOfLineText
+--- PASS: ExampleRemoveEndOfLineText (0.00s)
+=== RUN   ExampleTagWithUserName
+--- PASS: ExampleTagWithUserName (0.00s)
+PASS
+coverage: 84.8% of statements
+ok  	parsinglogfiles	0.044s	coverage: 84.8% of statements
+
+real	0m0.831s
+user	0m0.882s
+sys	0m0.662s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+parsinglogfiles/parsing_log_files.go:8:		IsValidLine		80.0%
+parsinglogfiles/parsing_log_files.go:21:	SplitLogLine		83.3%
+parsinglogfiles/parsing_log_files.go:36:	CountQuotedPasswords	87.5%
+parsinglogfiles/parsing_log_files.go:54:	RemoveEndOfLineText	85.7%
+parsinglogfiles/parsing_log_files.go:70:	TagWithUserName		85.7%
+total:						(statements)		84.8%
+
+real	0m0.219s
+user	0m0.159s
+sys	0m0.201s
+
+===============================================================================
+
+go test -v -race -covermode=atomic parsinglogfiles
+=== RUN   TestIsValidLine
+=== RUN   TestIsValidLine/Valid_ERR_message
+=== RUN   TestIsValidLine/Valid_INF_message
+=== RUN   TestIsValidLine/Invalid_ERR_message
+=== RUN   TestIsValidLine/Invalid_INF_message
+=== RUN   TestIsValidLine/Invalid_tag
+--- PASS: TestIsValidLine (0.00s)
+    --- PASS: TestIsValidLine/Valid_ERR_message (0.00s)
+    --- PASS: TestIsValidLine/Valid_INF_message (0.00s)
+    --- PASS: TestIsValidLine/Invalid_ERR_message (0.00s)
+    --- PASS: TestIsValidLine/Invalid_INF_message (0.00s)
+    --- PASS: TestIsValidLine/Invalid_tag (0.00s)
+=== RUN   TestSplitLogLine
+=== RUN   TestSplitLogLine/three_sections
+=== RUN   TestSplitLogLine/three_sections_with_different_symbols_inside_angular_brackets
+=== RUN   TestSplitLogLine/two_sections_with_no_characters_between_angular_brackets
+=== RUN   TestSplitLogLine/single_section_with_some_angular_brackets
+=== RUN   TestSplitLogLine/empty_text
+--- PASS: TestSplitLogLine (0.00s)
+    --- PASS: TestSplitLogLine/three_sections (0.00s)
+    --- PASS: TestSplitLogLine/three_sections_with_different_symbols_inside_angular_brackets (0.00s)
+    --- PASS: TestSplitLogLine/two_sections_with_no_characters_between_angular_brackets (0.00s)
+    --- PASS: TestSplitLogLine/single_section_with_some_angular_brackets (0.00s)
+    --- PASS: TestSplitLogLine/empty_text (0.00s)
+=== RUN   TestCountQuotedPasswords
+=== RUN   TestCountQuotedPasswords/text_with_two_matches
+=== RUN   TestCountQuotedPasswords/text_with_no_matches
+--- PASS: TestCountQuotedPasswords (0.00s)
+    --- PASS: TestCountQuotedPasswords/text_with_two_matches (0.00s)
+    --- PASS: TestCountQuotedPasswords/text_with_no_matches (0.00s)
+=== RUN   TestRemoveEndOfLineText
+=== RUN   TestRemoveEndOfLineText/INF_message
+--- PASS: TestRemoveEndOfLineText (0.00s)
+    --- PASS: TestRemoveEndOfLineText/INF_message (0.00s)
+=== RUN   TestTagWithUserName
+=== RUN   TestTagWithUserName/INF_message
+--- PASS: TestTagWithUserName (0.00s)
+    --- PASS: TestTagWithUserName/INF_message (0.00s)
+=== RUN   ExampleIsValidLine
+--- PASS: ExampleIsValidLine (0.01s)
+=== RUN   ExampleSplitLogLine
+--- PASS: ExampleSplitLogLine (0.00s)
+=== RUN   ExampleCountQuotedPasswords
+--- PASS: ExampleCountQuotedPasswords (0.00s)
+=== RUN   ExampleRemoveEndOfLineText
+--- PASS: ExampleRemoveEndOfLineText (0.00s)
+=== RUN   ExampleTagWithUserName
+--- PASS: ExampleTagWithUserName (0.00s)
+PASS
+coverage: 84.8% of statements
+ok  	parsinglogfiles	0.055s	coverage: 84.8% of statements
+
+real	0m0.916s
+user	0m1.030s
+sys	0m0.510s
+
+===============================================================================
+
+go test --bench . --benchmem
+PASS
+ok  	parsinglogfiles	0.017s
+
+real	0m0.839s
+user	0m0.974s
+sys	0m0.590s
+
+===============================================================================
+
+go test -tags bonus
+PASS
+ok  	parsinglogfiles	0.006s
+
+real	0m0.590s
+user	0m0.682s
+sys	0m0.465s
+
+===============================================================================
+
+go vet parsinglogfiles
+
+real	0m0.508s
+user	0m0.517s
+sys	0m0.471s
+
+===============================================================================
+
+go fix parsinglogfiles
+
+real	0m0.152s
+user	0m0.142s
+sys	0m0.106s
+
+===============================================================================
+
+gosec ./parsing-log-files
+[gosec] 2022/06/19 18:18:22 Including rules: default
+[gosec] 2022/06/19 18:18:22 Excluding rules: default
+[gosec] 2022/06/19 18:18:22 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/parsing-log-files
+2022/06/19 18:18:23 internal error: package "regexp" without types was imported from "command-line-arguments"
+
+real	0m0.490s
+user	0m0.551s
+sys	0m0.315s
+
+===============================================================================
+
+gomarkdoc --output parsinglogfiles-doc.md
+
+real	0m0.038s
+user	0m0.026s
+sys	0m0.012s
+
+===============================================================================
+
+go doc -all parsinglogfiles
+package parsinglogfiles // import "parsinglogfiles"
+
+
+FUNCTIONS
+
+func CountQuotedPasswords(lines []string) int
+    CountQuotedPasswords returns the count of quoted passwords from the array of
+    log lines.
+
+func IsValidLine(text string) bool
+    IsValidLine returns true if the text starts with one of [TRC], [DBG], [INF],
+    [WRN], [ERR], [FTL].
+
+func RemoveEndOfLineText(text string) string
+    RemoveEndOfLineText returns a string without `end-of-line[0-9]+`.
+
+func SplitLogLine(text string) []string
+    SplitLogLine returns a string slice of fields from the passed text.
+
+func TagWithUserName(lines []string) []string
+    TagWithUserName returns a slice of strings with user mentions.
+
+
+real	0m0.248s
+user	0m0.148s
+sys	0m0.186s
+
+
+===============================================================================
+
