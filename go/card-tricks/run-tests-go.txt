@@ -7,9 +7,9 @@ Go packages: cards
 
 golint cards
 
-real	0m0.192s
-user	0m0.153s
-sys	0m0.171s
+real	0m0.210s
+user	0m0.189s
+sys	0m0.173s
 
 ===============================================================================
 
@@ -76,11 +76,11 @@ go test -v -covermode=count -coverprofile coverage.out cards
 --- PASS: ExampleRemoveItem (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	cards	0.047s	coverage: 100.0% of statements
+ok  	cards	0.020s	coverage: 100.0% of statements
 
-real	0m0.721s
-user	0m0.778s
-sys	0m0.527s
+real	0m0.663s
+user	0m0.732s
+sys	0m0.502s
 
 ===============================================================================
 
@@ -92,9 +92,9 @@ cards/card_tricks.go:35:	PrependItems	100.0%
 cards/card_tricks.go:47:	RemoveItem	100.0%
 total:				(statements)	100.0%
 
-real	0m0.109s
-user	0m0.074s
-sys	0m0.087s
+real	0m0.095s
+user	0m0.044s
+sys	0m0.108s
 
 ===============================================================================
 
@@ -107,7 +107,7 @@ go test -v -race -covermode=atomic cards
 === RUN   TestGetItem/Get_last_item_from_slice
 === RUN   TestGetItem/Index_out_of_bounds
 === RUN   TestGetItem/Negative_index
---- PASS: TestGetItem (0.00s)
+--- PASS: TestGetItem (0.02s)
     --- PASS: TestGetItem/Retrieve_item_from_slice_by_index (0.00s)
     --- PASS: TestGetItem/Get_first_item_from_slice (0.00s)
     --- PASS: TestGetItem/Get_last_item_from_slice (0.00s)
@@ -131,7 +131,7 @@ go test -v -race -covermode=atomic cards
 === RUN   TestPrependItems/prepend_nil
 === RUN   TestPrependItems/prepend_zero_items
 === RUN   TestPrependItems/Prepend_slice_to_itself
---- PASS: TestPrependItems (0.00s)
+--- PASS: TestPrependItems (0.01s)
     --- PASS: TestPrependItems/Prepend_one_item (0.00s)
     --- PASS: TestPrependItems/Prepend_two_items (0.00s)
     --- PASS: TestPrependItems/prepend_nil (0.00s)
@@ -158,59 +158,59 @@ go test -v -race -covermode=atomic cards
 === RUN   ExamplePrependItems
 --- PASS: ExamplePrependItems (0.00s)
 === RUN   ExampleRemoveItem
---- PASS: ExampleRemoveItem (0.01s)
+--- PASS: ExampleRemoveItem (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	cards	0.042s	coverage: 100.0% of statements
+ok  	cards	0.077s	coverage: 100.0% of statements
 
-real	0m0.634s
-user	0m0.716s
-sys	0m0.418s
+real	0m0.804s
+user	0m0.852s
+sys	0m0.519s
 
 ===============================================================================
 
 go test --bench . --benchmem
 PASS
-ok  	cards	0.025s
+ok  	cards	0.014s
 
-real	0m0.513s
-user	0m0.608s
-sys	0m0.383s
+real	0m0.794s
+user	0m0.979s
+sys	0m0.616s
 
 ===============================================================================
 
 go test -tags bonus
 PASS
-ok  	cards	0.007s
+ok  	cards	0.008s
 
-real	0m0.459s
-user	0m0.516s
-sys	0m0.343s
+real	0m0.626s
+user	0m0.746s
+sys	0m0.535s
 
 ===============================================================================
 
 go vet cards
 
-real	0m0.343s
-user	0m0.353s
-sys	0m0.302s
+real	0m0.367s
+user	0m0.479s
+sys	0m0.385s
 
 ===============================================================================
 
 go fix cards
 
-real	0m0.046s
-user	0m0.030s
-sys	0m0.037s
+real	0m0.045s
+user	0m0.026s
+sys	0m0.033s
 
 ===============================================================================
 
 gosec ./card-tricks
-[gosec] 2022/06/17 17:44:14 Including rules: default
-[gosec] 2022/06/17 17:44:14 Excluding rules: default
-[gosec] 2022/06/17 17:44:14 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/card-tricks
-[gosec] 2022/06/17 17:44:14 Checking package: cards
-[gosec] 2022/06/17 17:44:14 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/card-tricks/card_tricks.go
+[gosec] 2022/06/20 23:44:56 Including rules: default
+[gosec] 2022/06/20 23:44:56 Excluding rules: default
+[gosec] 2022/06/20 23:44:56 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/card-tricks
+[gosec] 2022/06/20 23:44:57 Checking package: cards
+[gosec] 2022/06/20 23:44:57 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/card-tricks/card_tricks.go
 Results:
 
 
@@ -222,17 +222,17 @@ Results:
   Issues : [1;32m0[0m
 
 
-real	0m0.324s
-user	0m0.338s
-sys	0m0.272s
+real	0m0.265s
+user	0m0.257s
+sys	0m0.182s
 
 ===============================================================================
 
 gomarkdoc --output cards-doc.md
 
-real	0m0.029s
-user	0m0.015s
-sys	0m0.018s
+real	0m0.017s
+user	0m0.010s
+sys	0m0.022s
 
 ===============================================================================
 
@@ -260,9 +260,9 @@ func SetItem(slice []int, index, value int) []int
     value. If the index is out of range the value needs to be appended.
 
 
-real	0m0.127s
-user	0m0.057s
-sys	0m0.132s
+real	0m0.132s
+user	0m0.074s
+sys	0m0.125s
 
 
 ===============================================================================

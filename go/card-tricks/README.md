@@ -227,6 +227,8 @@ fmt.Println(cards)
 
 ### My Solution
 
-- [solution](./card_tricks.go)
+- [my solution](./card_tricks.go)
+- [my examples](./card_tricks_examples_test.go)
+- [tests](./card_tricks_test.go)
 - [run-tests](./run-tests-go.txt)
 - [documentation](./cards-doc.md)
