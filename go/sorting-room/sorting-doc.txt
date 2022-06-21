@@ -1,0 +1,42 @@
+package sorting // import "sorting"
+
+
+FUNCTIONS
+
+func DescribeAnything(i interface{}) string
+    DescribeAnything should return a string describing whatever it contains.
+
+func DescribeFancyNumberBox(fnb FancyNumberBox) string
+    DescribeFancyNumberBox should return a string describing the FancyNumberBox.
+
+func DescribeNumber(f float64) string
+    DescribeNumber should return a string describing the number.
+
+func DescribeNumberBox(nb NumberBox) string
+    DescribeNumberBox should return a string describing the NumberBox.
+
+func ExtractFancyNumber(fnb FancyNumberBox) int
+    ExtractFancyNumber should return the integer value for a FancyNumber and 0
+    if any other FancyNumberBox is supplied.
+
+
+TYPES
+
+type FancyNumber struct {
+	// Has unexported fields.
+}
+    FancyNumber struct that holds a string number.
+
+func (i FancyNumber) Value() string
+    Value is a FancyNumber method.
+
+type FancyNumberBox interface {
+	Value() string
+}
+    FancyNumberBox struct method set interface.
+
+type NumberBox interface {
+	Number() int
+}
+    NumberBox struct method set interface.
+

@@ -1,0 +1,271 @@
+Running automated test file(s):
+
+Go packages: meteorology 
+
+
+===============================================================================
+
+golint meteorology
+/home/vpayno/git_vpayno/exercism-workspace/go/meteorology/meteorology.go:58:6: type name will be used as meteorology.MeteorologyData by other packages, and that stutters; consider calling this Data
+
+real	0m0.209s
+user	0m0.186s
+sys	0m0.160s
+
+===============================================================================
+
+go test -v -covermode=count -coverprofile coverage.out meteorology
+=== RUN   TestTemperatureUnitString
+=== RUN   TestTemperatureUnitString/Celsius_unit
+=== RUN   TestTemperatureUnitString/Fahrenheit_unit
+--- PASS: TestTemperatureUnitString (0.00s)
+    --- PASS: TestTemperatureUnitString/Celsius_unit (0.00s)
+    --- PASS: TestTemperatureUnitString/Fahrenheit_unit (0.00s)
+=== RUN   TestTemperatureString
+=== RUN   TestTemperatureString/21_degree_Celsius
+=== RUN   TestTemperatureString/32_degree_Fahrenheit
+=== RUN   TestTemperatureString/minus_17_degree_Celsius
+--- PASS: TestTemperatureString (0.00s)
+    --- PASS: TestTemperatureString/21_degree_Celsius (0.00s)
+    --- PASS: TestTemperatureString/32_degree_Fahrenheit (0.00s)
+    --- PASS: TestTemperatureString/minus_17_degree_Celsius (0.00s)
+=== RUN   TestSpeedUnitString
+=== RUN   TestSpeedUnitString/kmPerHour
+=== RUN   TestSpeedUnitString/milesPerHour
+--- PASS: TestSpeedUnitString (0.00s)
+    --- PASS: TestSpeedUnitString/kmPerHour (0.00s)
+    --- PASS: TestSpeedUnitString/milesPerHour (0.00s)
+=== RUN   TestSpeedString
+=== RUN   TestSpeedString/18_kilometers_per_hour
+=== RUN   TestSpeedString/30_miles_per_hour
+=== RUN   TestSpeedString/0_kilometers_per_hour
+--- PASS: TestSpeedString (0.00s)
+    --- PASS: TestSpeedString/18_kilometers_per_hour (0.00s)
+    --- PASS: TestSpeedString/30_miles_per_hour (0.00s)
+    --- PASS: TestSpeedString/0_kilometers_per_hour (0.00s)
+=== RUN   TestMeteorologyDataString
+=== RUN   TestMeteorologyDataString/Athens
+=== RUN   TestMeteorologyDataString/Delhi
+=== RUN   TestMeteorologyDataString/San_Francisco
+--- PASS: TestMeteorologyDataString (0.00s)
+    --- PASS: TestMeteorologyDataString/Athens (0.00s)
+    --- PASS: TestMeteorologyDataString/Delhi (0.00s)
+    --- PASS: TestMeteorologyDataString/San_Francisco (0.00s)
+=== RUN   ExampleTemperatureUnitString
+--- PASS: ExampleTemperatureUnitString (0.00s)
+=== RUN   ExampleTemperatureString
+--- PASS: ExampleTemperatureString (0.00s)
+=== RUN   ExampleSpeedUnitString
+--- PASS: ExampleSpeedUnitString (0.00s)
+=== RUN   ExampleSpeedString
+--- PASS: ExampleSpeedString (0.00s)
+=== RUN   ExampleMeteorologyDataString
+--- PASS: ExampleMeteorologyDataString (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	meteorology	0.013s	coverage: 100.0% of statements
+
+real	0m0.672s
+user	0m0.734s
+sys	0m0.588s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+meteorology/meteorology.go:15:	String		100.0%
+meteorology/meteorology.go:27:	String		100.0%
+meteorology/meteorology.go:41:	String		100.0%
+meteorology/meteorology.go:53:	String		100.0%
+meteorology/meteorology.go:67:	String		100.0%
+total:				(statements)	100.0%
+
+real	0m0.307s
+user	0m0.359s
+sys	0m0.222s
+
+===============================================================================
+
+go test -v -race -covermode=atomic meteorology
+=== RUN   TestTemperatureUnitString
+=== RUN   TestTemperatureUnitString/Celsius_unit
+=== RUN   TestTemperatureUnitString/Fahrenheit_unit
+--- PASS: TestTemperatureUnitString (0.00s)
+    --- PASS: TestTemperatureUnitString/Celsius_unit (0.00s)
+    --- PASS: TestTemperatureUnitString/Fahrenheit_unit (0.00s)
+=== RUN   TestTemperatureString
+=== RUN   TestTemperatureString/21_degree_Celsius
+=== RUN   TestTemperatureString/32_degree_Fahrenheit
+=== RUN   TestTemperatureString/minus_17_degree_Celsius
+--- PASS: TestTemperatureString (0.00s)
+    --- PASS: TestTemperatureString/21_degree_Celsius (0.00s)
+    --- PASS: TestTemperatureString/32_degree_Fahrenheit (0.00s)
+    --- PASS: TestTemperatureString/minus_17_degree_Celsius (0.00s)
+=== RUN   TestSpeedUnitString
+=== RUN   TestSpeedUnitString/kmPerHour
+=== RUN   TestSpeedUnitString/milesPerHour
+--- PASS: TestSpeedUnitString (0.00s)
+    --- PASS: TestSpeedUnitString/kmPerHour (0.00s)
+    --- PASS: TestSpeedUnitString/milesPerHour (0.00s)
+=== RUN   TestSpeedString
+=== RUN   TestSpeedString/18_kilometers_per_hour
+=== RUN   TestSpeedString/30_miles_per_hour
+=== RUN   TestSpeedString/0_kilometers_per_hour
+--- PASS: TestSpeedString (0.00s)
+    --- PASS: TestSpeedString/18_kilometers_per_hour (0.00s)
+    --- PASS: TestSpeedString/30_miles_per_hour (0.00s)
+    --- PASS: TestSpeedString/0_kilometers_per_hour (0.00s)
+=== RUN   TestMeteorologyDataString
+=== RUN   TestMeteorologyDataString/Athens
+=== RUN   TestMeteorologyDataString/Delhi
+=== RUN   TestMeteorologyDataString/San_Francisco
+--- PASS: TestMeteorologyDataString (0.00s)
+    --- PASS: TestMeteorologyDataString/Athens (0.00s)
+    --- PASS: TestMeteorologyDataString/Delhi (0.00s)
+    --- PASS: TestMeteorologyDataString/San_Francisco (0.00s)
+=== RUN   ExampleTemperatureUnitString
+--- PASS: ExampleTemperatureUnitString (0.00s)
+=== RUN   ExampleTemperatureString
+--- PASS: ExampleTemperatureString (0.00s)
+=== RUN   ExampleSpeedUnitString
+--- PASS: ExampleSpeedUnitString (0.00s)
+=== RUN   ExampleSpeedString
+--- PASS: ExampleSpeedString (0.00s)
+=== RUN   ExampleMeteorologyDataString
+--- PASS: ExampleMeteorologyDataString (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	meteorology	(cached)	coverage: 100.0% of statements
+
+real	0m0.545s
+user	0m0.608s
+sys	0m0.370s
+
+===============================================================================
+
+go test --bench . --benchmem
+PASS
+ok  	meteorology	0.023s
+
+real	0m0.622s
+user	0m0.763s
+sys	0m0.414s
+
+===============================================================================
+
+go test -tags bonus
+PASS
+ok  	meteorology	0.009s
+
+real	0m0.549s
+user	0m0.634s
+sys	0m0.436s
+
+===============================================================================
+
+go vet meteorology
+# meteorology
+./meteorology_examples_test.go:5:1: ExampleTemperatureUnitString refers to unknown identifier: TemperatureUnitString
+./meteorology_examples_test.go:16:1: ExampleTemperatureString refers to unknown identifier: TemperatureString
+./meteorology_examples_test.go:34:1: ExampleSpeedUnitString refers to unknown identifier: SpeedUnitString
+./meteorology_examples_test.go:45:1: ExampleSpeedString refers to unknown identifier: SpeedString
+./meteorology_examples_test.go:62:1: ExampleMeteorologyDataString refers to unknown identifier: MeteorologyDataString
+
+real	0m0.367s
+user	0m0.450s
+sys	0m0.336s
+
+===============================================================================
+
+go fix meteorology
+
+real	0m0.227s
+user	0m0.189s
+sys	0m0.170s
+
+===============================================================================
+
+gosec ./meteorology
+[gosec] 2022/06/20 20:47:52 Including rules: default
+[gosec] 2022/06/20 20:47:52 Excluding rules: default
+[gosec] 2022/06/20 20:47:52 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/meteorology
+2022/06/20 20:47:53 internal error: package "fmt" without types was imported from "command-line-arguments"
+
+real	0m0.542s
+user	0m0.589s
+sys	0m0.411s
+
+===============================================================================
+
+gomarkdoc --output meteorology-doc.md
+
+real	0m0.025s
+user	0m0.022s
+sys	0m0.014s
+
+===============================================================================
+
+go doc -all meteorology
+package meteorology // import "meteorology"
+
+
+TYPES
+
+type MeteorologyData struct {
+	// Has unexported fields.
+}
+    MeteorologyData type tracks location weather information.
+
+func (md MeteorologyData) String() string
+    MeteorologyData String() method that returns a human readable meteorology
+    reading.
+
+type Speed struct {
+	// Has unexported fields.
+}
+    Speed type tracks wind speed value and unit type.
+
+func (s Speed) String() string
+    Speed String() method that returns a human readable speed reading.
+
+type SpeedUnit int
+    SpeedUnit Emum declaration.
+
+const (
+	KmPerHour    SpeedUnit = 0
+	MilesPerHour SpeedUnit = 1
+)
+    Speed Unit Enum definitions.
+
+func (index SpeedUnit) String() string
+    SpeedUnit String() method that returns a human readable speed unit.
+
+type Temperature struct {
+	// Has unexported fields.
+}
+    Temperature type tracks temperature value and unit type.
+
+func (t Temperature) String() string
+    Temperature String() method that returns a human readable temperature
+    reading.
+
+type TemperatureUnit int
+    TemperatureUnit Enum declaration.
+
+const (
+	Celsius    TemperatureUnit = 0
+	Fahrenheit TemperatureUnit = 1
+)
+    Temperature Units Enum definitions.
+
+func (index TemperatureUnit) String() string
+    TemperatureUnit String() method that returns a human readable temperature
+    unit.
+
+
+real	0m0.314s
+user	0m0.233s
+sys	0m0.270s
+
+
+===============================================================================
+
