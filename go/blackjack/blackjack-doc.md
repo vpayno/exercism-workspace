@@ -12,7 +12,7 @@ import "blackjack"
 - [func ParseCard(card string) int](<#func-parsecard>)
 
 
-## func [FirstTurn](<https://github.com/vpayno/exercism-workspace/blob/main/go/blackjack/blackjack.go#L37>)
+## func [FirstTurn](<https://github.com/vpayno/exercism-workspace/blob/main/go/blackjack/blackjack.go#L33>)
 
 ```go
 func FirstTurn(card1, card2, dealerCard string) string
