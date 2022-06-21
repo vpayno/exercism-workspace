@@ -40,28 +40,32 @@ func FirstTurn(card1, card2, dealerCard string) string {
 	// Split (P)
 	// Automatically win (W)
 
-	var result string
 	var cardSum int = ParseCard(card1) + ParseCard(card2)
 
 	if card1 == "ace" && card2 == "ace" {
-		result = "P"
-	} else if cardSum == 21 {
-		if ParseCard(dealerCard) < 10 {
-			result = "W"
-		} else {
-			result = "S"
-		}
-	} else if cardSum >= 17 && cardSum <= 20 {
-		result = "S"
-	} else if cardSum >= 12 && cardSum <= 16 {
-		if ParseCard(dealerCard) >= 7 {
-			result = "H"
-		} else {
-			result = "S"
-		}
-	} else if cardSum <= 11 {
-		result = "H"
+		return "P"
 	}
 
-	return result
+	if cardSum == 21 {
+		if ParseCard(dealerCard) < 10 {
+			return "W"
+		}
+
+		return "S"
+	}
+
+	if cardSum >= 17 && cardSum <= 20 {
+		return "S"
+	}
+
+	if cardSum >= 12 && cardSum <= 16 {
+		if ParseCard(dealerCard) >= 7 {
+			return "H"
+		}
+
+		return "S"
+	}
+
+	// cardSum <= 11
+	return "H"
 }

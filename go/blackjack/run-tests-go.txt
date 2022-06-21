@@ -7,9 +7,9 @@ Go packages: blackjack
 
 golint blackjack
 
-real	0m0.077s
-user	0m0.037s
-sys	0m0.083s
+real	0m0.112s
+user	0m0.110s
+sys	0m0.071s
 
 ===============================================================================
 
@@ -116,11 +116,11 @@ go test -v -covermode=count -coverprofile coverage.out blackjack
 --- PASS: ExampleFirstTurn (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	blackjack	0.014s	coverage: 100.0% of statements
+ok  	blackjack	0.021s	coverage: 100.0% of statements
 
-real	0m0.559s
-user	0m0.641s
-sys	0m0.449s
+real	0m0.656s
+user	0m0.702s
+sys	0m0.549s
 
 ===============================================================================
 
@@ -129,9 +129,9 @@ blackjack/blackjack.go:4:	ParseCard	100.0%
 blackjack/blackjack.go:37:	FirstTurn	100.0%
 total:				(statements)	100.0%
 
-real	0m0.089s
-user	0m0.041s
-sys	0m0.069s
+real	0m0.071s
+user	0m0.031s
+sys	0m0.065s
 
 ===============================================================================
 
@@ -151,7 +151,7 @@ go test -v -race -covermode=atomic blackjack
 === RUN   TestParseCard/parse_queen
 === RUN   TestParseCard/parse_king
 === RUN   TestParseCard/parse_other
---- PASS: TestParseCard (0.01s)
+--- PASS: TestParseCard (0.00s)
     --- PASS: TestParseCard/parse_ace (0.00s)
     --- PASS: TestParseCard/parse_two (0.00s)
     --- PASS: TestParseCard/parse_three (0.00s)
@@ -199,7 +199,7 @@ go test -v -race -covermode=atomic blackjack
 === RUN   TestFirstTurn/score_of_10_with_two_for_dealer
 === RUN   TestFirstTurn/score_of_5_with_queen_for_dealer
 === RUN   TestFirstTurn/score_of_4_with_five_for_dealer
---- PASS: TestFirstTurn (0.01s)
+--- PASS: TestFirstTurn (0.00s)
     --- PASS: TestFirstTurn/pair_of_aces (0.00s)
     --- PASS: TestFirstTurn/pair_of_jacks (0.00s)
     --- PASS: TestFirstTurn/pair_of_kings (0.00s)
@@ -238,78 +238,78 @@ go test -v -race -covermode=atomic blackjack
 --- PASS: ExampleFirstTurn (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	blackjack	0.055s	coverage: 100.0% of statements
+ok  	blackjack	0.042s	coverage: 100.0% of statements
 
-real	0m0.637s
-user	0m0.671s
-sys	0m0.408s
+real	0m0.737s
+user	0m0.920s
+sys	0m0.498s
 
 ===============================================================================
 
 go test --bench . --benchmem
 PASS
-ok  	blackjack	0.009s
+ok  	blackjack	0.044s
 
-real	0m0.453s
-user	0m0.582s
-sys	0m0.358s
+real	0m0.636s
+user	0m0.830s
+sys	0m0.396s
 
 ===============================================================================
 
 go test -tags bonus
 PASS
-ok  	blackjack	0.007s
+ok  	blackjack	0.010s
 
-real	0m0.462s
-user	0m0.550s
-sys	0m0.339s
+real	0m0.563s
+user	0m0.699s
+sys	0m0.432s
 
 ===============================================================================
 
 go vet blackjack
 
-real	0m0.318s
-user	0m0.385s
-sys	0m0.325s
+real	0m0.396s
+user	0m0.462s
+sys	0m0.370s
 
 ===============================================================================
 
 go fix blackjack
 
-real	0m0.080s
-user	0m0.040s
-sys	0m0.061s
+real	0m0.060s
+user	0m0.027s
+sys	0m0.054s
 
 ===============================================================================
 
 gosec ./blackjack
-[gosec] 2022/06/16 23:28:36 Including rules: default
-[gosec] 2022/06/16 23:28:36 Excluding rules: default
-[gosec] 2022/06/16 23:28:36 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/blackjack
-[gosec] 2022/06/16 23:28:36 Checking package: blackjack
-[gosec] 2022/06/16 23:28:36 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/blackjack/blackjack.go
+[gosec] 2022/06/20 22:55:39 Including rules: default
+[gosec] 2022/06/20 22:55:39 Excluding rules: default
+[gosec] 2022/06/20 22:55:39 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/blackjack
+[gosec] 2022/06/20 22:55:39 Checking package: blackjack
+[gosec] 2022/06/20 22:55:39 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/blackjack/blackjack.go
 Results:
 
 
 [1;36mSummary:[0m
   Gosec  : dev
   Files  : 1
-  Lines  : 67
+  Lines  : 71
   Nosec  : 0
   Issues : [1;32m0[0m
 
 
-real	0m0.309s
-user	0m0.333s
-sys	0m0.275s
+real	0m0.373s
+user	0m0.346s
+sys	0m0.273s
 
 ===============================================================================
 
 gomarkdoc --output blackjack-doc.md
 
-real	0m0.030s
-user	0m0.018s
-sys	0m0.017s
+real	0m0.033s
+user	0m0.025s
+sys	0m0.014s
 
 ===============================================================================
 
@@ -327,9 +327,9 @@ func ParseCard(card string) int
     ParseCard returns the integer value of a card following blackjack ruleset.
 
 
-real	0m0.122s
-user	0m0.060s
-sys	0m0.139s
+real	0m0.115s
+user	0m0.056s
+sys	0m0.101s
 
 
 ===============================================================================
