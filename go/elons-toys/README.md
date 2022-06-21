@@ -164,6 +164,8 @@ car.CanFinish(trackDistance)
 
 ### My Solution
 
-- [solution](./ elons_toys.go)
+- [my solution](./elons_toys.go)
+- [my examples](./elons_toys_examples_test.go)
+- [tests](./elons_toys_test.go)
 - [run-tests](./run-tests-go.txt)
 - [documentation](./elon-doc.md)
