@@ -32,7 +32,7 @@ for i := 1; i < 10; i++ {
 }
 ```
 
-This loop will print the numbers from `1` to `9` (including `9`). 
+This loop will print the numbers from `1` to `9` (including `9`).
 Defining the step is often done using an increment or decrement statement, as shown in the example above.
 
 ## Instructions
@@ -99,6 +99,8 @@ FixBirdCountLog(birdsPerDay)
 
 ### My Solution
 
-- [solution](./bird_watcher.go)
+- [my solution](./bird_watcher.go)
+- [my examples](./bird_watcher_examples_test.go)
+- [tests](./bird_watcher_test.go)
 - [run-tests](./run-tests-go.txt)
 - [documentation](./birdwatcher-doc.md)
