@@ -7,9 +7,9 @@ Go packages: cars
 
 golint cars
 
-real	0m0.090s
-user	0m0.074s
-sys	0m0.079s
+real	0m0.077s
+user	0m0.045s
+sys	0m0.080s
 
 ===============================================================================
 
@@ -32,7 +32,7 @@ go test -v -covermode=count -coverprofile coverage.out cars
 === RUN   TestCalculateWorkingCarsPerMinute/calculate_working_cars_per_minute_for_80%_success_rate
 === RUN   TestCalculateWorkingCarsPerMinute/calculate_working_cars_per_minute_for_20.5%_success_rate
 === RUN   TestCalculateWorkingCarsPerMinute/calculate_working_cars_per_minute_for_0%_success_rate
---- PASS: TestCalculateWorkingCarsPerMinute (0.02s)
+--- PASS: TestCalculateWorkingCarsPerMinute (0.00s)
     --- PASS: TestCalculateWorkingCarsPerMinute/calculate_working_cars_per_minute_for_production_rate_0 (0.00s)
     --- PASS: TestCalculateWorkingCarsPerMinute/calculate_working_cars_per_minute_for_100%_success_rate (0.00s)
     --- PASS: TestCalculateWorkingCarsPerMinute/calculate_working_cars_per_minute_for_80%_success_rate (0.00s)
@@ -68,11 +68,11 @@ go test -v -covermode=count -coverprofile coverage.out cars
 --- PASS: ExampleCalculateCost (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	cars	0.034s	coverage: 100.0% of statements
+ok  	cars	0.022s	coverage: 100.0% of statements
 
-real	0m0.628s
-user	0m0.712s
-sys	0m0.496s
+real	0m0.691s
+user	0m0.747s
+sys	0m0.527s
 
 ===============================================================================
 
@@ -82,9 +82,9 @@ cars/cars_assemble.go:11:	CalculateWorkingCarsPerMinute	100.0%
 cars/cars_assemble.go:16:	CalculateCost			100.0%
 total:				(statements)			100.0%
 
-real	0m0.086s
-user	0m0.034s
-sys	0m0.104s
+real	0m0.100s
+user	0m0.062s
+sys	0m0.069s
 
 ===============================================================================
 
@@ -107,7 +107,7 @@ go test -v -race -covermode=atomic cars
 === RUN   TestCalculateWorkingCarsPerMinute/calculate_working_cars_per_minute_for_80%_success_rate
 === RUN   TestCalculateWorkingCarsPerMinute/calculate_working_cars_per_minute_for_20.5%_success_rate
 === RUN   TestCalculateWorkingCarsPerMinute/calculate_working_cars_per_minute_for_0%_success_rate
---- PASS: TestCalculateWorkingCarsPerMinute (0.01s)
+--- PASS: TestCalculateWorkingCarsPerMinute (0.00s)
     --- PASS: TestCalculateWorkingCarsPerMinute/calculate_working_cars_per_minute_for_production_rate_0 (0.00s)
     --- PASS: TestCalculateWorkingCarsPerMinute/calculate_working_cars_per_minute_for_100%_success_rate (0.00s)
     --- PASS: TestCalculateWorkingCarsPerMinute/calculate_working_cars_per_minute_for_80%_success_rate (0.00s)
@@ -124,7 +124,7 @@ go test -v -race -covermode=atomic cars
 === RUN   TestCalculateCost/calculate_cost_to_produce_37_cars
 === RUN   TestCalculateCost/calculate_cost_to_produce_56_cars
 === RUN   TestCalculateCost/calculate_cost_to_produce_148_cars
---- PASS: TestCalculateCost (0.00s)
+--- PASS: TestCalculateCost (0.01s)
     --- PASS: TestCalculateCost/calculate_cost_to_produce_0_cars (0.00s)
     --- PASS: TestCalculateCost/calculate_the_cost_of_materials_to_produce_1_car (0.00s)
     --- PASS: TestCalculateCost/calculate_cost_to_produce_2_cars (0.00s)
@@ -143,56 +143,56 @@ go test -v -race -covermode=atomic cars
 --- PASS: ExampleCalculateCost (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	cars	0.054s	coverage: 100.0% of statements
+ok  	cars	0.051s	coverage: 100.0% of statements
 
-real	0m0.718s
-user	0m0.834s
-sys	0m0.455s
+real	0m0.823s
+user	0m0.889s
+sys	0m0.594s
 
 ===============================================================================
 
 go test --bench . --benchmem
 PASS
-ok  	cars	0.021s
+ok  	cars	0.016s
 
-real	0m0.601s
-user	0m0.701s
-sys	0m0.452s
+real	0m0.725s
+user	0m0.770s
+sys	0m0.615s
 
 ===============================================================================
 
 go test -tags bonus
 PASS
-ok  	cars	0.007s
+ok  	cars	0.010s
 
-real	0m0.551s
-user	0m0.700s
-sys	0m0.364s
+real	0m0.573s
+user	0m0.681s
+sys	0m0.450s
 
 ===============================================================================
 
 go vet cars
 
-real	0m0.393s
-user	0m0.486s
-sys	0m0.338s
+real	0m0.392s
+user	0m0.427s
+sys	0m0.352s
 
 ===============================================================================
 
 go fix cars
 
-real	0m0.077s
-user	0m0.047s
-sys	0m0.097s
+real	0m0.054s
+user	0m0.031s
+sys	0m0.058s
 
 ===============================================================================
 
 gosec ./cars-assemble
-[gosec] 2022/06/15 22:10:02 Including rules: default
-[gosec] 2022/06/15 22:10:02 Excluding rules: default
-[gosec] 2022/06/15 22:10:02 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/cars-assemble
-[gosec] 2022/06/15 22:10:03 Checking package: cars
-[gosec] 2022/06/15 22:10:03 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/cars-assemble/cars_assemble.go
+[gosec] 2022/06/20 23:18:18 Including rules: default
+[gosec] 2022/06/20 23:18:18 Excluding rules: default
+[gosec] 2022/06/20 23:18:18 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/cars-assemble
+[gosec] 2022/06/20 23:18:19 Checking package: cars
+[gosec] 2022/06/20 23:18:19 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/cars-assemble/cars_assemble.go
 Results:
 
 
@@ -204,17 +204,17 @@ Results:
   Issues : [1;32m0[0m
 
 
-real	0m0.269s
-user	0m0.268s
-sys	0m0.194s
+real	0m0.283s
+user	0m0.252s
+sys	0m0.216s
 
 ===============================================================================
 
 gomarkdoc --output cars-doc.md
 
-real	0m0.038s
-user	0m0.028s
-sys	0m0.024s
+real	0m0.067s
+user	0m0.041s
+sys	0m0.044s
 
 ===============================================================================
 
@@ -236,9 +236,9 @@ func CalculateWorkingCarsPerMinute(productionRate int, successRate float64) int
     by the assembly line every minute
 
 
-real	0m0.138s
-user	0m0.056s
-sys	0m0.139s
+real	0m0.161s
+user	0m0.082s
+sys	0m0.135s
 
 
 ===============================================================================

@@ -134,6 +134,8 @@ cost = CalculateCost(21)
 
 ### My Solution
 
-- [solution](./cars_assemble.go)
+- [my solution](./cars_assemble.go)
+- [my examples](./cars_assemble_examples_test.go)
+- [tests](./cars_assemble_test.go)
 - [run-tests](./run-tests-go.txt)
 - [documentation](./cars-doc.md)
