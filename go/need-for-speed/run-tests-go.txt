@@ -7,9 +7,9 @@ Go packages: speed
 
 golint speed
 
-real	0m0.096s
-user	0m0.041s
-sys	0m0.102s
+real	0m0.090s
+user	0m0.050s
+sys	0m0.093s
 
 ===============================================================================
 
@@ -58,11 +58,11 @@ go test -v -covermode=count -coverprofile coverage.out speed
 --- PASS: ExampleCanFinish (0.00s)
 PASS
 coverage: 93.3% of statements
-ok  	speed	0.015s	coverage: 93.3% of statements
+ok  	speed	0.003s	coverage: 93.3% of statements
 
-real	0m0.558s
-user	0m0.572s
-sys	0m0.432s
+real	0m0.706s
+user	0m0.765s
+sys	0m0.607s
 
 ===============================================================================
 
@@ -73,9 +73,9 @@ speed/need_for_speed.go:35:	Drive		100.0%
 speed/need_for_speed.go:45:	CanFinish	87.5%
 total:				(statements)	93.3%
 
-real	0m0.081s
-user	0m0.041s
-sys	0m0.068s
+real	0m0.082s
+user	0m0.036s
+sys	0m0.098s
 
 ===============================================================================
 
@@ -96,7 +96,7 @@ go test -v -race -covermode=atomic speed
 === RUN   TestDrive/Drive_the_car_with_battery_drained.
 === RUN   TestDrive/Drive_the_car_with_positive_initial_distance_and_battery_drained
 === RUN   TestDrive/Drive_the_car_with_positive_initial_distance_and_full_battery
---- PASS: TestDrive (0.02s)
+--- PASS: TestDrive (0.00s)
     --- PASS: TestDrive/Drive_the_car_with_full_battery. (0.00s)
     --- PASS: TestDrive/Drive_when_battery_percentage_is_below_battery_drain (0.00s)
     --- PASS: TestDrive/Drive_the_car_with_battery_drained. (0.00s)
@@ -108,7 +108,7 @@ go test -v -race -covermode=atomic speed
 === RUN   TestCanFinish/Car_cannot_finish_the_track_distance.
 === RUN   TestCanFinish/Car_can_finish_the_track_distance_with_initial_battery_less_than_100%
 === RUN   TestCanFinish/Car_cannot_finish_the_track_distance_with_initial_battery_less_than_100%
---- PASS: TestCanFinish (0.01s)
+--- PASS: TestCanFinish (0.00s)
     --- PASS: TestCanFinish/Car_can_easily_finish_the_track_distance. (0.00s)
     --- PASS: TestCanFinish/Car_can_finish_the_track_distance_just_as_the_battery_is_drained. (0.00s)
     --- PASS: TestCanFinish/Car_cannot_finish_the_track_distance. (0.00s)
@@ -124,21 +124,21 @@ go test -v -race -covermode=atomic speed
 --- PASS: ExampleCanFinish (0.00s)
 PASS
 coverage: 93.3% of statements
-ok  	speed	0.047s	coverage: 93.3% of statements
+ok  	speed	0.057s	coverage: 93.3% of statements
 
-real	0m0.666s
-user	0m0.770s
-sys	0m0.387s
+real	0m0.749s
+user	0m0.800s
+sys	0m0.465s
 
 ===============================================================================
 
 go test --bench . --benchmem
 PASS
-ok  	speed	0.015s
+ok  	speed	0.016s
 
-real	0m0.425s
-user	0m0.482s
-sys	0m0.399s
+real	0m0.579s
+user	0m0.711s
+sys	0m0.463s
 
 ===============================================================================
 
@@ -146,56 +146,56 @@ go test -tags bonus
 PASS
 ok  	speed	0.010s
 
-real	0m0.505s
-user	0m0.596s
-sys	0m0.371s
+real	0m0.583s
+user	0m0.636s
+sys	0m0.477s
 
 ===============================================================================
 
 go vet speed
 
-real	0m0.413s
-user	0m0.398s
-sys	0m0.299s
+real	0m0.384s
+user	0m0.442s
+sys	0m0.371s
 
 ===============================================================================
 
 go fix speed
 
-real	0m0.086s
-user	0m0.034s
-sys	0m0.039s
+real	0m0.060s
+user	0m0.027s
+sys	0m0.046s
 
 ===============================================================================
 
 gosec ./need-for-speed
-[gosec] 2022/06/17 00:39:40 Including rules: default
-[gosec] 2022/06/17 00:39:40 Excluding rules: default
-[gosec] 2022/06/17 00:39:40 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/need-for-speed
-[gosec] 2022/06/17 00:39:40 Checking package: speed
-[gosec] 2022/06/17 00:39:40 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/need-for-speed/need_for_speed.go
+[gosec] 2022/06/20 23:35:15 Including rules: default
+[gosec] 2022/06/20 23:35:15 Excluding rules: default
+[gosec] 2022/06/20 23:35:15 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/need-for-speed
+[gosec] 2022/06/20 23:35:15 Checking package: speed
+[gosec] 2022/06/20 23:35:15 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/need-for-speed/need_for_speed.go
 Results:
 
 
 [1;36mSummary:[0m
   Gosec  : dev
   Files  : 1
-  Lines  : 65
+  Lines  : 59
   Nosec  : 0
   Issues : [1;32m0[0m
 
 
-real	0m0.330s
-user	0m0.343s
-sys	0m0.219s
+real	0m0.387s
+user	0m0.341s
+sys	0m0.299s
 
 ===============================================================================
 
 gomarkdoc --output speed-doc.md
 
-real	0m0.025s
+real	0m0.033s
 user	0m0.019s
-sys	0m0.008s
+sys	0m0.020s
 
 ===============================================================================
 
@@ -233,9 +233,9 @@ func NewTrack(distance int) Track
     NewTrack created a new track
 
 
-real	0m0.110s
-user	0m0.061s
-sys	0m0.112s
+real	0m0.139s
+user	0m0.064s
+sys	0m0.147s
 
 
 ===============================================================================
