@@ -40,3 +40,4 @@
 - [the-farm](./the-farm/README.md)
 - [expenses](./expenses/README.md)
 - [sorting-room](./sorting-room/README.md)
+- [meteorology](./meteorology/README.md)

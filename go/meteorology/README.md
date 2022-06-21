@@ -226,3 +226,10 @@ fmt.Sprint(sfData)
 ### Contributed to by
 
 - @andrerfcsantos
+
+### My Solution
+
+- [solution](./meteorology.go)
+- [examples](./meteorology_examples_test.go)
+- [run-tests](./run-tests-go.txt)
+- [documentation](./greeting-doc.md)
