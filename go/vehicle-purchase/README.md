@@ -150,6 +150,8 @@ CalculateResellPrice(1000, 15)
 
 ### My Solution
 
-- [solution](./vehicle_purchase.go)
+- [my solution](./vehicle_purchase.go)
+- [my examples](./vehicle_purchase_examples_test.go)
+- [tests](./vehicle_purchase_test.go)
 - [run-tests](./run-tests-go.txt)
 - [documentation](./purchase-doc.md)
