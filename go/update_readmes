@@ -32,8 +32,9 @@ cat >> ./README.md <<EOF
 
 ### My Solution
 
-- [solution](./$(printf "%s\n" *[.]go | grep -v "test[.]go"))
-- [examples](./$(printf "%s\n" *[.]go | grep "_examples_test[.]go"))
+- [my solution](./$(printf "%s\n" *[.]go | grep -v "test[.]go"))
+- [my examples](./$(printf "%s\n" *[.]go | grep "_examples_test[.]go"))
+- [tests](./$(printf "%s\n" *[.]go | grep "_test[.]go" | grep -v "_examples_test[.]go"))
 - [run-tests](./run-tests-go.txt)
 - [documentation](./${package_name}-doc.md)
 EOF
