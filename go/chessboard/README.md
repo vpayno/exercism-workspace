@@ -188,6 +188,8 @@ CountOccupied(board)
 
 ### My Solution
 
-- [solution](./chessboard.go)
+- [my solution](./chessboard.go)
+- [my examples](./chessboard_examples_test.go)
+- [tests](./chessboard_test.go)
 - [run-tests](./run-tests-go.txt)
 - [documentation](./chessboard-doc.md)
