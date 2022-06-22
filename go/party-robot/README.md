@@ -144,6 +144,8 @@ AssignTable("Christiane", 27, "Frank", "on the left", 23.7834298)
 
 ### My Solution
 
-- [solution](./party_robot.go)
+- [my solution](./party_robot.go)
+- [my examples](./party_robot_examples_test.go)
+- [tests](./party_robot_test.go)
 - [run-tests](./run-tests-go.txt)
 - [documentation](./partyrobot-doc.md)

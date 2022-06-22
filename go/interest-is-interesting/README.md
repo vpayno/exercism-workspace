@@ -95,6 +95,8 @@ Note that the value returned is an `int`.
 
 ### My Solution
 
-- [solution](./interest_is_interesting.go)
+- [my solution](./interest_is_interesting.go)
+- [my examples](./interest_is_interesting_examples_test.go)
+- [tests](./interest_is_interesting_test.go)
 - [run-tests](./run-tests-go.txt)
 - [documentation](./interest-doc.md)

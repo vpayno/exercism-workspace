@@ -161,6 +161,8 @@ fmt.Println(ok)
 
 ### My Solution
 
-- [solution](./gross_store.go)
+- [my solution](./gross_store.go)
+- [my examples](./gross_store_examples_test.go)
+- [tests](./gross_store_test.go)
 - [run-tests](./run-tests-go.txt)
 - [documentation](./gross-doc.md)

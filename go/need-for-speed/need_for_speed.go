@@ -57,9 +57,3 @@ func CanFinish(car Car, track Track) bool {
 
 	return result
 }
-
-/*
-Drive({battery:3 batteryDrain:7 speed:5 distance:0}) = {battery:-4 batteryDrain:7 speed:5 distance:5}; expected {battery:3 batteryDrain:7 speed:5 distance:0}
-Drive({battery:4 batteryDrain:5 speed:5 distance:0}) = {battery:-1 batteryDrain:5 speed:5 distance:5}; expected {battery:4 batteryDrain:5 speed:5 distance:0}
-Drive({battery:2 batteryDrain:3 speed:5 distance:1}) = {battery:-1 batteryDrain:3 speed:5 distance:6}; expected {battery:2 batteryDrain:3 speed:5 distance:1}
-*/

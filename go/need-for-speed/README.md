@@ -121,6 +121,8 @@ CanFinish(car, raceTrack)
 
 ### My Solution
 
-- [solution](./need_for_speed.go)
+- [my solution](./need_for_speed.go)
+- [my examples](./need_for_speed_examples_test.go)
+- [tests](./need_for_speed_test.go)
 - [run-tests](./run-tests-go.txt)
 - [documentation](./speed-doc.md)

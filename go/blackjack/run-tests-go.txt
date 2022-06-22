@@ -7,9 +7,9 @@ Go packages: blackjack
 
 golint blackjack
 
-real	0m0.077s
-user	0m0.037s
-sys	0m0.083s
+real	0m0.104s
+user	0m0.084s
+sys	0m0.096s
 
 ===============================================================================
 
@@ -116,22 +116,22 @@ go test -v -covermode=count -coverprofile coverage.out blackjack
 --- PASS: ExampleFirstTurn (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	blackjack	0.014s	coverage: 100.0% of statements
+ok  	blackjack	0.004s	coverage: 100.0% of statements
 
-real	0m0.559s
-user	0m0.641s
-sys	0m0.449s
+real	0m0.703s
+user	0m0.775s
+sys	0m0.620s
 
 ===============================================================================
 
 go tool cover -func=coverage.out
 blackjack/blackjack.go:4:	ParseCard	100.0%
-blackjack/blackjack.go:37:	FirstTurn	100.0%
+blackjack/blackjack.go:33:	FirstTurn	100.0%
 total:				(statements)	100.0%
 
-real	0m0.089s
+real	0m0.104s
 user	0m0.041s
-sys	0m0.069s
+sys	0m0.120s
 
 ===============================================================================
 
@@ -199,7 +199,7 @@ go test -v -race -covermode=atomic blackjack
 === RUN   TestFirstTurn/score_of_10_with_two_for_dealer
 === RUN   TestFirstTurn/score_of_5_with_queen_for_dealer
 === RUN   TestFirstTurn/score_of_4_with_five_for_dealer
---- PASS: TestFirstTurn (0.01s)
+--- PASS: TestFirstTurn (0.02s)
     --- PASS: TestFirstTurn/pair_of_aces (0.00s)
     --- PASS: TestFirstTurn/pair_of_jacks (0.00s)
     --- PASS: TestFirstTurn/pair_of_kings (0.00s)
@@ -238,56 +238,56 @@ go test -v -race -covermode=atomic blackjack
 --- PASS: ExampleFirstTurn (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	blackjack	0.055s	coverage: 100.0% of statements
+ok  	blackjack	0.053s	coverage: 100.0% of statements
 
-real	0m0.637s
-user	0m0.671s
-sys	0m0.408s
+real	0m0.683s
+user	0m0.774s
+sys	0m0.430s
 
 ===============================================================================
 
 go test --bench . --benchmem
 PASS
-ok  	blackjack	0.009s
+ok  	blackjack	0.032s
 
-real	0m0.453s
-user	0m0.582s
-sys	0m0.358s
+real	0m0.650s
+user	0m0.764s
+sys	0m0.413s
 
 ===============================================================================
 
 go test -tags bonus
 PASS
-ok  	blackjack	0.007s
+ok  	blackjack	0.005s
 
-real	0m0.462s
-user	0m0.550s
-sys	0m0.339s
+real	0m0.544s
+user	0m0.659s
+sys	0m0.461s
 
 ===============================================================================
 
 go vet blackjack
 
-real	0m0.318s
-user	0m0.385s
-sys	0m0.325s
+real	0m0.350s
+user	0m0.477s
+sys	0m0.311s
 
 ===============================================================================
 
 go fix blackjack
 
-real	0m0.080s
-user	0m0.040s
-sys	0m0.061s
+real	0m0.062s
+user	0m0.031s
+sys	0m0.053s
 
 ===============================================================================
 
 gosec ./blackjack
-[gosec] 2022/06/16 23:28:36 Including rules: default
-[gosec] 2022/06/16 23:28:36 Excluding rules: default
-[gosec] 2022/06/16 23:28:36 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/blackjack
-[gosec] 2022/06/16 23:28:36 Checking package: blackjack
-[gosec] 2022/06/16 23:28:36 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/blackjack/blackjack.go
+[gosec] 2022/06/20 22:58:31 Including rules: default
+[gosec] 2022/06/20 22:58:31 Excluding rules: default
+[gosec] 2022/06/20 22:58:31 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/blackjack
+[gosec] 2022/06/20 22:58:32 Checking package: blackjack
+[gosec] 2022/06/20 22:58:32 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/blackjack/blackjack.go
 Results:
 
 
@@ -299,17 +299,17 @@ Results:
   Issues : [1;32m0[0m
 
 
-real	0m0.309s
-user	0m0.333s
-sys	0m0.275s
+real	0m0.369s
+user	0m0.391s
+sys	0m0.259s
 
 ===============================================================================
 
 gomarkdoc --output blackjack-doc.md
 
-real	0m0.030s
-user	0m0.018s
-sys	0m0.017s
+real	0m0.063s
+user	0m0.035s
+sys	0m0.034s
 
 ===============================================================================
 
@@ -327,9 +327,9 @@ func ParseCard(card string) int
     ParseCard returns the integer value of a card following blackjack ruleset.
 
 
-real	0m0.122s
-user	0m0.060s
-sys	0m0.139s
+real	0m0.149s
+user	0m0.043s
+sys	0m0.150s
 
 
 ===============================================================================

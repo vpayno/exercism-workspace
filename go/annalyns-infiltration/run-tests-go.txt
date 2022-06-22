@@ -7,9 +7,9 @@ Go packages: annalyn
 
 golint annalyn
 
-real	0m0.081s
-user	0m0.063s
-sys	0m0.082s
+real	0m0.103s
+user	0m0.066s
+sys	0m0.087s
 
 ===============================================================================
 
@@ -92,11 +92,11 @@ go test -v -covermode=count -coverprofile coverage.out annalyn
 --- PASS: ExampleCanFreePrisoner (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	annalyn	0.022s	coverage: 100.0% of statements
+ok  	annalyn	0.019s	coverage: 100.0% of statements
 
-real	0m0.691s
-user	0m0.788s
-sys	0m0.544s
+real	0m0.700s
+user	0m0.801s
+sys	0m0.446s
 
 ===============================================================================
 
@@ -107,9 +107,9 @@ annalyn/annalyns_infiltration.go:14:	CanSignalPrisoner	100.0%
 annalyn/annalyns_infiltration.go:20:	CanFreePrisoner		100.0%
 total:					(statements)		100.0%
 
-real	0m0.086s
-user	0m0.034s
-sys	0m0.079s
+real	0m0.069s
+user	0m0.032s
+sys	0m0.073s
 
 ===============================================================================
 
@@ -129,7 +129,7 @@ go test -v -race -covermode=atomic annalyn
 === RUN   TestCanSpy/Archer_and_prisoner_are_awake,_knight_is_sleeping
 === RUN   TestCanSpy/Prisoner_is_awake,_knight_and_archer_are_sleeping
 === RUN   TestCanSpy/All_characters_are_awake
---- PASS: TestCanSpy (0.01s)
+--- PASS: TestCanSpy (0.00s)
     --- PASS: TestCanSpy/All_characters_are_sleeping (0.00s)
     --- PASS: TestCanSpy/Knight_is_awake,_archer_and_prisoner_are_sleeping (0.00s)
     --- PASS: TestCanSpy/Knight_and_archer_are_awake,_prisoner_is_sleeping (0.00s)
@@ -143,7 +143,7 @@ go test -v -race -covermode=atomic annalyn
 === RUN   TestCanSignalPrisoner/Archer_is_sleeping,_prisoner_is_awake
 === RUN   TestCanSignalPrisoner/Archer_is_awake,_prisoner_is_sleeping
 === RUN   TestCanSignalPrisoner/All_characters_are_awake
---- PASS: TestCanSignalPrisoner (0.00s)
+--- PASS: TestCanSignalPrisoner (0.01s)
     --- PASS: TestCanSignalPrisoner/All_characters_are_sleeping (0.00s)
     --- PASS: TestCanSignalPrisoner/Archer_is_sleeping,_prisoner_is_awake (0.00s)
     --- PASS: TestCanSignalPrisoner/Archer_is_awake,_prisoner_is_sleeping (0.00s)
@@ -192,78 +192,78 @@ go test -v -race -covermode=atomic annalyn
 --- PASS: ExampleCanFreePrisoner (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	annalyn	0.085s	coverage: 100.0% of statements
+ok  	annalyn	0.057s	coverage: 100.0% of statements
 
-real	0m0.755s
-user	0m0.871s
-sys	0m0.478s
+real	0m0.704s
+user	0m0.851s
+sys	0m0.461s
 
 ===============================================================================
 
 go test --bench . --benchmem
 PASS
-ok  	annalyn	0.007s
+ok  	annalyn	0.013s
 
-real	0m0.506s
-user	0m0.619s
-sys	0m0.325s
+real	0m0.653s
+user	0m0.764s
+sys	0m0.464s
 
 ===============================================================================
 
 go test -tags bonus
 PASS
-ok  	annalyn	0.012s
+ok  	annalyn	0.007s
 
-real	0m0.498s
-user	0m0.578s
-sys	0m0.381s
+real	0m0.562s
+user	0m0.651s
+sys	0m0.423s
 
 ===============================================================================
 
 go vet annalyn
 
-real	0m0.370s
-user	0m0.379s
-sys	0m0.328s
+real	0m0.376s
+user	0m0.443s
+sys	0m0.417s
 
 ===============================================================================
 
 go fix annalyn
 
-real	0m0.048s
-user	0m0.029s
-sys	0m0.032s
+real	0m0.076s
+user	0m0.034s
+sys	0m0.067s
 
 ===============================================================================
 
 gosec ./annalyns-infiltration
-[gosec] 2022/06/15 21:43:56 Including rules: default
-[gosec] 2022/06/15 21:43:56 Excluding rules: default
-[gosec] 2022/06/15 21:43:56 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/annalyns-infiltration
-[gosec] 2022/06/15 21:43:56 Checking package: annalyn
-[gosec] 2022/06/15 21:43:56 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/annalyns-infiltration/annalyns_infiltration.go
+[gosec] 2022/06/20 22:19:03 Including rules: default
+[gosec] 2022/06/20 22:19:03 Excluding rules: default
+[gosec] 2022/06/20 22:19:03 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/annalyns-infiltration
+[gosec] 2022/06/20 22:19:03 Checking package: annalyn
+[gosec] 2022/06/20 22:19:03 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/annalyns-infiltration/annalyns_infiltration.go
 Results:
 
 
 [1;36mSummary:[0m
   Gosec  : dev
   Files  : 1
-  Lines  : 37
+  Lines  : 30
   Nosec  : 0
   Issues : [1;32m0[0m
 
 
-real	0m0.280s
-user	0m0.293s
-sys	0m0.238s
+real	0m0.307s
+user	0m0.276s
+sys	0m0.320s
 
 ===============================================================================
 
 gomarkdoc --output annalyn-doc.md
 
-real	0m0.034s
-user	0m0.028s
-sys	0m0.015s
+real	0m0.027s
+user	0m0.017s
+sys	0m0.011s
 
 ===============================================================================
 
@@ -289,9 +289,9 @@ func CanSpy(knightIsAwake, archerIsAwake, prisonerIsAwake bool) bool
     CanSpy can be executed if at least one of the characters is awake
 
 
-real	0m0.146s
-user	0m0.070s
-sys	0m0.140s
+real	0m0.126s
+user	0m0.056s
+sys	0m0.114s
 
 
 ===============================================================================

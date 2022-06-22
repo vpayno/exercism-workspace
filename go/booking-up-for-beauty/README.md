@@ -76,6 +76,8 @@ AnniversaryDate()
 
 ### My Solution
 
-- [solution](./booking_up_for_beauty.go)
+- [my solution](./booking_up_for_beauty.go)
+- [my examples](./booking_up_for_beauty_examples_test.go)
+- [tests](./booking_up_for_beauty_test.go)
 - [run-tests](./run-tests-go.txt)
 - [documentation](./booking-doc.md)

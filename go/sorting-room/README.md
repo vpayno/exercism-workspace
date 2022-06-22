@@ -164,7 +164,8 @@ fmt.Println(DescribeAnything("some string"))
 
 ### My Solution
 
-- [solution](./sorting_room.go)
-- [examples](./sorting_room_examples_test.go)
+- [my solution](./sorting_room.go)
+- [my examples](./sorting_room_examples_test.go)
+- [tests](./sorting_room_test.go)
 - [run-tests](./run-tests-go.txt)
 - [documentation](./greeting-doc.md)

@@ -162,6 +162,8 @@ WithinLimit("hello❗", 6)
 
 ### My Solution
 
-- [solution](./logs_logs_logs.go)
+- [my solution](./logs_logs_logs.go)
+- [my examples](./logs_logs_logs_examples_test.go)
+- [tests](./logs_logs_logs_test.go)
 - [run-tests](./run-tests-go.txt)
 - [documentation](./logs-doc.md)

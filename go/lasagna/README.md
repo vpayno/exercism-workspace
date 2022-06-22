@@ -152,6 +152,8 @@ ElapsedTime(3, 20)
 
 ### My Solution
 
-- [solution](./lasagna.go)
+- [my solution](./lasagna.go)
+- [my examples](./lasagna_examples_test.go)
+- [tests](./lasagna_test.go)
 - [run-tests](./run-tests-go.txt)
 - [documentation](./lasagna-doc.md)

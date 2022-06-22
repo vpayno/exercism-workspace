@@ -7,9 +7,9 @@ Go packages: purchase
 
 golint purchase
 
-real	0m0.222s
-user	0m0.228s
-sys	0m0.162s
+real	0m0.294s
+user	0m0.276s
+sys	0m0.226s
 
 ===============================================================================
 
@@ -60,11 +60,11 @@ go test -v -covermode=count -coverprofile coverage.out purchase
 --- PASS: ExampleCalculateResellPrice (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	purchase	0.008s	coverage: 100.0% of statements
+ok  	purchase	0.003s	coverage: 100.0% of statements
 
-real	0m0.645s
-user	0m0.685s
-sys	0m0.537s
+real	0m0.770s
+user	0m0.861s
+sys	0m0.454s
 
 ===============================================================================
 
@@ -74,9 +74,9 @@ purchase/vehicle_purchase.go:22:	ChooseVehicle		100.0%
 purchase/vehicle_purchase.go:35:	CalculateResellPrice	100.0%
 total:					(statements)		100.0%
 
-real	0m0.218s
-user	0m0.265s
-sys	0m0.191s
+real	0m0.301s
+user	0m0.311s
+sys	0m0.328s
 
 ===============================================================================
 
@@ -87,7 +87,7 @@ go test -v -race -covermode=atomic purchase
 === RUN   TestNeedsLicense/does_not_need_a_license_for_a_bike
 === RUN   TestNeedsLicense/does_not_need_a_license_for_a_stroller
 === RUN   TestNeedsLicense/does_not_need_a_license_for_a_e-scooter
---- PASS: TestNeedsLicense (0.00s)
+--- PASS: TestNeedsLicense (0.01s)
     --- PASS: TestNeedsLicense/need_a_license_for_a_car (0.00s)
     --- PASS: TestNeedsLicense/need_a_license_for_a_truck (0.00s)
     --- PASS: TestNeedsLicense/does_not_need_a_license_for_a_bike (0.00s)
@@ -99,7 +99,7 @@ go test -v -race -covermode=atomic purchase
 === RUN   TestChooseVehicle/chooses_Ford_Focus_over_Ford_Pinto
 === RUN   TestChooseVehicle/chooses_2018_over_2020
 === RUN   TestChooseVehicle/chooses_Bugatti_over_ford
---- PASS: TestChooseVehicle (0.00s)
+--- PASS: TestChooseVehicle (0.02s)
     --- PASS: TestChooseVehicle/chooses_Bugatti_over_Ford (0.00s)
     --- PASS: TestChooseVehicle/chooses_Chery_over_Kia (0.00s)
     --- PASS: TestChooseVehicle/chooses_Ford_Focus_over_Ford_Pinto (0.00s)
@@ -112,7 +112,7 @@ go test -v -race -covermode=atomic purchase
 === RUN   TestCalculateResellPrice/price_is_reduced_to_50%%_for_age_10
 === RUN   TestCalculateResellPrice/price_is_reduced_to_50%%_for_age_11
 === RUN   TestCalculateResellPrice/float_price_is_reduced_to_70%%_for_age_8,
---- PASS: TestCalculateResellPrice (0.00s)
+--- PASS: TestCalculateResellPrice (0.01s)
     --- PASS: TestCalculateResellPrice/price_is_reduced_to_80%%_for_age_below_3 (0.00s)
     --- PASS: TestCalculateResellPrice/price_is_reduced_to_80%%_for_age_below_3#01 (0.00s)
     --- PASS: TestCalculateResellPrice/price_is_reduced_to_70%%_for_age_7 (0.00s)
@@ -127,67 +127,67 @@ go test -v -race -covermode=atomic purchase
 --- PASS: ExampleCalculateResellPrice (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	purchase	0.041s	coverage: 100.0% of statements
+ok  	purchase	0.088s	coverage: 100.0% of statements
 
-real	0m0.655s
-user	0m0.738s
-sys	0m0.413s
+real	0m0.953s
+user	0m1.049s
+sys	0m0.567s
 
 ===============================================================================
 
 go test --bench . --benchmem
 PASS
-ok  	purchase	0.021s
+ok  	purchase	0.018s
 
-real	0m0.470s
-user	0m0.463s
-sys	0m0.343s
+real	0m0.780s
+user	0m0.833s
+sys	0m0.594s
 
 ===============================================================================
 
 go test -tags bonus
 PASS
-ok  	purchase	0.005s
+ok  	purchase	0.021s
 
-real	0m0.529s
-user	0m0.610s
-sys	0m0.355s
+real	0m0.629s
+user	0m0.713s
+sys	0m0.461s
 
 ===============================================================================
 
 go vet purchase
 
-real	0m0.363s
-user	0m0.416s
-sys	0m0.250s
+real	0m0.401s
+user	0m0.465s
+sys	0m0.527s
 
 ===============================================================================
 
 go fix purchase
 
-real	0m0.171s
-user	0m0.133s
-sys	0m0.130s
+real	0m0.210s
+user	0m0.227s
+sys	0m0.172s
 
 ===============================================================================
 
 gosec ./vehicle-purchase
-[gosec] 2022/06/16 22:57:20 Including rules: default
-[gosec] 2022/06/16 22:57:20 Excluding rules: default
-[gosec] 2022/06/16 22:57:20 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/vehicle-purchase
-2022/06/16 22:57:21 internal error: package "fmt" without types was imported from "command-line-arguments"
+[gosec] 2022/06/20 23:24:10 Including rules: default
+[gosec] 2022/06/20 23:24:10 Excluding rules: default
+[gosec] 2022/06/20 23:24:10 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/vehicle-purchase
+2022/06/20 23:24:10 internal error: package "fmt" without types was imported from "command-line-arguments"
 
-real	0m0.591s
-user	0m0.612s
-sys	0m0.464s
+real	0m0.513s
+user	0m0.549s
+sys	0m0.497s
 
 ===============================================================================
 
 gomarkdoc --output purchase-doc.md
 
-real	0m0.024s
-user	0m0.016s
-sys	0m0.012s
+real	0m0.048s
+user	0m0.036s
+sys	0m0.021s
 
 ===============================================================================
 
@@ -210,9 +210,9 @@ func NeedsLicense(kind string) bool
     vehicle. Only "car" and "truck" require a license.
 
 
-real	0m0.223s
-user	0m0.148s
-sys	0m0.209s
+real	0m0.241s
+user	0m0.176s
+sys	0m0.219s
 
 
 ===============================================================================

@@ -7,9 +7,9 @@ Go packages: elon
 
 golint elon
 
-real	0m0.235s
-user	0m0.232s
-sys	0m0.223s
+real	0m0.220s
+user	0m0.213s
+sys	0m0.212s
 
 ===============================================================================
 
@@ -46,11 +46,11 @@ go test -v -covermode=count -coverprofile coverage.out elon
 --- PASS: ExampleCanFinish (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	elon	0.018s	coverage: 100.0% of statements
+ok  	elon	0.009s	coverage: 100.0% of statements
 
-real	0m0.757s
-user	0m0.857s
-sys	0m0.539s
+real	0m0.731s
+user	0m0.774s
+sys	0m0.582s
 
 ===============================================================================
 
@@ -62,9 +62,9 @@ elon/elons_toys.go:28:	DisplayBattery	100.0%
 elon/elons_toys.go:33:	CanFinish	100.0%
 total:			(statements)	100.0%
 
-real	0m0.333s
-user	0m0.309s
-sys	0m0.279s
+real	0m0.247s
+user	0m0.279s
+sys	0m0.303s
 
 ===============================================================================
 
@@ -101,71 +101,71 @@ go test -v -race -covermode=atomic elon
 --- PASS: ExampleCanFinish (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	elon	0.046s	coverage: 100.0% of statements
+ok  	elon	0.058s	coverage: 100.0% of statements
 
-real	0m0.918s
-user	0m1.052s
-sys	0m0.677s
+real	0m0.757s
+user	0m0.813s
+sys	0m0.477s
 
 ===============================================================================
 
 go test --bench . --benchmem
 PASS
-ok  	elon	0.017s
+ok  	elon	0.072s
 
-real	0m0.592s
-user	0m0.597s
-sys	0m0.420s
+real	0m0.736s
+user	0m0.858s
+sys	0m0.516s
 
 ===============================================================================
 
 go test -tags bonus
 PASS
-ok  	elon	0.013s
+ok  	elon	0.004s
 
-real	0m0.623s
-user	0m0.756s
-sys	0m0.375s
+real	0m0.602s
+user	0m0.676s
+sys	0m0.437s
 
 ===============================================================================
 
 go vet elon
 # elon
-./elons_toys_2_test.go:7:1: ExampleDrive refers to unknown identifier: Drive
-./elons_toys_2_test.go:25:1: ExampleDisplayDistance refers to unknown identifier: DisplayDistance
-./elons_toys_2_test.go:35:1: ExampleDisplayBattery refers to unknown identifier: DisplayBattery
-./elons_toys_2_test.go:45:1: ExampleCanFinish refers to unknown identifier: CanFinish
+./elons_toys_examples_test.go:7:1: ExampleDrive refers to unknown identifier: Drive
+./elons_toys_examples_test.go:25:1: ExampleDisplayDistance refers to unknown identifier: DisplayDistance
+./elons_toys_examples_test.go:35:1: ExampleDisplayBattery refers to unknown identifier: DisplayBattery
+./elons_toys_examples_test.go:45:1: ExampleCanFinish refers to unknown identifier: CanFinish
 
-real	0m0.523s
-user	0m0.505s
-sys	0m0.541s
+real	0m0.427s
+user	0m0.487s
+sys	0m0.366s
 
 ===============================================================================
 
 go fix elon
 
-real	0m0.194s
-user	0m0.182s
-sys	0m0.159s
+real	0m0.200s
+user	0m0.199s
+sys	0m0.122s
 
 ===============================================================================
 
 gosec ./elons-toys
-[gosec] 2022/06/19 13:05:36 Including rules: default
-[gosec] 2022/06/19 13:05:36 Excluding rules: default
-[gosec] 2022/06/19 13:05:36 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/elons-toys
-2022/06/19 13:05:36 internal error: package "fmt" without types was imported from "command-line-arguments"
+[gosec] 2022/06/20 23:39:06 Including rules: default
+[gosec] 2022/06/20 23:39:06 Excluding rules: default
+[gosec] 2022/06/20 23:39:06 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/elons-toys
+2022/06/20 23:39:06 internal error: package "fmt" without types was imported from "command-line-arguments"
 
-real	0m0.637s
-user	0m0.659s
-sys	0m0.474s
+real	0m0.536s
+user	0m0.528s
+sys	0m0.360s
 
 ===============================================================================
 
 gomarkdoc --output elon-doc.md
 
-real	0m0.034s
-user	0m0.029s
+real	0m0.032s
+user	0m0.020s
 sys	0m0.014s
 
 ===============================================================================
@@ -201,9 +201,9 @@ func (car *Car) Drive() bool
     and reduces the battery (`int`) according to the battery drainage.
 
 
-real	0m0.281s
-user	0m0.224s
-sys	0m0.306s
+real	0m0.262s
+user	0m0.182s
+sys	0m0.259s
 
 
 ===============================================================================

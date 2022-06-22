@@ -284,7 +284,8 @@ CategoryExpenses(records, p2, "rent")
 
 ### My Solution
 
-- [solution](./expenses.go)
-- [examples](./expenses_examples_test.go)
+- [my solution](./expenses.go)
+- [my examples](./expenses_examples_test.go)
+- [tests](./expenses_test.go)
 - [run-tests](./run-tests-go.txt)
 - [documentation](./expenses-doc.md)
