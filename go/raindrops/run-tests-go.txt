@@ -7,9 +7,9 @@ Go packages: raindrops
 
 golint raindrops
 
-real	0m0.224s
-user	0m0.177s
-sys	0m0.215s
+real	0m0.177s
+user	0m0.193s
+sys	0m0.185s
 
 ===============================================================================
 
@@ -20,21 +20,21 @@ go test -v -covermode=count -coverprofile coverage.out raindrops
 --- PASS: ExampleConvert (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	raindrops	0.014s	coverage: 100.0% of statements
+ok  	raindrops	0.009s	coverage: 100.0% of statements
 
-real	0m0.749s
-user	0m0.792s
-sys	0m0.603s
+real	0m0.625s
+user	0m0.631s
+sys	0m0.541s
 
 ===============================================================================
 
 go tool cover -func=coverage.out
-raindrops/raindrops.go:7:	Convert		100.0%
+raindrops/raindrops.go:10:	Convert		100.0%
 total:				(statements)	100.0%
 
-real	0m0.306s
-user	0m0.249s
-sys	0m0.269s
+real	0m0.215s
+user	0m0.231s
+sys	0m0.194s
 
 ===============================================================================
 
@@ -45,11 +45,11 @@ go test -v -race -covermode=atomic raindrops
 --- PASS: ExampleConvert (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	raindrops	0.024s	coverage: 100.0% of statements
+ok  	raindrops	(cached)	coverage: 100.0% of statements
 
-real	0m0.684s
-user	0m0.752s
-sys	0m0.470s
+real	0m0.281s
+user	0m0.292s
+sys	0m0.255s
 
 ===============================================================================
 
@@ -58,59 +58,59 @@ goos: linux
 goarch: amd64
 pkg: raindrops
 cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
-BenchmarkConvert-4   	  951364	      1184 ns/op	      80 B/op	       6 allocs/op
+BenchmarkConvert-4   	  835659	      1322 ns/op	     290 B/op	      19 allocs/op
 PASS
-ok  	raindrops	1.206s
+ok  	raindrops	1.173s
 
-real	0m2.010s
-user	0m2.326s
-sys	0m0.639s
+real	0m1.645s
+user	0m2.197s
+sys	0m0.402s
 
 ===============================================================================
 
 go test -tags bonus
 PASS
-ok  	raindrops	0.003s
+ok  	raindrops	0.006s
 
-real	0m0.591s
-user	0m0.638s
-sys	0m0.388s
+real	0m0.611s
+user	0m0.744s
+sys	0m0.422s
 
 ===============================================================================
 
 go vet raindrops
 
-real	0m0.382s
-user	0m0.381s
-sys	0m0.351s
+real	0m0.345s
+user	0m0.453s
+sys	0m0.334s
 
 ===============================================================================
 
 go fix raindrops
 
-real	0m0.163s
-user	0m0.149s
-sys	0m0.139s
+real	0m0.160s
+user	0m0.153s
+sys	0m0.155s
 
 ===============================================================================
 
 gosec ./raindrops
-[gosec] 2022/06/22 08:55:42 Including rules: default
-[gosec] 2022/06/22 08:55:42 Excluding rules: default
-[gosec] 2022/06/22 08:55:42 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/raindrops
-2022/06/22 08:55:42 internal error: package "fmt" without types was imported from "command-line-arguments"
+[gosec] 2022/06/22 08:57:18 Including rules: default
+[gosec] 2022/06/22 08:57:18 Excluding rules: default
+[gosec] 2022/06/22 08:57:18 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/raindrops
+2022/06/22 08:57:18 internal error: package "fmt" without types was imported from "command-line-arguments"
 
-real	0m0.495s
-user	0m0.579s
-sys	0m0.425s
+real	0m0.491s
+user	0m0.545s
+sys	0m0.369s
 
 ===============================================================================
 
 gomarkdoc --output raindrops-doc.md
 
-real	0m0.031s
-user	0m0.018s
-sys	0m0.016s
+real	0m0.029s
+user	0m0.024s
+sys	0m0.020s
 
 ===============================================================================
 
@@ -127,9 +127,9 @@ func Convert(number int) string
     of the number, `int`, given.
 
 
-real	0m0.238s
-user	0m0.185s
-sys	0m0.240s
+real	0m0.269s
+user	0m0.227s
+sys	0m0.246s
 
 
 ===============================================================================

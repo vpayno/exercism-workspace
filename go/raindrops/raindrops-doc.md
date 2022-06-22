@@ -13,7 +13,7 @@ Package raindrops converts a number into a string that contains raindrop sounds 
 - [func Convert(number int) string](<#func-convert>)
 
 
-## func [Convert](<https://github.com/vpayno/exercism-workspace/blob/main/go/raindrops/raindrops.go#L7>)
+## func [Convert](<https://github.com/vpayno/exercism-workspace/blob/main/go/raindrops/raindrops.go#L10>)
 
 ```go
 func Convert(number int) string
