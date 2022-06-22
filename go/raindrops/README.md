@@ -44,3 +44,12 @@ The rules of `raindrops` are that if a given number:
 ### Based on
 
 A variation on FizzBuzz, a famous technical interview question that is intended to weed out potential candidates. That question is itself derived from Fizz Buzz, a popular children's game for teaching division. - https://en.wikipedia.org/wiki/Fizz_buzz
+
+### My Solution
+
+- [my solution](./raindrops.go)
+- [my examples](./raindrops_examples_test.go)
+- [test cases](./cases_test.go)
+- [tests](./raindrops_test.go)
+- [run-tests](./run-tests-go.txt)
+- [documentation](./raindrops-doc.md)
