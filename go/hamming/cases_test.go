@@ -64,4 +64,16 @@ var testCases = []struct {
 		0,
 		true,
 	},
+	{ // disallow left strand with invalid letters
+		"ABCD",
+		"CAGT",
+		0,
+		true,
+	},
+	{ // disallow right strand with invalid letters
+		"CAGT",
+		"ABCD",
+		0,
+		true,
+	},
 }

@@ -45,3 +45,4 @@
 ## Exercises
 
 - [two-fer](./two-fer/README.md)
+- [hamming](./hamming/README.md)
