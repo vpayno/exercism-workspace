@@ -7,9 +7,9 @@ Go packages: census
 
 golint census
 
-real	0m0.199s
-user	0m0.152s
-sys	0m0.144s
+real	0m0.102s
+user	0m0.096s
+sys	0m0.101s
 
 ===============================================================================
 
@@ -46,7 +46,7 @@ go test -v -covermode=count -coverprofile coverage.out census
 === RUN   TestCount/no_data_collected
 === RUN   TestCount/all_data_collected
 === RUN   TestCount/some_data_collected
---- PASS: TestCount (0.00s)
+--- PASS: TestCount (0.01s)
     --- PASS: TestCount/no_data_collected (0.00s)
     --- PASS: TestCount/all_data_collected (0.00s)
     --- PASS: TestCount/some_data_collected (0.00s)
@@ -60,11 +60,11 @@ go test -v -covermode=count -coverprofile coverage.out census
 --- PASS: ExampleCount (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	census	0.004s	coverage: 100.0% of statements
+ok  	census	0.018s	coverage: 100.0% of statements
 
-real	0m0.628s
-user	0m0.700s
-sys	0m0.490s
+real	0m0.618s
+user	0m0.692s
+sys	0m0.447s
 
 ===============================================================================
 
@@ -75,9 +75,9 @@ census/census.go:40:	Delete		100.0%
 census/census.go:47:	Count		100.0%
 total:			(statements)	100.0%
 
-real	0m0.133s
-user	0m0.043s
-sys	0m0.125s
+real	0m0.114s
+user	0m0.042s
+sys	0m0.127s
 
 ===============================================================================
 
@@ -106,7 +106,7 @@ go test -v -race -covermode=atomic census
 === RUN   TestDelete/no_data_collected
 === RUN   TestDelete/all_data_collected
 === RUN   TestDelete/some_data_collected
---- PASS: TestDelete (0.00s)
+--- PASS: TestDelete (0.01s)
     --- PASS: TestDelete/no_data_collected (0.00s)
     --- PASS: TestDelete/all_data_collected (0.00s)
     --- PASS: TestDelete/some_data_collected (0.00s)
@@ -114,7 +114,7 @@ go test -v -race -covermode=atomic census
 === RUN   TestCount/no_data_collected
 === RUN   TestCount/all_data_collected
 === RUN   TestCount/some_data_collected
---- PASS: TestCount (0.00s)
+--- PASS: TestCount (0.01s)
     --- PASS: TestCount/no_data_collected (0.00s)
     --- PASS: TestCount/all_data_collected (0.00s)
     --- PASS: TestCount/some_data_collected (0.00s)
@@ -128,59 +128,59 @@ go test -v -race -covermode=atomic census
 --- PASS: ExampleCount (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	census	0.037s	coverage: 100.0% of statements
+ok  	census	0.051s	coverage: 100.0% of statements
 
 real	0m0.844s
-user	0m0.888s
-sys	0m0.530s
+user	0m0.931s
+sys	0m0.524s
 
 ===============================================================================
 
 go test --bench . --benchmem
 PASS
-ok  	census	0.034s
+ok  	census	0.011s
 
-real	0m0.711s
-user	0m0.861s
-sys	0m0.606s
+real	0m0.534s
+user	0m0.648s
+sys	0m0.446s
 
 ===============================================================================
 
 go test -tags bonus
 PASS
-ok  	census	0.008s
+ok  	census	0.012s
 
-real	0m0.654s
-user	0m0.810s
-sys	0m0.469s
+real	0m0.589s
+user	0m0.674s
+sys	0m0.483s
 
 ===============================================================================
 
 go vet census
 # census
-./census_2_test.go:17:1: ExampleHasRequiredInfo refers to unknown identifier: HasRequiredInfo
-./census_2_test.go:29:1: ExampleDelete refers to unknown identifier: Delete
+./census_examples_test.go:17:1: ExampleHasRequiredInfo refers to unknown identifier: HasRequiredInfo
+./census_examples_test.go:29:1: ExampleDelete refers to unknown identifier: Delete
 
-real	0m0.413s
-user	0m0.440s
-sys	0m0.495s
+real	0m0.446s
+user	0m0.603s
+sys	0m0.430s
 
 ===============================================================================
 
 go fix census
 
-real	0m0.061s
-user	0m0.025s
-sys	0m0.054s
+real	0m0.049s
+user	0m0.026s
+sys	0m0.048s
 
 ===============================================================================
 
 gosec ./census
-[gosec] 2022/06/19 15:55:11 Including rules: default
-[gosec] 2022/06/19 15:55:11 Excluding rules: default
-[gosec] 2022/06/19 15:55:11 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/census
-[gosec] 2022/06/19 15:55:11 Checking package: census
-[gosec] 2022/06/19 15:55:11 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/census/census.go
+[gosec] 2022/06/21 19:39:26 Including rules: default
+[gosec] 2022/06/21 19:39:26 Excluding rules: default
+[gosec] 2022/06/21 19:39:26 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/census
+[gosec] 2022/06/21 19:39:26 Checking package: census
+[gosec] 2022/06/21 19:39:26 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/census/census.go
 Results:
 
 
@@ -192,17 +192,17 @@ Results:
   Issues : [1;32m0[0m
 
 
-real	0m0.408s
-user	0m0.480s
-sys	0m0.251s
+real	0m0.276s
+user	0m0.291s
+sys	0m0.187s
 
 ===============================================================================
 
 gomarkdoc --output census-doc.md
 
-real	0m0.036s
-user	0m0.025s
-sys	0m0.016s
+real	0m0.030s
+user	0m0.023s
+sys	0m0.007s
 
 ===============================================================================
 
@@ -237,9 +237,9 @@ func (r *Resident) HasRequiredInfo() bool
     information.
 
 
-real	0m0.106s
-user	0m0.055s
-sys	0m0.087s
+real	0m0.137s
+user	0m0.078s
+sys	0m0.132s
 
 
 ===============================================================================

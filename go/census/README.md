@@ -136,6 +136,8 @@ Count(residents)
 
 ### My Solution
 
-- [solution](./census.go)
+- [my solution](./census.go)
+- [my examples](./census_examples_test.go)
+- [tests](./census_test.go)
 - [run-tests](./run-tests-go.txt)
 - [documentation](./census-doc.md)
