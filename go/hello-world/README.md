@@ -46,7 +46,7 @@ This is an exercise to introduce users to using Exercism - http://en.wikipedia.o
 ### My Solution
 
 - [my solution](./hello_world.go)
-- [my examples](./hello_world_exercises_test.go)
+- [my examples](./hello_world_examples_test.go)
 - [tests](./hello_world_test.go)
 - [run-tests](./run-tests-go.txt)
 - [documentation](./greeting-doc.md)
