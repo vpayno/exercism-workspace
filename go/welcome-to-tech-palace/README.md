@@ -115,6 +115,8 @@ CleanUpMessage(message)
 
 ### My Solution
 
-- [solution](./welcome_to_tech_palace.go)
+- [my solution](./welcome_to_tech_palace.go)
+- [my examples](./welcome_to_tech_palace_examples_test.go)
+- [tests](./welcome_to_tech_palace_test.go)
 - [run-tests](./run-tests-go.txt)
 - [documentation](./techpalace-doc.md)
