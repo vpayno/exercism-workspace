@@ -8,9 +8,9 @@ Go packages: interest
 golint interest
 /home/vpayno/git_vpayno/exercism-workspace/go/interest-is-interesting/interest_is_interesting.go:4:6: func name will be used as interest.InterestRate by other packages, and that stutters; consider calling this Rate
 
-real	0m0.119s
-user	0m0.105s
-sys	0m0.078s
+real	0m0.092s
+user	0m0.097s
+sys	0m0.059s
 
 ===============================================================================
 
@@ -89,11 +89,11 @@ go test -v -covermode=count -coverprofile coverage.out interest
 --- PASS: ExampleYearsBeforeDesiredBalance (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	interest	0.029s	coverage: 100.0% of statements
+ok  	interest	0.004s	coverage: 100.0% of statements
 
-real	0m0.534s
-user	0m0.644s
-sys	0m0.370s
+real	0m0.600s
+user	0m0.779s
+sys	0m0.413s
 
 ===============================================================================
 
@@ -104,9 +104,9 @@ interest/interest_is_interesting.go:28:	AnnualBalanceUpdate		100.0%
 interest/interest_is_interesting.go:33:	YearsBeforeDesiredBalance	100.0%
 total:					(statements)			100.0%
 
-real	0m0.096s
-user	0m0.046s
-sys	0m0.108s
+real	0m0.077s
+user	0m0.041s
+sys	0m0.079s
 
 ===============================================================================
 
@@ -125,7 +125,7 @@ go test -v -race -covermode=atomic interest
 === RUN   TestInterestRate/Rate_on_small_negative_balance
 === RUN   TestInterestRate/Rate_on_regular_negative_balance
 === RUN   TestInterestRate/Rate_on_large_negative_balance
---- PASS: TestInterestRate (0.02s)
+--- PASS: TestInterestRate (0.01s)
     --- PASS: TestInterestRate/Minimal_first_interest_rate (0.00s)
     --- PASS: TestInterestRate/Tiny_first_interest_rate (0.00s)
     --- PASS: TestInterestRate/Maximum_first_interest_rate (0.00s)
@@ -157,7 +157,7 @@ go test -v -race -covermode=atomic interest
 === RUN   TestAnnualBalanceUpdate/Annual_balance_update_for_huge_positive_start_balance
 === RUN   TestAnnualBalanceUpdate/Annual_balance_update_for_small_negative_start_balance
 === RUN   TestAnnualBalanceUpdate/Annual_balance_update_for_large_negative_start_balance
---- PASS: TestAnnualBalanceUpdate (0.01s)
+--- PASS: TestAnnualBalanceUpdate (0.00s)
     --- PASS: TestAnnualBalanceUpdate/Annual_balance_update_for_empty_start_balance (0.00s)
     --- PASS: TestAnnualBalanceUpdate/Annual_balance_update_for_small_positive_start_balance (0.00s)
     --- PASS: TestAnnualBalanceUpdate/Annual_balance_update_for_average_positive_start_balance (0.00s)
@@ -185,56 +185,56 @@ go test -v -race -covermode=atomic interest
 --- PASS: ExampleYearsBeforeDesiredBalance (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	interest	(cached)	coverage: 100.0% of statements
+ok  	interest	0.054s	coverage: 100.0% of statements
 
-real	0m0.384s
-user	0m0.394s
-sys	0m0.408s
+real	0m0.670s
+user	0m0.772s
+sys	0m0.443s
 
 ===============================================================================
 
 go test --bench . --benchmem
 PASS
-ok  	interest	0.025s
+ok  	interest	0.035s
 
-real	0m0.552s
-user	0m0.604s
-sys	0m0.378s
+real	0m0.650s
+user	0m0.788s
+sys	0m0.438s
 
 ===============================================================================
 
 go test -tags bonus
 PASS
-ok  	interest	0.012s
+ok  	interest	0.011s
 
-real	0m0.480s
-user	0m0.567s
-sys	0m0.339s
+real	0m0.449s
+user	0m0.554s
+sys	0m0.364s
 
 ===============================================================================
 
 go vet interest
 
-real	0m0.513s
-user	0m0.699s
-sys	0m0.411s
+real	0m0.420s
+user	0m0.546s
+sys	0m0.312s
 
 ===============================================================================
 
 go fix interest
 
 real	0m0.052s
-user	0m0.021s
-sys	0m0.042s
+user	0m0.034s
+sys	0m0.058s
 
 ===============================================================================
 
 gosec ./interest-is-interesting
-[gosec] 2022/06/17 21:03:39 Including rules: default
-[gosec] 2022/06/17 21:03:39 Excluding rules: default
-[gosec] 2022/06/17 21:03:39 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/interest-is-interesting
-[gosec] 2022/06/17 21:03:39 Checking package: interest
-[gosec] 2022/06/17 21:03:39 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/interest-is-interesting/interest_is_interesting.go
+[gosec] 2022/06/21 19:47:24 Including rules: default
+[gosec] 2022/06/21 19:47:24 Excluding rules: default
+[gosec] 2022/06/21 19:47:24 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/interest-is-interesting
+[gosec] 2022/06/21 19:47:24 Checking package: interest
+[gosec] 2022/06/21 19:47:24 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/interest-is-interesting/interest_is_interesting.go
 Results:
 
 
@@ -246,17 +246,17 @@ Results:
   Issues : [1;32m0[0m
 
 
-real	0m0.269s
-user	0m0.224s
-sys	0m0.233s
+real	0m0.231s
+user	0m0.259s
+sys	0m0.155s
 
 ===============================================================================
 
 gomarkdoc --output interest-doc.md
 
-real	0m0.027s
-user	0m0.020s
-sys	0m0.017s
+real	0m0.033s
+user	0m0.042s
+sys	0m0.038s
 
 ===============================================================================
 
@@ -281,9 +281,9 @@ func YearsBeforeDesiredBalance(balance, targetBalance float64) int
     reach the desired balance:
 
 
-real	0m0.119s
-user	0m0.052s
-sys	0m0.134s
+real	0m0.109s
+user	0m0.053s
+sys	0m0.138s
 
 
 ===============================================================================
