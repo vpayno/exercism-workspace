@@ -234,10 +234,10 @@ With all the votes now counted, it's time to prepare the result announcement to 
 For this, you notice that having only counters for the votes is insufficient.
 There needs to be a way to associate the number of votes with a particular candidate.
 
-Create a function `NewElectionResult` that receives the name of a candidate and their number of votes and 
+Create a function `NewElectionResult` that receives the name of a candidate and their number of votes and
 returns a new election result.
 
-```go 
+```go
 var result *ElectionResult
 result = NewElectionResult("Peter", 3)
 
@@ -302,7 +302,8 @@ finalResults["Mary"]
 
 ### My Solution
 
-- [solution](./election_day.go
-election_result.go)
+- [my solution](./election_day.go)
+- [my examples](election_day_examples_test.go)
+- [tests](election_day_test.go)
 - [run-tests](./run-tests-go.txt)
 - [documentation](./electionday-doc.md)
