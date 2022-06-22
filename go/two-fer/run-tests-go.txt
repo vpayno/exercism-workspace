@@ -1,0 +1,134 @@
+Running automated test file(s):
+
+Go packages: twofer 
+
+
+===============================================================================
+
+golint twofer
+
+real	0m0.189s
+user	0m0.172s
+sys	0m0.160s
+
+===============================================================================
+
+go test -v -covermode=count -coverprofile coverage.out twofer
+=== RUN   TestShareWith
+--- PASS: TestShareWith (0.00s)
+=== RUN   ExampleShareWith
+--- PASS: ExampleShareWith (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	twofer	0.012s	coverage: 100.0% of statements
+
+real	0m0.582s
+user	0m0.634s
+sys	0m0.376s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+twofer/two_fer.go:9:	ShareWith	100.0%
+total:			(statements)	100.0%
+
+real	0m0.236s
+user	0m0.252s
+sys	0m0.260s
+
+===============================================================================
+
+go test -v -race -covermode=atomic twofer
+=== RUN   TestShareWith
+--- PASS: TestShareWith (0.00s)
+=== RUN   ExampleShareWith
+--- PASS: ExampleShareWith (0.01s)
+PASS
+coverage: 100.0% of statements
+ok  	twofer	(cached)	coverage: 100.0% of statements
+
+real	0m0.401s
+user	0m0.462s
+sys	0m0.377s
+
+===============================================================================
+
+go test --bench . --benchmem
+goos: linux
+goarch: amd64
+pkg: twofer
+cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+BenchmarkShareWith-4   	 2659958	       540.2 ns/op	      88 B/op	       4 allocs/op
+PASS
+ok  	twofer	1.937s
+
+real	0m2.469s
+user	0m3.202s
+sys	0m0.466s
+
+===============================================================================
+
+go test -tags bonus
+PASS
+ok  	twofer	0.007s
+
+real	0m0.508s
+user	0m0.520s
+sys	0m0.411s
+
+===============================================================================
+
+go vet twofer
+
+real	0m0.295s
+user	0m0.319s
+sys	0m0.277s
+
+===============================================================================
+
+go fix twofer
+
+real	0m0.179s
+user	0m0.142s
+sys	0m0.145s
+
+===============================================================================
+
+gosec ./two-fer
+[gosec] 2022/06/21 22:20:17 Including rules: default
+[gosec] 2022/06/21 22:20:17 Excluding rules: default
+[gosec] 2022/06/21 22:20:17 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/two-fer
+2022/06/21 22:20:18 internal error: package "fmt" without types was imported from "command-line-arguments"
+
+real	0m0.452s
+user	0m0.493s
+sys	0m0.324s
+
+===============================================================================
+
+gomarkdoc --output twofer-doc.md
+
+real	0m0.031s
+user	0m0.018s
+sys	0m0.020s
+
+===============================================================================
+
+go doc -all twofer
+package twofer // import "twofer"
+
+Package twofer for https://exercism.org/tracks/go/exercises/two-fer
+
+FUNCTIONS
+
+func ShareWith(name string) string
+    ShareWith returns a string with the sharing instructions.
+
+
+real	0m0.263s
+user	0m0.229s
+sys	0m0.202s
+
+
+===============================================================================
+

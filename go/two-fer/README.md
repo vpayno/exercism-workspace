@@ -51,3 +51,11 @@ Here are some examples:
 ### Based on
 
 https://github.com/exercism/problem-specifications/issues/757
+
+### My Solution
+
+- [my solution](./two_fer.go)
+- [my examples](./two_fer_examples_test.go)
+- [tests](./two_fer_test.go)
+- [run-tests](./run-tests-go.txt)
+- [documentation](./twofer-doc.md)
