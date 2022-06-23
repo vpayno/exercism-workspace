@@ -7,9 +7,9 @@ Go packages: diffsquares
 
 golint diffsquares
 
-real	0m0.124s
-user	0m0.085s
-sys	0m0.132s
+real	0m0.151s
+user	0m0.157s
+sys	0m0.133s
 
 ===============================================================================
 
@@ -19,55 +19,55 @@ go test -v -covermode=count -coverprofile coverage.out diffsquares
 === RUN   TestSumOfSquares
 --- PASS: TestSumOfSquares (0.00s)
 === RUN   TestDifference
---- PASS: TestDifference (0.01s)
+--- PASS: TestDifference (0.00s)
 === RUN   ExampleSquareOfSum
 --- PASS: ExampleSquareOfSum (0.00s)
 === RUN   ExampleSumOfSquares
 --- PASS: ExampleSumOfSquares (0.00s)
 === RUN   ExampleDifference
---- PASS: ExampleDifference (0.01s)
+--- PASS: ExampleDifference (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	diffsquares	0.032s	coverage: 100.0% of statements
+ok  	diffsquares	0.016s	coverage: 100.0% of statements
 
-real	0m0.800s
-user	0m1.023s
-sys	0m0.590s
+real	0m0.908s
+user	0m1.090s
+sys	0m0.715s
 
 ===============================================================================
 
 go tool cover -func=coverage.out
-diffsquares/difference_of_squares.go:7:		SquareOfSum	100.0%
-diffsquares/difference_of_squares.go:18:	SumOfSquares	100.0%
-diffsquares/difference_of_squares.go:29:	Difference	100.0%
+diffsquares/difference_of_squares.go:8:		SquareOfSum	100.0%
+diffsquares/difference_of_squares.go:16:	SumOfSquares	100.0%
+diffsquares/difference_of_squares.go:23:	Difference	100.0%
 total:						(statements)	100.0%
 
-real	0m0.121s
-user	0m0.061s
-sys	0m0.103s
+real	0m0.204s
+user	0m0.145s
+sys	0m0.137s
 
 ===============================================================================
 
 go test -v -race -covermode=atomic diffsquares
 === RUN   TestSquareOfSum
---- PASS: TestSquareOfSum (0.01s)
+--- PASS: TestSquareOfSum (0.00s)
 === RUN   TestSumOfSquares
---- PASS: TestSumOfSquares (0.04s)
+--- PASS: TestSumOfSquares (0.00s)
 === RUN   TestDifference
---- PASS: TestDifference (0.03s)
+--- PASS: TestDifference (0.00s)
 === RUN   ExampleSquareOfSum
---- PASS: ExampleSquareOfSum (0.01s)
+--- PASS: ExampleSquareOfSum (0.00s)
 === RUN   ExampleSumOfSquares
---- PASS: ExampleSumOfSquares (0.02s)
+--- PASS: ExampleSumOfSquares (0.00s)
 === RUN   ExampleDifference
---- PASS: ExampleDifference (0.03s)
+--- PASS: ExampleDifference (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	diffsquares	0.174s	coverage: 100.0% of statements
+ok  	diffsquares	0.063s	coverage: 100.0% of statements
 
-real	0m1.132s
-user	0m1.158s
-sys	0m0.609s
+real	0m1.173s
+user	0m1.355s
+sys	0m0.705s
 
 ===============================================================================
 
@@ -76,61 +76,61 @@ goos: linux
 goarch: amd64
 pkg: diffsquares
 cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
-BenchmarkSquareOfSum-4    	13116339	        85.00 ns/op	       0 B/op	       0 allocs/op
-BenchmarkSumOfSquares-4   	  363216	      3129 ns/op	       0 B/op	       0 allocs/op
-BenchmarkDifference-4     	  316506	      3286 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSquareOfSum-4    	24865846	        52.78 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSumOfSquares-4   	1000000000	         0.5825 ns/op	       0 B/op	       0 allocs/op
+BenchmarkDifference-4     	17963131	        58.90 ns/op	       0 B/op	       0 allocs/op
 PASS
-ok  	diffsquares	3.575s
+ok  	diffsquares	3.416s
 
-real	0m4.273s
-user	0m4.521s
-sys	0m0.495s
+real	0m4.068s
+user	0m4.612s
+sys	0m0.552s
 
 ===============================================================================
 
 go test -tags bonus
 PASS
-ok  	diffsquares	0.019s
+ok  	diffsquares	0.006s
 
-real	0m0.622s
-user	0m0.669s
-sys	0m0.437s
+real	0m0.978s
+user	0m1.196s
+sys	0m0.657s
 
 ===============================================================================
 
 go vet diffsquares
 
-real	0m0.381s
-user	0m0.437s
-sys	0m0.359s
+real	0m0.673s
+user	0m0.666s
+sys	0m0.574s
 
 ===============================================================================
 
 go fix diffsquares
 
-real	0m0.059s
-user	0m0.020s
-sys	0m0.070s
+real	0m0.104s
+user	0m0.035s
+sys	0m0.096s
 
 ===============================================================================
 
 gosec ./difference-of-squares
-[gosec] 2022/06/23 12:15:16 Including rules: default
-[gosec] 2022/06/23 12:15:16 Excluding rules: default
-[gosec] 2022/06/23 12:15:16 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/difference-of-squares
-2022/06/23 12:15:16 internal error: package "math" without types was imported from "command-line-arguments"
+[gosec] 2022/06/23 12:24:56 Including rules: default
+[gosec] 2022/06/23 12:24:56 Excluding rules: default
+[gosec] 2022/06/23 12:24:56 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/difference-of-squares
+2022/06/23 12:24:56 internal error: package "math" without types was imported from "command-line-arguments"
 
-real	0m0.302s
-user	0m0.331s
-sys	0m0.284s
+real	0m0.471s
+user	0m0.425s
+sys	0m0.306s
 
 ===============================================================================
 
 gomarkdoc --output diffsquares-doc.md
 
-real	0m0.030s
-user	0m0.021s
-sys	0m0.015s
+real	0m0.040s
+user	0m0.031s
+sys	0m0.014s
 
 ===============================================================================
 
@@ -148,16 +148,18 @@ func Difference(n int) int
 
 func SquareOfSum(n int) int
     SquareOfSum returns the sum, `int`, of the square of the sum of the first n
-    (`int`) numbers (starting with 1 to 10, inclusive).
+    (`int`) numbers (starting with 1 to 10, inclusive). Using
+    https://en.wikipedia.org/wiki/1_%2B_2_%2B_3_%2B_4_%2B_%E2%8B%AF
 
 func SumOfSquares(n int) int
     SumOfSquares returns the sum, `int`, of the sum of the first n (`int`)
-    squares (starting with 1 to 10, inclusive).
+    squares (starting with 1 to 10, inclusive). Using
+    https://brilliant.org/wiki/sum-of-n-n2-or-n3/
 
 
-real	0m0.174s
-user	0m0.095s
-sys	0m0.182s
+real	0m0.156s
+user	0m0.078s
+sys	0m0.147s
 
 
 ===============================================================================
