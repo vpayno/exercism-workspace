@@ -47,3 +47,4 @@
 - [two-fer](./two-fer/README.md)
 - [hamming](./hamming/README.md)
 - [raindrops](./raindrops/README.md)
+- [scrabble-score](./scrabble-score/README.md)

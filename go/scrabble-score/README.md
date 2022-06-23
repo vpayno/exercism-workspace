@@ -71,3 +71,12 @@ And to total:
 ### Based on
 
 Inspired by the Extreme Startup game - https://github.com/rchatley/extreme_startup
+
+### My Solution
+
+- [my solution](./scrabble_score.go)
+- [my examples](./scrabble_score_examples_test.go)
+- [test cases](./cases_test.go)
+- [tests](./scrabble_score_test.go)
+- [run-tests](./run-tests-go.txt)
+- [documentation](./scrabble-doc.md)
