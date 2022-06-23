@@ -7,9 +7,9 @@ Go packages: isogram
 
 golint isogram
 
-real	0m0.189s
-user	0m0.120s
-sys	0m0.162s
+real	0m0.180s
+user	0m0.146s
+sys	0m0.156s
 
 ===============================================================================
 
@@ -32,22 +32,22 @@ go test -v -covermode=count -coverprofile coverage.out isogram
 === RUN   ExampleIsIsogram
 --- PASS: ExampleIsIsogram (0.00s)
 PASS
-coverage: 100.0% of statements
-ok  	isogram	0.007s	coverage: 100.0% of statements
+coverage: 91.7% of statements
+ok  	isogram	0.008s	coverage: 91.7% of statements
 
-real	0m0.652s
+real	0m0.606s
 user	0m0.710s
-sys	0m0.597s
+sys	0m0.391s
 
 ===============================================================================
 
 go tool cover -func=coverage.out
-isogram/isogram.go:8:	IsIsogram	100.0%
-total:			(statements)	100.0%
+isogram/isogram.go:11:	IsIsogram	91.7%
+total:			(statements)	91.7%
 
-real	0m0.266s
-user	0m0.220s
-sys	0m0.231s
+real	0m0.172s
+user	0m0.157s
+sys	0m0.166s
 
 ===============================================================================
 
@@ -66,16 +66,16 @@ go test -v -race -covermode=atomic isogram
     isogram_test.go:11: PASS: Word "Emily Jung Schwartzkopf"
     isogram_test.go:11: PASS: Word "accentor"
     isogram_test.go:11: PASS: Word "angola"
---- PASS: TestIsIsogram (0.03s)
+--- PASS: TestIsIsogram (0.01s)
 === RUN   ExampleIsIsogram
 --- PASS: ExampleIsIsogram (0.00s)
 PASS
-coverage: 100.0% of statements
-ok  	isogram	0.062s	coverage: 100.0% of statements
+coverage: 91.7% of statements
+ok  	isogram	0.040s	coverage: 91.7% of statements
 
-real	0m0.597s
-user	0m0.671s
-sys	0m0.349s
+real	0m0.689s
+user	0m0.739s
+sys	0m0.442s
 
 ===============================================================================
 
@@ -84,59 +84,59 @@ goos: linux
 goarch: amd64
 pkg: isogram
 cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
-BenchmarkIsIsogram-4   	  375568	      4180 ns/op	     128 B/op	       7 allocs/op
+BenchmarkIsIsogram-4   	   34066	     62440 ns/op	   10596 B/op	     175 allocs/op
 PASS
-ok  	isogram	1.673s
+ok  	isogram	2.580s
 
-real	0m2.155s
-user	0m2.299s
-sys	0m0.401s
+real	0m3.024s
+user	0m4.434s
+sys	0m0.548s
 
 ===============================================================================
 
 go test -tags bonus
 PASS
-ok  	isogram	0.012s
+ok  	isogram	0.013s
 
-real	0m0.638s
-user	0m0.752s
-sys	0m0.415s
+real	0m0.609s
+user	0m0.762s
+sys	0m0.468s
 
 ===============================================================================
 
 go vet isogram
 
-real	0m0.548s
-user	0m0.594s
-sys	0m0.387s
+real	0m0.347s
+user	0m0.418s
+sys	0m0.364s
 
 ===============================================================================
 
 go fix isogram
 
-real	0m0.214s
-user	0m0.122s
-sys	0m0.155s
+real	0m0.147s
+user	0m0.134s
+sys	0m0.161s
 
 ===============================================================================
 
 gosec ./isogram
-[gosec] 2022/06/22 23:13:03 Including rules: default
-[gosec] 2022/06/22 23:13:03 Excluding rules: default
-[gosec] 2022/06/22 23:13:03 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/isogram
-2022/06/22 23:13:03 internal error: package "strings" without types was imported from "command-line-arguments"
+[gosec] 2022/06/22 23:23:48 Including rules: default
+[gosec] 2022/06/22 23:23:48 Excluding rules: default
+[gosec] 2022/06/22 23:23:48 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/isogram
+2022/06/22 23:23:48 internal error: package "regexp" without types was imported from "command-line-arguments"
 
-real	0m0.578s
-user	0m0.698s
-sys	0m0.464s
+real	0m0.509s
+user	0m0.519s
+sys	0m0.418s
 
 ===============================================================================
 
 gomarkdoc --output isogram-doc.md
 
-real	0m0.034s
-user	0m0.022s
-sys	0m0.014s
+real	0m0.038s
+user	0m0.021s
+sys	0m0.027s
 
 ===============================================================================
 
@@ -153,9 +153,9 @@ func IsIsogram(word string) bool
     however spaces and hyphens are allowed to appear multiple times.
 
 
-real	0m0.230s
-user	0m0.132s
-sys	0m0.187s
+real	0m0.257s
+user	0m0.200s
+sys	0m0.239s
 
 
 ===============================================================================

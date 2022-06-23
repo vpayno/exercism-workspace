@@ -13,7 +13,7 @@ Package isogram Determines if a word or phrase is an isogram\.
 - [func IsIsogram(word string) bool](<#func-isisogram>)
 
 
-## func [IsIsogram](<https://github.com/vpayno/exercism-workspace/blob/main/go/isogram/isogram.go#L8>)
+## func [IsIsogram](<https://github.com/vpayno/exercism-workspace/blob/main/go/isogram/isogram.go#L11>)
 
 ```go
 func IsIsogram(word string) bool
