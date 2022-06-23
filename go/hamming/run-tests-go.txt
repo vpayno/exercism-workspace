@@ -1,0 +1,139 @@
+Running automated test file(s):
+
+Go packages: hamming 
+
+
+===============================================================================
+
+golint hamming
+
+real	0m0.227s
+user	0m0.183s
+sys	0m0.216s
+
+===============================================================================
+
+go test -v -covermode=count -coverprofile coverage.out hamming
+=== RUN   TestHamming
+--- PASS: TestHamming (0.00s)
+=== RUN   Example_isValidDNASequence
+--- PASS: Example_isValidDNASequence (0.00s)
+=== RUN   ExampleDistance
+--- PASS: ExampleDistance (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	hamming	0.022s	coverage: 100.0% of statements
+
+real	0m0.619s
+user	0m0.660s
+sys	0m0.472s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+hamming/hamming.go:9:	isValidDNASequence	100.0%
+hamming/hamming.go:16:	Distance		100.0%
+total:			(statements)		100.0%
+
+real	0m0.234s
+user	0m0.166s
+sys	0m0.254s
+
+===============================================================================
+
+go test -v -race -covermode=atomic hamming
+=== RUN   TestHamming
+--- PASS: TestHamming (0.00s)
+=== RUN   Example_isValidDNASequence
+--- PASS: Example_isValidDNASequence (0.00s)
+=== RUN   ExampleDistance
+--- PASS: ExampleDistance (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	hamming	0.065s	coverage: 100.0% of statements
+
+real	0m0.699s
+user	0m0.737s
+sys	0m0.441s
+
+===============================================================================
+
+go test --bench . --benchmem
+goos: linux
+goarch: amd64
+pkg: hamming
+cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+BenchmarkHamming-4   	   10000	    127800 ns/op	   27996 B/op	     424 allocs/op
+PASS
+ok  	hamming	1.305s
+
+real	0m1.761s
+user	0m2.855s
+sys	0m0.556s
+
+===============================================================================
+
+go test -tags bonus
+PASS
+ok  	hamming	0.014s
+
+real	0m0.568s
+user	0m0.728s
+sys	0m0.430s
+
+===============================================================================
+
+go vet hamming
+
+real	0m0.344s
+user	0m0.424s
+sys	0m0.286s
+
+===============================================================================
+
+go fix hamming
+
+real	0m0.117s
+user	0m0.109s
+sys	0m0.128s
+
+===============================================================================
+
+gosec ./hamming
+[gosec] 2022/06/21 23:26:01 Including rules: default
+[gosec] 2022/06/21 23:26:01 Excluding rules: default
+[gosec] 2022/06/21 23:26:01 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/hamming
+2022/06/21 23:26:01 internal error: package "errors" without types was imported from "command-line-arguments"
+
+real	0m0.401s
+user	0m0.448s
+sys	0m0.373s
+
+===============================================================================
+
+gomarkdoc --output hamming-doc.md
+
+real	0m0.050s
+user	0m0.032s
+sys	0m0.023s
+
+===============================================================================
+
+go doc -all hamming
+package hamming // import "hamming"
+
+
+FUNCTIONS
+
+func Distance(a, b string) (int, error)
+    Distance returns an int for the Hamming Distance or 0 and an error if there
+    aer issues.
+
+
+real	0m0.251s
+user	0m0.239s
+sys	0m0.200s
+
+
+===============================================================================
+

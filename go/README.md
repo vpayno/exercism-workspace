@@ -12,7 +12,7 @@
 - [update_readmes](./update_readmes)
 
 
-## Exercises
+## Concept Exercises
 
 - [hello-world](./hello-world/README.md)
 - [lasagna](./lasagna/README.md)
@@ -41,3 +41,10 @@
 - [expenses](./expenses/README.md)
 - [sorting-room](./sorting-room/README.md)
 - [meteorology](./meteorology/README.md)
+
+## Exercises
+
+- [two-fer](./two-fer/README.md)
+- [hamming](./hamming/README.md)
+- [raindrops](./raindrops/README.md)
+- [scrabble-score](./scrabble-score/README.md)

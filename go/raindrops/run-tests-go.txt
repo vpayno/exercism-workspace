@@ -1,0 +1,136 @@
+Running automated test file(s):
+
+Go packages: raindrops 
+
+
+===============================================================================
+
+golint raindrops
+
+real	0m0.177s
+user	0m0.193s
+sys	0m0.185s
+
+===============================================================================
+
+go test -v -covermode=count -coverprofile coverage.out raindrops
+=== RUN   TestConvert
+--- PASS: TestConvert (0.00s)
+=== RUN   ExampleConvert
+--- PASS: ExampleConvert (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	raindrops	0.009s	coverage: 100.0% of statements
+
+real	0m0.625s
+user	0m0.631s
+sys	0m0.541s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+raindrops/raindrops.go:10:	Convert		100.0%
+total:				(statements)	100.0%
+
+real	0m0.215s
+user	0m0.231s
+sys	0m0.194s
+
+===============================================================================
+
+go test -v -race -covermode=atomic raindrops
+=== RUN   TestConvert
+--- PASS: TestConvert (0.00s)
+=== RUN   ExampleConvert
+--- PASS: ExampleConvert (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	raindrops	(cached)	coverage: 100.0% of statements
+
+real	0m0.281s
+user	0m0.292s
+sys	0m0.255s
+
+===============================================================================
+
+go test --bench . --benchmem
+goos: linux
+goarch: amd64
+pkg: raindrops
+cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+BenchmarkConvert-4   	  835659	      1322 ns/op	     290 B/op	      19 allocs/op
+PASS
+ok  	raindrops	1.173s
+
+real	0m1.645s
+user	0m2.197s
+sys	0m0.402s
+
+===============================================================================
+
+go test -tags bonus
+PASS
+ok  	raindrops	0.006s
+
+real	0m0.611s
+user	0m0.744s
+sys	0m0.422s
+
+===============================================================================
+
+go vet raindrops
+
+real	0m0.345s
+user	0m0.453s
+sys	0m0.334s
+
+===============================================================================
+
+go fix raindrops
+
+real	0m0.160s
+user	0m0.153s
+sys	0m0.155s
+
+===============================================================================
+
+gosec ./raindrops
+[gosec] 2022/06/22 08:57:18 Including rules: default
+[gosec] 2022/06/22 08:57:18 Excluding rules: default
+[gosec] 2022/06/22 08:57:18 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/raindrops
+2022/06/22 08:57:18 internal error: package "fmt" without types was imported from "command-line-arguments"
+
+real	0m0.491s
+user	0m0.545s
+sys	0m0.369s
+
+===============================================================================
+
+gomarkdoc --output raindrops-doc.md
+
+real	0m0.029s
+user	0m0.024s
+sys	0m0.020s
+
+===============================================================================
+
+go doc -all raindrops
+package raindrops // import "raindrops"
+
+Package raindrops converts a number into a string that contains raindrop
+sounds corresponding to certain potential factors.
+
+FUNCTIONS
+
+func Convert(number int) string
+    Convert returns a string containing raindrop sounds corresponding to factors
+    of the number, `int`, given.
+
+
+real	0m0.269s
+user	0m0.227s
+sys	0m0.246s
+
+
+===============================================================================
+

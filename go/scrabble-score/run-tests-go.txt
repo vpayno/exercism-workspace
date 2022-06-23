@@ -1,0 +1,135 @@
+Running automated test file(s):
+
+Go packages: scrabble 
+
+
+===============================================================================
+
+golint scrabble
+
+real	0m0.248s
+user	0m0.227s
+sys	0m0.171s
+
+===============================================================================
+
+go test -v -covermode=count -coverprofile coverage.out scrabble
+=== RUN   TestScore
+--- PASS: TestScore (0.00s)
+=== RUN   ExampleScore
+--- PASS: ExampleScore (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	scrabble	0.010s	coverage: 100.0% of statements
+
+real	0m0.626s
+user	0m0.665s
+sys	0m0.520s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+scrabble/scrabble_score.go:11:	charScore	100.0%
+scrabble/scrabble_score.go:34:	Score		100.0%
+total:				(statements)	100.0%
+
+real	0m0.209s
+user	0m0.173s
+sys	0m0.238s
+
+===============================================================================
+
+go test -v -race -covermode=atomic scrabble
+=== RUN   TestScore
+--- PASS: TestScore (0.00s)
+=== RUN   ExampleScore
+--- PASS: ExampleScore (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	scrabble	0.044s	coverage: 100.0% of statements
+
+real	0m1.002s
+user	0m1.105s
+sys	0m0.689s
+
+===============================================================================
+
+go test --bench . --benchmem
+goos: linux
+goarch: amd64
+pkg: scrabble
+cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+BenchmarkScore-4   	   13446	     89314 ns/op	   26492 B/op	     385 allocs/op
+PASS
+ok  	scrabble	2.063s
+
+real	0m2.773s
+user	0m4.053s
+sys	0m0.979s
+
+===============================================================================
+
+go test -tags bonus
+PASS
+ok  	scrabble	0.005s
+
+real	0m0.585s
+user	0m0.689s
+sys	0m0.411s
+
+===============================================================================
+
+go vet scrabble
+
+real	0m0.371s
+user	0m0.402s
+sys	0m0.356s
+
+===============================================================================
+
+go fix scrabble
+
+real	0m0.131s
+user	0m0.111s
+sys	0m0.140s
+
+===============================================================================
+
+gosec ./scrabble-score
+[gosec] 2022/06/22 21:58:06 Including rules: default
+[gosec] 2022/06/22 21:58:06 Excluding rules: default
+[gosec] 2022/06/22 21:58:06 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/scrabble-score
+2022/06/22 21:58:06 internal error: package "regexp" without types was imported from "command-line-arguments"
+
+real	0m0.524s
+user	0m0.560s
+sys	0m0.420s
+
+===============================================================================
+
+gomarkdoc --output scrabble-doc.md
+
+real	0m0.045s
+user	0m0.019s
+sys	0m0.020s
+
+===============================================================================
+
+go doc -all scrabble
+package scrabble // import "scrabble"
+
+Package scrabble Given a word, compute the Scrabble score for that word.
+
+FUNCTIONS
+
+func Score(word string) int
+    Score returns an `int` scrablle score for a given word (`string`).
+
+
+real	0m0.205s
+user	0m0.171s
+sys	0m0.254s
+
+
+===============================================================================
+
