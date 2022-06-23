@@ -1,0 +1,162 @@
+Running automated test file(s):
+
+Go packages: isogram 
+
+
+===============================================================================
+
+golint isogram
+
+real	0m0.161s
+user	0m0.119s
+sys	0m0.142s
+
+===============================================================================
+
+go test -v -covermode=count -coverprofile coverage.out isogram
+=== RUN   TestIsIsogram
+    isogram_test.go:11: PASS: Word ""
+    isogram_test.go:11: PASS: Word "isogram"
+    isogram_test.go:11: PASS: Word "eleven"
+    isogram_test.go:11: PASS: Word "zzyzx"
+    isogram_test.go:11: PASS: Word "subdermatoglyphic"
+    isogram_test.go:11: PASS: Word "Alphabet"
+    isogram_test.go:11: PASS: Word "alphAbet"
+    isogram_test.go:11: PASS: Word "thumbscrew-japingly"
+    isogram_test.go:11: PASS: Word "thumbscrew-jappingly"
+    isogram_test.go:11: PASS: Word "six-year-old"
+    isogram_test.go:11: PASS: Word "Emily Jung Schwartzkopf"
+    isogram_test.go:11: PASS: Word "accentor"
+    isogram_test.go:11: PASS: Word "angola"
+--- PASS: TestIsIsogram (0.00s)
+=== RUN   ExampleIsIsogram
+--- PASS: ExampleIsIsogram (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	isogram	0.021s	coverage: 100.0% of statements
+
+real	0m0.644s
+user	0m0.696s
+sys	0m0.474s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+isogram/isogram.go:8:	IsIsogram	100.0%
+total:			(statements)	100.0%
+
+real	0m0.180s
+user	0m0.128s
+sys	0m0.205s
+
+===============================================================================
+
+go test -v -race -covermode=atomic isogram
+=== RUN   TestIsIsogram
+    isogram_test.go:11: PASS: Word ""
+    isogram_test.go:11: PASS: Word "isogram"
+    isogram_test.go:11: PASS: Word "eleven"
+    isogram_test.go:11: PASS: Word "zzyzx"
+    isogram_test.go:11: PASS: Word "subdermatoglyphic"
+    isogram_test.go:11: PASS: Word "Alphabet"
+    isogram_test.go:11: PASS: Word "alphAbet"
+    isogram_test.go:11: PASS: Word "thumbscrew-japingly"
+    isogram_test.go:11: PASS: Word "thumbscrew-jappingly"
+    isogram_test.go:11: PASS: Word "six-year-old"
+    isogram_test.go:11: PASS: Word "Emily Jung Schwartzkopf"
+    isogram_test.go:11: PASS: Word "accentor"
+    isogram_test.go:11: PASS: Word "angola"
+--- PASS: TestIsIsogram (0.00s)
+=== RUN   ExampleIsIsogram
+--- PASS: ExampleIsIsogram (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	isogram	0.047s	coverage: 100.0% of statements
+
+real	0m0.771s
+user	0m0.876s
+sys	0m0.454s
+
+===============================================================================
+
+go test --bench . --benchmem
+goos: linux
+goarch: amd64
+pkg: isogram
+cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+BenchmarkIsIsogram-4   	  413985	      3216 ns/op	      40 B/op	       3 allocs/op
+PASS
+ok  	isogram	1.444s
+
+real	0m1.879s
+user	0m2.019s
+sys	0m0.375s
+
+===============================================================================
+
+go test -tags bonus
+PASS
+ok  	isogram	0.008s
+
+real	0m0.545s
+user	0m0.656s
+sys	0m0.441s
+
+===============================================================================
+
+go vet isogram
+
+real	0m0.370s
+user	0m0.405s
+sys	0m0.342s
+
+===============================================================================
+
+go fix isogram
+
+real	0m0.139s
+user	0m0.090s
+sys	0m0.138s
+
+===============================================================================
+
+gosec ./isogram
+[gosec] 2022/06/22 22:57:28 Including rules: default
+[gosec] 2022/06/22 22:57:28 Excluding rules: default
+[gosec] 2022/06/22 22:57:28 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/isogram
+2022/06/22 22:57:28 internal error: package "strings" without types was imported from "command-line-arguments"
+
+real	0m0.395s
+user	0m0.418s
+sys	0m0.399s
+
+===============================================================================
+
+gomarkdoc --output isogram-doc.md
+
+real	0m0.035s
+user	0m0.025s
+sys	0m0.029s
+
+===============================================================================
+
+go doc -all isogram
+package isogram // import "isogram"
+
+Package isogram Determines if a word or phrase is an isogram.
+
+FUNCTIONS
+
+func IsIsogram(word string) bool
+    IsIsogram returns true when a word is an isogram. An isogram (also known as
+    a "non-pattern word") is a word or phrase without a repeating letter,
+    however spaces and hyphens are allowed to appear multiple times.
+
+
+real	0m0.267s
+user	0m0.162s
+sys	0m0.227s
+
+
+===============================================================================
+

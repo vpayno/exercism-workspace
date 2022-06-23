@@ -43,3 +43,12 @@ The word *isograms*, however, is not an isogram, because the s repeats.
 ### Based on
 
 Wikipedia - https://en.wikipedia.org/wiki/Isogram
+
+### My Solution
+
+- [my solution](./isogram.go)
+- [my examples](./isogram_examples_test.go)
+- [test cases](./cases_test.go)
+- [tests](./isogram_test.go)
+- [run-tests](./run-tests-go.txt)
+- [documentation](./isogram-doc.md)
