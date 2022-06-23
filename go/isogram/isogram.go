@@ -6,17 +6,13 @@ import "strings"
 // IsIsogram returns true when a word is an isogram.
 // An isogram (also known as a "non-pattern word") is a word or phrase without a repeating letter, however spaces and hyphens are allowed to appear multiple times.
 func IsIsogram(word string) bool {
-	word = strings.TrimSpace(word)
 	word = strings.ToLower(word)
+	word = strings.ReplaceAll(word, " ", "")
+	word = strings.ReplaceAll(word, "-", "")
 
 	for i1, l1 := range word {
-		// Don't check hyphens or spaces.
-		if l1 == '-' || l1 == ' ' {
-			continue
-		}
-
 		for i2, l2 := range word {
-			if i1 == i2 || l2 == '-' || l2 == ' ' {
+			if i1 == i2 {
 				continue
 			}
 
