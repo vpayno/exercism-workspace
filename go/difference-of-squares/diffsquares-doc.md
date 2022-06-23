@@ -29,6 +29,8 @@ Difference returns the difference between the Square of Sums and Sum of Squares\
 ```go
 {
 	fmt.Println(Difference(10))
+	fmt.Println(Difference(12345))
+	fmt.Println(Difference(54321))
 
 }
 ```
@@ -37,6 +39,8 @@ Difference returns the difference between the Square of Sums and Sum of Squares\
 
 ```
 2640
+5806679228129780
+2176789148168973847
 ```
 
 </p>
@@ -56,6 +60,8 @@ SquareOfSum returns the sum\, \`int\`\, of the square of the sum of the first n 
 ```go
 {
 	fmt.Println(SquareOfSum(10))
+	fmt.Println(SquareOfSum(12345))
+	fmt.Println(SquareOfSum(54321))
 
 }
 ```
@@ -64,6 +70,8 @@ SquareOfSum returns the sum\, \`int\`\, of the square of the sum of the first n 
 
 ```
 3025
+5807306426319225
+2176842579255607808
 ```
 
 </p>
@@ -83,6 +91,8 @@ SumOfSquares returns the sum\, \`int\`\, of the sum of the first n \(\`int\`\) s
 ```go
 {
 	fmt.Println(SumOfSquares(10))
+	fmt.Println(SumOfSquares(12345))
+	fmt.Println(SumOfSquares(54321))
 
 }
 ```
@@ -91,6 +101,8 @@ SumOfSquares returns the sum\, \`int\`\, of the sum of the first n \(\`int\`\) s
 
 ```
 385
+627198189445
+53431086633961
 ```
 
 </p>

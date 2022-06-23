@@ -7,9 +7,9 @@ Go packages: diffsquares
 
 golint diffsquares
 
-real	0m0.240s
-user	0m0.206s
-sys	0m0.223s
+real	0m0.124s
+user	0m0.085s
+sys	0m0.132s
 
 ===============================================================================
 
@@ -19,20 +19,20 @@ go test -v -covermode=count -coverprofile coverage.out diffsquares
 === RUN   TestSumOfSquares
 --- PASS: TestSumOfSquares (0.00s)
 === RUN   TestDifference
---- PASS: TestDifference (0.00s)
+--- PASS: TestDifference (0.01s)
 === RUN   ExampleSquareOfSum
 --- PASS: ExampleSquareOfSum (0.00s)
 === RUN   ExampleSumOfSquares
 --- PASS: ExampleSumOfSquares (0.00s)
 === RUN   ExampleDifference
---- PASS: ExampleDifference (0.00s)
+--- PASS: ExampleDifference (0.01s)
 PASS
 coverage: 100.0% of statements
-ok  	diffsquares	0.015s	coverage: 100.0% of statements
+ok  	diffsquares	0.032s	coverage: 100.0% of statements
 
-real	0m1.325s
-user	0m1.714s
-sys	0m1.027s
+real	0m0.800s
+user	0m1.023s
+sys	0m0.590s
 
 ===============================================================================
 
@@ -42,32 +42,32 @@ diffsquares/difference_of_squares.go:18:	SumOfSquares	100.0%
 diffsquares/difference_of_squares.go:29:	Difference	100.0%
 total:						(statements)	100.0%
 
-real	0m0.368s
-user	0m0.206s
-sys	0m0.271s
+real	0m0.121s
+user	0m0.061s
+sys	0m0.103s
 
 ===============================================================================
 
 go test -v -race -covermode=atomic diffsquares
 === RUN   TestSquareOfSum
---- PASS: TestSquareOfSum (0.00s)
+--- PASS: TestSquareOfSum (0.01s)
 === RUN   TestSumOfSquares
---- PASS: TestSumOfSquares (0.00s)
+--- PASS: TestSumOfSquares (0.04s)
 === RUN   TestDifference
---- PASS: TestDifference (0.00s)
+--- PASS: TestDifference (0.03s)
 === RUN   ExampleSquareOfSum
---- PASS: ExampleSquareOfSum (0.00s)
+--- PASS: ExampleSquareOfSum (0.01s)
 === RUN   ExampleSumOfSquares
---- PASS: ExampleSumOfSquares (0.00s)
+--- PASS: ExampleSumOfSquares (0.02s)
 === RUN   ExampleDifference
---- PASS: ExampleDifference (0.00s)
+--- PASS: ExampleDifference (0.03s)
 PASS
 coverage: 100.0% of statements
-ok  	diffsquares	(cached)	coverage: 100.0% of statements
+ok  	diffsquares	0.174s	coverage: 100.0% of statements
 
-real	0m0.804s
-user	0m0.971s
-sys	0m0.778s
+real	0m1.132s
+user	0m1.158s
+sys	0m0.609s
 
 ===============================================================================
 
@@ -76,61 +76,61 @@ goos: linux
 goarch: amd64
 pkg: diffsquares
 cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
-BenchmarkSquareOfSum-4    	 9977414	       164.7 ns/op	       0 B/op	       0 allocs/op
-BenchmarkSumOfSquares-4   	  214692	      4752 ns/op	       0 B/op	       0 allocs/op
-BenchmarkDifference-4     	  241269	      7036 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSquareOfSum-4    	13116339	        85.00 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSumOfSquares-4   	  363216	      3129 ns/op	       0 B/op	       0 allocs/op
+BenchmarkDifference-4     	  316506	      3286 ns/op	       0 B/op	       0 allocs/op
 PASS
-ok  	diffsquares	4.825s
+ok  	diffsquares	3.575s
 
-real	0m6.139s
-user	0m6.802s
-sys	0m1.027s
+real	0m4.273s
+user	0m4.521s
+sys	0m0.495s
 
 ===============================================================================
 
 go test -tags bonus
 PASS
-ok  	diffsquares	0.020s
+ok  	diffsquares	0.019s
 
-real	0m1.190s
-user	0m1.632s
-sys	0m0.892s
+real	0m0.622s
+user	0m0.669s
+sys	0m0.437s
 
 ===============================================================================
 
 go vet diffsquares
 
-real	0m0.648s
-user	0m0.806s
-sys	0m0.605s
+real	0m0.381s
+user	0m0.437s
+sys	0m0.359s
 
 ===============================================================================
 
 go fix diffsquares
 
-real	0m0.144s
-user	0m0.078s
-sys	0m0.137s
+real	0m0.059s
+user	0m0.020s
+sys	0m0.070s
 
 ===============================================================================
 
 gosec ./difference-of-squares
-[gosec] 2022/06/23 08:32:47 Including rules: default
-[gosec] 2022/06/23 08:32:47 Excluding rules: default
-[gosec] 2022/06/23 08:32:47 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/difference-of-squares
-2022/06/23 08:32:47 internal error: package "math" without types was imported from "command-line-arguments"
+[gosec] 2022/06/23 12:15:16 Including rules: default
+[gosec] 2022/06/23 12:15:16 Excluding rules: default
+[gosec] 2022/06/23 12:15:16 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/difference-of-squares
+2022/06/23 12:15:16 internal error: package "math" without types was imported from "command-line-arguments"
 
-real	0m0.614s
-user	0m0.696s
-sys	0m0.430s
+real	0m0.302s
+user	0m0.331s
+sys	0m0.284s
 
 ===============================================================================
 
 gomarkdoc --output diffsquares-doc.md
 
-real	0m0.110s
-user	0m0.086s
-sys	0m0.048s
+real	0m0.030s
+user	0m0.021s
+sys	0m0.015s
 
 ===============================================================================
 
@@ -155,9 +155,9 @@ func SumOfSquares(n int) int
     squares (starting with 1 to 10, inclusive).
 
 
-real	0m0.212s
-user	0m0.108s
-sys	0m0.220s
+real	0m0.174s
+user	0m0.095s
+sys	0m0.182s
 
 
 ===============================================================================
