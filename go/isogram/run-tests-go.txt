@@ -7,9 +7,9 @@ Go packages: isogram
 
 golint isogram
 
-real	0m0.180s
-user	0m0.146s
-sys	0m0.156s
+real	0m0.235s
+user	0m0.272s
+sys	0m0.181s
 
 ===============================================================================
 
@@ -32,22 +32,22 @@ go test -v -covermode=count -coverprofile coverage.out isogram
 === RUN   ExampleIsIsogram
 --- PASS: ExampleIsIsogram (0.00s)
 PASS
-coverage: 91.7% of statements
-ok  	isogram	0.008s	coverage: 91.7% of statements
+coverage: 93.3% of statements
+ok  	isogram	0.006s	coverage: 93.3% of statements
 
-real	0m0.606s
-user	0m0.710s
-sys	0m0.391s
+real	0m0.740s
+user	0m0.858s
+sys	0m0.483s
 
 ===============================================================================
 
 go tool cover -func=coverage.out
-isogram/isogram.go:11:	IsIsogram	91.7%
-total:			(statements)	91.7%
+isogram/isogram.go:11:	IsIsogram	93.3%
+total:			(statements)	93.3%
 
-real	0m0.172s
-user	0m0.157s
-sys	0m0.166s
+real	0m0.232s
+user	0m0.206s
+sys	0m0.243s
 
 ===============================================================================
 
@@ -70,12 +70,12 @@ go test -v -race -covermode=atomic isogram
 === RUN   ExampleIsIsogram
 --- PASS: ExampleIsIsogram (0.00s)
 PASS
-coverage: 91.7% of statements
-ok  	isogram	0.040s	coverage: 91.7% of statements
+coverage: 93.3% of statements
+ok  	isogram	0.058s	coverage: 93.3% of statements
 
-real	0m0.689s
-user	0m0.739s
-sys	0m0.442s
+real	0m0.872s
+user	0m0.905s
+sys	0m0.537s
 
 ===============================================================================
 
@@ -84,59 +84,59 @@ goos: linux
 goarch: amd64
 pkg: isogram
 cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
-BenchmarkIsIsogram-4   	   34066	     62440 ns/op	   10596 B/op	     175 allocs/op
+BenchmarkIsIsogram-4   	   28382	     47087 ns/op	   10588 B/op	     177 allocs/op
 PASS
-ok  	isogram	2.580s
+ok  	isogram	1.862s
 
-real	0m3.024s
-user	0m4.434s
-sys	0m0.548s
+real	0m2.411s
+user	0m3.145s
+sys	0m0.603s
 
 ===============================================================================
 
 go test -tags bonus
 PASS
-ok  	isogram	0.013s
+ok  	isogram	0.012s
 
-real	0m0.609s
-user	0m0.762s
-sys	0m0.468s
+real	0m0.552s
+user	0m0.636s
+sys	0m0.433s
 
 ===============================================================================
 
 go vet isogram
 
-real	0m0.347s
-user	0m0.418s
-sys	0m0.364s
+real	0m0.448s
+user	0m0.543s
+sys	0m0.402s
 
 ===============================================================================
 
 go fix isogram
 
-real	0m0.147s
-user	0m0.134s
-sys	0m0.161s
+real	0m0.164s
+user	0m0.143s
+sys	0m0.137s
 
 ===============================================================================
 
 gosec ./isogram
-[gosec] 2022/06/22 23:23:48 Including rules: default
-[gosec] 2022/06/22 23:23:48 Excluding rules: default
-[gosec] 2022/06/22 23:23:48 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/isogram
-2022/06/22 23:23:48 internal error: package "regexp" without types was imported from "command-line-arguments"
+[gosec] 2022/06/22 23:29:31 Including rules: default
+[gosec] 2022/06/22 23:29:31 Excluding rules: default
+[gosec] 2022/06/22 23:29:31 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/isogram
+2022/06/22 23:29:32 internal error: package "regexp" without types was imported from "command-line-arguments"
 
-real	0m0.509s
-user	0m0.519s
-sys	0m0.418s
+real	0m0.392s
+user	0m0.438s
+sys	0m0.347s
 
 ===============================================================================
 
 gomarkdoc --output isogram-doc.md
 
-real	0m0.038s
+real	0m0.030s
 user	0m0.021s
-sys	0m0.027s
+sys	0m0.018s
 
 ===============================================================================
 
@@ -153,9 +153,9 @@ func IsIsogram(word string) bool
     however spaces and hyphens are allowed to appear multiple times.
 
 
-real	0m0.257s
-user	0m0.200s
-sys	0m0.239s
+real	0m0.264s
+user	0m0.197s
+sys	0m0.192s
 
 
 ===============================================================================
