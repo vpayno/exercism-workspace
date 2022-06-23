@@ -49,3 +49,4 @@
 - [raindrops](./raindrops/README.md)
 - [scrabble-score](./scrabble-score/README.md)
 - [isogram](./isogram/README.md)
+- [difference-of-squares](./difference-of-squares/README.md)
