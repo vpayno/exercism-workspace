@@ -1,0 +1,156 @@
+Running automated test file(s):
+
+Go packages: luhn 
+
+
+===============================================================================
+
+golint luhn
+
+real	0m0.220s
+user	0m0.270s
+sys	0m0.209s
+
+===============================================================================
+
+go test -v -covermode=count -coverprofile coverage.out luhn
+=== RUN   TestValid
+--- PASS: TestValid (0.00s)
+=== RUN   ExampleValid
+--- PASS: ExampleValid (0.00s)
+PASS
+coverage: 90.9% of statements
+ok  	luhn	0.008s	coverage: 90.9% of statements
+
+real	0m0.618s
+user	0m0.653s
+sys	0m0.445s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+luhn/luhn.go:15:	dPrint		50.0%
+luhn/luhn.go:22:	reverse		100.0%
+luhn/luhn.go:33:	isValidInput	83.3%
+luhn/luhn.go:48:	Valid		95.2%
+total:			(statements)	90.9%
+
+real	0m0.255s
+user	0m0.251s
+sys	0m0.234s
+
+===============================================================================
+
+go test -v -race -covermode=atomic luhn
+=== RUN   TestValid
+--- PASS: TestValid (0.00s)
+=== RUN   ExampleValid
+--- PASS: ExampleValid (0.00s)
+PASS
+coverage: 90.9% of statements
+ok  	luhn	0.041s	coverage: 90.9% of statements
+
+real	0m0.686s
+user	0m0.717s
+sys	0m0.455s
+
+===============================================================================
+
+mv -v benchstat-new.txt benchstat-old.txt
+renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
+
+go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+goos: linux
+goarch: amd64
+pkg: luhn
+cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+BenchmarkValid-4   	  118347	     14628 ns/op	    3528 B/op	     136 allocs/op
+PASS
+ok  	luhn	1.856s
+
+real	0m2.318s
+user	0m3.166s
+sys	0m0.657s
+
+===============================================================================
+
+go test -tags bonus
+PASS
+ok  	luhn	0.022s
+
+real	0m0.595s
+user	0m0.707s
+sys	0m0.429s
+
+===============================================================================
+
+go install golang.org/x/perf/cmd/benchstat@latest
+
+real	0m0.739s
+user	0m0.847s
+sys	0m0.319s
+
+benchstat benchstat-old.txt benchstat-new.txt
+
+real	0m0.030s
+user	0m0.015s
+sys	0m0.017s
+
+===============================================================================
+
+go vet luhn
+
+real	0m0.390s
+user	0m0.437s
+sys	0m0.399s
+
+===============================================================================
+
+go fix luhn
+
+real	0m0.158s
+user	0m0.166s
+sys	0m0.144s
+
+===============================================================================
+
+gosec ./luhn
+[gosec] 2022/06/24 00:02:38 Including rules: default
+[gosec] 2022/06/24 00:02:38 Excluding rules: default
+[gosec] 2022/06/24 00:02:38 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/luhn
+2022/06/24 00:02:38 internal error: package "fmt" without types was imported from "command-line-arguments"
+
+real	0m0.610s
+user	0m0.651s
+sys	0m0.455s
+
+===============================================================================
+
+gomarkdoc --output luhn-doc.md
+
+real	0m0.030s
+user	0m0.016s
+sys	0m0.013s
+
+===============================================================================
+
+go doc -all luhn
+package luhn // import "luhn"
+
+Package luhn is a simple checksum formula used to validate a variety of
+identification numbers, such as credit card numbers and Canadian Social
+Insurance Numbers.
+
+FUNCTIONS
+
+func Valid(id string) bool
+    Valid returns true when the passed number (`string`) is a valid luhn number.
+
+
+real	0m0.239s
+user	0m0.229s
+sys	0m0.231s
+
+
+===============================================================================
+

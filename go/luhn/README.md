@@ -94,3 +94,13 @@ Sum the digits
 ### Based on
 
 The Luhn Algorithm on Wikipedia - http://en.wikipedia.org/wiki/Luhn_algorithm
+
+### My Solution
+
+- [my solution](./luhn.go)
+- [my examples](./luhn_examples_test.go)
+- [test cases](./cases_test.go)
+- [tests](./luhn_test.go)
+- [run-tests](./run-tests-go.txt)
+- [coverage](./coverage.html)
+- [documentation](./luhn-doc.md)
