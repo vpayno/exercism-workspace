@@ -1,0 +1,219 @@
+Running automated test file(s):
+
+Go packages: diffsquares 
+
+
+===============================================================================
+
+golint diffsquares
+
+real	0m0.157s
+user	0m0.099s
+sys	0m0.146s
+
+===============================================================================
+
+go test -v -covermode=count -coverprofile coverage.out diffsquares
+=== RUN   TestSquareOfSum
+--- PASS: TestSquareOfSum (0.00s)
+=== RUN   TestSumOfSquares
+--- PASS: TestSumOfSquares (0.00s)
+=== RUN   TestDifference
+--- PASS: TestDifference (0.00s)
+=== RUN   ExampleSquareOfSum
+--- PASS: ExampleSquareOfSum (0.00s)
+=== RUN   ExampleSumOfSquares
+--- PASS: ExampleSumOfSquares (0.00s)
+=== RUN   ExampleDifference
+--- PASS: ExampleDifference (0.00s)
+=== RUN   Example_squareOfSumBruteForce
+--- PASS: Example_squareOfSumBruteForce (0.00s)
+=== RUN   Example_sumOfSquaresBruteForce
+--- PASS: Example_sumOfSquaresBruteForce (0.00s)
+=== RUN   ExampleDifference_BruteForce
+--- PASS: ExampleDifference_BruteForce (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	diffsquares	0.011s	coverage: 100.0% of statements
+
+real	0m0.601s
+user	0m0.681s
+sys	0m0.473s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+diffsquares/difference_of_squares.go:10:	SquareOfSum		100.0%
+diffsquares/difference_of_squares.go:19:	squareOfSumGauss	100.0%
+diffsquares/difference_of_squares.go:26:	squareOfSumBruteForce	100.0%
+diffsquares/difference_of_squares.go:37:	SumOfSquares		100.0%
+diffsquares/difference_of_squares.go:46:	sumOfSquaresGauss	100.0%
+diffsquares/difference_of_squares.go:53:	sumOfSquaresBruteForce	100.0%
+diffsquares/difference_of_squares.go:64:	Difference		100.0%
+total:						(statements)		100.0%
+
+real	0m0.134s
+user	0m0.062s
+sys	0m0.121s
+
+===============================================================================
+
+go test -v -race -covermode=atomic diffsquares
+=== RUN   TestSquareOfSum
+--- PASS: TestSquareOfSum (0.00s)
+=== RUN   TestSumOfSquares
+--- PASS: TestSumOfSquares (0.00s)
+=== RUN   TestDifference
+--- PASS: TestDifference (0.00s)
+=== RUN   ExampleSquareOfSum
+--- PASS: ExampleSquareOfSum (0.00s)
+=== RUN   ExampleSumOfSquares
+--- PASS: ExampleSumOfSquares (0.00s)
+=== RUN   ExampleDifference
+--- PASS: ExampleDifference (0.00s)
+=== RUN   Example_squareOfSumBruteForce
+--- PASS: Example_squareOfSumBruteForce (0.00s)
+=== RUN   Example_sumOfSquaresBruteForce
+--- PASS: Example_sumOfSquaresBruteForce (0.00s)
+=== RUN   ExampleDifference_BruteForce
+--- PASS: ExampleDifference_BruteForce (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	diffsquares	0.050s	coverage: 100.0% of statements
+
+real	0m0.727s
+user	0m0.786s
+sys	0m0.548s
+
+===============================================================================
+
+mv -v benchstat-new.txt benchstat-old.txt
+renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
+
+go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+goos: linux
+goarch: amd64
+pkg: diffsquares
+cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+Benchmark_squareOfSumBruteForce/input_size_10-4         	29426822	        36.32 ns/op	       0 B/op	       0 allocs/op
+Benchmark_squareOfSumBruteForce/input_size_100-4        	 8640528	       131.1 ns/op	       0 B/op	       0 allocs/op
+Benchmark_squareOfSumBruteForce/input_size_1000-4       	 1308825	       945.4 ns/op	       0 B/op	       0 allocs/op
+Benchmark_squareOfSumBruteForce/input_size_10000-4      	  115472	      9273 ns/op	       0 B/op	       0 allocs/op
+Benchmark_sumOfSquaresBruteForce/input_size_10-4        	 3680767	       291.4 ns/op	       0 B/op	       0 allocs/op
+Benchmark_sumOfSquaresBruteForce/input_size_100-4       	  341122	      3511 ns/op	       0 B/op	       0 allocs/op
+Benchmark_sumOfSquaresBruteForce/input_size_1000-4      	   32896	     34281 ns/op	       0 B/op	       0 allocs/op
+Benchmark_sumOfSquaresBruteForce/input_size_10000-4     	    3711	    347095 ns/op	       0 B/op	       0 allocs/op
+Benchmark_squareOfSumGauss/input_size_10-4              	26699696	        50.20 ns/op	       0 B/op	       0 allocs/op
+Benchmark_squareOfSumGauss/input_size_100-4             	30163941	        34.02 ns/op	       0 B/op	       0 allocs/op
+Benchmark_squareOfSumGauss/input_size_1000-4            	38001340	        34.72 ns/op	       0 B/op	       0 allocs/op
+Benchmark_squareOfSumGauss/input_size_10000-4           	31666057	        35.09 ns/op	       0 B/op	       0 allocs/op
+Benchmark_sumOfSquaresGauss/input_size_10-4             	439645538	         2.339 ns/op	       0 B/op	       0 allocs/op
+Benchmark_sumOfSquaresGauss/input_size_100-4            	497528520	         2.323 ns/op	       0 B/op	       0 allocs/op
+Benchmark_sumOfSquaresGauss/input_size_1000-4           	483448791	         2.396 ns/op	       0 B/op	       0 allocs/op
+Benchmark_sumOfSquaresGauss/input_size_10000-4          	438887734	         2.466 ns/op	       0 B/op	       0 allocs/op
+BenchmarkDifference2/input_size_10-4                    	26115793	        43.57 ns/op	       0 B/op	       0 allocs/op
+BenchmarkDifference2/input_size_100-4                   	26788078	        43.28 ns/op	       0 B/op	       0 allocs/op
+BenchmarkDifference2/input_size_1000-4                  	28098295	        43.96 ns/op	       0 B/op	       0 allocs/op
+BenchmarkDifference2/input_size_10000-4                 	21875874	        45.85 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSquareOfSum-4                                  	31738362	        37.79 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSumOfSquares-4                                 	241435201	         5.311 ns/op	       0 B/op	       0 allocs/op
+BenchmarkDifference-4                                   	28246478	        43.55 ns/op	       0 B/op	       0 allocs/op
+PASS
+ok  	diffsquares	36.072s
+
+real	0m36.562s
+user	0m38.104s
+sys	0m0.711s
+
+===============================================================================
+
+go test -tags bonus
+PASS
+ok  	diffsquares	0.005s
+
+real	0m0.619s
+user	0m0.742s
+sys	0m0.468s
+
+===============================================================================
+
+go install golang.org/x/perf/cmd/benchstat@latest
+
+real	0m0.735s
+user	0m0.727s
+sys	0m0.394s
+
+benchstat benchstat-old.txt benchstat-new.txt
+
+real	0m0.030s
+user	0m0.018s
+sys	0m0.026s
+
+===============================================================================
+
+go vet diffsquares
+# diffsquares
+./difference_of_squares_examples_test.go:47:1: ExampleDifference_BruteForce refers to unknown field or method: Difference.BruteForce
+
+real	0m0.407s
+user	0m0.516s
+sys	0m0.346s
+
+===============================================================================
+
+go fix diffsquares
+
+real	0m0.059s
+user	0m0.028s
+sys	0m0.056s
+
+===============================================================================
+
+gosec ./difference-of-squares
+[gosec] 2022/06/23 22:04:48 Including rules: default
+[gosec] 2022/06/23 22:04:48 Excluding rules: default
+[gosec] 2022/06/23 22:04:48 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/difference-of-squares
+2022/06/23 22:04:48 internal error: package "math" without types was imported from "command-line-arguments"
+
+real	0m0.384s
+user	0m0.425s
+sys	0m0.337s
+
+===============================================================================
+
+gomarkdoc --output diffsquares-doc.md
+
+real	0m0.030s
+user	0m0.020s
+sys	0m0.011s
+
+===============================================================================
+
+go doc -all diffsquares
+package diffsquares // import "diffsquares"
+
+Package diffsquares finds the difference between the square of the sum and
+the sum of the squares of the first N natural numbers.
+
+FUNCTIONS
+
+func Difference(n int) int
+    Difference returns the difference between the Square of Sums and Sum of
+    Squares.
+
+func SquareOfSum(n int) int
+    SquareOfSum returns the sum, `int`, of the square of the sum of the first n
+    (`int`) numbers (starting with 1 to 10, inclusive).
+
+func SumOfSquares(n int) int
+    SumOfSquares returns the sum, `int`, of the sum of the first n (`int`)
+    squares (starting with 1 to 10, inclusive).
+
+
+real	0m0.134s
+user	0m0.072s
+sys	0m0.099s
+
+
+===============================================================================
+

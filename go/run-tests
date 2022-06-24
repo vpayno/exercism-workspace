@@ -35,6 +35,7 @@ main()
 	if ! go list ... |& grep -q cmd/cover; then
 		echo go install golang.org/x/tools/cmd/cover@latest
 		time go install golang.org/x/tools/cmd/cover@latest
+		printf "\n"
 	fi
 
 	echo go test -v -covermode=count -coverprofile coverage.out "${packages[@]}"
@@ -52,13 +53,30 @@ main()
 
 	print_ruler
 
-	echo go test --bench . --benchmem
-	time go test --bench . --benchmem
+	if [[ -f benchstat-new.txt ]]; then
+		echo mv -v benchstat-{new,old}.txt
+		mv -v benchstat-{new,old}.txt
+		printf "\n"
+	fi
+
+	echo go test --run=xxx --bench . --benchmem '|&' tee benchstat-new.txt
+	time go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 
 	print_ruler
 
 	echo go test -tags bonus
 	time go test -tags bonus
+
+	print_ruler
+
+	if ! benchstat -h >& /dev/null; then
+		echo go install golang.org/x/perf/cmd/benchstat@latest
+		time go install golang.org/x/perf/cmd/benchstat@latest
+		printf "\n"
+	fi
+
+	echo benchstat benchstat-{old,new}.txt
+	time benchstat benchstat-{old,new}.txt
 
 	print_ruler
 
