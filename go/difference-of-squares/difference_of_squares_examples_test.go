@@ -31,3 +31,22 @@ func ExampleDifference() {
 	// 5806679228129780
 	// 2176789148168973847
 }
+
+func Example_squareOfSumBruteForce() {
+	fmt.Println(squareOfSumBruteForce(10))
+	// Output:
+	// 3025
+}
+
+func Example_sumOfSquaresBruteForce() {
+	fmt.Println(sumOfSquaresBruteForce(10))
+	// Output:
+	// 385
+}
+
+func ExampleDifference_BruteForce() {
+	defaultMethod = "default"
+	fmt.Println(Difference(10))
+	// Output:
+	// 2640
+}

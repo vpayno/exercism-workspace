@@ -8,6 +8,44 @@ import "diffsquares"
 
 Package diffsquares finds the difference between the square of the sum and the sum of the squares of the first N natural numbers\.
 
+<details><summary>Example (Square Of Sum Brute Force)</summary>
+<p>
+
+```go
+{
+	fmt.Println(squareOfSumBruteForce(10))
+
+}
+```
+
+#### Output
+
+```
+3025
+```
+
+</p>
+</details>
+
+<details><summary>Example (Sum Of Squares Brute Force)</summary>
+<p>
+
+```go
+{
+	fmt.Println(sumOfSquaresBruteForce(10))
+
+}
+```
+
+#### Output
+
+```
+385
+```
+
+</p>
+</details>
+
 ## Index
 
 - [func Difference(n int) int](<#func-difference>)
@@ -15,7 +53,7 @@ Package diffsquares finds the difference between the square of the sum and the s
 - [func SumOfSquares(n int) int](<#func-sumofsquares>)
 
 
-## func [Difference](<https://github.com/vpayno/exercism-workspace/blob/main/go/difference-of-squares/difference_of_squares.go#L23>)
+## func [Difference](<https://github.com/vpayno/exercism-workspace/blob/main/go/difference-of-squares/difference_of_squares.go#L64>)
 
 ```go
 func Difference(n int) int
@@ -46,13 +84,33 @@ Difference returns the difference between the Square of Sums and Sum of Squares\
 </p>
 </details>
 
-## func [SquareOfSum](<https://github.com/vpayno/exercism-workspace/blob/main/go/difference-of-squares/difference_of_squares.go#L8>)
+<details><summary>Example ("rute Force)</summary>
+<p>
+
+```go
+{
+	defaultMethod = "default"
+	fmt.Println(Difference(10))
+
+}
+```
+
+#### Output
+
+```
+2640
+```
+
+</p>
+</details>
+
+## func [SquareOfSum](<https://github.com/vpayno/exercism-workspace/blob/main/go/difference-of-squares/difference_of_squares.go#L10>)
 
 ```go
 func SquareOfSum(n int) int
 ```
 
-SquareOfSum returns the sum\, \`int\`\, of the square of the sum of the first n \(\`int\`\) numbers \(starting with 1 to 10\, inclusive\)\. Using https://en.wikipedia.org/wiki/1_%2B_2_%2B_3_%2B_4_%2B_%E2%8B%AF
+SquareOfSum returns the sum\, \`int\`\, of the square of the sum of the first n \(\`int\`\) numbers \(starting with 1 to 10\, inclusive\)\.
 
 <details><summary>Example</summary>
 <p>
@@ -77,13 +135,13 @@ SquareOfSum returns the sum\, \`int\`\, of the square of the sum of the first n 
 </p>
 </details>
 
-## func [SumOfSquares](<https://github.com/vpayno/exercism-workspace/blob/main/go/difference-of-squares/difference_of_squares.go#L16>)
+## func [SumOfSquares](<https://github.com/vpayno/exercism-workspace/blob/main/go/difference-of-squares/difference_of_squares.go#L37>)
 
 ```go
 func SumOfSquares(n int) int
 ```
 
-SumOfSquares returns the sum\, \`int\`\, of the sum of the first n \(\`int\`\) squares \(starting with 1 to 10\, inclusive\)\. Using https://brilliant.org/wiki/sum-of-n-n2-or-n3/
+SumOfSquares returns the sum\, \`int\`\, of the sum of the first n \(\`int\`\) squares \(starting with 1 to 10\, inclusive\)\.
 
 <details><summary>Example</summary>
 <p>
