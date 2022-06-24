@@ -48,6 +48,11 @@ main()
 
 	print_ruler
 
+	echo go tool cover -html coverage.out -o coverage.html
+	time go tool cover -html coverage.out -o coverage.html
+
+	print_ruler
+
 	echo go test -v -race -covermode=atomic "${packages[@]}"
 	time go test -v -race -covermode=atomic "${packages[@]}"
 
