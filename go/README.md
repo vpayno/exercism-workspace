@@ -51,3 +51,4 @@
 - [isogram](./isogram/README.md)
 - [difference-of-squares](./difference-of-squares/README.md)
 - [luhn](./luhn/README.md)
+- [grains](./grains/README.md)
