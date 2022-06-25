@@ -4,21 +4,20 @@
 package grains
 
 import (
-	"errors"
 	"fmt"
 	"math"
 )
 
-// const squareIdMin is the starting chessboard square id.
-const squareIdMin int = 1
+// const squareIDMin is the starting chessboard square id.
+const squareIDMin int = 1
 
-// const squareIdMax is the ending chessboard square id.
-const squareIdMax int = 64
+// const squareIDMax is the ending chessboard square id.
+const squareIDMax int = 64
 
-// isValidSquareId returns true if the id number is in the range 1-64
+// isValidSquareID returns true if the id number is in the range 1-64
 // (inclusive).
-func isValidSquareId(id int) bool {
-	if id >= squareIdMin && id <= squareIdMax {
+func isValidSquareID(id int) bool {
+	if id >= squareIDMin && id <= squareIDMax {
 		return true
 	}
 
@@ -27,8 +26,8 @@ func isValidSquareId(id int) bool {
 
 // Square returns the number of grains for the given square on a chessboard.
 func Square(number int) (uint64, error) {
-	if !isValidSquareId(number) {
-		return 0, errors.New(fmt.Sprintf("[%d] is not a valid square id on our chess board.", number))
+	if !isValidSquareID(number) {
+		return 0, fmt.Errorf("[%d] is not a valid square id on our chess board", number)
 	}
 
 	var power float64 = float64(number - 1)
@@ -37,18 +36,31 @@ func Square(number int) (uint64, error) {
 }
 
 // Total returns the number of grans for a while chessboard.
+// https://en.wikipedia.org/wiki/Wheat_and_chessboard_problem#:~:text=The%20number%20of%20grains%20of,of%20one%20grain%20of%20wheat).
 func Total() uint64 {
-	var total uint64
+	// Can't use gemetric sequences because we need a number larger than 2^64 to substract 1 from.
+	// This breaks after (2^62 - 1)
+	// var total uint64 = uint64(math.Pow(2.0, float64(64)) - 1.0)
 
-	for i := squareIdMin; i <= squareIdMax; i++ {
-		v, e := Square(i)
-
-		if e != nil {
-			panic(e)
-		}
-
-		total += v
-	}
+	// Fun fact, the max number for uint64 is (2^64 - 1) which is why you can't subtract 1 from 2^64.
+	// So the best optimization is just to return the max uint64 number.
+	var total uint64 = math.MaxUint64
 
 	return total
 }
+
+/*
+  $ benchstat benchstat-old.txt benchstat-new.txt
+
+  name      old time/op    new time/op    delta
+  Square-4    1.53µs ± 0%    1.52µs ± 0%   ~     (p=1.000 n=1+1)
+  Total-4     2.92µs ± 0%    0.00µs ± 0%   ~     (p=1.000 n=1+1)
+
+  name      old alloc/op   new alloc/op   delta
+  Square-4      232B ± 0%      232B ± 0%   ~     (all equal)
+  Total-4      0.00B          0.00B        ~     (all equal)
+
+  name      old allocs/op  new allocs/op  delta
+  Square-4      7.00 ± 0%      7.00 ± 0%   ~     (all equal)
+  Total-4       0.00           0.00        ~     (all equal)
+*/

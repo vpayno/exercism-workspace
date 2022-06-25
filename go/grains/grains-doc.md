@@ -47,13 +47,13 @@ Square returns the number of grains for the given square on a chessboard\.
 </p>
 </details>
 
-## func [Total](<https://github.com/vpayno/exercism-workspace/blob/main/go/grains/grains.go#L40>)
+## func [Total](<https://github.com/vpayno/exercism-workspace/blob/main/go/grains/grains.go#L41>)
 
 ```go
 func Total() uint64
 ```
 
-Total returns the number of grans for a while chessboard\.
+Total returns the number of grans for a while chessboard\. https://en.wikipedia.org/wiki/Wheat_and_chessboard_problem#:~:text=The%20number%20of%20grains%20of,of%20one%20grain%20of%20wheat\)\.
 
 <details><summary>Example</summary>
 <p>

@@ -68,5 +68,5 @@ JavaRanch Cattle Drive, exercise 6 - http://www.javaranch.com/grains.jsp
 - [test cases](./cases_test.go)
 - [tests](./grains_test.go)
 - [run-tests](./run-tests-go.txt)
-- [coverage](./coverage.html)
+- [coverage](./coverage.html.md)
 - [documentation](./grains-doc.md)

@@ -55,7 +55,7 @@
 			<div id="nav">
 				<select id="files">
 				
-				<option value="file0">grains/grains.go (92.9%)</option>
+				<option value="file0">grains/grains.go (100.0%)</option>
 				
 				</select>
 			</div>
@@ -97,41 +97,38 @@ const squareIdMax int = 64
 
 // isValidSquareId returns true if the id number is in the range 1-64
 // (inclusive).
-func isValidSquareId(id int) bool <span class="cov10" title="142">{
-        if id &gt;= squareIdMin &amp;&amp; id &lt;= squareIdMax </span><span class="cov9" title="138">{
+func isValidSquareId(id int) bool <span class="cov10" title="14">{
+        if id &gt;= squareIdMin &amp;&amp; id &lt;= squareIdMax </span><span class="cov8" title="10">{
                 return true
         }</span>
 
-        <span class="cov3" title="4">return false</span>
+        <span class="cov5" title="4">return false</span>
 }
 
 // Square returns the number of grains for the given square on a chessboard.
-func Square(number int) (uint64, error) <span class="cov10" title="142">{
-        if !isValidSquareId(number) </span><span class="cov3" title="4">{
+func Square(number int) (uint64, error) <span class="cov10" title="14">{
+        if !isValidSquareId(number) </span><span class="cov5" title="4">{
                 return 0, errors.New(fmt.Sprintf("[%d] is not a valid square id on our chess board.", number))
         }</span>
 
-        <span class="cov9" title="138">var power float64 = float64(number - 1)
+        <span class="cov8" title="10">var power float64 = float64(number - 1)
 
         return uint64(math.Pow(2.0, power)), nil</span>
 }
 
 // Total returns the number of grans for a while chessboard.
-func Total() uint64 <span class="cov2" title="2">{
-        var total uint64
+// https://en.wikipedia.org/wiki/Wheat_and_chessboard_problem#:~:text=The%20number%20of%20grains%20of,of%20one%20grain%20of%20wheat).
+func Total() uint64 <span class="cov3" title="2">{
+        // Can't use gemetric sequences because we need a number larger than 2^64 to substract 1 from.
+        // This breaks after (2^62 - 1)
+        // var total uint64 = uint64(math.Pow(2.0, float64(64)) - 1.0)
 
-        for i := squareIdMin; i &lt;= squareIdMax; i++ </span><span class="cov9" title="128">{
-                v, e := Square(i)
+        // Fun fact, the max number for uint64 is (2^64 - 1) which is why you can't subtract 1 from 2^64.
+        // So the best optimization is just to return the max uint64 number.
+        var total uint64 = math.MaxUint64
 
-                if e != nil </span><span class="cov0" title="0">{
-                        panic(e)</span>
-                }
-
-                <span class="cov9" title="128">total += v</span>
-        }
-
-        <span class="cov2" title="2">return total</span>
-}
+        return total
+}</span>
 </pre>
 		
 		</div>
