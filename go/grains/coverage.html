@@ -84,21 +84,21 @@
 package grains
 
 import (
-        "errors"
         "fmt"
         "math"
+        "math/big"
 )
 
-// const squareIdMin is the starting chessboard square id.
-const squareIdMin int = 1
+// const squareIDMin is the starting chessboard square id.
+const squareIDMin int = 1
 
-// const squareIdMax is the ending chessboard square id.
-const squareIdMax int = 64
+// const squareIDMax is the ending chessboard square id.
+const squareIDMax int = 64
 
-// isValidSquareId returns true if the id number is in the range 1-64
+// isValidSquareID returns true if the id number is in the range 1-64
 // (inclusive).
-func isValidSquareId(id int) bool <span class="cov10" title="14">{
-        if id &gt;= squareIdMin &amp;&amp; id &lt;= squareIdMax </span><span class="cov8" title="10">{
+func isValidSquareID(id int) bool <span class="cov10" title="14">{
+        if id &gt;= squareIDMin &amp;&amp; id &lt;= squareIDMax </span><span class="cov8" title="10">{
                 return true
         }</span>
 
@@ -107,8 +107,8 @@ func isValidSquareId(id int) bool <span class="cov10" title="14">{
 
 // Square returns the number of grains for the given square on a chessboard.
 func Square(number int) (uint64, error) <span class="cov10" title="14">{
-        if !isValidSquareId(number) </span><span class="cov5" title="4">{
-                return 0, errors.New(fmt.Sprintf("[%d] is not a valid square id on our chess board.", number))
+        if !isValidSquareID(number) </span><span class="cov5" title="4">{
+                return 0, fmt.Errorf("[%d] is not a valid square id on our chess board", number)
         }</span>
 
         <span class="cov8" title="10">var power float64 = float64(number - 1)
@@ -125,10 +125,33 @@ func Total() uint64 <span class="cov3" title="2">{
 
         // Fun fact, the max number for uint64 is (2^64 - 1) which is why you can't subtract 1 from 2^64.
         // So the best optimization is just to return the max uint64 number.
-        var total uint64 = math.MaxUint64
+        // var total uint64 = math.MaxUint64
 
-        return total
+        // https://pkg.go.dev/math/big
+        two := big.NewInt(int64(2))
+        size := big.NewInt(int64(squareIDMax))
+
+        var total *big.Int = new(big.Int).Exp(two, size, nil)
+        total.Sub(total, big.NewInt(int64(1)))
+
+        return total.Uint64()
 }</span>
+
+/*
+  $ benchstat benchstat-old.txt benchstat-new.txt
+
+  name      old time/op    new time/op    delta
+  Square-4    1.53µs ± 0%    1.52µs ± 0%   ~     (p=1.000 n=1+1)
+  Total-4     2.92µs ± 0%    0.00µs ± 0%   ~     (p=1.000 n=1+1)
+
+  name      old alloc/op   new alloc/op   delta
+  Square-4      232B ± 0%      232B ± 0%   ~     (all equal)
+  Total-4      0.00B          0.00B        ~     (all equal)
+
+  name      old allocs/op  new allocs/op  delta
+  Square-4      7.00 ± 0%      7.00 ± 0%   ~     (all equal)
+  Total-4       0.00           0.00        ~     (all equal)
+*/
 </pre>
 		
 		</div>

@@ -38,7 +38,7 @@ Square returns the number of grains for the given square on a chessboard\.
 #### Output
 
 ```
-0 [0] is not a valid square id on our chess board.
+0 [0] is not a valid square id on our chess board
 1 <nil>
 2 <nil>
 9223372036854775808 <nil>

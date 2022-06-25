@@ -6,6 +6,7 @@ package grains
 import (
 	"fmt"
 	"math"
+	"math/big"
 )
 
 // const squareIDMin is the starting chessboard square id.
@@ -44,13 +45,21 @@ func Total() uint64 {
 
 	// Fun fact, the max number for uint64 is (2^64 - 1) which is why you can't subtract 1 from 2^64.
 	// So the best optimization is just to return the max uint64 number.
-	var total uint64 = math.MaxUint64
+	// var total uint64 = math.MaxUint64
 
-	return total
+	// https://pkg.go.dev/math/big
+	// slower than the second solution and faster than the first.
+	two := big.NewInt(int64(2))
+	size := big.NewInt(int64(squareIDMax))
+
+	var total *big.Int = new(big.Int).Exp(two, size, nil)
+	total.Sub(total, big.NewInt(int64(1)))
+
+	return total.Uint64()
 }
 
 /*
-  $ benchstat benchstat-old.txt benchstat-new.txt
+  $ benchstat benchstat-brute_force.txt benchstat-constant.txt
 
   name      old time/op    new time/op    delta
   Square-4    1.53µs ± 0%    1.52µs ± 0%   ~     (p=1.000 n=1+1)
@@ -63,4 +72,20 @@ func Total() uint64 {
   name      old allocs/op  new allocs/op  delta
   Square-4      7.00 ± 0%      7.00 ± 0%   ~     (all equal)
   Total-4       0.00           0.00        ~     (all equal)
+*/
+
+/*
+  $ benchstat benchstat-brute_force.txt benchstat-big_int.txt
+
+  name      old time/op    new time/op    delta
+  Square-4    1.53µs ± 0%    1.52µs ± 0%   ~     (p=1.000 n=1+1)
+  Total-4     2.92µs ± 0%    0.69µs ± 0%   ~     (p=1.000 n=1+1)
+
+  name      old alloc/op   new alloc/op   delta
+  Square-4      232B ± 0%      200B ± 0%   ~     (p=1.000 n=1+1)
+  Total-4      0.00B        128.00B ± 0%   ~     (p=1.000 n=1+1)
+
+  name      old allocs/op  new allocs/op  delta
+  Square-4      7.00 ± 0%      7.00 ± 0%   ~     (all equal)
+  Total-4       0.00           6.00 ± 0%   ~     (p=1.000 n=1+1)
 */
