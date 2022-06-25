@@ -52,3 +52,4 @@
 - [difference-of-squares](./difference-of-squares/README.md)
 - [luhn](./luhn/README.md)
 - [grains](./grains/README.md)
+- [clock](./clock/README.md)

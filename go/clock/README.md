@@ -56,3 +56,13 @@ receiver see [Go Wiki: Receiver Type](https://github.com/golang/go/wiki/CodeRevi
 ### Based on
 
 Pairing session with Erin Drummond - https://twitter.com/ebdrummond
+
+### My Solution
+
+- [my solution](./clock.go)
+- [my examples](./clock_examples_test.go)
+- [test cases](./cases_test.go)
+- [tests](./clock_test.go)
+- [run-tests](./run-tests-go.txt)
+- [coverage](./coverage.html.md)
+- [documentation](./clock-doc.md)
