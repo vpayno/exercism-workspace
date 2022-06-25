@@ -80,3 +80,12 @@ For a good solution, you should see that the concurrent version shows a lower nu
 - @sebito91
 - @tleen
 - @kudligi
+
+### My Solution
+
+- [my solution](./parallel_letter_frequency.go)
+- [my examples](./parallel_letter_frequency_examples_test.go)
+- [tests](./parallel_letter_frequency_test.go)
+- [run-tests](./run-tests-go.txt)
+- [coverage](./coverage.html)
+- [documentation](./letter-doc.md)

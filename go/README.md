@@ -53,3 +53,4 @@
 - [luhn](./luhn/README.md)
 - [grains](./grains/README.md)
 - [clock](./clock/README.md)
+- [parallel-letter-frequency](./parallel-letter-frequency/README.md)
