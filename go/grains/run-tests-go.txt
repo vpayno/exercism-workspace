@@ -1,0 +1,207 @@
+Running automated test file(s):
+
+Go packages: grains 
+
+
+===============================================================================
+
+golint grains
+
+real	0m0.245s
+user	0m0.343s
+sys	0m0.210s
+
+===============================================================================
+
+go test -v -covermode=count -coverprofile coverage.out grains
+=== RUN   TestSquare
+    grains_test.go:25: PASS: 1
+    grains_test.go:25: PASS: 2
+    grains_test.go:25: PASS: 3
+    grains_test.go:25: PASS: 4
+    grains_test.go:25: PASS: 16
+    grains_test.go:25: PASS: 32
+    grains_test.go:25: PASS: 64
+    grains_test.go:25: PASS: square 0 returns an error
+    grains_test.go:25: PASS: negative square returns an error
+    grains_test.go:25: PASS: square greater than 64 returns an error
+--- PASS: TestSquare (0.00s)
+=== RUN   TestTotal
+--- PASS: TestTotal (0.00s)
+=== RUN   ExampleSquare
+--- PASS: ExampleSquare (0.00s)
+=== RUN   ExampleTotal
+--- PASS: ExampleTotal (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	grains	0.011s	coverage: 100.0% of statements
+
+real	0m0.653s
+user	0m0.790s
+sys	0m0.453s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+grains/grains.go:20:	isValidSquareID	100.0%
+grains/grains.go:29:	Square		100.0%
+grains/grains.go:41:	Total		100.0%
+total:			(statements)	100.0%
+
+real	0m0.281s
+user	0m0.285s
+sys	0m0.292s
+
+===============================================================================
+
+go tool cover -html coverage.out -o coverage.html
+
+real	0m0.231s
+user	0m0.231s
+sys	0m0.240s
+
+===============================================================================
+
+go test -v -race -covermode=atomic grains
+=== RUN   TestSquare
+    grains_test.go:25: PASS: 1
+    grains_test.go:25: PASS: 2
+    grains_test.go:25: PASS: 3
+    grains_test.go:25: PASS: 4
+    grains_test.go:25: PASS: 16
+    grains_test.go:25: PASS: 32
+    grains_test.go:25: PASS: 64
+    grains_test.go:25: PASS: square 0 returns an error
+    grains_test.go:25: PASS: negative square returns an error
+    grains_test.go:25: PASS: square greater than 64 returns an error
+--- PASS: TestSquare (0.00s)
+=== RUN   TestTotal
+--- PASS: TestTotal (0.00s)
+=== RUN   ExampleSquare
+--- PASS: ExampleSquare (0.00s)
+=== RUN   ExampleTotal
+--- PASS: ExampleTotal (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	grains	0.040s	coverage: 100.0% of statements
+
+real	0m0.927s
+user	0m1.111s
+sys	0m0.629s
+
+===============================================================================
+
+mv -v benchstat-new.txt benchstat-old.txt
+renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
+
+go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+goos: linux
+goarch: amd64
+pkg: grains
+cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+BenchmarkSquare-4   	  834349	      1523 ns/op	     200 B/op	       7 allocs/op
+BenchmarkTotal-4    	 2227270	       687.2 ns/op	     128 B/op	       6 allocs/op
+PASS
+ok  	grains	4.262s
+
+real	0m4.812s
+user	0m6.904s
+sys	0m0.879s
+
+===============================================================================
+
+go test -tags bonus
+PASS
+ok  	grains	0.009s
+
+real	0m0.638s
+user	0m0.734s
+sys	0m0.489s
+
+===============================================================================
+
+go install golang.org/x/perf/cmd/benchstat@latest
+
+real	0m4.127s
+user	0m0.733s
+sys	0m0.318s
+
+benchstat benchstat-old.txt benchstat-new.txt
+name      old time/op    new time/op    delta
+Square-4    1.52µs ± 0%    1.52µs ± 0%   ~     (p=1.000 n=1+1)
+Total-4     0.91ns ± 0%  687.20ns ± 0%   ~     (p=1.000 n=1+1)
+
+name      old alloc/op   new alloc/op   delta
+Square-4      232B ± 0%      200B ± 0%   ~     (p=1.000 n=1+1)
+Total-4      0.00B        128.00B ± 0%   ~     (p=1.000 n=1+1)
+
+name      old allocs/op  new allocs/op  delta
+Square-4      7.00 ± 0%      7.00 ± 0%   ~     (all equal)
+Total-4       0.00           6.00 ± 0%   ~     (p=1.000 n=1+1)
+
+real	0m0.021s
+user	0m0.004s
+sys	0m0.031s
+
+===============================================================================
+
+go vet grains
+
+real	0m0.661s
+user	0m0.754s
+sys	0m0.553s
+
+===============================================================================
+
+go fix grains
+
+real	0m0.147s
+user	0m0.119s
+sys	0m0.159s
+
+===============================================================================
+
+gosec ./grains
+[gosec] 2022/06/24 20:04:26 Including rules: default
+[gosec] 2022/06/24 20:04:26 Excluding rules: default
+[gosec] 2022/06/24 20:04:26 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/grains
+2022/06/24 20:04:26 internal error: package "fmt" without types was imported from "command-line-arguments"
+
+real	0m0.524s
+user	0m0.523s
+sys	0m0.384s
+
+===============================================================================
+
+gomarkdoc --output grains-doc.md
+
+real	0m0.026s
+user	0m0.020s
+sys	0m0.015s
+
+===============================================================================
+
+go doc -all grains
+package grains // import "grains"
+
+Package grains calculates the number of grains of wheat on a given
+chessboard square or on the whole chessboard given that the number on each
+square doubles.
+
+FUNCTIONS
+
+func Square(number int) (uint64, error)
+    Square returns the number of grains for the given square on a chessboard.
+
+func Total() uint64
+    Total returns the number of grans for a while chessboard.
+    https://en.wikipedia.org/wiki/Wheat_and_chessboard_problem#:~:text=The%20number%20of%20grains%20of,of%20one%20grain%20of%20wheat).
+
+
+real	0m0.272s
+user	0m0.228s
+sys	0m0.235s
+
+
+===============================================================================
+
