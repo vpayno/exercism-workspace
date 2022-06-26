@@ -1,5 +1,11 @@
 package letter
 
+import (
+	"runtime"
+	"sync"
+	"time"
+)
+
 // FreqMap records the frequency of each rune in a given text.
 type FreqMap map[rune]int
 
@@ -13,20 +19,103 @@ func Frequency(s string) FreqMap {
 	return m
 }
 
+type Job struct {
+	id int
+	s  string
+}
+
+type Result struct {
+	job     Job
+	freqMap FreqMap
+}
+
+var maxWorkers int = runtime.NumCPU() * 2
+
+var jobs chan Job = make(chan Job, maxWorkers)
+var results chan Result = make(chan Result, maxWorkers)
+
+func worker(wg *sync.WaitGroup) {
+	defer wg.Done()
+
+	for job := range jobs {
+		output := Result{
+			job,
+			Frequency(job.s),
+		}
+		results <- output
+	}
+}
+
+func createWorkerPool(workers int) {
+	defer close(results)
+
+	var wg sync.WaitGroup
+
+	for i := 0; i < workers; i++ {
+		wg.Add(1)
+		go worker(&wg)
+	}
+
+	wg.Wait()
+}
+
+func allocate(workers int, lines []string) {
+	for i := 0; i < workers; i++ {
+		if len(lines[i]) == 0 {
+			continue
+		}
+
+		job := Job{
+			i,
+			lines[i],
+		}
+
+		jobs <- job
+	}
+
+	close(jobs)
+}
+
+func result(done chan bool, data chan []FreqMap) {
+	var freqList []FreqMap = []FreqMap{}
+
+	for result := range results {
+		// fmt.Printf("%d: %#v\n", result.job.id, result.freqMap)
+		freqList = append(freqList, result.freqMap)
+	}
+
+	data <- freqList // needs to be after signaling that we're done.
+
+	// fmt.Printf("result(): freqList -> %#v\n", freqList)
+
+	// Minimum amount required to prevent the next send from failing.
+	// The Printf in the for loop was hiding this problem.
+	time.Sleep(time.Millisecond * 1_000)
+
+	done <- true
+}
+
 // ConcurrentFrequency counts the frequency of each rune in the given strings,
 // by making use of concurrency.
 func ConcurrentFrequency(lines []string) FreqMap {
+	done := make(chan bool)
+	var data chan []FreqMap = make(chan []FreqMap, maxWorkers)
+
+	totalJobs := len(lines)
+	go allocate(totalJobs, lines)
+
 	var freqMap FreqMap = FreqMap{}
-	// var results []FreqMap = []FreqMap{}
+	go result(done, data)
 
-	for _, line := range lines {
-		// import "golang.org/x/exp/maps" - doesn't merge values
-		// maps.Copy(result, Frequency(line))  // needs go1.18
+	createWorkerPool(maxWorkers)
 
-		// import "github.com/samber/lo" - doesn't merge values
-		// result = lo.Assign(result, Frequency(line))  // needs go1.18
+	var freqList []FreqMap = <-data
+	<-done // barrier
 
-		fm := Frequency(line)
+	// fmt.Printf("ConcurrentFrequency(): freqList -> %#v\n", freqList)
+
+	for _, fm := range freqList {
+		// fm := Frequency(line)
 
 		for k, v := range fm {
 			if _, found := freqMap[k]; found {

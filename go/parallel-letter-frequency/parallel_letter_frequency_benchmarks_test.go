@@ -10,7 +10,7 @@ import (
 )
 
 // benchMode values: serial, concurrent
-var benchMode string = "serial"
+var benchMode string = "concurency"
 
 type freqFunc map[string]func(s string) FreqMap
 
@@ -51,6 +51,10 @@ func setup() []book {
 		newBook := book{input: string(data)}
 
 		inputs = append(inputs, newBook)
+
+		// needed this while trying to figure out how to fix the channels
+		// being closed
+		// break
 	}
 
 	return inputs
@@ -87,8 +91,16 @@ func BenchmarkFrequency(b *testing.B) {
 			for i := 0; i < b.N; i++ {
 				r = benchmarkFunc(v.input)
 			}
+
+			// We need to re-open these channels after after the first input/
+			// iteration.
+			jobs = make(chan Job, maxWorkers)
+			results = make(chan Result, maxWorkers)
 		})
 	}
+
+	// done with this
+	// close(data)
 
 	// Stop the timer so we don't time post-benchmark code.
 	b.StopTimer()
