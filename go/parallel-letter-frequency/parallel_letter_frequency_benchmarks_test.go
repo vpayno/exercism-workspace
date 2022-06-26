@@ -91,16 +91,8 @@ func BenchmarkFrequency(b *testing.B) {
 			for i := 0; i < b.N; i++ {
 				r = benchmarkFunc(v.input)
 			}
-
-			// We need to re-open these channels after after the first input/
-			// iteration.
-			jobs = make(chan Job, maxWorkers)
-			results = make(chan Result, maxWorkers)
 		})
 	}
-
-	// done with this
-	// close(data)
 
 	// Stop the timer so we don't time post-benchmark code.
 	b.StopTimer()
