@@ -1,0 +1,228 @@
+Running automated test file(s):
+
+Go packages: clock 
+
+
+===============================================================================
+
+golint clock
+
+real	0m0.239s
+user	0m0.225s
+sys	0m0.190s
+
+===============================================================================
+
+go test -v -covermode=count -coverprofile coverage.out clock
+=== RUN   TestCreateClock
+    clock_test.go:16: 20 test cases
+--- PASS: TestCreateClock (0.00s)
+=== RUN   TestAddMinutes
+    clock_test.go:26: 8 test cases
+--- PASS: TestAddMinutes (0.00s)
+=== RUN   TestSubtractMinutes
+    clock_test.go:36: 8 test cases
+--- PASS: TestSubtractMinutes (0.00s)
+=== RUN   TestAddMinutesStringless
+    clock_test.go:55: 8 test cases
+--- PASS: TestAddMinutesStringless (0.00s)
+=== RUN   TestSubtractMinutesStringless
+    clock_test.go:74: 8 test cases
+--- PASS: TestSubtractMinutesStringless (0.00s)
+=== RUN   TestCompareClocks
+    clock_test.go:92: 16 test cases
+--- PASS: TestCompareClocks (0.00s)
+=== RUN   TestAddAndCompare
+--- PASS: TestAddAndCompare (0.00s)
+=== RUN   TestSubtractAndCompare
+--- PASS: TestSubtractAndCompare (0.00s)
+=== RUN   ExampleAdd
+--- PASS: ExampleAdd (0.00s)
+=== RUN   ExampleSubtract
+--- PASS: ExampleSubtract (0.00s)
+=== RUN   ExampleString
+--- PASS: ExampleString (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	clock	0.015s	coverage: 100.0% of statements
+
+real	0m0.645s
+user	0m0.725s
+sys	0m0.437s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+clock/clock.go:13:	normalize	100.0%
+clock/clock.go:34:	New		100.0%
+clock/clock.go:44:	Add		100.0%
+clock/clock.go:51:	Subtract	100.0%
+clock/clock.go:58:	String		100.0%
+total:			(statements)	100.0%
+
+real	0m0.330s
+user	0m0.298s
+sys	0m0.253s
+
+===============================================================================
+
+go tool cover -html coverage.out -o coverage.html
+
+real	0m0.207s
+user	0m0.215s
+sys	0m0.155s
+
+===============================================================================
+
+go test -v -race -covermode=atomic clock
+=== RUN   TestCreateClock
+    clock_test.go:16: 20 test cases
+--- PASS: TestCreateClock (0.00s)
+=== RUN   TestAddMinutes
+    clock_test.go:26: 8 test cases
+--- PASS: TestAddMinutes (0.00s)
+=== RUN   TestSubtractMinutes
+    clock_test.go:36: 8 test cases
+--- PASS: TestSubtractMinutes (0.00s)
+=== RUN   TestAddMinutesStringless
+    clock_test.go:55: 8 test cases
+--- PASS: TestAddMinutesStringless (0.00s)
+=== RUN   TestSubtractMinutesStringless
+    clock_test.go:74: 8 test cases
+--- PASS: TestSubtractMinutesStringless (0.00s)
+=== RUN   TestCompareClocks
+    clock_test.go:92: 16 test cases
+--- PASS: TestCompareClocks (0.00s)
+=== RUN   TestAddAndCompare
+--- PASS: TestAddAndCompare (0.00s)
+=== RUN   TestSubtractAndCompare
+--- PASS: TestSubtractAndCompare (0.00s)
+=== RUN   ExampleAdd
+--- PASS: ExampleAdd (0.00s)
+=== RUN   ExampleSubtract
+--- PASS: ExampleSubtract (0.00s)
+=== RUN   ExampleString
+--- PASS: ExampleString (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	clock	0.044s	coverage: 100.0% of statements
+
+real	0m0.722s
+user	0m0.742s
+sys	0m0.470s
+
+===============================================================================
+
+go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+goos: linux
+goarch: amd64
+pkg: clock
+cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+BenchmarkAddMinutes-4        	34995236	        32.33 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSubtractMinutes-4   	16155007	        87.23 ns/op	       0 B/op	       0 allocs/op
+BenchmarkCreateClocks-4      	 5566652	       192.9 ns/op	       0 B/op	       0 allocs/op
+PASS
+ok  	clock	4.871s
+
+real	0m5.515s
+user	0m5.844s
+sys	0m0.524s
+
+===============================================================================
+
+go test -tags bonus
+PASS
+ok  	clock	0.005s
+
+real	0m0.719s
+user	0m0.847s
+sys	0m0.487s
+
+===============================================================================
+
+go install golang.org/x/perf/cmd/benchstat@latest
+
+real	0m5.840s
+user	0m0.922s
+sys	0m0.492s
+
+benchstat benchstat-old.txt benchstat-new.txt
+benchstat: open benchstat-old.txt: no such file or directory
+
+real	0m0.016s
+user	0m0.000s
+sys	0m0.017s
+
+===============================================================================
+
+go vet clock
+# clock
+./clock_examples_test.go:12:1: ExampleAdd refers to unknown identifier: Add
+./clock_examples_test.go:20:1: ExampleSubtract refers to unknown identifier: Subtract
+
+real	0m0.377s
+user	0m0.374s
+sys	0m0.335s
+
+===============================================================================
+
+go fix clock
+
+real	0m0.133s
+user	0m0.138s
+sys	0m0.089s
+
+===============================================================================
+
+gosec ./clock
+[gosec] 2022/06/24 23:11:31 Including rules: default
+[gosec] 2022/06/24 23:11:31 Excluding rules: default
+[gosec] 2022/06/24 23:11:31 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/clock
+2022/06/24 23:11:31 internal error: package "fmt" without types was imported from "command-line-arguments"
+
+real	0m0.430s
+user	0m0.441s
+sys	0m0.359s
+
+===============================================================================
+
+gomarkdoc --output clock-doc.md
+
+real	0m0.034s
+user	0m0.021s
+sys	0m0.019s
+
+===============================================================================
+
+go doc -all clock
+package clock // import "clock"
+
+Package clock that handles times without dates.
+
+TYPES
+
+type Clock struct {
+	// Has unexported fields.
+}
+    Clock struct that uses hours and minutes to represent time.
+
+func New(h, m int) Clock
+    New returns a new clock with the normalized given hours and minutes.
+
+func (c Clock) Add(m int) Clock
+    Add returns a clock with the added minutes.
+
+func (c Clock) String() string
+    String retruns a string representation of the clock struct.
+
+func (c Clock) Subtract(m int) Clock
+    Subtract returns a clock with the subtracted minutes.
+
+
+real	0m0.228s
+user	0m0.157s
+sys	0m0.254s
+
+
+===============================================================================
+

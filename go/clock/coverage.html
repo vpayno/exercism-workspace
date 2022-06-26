@@ -1,0 +1,172 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>clock: Go Coverage Report</title>
+		<style>
+			body {
+				background: black;
+				color: rgb(80, 80, 80);
+			}
+			body, pre, #legend span {
+				font-family: Menlo, monospace;
+				font-weight: bold;
+			}
+			#topbar {
+				background: black;
+				position: fixed;
+				top: 0; left: 0; right: 0;
+				height: 42px;
+				border-bottom: 1px solid rgb(80, 80, 80);
+			}
+			#content {
+				margin-top: 50px;
+			}
+			#nav, #legend {
+				float: left;
+				margin-left: 10px;
+			}
+			#legend {
+				margin-top: 12px;
+			}
+			#nav {
+				margin-top: 10px;
+			}
+			#legend span {
+				margin: 0 5px;
+			}
+			.cov0 { color: rgb(192, 0, 0) }
+.cov1 { color: rgb(128, 128, 128) }
+.cov2 { color: rgb(116, 140, 131) }
+.cov3 { color: rgb(104, 152, 134) }
+.cov4 { color: rgb(92, 164, 137) }
+.cov5 { color: rgb(80, 176, 140) }
+.cov6 { color: rgb(68, 188, 143) }
+.cov7 { color: rgb(56, 200, 146) }
+.cov8 { color: rgb(44, 212, 149) }
+.cov9 { color: rgb(32, 224, 152) }
+.cov10 { color: rgb(20, 236, 155) }
+
+		</style>
+	</head>
+	<body>
+		<div id="topbar">
+			<div id="nav">
+				<select id="files">
+				
+				<option value="file0">clock/clock.go (100.0%)</option>
+				
+				</select>
+			</div>
+			<div id="legend">
+				<span>not tracked</span>
+			
+				<span class="cov0">no coverage</span>
+				<span class="cov1">low coverage</span>
+				<span class="cov2">*</span>
+				<span class="cov3">*</span>
+				<span class="cov4">*</span>
+				<span class="cov5">*</span>
+				<span class="cov6">*</span>
+				<span class="cov7">*</span>
+				<span class="cov8">*</span>
+				<span class="cov9">*</span>
+				<span class="cov10">high coverage</span>
+			
+			</div>
+		</div>
+		<div id="content">
+		
+		<pre class="file" id="file0" style="display: none">// Package clock that handles times without dates.
+package clock
+
+import "fmt"
+
+// Clock struct that uses hours and minutes to represent time.
+type Clock struct {
+        h int
+        m int
+}
+
+// normalize returns hours and minutes after the hours have been normalized (it's late, that's the best name I could think of).
+func normalize(h, m int) (int, int) <span class="cov7" title="142">{
+        for m &lt; 0 </span><span class="cov10" title="653">{
+                m += 60
+                h--
+        }</span>
+
+        <span class="cov7" title="142">for h &lt; 0 </span><span class="cov6" title="57">{
+                h += 24
+        }</span>
+
+        <span class="cov7" title="142">var minutes int = h*60 + m
+
+        if minutes &gt; 60 </span><span class="cov7" title="126">{
+                h = (minutes / 60) % 24
+                m = minutes % 60
+        }</span>
+
+        <span class="cov7" title="142">return h, m</span>
+}
+
+// New returns a new clock with the normalized given hours and minutes.
+func New(h, m int) Clock <span class="cov7" title="104">{
+        h, m = normalize(h, m)
+
+        return Clock{
+                h: h,
+                m: m,
+        }
+}</span>
+
+// Add returns a clock with the added minutes.
+func (c Clock) Add(m int) Clock <span class="cov5" title="19">{
+        c.h, c.m = normalize(c.h, c.m+m)
+
+        return c
+}</span>
+
+// Subtract returns a clock with the subtracted minutes.
+func (c Clock) Subtract(m int) Clock <span class="cov5" title="19">{
+        c.h, c.m = normalize(c.h, c.m-m)
+
+        return c
+}</span>
+
+// String retruns a string representation of the clock struct.
+func (c Clock) String() string <span class="cov6" title="45">{
+        return fmt.Sprintf("%02d:%02d", c.h, c.m)
+}</span>
+</pre>
+		
+		</div>
+	</body>
+	<script>
+	(function() {
+		var files = document.getElementById('files');
+		var visible;
+		files.addEventListener('change', onChange, false);
+		function select(part) {
+			if (visible)
+				visible.style.display = 'none';
+			visible = document.getElementById(part);
+			if (!visible)
+				return;
+			files.value = part;
+			visible.style.display = 'block';
+			location.hash = part;
+		}
+		function onChange() {
+			select(files.value);
+			window.scrollTo(0, 0);
+		}
+		if (location.hash != "") {
+			select(location.hash.substr(1));
+		}
+		if (!visible) {
+			select("file0");
+		}
+	})();
+	</script>
+</html>
