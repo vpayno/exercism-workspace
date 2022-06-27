@@ -61,3 +61,13 @@ Implementing this new custom type as a string should suffice.
 ### Based on
 
 Partially inspired by Chapter 1 in Chris Pine's online Learn to Program tutorial. - http://pine.fm/LearnToProgram/?Chapter=01
+
+### My Solution
+
+- [my solution](./space_age.go)
+- [my examples](./space_age_examples_test.go)
+- [test cases](./cases_test.go)
+- [tests](./space_age_test.go)
+- [run-tests](./run-tests-go.txt)
+- [coverage](./coverage.html)
+- [documentation](./space-doc.md)
