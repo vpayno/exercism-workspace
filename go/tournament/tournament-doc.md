@@ -13,11 +13,13 @@ import "tournament"
 - [type Teams](<#type-teams>)
 
 
-## func [Tally](<https://github.com/vpayno/exercism-workspace/blob/main/go/tournament/tournament.go#L23>)
+## func [Tally](<https://github.com/vpayno/exercism-workspace/blob/main/go/tournament/tournament.go#L28>)
 
 ```go
 func Tally(reader io.Reader, writer io.Writer) error
 ```
+
+Tally returns the results of a small football competition\.
 
 <details><summary>Example</summary>
 <p>
@@ -37,7 +39,7 @@ Devastating Donkeys;Allegoric Alaskans;win
 Courageous Californians;Blithering Badgers;loss
 Blithering Badgers;Devastating Donkeys;loss
 Allegoric Alaskans;Courageous Californians;win
-`
+`[1:] // [1:] = strip initial readability newline
 
 func main() {
 	debug = true
@@ -62,7 +64,9 @@ Courageous Californians        |  3 |  0 |  1 |  2 |  1
 </p>
 </details>
 
-## type [Team](<https://github.com/vpayno/exercism-workspace/blob/main/go/tournament/tournament.go#L12-L19>)
+## type [Team](<https://github.com/vpayno/exercism-workspace/blob/main/go/tournament/tournament.go#L15-L22>)
+
+Team struct holds a team's tournament information\.
 
 ```go
 type Team struct {
@@ -70,7 +74,9 @@ type Team struct {
 }
 ```
 
-## type [Teams](<https://github.com/vpayno/exercism-workspace/blob/main/go/tournament/tournament.go#L21>)
+## type [Teams](<https://github.com/vpayno/exercism-workspace/blob/main/go/tournament/tournament.go#L25>)
+
+Teams map holds a collection of Team structs for a single tournament\.
 
 ```go
 type Teams map[string]Team

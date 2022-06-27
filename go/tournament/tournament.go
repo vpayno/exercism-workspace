@@ -4,11 +4,14 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"sort"
 	"strings"
 )
 
+// Used to turn on print for the example test(s).
 var debug bool = false
 
+// Team struct holds a team's tournament information.
 type Team struct {
 	name   string
 	played int
@@ -18,8 +21,10 @@ type Team struct {
 	points int
 }
 
+// Teams map holds a collection of Team structs for a single tournament.
 type Teams map[string]Team
 
+// Tally returns the results of a small football competition.
 func Tally(reader io.Reader, writer io.Writer) error {
 	teams := Teams{}
 
@@ -143,20 +148,24 @@ func Tally(reader io.Reader, writer io.Writer) error {
 	var header string
 	var output string
 
-	header = fmt.Sprintf("%-30s | %2s | %2s | %2s | %2s | %2s \n", "Team", "MP", "W", "D", "L", "P")
+	header = fmt.Sprintf("%-30s | %2s | %2s | %2s | %2s | %2s\n", "Team", "MP", "W", "D", "L", "P")
 
-	/*
-		var rows [][]int = [][]int{}
-			for _, v := range teams {
-				t := v
-				rows = append(rows, []int{t.name, t.played, t.won, t.drawn, t.lost, t.points})
-			}
-	*/
+	var rows []Team = []Team{}
+	for _, t := range teams {
+		rows = append(rows, t)
+	}
+
+	// fmt.Printf("rows: %#v\n", rows)
+	sort.Slice(rows, func(i, j int) bool {
+		if rows[i].points == rows[j].points {
+			return rows[i].name < rows[j].name
+		}
+		return rows[i].points > rows[j].points
+	})
 	// fmt.Printf("rows: %#v\n", rows)
 
-	for _, v := range teams {
-		t := v
-		output += fmt.Sprintf("%-30s | %2d | %2d | %2d | %2d | %2d \n", t.name, t.played, t.won, t.drawn, t.lost, t.points)
+	for _, t := range rows {
+		output += fmt.Sprintf("%-30s | %2d | %2d | %2d | %2d | %2d\n", t.name, t.played, t.won, t.drawn, t.lost, t.points)
 	}
 
 	if debug {

@@ -84,11 +84,14 @@ import (
         "errors"
         "fmt"
         "io"
+        "sort"
         "strings"
 )
 
+// Used to turn on print for the example test(s).
 var debug bool = false
 
+// Team struct holds a team's tournament information.
 type Team struct {
         name   string
         played int
@@ -98,9 +101,11 @@ type Team struct {
         points int
 }
 
+// Teams map holds a collection of Team structs for a single tournament.
 type Teams map[string]Team
 
-func Tally(reader io.Reader, writer io.Writer) error <span class="cov3" title="6">{
+// Tally returns the results of a small football competition.
+func Tally(reader io.Reader, writer io.Writer) error <span class="cov3" title="9">{
         teams := Teams{}
 
         var lines []string = []string{}
@@ -111,32 +116,32 @@ func Tally(reader io.Reader, writer io.Writer) error <span class="cov3" title="6
         var team1 Team
         var team2 Team
 
-        for e != io.EOF </span><span class="cov10" title="707">{
+        for e != io.EOF </span><span class="cov10" title="1491">{
 
                 // Why are we stuck doing this one byte at a time?
                 b := make([]byte, 1)
                 size, e = reader.Read(b)
 
-                if size &gt; 0 </span><span class="cov9" title="701">{
+                if size &gt; 0 </span><span class="cov9" title="1482">{
                         char := b[0]
 
                         // fmt.Printf("char: %c\n", char)
 
-                        if char == '\n' </span><span class="cov4" title="14">{
+                        if char == '\n' </span><span class="cov5" title="37">{
                                 lines = append(lines, line)
                                 line = ""
                                 continue</span>
                         }
 
-                        <span class="cov9" title="687">line += string(char)</span>
+                        <span class="cov9" title="1445">line += string(char)</span>
                 }
         }
 
-        <span class="cov3" title="6">if len(lines) == 0 </span><span class="cov2" title="4">{
+        <span class="cov3" title="9">if len(lines) == 0 </span><span class="cov2" title="4">{
                 return errors.New("blank line")
         }</span>
 
-        <span class="cov1" title="2">for _, line := range lines </span><span class="cov4" title="14">{
+        <span class="cov2" title="5">for _, line := range lines </span><span class="cov5" title="37">{
                 fields := strings.Split(line, ";")
 
                 /*
@@ -145,26 +150,26 @@ func Tally(reader io.Reader, writer io.Writer) error <span class="cov3" title="6
                         fmt.Println()
                 */
 
-                if len(fields) != 3 </span><span class="cov1" title="2">{
+                if len(fields) != 3 </span><span class="cov3" title="9">{
                         continue</span>
                 }
 
-                <span class="cov4" title="12">name1 := fields[0]
+                <span class="cov5" title="28">name1 := fields[0]
                 name2 := fields[1]
                 result := fields[2]
 
                 // take the structs out of the map or create a new one
-                if _, found := teams[name1]; found </span><span class="cov3" title="8">{
+                if _, found := teams[name1]; found </span><span class="cov4" title="16">{
                         team1 = teams[name1]
-                }</span> else<span class="cov2" title="4"> {
+                }</span> else<span class="cov4" title="12"> {
                         team1 = Team{}
                         team1.name = name1
                 }</span>
 
                 // take the structs out of the map or create a new one
-                <span class="cov4" title="12">if _, found := teams[name2]; found </span><span class="cov3" title="8">{
+                <span class="cov5" title="28">if _, found := teams[name2]; found </span><span class="cov4" title="20">{
                         team2 = teams[name2]
-                }</span> else<span class="cov2" title="4"> {
+                }</span> else<span class="cov3" title="8"> {
                         team2 = Team{}
                         team2.name = name2
                 }</span>
@@ -183,8 +188,8 @@ func Tally(reader io.Reader, writer io.Writer) error <span class="cov3" title="6
                         fmt.Println()
                 */
 
-                <span class="cov4" title="12">switch result </span>{
-                case "win":<span class="cov3" title="6">
+                <span class="cov5" title="28">switch result </span>{
+                case "win":<span class="cov4" title="15">
                         /*
                                 fmt.Printf(" won: %s\n", team1.name)
                                 fmt.Printf("lost: %s\n", team2.name)
@@ -192,7 +197,7 @@ func Tally(reader io.Reader, writer io.Writer) error <span class="cov3" title="6
                         team1.won++
                         team1.points += 3
                         team2.lost++</span>
-                case "loss":<span class="cov2" title="4">
+                case "loss":<span class="cov3" title="8">
                         /*
                                 fmt.Printf("lost: %s\n", team1.name)
                                 fmt.Printf(" won: %s\n", team2.name)
@@ -200,7 +205,7 @@ func Tally(reader io.Reader, writer io.Writer) error <span class="cov3" title="6
                         team1.lost++
                         team2.won++
                         team2.points += 3</span>
-                case "draw":<span class="cov1" title="2">
+                case "draw":<span class="cov2" title="5">
                         /*
                                 fmt.Printf("draw: %s\n", team1.name)
                                 fmt.Printf("draw: %s\n", team2.name)
@@ -210,7 +215,7 @@ func Tally(reader io.Reader, writer io.Writer) error <span class="cov3" title="6
                         team1.points++
                         team2.points++</span>
                 }
-                <span class="cov4" title="12">fmt.Println()
+                <span class="cov5" title="28">fmt.Println()
 
                 team1.played++
                 team2.played++
@@ -220,41 +225,45 @@ func Tally(reader io.Reader, writer io.Writer) error <span class="cov3" title="6
                 teams[name2] = team2</span>
         }
 
-        <span class="cov1" title="2">var header string
+        <span class="cov2" title="5">var header string
         var output string
 
-        header = fmt.Sprintf("%-30s | %2s | %2s | %2s | %2s | %2s \n", "Team", "MP", "W", "D", "L", "P")
+        header = fmt.Sprintf("%-30s | %2s | %2s | %2s | %2s | %2s\n", "Team", "MP", "W", "D", "L", "P")
 
-        /*
-                var rows [][]int = [][]int{}
-                        for _, v := range teams {
-                                t := v
-                                rows = append(rows, []int{t.name, t.played, t.won, t.drawn, t.lost, t.points})
-                        }
-        */
-        // fmt.Printf("rows: %#v\n", rows)
-
-        for _, v := range teams </span><span class="cov3" title="8">{
-                t := v
-                output += fmt.Sprintf("%-30s | %2d | %2d | %2d | %2d | %2d \n", t.name, t.played, t.won, t.drawn, t.lost, t.points)
+        var rows []Team = []Team{}
+        for _, t := range teams </span><span class="cov4" title="20">{
+                rows = append(rows, t)
         }</span>
 
-        <span class="cov1" title="2">if debug </span><span class="cov1" title="1">{
+        // fmt.Printf("rows: %#v\n", rows)
+        <span class="cov2" title="5">sort.Slice(rows, func(i, j int) bool </span><span class="cov5" title="26">{
+                if rows[i].points == rows[j].points </span><span class="cov2" title="3">{
+                        return rows[i].name &lt; rows[j].name
+                }</span>
+                <span class="cov4" title="23">return rows[i].points &gt; rows[j].points</span>
+        })
+        // fmt.Printf("rows: %#v\n", rows)
+
+        <span class="cov2" title="5">for _, t := range rows </span><span class="cov4" title="20">{
+                output += fmt.Sprintf("%-30s | %2d | %2d | %2d | %2d | %2d\n", t.name, t.played, t.won, t.drawn, t.lost, t.points)
+        }</span>
+
+        <span class="cov2" title="5">if debug </span><span class="cov1" title="1">{
                 fmt.Print(header)
                 fmt.Print(output)
         }</span>
 
-        <span class="cov1" title="2">for _, char := range header </span><span class="cov7" title="114">{
+        <span class="cov2" title="5">for _, char := range header </span><span class="cov7" title="280">{
                 b := []byte{byte(char)}
                 size, _ = writer.Write(b)
         }</span>
 
-        <span class="cov1" title="2">for _, char := range output </span><span class="cov9" title="456">{
+        <span class="cov2" title="5">for _, char := range output </span><span class="cov9" title="1120">{
                 b := []byte{byte(char)}
                 size, _ = writer.Write(b)
         }</span>
 
-        <span class="cov1" title="2">return nil</span>
+        <span class="cov2" title="5">return nil</span>
 }
 </pre>
 		

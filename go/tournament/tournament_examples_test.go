@@ -12,7 +12,7 @@ Devastating Donkeys;Allegoric Alaskans;win
 Courageous Californians;Blithering Badgers;loss
 Blithering Badgers;Devastating Donkeys;loss
 Allegoric Alaskans;Courageous Californians;win
-`
+`[1:] // [1:] = strip initial readability newline
 
 func ExampleTally() {
 	debug = true
