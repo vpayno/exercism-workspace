@@ -1,0 +1,177 @@
+Running automated test file(s):
+
+Go packages: space 
+
+
+===============================================================================
+
+golint space
+
+real	0m0.156s
+user	0m0.140s
+sys	0m0.137s
+
+===============================================================================
+
+go test -v -covermode=count -coverprofile coverage.out space
+=== RUN   TestAge
+    space_age_test.go:15: PASS: age on Earth
+    space_age_test.go:15: PASS: age on Mercury
+    space_age_test.go:15: PASS: age on Venus
+    space_age_test.go:15: PASS: age on Mars
+    space_age_test.go:15: PASS: age on Jupiter
+    space_age_test.go:15: PASS: age on Saturn
+    space_age_test.go:15: PASS: age on Uranus
+    space_age_test.go:15: PASS: age on Neptune
+--- PASS: TestAge (0.00s)
+=== RUN   ExampleAge
+--- PASS: ExampleAge (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	space	0.023s	coverage: 100.0% of statements
+
+real	0m0.504s
+user	0m0.625s
+sys	0m0.388s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+space/space_age.go:22:	Age		100.0%
+total:			(statements)	100.0%
+
+real	0m0.087s
+user	0m0.049s
+sys	0m0.088s
+
+===============================================================================
+
+go tool cover -html coverage.out -o coverage.html
+
+real	0m0.118s
+user	0m0.073s
+sys	0m0.081s
+
+===============================================================================
+
+go test -v -race -covermode=atomic space
+=== RUN   TestAge
+    space_age_test.go:15: PASS: age on Earth
+    space_age_test.go:15: PASS: age on Mercury
+    space_age_test.go:15: PASS: age on Venus
+    space_age_test.go:15: PASS: age on Mars
+    space_age_test.go:15: PASS: age on Jupiter
+    space_age_test.go:15: PASS: age on Saturn
+    space_age_test.go:15: PASS: age on Uranus
+    space_age_test.go:15: PASS: age on Neptune
+--- PASS: TestAge (0.00s)
+=== RUN   ExampleAge
+--- PASS: ExampleAge (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	space	(cached)	coverage: 100.0% of statements
+
+real	0m0.359s
+user	0m0.344s
+sys	0m0.390s
+
+===============================================================================
+
+go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+goos: linux
+goarch: amd64
+pkg: space
+cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+BenchmarkAge-4   	10086499	       118.6 ns/op	       0 B/op	       0 allocs/op
+PASS
+ok  	space	1.389s
+
+real	0m1.839s
+user	0m2.022s
+sys	0m0.349s
+
+===============================================================================
+
+go test -tags bonus
+PASS
+ok  	space	0.003s
+
+real	0m0.561s
+user	0m0.725s
+sys	0m0.459s
+
+===============================================================================
+
+No old benchmarks to run benchstat against.
+
+===============================================================================
+
+go vet space
+
+real	0m0.444s
+user	0m0.498s
+sys	0m0.454s
+
+===============================================================================
+
+go fix space
+
+real	0m0.065s
+user	0m0.034s
+sys	0m0.057s
+
+===============================================================================
+
+gosec ./space-age
+[gosec] 2022/06/27 07:52:28 Including rules: default
+[gosec] 2022/06/27 07:52:28 Excluding rules: default
+[gosec] 2022/06/27 07:52:28 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/space-age
+[gosec] 2022/06/27 07:52:28 Checking package: space
+[gosec] 2022/06/27 07:52:28 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/space-age/space_age.go
+Results:
+
+
+Summary:
+   Files: 1
+   Lines: 26
+   Nosec: 0
+  Issues: 0
+
+
+real	0m0.208s
+user	0m0.215s
+sys	0m0.154s
+
+===============================================================================
+
+gomarkdoc --output space-doc.md
+
+real	0m0.043s
+user	0m0.051s
+sys	0m0.040s
+
+===============================================================================
+
+go doc -all space
+package space // import "space"
+
+
+FUNCTIONS
+
+func Age(seconds float64, planet Planet) float64
+    Age returns a person's age on a given planet.
+
+
+TYPES
+
+type Planet string
+    Planet is a string with the name of a Planet.
+
+
+real	0m0.148s
+user	0m0.067s
+sys	0m0.148s
+
+
+===============================================================================
+

@@ -74,14 +74,22 @@ main()
 
 	print_ruler
 
-	if ! benchstat -h >& /dev/null; then
-		echo go install golang.org/x/perf/cmd/benchstat@latest
-		time go install golang.org/x/perf/cmd/benchstat@latest
-		printf "\n"
-	fi
+	if [[ -f benchstat-old.txt ]] && [[ -f benchstat-new.txt ]]; then
 
-	echo benchstat benchstat-{old,new}.txt
-	time benchstat benchstat-{old,new}.txt
+		if ! benchstat -h >& /dev/null; then
+			echo go install golang.org/x/perf/cmd/benchstat@latest
+			time go install golang.org/x/perf/cmd/benchstat@latest
+			printf "\n"
+		fi
+
+		echo benchstat benchstat-{old,new}.txt
+		time benchstat benchstat-{old,new}.txt
+
+	else
+
+		printf "No old benchmarks to run benchstat against.\n"
+
+	fi
 
 	print_ruler
 

@@ -1,0 +1,181 @@
+Running automated test file(s):
+
+Go packages: triangle 
+
+
+===============================================================================
+
+golint triangle
+
+real	0m0.078s
+user	0m0.057s
+sys	0m0.091s
+
+===============================================================================
+
+go test -v -covermode=count -coverprofile coverage.out triangle
+=== RUN   TestKindsNotEqual
+--- PASS: TestKindsNotEqual (0.00s)
+=== RUN   TestKind
+--- PASS: TestKind (0.00s)
+=== RUN   ExampleHelloWorld
+--- PASS: ExampleHelloWorld (0.00s)
+PASS
+coverage: 96.0% of statements
+ok  	triangle	0.012s	coverage: 96.0% of statements
+
+real	0m0.638s
+user	0m0.835s
+sys	0m0.461s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+triangle/triangle.go:16:	isTriangle	100.0%
+triangle/triangle.go:29:	isEquilateral	100.0%
+triangle/triangle.go:42:	isIsosceles	100.0%
+triangle/triangle.go:55:	isScalene	80.0%
+triangle/triangle.go:68:	KindFromSides	100.0%
+total:				(statements)	96.0%
+
+real	0m0.112s
+user	0m0.055s
+sys	0m0.100s
+
+===============================================================================
+
+go tool cover -html coverage.out -o coverage.html
+
+real	0m0.083s
+user	0m0.046s
+sys	0m0.074s
+
+===============================================================================
+
+go test -v -race -covermode=atomic triangle
+=== RUN   TestKindsNotEqual
+--- PASS: TestKindsNotEqual (0.00s)
+=== RUN   TestKind
+--- PASS: TestKind (0.00s)
+=== RUN   ExampleHelloWorld
+--- PASS: ExampleHelloWorld (0.00s)
+PASS
+coverage: 96.0% of statements
+ok  	triangle	0.025s	coverage: 96.0% of statements
+
+real	0m0.688s
+user	0m0.812s
+sys	0m0.451s
+
+===============================================================================
+
+go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+goos: linux
+goarch: amd64
+pkg: triangle
+cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+BenchmarkKind-4   	 7243879	       155.2 ns/op	       0 B/op	       0 allocs/op
+PASS
+ok  	triangle	1.353s
+
+real	0m1.899s
+user	0m2.119s
+sys	0m0.386s
+
+===============================================================================
+
+go test -tags bonus
+PASS
+ok  	triangle	0.013s
+
+real	0m0.575s
+user	0m0.610s
+sys	0m0.510s
+
+===============================================================================
+
+No old benchmarks to run benchstat against.
+
+===============================================================================
+
+go vet triangle
+# triangle
+./triangle_examples_test.go:7:1: ExampleHelloWorld refers to unknown identifier: HelloWorld
+
+real	0m0.370s
+user	0m0.460s
+sys	0m0.332s
+
+===============================================================================
+
+go fix triangle
+
+real	0m0.057s
+user	0m0.048s
+sys	0m0.044s
+
+===============================================================================
+
+gosec ./triangle
+[gosec] 2022/06/27 08:43:00 Including rules: default
+[gosec] 2022/06/27 08:43:00 Excluding rules: default
+[gosec] 2022/06/27 08:43:00 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/triangle
+[gosec] 2022/06/27 08:43:00 Checking package: triangle
+[gosec] 2022/06/27 08:43:00 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/triangle/triangle.go
+Results:
+
+
+Summary:
+   Files: 1
+   Lines: 79
+   Nosec: 0
+  Issues: 0
+
+
+real	0m0.352s
+user	0m0.433s
+sys	0m0.268s
+
+===============================================================================
+
+gomarkdoc --output triangle-doc.md
+
+real	0m0.035s
+user	0m0.043s
+sys	0m0.018s
+
+===============================================================================
+
+go doc -all triangle
+package triangle // import "triangle"
+
+Package triangle determines if a triangle is equilateral, isosceles, or
+scalene.
+
+CONSTANTS
+
+const (
+	NaT = 0 // not a triangle
+	Equ = 1 // equilateral
+	Iso = 2 // isosceles
+	Sca = 3 // scalene
+)
+    Triangle types.
+
+
+TYPES
+
+type Kind int
+    Kind is an int used to describe a triangle.
+
+func KindFromSides(a, b, c float64) Kind
+    KindFromSides returns the kind of triangle being tested.
+
+
+real	0m0.119s
+user	0m0.075s
+sys	0m0.100s
+
+
+===============================================================================
+
