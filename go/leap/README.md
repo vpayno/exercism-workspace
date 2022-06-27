@@ -71,3 +71,13 @@ file. The Go specific transformation of that data lives in the `cases_test.go` f
 ### Based on
 
 JavaRanch Cattle Drive, exercise 3 - http://www.javaranch.com/leap.jsp
+
+### My Solution
+
+- [my solution](./leap.go)
+- [my examples](./leap_examples_test.go)
+- [test cases](./cases_test.go)
+- [tests](./leap_test.go)
+- [run-tests](./run-tests-go.txt)
+- [coverage](./coverage.html)
+- [documentation](./leap-doc.md)

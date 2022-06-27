@@ -56,3 +56,4 @@
 - [parallel-letter-frequency](./parallel-letter-frequency/README.md)
 - [tournament](./tournament/README.md)
 - [space-age](./space-age/README.md)
+- [leap](./leap/README.md)
