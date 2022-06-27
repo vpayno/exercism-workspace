@@ -1,0 +1,299 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>tournament: Go Coverage Report</title>
+		<style>
+			body {
+				background: black;
+				color: rgb(80, 80, 80);
+			}
+			body, pre, #legend span {
+				font-family: Menlo, monospace;
+				font-weight: bold;
+			}
+			#topbar {
+				background: black;
+				position: fixed;
+				top: 0; left: 0; right: 0;
+				height: 42px;
+				border-bottom: 1px solid rgb(80, 80, 80);
+			}
+			#content {
+				margin-top: 50px;
+			}
+			#nav, #legend {
+				float: left;
+				margin-left: 10px;
+			}
+			#legend {
+				margin-top: 12px;
+			}
+			#nav {
+				margin-top: 10px;
+			}
+			#legend span {
+				margin: 0 5px;
+			}
+			.cov0 { color: rgb(192, 0, 0) }
+.cov1 { color: rgb(128, 128, 128) }
+.cov2 { color: rgb(116, 140, 131) }
+.cov3 { color: rgb(104, 152, 134) }
+.cov4 { color: rgb(92, 164, 137) }
+.cov5 { color: rgb(80, 176, 140) }
+.cov6 { color: rgb(68, 188, 143) }
+.cov7 { color: rgb(56, 200, 146) }
+.cov8 { color: rgb(44, 212, 149) }
+.cov9 { color: rgb(32, 224, 152) }
+.cov10 { color: rgb(20, 236, 155) }
+
+		</style>
+	</head>
+	<body>
+		<div id="topbar">
+			<div id="nav">
+				<select id="files">
+				
+				<option value="file0">tournament/tournament.go (100.0%)</option>
+				
+				</select>
+			</div>
+			<div id="legend">
+				<span>not tracked</span>
+			
+				<span class="cov0">no coverage</span>
+				<span class="cov1">low coverage</span>
+				<span class="cov2">*</span>
+				<span class="cov3">*</span>
+				<span class="cov4">*</span>
+				<span class="cov5">*</span>
+				<span class="cov6">*</span>
+				<span class="cov7">*</span>
+				<span class="cov8">*</span>
+				<span class="cov9">*</span>
+				<span class="cov10">high coverage</span>
+			
+			</div>
+		</div>
+		<div id="content">
+		
+		<pre class="file" id="file0" style="display: none">package tournament
+
+import (
+        "errors"
+        "fmt"
+        "io"
+        "sort"
+        "strings"
+)
+
+// Used to turn on print for the example test(s).
+var debug bool = false
+
+// Team struct holds a team's tournament information.
+type Team struct {
+        name   string
+        played int
+        won    int
+        drawn  int
+        lost   int
+        points int
+}
+
+// Teams map holds a collection of Team structs for a single tournament.
+type Teams map[string]Team
+
+// Tally returns the results of a small football competition.
+func Tally(reader io.Reader, writer io.Writer) error <span class="cov3" title="9">{
+        teams := Teams{}
+
+        var lines []string = []string{}
+        var line string
+        var size int
+        var e error
+
+        var team1 Team
+        var team2 Team
+
+        for e != io.EOF </span><span class="cov10" title="1491">{
+
+                // Why are we stuck doing this one byte at a time?
+                b := make([]byte, 1)
+                size, e = reader.Read(b)
+
+                if size &gt; 0 </span><span class="cov9" title="1482">{
+                        char := b[0]
+
+                        // fmt.Printf("char: %c\n", char)
+
+                        if char == '\n' </span><span class="cov5" title="37">{
+                                lines = append(lines, line)
+                                line = ""
+                                continue</span>
+                        }
+
+                        <span class="cov9" title="1445">line += string(char)</span>
+                }
+        }
+
+        <span class="cov3" title="9">if len(lines) == 0 </span><span class="cov2" title="4">{
+                return errors.New("blank line")
+        }</span>
+
+        <span class="cov2" title="5">for _, line := range lines </span><span class="cov5" title="37">{
+                fields := strings.Split(line, ";")
+
+                /*
+                        fmt.Printf("  line: %#v (%d)\n", line, len(line))
+                        fmt.Printf("fields: %#v (%d)\n", fields, len(fields))
+                        fmt.Println()
+                */
+
+                if len(fields) != 3 </span><span class="cov3" title="9">{
+                        continue</span>
+                }
+
+                <span class="cov5" title="28">name1 := fields[0]
+                name2 := fields[1]
+                result := fields[2]
+
+                // take the structs out of the map or create a new one
+                if _, found := teams[name1]; found </span><span class="cov4" title="16">{
+                        team1 = teams[name1]
+                }</span> else<span class="cov4" title="12"> {
+                        team1 = Team{}
+                        team1.name = name1
+                }</span>
+
+                // take the structs out of the map or create a new one
+                <span class="cov5" title="28">if _, found := teams[name2]; found </span><span class="cov4" title="20">{
+                        team2 = teams[name2]
+                }</span> else<span class="cov3" title="8"> {
+                        team2 = Team{}
+                        team2.name = name2
+                }</span>
+
+                /*
+                        fmt.Printf(" team1: %#v\n", team1)
+                        fmt.Printf(" team2: %#v\n", team2)
+                        fmt.Printf("result: %v\n", result)
+                        fmt.Println()
+
+                        fmt.Printf(" teams: %#v\n", teams)
+                        fmt.Printf(" teams[%s]: %#v\n", team1.name, teams[team1.name])
+                        fmt.Printf(" teams[%s].name: %#v\n", team1.name, teams[team1.name].name)
+                        fmt.Printf(" teams[%s].won: %#v\n", team1.name, teams[team1.name].won)
+                        fmt.Printf(" teams[%s]: %#v\n", team2.name, teams[team2.name])
+                        fmt.Println()
+                */
+
+                <span class="cov5" title="28">switch result </span>{
+                case "win":<span class="cov4" title="15">
+                        /*
+                                fmt.Printf(" won: %s\n", team1.name)
+                                fmt.Printf("lost: %s\n", team2.name)
+                        */
+                        team1.won++
+                        team1.points += 3
+                        team2.lost++</span>
+                case "loss":<span class="cov3" title="8">
+                        /*
+                                fmt.Printf("lost: %s\n", team1.name)
+                                fmt.Printf(" won: %s\n", team2.name)
+                        */
+                        team1.lost++
+                        team2.won++
+                        team2.points += 3</span>
+                case "draw":<span class="cov2" title="5">
+                        /*
+                                fmt.Printf("draw: %s\n", team1.name)
+                                fmt.Printf("draw: %s\n", team2.name)
+                        */
+                        team1.drawn++
+                        team2.drawn++
+                        team1.points++
+                        team2.points++</span>
+                }
+                <span class="cov5" title="28">fmt.Println()
+
+                team1.played++
+                team2.played++
+
+                // put the structs back in the map
+                teams[name1] = team1
+                teams[name2] = team2</span>
+        }
+
+        <span class="cov2" title="5">var header string
+        var output string
+
+        header = fmt.Sprintf("%-30s | %2s | %2s | %2s | %2s | %2s\n", "Team", "MP", "W", "D", "L", "P")
+
+        var rows []Team = []Team{}
+        for _, t := range teams </span><span class="cov4" title="20">{
+                rows = append(rows, t)
+        }</span>
+
+        // fmt.Printf("rows: %#v\n", rows)
+        <span class="cov2" title="5">sort.Slice(rows, func(i, j int) bool </span><span class="cov5" title="26">{
+                if rows[i].points == rows[j].points </span><span class="cov2" title="3">{
+                        return rows[i].name &lt; rows[j].name
+                }</span>
+                <span class="cov4" title="23">return rows[i].points &gt; rows[j].points</span>
+        })
+        // fmt.Printf("rows: %#v\n", rows)
+
+        <span class="cov2" title="5">for _, t := range rows </span><span class="cov4" title="20">{
+                output += fmt.Sprintf("%-30s | %2d | %2d | %2d | %2d | %2d\n", t.name, t.played, t.won, t.drawn, t.lost, t.points)
+        }</span>
+
+        <span class="cov2" title="5">if debug </span><span class="cov1" title="1">{
+                fmt.Print(header)
+                fmt.Print(output)
+        }</span>
+
+        <span class="cov2" title="5">for _, char := range header </span><span class="cov7" title="280">{
+                b := []byte{byte(char)}
+                size, _ = writer.Write(b)
+        }</span>
+
+        <span class="cov2" title="5">for _, char := range output </span><span class="cov9" title="1120">{
+                b := []byte{byte(char)}
+                size, _ = writer.Write(b)
+        }</span>
+
+        <span class="cov2" title="5">return nil</span>
+}
+</pre>
+		
+		</div>
+	</body>
+	<script>
+	(function() {
+		var files = document.getElementById('files');
+		var visible;
+		files.addEventListener('change', onChange, false);
+		function select(part) {
+			if (visible)
+				visible.style.display = 'none';
+			visible = document.getElementById(part);
+			if (!visible)
+				return;
+			files.value = part;
+			visible.style.display = 'block';
+			location.hash = part;
+		}
+		function onChange() {
+			select(files.value);
+			window.scrollTo(0, 0);
+		}
+		if (location.hash != "") {
+			select(location.hash.substr(1));
+		}
+		if (!visible) {
+			select("file0");
+		}
+	})();
+	</script>
+</html>

@@ -54,3 +54,4 @@
 - [grains](./grains/README.md)
 - [clock](./clock/README.md)
 - [parallel-letter-frequency](./parallel-letter-frequency/README.md)
+- [tournament](./tournament/README.md)
