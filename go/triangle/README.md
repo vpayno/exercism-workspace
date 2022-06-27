@@ -62,3 +62,12 @@ excellent write up about it
 ### Based on
 
 The Ruby Koans triangle project, parts 1 & 2 - http://rubykoans.com
+
+### My Solution
+
+- [my solution](./triangle.go)
+- [my examples](./triangle_examples_test.go)
+- [tests](./triangle_test.go)
+- [run-tests](./run-tests-go.txt)
+- [coverage](./coverage.html)
+- [documentation](./triangle-doc.md)

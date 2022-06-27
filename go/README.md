@@ -57,3 +57,4 @@
 - [tournament](./tournament/README.md)
 - [space-age](./space-age/README.md)
 - [leap](./leap/README.md)
+- [triangle](./triangle/README.md)
