@@ -88,3 +88,12 @@ means that the Devastating Donkeys and Courageous Californians tied.
 - @sebito91
 - @soniakeys
 - @tleen
+
+### My Solution
+
+- [my solution](./tournament.go)
+- [my examples](./tournament_examples_test.go)
+- [tests](./tournament_test.go)
+- [run-tests](./run-tests-go.txt)
+- [coverage](./coverage.html)
+- [documentation](./greeting-doc.md)
