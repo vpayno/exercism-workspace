@@ -74,3 +74,13 @@ See also: [http://www.novaroma.org/via_romana/numbers.html](http://www.novaroma.
 ### Based on
 
 The Roman Numeral Kata - http://codingdojo.org/cgi-bin/index.pl?KataRomanNumerals
+
+### My Solution
+
+- [my solution](./roman_numerals.go)
+- [my examples](./roman_numerals_examples_test.go)
+- [test cases](./cases_test.go)
+- [tests](./roman_numerals_test.go)
+- [run-tests](./run-tests-go.txt)
+- [coverage](./coverage.html)
+- [documentation](./romannumerals-doc.md)
