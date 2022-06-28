@@ -55,7 +55,7 @@
 			<div id="nav">
 				<select id="files">
 				
-				<option value="file0">dna/nucleotide_count.go (81.8%)</option>
+				<option value="file0">dna/nucleotide_count.go (87.5%)</option>
 				
 				</select>
 			</div>
@@ -82,7 +82,6 @@
 package dna
 
 import (
-        "errors"
         "fmt"
         "regexp"
 )
@@ -97,8 +96,23 @@ type Histogram map[rune]int
 // DNA is a list of nucleotides.
 type DNA string
 
-// Valid nucleotides.
-const nucleotides = "ACGT"
+// IsValid returns true if the DNA strand is valid.
+func (d DNA) IsValid() (bool, error) <span class="cov4" title="6">{
+        // Valid nucleotides.
+        const nucleotides = "ACGT"
+
+        if match, _ := regexp.MatchString(`^[`+nucleotides+`]+$`, string(d)); !match </span><span class="cov2" title="2">{
+                return false, fmt.Errorf("DNA sequence, %q, contains invalid nucleotides", string(d))
+        }</span>
+
+        <span class="cov3" title="4">return true, nil</span>
+}
+
+// String returns a pretty formated representation of a DNA type.
+func (d DNA) String() string <span class="cov2" title="2">{
+        // we need string(d) here to prevent recursion
+        return fmt.Sprintf("dna strand: %q", string(d))
+}</span>
 
 // Counts generates a histogram of valid nucleotides in the given DNA.
 // Returns an error if d contains an invalid nucleotide.
@@ -106,7 +120,7 @@ const nucleotides = "ACGT"
 // Counts is a method on the DNA type. A method is a function with a special receiver argument.
 // The receiver appears in its own argument list between the func keyword and the method name.
 // Here, the Counts method has a receiver of type DNA named d.
-func (d DNA) Counts() (Histogram, error) <span class="cov4" title="6">{
+func (d DNA) Counts() (Histogram, error) <span class="cov4" title="7">{
         var h Histogram = Histogram{
                 'A': 0,
                 'C': 0,
@@ -118,8 +132,8 @@ func (d DNA) Counts() (Histogram, error) <span class="cov4" title="6">{
                 return h, nil
         }</span>
 
-        <span class="cov4" title="5">if match, _ := regexp.MatchString(`^[ACGT]+$`, string(d)); !match </span><span class="cov1" title="1">{
-                return h, errors.New("DNA sequence contains invalid nucleotides")
+        <span class="cov4" title="6">if ok, e := d.IsValid(); !ok </span><span class="cov2" title="2">{
+                return h, e
         }</span>
 
         <span class="cov3" title="4">for _, nucleotide := range d </span><span class="cov10" title="82">{
@@ -127,7 +141,7 @@ func (d DNA) Counts() (Histogram, error) <span class="cov4" title="6">{
         }</span>
 
         <span class="cov3" title="4">if debug </span><span class="cov0" title="0">{
-                fmt.Printf("dna: %q\n", d)
+                fmt.Printf("%s\n", d)
                 fmt.Printf("historgram: %#v\n", h)
         }</span>
 
