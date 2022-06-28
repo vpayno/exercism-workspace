@@ -1,0 +1,164 @@
+Running automated test file(s):
+
+Go packages: dna 
+
+
+===============================================================================
+
+golint dna
+
+real	0m0.211s
+user	0m0.216s
+sys	0m0.185s
+
+===============================================================================
+
+go test -v -covermode=count -coverprofile coverage.out dna
+=== RUN   TestCounts
+    nucleotide_count_test.go:25: PASS: empty strand
+    nucleotide_count_test.go:25: PASS: can count one nucleotide in single-character input
+    nucleotide_count_test.go:25: PASS: strand with repeated nucleotide
+    nucleotide_count_test.go:25: PASS: strand with multiple nucleotides
+    nucleotide_count_test.go:25: PASS: strand with invalid nucleotides
+--- PASS: TestCounts (0.00s)
+=== RUN   ExampleCounts
+--- PASS: ExampleCounts (0.00s)
+PASS
+coverage: 81.8% of statements
+ok  	dna	0.007s	coverage: 81.8% of statements
+
+real	0m0.738s
+user	0m0.904s
+sys	0m0.541s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+dna/nucleotide_count.go:29:	Counts		81.8%
+total:				(statements)	81.8%
+
+real	0m0.217s
+user	0m0.237s
+sys	0m0.244s
+
+===============================================================================
+
+go tool cover -html coverage.out -o coverage.html
+
+real	0m0.227s
+user	0m0.242s
+sys	0m0.245s
+
+===============================================================================
+
+go test -v -race -covermode=atomic dna
+=== RUN   TestCounts
+    nucleotide_count_test.go:25: PASS: empty strand
+    nucleotide_count_test.go:25: PASS: can count one nucleotide in single-character input
+    nucleotide_count_test.go:25: PASS: strand with repeated nucleotide
+    nucleotide_count_test.go:25: PASS: strand with multiple nucleotides
+    nucleotide_count_test.go:25: PASS: strand with invalid nucleotides
+--- PASS: TestCounts (0.00s)
+=== RUN   ExampleCounts
+--- PASS: ExampleCounts (0.00s)
+PASS
+coverage: 81.8% of statements
+ok  	dna	0.037s	coverage: 81.8% of statements
+
+real	0m1.106s
+user	0m0.991s
+sys	0m0.663s
+
+===============================================================================
+
+go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+PASS
+ok  	dna	0.008s
+
+real	0m0.556s
+user	0m0.705s
+sys	0m0.399s
+
+===============================================================================
+
+go test -tags bonus
+PASS
+ok  	dna	0.006s
+
+real	0m0.474s
+user	0m0.572s
+sys	0m0.375s
+
+===============================================================================
+
+No old benchmarks to run benchstat against.
+
+===============================================================================
+
+go vet dna
+# dna
+./nucleotide_count_examples_test.go:7:1: ExampleCounts refers to unknown identifier: Counts
+
+real	0m0.391s
+user	0m0.459s
+sys	0m0.346s
+
+===============================================================================
+
+go fix dna
+
+real	0m0.183s
+user	0m0.200s
+sys	0m0.189s
+
+===============================================================================
+
+gosec ./nucleotide-count
+[gosec] 2022/06/27 19:00:10 Including rules: default
+[gosec] 2022/06/27 19:00:10 Excluding rules: default
+[gosec] 2022/06/27 19:00:10 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/nucleotide-count
+2022/06/27 19:00:11 internal error: package "errors" without types was imported from "command-line-arguments"
+
+real	0m0.681s
+user	0m0.835s
+sys	0m0.502s
+
+===============================================================================
+
+gomarkdoc --output dna-doc.md
+
+real	0m0.030s
+user	0m0.017s
+sys	0m0.015s
+
+===============================================================================
+
+go doc -all dna
+package dna // import "dna"
+
+Package dna is a package used to inspect DNA sequences.
+
+TYPES
+
+type DNA string
+    DNA is a list of nucleotides.
+
+func (d DNA) Counts() (Histogram, error)
+    Counts generates a histogram of valid nucleotides in the given DNA. Returns
+    an error if d contains an invalid nucleotide. / Counts is a method on the
+    DNA type. A method is a function with a special receiver argument. The
+    receiver appears in its own argument list between the func keyword and the
+    method name. Here, the Counts method has a receiver of type DNA named d.
+
+type Histogram map[rune]int
+    Histogram is a mapping from nucleotide to its count in given DNA. Choose a
+    suitable data type.
+
+
+real	0m0.250s
+user	0m0.193s
+sys	0m0.239s
+
+
+===============================================================================
+

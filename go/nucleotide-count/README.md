@@ -72,3 +72,13 @@ You may be wondering about the `cases_test.go` file. We explain it in the
 ### Based on
 
 The Calculating DNA Nucleotides_problem at Rosalind - http://rosalind.info/problems/dna/
+
+### My Solution
+
+- [my solution](./nucleotide_count.go)
+- [my examples](./nucleotide_count_examples_test.go)
+- [test cases](./cases_test.go)
+- [tests](./nucleotide_count_test.go)
+- [run-tests](./run-tests-go.txt)
+- [coverage](./coverage.html)
+- [documentation](./dna-doc.md)
