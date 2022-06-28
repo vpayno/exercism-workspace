@@ -48,3 +48,13 @@ each nucleotide with its complement:
 ### Based on
 
 Hyperphysics - http://hyperphysics.phy-astr.gsu.edu/hbase/Organic/transcription.html
+
+### My Solution
+
+- [my solution](./rna_transcription.go)
+- [my examples](./rna_transcription_examples_test.go)
+- [test cases](./cases_test.go)
+- [tests](./rna_transcription_test.go)
+- [run-tests](./run-tests-go.txt)
+- [coverage](./coverage.html)
+- [documentation](./strand-doc.md)
