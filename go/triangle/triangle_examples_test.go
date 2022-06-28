@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-func ExampleHelloWorld() {
+func ExampleKindFromSides() {
 	fmt.Println(KindFromSides(0, 1, 2))
 	fmt.Println(KindFromSides(3, 3, 3))
 	fmt.Println(KindFromSides(1, 3, 3))

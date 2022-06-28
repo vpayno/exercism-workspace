@@ -1,0 +1,187 @@
+Running automated test file(s):
+
+Go packages: strand 
+
+
+===============================================================================
+
+golint strand
+
+real	0m0.212s
+user	0m0.182s
+sys	0m0.207s
+
+===============================================================================
+
+go test -v -covermode=count -coverprofile coverage.out strand
+=== RUN   TestPanic
+--- PASS: TestPanic (0.00s)
+=== RUN   TestRNATranscription
+    rna_transcription_test.go:11: PASS: Empty RNA sequence
+    rna_transcription_test.go:11: PASS: RNA complement of cytosine is guanine
+    rna_transcription_test.go:11: PASS: RNA complement of guanine is cytosine
+    rna_transcription_test.go:11: PASS: RNA complement of thymine is adenine
+    rna_transcription_test.go:11: PASS: RNA complement of adenine is uracil
+    rna_transcription_test.go:11: PASS: RNA complement
+--- PASS: TestRNATranscription (0.00s)
+=== RUN   ExampleToRNA
+--- PASS: ExampleToRNA (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	strand	0.005s	coverage: 100.0% of statements
+
+real	0m0.574s
+user	0m0.676s
+sys	0m0.463s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+strand/rna_transcription.go:13:	IsValid		100.0%
+strand/rna_transcription.go:25:	String		100.0%
+strand/rna_transcription.go:31:	ConvertToRNA	100.0%
+strand/rna_transcription.go:60:	String		100.0%
+strand/rna_transcription.go:66:	ToRNA		100.0%
+total:				(statements)	100.0%
+
+real	0m0.244s
+user	0m0.240s
+sys	0m0.281s
+
+===============================================================================
+
+go tool cover -html coverage.out -o coverage.html
+
+real	0m0.288s
+user	0m0.286s
+sys	0m0.239s
+
+===============================================================================
+
+go test -v -race -covermode=atomic strand
+=== RUN   TestPanic
+--- PASS: TestPanic (0.00s)
+=== RUN   TestRNATranscription
+    rna_transcription_test.go:11: PASS: Empty RNA sequence
+    rna_transcription_test.go:11: PASS: RNA complement of cytosine is guanine
+    rna_transcription_test.go:11: PASS: RNA complement of guanine is cytosine
+    rna_transcription_test.go:11: PASS: RNA complement of thymine is adenine
+    rna_transcription_test.go:11: PASS: RNA complement of adenine is uracil
+    rna_transcription_test.go:11: PASS: RNA complement
+--- PASS: TestRNATranscription (0.00s)
+=== RUN   ExampleToRNA
+--- PASS: ExampleToRNA (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	strand	0.030s	coverage: 100.0% of statements
+
+real	0m0.607s
+user	0m0.694s
+sys	0m0.403s
+
+===============================================================================
+
+go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+goos: linux
+goarch: amd64
+pkg: strand
+cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+BenchmarkRNATranscription-4   	   31231	     37861 ns/op	   12940 B/op	     223 allocs/op
+PASS
+ok  	strand	1.561s
+
+real	0m2.051s
+user	0m2.882s
+sys	0m0.517s
+
+===============================================================================
+
+go test -tags bonus
+PASS
+ok  	strand	0.009s
+
+real	0m0.545s
+user	0m0.581s
+sys	0m0.453s
+
+===============================================================================
+
+No old benchmarks to run benchstat against.
+
+===============================================================================
+
+go vet strand
+
+real	0m0.358s
+user	0m0.426s
+sys	0m0.352s
+
+===============================================================================
+
+go fix strand
+
+real	0m0.143s
+user	0m0.147s
+sys	0m0.116s
+
+===============================================================================
+
+gosec ./rna-transcription
+[gosec] 2022/06/27 21:56:14 Including rules: default
+[gosec] 2022/06/27 21:56:14 Excluding rules: default
+[gosec] 2022/06/27 21:56:14 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/rna-transcription
+2022/06/27 21:56:15 internal error: package "fmt" without types was imported from "command-line-arguments"
+
+real	0m0.441s
+user	0m0.458s
+sys	0m0.329s
+
+===============================================================================
+
+gomarkdoc --output strand-doc.md
+
+real	0m0.030s
+user	0m0.020s
+sys	0m0.014s
+
+===============================================================================
+
+go doc -all strand
+package strand // import "strand"
+
+Package strand is used to convert DNA sequences into RNA sequences.
+
+FUNCTIONS
+
+func ToRNA(s string) string
+    ToRNA returns an RNA sequence from a DNA sequence.
+
+
+TYPES
+
+type DNA string
+    DNA is a list of nucleotides.
+
+func (d DNA) ConvertToRNA() RNA
+    ConvertToRNA returns a pretty formated representation of a DNA type.
+
+func (d DNA) IsValid() (bool, error)
+    IsValid returns true if the DNA strand is valid.
+
+func (d DNA) String() string
+    String returns a pretty formated representation of a DNA type.
+
+type RNA string
+    RNA is a list of nucleotides.
+
+func (d RNA) String() string
+    String returns a pretty formated representation of a DNA type.
+
+
+real	0m0.243s
+user	0m0.222s
+sys	0m0.240s
+
+
+===============================================================================
+
