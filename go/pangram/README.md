@@ -38,3 +38,13 @@ insensitive. Input will not contain non-ASCII symbols.
 ### Based on
 
 Wikipedia - https://en.wikipedia.org/wiki/Pangram
+
+### My Solution
+
+- [my solution](./pangram.go)
+- [my examples](./pangram_examples_test.go)
+- [test cases](./cases_test.go)
+- [tests](./pangram_test.go)
+- [run-tests](./run-tests-go.txt)
+- [coverage](./coverage.html)
+- [documentation](./pangram-doc.md)

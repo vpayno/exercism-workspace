@@ -1,0 +1,167 @@
+Running automated test file(s):
+
+Go packages: pangram 
+
+
+===============================================================================
+
+golint pangram
+
+real	0m0.188s
+user	0m0.140s
+sys	0m0.153s
+
+===============================================================================
+
+go test -v -covermode=count -coverprofile coverage.out pangram
+=== RUN   TestPangram
+    pangram_test.go:12: PASS: sentence empty
+    pangram_test.go:12: PASS: recognizes a perfect lower case pangram
+    pangram_test.go:12: PASS: pangram with only lower case
+    pangram_test.go:12: PASS: missing character 'x'
+    pangram_test.go:12: PASS: another missing character, e.g. 'h'
+    pangram_test.go:12: PASS: pangram with underscores
+    pangram_test.go:12: PASS: pangram with numbers
+    pangram_test.go:12: PASS: missing letters replaced by numbers
+    pangram_test.go:12: PASS: pangram with mixed case and punctuation
+    pangram_test.go:12: PASS: upper and lower case versions of the same character should not be counted separately
+--- PASS: TestPangram (0.00s)
+=== RUN   ExampleIsPangram
+--- PASS: ExampleIsPangram (0.00s)
+PASS
+coverage: 92.9% of statements
+ok  	pangram	0.005s	coverage: 92.9% of statements
+
+real	0m0.620s
+user	0m0.665s
+sys	0m0.521s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+pangram/pangram.go:12:	IsPangram	92.9%
+total:			(statements)	92.9%
+
+real	0m0.347s
+user	0m0.274s
+sys	0m0.305s
+
+===============================================================================
+
+go tool cover -html coverage.out -o coverage.html
+
+real	0m0.250s
+user	0m0.232s
+sys	0m0.298s
+
+===============================================================================
+
+go test -v -race -covermode=atomic pangram
+=== RUN   TestPangram
+    pangram_test.go:12: PASS: sentence empty
+    pangram_test.go:12: PASS: recognizes a perfect lower case pangram
+    pangram_test.go:12: PASS: pangram with only lower case
+    pangram_test.go:12: PASS: missing character 'x'
+    pangram_test.go:12: PASS: another missing character, e.g. 'h'
+    pangram_test.go:12: PASS: pangram with underscores
+    pangram_test.go:12: PASS: pangram with numbers
+    pangram_test.go:12: PASS: missing letters replaced by numbers
+    pangram_test.go:12: PASS: pangram with mixed case and punctuation
+    pangram_test.go:12: PASS: upper and lower case versions of the same character should not be counted separately
+--- PASS: TestPangram (0.01s)
+=== RUN   ExampleIsPangram
+--- PASS: ExampleIsPangram (0.00s)
+PASS
+coverage: 92.9% of statements
+ok  	pangram	0.042s	coverage: 92.9% of statements
+
+real	0m0.905s
+user	0m0.960s
+sys	0m0.669s
+
+===============================================================================
+
+go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+goos: linux
+goarch: amd64
+pkg: pangram
+cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+BenchmarkPangram-4   	   17280	     66059 ns/op	    8575 B/op	     149 allocs/op
+PASS
+ok  	pangram	1.890s
+
+real	0m2.443s
+user	0m2.746s
+sys	0m0.603s
+
+===============================================================================
+
+go test -tags bonus
+PASS
+ok  	pangram	0.008s
+
+real	0m0.705s
+user	0m0.806s
+sys	0m0.536s
+
+===============================================================================
+
+No old benchmarks to run benchstat against.
+
+===============================================================================
+
+go vet pangram
+
+real	0m0.357s
+user	0m0.436s
+sys	0m0.331s
+
+===============================================================================
+
+go fix pangram
+
+real	0m0.195s
+user	0m0.164s
+sys	0m0.184s
+
+===============================================================================
+
+gosec ./pangram
+[gosec] 2022/06/29 12:37:59 Including rules: default
+[gosec] 2022/06/29 12:37:59 Excluding rules: default
+[gosec] 2022/06/29 12:37:59 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/pangram
+2022/06/29 12:38:00 internal error: package "regexp" without types was imported from "command-line-arguments"
+
+real	0m0.490s
+user	0m0.506s
+sys	0m0.382s
+
+===============================================================================
+
+gomarkdoc --output pangram-doc.md
+
+real	0m0.036s
+user	0m0.017s
+sys	0m0.024s
+
+===============================================================================
+
+go doc -all pangram
+package pangram // import "pangram"
+
+Package pangram determines if a sentence is a pangram.
+
+FUNCTIONS
+
+func IsPangram(input string) bool
+    IsPangram returns true if the string contains all the ASCII letters (a to
+    z).
+
+
+real	0m0.302s
+user	0m0.165s
+sys	0m0.252s
+
+
+===============================================================================
+
