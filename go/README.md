@@ -61,3 +61,4 @@
 - [nucleotide-count](./nucleotide-count/README.md)
 - [rna-transcription](./rna-transcription/README.md)
 - [roman-numerals](./roman-numerals/README.md)
+- [reverse-string](./reverse-string/README.md)

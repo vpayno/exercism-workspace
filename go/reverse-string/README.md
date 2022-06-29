@@ -31,3 +31,13 @@ output: "looc"
 ### Based on
 
 Introductory challenge to reverse an input string - https://medium.freecodecamp.org/how-to-reverse-a-string-in-javascript-in-3-different-ways-75e4763c68cb
+
+### My Solution
+
+- [my solution](./reverse_string.go)
+- [my examples](./reverse_string_examples_test.go)
+- [test cases](./cases_test.go)
+- [tests](./reverse_string_test.go)
+- [run-tests](./run-tests-go.txt)
+- [coverage](./coverage.html)
+- [documentation](./reverse-doc.md)
