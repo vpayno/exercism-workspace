@@ -43,3 +43,13 @@ like Portable Network Graphics to its acronym (PNG).
 ### Based on
 
 Julien Vanier - https://github.com/monkbroc
+
+### My Solution
+
+- [my solution](./acronym.go)
+- [my examples](./acronym_examples_test.go)
+- [test cases](./cases_test.go)
+- [tests](./acronym_test.go)
+- [run-tests](./run-tests-go.txt)
+- [coverage](./coverage.html)
+- [documentation](./greeting-doc.md)
