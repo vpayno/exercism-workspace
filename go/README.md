@@ -62,3 +62,4 @@
 - [rna-transcription](./rna-transcription/README.md)
 - [roman-numerals](./roman-numerals/README.md)
 - [reverse-string](./reverse-string/README.md)
+- [gigasecond](./gigasecond/README.md)

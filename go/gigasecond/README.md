@@ -36,3 +36,13 @@ A gigasecond is 10^9 (1,000,000,000) seconds.
 ### Based on
 
 Chapter 9 in Chris Pine's online Learn to Program tutorial. - http://pine.fm/LearnToProgram/?Chapter=09
+
+### My Solution
+
+- [my solution](./gigasecond.go)
+- [my examples](./gigasecond_examples_test.go)
+- [test cases](./cases_test.go)
+- [tests](./gigasecond_test.go)
+- [run-tests](./run-tests-go.txt)
+- [coverage](./coverage.html)
+- [documentation](./gigasecond-doc.md)

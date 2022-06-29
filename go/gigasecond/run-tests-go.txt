@@ -1,0 +1,158 @@
+Running automated test file(s):
+
+Go packages: gigasecond 
+
+
+===============================================================================
+
+golint gigasecond
+
+real	0m0.231s
+user	0m0.187s
+sys	0m0.200s
+
+===============================================================================
+
+go test -v -covermode=count -coverprofile coverage.out gigasecond
+=== RUN   TestAddGigasecond
+    gigasecond_test.go:28: PASS: date only specification of time
+    gigasecond_test.go:28: PASS: second test for date only specification of time
+    gigasecond_test.go:28: PASS: third test for date only specification of time
+    gigasecond_test.go:28: PASS: full time specified
+    gigasecond_test.go:28: PASS: full time with day roll-over
+    gigasecond_test.go:30: Tested 5 cases.
+--- PASS: TestAddGigasecond (0.00s)
+=== RUN   ExampleAddGigasecond
+--- PASS: ExampleAddGigasecond (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	gigasecond	0.003s	coverage: 100.0% of statements
+
+real	0m0.643s
+user	0m0.741s
+sys	0m0.496s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+gigasecond/gigasecond.go:10:	AddGigasecond	100.0%
+total:				(statements)	100.0%
+
+real	0m0.203s
+user	0m0.175s
+sys	0m0.195s
+
+===============================================================================
+
+go tool cover -html coverage.out -o coverage.html
+
+real	0m0.200s
+user	0m0.163s
+sys	0m0.216s
+
+===============================================================================
+
+go test -v -race -covermode=atomic gigasecond
+=== RUN   TestAddGigasecond
+    gigasecond_test.go:28: PASS: date only specification of time
+    gigasecond_test.go:28: PASS: second test for date only specification of time
+    gigasecond_test.go:28: PASS: third test for date only specification of time
+    gigasecond_test.go:28: PASS: full time specified
+    gigasecond_test.go:28: PASS: full time with day roll-over
+    gigasecond_test.go:30: Tested 5 cases.
+--- PASS: TestAddGigasecond (0.00s)
+=== RUN   ExampleAddGigasecond
+--- PASS: ExampleAddGigasecond (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	gigasecond	0.037s	coverage: 100.0% of statements
+
+real	0m0.741s
+user	0m0.775s
+sys	0m0.503s
+
+===============================================================================
+
+go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+goos: linux
+goarch: amd64
+pkg: gigasecond
+cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+BenchmarkAddGigasecond-4   	16472568	        89.37 ns/op	       0 B/op	       0 allocs/op
+PASS
+ok  	gigasecond	2.502s
+
+real	0m3.041s
+user	0m3.205s
+sys	0m0.424s
+
+===============================================================================
+
+go test -tags bonus
+PASS
+ok  	gigasecond	0.010s
+
+real	0m0.678s
+user	0m0.789s
+sys	0m0.537s
+
+===============================================================================
+
+No old benchmarks to run benchstat against.
+
+===============================================================================
+
+go vet gigasecond
+
+real	0m0.464s
+user	0m0.557s
+sys	0m0.439s
+
+===============================================================================
+
+go fix gigasecond
+
+real	0m0.146s
+user	0m0.116s
+sys	0m0.099s
+
+===============================================================================
+
+gosec ./gigasecond
+[gosec] 2022/06/28 22:38:31 Including rules: default
+[gosec] 2022/06/28 22:38:31 Excluding rules: default
+[gosec] 2022/06/28 22:38:31 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/gigasecond
+2022/06/28 22:38:32 internal error: package "time" without types was imported from "command-line-arguments"
+
+real	0m0.570s
+user	0m0.555s
+sys	0m0.396s
+
+===============================================================================
+
+gomarkdoc --output gigasecond-doc.md
+
+real	0m0.045s
+user	0m0.024s
+sys	0m0.029s
+
+===============================================================================
+
+go doc -all gigasecond
+package gigasecond // import "gigasecond"
+
+Package gigasecond determines the time now plus 1 gigasecond.
+
+FUNCTIONS
+
+func AddGigasecond(t time.Time) time.Time
+    AddGigasecond returns the current time plus 1 gigasecond.
+
+
+real	0m0.235s
+user	0m0.152s
+sys	0m0.197s
+
+
+===============================================================================
+
