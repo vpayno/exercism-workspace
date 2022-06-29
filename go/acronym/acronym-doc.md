@@ -6,14 +6,14 @@
 import "acronym"
 ```
 
-Package acronym converts a phrase to its acronym\.
+Package acronym converts a phrase to its acronym\. The 1st iteration is better than the second one\.
 
 ## Index
 
 - [func Abbreviate(s string) string](<#func-abbreviate>)
 
 
-## func [Abbreviate](<https://github.com/vpayno/exercism-workspace/blob/main/go/acronym/acronym.go#L12>)
+## func [Abbreviate](<https://github.com/vpayno/exercism-workspace/blob/main/go/acronym/acronym.go#L11>)
 
 ```go
 func Abbreviate(s string) string
