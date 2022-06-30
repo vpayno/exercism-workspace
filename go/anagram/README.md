@@ -41,3 +41,13 @@ Given `"listen"` and a list of candidates like `"enlists" "google"
 ### Based on
 
 Inspired by the Extreme Startup game - https://github.com/rchatley/extreme_startup
+
+### My Solution
+
+- [my solution](./anagram.go)
+- [my examples](./anagram_examples_test.go)
+- [test cases](./cases_test.go)
+- [tests](./anagram_test.go)
+- [run-tests](./run-tests-go.txt)
+- [coverage](./coverage.html)
+- [documentation](./anagram-doc.md)

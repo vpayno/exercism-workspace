@@ -66,3 +66,4 @@
 - [acronym](./acronym/README.md)
 - [pangram](./pangram/README.md)
 - [word-count](./word-count/README.md)
+- [anagram](./anagram/README.md)
