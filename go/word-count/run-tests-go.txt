@@ -1,0 +1,183 @@
+Running automated test file(s):
+
+Go packages: wordcount 
+
+
+===============================================================================
+
+golint wordcount
+
+real	0m0.213s
+user	0m0.157s
+sys	0m0.228s
+
+===============================================================================
+
+go test -v -covermode=count -coverprofile coverage.out wordcount
+=== RUN   TestWordCount
+    word_count_test.go:15: PASS: count one word - WordCount(word)
+    word_count_test.go:15: PASS: count one of each word - WordCount(one of each)
+    word_count_test.go:15: PASS: multiple occurrences of a word - WordCount(one fish two fish red fish blue fish)
+    word_count_test.go:15: PASS: handles cramped lists - WordCount(one,two,three)
+    word_count_test.go:15: PASS: handles expanded lists - WordCount(one,
+        two,
+        three)
+    word_count_test.go:15: PASS: ignore punctuation - WordCount(car: carpet as java: javascript!!&@$%^&)
+    word_count_test.go:15: PASS: include numbers - WordCount(testing, 1, 2 testing)
+    word_count_test.go:15: PASS: normalize case - WordCount(go Go GO Stop stop)
+    word_count_test.go:15: PASS: with apostrophes - WordCount(First: don't laugh. Then: don't cry.)
+    word_count_test.go:15: PASS: with quotations - WordCount(Joe can't tell between 'large' and large.)
+    word_count_test.go:15: PASS: multiple spaces not detected as a word - WordCount( multiple   whitespaces)
+    word_count_test.go:15: PASS: alternating word separators not detected as a word - WordCount(,
+        ,one,
+         ,two 
+         'three')
+--- PASS: TestWordCount (0.00s)
+=== RUN   ExampleWordCount
+--- PASS: ExampleWordCount (0.00s)
+PASS
+coverage: 84.4% of statements
+ok  	wordcount	0.023s	coverage: 84.4% of statements
+
+real	0m0.733s
+user	0m0.733s
+sys	0m0.616s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+wordcount/word_count.go:13:	WordCount	84.4%
+total:				(statements)	84.4%
+
+real	0m0.217s
+user	0m0.180s
+sys	0m0.202s
+
+===============================================================================
+
+go tool cover -html coverage.out -o coverage.html
+
+real	0m0.232s
+user	0m0.219s
+sys	0m0.212s
+
+===============================================================================
+
+go test -v -race -covermode=atomic wordcount
+=== RUN   TestWordCount
+    word_count_test.go:15: PASS: count one word - WordCount(word)
+    word_count_test.go:15: PASS: count one of each word - WordCount(one of each)
+    word_count_test.go:15: PASS: multiple occurrences of a word - WordCount(one fish two fish red fish blue fish)
+    word_count_test.go:15: PASS: handles cramped lists - WordCount(one,two,three)
+    word_count_test.go:15: PASS: handles expanded lists - WordCount(one,
+        two,
+        three)
+    word_count_test.go:15: PASS: ignore punctuation - WordCount(car: carpet as java: javascript!!&@$%^&)
+    word_count_test.go:15: PASS: include numbers - WordCount(testing, 1, 2 testing)
+    word_count_test.go:15: PASS: normalize case - WordCount(go Go GO Stop stop)
+    word_count_test.go:15: PASS: with apostrophes - WordCount(First: don't laugh. Then: don't cry.)
+    word_count_test.go:15: PASS: with quotations - WordCount(Joe can't tell between 'large' and large.)
+    word_count_test.go:15: PASS: multiple spaces not detected as a word - WordCount( multiple   whitespaces)
+    word_count_test.go:15: PASS: alternating word separators not detected as a word - WordCount(,
+        ,one,
+         ,two 
+         'three')
+--- PASS: TestWordCount (0.03s)
+=== RUN   ExampleWordCount
+--- PASS: ExampleWordCount (0.01s)
+PASS
+coverage: 84.4% of statements
+ok  	wordcount	0.081s	coverage: 84.4% of statements
+
+real	0m0.823s
+user	0m0.823s
+sys	0m0.530s
+
+===============================================================================
+
+go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+goos: linux
+goarch: amd64
+pkg: wordcount
+cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+BenchmarkWordCount-4   	    2701	    491216 ns/op	   78760 B/op	    1053 allocs/op
+PASS
+ok  	wordcount	1.416s
+
+real	0m2.097s
+user	0m2.564s
+sys	0m0.651s
+
+===============================================================================
+
+go test -tags bonus
+PASS
+ok  	wordcount	0.006s
+
+real	0m0.695s
+user	0m0.936s
+sys	0m0.555s
+
+===============================================================================
+
+No old benchmarks to run benchstat against.
+
+===============================================================================
+
+go vet wordcount
+
+real	0m0.351s
+user	0m0.429s
+sys	0m0.341s
+
+===============================================================================
+
+go fix wordcount
+
+real	0m0.192s
+user	0m0.111s
+sys	0m0.139s
+
+===============================================================================
+
+gosec ./word-count
+[gosec] 2022/06/29 20:24:55 Including rules: default
+[gosec] 2022/06/29 20:24:55 Excluding rules: default
+[gosec] 2022/06/29 20:24:55 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/word-count
+2022/06/29 20:24:56 internal error: package "regexp" without types was imported from "command-line-arguments"
+
+real	0m0.488s
+user	0m0.495s
+sys	0m0.443s
+
+===============================================================================
+
+gomarkdoc --output wordcount-doc.md
+
+real	0m0.055s
+user	0m0.039s
+sys	0m0.023s
+
+===============================================================================
+
+go doc -all wordcount
+package wordcount // import "wordcount"
+
+Package wordcount is used to count word frequencies.
+
+TYPES
+
+type Frequency map[string]int
+    Frequency is a map used to count word frequencies.
+
+func WordCount(phrase string) Frequency
+    WordCount returns a frequency map for the words counts in the string.
+
+
+real	0m0.263s
+user	0m0.185s
+sys	0m0.239s
+
+
+===============================================================================
+
