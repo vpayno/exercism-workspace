@@ -62,3 +62,13 @@ fled: 1
 ### Based on
 
 This is a classic toy problem, but we were reminded of it by seeing it in the Go Tour.
+
+### My Solution
+
+- [my solution](./word_count.go)
+- [my examples](./word_count_examples_test.go)
+- [test cases](./cases_test.go)
+- [tests](./word_count_test.go)
+- [run-tests](./run-tests-go.txt)
+- [coverage](./coverage.html)
+- [documentation](./wordcount-doc.md)
