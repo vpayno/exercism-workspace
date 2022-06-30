@@ -10,21 +10,6 @@ var testCases = []struct {
 	expected    string
 }{
 	{
-		"stating something",
-		"Tom-ay-to, tom-aaaah-to.",
-		"Whatever.",
-	},
-	{
-		"shouting",
-		"WATCH OUT!",
-		"Whoa, chill out!",
-	},
-	{
-		"shouting gibberish",
-		"FCECDFCAAB",
-		"Whoa, chill out!",
-	},
-	{
 		"asking a question",
 		"Does this cryogenic chamber make me look fat?",
 		"Sure.",
@@ -40,34 +25,34 @@ var testCases = []struct {
 		"Sure.",
 	},
 	{
-		"talking forcefully",
-		"Hi there!",
-		"Whatever.",
+		"question with no letters",
+		"4?",
+		"Sure.",
 	},
 	{
-		"using acronyms in regular speech",
-		"It's OK if you don't want to go to the DMV.",
-		"Whatever.",
+		"non-letters with question",
+		":) ?",
+		"Sure.",
 	},
 	{
-		"forceful question",
-		"WHAT'S GOING ON?",
-		"Calm down, I know what I'm doing!",
+		"prattling on",
+		"Wait! Hang on. Are you going to be OK?",
+		"Sure.",
+	},
+	{
+		"ending with whitespace",
+		"Okay if like my  spacebar  quite a bit?   ",
+		"Sure.",
+	},
+	{
+		"shouting gibberish",
+		"FCECDFCAAB",
+		"Whoa, chill out!",
 	},
 	{
 		"shouting numbers",
 		"1, 2, 3 GO!",
 		"Whoa, chill out!",
-	},
-	{
-		"no letters",
-		"1, 2, 3",
-		"Whatever.",
-	},
-	{
-		"question with no letters",
-		"4?",
-		"Sure.",
 	},
 	{
 		"shouting with special characters",
@@ -80,19 +65,14 @@ var testCases = []struct {
 		"Whoa, chill out!",
 	},
 	{
-		"statement containing question mark",
-		"Ending with ? means a question.",
-		"Whatever.",
+		"shouting",
+		"WATCH OUT!",
+		"Whoa, chill out!",
 	},
 	{
-		"non-letters with question",
-		":) ?",
-		"Sure.",
-	},
-	{
-		"prattling on",
-		"Wait! Hang on. Are you going to be OK?",
-		"Sure.",
+		"forceful question",
+		"WHAT'S GOING ON?",
+		"Calm down, I know what I'm doing!",
 	},
 	{
 		"silence",
@@ -110,6 +90,36 @@ var testCases = []struct {
 		"Fine. Be that way!",
 	},
 	{
+		"other whitespace",
+		"\n\r \t",
+		"Fine. Be that way!",
+	},
+	{
+		"talking forcefully",
+		"Hi there!",
+		"Whatever.",
+	},
+	{
+		"using acronyms in regular speech",
+		"It's OK if you don't want to go to the DMV.",
+		"Whatever.",
+	},
+	{
+		"no letters",
+		"1, 2, 3",
+		"Whatever.",
+	},
+	{
+		"stating something",
+		"Tom-ay-to, tom-aaaah-to.",
+		"Whatever.",
+	},
+	{
+		"statement containing question mark",
+		"Ending with ? means a question.",
+		"Whatever.",
+	},
+	{
 		"multiple line question",
 		"\nDoes this cryogenic chamber make me look fat?\nNo.",
 		"Whatever.",
@@ -118,16 +128,6 @@ var testCases = []struct {
 		"starting with whitespace",
 		"         hmmmmmmm...",
 		"Whatever.",
-	},
-	{
-		"ending with whitespace",
-		"Okay if like my  spacebar  quite a bit?   ",
-		"Sure.",
-	},
-	{
-		"other whitespace",
-		"\n\r \t",
-		"Fine. Be that way!",
 	},
 	{
 		"non-question ending with whitespace",

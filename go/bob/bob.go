@@ -1,15 +1,72 @@
-// This is a "stub" file.  It's a little start on your solution.
-// It's not a complete solution though; you have to write some code.
-
-// Package bob should have a package comment that summarizes what it's about.
-// https://golang.org/doc/effective_go.html#commentary
+// Package bob is a lackadaisical teenage AI.
 package bob
 
-// Hey should have a comment documenting it.
+import (
+	"regexp"
+	"strings"
+)
+
+// Hey returns a response from the simulated teenager.
 func Hey(remark string) string {
-	// Write some code here to pass the test suite.
-	// Then remove all the stock comments.
-	// They're here to help you get started but they only clutter a finished solution.
-	// If you leave them in, reviewers may protest!
-	return ""
+	// The extra whitespace just gets in the way.
+	remark = strings.TrimSpace(remark)
+
+	var reStr string
+
+	// Question without letters.
+	reStr = `^([[:punct:]|[[:space:]])+[?]$`
+	if m, e := regexp.MatchString(reStr, remark); m {
+		if e != nil {
+			panic(e)
+		}
+		return "Sure."
+	}
+
+	// Yelling a question.
+	reStr = `^([[:upper:]]|[[:punct:]|[[:space:]])+[?]$`
+	if m, e := regexp.MatchString(reStr, remark); m {
+		if e != nil {
+			panic(e)
+		}
+		return "Calm down, I know what I'm doing!"
+	}
+
+	// Any normal question.
+	reStr = `^([[:alpha:]]|[[:digit:]]|[[:punct:]])([[:alpha:]]|[[:digit:]]|[[:punct:]]|[[:space:]])*[?]$`
+	if m, e := regexp.MatchString(reStr, remark); m {
+		if e != nil {
+			panic(e)
+		}
+		return "Sure."
+	}
+
+	// Letterless statement.
+	reStr = `^([[:digit:]]|[[:punct:]|[[:space:]])+$`
+	if m, e := regexp.MatchString(reStr, remark); m {
+		if e != nil {
+			panic(e)
+		}
+		return "Whatever."
+	}
+
+	// Yelling statement.
+	reStr = `^([[:upper:]]|[[:digit:]]|[[:punct:]|[[:space:]])+$`
+	if m, e := regexp.MatchString(reStr, remark); m {
+		if e != nil {
+			panic(e)
+		}
+		return "Whoa, chill out!"
+	}
+
+	// Silence
+	reStr = `^[[:space:]]*$`
+	if m, e := regexp.MatchString(reStr, remark); m {
+		if e != nil {
+			panic(e)
+		}
+		return "Fine. Be that way!"
+	}
+
+	// Default response.
+	return "Whatever."
 }
