@@ -1,0 +1,195 @@
+Running automated test file(s):
+
+Go packages: wordy 
+
+
+===============================================================================
+
+golint wordy
+
+real	0m0.439s
+user	0m0.626s
+sys	0m0.332s
+
+===============================================================================
+
+go test -v -covermode=count -coverprofile coverage.out wordy
+=== RUN   TestAnswer
+    wordy_test.go:17: PASS: just a number
+    wordy_test.go:17: PASS: addition
+    wordy_test.go:17: PASS: more addition
+    wordy_test.go:17: PASS: addition with negative numbers
+    wordy_test.go:17: PASS: large addition
+    wordy_test.go:17: PASS: subtraction
+    wordy_test.go:17: PASS: multiplication
+    wordy_test.go:17: PASS: division
+    wordy_test.go:17: PASS: multiple additions
+    wordy_test.go:17: PASS: addition and subtraction
+    wordy_test.go:17: PASS: multiple subtraction
+    wordy_test.go:17: PASS: subtraction then addition
+    wordy_test.go:17: PASS: multiple multiplication
+    wordy_test.go:17: PASS: addition and multiplication
+    wordy_test.go:17: PASS: multiple division
+    wordy_test.go:17: PASS: unknown operation
+    wordy_test.go:17: PASS: Non math question
+    wordy_test.go:17: PASS: reject problem missing an operand
+    wordy_test.go:17: PASS: reject problem with no operands or operators
+    wordy_test.go:17: PASS: reject two operations in a row
+    wordy_test.go:17: PASS: reject two numbers in a row
+    wordy_test.go:17: PASS: reject postfix notation
+    wordy_test.go:17: PASS: reject prefix notation
+    wordy_test.go:17: PASS: reject using default 0 minus number
+--- PASS: TestAnswer (0.01s)
+=== RUN   ExampleAnswer
+--- PASS: ExampleAnswer (0.00s)
+PASS
+coverage: 86.0% of statements
+ok  	wordy	0.020s	coverage: 86.0% of statements
+
+real	0m0.550s
+user	0m0.612s
+sys	0m0.442s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+wordy/wordy.go:12:	Answer		86.0%
+total:			(statements)	86.0%
+
+real	0m0.203s
+user	0m0.193s
+sys	0m0.234s
+
+===============================================================================
+
+go tool cover -html coverage.out -o coverage.html
+
+real	0m0.183s
+user	0m0.187s
+sys	0m0.183s
+
+===============================================================================
+
+go test -v -race -covermode=atomic wordy
+=== RUN   TestAnswer
+    wordy_test.go:17: PASS: just a number
+    wordy_test.go:17: PASS: addition
+    wordy_test.go:17: PASS: more addition
+    wordy_test.go:17: PASS: addition with negative numbers
+    wordy_test.go:17: PASS: large addition
+    wordy_test.go:17: PASS: subtraction
+    wordy_test.go:17: PASS: multiplication
+    wordy_test.go:17: PASS: division
+    wordy_test.go:17: PASS: multiple additions
+    wordy_test.go:17: PASS: addition and subtraction
+    wordy_test.go:17: PASS: multiple subtraction
+    wordy_test.go:17: PASS: subtraction then addition
+    wordy_test.go:17: PASS: multiple multiplication
+    wordy_test.go:17: PASS: addition and multiplication
+    wordy_test.go:17: PASS: multiple division
+    wordy_test.go:17: PASS: unknown operation
+    wordy_test.go:17: PASS: Non math question
+    wordy_test.go:17: PASS: reject problem missing an operand
+    wordy_test.go:17: PASS: reject problem with no operands or operators
+    wordy_test.go:17: PASS: reject two operations in a row
+    wordy_test.go:17: PASS: reject two numbers in a row
+    wordy_test.go:17: PASS: reject postfix notation
+    wordy_test.go:17: PASS: reject prefix notation
+    wordy_test.go:17: PASS: reject using default 0 minus number
+--- PASS: TestAnswer (0.10s)
+=== RUN   ExampleAnswer
+--- PASS: ExampleAnswer (0.01s)
+PASS
+coverage: 86.0% of statements
+ok  	wordy	0.179s	coverage: 86.0% of statements
+
+real	0m0.885s
+user	0m0.930s
+sys	0m0.554s
+
+===============================================================================
+
+go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+goos: linux
+goarch: amd64
+pkg: wordy
+cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+BenchmarkAnswer-4   	     266	   5660630 ns/op	 1792281 B/op	   20564 allocs/op
+PASS
+ok  	wordy	1.982s
+
+real	0m2.487s
+user	0m3.551s
+sys	0m0.902s
+
+===============================================================================
+
+go test -tags bonus
+PASS
+ok  	wordy	0.027s
+
+real	0m0.559s
+user	0m0.689s
+sys	0m0.447s
+
+===============================================================================
+
+No old benchmarks to run benchstat against.
+
+===============================================================================
+
+go vet wordy
+
+real	0m0.478s
+user	0m0.529s
+sys	0m0.408s
+
+===============================================================================
+
+go fix wordy
+
+real	0m0.152s
+user	0m0.130s
+sys	0m0.146s
+
+===============================================================================
+
+gosec ./wordy
+[gosec] 2022/06/30 00:12:39 Including rules: default
+[gosec] 2022/06/30 00:12:39 Excluding rules: default
+[gosec] 2022/06/30 00:12:39 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/wordy
+2022/06/30 00:12:40 internal error: package "math" without types was imported from "command-line-arguments"
+
+real	0m0.522s
+user	0m0.483s
+sys	0m0.422s
+
+===============================================================================
+
+gomarkdoc --output wordy-doc.md
+
+real	0m0.036s
+user	0m0.022s
+sys	0m0.020s
+
+===============================================================================
+
+go doc -all wordy
+package wordy // import "wordy"
+
+Package wordy parses and evaluates simple math problems.
+
+FUNCTIONS
+
+func Answer(question string) (int, bool)
+    Answer returns a result and error after parsing and evaluating a simple math
+    problem.
+
+
+real	0m0.209s
+user	0m0.184s
+sys	0m0.204s
+
+
+===============================================================================
+

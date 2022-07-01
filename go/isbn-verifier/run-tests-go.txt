@@ -1,0 +1,214 @@
+Running automated test file(s):
+
+Go packages: isbn 
+
+
+===============================================================================
+
+golint isbn
+
+real	0m0.207s
+user	0m0.157s
+sys	0m0.242s
+
+===============================================================================
+
+go test -v -covermode=count -coverprofile coverage.out isbn
+=== RUN   TestIsValidISBN
+=== RUN   TestIsValidISBN/valid_isbn_number
+=== RUN   TestIsValidISBN/invalid_isbn_check_digit
+=== RUN   TestIsValidISBN/valid_isbn_number_with_a_check_digit_of_10
+=== RUN   TestIsValidISBN/check_digit_is_a_character_other_than_X
+=== RUN   TestIsValidISBN/invalid_character_in_isbn
+=== RUN   TestIsValidISBN/X_is_only_valid_as_a_check_digit
+=== RUN   TestIsValidISBN/valid_isbn_without_separating_dashes
+=== RUN   TestIsValidISBN/isbn_without_separating_dashes_and_X_as_check_digit
+=== RUN   TestIsValidISBN/isbn_without_check_digit_and_dashes
+=== RUN   TestIsValidISBN/too_long_isbn_and_no_dashes
+=== RUN   TestIsValidISBN/too_short_isbn
+=== RUN   TestIsValidISBN/isbn_without_check_digit
+=== RUN   TestIsValidISBN/check_digit_of_X_should_not_be_used_for_0
+=== RUN   TestIsValidISBN/empty_isbn
+=== RUN   TestIsValidISBN/input_is_9_characters
+=== RUN   TestIsValidISBN/invalid_characters_are_not_ignored
+=== RUN   TestIsValidISBN/input_is_too_long_but_contains_a_valid_isbn
+--- PASS: TestIsValidISBN (0.00s)
+    --- PASS: TestIsValidISBN/valid_isbn_number (0.00s)
+    --- PASS: TestIsValidISBN/invalid_isbn_check_digit (0.00s)
+    --- PASS: TestIsValidISBN/valid_isbn_number_with_a_check_digit_of_10 (0.00s)
+    --- PASS: TestIsValidISBN/check_digit_is_a_character_other_than_X (0.00s)
+    --- PASS: TestIsValidISBN/invalid_character_in_isbn (0.00s)
+    --- PASS: TestIsValidISBN/X_is_only_valid_as_a_check_digit (0.00s)
+    --- PASS: TestIsValidISBN/valid_isbn_without_separating_dashes (0.00s)
+    --- PASS: TestIsValidISBN/isbn_without_separating_dashes_and_X_as_check_digit (0.00s)
+    --- PASS: TestIsValidISBN/isbn_without_check_digit_and_dashes (0.00s)
+    --- PASS: TestIsValidISBN/too_long_isbn_and_no_dashes (0.00s)
+    --- PASS: TestIsValidISBN/too_short_isbn (0.00s)
+    --- PASS: TestIsValidISBN/isbn_without_check_digit (0.00s)
+    --- PASS: TestIsValidISBN/check_digit_of_X_should_not_be_used_for_0 (0.00s)
+    --- PASS: TestIsValidISBN/empty_isbn (0.00s)
+    --- PASS: TestIsValidISBN/input_is_9_characters (0.00s)
+    --- PASS: TestIsValidISBN/invalid_characters_are_not_ignored (0.00s)
+    --- PASS: TestIsValidISBN/input_is_too_long_but_contains_a_valid_isbn (0.00s)
+=== RUN   ExampleIsValidISBN
+--- PASS: ExampleIsValidISBN (0.00s)
+PASS
+coverage: 88.5% of statements
+ok  	isbn	0.010s	coverage: 88.5% of statements
+
+real	0m0.741s
+user	0m0.780s
+sys	0m0.593s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+isbn/isbn_verifier.go:11:	IsValidISBN	88.5%
+total:				(statements)	88.5%
+
+real	0m0.301s
+user	0m0.247s
+sys	0m0.320s
+
+===============================================================================
+
+go tool cover -html coverage.out -o coverage.html
+
+real	0m0.228s
+user	0m0.203s
+sys	0m0.239s
+
+===============================================================================
+
+go test -v -race -covermode=atomic isbn
+=== RUN   TestIsValidISBN
+=== RUN   TestIsValidISBN/valid_isbn_number
+=== RUN   TestIsValidISBN/invalid_isbn_check_digit
+=== RUN   TestIsValidISBN/valid_isbn_number_with_a_check_digit_of_10
+=== RUN   TestIsValidISBN/check_digit_is_a_character_other_than_X
+=== RUN   TestIsValidISBN/invalid_character_in_isbn
+=== RUN   TestIsValidISBN/X_is_only_valid_as_a_check_digit
+=== RUN   TestIsValidISBN/valid_isbn_without_separating_dashes
+=== RUN   TestIsValidISBN/isbn_without_separating_dashes_and_X_as_check_digit
+=== RUN   TestIsValidISBN/isbn_without_check_digit_and_dashes
+=== RUN   TestIsValidISBN/too_long_isbn_and_no_dashes
+=== RUN   TestIsValidISBN/too_short_isbn
+=== RUN   TestIsValidISBN/isbn_without_check_digit
+=== RUN   TestIsValidISBN/check_digit_of_X_should_not_be_used_for_0
+=== RUN   TestIsValidISBN/empty_isbn
+=== RUN   TestIsValidISBN/input_is_9_characters
+=== RUN   TestIsValidISBN/invalid_characters_are_not_ignored
+=== RUN   TestIsValidISBN/input_is_too_long_but_contains_a_valid_isbn
+--- PASS: TestIsValidISBN (0.05s)
+    --- PASS: TestIsValidISBN/valid_isbn_number (0.01s)
+    --- PASS: TestIsValidISBN/invalid_isbn_check_digit (0.00s)
+    --- PASS: TestIsValidISBN/valid_isbn_number_with_a_check_digit_of_10 (0.00s)
+    --- PASS: TestIsValidISBN/check_digit_is_a_character_other_than_X (0.00s)
+    --- PASS: TestIsValidISBN/invalid_character_in_isbn (0.00s)
+    --- PASS: TestIsValidISBN/X_is_only_valid_as_a_check_digit (0.00s)
+    --- PASS: TestIsValidISBN/valid_isbn_without_separating_dashes (0.00s)
+    --- PASS: TestIsValidISBN/isbn_without_separating_dashes_and_X_as_check_digit (0.00s)
+    --- PASS: TestIsValidISBN/isbn_without_check_digit_and_dashes (0.00s)
+    --- PASS: TestIsValidISBN/too_long_isbn_and_no_dashes (0.00s)
+    --- PASS: TestIsValidISBN/too_short_isbn (0.00s)
+    --- PASS: TestIsValidISBN/isbn_without_check_digit (0.00s)
+    --- PASS: TestIsValidISBN/check_digit_of_X_should_not_be_used_for_0 (0.00s)
+    --- PASS: TestIsValidISBN/empty_isbn (0.00s)
+    --- PASS: TestIsValidISBN/input_is_9_characters (0.00s)
+    --- PASS: TestIsValidISBN/invalid_characters_are_not_ignored (0.00s)
+    --- PASS: TestIsValidISBN/input_is_too_long_but_contains_a_valid_isbn (0.00s)
+=== RUN   ExampleIsValidISBN
+--- PASS: ExampleIsValidISBN (0.00s)
+PASS
+coverage: 88.5% of statements
+ok  	isbn	0.085s	coverage: 88.5% of statements
+
+real	0m0.951s
+user	0m1.010s
+sys	0m0.655s
+
+===============================================================================
+
+go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+goos: linux
+goarch: amd64
+pkg: isbn
+cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+BenchmarkIsValidISBN-4   	    6186	    230539 ns/op	   71705 B/op	     899 allocs/op
+PASS
+ok  	isbn	2.420s
+
+real	0m3.071s
+user	0m4.186s
+sys	0m0.995s
+
+===============================================================================
+
+go test -tags bonus
+PASS
+ok  	isbn	0.004s
+
+real	0m0.493s
+user	0m0.586s
+sys	0m0.410s
+
+===============================================================================
+
+No old benchmarks to run benchstat against.
+
+===============================================================================
+
+go vet isbn
+
+real	0m0.323s
+user	0m0.423s
+sys	0m0.347s
+
+===============================================================================
+
+go fix isbn
+
+real	0m0.131s
+user	0m0.146s
+sys	0m0.134s
+
+===============================================================================
+
+gosec ./isbn-verifier
+[gosec] 2022/06/29 22:17:50 Including rules: default
+[gosec] 2022/06/29 22:17:50 Excluding rules: default
+[gosec] 2022/06/29 22:17:50 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/isbn-verifier
+2022/06/29 22:17:50 internal error: package "regexp" without types was imported from "command-line-arguments"
+
+real	0m0.536s
+user	0m0.611s
+sys	0m0.454s
+
+===============================================================================
+
+gomarkdoc --output isbn-doc.md
+
+real	0m0.022s
+user	0m0.014s
+sys	0m0.014s
+
+===============================================================================
+
+go doc -all isbn
+package isbn // import "isbn"
+
+Package isbn is used to validate book id numbers.
+
+FUNCTIONS
+
+func IsValidISBN(isbn string) bool
+    IsValidISBN returns true if the book id number is valid.
+
+
+real	0m0.167s
+user	0m0.129s
+sys	0m0.171s
+
+
+===============================================================================
+

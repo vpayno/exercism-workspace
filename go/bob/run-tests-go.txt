@@ -1,0 +1,146 @@
+Running automated test file(s):
+
+Go packages: bob 
+
+
+===============================================================================
+
+golint bob
+
+real	0m0.190s
+user	0m0.162s
+sys	0m0.170s
+
+===============================================================================
+
+go test -v -covermode=count -coverprofile coverage.out bob
+=== RUN   TestHey
+--- PASS: TestHey (0.00s)
+=== RUN   ExampleHey
+--- PASS: ExampleHey (0.01s)
+PASS
+coverage: 81.8% of statements
+ok  	bob	0.020s	coverage: 81.8% of statements
+
+real	0m0.650s
+user	0m0.736s
+sys	0m0.480s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+bob/bob.go:10:	Hey		81.8%
+total:		(statements)	81.8%
+
+real	0m0.204s
+user	0m0.168s
+sys	0m0.173s
+
+===============================================================================
+
+go tool cover -html coverage.out -o coverage.html
+
+real	0m0.222s
+user	0m0.204s
+sys	0m0.243s
+
+===============================================================================
+
+go test -v -race -covermode=atomic bob
+=== RUN   TestHey
+--- PASS: TestHey (0.02s)
+=== RUN   ExampleHey
+--- PASS: ExampleHey (0.00s)
+PASS
+coverage: 81.8% of statements
+ok  	bob	0.055s	coverage: 81.8% of statements
+
+real	0m1.002s
+user	0m1.198s
+sys	0m0.659s
+
+===============================================================================
+
+go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+goos: linux
+goarch: amd64
+pkg: bob
+cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+BenchmarkHey-4   	    1046	   1327137 ns/op	  452361 B/op	    5947 allocs/op
+PASS
+ok  	bob	1.533s
+
+real	0m2.044s
+user	0m2.755s
+sys	0m0.609s
+
+===============================================================================
+
+go test -tags bonus
+PASS
+ok  	bob	0.016s
+
+real	0m0.573s
+user	0m0.698s
+sys	0m0.432s
+
+===============================================================================
+
+No old benchmarks to run benchstat against.
+
+===============================================================================
+
+go vet bob
+
+real	0m0.383s
+user	0m0.418s
+sys	0m0.384s
+
+===============================================================================
+
+go fix bob
+
+real	0m0.207s
+user	0m0.117s
+sys	0m0.152s
+
+===============================================================================
+
+gosec ./bob
+[gosec] 2022/06/30 08:20:23 Including rules: default
+[gosec] 2022/06/30 08:20:23 Excluding rules: default
+[gosec] 2022/06/30 08:20:23 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/bob
+2022/06/30 08:20:23 internal error: package "regexp" without types was imported from "command-line-arguments"
+
+real	0m0.454s
+user	0m0.472s
+sys	0m0.361s
+
+===============================================================================
+
+gomarkdoc --output bob-doc.md
+
+real	0m0.061s
+user	0m0.036s
+sys	0m0.031s
+
+===============================================================================
+
+go doc -all bob
+package bob // import "bob"
+
+Package bob is a lackadaisical teenage AI.
+
+FUNCTIONS
+
+func Hey(remark string) string
+    Hey returns a response from the simulated teenager.
+
+
+real	0m0.251s
+user	0m0.153s
+sys	0m0.194s
+
+
+===============================================================================
+
