@@ -67,3 +67,13 @@ returns one of following messages:
 - @robphoenix
 - @sebito91
 - @tleen
+
+### My Solution
+
+- [my solution](./all_your_base.go)
+- [my examples](./all_your_base_examples_test.go)
+- [test cases](./cases_test.go)
+- [tests](./all_your_base_test.go)
+- [run-tests](./run-tests-go.txt)
+- [coverage](./coverage.html)
+- [documentation](./allyourbase-doc.md)

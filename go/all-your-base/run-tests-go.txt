@@ -1,0 +1,215 @@
+Running automated test file(s):
+
+Go packages: allyourbase 
+
+
+===============================================================================
+
+golint allyourbase
+
+real	0m0.271s
+user	0m0.395s
+sys	0m0.245s
+
+===============================================================================
+
+go test -v -covermode=count -coverprofile coverage.out allyourbase
+=== RUN   TestConvertToBase
+    all_your_base_test.go:25: PASS: single bit one to decimal
+    all_your_base_test.go:25: PASS: binary to single decimal
+    all_your_base_test.go:25: PASS: single decimal to binary
+    all_your_base_test.go:25: PASS: binary to multiple decimal
+    all_your_base_test.go:25: PASS: decimal to binary
+    all_your_base_test.go:25: PASS: trinary to hexadecimal
+    all_your_base_test.go:25: PASS: hexadecimal to trinary
+    all_your_base_test.go:25: PASS: 15-bit integer
+    all_your_base_test.go:25: PASS: empty list
+    all_your_base_test.go:25: PASS: single zero
+    all_your_base_test.go:25: PASS: multiple zeros
+    all_your_base_test.go:25: PASS: leading zeros
+    all_your_base_test.go:25: PASS: input base is one
+    all_your_base_test.go:25: PASS: input base is zero
+    all_your_base_test.go:25: PASS: input base is negative
+    all_your_base_test.go:25: PASS: negative digit
+    all_your_base_test.go:25: PASS: invalid positive digit
+    all_your_base_test.go:25: PASS: output base is one
+    all_your_base_test.go:25: PASS: output base is zero
+    all_your_base_test.go:25: PASS: output base is negative
+    all_your_base_test.go:25: PASS: both bases are negative
+--- PASS: TestConvertToBase (0.00s)
+=== RUN   ExampleConvertToBase
+--- PASS: ExampleConvertToBase (0.00s)
+=== RUN   ExampleConvertToBase10
+--- PASS: ExampleConvertToBase10 (0.00s)
+=== RUN   ExampleConvertFromBase10
+--- PASS: ExampleConvertFromBase10 (0.00s)
+=== RUN   ExampleConvertStrToIntList
+--- PASS: ExampleConvertStrToIntList (0.00s)
+PASS
+coverage: 97.0% of statements
+ok  	allyourbase	0.011s	coverage: 97.0% of statements
+
+real	0m0.648s
+user	0m0.838s
+sys	0m0.475s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+allyourbase/all_your_base.go:12:	ConvertToBase		95.2%
+allyourbase/all_your_base.go:61:	quickChecks		100.0%
+allyourbase/all_your_base.go:93:	mathPow			100.0%
+allyourbase/all_your_base.go:98:	ConvertIntToIntList	100.0%
+allyourbase/all_your_base.go:108:	ConvertStrToIntList	85.7%
+allyourbase/all_your_base.go:125:	ConvertToBase10		100.0%
+allyourbase/all_your_base.go:147:	ConvertFromBase10	100.0%
+total:					(statements)		97.0%
+
+real	0m0.253s
+user	0m0.247s
+sys	0m0.257s
+
+===============================================================================
+
+go tool cover -html coverage.out -o coverage.html
+
+real	0m0.240s
+user	0m0.236s
+sys	0m0.283s
+
+===============================================================================
+
+go test -v -race -covermode=atomic allyourbase
+=== RUN   TestConvertToBase
+    all_your_base_test.go:25: PASS: single bit one to decimal
+    all_your_base_test.go:25: PASS: binary to single decimal
+    all_your_base_test.go:25: PASS: single decimal to binary
+    all_your_base_test.go:25: PASS: binary to multiple decimal
+    all_your_base_test.go:25: PASS: decimal to binary
+    all_your_base_test.go:25: PASS: trinary to hexadecimal
+    all_your_base_test.go:25: PASS: hexadecimal to trinary
+    all_your_base_test.go:25: PASS: 15-bit integer
+    all_your_base_test.go:25: PASS: empty list
+    all_your_base_test.go:25: PASS: single zero
+    all_your_base_test.go:25: PASS: multiple zeros
+    all_your_base_test.go:25: PASS: leading zeros
+    all_your_base_test.go:25: PASS: input base is one
+    all_your_base_test.go:25: PASS: input base is zero
+    all_your_base_test.go:25: PASS: input base is negative
+    all_your_base_test.go:25: PASS: negative digit
+    all_your_base_test.go:25: PASS: invalid positive digit
+    all_your_base_test.go:25: PASS: output base is one
+    all_your_base_test.go:25: PASS: output base is zero
+    all_your_base_test.go:25: PASS: output base is negative
+    all_your_base_test.go:25: PASS: both bases are negative
+--- PASS: TestConvertToBase (0.01s)
+=== RUN   ExampleConvertToBase
+--- PASS: ExampleConvertToBase (0.00s)
+=== RUN   ExampleConvertToBase10
+--- PASS: ExampleConvertToBase10 (0.00s)
+=== RUN   ExampleConvertFromBase10
+--- PASS: ExampleConvertFromBase10 (0.00s)
+=== RUN   ExampleConvertStrToIntList
+--- PASS: ExampleConvertStrToIntList (0.00s)
+PASS
+coverage: 97.0% of statements
+ok  	allyourbase	0.065s	coverage: 97.0% of statements
+
+real	0m1.068s
+user	0m0.895s
+sys	0m0.662s
+
+===============================================================================
+
+go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+PASS
+ok  	allyourbase	0.028s
+
+real	0m0.566s
+user	0m0.734s
+sys	0m0.412s
+
+===============================================================================
+
+go test -tags bonus
+PASS
+ok  	allyourbase	0.005s
+
+real	0m0.572s
+user	0m0.674s
+sys	0m0.450s
+
+===============================================================================
+
+No old benchmarks to run benchstat against.
+
+===============================================================================
+
+go vet allyourbase
+
+real	0m0.387s
+user	0m0.494s
+sys	0m0.354s
+
+===============================================================================
+
+go fix allyourbase
+
+real	0m0.215s
+user	0m0.221s
+sys	0m0.231s
+
+===============================================================================
+
+gosec ./all-your-base
+[gosec] 2022/07/02 20:16:56 Including rules: default
+[gosec] 2022/07/02 20:16:56 Excluding rules: default
+[gosec] 2022/07/02 20:16:56 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/all-your-base
+2022/07/02 20:16:57 internal error: package "errors" without types was imported from "command-line-arguments"
+
+real	0m0.534s
+user	0m0.619s
+sys	0m0.404s
+
+===============================================================================
+
+gomarkdoc --output allyourbase-doc.md
+
+real	0m0.029s
+user	0m0.021s
+sys	0m0.014s
+
+===============================================================================
+
+go doc -all allyourbase
+package allyourbase // import "allyourbase"
+
+Package allyourbase is used to convert from any base to any other base.
+
+FUNCTIONS
+
+func ConvertFromBase10(outputBase int, inputNum int) []int
+    ConvertFromBase10 returns a base x number. It didn't make sense to pass the
+    functions an int slice so I'm hiding that part of the algorithm in the
+    function.
+
+func ConvertIntToIntList(num int) []int
+    ConvertIntToIntList returns a list of intergers for the passed int.
+
+func ConvertStrToIntList(inputStr string) []int
+    ConvertStrToIntList returns a list of intergers for the passed string.
+
+func ConvertToBase(inputBase int, inputDigits []int, outputBase int) ([]int, error)
+    ConvertToBase returns an integer slice of converted numbers.
+
+func ConvertToBase10(inputBase int, inputDigits []int) int
+    ConvertToBase10 returns a base 10 number.
+
+
+real	0m0.277s
+user	0m0.219s
+sys	0m0.251s
+
+
+===============================================================================
+

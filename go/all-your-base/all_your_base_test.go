@@ -10,12 +10,12 @@ func TestConvertToBase(t *testing.T) {
 		output, err := ConvertToBase(c.inputBase, c.inputDigits, c.outputBase)
 		if c.err != "" {
 			if err == nil || c.err != err.Error() {
-				t.Fatalf(`FAIL: %s
+				t.Errorf(`FAIL: %s
 	Expected error: %s
 	Got: %v`, c.description, c.err, err)
 			}
 		} else if !reflect.DeepEqual(c.expected, output) {
-			t.Fatalf(`FAIL: %s
+			t.Errorf(`FAIL: %s
     Input base: %d
     Input digits: %#v
     Output base: %d
