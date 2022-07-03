@@ -71,3 +71,4 @@
 - [all-your-base](./all-your-base/README.md)
 - [etl](./etl/README.md)
 - [protein-translation](./protein-translation/README.md)
+- [beer-song](./beer-song/README.md)

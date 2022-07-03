@@ -354,3 +354,12 @@ experiment make the code better? Worse? Did you learn anything from it?
 ### Based on
 
 Learn to Program by Chris Pine - http://pine.fm/LearnToProgram/?Chapter=06
+
+### My Solution
+
+- [my solution](./beer_song.go)
+- [my examples](./beer_song_examples_test.go)
+- [tests](./beer_song_test.go)
+- [run-tests](./run-tests-go.txt)
+- [coverage](./coverage.html)
+- [documentation](./beer-doc.md)
