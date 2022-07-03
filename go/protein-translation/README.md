@@ -68,3 +68,13 @@ Learn more about [protein translation on Wikipedia](http://en.wikipedia.org/wiki
 ### Based on
 
 Tyler Long
+
+### My Solution
+
+- [my solution](./protein_translation.go)
+- [my examples](./protein_translation_examples_test.go)
+- [tests](./protein_translation_detailed_test.go
+protein_translation_test.go)
+- [run-tests](./run-tests-go.txt)
+- [coverage](./coverage.html)
+- [documentation](./protein-doc.md)

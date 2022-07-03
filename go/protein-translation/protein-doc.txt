@@ -1,0 +1,22 @@
+package protein // import "protein"
+
+Package protein is used to translate RNA sequences into proteins.
+
+VARIABLES
+
+var ErrInvalidBase = errors.New("Invalid Base")
+    ErrInvalidBase is used to signal FronCodon that an invalid codon has been
+    encountered.
+
+var ErrStop = errors.New("STOP")
+    ErrStop is used to signal FromCodon to stop processing codons.
+
+
+FUNCTIONS
+
+func FromCodon(codon string) (string, error)
+    FromCodon returns a single protein from a codon.
+
+func FromRNA(rna string) ([]string, error)
+    FromRNA returns a protein sequence from an RNA sequence.
+

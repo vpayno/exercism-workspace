@@ -6,10 +6,10 @@ import (
 
 func TestErrorsNotNil(t *testing.T) {
 	if ErrStop == nil {
-		t.Fatalf("FAIL: ErrStop cannot be nil")
+		t.Errorf("FAIL: ErrStop cannot be nil")
 	}
 	if ErrInvalidBase == nil {
-		t.Fatalf("FAIL: ErrInvalidBase cannot be nil")
+		t.Errorf("FAIL: ErrInvalidBase cannot be nil")
 	}
 }
 
@@ -97,15 +97,15 @@ func TestCodon(t *testing.T) {
 		actual, err := FromCodon(test.input)
 		if test.errorExpected != nil {
 			if test.errorExpected != err {
-				t.Fatalf("FAIL: Protein translation test: %s\nExpected error: %q\nActual error: %q",
+				t.Errorf("FAIL: Protein translation test: %s\nExpected error: %q\nActual error: %q",
 					test.input, test.errorExpected, err)
 			}
 		} else if err != nil {
-			t.Fatalf("FAIL: Protein translation test: %s\nExpected: %s\nGot error: %q",
+			t.Errorf("FAIL: Protein translation test: %s\nExpected: %s\nGot error: %q",
 				test.input, test.expected, err)
 		}
 		if actual != test.expected {
-			t.Fatalf("FAIL: Protein translation test: %s\nExpected: %s\nActual: %s",
+			t.Errorf("FAIL: Protein translation test: %s\nExpected: %s\nActual: %s",
 				test.input, test.expected, actual)
 		}
 		t.Logf("PASS: Protein translation test: %s", test.input)
@@ -151,15 +151,15 @@ func TestProtein(t *testing.T) {
 		actual, err := FromRNA(test.input)
 		if test.errorExpected != nil {
 			if test.errorExpected != err {
-				t.Fatalf("FAIL: RNA translation test: %s\nExpected error: %q\nActual error: %q",
+				t.Errorf("FAIL: RNA translation test: %s\nExpected error: %q\nActual error: %q",
 					test.input, test.errorExpected, err)
 			}
 		} else if err != nil {
-			t.Fatalf("FAIL: RNA translation test: %s\nExpected: %s\nGot error: %q",
+			t.Errorf("FAIL: RNA translation test: %s\nExpected: %s\nGot error: %q",
 				test.input, test.expected, err)
 		}
 		if !slicesEqual(actual, test.expected) {
-			t.Fatalf("FAIL: RNA Translation test: %s\nExpected: %q\nActual %q", test.input, test.expected, actual)
+			t.Errorf("FAIL: RNA Translation test: %s\nExpected: %q\nActual %q", test.input, test.expected, actual)
 		}
 		t.Logf("PASS: RNA translation test: %s", test.input)
 	}

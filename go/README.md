@@ -70,3 +70,4 @@
 - [bob](./bob/README.md)
 - [all-your-base](./all-your-base/README.md)
 - [etl](./etl/README.md)
+- [protein-translation](./protein-translation/README.md)

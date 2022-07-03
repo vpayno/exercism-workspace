@@ -1,0 +1,211 @@
+Running automated test file(s):
+
+Go packages: protein 
+
+
+===============================================================================
+
+golint protein
+
+real	0m0.173s
+user	0m0.144s
+sys	0m0.173s
+
+===============================================================================
+
+go test -v -covermode=count -coverprofile coverage.out protein
+=== RUN   TestErrorsNotNil
+--- PASS: TestErrorsNotNil (0.00s)
+=== RUN   TestCodon
+    protein_translation_test.go:111: PASS: Protein translation test: AUG
+    protein_translation_test.go:111: PASS: Protein translation test: UUU
+    protein_translation_test.go:111: PASS: Protein translation test: UUC
+    protein_translation_test.go:111: PASS: Protein translation test: UUA
+    protein_translation_test.go:111: PASS: Protein translation test: UUG
+    protein_translation_test.go:111: PASS: Protein translation test: UCG
+    protein_translation_test.go:111: PASS: Protein translation test: UAU
+    protein_translation_test.go:111: PASS: Protein translation test: UAC
+    protein_translation_test.go:111: PASS: Protein translation test: UGU
+    protein_translation_test.go:111: PASS: Protein translation test: UGG
+    protein_translation_test.go:111: PASS: Protein translation test: UAA
+    protein_translation_test.go:111: PASS: Protein translation test: UAG
+    protein_translation_test.go:111: PASS: Protein translation test: UGA
+    protein_translation_test.go:111: PASS: Protein translation test: ABC
+--- PASS: TestCodon (0.00s)
+=== RUN   TestProtein
+    protein_translation_test.go:164: PASS: RNA translation test: AUGUUUUCUUAAAUG
+    protein_translation_test.go:164: PASS: RNA translation test: AUGUUUUGG
+    protein_translation_test.go:164: PASS: RNA translation test: AUGUUUUAA
+    protein_translation_test.go:164: PASS: RNA translation test: UGGUGUUAUUAAUGGUUU
+    protein_translation_test.go:164: PASS: RNA translation test: UGGAGAAUUAAUGGUUU
+--- PASS: TestProtein (0.00s)
+=== RUN   ExampleFromRNA
+--- PASS: ExampleFromRNA (0.00s)
+=== RUN   ExampleFromCodon
+--- PASS: ExampleFromCodon (0.00s)
+PASS
+coverage: 96.0% of statements
+ok  	protein	0.043s	coverage: 96.0% of statements
+
+real	0m1.053s
+user	0m1.561s
+sys	0m0.634s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+protein/protein_translation.go:16:	FromRNA		93.3%
+protein/protein_translation.go:46:	FromCodon	100.0%
+total:					(statements)	96.0%
+
+real	0m0.317s
+user	0m0.216s
+sys	0m0.294s
+
+===============================================================================
+
+go tool cover -html coverage.out -o coverage.html
+
+real	0m0.231s
+user	0m0.229s
+sys	0m0.203s
+
+===============================================================================
+
+go test -v -race -covermode=atomic protein
+=== RUN   TestErrorsNotNil
+--- PASS: TestErrorsNotNil (0.00s)
+=== RUN   TestCodon
+    protein_translation_test.go:111: PASS: Protein translation test: AUG
+    protein_translation_test.go:111: PASS: Protein translation test: UUU
+    protein_translation_test.go:111: PASS: Protein translation test: UUC
+    protein_translation_test.go:111: PASS: Protein translation test: UUA
+    protein_translation_test.go:111: PASS: Protein translation test: UUG
+    protein_translation_test.go:111: PASS: Protein translation test: UCG
+    protein_translation_test.go:111: PASS: Protein translation test: UAU
+    protein_translation_test.go:111: PASS: Protein translation test: UAC
+    protein_translation_test.go:111: PASS: Protein translation test: UGU
+    protein_translation_test.go:111: PASS: Protein translation test: UGG
+    protein_translation_test.go:111: PASS: Protein translation test: UAA
+    protein_translation_test.go:111: PASS: Protein translation test: UAG
+    protein_translation_test.go:111: PASS: Protein translation test: UGA
+    protein_translation_test.go:111: PASS: Protein translation test: ABC
+--- PASS: TestCodon (0.00s)
+=== RUN   TestProtein
+    protein_translation_test.go:164: PASS: RNA translation test: AUGUUUUCUUAAAUG
+    protein_translation_test.go:164: PASS: RNA translation test: AUGUUUUGG
+    protein_translation_test.go:164: PASS: RNA translation test: AUGUUUUAA
+    protein_translation_test.go:164: PASS: RNA translation test: UGGUGUUAUUAAUGGUUU
+    protein_translation_test.go:164: PASS: RNA translation test: UGGAGAAUUAAUGGUUU
+--- PASS: TestProtein (0.01s)
+=== RUN   ExampleFromRNA
+--- PASS: ExampleFromRNA (0.00s)
+=== RUN   ExampleFromCodon
+--- PASS: ExampleFromCodon (0.00s)
+PASS
+coverage: 96.0% of statements
+ok  	protein	0.051s	coverage: 96.0% of statements
+
+real	0m0.817s
+user	0m0.930s
+sys	0m0.600s
+
+===============================================================================
+
+go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+goos: linux
+goarch: amd64
+pkg: protein
+cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+BenchmarkCodon-4     	 4767339	       262.5 ns/op	       0 B/op	       0 allocs/op
+BenchmarkProtein-4   	   36894	     33786 ns/op	    9913 B/op	     124 allocs/op
+PASS
+ok  	protein	3.170s
+
+real	0m3.927s
+user	0m4.865s
+sys	0m0.844s
+
+===============================================================================
+
+go test -tags bonus
+PASS
+ok  	protein	0.007s
+
+real	0m0.497s
+user	0m0.609s
+sys	0m0.391s
+
+===============================================================================
+
+No old benchmarks to run benchstat against.
+
+===============================================================================
+
+go vet protein
+
+real	0m0.420s
+user	0m0.467s
+sys	0m0.410s
+
+===============================================================================
+
+go fix protein
+
+real	0m0.159s
+user	0m0.138s
+sys	0m0.180s
+
+===============================================================================
+
+gosec ./protein-translation
+[gosec] 2022/07/02 23:03:47 Including rules: default
+[gosec] 2022/07/02 23:03:47 Excluding rules: default
+[gosec] 2022/07/02 23:03:47 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/protein-translation
+2022/07/02 23:03:48 internal error: package "errors" without types was imported from "command-line-arguments"
+
+real	0m0.495s
+user	0m0.510s
+sys	0m0.426s
+
+===============================================================================
+
+gomarkdoc --output protein-doc.md
+
+real	0m0.034s
+user	0m0.026s
+sys	0m0.014s
+
+===============================================================================
+
+go doc -all protein
+package protein // import "protein"
+
+Package protein is used to translate RNA sequences into proteins.
+
+VARIABLES
+
+var ErrInvalidBase = errors.New("Invalid Base")
+    ErrInvalidBase is used to signal FronCodon that an invalid codon has been
+    encountered.
+
+var ErrStop = errors.New("STOP")
+    ErrStop is used to signal FromCodon to stop processing codons.
+
+
+FUNCTIONS
+
+func FromCodon(codon string) (string, error)
+    FromCodon returns a single protein from a codon.
+
+func FromRNA(rna string) ([]string, error)
+    FromRNA returns a protein sequence from an RNA sequence.
+
+
+real	0m0.199s
+user	0m0.162s
+sys	0m0.161s
+
+
+===============================================================================
+
