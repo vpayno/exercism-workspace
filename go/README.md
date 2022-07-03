@@ -68,3 +68,4 @@
 - [word-count](./word-count/README.md)
 - [anagram](./anagram/README.md)
 - [bob](./bob/README.md)
+- [all-your-base](./all-your-base/README.md)
