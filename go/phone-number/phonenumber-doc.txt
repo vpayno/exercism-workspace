@@ -1,0 +1,55 @@
+package phonenumber // import "phonenumber"
+
+Package phonenumber used to clean up NANP (North American Numbering Plan)
+phone numbers.
+
+VARIABLES
+
+var ErrAreaCodeStartsWithOne = errors.New("area code cannot start with one")
+    ErrAreaCodeStartsWithOne is an error used when area codes start with one.
+
+var ErrAreaCodeStartsWithZero = errors.New("area code cannot start with zero")
+    ErrAreaCodeStartsWithZero is an error used when area codes start with zero.
+
+var ErrContainsLetters = errors.New("letters not permitted")
+    ErrContainsLetters is an error used when the phone number has letters in it.
+
+var ErrContainsPunctuations = errors.New("punctuations not permitted")
+    ErrContainsPunctuations is an error used when the phone number has
+    punctuation in it.
+
+var ErrElevenNotStartWithOne = errors.New("11 digits must start with 1")
+    ErrElevenNotStartWithOne is an error used when the phone number has 11
+    digits and it doesn't start with one.
+
+var ErrExchangeCodeStartsWithOne = errors.New("exchange code cannot start with one")
+    ErrExchangeCodeStartsWithOne is an error used when exchange codes start with
+    one.
+
+var ErrExchangeCodeStartsWithZero = errors.New("exchange code cannot start with zero")
+    ErrExchangeCodeStartsWithZero is an error used when exchange codes start
+    with zero.
+
+var ErrNumOfDigits = errors.New("incorrect number of digits")
+    ErrNumOfDigits is an error used when the phone number has less than 10
+    digits.
+
+var ErrTooManyNumbers = errors.New("more than 11 digits")
+    ErrTooManyNumbers is an error used when the phone number has more than 11
+    digits.
+
+
+FUNCTIONS
+
+func AreaCode(phoneNumber string) (string, error)
+    AreaCode returns the area code from a phone number.
+
+func Format(phoneNumber string) (string, error)
+    Format returns a pretty phone number.
+
+func Number(phoneNumber string) (string, error)
+    Number returns just the digits of the passed phone number.
+
+func ValidateInput(phoneNumber string) error
+    ValidateInput returns an error if the phone number has invalid data in it.
+

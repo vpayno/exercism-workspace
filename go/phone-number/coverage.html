@@ -1,0 +1,287 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>phonenumber: Go Coverage Report</title>
+		<style>
+			body {
+				background: black;
+				color: rgb(80, 80, 80);
+			}
+			body, pre, #legend span {
+				font-family: Menlo, monospace;
+				font-weight: bold;
+			}
+			#topbar {
+				background: black;
+				position: fixed;
+				top: 0; left: 0; right: 0;
+				height: 42px;
+				border-bottom: 1px solid rgb(80, 80, 80);
+			}
+			#content {
+				margin-top: 50px;
+			}
+			#nav, #legend {
+				float: left;
+				margin-left: 10px;
+			}
+			#legend {
+				margin-top: 12px;
+			}
+			#nav {
+				margin-top: 10px;
+			}
+			#legend span {
+				margin: 0 5px;
+			}
+			.cov0 { color: rgb(192, 0, 0) }
+.cov1 { color: rgb(128, 128, 128) }
+.cov2 { color: rgb(116, 140, 131) }
+.cov3 { color: rgb(104, 152, 134) }
+.cov4 { color: rgb(92, 164, 137) }
+.cov5 { color: rgb(80, 176, 140) }
+.cov6 { color: rgb(68, 188, 143) }
+.cov7 { color: rgb(56, 200, 146) }
+.cov8 { color: rgb(44, 212, 149) }
+.cov9 { color: rgb(32, 224, 152) }
+.cov10 { color: rgb(20, 236, 155) }
+
+		</style>
+	</head>
+	<body>
+		<div id="topbar">
+			<div id="nav">
+				<select id="files">
+				
+				<option value="file0">phonenumber/phone_number.go (88.7%)</option>
+				
+				</select>
+			</div>
+			<div id="legend">
+				<span>not tracked</span>
+			
+				<span class="cov0">no coverage</span>
+				<span class="cov1">low coverage</span>
+				<span class="cov2">*</span>
+				<span class="cov3">*</span>
+				<span class="cov4">*</span>
+				<span class="cov5">*</span>
+				<span class="cov6">*</span>
+				<span class="cov7">*</span>
+				<span class="cov8">*</span>
+				<span class="cov9">*</span>
+				<span class="cov10">high coverage</span>
+			
+			</div>
+		</div>
+		<div id="content">
+		
+		<pre class="file" id="file0" style="display: none">// Package phonenumber used to clean up NANP (North American Numbering Plan) phone numbers.
+package phonenumber
+
+import (
+        "errors"
+        "regexp"
+)
+
+// ErrNumOfDigits is an error used when the phone number has less than 10 digits.
+var ErrNumOfDigits = errors.New("incorrect number of digits")
+
+// ErrElevenNotStartWithOne is an error used when the phone number has 11 digits and it doesn't start with one.
+var ErrElevenNotStartWithOne = errors.New("11 digits must start with 1")
+
+// ErrTooManyNumbers is an error used when the phone number has more than 11 digits.
+var ErrTooManyNumbers = errors.New("more than 11 digits")
+
+// ErrContainsLetters is an error used when the phone number has letters in it.
+var ErrContainsLetters = errors.New("letters not permitted")
+
+// ErrContainsPunctuations is an error used when the phone number has punctuation in it.
+var ErrContainsPunctuations = errors.New("punctuations not permitted")
+
+// ErrAreaCodeStartsWithZero is an error used when area codes start with zero.
+var ErrAreaCodeStartsWithZero = errors.New("area code cannot start with zero")
+
+// ErrAreaCodeStartsWithOne is an error used when area codes start with one.
+var ErrAreaCodeStartsWithOne = errors.New("area code cannot start with one")
+
+// ErrExchangeCodeStartsWithZero is an error used when exchange codes start with zero.
+var ErrExchangeCodeStartsWithZero = errors.New("exchange code cannot start with zero")
+
+// ErrExchangeCodeStartsWithOne is an error used when exchange codes start with one.
+var ErrExchangeCodeStartsWithOne = errors.New("exchange code cannot start with one")
+
+// ValidateInput returns an error if the phone number has invalid data in it.
+func ValidateInput(phoneNumber string) error <span class="cov10" title="66">{
+        // Check the string for invalid characters.
+        // Pointless since we can easily just remove them.
+        reStrPunct := `[\]\[\|:;&gt;&lt;,?/\\"'!@#$%&amp;*^]`
+        match, e := regexp.MatchString(reStrPunct, phoneNumber)
+        if e != nil </span><span class="cov0" title="0">{
+                panic(e)</span>
+        }
+        <span class="cov10" title="66">if match </span><span class="cov3" title="3">{
+                return ErrContainsPunctuations
+        }</span>
+
+        // Check to see if the phone number has letters in it.
+        <span class="cov9" title="63">reStrLetters := `[[:alpha:]]`
+        match, e = regexp.MatchString(reStrLetters, phoneNumber)
+        if e != nil </span><span class="cov0" title="0">{
+                panic(e)</span>
+        }
+        <span class="cov9" title="63">if match </span><span class="cov3" title="3">{
+                return ErrContainsLetters
+        }</span>
+
+        // Clean up the string.
+        <span class="cov9" title="60">reStr := `([[:space:]]|[[:punct:]]|[[:alpha:]]|[[:cntrl:]])`
+        re, e := regexp.Compile(reStr)
+        if e != nil </span><span class="cov0" title="0">{
+                panic(e)</span>
+        }
+        <span class="cov9" title="60">digits := re.ReplaceAllString(phoneNumber, ``)
+
+        // Check the lenght of the remaining string.
+        if len(digits) &lt; 10 </span><span class="cov3" title="3">{
+                return ErrNumOfDigits
+        }</span>
+        <span class="cov9" title="57">if len(digits) &gt; 11 </span><span class="cov3" title="3">{
+                return ErrTooManyNumbers
+        }</span>
+
+        // If it's an eleven digit number, make sure it starts with 1.
+        <span class="cov9" title="54">if len(digits) == 11 &amp;&amp; string(digits[0]) != "1" </span><span class="cov3" title="3">{
+                return ErrElevenNotStartWithOne
+        }</span>
+
+        // Check the starting digit of the area code.
+        <span class="cov9" title="51">reStr = `^[[:digit:]]?([[:digit:]])[[:digit:]]{9}$`
+        re, e = regexp.Compile(reStr)
+        if e != nil </span><span class="cov0" title="0">{
+                panic(e)</span>
+        }
+        <span class="cov9" title="51">digit := re.ReplaceAllString(digits, `$1`)
+        if digit == "0" </span><span class="cov4" title="6">{
+                return ErrAreaCodeStartsWithZero
+        }</span>
+        <span class="cov9" title="45">if digit == "1" </span><span class="cov4" title="6">{
+                return ErrAreaCodeStartsWithOne
+        }</span>
+
+        // Check the starting digit of the exchange code.
+        <span class="cov8" title="39">reStr = `^[[:digit:]]?[[:digit:]]{3}([[:digit:]])[[:digit:]]{6}$`
+        re, e = regexp.Compile(reStr)
+        if e != nil </span><span class="cov0" title="0">{
+                panic(e)</span>
+        }
+        <span class="cov8" title="39">digit = re.ReplaceAllString(digits, `$1`)
+        if digit == "0" </span><span class="cov4" title="6">{
+                return ErrExchangeCodeStartsWithZero
+        }</span>
+        <span class="cov8" title="33">if digit == "1" </span><span class="cov4" title="6">{
+                return ErrExchangeCodeStartsWithOne
+        }</span>
+
+        // No errors found.
+        <span class="cov8" title="27">return nil</span>
+}
+
+// Number returns just the digits of the passed phone number.
+func Number(phoneNumber string) (string, error) <span class="cov10" title="66">{
+        // Validate the input.
+        eVal := ValidateInput(phoneNumber)
+        if eVal != nil </span><span class="cov8" title="39">{
+                return "", eVal
+        }</span>
+
+        // Extract all the digits from the number.
+        <span class="cov8" title="27">reStr := `([[:space:]]|[[:punct:]]|[[:alpha:]]|[[:cntrl:]])`
+        re, e := regexp.Compile(reStr)
+        if e != nil </span><span class="cov0" title="0">{
+                panic(e)</span>
+        }
+        <span class="cov8" title="27">digits := re.ReplaceAllString(phoneNumber, ``)
+
+        // Return the 10-dgit number (minus the contry code).
+        if len(digits) == 11 </span><span class="cov6" title="12">{
+                return digits[1:], nil
+        }</span>
+
+        // Return the 10-dgit number.
+        <span class="cov6" title="15">return digits, nil</span>
+}
+
+// AreaCode returns the area code from a phone number.
+func AreaCode(phoneNumber string) (string, error) <span class="cov7" title="22">{
+        // Get the digits from the input and input validation.
+        digits, eNum := Number(phoneNumber)
+        if eNum != nil </span><span class="cov6" title="13">{
+                return "", eNum
+        }</span>
+
+        // Get the first digit from the area code.
+        <span class="cov5" title="9">reStr := `^([[:digit:]]?)([[:digit:]]{3})([[:digit:]]{7})$`
+        re, e := regexp.Compile(reStr)
+        if e != nil </span><span class="cov0" title="0">{
+                panic(e)</span>
+        }
+        <span class="cov5" title="9">areaCode := re.ReplaceAllString(digits, `$2`)
+
+        // Return the area code without an error.
+        return areaCode, nil</span>
+}
+
+// Format returns a pretty phone number.
+func Format(phoneNumber string) (string, error) <span class="cov7" title="22">{
+        // Get the digits from the input and input validation.
+        digits, eNum := Number(phoneNumber)
+        if eNum != nil </span><span class="cov6" title="13">{
+                return "", eNum
+        }</span>
+
+        // Get the phone number groups and format the number.
+        <span class="cov5" title="9">reStr := `^([[:digit:]]?)([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{4})$`
+        re, e := regexp.Compile(reStr)
+        if e != nil </span><span class="cov0" title="0">{
+                panic(e)</span>
+        }
+        <span class="cov5" title="9">fmtStr := re.ReplaceAllString(digits, `(${2}) ${3}-${4}`)
+
+        // Return the formatted string without an error code.
+        return fmtStr, nil</span>
+}
+</pre>
+		
+		</div>
+	</body>
+	<script>
+	(function() {
+		var files = document.getElementById('files');
+		var visible;
+		files.addEventListener('change', onChange, false);
+		function select(part) {
+			if (visible)
+				visible.style.display = 'none';
+			visible = document.getElementById(part);
+			if (!visible)
+				return;
+			files.value = part;
+			visible.style.display = 'block';
+			location.hash = part;
+		}
+		function onChange() {
+			select(files.value);
+			window.scrollTo(0, 0);
+		}
+		if (location.hash != "") {
+			select(location.hash.substr(1));
+		}
+		if (!visible) {
+			select("file0");
+		}
+	})();
+	</script>
+</html>
