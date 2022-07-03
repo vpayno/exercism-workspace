@@ -78,3 +78,12 @@ game while being scored at 4 in the Hawaiian-language version.
 ### Based on
 
 The Jumpstart Lab team - http://jumpstartlab.com
+
+### My Solution
+
+- [my solution](./etl.go)
+- [my examples](./etl_examples_test.go)
+- [tests](./etl_test.go)
+- [run-tests](./run-tests-go.txt)
+- [coverage](./coverage.html)
+- [documentation](./etl-doc.md)

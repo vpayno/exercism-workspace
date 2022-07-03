@@ -71,7 +71,7 @@ func TestTransform(t *testing.T) {
 	for _, tt := range transformTests {
 		actual := Transform(map[int][]string(tt.input))
 		if !equal(actual, tt.output) {
-			t.Fatalf("Transform(%v). Expected [%v], Actual [%v]", tt.input, tt.output, actual)
+			t.Errorf("Transform(%v). Expected [%v], Actual [%v]", tt.input, tt.output, actual)
 		}
 	}
 }
