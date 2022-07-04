@@ -1,0 +1,155 @@
+Running automated test file(s):
+
+Go packages: series 
+
+
+===============================================================================
+
+golint series
+
+real	0m0.241s
+user	0m0.261s
+sys	0m0.244s
+
+===============================================================================
+
+go test -v -covermode=count -coverprofile coverage.out series
+=== RUN   TestAll
+--- PASS: TestAll (0.00s)
+=== RUN   TestUnsafeFirst
+--- PASS: TestUnsafeFirst (0.00s)
+=== RUN   ExampleAll
+--- PASS: ExampleAll (0.00s)
+=== RUN   ExampleUnsafeFirst
+--- PASS: ExampleUnsafeFirst (0.00s)
+PASS
+coverage: 81.0% of statements
+ok  	series	0.016s	coverage: 81.0% of statements
+
+real	0m0.630s
+user	0m0.695s
+sys	0m0.484s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+series/series.go:10:	All		86.7%
+series/series.go:39:	UnsafeFirst	66.7%
+total:			(statements)	81.0%
+
+real	0m0.249s
+user	0m0.239s
+sys	0m0.254s
+
+===============================================================================
+
+go tool cover -html coverage.out -o coverage.html
+
+real	0m0.222s
+user	0m0.232s
+sys	0m0.210s
+
+===============================================================================
+
+go test -v -race -covermode=atomic series
+=== RUN   TestAll
+--- PASS: TestAll (0.00s)
+=== RUN   TestUnsafeFirst
+--- PASS: TestUnsafeFirst (0.00s)
+=== RUN   ExampleAll
+--- PASS: ExampleAll (0.00s)
+=== RUN   ExampleUnsafeFirst
+--- PASS: ExampleUnsafeFirst (0.00s)
+PASS
+coverage: 81.0% of statements
+ok  	series	0.061s	coverage: 81.0% of statements
+
+real	0m0.768s
+user	0m0.756s
+sys	0m0.578s
+
+===============================================================================
+
+go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+PASS
+ok  	series	0.005s
+
+real	0m0.613s
+user	0m0.697s
+sys	0m0.450s
+
+===============================================================================
+
+go test -tags bonus
+PASS
+ok  	series	0.010s
+
+real	0m0.590s
+user	0m0.671s
+sys	0m0.513s
+
+===============================================================================
+
+No old benchmarks to run benchstat against.
+
+===============================================================================
+
+go vet series
+
+real	0m0.398s
+user	0m0.469s
+sys	0m0.327s
+
+===============================================================================
+
+go fix series
+
+real	0m0.164s
+user	0m0.149s
+sys	0m0.170s
+
+===============================================================================
+
+gosec ./series
+[gosec] 2022/07/03 18:19:38 Including rules: default
+[gosec] 2022/07/03 18:19:38 Excluding rules: default
+[gosec] 2022/07/03 18:19:38 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/series
+2022/07/03 18:19:39 internal error: package "fmt" without types was imported from "command-line-arguments"
+
+real	0m0.730s
+user	0m0.800s
+sys	0m0.484s
+
+===============================================================================
+
+gomarkdoc --output series-doc.md
+
+real	0m0.045s
+user	0m0.054s
+sys	0m0.038s
+
+===============================================================================
+
+go doc -all series
+package series // import "series"
+
+Package series returns contiguous substrings from a string.
+
+FUNCTIONS
+
+func All(size int, input string) []string
+    All returns all the contiguous substrings of length n in that string in the
+    order that they appear.
+
+func UnsafeFirst(size int, input string) string
+    UnsafeFirst return the first contiguous substrings of length n in that
+    string.
+
+
+real	0m0.405s
+user	0m0.410s
+sys	0m0.320s
+
+
+===============================================================================
+

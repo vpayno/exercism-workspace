@@ -73,6 +73,7 @@
 - [protein-translation](./protein-translation/README.md)
 - [beer-song](./beer-song/README.md)
 - [phone-number](./phone-number/README.md)
+- [series](./series/README.md)
 - [prime-factors](./prime-factors/README.md)
 - [nth-prime](./nth-prime/README.md)
 - [largest-series-product](./largest-series-product/README.md)

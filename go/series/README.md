@@ -89,3 +89,14 @@ in Go. For example you see it in
 ### Based on
 
 A subset of the Problem 8 at Project Euler - http://projecteuler.net/problem=8
+
+### My Solution
+
+- [my solution](./series.go)
+- [my examples](./series_examples_test.go)
+- [tests](./asktoomuch_test.go
+first_test.go
+series_test.go)
+- [run-tests](./run-tests-go.txt)
+- [coverage](./coverage.html)
+- [documentation](./series-doc.md)
