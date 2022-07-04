@@ -1,0 +1,31 @@
+package strain // import "strain"
+
+Package strain implements collection keep and discard functions.
+
+TYPES
+
+type Ints []int
+    Ints integer collection.
+
+func (i Ints) Discard(filter func(int) bool) Ints
+    Discard returns a new collection containing those elements where the
+    predicate is false.
+
+func (i Ints) Keep(filter func(int) bool) Ints
+    Keep returns a new collection containing those elements where the predicate
+    is true.
+
+type Lists [][]int
+    Lists slice integer collection.
+
+func (l Lists) Keep(filter func([]int) bool) Lists
+    Keep returns a new collection containing those elements where the predicate
+    is true.
+
+type Strings []string
+    Strings string collection.
+
+func (s Strings) Keep(filter func(string) bool) Strings
+    Keep returns a new collection containing those elements where the predicate
+    is true.
+

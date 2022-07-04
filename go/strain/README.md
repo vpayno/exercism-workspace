@@ -57,3 +57,12 @@ basic tools instead.
 ### Based on
 
 Conversation with James Edward Gray II - https://twitter.com/jeg2
+
+### My Solution
+
+- [my solution](./strain.go)
+- [my examples](./strain_examples_test.go)
+- [tests](./strain_test.go)
+- [run-tests](./run-tests-go.txt)
+- [coverage](./coverage.html)
+- [documentation](./strain-doc.md)
