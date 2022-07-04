@@ -1,0 +1,179 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>protein: Go Coverage Report</title>
+		<style>
+			body {
+				background: black;
+				color: rgb(80, 80, 80);
+			}
+			body, pre, #legend span {
+				font-family: Menlo, monospace;
+				font-weight: bold;
+			}
+			#topbar {
+				background: black;
+				position: fixed;
+				top: 0; left: 0; right: 0;
+				height: 42px;
+				border-bottom: 1px solid rgb(80, 80, 80);
+			}
+			#content {
+				margin-top: 50px;
+			}
+			#nav, #legend {
+				float: left;
+				margin-left: 10px;
+			}
+			#legend {
+				margin-top: 12px;
+			}
+			#nav {
+				margin-top: 10px;
+			}
+			#legend span {
+				margin: 0 5px;
+			}
+			.cov0 { color: rgb(192, 0, 0) }
+.cov1 { color: rgb(128, 128, 128) }
+.cov2 { color: rgb(116, 140, 131) }
+.cov3 { color: rgb(104, 152, 134) }
+.cov4 { color: rgb(92, 164, 137) }
+.cov5 { color: rgb(80, 176, 140) }
+.cov6 { color: rgb(68, 188, 143) }
+.cov7 { color: rgb(56, 200, 146) }
+.cov8 { color: rgb(44, 212, 149) }
+.cov9 { color: rgb(32, 224, 152) }
+.cov10 { color: rgb(20, 236, 155) }
+
+		</style>
+	</head>
+	<body>
+		<div id="topbar">
+			<div id="nav">
+				<select id="files">
+				
+				<option value="file0">protein/protein_translation.go (96.0%)</option>
+				
+				</select>
+			</div>
+			<div id="legend">
+				<span>not tracked</span>
+			
+				<span class="cov0">no coverage</span>
+				<span class="cov1">low coverage</span>
+				<span class="cov2">*</span>
+				<span class="cov3">*</span>
+				<span class="cov4">*</span>
+				<span class="cov5">*</span>
+				<span class="cov6">*</span>
+				<span class="cov7">*</span>
+				<span class="cov8">*</span>
+				<span class="cov9">*</span>
+				<span class="cov10">high coverage</span>
+			
+			</div>
+		</div>
+		<div id="content">
+		
+		<pre class="file" id="file0" style="display: none">// Package protein is used to translate RNA sequences into proteins.
+package protein
+
+import (
+        "errors"
+        "regexp"
+)
+
+// ErrStop is used to signal FromCodon to stop processing codons.
+var ErrStop = errors.New("STOP")
+
+// ErrInvalidBase is used to signal FronCodon that an invalid codon has been encountered.
+var ErrInvalidBase = errors.New("Invalid Base")
+
+// FromRNA returns a protein sequence from an RNA sequence.
+func FromRNA(rna string) ([]string, error) <span class="cov5" title="6">{
+        var codons []string = []string{}
+        var proteins []string = []string{}
+
+        reStr := `([[:upper:]]{3})`
+
+        re, e := regexp.Compile(reStr)
+
+        if e != nil </span><span class="cov0" title="0">{
+                panic(e)</span>
+        }
+
+        <span class="cov5" title="6">codons = re.FindAllString(rna, -1)
+
+        for _, codon := range codons </span><span class="cov8" title="20">{
+                protein, e := FromCodon(codon)
+
+                if e == ErrStop </span><span class="cov4" title="4">{
+                        break</span>
+                } else<span class="cov8" title="16"> if e != nil </span><span class="cov1" title="1">{
+                        return []string{}, e
+                }</span>
+
+                <span class="cov7" title="15">proteins = append(proteins, protein)</span>
+        }
+
+        <span class="cov5" title="5">return proteins, nil</span>
+}
+
+// FromCodon returns a single protein from a codon.
+func FromCodon(codon string) (string, error) <span class="cov10" title="35">{
+        switch codon </span>{
+        case "AUG":<span class="cov5" title="5">
+                return "Methionine", nil</span>
+        case "UUU", "UUC":<span class="cov5" title="5">
+                return "Phenylalanine", nil</span>
+        case "UUA", "UUG":<span class="cov2" title="2">
+                return "Leucine", nil</span>
+        case "UCU", "UCC", "UCA", "UCG":<span class="cov2" title="2">
+                return "Serine", nil</span>
+        case "UAU", "UAC":<span class="cov4" title="4">
+                return "Tyrosine", nil</span>
+        case "UGU", "UGC":<span class="cov3" title="3">
+                return "Cysteine", nil</span>
+        case "UGG":<span class="cov5" title="5">
+                return "Tryptophan", nil</span>
+        case "UAA", "UAG", "UGA":<span class="cov5" title="7">
+                return "", ErrStop</span>
+        default:<span class="cov2" title="2">
+                return "", ErrInvalidBase</span>
+        }
+}
+</pre>
+		
+		</div>
+	</body>
+	<script>
+	(function() {
+		var files = document.getElementById('files');
+		var visible;
+		files.addEventListener('change', onChange, false);
+		function select(part) {
+			if (visible)
+				visible.style.display = 'none';
+			visible = document.getElementById(part);
+			if (!visible)
+				return;
+			files.value = part;
+			visible.style.display = 'block';
+			location.hash = part;
+		}
+		function onChange() {
+			select(files.value);
+			window.scrollTo(0, 0);
+		}
+		if (location.hash != "") {
+			select(location.hash.substr(1));
+		}
+		if (!visible) {
+			select("file0");
+		}
+	})();
+	</script>
+</html>

@@ -1,0 +1,167 @@
+Running automated test file(s):
+
+Go packages: beer 
+
+
+===============================================================================
+
+golint beer
+
+real	0m0.223s
+user	0m0.231s
+sys	0m0.247s
+
+===============================================================================
+
+go test -v -covermode=count -coverprofile coverage.out beer
+=== RUN   TestBottlesVerse
+--- PASS: TestBottlesVerse (0.00s)
+=== RUN   TestSeveralVerses
+--- PASS: TestSeveralVerses (0.00s)
+=== RUN   TestEntireSong
+--- PASS: TestEntireSong (0.02s)
+=== RUN   ExampleVerse
+--- PASS: ExampleVerse (0.00s)
+=== RUN   ExampleVerses
+--- PASS: ExampleVerses (0.00s)
+PASS
+coverage: 97.7% of statements
+ok  	beer	0.044s	coverage: 97.7% of statements
+
+real	0m0.733s
+user	0m0.831s
+sys	0m0.552s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+beer/beer_song.go:10:	Song		75.0%
+beer/beer_song.go:21:	Verses		100.0%
+beer/beer_song.go:49:	Verse		100.0%
+total:			(statements)	97.7%
+
+real	0m0.262s
+user	0m0.282s
+sys	0m0.260s
+
+===============================================================================
+
+go tool cover -html coverage.out -o coverage.html
+
+real	0m0.216s
+user	0m0.229s
+sys	0m0.227s
+
+===============================================================================
+
+go test -v -race -covermode=atomic beer
+=== RUN   TestBottlesVerse
+--- PASS: TestBottlesVerse (0.00s)
+=== RUN   TestSeveralVerses
+--- PASS: TestSeveralVerses (0.01s)
+=== RUN   TestEntireSong
+--- PASS: TestEntireSong (0.03s)
+=== RUN   ExampleVerse
+--- PASS: ExampleVerse (0.00s)
+=== RUN   ExampleVerses
+--- PASS: ExampleVerses (0.00s)
+PASS
+coverage: 97.7% of statements
+ok  	beer	0.071s	coverage: 97.7% of statements
+
+real	0m0.874s
+user	0m0.909s
+sys	0m0.577s
+
+===============================================================================
+
+go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+goos: linux
+goarch: amd64
+pkg: beer
+cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+BenchmarkSeveralVerses-4   	     687	   2691060 ns/op	 1312166 B/op	    1037 allocs/op
+BenchmarkEntireSong-4      	     540	   2518290 ns/op	 1307392 B/op	     981 allocs/op
+PASS
+ok  	beer	3.700s
+
+real	0m4.242s
+user	0m5.926s
+sys	0m1.942s
+
+===============================================================================
+
+go test -tags bonus
+PASS
+ok  	beer	0.027s
+
+real	0m0.529s
+user	0m0.609s
+sys	0m0.423s
+
+===============================================================================
+
+No old benchmarks to run benchstat against.
+
+===============================================================================
+
+go vet beer
+
+real	0m0.351s
+user	0m0.446s
+sys	0m0.347s
+
+===============================================================================
+
+go fix beer
+
+real	0m0.173s
+user	0m0.176s
+sys	0m0.147s
+
+===============================================================================
+
+gosec ./beer-song
+[gosec] 2022/07/03 11:18:16 Including rules: default
+[gosec] 2022/07/03 11:18:16 Excluding rules: default
+[gosec] 2022/07/03 11:18:16 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/beer-song
+2022/07/03 11:18:17 internal error: package "errors" without types was imported from "command-line-arguments"
+
+real	0m0.490s
+user	0m0.550s
+sys	0m0.362s
+
+===============================================================================
+
+gomarkdoc --output beer-doc.md
+
+real	0m0.043s
+user	0m0.023s
+sys	0m0.028s
+
+===============================================================================
+
+go doc -all beer
+package beer // import "beer"
+
+Package beer generates the lrics to the 99 Bootles of Beer on the Wall.
+
+FUNCTIONS
+
+func Song() string
+    Song returns the whole 99 Bottles of Beer on the Wall song.
+
+func Verse(beerCount int) (string, error)
+    Verse returns a single verse from 99 Bottles of Beer on the Wall song.
+
+func Verses(start, stop int) (string, error)
+    Verses returns select verselyricss 99 Bottles of Beer on the Wall song.
+
+
+real	0m0.253s
+user	0m0.217s
+sys	0m0.261s
+
+
+===============================================================================
+

@@ -1,0 +1,198 @@
+Running automated test file(s):
+
+Go packages: darts 
+
+
+===============================================================================
+
+golint darts
+
+real	0m0.123s
+user	0m0.117s
+sys	0m0.103s
+
+===============================================================================
+
+go test -v -covermode=count -coverprofile coverage.out darts
+=== RUN   TestScore
+=== RUN   TestScore/Missed_target
+=== RUN   TestScore/On_the_outer_circle
+=== RUN   TestScore/On_the_middle_circle
+=== RUN   TestScore/On_the_inner_circle
+=== RUN   TestScore/Exactly_on_centre
+=== RUN   TestScore/Near_the_centre
+=== RUN   TestScore/Just_within_the_inner_circle
+=== RUN   TestScore/Just_outside_the_inner_circle
+=== RUN   TestScore/Just_within_the_middle_circle
+=== RUN   TestScore/Just_outside_the_middle_circle
+=== RUN   TestScore/Just_within_the_outer_circle
+=== RUN   TestScore/Just_outside_the_outer_circle
+=== RUN   TestScore/Asymmetric_position_between_the_inner_and_middle_circles
+--- PASS: TestScore (0.00s)
+    --- PASS: TestScore/Missed_target (0.00s)
+    --- PASS: TestScore/On_the_outer_circle (0.00s)
+    --- PASS: TestScore/On_the_middle_circle (0.00s)
+    --- PASS: TestScore/On_the_inner_circle (0.00s)
+    --- PASS: TestScore/Exactly_on_centre (0.00s)
+    --- PASS: TestScore/Near_the_centre (0.00s)
+    --- PASS: TestScore/Just_within_the_inner_circle (0.00s)
+    --- PASS: TestScore/Just_outside_the_inner_circle (0.00s)
+    --- PASS: TestScore/Just_within_the_middle_circle (0.00s)
+    --- PASS: TestScore/Just_outside_the_middle_circle (0.00s)
+    --- PASS: TestScore/Just_within_the_outer_circle (0.00s)
+    --- PASS: TestScore/Just_outside_the_outer_circle (0.00s)
+    --- PASS: TestScore/Asymmetric_position_between_the_inner_and_middle_circles (0.00s)
+=== RUN   ExampleScore
+--- PASS: ExampleScore (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	darts	0.021s	coverage: 100.0% of statements
+
+real	0m0.653s
+user	0m0.748s
+sys	0m0.474s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+darts/darts.go:9:	Score		100.0%
+total:			(statements)	100.0%
+
+real	0m0.145s
+user	0m0.083s
+sys	0m0.173s
+
+===============================================================================
+
+go tool cover -html coverage.out -o coverage.html
+
+real	0m0.139s
+user	0m0.090s
+sys	0m0.144s
+
+===============================================================================
+
+go test -v -race -covermode=atomic darts
+=== RUN   TestScore
+=== RUN   TestScore/Missed_target
+=== RUN   TestScore/On_the_outer_circle
+=== RUN   TestScore/On_the_middle_circle
+=== RUN   TestScore/On_the_inner_circle
+=== RUN   TestScore/Exactly_on_centre
+=== RUN   TestScore/Near_the_centre
+=== RUN   TestScore/Just_within_the_inner_circle
+=== RUN   TestScore/Just_outside_the_inner_circle
+=== RUN   TestScore/Just_within_the_middle_circle
+=== RUN   TestScore/Just_outside_the_middle_circle
+=== RUN   TestScore/Just_within_the_outer_circle
+=== RUN   TestScore/Just_outside_the_outer_circle
+=== RUN   TestScore/Asymmetric_position_between_the_inner_and_middle_circles
+--- PASS: TestScore (0.01s)
+    --- PASS: TestScore/Missed_target (0.00s)
+    --- PASS: TestScore/On_the_outer_circle (0.00s)
+    --- PASS: TestScore/On_the_middle_circle (0.00s)
+    --- PASS: TestScore/On_the_inner_circle (0.00s)
+    --- PASS: TestScore/Exactly_on_centre (0.00s)
+    --- PASS: TestScore/Near_the_centre (0.00s)
+    --- PASS: TestScore/Just_within_the_inner_circle (0.00s)
+    --- PASS: TestScore/Just_outside_the_inner_circle (0.00s)
+    --- PASS: TestScore/Just_within_the_middle_circle (0.00s)
+    --- PASS: TestScore/Just_outside_the_middle_circle (0.00s)
+    --- PASS: TestScore/Just_within_the_outer_circle (0.00s)
+    --- PASS: TestScore/Just_outside_the_outer_circle (0.00s)
+    --- PASS: TestScore/Asymmetric_position_between_the_inner_and_middle_circles (0.00s)
+=== RUN   ExampleScore
+--- PASS: ExampleScore (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	darts	0.040s	coverage: 100.0% of statements
+
+real	0m0.905s
+user	0m0.795s
+sys	0m0.517s
+
+===============================================================================
+
+go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+goos: linux
+goarch: amd64
+pkg: darts
+cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+BenchmarkScore-4   	 1882360	       738.9 ns/op	       0 B/op	       0 allocs/op
+PASS
+ok  	darts	2.105s
+
+real	0m2.636s
+user	0m2.752s
+sys	0m0.373s
+
+===============================================================================
+
+go test -tags bonus
+PASS
+ok  	darts	0.006s
+
+real	0m0.540s
+user	0m0.731s
+sys	0m0.405s
+
+===============================================================================
+
+No old benchmarks to run benchstat against.
+
+===============================================================================
+
+go vet darts
+
+real	0m0.368s
+user	0m0.444s
+sys	0m0.313s
+
+===============================================================================
+
+go fix darts
+
+real	0m0.084s
+user	0m0.041s
+sys	0m0.081s
+
+===============================================================================
+
+gosec ./darts
+[gosec] 2022/07/03 12:11:58 Including rules: default
+[gosec] 2022/07/03 12:11:58 Excluding rules: default
+[gosec] 2022/07/03 12:11:58 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/darts
+2022/07/03 12:11:59 internal error: package "math" without types was imported from "command-line-arguments"
+
+real	0m0.370s
+user	0m0.402s
+sys	0m0.295s
+
+===============================================================================
+
+gomarkdoc --output darts-doc.md
+
+real	0m0.023s
+user	0m0.013s
+sys	0m0.014s
+
+===============================================================================
+
+go doc -all darts
+package darts // import "darts"
+
+Package darts is used to calculate the score in a game of darts.
+
+FUNCTIONS
+
+func Score(x, y float64) int
+    Score returns a score for a single dart throw.
+
+
+real	0m0.204s
+user	0m0.081s
+sys	0m0.167s
+
+
+===============================================================================
+
