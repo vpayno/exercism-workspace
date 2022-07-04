@@ -8,7 +8,7 @@ var testCases = []struct {
 	description string
 	listOne     []int
 	listTwo     []int
-	expected    Relation
+	expected    string
 }{
 	{
 		description: "empty lists",

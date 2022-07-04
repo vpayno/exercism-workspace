@@ -7,7 +7,7 @@ import (
 func TestSublist(t *testing.T) {
 	for _, tc := range testCases {
 		if actual := Sublist(tc.listOne, tc.listTwo); actual != tc.expected {
-			t.Fatalf("FAIL: %s\nExpected: %#v\nActual: %#v", tc.description, tc.expected, actual)
+			t.Errorf("FAIL: %s\nExpected: %#v\nActual: %#v", tc.description, tc.expected, actual)
 		}
 		t.Logf("PASS: %s", tc.description)
 	}
