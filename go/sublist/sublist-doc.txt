@@ -2,11 +2,28 @@ package sublist // import "sublist"
 
 Package sublist is used to compare two lists with each other.
 
+CONSTANTS
+
+const (
+	EqualR     Relation = "equal"
+	UnequalR            = "unequal"
+	SuperlistR          = "superlist"
+	SublistR            = "sublist"
+)
+    "Enum" of list relations.
+
+
 FUNCTIONS
 
 func ListToString(list []int) string
     ListToString returns a string representation of an int slice.
 
-func Sublist(l1, l2 []int) string
+
+TYPES
+
+type Relation string
+    Relation is a string that shows the relationship between two lists.
+
+func Sublist(l1, l2 []int) Relation
     Sublist returns the relationship between two lists.
 

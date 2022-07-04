@@ -6,6 +6,17 @@ import (
 	"strings"
 )
 
+// Relation is a string that shows the relationship between two lists.
+type Relation string
+
+// "Enum" of list relations.
+const (
+	EqualR     Relation = "equal"
+	UnequalR            = "unequal"
+	SuperlistR          = "superlist"
+	SublistR            = "sublist"
+)
+
 // ListToString returns a string representation of an int slice.
 func ListToString(list []int) string {
 	str := fmt.Sprint(list)
@@ -16,26 +27,26 @@ func ListToString(list []int) string {
 }
 
 // Sublist returns the relationship between two lists.
-func Sublist(l1, l2 []int) string {
+func Sublist(l1, l2 []int) Relation {
 
 	if len(l1) == 0 && len(l2) == 0 {
-		return "equal"
+		return EqualR
 	}
 
 	s1 := ListToString(l1)
 	s2 := ListToString(l2)
 
 	if len(l1) == len(l2) && s1 == s2 {
-		return "equal"
+		return EqualR
 	}
 
 	if len(s1) > len(s2) && strings.Contains(s1, s2) {
-		return "superlist"
+		return SuperlistR
 	}
 
 	if len(s1) < len(s2) && strings.Contains(s2, s1) {
-		return "sublist"
+		return SublistR
 	}
 
-	return "unequal"
+	return UnequalR
 }

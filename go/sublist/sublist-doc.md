@@ -10,11 +10,26 @@ Package sublist is used to compare two lists with each other\.
 
 ## Index
 
+- [Constants](<#constants>)
 - [func ListToString(list []int) string](<#func-listtostring>)
-- [func Sublist(l1, l2 []int) string](<#func-sublist>)
+- [type Relation](<#type-relation>)
+  - [func Sublist(l1, l2 []int) Relation](<#func-sublist>)
 
 
-## func [ListToString](<https://github.com/vpayno/exercism-workspace/blob/main/go/sublist/sublist.go#L10>)
+## Constants
+
+"Enum" of list relations\.
+
+```go
+const (
+    EqualR     Relation = "equal"
+    UnequalR            = "unequal"
+    SuperlistR          = "superlist"
+    SublistR            = "sublist"
+)
+```
+
+## func [ListToString](<https://github.com/vpayno/exercism-workspace/blob/main/go/sublist/sublist.go#L21>)
 
 ```go
 func ListToString(list []int) string
@@ -22,10 +37,18 @@ func ListToString(list []int) string
 
 ListToString returns a string representation of an int slice\.
 
-## func [Sublist](<https://github.com/vpayno/exercism-workspace/blob/main/go/sublist/sublist.go#L19>)
+## type [Relation](<https://github.com/vpayno/exercism-workspace/blob/main/go/sublist/sublist.go#L10>)
+
+Relation is a string that shows the relationship between two lists\.
 
 ```go
-func Sublist(l1, l2 []int) string
+type Relation string
+```
+
+### func [Sublist](<https://github.com/vpayno/exercism-workspace/blob/main/go/sublist/sublist.go#L30>)
+
+```go
+func Sublist(l1, l2 []int) Relation
 ```
 
 Sublist returns the relationship between two lists\.
