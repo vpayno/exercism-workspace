@@ -1,0 +1,169 @@
+Running automated test file(s):
+
+Go packages: flatten 
+
+
+===============================================================================
+
+golint flatten
+
+real	0m0.169s
+user	0m0.170s
+sys	0m0.143s
+
+===============================================================================
+
+go test -v -covermode=count -coverprofile coverage.out flatten
+=== RUN   TestFlatten
+    flatten_array_test.go:13: PASS: no nesting
+    flatten_array_test.go:13: PASS: flattens array with just integers present
+    flatten_array_test.go:13: PASS: 5 level nesting
+    flatten_array_test.go:13: PASS: 6 level nesting
+    flatten_array_test.go:13: PASS: 6 level nest list with null values
+    flatten_array_test.go:13: PASS: all values in nested list are null
+--- PASS: TestFlatten (0.00s)
+=== RUN   ExampleFlatten
+--- PASS: ExampleFlatten (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	flatten	0.013s	coverage: 100.0% of statements
+
+real	0m0.639s
+user	0m0.810s
+sys	0m0.550s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+flatten/flatten_array.go:5:	walkInterface	100.0%
+flatten/flatten_array.go:17:	Flatten		100.0%
+total:				(statements)	100.0%
+
+real	0m0.131s
+user	0m0.061s
+sys	0m0.107s
+
+===============================================================================
+
+go tool cover -html coverage.out -o coverage.html
+
+real	0m0.112s
+user	0m0.028s
+sys	0m0.131s
+
+===============================================================================
+
+go test -v -race -covermode=atomic flatten
+=== RUN   TestFlatten
+    flatten_array_test.go:13: PASS: no nesting
+    flatten_array_test.go:13: PASS: flattens array with just integers present
+    flatten_array_test.go:13: PASS: 5 level nesting
+    flatten_array_test.go:13: PASS: 6 level nesting
+    flatten_array_test.go:13: PASS: 6 level nest list with null values
+    flatten_array_test.go:13: PASS: all values in nested list are null
+--- PASS: TestFlatten (0.00s)
+=== RUN   ExampleFlatten
+--- PASS: ExampleFlatten (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	flatten	0.039s	coverage: 100.0% of statements
+
+real	0m0.694s
+user	0m0.824s
+sys	0m0.410s
+
+===============================================================================
+
+go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+goos: linux
+goarch: amd64
+pkg: flatten
+cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+BenchmarkFlatten-4   	  376266	      4443 ns/op	    1328 B/op	      20 allocs/op
+PASS
+ok  	flatten	1.763s
+
+real	0m2.293s
+user	0m3.467s
+sys	0m0.693s
+
+===============================================================================
+
+go test -tags bonus
+PASS
+ok  	flatten	0.026s
+
+real	0m0.603s
+user	0m0.742s
+sys	0m0.584s
+
+===============================================================================
+
+No old benchmarks to run benchstat against.
+
+===============================================================================
+
+go vet flatten
+
+real	0m0.395s
+user	0m0.471s
+sys	0m0.384s
+
+===============================================================================
+
+go fix flatten
+
+real	0m0.052s
+user	0m0.016s
+sys	0m0.046s
+
+===============================================================================
+
+gosec ./flatten-array
+[gosec] 2022/07/03 22:00:10 Including rules: default
+[gosec] 2022/07/03 22:00:10 Excluding rules: default
+[gosec] 2022/07/03 22:00:10 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/flatten-array
+[gosec] 2022/07/03 22:00:10 Checking package: flatten
+[gosec] 2022/07/03 22:00:10 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/flatten-array/flatten_array.go
+Results:
+
+
+Summary:
+   Files: 1
+   Lines: 23
+   Nosec: 0
+  Issues: 0
+
+
+real	0m0.271s
+user	0m0.262s
+sys	0m0.222s
+
+===============================================================================
+
+gomarkdoc --output flatten-doc.md
+
+real	0m0.030s
+user	0m0.022s
+sys	0m0.020s
+
+===============================================================================
+
+go doc -all flatten
+package flatten // import "flatten"
+
+Package flatten is used to flatten lists.
+
+FUNCTIONS
+
+func Flatten(nested interface{}) []interface{}
+    Flatten returns a single flattened list with all values except nil.
+
+
+real	0m0.126s
+user	0m0.062s
+sys	0m0.152s
+
+
+===============================================================================
+

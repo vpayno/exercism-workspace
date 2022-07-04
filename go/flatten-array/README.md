@@ -33,3 +33,13 @@ output: [1,2,3,4,5]
 ### Based on
 
 Interview Question - https://reference.wolfram.com/language/ref/Flatten.html
+
+### My Solution
+
+- [my solution](./flatten_array.go)
+- [my examples](./flatten_array_examples_test.go)
+- [test cases](./cases_test.go)
+- [tests](./flatten_array_test.go)
+- [run-tests](./run-tests-go.txt)
+- [coverage](./coverage.html)
+- [documentation](./flatten-doc.md)
