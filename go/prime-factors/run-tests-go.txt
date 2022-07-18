@@ -1,0 +1,204 @@
+Running automated test file(s):
+
+Go packages: prime 
+
+
+===============================================================================
+
+golint prime
+
+real	0m0.211s
+user	0m0.077s
+sys	0m0.130s
+
+===============================================================================
+
+go test -v -covermode=count -coverprofile coverage.out prime
+=== RUN   TestPrimeFactors
+=== RUN   TestPrimeFactors/no_factors
+=== RUN   TestPrimeFactors/prime_number
+=== RUN   TestPrimeFactors/another_prime_number
+=== RUN   TestPrimeFactors/square_of_a_prime
+=== RUN   TestPrimeFactors/product_of_first_prime
+=== RUN   TestPrimeFactors/cube_of_a_prime
+=== RUN   TestPrimeFactors/product_of_second_prime
+=== RUN   TestPrimeFactors/product_of_third_prime
+=== RUN   TestPrimeFactors/product_of_first_and_second_prime
+=== RUN   TestPrimeFactors/product_of_primes_and_non-primes
+=== RUN   TestPrimeFactors/product_of_primes
+=== RUN   TestPrimeFactors/factors_include_a_large_prime
+--- PASS: TestPrimeFactors (0.03s)
+    --- PASS: TestPrimeFactors/no_factors (0.00s)
+    --- PASS: TestPrimeFactors/prime_number (0.00s)
+    --- PASS: TestPrimeFactors/another_prime_number (0.00s)
+    --- PASS: TestPrimeFactors/square_of_a_prime (0.00s)
+    --- PASS: TestPrimeFactors/product_of_first_prime (0.00s)
+    --- PASS: TestPrimeFactors/cube_of_a_prime (0.00s)
+    --- PASS: TestPrimeFactors/product_of_second_prime (0.00s)
+    --- PASS: TestPrimeFactors/product_of_third_prime (0.00s)
+    --- PASS: TestPrimeFactors/product_of_first_and_second_prime (0.00s)
+    --- PASS: TestPrimeFactors/product_of_primes_and_non-primes (0.00s)
+    --- PASS: TestPrimeFactors/product_of_primes (0.00s)
+    --- PASS: TestPrimeFactors/factors_include_a_large_prime (0.03s)
+=== RUN   ExampleFactors
+--- PASS: ExampleFactors (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	prime	0.053s	coverage: 100.0% of statements
+
+real	0m1.876s
+user	0m1.591s
+sys	0m0.749s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+prime/prime_factors.go:5:	Factors		100.0%
+total:				(statements)	100.0%
+
+real	0m0.142s
+user	0m0.029s
+sys	0m0.106s
+
+===============================================================================
+
+go tool cover -html coverage.out -o coverage.html
+
+real	0m0.185s
+user	0m0.054s
+sys	0m0.121s
+
+===============================================================================
+
+go test -v -race -covermode=atomic prime
+=== RUN   TestPrimeFactors
+=== RUN   TestPrimeFactors/no_factors
+=== RUN   TestPrimeFactors/prime_number
+=== RUN   TestPrimeFactors/another_prime_number
+=== RUN   TestPrimeFactors/square_of_a_prime
+=== RUN   TestPrimeFactors/product_of_first_prime
+=== RUN   TestPrimeFactors/cube_of_a_prime
+=== RUN   TestPrimeFactors/product_of_second_prime
+=== RUN   TestPrimeFactors/product_of_third_prime
+=== RUN   TestPrimeFactors/product_of_first_and_second_prime
+=== RUN   TestPrimeFactors/product_of_primes_and_non-primes
+=== RUN   TestPrimeFactors/product_of_primes
+=== RUN   TestPrimeFactors/factors_include_a_large_prime
+--- PASS: TestPrimeFactors (0.56s)
+    --- PASS: TestPrimeFactors/no_factors (0.00s)
+    --- PASS: TestPrimeFactors/prime_number (0.00s)
+    --- PASS: TestPrimeFactors/another_prime_number (0.00s)
+    --- PASS: TestPrimeFactors/square_of_a_prime (0.00s)
+    --- PASS: TestPrimeFactors/product_of_first_prime (0.00s)
+    --- PASS: TestPrimeFactors/cube_of_a_prime (0.00s)
+    --- PASS: TestPrimeFactors/product_of_second_prime (0.00s)
+    --- PASS: TestPrimeFactors/product_of_third_prime (0.00s)
+    --- PASS: TestPrimeFactors/product_of_first_and_second_prime (0.00s)
+    --- PASS: TestPrimeFactors/product_of_primes_and_non-primes (0.00s)
+    --- PASS: TestPrimeFactors/product_of_primes (0.01s)
+    --- PASS: TestPrimeFactors/factors_include_a_large_prime (0.53s)
+=== RUN   ExampleFactors
+--- PASS: ExampleFactors (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	prime	0.628s	coverage: 100.0% of statements
+
+real	0m7.729s
+user	0m8.594s
+sys	0m3.246s
+
+===============================================================================
+
+go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+goos: linux
+goarch: amd64
+pkg: prime
+cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+BenchmarkPrimeFactors-4   	      43	  27929700 ns/op	     424 B/op	      26 allocs/op
+PASS
+ok  	prime	2.281s
+
+real	0m3.932s
+user	0m3.514s
+sys	0m0.650s
+
+===============================================================================
+
+go test -tags bonus
+PASS
+ok  	prime	0.040s
+
+real	0m1.470s
+user	0m1.360s
+sys	0m0.670s
+
+===============================================================================
+
+No old benchmarks to run benchstat against.
+
+===============================================================================
+
+go vet prime
+
+real	0m4.088s
+user	0m7.410s
+sys	0m2.354s
+
+===============================================================================
+
+go fix prime
+
+real	0m0.134s
+user	0m0.049s
+sys	0m0.091s
+
+===============================================================================
+
+gosec ./prime-factors
+[gosec] 2022/07/17 23:49:09 Including rules: default
+[gosec] 2022/07/17 23:49:09 Excluding rules: default
+[gosec] 2022/07/17 23:49:09 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/prime-factors
+[gosec] 2022/07/17 23:49:09 Checking package: prime
+[gosec] 2022/07/17 23:49:09 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/prime-factors/prime_factors.go
+Results:
+
+
+Summary:
+   Files: 1
+   Lines: 28
+   Nosec: 0
+  Issues: 0
+
+
+real	0m0.346s
+user	0m0.589s
+sys	0m0.178s
+
+===============================================================================
+
+gomarkdoc --output prime-doc.md
+
+real	0m0.052s
+user	0m0.034s
+sys	0m0.036s
+
+===============================================================================
+
+go doc -all prime
+package prime // import "prime"
+
+Package prime computes the prime factors of a given natural number.
+
+FUNCTIONS
+
+func Factors(number int64) []int64
+    Factors returns an in64 list of prime factors for the given natural number.
+
+
+real	0m0.205s
+user	0m0.099s
+sys	0m0.140s
+
+
+===============================================================================
+

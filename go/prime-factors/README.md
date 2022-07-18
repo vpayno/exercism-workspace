@@ -62,3 +62,13 @@ You can check this yourself:
 ### Based on
 
 The Prime Factors Kata by Uncle Bob - http://butunclebob.com/ArticleS.UncleBob.ThePrimeFactorsKata
+
+### My Solution
+
+- [my solution](./prime_factors.go)
+- [my examples](./)
+- [test cases](./cases_test.go)
+- [tests](./prime_factors_test.go)
+- [run-tests](./run-tests-go.txt)
+- [coverage](./coverage.html)
+- [documentation](./prime-doc.md)
