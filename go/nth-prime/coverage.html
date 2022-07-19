@@ -1,0 +1,213 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>prime: Go Coverage Report</title>
+		<style>
+			body {
+				background: black;
+				color: rgb(80, 80, 80);
+			}
+			body, pre, #legend span {
+				font-family: Menlo, monospace;
+				font-weight: bold;
+			}
+			#topbar {
+				background: black;
+				position: fixed;
+				top: 0; left: 0; right: 0;
+				height: 42px;
+				border-bottom: 1px solid rgb(80, 80, 80);
+			}
+			#content {
+				margin-top: 50px;
+			}
+			#nav, #legend {
+				float: left;
+				margin-left: 10px;
+			}
+			#legend {
+				margin-top: 12px;
+			}
+			#nav {
+				margin-top: 10px;
+			}
+			#legend span {
+				margin: 0 5px;
+			}
+			.cov0 { color: rgb(192, 0, 0) }
+.cov1 { color: rgb(128, 128, 128) }
+.cov2 { color: rgb(116, 140, 131) }
+.cov3 { color: rgb(104, 152, 134) }
+.cov4 { color: rgb(92, 164, 137) }
+.cov5 { color: rgb(80, 176, 140) }
+.cov6 { color: rgb(68, 188, 143) }
+.cov7 { color: rgb(56, 200, 146) }
+.cov8 { color: rgb(44, 212, 149) }
+.cov9 { color: rgb(32, 224, 152) }
+.cov10 { color: rgb(20, 236, 155) }
+
+		</style>
+	</head>
+	<body>
+		<div id="topbar">
+			<div id="nav">
+				<select id="files">
+				
+				<option value="file0">prime/nth_prime.go (100.0%)</option>
+				
+				</select>
+			</div>
+			<div id="legend">
+				<span>not tracked</span>
+			
+				<span class="cov0">no coverage</span>
+				<span class="cov1">low coverage</span>
+				<span class="cov2">*</span>
+				<span class="cov3">*</span>
+				<span class="cov4">*</span>
+				<span class="cov5">*</span>
+				<span class="cov6">*</span>
+				<span class="cov7">*</span>
+				<span class="cov8">*</span>
+				<span class="cov9">*</span>
+				<span class="cov10">high coverage</span>
+			
+			</div>
+		</div>
+		<div id="content">
+		
+		<pre class="file" id="file0" style="display: none">// Package prime determines the nth prime.
+package prime
+
+import (
+        "errors"
+        "math"
+        "sort"
+)
+
+// Nth returns the nth prime number. An error must be returned if the nth prime number can't be calculated ('n' is equal or less than zero)
+func Nth(input int) (int, error) <span class="cov3" title="16">{
+        if input &lt; 1 </span><span class="cov1" title="2">{
+                return 0, errors.New("the nth prime has to be equal to or greater than 1")
+        }</span>
+
+        <span class="cov2" title="14">primes := []int{}
+        var prime int
+
+        // Using a large size to minimize the number of loops since each loop is
+        // expensive.
+        var searchSize int = input * 11
+
+        for len(primes) &lt;= input </span><span class="cov2" title="14">{
+                primes = append(primes, findPrimeWithSieve(input, searchSize)...)
+
+                prime = primes[input-1]
+
+                searchSize *= 2
+        }</span>
+
+        <span class="cov2" title="14">return prime, nil</span>
+}
+
+// findPrimeWithSieve returns a list of primes up to the nth prime.
+func findPrimeWithSieve(searchTarget int, limit int) []int <span class="cov2" title="14">{
+        var counter int
+
+        primes := []int{}
+
+        // If limit is greater than 2 and is even, substract 1.
+        if limit &gt; 2 &amp;&amp; limit%2 == 0 </span><span class="cov2" title="7">{
+                limit--
+        }</span>
+
+        // Index 2 to limit. These need to all be set to true.
+        <span class="cov2" title="14">numbers := map[int]bool{}
+
+        // - Only generate a list for '2' and odd numbers. All other even numbers
+        //   aren't primes so they're automatically set to false so don't bother
+        //   with them.
+        if limit &gt;= 2 </span><span class="cov2" title="14">{
+                numbers[2] = true
+                counter++
+        }</span>
+        <span class="cov2" title="14">for i := 3; i &lt;= limit; i += 2 </span><span class="cov8" title="55347">{
+                numbers[i] = true
+                counter++
+        }</span>
+
+        <span class="cov2" title="14">for number, isPrime := range numbers </span><span class="cov9" title="100043">{
+                if isPrime </span><span class="cov8" title="24903">{
+                        for x, j := 1, number*number; j &lt;= limit; x, j = x+1, number*number+x*number </span><span class="cov10" title="237570">{
+                                numbers[j] = false
+                        }</span>
+                }
+        }
+
+        <span class="cov2" title="14">outer := 2
+        sqrtLimit := int(math.Sqrt(float64(limit))) + 1
+
+        var loop int
+        var square int
+        var inner int
+
+        for outer &lt;= sqrtLimit </span><span class="cov5" title="415">{
+
+                if numbers[outer] </span><span class="cov4" title="113">{
+                        loop = 2
+                        square = outer * outer
+                        inner = square * (outer * (loop - 2))
+
+                        for inner &lt;= limit </span><span class="cov8" title="19430">{
+                                delete(numbers, inner)
+                                loop++
+                                inner = square * (outer * (loop - 2))
+                        }</span>
+                }
+
+                <span class="cov5" title="415">outer++</span>
+        }
+
+        <span class="cov2" title="14">for number, isPrime := range numbers </span><span class="cov9" title="92101">{
+                if isPrime </span><span class="cov7" title="10654">{
+                        primes = append(primes, number)
+                }</span>
+        }
+
+        <span class="cov2" title="14">sort.Ints(primes)
+
+        return primes</span>
+}
+</pre>
+		
+		</div>
+	</body>
+	<script>
+	(function() {
+		var files = document.getElementById('files');
+		var visible;
+		files.addEventListener('change', onChange, false);
+		function select(part) {
+			if (visible)
+				visible.style.display = 'none';
+			visible = document.getElementById(part);
+			if (!visible)
+				return;
+			files.value = part;
+			visible.style.display = 'block';
+			location.hash = part;
+		}
+		function onChange() {
+			select(files.value);
+			window.scrollTo(0, 0);
+		}
+		if (location.hash != "") {
+			select(location.hash.substr(1));
+		}
+		if (!visible) {
+			select("file0");
+		}
+	})();
+	</script>
+</html>

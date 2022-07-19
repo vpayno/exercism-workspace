@@ -9,12 +9,12 @@ func TestNth(t *testing.T) {
 			switch {
 			case tc.err != "":
 				if err == nil {
-					t.Fatalf("Nth(%d) expected error: %q, got: %d", tc.input, tc.err, actual)
+					t.Errorf("Nth(%d) expected error: %q, got: %d", tc.input, tc.err, actual)
 				}
 			case err != nil:
-				t.Fatalf("Nth(%d) returned error: %v, want: %d", tc.input, err, tc.expected)
+				t.Errorf("Nth(%d) returned error: %v, want: %d", tc.input, err, tc.expected)
 			case actual != tc.expected:
-				t.Fatalf("Nth(%d) = %d, want: %d", tc.input, actual, tc.expected)
+				t.Errorf("Nth(%d) = %d, want: %d", tc.input, actual, tc.expected)
 			}
 		})
 	}

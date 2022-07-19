@@ -1,0 +1,168 @@
+Running automated test file(s):
+
+Go packages: prime 
+
+
+===============================================================================
+
+golint prime
+
+real	0m0.322s
+user	0m0.364s
+sys	0m0.265s
+
+===============================================================================
+
+go test -v -covermode=count -coverprofile coverage.out prime
+=== RUN   TestNth
+=== RUN   TestNth/first_prime
+=== RUN   TestNth/second_prime
+=== RUN   TestNth/sixth_prime
+=== RUN   TestNth/big_prime
+=== RUN   TestNth/there_is_no_zeroth_prime
+--- PASS: TestNth (0.20s)
+    --- PASS: TestNth/first_prime (0.00s)
+    --- PASS: TestNth/second_prime (0.00s)
+    --- PASS: TestNth/sixth_prime (0.00s)
+    --- PASS: TestNth/big_prime (0.20s)
+    --- PASS: TestNth/there_is_no_zeroth_prime (0.00s)
+=== RUN   ExampleNth
+--- PASS: ExampleNth (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	prime	0.207s	coverage: 100.0% of statements
+
+real	0m1.177s
+user	0m1.402s
+sys	0m0.657s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+prime/nth_prime.go:11:	Nth			100.0%
+prime/nth_prime.go:35:	findPrimeWithSieve	100.0%
+total:			(statements)		100.0%
+
+real	0m0.379s
+user	0m0.421s
+sys	0m0.339s
+
+===============================================================================
+
+go tool cover -html coverage.out -o coverage.html
+
+real	0m0.351s
+user	0m0.345s
+sys	0m0.313s
+
+===============================================================================
+
+go test -v -race -covermode=atomic prime
+=== RUN   TestNth
+=== RUN   TestNth/first_prime
+=== RUN   TestNth/second_prime
+=== RUN   TestNth/sixth_prime
+=== RUN   TestNth/big_prime
+=== RUN   TestNth/there_is_no_zeroth_prime
+--- PASS: TestNth (0.42s)
+    --- PASS: TestNth/first_prime (0.00s)
+    --- PASS: TestNth/second_prime (0.00s)
+    --- PASS: TestNth/sixth_prime (0.00s)
+    --- PASS: TestNth/big_prime (0.42s)
+    --- PASS: TestNth/there_is_no_zeroth_prime (0.00s)
+=== RUN   ExampleNth
+--- PASS: ExampleNth (0.02s)
+PASS
+coverage: 100.0% of statements
+ok  	prime	0.504s	coverage: 100.0% of statements
+
+real	0m2.063s
+user	0m2.120s
+sys	0m1.045s
+
+===============================================================================
+
+go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+goos: linux
+goarch: amd64
+pkg: prime
+cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+BenchmarkNth-4   	      18	 101300890 ns/op	 7236517 B/op	    4784 allocs/op
+PASS
+ok  	prime	1.956s
+
+real	0m2.842s
+user	0m4.310s
+sys	0m0.977s
+
+===============================================================================
+
+go test -tags bonus
+PASS
+ok  	prime	0.196s
+
+real	0m1.137s
+user	0m1.483s
+sys	0m0.629s
+
+===============================================================================
+
+No old benchmarks to run benchstat against.
+
+===============================================================================
+
+go vet prime
+
+real	0m0.640s
+user	0m0.661s
+sys	0m0.484s
+
+===============================================================================
+
+go fix prime
+
+real	0m0.186s
+user	0m0.186s
+sys	0m0.190s
+
+===============================================================================
+
+gosec ./nth-prime
+[gosec] 2022/07/18 22:25:55 Including rules: default
+[gosec] 2022/07/18 22:25:55 Excluding rules: default
+[gosec] 2022/07/18 22:25:55 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/nth-prime
+2022/07/18 22:25:56 internal error: package "errors" without types was imported from "command-line-arguments"
+
+real	0m0.667s
+user	0m0.875s
+sys	0m0.494s
+
+===============================================================================
+
+gomarkdoc --output prime-doc.md
+
+real	0m0.028s
+user	0m0.013s
+sys	0m0.017s
+
+===============================================================================
+
+go doc -all prime
+package prime // import "prime"
+
+Package prime determines the nth prime.
+
+FUNCTIONS
+
+func Nth(input int) (int, error)
+    Nth returns the nth prime number. An error must be returned if the nth prime
+    number can't be calculated ('n' is equal or less than zero)
+
+
+real	0m0.412s
+user	0m0.272s
+sys	0m0.257s
+
+
+===============================================================================
+

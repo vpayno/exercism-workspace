@@ -41,3 +41,13 @@ For inputs lesser than `1`, the nth prime number can't be computed. In that case
 ### Based on
 
 A variation on Problem 7 at Project Euler - http://projecteuler.net/problem=7
+
+### My Solution
+
+- [my solution](./nth_prime.go)
+- [my examples](./)
+- [test cases](./cases_test.go)
+- [tests](./nth_prime_test.go)
+- [run-tests](./run-tests-go.txt)
+- [coverage](./coverage.html)
+- [documentation](./prime-doc.md)
