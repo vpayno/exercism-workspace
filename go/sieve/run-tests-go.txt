@@ -1,0 +1,196 @@
+Running automated test file(s):
+
+Go packages: sieve 
+
+
+===============================================================================
+
+golint sieve
+
+real	0m0.799s
+user	0m0.971s
+sys	0m0.352s
+
+===============================================================================
+
+go test -v -covermode=count -coverprofile coverage.out sieve
+=== RUN   TestSieve
+    sieve_test.go:17: PASS: no primes under two
+    sieve_test.go:17: PASS: find first prime
+    sieve_test.go:17: PASS: find primes up to 10
+    sieve_test.go:17: PASS: limit is prime
+    sieve_test.go:17: PASS: find primes up to 1,000
+    sieve_test.go:17: PASS: find primes up to 1,000,000
+--- PASS: TestSieve (1.00s)
+=== RUN   ExampleSieve
+--- PASS: ExampleSieve (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	sieve	1.040s	coverage: 100.0% of statements
+
+real	0m2.454s
+user	0m3.497s
+sys	0m1.065s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+sieve/sieve.go:27:	Sieve		100.0%
+total:			(statements)	100.0%
+
+real	0m0.290s
+user	0m0.227s
+sys	0m0.232s
+
+===============================================================================
+
+go tool cover -html coverage.out -o coverage.html
+
+real	0m0.334s
+user	0m0.341s
+sys	0m0.294s
+
+===============================================================================
+
+go test -v -race -covermode=atomic sieve
+=== RUN   TestSieve
+    sieve_test.go:17: PASS: no primes under two
+    sieve_test.go:17: PASS: find first prime
+    sieve_test.go:17: PASS: find primes up to 10
+    sieve_test.go:17: PASS: limit is prime
+    sieve_test.go:17: PASS: find primes up to 1,000
+    sieve_test.go:17: PASS: find primes up to 1,000,000
+--- PASS: TestSieve (4.06s)
+=== RUN   ExampleSieve
+--- PASS: ExampleSieve (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	sieve	(cached)	coverage: 100.0% of statements
+
+real	0m1.398s
+user	0m2.167s
+sys	0m0.836s
+
+===============================================================================
+
+mv -v benchstat-new.txt benchstat-old.txt
+renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
+
+go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+goos: linux
+goarch: amd64
+pkg: sieve
+cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+BenchmarkSieve-4   	       2	 818023420 ns/op	57877472 B/op	   38573 allocs/op
+PASS
+ok  	sieve	2.618s
+
+real	0m4.148s
+user	0m5.653s
+sys	0m1.176s
+
+===============================================================================
+
+go test -tags bonus
+PASS
+ok  	sieve	0.959s
+
+real	0m2.519s
+user	0m3.565s
+sys	0m1.116s
+
+===============================================================================
+
+go install golang.org/x/perf/cmd/benchstat@latest
+
+real	0m1.146s
+user	0m1.083s
+sys	0m0.549s
+
+benchstat benchstat-old.txt benchstat-new.txt
+name     old time/op    new time/op    delta
+Sieve-4     1.02s ± 0%     0.82s ± 0%   ~     (p=1.000 n=1+1)
+
+name     old alloc/op   new alloc/op   delta
+Sieve-4    57.9MB ± 0%    57.9MB ± 0%   ~     (p=1.000 n=1+1)
+
+name     old allocs/op  new allocs/op  delta
+Sieve-4     38.6k ± 0%     38.6k ± 0%   ~     (p=1.000 n=1+1)
+
+real	0m0.060s
+user	0m0.038s
+sys	0m0.056s
+
+===============================================================================
+
+go vet sieve
+
+real	0m1.274s
+user	0m1.872s
+sys	0m0.554s
+
+===============================================================================
+
+go fix sieve
+
+real	0m0.610s
+user	0m0.974s
+sys	0m0.240s
+
+===============================================================================
+
+gosec ./sieve
+[gosec] 2022/07/18 18:27:33 Including rules: default
+[gosec] 2022/07/18 18:27:33 Excluding rules: default
+[gosec] 2022/07/18 18:27:33 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/sieve
+2022/07/18 18:27:33 internal error: package "sort" without types was imported from "command-line-arguments"
+
+real	0m0.665s
+user	0m0.917s
+sys	0m0.384s
+
+===============================================================================
+
+gomarkdoc --output sieve-doc.md
+
+real	0m0.231s
+user	0m0.265s
+sys	0m0.073s
+
+===============================================================================
+
+go doc -all sieve
+package sieve // import "sieve"
+
+Package sieve of Eratosthenes is used to find all the primes from 2 up to a
+given number.
+
+FUNCTIONS
+
+func Sieve(limit int) []int
+    Sieve returns a list of prime numbers using the Sieve of Eratosthenes.
+    https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes Litering the code with
+    optimization todos so I can play with Go benchmarks.
+
+        algorithm Sieve of Eratosthenes is
+        	input: an integer n > 1.
+        	output: all prime numbers from 2 through n.
+
+        	let A be an array of Boolean values, indexed by integers 2 to n,
+        	initially all set to true.
+
+        	for i = 2, 3, 4, ..., not exceeding √n do
+        		if A[i] is true
+        			for j = i2, i2+i, i2+2i, i2+3i, ..., not exceeding n do
+        				set A[j] := false
+
+        	return all i such that A[i] is true.
+
+
+real	0m0.283s
+user	0m0.180s
+sys	0m0.213s
+
+
+===============================================================================
+

@@ -1,0 +1,200 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>sieve: Go Coverage Report</title>
+		<style>
+			body {
+				background: black;
+				color: rgb(80, 80, 80);
+			}
+			body, pre, #legend span {
+				font-family: Menlo, monospace;
+				font-weight: bold;
+			}
+			#topbar {
+				background: black;
+				position: fixed;
+				top: 0; left: 0; right: 0;
+				height: 42px;
+				border-bottom: 1px solid rgb(80, 80, 80);
+			}
+			#content {
+				margin-top: 50px;
+			}
+			#nav, #legend {
+				float: left;
+				margin-left: 10px;
+			}
+			#legend {
+				margin-top: 12px;
+			}
+			#nav {
+				margin-top: 10px;
+			}
+			#legend span {
+				margin: 0 5px;
+			}
+			.cov0 { color: rgb(192, 0, 0) }
+.cov1 { color: rgb(128, 128, 128) }
+.cov2 { color: rgb(116, 140, 131) }
+.cov3 { color: rgb(104, 152, 134) }
+.cov4 { color: rgb(92, 164, 137) }
+.cov5 { color: rgb(80, 176, 140) }
+.cov6 { color: rgb(68, 188, 143) }
+.cov7 { color: rgb(56, 200, 146) }
+.cov8 { color: rgb(44, 212, 149) }
+.cov9 { color: rgb(32, 224, 152) }
+.cov10 { color: rgb(20, 236, 155) }
+
+		</style>
+	</head>
+	<body>
+		<div id="topbar">
+			<div id="nav">
+				<select id="files">
+				
+				<option value="file0">sieve/sieve.go (100.0%)</option>
+				
+				</select>
+			</div>
+			<div id="legend">
+				<span>not tracked</span>
+			
+				<span class="cov0">no coverage</span>
+				<span class="cov1">low coverage</span>
+				<span class="cov2">*</span>
+				<span class="cov3">*</span>
+				<span class="cov4">*</span>
+				<span class="cov5">*</span>
+				<span class="cov6">*</span>
+				<span class="cov7">*</span>
+				<span class="cov8">*</span>
+				<span class="cov9">*</span>
+				<span class="cov10">high coverage</span>
+			
+			</div>
+		</div>
+		<div id="content">
+		
+		<pre class="file" id="file0" style="display: none">// Package sieve of Eratosthenes is used to find all the primes from 2 up to a
+// given number.
+package sieve
+
+import (
+        "sort"
+)
+
+// Sieve returns a list of prime numbers using the Sieve of Eratosthenes.
+// https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
+// Litering the code with optimization todos so I can play with Go benchmarks.
+/*
+        algorithm Sieve of Eratosthenes is
+                input: an integer n &gt; 1.
+                output: all prime numbers from 2 through n.
+
+                let A be an array of Boolean values, indexed by integers 2 to n,
+                initially all set to true.
+
+                for i = 2, 3, 4, ..., not exceeding √n do
+                        if A[i] is true
+                                for j = i2, i2+i, i2+2i, i2+3i, ..., not exceeding n do
+                                        set A[j] := false
+
+                return all i such that A[i] is true.
+*/
+func Sieve(limit int) []int <span class="cov2" title="16">{
+        primes := []int{}
+
+        // If limit is greater than 2 and is even, substract 1.
+        if limit &gt; 2 &amp;&amp; limit%2 == 0 </span><span class="cov2" title="6">{
+                limit--
+        }</span>
+
+        // Index 2 to limit. These need to all be set to true.
+        // TODO:
+        // - Default bool zero value is false, going to add that as a future
+        //   optimization step.
+        <span class="cov2" title="16">numbers := map[int]bool{}
+
+        // - Only generate a list for '2' and odd numbers. All other even numbers
+        //   aren't primes so they're automatically set to false so don't bother
+        //   with them.
+        if limit &gt;= 2 </span><span class="cov2" title="13">{
+                numbers[2] = true
+        }</span>
+        <span class="cov2" title="16">for i := 3; i &lt;= limit; i += 2 </span><span class="cov8" title="500524">{
+                numbers[i] = true
+        }</span>
+        // fmt.Printf("numbers: %#v\n", numbers)
+
+        <span class="cov2" title="16">for number, isPrime := range numbers </span><span class="cov9" title="744470">{
+                // fmt.Printf("number: %d\nisPrime: %v\n", number, isPrime)
+
+                if isPrime </span><span class="cov8" title="245036">{
+                        for x, j := 1, number*number; j &lt;= limit; x, j = x+1, number*number+x*number </span><span class="cov10" title="2983603">{
+                                // fmt.Printf("\tx: %d\tj: %d\t", x, j)
+                                // fmt.Printf("i^2 + xi =&gt; %d^2 + %d*%d =&gt; %d\n", number, x, number, j)
+                                numbers[j] = false
+                        }</span>
+                }
+        }
+
+        <span class="cov2" title="16">for number, isPrime := range numbers </span><span class="cov9" title="1001050">{
+                if isPrime </span><span class="cov7" title="78700">{
+                        primes = append(primes, number)
+                }</span>
+        }
+
+        <span class="cov2" title="16">sort.Ints(primes)
+
+        return primes</span>
+}
+
+/*
+        Change: If limit is greater than 2 and is even, substract 1.
+
+        name     old time/op    new time/op    delta
+        Sieve-4     1.02s ± 0%     1.02s ± 0%   ~     (p=1.000 n=1+1)
+
+        name     old alloc/op   new alloc/op   delta
+        Sieve-4    57.9MB ± 0%    57.9MB ± 0%   ~     (p=1.000 n=1+1)
+
+        name     old allocs/op  new allocs/op  delta
+        Sieve-4     38.6k ± 0%     38.6k ± 0%   ~     (p=1.000 n=1+1)
+*/
+
+// TODO: Write and benchmark a Sieve64(int64) []int64 function.
+</pre>
+		
+		</div>
+	</body>
+	<script>
+	(function() {
+		var files = document.getElementById('files');
+		var visible;
+		files.addEventListener('change', onChange, false);
+		function select(part) {
+			if (visible)
+				visible.style.display = 'none';
+			visible = document.getElementById(part);
+			if (!visible)
+				return;
+			files.value = part;
+			visible.style.display = 'block';
+			location.hash = part;
+		}
+		function onChange() {
+			select(files.value);
+			window.scrollTo(0, 0);
+		}
+		if (location.hash != "") {
+			select(location.hash.substr(1));
+		}
+		if (!visible) {
+			select("file0");
+		}
+	})();
+	</script>
+</html>
