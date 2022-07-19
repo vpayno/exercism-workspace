@@ -10,7 +10,7 @@ func TestSieve(t *testing.T) {
 		p := Sieve(tc.limit)
 		if len(p) != 0 || len(tc.expected) != 0 {
 			if !reflect.DeepEqual(p, tc.expected) {
-				t.Fatalf("FAIL: %s\nSieve(%d)\nExpected %v\nActual  %v",
+				t.Errorf("FAIL: %s\nSieve(%d)\nExpected %v\nActual  %v",
 					tc.description, tc.limit, tc.expected, p)
 			}
 		}

@@ -1,0 +1,175 @@
+Running automated test file(s):
+
+Go packages: sieve 
+
+
+===============================================================================
+
+golint sieve
+
+real	0m0.846s
+user	0m1.205s
+sys	0m0.372s
+
+===============================================================================
+
+go test -v -covermode=count -coverprofile coverage.out sieve
+=== RUN   TestSieve
+    sieve_test.go:17: PASS: no primes under two
+    sieve_test.go:17: PASS: find first prime
+    sieve_test.go:17: PASS: find primes up to 10
+    sieve_test.go:17: PASS: limit is prime
+    sieve_test.go:17: PASS: find primes up to 1,000
+    sieve_test.go:17: PASS: find primes up to 1,000,000
+--- PASS: TestSieve (0.89s)
+=== RUN   ExampleSieve
+--- PASS: ExampleSieve (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	sieve	0.917s	coverage: 100.0% of statements
+
+real	0m3.214s
+user	0m4.874s
+sys	0m1.037s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+sieve/sieve.go:27:	Sieve		100.0%
+total:			(statements)	100.0%
+
+real	0m0.289s
+user	0m0.257s
+sys	0m0.293s
+
+===============================================================================
+
+go tool cover -html coverage.out -o coverage.html
+
+real	0m0.248s
+user	0m0.249s
+sys	0m0.217s
+
+===============================================================================
+
+go test -v -race -covermode=atomic sieve
+=== RUN   TestSieve
+    sieve_test.go:17: PASS: no primes under two
+    sieve_test.go:17: PASS: find first prime
+    sieve_test.go:17: PASS: find primes up to 10
+    sieve_test.go:17: PASS: limit is prime
+    sieve_test.go:17: PASS: find primes up to 1,000
+    sieve_test.go:17: PASS: find primes up to 1,000,000
+--- PASS: TestSieve (4.63s)
+=== RUN   ExampleSieve
+--- PASS: ExampleSieve (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	sieve	4.749s	coverage: 100.0% of statements
+
+real	0m7.462s
+user	0m7.889s
+sys	0m1.986s
+
+===============================================================================
+
+go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+goos: linux
+goarch: amd64
+pkg: sieve
+cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+BenchmarkSieve-4   	       1	1016796018 ns/op	57878512 B/op	   38561 allocs/op
+PASS
+ok  	sieve	1.119s
+
+real	0m2.450s
+user	0m3.351s
+sys	0m0.843s
+
+===============================================================================
+
+go test -tags bonus
+PASS
+ok  	sieve	1.312s
+
+real	0m2.565s
+user	0m3.511s
+sys	0m0.852s
+
+===============================================================================
+
+No old benchmarks to run benchstat against.
+
+===============================================================================
+
+go vet sieve
+
+real	0m1.085s
+user	0m1.614s
+sys	0m0.687s
+
+===============================================================================
+
+go fix sieve
+
+real	0m0.716s
+user	0m0.987s
+sys	0m0.211s
+
+===============================================================================
+
+gosec ./sieve
+[gosec] 2022/07/18 18:13:09 Including rules: default
+[gosec] 2022/07/18 18:13:09 Excluding rules: default
+[gosec] 2022/07/18 18:13:09 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/sieve
+2022/07/18 18:13:10 internal error: package "sort" without types was imported from "command-line-arguments"
+
+real	0m0.641s
+user	0m0.821s
+sys	0m0.379s
+
+===============================================================================
+
+gomarkdoc --output sieve-doc.md
+
+real	0m0.161s
+user	0m0.231s
+sys	0m0.073s
+
+===============================================================================
+
+go doc -all sieve
+package sieve // import "sieve"
+
+Package sieve of Eratosthenes is used to find all the primes from 2 up to a
+given number.
+
+FUNCTIONS
+
+func Sieve(limit int) []int
+    Sieve returns a list of prime numbers using the Sieve of Eratosthenes.
+    https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes Litering the code with
+    optimization todos so I can play with Go benchmarks.
+
+        algorithm Sieve of Eratosthenes is
+        	input: an integer n > 1.
+        	output: all prime numbers from 2 through n.
+
+        	let A be an array of Boolean values, indexed by integers 2 to n,
+        	initially all set to true.
+
+        	for i = 2, 3, 4, ..., not exceeding √n do
+        		if A[i] is true
+        			for j = i2, i2+i, i2+2i, i2+3i, ..., not exceeding n do
+        				set A[j] := false
+
+        	return all i such that A[i] is true.
+
+
+real	0m0.273s
+user	0m0.155s
+sys	0m0.233s
+
+
+===============================================================================
+
