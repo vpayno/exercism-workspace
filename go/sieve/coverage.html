@@ -116,21 +116,24 @@ func Sieve(limit int) []int <span class="cov2" title="16">{
         // TODO:
         // - Default bool zero value is false, going to add that as a future
         //   optimization step.
+        <span class="cov2" title="16">numbers := map[int]bool{}
+
         // - Only generate a list for '2' and odd numbers. All other even numbers
         //   aren't primes so they're automatically set to false so don't bother
         //   with them.
-        <span class="cov2" title="16">numbers := map[int]bool{}
-
-        for i := 2; i &lt;= limit; i++ </span><span class="cov9" title="1001050">{
+        if limit &gt;= 2 </span><span class="cov2" title="13">{
+                numbers[2] = true
+        }</span>
+        <span class="cov2" title="16">for i := 3; i &lt;= limit; i += 2 </span><span class="cov8" title="500524">{
                 numbers[i] = true
         }</span>
         // fmt.Printf("numbers: %#v\n", numbers)
 
-        <span class="cov2" title="16">for number, isPrime := range numbers </span><span class="cov9" title="1001050">{
+        <span class="cov2" title="16">for number, isPrime := range numbers </span><span class="cov9" title="744470">{
                 // fmt.Printf("number: %d\nisPrime: %v\n", number, isPrime)
 
-                if isPrime </span><span class="cov8" title="274853">{
-                        for x, j := 1, number*number; j &lt;= limit; x, j = x+1, number*number+x*number </span><span class="cov10" title="3451931">{
+                if isPrime </span><span class="cov8" title="245036">{
+                        for x, j := 1, number*number; j &lt;= limit; x, j = x+1, number*number+x*number </span><span class="cov10" title="2983603">{
                                 // fmt.Printf("\tx: %d\tj: %d\t", x, j)
                                 // fmt.Printf("i^2 + xi =&gt; %d^2 + %d*%d =&gt; %d\n", number, x, number, j)
                                 numbers[j] = false
@@ -148,6 +151,19 @@ func Sieve(limit int) []int <span class="cov2" title="16">{
 
         return primes</span>
 }
+
+/*
+        Change: If limit is greater than 2 and is even, substract 1.
+
+        name     old time/op    new time/op    delta
+        Sieve-4     1.02s ± 0%     1.02s ± 0%   ~     (p=1.000 n=1+1)
+
+        name     old alloc/op   new alloc/op   delta
+        Sieve-4    57.9MB ± 0%    57.9MB ± 0%   ~     (p=1.000 n=1+1)
+
+        name     old allocs/op  new allocs/op  delta
+        Sieve-4     38.6k ± 0%     38.6k ± 0%   ~     (p=1.000 n=1+1)
+*/
 
 // TODO: Write and benchmark a Sieve64(int64) []int64 function.
 </pre>

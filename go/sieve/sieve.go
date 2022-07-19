@@ -35,13 +35,13 @@ func Sieve(limit int) []int {
 	// Index 2 to limit. These need to all be set to true.
 	numbers := map[int]bool{}
 
-	// TODO:
 	// - Only generate a list for '2' and odd numbers. All other even numbers
 	//   aren't primes so they're automatically set to false so don't bother
 	//   with them.
-	numbers := map[int]bool{}
-
-	for i := 2; i <= limit; i++ {
+	if limit >= 2 {
+		numbers[2] = true
+	}
+	for i := 3; i <= limit; i += 2 {
 		numbers[i] = true
 	}
 	// fmt.Printf("numbers: %#v\n", numbers)
@@ -74,6 +74,20 @@ func Sieve(limit int) []int {
 
 	name     old time/op    new time/op    delta
 	Sieve-4     1.02s ± 0%     1.02s ± 0%   ~     (p=1.000 n=1+1)
+
+	name     old alloc/op   new alloc/op   delta
+	Sieve-4    57.9MB ± 0%    57.9MB ± 0%   ~     (p=1.000 n=1+1)
+
+	name     old allocs/op  new allocs/op  delta
+	Sieve-4     38.6k ± 0%     38.6k ± 0%   ~     (p=1.000 n=1+1)
+*/
+
+/*
+	Change: Only generate a list for '2' and odd numbers. All other even numbers
+	aren't primes so they're automatically set to false so don't bother with them.
+
+	name     old time/op    new time/op    delta
+	Sieve-4     1.02s ± 0%     0.82s ± 0%   ~     (p=1.000 n=1+1)
 
 	name     old alloc/op   new alloc/op   delta
 	Sieve-4    57.9MB ± 0%    57.9MB ± 0%   ~     (p=1.000 n=1+1)
