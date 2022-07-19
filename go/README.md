@@ -74,3 +74,4 @@
 - [beer-song](./beer-song/README.md)
 - [phone-number](./phone-number/README.md)
 - [prime-factors](./prime-factors/README.md)
+- [nth-prime](./nth-prime/README.md)
