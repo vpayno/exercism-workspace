@@ -107,7 +107,10 @@ import (
 func Sieve(limit int) []int <span class="cov2" title="16">{
         primes := []int{}
 
-        // TODO: If limit is even, substract 1.
+        // If limit is greater than 2 and is even, substract 1.
+        if limit &gt; 2 &amp;&amp; limit%2 == 0 </span><span class="cov2" title="6">{
+                limit--
+        }</span>
 
         // Index 2 to limit. These need to all be set to true.
         // TODO:
@@ -116,18 +119,18 @@ func Sieve(limit int) []int <span class="cov2" title="16">{
         // - Only generate a list for '2' and odd numbers. All other even numbers
         //   aren't primes so they're automatically set to false so don't bother
         //   with them.
-        numbers := map[int]bool{}
+        <span class="cov2" title="16">numbers := map[int]bool{}
 
-        for i := 2; i &lt;= limit; i++ </span><span class="cov9" title="1001056">{
+        for i := 2; i &lt;= limit; i++ </span><span class="cov9" title="1001050">{
                 numbers[i] = true
         }</span>
         // fmt.Printf("numbers: %#v\n", numbers)
 
-        <span class="cov2" title="16">for number, isPrime := range numbers </span><span class="cov9" title="1001056">{
+        <span class="cov2" title="16">for number, isPrime := range numbers </span><span class="cov9" title="1001050">{
                 // fmt.Printf("number: %d\nisPrime: %v\n", number, isPrime)
 
-                if isPrime </span><span class="cov8" title="299554">{
-                        for x, j := 1, number*number; j &lt;= limit; x, j = x+1, number*number+x*number </span><span class="cov10" title="3116802">{
+                if isPrime </span><span class="cov8" title="274853">{
+                        for x, j := 1, number*number; j &lt;= limit; x, j = x+1, number*number+x*number </span><span class="cov10" title="3451931">{
                                 // fmt.Printf("\tx: %d\tj: %d\t", x, j)
                                 // fmt.Printf("i^2 + xi =&gt; %d^2 + %d*%d =&gt; %d\n", number, x, number, j)
                                 numbers[j] = false
@@ -135,7 +138,7 @@ func Sieve(limit int) []int <span class="cov2" title="16">{
                 }
         }
 
-        <span class="cov2" title="16">for number, isPrime := range numbers </span><span class="cov9" title="1001056">{
+        <span class="cov2" title="16">for number, isPrime := range numbers </span><span class="cov9" title="1001050">{
                 if isPrime </span><span class="cov7" title="78700">{
                         primes = append(primes, number)
                 }</span>

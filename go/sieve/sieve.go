@@ -27,7 +27,10 @@ import (
 func Sieve(limit int) []int {
 	primes := []int{}
 
-	// TODO: If limit is even, substract 1.
+	// If limit is greater than 2 and is even, substract 1.
+	if limit > 2 && limit%2 == 0 {
+		limit--
+	}
 
 	// Index 2 to limit. These need to all be set to true.
 	numbers := map[int]bool{}
@@ -65,5 +68,18 @@ func Sieve(limit int) []int {
 
 	return primes
 }
+
+/*
+	Change: If limit is greater than 2 and is even, substract 1.
+
+	name     old time/op    new time/op    delta
+	Sieve-4     1.02s ± 0%     1.02s ± 0%   ~     (p=1.000 n=1+1)
+
+	name     old alloc/op   new alloc/op   delta
+	Sieve-4    57.9MB ± 0%    57.9MB ± 0%   ~     (p=1.000 n=1+1)
+
+	name     old allocs/op  new allocs/op  delta
+	Sieve-4     38.6k ± 0%     38.6k ± 0%   ~     (p=1.000 n=1+1)
+*/
 
 // TODO: Write and benchmark a Sieve64(int64) []int64 function.

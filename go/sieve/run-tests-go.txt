@@ -7,9 +7,9 @@ Go packages: sieve
 
 golint sieve
 
-real	0m0.846s
-user	0m1.205s
-sys	0m0.372s
+real	0m0.707s
+user	0m0.926s
+sys	0m0.293s
 
 ===============================================================================
 
@@ -21,16 +21,16 @@ go test -v -covermode=count -coverprofile coverage.out sieve
     sieve_test.go:17: PASS: limit is prime
     sieve_test.go:17: PASS: find primes up to 1,000
     sieve_test.go:17: PASS: find primes up to 1,000,000
---- PASS: TestSieve (0.89s)
+--- PASS: TestSieve (1.06s)
 === RUN   ExampleSieve
 --- PASS: ExampleSieve (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	sieve	0.917s	coverage: 100.0% of statements
+ok  	sieve	1.098s	coverage: 100.0% of statements
 
-real	0m3.214s
-user	0m4.874s
-sys	0m1.037s
+real	0m3.283s
+user	0m4.628s
+sys	0m1.174s
 
 ===============================================================================
 
@@ -38,17 +38,17 @@ go tool cover -func=coverage.out
 sieve/sieve.go:27:	Sieve		100.0%
 total:			(statements)	100.0%
 
-real	0m0.289s
-user	0m0.257s
-sys	0m0.293s
+real	0m0.404s
+user	0m0.296s
+sys	0m0.333s
 
 ===============================================================================
 
 go tool cover -html coverage.out -o coverage.html
 
-real	0m0.248s
-user	0m0.249s
-sys	0m0.217s
+real	0m0.268s
+user	0m0.242s
+sys	0m0.218s
 
 ===============================================================================
 
@@ -60,81 +60,102 @@ go test -v -race -covermode=atomic sieve
     sieve_test.go:17: PASS: limit is prime
     sieve_test.go:17: PASS: find primes up to 1,000
     sieve_test.go:17: PASS: find primes up to 1,000,000
---- PASS: TestSieve (4.63s)
+--- PASS: TestSieve (5.54s)
 === RUN   ExampleSieve
 --- PASS: ExampleSieve (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	sieve	4.749s	coverage: 100.0% of statements
+ok  	sieve	5.691s	coverage: 100.0% of statements
 
-real	0m7.462s
-user	0m7.889s
-sys	0m1.986s
+real	0m8.255s
+user	0m9.336s
+sys	0m1.878s
 
 ===============================================================================
+
+mv -v benchstat-new.txt benchstat-old.txt
+renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
 
 go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 goos: linux
 goarch: amd64
 pkg: sieve
 cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
-BenchmarkSieve-4   	       1	1016796018 ns/op	57878512 B/op	   38561 allocs/op
+BenchmarkSieve-4   	       1	1019998001 ns/op	57866712 B/op	   38580 allocs/op
 PASS
-ok  	sieve	1.119s
+ok  	sieve	1.049s
 
-real	0m2.450s
-user	0m3.351s
-sys	0m0.843s
+real	0m3.308s
+user	0m4.383s
+sys	0m1.284s
 
 ===============================================================================
 
 go test -tags bonus
 PASS
-ok  	sieve	1.312s
+ok  	sieve	1.216s
 
-real	0m2.565s
-user	0m3.511s
-sys	0m0.852s
+real	0m2.525s
+user	0m3.589s
+sys	0m0.898s
 
 ===============================================================================
 
-No old benchmarks to run benchstat against.
+go install golang.org/x/perf/cmd/benchstat@latest
+
+real	0m5.136s
+user	0m2.848s
+sys	0m1.089s
+
+benchstat benchstat-old.txt benchstat-new.txt
+name     old time/op    new time/op    delta
+Sieve-4     1.02s ± 0%     1.02s ± 0%   ~     (p=1.000 n=1+1)
+
+name     old alloc/op   new alloc/op   delta
+Sieve-4    57.9MB ± 0%    57.9MB ± 0%   ~     (p=1.000 n=1+1)
+
+name     old allocs/op  new allocs/op  delta
+Sieve-4     38.6k ± 0%     38.6k ± 0%   ~     (p=1.000 n=1+1)
+
+real	0m0.044s
+user	0m0.027s
+sys	0m0.037s
 
 ===============================================================================
 
 go vet sieve
 
-real	0m1.085s
-user	0m1.614s
-sys	0m0.687s
+real	0m1.236s
+user	0m1.849s
+sys	0m0.666s
 
 ===============================================================================
 
 go fix sieve
 
-real	0m0.716s
-user	0m0.987s
-sys	0m0.211s
+real	0m0.639s
+user	0m0.768s
+sys	0m0.186s
 
 ===============================================================================
 
 gosec ./sieve
-[gosec] 2022/07/18 18:13:09 Including rules: default
-[gosec] 2022/07/18 18:13:09 Excluding rules: default
-[gosec] 2022/07/18 18:13:09 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/sieve
-2022/07/18 18:13:10 internal error: package "sort" without types was imported from "command-line-arguments"
+[gosec] 2022/07/18 18:20:17 Including rules: default
+[gosec] 2022/07/18 18:20:17 Excluding rules: default
+[gosec] 2022/07/18 18:20:17 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/sieve
+2022/07/18 18:20:18 internal error: package "sort" without types was imported from "command-line-arguments"
 
-real	0m0.641s
-user	0m0.821s
-sys	0m0.379s
+real	0m0.621s
+user	0m0.811s
+sys	0m0.471s
 
 ===============================================================================
 
 gomarkdoc --output sieve-doc.md
 
-real	0m0.161s
-user	0m0.231s
-sys	0m0.073s
+real	0m0.155s
+user	0m0.187s
+sys	0m0.076s
 
 ===============================================================================
 
@@ -166,9 +187,9 @@ func Sieve(limit int) []int
         	return all i such that A[i] is true.
 
 
-real	0m0.273s
-user	0m0.155s
-sys	0m0.233s
+real	0m0.266s
+user	0m0.185s
+sys	0m0.260s
 
 
 ===============================================================================
