@@ -46,3 +46,13 @@ it just means that multiplying a number by 1 gives you the same number.)
 ### Based on
 
 A variation on Problem 8 at Project Euler - http://projecteuler.net/problem=8
+
+### My Solution
+
+- [my solution](./largest_series_product.go)
+- [my examples](./largest_series_product_examples_test.go)
+- [test cases](./cases_test.go)
+- [tests](./largest_series_product_test.go)
+- [run-tests](./run-tests-go.txt)
+- [coverage](./coverage.html)
+- [documentation](./lsproduct-doc.md)

@@ -9,15 +9,15 @@ func TestLargestSeriesProduct(t *testing.T) {
 			if tc.error == "" {
 				// we do not expect error
 				if err != nil {
-					t.Fatalf("LargestSeriesProduct(%q, %d) returned error: %v\nwant: %d", tc.digits, tc.span, err, tc.expected)
+					t.Errorf("LargestSeriesProduct(%q, %d) returned error: %v\nwant: %d", tc.digits, tc.span, err, tc.expected)
 				}
 
 				if actual != tc.expected {
-					t.Fatalf("LargestSeriesProduct(%q, %d) = %d, want: %d", tc.digits, tc.span, actual, tc.expected)
+					t.Errorf("LargestSeriesProduct(%q, %d) = %d, want: %d", tc.digits, tc.span, actual, tc.expected)
 				}
 			} else if err == nil {
 				// expect error but got nil
-				t.Fatalf("LargestSeriesProduct(%q, %d) = %d, want error: %q", tc.digits, tc.span, actual, tc.error)
+				t.Errorf("LargestSeriesProduct(%q, %d) = %d, want error: %q", tc.digits, tc.span, actual, tc.error)
 			}
 		})
 	}
