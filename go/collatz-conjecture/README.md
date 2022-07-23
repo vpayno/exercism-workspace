@@ -50,3 +50,13 @@ Resulting in 9 steps. So for input n = 12, the return value would be 9.
 ### Based on
 
 An unsolved problem in mathematics named after mathematician Lothar Collatz - https://en.wikipedia.org/wiki/3x_%2B_1_problem
+
+### My Solution
+
+- [my solution](./collatz_conjecture.go)
+- [my examples](./collatz_conjecture_examples_test.go)
+- [test cases](./cases_test.go)
+- [tests](./collatz_conjecture_test.go)
+- [run-tests](./run-tests-go.txt)
+- [coverage](./coverage.html)
+- [documentation](./collatzconjecture-doc.md)

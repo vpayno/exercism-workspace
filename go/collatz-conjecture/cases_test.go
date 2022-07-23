@@ -29,7 +29,7 @@ var testCases = []struct {
 	},
 	{
 		description: "large number of even and odd steps",
-		input:       1000000,
+		input:       1_000_000,
 		expectError: false,
 		expected:    152,
 	},
