@@ -1,0 +1,282 @@
+Running automated test file(s):
+
+Go packages: listops 
+
+
+===============================================================================
+
+golint listops
+/home/vpayno/git_vpayno/exercism-workspace/go/list-ops/list_ops.go:18:1: comment on exported method IntList.Foldr should be of the form "Foldr ..."
+/home/vpayno/git_vpayno/exercism-workspace/go/list-ops/list_ops.go:72:9: should omit 2nd value from range; this loop is equivalent to `for i := range ...`
+
+real	0m0.142s
+user	0m0.075s
+sys	0m0.092s
+
+===============================================================================
+
+go test -v -covermode=count -coverprofile coverage.out listops
+=== RUN   TestFold
+    list_ops_test.go:77: PASS: foldl: empty list
+    list_ops_test.go:77: PASS: foldl: direction independent function applied to non-empty list
+    list_ops_test.go:77: PASS: foldl: direction dependent function applied to non-empty list
+    list_ops_test.go:77: PASS: foldr: empty list
+    list_ops_test.go:77: PASS: foldr: direction independent function applied to non-empty list
+    list_ops_test.go:77: PASS: foldr: direction dependent function applied to non-empty list
+--- PASS: TestFold (0.00s)
+=== RUN   TestFilterMethod
+    list_ops_test.go:114: PASS: filter: empty list
+    list_ops_test.go:114: PASS: filter: non-empty list
+--- PASS: TestFilterMethod (0.00s)
+=== RUN   TestLengthMethod
+    list_ops_test.go:146: PASS: length: empty list
+    list_ops_test.go:146: PASS: length: non-empty list
+--- PASS: TestLengthMethod (0.00s)
+=== RUN   TestMapMethod
+    list_ops_test.go:181: PASS: map: empty list
+    list_ops_test.go:181: PASS: map: non-empty list
+--- PASS: TestMapMethod (0.00s)
+=== RUN   TestReverseMethod
+    list_ops_test.go:213: PASS: reverse: empty list
+    list_ops_test.go:213: PASS: reverse: non-empty list
+--- PASS: TestReverseMethod (0.00s)
+=== RUN   TestAppendMethod
+    list_ops_test.go:255: PASS: append: empty list
+    list_ops_test.go:255: PASS: append: empty list to list
+    list_ops_test.go:255: PASS: append: non-empty lists
+--- PASS: TestAppendMethod (0.00s)
+=== RUN   TestConcatMethod
+    list_ops_test.go:290: PASS: concat: empty list
+    list_ops_test.go:290: PASS: concat: list of lists
+--- PASS: TestConcatMethod (0.00s)
+=== RUN   ExampleFoldl
+--- PASS: ExampleFoldl (0.00s)
+=== RUN   ExampleFoldr
+--- PASS: ExampleFoldr (0.00s)
+=== RUN   ExampleFilter
+--- PASS: ExampleFilter (0.00s)
+=== RUN   ExampleMap
+--- PASS: ExampleMap (0.00s)
+=== RUN   ExampleLen
+--- PASS: ExampleLen (0.00s)
+=== RUN   ExampleReverse
+--- PASS: ExampleReverse (0.00s)
+=== RUN   ExampleAppend
+--- PASS: ExampleAppend (0.00s)
+=== RUN   ExampleConcat
+--- PASS: ExampleConcat (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	listops	0.032s	coverage: 100.0% of statements
+
+real	0m0.683s
+user	0m0.794s
+sys	0m0.445s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+listops/list_ops.go:8:	Foldl		100.0%
+listops/list_ops.go:19:	Foldr		100.0%
+listops/list_ops.go:32:	Filter		100.0%
+listops/list_ops.go:47:	Length		100.0%
+listops/list_ops.go:54:	Map		100.0%
+listops/list_ops.go:67:	Reverse		100.0%
+listops/list_ops.go:82:	Append		100.0%
+listops/list_ops.go:89:	Concat		100.0%
+total:			(statements)	100.0%
+
+real	0m0.074s
+user	0m0.044s
+sys	0m0.076s
+
+===============================================================================
+
+go tool cover -html coverage.out -o coverage.html
+
+real	0m0.077s
+user	0m0.054s
+sys	0m0.063s
+
+===============================================================================
+
+go test -v -race -covermode=atomic listops
+=== RUN   TestFold
+    list_ops_test.go:77: PASS: foldl: empty list
+    list_ops_test.go:77: PASS: foldl: direction independent function applied to non-empty list
+    list_ops_test.go:77: PASS: foldl: direction dependent function applied to non-empty list
+    list_ops_test.go:77: PASS: foldr: empty list
+    list_ops_test.go:77: PASS: foldr: direction independent function applied to non-empty list
+    list_ops_test.go:77: PASS: foldr: direction dependent function applied to non-empty list
+--- PASS: TestFold (0.00s)
+=== RUN   TestFilterMethod
+    list_ops_test.go:114: PASS: filter: empty list
+    list_ops_test.go:114: PASS: filter: non-empty list
+--- PASS: TestFilterMethod (0.00s)
+=== RUN   TestLengthMethod
+    list_ops_test.go:146: PASS: length: empty list
+    list_ops_test.go:146: PASS: length: non-empty list
+--- PASS: TestLengthMethod (0.00s)
+=== RUN   TestMapMethod
+    list_ops_test.go:181: PASS: map: empty list
+    list_ops_test.go:181: PASS: map: non-empty list
+--- PASS: TestMapMethod (0.00s)
+=== RUN   TestReverseMethod
+    list_ops_test.go:213: PASS: reverse: empty list
+    list_ops_test.go:213: PASS: reverse: non-empty list
+--- PASS: TestReverseMethod (0.00s)
+=== RUN   TestAppendMethod
+    list_ops_test.go:255: PASS: append: empty list
+    list_ops_test.go:255: PASS: append: empty list to list
+    list_ops_test.go:255: PASS: append: non-empty lists
+--- PASS: TestAppendMethod (0.00s)
+=== RUN   TestConcatMethod
+    list_ops_test.go:290: PASS: concat: empty list
+    list_ops_test.go:290: PASS: concat: list of lists
+--- PASS: TestConcatMethod (0.00s)
+=== RUN   ExampleFoldl
+--- PASS: ExampleFoldl (0.00s)
+=== RUN   ExampleFoldr
+--- PASS: ExampleFoldr (0.00s)
+=== RUN   ExampleFilter
+--- PASS: ExampleFilter (0.00s)
+=== RUN   ExampleMap
+--- PASS: ExampleMap (0.00s)
+=== RUN   ExampleLen
+--- PASS: ExampleLen (0.00s)
+=== RUN   ExampleReverse
+--- PASS: ExampleReverse (0.00s)
+=== RUN   ExampleAppend
+--- PASS: ExampleAppend (0.00s)
+=== RUN   ExampleConcat
+--- PASS: ExampleConcat (0.01s)
+PASS
+coverage: 100.0% of statements
+ok  	listops	0.055s	coverage: 100.0% of statements
+
+real	0m0.972s
+user	0m0.905s
+sys	0m0.545s
+
+===============================================================================
+
+go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+PASS
+ok  	listops	0.016s
+
+real	0m0.564s
+user	0m0.591s
+sys	0m0.491s
+
+===============================================================================
+
+go test -tags bonus
+PASS
+ok  	listops	0.006s
+
+real	0m0.543s
+user	0m0.674s
+sys	0m0.400s
+
+===============================================================================
+
+No old benchmarks to run benchstat against.
+
+===============================================================================
+
+go vet listops
+# listops
+./list_ops_examples_test.go:7:1: ExampleFoldl refers to unknown identifier: Foldl
+./list_ops_examples_test.go:17:1: ExampleFoldr refers to unknown identifier: Foldr
+./list_ops_examples_test.go:27:1: ExampleFilter refers to unknown identifier: Filter
+./list_ops_examples_test.go:45:1: ExampleLen refers to unknown identifier: Len
+./list_ops_examples_test.go:53:1: ExampleReverse refers to unknown identifier: Reverse
+./list_ops_examples_test.go:70:1: ExampleConcat refers to unknown identifier: Concat
+
+real	0m0.378s
+user	0m0.431s
+sys	0m0.356s
+
+===============================================================================
+
+go fix listops
+
+real	0m0.072s
+user	0m0.031s
+sys	0m0.045s
+
+===============================================================================
+
+gosec ./list-ops
+[gosec] 2022/07/23 01:00:34 Including rules: default
+[gosec] 2022/07/23 01:00:34 Excluding rules: default
+[gosec] 2022/07/23 01:00:34 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/list-ops
+[gosec] 2022/07/23 01:00:34 Checking package: listops
+[gosec] 2022/07/23 01:00:34 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/list-ops/list_ops.go
+Results:
+
+
+Summary:
+   Files: 1
+   Lines: 101
+   Nosec: 0
+  Issues: 0
+
+
+real	0m0.322s
+user	0m0.362s
+sys	0m0.255s
+
+===============================================================================
+
+gomarkdoc --output listops-doc.md
+
+real	0m0.068s
+user	0m0.052s
+sys	0m0.034s
+
+===============================================================================
+
+go doc -all listops
+package listops // import "listops"
+
+Package listops is a library of list utility functions.
+
+TYPES
+
+type IntList []int
+    IntList is an abstraction of a list of integers which we can define methods
+    on
+
+func (s IntList) Append(lst IntList) IntList
+    Append returns an end-appended list.
+
+func (s IntList) Concat(lists []IntList) IntList
+    Concat returns a flattened list from all the lists passed.
+
+func (s IntList) Filter(fn func(int) bool) IntList
+    Filter returns list of all items for which predicate(item) is True.
+
+func (s IntList) Foldl(fn func(int, int) int, acc int) int
+    Foldl returns the left to right reduced value using the passed function.
+
+func (s IntList) Foldr(fn func(int, int) int, acc int) int
+    Foldl returns the right to left reduced value using the passed function.
+
+func (s IntList) Length() int
+    Length returns the length of the list.
+
+func (s IntList) Map(fn func(int) int) IntList
+    Map returns a list of the results of applying function(item) on all items.
+
+func (s IntList) Reverse() IntList
+    Reverse returns a reversed list.
+
+
+real	0m0.135s
+user	0m0.058s
+sys	0m0.144s
+
+
+===============================================================================
+

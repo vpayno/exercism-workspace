@@ -39,3 +39,12 @@ operations you will implement include:
 - @hilary
 - @ivenk
 - @leenipper
+
+### My Solution
+
+- [my solution](./list_ops.go)
+- [my examples](./list_ops_examples_test.go)
+- [tests](./list_ops_test.go)
+- [run-tests](./run-tests-go.txt)
+- [coverage](./coverage.html)
+- [documentation](./listops-doc.md)

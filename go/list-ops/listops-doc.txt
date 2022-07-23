@@ -1,0 +1,34 @@
+package listops // import "listops"
+
+Package listops is a library of list utility functions.
+
+TYPES
+
+type IntList []int
+    IntList is an abstraction of a list of integers which we can define methods
+    on
+
+func (s IntList) Append(lst IntList) IntList
+    Append returns an end-appended list.
+
+func (s IntList) Concat(lists []IntList) IntList
+    Concat returns a flattened list from all the lists passed.
+
+func (s IntList) Filter(fn func(int) bool) IntList
+    Filter returns list of all items for which predicate(item) is True.
+
+func (s IntList) Foldl(fn func(int, int) int, acc int) int
+    Foldl returns the left to right reduced value using the passed function.
+
+func (s IntList) Foldr(fn func(int, int) int, acc int) int
+    Foldl returns the right to left reduced value using the passed function.
+
+func (s IntList) Length() int
+    Length returns the length of the list.
+
+func (s IntList) Map(fn func(int) int) IntList
+    Map returns a list of the results of applying function(item) on all items.
+
+func (s IntList) Reverse() IntList
+    Reverse returns a reversed list.
+
