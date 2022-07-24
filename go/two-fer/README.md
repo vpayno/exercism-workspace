@@ -58,4 +58,5 @@ https://github.com/exercism/problem-specifications/issues/757
 - [my examples](./two_fer_examples_test.go)
 - [tests](./two_fer_test.go)
 - [run-tests](./run-tests-go.txt)
+- [coverage](./coverage.html)
 - [documentation](./twofer-doc.md)
