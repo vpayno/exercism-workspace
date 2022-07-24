@@ -83,6 +83,7 @@
 - [sublist](./sublist/README.md)
 - [list-ops](./list-ops/README.md)
 - [prime-factors](./prime-factors/README.md)
+- [sieve](./sieve/README.md)
 - [nth-prime](./nth-prime/README.md)
 - [largest-series-product](./largest-series-product/README.md)
 - [collatz-conjecture](./collatz-conjecture/README.md)

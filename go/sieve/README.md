@@ -53,7 +53,18 @@ language).
 - @robphoenix
 - @sebito91
 - @tleen
+- @eklatzer
 
 ### Based on
 
 Sieve of Eratosthenes at Wikipedia - http://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
+
+### My Solution
+
+- [my solution](./sieve.go)
+- [my examples](./sieve_examples_test.go)
+- [test cases](./cases_test.go)
+- [tests](./sieve_test.go)
+- [run-tests](./run-tests-go.txt)
+- [coverage](./coverage.html)
+- [documentation](./sieve-doc.md)
