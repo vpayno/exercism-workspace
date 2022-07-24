@@ -89,7 +89,7 @@ import (
 
 // Answer returns a result and error after parsing and evaluating a simple math
 // problem.
-func Answer(question string) (int, bool) <span class="cov7" title="30">{
+func Answer(question string) (int, bool) <span class="cov7" title="29">{
         var result int
         var reStr string
         var e error
@@ -101,7 +101,7 @@ func Answer(question string) (int, bool) <span class="cov7" title="30">{
                 `^What is (-?[0-9]+) ?(raised to the) ?(-?[0-9]+)[a-z][a-z] power[?]$`,
         }
 
-        for _, reStr = range reStrings </span><span class="cov10" title="85">{
+        for _, reStr = range reStrings </span><span class="cov10" title="81">{
 
                 match, me := regexp.MatchString(reStr, question)
 
@@ -109,26 +109,26 @@ func Answer(question string) (int, bool) <span class="cov7" title="30">{
                         panic(me)</span>
                 }
 
-                <span class="cov10" title="85">if match </span><span class="cov7" title="21">{
+                <span class="cov10" title="81">if match </span><span class="cov7" title="21">{
                         break</span>
                 }
         }
 
-        <span class="cov7" title="30">re, e := regexp.Compile(reStr)
+        <span class="cov7" title="29">re, e := regexp.Compile(reStr)
         if e != nil </span><span class="cov0" title="0">{
                 panic(e)</span>
         }
 
-        <span class="cov7" title="30">s1 := re.ReplaceAllString(question, "$1")
+        <span class="cov7" title="29">s1 := re.ReplaceAllString(question, "$1")
         n1, e1 := strconv.Atoi(s1)
-        if e1 != nil </span><span class="cov5" title="9">{
+        if e1 != nil </span><span class="cov5" title="8">{
                 return 0, false
         }</span>
 
         <span class="cov7" title="21">s3 := re.ReplaceAllString(question, "$3")
         var n3 int
         var e3 error
-        if s3 != "" </span><span class="cov6" title="19">{
+        if s3 != "" </span><span class="cov7" title="19">{
                 n3, e3 = strconv.Atoi(s3)
                 if e3 != nil </span><span class="cov0" title="0">{
                         return 0, false
