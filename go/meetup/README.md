@@ -45,3 +45,13 @@ For example, if given "First Monday of January 2022", the correct meetup date is
 ### Based on
 
 Jeremy Hinegardner mentioned a Boulder meetup that happens on the Wednesteenth of every month - https://twitter.com/copiousfreetime
+
+### My Solution
+
+- [my solution](./meetup.go)
+- [my examples](./meetup_examples_test.go)
+- [test cases](./cases_test.go)
+- [tests](./meetup_test.go)
+- [run-tests](./run-tests-go.txt)
+- [coverage](./coverage.html)
+- [documentation](./meetup-doc.md)

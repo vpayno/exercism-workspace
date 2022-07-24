@@ -82,3 +82,4 @@
 - [nth-prime](./nth-prime/README.md)
 - [largest-series-product](./largest-series-product/README.md)
 - [collatz-conjecture](./collatz-conjecture/README.md)
+- [meetup](./meetup/README.md)

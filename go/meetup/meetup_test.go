@@ -16,7 +16,7 @@ func TestDay(t *testing.T) {
 		t.Run(tc.description, func(t *testing.T) {
 			actual := Day(tc.week, tc.weekday, tc.month, tc.year)
 			if actual != tc.expectedDay {
-				t.Fatalf("Day(%q, %d, %d, %d) = %d, want: %d", weekName[tc.week], tc.weekday, tc.month, tc.year, actual, tc.expectedDay)
+				t.Errorf("Day(%q, %d, %d, %d) = %d, want: %d", weekName[tc.week], tc.weekday, tc.month, tc.year, actual, tc.expectedDay)
 			}
 		})
 	}
