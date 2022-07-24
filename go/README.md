@@ -75,6 +75,7 @@
 - [etl](./etl/README.md)
 - [protein-translation](./protein-translation/README.md)
 - [beer-song](./beer-song/README.md)
+- [darts](./darts/README.md)
 - [phone-number](./phone-number/README.md)
 - [series](./series/README.md)
 - [strain](./strain/README.md)
