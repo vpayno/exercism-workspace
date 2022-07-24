@@ -20,7 +20,13 @@ var secondsInEarthYear float64 = 365.25 * 24 * 60 * 60
 
 // Age returns a person's age on a given planet.
 func Age(seconds float64, planet Planet) float64 {
-	age := seconds / (orbitalPeriods[planet] * secondsInEarthYear)
+	orbitalPeriod, found := orbitalPeriods[planet]
+
+	if !found {
+		return -1.0
+	}
+
+	age := seconds / (orbitalPeriod * secondsInEarthYear)
 
 	return age
 }
