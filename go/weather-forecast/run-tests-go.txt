@@ -7,9 +7,9 @@ Go packages: weather
 
 golint weather
 
-real	0m0.116s
-user	0m0.067s
-sys	0m0.080s
+real	0m0.160s
+user	0m0.099s
+sys	0m0.116s
 
 ===============================================================================
 
@@ -20,11 +20,11 @@ go test -v -covermode=count -coverprofile coverage.out weather
 --- PASS: ExampleForecast (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	weather	0.029s	coverage: 100.0% of statements
+ok  	weather	0.018s	coverage: 100.0% of statements
 
-real	0m0.638s
-user	0m0.785s
-sys	0m0.516s
+real	0m0.665s
+user	0m0.653s
+sys	0m0.583s
 
 ===============================================================================
 
@@ -32,9 +32,17 @@ go tool cover -func=coverage.out
 weather/weather_forecast.go:11:	Forecast	100.0%
 total:				(statements)	100.0%
 
-real	0m0.083s
-user	0m0.049s
-sys	0m0.083s
+real	0m0.079s
+user	0m0.037s
+sys	0m0.087s
+
+===============================================================================
+
+go tool cover -html coverage.out -o coverage.html
+
+real	0m0.072s
+user	0m0.047s
+sys	0m0.079s
 
 ===============================================================================
 
@@ -45,78 +53,81 @@ go test -v -race -covermode=atomic weather
 --- PASS: ExampleForecast (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	weather	0.033s	coverage: 100.0% of statements
+ok  	weather	0.047s	coverage: 100.0% of statements
 
-real	0m0.726s
-user	0m0.817s
-sys	0m0.485s
+real	0m0.787s
+user	0m1.058s
+sys	0m0.564s
 
 ===============================================================================
 
-go test --bench . --benchmem
+go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 PASS
-ok  	weather	0.026s
+ok  	weather	0.025s
 
-real	0m0.643s
-user	0m0.698s
-sys	0m0.454s
+real	0m0.467s
+user	0m0.532s
+sys	0m0.353s
 
 ===============================================================================
 
 go test -tags bonus
 PASS
-ok  	weather	0.004s
+ok  	weather	0.018s
 
-real	0m0.537s
-user	0m0.575s
-sys	0m0.388s
+real	0m0.564s
+user	0m0.573s
+sys	0m0.393s
+
+===============================================================================
+
+No old benchmarks to run benchstat against.
 
 ===============================================================================
 
 go vet weather
 
-real	0m0.384s
-user	0m0.404s
-sys	0m0.442s
+real	0m0.577s
+user	0m0.664s
+sys	0m0.431s
 
 ===============================================================================
 
 go fix weather
 
-real	0m0.049s
-user	0m0.023s
-sys	0m0.037s
+real	0m0.047s
+user	0m0.019s
+sys	0m0.036s
 
 ===============================================================================
 
 gosec ./weather-forecast
-[gosec] 2022/06/20 22:44:32 Including rules: default
-[gosec] 2022/06/20 22:44:32 Excluding rules: default
-[gosec] 2022/06/20 22:44:32 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/weather-forecast
-[gosec] 2022/06/20 22:44:32 Checking package: weather
-[gosec] 2022/06/20 22:44:32 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/weather-forecast/weather_forecast.go
+[gosec] 2022/07/24 00:42:26 Including rules: default
+[gosec] 2022/07/24 00:42:26 Excluding rules: default
+[gosec] 2022/07/24 00:42:26 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/weather-forecast
+[gosec] 2022/07/24 00:42:26 Checking package: weather
+[gosec] 2022/07/24 00:42:26 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/weather-forecast/weather_forecast.go
 Results:
 
 
-[1;36mSummary:[0m
-  Gosec  : dev
-  Files  : 1
-  Lines  : 14
-  Nosec  : 0
-  Issues : [1;32m0[0m
+Summary:
+   Files: 1
+   Lines: 14
+   Nosec: 0
+  Issues: 0
 
 
-real	0m0.297s
-user	0m0.279s
-sys	0m0.209s
+real	0m0.269s
+user	0m0.289s
+sys	0m0.197s
 
 ===============================================================================
 
 gomarkdoc --output weather-doc.md
 
-real	0m0.030s
-user	0m0.016s
-sys	0m0.023s
+real	0m0.036s
+user	0m0.031s
+sys	0m0.010s
 
 ===============================================================================
 
@@ -141,8 +152,8 @@ func Forecast(city, condition string) string
     Forecast returns a string with the weather conditions for a city.
 
 
-real	0m0.139s
-user	0m0.064s
+real	0m0.137s
+user	0m0.052s
 sys	0m0.140s
 
 

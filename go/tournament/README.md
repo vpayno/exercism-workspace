@@ -96,4 +96,4 @@ means that the Devastating Donkeys and Courageous Californians tied.
 - [tests](./tournament_test.go)
 - [run-tests](./run-tests-go.txt)
 - [coverage](./coverage.html)
-- [documentation](./greeting-doc.md)
+- [documentation](./tournament-doc.md)

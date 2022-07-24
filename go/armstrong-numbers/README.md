@@ -33,7 +33,18 @@ Write some code to determine whether a number is an Armstrong number.
 - @kytrinyx
 - @leenipper
 - @sebito91
+- @eklatzer
 
 ### Based on
 
 Wikipedia - https://en.wikipedia.org/wiki/Narcissistic_number
+
+### My Solution
+
+- [my solution](./armstrong_numbers.go)
+- [my examples](./armstrong_numbers_examples_test.go)
+- [test cases](./cases_test.go)
+- [tests](./armstrong_numbers_test.go)
+- [run-tests](./run-tests-go.txt)
+- [coverage](./coverage.html)
+- [documentation](./armstrong-doc.md)

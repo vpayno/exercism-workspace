@@ -92,7 +92,18 @@ If you'd like, handle exponentials.
 - @petertseng
 - @robphoenix
 - @sebito91
+- @eklatzer
 
 ### Based on
 
 Inspired by one of the generated questions in the Extreme Startup game. - https://github.com/rchatley/extreme_startup
+
+### My Solution
+
+- [my solution](./wordy.go)
+- [my examples](./wordy_examples_test.go)
+- [test cases](./cases_test.go)
+- [tests](./wordy_test.go)
+- [run-tests](./run-tests-go.txt)
+- [coverage](./coverage.html)
+- [documentation](./wordy-doc.md)
