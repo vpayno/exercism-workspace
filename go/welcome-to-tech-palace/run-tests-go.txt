@@ -7,9 +7,9 @@ Go packages: techpalace
 
 golint techpalace
 
-real	0m0.160s
-user	0m0.185s
-sys	0m0.154s
+real	0m0.186s
+user	0m0.188s
+sys	0m0.203s
 
 ===============================================================================
 
@@ -46,11 +46,11 @@ go test -v -covermode=count -coverprofile coverage.out techpalace
 --- PASS: ExampleCleanupMessage (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	techpalace	0.003s	coverage: 100.0% of statements
+ok  	techpalace	0.012s	coverage: 100.0% of statements
 
-real	0m0.693s
-user	0m0.735s
-sys	0m0.514s
+real	0m0.588s
+user	0m0.689s
+sys	0m0.441s
 
 ===============================================================================
 
@@ -60,9 +60,17 @@ techpalace/welcome_to_tech_palace.go:14:	AddBorder	100.0%
 techpalace/welcome_to_tech_palace.go:21:	CleanupMessage	100.0%
 total:						(statements)	100.0%
 
-real	0m0.184s
-user	0m0.177s
-sys	0m0.191s
+real	0m0.224s
+user	0m0.208s
+sys	0m0.195s
+
+===============================================================================
+
+go tool cover -html coverage.out -o coverage.html
+
+real	0m0.213s
+user	0m0.204s
+sys	0m0.232s
 
 ===============================================================================
 
@@ -80,7 +88,7 @@ go test -v -race -covermode=atomic techpalace
 === RUN   TestAddBorder
 === RUN   TestAddBorder/Add_border_with_10_stars_per_line
 === RUN   TestAddBorder/Add_border_with_2_stars_per_line
---- PASS: TestAddBorder (0.00s)
+--- PASS: TestAddBorder (0.01s)
     --- PASS: TestAddBorder/Add_border_with_10_stars_per_line (0.00s)
     --- PASS: TestAddBorder/Add_border_with_2_stars_per_line (0.00s)
 === RUN   TestCleanupMessage
@@ -99,67 +107,71 @@ go test -v -race -covermode=atomic techpalace
 --- PASS: ExampleCleanupMessage (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	techpalace	0.042s	coverage: 100.0% of statements
+ok  	techpalace	0.050s	coverage: 100.0% of statements
 
-real	0m0.846s
-user	0m0.751s
-sys	0m0.459s
+real	0m0.712s
+user	0m0.706s
+sys	0m0.462s
 
 ===============================================================================
 
-go test --bench . --benchmem
+go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 PASS
-ok  	techpalace	0.005s
+ok  	techpalace	0.021s
 
-real	0m0.692s
-user	0m0.820s
-sys	0m0.501s
+real	0m0.460s
+user	0m0.529s
+sys	0m0.330s
 
 ===============================================================================
 
 go test -tags bonus
 PASS
-ok  	techpalace	0.011s
+ok  	techpalace	0.004s
 
-real	0m0.546s
-user	0m0.615s
-sys	0m0.429s
+real	0m0.567s
+user	0m0.638s
+sys	0m0.439s
+
+===============================================================================
+
+No old benchmarks to run benchstat against.
 
 ===============================================================================
 
 go vet techpalace
 
-real	0m0.394s
-user	0m0.440s
-sys	0m0.348s
+real	0m0.298s
+user	0m0.305s
+sys	0m0.293s
 
 ===============================================================================
 
 go fix techpalace
 
-real	0m0.150s
-user	0m0.190s
-sys	0m0.139s
+real	0m0.189s
+user	0m0.199s
+sys	0m0.220s
 
 ===============================================================================
 
 gosec ./welcome-to-tech-palace
-[gosec] 2022/06/21 19:38:45 Including rules: default
-[gosec] 2022/06/21 19:38:45 Excluding rules: default
-[gosec] 2022/06/21 19:38:45 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/welcome-to-tech-palace
-2022/06/21 19:38:45 internal error: package "fmt" without types was imported from "command-line-arguments"
+[gosec] 2022/07/24 00:41:37 Including rules: default
+[gosec] 2022/07/24 00:41:37 Excluding rules: default
+[gosec] 2022/07/24 00:41:37 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/welcome-to-tech-palace
+2022/07/24 00:41:38 internal error: package "fmt" without types was imported from "command-line-arguments"
 
-real	0m0.495s
-user	0m0.558s
-sys	0m0.413s
+real	0m0.476s
+user	0m0.527s
+sys	0m0.370s
 
 ===============================================================================
 
 gomarkdoc --output techpalace-doc.md
 
-real	0m0.057s
-user	0m0.035s
-sys	0m0.028s
+real	0m0.023s
+user	0m0.017s
+sys	0m0.012s
 
 ===============================================================================
 
@@ -179,9 +191,9 @@ func WelcomeMessage(customer string) string
     WelcomeMessage returns a welcome message for the customer.
 
 
-real	0m0.211s
-user	0m0.176s
-sys	0m0.162s
+real	0m0.218s
+user	0m0.166s
+sys	0m0.199s
 
 
 ===============================================================================
