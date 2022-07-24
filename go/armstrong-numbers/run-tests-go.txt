@@ -7,33 +7,42 @@ Go packages: armstrong
 
 golint armstrong
 
-real	0m0.197s
-user	0m0.256s
-sys	0m0.232s
+real	0m0.185s
+user	0m0.213s
+sys	0m0.188s
 
 ===============================================================================
 
 go test -v -covermode=count -coverprofile coverage.out armstrong
 === RUN   TestArmstrong
-    armstrong_numbers_test.go:13: PASS: Zero is an Armstrong number
-    armstrong_numbers_test.go:13: PASS: Single digit numbers are Armstrong numbers
-    armstrong_numbers_test.go:13: PASS: There are no 2 digit Armstrong numbers
-    armstrong_numbers_test.go:13: PASS: Three digit number that is an Armstrong number
-    armstrong_numbers_test.go:13: PASS: Three digit number that is not an Armstrong number
-    armstrong_numbers_test.go:13: PASS: Four digit number that is an Armstrong number
-    armstrong_numbers_test.go:13: PASS: Four digit number that is not an Armstrong number
-    armstrong_numbers_test.go:13: PASS: Seven digit number that is an Armstrong number
-    armstrong_numbers_test.go:13: PASS: Seven digit number that is not an Armstrong number
+=== RUN   TestArmstrong/Zero_is_an_Armstrong_number
+=== RUN   TestArmstrong/Single-digit_numbers_are_Armstrong_numbers
+=== RUN   TestArmstrong/There_are_no_two-digit_Armstrong_numbers
+=== RUN   TestArmstrong/Three-digit_number_that_is_an_Armstrong_number
+=== RUN   TestArmstrong/Three-digit_number_that_is_not_an_Armstrong_number
+=== RUN   TestArmstrong/Four-digit_number_that_is_an_Armstrong_number
+=== RUN   TestArmstrong/Four-digit_number_that_is_not_an_Armstrong_number
+=== RUN   TestArmstrong/Seven-digit_number_that_is_an_Armstrong_number
+=== RUN   TestArmstrong/Seven-digit_number_that_is_not_an_Armstrong_number
 --- PASS: TestArmstrong (0.00s)
+    --- PASS: TestArmstrong/Zero_is_an_Armstrong_number (0.00s)
+    --- PASS: TestArmstrong/Single-digit_numbers_are_Armstrong_numbers (0.00s)
+    --- PASS: TestArmstrong/There_are_no_two-digit_Armstrong_numbers (0.00s)
+    --- PASS: TestArmstrong/Three-digit_number_that_is_an_Armstrong_number (0.00s)
+    --- PASS: TestArmstrong/Three-digit_number_that_is_not_an_Armstrong_number (0.00s)
+    --- PASS: TestArmstrong/Four-digit_number_that_is_an_Armstrong_number (0.00s)
+    --- PASS: TestArmstrong/Four-digit_number_that_is_not_an_Armstrong_number (0.00s)
+    --- PASS: TestArmstrong/Seven-digit_number_that_is_an_Armstrong_number (0.00s)
+    --- PASS: TestArmstrong/Seven-digit_number_that_is_not_an_Armstrong_number (0.00s)
 === RUN   ExampleIsNumber
 --- PASS: ExampleIsNumber (0.00s)
 PASS
 coverage: 91.7% of statements
-ok  	armstrong	0.006s	coverage: 91.7% of statements
+ok  	armstrong	0.010s	coverage: 91.7% of statements
 
-real	0m0.629s
-user	0m0.651s
-sys	0m0.483s
+real	0m0.534s
+user	0m0.642s
+sys	0m0.394s
 
 ===============================================================================
 
@@ -41,114 +50,128 @@ go tool cover -func=coverage.out
 armstrong/armstrong_numbers.go:12:	IsNumber	91.7%
 total:					(statements)	91.7%
 
-real	0m0.256s
-user	0m0.249s
-sys	0m0.267s
+real	0m0.225s
+user	0m0.237s
+sys	0m0.216s
 
 ===============================================================================
 
 go tool cover -html coverage.out -o coverage.html
 
-real	0m0.210s
-user	0m0.187s
-sys	0m0.209s
+real	0m0.235s
+user	0m0.209s
+sys	0m0.221s
 
 ===============================================================================
 
 go test -v -race -covermode=atomic armstrong
 === RUN   TestArmstrong
-    armstrong_numbers_test.go:13: PASS: Zero is an Armstrong number
-    armstrong_numbers_test.go:13: PASS: Single digit numbers are Armstrong numbers
-    armstrong_numbers_test.go:13: PASS: There are no 2 digit Armstrong numbers
-    armstrong_numbers_test.go:13: PASS: Three digit number that is an Armstrong number
-    armstrong_numbers_test.go:13: PASS: Three digit number that is not an Armstrong number
-    armstrong_numbers_test.go:13: PASS: Four digit number that is an Armstrong number
-    armstrong_numbers_test.go:13: PASS: Four digit number that is not an Armstrong number
-    armstrong_numbers_test.go:13: PASS: Seven digit number that is an Armstrong number
-    armstrong_numbers_test.go:13: PASS: Seven digit number that is not an Armstrong number
+=== RUN   TestArmstrong/Zero_is_an_Armstrong_number
+=== RUN   TestArmstrong/Single-digit_numbers_are_Armstrong_numbers
+=== RUN   TestArmstrong/There_are_no_two-digit_Armstrong_numbers
+=== RUN   TestArmstrong/Three-digit_number_that_is_an_Armstrong_number
+=== RUN   TestArmstrong/Three-digit_number_that_is_not_an_Armstrong_number
+=== RUN   TestArmstrong/Four-digit_number_that_is_an_Armstrong_number
+=== RUN   TestArmstrong/Four-digit_number_that_is_not_an_Armstrong_number
+=== RUN   TestArmstrong/Seven-digit_number_that_is_an_Armstrong_number
+=== RUN   TestArmstrong/Seven-digit_number_that_is_not_an_Armstrong_number
 --- PASS: TestArmstrong (0.01s)
+    --- PASS: TestArmstrong/Zero_is_an_Armstrong_number (0.00s)
+    --- PASS: TestArmstrong/Single-digit_numbers_are_Armstrong_numbers (0.00s)
+    --- PASS: TestArmstrong/There_are_no_two-digit_Armstrong_numbers (0.00s)
+    --- PASS: TestArmstrong/Three-digit_number_that_is_an_Armstrong_number (0.00s)
+    --- PASS: TestArmstrong/Three-digit_number_that_is_not_an_Armstrong_number (0.00s)
+    --- PASS: TestArmstrong/Four-digit_number_that_is_an_Armstrong_number (0.00s)
+    --- PASS: TestArmstrong/Four-digit_number_that_is_not_an_Armstrong_number (0.00s)
+    --- PASS: TestArmstrong/Seven-digit_number_that_is_an_Armstrong_number (0.00s)
+    --- PASS: TestArmstrong/Seven-digit_number_that_is_not_an_Armstrong_number (0.00s)
 === RUN   ExampleIsNumber
 --- PASS: ExampleIsNumber (0.00s)
 PASS
 coverage: 91.7% of statements
-ok  	armstrong	0.053s	coverage: 91.7% of statements
+ok  	armstrong	0.045s	coverage: 91.7% of statements
 
-real	0m0.803s
-user	0m0.880s
-sys	0m0.531s
+real	0m0.730s
+user	0m0.761s
+sys	0m0.550s
 
 ===============================================================================
+
+mv -v benchstat-new.txt benchstat-old.txt
+renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
 
 go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 goos: linux
 goarch: amd64
 pkg: armstrong
 cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
-BenchmarkIsNumber/0-4 	 6247946	       165.2 ns/op	       4 B/op	       1 allocs/op
-BenchmarkIsNumber/5-4 	 7303632	       167.6 ns/op	       4 B/op	       1 allocs/op
-BenchmarkIsNumber/10-4         	 4960125	       270.0 ns/op	      12 B/op	       3 allocs/op
-BenchmarkIsNumber/153-4        	 3109310	       368.2 ns/op	      16 B/op	       4 allocs/op
-BenchmarkIsNumber/100-4        	 3486847	       299.8 ns/op	      16 B/op	       4 allocs/op
-BenchmarkIsNumber/9474-4       	 2473671	       475.4 ns/op	      32 B/op	       6 allocs/op
-BenchmarkIsNumber/9475-4       	 2123463	       525.2 ns/op	      32 B/op	       6 allocs/op
-BenchmarkIsNumber/9926315-4    	 1591429	       783.3 ns/op	      48 B/op	       9 allocs/op
-BenchmarkIsNumber/9926314-4    	 1539709	       746.1 ns/op	      48 B/op	       9 allocs/op
+BenchmarkIsNumber-4   	  461610	      3258 ns/op	     212 B/op	      43 allocs/op
 PASS
-ok  	armstrong	15.886s
+ok  	armstrong	1.593s
 
-real	0m16.375s
-user	0m18.441s
-sys	0m0.818s
+real	0m2.053s
+user	0m2.279s
+sys	0m0.392s
 
 ===============================================================================
 
 go test -tags bonus
 PASS
-ok  	armstrong	0.015s
+ok  	armstrong	0.009s
 
-real	0m0.670s
-user	0m0.787s
-sys	0m0.473s
+real	0m0.534s
+user	0m0.593s
+sys	0m0.414s
 
 ===============================================================================
 
-No old benchmarks to run benchstat against.
+go install golang.org/x/perf/cmd/benchstat@latest
+
+real	0m0.754s
+user	0m0.709s
+sys	0m0.411s
+
+benchstat benchstat-old.txt benchstat-new.txt
+
+real	0m0.009s
+user	0m0.003s
+sys	0m0.004s
 
 ===============================================================================
 
 go vet armstrong
 
-real	0m0.369s
-user	0m0.480s
-sys	0m0.381s
+real	0m0.353s
+user	0m0.402s
+sys	0m0.337s
 
 ===============================================================================
 
 go fix armstrong
 
-real	0m0.155s
-user	0m0.146s
-sys	0m0.135s
+real	0m0.187s
+user	0m0.179s
+sys	0m0.156s
 
 ===============================================================================
 
 gosec ./armstrong-numbers
-[gosec] 2022/06/30 06:59:45 Including rules: default
-[gosec] 2022/06/30 06:59:45 Excluding rules: default
-[gosec] 2022/06/30 06:59:45 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/armstrong-numbers
-2022/06/30 06:59:46 internal error: package "fmt" without types was imported from "command-line-arguments"
+[gosec] 2022/07/24 00:20:42 Including rules: default
+[gosec] 2022/07/24 00:20:42 Excluding rules: default
+[gosec] 2022/07/24 00:20:42 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/armstrong-numbers
+2022/07/24 00:20:42 internal error: package "fmt" without types was imported from "command-line-arguments"
 
-real	0m0.559s
-user	0m0.620s
-sys	0m0.434s
+real	0m0.519s
+user	0m0.640s
+sys	0m0.385s
 
 ===============================================================================
 
 gomarkdoc --output armstrong-doc.md
 
-real	0m0.035s
-user	0m0.021s
-sys	0m0.020s
+real	0m0.033s
+user	0m0.020s
+sys	0m0.018s
 
 ===============================================================================
 
@@ -164,9 +187,9 @@ func IsNumber(number int) bool
     the power of the number of digits.
 
 
-real	0m0.291s
-user	0m0.233s
-sys	0m0.253s
+real	0m0.214s
+user	0m0.219s
+sys	0m0.205s
 
 
 ===============================================================================
