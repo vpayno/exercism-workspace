@@ -66,7 +66,7 @@ The Prime Factors Kata by Uncle Bob - http://butunclebob.com/ArticleS.UncleBob.T
 ### My Solution
 
 - [my solution](./prime_factors.go)
-- [my examples](./)
+- [my examples](./prime_factors_examples_test.go)
 - [test cases](./cases_test.go)
 - [tests](./prime_factors_test.go)
 - [run-tests](./run-tests-go.txt)
