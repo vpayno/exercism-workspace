@@ -6,9 +6,9 @@ import (
 )
 
 func ExampleToRNA() {
-	var validDNA DNA = DNA("GCTA")
+	var validDNA string = "GCTA"
 
-	fmt.Println(ToRNA(validDNA.String()))
+	fmt.Println(ToRNA(validDNA))
 	// Output:
 	// CGAU
 }
