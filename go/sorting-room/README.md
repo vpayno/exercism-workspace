@@ -63,13 +63,15 @@ It has the same syntax as a type assertion (`interfaceVariable.(concreteType)`),
 Here is an example:
 
 ```go
+var i interface{} = 12 // try: 12.3, true, int64(12), []int{}, map[string]int{}
+
 switch v := i.(type) {
 case int:
-    fmt.Println("the integer %d", v)
+    fmt.Printf("the integer %d\n", v)
 case string:
-    fmt.Println("the string %s", v)
+    fmt.Printf("the string %s\n", v)
 default:
-    fmt.Println("some type we did not handle explicitly")
+    fmt.Printf("type, %T, not handled explicitly: %#v\n", v, v)
 }
 ```
 
@@ -168,4 +170,5 @@ fmt.Println(DescribeAnything("some string"))
 - [my examples](./sorting_room_examples_test.go)
 - [tests](./sorting_room_test.go)
 - [run-tests](./run-tests-go.txt)
-- [documentation](./greeting-doc.md)
+- [coverage](./coverage.html)
+- [documentation](./sorting-doc.md)

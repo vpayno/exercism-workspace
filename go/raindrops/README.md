@@ -40,6 +40,7 @@ The rules of `raindrops` are that if a given number:
 - @sebito91
 - @soniakeys
 - @tleen
+- @eklatzer
 
 ### Based on
 
@@ -52,4 +53,5 @@ A variation on FizzBuzz, a famous technical interview question that is intended 
 - [test cases](./cases_test.go)
 - [tests](./raindrops_test.go)
 - [run-tests](./run-tests-go.txt)
+- [coverage](./coverage.html)
 - [documentation](./raindrops-doc.md)

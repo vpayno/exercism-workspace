@@ -21,7 +21,7 @@ const (
 func ListToString(list []int) string {
 	str := fmt.Sprint(list)
 	str = strings.Trim(string(str), "[]")
-	str = strings.ReplaceAll(str, " ", "")
+	str += " "
 
 	return str
 }

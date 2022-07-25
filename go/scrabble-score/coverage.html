@@ -3,7 +3,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<title>sublist: Go Coverage Report</title>
+		<title>scrabble: Go Coverage Report</title>
 		<style>
 			body {
 				background: black;
@@ -55,7 +55,7 @@
 			<div id="nav">
 				<select id="files">
 				
-				<option value="file0">sublist/sublist.go (100.0%)</option>
+				<option value="file0">scrabble/scrabble_score.go (100.0%)</option>
 				
 				</select>
 			</div>
@@ -78,57 +78,55 @@
 		</div>
 		<div id="content">
 		
-		<pre class="file" id="file0" style="display: none">// Package sublist is used to compare two lists with each other.
-package sublist
+		<pre class="file" id="file0" style="display: none">// Package scrabble Given a word, compute the Scrabble score for that word.
+package scrabble
 
 import (
-        "fmt"
+        "regexp"
         "strings"
+        "unicode"
 )
 
-// Relation is a string that shows the relationship between two lists.
-type Relation string
+// charScore returns an `int` score for a given letter (`string`).
+func charScore(letter rune) int <span class="cov10" title="115">{
+        letter = unicode.ToLower(letter)
 
-// "Enum" of list relations.
-const (
-        EqualR     Relation = "equal"
-        UnequalR            = "unequal"
-        SuperlistR          = "superlist"
-        SublistR            = "sublist"
-)
+        switch letter </span>{
+        case 'd', 'g':<span class="cov4" title="5">
+                return 2</span>
+        case 'b', 'c', 'm', 'p':<span class="cov6" title="16">
+                return 3</span>
+        case 'f', 'h', 'v', 'w', 'y':<span class="cov6" title="16">
+                return 4</span>
+        case 'k':<span class="cov3" title="3">
+                return 5</span>
+        case 'j', 'x':<span class="cov4" title="6">
+                return 8</span>
+        case 'q', 'z':<span class="cov4" title="8">
+                return 10</span>
+        default:<span class="cov8" title="61">
+                // A, E, I, O, U, L, N, R, S, T
+                return 1</span>
+        }
+}
 
-// ListToString returns a string representation of an int slice.
-func ListToString(list []int) string <span class="cov10" title="42">{
-        str := fmt.Sprint(list)
-        str = strings.Trim(string(str), "[]")
-        str += " "
+// Score returns an `int` scrablle score for a given word (`string`).
+func Score(word string) int <span class="cov6" title="17">{
+        var score int
+        var letters string
 
-        return str
-}</span>
+        letters = strings.TrimSpace(word)
 
-// Sublist returns the relationship between two lists.
-func Sublist(l1, l2 []int) Relation <span class="cov8" title="22">{
-
-        if len(l1) == 0 &amp;&amp; len(l2) == 0 </span><span class="cov1" title="1">{
-                return EqualR
+        // Make sure we have only have letters.
+        if m, _ := regexp.MatchString(`^[a-zA-Z]+$`, word); !m </span><span class="cov3" title="4">{
+                return 0
         }</span>
 
-        <span class="cov8" title="21">s1 := ListToString(l1)
-        s2 := ListToString(l2)
-
-        if len(l1) == len(l2) &amp;&amp; s1 == s2 </span><span class="cov2" title="2">{
-                return EqualR
+        <span class="cov5" title="13">for _, letter := range letters </span><span class="cov10" title="115">{
+                score += charScore(letter)
         }</span>
 
-        <span class="cov8" title="19">if len(s1) &gt; len(s2) &amp;&amp; strings.Contains(s1, s2) </span><span class="cov4" title="5">{
-                return SuperlistR
-        }</span>
-
-        <span class="cov7" title="14">if len(s1) &lt; len(s2) &amp;&amp; strings.Contains(s2, s1) </span><span class="cov5" title="7">{
-                return SublistR
-        }</span>
-
-        <span class="cov5" title="7">return UnequalR</span>
+        <span class="cov5" title="13">return score</span>
 }
 </pre>
 		

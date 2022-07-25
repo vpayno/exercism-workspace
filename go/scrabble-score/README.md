@@ -67,6 +67,7 @@ And to total:
 - @sebito91
 - @sjakobi
 - @tleen
+- @eklatzer
 
 ### Based on
 
@@ -79,4 +80,5 @@ Inspired by the Extreme Startup game - https://github.com/rchatley/extreme_start
 - [test cases](./cases_test.go)
 - [tests](./scrabble_score_test.go)
 - [run-tests](./run-tests-go.txt)
+- [coverage](./coverage.html)
 - [documentation](./scrabble-doc.md)
