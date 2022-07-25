@@ -68,7 +68,18 @@ and an `AreaCode()` function should output
 - @strangeman
 - @tleen
 - @tompao
+- @eklatzer
 
 ### Based on
 
 Event Manager by JumpstartLab - http://tutorials.jumpstartlab.com/projects/eventmanager.html
+
+### My Solution
+
+- [my solution](./phone_number.go)
+- [my examples](./phone_number_examples_test.go)
+- [test cases](./cases_test.go)
+- [tests](./phone_number_test.go)
+- [run-tests](./run-tests-go.txt)
+- [coverage](./coverage.html)
+- [documentation](./phonenumber-doc.md)
