@@ -7,24 +7,68 @@ Go packages: luhn
 
 golint luhn
 
-real	0m0.220s
-user	0m0.270s
-sys	0m0.209s
+real	0m0.203s
+user	0m0.239s
+sys	0m0.214s
 
 ===============================================================================
 
 go test -v -covermode=count -coverprofile coverage.out luhn
 === RUN   TestValid
---- PASS: TestValid (0.00s)
+=== RUN   TestValid/single_digit_strings_can_not_be_valid
+=== RUN   TestValid/a_single_zero_is_invalid
+=== RUN   TestValid/a_simple_valid_SIN_that_remains_valid_if_reversed
+=== RUN   TestValid/a_simple_valid_SIN_that_becomes_invalid_if_reversed
+=== RUN   TestValid/a_valid_Canadian_SIN
+=== RUN   TestValid/invalid_Canadian_SIN
+=== RUN   TestValid/invalid_credit_card
+=== RUN   TestValid/invalid_long_number_with_an_even_remainder
+=== RUN   TestValid/invalid_long_number_with_a_remainder_divisible_by_5
+=== RUN   TestValid/valid_number_with_an_even_number_of_digits
+=== RUN   TestValid/valid_number_with_an_odd_number_of_spaces
+=== RUN   TestValid/valid_strings_with_a_non-digit_added_at_the_end_become_invalid
+=== RUN   TestValid/valid_strings_with_punctuation_included_become_invalid
+=== RUN   TestValid/valid_strings_with_symbols_included_become_invalid
+=== RUN   TestValid/single_zero_with_space_is_invalid
+=== RUN   TestValid/more_than_a_single_zero_is_valid
+=== RUN   TestValid/input_digit_9_is_correctly_converted_to_output_digit_9
+=== RUN   TestValid/very_long_input_is_valid
+=== RUN   TestValid/valid_luhn_with_an_odd_number_of_digits_and_non_zero_first_digit
+=== RUN   TestValid/using_ascii_value_for_non-doubled_non-digit_isn't_allowed
+=== RUN   TestValid/using_ascii_value_for_doubled_non-digit_isn't_allowed
+=== RUN   TestValid/non-numeric,_non-space_char_in_the_middle_with_a_sum_that's_divisible_by_10_isn't_allowed
+--- PASS: TestValid (0.01s)
+    --- PASS: TestValid/single_digit_strings_can_not_be_valid (0.00s)
+    --- PASS: TestValid/a_single_zero_is_invalid (0.00s)
+    --- PASS: TestValid/a_simple_valid_SIN_that_remains_valid_if_reversed (0.00s)
+    --- PASS: TestValid/a_simple_valid_SIN_that_becomes_invalid_if_reversed (0.00s)
+    --- PASS: TestValid/a_valid_Canadian_SIN (0.00s)
+    --- PASS: TestValid/invalid_Canadian_SIN (0.00s)
+    --- PASS: TestValid/invalid_credit_card (0.00s)
+    --- PASS: TestValid/invalid_long_number_with_an_even_remainder (0.00s)
+    --- PASS: TestValid/invalid_long_number_with_a_remainder_divisible_by_5 (0.00s)
+    --- PASS: TestValid/valid_number_with_an_even_number_of_digits (0.00s)
+    --- PASS: TestValid/valid_number_with_an_odd_number_of_spaces (0.00s)
+    --- PASS: TestValid/valid_strings_with_a_non-digit_added_at_the_end_become_invalid (0.00s)
+    --- PASS: TestValid/valid_strings_with_punctuation_included_become_invalid (0.00s)
+    --- PASS: TestValid/valid_strings_with_symbols_included_become_invalid (0.00s)
+    --- PASS: TestValid/single_zero_with_space_is_invalid (0.00s)
+    --- PASS: TestValid/more_than_a_single_zero_is_valid (0.00s)
+    --- PASS: TestValid/input_digit_9_is_correctly_converted_to_output_digit_9 (0.00s)
+    --- PASS: TestValid/very_long_input_is_valid (0.00s)
+    --- PASS: TestValid/valid_luhn_with_an_odd_number_of_digits_and_non_zero_first_digit (0.00s)
+    --- PASS: TestValid/using_ascii_value_for_non-doubled_non-digit_isn't_allowed (0.00s)
+    --- PASS: TestValid/using_ascii_value_for_doubled_non-digit_isn't_allowed (0.00s)
+    --- PASS: TestValid/non-numeric,_non-space_char_in_the_middle_with_a_sum_that's_divisible_by_10_isn't_allowed (0.00s)
 === RUN   ExampleValid
 --- PASS: ExampleValid (0.00s)
 PASS
 coverage: 90.9% of statements
-ok  	luhn	0.008s	coverage: 90.9% of statements
+ok  	luhn	0.018s	coverage: 90.9% of statements
 
-real	0m0.618s
-user	0m0.653s
-sys	0m0.445s
+real	0m0.614s
+user	0m0.736s
+sys	0m0.491s
 
 ===============================================================================
 
@@ -36,23 +80,75 @@ luhn/luhn.go:48:	Valid		95.2%
 total:			(statements)	90.9%
 
 real	0m0.255s
-user	0m0.251s
-sys	0m0.234s
+user	0m0.267s
+sys	0m0.255s
+
+===============================================================================
+
+go tool cover -html coverage.out -o coverage.html
+
+real	0m0.271s
+user	0m0.209s
+sys	0m0.223s
 
 ===============================================================================
 
 go test -v -race -covermode=atomic luhn
 === RUN   TestValid
---- PASS: TestValid (0.00s)
+=== RUN   TestValid/single_digit_strings_can_not_be_valid
+=== RUN   TestValid/a_single_zero_is_invalid
+=== RUN   TestValid/a_simple_valid_SIN_that_remains_valid_if_reversed
+=== RUN   TestValid/a_simple_valid_SIN_that_becomes_invalid_if_reversed
+=== RUN   TestValid/a_valid_Canadian_SIN
+=== RUN   TestValid/invalid_Canadian_SIN
+=== RUN   TestValid/invalid_credit_card
+=== RUN   TestValid/invalid_long_number_with_an_even_remainder
+=== RUN   TestValid/invalid_long_number_with_a_remainder_divisible_by_5
+=== RUN   TestValid/valid_number_with_an_even_number_of_digits
+=== RUN   TestValid/valid_number_with_an_odd_number_of_spaces
+=== RUN   TestValid/valid_strings_with_a_non-digit_added_at_the_end_become_invalid
+=== RUN   TestValid/valid_strings_with_punctuation_included_become_invalid
+=== RUN   TestValid/valid_strings_with_symbols_included_become_invalid
+=== RUN   TestValid/single_zero_with_space_is_invalid
+=== RUN   TestValid/more_than_a_single_zero_is_valid
+=== RUN   TestValid/input_digit_9_is_correctly_converted_to_output_digit_9
+=== RUN   TestValid/very_long_input_is_valid
+=== RUN   TestValid/valid_luhn_with_an_odd_number_of_digits_and_non_zero_first_digit
+=== RUN   TestValid/using_ascii_value_for_non-doubled_non-digit_isn't_allowed
+=== RUN   TestValid/using_ascii_value_for_doubled_non-digit_isn't_allowed
+=== RUN   TestValid/non-numeric,_non-space_char_in_the_middle_with_a_sum_that's_divisible_by_10_isn't_allowed
+--- PASS: TestValid (0.03s)
+    --- PASS: TestValid/single_digit_strings_can_not_be_valid (0.00s)
+    --- PASS: TestValid/a_single_zero_is_invalid (0.00s)
+    --- PASS: TestValid/a_simple_valid_SIN_that_remains_valid_if_reversed (0.00s)
+    --- PASS: TestValid/a_simple_valid_SIN_that_becomes_invalid_if_reversed (0.00s)
+    --- PASS: TestValid/a_valid_Canadian_SIN (0.00s)
+    --- PASS: TestValid/invalid_Canadian_SIN (0.00s)
+    --- PASS: TestValid/invalid_credit_card (0.00s)
+    --- PASS: TestValid/invalid_long_number_with_an_even_remainder (0.00s)
+    --- PASS: TestValid/invalid_long_number_with_a_remainder_divisible_by_5 (0.00s)
+    --- PASS: TestValid/valid_number_with_an_even_number_of_digits (0.00s)
+    --- PASS: TestValid/valid_number_with_an_odd_number_of_spaces (0.00s)
+    --- PASS: TestValid/valid_strings_with_a_non-digit_added_at_the_end_become_invalid (0.00s)
+    --- PASS: TestValid/valid_strings_with_punctuation_included_become_invalid (0.00s)
+    --- PASS: TestValid/valid_strings_with_symbols_included_become_invalid (0.00s)
+    --- PASS: TestValid/single_zero_with_space_is_invalid (0.00s)
+    --- PASS: TestValid/more_than_a_single_zero_is_valid (0.00s)
+    --- PASS: TestValid/input_digit_9_is_correctly_converted_to_output_digit_9 (0.00s)
+    --- PASS: TestValid/very_long_input_is_valid (0.00s)
+    --- PASS: TestValid/valid_luhn_with_an_odd_number_of_digits_and_non_zero_first_digit (0.00s)
+    --- PASS: TestValid/using_ascii_value_for_non-doubled_non-digit_isn't_allowed (0.00s)
+    --- PASS: TestValid/using_ascii_value_for_doubled_non-digit_isn't_allowed (0.00s)
+    --- PASS: TestValid/non-numeric,_non-space_char_in_the_middle_with_a_sum_that's_divisible_by_10_isn't_allowed (0.00s)
 === RUN   ExampleValid
 --- PASS: ExampleValid (0.00s)
 PASS
 coverage: 90.9% of statements
-ok  	luhn	0.041s	coverage: 90.9% of statements
+ok  	luhn	0.076s	coverage: 90.9% of statements
 
-real	0m0.686s
-user	0m0.717s
-sys	0m0.455s
+real	0m0.667s
+user	0m0.659s
+sys	0m0.461s
 
 ===============================================================================
 
@@ -64,73 +160,81 @@ goos: linux
 goarch: amd64
 pkg: luhn
 cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
-BenchmarkValid-4   	  118347	     14628 ns/op	    3528 B/op	     136 allocs/op
+BenchmarkValid-4   	    8918	    181183 ns/op	   56865 B/op	    1647 allocs/op
 PASS
-ok  	luhn	1.856s
+ok  	luhn	2.204s
 
-real	0m2.318s
-user	0m3.166s
-sys	0m0.657s
+real	0m2.668s
+user	0m3.615s
+sys	0m0.529s
 
 ===============================================================================
 
 go test -tags bonus
 PASS
-ok  	luhn	0.022s
+ok  	luhn	0.024s
 
-real	0m0.595s
-user	0m0.707s
-sys	0m0.429s
+real	0m0.539s
+user	0m0.600s
+sys	0m0.411s
 
 ===============================================================================
 
 go install golang.org/x/perf/cmd/benchstat@latest
 
-real	0m0.739s
-user	0m0.847s
-sys	0m0.319s
+real	0m0.715s
+user	0m0.735s
+sys	0m0.388s
 
 benchstat benchstat-old.txt benchstat-new.txt
+name     old time/op    new time/op    delta
+Valid-4    14.6µs ± 0%   181.2µs ± 0%   ~     (p=1.000 n=1+1)
 
-real	0m0.030s
-user	0m0.015s
-sys	0m0.017s
+name     old alloc/op   new alloc/op   delta
+Valid-4    3.53kB ± 0%   56.87kB ± 0%   ~     (p=1.000 n=1+1)
+
+name     old allocs/op  new allocs/op  delta
+Valid-4       136 ± 0%      1647 ± 0%   ~     (p=1.000 n=1+1)
+
+real	0m0.029s
+user	0m0.017s
+sys	0m0.025s
 
 ===============================================================================
 
 go vet luhn
 
-real	0m0.390s
-user	0m0.437s
-sys	0m0.399s
+real	0m0.360s
+user	0m0.429s
+sys	0m0.322s
 
 ===============================================================================
 
 go fix luhn
 
-real	0m0.158s
-user	0m0.166s
-sys	0m0.144s
+real	0m0.141s
+user	0m0.163s
+sys	0m0.122s
 
 ===============================================================================
 
 gosec ./luhn
-[gosec] 2022/06/24 00:02:38 Including rules: default
-[gosec] 2022/06/24 00:02:38 Excluding rules: default
-[gosec] 2022/06/24 00:02:38 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/luhn
-2022/06/24 00:02:38 internal error: package "fmt" without types was imported from "command-line-arguments"
+[gosec] 2022/07/26 07:39:52 Including rules: default
+[gosec] 2022/07/26 07:39:52 Excluding rules: default
+[gosec] 2022/07/26 07:39:52 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/luhn
+2022/07/26 07:39:53 internal error: package "fmt" without types was imported from "command-line-arguments"
 
-real	0m0.610s
-user	0m0.651s
-sys	0m0.455s
+real	0m0.522s
+user	0m0.566s
+sys	0m0.423s
 
 ===============================================================================
 
 gomarkdoc --output luhn-doc.md
 
-real	0m0.030s
-user	0m0.016s
-sys	0m0.013s
+real	0m0.048s
+user	0m0.034s
+sys	0m0.015s
 
 ===============================================================================
 
@@ -147,9 +251,9 @@ func Valid(id string) bool
     Valid returns true when the passed number (`string`) is a valid luhn number.
 
 
-real	0m0.239s
-user	0m0.229s
-sys	0m0.231s
+real	0m0.257s
+user	0m0.230s
+sys	0m0.236s
 
 
 ===============================================================================
