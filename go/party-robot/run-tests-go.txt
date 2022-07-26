@@ -7,9 +7,9 @@ Go packages: partyrobot
 
 golint partyrobot
 
-real	0m0.235s
-user	0m0.248s
-sys	0m0.193s
+real	0m0.285s
+user	0m0.279s
+sys	0m0.248s
 
 ===============================================================================
 
@@ -42,11 +42,11 @@ go test -v -covermode=count -coverprofile coverage.out partyrobot
 --- PASS: ExampleAssignTable (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	partyrobot	0.007s	coverage: 100.0% of statements
+ok  	partyrobot	0.005s	coverage: 100.0% of statements
 
-real	0m0.603s
-user	0m0.663s
-sys	0m0.413s
+real	0m0.761s
+user	0m0.851s
+sys	0m0.527s
 
 ===============================================================================
 
@@ -56,9 +56,17 @@ partyrobot/party_robot.go:13:	HappyBirthday	100.0%
 partyrobot/party_robot.go:18:	AssignTable	100.0%
 total:				(statements)	100.0%
 
-real	0m0.271s
-user	0m0.205s
-sys	0m0.224s
+real	0m0.280s
+user	0m0.250s
+sys	0m0.214s
+
+===============================================================================
+
+go tool cover -html coverage.out -o coverage.html
+
+real	0m0.239s
+user	0m0.204s
+sys	0m0.191s
 
 ===============================================================================
 
@@ -66,7 +74,7 @@ go test -v -race -covermode=atomic partyrobot
 === RUN   TestWelcome
 === RUN   TestWelcome/Greet_Chihiro_with_a_welcoming_message
 === RUN   TestWelcome/Greet_Xuân_Jing_with_a_welcoming_message
---- PASS: TestWelcome (0.01s)
+--- PASS: TestWelcome (0.00s)
     --- PASS: TestWelcome/Greet_Chihiro_with_a_welcoming_message (0.00s)
     --- PASS: TestWelcome/Greet_Xuân_Jing_with_a_welcoming_message (0.00s)
 === RUN   TestHappyBirthday
@@ -91,67 +99,71 @@ go test -v -race -covermode=atomic partyrobot
 --- PASS: ExampleAssignTable (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	partyrobot	0.047s	coverage: 100.0% of statements
+ok  	partyrobot	0.049s	coverage: 100.0% of statements
 
-real	0m0.663s
-user	0m0.755s
-sys	0m0.459s
+real	0m0.895s
+user	0m0.876s
+sys	0m0.561s
 
 ===============================================================================
 
-go test --bench . --benchmem
+go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 PASS
-ok  	partyrobot	0.021s
+ok  	partyrobot	0.039s
 
-real	0m0.674s
-user	0m0.831s
-sys	0m0.497s
+real	0m0.747s
+user	0m0.829s
+sys	0m0.523s
 
 ===============================================================================
 
 go test -tags bonus
 PASS
-ok  	partyrobot	0.008s
+ok  	partyrobot	0.020s
 
-real	0m0.530s
-user	0m0.606s
-sys	0m0.389s
+real	0m0.783s
+user	0m0.929s
+sys	0m0.532s
+
+===============================================================================
+
+No old benchmarks to run benchstat against.
 
 ===============================================================================
 
 go vet partyrobot
 
-real	0m0.366s
-user	0m0.396s
-sys	0m0.349s
+real	0m0.505s
+user	0m0.661s
+sys	0m0.365s
 
 ===============================================================================
 
 go fix partyrobot
 
-real	0m0.192s
-user	0m0.153s
-sys	0m0.144s
+real	0m0.338s
+user	0m0.253s
+sys	0m0.191s
 
 ===============================================================================
 
 gosec ./party-robot
-[gosec] 2022/06/20 22:26:59 Including rules: default
-[gosec] 2022/06/20 22:26:59 Excluding rules: default
-[gosec] 2022/06/20 22:26:59 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/party-robot
-2022/06/20 22:26:59 internal error: package "fmt" without types was imported from "command-line-arguments"
+[gosec] 2022/07/25 08:27:44 Including rules: default
+[gosec] 2022/07/25 08:27:44 Excluding rules: default
+[gosec] 2022/07/25 08:27:44 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/party-robot
+2022/07/25 08:27:45 internal error: package "fmt" without types was imported from "command-line-arguments"
 
-real	0m0.553s
-user	0m0.584s
-sys	0m0.400s
+real	0m0.605s
+user	0m0.630s
+sys	0m0.443s
 
 ===============================================================================
 
 gomarkdoc --output partyrobot-doc.md
 
-real	0m0.040s
-user	0m0.027s
-sys	0m0.023s
+real	0m0.086s
+user	0m0.022s
+sys	0m0.076s
 
 ===============================================================================
 
@@ -172,9 +184,9 @@ func Welcome(name string) string
     Welcome greets a person by name.
 
 
-real	0m0.280s
-user	0m0.208s
-sys	0m0.201s
+real	0m0.337s
+user	0m0.278s
+sys	0m0.320s
 
 
 ===============================================================================
