@@ -7,9 +7,9 @@ Go packages: logs
 
 golint logs
 
-real	0m0.174s
-user	0m0.156s
-sys	0m0.138s
+real	0m0.161s
+user	0m0.114s
+sys	0m0.145s
 
 ===============================================================================
 
@@ -42,10 +42,16 @@ go test -v -covermode=count -coverprofile coverage.out logs
 === RUN   TestWithinLimit/exact_limit
 === RUN   TestWithinLimit/under_limit
 === RUN   TestWithinLimit/over_limit
+=== RUN   TestWithinLimit/exact_limit#01
+=== RUN   TestWithinLimit/under_limit#01
+=== RUN   TestWithinLimit/over_limit#01
 --- PASS: TestWithinLimit (0.00s)
     --- PASS: TestWithinLimit/exact_limit (0.00s)
     --- PASS: TestWithinLimit/under_limit (0.00s)
     --- PASS: TestWithinLimit/over_limit (0.00s)
+    --- PASS: TestWithinLimit/exact_limit#01 (0.00s)
+    --- PASS: TestWithinLimit/under_limit#01 (0.00s)
+    --- PASS: TestWithinLimit/over_limit#01 (0.00s)
 === RUN   ExampleApplication
 --- PASS: ExampleApplication (0.00s)
 === RUN   ExampleReplace
@@ -54,11 +60,11 @@ go test -v -covermode=count -coverprofile coverage.out logs
 --- PASS: ExampleWithinLimit (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	logs	0.006s	coverage: 100.0% of statements
+ok  	logs	0.009s	coverage: 100.0% of statements
 
-real	0m0.717s
-user	0m0.812s
-sys	0m0.538s
+real	0m0.632s
+user	0m0.703s
+sys	0m0.416s
 
 ===============================================================================
 
@@ -68,9 +74,17 @@ logs/logs_logs_logs.go:32:	Replace		100.0%
 logs/logs_logs_logs.go:38:	WithinLimit	100.0%
 total:				(statements)	100.0%
 
-real	0m0.203s
-user	0m0.136s
-sys	0m0.186s
+real	0m0.182s
+user	0m0.169s
+sys	0m0.143s
+
+===============================================================================
+
+go tool cover -html coverage.out -o coverage.html
+
+real	0m0.190s
+user	0m0.137s
+sys	0m0.158s
 
 ===============================================================================
 
@@ -103,10 +117,16 @@ go test -v -race -covermode=atomic logs
 === RUN   TestWithinLimit/exact_limit
 === RUN   TestWithinLimit/under_limit
 === RUN   TestWithinLimit/over_limit
+=== RUN   TestWithinLimit/exact_limit#01
+=== RUN   TestWithinLimit/under_limit#01
+=== RUN   TestWithinLimit/over_limit#01
 --- PASS: TestWithinLimit (0.00s)
     --- PASS: TestWithinLimit/exact_limit (0.00s)
     --- PASS: TestWithinLimit/under_limit (0.00s)
     --- PASS: TestWithinLimit/over_limit (0.00s)
+    --- PASS: TestWithinLimit/exact_limit#01 (0.00s)
+    --- PASS: TestWithinLimit/under_limit#01 (0.00s)
+    --- PASS: TestWithinLimit/over_limit#01 (0.00s)
 === RUN   ExampleApplication
 --- PASS: ExampleApplication (0.00s)
 === RUN   ExampleReplace
@@ -115,67 +135,71 @@ go test -v -race -covermode=atomic logs
 --- PASS: ExampleWithinLimit (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	logs	0.047s	coverage: 100.0% of statements
+ok  	logs	0.053s	coverage: 100.0% of statements
 
-real	0m0.812s
-user	0m0.877s
-sys	0m0.559s
+real	0m0.627s
+user	0m0.638s
+sys	0m0.450s
 
 ===============================================================================
 
-go test --bench . --benchmem
+go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 PASS
-ok  	logs	0.039s
+ok  	logs	0.025s
 
-real	0m0.703s
-user	0m0.866s
-sys	0m0.632s
+real	0m0.455s
+user	0m0.532s
+sys	0m0.313s
 
 ===============================================================================
 
 go test -tags bonus
 PASS
-ok  	logs	0.009s
+ok  	logs	0.006s
 
-real	0m0.623s
-user	0m0.724s
-sys	0m0.440s
+real	0m0.568s
+user	0m0.640s
+sys	0m0.398s
+
+===============================================================================
+
+No old benchmarks to run benchstat against.
 
 ===============================================================================
 
 go vet logs
 
-real	0m0.443s
-user	0m0.506s
-sys	0m0.420s
+real	0m0.334s
+user	0m0.389s
+sys	0m0.348s
 
 ===============================================================================
 
 go fix logs
 
-real	0m0.168s
-user	0m0.101s
-sys	0m0.125s
+real	0m0.103s
+user	0m0.059s
+sys	0m0.090s
 
 ===============================================================================
 
 gosec ./logs-logs-logs
-[gosec] 2022/06/20 23:47:27 Including rules: default
-[gosec] 2022/06/20 23:47:27 Excluding rules: default
-[gosec] 2022/06/20 23:47:27 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/logs-logs-logs
-2022/06/20 23:47:28 internal error: package "strings" without types was imported from "command-line-arguments"
+[gosec] 2022/07/26 07:40:40 Including rules: default
+[gosec] 2022/07/26 07:40:40 Excluding rules: default
+[gosec] 2022/07/26 07:40:40 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/logs-logs-logs
+2022/07/26 07:40:40 internal error: package "strings" without types was imported from "command-line-arguments"
 
-real	0m0.430s
-user	0m0.456s
-sys	0m0.373s
+real	0m0.342s
+user	0m0.344s
+sys	0m0.266s
 
 ===============================================================================
 
 gomarkdoc --output logs-doc.md
 
-real	0m0.029s
-user	0m0.017s
-sys	0m0.014s
+real	0m0.031s
+user	0m0.027s
+sys	0m0.009s
 
 ===============================================================================
 
@@ -197,9 +221,9 @@ func WithinLimit(log string, limit int) bool
     within the limit.
 
 
-real	0m0.168s
+real	0m0.184s
 user	0m0.108s
-sys	0m0.155s
+sys	0m0.121s
 
 
 ===============================================================================
