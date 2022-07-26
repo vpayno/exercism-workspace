@@ -45,7 +45,7 @@ A variation on Problem 7 at Project Euler - http://projecteuler.net/problem=7
 ### My Solution
 
 - [my solution](./nth_prime.go)
-- [my examples](./)
+- [my examples](./nth_prime_examples_test.go)
 - [test cases](./cases_test.go)
 - [tests](./nth_prime_test.go)
 - [run-tests](./run-tests-go.txt)
