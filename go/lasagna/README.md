@@ -72,12 +72,12 @@ Single line comments are preceded by `//` and multiline comments are inserted be
 ```go
 package greeting
 
-// Hello is a public function
+// Hello is a public function.
 func Hello (name string) string {
     return hi(name)
 }
 
-// hi is a private function
+// hi is a private function.
 func hi (name string) string {
     return "hi " + name
 }
@@ -156,4 +156,5 @@ ElapsedTime(3, 20)
 - [my examples](./lasagna_examples_test.go)
 - [tests](./lasagna_test.go)
 - [run-tests](./run-tests-go.txt)
+- [coverage](./coverage.html)
 - [documentation](./lasagna-doc.md)
