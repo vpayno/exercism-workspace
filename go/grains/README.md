@@ -56,6 +56,7 @@ experiment make the code better? Worse? Did you learn anything from it?
 - @sebito91
 - @strangeman
 - @tleen
+- @eklatzer
 
 ### Based on
 
@@ -68,5 +69,5 @@ JavaRanch Cattle Drive, exercise 6 - http://www.javaranch.com/grains.jsp
 - [test cases](./cases_test.go)
 - [tests](./grains_test.go)
 - [run-tests](./run-tests-go.txt)
-- [coverage](./coverage.html.md)
+- [coverage](./coverage.html)
 - [documentation](./grains-doc.md)
