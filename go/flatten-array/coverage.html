@@ -82,19 +82,19 @@
 package flatten
 
 // walkInterface uses a type switch to inspeact the list and recurse over nested lists.
-func walkInterface(nested interface{}, result *[]interface{}) <span class="cov10" title="86">{
+func walkInterface(nested interface{}, result *[]interface{}) <span class="cov10" title="103">{
         switch nested.(type) </span>{
-        case int:<span class="cov8" title="43">
+        case int:<span class="cov8" title="48">
                 *result = append(*result, nested)</span>
-        case []interface{}:<span class="cov7" title="31">
-                for _, item := range nested.([]interface{}) </span><span class="cov9" title="79">{
+        case []interface{}:<span class="cov8" title="38">
+                for _, item := range nested.([]interface{}) </span><span class="cov9" title="91">{
                         walkInterface(item, result)
                 }</span>
         }
 }
 
 // Flatten returns a single flattened list with all values except nil.
-func Flatten(nested interface{}) []interface{} <span class="cov4" title="7">{
+func Flatten(nested interface{}) []interface{} <span class="cov5" title="12">{
         result := make([]interface{}, 0)
 
         walkInterface(nested, &amp;result)

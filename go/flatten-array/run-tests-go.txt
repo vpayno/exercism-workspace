@@ -7,30 +7,46 @@ Go packages: flatten
 
 golint flatten
 
-real	0m0.169s
-user	0m0.170s
-sys	0m0.143s
+real	0m0.126s
+user	0m0.080s
+sys	0m0.138s
 
 ===============================================================================
 
 go test -v -covermode=count -coverprofile coverage.out flatten
 === RUN   TestFlatten
-    flatten_array_test.go:13: PASS: no nesting
-    flatten_array_test.go:13: PASS: flattens array with just integers present
-    flatten_array_test.go:13: PASS: 5 level nesting
-    flatten_array_test.go:13: PASS: 6 level nesting
-    flatten_array_test.go:13: PASS: 6 level nest list with null values
-    flatten_array_test.go:13: PASS: all values in nested list are null
---- PASS: TestFlatten (0.00s)
+=== RUN   TestFlatten/empty
+=== RUN   TestFlatten/no_nesting
+=== RUN   TestFlatten/flattens_a_nested_array
+=== RUN   TestFlatten/flattens_array_with_just_integers_present
+=== RUN   TestFlatten/5_level_nesting
+=== RUN   TestFlatten/6_level_nesting
+=== RUN   TestFlatten/null_values_are_omitted_from_the_final_result
+=== RUN   TestFlatten/consecutive_null_values_at_the_front_of_the_list_are_omitted_from_the_final_result
+=== RUN   TestFlatten/consecutive_null_values_in_the_middle_of_the_list_are_omitted_from_the_final_result
+=== RUN   TestFlatten/6_level_nest_list_with_null_values
+=== RUN   TestFlatten/all_values_in_nested_list_are_null
+--- PASS: TestFlatten (0.01s)
+    --- PASS: TestFlatten/empty (0.00s)
+    --- PASS: TestFlatten/no_nesting (0.00s)
+    --- PASS: TestFlatten/flattens_a_nested_array (0.00s)
+    --- PASS: TestFlatten/flattens_array_with_just_integers_present (0.00s)
+    --- PASS: TestFlatten/5_level_nesting (0.00s)
+    --- PASS: TestFlatten/6_level_nesting (0.00s)
+    --- PASS: TestFlatten/null_values_are_omitted_from_the_final_result (0.00s)
+    --- PASS: TestFlatten/consecutive_null_values_at_the_front_of_the_list_are_omitted_from_the_final_result (0.00s)
+    --- PASS: TestFlatten/consecutive_null_values_in_the_middle_of_the_list_are_omitted_from_the_final_result (0.00s)
+    --- PASS: TestFlatten/6_level_nest_list_with_null_values (0.00s)
+    --- PASS: TestFlatten/all_values_in_nested_list_are_null (0.00s)
 === RUN   ExampleFlatten
 --- PASS: ExampleFlatten (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	flatten	0.013s	coverage: 100.0% of statements
+ok  	flatten	0.020s	coverage: 100.0% of statements
 
-real	0m0.639s
-user	0m0.810s
-sys	0m0.550s
+real	0m0.979s
+user	0m1.017s
+sys	0m0.829s
 
 ===============================================================================
 
@@ -39,92 +55,129 @@ flatten/flatten_array.go:5:	walkInterface	100.0%
 flatten/flatten_array.go:17:	Flatten		100.0%
 total:				(statements)	100.0%
 
-real	0m0.131s
-user	0m0.061s
-sys	0m0.107s
+real	0m0.125s
+user	0m0.069s
+sys	0m0.098s
 
 ===============================================================================
 
 go tool cover -html coverage.out -o coverage.html
 
-real	0m0.112s
-user	0m0.028s
-sys	0m0.131s
+real	0m0.141s
+user	0m0.071s
+sys	0m0.147s
 
 ===============================================================================
 
 go test -v -race -covermode=atomic flatten
 === RUN   TestFlatten
-    flatten_array_test.go:13: PASS: no nesting
-    flatten_array_test.go:13: PASS: flattens array with just integers present
-    flatten_array_test.go:13: PASS: 5 level nesting
-    flatten_array_test.go:13: PASS: 6 level nesting
-    flatten_array_test.go:13: PASS: 6 level nest list with null values
-    flatten_array_test.go:13: PASS: all values in nested list are null
---- PASS: TestFlatten (0.00s)
+=== RUN   TestFlatten/empty
+=== RUN   TestFlatten/no_nesting
+=== RUN   TestFlatten/flattens_a_nested_array
+=== RUN   TestFlatten/flattens_array_with_just_integers_present
+=== RUN   TestFlatten/5_level_nesting
+=== RUN   TestFlatten/6_level_nesting
+=== RUN   TestFlatten/null_values_are_omitted_from_the_final_result
+=== RUN   TestFlatten/consecutive_null_values_at_the_front_of_the_list_are_omitted_from_the_final_result
+=== RUN   TestFlatten/consecutive_null_values_in_the_middle_of_the_list_are_omitted_from_the_final_result
+=== RUN   TestFlatten/6_level_nest_list_with_null_values
+=== RUN   TestFlatten/all_values_in_nested_list_are_null
+--- PASS: TestFlatten (0.03s)
+    --- PASS: TestFlatten/empty (0.00s)
+    --- PASS: TestFlatten/no_nesting (0.00s)
+    --- PASS: TestFlatten/flattens_a_nested_array (0.00s)
+    --- PASS: TestFlatten/flattens_array_with_just_integers_present (0.00s)
+    --- PASS: TestFlatten/5_level_nesting (0.00s)
+    --- PASS: TestFlatten/6_level_nesting (0.00s)
+    --- PASS: TestFlatten/null_values_are_omitted_from_the_final_result (0.00s)
+    --- PASS: TestFlatten/consecutive_null_values_at_the_front_of_the_list_are_omitted_from_the_final_result (0.00s)
+    --- PASS: TestFlatten/consecutive_null_values_in_the_middle_of_the_list_are_omitted_from_the_final_result (0.00s)
+    --- PASS: TestFlatten/6_level_nest_list_with_null_values (0.00s)
+    --- PASS: TestFlatten/all_values_in_nested_list_are_null (0.00s)
 === RUN   ExampleFlatten
 --- PASS: ExampleFlatten (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	flatten	0.039s	coverage: 100.0% of statements
+ok  	flatten	0.104s	coverage: 100.0% of statements
 
-real	0m0.694s
-user	0m0.824s
-sys	0m0.410s
+real	0m1.495s
+user	0m1.842s
+sys	0m0.979s
 
 ===============================================================================
+
+mv -v benchstat-new.txt benchstat-old.txt
+renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
 
 go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 goos: linux
 goarch: amd64
 pkg: flatten
 cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
-BenchmarkFlatten-4   	  376266	      4443 ns/op	    1328 B/op	      20 allocs/op
+BenchmarkFlatten-4   	  167460	      8110 ns/op	    1440 B/op	      25 allocs/op
 PASS
-ok  	flatten	1.763s
+ok  	flatten	1.487s
 
-real	0m2.293s
-user	0m3.467s
-sys	0m0.693s
+real	0m2.541s
+user	0m3.908s
+sys	0m1.058s
 
 ===============================================================================
 
 go test -tags bonus
 PASS
-ok  	flatten	0.026s
+ok  	flatten	0.006s
 
-real	0m0.603s
-user	0m0.742s
-sys	0m0.584s
+real	0m1.207s
+user	0m1.319s
+sys	0m0.985s
 
 ===============================================================================
 
-No old benchmarks to run benchstat against.
+go install golang.org/x/perf/cmd/benchstat@latest
+
+real	0m0.909s
+user	0m1.409s
+sys	0m0.667s
+
+benchstat benchstat-old.txt benchstat-new.txt
+name       old time/op    new time/op    delta
+Flatten-4    4.44µs ± 0%    8.11µs ± 0%   ~     (p=1.000 n=1+1)
+
+name       old alloc/op   new alloc/op   delta
+Flatten-4    1.33kB ± 0%    1.44kB ± 0%   ~     (p=1.000 n=1+1)
+
+name       old allocs/op  new allocs/op  delta
+Flatten-4      20.0 ± 0%      25.0 ± 0%   ~     (p=1.000 n=1+1)
+
+real	0m0.025s
+user	0m0.004s
+sys	0m0.022s
 
 ===============================================================================
 
 go vet flatten
 
-real	0m0.395s
-user	0m0.471s
-sys	0m0.384s
+real	0m0.652s
+user	0m0.905s
+sys	0m0.608s
 
 ===============================================================================
 
 go fix flatten
 
-real	0m0.052s
-user	0m0.016s
-sys	0m0.046s
+real	0m0.064s
+user	0m0.048s
+sys	0m0.049s
 
 ===============================================================================
 
 gosec ./flatten-array
-[gosec] 2022/07/03 22:00:10 Including rules: default
-[gosec] 2022/07/03 22:00:10 Excluding rules: default
-[gosec] 2022/07/03 22:00:10 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/flatten-array
-[gosec] 2022/07/03 22:00:10 Checking package: flatten
-[gosec] 2022/07/03 22:00:10 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/flatten-array/flatten_array.go
+[gosec] 2022/07/27 12:40:20 Including rules: default
+[gosec] 2022/07/27 12:40:20 Excluding rules: default
+[gosec] 2022/07/27 12:40:20 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/flatten-array
+[gosec] 2022/07/27 12:40:20 Checking package: flatten
+[gosec] 2022/07/27 12:40:20 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/flatten-array/flatten_array.go
 Results:
 
 
@@ -135,17 +188,17 @@ Summary:
   Issues: 0
 
 
-real	0m0.271s
-user	0m0.262s
-sys	0m0.222s
+real	0m0.371s
+user	0m0.503s
+sys	0m0.261s
 
 ===============================================================================
 
 gomarkdoc --output flatten-doc.md
 
-real	0m0.030s
-user	0m0.022s
-sys	0m0.020s
+real	0m0.047s
+user	0m0.039s
+sys	0m0.021s
 
 ===============================================================================
 
@@ -160,9 +213,9 @@ func Flatten(nested interface{}) []interface{}
     Flatten returns a single flattened list with all values except nil.
 
 
-real	0m0.126s
-user	0m0.062s
-sys	0m0.152s
+real	0m0.167s
+user	0m0.107s
+sys	0m0.150s
 
 
 ===============================================================================
