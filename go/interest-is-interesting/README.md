@@ -44,7 +44,7 @@ Implement the `InterestRate()` function to calculate the interest rate based on 
 
 ```go
 InterestRate(200.75)
-// Output: 0.5
+// => 0.5
 ```
 
 Note that the value returned is a `float32`.
@@ -55,7 +55,7 @@ Implement the `Interest()` function to calculate the interest based on the speci
 
 ```go
 Interest(200.75)
-// Output: 1.003750
+// => 1.003750
 ```
 
 Note that the value returned is a `float64`.
@@ -66,7 +66,7 @@ Implement the `AnnualBalanceUpdate()` function to calculate the annual balance u
 
 ```go
 AnnualBalanceUpdate(200.75)
-// Output: 201.75375
+// => 201.75375
 ```
 
 Note that the value returned is a `float64`.
@@ -82,7 +82,7 @@ And so on, until the current year's balance is greater than or equal to the targ
 balance := 200.75
 targetBalance := 214.88
 YearsBeforeDesiredBalance(balance, targetBalance)
-// Output: 14
+// => 14
 ```
 
 Note that the value returned is an `int`.
@@ -99,4 +99,5 @@ Note that the value returned is an `int`.
 - [my examples](./interest_is_interesting_examples_test.go)
 - [tests](./interest_is_interesting_test.go)
 - [run-tests](./run-tests-go.txt)
+- [coverage](./coverage.html)
 - [documentation](./interest-doc.md)
