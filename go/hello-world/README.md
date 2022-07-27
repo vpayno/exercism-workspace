@@ -49,4 +49,5 @@ This is an exercise to introduce users to using Exercism - http://en.wikipedia.o
 - [my examples](./hello_world_examples_test.go)
 - [tests](./hello_world_test.go)
 - [run-tests](./run-tests-go.txt)
+- [coverage](./coverage.html)
 - [documentation](./greeting-doc.md)
