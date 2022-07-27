@@ -39,6 +39,7 @@ The word *isograms*, however, is not an isogram, because the s repeats.
 - @sebito91
 - @strangeman
 - @tleen
+- @eklatzer
 
 ### Based on
 
@@ -51,4 +52,5 @@ Wikipedia - https://en.wikipedia.org/wiki/Isogram
 - [test cases](./cases_test.go)
 - [tests](./isogram_test.go)
 - [run-tests](./run-tests-go.txt)
+- [coverage](./coverage.html)
 - [documentation](./isogram-doc.md)
