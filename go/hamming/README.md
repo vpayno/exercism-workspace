@@ -58,6 +58,7 @@ You may be wondering about the `cases_test.go` file. We explain it in the
 - @soniakeys
 - @tleen
 - @tompao
+- @eklatzer
 
 ### Based on
 
@@ -70,4 +71,5 @@ The Calculating Point Mutations problem at Rosalind - http://rosalind.info/probl
 - [test cases](./cases_test.go)
 - [tests](./hamming_test.go)
 - [run-tests](./run-tests-go.txt)
+- [coverage](./coverage.html)
 - [documentation](./hamming-doc.md)

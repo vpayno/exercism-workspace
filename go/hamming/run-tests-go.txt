@@ -7,26 +7,44 @@ Go packages: hamming
 
 golint hamming
 
-real	0m0.227s
-user	0m0.183s
-sys	0m0.216s
+real	0m0.282s
+user	0m0.356s
+sys	0m0.256s
 
 ===============================================================================
 
 go test -v -covermode=count -coverprofile coverage.out hamming
 === RUN   TestHamming
+=== RUN   TestHamming/empty_strands
+=== RUN   TestHamming/single_letter_identical_strands
+=== RUN   TestHamming/single_letter_different_strands
+=== RUN   TestHamming/long_identical_strands
+=== RUN   TestHamming/long_different_strands
+=== RUN   TestHamming/disallow_first_strand_longer
+=== RUN   TestHamming/disallow_second_strand_longer
+=== RUN   TestHamming/disallow_empty_first_strand
+=== RUN   TestHamming/disallow_empty_second_strand
 --- PASS: TestHamming (0.00s)
+    --- PASS: TestHamming/empty_strands (0.00s)
+    --- PASS: TestHamming/single_letter_identical_strands (0.00s)
+    --- PASS: TestHamming/single_letter_different_strands (0.00s)
+    --- PASS: TestHamming/long_identical_strands (0.00s)
+    --- PASS: TestHamming/long_different_strands (0.00s)
+    --- PASS: TestHamming/disallow_first_strand_longer (0.00s)
+    --- PASS: TestHamming/disallow_second_strand_longer (0.00s)
+    --- PASS: TestHamming/disallow_empty_first_strand (0.00s)
+    --- PASS: TestHamming/disallow_empty_second_strand (0.00s)
 === RUN   Example_isValidDNASequence
 --- PASS: Example_isValidDNASequence (0.00s)
 === RUN   ExampleDistance
 --- PASS: ExampleDistance (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	hamming	0.022s	coverage: 100.0% of statements
+ok  	hamming	0.004s	coverage: 100.0% of statements
 
-real	0m0.619s
-user	0m0.660s
-sys	0m0.472s
+real	0m0.944s
+user	0m1.197s
+sys	0m0.705s
 
 ===============================================================================
 
@@ -35,87 +53,117 @@ hamming/hamming.go:9:	isValidDNASequence	100.0%
 hamming/hamming.go:16:	Distance		100.0%
 total:			(statements)		100.0%
 
-real	0m0.234s
-user	0m0.166s
-sys	0m0.254s
+real	0m0.433s
+user	0m0.487s
+sys	0m0.396s
+
+===============================================================================
+
+go tool cover -html coverage.out -o coverage.html
+
+real	0m0.312s
+user	0m0.343s
+sys	0m0.284s
 
 ===============================================================================
 
 go test -v -race -covermode=atomic hamming
 === RUN   TestHamming
---- PASS: TestHamming (0.00s)
+=== RUN   TestHamming/empty_strands
+=== RUN   TestHamming/single_letter_identical_strands
+=== RUN   TestHamming/single_letter_different_strands
+=== RUN   TestHamming/long_identical_strands
+=== RUN   TestHamming/long_different_strands
+=== RUN   TestHamming/disallow_first_strand_longer
+=== RUN   TestHamming/disallow_second_strand_longer
+=== RUN   TestHamming/disallow_empty_first_strand
+=== RUN   TestHamming/disallow_empty_second_strand
+--- PASS: TestHamming (0.01s)
+    --- PASS: TestHamming/empty_strands (0.00s)
+    --- PASS: TestHamming/single_letter_identical_strands (0.00s)
+    --- PASS: TestHamming/single_letter_different_strands (0.00s)
+    --- PASS: TestHamming/long_identical_strands (0.00s)
+    --- PASS: TestHamming/long_different_strands (0.00s)
+    --- PASS: TestHamming/disallow_first_strand_longer (0.00s)
+    --- PASS: TestHamming/disallow_second_strand_longer (0.00s)
+    --- PASS: TestHamming/disallow_empty_first_strand (0.00s)
+    --- PASS: TestHamming/disallow_empty_second_strand (0.00s)
 === RUN   Example_isValidDNASequence
 --- PASS: Example_isValidDNASequence (0.00s)
 === RUN   ExampleDistance
 --- PASS: ExampleDistance (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	hamming	0.065s	coverage: 100.0% of statements
+ok  	hamming	0.097s	coverage: 100.0% of statements
 
-real	0m0.699s
-user	0m0.737s
-sys	0m0.441s
+real	0m1.250s
+user	0m1.447s
+sys	0m0.865s
 
 ===============================================================================
 
-go test --bench . --benchmem
+go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 goos: linux
 goarch: amd64
 pkg: hamming
 cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
-BenchmarkHamming-4   	   10000	    127800 ns/op	   27996 B/op	     424 allocs/op
+BenchmarkHamming-4   	   12760	     99563 ns/op	   20355 B/op	     308 allocs/op
 PASS
-ok  	hamming	1.305s
+ok  	hamming	2.238s
 
-real	0m1.761s
-user	0m2.855s
-sys	0m0.556s
+real	0m3.073s
+user	0m5.245s
+sys	0m1.083s
 
 ===============================================================================
 
 go test -tags bonus
 PASS
-ok  	hamming	0.014s
+ok  	hamming	0.015s
 
-real	0m0.568s
-user	0m0.728s
-sys	0m0.430s
+real	0m0.698s
+user	0m0.838s
+sys	0m0.570s
+
+===============================================================================
+
+No old benchmarks to run benchstat against.
 
 ===============================================================================
 
 go vet hamming
 
-real	0m0.344s
-user	0m0.424s
-sys	0m0.286s
+real	0m0.530s
+user	0m0.530s
+sys	0m0.533s
 
 ===============================================================================
 
 go fix hamming
 
-real	0m0.117s
-user	0m0.109s
-sys	0m0.128s
+real	0m0.232s
+user	0m0.218s
+sys	0m0.205s
 
 ===============================================================================
 
 gosec ./hamming
-[gosec] 2022/06/21 23:26:01 Including rules: default
-[gosec] 2022/06/21 23:26:01 Excluding rules: default
-[gosec] 2022/06/21 23:26:01 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/hamming
-2022/06/21 23:26:01 internal error: package "errors" without types was imported from "command-line-arguments"
+[gosec] 2022/07/27 12:31:40 Including rules: default
+[gosec] 2022/07/27 12:31:40 Excluding rules: default
+[gosec] 2022/07/27 12:31:40 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/hamming
+2022/07/27 12:31:41 internal error: package "errors" without types was imported from "command-line-arguments"
 
-real	0m0.401s
-user	0m0.448s
-sys	0m0.373s
+real	0m0.770s
+user	0m0.903s
+sys	0m0.543s
 
 ===============================================================================
 
 gomarkdoc --output hamming-doc.md
 
-real	0m0.050s
-user	0m0.032s
-sys	0m0.023s
+real	0m0.061s
+user	0m0.045s
+sys	0m0.025s
 
 ===============================================================================
 
@@ -130,9 +178,9 @@ func Distance(a, b string) (int, error)
     aer issues.
 
 
-real	0m0.251s
-user	0m0.239s
-sys	0m0.200s
+real	0m0.302s
+user	0m0.312s
+sys	0m0.255s
 
 
 ===============================================================================
