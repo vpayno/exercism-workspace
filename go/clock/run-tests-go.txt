@@ -7,35 +7,161 @@ Go packages: clock
 
 golint clock
 
-real	0m0.239s
-user	0m0.225s
-sys	0m0.190s
+real	0m0.540s
+user	0m0.522s
+sys	0m0.485s
 
 ===============================================================================
 
 go test -v -covermode=count -coverprofile coverage.out clock
 === RUN   TestCreateClock
-    clock_test.go:16: 20 test cases
+=== RUN   TestCreateClock/on_the_hour
+=== RUN   TestCreateClock/past_the_hour
+=== RUN   TestCreateClock/midnight_is_zero_hours
+=== RUN   TestCreateClock/hour_rolls_over
+=== RUN   TestCreateClock/hour_rolls_over_continuously
+=== RUN   TestCreateClock/sixty_minutes_is_next_hour
+=== RUN   TestCreateClock/minutes_roll_over
+=== RUN   TestCreateClock/minutes_roll_over_continuously
+=== RUN   TestCreateClock/hour_and_minutes_roll_over
+=== RUN   TestCreateClock/hour_and_minutes_roll_over_continuously
+=== RUN   TestCreateClock/hour_and_minutes_roll_over_to_exactly_midnight
+=== RUN   TestCreateClock/negative_hour
+=== RUN   TestCreateClock/negative_hour_rolls_over
+=== RUN   TestCreateClock/negative_hour_rolls_over_continuously
+=== RUN   TestCreateClock/negative_minutes
+=== RUN   TestCreateClock/negative_minutes_roll_over
+=== RUN   TestCreateClock/negative_minutes_roll_over_continuously
+=== RUN   TestCreateClock/negative_sixty_minutes_is_previous_hour
+=== RUN   TestCreateClock/negative_hour_and_minutes_both_roll_over
+=== RUN   TestCreateClock/negative_hour_and_minutes_both_roll_over_continuously
 --- PASS: TestCreateClock (0.00s)
+    --- PASS: TestCreateClock/on_the_hour (0.00s)
+    --- PASS: TestCreateClock/past_the_hour (0.00s)
+    --- PASS: TestCreateClock/midnight_is_zero_hours (0.00s)
+    --- PASS: TestCreateClock/hour_rolls_over (0.00s)
+    --- PASS: TestCreateClock/hour_rolls_over_continuously (0.00s)
+    --- PASS: TestCreateClock/sixty_minutes_is_next_hour (0.00s)
+    --- PASS: TestCreateClock/minutes_roll_over (0.00s)
+    --- PASS: TestCreateClock/minutes_roll_over_continuously (0.00s)
+    --- PASS: TestCreateClock/hour_and_minutes_roll_over (0.00s)
+    --- PASS: TestCreateClock/hour_and_minutes_roll_over_continuously (0.00s)
+    --- PASS: TestCreateClock/hour_and_minutes_roll_over_to_exactly_midnight (0.00s)
+    --- PASS: TestCreateClock/negative_hour (0.00s)
+    --- PASS: TestCreateClock/negative_hour_rolls_over (0.00s)
+    --- PASS: TestCreateClock/negative_hour_rolls_over_continuously (0.00s)
+    --- PASS: TestCreateClock/negative_minutes (0.00s)
+    --- PASS: TestCreateClock/negative_minutes_roll_over (0.00s)
+    --- PASS: TestCreateClock/negative_minutes_roll_over_continuously (0.00s)
+    --- PASS: TestCreateClock/negative_sixty_minutes_is_previous_hour (0.00s)
+    --- PASS: TestCreateClock/negative_hour_and_minutes_both_roll_over (0.00s)
+    --- PASS: TestCreateClock/negative_hour_and_minutes_both_roll_over_continuously (0.00s)
 === RUN   TestAddMinutes
-    clock_test.go:26: 8 test cases
+=== RUN   TestAddMinutes/add_minutes
+=== RUN   TestAddMinutes/add_no_minutes
+=== RUN   TestAddMinutes/add_to_next_hour
+=== RUN   TestAddMinutes/add_more_than_one_hour
+=== RUN   TestAddMinutes/add_more_than_two_hours_with_carry
+=== RUN   TestAddMinutes/add_across_midnight
+=== RUN   TestAddMinutes/add_more_than_one_day_(1500_min_=_25_hrs)
+=== RUN   TestAddMinutes/add_more_than_two_days
 --- PASS: TestAddMinutes (0.00s)
+    --- PASS: TestAddMinutes/add_minutes (0.00s)
+    --- PASS: TestAddMinutes/add_no_minutes (0.00s)
+    --- PASS: TestAddMinutes/add_to_next_hour (0.00s)
+    --- PASS: TestAddMinutes/add_more_than_one_hour (0.00s)
+    --- PASS: TestAddMinutes/add_more_than_two_hours_with_carry (0.00s)
+    --- PASS: TestAddMinutes/add_across_midnight (0.00s)
+    --- PASS: TestAddMinutes/add_more_than_one_day_(1500_min_=_25_hrs) (0.00s)
+    --- PASS: TestAddMinutes/add_more_than_two_days (0.00s)
 === RUN   TestSubtractMinutes
-    clock_test.go:36: 8 test cases
+=== RUN   TestSubtractMinutes/subtract_minutes
+=== RUN   TestSubtractMinutes/subtract_to_previous_hour
+=== RUN   TestSubtractMinutes/subtract_more_than_an_hour
+=== RUN   TestSubtractMinutes/subtract_across_midnight
+=== RUN   TestSubtractMinutes/subtract_more_than_two_hours
+=== RUN   TestSubtractMinutes/subtract_more_than_two_hours_with_borrow
+=== RUN   TestSubtractMinutes/subtract_more_than_one_day_(1500_min_=_25_hrs)
+=== RUN   TestSubtractMinutes/subtract_more_than_two_days
 --- PASS: TestSubtractMinutes (0.00s)
+    --- PASS: TestSubtractMinutes/subtract_minutes (0.00s)
+    --- PASS: TestSubtractMinutes/subtract_to_previous_hour (0.00s)
+    --- PASS: TestSubtractMinutes/subtract_more_than_an_hour (0.00s)
+    --- PASS: TestSubtractMinutes/subtract_across_midnight (0.00s)
+    --- PASS: TestSubtractMinutes/subtract_more_than_two_hours (0.00s)
+    --- PASS: TestSubtractMinutes/subtract_more_than_two_hours_with_borrow (0.00s)
+    --- PASS: TestSubtractMinutes/subtract_more_than_one_day_(1500_min_=_25_hrs) (0.00s)
+    --- PASS: TestSubtractMinutes/subtract_more_than_two_days (0.00s)
 === RUN   TestAddMinutesStringless
-    clock_test.go:55: 8 test cases
+=== RUN   TestAddMinutesStringless/add_minutes
+=== RUN   TestAddMinutesStringless/add_no_minutes
+=== RUN   TestAddMinutesStringless/add_to_next_hour
+=== RUN   TestAddMinutesStringless/add_more_than_one_hour
+=== RUN   TestAddMinutesStringless/add_more_than_two_hours_with_carry
+=== RUN   TestAddMinutesStringless/add_across_midnight
+=== RUN   TestAddMinutesStringless/add_more_than_one_day_(1500_min_=_25_hrs)
+=== RUN   TestAddMinutesStringless/add_more_than_two_days
 --- PASS: TestAddMinutesStringless (0.00s)
+    --- PASS: TestAddMinutesStringless/add_minutes (0.00s)
+    --- PASS: TestAddMinutesStringless/add_no_minutes (0.00s)
+    --- PASS: TestAddMinutesStringless/add_to_next_hour (0.00s)
+    --- PASS: TestAddMinutesStringless/add_more_than_one_hour (0.00s)
+    --- PASS: TestAddMinutesStringless/add_more_than_two_hours_with_carry (0.00s)
+    --- PASS: TestAddMinutesStringless/add_across_midnight (0.00s)
+    --- PASS: TestAddMinutesStringless/add_more_than_one_day_(1500_min_=_25_hrs) (0.00s)
+    --- PASS: TestAddMinutesStringless/add_more_than_two_days (0.00s)
 === RUN   TestSubtractMinutesStringless
-    clock_test.go:74: 8 test cases
+=== RUN   TestSubtractMinutesStringless/subtract_minutes
+=== RUN   TestSubtractMinutesStringless/subtract_to_previous_hour
+=== RUN   TestSubtractMinutesStringless/subtract_more_than_an_hour
+=== RUN   TestSubtractMinutesStringless/subtract_across_midnight
+=== RUN   TestSubtractMinutesStringless/subtract_more_than_two_hours
+=== RUN   TestSubtractMinutesStringless/subtract_more_than_two_hours_with_borrow
+=== RUN   TestSubtractMinutesStringless/subtract_more_than_one_day_(1500_min_=_25_hrs)
+=== RUN   TestSubtractMinutesStringless/subtract_more_than_two_days
 --- PASS: TestSubtractMinutesStringless (0.00s)
+    --- PASS: TestSubtractMinutesStringless/subtract_minutes (0.00s)
+    --- PASS: TestSubtractMinutesStringless/subtract_to_previous_hour (0.00s)
+    --- PASS: TestSubtractMinutesStringless/subtract_more_than_an_hour (0.00s)
+    --- PASS: TestSubtractMinutesStringless/subtract_across_midnight (0.00s)
+    --- PASS: TestSubtractMinutesStringless/subtract_more_than_two_hours (0.00s)
+    --- PASS: TestSubtractMinutesStringless/subtract_more_than_two_hours_with_borrow (0.00s)
+    --- PASS: TestSubtractMinutesStringless/subtract_more_than_one_day_(1500_min_=_25_hrs) (0.00s)
+    --- PASS: TestSubtractMinutesStringless/subtract_more_than_two_days (0.00s)
 === RUN   TestCompareClocks
-    clock_test.go:92: 16 test cases
---- PASS: TestCompareClocks (0.00s)
-=== RUN   TestAddAndCompare
---- PASS: TestAddAndCompare (0.00s)
-=== RUN   TestSubtractAndCompare
---- PASS: TestSubtractAndCompare (0.00s)
+=== RUN   TestCompareClocks/clocks_with_same_time
+=== RUN   TestCompareClocks/clocks_a_minute_apart
+=== RUN   TestCompareClocks/clocks_an_hour_apart
+=== RUN   TestCompareClocks/clocks_with_hour_overflow
+=== RUN   TestCompareClocks/clocks_with_hour_overflow_by_several_days
+=== RUN   TestCompareClocks/clocks_with_negative_hour
+=== RUN   TestCompareClocks/clocks_with_negative_hour_that_wraps
+=== RUN   TestCompareClocks/clocks_with_negative_hour_that_wraps_multiple_times
+=== RUN   TestCompareClocks/clocks_with_minute_overflow
+=== RUN   TestCompareClocks/clocks_with_minute_overflow_by_several_days
+=== RUN   TestCompareClocks/clocks_with_negative_minute
+=== RUN   TestCompareClocks/clocks_with_negative_minute_that_wraps
+=== RUN   TestCompareClocks/clocks_with_negative_minute_that_wraps_multiple_times
+=== RUN   TestCompareClocks/clocks_with_negative_hours_and_minutes
+=== RUN   TestCompareClocks/clocks_with_negative_hours_and_minutes_that_wrap
+=== RUN   TestCompareClocks/full_clock_and_zeroed_clock
+--- PASS: TestCompareClocks (0.01s)
+    --- PASS: TestCompareClocks/clocks_with_same_time (0.00s)
+    --- PASS: TestCompareClocks/clocks_a_minute_apart (0.00s)
+    --- PASS: TestCompareClocks/clocks_an_hour_apart (0.00s)
+    --- PASS: TestCompareClocks/clocks_with_hour_overflow (0.00s)
+    --- PASS: TestCompareClocks/clocks_with_hour_overflow_by_several_days (0.00s)
+    --- PASS: TestCompareClocks/clocks_with_negative_hour (0.00s)
+    --- PASS: TestCompareClocks/clocks_with_negative_hour_that_wraps (0.00s)
+    --- PASS: TestCompareClocks/clocks_with_negative_hour_that_wraps_multiple_times (0.00s)
+    --- PASS: TestCompareClocks/clocks_with_minute_overflow (0.00s)
+    --- PASS: TestCompareClocks/clocks_with_minute_overflow_by_several_days (0.00s)
+    --- PASS: TestCompareClocks/clocks_with_negative_minute (0.00s)
+    --- PASS: TestCompareClocks/clocks_with_negative_minute_that_wraps (0.00s)
+    --- PASS: TestCompareClocks/clocks_with_negative_minute_that_wraps_multiple_times (0.00s)
+    --- PASS: TestCompareClocks/clocks_with_negative_hours_and_minutes (0.00s)
+    --- PASS: TestCompareClocks/clocks_with_negative_hours_and_minutes_that_wrap (0.00s)
+    --- PASS: TestCompareClocks/full_clock_and_zeroed_clock (0.00s)
 === RUN   ExampleAdd
 --- PASS: ExampleAdd (0.00s)
 === RUN   ExampleSubtract
@@ -44,11 +170,11 @@ go test -v -covermode=count -coverprofile coverage.out clock
 --- PASS: ExampleString (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	clock	0.015s	coverage: 100.0% of statements
+ok  	clock	0.026s	coverage: 100.0% of statements
 
-real	0m0.645s
-user	0m0.725s
-sys	0m0.437s
+real	0m1.333s
+user	0m1.709s
+sys	0m1.024s
 
 ===============================================================================
 
@@ -60,43 +186,169 @@ clock/clock.go:51:	Subtract	100.0%
 clock/clock.go:58:	String		100.0%
 total:			(statements)	100.0%
 
-real	0m0.330s
-user	0m0.298s
-sys	0m0.253s
+real	0m0.380s
+user	0m0.393s
+sys	0m0.348s
 
 ===============================================================================
 
 go tool cover -html coverage.out -o coverage.html
 
-real	0m0.207s
-user	0m0.215s
-sys	0m0.155s
+real	0m0.450s
+user	0m0.505s
+sys	0m0.275s
 
 ===============================================================================
 
 go test -v -race -covermode=atomic clock
 === RUN   TestCreateClock
-    clock_test.go:16: 20 test cases
---- PASS: TestCreateClock (0.00s)
+=== RUN   TestCreateClock/on_the_hour
+=== RUN   TestCreateClock/past_the_hour
+=== RUN   TestCreateClock/midnight_is_zero_hours
+=== RUN   TestCreateClock/hour_rolls_over
+=== RUN   TestCreateClock/hour_rolls_over_continuously
+=== RUN   TestCreateClock/sixty_minutes_is_next_hour
+=== RUN   TestCreateClock/minutes_roll_over
+=== RUN   TestCreateClock/minutes_roll_over_continuously
+=== RUN   TestCreateClock/hour_and_minutes_roll_over
+=== RUN   TestCreateClock/hour_and_minutes_roll_over_continuously
+=== RUN   TestCreateClock/hour_and_minutes_roll_over_to_exactly_midnight
+=== RUN   TestCreateClock/negative_hour
+=== RUN   TestCreateClock/negative_hour_rolls_over
+=== RUN   TestCreateClock/negative_hour_rolls_over_continuously
+=== RUN   TestCreateClock/negative_minutes
+=== RUN   TestCreateClock/negative_minutes_roll_over
+=== RUN   TestCreateClock/negative_minutes_roll_over_continuously
+=== RUN   TestCreateClock/negative_sixty_minutes_is_previous_hour
+=== RUN   TestCreateClock/negative_hour_and_minutes_both_roll_over
+=== RUN   TestCreateClock/negative_hour_and_minutes_both_roll_over_continuously
+--- PASS: TestCreateClock (0.02s)
+    --- PASS: TestCreateClock/on_the_hour (0.00s)
+    --- PASS: TestCreateClock/past_the_hour (0.00s)
+    --- PASS: TestCreateClock/midnight_is_zero_hours (0.00s)
+    --- PASS: TestCreateClock/hour_rolls_over (0.00s)
+    --- PASS: TestCreateClock/hour_rolls_over_continuously (0.00s)
+    --- PASS: TestCreateClock/sixty_minutes_is_next_hour (0.00s)
+    --- PASS: TestCreateClock/minutes_roll_over (0.00s)
+    --- PASS: TestCreateClock/minutes_roll_over_continuously (0.00s)
+    --- PASS: TestCreateClock/hour_and_minutes_roll_over (0.00s)
+    --- PASS: TestCreateClock/hour_and_minutes_roll_over_continuously (0.00s)
+    --- PASS: TestCreateClock/hour_and_minutes_roll_over_to_exactly_midnight (0.00s)
+    --- PASS: TestCreateClock/negative_hour (0.00s)
+    --- PASS: TestCreateClock/negative_hour_rolls_over (0.00s)
+    --- PASS: TestCreateClock/negative_hour_rolls_over_continuously (0.00s)
+    --- PASS: TestCreateClock/negative_minutes (0.00s)
+    --- PASS: TestCreateClock/negative_minutes_roll_over (0.00s)
+    --- PASS: TestCreateClock/negative_minutes_roll_over_continuously (0.00s)
+    --- PASS: TestCreateClock/negative_sixty_minutes_is_previous_hour (0.00s)
+    --- PASS: TestCreateClock/negative_hour_and_minutes_both_roll_over (0.00s)
+    --- PASS: TestCreateClock/negative_hour_and_minutes_both_roll_over_continuously (0.00s)
 === RUN   TestAddMinutes
-    clock_test.go:26: 8 test cases
---- PASS: TestAddMinutes (0.00s)
+=== RUN   TestAddMinutes/add_minutes
+=== RUN   TestAddMinutes/add_no_minutes
+=== RUN   TestAddMinutes/add_to_next_hour
+=== RUN   TestAddMinutes/add_more_than_one_hour
+=== RUN   TestAddMinutes/add_more_than_two_hours_with_carry
+=== RUN   TestAddMinutes/add_across_midnight
+=== RUN   TestAddMinutes/add_more_than_one_day_(1500_min_=_25_hrs)
+=== RUN   TestAddMinutes/add_more_than_two_days
+--- PASS: TestAddMinutes (0.01s)
+    --- PASS: TestAddMinutes/add_minutes (0.00s)
+    --- PASS: TestAddMinutes/add_no_minutes (0.00s)
+    --- PASS: TestAddMinutes/add_to_next_hour (0.00s)
+    --- PASS: TestAddMinutes/add_more_than_one_hour (0.00s)
+    --- PASS: TestAddMinutes/add_more_than_two_hours_with_carry (0.00s)
+    --- PASS: TestAddMinutes/add_across_midnight (0.00s)
+    --- PASS: TestAddMinutes/add_more_than_one_day_(1500_min_=_25_hrs) (0.00s)
+    --- PASS: TestAddMinutes/add_more_than_two_days (0.00s)
 === RUN   TestSubtractMinutes
-    clock_test.go:36: 8 test cases
---- PASS: TestSubtractMinutes (0.00s)
+=== RUN   TestSubtractMinutes/subtract_minutes
+=== RUN   TestSubtractMinutes/subtract_to_previous_hour
+=== RUN   TestSubtractMinutes/subtract_more_than_an_hour
+=== RUN   TestSubtractMinutes/subtract_across_midnight
+=== RUN   TestSubtractMinutes/subtract_more_than_two_hours
+=== RUN   TestSubtractMinutes/subtract_more_than_two_hours_with_borrow
+=== RUN   TestSubtractMinutes/subtract_more_than_one_day_(1500_min_=_25_hrs)
+=== RUN   TestSubtractMinutes/subtract_more_than_two_days
+--- PASS: TestSubtractMinutes (0.01s)
+    --- PASS: TestSubtractMinutes/subtract_minutes (0.00s)
+    --- PASS: TestSubtractMinutes/subtract_to_previous_hour (0.00s)
+    --- PASS: TestSubtractMinutes/subtract_more_than_an_hour (0.00s)
+    --- PASS: TestSubtractMinutes/subtract_across_midnight (0.00s)
+    --- PASS: TestSubtractMinutes/subtract_more_than_two_hours (0.00s)
+    --- PASS: TestSubtractMinutes/subtract_more_than_two_hours_with_borrow (0.00s)
+    --- PASS: TestSubtractMinutes/subtract_more_than_one_day_(1500_min_=_25_hrs) (0.00s)
+    --- PASS: TestSubtractMinutes/subtract_more_than_two_days (0.00s)
 === RUN   TestAddMinutesStringless
-    clock_test.go:55: 8 test cases
---- PASS: TestAddMinutesStringless (0.00s)
+=== RUN   TestAddMinutesStringless/add_minutes
+=== RUN   TestAddMinutesStringless/add_no_minutes
+=== RUN   TestAddMinutesStringless/add_to_next_hour
+=== RUN   TestAddMinutesStringless/add_more_than_one_hour
+=== RUN   TestAddMinutesStringless/add_more_than_two_hours_with_carry
+=== RUN   TestAddMinutesStringless/add_across_midnight
+=== RUN   TestAddMinutesStringless/add_more_than_one_day_(1500_min_=_25_hrs)
+=== RUN   TestAddMinutesStringless/add_more_than_two_days
+--- PASS: TestAddMinutesStringless (0.01s)
+    --- PASS: TestAddMinutesStringless/add_minutes (0.00s)
+    --- PASS: TestAddMinutesStringless/add_no_minutes (0.00s)
+    --- PASS: TestAddMinutesStringless/add_to_next_hour (0.00s)
+    --- PASS: TestAddMinutesStringless/add_more_than_one_hour (0.00s)
+    --- PASS: TestAddMinutesStringless/add_more_than_two_hours_with_carry (0.00s)
+    --- PASS: TestAddMinutesStringless/add_across_midnight (0.00s)
+    --- PASS: TestAddMinutesStringless/add_more_than_one_day_(1500_min_=_25_hrs) (0.00s)
+    --- PASS: TestAddMinutesStringless/add_more_than_two_days (0.00s)
 === RUN   TestSubtractMinutesStringless
-    clock_test.go:74: 8 test cases
+=== RUN   TestSubtractMinutesStringless/subtract_minutes
+=== RUN   TestSubtractMinutesStringless/subtract_to_previous_hour
+=== RUN   TestSubtractMinutesStringless/subtract_more_than_an_hour
+=== RUN   TestSubtractMinutesStringless/subtract_across_midnight
+=== RUN   TestSubtractMinutesStringless/subtract_more_than_two_hours
+=== RUN   TestSubtractMinutesStringless/subtract_more_than_two_hours_with_borrow
+=== RUN   TestSubtractMinutesStringless/subtract_more_than_one_day_(1500_min_=_25_hrs)
+=== RUN   TestSubtractMinutesStringless/subtract_more_than_two_days
 --- PASS: TestSubtractMinutesStringless (0.00s)
+    --- PASS: TestSubtractMinutesStringless/subtract_minutes (0.00s)
+    --- PASS: TestSubtractMinutesStringless/subtract_to_previous_hour (0.00s)
+    --- PASS: TestSubtractMinutesStringless/subtract_more_than_an_hour (0.00s)
+    --- PASS: TestSubtractMinutesStringless/subtract_across_midnight (0.00s)
+    --- PASS: TestSubtractMinutesStringless/subtract_more_than_two_hours (0.00s)
+    --- PASS: TestSubtractMinutesStringless/subtract_more_than_two_hours_with_borrow (0.00s)
+    --- PASS: TestSubtractMinutesStringless/subtract_more_than_one_day_(1500_min_=_25_hrs) (0.00s)
+    --- PASS: TestSubtractMinutesStringless/subtract_more_than_two_days (0.00s)
 === RUN   TestCompareClocks
-    clock_test.go:92: 16 test cases
---- PASS: TestCompareClocks (0.00s)
-=== RUN   TestAddAndCompare
---- PASS: TestAddAndCompare (0.00s)
-=== RUN   TestSubtractAndCompare
---- PASS: TestSubtractAndCompare (0.00s)
+=== RUN   TestCompareClocks/clocks_with_same_time
+=== RUN   TestCompareClocks/clocks_a_minute_apart
+=== RUN   TestCompareClocks/clocks_an_hour_apart
+=== RUN   TestCompareClocks/clocks_with_hour_overflow
+=== RUN   TestCompareClocks/clocks_with_hour_overflow_by_several_days
+=== RUN   TestCompareClocks/clocks_with_negative_hour
+=== RUN   TestCompareClocks/clocks_with_negative_hour_that_wraps
+=== RUN   TestCompareClocks/clocks_with_negative_hour_that_wraps_multiple_times
+=== RUN   TestCompareClocks/clocks_with_minute_overflow
+=== RUN   TestCompareClocks/clocks_with_minute_overflow_by_several_days
+=== RUN   TestCompareClocks/clocks_with_negative_minute
+=== RUN   TestCompareClocks/clocks_with_negative_minute_that_wraps
+=== RUN   TestCompareClocks/clocks_with_negative_minute_that_wraps_multiple_times
+=== RUN   TestCompareClocks/clocks_with_negative_hours_and_minutes
+=== RUN   TestCompareClocks/clocks_with_negative_hours_and_minutes_that_wrap
+=== RUN   TestCompareClocks/full_clock_and_zeroed_clock
+--- PASS: TestCompareClocks (0.01s)
+    --- PASS: TestCompareClocks/clocks_with_same_time (0.00s)
+    --- PASS: TestCompareClocks/clocks_a_minute_apart (0.00s)
+    --- PASS: TestCompareClocks/clocks_an_hour_apart (0.00s)
+    --- PASS: TestCompareClocks/clocks_with_hour_overflow (0.00s)
+    --- PASS: TestCompareClocks/clocks_with_hour_overflow_by_several_days (0.00s)
+    --- PASS: TestCompareClocks/clocks_with_negative_hour (0.00s)
+    --- PASS: TestCompareClocks/clocks_with_negative_hour_that_wraps (0.00s)
+    --- PASS: TestCompareClocks/clocks_with_negative_hour_that_wraps_multiple_times (0.00s)
+    --- PASS: TestCompareClocks/clocks_with_minute_overflow (0.00s)
+    --- PASS: TestCompareClocks/clocks_with_minute_overflow_by_several_days (0.00s)
+    --- PASS: TestCompareClocks/clocks_with_negative_minute (0.00s)
+    --- PASS: TestCompareClocks/clocks_with_negative_minute_that_wraps (0.00s)
+    --- PASS: TestCompareClocks/clocks_with_negative_minute_that_wraps_multiple_times (0.00s)
+    --- PASS: TestCompareClocks/clocks_with_negative_hours_and_minutes (0.00s)
+    --- PASS: TestCompareClocks/clocks_with_negative_hours_and_minutes_that_wrap (0.00s)
+    --- PASS: TestCompareClocks/full_clock_and_zeroed_clock (0.00s)
 === RUN   ExampleAdd
 --- PASS: ExampleAdd (0.00s)
 === RUN   ExampleSubtract
@@ -105,53 +357,69 @@ go test -v -race -covermode=atomic clock
 --- PASS: ExampleString (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	clock	0.044s	coverage: 100.0% of statements
+ok  	clock	0.120s	coverage: 100.0% of statements
 
-real	0m0.722s
-user	0m0.742s
-sys	0m0.470s
+real	0m1.569s
+user	0m2.157s
+sys	0m1.116s
 
 ===============================================================================
+
+mv -v benchstat-new.txt benchstat-old.txt
+renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
 
 go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 goos: linux
 goarch: amd64
 pkg: clock
 cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
-BenchmarkAddMinutes-4        	34995236	        32.33 ns/op	       0 B/op	       0 allocs/op
-BenchmarkSubtractMinutes-4   	16155007	        87.23 ns/op	       0 B/op	       0 allocs/op
-BenchmarkCreateClocks-4      	 5566652	       192.9 ns/op	       0 B/op	       0 allocs/op
+BenchmarkAddMinutes-4        	32747145	        46.53 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSubtractMinutes-4   	11690691	       122.2 ns/op	       0 B/op	       0 allocs/op
+BenchmarkCreateClocks-4      	 4752541	       292.1 ns/op	       0 B/op	       0 allocs/op
 PASS
-ok  	clock	4.871s
+ok  	clock	5.872s
 
-real	0m5.515s
-user	0m5.844s
-sys	0m0.524s
+real	0m6.718s
+user	0m7.001s
+sys	0m0.670s
 
 ===============================================================================
 
 go test -tags bonus
 PASS
-ok  	clock	0.005s
+ok  	clock	0.021s
 
-real	0m0.719s
-user	0m0.847s
-sys	0m0.487s
+real	0m0.861s
+user	0m0.970s
+sys	0m0.570s
 
 ===============================================================================
 
 go install golang.org/x/perf/cmd/benchstat@latest
 
-real	0m5.840s
-user	0m0.922s
-sys	0m0.492s
+real	0m1.316s
+user	0m1.247s
+sys	0m0.720s
 
 benchstat benchstat-old.txt benchstat-new.txt
-benchstat: open benchstat-old.txt: no such file or directory
+name               old time/op    new time/op    delta
+AddMinutes-4         32.3ns ± 0%    46.5ns ± 0%   ~     (p=1.000 n=1+1)
+SubtractMinutes-4    87.2ns ± 0%   122.2ns ± 0%   ~     (p=1.000 n=1+1)
+CreateClocks-4        193ns ± 0%     292ns ± 0%   ~     (p=1.000 n=1+1)
 
-real	0m0.016s
-user	0m0.000s
-sys	0m0.017s
+name               old alloc/op   new alloc/op   delta
+AddMinutes-4          0.00B          0.00B        ~     (all equal)
+SubtractMinutes-4     0.00B          0.00B        ~     (all equal)
+CreateClocks-4        0.00B          0.00B        ~     (all equal)
+
+name               old allocs/op  new allocs/op  delta
+AddMinutes-4           0.00           0.00        ~     (all equal)
+SubtractMinutes-4      0.00           0.00        ~     (all equal)
+CreateClocks-4         0.00           0.00        ~     (all equal)
+
+real	0m0.023s
+user	0m0.012s
+sys	0m0.016s
 
 ===============================================================================
 
@@ -160,37 +428,37 @@ go vet clock
 ./clock_examples_test.go:12:1: ExampleAdd refers to unknown identifier: Add
 ./clock_examples_test.go:20:1: ExampleSubtract refers to unknown identifier: Subtract
 
-real	0m0.377s
-user	0m0.374s
-sys	0m0.335s
+real	0m0.593s
+user	0m0.828s
+sys	0m0.616s
 
 ===============================================================================
 
 go fix clock
 
-real	0m0.133s
-user	0m0.138s
-sys	0m0.089s
+real	0m0.236s
+user	0m0.231s
+sys	0m0.204s
 
 ===============================================================================
 
 gosec ./clock
-[gosec] 2022/06/24 23:11:31 Including rules: default
-[gosec] 2022/06/24 23:11:31 Excluding rules: default
-[gosec] 2022/06/24 23:11:31 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/clock
-2022/06/24 23:11:31 internal error: package "fmt" without types was imported from "command-line-arguments"
+[gosec] 2022/07/28 07:55:30 Including rules: default
+[gosec] 2022/07/28 07:55:30 Excluding rules: default
+[gosec] 2022/07/28 07:55:30 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/clock
+2022/07/28 07:55:31 internal error: package "fmt" without types was imported from "command-line-arguments"
 
-real	0m0.430s
-user	0m0.441s
-sys	0m0.359s
+real	0m0.787s
+user	0m0.993s
+sys	0m0.553s
 
 ===============================================================================
 
 gomarkdoc --output clock-doc.md
 
-real	0m0.034s
-user	0m0.021s
-sys	0m0.019s
+real	0m0.043s
+user	0m0.039s
+sys	0m0.036s
 
 ===============================================================================
 
@@ -219,9 +487,9 @@ func (c Clock) Subtract(m int) Clock
     Subtract returns a clock with the subtracted minutes.
 
 
-real	0m0.228s
-user	0m0.157s
-sys	0m0.254s
+real	0m0.328s
+user	0m0.369s
+sys	0m0.324s
 
 
 ===============================================================================

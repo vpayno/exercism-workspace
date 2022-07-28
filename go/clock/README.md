@@ -52,6 +52,7 @@ receiver see [Go Wiki: Receiver Type](https://github.com/golang/go/wiki/CodeRevi
 - @sebito91
 - @thenickcox
 - @tleen
+- @eklatzer
 
 ### Based on
 
@@ -64,5 +65,5 @@ Pairing session with Erin Drummond - https://twitter.com/ebdrummond
 - [test cases](./cases_test.go)
 - [tests](./clock_test.go)
 - [run-tests](./run-tests-go.txt)
-- [coverage](./coverage.html.md)
+- [coverage](./coverage.html)
 - [documentation](./clock-doc.md)

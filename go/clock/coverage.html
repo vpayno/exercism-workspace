@@ -90,28 +90,28 @@ type Clock struct {
 }
 
 // normalize returns hours and minutes after the hours have been normalized (it's late, that's the best name I could think of).
-func normalize(h, m int) (int, int) <span class="cov7" title="142">{
-        for m &lt; 0 </span><span class="cov10" title="653">{
+func normalize(h, m int) (int, int) <span class="cov7" title="136">{
+        for m &lt; 0 </span><span class="cov10" title="652">{
                 m += 60
                 h--
         }</span>
 
-        <span class="cov7" title="142">for h &lt; 0 </span><span class="cov6" title="57">{
+        <span class="cov7" title="136">for h &lt; 0 </span><span class="cov6" title="57">{
                 h += 24
         }</span>
 
-        <span class="cov7" title="142">var minutes int = h*60 + m
+        <span class="cov7" title="136">var minutes int = h*60 + m
 
-        if minutes &gt; 60 </span><span class="cov7" title="126">{
+        if minutes &gt; 60 </span><span class="cov7" title="120">{
                 h = (minutes / 60) % 24
                 m = minutes % 60
         }</span>
 
-        <span class="cov7" title="142">return h, m</span>
+        <span class="cov7" title="136">return h, m</span>
 }
 
 // New returns a new clock with the normalized given hours and minutes.
-func New(h, m int) Clock <span class="cov7" title="104">{
+func New(h, m int) Clock <span class="cov7" title="100">{
         h, m = normalize(h, m)
 
         return Clock{
@@ -121,14 +121,14 @@ func New(h, m int) Clock <span class="cov7" title="104">{
 }</span>
 
 // Add returns a clock with the added minutes.
-func (c Clock) Add(m int) Clock <span class="cov5" title="19">{
+func (c Clock) Add(m int) Clock <span class="cov5" title="18">{
         c.h, c.m = normalize(c.h, c.m+m)
 
         return c
 }</span>
 
 // Subtract returns a clock with the subtracted minutes.
-func (c Clock) Subtract(m int) Clock <span class="cov5" title="19">{
+func (c Clock) Subtract(m int) Clock <span class="cov5" title="18">{
         c.h, c.m = normalize(c.h, c.m-m)
 
         return c
