@@ -7,9 +7,9 @@ Go packages: chessboard
 
 golint chessboard
 
-real	0m0.080s
-user	0m0.074s
-sys	0m0.065s
+real	0m0.114s
+user	0m0.115s
+sys	0m0.096s
 
 ===============================================================================
 
@@ -32,11 +32,11 @@ go test -v -covermode=count -coverprofile coverage.out chessboard
 --- PASS: ExampleCountOccupied (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	chessboard	0.004s	coverage: 100.0% of statements
+ok  	chessboard	0.021s	coverage: 100.0% of statements
 
-real	0m0.663s
-user	0m0.733s
-sys	0m0.534s
+real	0m1.084s
+user	0m1.476s
+sys	0m0.879s
 
 ===============================================================================
 
@@ -47,9 +47,17 @@ chessboard/chessboard.go:38:	CountAll	100.0%
 chessboard/chessboard.go:51:	CountOccupied	100.0%
 total:				(statements)	100.0%
 
-real	0m0.112s
-user	0m0.049s
-sys	0m0.108s
+real	0m0.107s
+user	0m0.088s
+sys	0m0.089s
+
+===============================================================================
+
+go tool cover -html coverage.out -o coverage.html
+
+real	0m0.105s
+user	0m0.054s
+sys	0m0.111s
 
 ===============================================================================
 
@@ -72,78 +80,81 @@ go test -v -race -covermode=atomic chessboard
 --- PASS: ExampleCountOccupied (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	chessboard	0.038s	coverage: 100.0% of statements
+ok  	chessboard	0.071s	coverage: 100.0% of statements
 
-real	0m0.750s
-user	0m0.874s
-sys	0m0.456s
+real	0m1.588s
+user	0m2.138s
+sys	0m0.701s
 
 ===============================================================================
 
-go test --bench . --benchmem
+go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 PASS
-ok  	chessboard	0.015s
+ok  	chessboard	0.041s
 
-real	0m0.682s
-user	0m0.768s
-sys	0m0.539s
+real	0m0.933s
+user	0m1.219s
+sys	0m0.706s
 
 ===============================================================================
 
 go test -tags bonus
 PASS
-ok  	chessboard	0.014s
+ok  	chessboard	0.010s
 
-real	0m0.511s
-user	0m0.565s
-sys	0m0.426s
+real	0m0.794s
+user	0m1.054s
+sys	0m0.651s
+
+===============================================================================
+
+No old benchmarks to run benchstat against.
 
 ===============================================================================
 
 go vet chessboard
 
-real	0m0.427s
-user	0m0.548s
-sys	0m0.361s
+real	0m0.524s
+user	0m0.717s
+sys	0m0.536s
 
 ===============================================================================
 
 go fix chessboard
 
-real	0m0.047s
-user	0m0.028s
-sys	0m0.029s
+real	0m0.057s
+user	0m0.044s
+sys	0m0.039s
 
 ===============================================================================
 
 gosec ./chessboard
-[gosec] 2022/06/20 23:52:41 Including rules: default
-[gosec] 2022/06/20 23:52:41 Excluding rules: default
-[gosec] 2022/06/20 23:52:41 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/chessboard
-[gosec] 2022/06/20 23:52:41 Checking package: chessboard
-[gosec] 2022/06/20 23:52:41 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/chessboard/chessboard.go
+[gosec] 2022/07/28 07:57:01 Including rules: default
+[gosec] 2022/07/28 07:57:01 Excluding rules: default
+[gosec] 2022/07/28 07:57:01 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/chessboard
+[gosec] 2022/07/28 07:57:01 Checking package: chessboard
+[gosec] 2022/07/28 07:57:01 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/chessboard/chessboard.go
 Results:
 
 
-[1;36mSummary:[0m
-  Gosec  : dev
-  Files  : 1
-  Lines  : 63
-  Nosec  : 0
-  Issues : [1;32m0[0m
+Summary:
+   Files: 1
+   Lines: 63
+   Nosec: 0
+  Issues: 0
 
 
-real	0m0.273s
-user	0m0.304s
-sys	0m0.230s
+real	0m0.357s
+user	0m0.411s
+sys	0m0.208s
 
 ===============================================================================
 
 gomarkdoc --output chessboard-doc.md
 
 real	0m0.039s
-user	0m0.026s
-sys	0m0.022s
+user	0m0.025s
+sys	0m0.019s
 
 ===============================================================================
 
@@ -178,9 +189,9 @@ type Rank []bool
     bools
 
 
-real	0m0.155s
-user	0m0.052s
-sys	0m0.124s
+real	0m0.156s
+user	0m0.070s
+sys	0m0.138s
 
 
 ===============================================================================
