@@ -7,9 +7,9 @@ Go packages: electionday
 
 golint electionday
 
-real	0m0.160s
-user	0m0.159s
-sys	0m0.138s
+real	0m0.293s
+user	0m0.257s
+sys	0m0.272s
 
 ===============================================================================
 
@@ -25,9 +25,13 @@ go test -v -covermode=count -coverprofile coverage.out electionday
     --- PASS: TestVoteCount/Call_to_VoteCount_with_a_nil_argument (0.00s)
     --- PASS: TestVoteCount/Call_to_VoteCount_with_a_pointer_to_an_int_with_a_value_of_2 (0.00s)
 === RUN   TestIncrementVoteCount
+=== RUN   TestIncrementVoteCount/Call_to_IncrementVoteCount_with_a_pointer_to_an_int_with_a_value_of_0_and_increment_of_1
 === RUN   TestIncrementVoteCount/Call_to_IncrementVoteCount_with_a_pointer_to_an_int_with_a_value_of_2_and_increment_of_2
+=== RUN   TestIncrementVoteCount/Call_to_IncrementVoteCount_with_a_pointer_to_an_int_with_a_value_of_5_and_increment_of_7
 --- PASS: TestIncrementVoteCount (0.00s)
+    --- PASS: TestIncrementVoteCount/Call_to_IncrementVoteCount_with_a_pointer_to_an_int_with_a_value_of_0_and_increment_of_1 (0.00s)
     --- PASS: TestIncrementVoteCount/Call_to_IncrementVoteCount_with_a_pointer_to_an_int_with_a_value_of_2_and_increment_of_2 (0.00s)
+    --- PASS: TestIncrementVoteCount/Call_to_IncrementVoteCount_with_a_pointer_to_an_int_with_a_value_of_5_and_increment_of_7 (0.00s)
 === RUN   TestNewElectionResult
 === RUN   TestNewElectionResult/Call_to_NewElectionResult_for_Peter_with_2_votes
 --- PASS: TestNewElectionResult (0.00s)
@@ -54,11 +58,11 @@ go test -v -covermode=count -coverprofile coverage.out electionday
 --- PASS: ExampleDecrementVotesOfCandidate (0.00s)
 PASS
 coverage: 94.7% of statements
-ok  	electionday	0.010s	coverage: 94.7% of statements
+ok  	electionday	0.017s	coverage: 94.7% of statements
 
-real	0m0.642s
-user	0m0.732s
-sys	0m0.479s
+real	0m2.018s
+user	0m2.235s
+sys	0m1.467s
 
 ===============================================================================
 
@@ -71,9 +75,17 @@ electionday/election_day.go:50:	DisplayResult			100.0%
 electionday/election_day.go:59:	DecrementVotesOfCandidate	100.0%
 total:				(statements)			94.7%
 
-real	0m0.272s
-user	0m0.253s
-sys	0m0.264s
+real	0m0.445s
+user	0m0.370s
+sys	0m0.428s
+
+===============================================================================
+
+go tool cover -html coverage.out -o coverage.html
+
+real	0m0.468s
+user	0m0.482s
+sys	0m0.418s
 
 ===============================================================================
 
@@ -89,9 +101,13 @@ go test -v -race -covermode=atomic electionday
     --- PASS: TestVoteCount/Call_to_VoteCount_with_a_nil_argument (0.00s)
     --- PASS: TestVoteCount/Call_to_VoteCount_with_a_pointer_to_an_int_with_a_value_of_2 (0.00s)
 === RUN   TestIncrementVoteCount
+=== RUN   TestIncrementVoteCount/Call_to_IncrementVoteCount_with_a_pointer_to_an_int_with_a_value_of_0_and_increment_of_1
 === RUN   TestIncrementVoteCount/Call_to_IncrementVoteCount_with_a_pointer_to_an_int_with_a_value_of_2_and_increment_of_2
+=== RUN   TestIncrementVoteCount/Call_to_IncrementVoteCount_with_a_pointer_to_an_int_with_a_value_of_5_and_increment_of_7
 --- PASS: TestIncrementVoteCount (0.00s)
+    --- PASS: TestIncrementVoteCount/Call_to_IncrementVoteCount_with_a_pointer_to_an_int_with_a_value_of_0_and_increment_of_1 (0.00s)
     --- PASS: TestIncrementVoteCount/Call_to_IncrementVoteCount_with_a_pointer_to_an_int_with_a_value_of_2_and_increment_of_2 (0.00s)
+    --- PASS: TestIncrementVoteCount/Call_to_IncrementVoteCount_with_a_pointer_to_an_int_with_a_value_of_5_and_increment_of_7 (0.00s)
 === RUN   TestNewElectionResult
 === RUN   TestNewElectionResult/Call_to_NewElectionResult_for_Peter_with_2_votes
 --- PASS: TestNewElectionResult (0.00s)
@@ -118,67 +134,71 @@ go test -v -race -covermode=atomic electionday
 --- PASS: ExampleDecrementVotesOfCandidate (0.00s)
 PASS
 coverage: 94.7% of statements
-ok  	electionday	0.039s	coverage: 94.7% of statements
+ok  	electionday	0.080s	coverage: 94.7% of statements
 
-real	0m0.699s
-user	0m0.736s
-sys	0m0.392s
+real	0m1.739s
+user	0m1.511s
+sys	0m0.975s
 
 ===============================================================================
 
-go test --bench . --benchmem
+go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 PASS
-ok  	electionday	0.017s
+ok  	electionday	0.028s
 
-real	0m0.581s
-user	0m0.752s
-sys	0m0.388s
+real	0m1.098s
+user	0m1.389s
+sys	0m0.947s
 
 ===============================================================================
 
 go test -tags bonus
 PASS
-ok  	electionday	0.014s
+ok  	electionday	0.019s
 
-real	0m0.527s
-user	0m0.631s
-sys	0m0.434s
+real	0m0.882s
+user	0m1.016s
+sys	0m0.592s
+
+===============================================================================
+
+No old benchmarks to run benchstat against.
 
 ===============================================================================
 
 go vet electionday
 
-real	0m0.432s
-user	0m0.453s
-sys	0m0.448s
+real	0m0.736s
+user	0m0.867s
+sys	0m0.670s
 
 ===============================================================================
 
 go fix electionday
 
-real	0m0.227s
-user	0m0.185s
-sys	0m0.222s
+real	0m0.264s
+user	0m0.306s
+sys	0m0.246s
 
 ===============================================================================
 
 gosec ./election-day
-[gosec] 2022/06/21 19:44:42 Including rules: default
-[gosec] 2022/06/21 19:44:42 Excluding rules: default
-[gosec] 2022/06/21 19:44:42 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/election-day
-2022/06/21 19:44:42 internal error: package "fmt" without types was imported from "command-line-arguments"
+[gosec] 2022/07/28 07:52:51 Including rules: default
+[gosec] 2022/07/28 07:52:51 Excluding rules: default
+[gosec] 2022/07/28 07:52:51 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/election-day
+2022/07/28 07:52:52 internal error: package "fmt" without types was imported from "command-line-arguments"
 
-real	0m0.427s
-user	0m0.484s
-sys	0m0.353s
+real	0m0.818s
+user	0m1.030s
+sys	0m0.601s
 
 ===============================================================================
 
 gomarkdoc --output electionday-doc.md
 
-real	0m0.032s
-user	0m0.021s
-sys	0m0.016s
+real	0m0.101s
+user	0m0.059s
+sys	0m0.041s
 
 ===============================================================================
 
@@ -209,20 +229,20 @@ func VoteCount(counter *int) int
 TYPES
 
 type ElectionResult struct {
-	// Name of the candidate
+	// Name is the name of the candidate.
 	Name string
-	// Number of votes the candidate had
+	// Number is the total number of votes the candidate had.
 	Votes int
 }
-    ElectionResult represents an election result
+    ElectionResult represents an election result.
 
 func NewElectionResult(candidateName string, votes int) *ElectionResult
     NewElectionResult creates a new election result
 
 
-real	0m0.246s
-user	0m0.161s
-sys	0m0.239s
+real	0m0.440s
+user	0m0.437s
+sys	0m0.399s
 
 
 ===============================================================================

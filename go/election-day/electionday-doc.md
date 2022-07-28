@@ -196,13 +196,13 @@ VoteCount extracts the number of votes from a counter\.
 
 ## type [ElectionResult](<https://github.com/vpayno/exercism-workspace/blob/main/go/election-day/election_result.go#L4-L9>)
 
-ElectionResult represents an election result
+ElectionResult represents an election result\.
 
 ```go
 type ElectionResult struct {
-    // Name of the candidate
+    // Name is the name of the candidate.
     Name string
-    // Number of votes the candidate had
+    // Number is the total number of votes the candidate had.
     Votes int
 }
 ```

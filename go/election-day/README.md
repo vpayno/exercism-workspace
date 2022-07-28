@@ -202,11 +202,11 @@ var voteCounter *int
 voteCounter = &votes
 
 VoteCount(voteCounter)
-// Output: 3
+// => 3
 
 var nilVoteCounter *int
 VoteCount(nilVoteCounter)
-// Output: 0
+// => 0
 ```
 
 ## 3. Increment the votes of a counter
@@ -273,7 +273,7 @@ result = &ElectionResult{
 }
 
 DisplayResult(result)
-// Output: John (32)
+// => John (32)
 ```
 
 ## 6. Vote recounting
@@ -291,7 +291,7 @@ var finalResults = map[string]int{
 DecrementVotesOfCandidate(finalResults, "Mary")
 
 finalResults["Mary"]
-// Output: 9
+// => 9
 ```
 
 ## Source
@@ -302,8 +302,10 @@ finalResults["Mary"]
 
 ### My Solution
 
-- [my solution](./election_day.go)
-- [my examples](election_day_examples_test.go)
-- [tests](election_day_test.go)
+- [my solution](./election_day.go
+election_result.go)
+- [my examples](./election_day_examples_test.go)
+- [tests](./election_day_test.go)
 - [run-tests](./run-tests-go.txt)
+- [coverage](./coverage.html)
 - [documentation](./electionday-doc.md)
