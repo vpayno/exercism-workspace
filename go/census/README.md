@@ -86,12 +86,12 @@ address := map[string]string{"street": "Main St."}
 resident := NewResident(name, age, address)
 
 fmt.Println(resident)
-// => &{Matthew Sanabria 29 map[street:Main St.]}
+// Output: &{Matthew Sanabria 29 map[street:Main St.]}
 
 resident.Delete()
 
 fmt.Println(resident)
-// => &{ 0 map[]}
+// Output: &{ 0 map[]}
 ```
 
 ## 4. Count the residents
@@ -133,6 +133,7 @@ Count(residents)
 ### Contributed to by
 
 - @tehsphinx
+- @eklatzer
 
 ### My Solution
 
@@ -140,4 +141,5 @@ Count(residents)
 - [my examples](./census_examples_test.go)
 - [tests](./census_test.go)
 - [run-tests](./run-tests-go.txt)
+- [coverage](./coverage.html)
 - [documentation](./census-doc.md)
