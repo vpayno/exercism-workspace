@@ -7,36 +7,57 @@ Go packages: allyourbase
 
 golint allyourbase
 
-real	0m0.271s
-user	0m0.395s
-sys	0m0.245s
+real	0m0.568s
+user	0m0.669s
+sys	0m0.445s
 
 ===============================================================================
 
 go test -v -covermode=count -coverprofile coverage.out allyourbase
 === RUN   TestConvertToBase
-    all_your_base_test.go:25: PASS: single bit one to decimal
-    all_your_base_test.go:25: PASS: binary to single decimal
-    all_your_base_test.go:25: PASS: single decimal to binary
-    all_your_base_test.go:25: PASS: binary to multiple decimal
-    all_your_base_test.go:25: PASS: decimal to binary
-    all_your_base_test.go:25: PASS: trinary to hexadecimal
-    all_your_base_test.go:25: PASS: hexadecimal to trinary
-    all_your_base_test.go:25: PASS: 15-bit integer
-    all_your_base_test.go:25: PASS: empty list
-    all_your_base_test.go:25: PASS: single zero
-    all_your_base_test.go:25: PASS: multiple zeros
-    all_your_base_test.go:25: PASS: leading zeros
-    all_your_base_test.go:25: PASS: input base is one
-    all_your_base_test.go:25: PASS: input base is zero
-    all_your_base_test.go:25: PASS: input base is negative
-    all_your_base_test.go:25: PASS: negative digit
-    all_your_base_test.go:25: PASS: invalid positive digit
-    all_your_base_test.go:25: PASS: output base is one
-    all_your_base_test.go:25: PASS: output base is zero
-    all_your_base_test.go:25: PASS: output base is negative
-    all_your_base_test.go:25: PASS: both bases are negative
+=== RUN   TestConvertToBase/single_bit_one_to_decimal
+=== RUN   TestConvertToBase/binary_to_single_decimal
+=== RUN   TestConvertToBase/single_decimal_to_binary
+=== RUN   TestConvertToBase/binary_to_multiple_decimal
+=== RUN   TestConvertToBase/decimal_to_binary
+=== RUN   TestConvertToBase/trinary_to_hexadecimal
+=== RUN   TestConvertToBase/hexadecimal_to_trinary
+=== RUN   TestConvertToBase/15-bit_integer
+=== RUN   TestConvertToBase/empty_list
+=== RUN   TestConvertToBase/single_zero
+=== RUN   TestConvertToBase/multiple_zeros
+=== RUN   TestConvertToBase/leading_zeros
+=== RUN   TestConvertToBase/input_base_is_one
+=== RUN   TestConvertToBase/input_base_is_zero
+=== RUN   TestConvertToBase/input_base_is_negative
+=== RUN   TestConvertToBase/negative_digit
+=== RUN   TestConvertToBase/invalid_positive_digit
+=== RUN   TestConvertToBase/output_base_is_one
+=== RUN   TestConvertToBase/output_base_is_zero
+=== RUN   TestConvertToBase/output_base_is_negative
+=== RUN   TestConvertToBase/both_bases_are_negative
 --- PASS: TestConvertToBase (0.00s)
+    --- PASS: TestConvertToBase/single_bit_one_to_decimal (0.00s)
+    --- PASS: TestConvertToBase/binary_to_single_decimal (0.00s)
+    --- PASS: TestConvertToBase/single_decimal_to_binary (0.00s)
+    --- PASS: TestConvertToBase/binary_to_multiple_decimal (0.00s)
+    --- PASS: TestConvertToBase/decimal_to_binary (0.00s)
+    --- PASS: TestConvertToBase/trinary_to_hexadecimal (0.00s)
+    --- PASS: TestConvertToBase/hexadecimal_to_trinary (0.00s)
+    --- PASS: TestConvertToBase/15-bit_integer (0.00s)
+    --- PASS: TestConvertToBase/empty_list (0.00s)
+    --- PASS: TestConvertToBase/single_zero (0.00s)
+    --- PASS: TestConvertToBase/multiple_zeros (0.00s)
+    --- PASS: TestConvertToBase/leading_zeros (0.00s)
+    --- PASS: TestConvertToBase/input_base_is_one (0.00s)
+    --- PASS: TestConvertToBase/input_base_is_zero (0.00s)
+    --- PASS: TestConvertToBase/input_base_is_negative (0.00s)
+    --- PASS: TestConvertToBase/negative_digit (0.00s)
+    --- PASS: TestConvertToBase/invalid_positive_digit (0.00s)
+    --- PASS: TestConvertToBase/output_base_is_one (0.00s)
+    --- PASS: TestConvertToBase/output_base_is_zero (0.00s)
+    --- PASS: TestConvertToBase/output_base_is_negative (0.00s)
+    --- PASS: TestConvertToBase/both_bases_are_negative (0.00s)
 === RUN   ExampleConvertToBase
 --- PASS: ExampleConvertToBase (0.00s)
 === RUN   ExampleConvertToBase10
@@ -47,11 +68,11 @@ go test -v -covermode=count -coverprofile coverage.out allyourbase
 --- PASS: ExampleConvertStrToIntList (0.00s)
 PASS
 coverage: 97.0% of statements
-ok  	allyourbase	0.011s	coverage: 97.0% of statements
+ok  	allyourbase	0.007s	coverage: 97.0% of statements
 
-real	0m0.648s
-user	0m0.838s
-sys	0m0.475s
+real	0m1.209s
+user	0m1.536s
+sys	0m0.781s
 
 ===============================================================================
 
@@ -65,44 +86,65 @@ allyourbase/all_your_base.go:125:	ConvertToBase10		100.0%
 allyourbase/all_your_base.go:147:	ConvertFromBase10	100.0%
 total:					(statements)		97.0%
 
-real	0m0.253s
-user	0m0.247s
-sys	0m0.257s
+real	0m0.489s
+user	0m0.586s
+sys	0m0.393s
 
 ===============================================================================
 
 go tool cover -html coverage.out -o coverage.html
 
-real	0m0.240s
-user	0m0.236s
-sys	0m0.283s
+real	0m0.415s
+user	0m0.537s
+sys	0m0.353s
 
 ===============================================================================
 
 go test -v -race -covermode=atomic allyourbase
 === RUN   TestConvertToBase
-    all_your_base_test.go:25: PASS: single bit one to decimal
-    all_your_base_test.go:25: PASS: binary to single decimal
-    all_your_base_test.go:25: PASS: single decimal to binary
-    all_your_base_test.go:25: PASS: binary to multiple decimal
-    all_your_base_test.go:25: PASS: decimal to binary
-    all_your_base_test.go:25: PASS: trinary to hexadecimal
-    all_your_base_test.go:25: PASS: hexadecimal to trinary
-    all_your_base_test.go:25: PASS: 15-bit integer
-    all_your_base_test.go:25: PASS: empty list
-    all_your_base_test.go:25: PASS: single zero
-    all_your_base_test.go:25: PASS: multiple zeros
-    all_your_base_test.go:25: PASS: leading zeros
-    all_your_base_test.go:25: PASS: input base is one
-    all_your_base_test.go:25: PASS: input base is zero
-    all_your_base_test.go:25: PASS: input base is negative
-    all_your_base_test.go:25: PASS: negative digit
-    all_your_base_test.go:25: PASS: invalid positive digit
-    all_your_base_test.go:25: PASS: output base is one
-    all_your_base_test.go:25: PASS: output base is zero
-    all_your_base_test.go:25: PASS: output base is negative
-    all_your_base_test.go:25: PASS: both bases are negative
+=== RUN   TestConvertToBase/single_bit_one_to_decimal
+=== RUN   TestConvertToBase/binary_to_single_decimal
+=== RUN   TestConvertToBase/single_decimal_to_binary
+=== RUN   TestConvertToBase/binary_to_multiple_decimal
+=== RUN   TestConvertToBase/decimal_to_binary
+=== RUN   TestConvertToBase/trinary_to_hexadecimal
+=== RUN   TestConvertToBase/hexadecimal_to_trinary
+=== RUN   TestConvertToBase/15-bit_integer
+=== RUN   TestConvertToBase/empty_list
+=== RUN   TestConvertToBase/single_zero
+=== RUN   TestConvertToBase/multiple_zeros
+=== RUN   TestConvertToBase/leading_zeros
+=== RUN   TestConvertToBase/input_base_is_one
+=== RUN   TestConvertToBase/input_base_is_zero
+=== RUN   TestConvertToBase/input_base_is_negative
+=== RUN   TestConvertToBase/negative_digit
+=== RUN   TestConvertToBase/invalid_positive_digit
+=== RUN   TestConvertToBase/output_base_is_one
+=== RUN   TestConvertToBase/output_base_is_zero
+=== RUN   TestConvertToBase/output_base_is_negative
+=== RUN   TestConvertToBase/both_bases_are_negative
 --- PASS: TestConvertToBase (0.01s)
+    --- PASS: TestConvertToBase/single_bit_one_to_decimal (0.00s)
+    --- PASS: TestConvertToBase/binary_to_single_decimal (0.00s)
+    --- PASS: TestConvertToBase/single_decimal_to_binary (0.00s)
+    --- PASS: TestConvertToBase/binary_to_multiple_decimal (0.00s)
+    --- PASS: TestConvertToBase/decimal_to_binary (0.00s)
+    --- PASS: TestConvertToBase/trinary_to_hexadecimal (0.00s)
+    --- PASS: TestConvertToBase/hexadecimal_to_trinary (0.00s)
+    --- PASS: TestConvertToBase/15-bit_integer (0.00s)
+    --- PASS: TestConvertToBase/empty_list (0.00s)
+    --- PASS: TestConvertToBase/single_zero (0.00s)
+    --- PASS: TestConvertToBase/multiple_zeros (0.00s)
+    --- PASS: TestConvertToBase/leading_zeros (0.00s)
+    --- PASS: TestConvertToBase/input_base_is_one (0.00s)
+    --- PASS: TestConvertToBase/input_base_is_zero (0.00s)
+    --- PASS: TestConvertToBase/input_base_is_negative (0.00s)
+    --- PASS: TestConvertToBase/negative_digit (0.00s)
+    --- PASS: TestConvertToBase/invalid_positive_digit (0.00s)
+    --- PASS: TestConvertToBase/output_base_is_one (0.00s)
+    --- PASS: TestConvertToBase/output_base_is_zero (0.00s)
+    --- PASS: TestConvertToBase/output_base_is_negative (0.00s)
+    --- PASS: TestConvertToBase/both_bases_are_negative (0.00s)
 === RUN   ExampleConvertToBase
 --- PASS: ExampleConvertToBase (0.00s)
 === RUN   ExampleConvertToBase10
@@ -113,71 +155,84 @@ go test -v -race -covermode=atomic allyourbase
 --- PASS: ExampleConvertStrToIntList (0.00s)
 PASS
 coverage: 97.0% of statements
-ok  	allyourbase	0.065s	coverage: 97.0% of statements
+ok  	allyourbase	0.056s	coverage: 97.0% of statements
 
-real	0m1.068s
-user	0m0.895s
-sys	0m0.662s
+real	0m1.478s
+user	0m1.837s
+sys	0m0.748s
 
 ===============================================================================
 
+mv -v benchstat-new.txt benchstat-old.txt
+renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
+
 go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 PASS
-ok  	allyourbase	0.028s
+ok  	allyourbase	0.019s
 
-real	0m0.566s
-user	0m0.734s
-sys	0m0.412s
+real	0m1.079s
+user	0m1.496s
+sys	0m0.748s
 
 ===============================================================================
 
 go test -tags bonus
 PASS
-ok  	allyourbase	0.005s
+ok  	allyourbase	0.008s
 
-real	0m0.572s
-user	0m0.674s
-sys	0m0.450s
+real	0m0.956s
+user	0m1.235s
+sys	0m0.688s
 
 ===============================================================================
 
-No old benchmarks to run benchstat against.
+go install golang.org/x/perf/cmd/benchstat@latest
+
+real	0m1.212s
+user	0m1.382s
+sys	0m0.537s
+
+benchstat benchstat-old.txt benchstat-new.txt
+
+real	0m0.043s
+user	0m0.041s
+sys	0m0.027s
 
 ===============================================================================
 
 go vet allyourbase
 
-real	0m0.387s
-user	0m0.494s
-sys	0m0.354s
+real	0m0.603s
+user	0m0.833s
+sys	0m0.452s
 
 ===============================================================================
 
 go fix allyourbase
 
-real	0m0.215s
-user	0m0.221s
-sys	0m0.231s
+real	0m0.301s
+user	0m0.410s
+sys	0m0.301s
 
 ===============================================================================
 
 gosec ./all-your-base
-[gosec] 2022/07/02 20:16:56 Including rules: default
-[gosec] 2022/07/02 20:16:56 Excluding rules: default
-[gosec] 2022/07/02 20:16:56 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/all-your-base
-2022/07/02 20:16:57 internal error: package "errors" without types was imported from "command-line-arguments"
+[gosec] 2022/07/30 13:57:02 Including rules: default
+[gosec] 2022/07/30 13:57:02 Excluding rules: default
+[gosec] 2022/07/30 13:57:02 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/all-your-base
+2022/07/30 13:57:02 internal error: package "errors" without types was imported from "command-line-arguments"
 
-real	0m0.534s
-user	0m0.619s
-sys	0m0.404s
+real	0m0.864s
+user	0m1.181s
+sys	0m0.511s
 
 ===============================================================================
 
 gomarkdoc --output allyourbase-doc.md
 
-real	0m0.029s
-user	0m0.021s
-sys	0m0.014s
+real	0m0.043s
+user	0m0.034s
+sys	0m0.022s
 
 ===============================================================================
 
@@ -206,9 +261,9 @@ func ConvertToBase10(inputBase int, inputDigits []int) int
     ConvertToBase10 returns a base 10 number.
 
 
-real	0m0.277s
-user	0m0.219s
-sys	0m0.251s
+real	0m0.385s
+user	0m0.439s
+sys	0m0.349s
 
 
 ===============================================================================
