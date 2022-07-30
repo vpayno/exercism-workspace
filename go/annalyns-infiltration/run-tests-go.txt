@@ -7,9 +7,9 @@ Go packages: annalyn
 
 golint annalyn
 
-real	0m0.103s
-user	0m0.066s
-sys	0m0.087s
+real	0m0.277s
+user	0m0.129s
+sys	0m0.183s
 
 ===============================================================================
 
@@ -65,6 +65,8 @@ go test -v -covermode=count -coverprofile coverage.out annalyn
 === RUN   TestCanFreePrisoner/Knight_and_archer_are_awake._Prisoner_is_sleeping._Dog_is_present
 === RUN   TestCanFreePrisoner/Knight_and_archer_are_awake._Prisoner_is_awake._Dog_is_not_present
 === RUN   TestCanFreePrisoner/Knight_and_archer_are_awake._Prisoner_is_awake._Dog_is_present
+=== RUN   TestCanFreePrisoner/Knight_and_archer_are_awake._Prisoner_is_sleeping._Dog_is_not_present#01
+=== RUN   TestCanFreePrisoner/Everyone_is_sleeping._Dog_is_not_present
 --- PASS: TestCanFreePrisoner (0.00s)
     --- PASS: TestCanFreePrisoner/All_characters_are_sleeping._Dog_is_not_present. (0.00s)
     --- PASS: TestCanFreePrisoner/All_characters_are_sleeping._Dog_is_present. (0.00s)
@@ -82,6 +84,8 @@ go test -v -covermode=count -coverprofile coverage.out annalyn
     --- PASS: TestCanFreePrisoner/Knight_and_archer_are_awake._Prisoner_is_sleeping._Dog_is_present (0.00s)
     --- PASS: TestCanFreePrisoner/Knight_and_archer_are_awake._Prisoner_is_awake._Dog_is_not_present (0.00s)
     --- PASS: TestCanFreePrisoner/Knight_and_archer_are_awake._Prisoner_is_awake._Dog_is_present (0.00s)
+    --- PASS: TestCanFreePrisoner/Knight_and_archer_are_awake._Prisoner_is_sleeping._Dog_is_not_present#01 (0.00s)
+    --- PASS: TestCanFreePrisoner/Everyone_is_sleeping._Dog_is_not_present (0.00s)
 === RUN   ExampleCanFastAttack
 --- PASS: ExampleCanFastAttack (0.00s)
 === RUN   ExampleCanSpy
@@ -92,11 +96,11 @@ go test -v -covermode=count -coverprofile coverage.out annalyn
 --- PASS: ExampleCanFreePrisoner (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	annalyn	0.019s	coverage: 100.0% of statements
+ok  	annalyn	0.027s	coverage: 100.0% of statements
 
-real	0m0.700s
-user	0m0.801s
-sys	0m0.446s
+real	0m1.685s
+user	0m2.116s
+sys	0m1.111s
 
 ===============================================================================
 
@@ -107,9 +111,17 @@ annalyn/annalyns_infiltration.go:14:	CanSignalPrisoner	100.0%
 annalyn/annalyns_infiltration.go:20:	CanFreePrisoner		100.0%
 total:					(statements)		100.0%
 
-real	0m0.069s
-user	0m0.032s
-sys	0m0.073s
+real	0m0.187s
+user	0m0.113s
+sys	0m0.169s
+
+===============================================================================
+
+go tool cover -html coverage.out -o coverage.html
+
+real	0m0.166s
+user	0m0.085s
+sys	0m0.152s
 
 ===============================================================================
 
@@ -143,7 +155,7 @@ go test -v -race -covermode=atomic annalyn
 === RUN   TestCanSignalPrisoner/Archer_is_sleeping,_prisoner_is_awake
 === RUN   TestCanSignalPrisoner/Archer_is_awake,_prisoner_is_sleeping
 === RUN   TestCanSignalPrisoner/All_characters_are_awake
---- PASS: TestCanSignalPrisoner (0.01s)
+--- PASS: TestCanSignalPrisoner (0.00s)
     --- PASS: TestCanSignalPrisoner/All_characters_are_sleeping (0.00s)
     --- PASS: TestCanSignalPrisoner/Archer_is_sleeping,_prisoner_is_awake (0.00s)
     --- PASS: TestCanSignalPrisoner/Archer_is_awake,_prisoner_is_sleeping (0.00s)
@@ -165,7 +177,9 @@ go test -v -race -covermode=atomic annalyn
 === RUN   TestCanFreePrisoner/Knight_and_archer_are_awake._Prisoner_is_sleeping._Dog_is_present
 === RUN   TestCanFreePrisoner/Knight_and_archer_are_awake._Prisoner_is_awake._Dog_is_not_present
 === RUN   TestCanFreePrisoner/Knight_and_archer_are_awake._Prisoner_is_awake._Dog_is_present
---- PASS: TestCanFreePrisoner (0.01s)
+=== RUN   TestCanFreePrisoner/Knight_and_archer_are_awake._Prisoner_is_sleeping._Dog_is_not_present#01
+=== RUN   TestCanFreePrisoner/Everyone_is_sleeping._Dog_is_not_present
+--- PASS: TestCanFreePrisoner (0.02s)
     --- PASS: TestCanFreePrisoner/All_characters_are_sleeping._Dog_is_not_present. (0.00s)
     --- PASS: TestCanFreePrisoner/All_characters_are_sleeping._Dog_is_present. (0.00s)
     --- PASS: TestCanFreePrisoner/Knight_and_archer_are_sleeping._Prisoner_is_awake._Dog_is_not_present. (0.00s)
@@ -182,6 +196,8 @@ go test -v -race -covermode=atomic annalyn
     --- PASS: TestCanFreePrisoner/Knight_and_archer_are_awake._Prisoner_is_sleeping._Dog_is_present (0.00s)
     --- PASS: TestCanFreePrisoner/Knight_and_archer_are_awake._Prisoner_is_awake._Dog_is_not_present (0.00s)
     --- PASS: TestCanFreePrisoner/Knight_and_archer_are_awake._Prisoner_is_awake._Dog_is_present (0.00s)
+    --- PASS: TestCanFreePrisoner/Knight_and_archer_are_awake._Prisoner_is_sleeping._Dog_is_not_present#01 (0.00s)
+    --- PASS: TestCanFreePrisoner/Everyone_is_sleeping._Dog_is_not_present (0.00s)
 === RUN   ExampleCanFastAttack
 --- PASS: ExampleCanFastAttack (0.00s)
 === RUN   ExampleCanSpy
@@ -192,78 +208,81 @@ go test -v -race -covermode=atomic annalyn
 --- PASS: ExampleCanFreePrisoner (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	annalyn	0.057s	coverage: 100.0% of statements
+ok  	annalyn	0.096s	coverage: 100.0% of statements
 
-real	0m0.704s
-user	0m0.851s
-sys	0m0.461s
+real	0m2.045s
+user	0m2.152s
+sys	0m1.073s
 
 ===============================================================================
 
-go test --bench . --benchmem
+go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 PASS
-ok  	annalyn	0.013s
+ok  	annalyn	0.064s
 
-real	0m0.653s
-user	0m0.764s
-sys	0m0.464s
+real	0m1.051s
+user	0m1.191s
+sys	0m0.715s
 
 ===============================================================================
 
 go test -tags bonus
 PASS
-ok  	annalyn	0.007s
+ok  	annalyn	0.006s
 
-real	0m0.562s
-user	0m0.651s
-sys	0m0.423s
+real	0m1.103s
+user	0m1.449s
+sys	0m0.807s
+
+===============================================================================
+
+No old benchmarks to run benchstat against.
 
 ===============================================================================
 
 go vet annalyn
 
-real	0m0.376s
-user	0m0.443s
-sys	0m0.417s
+real	0m0.683s
+user	0m0.895s
+sys	0m0.614s
 
 ===============================================================================
 
 go fix annalyn
 
-real	0m0.076s
-user	0m0.034s
-sys	0m0.067s
+real	0m0.089s
+user	0m0.039s
+sys	0m0.068s
 
 ===============================================================================
 
 gosec ./annalyns-infiltration
-[gosec] 2022/06/20 22:19:03 Including rules: default
-[gosec] 2022/06/20 22:19:03 Excluding rules: default
-[gosec] 2022/06/20 22:19:03 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/annalyns-infiltration
-[gosec] 2022/06/20 22:19:03 Checking package: annalyn
-[gosec] 2022/06/20 22:19:03 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/annalyns-infiltration/annalyns_infiltration.go
+[gosec] 2022/07/30 13:53:49 Including rules: default
+[gosec] 2022/07/30 13:53:49 Excluding rules: default
+[gosec] 2022/07/30 13:53:49 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/annalyns-infiltration
+[gosec] 2022/07/30 13:53:49 Checking package: annalyn
+[gosec] 2022/07/30 13:53:49 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/annalyns-infiltration/annalyns_infiltration.go
 Results:
 
 
-[1;36mSummary:[0m
-  Gosec  : dev
-  Files  : 1
-  Lines  : 30
-  Nosec  : 0
-  Issues : [1;32m0[0m
+Summary:
+   Files: 1
+   Lines: 30
+   Nosec: 0
+  Issues: 0
 
 
-real	0m0.307s
-user	0m0.276s
-sys	0m0.320s
+real	0m0.537s
+user	0m0.722s
+sys	0m0.314s
 
 ===============================================================================
 
 gomarkdoc --output annalyn-doc.md
 
-real	0m0.027s
-user	0m0.017s
-sys	0m0.011s
+real	0m0.119s
+user	0m0.129s
+sys	0m0.074s
 
 ===============================================================================
 
@@ -289,9 +308,9 @@ func CanSpy(knightIsAwake, archerIsAwake, prisonerIsAwake bool) bool
     CanSpy can be executed if at least one of the characters is awake
 
 
-real	0m0.126s
-user	0m0.056s
-sys	0m0.114s
+real	0m0.412s
+user	0m0.219s
+sys	0m0.443s
 
 
 ===============================================================================
