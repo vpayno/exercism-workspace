@@ -103,6 +103,15 @@ main()
 
 	print_ruler
 
+	if ! which ineffassign >& /dev/null; then
+		time go install github.com/gordonklaus/ineffassign@latest
+		echo go install github.com/gordonklaus/ineffassign@latest
+	fi
+	echo ineffassign ./...
+	time ineffassign ./...
+
+	print_ruler
+
 	if ! which gocyclo >& /dev/null; then
 		time go install github.com/fzipp/gocyclo/cmd/gocyclo@latest
 		echo go install github.com/fzipp/gocyclo/cmd/gocyclo@latest
