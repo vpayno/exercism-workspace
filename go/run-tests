@@ -103,6 +103,15 @@ main()
 
 	print_ruler
 
+	if ! which gocyclo >& /dev/null; then
+		time go install github.com/fzipp/gocyclo/cmd/gocyclo@latest
+		echo go install github.com/fzipp/gocyclo/cmd/gocyclo@latest
+	fi
+	echo gocyclo .
+	time gocyclo .
+
+	print_ruler
+
 	if ! gosec -h >& /dev/null; then
 		echo go install github.com/securego/gosec/cmd/gosec@latest
 		time go install github.com/securego/gosec/cmd/gosec@latest
