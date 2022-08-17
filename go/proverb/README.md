@@ -39,3 +39,13 @@ Note that the list of inputs may vary; your solution should be able to handle li
 ### Based on
 
 Wikipedia - http://en.wikipedia.org/wiki/For_Want_of_a_Nail
+
+### My Solution
+
+- [my solution](./proverb.go)
+- [my examples](./proverb_examples_test.go)
+- [test cases](./cases_test.go)
+- [tests](./proverb_test.go)
+- [run-tests](./run-tests-go.txt)
+- [coverage](./coverage.html)
+- [documentation](./proverb-doc.md)
