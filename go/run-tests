@@ -121,6 +121,15 @@ main()
 
 	print_ruler
 
+	if ! which misspell >& /dev/null; then
+		time go install github.com/client9/misspell/cmd/misspell@latest
+		echo go install github.com/client9/misspell/cmd/misspell@latest
+	fi
+	echo misspell .
+	time misspell .
+
+	print_ruler
+
 	if ! which gosec >& /dev/null; then
 		echo go install github.com/securego/gosec/cmd/gosec@latest
 		time go install github.com/securego/gosec/cmd/gosec@latest
