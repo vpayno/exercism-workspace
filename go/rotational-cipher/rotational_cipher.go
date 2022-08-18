@@ -2,7 +2,7 @@
 package rotationalcipher
 
 import (
-	"bytes"
+	"strings"
 	"unicode"
 )
 
@@ -12,7 +12,7 @@ func RotationalCipher(plain string, shiftKey int) string {
 		return ""
 	}
 
-	var cipher bytes.Buffer
+	var cipher strings.Builder
 
 	for _, char := range plain {
 		if !unicode.IsLower(char) && !unicode.IsUpper(char) {
@@ -50,4 +50,16 @@ func shiftChar(char rune, shift int) rune {
 
 	name                old allocs/op  new allocs/op  delta
 	RotationalCipher-4      14.0 ± 0%      14.0 ± 0%   ~     (all equal)
+*/
+
+/*
+    === bytes.Buffer vs strings.Builder ===
+	name                old time/op    new time/op    delta
+	RotationalCipher-4    4.01µs ± 0%    3.61µs ± 0%   ~     (p=1.000 n=1+1)
+
+	name                old alloc/op   new alloc/op   delta
+	RotationalCipher-4      680B ± 0%      280B ± 0%   ~     (p=1.000 n=1+1)
+
+	name                old allocs/op  new allocs/op  delta
+	RotationalCipher-4      14.0 ± 0%      16.0 ± 0%   ~     (p=1.000 n=1+1)
 */
