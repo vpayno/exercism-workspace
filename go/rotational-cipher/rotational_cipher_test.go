@@ -11,6 +11,18 @@ var testCases = []struct {
 	expected      string
 }{
 	{
+		description:   "zero len input, rotate by 0",
+		inputPlain:    "",
+		inputShiftKey: 0,
+		expected:      "",
+	},
+	{
+		description:   "zero len input, rotate by 3",
+		inputPlain:    "",
+		inputShiftKey: 3,
+		expected:      "",
+	},
+	{
 		description:   "rotate a by 0, same output as input",
 		inputPlain:    "a",
 		inputShiftKey: 0,
@@ -70,7 +82,7 @@ func TestRotationalCipher(t *testing.T) {
 	for _, testCase := range testCases {
 		cipher := RotationalCipher(testCase.inputPlain, testCase.inputShiftKey)
 		if cipher != testCase.expected {
-			t.Fatalf("FAIL: %s\n\tRotationalCipher(%s, %d)\nexpected: %s, \ngot:      %s",
+			t.Errorf("FAIL: %s\n\tRotationalCipher(%s, %d)\nexpected: %s, \ngot:      %s",
 				testCase.description, testCase.inputPlain, testCase.inputShiftKey, testCase.expected, cipher)
 		}
 		t.Logf("PASS: %s", testCase.description)

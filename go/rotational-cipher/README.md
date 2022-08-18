@@ -53,3 +53,12 @@ Ciphertext is written out in the same formatting as the input including spaces a
 ### Based on
 
 Wikipedia - https://en.wikipedia.org/wiki/Caesar_cipher
+
+### My Solution
+
+- [my solution](./rotational_cipher.go)
+- [my examples](./rotational_cipher_examples_test.go)
+- [tests](./rotational_cipher_test.go)
+- [run-tests](./run-tests-go.txt)
+- [coverage](./coverage.html)
+- [documentation](./rotationalcipher-doc.md)
