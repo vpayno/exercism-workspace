@@ -89,3 +89,4 @@
 - [collatz-conjecture](./collatz-conjecture/README.md)
 - [meetup](./meetup/README.md)
 - [proverb](./proverb/README.md)
+- [rotational-cipher](./rotational-cipher/README.md)
