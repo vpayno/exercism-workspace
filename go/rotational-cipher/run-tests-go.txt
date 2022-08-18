@@ -7,9 +7,9 @@ Go packages: rotationalcipher
 
 golint rotationalcipher
 
-real	0m0.178s
-user	0m0.171s
-sys	0m0.134s
+real	0m0.128s
+user	0m0.081s
+sys	0m0.095s
 
 ===============================================================================
 
@@ -31,30 +31,30 @@ go test -v -covermode=count -coverprofile coverage.out rotationalcipher
 --- PASS: ExampleRotationalCipher (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	rotationalcipher	0.007s	coverage: 100.0% of statements
+ok  	rotationalcipher	0.014s	coverage: 100.0% of statements
 
-real	0m0.567s
-user	0m0.614s
-sys	0m0.360s
+real	0m0.539s
+user	0m0.583s
+sys	0m0.434s
 
 ===============================================================================
 
 go tool cover -func=coverage.out
-rotationalcipher/rotational_cipher.go:7:	RotationalCipher	100.0%
-rotationalcipher/rotational_cipher.go:25:	shiftChar		100.0%
+rotationalcipher/rotational_cipher.go:10:	RotationalCipher	100.0%
+rotationalcipher/rotational_cipher.go:28:	shiftChar		100.0%
 total:						(statements)		100.0%
 
-real	0m0.094s
-user	0m0.047s
-sys	0m0.072s
+real	0m0.163s
+user	0m0.102s
+sys	0m0.193s
 
 ===============================================================================
 
 go tool cover -html coverage.out -o coverage.html
 
-real	0m0.141s
-user	0m0.039s
-sys	0m0.159s
+real	0m0.148s
+user	0m0.117s
+sys	0m0.170s
 
 ===============================================================================
 
@@ -71,116 +71,133 @@ go test -v -race -covermode=atomic rotationalcipher
     rotational_cipher_test.go:88: PASS: rotate numbers
     rotational_cipher_test.go:88: PASS: rotate punctuation
     rotational_cipher_test.go:88: PASS: rotate all letters
---- PASS: TestRotationalCipher (0.01s)
+--- PASS: TestRotationalCipher (0.00s)
 === RUN   ExampleRotationalCipher
---- PASS: ExampleRotationalCipher (0.01s)
+--- PASS: ExampleRotationalCipher (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	rotationalcipher	0.056s	coverage: 100.0% of statements
+ok  	rotationalcipher	(cached)	coverage: 100.0% of statements
 
-real	0m0.728s
-user	0m0.772s
-sys	0m0.553s
+real	0m0.329s
+user	0m0.351s
+sys	0m0.300s
 
 ===============================================================================
+
+mv -v benchstat-new.txt benchstat-old.txt
+renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
 
 go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 goos: linux
 goarch: amd64
 pkg: rotationalcipher
 cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
-BenchmarkRotationalCipher-4   	  157893	      9873 ns/op	    2128 B/op	     183 allocs/op
+BenchmarkRotationalCipher-4   	  286296	      4015 ns/op	     680 B/op	      14 allocs/op
 PASS
-ok  	rotationalcipher	1.714s
+ok  	rotationalcipher	1.231s
 
-real	0m2.097s
-user	0m3.009s
-sys	0m0.500s
+real	0m1.716s
+user	0m2.391s
+sys	0m0.582s
 
 ===============================================================================
 
 go test -tags bonus
 PASS
-ok  	rotationalcipher	0.004s
+ok  	rotationalcipher	0.016s
 
-real	0m0.523s
-user	0m0.589s
-sys	0m0.468s
+real	0m0.525s
+user	0m0.536s
+sys	0m0.474s
 
 ===============================================================================
 
-No old benchmarks to run benchstat against.
+go install golang.org/x/perf/cmd/benchstat@latest
+
+real	0m0.410s
+user	0m0.510s
+sys	0m0.248s
+
+benchstat benchstat-old.txt benchstat-new.txt
+name                old time/op    new time/op    delta
+RotationalCipher-4    3.61µs ± 0%    4.01µs ± 0%   ~     (p=1.000 n=1+1)
+
+name                old alloc/op   new alloc/op   delta
+RotationalCipher-4      680B ± 0%      680B ± 0%   ~     (all equal)
+
+name                old allocs/op  new allocs/op  delta
+RotationalCipher-4      14.0 ± 0%      14.0 ± 0%   ~     (all equal)
+
+real	0m0.017s
+user	0m0.001s
+sys	0m0.021s
 
 ===============================================================================
 
 go vet rotationalcipher
 
-real	0m0.340s
-user	0m0.312s
-sys	0m0.303s
+real	0m0.489s
+user	0m0.656s
+sys	0m0.399s
 
 ===============================================================================
 
 go fix rotationalcipher
 
-real	0m0.066s
-user	0m0.030s
-sys	0m0.070s
+real	0m0.098s
+user	0m0.049s
+sys	0m0.118s
 
 ===============================================================================
 
 ineffassign ./...
 
-real	0m0.324s
-user	0m0.361s
-sys	0m0.289s
+real	0m0.363s
+user	0m0.376s
+sys	0m0.280s
 
 ===============================================================================
 
 gocyclo .
-5 rotationalcipher RotationalCipher rotational_cipher.go:7:1
+5 rotationalcipher RotationalCipher rotational_cipher.go:10:1
 4 rotationalcipher BenchmarkRotationalCipher rotational_cipher_test.go:92:1
 3 rotationalcipher TestRotationalCipher rotational_cipher_test.go:81:1
-3 rotationalcipher shiftChar rotational_cipher.go:25:1
+3 rotationalcipher shiftChar rotational_cipher.go:28:1
 1 rotationalcipher ExampleRotationalCipher rotational_cipher_examples_test.go:7:1
 
 real	0m0.013s
-user	0m0.001s
-sys	0m0.002s
+user	0m0.006s
+sys	0m0.007s
 
 ===============================================================================
 
 misspell .
-coverage.html:86:20: "retuns" is a misspelling of "returns"
-rotational_cipher.go:6:20: "retuns" is a misspelling of "returns"
 rotationalcipher-doc.md:22:17: "retuns" is a misspelling of "returns"
-run-tests-go.txt:154:22: "retuns" is a misspelling of "returns"
-run-tests-go.txt:155:28: "retuns" is a misspelling of "returns"
 rotationalcipher-doc.txt:8:21: "retuns" is a misspelling of "returns"
 
-real	0m0.089s
-user	0m0.081s
-sys	0m0.043s
+real	0m0.167s
+user	0m0.299s
+sys	0m0.080s
 
 ===============================================================================
 
 gosec ./rotational-cipher
-[gosec] 2022/08/17 20:47:48 Including rules: default
-[gosec] 2022/08/17 20:47:48 Excluding rules: default
-[gosec] 2022/08/17 20:47:48 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/rotational-cipher
-2022/08/17 20:47:48 internal error: package "unicode" without types was imported from "command-line-arguments"
+[gosec] 2022/08/17 20:57:53 Including rules: default
+[gosec] 2022/08/17 20:57:53 Excluding rules: default
+[gosec] 2022/08/17 20:57:53 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/rotational-cipher
+2022/08/17 20:57:53 internal error: package "bytes" without types was imported from "command-line-arguments"
 
-real	0m0.313s
-user	0m0.285s
-sys	0m0.268s
+real	0m0.735s
+user	0m1.051s
+sys	0m0.450s
 
 ===============================================================================
 
 gomarkdoc --output rotationalcipher-doc.md
 
-real	0m0.027s
-user	0m0.017s
-sys	0m0.008s
+real	0m0.038s
+user	0m0.032s
+sys	0m0.022s
 
 ===============================================================================
 
@@ -192,13 +209,13 @@ Package rotationalcipher is used to encrypt data.
 FUNCTIONS
 
 func RotationalCipher(plain string, shiftKey int) string
-    RotationalCipher retuns a cipher text after applying a rotational cipher to
+    RotationalCipher returns a cipher text after applying a rotational cipher to
     a plain text input.
 
 
-real	0m0.133s
-user	0m0.063s
-sys	0m0.129s
+real	0m0.233s
+user	0m0.138s
+sys	0m0.217s
 
 
 ===============================================================================

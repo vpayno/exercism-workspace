@@ -13,13 +13,13 @@ Package rotationalcipher is used to encrypt data\.
 - [func RotationalCipher(plain string, shiftKey int) string](<#func-rotationalcipher>)
 
 
-## func [RotationalCipher](<https://github.com/vpayno/exercism-workspace/blob/main/go/rotational-cipher/rotational_cipher.go#L7>)
+## func [RotationalCipher](<https://github.com/vpayno/exercism-workspace/blob/main/go/rotational-cipher/rotational_cipher.go#L10>)
 
 ```go
 func RotationalCipher(plain string, shiftKey int) string
 ```
 
-RotationalCipher retuns a cipher text after applying a rotational cipher to a plain text input\.
+RotationalCipher returns a cipher text after applying a rotational cipher to a plain text input\.
 
 <details><summary>Example</summary>
 <p>

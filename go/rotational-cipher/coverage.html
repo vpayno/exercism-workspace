@@ -81,25 +81,28 @@
 		<pre class="file" id="file0" style="display: none">// Package rotationalcipher is used to encrypt data.
 package rotationalcipher
 
-import "unicode"
+import (
+        "bytes"
+        "unicode"
+)
 
-// RotationalCipher retuns a cipher text after applying a rotational cipher to a plain text input.
+// RotationalCipher returns a cipher text after applying a rotational cipher to a plain text input.
 func RotationalCipher(plain string, shiftKey int) string <span class="cov5" title="12">{
         if len(plain) == 0 </span><span class="cov2" title="2">{
                 return ""
         }</span>
 
-        <span class="cov5" title="10">var cipher string
+        <span class="cov5" title="10">var cipher bytes.Buffer
 
         for _, char := range plain </span><span class="cov10" title="122">{
                 if !unicode.IsLower(char) &amp;&amp; !unicode.IsUpper(char) </span><span class="cov6" title="23">{
-                        cipher += string(char)
+                        cipher.WriteString(string(char))
                 }</span> else<span class="cov9" title="99"> {
-                        cipher += string(shiftChar(char, shiftKey))
+                        cipher.WriteString(string(shiftChar(char, shiftKey)))
                 }</span>
         }
 
-        <span class="cov5" title="10">return cipher</span>
+        <span class="cov5" title="10">return cipher.String()</span>
 }
 
 func shiftChar(char rune, shift int) rune <span class="cov9" title="99">{
