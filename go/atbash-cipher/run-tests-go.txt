@@ -1,0 +1,212 @@
+Running automated test file(s):
+
+Go packages: atbash 
+
+
+===============================================================================
+
+golint atbash
+
+real	0m0.122s
+user	0m0.097s
+sys	0m0.105s
+
+===============================================================================
+
+go test -v -covermode=count -coverprofile coverage.out atbash
+=== RUN   TestAtbash
+=== RUN   TestAtbash/encode_yes
+=== RUN   TestAtbash/encode_no
+=== RUN   TestAtbash/encode_OMG
+=== RUN   TestAtbash/encode_spaces
+=== RUN   TestAtbash/encode_mindblowingly
+=== RUN   TestAtbash/encode_numbers
+=== RUN   TestAtbash/encode_deep_thought
+=== RUN   TestAtbash/encode_all_the_letters
+--- PASS: TestAtbash (0.00s)
+    --- PASS: TestAtbash/encode_yes (0.00s)
+    --- PASS: TestAtbash/encode_no (0.00s)
+    --- PASS: TestAtbash/encode_OMG (0.00s)
+    --- PASS: TestAtbash/encode_spaces (0.00s)
+    --- PASS: TestAtbash/encode_mindblowingly (0.00s)
+    --- PASS: TestAtbash/encode_numbers (0.00s)
+    --- PASS: TestAtbash/encode_deep_thought (0.00s)
+    --- PASS: TestAtbash/encode_all_the_letters (0.00s)
+=== RUN   ExampleAtbash
+--- PASS: ExampleAtbash (0.00s)
+PASS
+coverage: 95.2% of statements
+ok  	atbash	0.007s	coverage: 95.2% of statements
+
+real	0m0.544s
+user	0m0.665s
+sys	0m0.419s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+atbash/atbash_cipher.go:15:	Atbash		92.3%
+atbash/atbash_cipher.go:43:	shiftChar	100.0%
+total:				(statements)	95.2%
+
+real	0m0.238s
+user	0m0.211s
+sys	0m0.217s
+
+===============================================================================
+
+go tool cover -html coverage.out -o coverage.html
+
+real	0m0.209s
+user	0m0.189s
+sys	0m0.181s
+
+===============================================================================
+
+go test -v -race -covermode=atomic atbash
+=== RUN   TestAtbash
+=== RUN   TestAtbash/encode_yes
+=== RUN   TestAtbash/encode_no
+=== RUN   TestAtbash/encode_OMG
+=== RUN   TestAtbash/encode_spaces
+=== RUN   TestAtbash/encode_mindblowingly
+=== RUN   TestAtbash/encode_numbers
+=== RUN   TestAtbash/encode_deep_thought
+=== RUN   TestAtbash/encode_all_the_letters
+--- PASS: TestAtbash (0.00s)
+    --- PASS: TestAtbash/encode_yes (0.00s)
+    --- PASS: TestAtbash/encode_no (0.00s)
+    --- PASS: TestAtbash/encode_OMG (0.00s)
+    --- PASS: TestAtbash/encode_spaces (0.00s)
+    --- PASS: TestAtbash/encode_mindblowingly (0.00s)
+    --- PASS: TestAtbash/encode_numbers (0.00s)
+    --- PASS: TestAtbash/encode_deep_thought (0.00s)
+    --- PASS: TestAtbash/encode_all_the_letters (0.00s)
+=== RUN   ExampleAtbash
+--- PASS: ExampleAtbash (0.00s)
+PASS
+coverage: 95.2% of statements
+ok  	atbash	0.053s	coverage: 95.2% of statements
+
+real	0m0.854s
+user	0m0.665s
+sys	0m0.498s
+
+===============================================================================
+
+go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+goos: linux
+goarch: amd64
+pkg: atbash
+cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+BenchmarkAtbash-4   	  126147	      8726 ns/op	    1216 B/op	      55 allocs/op
+PASS
+ok  	atbash	1.241s
+
+real	0m1.609s
+user	0m2.009s
+sys	0m0.380s
+
+===============================================================================
+
+go test -tags bonus
+PASS
+ok  	atbash	0.007s
+
+real	0m0.552s
+user	0m0.600s
+sys	0m0.439s
+
+===============================================================================
+
+No old benchmarks to run benchstat against.
+
+===============================================================================
+
+go vet atbash
+
+real	0m0.266s
+user	0m0.277s
+sys	0m0.359s
+
+===============================================================================
+
+go fix atbash
+
+real	0m0.118s
+user	0m0.078s
+sys	0m0.134s
+
+===============================================================================
+
+ineffassign ./...
+
+real	0m0.358s
+user	0m0.337s
+sys	0m0.355s
+
+===============================================================================
+
+gocyclo .
+6 atbash Atbash atbash_cipher.go:15:1
+4 atbash BenchmarkAtbash atbash_cipher_test.go:16:1
+4 atbash shiftChar atbash_cipher.go:43:1
+3 atbash TestAtbash atbash_cipher_test.go:5:1
+1 atbash ExampleAtbash atbash_cipher_examples_test.go:7:1
+
+real	0m0.028s
+user	0m0.010s
+sys	0m0.020s
+
+===============================================================================
+
+misspell .
+
+real	0m0.079s
+user	0m0.074s
+sys	0m0.057s
+
+===============================================================================
+
+gosec ./atbash-cipher
+[gosec] 2022/08/18 07:53:23 Including rules: default
+[gosec] 2022/08/18 07:53:23 Excluding rules: default
+[gosec] 2022/08/18 07:53:23 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/atbash-cipher
+2022/08/18 07:53:24 internal error: package "fmt" without types was imported from "command-line-arguments"
+
+real	0m0.501s
+user	0m0.463s
+sys	0m0.419s
+
+===============================================================================
+
+gomarkdoc --output atbash-doc.md
+
+real	0m0.098s
+user	0m0.035s
+sys	0m0.032s
+
+===============================================================================
+
+go doc -all atbash
+package atbash // import "atbash"
+
+Package atbash implements the atbash ciper.
+
+FUNCTIONS
+
+func Atbash(plain string) string
+    Atbash returns a simple substitution cipher text. Ciphertext is written
+    out in groups of fixed length, the traditional group size being 5 letters,
+    leaving numbers unchanged, and punctuation is excluded. This is to make it
+    harder to guess things based on word boundaries. All text will be encoded as
+    lowercase letters.
+
+
+real	0m0.160s
+user	0m0.091s
+sys	0m0.197s
+
+
+===============================================================================
+

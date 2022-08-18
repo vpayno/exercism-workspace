@@ -90,3 +90,4 @@
 - [meetup](./meetup/README.md)
 - [proverb](./proverb/README.md)
 - [rotational-cipher](./rotational-cipher/README.md)
+- [atbash-cipher](./atbash-cipher/README.md)
