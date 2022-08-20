@@ -21,25 +21,18 @@ main()
 
 	print_ruler
 
-	if ! golint -h >& /dev/null; then
-		echo go install golang.org/x/lint/golint@latest
-		time go install golang.org/x/lint/golint@latest
-		printf "\n"
-	fi
+	# go install golang.org/x/lint/golint@latest
 
-	echo golint "${packages[@]}"
-	time golint "${packages[@]}"
+	echo golint ./...
+	time golint ./...
 
 	print_ruler
 
-	if ! go list ... |& grep -q cmd/cover; then
-		echo go install golang.org/x/tools/cmd/cover@latest
-		time go install golang.org/x/tools/cmd/cover@latest
-		printf "\n"
-	fi
+	# go install golang.org/x/tools/cmd/cover@latest
+	# go install github.com/rakyll/gotest@latest
 
-	echo go test -v -covermode=count -coverprofile coverage.out "${packages[@]}"
-	time go test -v -covermode=count -coverprofile coverage.out "${packages[@]}"
+	echo gotest -v -covermode=count -coverprofile coverage.out ./...
+	time gotest -v -covermode=count -coverprofile coverage.out ./...
 
 	print_ruler
 
@@ -53,8 +46,8 @@ main()
 
 	print_ruler
 
-	echo go test -v -race -covermode=atomic "${packages[@]}"
-	time go test -v -race -covermode=atomic "${packages[@]}"
+	echo gotest -v -race -covermode=atomic ./...
+	time gotest -v -race -covermode=atomic ./...
 
 	print_ruler
 
@@ -76,11 +69,7 @@ main()
 
 	if [[ -f benchstat-old.txt ]] && [[ -f benchstat-new.txt ]]; then
 
-		if ! benchstat -h >& /dev/null; then
-			echo go install golang.org/x/perf/cmd/benchstat@latest
-			time go install golang.org/x/perf/cmd/benchstat@latest
-			printf "\n"
-		fi
+		# go install golang.org/x/perf/cmd/benchstat@latest
 
 		echo benchstat benchstat-{old,new}.txt
 		time benchstat benchstat-{old,new}.txt
@@ -93,62 +82,38 @@ main()
 
 	print_ruler
 
-	echo go vet "${packages[@]}"
-	time go vet "${packages[@]}"
+	echo go vet ./...
+	time go vet ./...
 
 	print_ruler
 
-	echo go fix "${packages[@]}"
-	time go fix "${packages[@]}"
+	echo go fix ./...
+	time go fix ./...
 
 	print_ruler
 
-	if ! which ineffassign >& /dev/null; then
-		time go install github.com/gordonklaus/ineffassign@latest
-		echo go install github.com/gordonklaus/ineffassign@latest
-	fi
-	echo ineffassign ./...
-	time ineffassign ./...
+	# go install github.com/fzipp/gocyclo/cmd/gocyclo@latest
 
-	print_ruler
-
-	if ! which gocyclo >& /dev/null; then
-		time go install github.com/fzipp/gocyclo/cmd/gocyclo@latest
-		echo go install github.com/fzipp/gocyclo/cmd/gocyclo@latest
-	fi
 	echo gocyclo .
 	time gocyclo .
 
 	print_ruler
 
-	if ! which misspell >& /dev/null; then
-		time go install github.com/client9/misspell/cmd/misspell@latest
-		echo go install github.com/client9/misspell/cmd/misspell@latest
-	fi
+	# go install github.com/client9/misspell/cmd/misspell@latest
+
 	echo misspell .
 	time misspell .
 
 	print_ruler
 
-	if ! which gosec >& /dev/null; then
-		echo go install github.com/securego/gosec/cmd/gosec@latest
-		time go install github.com/securego/gosec/cmd/gosec@latest
-		printf "\n"
-	fi
+	# go install github.com/securego/gosec/cmd/gosec@latest
 
-	gosec_target="./$(basename "${PWD}")"
-	cd .. || return
-	echo gosec "${gosec_target}"
-	time gosec "${gosec_target}"
-	cd - >& /dev/null|| return
+	echo gosec ./...
+	time gosec ./...
 
 	print_ruler
 
-	if ! which gomarkdoc >& /dev/null; then
-		echo go install github.com/princjef/gomarkdoc/cmd/gomarkdoc@latest
-		time go install github.com/princjef/gomarkdoc/cmd/gomarkdoc@latest
-		printf "\n"
-	fi
+	# go install github.com/princjef/gomarkdoc/cmd/gomarkdoc@latest
 
 	for package in "${packages[@]}"; do
 		echo gomarkdoc --output "${package}"-doc.md
