@@ -104,3 +104,12 @@ ciphertext back in to the original message:
 ### Based on
 
 J Dalbey's Programming Practice problems - http://users.csc.calpoly.edu/~jdalbey/103/Projects/ProgrammingPractice.html
+
+### My Solution
+
+- [my solution](./crypto_square.go)
+- [my examples](./crypto_square_examples_test.go)
+- [tests](./crypto_square_test.go)
+- [run-tests](./run-tests-go.txt)
+- [coverage](./coverage.html)
+- [documentation](./cryptosquare-doc.md)
