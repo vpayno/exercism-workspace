@@ -1,0 +1,479 @@
+Running automated test file(s):
+
+Go packages: cryptosquare 
+
+
+===============================================================================
+
+golint ./...
+
+real	0m0.129s
+user	0m0.164s
+sys	0m0.121s
+
+===============================================================================
+
+revive ./...
+
+real	0m0.052s
+user	0m0.044s
+sys	0m0.052s
+
+===============================================================================
+
+ineffassign ./...
+
+real	0m0.589s
+user	0m0.656s
+sys	0m0.489s
+
+===============================================================================
+
+go-consistent -v ./...
+	info: check "./."
+
+real	0m1.645s
+user	0m2.635s
+sys	0m1.102s
+
+===============================================================================
+
+staticcheck ./...
+
+real	0m1.018s
+user	0m1.217s
+sys	0m0.952s
+
+===============================================================================
+
+gocritic check -enableAll ./...
+
+real	0m6.601s
+user	0m10.393s
+sys	0m2.822s
+
+===============================================================================
+
+gotest -v -covermode=count -coverprofile coverage.out ./...
+=== RUN   TestEncode
+=== RUN   TestEncode/s#$%^&plunk
+=== RUN   TestEncode/1,_2,_3_GO!
+=== RUN   TestEncode/1234
+=== RUN   TestEncode/123456789
+=== RUN   TestEncode/123456789abc
+=== RUN   TestEncode/Never_vex_thine_heart_with_idle_woes
+=== RUN   TestEncode/ZOMG!_ZOMBIES!!!
+=== RUN   TestEncode/Time_is_an_illusion._Lunchtime_doubly_so.
+=== RUN   TestEncode/We_all_know_interspecies_romance_is_weird.
+=== RUN   TestEncode/Madness,_and_then_illumination.
+=== RUN   TestEncode/Vampires_are_people_too!
+=== RUN   TestEncode/#00
+=== RUN   TestEncode/1
+=== RUN   TestEncode/12
+=== RUN   TestEncode/12_3
+=== RUN   TestEncode/12345678
+=== RUN   TestEncode/123456789a
+=== RUN   TestEncode/If_man_was_meant_to_stay_on_the_ground_god_would_have_given_us_roots
+=== RUN   TestEncode/Have_a_nice_day._Feed_the_dog_&_chill_out!
+--- PASS: TestEncode (0.00s)
+    --- PASS: TestEncode/s#$%^&plunk (0.00s)
+    --- PASS: TestEncode/1,_2,_3_GO! (0.00s)
+    --- PASS: TestEncode/1234 (0.00s)
+    --- PASS: TestEncode/123456789 (0.00s)
+    --- PASS: TestEncode/123456789abc (0.00s)
+    --- PASS: TestEncode/Never_vex_thine_heart_with_idle_woes (0.00s)
+    --- PASS: TestEncode/ZOMG!_ZOMBIES!!! (0.00s)
+    --- PASS: TestEncode/Time_is_an_illusion._Lunchtime_doubly_so. (0.00s)
+    --- PASS: TestEncode/We_all_know_interspecies_romance_is_weird. (0.00s)
+    --- PASS: TestEncode/Madness,_and_then_illumination. (0.00s)
+    --- PASS: TestEncode/Vampires_are_people_too! (0.00s)
+    --- PASS: TestEncode/#00 (0.00s)
+    --- PASS: TestEncode/1 (0.00s)
+    --- PASS: TestEncode/12 (0.00s)
+    --- PASS: TestEncode/12_3 (0.00s)
+    --- PASS: TestEncode/12345678 (0.00s)
+    --- PASS: TestEncode/123456789a (0.00s)
+    --- PASS: TestEncode/If_man_was_meant_to_stay_on_the_ground_god_would_have_given_us_roots (0.00s)
+    --- PASS: TestEncode/Have_a_nice_day._Feed_the_dog_&_chill_out! (0.00s)
+=== RUN   ExampleNormalizeText
+--- PASS: ExampleNormalizeText (0.00s)
+=== RUN   ExampleGetSquareDimmensions
+--- PASS: ExampleGetSquareDimmensions (0.00s)
+=== RUN   ExampleGetTokens
+--- PASS: ExampleGetTokens (0.00s)
+=== RUN   ExampleEncodeTokens
+--- PASS: ExampleEncodeTokens (0.00s)
+=== RUN   ExampleEncode
+--- PASS: ExampleEncode (0.00s)
+PASS
+coverage: 85.1% of statements
+ok  	cryptosquare	0.014s	coverage: 85.1% of statements
+
+real	0m1.301s
+user	0m1.599s
+sys	0m0.896s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+cryptosquare/crypto_square.go:14:	Encode			73.3%
+cryptosquare/crypto_square.go:49:	NormalizeText		80.0%
+cryptosquare/crypto_square.go:71:	GetSquareDimmensions	83.3%
+cryptosquare/crypto_square.go:96:	GetTokens		94.4%
+cryptosquare/crypto_square.go:134:	EncodeTokens		91.7%
+total:					(statements)		85.1%
+
+real	0m0.519s
+user	0m0.330s
+sys	0m0.586s
+
+===============================================================================
+
+go tool cover -html coverage.out -o coverage.html
+
+real	0m0.354s
+user	0m0.396s
+sys	0m0.338s
+
+===============================================================================
+
+gocov convert coverage.out | gocov annotate -ceiling=100 -color - | tee coverage-annotations.txt
+
+[0m14 	func Encode(plain string) string {[0m
+[0m15 		if plain == "" {[0m
+[0m16 			return ""[0m
+[0m17 		}[0m
+[0m18 	[0m
+[0m19 		if debugMode {[0m
+[31;1m20 			fmt.Printf("plain: %q\n", plain)[0m
+[0m21 		}[0m
+[0m22 	[0m
+[0m23 		normalizedText := NormalizeText(plain)[0m
+[0m24 	[0m
+[0m25 		if debugMode {[0m
+[31;1m26 			fmt.Printf("plain: %q\n", normalizedText)[0m
+[0m27 		}[0m
+[0m28 	[0m
+[0m29 		plainTokens := GetTokens(normalizedText)[0m
+[0m30 	[0m
+[0m31 		if debugMode {[0m
+[31;1m32 			fmt.Printf("plainTokens: %#v\n", plainTokens)[0m
+[0m33 		}[0m
+[0m34 	[0m
+[0m35 		encodedTokens := EncodeTokens(plainTokens)[0m
+[0m36 	[0m
+[0m37 		if debugMode {[0m
+[31;1m38 			fmt.Printf("encodedTokens: %#v\n", encodedTokens)[0m
+[0m39 		}[0m
+[0m40 	[0m
+[0m41 		cipher := strings.Join(encodedTokens, " ")[0m
+[0m42 	[0m
+[0m43 		return cipher[0m
+[0m44 	}[0m
+
+
+[0m134 	func EncodeTokens(tokens []string) []string {[0m
+[0m135 		if len(tokens) == 0 {[0m
+[31;1m136 			return []string{}[0m
+[0m137 		}[0m
+[0m138 	[0m
+[0m139 		var sb strings.Builder[0m
+[0m140 		cipher := []string{}[0m
+[0m141 	[0m
+[0m142 		// col <= len because we need to capture incomplete tokens.[0m
+[0m143 		for col := 0; col <= len(tokens); col++ {[0m
+[0m144 			for _, row := range tokens {[0m
+[0m145 				if col < len(row) {[0m
+[0m146 					sb.WriteString(string(row[col]))[0m
+[0m147 				}[0m
+[0m148 			}[0m
+[0m149 	[0m
+[0m150 			// To prevent from ending with an empty token.[0m
+[0m151 			// Write a token to the slice.[0m
+[0m152 			if len(sb.String()) > 0 {[0m
+[0m153 				cipher = append(cipher, sb.String())[0m
+[0m154 			}[0m
+[0m155 			sb.Reset()[0m
+[0m156 		}[0m
+[0m157 	[0m
+[0m158 		return cipher[0m
+[0m159 	}[0m
+
+
+[0m71 	func GetSquareDimmensions(text string) (row, col int) {[0m
+[0m72 		size := len(text)[0m
+[0m73 	[0m
+[0m74 		if size == 0 {[0m
+[31;1m75 			return[0m
+[0m76 		}[0m
+[0m77 	[0m
+[0m78 		if size == 1 {[0m
+[0m79 			row, col = 1, 1[0m
+[0m80 			return[0m
+[0m81 		}[0m
+[0m82 	[0m
+[0m83 		for c := 1; c <= size; c++ {[0m
+[0m84 			for r := 1; r < size; r++ {[0m
+[0m85 				if r*c >= size && c >= r && c-r <= 1 {[0m
+[0m86 					row, col = r, c[0m
+[0m87 					return[0m
+[0m88 				}[0m
+[0m89 			}[0m
+[0m90 		}[0m
+[0m91 	[0m
+[31;1m92 		return[0m
+[0m93 	}[0m
+
+
+[0m 96 	func GetTokens(text string) []string {[0m
+[0m 97 		if text == "" {[0m
+[31;1m 98 			return []string{}[0m
+[0m 99 		}[0m
+[0m100 	[0m
+[0m101 		row, col := GetSquareDimmensions(NormalizeText(text))[0m
+[0m102 	[0m
+[0m103 		tokens := []string{}[0m
+[0m104 		var token strings.Builder[0m
+[0m105 		var count int[0m
+[0m106 	[0m
+[0m107 		for _, char := range text {[0m
+[0m108 			count++[0m
+[0m109 			token.WriteString(string(char))[0m
+[0m110 	[0m
+[0m111 			// Write a token to the slice.[0m
+[0m112 			if count == col {[0m
+[0m113 				tokens = append(tokens, token.String())[0m
+[0m114 				token.Reset()[0m
+[0m115 				count = 0[0m
+[0m116 			}[0m
+[0m117 		}[0m
+[0m118 	[0m
+[0m119 		// Prevent empty tokens from being captured.[0m
+[0m120 		if len(token.String()) > 0 {[0m
+[0m121 			tokens = append(tokens, token.String())[0m
+[0m122 		}[0m
+[0m123 	[0m
+[0m124 		// Count can be zero or larger than col.[0m
+[0m125 		// Catch incomplete tokens and add whitespace padd them.[0m
+[0m126 		if count > 0 && count < col {[0m
+[0m127 			tokens[row-1] += strings.Repeat(" ", col-count)[0m
+[0m128 		}[0m
+[0m129 	[0m
+[0m130 		return tokens[0m
+[0m131 	}[0m
+
+
+[0m49 	func NormalizeText(text string) string {[0m
+[0m50 		if text == "" {[0m
+[31;1m51 			return ""[0m
+[0m52 		}[0m
+[0m53 	[0m
+[0m54 		var output string[0m
+[0m55 	[0m
+[0m56 		reStr := `[[:^alnum:]]+`[0m
+[0m57 		re, err := regexp.Compile(reStr)[0m
+[0m58 		if err != nil {[0m
+[31;1m59 			panic(err)[0m
+[0m60 		}[0m
+[0m61 	[0m
+[0m62 		// If it's not A-Z, a-z or 0-9, replace it with an empty string.[0m
+[0m63 		output = re.ReplaceAllString(text, "")[0m
+[0m64 	[0m
+[0m65 		output = strings.ToLower(output)[0m
+[0m66 	[0m
+[0m67 		return output[0m
+[0m68 	}[0m
+
+
+real	0m0.106s
+user	0m0.076s
+sys	0m0.123s
+
+===============================================================================
+
+gotest -v -race -covermode=atomic cryptosquare
+=== RUN   TestEncode
+=== RUN   TestEncode/s#$%^&plunk
+=== RUN   TestEncode/1,_2,_3_GO!
+=== RUN   TestEncode/1234
+=== RUN   TestEncode/123456789
+=== RUN   TestEncode/123456789abc
+=== RUN   TestEncode/Never_vex_thine_heart_with_idle_woes
+=== RUN   TestEncode/ZOMG!_ZOMBIES!!!
+=== RUN   TestEncode/Time_is_an_illusion._Lunchtime_doubly_so.
+=== RUN   TestEncode/We_all_know_interspecies_romance_is_weird.
+=== RUN   TestEncode/Madness,_and_then_illumination.
+=== RUN   TestEncode/Vampires_are_people_too!
+=== RUN   TestEncode/#00
+=== RUN   TestEncode/1
+=== RUN   TestEncode/12
+=== RUN   TestEncode/12_3
+=== RUN   TestEncode/12345678
+=== RUN   TestEncode/123456789a
+=== RUN   TestEncode/If_man_was_meant_to_stay_on_the_ground_god_would_have_given_us_roots
+=== RUN   TestEncode/Have_a_nice_day._Feed_the_dog_&_chill_out!
+--- PASS: TestEncode (0.02s)
+    --- PASS: TestEncode/s#$%^&plunk (0.00s)
+    --- PASS: TestEncode/1,_2,_3_GO! (0.00s)
+    --- PASS: TestEncode/1234 (0.00s)
+    --- PASS: TestEncode/123456789 (0.00s)
+    --- PASS: TestEncode/123456789abc (0.00s)
+    --- PASS: TestEncode/Never_vex_thine_heart_with_idle_woes (0.00s)
+    --- PASS: TestEncode/ZOMG!_ZOMBIES!!! (0.00s)
+    --- PASS: TestEncode/Time_is_an_illusion._Lunchtime_doubly_so. (0.00s)
+    --- PASS: TestEncode/We_all_know_interspecies_romance_is_weird. (0.00s)
+    --- PASS: TestEncode/Madness,_and_then_illumination. (0.00s)
+    --- PASS: TestEncode/Vampires_are_people_too! (0.00s)
+    --- PASS: TestEncode/#00 (0.00s)
+    --- PASS: TestEncode/1 (0.00s)
+    --- PASS: TestEncode/12 (0.00s)
+    --- PASS: TestEncode/12_3 (0.00s)
+    --- PASS: TestEncode/12345678 (0.00s)
+    --- PASS: TestEncode/123456789a (0.00s)
+    --- PASS: TestEncode/If_man_was_meant_to_stay_on_the_ground_god_would_have_given_us_roots (0.00s)
+    --- PASS: TestEncode/Have_a_nice_day._Feed_the_dog_&_chill_out! (0.00s)
+=== RUN   ExampleNormalizeText
+--- PASS: ExampleNormalizeText (0.00s)
+=== RUN   ExampleGetSquareDimmensions
+--- PASS: ExampleGetSquareDimmensions (0.00s)
+=== RUN   ExampleGetTokens
+--- PASS: ExampleGetTokens (0.00s)
+=== RUN   ExampleEncodeTokens
+--- PASS: ExampleEncodeTokens (0.00s)
+=== RUN   ExampleEncode
+--- PASS: ExampleEncode (0.00s)
+PASS
+coverage: 85.1% of statements
+ok  	cryptosquare	0.127s	coverage: 85.1% of statements
+
+real	0m1.584s
+user	0m1.658s
+sys	0m0.972s
+
+===============================================================================
+
+go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+goos: linux
+goarch: amd64
+pkg: cryptosquare
+cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+BenchmarkEncode-4   	    2530	    402031 ns/op	   42270 B/op	     845 allocs/op
+PASS
+ok  	cryptosquare	1.144s
+
+real	0m2.109s
+user	0m2.981s
+sys	0m0.930s
+
+===============================================================================
+
+go test -tags bonus
+PASS
+ok  	cryptosquare	0.043s
+
+real	0m0.775s
+user	0m0.875s
+sys	0m0.528s
+
+===============================================================================
+
+No old benchmarks to run benchstat against.
+
+===============================================================================
+
+go vet ./...
+
+real	0m0.515s
+user	0m0.614s
+sys	0m0.521s
+
+===============================================================================
+
+go fix ./...
+
+real	0m0.189s
+user	0m0.108s
+sys	0m0.207s
+
+===============================================================================
+
+gocyclo .
+8 cryptosquare GetSquareDimmensions crypto_square.go:71:1
+7 cryptosquare GetTokens crypto_square.go:96:1
+6 cryptosquare EncodeTokens crypto_square.go:134:1
+6 cryptosquare Encode crypto_square.go:14:1
+4 cryptosquare BenchmarkEncode crypto_square_test.go:97:1
+3 cryptosquare TestEncode crypto_square_test.go:87:1
+3 cryptosquare NormalizeText crypto_square.go:49:1
+2 cryptosquare ExampleEncodeTokens crypto_square_examples_test.go:59:1
+2 cryptosquare ExampleGetTokens crypto_square_examples_test.go:41:1
+2 cryptosquare ExampleGetSquareDimmensions crypto_square_examples_test.go:22:1
+2 cryptosquare ExampleNormalizeText crypto_square_examples_test.go:5:1
+1 cryptosquare ExampleEncode crypto_square_examples_test.go:78:1
+
+real	0m0.021s
+user	0m0.013s
+sys	0m0.009s
+
+===============================================================================
+
+misspell .
+
+real	0m0.203s
+user	0m0.229s
+sys	0m0.068s
+
+===============================================================================
+
+gosec ./...
+[gosec] 2022/08/19 22:21:56 Including rules: default
+[gosec] 2022/08/19 22:21:56 Excluding rules: default
+[gosec] 2022/08/19 22:21:56 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/crypto-square
+2022/08/19 22:21:57 internal error: package "fmt" without types was imported from "command-line-arguments"
+
+real	0m0.797s
+user	0m0.835s
+sys	0m0.585s
+
+===============================================================================
+
+gomarkdoc --output cryptosquare-doc.md
+
+real	0m0.044s
+user	0m0.042s
+sys	0m0.022s
+
+===============================================================================
+
+go doc -all cryptosquare
+package cryptosquare // import "cryptosquare"
+
+Package cryptosquare implements the classic method of compsing secret messages
+using a square code.
+
+FUNCTIONS
+
+func Encode(plain string) string
+    Encode returns a crypto square encoded string.
+
+func EncodeTokens(tokens []string) []string
+    EncodeTokens returns the encoded "square".
+
+func GetSquareDimmensions(text string) (row, col int)
+    GetSquareDimmensions returns the dimensions of the square to use.
+
+func GetTokens(text string) []string
+    GetTokens returns a string of tokens used to create the plain text "square".
+
+func NormalizeText(text string) string
+    NormalizeText returns a normalized string. - The spaces and punctuation are
+    removed from the English text. - The message is down-cased.
+
+
+real	0m0.274s
+user	0m0.170s
+sys	0m0.252s
+
+
+===============================================================================
+
