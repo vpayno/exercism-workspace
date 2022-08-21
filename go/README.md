@@ -92,3 +92,4 @@
 - [rotational-cipher](./rotational-cipher/README.md)
 - [atbash-cipher](./atbash-cipher/README.md)
 - [crypto-square](./crypto-square/README.md)
+- [simple-cipher](./simple-cipher/README.md)
