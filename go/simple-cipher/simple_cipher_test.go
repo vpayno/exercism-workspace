@@ -43,12 +43,12 @@ func testCipher(c Cipher, tests []cipherTest, t *testing.T) {
 	for _, test := range tests {
 		t.Run(fmt.Sprintf("Encode(%s)", test.source), func(tt *testing.T) {
 			if enc := c.Encode(test.source); enc != test.cipher {
-				tt.Fatalf("Encode(%s): got %q, want %q.", test.source, enc, test.cipher)
+				tt.Errorf("Encode(%s): got %q, want %q.", test.source, enc, test.cipher)
 			}
 		})
 		t.Run(fmt.Sprintf("Decode(%s)", test.cipher), func(tt *testing.T) {
 			if dec := c.Decode(test.cipher); dec != test.plain {
-				tt.Fatalf("Decode(%s): got %q, want %q.", test.cipher, dec, test.plain)
+				tt.Errorf("Decode(%s): got %q, want %q.", test.cipher, dec, test.plain)
 			}
 		})
 	}
@@ -72,7 +72,7 @@ func TestShift(t *testing.T) {
 	t.Run(fmt.Sprintf("key=%d", 3), func(t *testing.T) {
 		c := NewShift(3)
 		if c == nil {
-			t.Fatal("NewShift(3): got nil, want non-nil Cipher")
+			t.Error("NewShift(3): got nil, want non-nil Cipher")
 		}
 		testCipher(c, caesarTests, t)
 	})
@@ -81,7 +81,7 @@ func TestShift(t *testing.T) {
 	t.Run(fmt.Sprintf("key=%d", -3), func(t *testing.T) {
 		c := NewShift(-3)
 		if c == nil {
-			t.Fatal("NewShift(-3): got nil, want non-nil Cipher")
+			t.Error("NewShift(-3): got nil, want non-nil Cipher")
 		}
 		testCipher(c, NSATests, t)
 	})
@@ -121,7 +121,7 @@ func TestVigenere(t *testing.T) {
 		t.Run(fmt.Sprintf("key=%s", test.key), func(t *testing.T) {
 			v := NewVigenere(test.key)
 			if v == nil {
-				t.Fatalf("NewVigenere(%q): got nil, want non-nil Cipher",
+				t.Errorf("NewVigenere(%q): got nil, want non-nil Cipher",
 					test.key)
 			}
 			testCipher(v, test.tests, t)

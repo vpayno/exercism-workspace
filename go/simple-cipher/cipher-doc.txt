@@ -1,0 +1,21 @@
+package cipher // import "cipher"
+
+Package cipher is comprised of multiple cipher implementations.
+
+TYPES
+
+type Cipher interface {
+	Encode(string) string
+	Decode(string) string
+}
+    The Cipher interface describes the Encode() and Decode() functions.
+
+func NewCaesar() Cipher
+    NewCaesar returns a Cipher.
+
+func NewShift(distance int) Cipher
+    NewShift returns a Cipher.
+
+func NewVigenere(key string) Cipher
+    NewVigenere returns a Cipher.
+

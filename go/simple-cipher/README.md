@@ -159,3 +159,12 @@ For invalid arguments `NewVigenere` returns nil.
 ### Based on
 
 Substitution Cipher at Wikipedia - http://en.wikipedia.org/wiki/Substitution_cipher
+
+### My Solution
+
+- [my solution](./simple_cipher.go)
+- [my examples](./simple_cipher_examples_test.go)
+- [tests](./simple_cipher_test.go)
+- [run-tests](./run-tests-go.txt)
+- [coverage](./coverage.html)
+- [documentation](./cipher-doc.md)
