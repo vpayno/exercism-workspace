@@ -50,6 +50,15 @@ func diff(got, want string) string {
 	}
 }
 
+func TestVerse(t *testing.T) {
+	for _, test := range testCases {
+		actual := Verse(test.input)
+		if actual != test.expected {
+			t.Errorf("Twelve Days test [%d], expected [%s], actual [%s]", test.input, test.expected, actual)
+		}
+	}
+}
+
 func TestSong(t *testing.T) {
 	var verses []string
 	for _, test := range testCases {
@@ -59,15 +68,6 @@ func TestSong(t *testing.T) {
 	actual := Song()
 	if expected != actual {
 		t.Fatalf("Song() =\n%s\n  want:\n%s\n%s", actual, expected, diff(actual, expected))
-	}
-}
-
-func TestVerse(t *testing.T) {
-	for _, test := range testCases {
-		actual := Verse(test.input)
-		if actual != test.expected {
-			t.Errorf("Twelve Days test [%d], expected [%s], actual [%s]", test.input, test.expected, actual)
-		}
 	}
 }
 

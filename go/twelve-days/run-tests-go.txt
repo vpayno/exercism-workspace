@@ -1,0 +1,300 @@
+Running automated test file(s):
+
+Go packages: twelve 
+
+
+===============================================================================
+
+golint ./...
+
+real	0m0.077s
+user	0m0.078s
+sys	0m0.069s
+
+===============================================================================
+
+revive ./...
+
+real	0m0.030s
+user	0m0.020s
+sys	0m0.011s
+
+===============================================================================
+
+ineffassign ./...
+
+real	0m0.321s
+user	0m0.375s
+sys	0m0.312s
+
+===============================================================================
+
+go-consistent -v ./...
+	info: check "./."
+
+real	0m0.348s
+user	0m0.409s
+sys	0m0.355s
+
+===============================================================================
+
+staticcheck ./...
+
+real	0m0.531s
+user	0m0.540s
+sys	0m0.517s
+
+===============================================================================
+
+gocritic check -enableAll ./...
+
+real	0m2.217s
+user	0m3.797s
+sys	0m1.007s
+
+===============================================================================
+
+gotest -v -covermode=count -coverprofile coverage.out ./...
+=== RUN   TestVerse
+--- PASS: TestVerse (0.00s)
+=== RUN   TestSong
+--- PASS: TestSong (0.00s)
+=== RUN   ExampleVerse
+--- PASS: ExampleVerse (0.00s)
+=== RUN   ExampleSong
+--- PASS: ExampleSong (0.00s)
+PASS
+coverage: 95.5% of statements
+ok  	twelve	0.017s	coverage: 95.5% of statements
+
+real	0m0.429s
+user	0m0.521s
+sys	0m0.322s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+twelve/twelve_days.go:10:	Verse		93.8%
+twelve/twelve_days.go:67:	Song		100.0%
+total:				(statements)	95.5%
+
+real	0m0.275s
+user	0m0.262s
+sys	0m0.269s
+
+===============================================================================
+
+go tool cover -html coverage.out -o coverage.html
+
+real	0m0.184s
+user	0m0.165s
+sys	0m0.215s
+
+===============================================================================
+
+gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+10     	func Verse(verseNum int) string {
+11     		verseNum--
+12     		if verseNum < 0 || verseNum > 11 {
+13 MISS			return ""
+14     		}
+15     	
+16     		linePrefix := "On the %s day of Christmas my true love gave to me: %s"
+17     	
+18     		days := []string{
+19     			"first",
+20     			"second",
+21     			"third",
+22     			"fourth",
+23     			"fifth",
+24     			"sixth",
+25     			"seventh",
+26     			"eighth",
+27     			"ninth",
+28     			"tenth",
+29     			"eleventh",
+30     			"twelfth",
+31     		}
+32     	
+33     		items := []string{
+34     			"a Partridge in a Pear Tree.",
+35     			"two Turtle Doves, ",
+36     			"three French Hens, ",
+37     			"four Calling Birds, ",
+38     			"five Gold Rings, ",
+39     			"six Geese-a-Laying, ",
+40     			"seven Swans-a-Swimming, ",
+41     			"eight Maids-a-Milking, ",
+42     			"nine Ladies Dancing, ",
+43     			"ten Lords-a-Leaping, ",
+44     			"eleven Pipers Piping, ",
+45     			"twelve Drummers Drumming, ",
+46     		}
+47     	
+48     		var verse string
+49     		i := verseNum
+50     		j := 0
+51     	
+52     		for j <= i {
+53     			if j == 1 {
+54     				verse = "and " + verse
+55     			}
+56     	
+57     			verse = items[j] + verse
+58     			j++
+59     		}
+60     	
+61     		verse = fmt.Sprintf(linePrefix, days[i], verse)
+62     	
+63     		return verse
+64     	}
+
+
+real	0m0.070s
+user	0m0.071s
+sys	0m0.075s
+
+===============================================================================
+
+gotest -v -race -covermode=atomic ./...
+=== RUN   TestVerse
+--- PASS: TestVerse (0.00s)
+=== RUN   TestSong
+--- PASS: TestSong (0.00s)
+=== RUN   ExampleVerse
+--- PASS: ExampleVerse (0.00s)
+=== RUN   ExampleSong
+--- PASS: ExampleSong (0.00s)
+PASS
+coverage: 95.5% of statements
+ok  	twelve	(cached)	coverage: 95.5% of statements
+
+real	0m0.332s
+user	0m0.363s
+sys	0m0.344s
+
+===============================================================================
+
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+goos: linux
+goarch: amd64
+pkg: twelve
+cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+BenchmarkVerse
+BenchmarkVerse-4   	   54613	     26142 ns/op	   11475 B/op	     113 allocs/op
+BenchmarkSong
+BenchmarkSong-4    	   37423	     39293 ns/op	   18485 B/op	     120 allocs/op
+PASS
+ok  	twelve	5.607s
+
+real	0m6.178s
+user	0m9.212s
+sys	0m2.094s
+
+===============================================================================
+
+gotest -v -tags bonus
+=== RUN   TestVerse
+--- PASS: TestVerse (0.00s)
+=== RUN   TestSong
+--- PASS: TestSong (0.00s)
+=== RUN   ExampleVerse
+--- PASS: ExampleVerse (0.00s)
+=== RUN   ExampleSong
+--- PASS: ExampleSong (0.00s)
+PASS
+ok  	twelve	0.015s
+
+real	0m0.523s
+user	0m0.543s
+sys	0m0.401s
+
+===============================================================================
+
+No old benchmarks to run benchstat against.
+
+===============================================================================
+
+go vet ./...
+
+real	0m0.248s
+user	0m0.262s
+sys	0m0.316s
+
+===============================================================================
+
+go fix ./...
+
+real	0m0.122s
+user	0m0.093s
+sys	0m0.148s
+
+===============================================================================
+
+gocyclo .
+7 twelve diff twelve_days_test.go:30:1
+5 twelve Verse twelve_days.go:10:1
+4 twelve BenchmarkVerse twelve_days_test.go:74:1
+4 twelve Song twelve_days.go:67:1
+3 twelve BenchmarkSong twelve_days_test.go:85:1
+3 twelve TestSong twelve_days_test.go:62:1
+3 twelve TestVerse twelve_days_test.go:53:1
+1 twelve ExampleSong twelve_days_examples_test.go:13:1
+1 twelve ExampleVerse twelve_days_examples_test.go:5:1
+
+real	0m0.017s
+user	0m0.003s
+sys	0m0.009s
+
+===============================================================================
+
+misspell .
+
+real	0m0.101s
+user	0m0.091s
+sys	0m0.068s
+
+===============================================================================
+
+gosec ./...
+[gosec] 2022/08/23 22:05:44 Including rules: default
+[gosec] 2022/08/23 22:05:44 Excluding rules: default
+[gosec] 2022/08/23 22:05:44 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/twelve-days
+2022/08/23 22:05:44 internal error: package "fmt" without types was imported from "command-line-arguments"
+
+real	0m0.431s
+user	0m0.442s
+sys	0m0.344s
+
+===============================================================================
+
+gomarkdoc --output twelve-doc.md
+
+real	0m0.044s
+user	0m0.029s
+sys	0m0.023s
+
+===============================================================================
+
+go doc -all twelve
+package twelve // import "twelve"
+
+Package twelve resites the "Twelve Days of Christmas" lyrics.
+
+FUNCTIONS
+
+func Song() string
+    Song returns the whole song.
+
+func Verse(verseNum int) string
+    Verse returns the specific verse/line from the song.
+
+
+real	0m0.139s
+user	0m0.101s
+sys	0m0.147s
+
+
+===============================================================================
+

@@ -1,0 +1,57 @@
+
+10     	func Verse(verseNum int) string {
+11     		verseNum--
+12     		if verseNum < 0 || verseNum > 11 {
+13 MISS			return ""
+14     		}
+15     	
+16     		linePrefix := "On the %s day of Christmas my true love gave to me: %s"
+17     	
+18     		days := []string{
+19     			"first",
+20     			"second",
+21     			"third",
+22     			"fourth",
+23     			"fifth",
+24     			"sixth",
+25     			"seventh",
+26     			"eighth",
+27     			"ninth",
+28     			"tenth",
+29     			"eleventh",
+30     			"twelfth",
+31     		}
+32     	
+33     		items := []string{
+34     			"a Partridge in a Pear Tree.",
+35     			"two Turtle Doves, ",
+36     			"three French Hens, ",
+37     			"four Calling Birds, ",
+38     			"five Gold Rings, ",
+39     			"six Geese-a-Laying, ",
+40     			"seven Swans-a-Swimming, ",
+41     			"eight Maids-a-Milking, ",
+42     			"nine Ladies Dancing, ",
+43     			"ten Lords-a-Leaping, ",
+44     			"eleven Pipers Piping, ",
+45     			"twelve Drummers Drumming, ",
+46     		}
+47     	
+48     		var verse string
+49     		i := verseNum
+50     		j := 0
+51     	
+52     		for j <= i {
+53     			if j == 1 {
+54     				verse = "and " + verse
+55     			}
+56     	
+57     			verse = items[j] + verse
+58     			j++
+59     		}
+60     	
+61     		verse = fmt.Sprintf(linePrefix, days[i], verse)
+62     	
+63     		return verse
+64     	}
+
