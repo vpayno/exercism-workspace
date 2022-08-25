@@ -1,0 +1,570 @@
+Running automated test file(s):
+
+Go packages: allergies 
+
+
+===============================================================================
+
+golint ./...
+
+real	0m0.199s
+user	0m0.133s
+sys	0m0.173s
+
+===============================================================================
+
+revive ./...
+
+real	0m0.069s
+user	0m0.038s
+sys	0m0.020s
+
+===============================================================================
+
+ineffassign ./...
+
+real	0m0.524s
+user	0m0.511s
+sys	0m0.464s
+
+===============================================================================
+
+go-consistent -v ./...
+	info: check "./."
+
+real	0m0.632s
+user	0m0.549s
+sys	0m0.521s
+
+===============================================================================
+
+staticcheck ./...
+
+real	0m0.979s
+user	0m0.808s
+sys	0m0.971s
+
+===============================================================================
+
+gocritic check -enableAll ./...
+
+real	0m7.317s
+user	0m10.520s
+sys	0m2.964s
+
+===============================================================================
+
+gotest -v -covermode=count -coverprofile coverage.out ./...
+=== RUN   TestAllergicTo
+=== RUN   TestAllergicTo/not_allergic_to_anything
+=== RUN   TestAllergicTo/allergic_only_to_eggs
+=== RUN   TestAllergicTo/allergic_to_eggs_and_something_else
+=== RUN   TestAllergicTo/allergic_to_something,_but_not_eggs
+=== RUN   TestAllergicTo/allergic_to_everything
+=== RUN   TestAllergicTo/not_allergic_to_anything#01
+=== RUN   TestAllergicTo/allergic_only_to_peanuts
+=== RUN   TestAllergicTo/allergic_to_peanuts_and_something_else
+=== RUN   TestAllergicTo/allergic_to_something,_but_not_peanuts
+=== RUN   TestAllergicTo/allergic_to_everything#01
+=== RUN   TestAllergicTo/not_allergic_to_anything#02
+=== RUN   TestAllergicTo/allergic_only_to_shellfish
+=== RUN   TestAllergicTo/allergic_to_shellfish_and_something_else
+=== RUN   TestAllergicTo/allergic_to_something,_but_not_shellfish
+=== RUN   TestAllergicTo/allergic_to_everything#02
+=== RUN   TestAllergicTo/not_allergic_to_anything#03
+=== RUN   TestAllergicTo/allergic_only_to_strawberries
+=== RUN   TestAllergicTo/allergic_to_strawberries_and_something_else
+=== RUN   TestAllergicTo/allergic_to_something,_but_not_strawberries
+=== RUN   TestAllergicTo/allergic_to_everything#03
+=== RUN   TestAllergicTo/not_allergic_to_anything#04
+=== RUN   TestAllergicTo/allergic_only_to_tomatoes
+=== RUN   TestAllergicTo/allergic_to_tomatoes_and_something_else
+=== RUN   TestAllergicTo/allergic_to_something,_but_not_tomatoes
+=== RUN   TestAllergicTo/allergic_to_everything#04
+=== RUN   TestAllergicTo/not_allergic_to_anything#05
+=== RUN   TestAllergicTo/allergic_only_to_chocolate
+=== RUN   TestAllergicTo/allergic_to_chocolate_and_something_else
+=== RUN   TestAllergicTo/allergic_to_something,_but_not_chocolate
+=== RUN   TestAllergicTo/allergic_to_everything#05
+=== RUN   TestAllergicTo/not_allergic_to_anything#06
+=== RUN   TestAllergicTo/allergic_only_to_pollen
+=== RUN   TestAllergicTo/allergic_to_pollen_and_something_else
+=== RUN   TestAllergicTo/allergic_to_something,_but_not_pollen
+=== RUN   TestAllergicTo/allergic_to_everything#06
+=== RUN   TestAllergicTo/not_allergic_to_anything#07
+=== RUN   TestAllergicTo/allergic_only_to_cats
+=== RUN   TestAllergicTo/allergic_to_cats_and_something_else
+=== RUN   TestAllergicTo/allergic_to_something,_but_not_cats
+=== RUN   TestAllergicTo/allergic_to_everything#07
+--- PASS: TestAllergicTo (0.00s)
+    --- PASS: TestAllergicTo/not_allergic_to_anything (0.00s)
+    --- PASS: TestAllergicTo/allergic_only_to_eggs (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_eggs_and_something_else (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_something,_but_not_eggs (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_everything (0.00s)
+    --- PASS: TestAllergicTo/not_allergic_to_anything#01 (0.00s)
+    --- PASS: TestAllergicTo/allergic_only_to_peanuts (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_peanuts_and_something_else (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_something,_but_not_peanuts (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_everything#01 (0.00s)
+    --- PASS: TestAllergicTo/not_allergic_to_anything#02 (0.00s)
+    --- PASS: TestAllergicTo/allergic_only_to_shellfish (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_shellfish_and_something_else (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_something,_but_not_shellfish (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_everything#02 (0.00s)
+    --- PASS: TestAllergicTo/not_allergic_to_anything#03 (0.00s)
+    --- PASS: TestAllergicTo/allergic_only_to_strawberries (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_strawberries_and_something_else (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_something,_but_not_strawberries (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_everything#03 (0.00s)
+    --- PASS: TestAllergicTo/not_allergic_to_anything#04 (0.00s)
+    --- PASS: TestAllergicTo/allergic_only_to_tomatoes (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_tomatoes_and_something_else (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_something,_but_not_tomatoes (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_everything#04 (0.00s)
+    --- PASS: TestAllergicTo/not_allergic_to_anything#05 (0.00s)
+    --- PASS: TestAllergicTo/allergic_only_to_chocolate (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_chocolate_and_something_else (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_something,_but_not_chocolate (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_everything#05 (0.00s)
+    --- PASS: TestAllergicTo/not_allergic_to_anything#06 (0.00s)
+    --- PASS: TestAllergicTo/allergic_only_to_pollen (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_pollen_and_something_else (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_something,_but_not_pollen (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_everything#06 (0.00s)
+    --- PASS: TestAllergicTo/not_allergic_to_anything#07 (0.00s)
+    --- PASS: TestAllergicTo/allergic_only_to_cats (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_cats_and_something_else (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_something,_but_not_cats (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_everything#07 (0.00s)
+=== RUN   TestAllergies
+=== RUN   TestAllergies/no_allergies
+=== RUN   TestAllergies/just_eggs
+=== RUN   TestAllergies/just_peanuts
+=== RUN   TestAllergies/just_strawberries
+=== RUN   TestAllergies/eggs_and_peanuts
+=== RUN   TestAllergies/more_than_eggs_but_not_peanuts
+=== RUN   TestAllergies/lots_of_stuff
+=== RUN   TestAllergies/everything
+=== RUN   TestAllergies/no_allergen_score_parts
+=== RUN   TestAllergies/no_allergen_score_parts_without_highest_valid_score
+--- PASS: TestAllergies (0.00s)
+    --- PASS: TestAllergies/no_allergies (0.00s)
+    --- PASS: TestAllergies/just_eggs (0.00s)
+    --- PASS: TestAllergies/just_peanuts (0.00s)
+    --- PASS: TestAllergies/just_strawberries (0.00s)
+    --- PASS: TestAllergies/eggs_and_peanuts (0.00s)
+    --- PASS: TestAllergies/more_than_eggs_but_not_peanuts (0.00s)
+    --- PASS: TestAllergies/lots_of_stuff (0.00s)
+    --- PASS: TestAllergies/everything (0.00s)
+    --- PASS: TestAllergies/no_allergen_score_parts (0.00s)
+    --- PASS: TestAllergies/no_allergen_score_parts_without_highest_valid_score (0.00s)
+=== RUN   ExampleAllergicTo
+--- PASS: ExampleAllergicTo (0.00s)
+=== RUN   ExampleAllergies
+--- PASS: ExampleAllergies (0.00s)
+PASS
+coverage: 95.7% of statements
+ok  	allergies	0.019s	coverage: 95.7% of statements
+
+real	0m1.260s
+user	0m1.353s
+sys	0m0.820s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+allergies/allergies.go:29:	AllergicTo	90.9%
+allergies/allergies.go:55:	Allergies	100.0%
+total:				(statements)	95.7%
+
+real	0m0.294s
+user	0m0.220s
+sys	0m0.293s
+
+===============================================================================
+
+go tool cover -html coverage.out -o coverage.html
+
+real	0m0.404s
+user	0m0.289s
+sys	0m0.288s
+
+===============================================================================
+
+gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+29     	func AllergicTo(flags uint, name string) bool {
+30     		if flags == 0 {
+31     			return false
+32     		}
+33     	
+34     		allergyFlags := map[string]uint{}
+35     	
+36     		for bits, name := range allergyNames {
+37     			allergyFlags[name] = bits
+38     		}
+39     	
+40     		allergyFlag, ok := allergyFlags[name]
+41     	
+42     		if !ok {
+43     			// Why do so many exercisms lack error return values????
+44 MISS			return false
+45     		}
+46     	
+47     		if (flags & allergyFlag) != 0 {
+48     			return true
+49     		}
+50     	
+51     		return false
+52     	}
+
+
+real	0m0.095s
+user	0m0.042s
+sys	0m0.085s
+
+===============================================================================
+
+gotest -v -race -covermode=atomic ./...
+=== RUN   TestAllergicTo
+=== RUN   TestAllergicTo/not_allergic_to_anything
+=== RUN   TestAllergicTo/allergic_only_to_eggs
+=== RUN   TestAllergicTo/allergic_to_eggs_and_something_else
+=== RUN   TestAllergicTo/allergic_to_something,_but_not_eggs
+=== RUN   TestAllergicTo/allergic_to_everything
+=== RUN   TestAllergicTo/not_allergic_to_anything#01
+=== RUN   TestAllergicTo/allergic_only_to_peanuts
+=== RUN   TestAllergicTo/allergic_to_peanuts_and_something_else
+=== RUN   TestAllergicTo/allergic_to_something,_but_not_peanuts
+=== RUN   TestAllergicTo/allergic_to_everything#01
+=== RUN   TestAllergicTo/not_allergic_to_anything#02
+=== RUN   TestAllergicTo/allergic_only_to_shellfish
+=== RUN   TestAllergicTo/allergic_to_shellfish_and_something_else
+=== RUN   TestAllergicTo/allergic_to_something,_but_not_shellfish
+=== RUN   TestAllergicTo/allergic_to_everything#02
+=== RUN   TestAllergicTo/not_allergic_to_anything#03
+=== RUN   TestAllergicTo/allergic_only_to_strawberries
+=== RUN   TestAllergicTo/allergic_to_strawberries_and_something_else
+=== RUN   TestAllergicTo/allergic_to_something,_but_not_strawberries
+=== RUN   TestAllergicTo/allergic_to_everything#03
+=== RUN   TestAllergicTo/not_allergic_to_anything#04
+=== RUN   TestAllergicTo/allergic_only_to_tomatoes
+=== RUN   TestAllergicTo/allergic_to_tomatoes_and_something_else
+=== RUN   TestAllergicTo/allergic_to_something,_but_not_tomatoes
+=== RUN   TestAllergicTo/allergic_to_everything#04
+=== RUN   TestAllergicTo/not_allergic_to_anything#05
+=== RUN   TestAllergicTo/allergic_only_to_chocolate
+=== RUN   TestAllergicTo/allergic_to_chocolate_and_something_else
+=== RUN   TestAllergicTo/allergic_to_something,_but_not_chocolate
+=== RUN   TestAllergicTo/allergic_to_everything#05
+=== RUN   TestAllergicTo/not_allergic_to_anything#06
+=== RUN   TestAllergicTo/allergic_only_to_pollen
+=== RUN   TestAllergicTo/allergic_to_pollen_and_something_else
+=== RUN   TestAllergicTo/allergic_to_something,_but_not_pollen
+=== RUN   TestAllergicTo/allergic_to_everything#06
+=== RUN   TestAllergicTo/not_allergic_to_anything#07
+=== RUN   TestAllergicTo/allergic_only_to_cats
+=== RUN   TestAllergicTo/allergic_to_cats_and_something_else
+=== RUN   TestAllergicTo/allergic_to_something,_but_not_cats
+=== RUN   TestAllergicTo/allergic_to_everything#07
+--- PASS: TestAllergicTo (0.04s)
+    --- PASS: TestAllergicTo/not_allergic_to_anything (0.00s)
+    --- PASS: TestAllergicTo/allergic_only_to_eggs (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_eggs_and_something_else (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_something,_but_not_eggs (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_everything (0.00s)
+    --- PASS: TestAllergicTo/not_allergic_to_anything#01 (0.00s)
+    --- PASS: TestAllergicTo/allergic_only_to_peanuts (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_peanuts_and_something_else (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_something,_but_not_peanuts (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_everything#01 (0.00s)
+    --- PASS: TestAllergicTo/not_allergic_to_anything#02 (0.00s)
+    --- PASS: TestAllergicTo/allergic_only_to_shellfish (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_shellfish_and_something_else (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_something,_but_not_shellfish (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_everything#02 (0.00s)
+    --- PASS: TestAllergicTo/not_allergic_to_anything#03 (0.00s)
+    --- PASS: TestAllergicTo/allergic_only_to_strawberries (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_strawberries_and_something_else (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_something,_but_not_strawberries (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_everything#03 (0.00s)
+    --- PASS: TestAllergicTo/not_allergic_to_anything#04 (0.00s)
+    --- PASS: TestAllergicTo/allergic_only_to_tomatoes (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_tomatoes_and_something_else (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_something,_but_not_tomatoes (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_everything#04 (0.00s)
+    --- PASS: TestAllergicTo/not_allergic_to_anything#05 (0.00s)
+    --- PASS: TestAllergicTo/allergic_only_to_chocolate (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_chocolate_and_something_else (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_something,_but_not_chocolate (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_everything#05 (0.00s)
+    --- PASS: TestAllergicTo/not_allergic_to_anything#06 (0.00s)
+    --- PASS: TestAllergicTo/allergic_only_to_pollen (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_pollen_and_something_else (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_something,_but_not_pollen (0.01s)
+    --- PASS: TestAllergicTo/allergic_to_everything#06 (0.00s)
+    --- PASS: TestAllergicTo/not_allergic_to_anything#07 (0.00s)
+    --- PASS: TestAllergicTo/allergic_only_to_cats (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_cats_and_something_else (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_something,_but_not_cats (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_everything#07 (0.00s)
+=== RUN   TestAllergies
+=== RUN   TestAllergies/no_allergies
+=== RUN   TestAllergies/just_eggs
+=== RUN   TestAllergies/just_peanuts
+=== RUN   TestAllergies/just_strawberries
+=== RUN   TestAllergies/eggs_and_peanuts
+=== RUN   TestAllergies/more_than_eggs_but_not_peanuts
+=== RUN   TestAllergies/lots_of_stuff
+=== RUN   TestAllergies/everything
+=== RUN   TestAllergies/no_allergen_score_parts
+=== RUN   TestAllergies/no_allergen_score_parts_without_highest_valid_score
+--- PASS: TestAllergies (0.00s)
+    --- PASS: TestAllergies/no_allergies (0.00s)
+    --- PASS: TestAllergies/just_eggs (0.00s)
+    --- PASS: TestAllergies/just_peanuts (0.00s)
+    --- PASS: TestAllergies/just_strawberries (0.00s)
+    --- PASS: TestAllergies/eggs_and_peanuts (0.00s)
+    --- PASS: TestAllergies/more_than_eggs_but_not_peanuts (0.00s)
+    --- PASS: TestAllergies/lots_of_stuff (0.00s)
+    --- PASS: TestAllergies/everything (0.00s)
+    --- PASS: TestAllergies/no_allergen_score_parts (0.00s)
+    --- PASS: TestAllergies/no_allergen_score_parts_without_highest_valid_score (0.00s)
+=== RUN   ExampleAllergicTo
+--- PASS: ExampleAllergicTo (0.00s)
+=== RUN   ExampleAllergies
+--- PASS: ExampleAllergies (0.00s)
+PASS
+coverage: 95.7% of statements
+ok  	allergies	0.129s	coverage: 95.7% of statements
+
+real	0m1.787s
+user	0m1.420s
+sys	0m1.127s
+
+===============================================================================
+
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+goos: linux
+goarch: amd64
+pkg: allergies
+cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+BenchmarkAllergicTo
+BenchmarkAllergicTo-4   	   47143	     21627 ns/op	       0 B/op	       0 allocs/op
+BenchmarkAllergies
+BenchmarkAllergies-4    	    4066	    377004 ns/op	    4608 B/op	     130 allocs/op
+PASS
+ok  	allergies	2.980s
+
+real	0m3.968s
+user	0m4.185s
+sys	0m0.839s
+
+===============================================================================
+
+gotest -v -tags bonus
+=== RUN   TestAllergicTo
+=== RUN   TestAllergicTo/not_allergic_to_anything
+=== RUN   TestAllergicTo/allergic_only_to_eggs
+=== RUN   TestAllergicTo/allergic_to_eggs_and_something_else
+=== RUN   TestAllergicTo/allergic_to_something,_but_not_eggs
+=== RUN   TestAllergicTo/allergic_to_everything
+=== RUN   TestAllergicTo/not_allergic_to_anything#01
+=== RUN   TestAllergicTo/allergic_only_to_peanuts
+=== RUN   TestAllergicTo/allergic_to_peanuts_and_something_else
+=== RUN   TestAllergicTo/allergic_to_something,_but_not_peanuts
+=== RUN   TestAllergicTo/allergic_to_everything#01
+=== RUN   TestAllergicTo/not_allergic_to_anything#02
+=== RUN   TestAllergicTo/allergic_only_to_shellfish
+=== RUN   TestAllergicTo/allergic_to_shellfish_and_something_else
+=== RUN   TestAllergicTo/allergic_to_something,_but_not_shellfish
+=== RUN   TestAllergicTo/allergic_to_everything#02
+=== RUN   TestAllergicTo/not_allergic_to_anything#03
+=== RUN   TestAllergicTo/allergic_only_to_strawberries
+=== RUN   TestAllergicTo/allergic_to_strawberries_and_something_else
+=== RUN   TestAllergicTo/allergic_to_something,_but_not_strawberries
+=== RUN   TestAllergicTo/allergic_to_everything#03
+=== RUN   TestAllergicTo/not_allergic_to_anything#04
+=== RUN   TestAllergicTo/allergic_only_to_tomatoes
+=== RUN   TestAllergicTo/allergic_to_tomatoes_and_something_else
+=== RUN   TestAllergicTo/allergic_to_something,_but_not_tomatoes
+=== RUN   TestAllergicTo/allergic_to_everything#04
+=== RUN   TestAllergicTo/not_allergic_to_anything#05
+=== RUN   TestAllergicTo/allergic_only_to_chocolate
+=== RUN   TestAllergicTo/allergic_to_chocolate_and_something_else
+=== RUN   TestAllergicTo/allergic_to_something,_but_not_chocolate
+=== RUN   TestAllergicTo/allergic_to_everything#05
+=== RUN   TestAllergicTo/not_allergic_to_anything#06
+=== RUN   TestAllergicTo/allergic_only_to_pollen
+=== RUN   TestAllergicTo/allergic_to_pollen_and_something_else
+=== RUN   TestAllergicTo/allergic_to_something,_but_not_pollen
+=== RUN   TestAllergicTo/allergic_to_everything#06
+=== RUN   TestAllergicTo/not_allergic_to_anything#07
+=== RUN   TestAllergicTo/allergic_only_to_cats
+=== RUN   TestAllergicTo/allergic_to_cats_and_something_else
+=== RUN   TestAllergicTo/allergic_to_something,_but_not_cats
+=== RUN   TestAllergicTo/allergic_to_everything#07
+--- PASS: TestAllergicTo (0.00s)
+    --- PASS: TestAllergicTo/not_allergic_to_anything (0.00s)
+    --- PASS: TestAllergicTo/allergic_only_to_eggs (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_eggs_and_something_else (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_something,_but_not_eggs (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_everything (0.00s)
+    --- PASS: TestAllergicTo/not_allergic_to_anything#01 (0.00s)
+    --- PASS: TestAllergicTo/allergic_only_to_peanuts (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_peanuts_and_something_else (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_something,_but_not_peanuts (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_everything#01 (0.00s)
+    --- PASS: TestAllergicTo/not_allergic_to_anything#02 (0.00s)
+    --- PASS: TestAllergicTo/allergic_only_to_shellfish (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_shellfish_and_something_else (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_something,_but_not_shellfish (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_everything#02 (0.00s)
+    --- PASS: TestAllergicTo/not_allergic_to_anything#03 (0.00s)
+    --- PASS: TestAllergicTo/allergic_only_to_strawberries (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_strawberries_and_something_else (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_something,_but_not_strawberries (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_everything#03 (0.00s)
+    --- PASS: TestAllergicTo/not_allergic_to_anything#04 (0.00s)
+    --- PASS: TestAllergicTo/allergic_only_to_tomatoes (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_tomatoes_and_something_else (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_something,_but_not_tomatoes (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_everything#04 (0.00s)
+    --- PASS: TestAllergicTo/not_allergic_to_anything#05 (0.00s)
+    --- PASS: TestAllergicTo/allergic_only_to_chocolate (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_chocolate_and_something_else (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_something,_but_not_chocolate (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_everything#05 (0.00s)
+    --- PASS: TestAllergicTo/not_allergic_to_anything#06 (0.00s)
+    --- PASS: TestAllergicTo/allergic_only_to_pollen (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_pollen_and_something_else (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_something,_but_not_pollen (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_everything#06 (0.00s)
+    --- PASS: TestAllergicTo/not_allergic_to_anything#07 (0.00s)
+    --- PASS: TestAllergicTo/allergic_only_to_cats (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_cats_and_something_else (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_something,_but_not_cats (0.00s)
+    --- PASS: TestAllergicTo/allergic_to_everything#07 (0.00s)
+=== RUN   TestAllergies
+=== RUN   TestAllergies/no_allergies
+=== RUN   TestAllergies/just_eggs
+=== RUN   TestAllergies/just_peanuts
+=== RUN   TestAllergies/just_strawberries
+=== RUN   TestAllergies/eggs_and_peanuts
+=== RUN   TestAllergies/more_than_eggs_but_not_peanuts
+=== RUN   TestAllergies/lots_of_stuff
+=== RUN   TestAllergies/everything
+=== RUN   TestAllergies/no_allergen_score_parts
+=== RUN   TestAllergies/no_allergen_score_parts_without_highest_valid_score
+--- PASS: TestAllergies (0.00s)
+    --- PASS: TestAllergies/no_allergies (0.00s)
+    --- PASS: TestAllergies/just_eggs (0.00s)
+    --- PASS: TestAllergies/just_peanuts (0.00s)
+    --- PASS: TestAllergies/just_strawberries (0.00s)
+    --- PASS: TestAllergies/eggs_and_peanuts (0.00s)
+    --- PASS: TestAllergies/more_than_eggs_but_not_peanuts (0.00s)
+    --- PASS: TestAllergies/lots_of_stuff (0.00s)
+    --- PASS: TestAllergies/everything (0.00s)
+    --- PASS: TestAllergies/no_allergen_score_parts (0.00s)
+    --- PASS: TestAllergies/no_allergen_score_parts_without_highest_valid_score (0.00s)
+=== RUN   ExampleAllergicTo
+--- PASS: ExampleAllergicTo (0.00s)
+=== RUN   ExampleAllergies
+--- PASS: ExampleAllergies (0.00s)
+PASS
+ok  	allergies	0.012s
+
+real	0m1.684s
+user	0m1.672s
+sys	0m1.151s
+
+===============================================================================
+
+No old benchmarks to run benchstat against.
+
+===============================================================================
+
+go vet ./...
+
+real	0m1.085s
+user	0m1.091s
+sys	0m0.851s
+
+===============================================================================
+
+go fix ./...
+
+real	0m0.446s
+user	0m0.244s
+sys	0m0.299s
+
+===============================================================================
+
+gocyclo .
+5 allergies Allergies allergies.go:55:1
+5 allergies AllergicTo allergies.go:29:1
+4 allergies BenchmarkAllergies allergies_test.go:40:1
+4 allergies BenchmarkAllergicTo allergies_test.go:29:1
+3 allergies TestAllergies allergies_test.go:19:1
+3 allergies TestAllergicTo allergies_test.go:8:1
+2 allergies sliceSet allergies_test.go:65:1
+2 allergies sameSliceElements allergies_test.go:56:1
+2 allergies ExampleAllergies allergies_examples_test.go:44:1
+2 allergies ExampleAllergicTo allergies_examples_test.go:5:1
+
+real	0m0.064s
+user	0m0.024s
+sys	0m0.037s
+
+===============================================================================
+
+misspell .
+
+real	0m0.482s
+user	0m0.658s
+sys	0m0.269s
+
+===============================================================================
+
+gosec ./...
+[gosec] 2022/08/24 09:36:24 Including rules: default
+[gosec] 2022/08/24 09:36:24 Excluding rules: default
+[gosec] 2022/08/24 09:36:24 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/allergies
+2022/08/24 09:36:25 internal error: package "sort" without types was imported from "command-line-arguments"
+
+real	0m1.609s
+user	0m1.628s
+sys	0m1.154s
+
+===============================================================================
+
+gomarkdoc --output allergies-doc.md
+
+real	0m0.268s
+user	0m0.176s
+sys	0m0.194s
+
+===============================================================================
+
+go doc -all allergies
+package allergies // import "allergies"
+
+Package allergies is used to identify a patient's allergies.
+
+FUNCTIONS
+
+func AllergicTo(flags uint, name string) bool
+    AllergicTo returns true or false to each allergy test.
+
+func Allergies(flags uint) []string
+    Allergies returns a list of allergies the patient is allergic to.
+
+
+real	0m0.398s
+user	0m0.177s
+sys	0m0.303s
+
+
+===============================================================================
+

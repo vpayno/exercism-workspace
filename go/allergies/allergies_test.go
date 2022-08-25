@@ -5,33 +5,22 @@ import (
 	"testing"
 )
 
-func TestAllergies(t *testing.T) {
-	for _, test := range listTests {
-		t.Run(test.description, func(t *testing.T) {
-			if actual := Allergies(test.score); !sameSliceElements(actual, test.expected) {
-				t.Fatalf("Allergies(%d) = %#v, want: %#v", test.score, actual, test.expected)
-			}
-		})
-	}
-}
-
-func BenchmarkAllergies(b *testing.B) {
-	if testing.Short() {
-		b.Skip("skipping benchmark in short mode.")
-	}
-	for i := 0; i < b.N; i++ {
-		for _, test := range allergicToTests {
-			Allergies(test.input.score)
-		}
-	}
-}
-
 func TestAllergicTo(t *testing.T) {
 	for _, test := range allergicToTests {
 		t.Run(test.description, func(t *testing.T) {
 			actual := AllergicTo(test.input.score, test.input.allergen)
 			if actual != test.expected {
-				t.Fatalf("AllergicTo(%d, %q) = %t, want: %t", test.input.score, test.input.allergen, actual, test.expected)
+				t.Errorf("AllergicTo(%d, %q) = %t, want: %t", test.input.score, test.input.allergen, actual, test.expected)
+			}
+		})
+	}
+}
+
+func TestAllergies(t *testing.T) {
+	for _, test := range listTests {
+		t.Run(test.description, func(t *testing.T) {
+			if actual := Allergies(test.score); !sameSliceElements(actual, test.expected) {
+				t.Errorf("Allergies(%d) = %#v, want: %#v", test.score, actual, test.expected)
 			}
 		})
 	}
@@ -44,6 +33,17 @@ func BenchmarkAllergicTo(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		for _, test := range allergicToTests {
 			AllergicTo(test.input.score, test.input.allergen)
+		}
+	}
+}
+
+func BenchmarkAllergies(b *testing.B) {
+	if testing.Short() {
+		b.Skip("skipping benchmark in short mode.")
+	}
+	for i := 0; i < b.N; i++ {
+		for _, test := range allergicToTests {
+			Allergies(test.input.score)
 		}
 	}
 }

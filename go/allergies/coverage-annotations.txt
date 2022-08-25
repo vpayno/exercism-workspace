@@ -1,0 +1,26 @@
+
+29     	func AllergicTo(flags uint, name string) bool {
+30     		if flags == 0 {
+31     			return false
+32     		}
+33     	
+34     		allergyFlags := map[string]uint{}
+35     	
+36     		for bits, name := range allergyNames {
+37     			allergyFlags[name] = bits
+38     		}
+39     	
+40     		allergyFlag, ok := allergyFlags[name]
+41     	
+42     		if !ok {
+43     			// Why do so many exercisms lack error return values????
+44 MISS			return false
+45     		}
+46     	
+47     		if (flags & allergyFlag) != 0 {
+48     			return true
+49     		}
+50     	
+51     		return false
+52     	}
+
