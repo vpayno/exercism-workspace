@@ -1,18 +1,19 @@
 package chessboard // import "chessboard"
 
+Package chessboard returns stats on a chessboard.
 
 FUNCTIONS
 
 func CountAll(cb Chessboard) int
     CountAll should count how many squares are present in the chessboard
 
-func CountInFile(cb Chessboard, file int) int
-    CountInFile returns how many squares are occupied in the chessboard, within
-    the given file
+func CountInFile(cb Chessboard, rank string) int
+    CountInFile returns how many squares are occupied in the chessboard,
+    within the given rank
 
-func CountInRank(cb Chessboard, rank string) int
-    CountInRank returns how many squares are occupied in the chessboard, within
-    the given rank
+func CountInRank(cb Chessboard, file int) int
+    CountInRank returns how many squares are occupied in the chessboard,
+    within the given file
 
 func CountOccupied(cb Chessboard) int
     CountOccupied returns how many squares are occupied in the chessboard
@@ -20,10 +21,10 @@ func CountOccupied(cb Chessboard) int
 
 TYPES
 
-type Chessboard map[string]Rank
-    Chessboard contains a map of eight Ranks, accessed with keys from "A" to "H"
+type Chessboard map[string]File
+    Chessboard contains a map of eight Files, accessed with keys from "A" to "H"
 
-type Rank []bool
-    Rank stores if a square is occupied by a piece - this will be a slice of
+type File []bool
+    File stores if a square is occupied by a piece - this will be a slice of
     bools
 

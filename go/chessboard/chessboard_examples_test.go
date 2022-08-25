@@ -4,17 +4,17 @@ import (
 	"fmt"
 )
 
-func ExampleCountInRank() {
-	board := newChessboard()
-
-	fmt.Println(CountInRank(board, "A"))
-	// Output: 3
-}
-
 func ExampleCountInFile() {
 	board := newChessboard()
 
-	fmt.Println(CountInFile(board, 2))
+	fmt.Println(CountInFile(board, "A"))
+	// Output: 3
+}
+
+func ExampleCountInRank() {
+	board := newChessboard()
+
+	fmt.Println(CountInRank(board, 2))
 	// Output: 1
 }
 

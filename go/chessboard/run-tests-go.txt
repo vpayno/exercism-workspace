@@ -5,175 +5,345 @@ Go packages: chessboard
 
 ===============================================================================
 
-golint chessboard
+golint ./...
 
-real	0m0.114s
-user	0m0.115s
-sys	0m0.096s
+real	0m0.194s
+user	0m0.225s
+sys	0m0.138s
 
 ===============================================================================
 
-go test -v -covermode=count -coverprofile coverage.out chessboard
-=== RUN   TestCountInRank
---- PASS: TestCountInRank (0.00s)
+revive ./...
+
+real	0m0.052s
+user	0m0.014s
+sys	0m0.035s
+
+===============================================================================
+
+ineffassign ./...
+
+real	0m0.310s
+user	0m0.311s
+sys	0m0.328s
+
+===============================================================================
+
+go-consistent -v ./...
+	info: check "./."
+
+real	0m0.356s
+user	0m0.382s
+sys	0m0.345s
+
+===============================================================================
+
+staticcheck ./...
+
+real	0m0.462s
+user	0m0.402s
+sys	0m0.514s
+
+===============================================================================
+
+gocritic check -enableAll ./...
+
+real	0m2.643s
+user	0m4.263s
+sys	0m1.302s
+
+===============================================================================
+
+gotest -v -covermode=count -coverprofile coverage.out ./...
 === RUN   TestCountInFile
+=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_A
+=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_B
+=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_C
+=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_D
+=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_E
+=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_F
+=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_G
+=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_H
+=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_Z
 --- PASS: TestCountInFile (0.00s)
+    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_A (0.00s)
+    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_B (0.00s)
+    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_C (0.00s)
+    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_D (0.00s)
+    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_E (0.00s)
+    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_F (0.00s)
+    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_G (0.00s)
+    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_H (0.00s)
+    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_Z (0.00s)
+=== RUN   TestCountInRank
+=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_1
+=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_2
+=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_3
+=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_4
+=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_5
+=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_6
+=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_7
+=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_8
+=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_100
+=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_0
+=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_-1
+=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_-100
+--- PASS: TestCountInRank (0.00s)
+    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_1 (0.00s)
+    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_2 (0.00s)
+    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_3 (0.00s)
+    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_4 (0.00s)
+    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_5 (0.00s)
+    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_6 (0.00s)
+    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_7 (0.00s)
+    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_8 (0.00s)
+    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_100 (0.00s)
+    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_0 (0.00s)
+    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_-1 (0.00s)
+    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_-100 (0.00s)
 === RUN   TestCountAll
 --- PASS: TestCountAll (0.00s)
 === RUN   TestCountOccupied
 --- PASS: TestCountOccupied (0.00s)
-=== RUN   ExampleCountInRank
---- PASS: ExampleCountInRank (0.00s)
 === RUN   ExampleCountInFile
 --- PASS: ExampleCountInFile (0.00s)
+=== RUN   ExampleCountInRank
+--- PASS: ExampleCountInRank (0.00s)
 === RUN   ExampleCountAll
 --- PASS: ExampleCountAll (0.00s)
 === RUN   ExampleCountOccupied
 --- PASS: ExampleCountOccupied (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	chessboard	0.021s	coverage: 100.0% of statements
+ok  	chessboard	0.030s	coverage: 100.0% of statements
 
-real	0m1.084s
-user	0m1.476s
-sys	0m0.879s
+real	0m0.736s
+user	0m0.754s
+sys	0m0.581s
 
 ===============================================================================
 
 go tool cover -func=coverage.out
-chessboard/chessboard.go:11:	CountInRank	100.0%
-chessboard/chessboard.go:25:	CountInFile	100.0%
-chessboard/chessboard.go:38:	CountAll	100.0%
-chessboard/chessboard.go:51:	CountOccupied	100.0%
+chessboard/chessboard.go:12:	CountInFile	100.0%
+chessboard/chessboard.go:26:	CountInRank	100.0%
+chessboard/chessboard.go:39:	CountAll	100.0%
+chessboard/chessboard.go:52:	CountOccupied	100.0%
 total:				(statements)	100.0%
 
-real	0m0.107s
-user	0m0.088s
-sys	0m0.089s
+real	0m0.145s
+user	0m0.071s
+sys	0m0.133s
 
 ===============================================================================
 
 go tool cover -html coverage.out -o coverage.html
 
-real	0m0.105s
-user	0m0.054s
-sys	0m0.111s
+real	0m0.092s
+user	0m0.042s
+sys	0m0.088s
 
 ===============================================================================
 
-go test -v -race -covermode=atomic chessboard
-=== RUN   TestCountInRank
---- PASS: TestCountInRank (0.00s)
+gocov convert coverage.out | gocov annotate -ceiling=100 -color - | tee coverage-annotations.txt
+
+real	0m0.038s
+user	0m0.016s
+sys	0m0.048s
+
+===============================================================================
+
+gotest -v -race -covermode=atomic ./...
 === RUN   TestCountInFile
+=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_A
+=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_B
+=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_C
+=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_D
+=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_E
+=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_F
+=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_G
+=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_H
+=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_Z
 --- PASS: TestCountInFile (0.00s)
+    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_A (0.00s)
+    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_B (0.00s)
+    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_C (0.00s)
+    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_D (0.00s)
+    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_E (0.00s)
+    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_F (0.00s)
+    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_G (0.00s)
+    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_H (0.00s)
+    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_Z (0.00s)
+=== RUN   TestCountInRank
+=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_1
+=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_2
+=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_3
+=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_4
+=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_5
+=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_6
+=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_7
+=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_8
+=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_100
+=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_0
+=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_-1
+=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_-100
+--- PASS: TestCountInRank (0.00s)
+    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_1 (0.00s)
+    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_2 (0.00s)
+    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_3 (0.00s)
+    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_4 (0.00s)
+    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_5 (0.00s)
+    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_6 (0.00s)
+    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_7 (0.00s)
+    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_8 (0.00s)
+    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_100 (0.00s)
+    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_0 (0.00s)
+    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_-1 (0.00s)
+    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_-100 (0.00s)
 === RUN   TestCountAll
 --- PASS: TestCountAll (0.00s)
 === RUN   TestCountOccupied
 --- PASS: TestCountOccupied (0.00s)
-=== RUN   ExampleCountInRank
---- PASS: ExampleCountInRank (0.00s)
 === RUN   ExampleCountInFile
 --- PASS: ExampleCountInFile (0.00s)
+=== RUN   ExampleCountInRank
+--- PASS: ExampleCountInRank (0.00s)
 === RUN   ExampleCountAll
 --- PASS: ExampleCountAll (0.00s)
 === RUN   ExampleCountOccupied
 --- PASS: ExampleCountOccupied (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	chessboard	0.071s	coverage: 100.0% of statements
+ok  	chessboard	0.047s	coverage: 100.0% of statements
 
-real	0m1.588s
-user	0m2.138s
-sys	0m0.701s
+real	0m1.001s
+user	0m0.884s
+sys	0m0.595s
 
 ===============================================================================
 
+mv -v benchstat-new.txt benchstat-old.txt
+renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
+
 go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 PASS
-ok  	chessboard	0.041s
+ok  	chessboard	0.013s
 
-real	0m0.933s
-user	0m1.219s
-sys	0m0.706s
+real	0m0.634s
+user	0m0.740s
+sys	0m0.475s
 
 ===============================================================================
 
 go test -tags bonus
 PASS
-ok  	chessboard	0.010s
+ok  	chessboard	0.011s
 
-real	0m0.794s
-user	0m1.054s
-sys	0m0.651s
-
-===============================================================================
-
-No old benchmarks to run benchstat against.
+real	0m0.495s
+user	0m0.561s
+sys	0m0.410s
 
 ===============================================================================
 
-go vet chessboard
+benchstat benchstat-old.txt benchstat-new.txt
 
-real	0m0.524s
-user	0m0.717s
-sys	0m0.536s
-
-===============================================================================
-
-go fix chessboard
-
-real	0m0.057s
-user	0m0.044s
-sys	0m0.039s
+real	0m0.021s
+user	0m0.009s
+sys	0m0.014s
 
 ===============================================================================
 
-gosec ./chessboard
-[gosec] 2022/07/28 07:57:01 Including rules: default
-[gosec] 2022/07/28 07:57:01 Excluding rules: default
-[gosec] 2022/07/28 07:57:01 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/chessboard
-[gosec] 2022/07/28 07:57:01 Checking package: chessboard
-[gosec] 2022/07/28 07:57:01 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/chessboard/chessboard.go
+go vet ./...
+
+real	0m0.389s
+user	0m0.366s
+sys	0m0.370s
+
+===============================================================================
+
+go fix ./...
+
+real	0m0.076s
+user	0m0.038s
+sys	0m0.060s
+
+===============================================================================
+
+gocyclo .
+5 chessboard CountInRank chessboard.go:26:1
+4 chessboard CountOccupied chessboard.go:52:1
+3 chessboard TestCountInRank chessboard_test.go:59:1
+3 chessboard TestCountInFile chessboard_test.go:34:1
+3 chessboard CountAll chessboard.go:39:1
+3 chessboard CountInFile chessboard.go:12:1
+2 chessboard TestCountOccupied chessboard_test.go:96:1
+2 chessboard TestCountAll chessboard_test.go:88:1
+1 chessboard newChessboard chessboard_test.go:21:1
+1 chessboard ExampleCountOccupied chessboard_examples_test.go:28:1
+1 chessboard ExampleCountAll chessboard_examples_test.go:21:1
+1 chessboard ExampleCountInRank chessboard_examples_test.go:14:1
+1 chessboard ExampleCountInFile chessboard_examples_test.go:7:1
+
+real	0m0.012s
+user	0m0.008s
+sys	0m0.003s
+
+===============================================================================
+
+misspell .
+
+real	0m0.077s
+user	0m0.081s
+sys	0m0.037s
+
+===============================================================================
+
+gosec ./...
+[gosec] 2022/08/24 21:34:05 Including rules: default
+[gosec] 2022/08/24 21:34:05 Excluding rules: default
+[gosec] 2022/08/24 21:34:05 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/chessboard
+[gosec] 2022/08/24 21:34:06 Checking package: chessboard
+[gosec] 2022/08/24 21:34:06 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/chessboard/chessboard.go
 Results:
 
 
 Summary:
    Files: 1
-   Lines: 63
+   Lines: 64
    Nosec: 0
   Issues: 0
 
 
-real	0m0.357s
-user	0m0.411s
-sys	0m0.208s
+real	0m0.446s
+user	0m0.510s
+sys	0m0.279s
 
 ===============================================================================
 
 gomarkdoc --output chessboard-doc.md
 
-real	0m0.039s
-user	0m0.025s
-sys	0m0.019s
+real	0m0.092s
+user	0m0.052s
+sys	0m0.055s
 
 ===============================================================================
 
 go doc -all chessboard
 package chessboard // import "chessboard"
 
+Package chessboard returns stats on a chessboard.
 
 FUNCTIONS
 
 func CountAll(cb Chessboard) int
     CountAll should count how many squares are present in the chessboard
 
-func CountInFile(cb Chessboard, file int) int
-    CountInFile returns how many squares are occupied in the chessboard, within
-    the given file
+func CountInFile(cb Chessboard, rank string) int
+    CountInFile returns how many squares are occupied in the chessboard,
+    within the given rank
 
-func CountInRank(cb Chessboard, rank string) int
-    CountInRank returns how many squares are occupied in the chessboard, within
-    the given rank
+func CountInRank(cb Chessboard, file int) int
+    CountInRank returns how many squares are occupied in the chessboard,
+    within the given file
 
 func CountOccupied(cb Chessboard) int
     CountOccupied returns how many squares are occupied in the chessboard
@@ -181,17 +351,17 @@ func CountOccupied(cb Chessboard) int
 
 TYPES
 
-type Chessboard map[string]Rank
-    Chessboard contains a map of eight Ranks, accessed with keys from "A" to "H"
+type Chessboard map[string]File
+    Chessboard contains a map of eight Files, accessed with keys from "A" to "H"
 
-type Rank []bool
-    Rank stores if a square is occupied by a piece - this will be a slice of
+type File []bool
+    File stores if a square is occupied by a piece - this will be a slice of
     bools
 
 
-real	0m0.156s
-user	0m0.070s
-sys	0m0.138s
+real	0m0.179s
+user	0m0.090s
+sys	0m0.179s
 
 
 ===============================================================================

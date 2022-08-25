@@ -78,17 +78,18 @@
 		</div>
 		<div id="content">
 		
-		<pre class="file" id="file0" style="display: none">package chessboard
+		<pre class="file" id="file0" style="display: none">// Package chessboard returns stats on a chessboard.
+package chessboard
 
-// Rank stores if a square is occupied by a piece - this will be a slice of bools
-type Rank []bool
+// File stores if a square is occupied by a piece - this will be a slice of bools
+type File []bool
 
-// Chessboard contains a map of eight Ranks, accessed with keys from "A" to "H"
-type Chessboard map[string]Rank
+// Chessboard contains a map of eight Files, accessed with keys from "A" to "H"
+type Chessboard map[string]File
 
-// CountInRank returns how many squares are occupied in the chessboard,
+// CountInFile returns how many squares are occupied in the chessboard,
 // within the given rank
-func CountInRank(cb Chessboard, rank string) int <span class="cov5" title="10">{
+func CountInFile(cb Chessboard, rank string) int <span class="cov5" title="10">{
         var count int
 
         for _, value := range cb[rank] </span><span class="cov8" title="72">{
@@ -100,13 +101,13 @@ func CountInRank(cb Chessboard, rank string) int <span class="cov5" title="10">{
         <span class="cov5" title="10">return count</span>
 }
 
-// CountInFile returns how many squares are occupied in the chessboard,
+// CountInRank returns how many squares are occupied in the chessboard,
 // within the given file
-func CountInFile(cb Chessboard, file int) int <span class="cov5" title="13">{
+func CountInRank(cb Chessboard, file int) int <span class="cov5" title="13">{
         var count int
 
         for key := range cb </span><span class="cov9" title="104">{
-                if (file-1 &gt;= 0 &amp;&amp; file-1 &lt; 8) &amp;&amp; cb[key][file-1] </span><span class="cov6" title="16">{
+                if (file &gt; 0 &amp;&amp; file &lt;= 8) &amp;&amp; cb[key][file-1] </span><span class="cov6" title="16">{
                         count++
                 }</span>
         }

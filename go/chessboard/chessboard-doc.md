@@ -6,17 +6,19 @@
 import "chessboard"
 ```
 
+Package chessboard returns stats on a chessboard.
+
 ## Index
 
 - [func CountAll(cb Chessboard) int](<#func-countall>)
-- [func CountInFile(cb Chessboard, file int) int](<#func-countinfile>)
-- [func CountInRank(cb Chessboard, rank string) int](<#func-countinrank>)
+- [func CountInFile(cb Chessboard, rank string) int](<#func-countinfile>)
+- [func CountInRank(cb Chessboard, file int) int](<#func-countinrank>)
 - [func CountOccupied(cb Chessboard) int](<#func-countoccupied>)
 - [type Chessboard](<#type-chessboard>)
-- [type Rank](<#type-rank>)
+- [type File](<#type-file>)
 
 
-## func [CountAll](<https://github.com/vpayno/exercism-workspace/blob/main/go/chessboard/chessboard.go#L38>)
+## func [CountAll](<https://github.com/vpayno/exercism-workspace/blob/main/go/chessboard/chessboard.go#L39>)
 
 ```go
 func CountAll(cb Chessboard) int
@@ -45,13 +47,13 @@ CountAll should count how many squares are present in the chessboard
 </p>
 </details>
 
-## func [CountInFile](<https://github.com/vpayno/exercism-workspace/blob/main/go/chessboard/chessboard.go#L25>)
+## func [CountInFile](<https://github.com/vpayno/exercism-workspace/blob/main/go/chessboard/chessboard.go#L12>)
 
 ```go
-func CountInFile(cb Chessboard, file int) int
+func CountInFile(cb Chessboard, rank string) int
 ```
 
-CountInFile returns how many squares are occupied in the chessboard\, within the given file
+CountInFile returns how many squares are occupied in the chessboard, within the given rank
 
 <details><summary>Example</summary>
 <p>
@@ -60,36 +62,7 @@ CountInFile returns how many squares are occupied in the chessboard\, within the
 {
 	board := newChessboard()
 
-	fmt.Println(CountInFile(board, 2))
-
-}
-```
-
-#### Output
-
-```
-1
-```
-
-</p>
-</details>
-
-## func [CountInRank](<https://github.com/vpayno/exercism-workspace/blob/main/go/chessboard/chessboard.go#L11>)
-
-```go
-func CountInRank(cb Chessboard, rank string) int
-```
-
-CountInRank returns how many squares are occupied in the chessboard\, within the given rank
-
-<details><summary>Example</summary>
-<p>
-
-```go
-{
-	board := newChessboard()
-
-	fmt.Println(CountInRank(board, "A"))
+	fmt.Println(CountInFile(board, "A"))
 
 }
 ```
@@ -103,7 +76,36 @@ CountInRank returns how many squares are occupied in the chessboard\, within the
 </p>
 </details>
 
-## func [CountOccupied](<https://github.com/vpayno/exercism-workspace/blob/main/go/chessboard/chessboard.go#L51>)
+## func [CountInRank](<https://github.com/vpayno/exercism-workspace/blob/main/go/chessboard/chessboard.go#L26>)
+
+```go
+func CountInRank(cb Chessboard, file int) int
+```
+
+CountInRank returns how many squares are occupied in the chessboard, within the given file
+
+<details><summary>Example</summary>
+<p>
+
+```go
+{
+	board := newChessboard()
+
+	fmt.Println(CountInRank(board, 2))
+
+}
+```
+
+#### Output
+
+```
+1
+```
+
+</p>
+</details>
+
+## func [CountOccupied](<https://github.com/vpayno/exercism-workspace/blob/main/go/chessboard/chessboard.go#L52>)
 
 ```go
 func CountOccupied(cb Chessboard) int
@@ -132,20 +134,20 @@ CountOccupied returns how many squares are occupied in the chessboard
 </p>
 </details>
 
-## type [Chessboard](<https://github.com/vpayno/exercism-workspace/blob/main/go/chessboard/chessboard.go#L7>)
+## type [Chessboard](<https://github.com/vpayno/exercism-workspace/blob/main/go/chessboard/chessboard.go#L8>)
 
-Chessboard contains a map of eight Ranks\, accessed with keys from "A" to "H"
+Chessboard contains a map of eight Files, accessed with keys from "A" to "H"
 
 ```go
-type Chessboard map[string]Rank
+type Chessboard map[string]File
 ```
 
-## type [Rank](<https://github.com/vpayno/exercism-workspace/blob/main/go/chessboard/chessboard.go#L4>)
+## type [File](<https://github.com/vpayno/exercism-workspace/blob/main/go/chessboard/chessboard.go#L5>)
 
-Rank stores if a square is occupied by a piece \- this will be a slice of bools
+File stores if a square is occupied by a piece \- this will be a slice of bools
 
 ```go
-type Rank []bool
+type File []bool
 ```
 
 
