@@ -1,11 +1,15 @@
 // Package allergies is used to identify a patient's allergies.
 package allergies
 
-import "sort"
+import (
+	"sort"
+)
+
+type allergy uint
 
 const (
-	eggs    uint = 1
-	peanuts uint = 1 << iota
+	eggs    allergy = 1
+	peanuts allergy = 1 << iota
 	shellfish
 	strawberries
 	tomatoes
@@ -14,37 +18,50 @@ const (
 	cats
 )
 
-var allergyNames = map[uint]string{
-	0b00000001: "eggs",
-	0b00000010: "peanuts",
-	0b00000100: "shellfish",
-	0b00001000: "strawberries",
-	0b00010000: "tomatoes",
-	0b00100000: "chocolate",
-	0b01000000: "pollen",
-	0b10000000: "cats",
+var allergyNames = map[allergy]string{
+	eggs.Bits():         "eggs",
+	peanuts.Bits():      "peanuts",
+	shellfish.Bits():    "shellfish",
+	strawberries.Bits(): "strawberries",
+	tomatoes.Bits():     "tomatoes",
+	chocolate.Bits():    "chocolate",
+	pollen.Bits():       "pollen",
+	cats.Bits():         "cats",
+}
+
+func (a allergy) String() string {
+	name, ok := allergyNames[a]
+
+	if !ok {
+		return ""
+	}
+
+	return name
+}
+
+func (a allergy) Uint() uint {
+	if a < 1 || a > 255 {
+		return 0
+	}
+
+	return uint(a)
+}
+
+func (a allergy) Bits() allergy {
+	if a < 1 || a > 255 {
+		return 0
+	}
+
+	return a
 }
 
 // AllergicTo returns true or false to each allergy test.
-func AllergicTo(flags uint, name string) bool {
+func AllergicTo(flags allergy, flag allergy) bool {
 	if flags == 0 {
 		return false
 	}
 
-	allergyFlags := map[string]uint{}
-
-	for bits, name := range allergyNames {
-		allergyFlags[name] = bits
-	}
-
-	allergyFlag, ok := allergyFlags[name]
-
-	if !ok {
-		// Why do so many exercisms lack error return values????
-		return false
-	}
-
-	if (flags & allergyFlag) != 0 {
+	if (flags & flag.Bits()) != 0 {
 		return true
 	}
 
@@ -52,7 +69,7 @@ func AllergicTo(flags uint, name string) bool {
 }
 
 // Allergies returns a list of allergies the patient is allergic to.
-func Allergies(flags uint) []string {
+func Allergies(flags allergy) []string {
 	if flags == 0 {
 		return []string{}
 	}
@@ -60,14 +77,14 @@ func Allergies(flags uint) []string {
 	allergies := []string{}
 
 	// walk through all the known allergies
-	for _, name := range allergyNames {
-		if AllergicTo(flags, name) {
-			allergies = append(allergies, name)
+	for flag, _ := range allergyNames {
+		if AllergicTo(flags, flag) {
+			allergies = append(allergies, allergy(flag).String())
 		}
 	}
 
 	// We need this so we can sort the allergies array since tests need sorted, stable output.
-	allergyFlags := map[string]uint{}
+	allergyFlags := map[string]allergy{}
 	for bits, name := range allergyNames {
 		allergyFlags[name] = bits
 	}

@@ -6,51 +6,56 @@ Go packages: allergies
 ===============================================================================
 
 golint ./...
+allergies.go:80:12: should omit 2nd value from range; this loop is equivalent to `for flag := range ...`
 
-real	0m0.199s
-user	0m0.133s
-sys	0m0.173s
+real	0m0.159s
+user	0m0.109s
+sys	0m0.122s
 
 ===============================================================================
 
 revive ./...
+allergies.go:80:12: should omit 2nd value from range; this loop is equivalent to `for flag := range ...`
 
-real	0m0.069s
-user	0m0.038s
-sys	0m0.020s
+real	0m0.093s
+user	0m0.051s
+sys	0m0.045s
 
 ===============================================================================
 
 ineffassign ./...
 
-real	0m0.524s
-user	0m0.511s
-sys	0m0.464s
+real	0m0.295s
+user	0m0.266s
+sys	0m0.277s
 
 ===============================================================================
 
 go-consistent -v ./...
 	info: check "./."
+./allergies.go:4:1: unit import: omit parenthesis in a single-package import
 
-real	0m0.632s
-user	0m0.549s
-sys	0m0.521s
+real	0m0.427s
+user	0m0.388s
+sys	0m0.431s
 
 ===============================================================================
 
 staticcheck ./...
+allergies.go:80:12: unnecessary assignment to the blank identifier (S1005)
 
-real	0m0.979s
-user	0m0.808s
-sys	0m0.971s
+real	0m0.395s
+user	0m0.396s
+sys	0m0.383s
 
 ===============================================================================
 
 gocritic check -enableAll ./...
+./allergies.go:59:1: paramTypeCombine: func(flags allergy, flag allergy) bool could be replaced with func(flags, flag allergy) bool
 
-real	0m7.317s
-user	0m10.520s
-sys	0m2.964s
+real	0m3.075s
+user	0m4.484s
+sys	0m1.529s
 
 ===============================================================================
 
@@ -164,65 +169,71 @@ gotest -v -covermode=count -coverprofile coverage.out ./...
 === RUN   ExampleAllergies
 --- PASS: ExampleAllergies (0.00s)
 PASS
-coverage: 95.7% of statements
-ok  	allergies	0.019s	coverage: 95.7% of statements
+coverage: 81.5% of statements
+ok  	allergies	0.006s	coverage: 81.5% of statements
 
-real	0m1.260s
-user	0m1.353s
-sys	0m0.820s
+real	0m0.881s
+user	0m1.014s
+sys	0m0.660s
 
 ===============================================================================
 
 go tool cover -func=coverage.out
-allergies/allergies.go:29:	AllergicTo	90.9%
-allergies/allergies.go:55:	Allergies	100.0%
-total:				(statements)	95.7%
+allergies/allergies.go:32:	String		75.0%
+allergies/allergies.go:42:	Uint		0.0%
+allergies/allergies.go:50:	Bits		66.7%
+allergies/allergies.go:59:	AllergicTo	100.0%
+allergies/allergies.go:72:	Allergies	100.0%
+total:				(statements)	81.5%
 
-real	0m0.294s
-user	0m0.220s
-sys	0m0.293s
+real	0m0.285s
+user	0m0.224s
+sys	0m0.310s
 
 ===============================================================================
 
 go tool cover -html coverage.out -o coverage.html
 
-real	0m0.404s
-user	0m0.289s
-sys	0m0.288s
+real	0m0.284s
+user	0m0.219s
+sys	0m0.254s
 
 ===============================================================================
 
 gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
 
-29     	func AllergicTo(flags uint, name string) bool {
-30     		if flags == 0 {
-31     			return false
-32     		}
-33     	
-34     		allergyFlags := map[string]uint{}
-35     	
-36     		for bits, name := range allergyNames {
-37     			allergyFlags[name] = bits
-38     		}
-39     	
-40     		allergyFlag, ok := allergyFlags[name]
-41     	
-42     		if !ok {
-43     			// Why do so many exercisms lack error return values????
-44 MISS			return false
+50     	func (a allergy) Bits() allergy {
+51     		if a < 1 || a > 255 {
+52 MISS			return 0
+53     		}
+54     	
+55     		return a
+56     	}
+
+
+32     	func (a allergy) String() string {
+33     		name, ok := allergyNames[a]
+34     	
+35     		if !ok {
+36 MISS			return ""
+37     		}
+38     	
+39     		return name
+40     	}
+
+
+42     	func (a allergy) Uint() uint {
+43 MISS		if a < 1 || a > 255 {
+44 MISS			return 0
 45     		}
 46     	
-47     		if (flags & allergyFlag) != 0 {
-48     			return true
-49     		}
-50     	
-51     		return false
-52     	}
+47 MISS		return uint(a)
+48     	}
 
 
-real	0m0.095s
-user	0m0.042s
-sys	0m0.085s
+real	0m0.121s
+user	0m0.032s
+sys	0m0.103s
 
 ===============================================================================
 
@@ -268,7 +279,7 @@ gotest -v -race -covermode=atomic ./...
 === RUN   TestAllergicTo/allergic_to_cats_and_something_else
 === RUN   TestAllergicTo/allergic_to_something,_but_not_cats
 === RUN   TestAllergicTo/allergic_to_everything#07
---- PASS: TestAllergicTo (0.04s)
+--- PASS: TestAllergicTo (0.03s)
     --- PASS: TestAllergicTo/not_allergic_to_anything (0.00s)
     --- PASS: TestAllergicTo/allergic_only_to_eggs (0.00s)
     --- PASS: TestAllergicTo/allergic_to_eggs_and_something_else (0.00s)
@@ -302,7 +313,7 @@ gotest -v -race -covermode=atomic ./...
     --- PASS: TestAllergicTo/not_allergic_to_anything#06 (0.00s)
     --- PASS: TestAllergicTo/allergic_only_to_pollen (0.00s)
     --- PASS: TestAllergicTo/allergic_to_pollen_and_something_else (0.00s)
-    --- PASS: TestAllergicTo/allergic_to_something,_but_not_pollen (0.01s)
+    --- PASS: TestAllergicTo/allergic_to_something,_but_not_pollen (0.00s)
     --- PASS: TestAllergicTo/allergic_to_everything#06 (0.00s)
     --- PASS: TestAllergicTo/not_allergic_to_anything#07 (0.00s)
     --- PASS: TestAllergicTo/allergic_only_to_cats (0.00s)
@@ -320,7 +331,7 @@ gotest -v -race -covermode=atomic ./...
 === RUN   TestAllergies/everything
 === RUN   TestAllergies/no_allergen_score_parts
 === RUN   TestAllergies/no_allergen_score_parts_without_highest_valid_score
---- PASS: TestAllergies (0.00s)
+--- PASS: TestAllergies (0.01s)
     --- PASS: TestAllergies/no_allergies (0.00s)
     --- PASS: TestAllergies/just_eggs (0.00s)
     --- PASS: TestAllergies/just_peanuts (0.00s)
@@ -336,14 +347,17 @@ gotest -v -race -covermode=atomic ./...
 === RUN   ExampleAllergies
 --- PASS: ExampleAllergies (0.00s)
 PASS
-coverage: 95.7% of statements
-ok  	allergies	0.129s	coverage: 95.7% of statements
+coverage: 81.5% of statements
+ok  	allergies	0.073s	coverage: 81.5% of statements
 
-real	0m1.787s
-user	0m1.420s
-sys	0m1.127s
+real	0m1.358s
+user	0m1.144s
+sys	0m0.832s
 
 ===============================================================================
+
+mv -v benchstat-new.txt benchstat-old.txt
+renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
 
 gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 goos: linux
@@ -351,15 +365,15 @@ goarch: amd64
 pkg: allergies
 cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
 BenchmarkAllergicTo
-BenchmarkAllergicTo-4   	   47143	     21627 ns/op	       0 B/op	       0 allocs/op
+BenchmarkAllergicTo-4   	17573226	        69.40 ns/op	       0 B/op	       0 allocs/op
 BenchmarkAllergies
-BenchmarkAllergies-4    	    4066	    377004 ns/op	    4608 B/op	     130 allocs/op
+BenchmarkAllergies-4    	   19191	     62253 ns/op	    4608 B/op	     130 allocs/op
 PASS
-ok  	allergies	2.980s
+ok  	allergies	3.205s
 
-real	0m3.968s
-user	0m4.185s
-sys	0m0.839s
+real	0m3.825s
+user	0m4.342s
+sys	0m0.587s
 
 ===============================================================================
 
@@ -475,75 +489,93 @@ gotest -v -tags bonus
 PASS
 ok  	allergies	0.012s
 
-real	0m1.684s
-user	0m1.672s
-sys	0m1.151s
+real	0m0.463s
+user	0m0.549s
+sys	0m0.390s
 
 ===============================================================================
 
-No old benchmarks to run benchstat against.
+benchstat benchstat-old.txt benchstat-new.txt
+name          old time/op    new time/op    delta
+AllergicTo-4    21.6µs ± 0%     0.1µs ± 0%   ~     (p=1.000 n=1+1)
+Allergies-4      377µs ± 0%      62µs ± 0%   ~     (p=1.000 n=1+1)
+
+name          old alloc/op   new alloc/op   delta
+AllergicTo-4     0.00B          0.00B        ~     (all equal)
+Allergies-4     4.61kB ± 0%    4.61kB ± 0%   ~     (all equal)
+
+name          old allocs/op  new allocs/op  delta
+AllergicTo-4      0.00           0.00        ~     (all equal)
+Allergies-4        130 ± 0%       130 ± 0%   ~     (all equal)
+
+real	0m0.096s
+user	0m0.034s
+sys	0m0.056s
 
 ===============================================================================
 
 go vet ./...
 
-real	0m1.085s
-user	0m1.091s
-sys	0m0.851s
+real	0m0.310s
+user	0m0.357s
+sys	0m0.292s
 
 ===============================================================================
 
 go fix ./...
 
-real	0m0.446s
-user	0m0.244s
-sys	0m0.299s
+real	0m0.093s
+user	0m0.040s
+sys	0m0.080s
 
 ===============================================================================
 
 gocyclo .
-5 allergies Allergies allergies.go:55:1
-5 allergies AllergicTo allergies.go:29:1
+5 allergies Allergies allergies.go:72:1
 4 allergies BenchmarkAllergies allergies_test.go:40:1
 4 allergies BenchmarkAllergicTo allergies_test.go:29:1
 3 allergies TestAllergies allergies_test.go:19:1
 3 allergies TestAllergicTo allergies_test.go:8:1
+3 allergies AllergicTo allergies.go:59:1
+3 allergies (allergy).Bits allergies.go:50:1
+3 allergies (allergy).Uint allergies.go:42:1
 2 allergies sliceSet allergies_test.go:65:1
 2 allergies sameSliceElements allergies_test.go:56:1
-2 allergies ExampleAllergies allergies_examples_test.go:44:1
+2 allergies ExampleAllergies allergies_examples_test.go:32:1
 2 allergies ExampleAllergicTo allergies_examples_test.go:5:1
+2 allergies (allergy).String allergies.go:32:1
 
-real	0m0.064s
-user	0m0.024s
-sys	0m0.037s
+real	0m0.014s
+user	0m0.003s
+sys	0m0.008s
 
 ===============================================================================
 
 misspell .
 
-real	0m0.482s
-user	0m0.658s
-sys	0m0.269s
+real	0m0.089s
+user	0m0.071s
+sys	0m0.051s
 
 ===============================================================================
 
 gosec ./...
-[gosec] 2022/08/24 09:36:24 Including rules: default
-[gosec] 2022/08/24 09:36:24 Excluding rules: default
-[gosec] 2022/08/24 09:36:24 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/allergies
-2022/08/24 09:36:25 internal error: package "sort" without types was imported from "command-line-arguments"
+[gosec] 2022/08/24 20:35:03 Including rules: default
+[gosec] 2022/08/24 20:35:03 Excluding rules: default
+[gosec] 2022/08/24 20:35:03 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/allergies
+2022/08/24 20:35:04 internal error: package "sort" without types was imported from "command-line-arguments"
 
-real	0m1.609s
-user	0m1.628s
-sys	0m1.154s
+real	0m0.518s
+user	0m0.456s
+sys	0m0.398s
 
 ===============================================================================
 
 gomarkdoc --output allergies-doc.md
 
-real	0m0.268s
-user	0m0.176s
-sys	0m0.194s
+real	0m0.067s
+user	0m0.015s
+sys	0m0.023s
 
 ===============================================================================
 
@@ -554,16 +586,16 @@ Package allergies is used to identify a patient's allergies.
 
 FUNCTIONS
 
-func AllergicTo(flags uint, name string) bool
+func AllergicTo(flags allergy, flag allergy) bool
     AllergicTo returns true or false to each allergy test.
 
-func Allergies(flags uint) []string
+func Allergies(flags allergy) []string
     Allergies returns a list of allergies the patient is allergic to.
 
 
-real	0m0.398s
-user	0m0.177s
-sys	0m0.303s
+real	0m0.197s
+user	0m0.093s
+sys	0m0.178s
 
 
 ===============================================================================

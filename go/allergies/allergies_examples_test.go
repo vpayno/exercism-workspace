@@ -3,19 +3,8 @@ package allergies
 import "fmt"
 
 func ExampleAllergicTo() {
-	cases := map[uint]string{
-		0b00000001: "eggs",
-		0b00000010: "peanuts",
-		0b00000100: "shellfish",
-		0b00001000: "strawberries",
-		0b00010000: "tomatoes",
-		0b00100000: "chocolate",
-		0b01000000: "pollen",
-		0b10000000: "cats",
-	}
-
 	// ugly trick to sort the output
-	flags := []uint{
+	flags := []allergy{
 		eggs,
 		peanuts,
 		shellfish,
@@ -27,8 +16,7 @@ func ExampleAllergicTo() {
 	}
 
 	for _, flag := range flags {
-		name := cases[flag]
-		fmt.Printf("alergic to %q: %v\n", allergyNames[flag], AllergicTo(flag, name))
+		fmt.Printf("alergic to %q: %v\n", allergyNames[flag], AllergicTo(flag, flag))
 	}
 	// Output:
 	// alergic to "eggs": true
@@ -42,7 +30,7 @@ func ExampleAllergicTo() {
 }
 
 func ExampleAllergies() {
-	flags := []uint{
+	flags := []allergy{
 		0b11111111,
 	}
 

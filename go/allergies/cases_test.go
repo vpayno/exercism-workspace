@@ -7,8 +7,8 @@ package allergies
 
 // allergicTo
 type allergicToInput struct {
-	allergen string
-	score    uint
+	allergen allergy
+	score    allergy
 }
 
 var allergicToTests = []struct {
@@ -19,7 +19,7 @@ var allergicToTests = []struct {
 	{
 		description: "not allergic to anything",
 		input: allergicToInput{
-			allergen: "eggs",
+			allergen: eggs,
 			score:    0,
 		},
 		expected: false,
@@ -27,7 +27,7 @@ var allergicToTests = []struct {
 	{
 		description: "allergic only to eggs",
 		input: allergicToInput{
-			allergen: "eggs",
+			allergen: eggs,
 			score:    1,
 		},
 		expected: true,
@@ -35,7 +35,7 @@ var allergicToTests = []struct {
 	{
 		description: "allergic to eggs and something else",
 		input: allergicToInput{
-			allergen: "eggs",
+			allergen: eggs,
 			score:    3,
 		},
 		expected: true,
@@ -43,7 +43,7 @@ var allergicToTests = []struct {
 	{
 		description: "allergic to something, but not eggs",
 		input: allergicToInput{
-			allergen: "eggs",
+			allergen: eggs,
 			score:    2,
 		},
 		expected: false,
@@ -51,7 +51,7 @@ var allergicToTests = []struct {
 	{
 		description: "allergic to everything",
 		input: allergicToInput{
-			allergen: "eggs",
+			allergen: eggs,
 			score:    255,
 		},
 		expected: true,
@@ -59,7 +59,7 @@ var allergicToTests = []struct {
 	{
 		description: "not allergic to anything",
 		input: allergicToInput{
-			allergen: "peanuts",
+			allergen: peanuts,
 			score:    0,
 		},
 		expected: false,
@@ -67,7 +67,7 @@ var allergicToTests = []struct {
 	{
 		description: "allergic only to peanuts",
 		input: allergicToInput{
-			allergen: "peanuts",
+			allergen: peanuts,
 			score:    2,
 		},
 		expected: true,
@@ -75,7 +75,7 @@ var allergicToTests = []struct {
 	{
 		description: "allergic to peanuts and something else",
 		input: allergicToInput{
-			allergen: "peanuts",
+			allergen: peanuts,
 			score:    7,
 		},
 		expected: true,
@@ -83,7 +83,7 @@ var allergicToTests = []struct {
 	{
 		description: "allergic to something, but not peanuts",
 		input: allergicToInput{
-			allergen: "peanuts",
+			allergen: peanuts,
 			score:    5,
 		},
 		expected: false,
@@ -91,7 +91,7 @@ var allergicToTests = []struct {
 	{
 		description: "allergic to everything",
 		input: allergicToInput{
-			allergen: "peanuts",
+			allergen: peanuts,
 			score:    255,
 		},
 		expected: true,
@@ -99,7 +99,7 @@ var allergicToTests = []struct {
 	{
 		description: "not allergic to anything",
 		input: allergicToInput{
-			allergen: "shellfish",
+			allergen: shellfish,
 			score:    0,
 		},
 		expected: false,
@@ -107,7 +107,7 @@ var allergicToTests = []struct {
 	{
 		description: "allergic only to shellfish",
 		input: allergicToInput{
-			allergen: "shellfish",
+			allergen: shellfish,
 			score:    4,
 		},
 		expected: true,
@@ -115,7 +115,7 @@ var allergicToTests = []struct {
 	{
 		description: "allergic to shellfish and something else",
 		input: allergicToInput{
-			allergen: "shellfish",
+			allergen: shellfish,
 			score:    14,
 		},
 		expected: true,
@@ -123,7 +123,7 @@ var allergicToTests = []struct {
 	{
 		description: "allergic to something, but not shellfish",
 		input: allergicToInput{
-			allergen: "shellfish",
+			allergen: shellfish,
 			score:    10,
 		},
 		expected: false,
@@ -131,7 +131,7 @@ var allergicToTests = []struct {
 	{
 		description: "allergic to everything",
 		input: allergicToInput{
-			allergen: "shellfish",
+			allergen: shellfish,
 			score:    255,
 		},
 		expected: true,
@@ -139,7 +139,7 @@ var allergicToTests = []struct {
 	{
 		description: "not allergic to anything",
 		input: allergicToInput{
-			allergen: "strawberries",
+			allergen: strawberries,
 			score:    0,
 		},
 		expected: false,
@@ -147,7 +147,7 @@ var allergicToTests = []struct {
 	{
 		description: "allergic only to strawberries",
 		input: allergicToInput{
-			allergen: "strawberries",
+			allergen: strawberries,
 			score:    8,
 		},
 		expected: true,
@@ -155,7 +155,7 @@ var allergicToTests = []struct {
 	{
 		description: "allergic to strawberries and something else",
 		input: allergicToInput{
-			allergen: "strawberries",
+			allergen: strawberries,
 			score:    28,
 		},
 		expected: true,
@@ -163,7 +163,7 @@ var allergicToTests = []struct {
 	{
 		description: "allergic to something, but not strawberries",
 		input: allergicToInput{
-			allergen: "strawberries",
+			allergen: strawberries,
 			score:    20,
 		},
 		expected: false,
@@ -171,7 +171,7 @@ var allergicToTests = []struct {
 	{
 		description: "allergic to everything",
 		input: allergicToInput{
-			allergen: "strawberries",
+			allergen: strawberries,
 			score:    255,
 		},
 		expected: true,
@@ -179,7 +179,7 @@ var allergicToTests = []struct {
 	{
 		description: "not allergic to anything",
 		input: allergicToInput{
-			allergen: "tomatoes",
+			allergen: tomatoes,
 			score:    0,
 		},
 		expected: false,
@@ -187,7 +187,7 @@ var allergicToTests = []struct {
 	{
 		description: "allergic only to tomatoes",
 		input: allergicToInput{
-			allergen: "tomatoes",
+			allergen: tomatoes,
 			score:    16,
 		},
 		expected: true,
@@ -195,7 +195,7 @@ var allergicToTests = []struct {
 	{
 		description: "allergic to tomatoes and something else",
 		input: allergicToInput{
-			allergen: "tomatoes",
+			allergen: tomatoes,
 			score:    56,
 		},
 		expected: true,
@@ -203,7 +203,7 @@ var allergicToTests = []struct {
 	{
 		description: "allergic to something, but not tomatoes",
 		input: allergicToInput{
-			allergen: "tomatoes",
+			allergen: tomatoes,
 			score:    40,
 		},
 		expected: false,
@@ -211,7 +211,7 @@ var allergicToTests = []struct {
 	{
 		description: "allergic to everything",
 		input: allergicToInput{
-			allergen: "tomatoes",
+			allergen: tomatoes,
 			score:    255,
 		},
 		expected: true,
@@ -219,7 +219,7 @@ var allergicToTests = []struct {
 	{
 		description: "not allergic to anything",
 		input: allergicToInput{
-			allergen: "chocolate",
+			allergen: chocolate,
 			score:    0,
 		},
 		expected: false,
@@ -227,7 +227,7 @@ var allergicToTests = []struct {
 	{
 		description: "allergic only to chocolate",
 		input: allergicToInput{
-			allergen: "chocolate",
+			allergen: chocolate,
 			score:    32,
 		},
 		expected: true,
@@ -235,7 +235,7 @@ var allergicToTests = []struct {
 	{
 		description: "allergic to chocolate and something else",
 		input: allergicToInput{
-			allergen: "chocolate",
+			allergen: chocolate,
 			score:    112,
 		},
 		expected: true,
@@ -243,7 +243,7 @@ var allergicToTests = []struct {
 	{
 		description: "allergic to something, but not chocolate",
 		input: allergicToInput{
-			allergen: "chocolate",
+			allergen: chocolate,
 			score:    80,
 		},
 		expected: false,
@@ -251,7 +251,7 @@ var allergicToTests = []struct {
 	{
 		description: "allergic to everything",
 		input: allergicToInput{
-			allergen: "chocolate",
+			allergen: chocolate,
 			score:    255,
 		},
 		expected: true,
@@ -259,7 +259,7 @@ var allergicToTests = []struct {
 	{
 		description: "not allergic to anything",
 		input: allergicToInput{
-			allergen: "pollen",
+			allergen: pollen,
 			score:    0,
 		},
 		expected: false,
@@ -267,7 +267,7 @@ var allergicToTests = []struct {
 	{
 		description: "allergic only to pollen",
 		input: allergicToInput{
-			allergen: "pollen",
+			allergen: pollen,
 			score:    64,
 		},
 		expected: true,
@@ -275,7 +275,7 @@ var allergicToTests = []struct {
 	{
 		description: "allergic to pollen and something else",
 		input: allergicToInput{
-			allergen: "pollen",
+			allergen: pollen,
 			score:    224,
 		},
 		expected: true,
@@ -283,7 +283,7 @@ var allergicToTests = []struct {
 	{
 		description: "allergic to something, but not pollen",
 		input: allergicToInput{
-			allergen: "pollen",
+			allergen: pollen,
 			score:    160,
 		},
 		expected: false,
@@ -291,7 +291,7 @@ var allergicToTests = []struct {
 	{
 		description: "allergic to everything",
 		input: allergicToInput{
-			allergen: "pollen",
+			allergen: pollen,
 			score:    255,
 		},
 		expected: true,
@@ -299,7 +299,7 @@ var allergicToTests = []struct {
 	{
 		description: "not allergic to anything",
 		input: allergicToInput{
-			allergen: "cats",
+			allergen: cats,
 			score:    0,
 		},
 		expected: false,
@@ -307,7 +307,7 @@ var allergicToTests = []struct {
 	{
 		description: "allergic only to cats",
 		input: allergicToInput{
-			allergen: "cats",
+			allergen: cats,
 			score:    128,
 		},
 		expected: true,
@@ -315,7 +315,7 @@ var allergicToTests = []struct {
 	{
 		description: "allergic to cats and something else",
 		input: allergicToInput{
-			allergen: "cats",
+			allergen: cats,
 			score:    192,
 		},
 		expected: true,
@@ -323,7 +323,7 @@ var allergicToTests = []struct {
 	{
 		description: "allergic to something, but not cats",
 		input: allergicToInput{
-			allergen: "cats",
+			allergen: cats,
 			score:    64,
 		},
 		expected: false,
@@ -331,7 +331,7 @@ var allergicToTests = []struct {
 	{
 		description: "allergic to everything",
 		input: allergicToInput{
-			allergen: "cats",
+			allergen: cats,
 			score:    255,
 		},
 		expected: true,
@@ -341,7 +341,7 @@ var allergicToTests = []struct {
 // list
 var listTests = []struct {
 	description string
-	score       uint
+	score       allergy
 	expected    []string
 }{
 	{

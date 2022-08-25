@@ -10,14 +10,14 @@ Package allergies is used to identify a patient's allergies.
 
 ## Index
 
-- [func AllergicTo(flags uint, name string) bool](<#func-allergicto>)
-- [func Allergies(flags uint) []string](<#func-allergies>)
+- [func AllergicTo(flags allergy, flag allergy) bool](<#func-allergicto>)
+- [func Allergies(flags allergy) []string](<#func-allergies>)
 
 
-## func [AllergicTo](<https://github.com/vpayno/exercism-workspace/blob/main/go/allergies/allergies.go#L29>)
+## func [AllergicTo](<https://github.com/vpayno/exercism-workspace/blob/main/go/allergies/allergies.go#L59>)
 
 ```go
-func AllergicTo(flags uint, name string) bool
+func AllergicTo(flags allergy, flag allergy) bool
 ```
 
 AllergicTo returns true or false to each allergy test.
@@ -27,18 +27,8 @@ AllergicTo returns true or false to each allergy test.
 
 ```go
 {
-	cases := map[uint]string{
-		0b00000001: "eggs",
-		0b00000010: "peanuts",
-		0b00000100: "shellfish",
-		0b00001000: "strawberries",
-		0b00010000: "tomatoes",
-		0b00100000: "chocolate",
-		0b01000000: "pollen",
-		0b10000000: "cats",
-	}
 
-	flags := []uint{
+	flags := []allergy{
 		eggs,
 		peanuts,
 		shellfish,
@@ -50,8 +40,7 @@ AllergicTo returns true or false to each allergy test.
 	}
 
 	for _, flag := range flags {
-		name := cases[flag]
-		fmt.Printf("alergic to %q: %v\n", allergyNames[flag], AllergicTo(flag, name))
+		fmt.Printf("alergic to %q: %v\n", allergyNames[flag], AllergicTo(flag, flag))
 	}
 
 }
@@ -73,10 +62,10 @@ alergic to "cats": true
 </p>
 </details>
 
-## func [Allergies](<https://github.com/vpayno/exercism-workspace/blob/main/go/allergies/allergies.go#L55>)
+## func [Allergies](<https://github.com/vpayno/exercism-workspace/blob/main/go/allergies/allergies.go#L72>)
 
 ```go
-func Allergies(flags uint) []string
+func Allergies(flags allergy) []string
 ```
 
 Allergies returns a list of allergies the patient is allergic to.
@@ -86,7 +75,7 @@ Allergies returns a list of allergies the patient is allergic to.
 
 ```go
 {
-	flags := []uint{
+	flags := []allergy{
 		0b11111111,
 	}
 
