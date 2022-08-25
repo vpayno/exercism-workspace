@@ -20,7 +20,7 @@ import "chance"
 func GenerateWandEnergy() float64
 ```
 
-GenerateWandEnergy returns a random float64 f with 0\.0 \<= f \< 12\.0
+GenerateWandEnergy returns a random float64 f with 0.0 \<= f \< 12.0
 
 <details><summary>Example</summary>
 <p>
