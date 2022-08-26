@@ -10,13 +10,13 @@ Package markdown renders markdown into HTML.
 
 ## Index
 
-- [func Render(markdown string) string](<#func-render>)
+- [func Render(input string) string](<#func-render>)
 
 
-## func [Render](<https://github.com/vpayno/exercism-workspace/blob/main/go/markdown/markdown.go#L12>)
+## func [Render](<https://github.com/vpayno/exercism-workspace/blob/main/go/markdown/markdown.go#L23>)
 
 ```go
-func Render(markdown string) string
+func Render(input string) string
 ```
 
 Render translates markdown to HTML

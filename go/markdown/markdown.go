@@ -143,3 +143,14 @@ func Render(input string) string {
 
 	return html.String()
 }
+
+/*
+	name        old time/op    new time/op    delta
+	Markdown-4    90.4µs ± 0%    20.2µs ± 0%   ~     (p=1.000 n=1+1)
+
+	name        old alloc/op   new alloc/op   delta
+	Markdown-4    18.4kB ± 0%     2.9kB ± 0%   ~     (p=1.000 n=1+1)
+
+	name        old allocs/op  new allocs/op  delta
+	Markdown-4     1.04k ± 0%     0.10k ± 0%   ~     (p=1.000 n=1+1)
+*/
