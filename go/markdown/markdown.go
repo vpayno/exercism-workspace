@@ -13,6 +13,7 @@ import (
 	2. Use better variable names.
 	3. Use strings.Builder for the html variable.
 	4. Switch to a for loop with an exit condition.
+	5. Switch if-else chains to switch statements.
 */
 
 // Render translates markdown to HTML
@@ -45,12 +46,15 @@ func Render(input string) string {
 				char = markdown[cursorPosition]
 			}
 
-			if headerTracker == 7 {
+			switch {
+			case headerTracker == 7:
 				html.WriteString(fmt.Sprintf("<p>%s ", strings.Repeat("#", headerTracker)))
-			} else if headerEnd {
+
+			case headerEnd:
 				html.WriteString("# ")
 				headerTracker--
-			} else {
+
+			default:
 				html.WriteString(fmt.Sprintf("<h%d>", headerTracker))
 			}
 
@@ -69,10 +73,12 @@ func Render(input string) string {
 
 			listTracker++
 
-			if !listOpened {
+			switch {
+			case !listOpened:
 				html.WriteString("<li>")
 				listOpened = true
-			} else {
+
+			default:
 				html.WriteByte(char)
 				html.WriteString(" ")
 			}
