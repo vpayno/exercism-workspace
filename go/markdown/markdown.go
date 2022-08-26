@@ -16,12 +16,11 @@ import (
 	5. Switch if-else chains to switch statements.
 	6. Simplify if expressions.
 	7. Combine switch and if-return statements into one switch statement.
+	8. Switch declarations to use default zero values.
 */
 
 // Render translates markdown to HTML
 func Render(input string) string {
-	headerTracker := 0
-
 	var html strings.Builder
 
 	markdown := input
@@ -31,10 +30,11 @@ func Render(input string) string {
 	markdown = strings.Replace(markdown, "_", "<em>", 1)
 	markdown = strings.Replace(markdown, "_", "</em>", 1)
 
-	cursorPosition := 0
-	listTracker := 0
-	listOpened := false
-	headerEnd := false
+	var cursorPosition int
+	var headerTracker int
+	var listTracker int
+	var listOpened bool
+	var headerEnd bool
 
 	for cursorPosition < len(markdown) {
 
