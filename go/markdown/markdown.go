@@ -11,6 +11,7 @@ import (
 /*
 	1. Whitespace clean up.
 	2. Use better variable names.
+	3. Use strings.Builder for the html variable.
 */
 
 // Render translates markdown to HTML
@@ -43,12 +44,12 @@ func Render(input string) string {
 			}
 
 			if headerTracker == 7 {
-				html += fmt.Sprintf("<p>%s ", strings.Repeat("#", headerTracker))
+				html.WriteString(fmt.Sprintf("<p>%s ", strings.Repeat("#", headerTracker)))
 			} else if headerEnd {
-				html += "# "
+				html.WriteString("# ")
 				headerTracker--
 			} else {
-				html += fmt.Sprintf("<h%d>", headerTracker)
+				html.WriteString(fmt.Sprintf("<h%d>", headerTracker))
 			}
 
 			cursorPosition++
@@ -61,16 +62,17 @@ func Render(input string) string {
 		if char == '*' && headerTracker == 0 && strings.Contains(markdown, "\n") {
 
 			if listTracker == 0 {
-				html += "<ul>"
+				html.WriteString("<ul>")
 			}
 
 			listTracker++
 
 			if !listOpened {
-				html += "<li>"
+				html.WriteString("<li>")
 				listOpened = true
 			} else {
-				html += string(char) + " "
+				html.WriteByte(char)
+				html.WriteString(" ")
 			}
 
 			cursorPosition += 2
@@ -81,18 +83,18 @@ func Render(input string) string {
 		if char == '\n' {
 
 			if listOpened && strings.LastIndex(markdown, "\n") == cursorPosition && strings.LastIndex(markdown, "\n") > strings.LastIndex(markdown, "*") {
-				html += "</li></ul><p>"
+				html.WriteString("</li></ul><p>")
 				listOpened = false
 				listTracker = 0
 			}
 
 			if listTracker > 0 && listOpened {
-				html += "</li>"
+				html.WriteString("</li>")
 				listOpened = false
 			}
 
 			if headerTracker > 0 {
-				html += fmt.Sprintf("</h%d>", headerTracker)
+				html.WriteString(fmt.Sprintf("</h%d>", headerTracker))
 				headerTracker = 0
 			}
 
@@ -101,7 +103,7 @@ func Render(input string) string {
 			continue
 		}
 
-		html += string(char)
+		html.WriteByte(char)
 
 		cursorPosition++
 		if cursorPosition >= len(markdown) {
@@ -111,18 +113,24 @@ func Render(input string) string {
 
 	switch {
 	case headerTracker == 7:
-		return html + "</p>"
+		html.WriteString("</p>")
+		return html.String()
+
 	case headerTracker > 0:
-		return html + fmt.Sprintf("</h%d>", headerTracker)
+		html.WriteString(fmt.Sprintf("</h%d>", headerTracker))
+		return html.String()
 	}
 
 	if listTracker > 0 {
-		return html + "</li></ul>"
+		html.WriteString("</li></ul>")
+		return html.String()
 	}
 
-	if strings.Contains(html, "<p>") {
-		return html + "</p>"
+	if strings.Contains(html.String(), "<p>") {
+		html.WriteString("</p>")
+		return html.String()
 	}
 
-	return "<p>" + html + "</p>"
+	html.WriteString("</p>")
+	return "<p>" + html.String()
 }
