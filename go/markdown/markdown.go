@@ -14,6 +14,7 @@ import (
 	3. Use strings.Builder for the html variable.
 	4. Switch to a for loop with an exit condition.
 	5. Switch if-else chains to switch statements.
+	6. Simplify if expressions.
 */
 
 // Render translates markdown to HTML
@@ -90,15 +91,20 @@ func Render(input string) string {
 
 		if char == '\n' {
 
-			if listOpened && strings.LastIndex(markdown, "\n") == cursorPosition && strings.LastIndex(markdown, "\n") > strings.LastIndex(markdown, "*") {
-				html.WriteString("</li></ul><p>")
-				listOpened = false
-				listTracker = 0
-			}
+			if listOpened {
+				lastNewlineIndex := strings.LastIndex(markdown, "\n")
 
-			if listTracker > 0 && listOpened {
-				html.WriteString("</li>")
-				listOpened = false
+				if lastNewlineIndex == cursorPosition && lastNewlineIndex > strings.LastIndex(markdown, "*") {
+					html.WriteString("</li></ul><p>")
+					listOpened = false
+					listTracker = 0
+				}
+
+				if listTracker > 0 {
+					html.WriteString("</li>")
+					listOpened = false
+				}
+
 			}
 
 			if headerTracker > 0 {
