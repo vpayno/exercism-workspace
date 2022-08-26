@@ -12,6 +12,7 @@ import (
 	1. Whitespace clean up.
 	2. Use better variable names.
 	3. Use strings.Builder for the html variable.
+	4. Switch to a for loop with an exit condition.
 */
 
 // Render translates markdown to HTML
@@ -32,7 +33,8 @@ func Render(input string) string {
 	listOpened := false
 	headerEnd := false
 
-	for {
+	for cursorPosition < len(markdown) {
+
 		char := markdown[cursorPosition]
 
 		if char == '#' {
@@ -106,9 +108,6 @@ func Render(input string) string {
 		html.WriteByte(char)
 
 		cursorPosition++
-		if cursorPosition >= len(markdown) {
-			break
-		}
 	}
 
 	switch {
