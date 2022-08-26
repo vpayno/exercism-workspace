@@ -8,87 +8,121 @@ import (
 	"strings"
 )
 
+/*
+	1. Whitespace clean up.
+	2. Use better variable names.
+*/
+
 // Render translates markdown to HTML
-func Render(markdown string) string {
-	header := 0
+func Render(input string) string {
+	headerTracker := 0
+
+	var html strings.Builder
+
+	markdown := input
+
 	markdown = strings.Replace(markdown, "__", "<strong>", 1)
 	markdown = strings.Replace(markdown, "__", "</strong>", 1)
 	markdown = strings.Replace(markdown, "_", "<em>", 1)
 	markdown = strings.Replace(markdown, "_", "</em>", 1)
-	pos := 0
-	list := 0
+
+	cursorPosition := 0
+	listTracker := 0
 	listOpened := false
-	html := ""
-	he := false
+	headerEnd := false
+
 	for {
-		char := markdown[pos]
+		char := markdown[cursorPosition]
+
 		if char == '#' {
+
 			for char == '#' {
-				header++
-				pos++
-				char = markdown[pos]
+				headerTracker++
+				cursorPosition++
+				char = markdown[cursorPosition]
 			}
-			if header == 7 {
-				html += fmt.Sprintf("<p>%s ", strings.Repeat("#", header))
-			} else if he {
+
+			if headerTracker == 7 {
+				html += fmt.Sprintf("<p>%s ", strings.Repeat("#", headerTracker))
+			} else if headerEnd {
 				html += "# "
-				header--
+				headerTracker--
 			} else {
-				html += fmt.Sprintf("<h%d>", header)
+				html += fmt.Sprintf("<h%d>", headerTracker)
 			}
-			pos++
+
+			cursorPosition++
+
 			continue
 		}
-		he = true
-		if char == '*' && header == 0 && strings.Contains(markdown, "\n") {
-			if list == 0 {
+
+		headerEnd = true
+
+		if char == '*' && headerTracker == 0 && strings.Contains(markdown, "\n") {
+
+			if listTracker == 0 {
 				html += "<ul>"
 			}
-			list++
+
+			listTracker++
+
 			if !listOpened {
 				html += "<li>"
 				listOpened = true
 			} else {
 				html += string(char) + " "
 			}
-			pos += 2
+
+			cursorPosition += 2
+
 			continue
 		}
+
 		if char == '\n' {
-			if listOpened && strings.LastIndex(markdown, "\n") == pos && strings.LastIndex(markdown, "\n") > strings.LastIndex(markdown, "*") {
+
+			if listOpened && strings.LastIndex(markdown, "\n") == cursorPosition && strings.LastIndex(markdown, "\n") > strings.LastIndex(markdown, "*") {
 				html += "</li></ul><p>"
 				listOpened = false
-				list = 0
+				listTracker = 0
 			}
-			if list > 0 && listOpened {
+
+			if listTracker > 0 && listOpened {
 				html += "</li>"
 				listOpened = false
 			}
-			if header > 0 {
-				html += fmt.Sprintf("</h%d>", header)
-				header = 0
+
+			if headerTracker > 0 {
+				html += fmt.Sprintf("</h%d>", headerTracker)
+				headerTracker = 0
 			}
-			pos++
+
+			cursorPosition++
+
 			continue
 		}
+
 		html += string(char)
-		pos++
-		if pos >= len(markdown) {
+
+		cursorPosition++
+		if cursorPosition >= len(markdown) {
 			break
 		}
 	}
+
 	switch {
-	case header == 7:
+	case headerTracker == 7:
 		return html + "</p>"
-	case header > 0:
-		return html + fmt.Sprintf("</h%d>", header)
+	case headerTracker > 0:
+		return html + fmt.Sprintf("</h%d>", headerTracker)
 	}
-	if list > 0 {
+
+	if listTracker > 0 {
 		return html + "</li></ul>"
 	}
+
 	if strings.Contains(html, "<p>") {
 		return html + "</p>"
 	}
-	return "<p>" + html + "</p>"
 
+	return "<p>" + html + "</p>"
 }
