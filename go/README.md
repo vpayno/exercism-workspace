@@ -93,3 +93,4 @@
 - [atbash-cipher](./atbash-cipher/README.md)
 - [crypto-square](./crypto-square/README.md)
 - [simple-cipher](./simple-cipher/README.md)
+- [markdown](./markdown/README.md)

@@ -35,3 +35,13 @@ important thing is to make the code better!
 - @sebito91
 - @eklatzer
 - @jasstkn
+
+### My Solution
+
+- [my solution](./markdown.go)
+- [my examples](./markdown_examples_test.go)
+- [test cases](./cases_test.go)
+- [tests](./markdown_test.go)
+- [run-tests](./run-tests-go.txt)
+- [coverage](./coverage.html)
+- [documentation](./markdown-doc.md)

@@ -1,3 +1,4 @@
+// Package markdown renders markdown into HTML.
 package markdown
 
 // implementation to refactor
