@@ -15,6 +15,7 @@ import (
 	4. Switch to a for loop with an exit condition.
 	5. Switch if-else chains to switch statements.
 	6. Simplify if expressions.
+	7. Combine switch and if-return statements into one switch statement.
 */
 
 // Render translates markdown to HTML
@@ -125,23 +126,20 @@ func Render(input string) string {
 	switch {
 	case headerTracker == 7:
 		html.WriteString("</p>")
-		return html.String()
 
 	case headerTracker > 0:
 		html.WriteString(fmt.Sprintf("</h%d>", headerTracker))
-		return html.String()
-	}
 
-	if listTracker > 0 {
+	case listTracker > 0:
 		html.WriteString("</li></ul>")
-		return html.String()
-	}
 
-	if strings.Contains(html.String(), "<p>") {
+	case strings.Contains(html.String(), "<p>"):
 		html.WriteString("</p>")
-		return html.String()
+
+	default:
+		html.WriteString("</p>")
+		return "<p>" + html.String()
 	}
 
-	html.WriteString("</p>")
-	return "<p>" + html.String()
+	return html.String()
 }
