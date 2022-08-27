@@ -99,13 +99,13 @@ main()
 		printf "\n"
 	fi
 
-	echo go test --run=xxx --bench . --benchmem '|&' tee benchstat-new.txt
-	time go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+	echo gotest -v --run=xxx --bench . --benchmem '|&' tee benchstat-new.txt
+	time gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 
 	print_ruler
 
-	echo go test -tags bonus
-	time go test -tags bonus
+	echo gotest -v -tags bonus
+	time gotest -v -tags bonus
 
 	print_ruler
 
