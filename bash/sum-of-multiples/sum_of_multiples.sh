@@ -116,7 +116,7 @@ sum_of_multiples()
         # Remove zeros and ones from the multiple list.
         if [[ ${multiples[${i}]} -eq 0 ]]; then
             eprintf "Removing zero at position %d\n" "${i}"
-            unset multiples["${i}"]
+            unset "multiples[${i}]"
             continue
         fi
     done
