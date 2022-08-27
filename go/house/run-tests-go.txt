@@ -1,0 +1,392 @@
+Running automated test file(s):
+
+Go packages: house 
+
+
+===============================================================================
+
+golint ./...
+
+real	0m0.096s
+user	0m0.069s
+sys	0m0.054s
+
+===============================================================================
+
+revive ./...
+
+real	0m0.043s
+user	0m0.015s
+sys	0m0.015s
+
+===============================================================================
+
+ineffassign ./...
+
+real	0m0.282s
+user	0m0.302s
+sys	0m0.266s
+
+===============================================================================
+
+go-consistent -v ./...
+	info: check "./."
+
+real	0m0.473s
+user	0m0.529s
+sys	0m0.491s
+
+===============================================================================
+
+staticcheck ./...
+
+real	0m0.468s
+user	0m0.443s
+sys	0m0.375s
+
+===============================================================================
+
+gocritic check -enableAll ./...
+
+real	0m2.459s
+user	0m4.019s
+sys	0m1.180s
+
+===============================================================================
+
+gotest -v -covermode=count -coverprofile coverage.out ./...
+=== RUN   TestVerse
+=== RUN   TestVerse/verse_1
+=== RUN   TestVerse/verse_2
+=== RUN   TestVerse/verse_3
+=== RUN   TestVerse/verse_4
+=== RUN   TestVerse/verse_5
+=== RUN   TestVerse/verse_6
+=== RUN   TestVerse/verse_7
+=== RUN   TestVerse/verse_8
+=== RUN   TestVerse/verse_9
+=== RUN   TestVerse/verse_10
+=== RUN   TestVerse/verse_11
+=== RUN   TestVerse/verse_12
+--- PASS: TestVerse (0.00s)
+    --- PASS: TestVerse/verse_1 (0.00s)
+    --- PASS: TestVerse/verse_2 (0.00s)
+    --- PASS: TestVerse/verse_3 (0.00s)
+    --- PASS: TestVerse/verse_4 (0.00s)
+    --- PASS: TestVerse/verse_5 (0.00s)
+    --- PASS: TestVerse/verse_6 (0.00s)
+    --- PASS: TestVerse/verse_7 (0.00s)
+    --- PASS: TestVerse/verse_8 (0.00s)
+    --- PASS: TestVerse/verse_9 (0.00s)
+    --- PASS: TestVerse/verse_10 (0.00s)
+    --- PASS: TestVerse/verse_11 (0.00s)
+    --- PASS: TestVerse/verse_12 (0.00s)
+=== RUN   TestSong
+--- PASS: TestSong (0.00s)
+=== RUN   ExampleVerse
+--- PASS: ExampleVerse (0.00s)
+=== RUN   ExampleSong
+--- PASS: ExampleSong (0.00s)
+PASS
+coverage: 95.5% of statements
+ok  	house	0.027s	coverage: 95.5% of statements
+
+real	0m0.712s
+user	0m0.819s
+sys	0m0.569s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+house/house.go:10:	Verse		93.3%
+house/house.go:70:	Song		100.0%
+total:			(statements)	95.5%
+
+real	0m0.262s
+user	0m0.205s
+sys	0m0.374s
+
+===============================================================================
+
+go tool cover -html coverage.out -o coverage.html
+
+real	0m0.218s
+user	0m0.154s
+sys	0m0.195s
+
+===============================================================================
+
+gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+10     	func Verse(level int) string {
+11     		level--
+12     	
+13     		if level < 0 || level > 11 {
+14 MISS			return ""
+15     		}
+16     	
+17     		part1 := map[string]string{
+18     			"0":                                "This is the",
+19     			"horse and the hound and the horn": "This is the",
+20     			"farmer sowing his corn":           "that belonged to the",
+21     			"rooster that crowed in the morn":  "that kept the",
+22     			"priest all shaven and shorn":      "that woke the",
+23     			"man all tattered and torn":        "that married the",
+24     			"maiden all forlorn":               "that kissed the",
+25     			"cow with the crumpled horn":       "that milked the",
+26     			"dog":                              "that tossed the",
+27     			"cat":                              "that worried the",
+28     			"rat":                              "that killed the",
+29     			"malt":                             "that ate the",
+30     			"house that Jack built.":           "that lay in the",
+31     		}
+32     	
+33     		part2 := map[int]string{
+34     			11: "horse and the hound and the horn",
+35     			10: "farmer sowing his corn",
+36     			9:  "rooster that crowed in the morn",
+37     			8:  "priest all shaven and shorn",
+38     			7:  "man all tattered and torn",
+39     			6:  "maiden all forlorn",
+40     			5:  "cow with the crumpled horn",
+41     			4:  "dog",
+42     			3:  "cat",
+43     			2:  "rat",
+44     			1:  "malt",
+45     			0:  "house that Jack built.",
+46     		}
+47     	
+48     		var verse strings.Builder
+49     	
+50     		for i, j := 0, level; i <= level; i, j = i+1, j-1 {
+51     			var line strings.Builder
+52     	
+53     			if i == 0 {
+54     				line.WriteString(fmt.Sprintf("%s %s", part1["0"], part2[j]))
+55     			} else {
+56     				line.WriteString(fmt.Sprintf("%s %s", part1[part2[j]], part2[j]))
+57     			}
+58     	
+59     			verse.WriteString(line.String())
+60     	
+61     			if i != level {
+62     				verse.WriteString("\n")
+63     			}
+64     		}
+65     	
+66     		return verse.String()
+67     	}
+
+
+real	0m0.112s
+user	0m0.066s
+sys	0m0.156s
+
+===============================================================================
+
+gotest -v -race -covermode=atomic ./...
+=== RUN   TestVerse
+=== RUN   TestVerse/verse_1
+=== RUN   TestVerse/verse_2
+=== RUN   TestVerse/verse_3
+=== RUN   TestVerse/verse_4
+=== RUN   TestVerse/verse_5
+=== RUN   TestVerse/verse_6
+=== RUN   TestVerse/verse_7
+=== RUN   TestVerse/verse_8
+=== RUN   TestVerse/verse_9
+=== RUN   TestVerse/verse_10
+=== RUN   TestVerse/verse_11
+=== RUN   TestVerse/verse_12
+--- PASS: TestVerse (0.00s)
+    --- PASS: TestVerse/verse_1 (0.00s)
+    --- PASS: TestVerse/verse_2 (0.00s)
+    --- PASS: TestVerse/verse_3 (0.00s)
+    --- PASS: TestVerse/verse_4 (0.00s)
+    --- PASS: TestVerse/verse_5 (0.00s)
+    --- PASS: TestVerse/verse_6 (0.00s)
+    --- PASS: TestVerse/verse_7 (0.00s)
+    --- PASS: TestVerse/verse_8 (0.00s)
+    --- PASS: TestVerse/verse_9 (0.00s)
+    --- PASS: TestVerse/verse_10 (0.00s)
+    --- PASS: TestVerse/verse_11 (0.00s)
+    --- PASS: TestVerse/verse_12 (0.00s)
+=== RUN   TestSong
+--- PASS: TestSong (0.00s)
+=== RUN   ExampleVerse
+--- PASS: ExampleVerse (0.00s)
+=== RUN   ExampleSong
+--- PASS: ExampleSong (0.00s)
+PASS
+coverage: 95.5% of statements
+ok  	house	0.048s	coverage: 95.5% of statements
+
+real	0m1.118s
+user	0m0.886s
+sys	0m0.712s
+
+===============================================================================
+
+mv -v benchstat-new.txt benchstat-old.txt
+renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
+
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+goos: linux
+goarch: amd64
+pkg: house
+cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+BenchmarkVerse
+BenchmarkVerse-4   	   10000	    113670 ns/op	   27324 B/op	     382 allocs/op
+BenchmarkSong
+BenchmarkSong-4    	   10000	    118872 ns/op	   34377 B/op	     390 allocs/op
+PASS
+ok  	house	2.435s
+
+real	0m2.847s
+user	0m4.099s
+sys	0m0.884s
+
+===============================================================================
+
+gotest -v -tags bonus
+=== RUN   TestVerse
+=== RUN   TestVerse/verse_1
+=== RUN   TestVerse/verse_2
+=== RUN   TestVerse/verse_3
+=== RUN   TestVerse/verse_4
+=== RUN   TestVerse/verse_5
+=== RUN   TestVerse/verse_6
+=== RUN   TestVerse/verse_7
+=== RUN   TestVerse/verse_8
+=== RUN   TestVerse/verse_9
+=== RUN   TestVerse/verse_10
+=== RUN   TestVerse/verse_11
+=== RUN   TestVerse/verse_12
+--- PASS: TestVerse (0.00s)
+    --- PASS: TestVerse/verse_1 (0.00s)
+    --- PASS: TestVerse/verse_2 (0.00s)
+    --- PASS: TestVerse/verse_3 (0.00s)
+    --- PASS: TestVerse/verse_4 (0.00s)
+    --- PASS: TestVerse/verse_5 (0.00s)
+    --- PASS: TestVerse/verse_6 (0.00s)
+    --- PASS: TestVerse/verse_7 (0.00s)
+    --- PASS: TestVerse/verse_8 (0.00s)
+    --- PASS: TestVerse/verse_9 (0.00s)
+    --- PASS: TestVerse/verse_10 (0.00s)
+    --- PASS: TestVerse/verse_11 (0.00s)
+    --- PASS: TestVerse/verse_12 (0.00s)
+=== RUN   TestSong
+--- PASS: TestSong (0.00s)
+=== RUN   ExampleVerse
+--- PASS: ExampleVerse (0.00s)
+=== RUN   ExampleSong
+--- PASS: ExampleSong (0.00s)
+PASS
+ok  	house	0.010s
+
+real	0m0.532s
+user	0m0.588s
+sys	0m0.442s
+
+===============================================================================
+
+benchstat benchstat-old.txt benchstat-new.txt
+name     old time/op    new time/op    delta
+Verse-4    98.9µs ± 0%   113.7µs ± 0%   ~     (p=1.000 n=1+1)
+Song-4      127µs ± 0%     119µs ± 0%   ~     (p=1.000 n=1+1)
+
+name     old alloc/op   new alloc/op   delta
+Verse-4    27.3kB ± 0%    27.3kB ± 0%   ~     (p=1.000 n=1+1)
+Song-4     34.4kB ± 0%    34.4kB ± 0%   ~     (p=1.000 n=1+1)
+
+name     old allocs/op  new allocs/op  delta
+Verse-4       382 ± 0%       382 ± 0%   ~     (all equal)
+Song-4        391 ± 0%       390 ± 0%   ~     (p=1.000 n=1+1)
+
+real	0m0.054s
+user	0m0.021s
+sys	0m0.034s
+
+===============================================================================
+
+go vet ./...
+
+real	0m0.334s
+user	0m0.351s
+sys	0m0.271s
+
+===============================================================================
+
+go fix ./...
+
+real	0m0.123s
+user	0m0.063s
+sys	0m0.080s
+
+===============================================================================
+
+gocyclo .
+6 house TestSong house_test.go:124:1
+6 house Verse house.go:10:1
+4 house BenchmarkVerse house_test.go:151:1
+3 house BenchmarkSong house_test.go:162:1
+3 house TestVerse house_test.go:114:1
+3 house Song house.go:70:1
+1 house ExampleSong house_examples_test.go:26:1
+1 house ExampleVerse house_examples_test.go:5:1
+
+real	0m0.063s
+user	0m0.014s
+sys	0m0.022s
+
+===============================================================================
+
+misspell .
+
+real	0m0.122s
+user	0m0.082s
+sys	0m0.105s
+
+===============================================================================
+
+gosec ./...
+[gosec] 2022/08/26 19:46:35 Including rules: default
+[gosec] 2022/08/26 19:46:35 Excluding rules: default
+[gosec] 2022/08/26 19:46:35 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/house
+2022/08/26 19:46:35 internal error: package "fmt" without types was imported from "command-line-arguments"
+
+real	0m0.498s
+user	0m0.502s
+sys	0m0.418s
+
+===============================================================================
+
+gomarkdoc --output house-doc.md
+
+real	0m0.071s
+user	0m0.031s
+sys	0m0.030s
+
+===============================================================================
+
+go doc -all house
+package house // import "house"
+
+Package house generates the nursery rhyme "This is the House that Jack Built".
+
+FUNCTIONS
+
+func Song() string
+    Song returns the whole nursery rhyme.
+
+func Verse(level int) string
+    Verse returns a specific verse from the nursery rhyme.
+
+
+real	0m0.215s
+user	0m0.096s
+sys	0m0.204s
+
+
+===============================================================================
+

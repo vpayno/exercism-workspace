@@ -1,0 +1,60 @@
+
+10     	func Verse(level int) string {
+11     		level--
+12     	
+13     		if level < 0 || level > 11 {
+14 MISS			return ""
+15     		}
+16     	
+17     		part1 := map[string]string{
+18     			"0":                                "This is the",
+19     			"horse and the hound and the horn": "This is the",
+20     			"farmer sowing his corn":           "that belonged to the",
+21     			"rooster that crowed in the morn":  "that kept the",
+22     			"priest all shaven and shorn":      "that woke the",
+23     			"man all tattered and torn":        "that married the",
+24     			"maiden all forlorn":               "that kissed the",
+25     			"cow with the crumpled horn":       "that milked the",
+26     			"dog":                              "that tossed the",
+27     			"cat":                              "that worried the",
+28     			"rat":                              "that killed the",
+29     			"malt":                             "that ate the",
+30     			"house that Jack built.":           "that lay in the",
+31     		}
+32     	
+33     		part2 := map[int]string{
+34     			11: "horse and the hound and the horn",
+35     			10: "farmer sowing his corn",
+36     			9:  "rooster that crowed in the morn",
+37     			8:  "priest all shaven and shorn",
+38     			7:  "man all tattered and torn",
+39     			6:  "maiden all forlorn",
+40     			5:  "cow with the crumpled horn",
+41     			4:  "dog",
+42     			3:  "cat",
+43     			2:  "rat",
+44     			1:  "malt",
+45     			0:  "house that Jack built.",
+46     		}
+47     	
+48     		var verse strings.Builder
+49     	
+50     		for i, j := 0, level; i <= level; i, j = i+1, j-1 {
+51     			var line strings.Builder
+52     	
+53     			if i == 0 {
+54     				line.WriteString(fmt.Sprintf("%s %s", part1["0"], part2[j]))
+55     			} else {
+56     				line.WriteString(fmt.Sprintf("%s %s", part1[part2[j]], part2[j]))
+57     			}
+58     	
+59     			verse.WriteString(line.String())
+60     	
+61     			if i != level {
+62     				verse.WriteString("\n")
+63     			}
+64     		}
+65     	
+66     		return verse.String()
+67     	}
+

@@ -145,7 +145,7 @@ func TestSong(t *testing.T) {
 			break
 		}
 	}
-	t.Fatalf("Song() line %d =\n%q\n want \n%q", i+1, g, w)
+	t.Fatalf("Song() line %d =\n[%q]\n want \n[%q]", i+1, g, w)
 }
 
 func BenchmarkVerse(b *testing.B) {

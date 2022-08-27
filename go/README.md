@@ -94,3 +94,4 @@
 - [crypto-square](./crypto-square/README.md)
 - [simple-cipher](./simple-cipher/README.md)
 - [markdown](./markdown/README.md)
+- [house](./house/README.md)
