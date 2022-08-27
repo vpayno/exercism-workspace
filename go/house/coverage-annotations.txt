@@ -1,0 +1,58 @@
+
+10     	func Verse(level int) string {
+11     		level--
+12     	
+13     		if level < 0 || level > 11 {
+14 MISS			return ""
+15     		}
+16     	
+17     		part1 := map[string]string{
+18     			"0":                                "This is the",
+19     			"horse and the hound and the horn": "This is the",
+20     			"farmer sowing his corn":           "that belonged to the",
+21     			"rooster that crowed in the morn":  "that kept the",
+22     			"priest all shaven and shorn":      "that woke the",
+23     			"man all tattered and torn":        "that married the",
+24     			"maiden all forlorn":               "that kissed the",
+25     			"cow with the crumpled horn":       "that milked the",
+26     			"dog":                              "that tossed the",
+27     			"cat":                              "that worried the",
+28     			"rat":                              "that killed the",
+29     			"malt":                             "that ate the",
+30     			"house that Jack built.":           "that lay in the",
+31     		}
+32     		part2 := map[int]string{
+33     			11: "horse and the hound and the horn",
+34     			10: "farmer sowing his corn",
+35     			9:  "rooster that crowed in the morn",
+36     			8:  "priest all shaven and shorn",
+37     			7:  "man all tattered and torn",
+38     			6:  "maiden all forlorn",
+39     			5:  "cow with the crumpled horn",
+40     			4:  "dog",
+41     			3:  "cat",
+42     			2:  "rat",
+43     			1:  "malt",
+44     			0:  "house that Jack built.",
+45     		}
+46     	
+47     		var verse strings.Builder
+48     	
+49     		for i, j := 0, level; i <= level; i, j = i+1, j-1 {
+50     			var line strings.Builder
+51     			if i == 0 {
+52     				line.WriteString(fmt.Sprintf("%s %s", part1["0"], part2[j]))
+53     			} else {
+54     				line.WriteString(fmt.Sprintf("%s %s", part1[part2[j]], part2[j]))
+55     			}
+56     	
+57     			verse.WriteString(line.String())
+58     	
+59     			if i != level {
+60     				verse.WriteString("\n")
+61     			}
+62     		}
+63     	
+64     		return verse.String()
+65     	}
+
