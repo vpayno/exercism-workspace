@@ -1,0 +1,40 @@
+
+36     	func DedupSlice(slice []int) []int {
+37     		if len(slice) == 0 {
+38 MISS			return []int{}
+39     		}
+40     	
+41     		newSlice := []int{}
+42     	
+43     		// Using a zero size struct is better than using a bool value.
+44     		intSet := make(map[int]struct{})
+45     		exists := struct{}{}
+46     	
+47     		for _, v := range slice {
+48     			intSet[v] = exists
+49     		}
+50     	
+51     		for v := range intSet {
+52     			newSlice = append(newSlice, v)
+53     		}
+54     	
+55     		return newSlice
+56     	}
+
+
+59     	func RemoveZeros(slice []int) []int {
+60     		if len(slice) == 0 {
+61 MISS			return []int{}
+62     		}
+63     	
+64     		newSlice := []int{}
+65     	
+66     		for _, v := range slice {
+67     			if v > 0 {
+68     				newSlice = append(newSlice, v)
+69     			}
+70     		}
+71     	
+72     		return newSlice
+73     	}
+

@@ -39,3 +39,13 @@ The sum of these multiples is 78.
 ### Based on
 
 A variation on Problem 1 at Project Euler - http://projecteuler.net/problem=1
+
+### My Solution
+
+- [my solution](./sum_of_multiples.go)
+- [my examples](./sum_of_multiples_examples_test.go)
+- [test cases](./cases_test.go)
+- [tests](./sum_of_multiples_test.go)
+- [run-tests](./run-tests-go.txt)
+- [coverage](./coverage.html)
+- [documentation](./summultiples-doc.md)

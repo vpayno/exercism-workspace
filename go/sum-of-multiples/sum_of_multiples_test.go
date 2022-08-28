@@ -7,7 +7,7 @@ func TestSumMultiples(t *testing.T) {
 		t.Run(tc.description, func(t *testing.T) {
 			actual := SumMultiples(tc.limit, tc.divisors...)
 			if actual != tc.expected {
-				t.Fatalf("SumMultiples(%d, %#v) = %d, want: %d", tc.limit, tc.divisors, actual, tc.expected)
+				t.Errorf("SumMultiples(%d, %#v) = %d, want: %d", tc.limit, tc.divisors, actual, tc.expected)
 			}
 		})
 	}

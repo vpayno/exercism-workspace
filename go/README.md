@@ -95,3 +95,4 @@
 - [simple-cipher](./simple-cipher/README.md)
 - [markdown](./markdown/README.md)
 - [house](./house/README.md)
+- [sum-of-multiples](./sum-of-multiples/README.md)

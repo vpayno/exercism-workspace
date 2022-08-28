@@ -1,0 +1,39 @@
+package summultiples
+
+import (
+	"fmt"
+	"sort"
+)
+
+func ExampleSumMultiples() {
+	limit := 20
+	multiples := []int{3, 5}
+
+	fmt.Printf("sum (%d), limit (%d), multiples %v\n", SumMultiples(limit, multiples...), limit, multiples)
+	// Output:
+	// sum (78), limit (20), multiples [3 5]
+}
+
+func ExampleDedupSlice() {
+	slice := []int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 2, 3, 4, 5, 2, 3, 4, 5, 8, 9, 1, 0, 4, 4, 4}
+
+	dedup := DedupSlice(slice)
+	sort.Ints(dedup)
+
+	fmt.Printf("original: %#v\n   dedup: %#v\n", slice, dedup)
+	// Output:
+	// original: []int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 2, 3, 4, 5, 2, 3, 4, 5, 8, 9, 1, 0, 4, 4, 4}
+	//    dedup: []int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+}
+
+func ExampleRemoveZeros() {
+	slice := []int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0}
+
+	newSlice := RemoveZeros(slice)
+	sort.Ints(newSlice)
+
+	fmt.Printf("original: %#v\nnewSlice: %#v\n", slice, newSlice)
+	// Output:
+	// original: []int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 2, 3, 4, 5, 2, 3, 4, 5, 8, 9, 1, 0, 4, 4, 4}
+	// newSlice: []int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+}
