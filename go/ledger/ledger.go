@@ -6,6 +6,7 @@ package ledger
 	2. Whitespace clean up.
 	3. Move fast return to the top of the FormatLedger() function.
 	4. Use copy to copy entries slice to entriesCopy slice.
+	5. Replace some if-else blocks with switch statements.
 */
 
 import (
@@ -66,21 +67,24 @@ func FormatLedger(currency string, locale string, entries []Entry) (string, erro
 
 	var s string
 
-	if locale == "nl-NL" {
+	switch locale {
+	case "nl-NL":
 		s = "Datum" +
 			strings.Repeat(" ", 10-len("Datum")) +
 			" | " +
 			"Omschrijving" +
 			strings.Repeat(" ", 25-len("Omschrijving")) +
 			" | " + "Verandering" + "\n"
-	} else if locale == "en-US" {
+
+	case "en-US":
 		s = "Date" +
 			strings.Repeat(" ", 10-len("Date")) +
 			" | " +
 			"Description" +
 			strings.Repeat(" ", 25-len("Description")) +
 			" | " + "Change" + "\n"
-	} else {
+
+	default:
 		return "", errors.New("")
 	}
 
@@ -134,9 +138,12 @@ func FormatLedger(currency string, locale string, entries []Entry) (string, erro
 			}
 
 			var d string
-			if locale == "nl-NL" {
+
+			switch locale {
+			case "nl-NL":
 				d = d5 + "-" + d3 + "-" + d1
-			} else if locale == "en-US" {
+
+			case "en-US":
 				d = d3 + "/" + d5 + "/" + d1
 			}
 
@@ -150,12 +157,17 @@ func FormatLedger(currency string, locale string, entries []Entry) (string, erro
 
 			var a string
 
-			if locale == "nl-NL" {
-				if currency == "EUR" {
+			switch locale {
+			case "nl-NL":
+
+				switch currency {
+				case "EUR":
 					a += "€"
-				} else if currency == "USD" {
+
+				case "USD":
 					a += "$"
-				} else {
+
+				default:
 					co <- struct {
 						i int
 						s string
@@ -202,7 +214,8 @@ func FormatLedger(currency string, locale string, entries []Entry) (string, erro
 				} else {
 					a += " "
 				}
-			} else if locale == "en-US" {
+
+			case "en-US":
 				if negative {
 					a += "("
 				}
@@ -257,7 +270,8 @@ func FormatLedger(currency string, locale string, entries []Entry) (string, erro
 				} else {
 					a += " "
 				}
-			} else {
+
+			default:
 				co <- struct {
 					i int
 					s string
