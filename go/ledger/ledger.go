@@ -1,4 +1,9 @@
+// Package ledger prints a nicely formatted ledger, given a locale (American or Dutch) and a currency (US dollar or euro).
 package ledger
+
+/*
+	1. Add documentation comments.
+*/
 
 import (
 	"errors"
@@ -6,12 +11,14 @@ import (
 	"strings"
 )
 
+// Entry type consists of a date, description and change.
 type Entry struct {
 	Date        string // "Y-m-d"
 	Description string
 	Change      int // in cents
 }
 
+// FormatLedger returns a string with the whole ledger.
 func FormatLedger(currency string, locale string, entries []Entry) (string, error) {
 	var entriesCopy []Entry
 	for _, e := range entries {
