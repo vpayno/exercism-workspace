@@ -1,0 +1,56 @@
+
+26     	func (c Classification) String() string {
+27     		switch c {
+28     		case ClassificationAbundant:
+29     			return ClassificationNames[ClassificationAbundant]
+30     		case ClassificationDeficient:
+31     			return ClassificationNames[ClassificationDeficient]
+32     		case ClassificationPerfect:
+33     			return ClassificationNames[ClassificationPerfect]
+34     		default:
+35 MISS			return ClassificationNames[Unknown]
+36     		}
+37     	}
+
+
+43     	func Classify(number int64) (Classification, error) {
+44     		if number <= 0 {
+45     			return Unknown, ErrOnlyPositive
+46     		}
+47     	
+48     		// Factors: factors including 1 but not n.
+49     		factors := Factors(number)
+50     	
+51     		// Aliquot sum: the sum of factors of a number.
+52     		aliquotSum := Sum(factors)
+53     	
+54     		switch {
+55     		case aliquotSum > number:
+56     			return ClassificationAbundant, nil
+57     		case aliquotSum < number:
+58     			return ClassificationDeficient, nil
+59     		case aliquotSum == number:
+60     			return ClassificationPerfect, nil
+61     		}
+62     	
+63 MISS		return 0, nil
+64     	}
+
+
+83     	func Factors(number int64) []int64 {
+84     		if number == 0 {
+85 MISS			return []int64{}
+86     		}
+87     	
+88     		factors := []int64{}
+89     		var factor int64
+90     	
+91     		for factor = 1; factor < number; factor++ {
+92     			if number%factor == 0 {
+93     				factors = append(factors, factor)
+94     			}
+95     		}
+96     	
+97     		return factors
+98     	}
+

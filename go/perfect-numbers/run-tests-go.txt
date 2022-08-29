@@ -1,0 +1,450 @@
+Running automated test file(s):
+
+Go packages: perfect 
+
+
+===============================================================================
+
+golangci-lint run ./...
+
+real	0m8.479s
+user	0m17.131s
+sys	0m3.091s
+
+===============================================================================
+
+golint ./...
+
+real	0m0.051s
+user	0m0.042s
+sys	0m0.034s
+
+===============================================================================
+
+revive -formatter=stylish ./...
+perfect_numbers.go
+  (40, 21)  https://revive.run/r#var-declaration  should omit type error from declaration of var ErrOnlyPositive; it will be inferred from the right-hand side  
+
+
+ ✖ 1 problem (0 errors) (1 warnings)
+
+real	0m0.043s
+user	0m0.022s
+sys	0m0.023s
+
+===============================================================================
+
+ineffassign ./...
+
+real	0m0.332s
+user	0m0.375s
+sys	0m0.354s
+
+===============================================================================
+
+go-consistent -v ./...
+	info: check "./."
+
+real	0m0.419s
+user	0m0.470s
+sys	0m0.408s
+
+===============================================================================
+
+staticcheck ./...
+
+real	0m0.572s
+user	0m0.528s
+sys	0m0.603s
+
+===============================================================================
+
+gocritic check -enableAll ./...
+
+real	0m2.687s
+user	0m4.634s
+sys	0m1.219s
+
+===============================================================================
+
+go vet ./...
+
+real	0m0.279s
+user	0m0.321s
+sys	0m0.270s
+
+===============================================================================
+
+go fix ./...
+
+real	0m0.101s
+user	0m0.059s
+sys	0m0.126s
+
+===============================================================================
+
+gocyclo .
+6 perfect TestClassifiesCorrectly perfect_numbers_test.go:13:1
+5 perfect BenchmarkClassify perfect_numbers_test.go:54:1
+5 perfect Classify perfect_numbers.go:43:1
+4 perfect TestClassificationsNotEqual perfect_numbers_test.go:34:1
+4 perfect Factors perfect_numbers.go:83:1
+4 perfect (Classification).String perfect_numbers.go:26:1
+3 perfect Sum perfect_numbers.go:67:1
+2 perfect TestZeroGivesPositiveRequiredError perfect_numbers_test.go:5:1
+1 perfect ExampleFactors perfect_numbers_examples_test.go:39:1
+1 perfect ExampleSum perfect_numbers_examples_test.go:29:1
+1 perfect ExampleClassify perfect_numbers_examples_test.go:5:1
+
+real	0m0.023s
+user	0m0.002s
+sys	0m0.005s
+
+===============================================================================
+
+misspell .
+
+real	0m0.096s
+user	0m0.116s
+sys	0m0.049s
+
+===============================================================================
+
+gosec ./...
+[gosec] 2022/08/28 20:10:06 Including rules: default
+[gosec] 2022/08/28 20:10:06 Excluding rules: default
+[gosec] 2022/08/28 20:10:06 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/perfect-numbers
+2022/08/28 20:10:06 internal error: package "errors" without types was imported from "command-line-arguments"
+
+real	0m0.378s
+user	0m0.379s
+sys	0m0.328s
+
+===============================================================================
+
+gotest -v -covermode=count -coverprofile coverage.out ./...
+=== RUN   TestZeroGivesPositiveRequiredError
+=== RUN   TestZeroGivesPositiveRequiredError/GivesPositiveRequiredError
+--- PASS: TestZeroGivesPositiveRequiredError (0.00s)
+    --- PASS: TestZeroGivesPositiveRequiredError/GivesPositiveRequiredError (0.00s)
+=== RUN   TestClassifiesCorrectly
+=== RUN   TestClassifiesCorrectly/Smallest_perfect_number_is_classified_correctly
+=== RUN   TestClassifiesCorrectly/Medium_perfect_number_is_classified_correctly
+=== RUN   TestClassifiesCorrectly/Large_perfect_number_is_classified_correctly
+=== RUN   TestClassifiesCorrectly/Smallest_abundant_number_is_classified_correctly
+=== RUN   TestClassifiesCorrectly/Medium_abundant_number_is_classified_correctly
+=== RUN   TestClassifiesCorrectly/Large_abundant_number_is_classified_correctly
+=== RUN   TestClassifiesCorrectly/Smallest_prime_deficient_number_is_classified_correctly
+=== RUN   TestClassifiesCorrectly/Smallest_non-prime_deficient_number_is_classified_correctly
+=== RUN   TestClassifiesCorrectly/Medium_deficient_number_is_classified_correctly
+=== RUN   TestClassifiesCorrectly/Large_deficient_number_is_classified_correctly
+=== RUN   TestClassifiesCorrectly/Edge_case_(no_factors_other_than_itself)_is_classified_correctly
+=== RUN   TestClassifiesCorrectly/Zero_is_rejected_(as_it_is_not_a_positive_integer)
+=== RUN   TestClassifiesCorrectly/Negative_integer_is_rejected_(as_it_is_not_a_positive_integer)
+--- PASS: TestClassifiesCorrectly (1.12s)
+    --- PASS: TestClassifiesCorrectly/Smallest_perfect_number_is_classified_correctly (0.00s)
+    --- PASS: TestClassifiesCorrectly/Medium_perfect_number_is_classified_correctly (0.00s)
+    --- PASS: TestClassifiesCorrectly/Large_perfect_number_is_classified_correctly (0.40s)
+    --- PASS: TestClassifiesCorrectly/Smallest_abundant_number_is_classified_correctly (0.00s)
+    --- PASS: TestClassifiesCorrectly/Medium_abundant_number_is_classified_correctly (0.00s)
+    --- PASS: TestClassifiesCorrectly/Large_abundant_number_is_classified_correctly (0.34s)
+    --- PASS: TestClassifiesCorrectly/Smallest_prime_deficient_number_is_classified_correctly (0.00s)
+    --- PASS: TestClassifiesCorrectly/Smallest_non-prime_deficient_number_is_classified_correctly (0.00s)
+    --- PASS: TestClassifiesCorrectly/Medium_deficient_number_is_classified_correctly (0.00s)
+    --- PASS: TestClassifiesCorrectly/Large_deficient_number_is_classified_correctly (0.38s)
+    --- PASS: TestClassifiesCorrectly/Edge_case_(no_factors_other_than_itself)_is_classified_correctly (0.00s)
+    --- PASS: TestClassifiesCorrectly/Zero_is_rejected_(as_it_is_not_a_positive_integer) (0.00s)
+    --- PASS: TestClassifiesCorrectly/Negative_integer_is_rejected_(as_it_is_not_a_positive_integer) (0.00s)
+=== RUN   TestClassificationsNotEqual
+--- PASS: TestClassificationsNotEqual (0.00s)
+=== RUN   ExampleClassify
+--- PASS: ExampleClassify (0.00s)
+=== RUN   ExampleSum
+--- PASS: ExampleSum (0.00s)
+=== RUN   ExampleFactors
+--- PASS: ExampleFactors (0.01s)
+PASS
+coverage: 89.3% of statements
+ok  	perfect	1.163s	coverage: 89.3% of statements
+
+real	0m1.657s
+user	0m1.731s
+sys	0m0.440s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+perfect/perfect_numbers.go:26:	String		80.0%
+perfect/perfect_numbers.go:43:	Classify	88.9%
+perfect/perfect_numbers.go:67:	Sum		100.0%
+perfect/perfect_numbers.go:83:	Factors		87.5%
+total:				(statements)	89.3%
+
+real	0m0.193s
+user	0m0.092s
+sys	0m0.268s
+
+===============================================================================
+
+go tool cover -html coverage.out -o coverage.html
+
+real	0m0.187s
+user	0m0.105s
+sys	0m0.289s
+
+===============================================================================
+
+gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+26     	func (c Classification) String() string {
+27     		switch c {
+28     		case ClassificationAbundant:
+29     			return ClassificationNames[ClassificationAbundant]
+30     		case ClassificationDeficient:
+31     			return ClassificationNames[ClassificationDeficient]
+32     		case ClassificationPerfect:
+33     			return ClassificationNames[ClassificationPerfect]
+34     		default:
+35 MISS			return ClassificationNames[Unknown]
+36     		}
+37     	}
+
+
+43     	func Classify(number int64) (Classification, error) {
+44     		if number <= 0 {
+45     			return Unknown, ErrOnlyPositive
+46     		}
+47     	
+48     		// Factors: factors including 1 but not n.
+49     		factors := Factors(number)
+50     	
+51     		// Aliquot sum: the sum of factors of a number.
+52     		aliquotSum := Sum(factors)
+53     	
+54     		switch {
+55     		case aliquotSum > number:
+56     			return ClassificationAbundant, nil
+57     		case aliquotSum < number:
+58     			return ClassificationDeficient, nil
+59     		case aliquotSum == number:
+60     			return ClassificationPerfect, nil
+61     		}
+62     	
+63 MISS		return 0, nil
+64     	}
+
+
+83     	func Factors(number int64) []int64 {
+84     		if number == 0 {
+85 MISS			return []int64{}
+86     		}
+87     	
+88     		factors := []int64{}
+89     		var factor int64
+90     	
+91     		for factor = 1; factor < number; factor++ {
+92     			if number%factor == 0 {
+93     				factors = append(factors, factor)
+94     			}
+95     		}
+96     	
+97     		return factors
+98     	}
+
+
+real	0m0.079s
+user	0m0.029s
+sys	0m0.075s
+
+===============================================================================
+
+gotest -v -race -covermode=atomic ./...
+=== RUN   TestZeroGivesPositiveRequiredError
+=== RUN   TestZeroGivesPositiveRequiredError/GivesPositiveRequiredError
+--- PASS: TestZeroGivesPositiveRequiredError (0.00s)
+    --- PASS: TestZeroGivesPositiveRequiredError/GivesPositiveRequiredError (0.00s)
+=== RUN   TestClassifiesCorrectly
+=== RUN   TestClassifiesCorrectly/Smallest_perfect_number_is_classified_correctly
+=== RUN   TestClassifiesCorrectly/Medium_perfect_number_is_classified_correctly
+=== RUN   TestClassifiesCorrectly/Large_perfect_number_is_classified_correctly
+=== RUN   TestClassifiesCorrectly/Smallest_abundant_number_is_classified_correctly
+=== RUN   TestClassifiesCorrectly/Medium_abundant_number_is_classified_correctly
+=== RUN   TestClassifiesCorrectly/Large_abundant_number_is_classified_correctly
+=== RUN   TestClassifiesCorrectly/Smallest_prime_deficient_number_is_classified_correctly
+=== RUN   TestClassifiesCorrectly/Smallest_non-prime_deficient_number_is_classified_correctly
+=== RUN   TestClassifiesCorrectly/Medium_deficient_number_is_classified_correctly
+=== RUN   TestClassifiesCorrectly/Large_deficient_number_is_classified_correctly
+=== RUN   TestClassifiesCorrectly/Edge_case_(no_factors_other_than_itself)_is_classified_correctly
+=== RUN   TestClassifiesCorrectly/Zero_is_rejected_(as_it_is_not_a_positive_integer)
+=== RUN   TestClassifiesCorrectly/Negative_integer_is_rejected_(as_it_is_not_a_positive_integer)
+--- PASS: TestClassifiesCorrectly (14.65s)
+    --- PASS: TestClassifiesCorrectly/Smallest_perfect_number_is_classified_correctly (0.00s)
+    --- PASS: TestClassifiesCorrectly/Medium_perfect_number_is_classified_correctly (0.00s)
+    --- PASS: TestClassifiesCorrectly/Large_perfect_number_is_classified_correctly (4.77s)
+    --- PASS: TestClassifiesCorrectly/Smallest_abundant_number_is_classified_correctly (0.00s)
+    --- PASS: TestClassifiesCorrectly/Medium_abundant_number_is_classified_correctly (0.00s)
+    --- PASS: TestClassifiesCorrectly/Large_abundant_number_is_classified_correctly (4.90s)
+    --- PASS: TestClassifiesCorrectly/Smallest_prime_deficient_number_is_classified_correctly (0.00s)
+    --- PASS: TestClassifiesCorrectly/Smallest_non-prime_deficient_number_is_classified_correctly (0.00s)
+    --- PASS: TestClassifiesCorrectly/Medium_deficient_number_is_classified_correctly (0.00s)
+    --- PASS: TestClassifiesCorrectly/Large_deficient_number_is_classified_correctly (4.98s)
+    --- PASS: TestClassifiesCorrectly/Edge_case_(no_factors_other_than_itself)_is_classified_correctly (0.00s)
+    --- PASS: TestClassifiesCorrectly/Zero_is_rejected_(as_it_is_not_a_positive_integer) (0.00s)
+    --- PASS: TestClassifiesCorrectly/Negative_integer_is_rejected_(as_it_is_not_a_positive_integer) (0.00s)
+=== RUN   TestClassificationsNotEqual
+--- PASS: TestClassificationsNotEqual (0.00s)
+=== RUN   ExampleClassify
+--- PASS: ExampleClassify (0.00s)
+=== RUN   ExampleSum
+--- PASS: ExampleSum (0.00s)
+=== RUN   ExampleFactors
+--- PASS: ExampleFactors (0.00s)
+PASS
+coverage: 89.3% of statements
+ok  	perfect	(cached)	coverage: 89.3% of statements
+
+real	0m0.363s
+user	0m0.409s
+sys	0m0.375s
+
+===============================================================================
+
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+goos: linux
+goarch: amd64
+pkg: perfect
+cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+BenchmarkClassify
+    perfect_numbers_test.go:62: error encountered during benchmark
+    perfect_numbers_test.go:62: error encountered during benchmark
+--- FAIL: BenchmarkClassify
+FAIL
+exit status 1
+FAIL	perfect	1.155s
+
+real	0m1.782s
+user	0m1.788s
+sys	0m0.575s
+
+===============================================================================
+
+gotest -v -tags bonus
+=== RUN   TestZeroGivesPositiveRequiredError
+=== RUN   TestZeroGivesPositiveRequiredError/GivesPositiveRequiredError
+--- PASS: TestZeroGivesPositiveRequiredError (0.00s)
+    --- PASS: TestZeroGivesPositiveRequiredError/GivesPositiveRequiredError (0.00s)
+=== RUN   TestClassifiesCorrectly
+=== RUN   TestClassifiesCorrectly/Smallest_perfect_number_is_classified_correctly
+=== RUN   TestClassifiesCorrectly/Medium_perfect_number_is_classified_correctly
+=== RUN   TestClassifiesCorrectly/Large_perfect_number_is_classified_correctly
+=== RUN   TestClassifiesCorrectly/Smallest_abundant_number_is_classified_correctly
+=== RUN   TestClassifiesCorrectly/Medium_abundant_number_is_classified_correctly
+=== RUN   TestClassifiesCorrectly/Large_abundant_number_is_classified_correctly
+=== RUN   TestClassifiesCorrectly/Smallest_prime_deficient_number_is_classified_correctly
+=== RUN   TestClassifiesCorrectly/Smallest_non-prime_deficient_number_is_classified_correctly
+=== RUN   TestClassifiesCorrectly/Medium_deficient_number_is_classified_correctly
+=== RUN   TestClassifiesCorrectly/Large_deficient_number_is_classified_correctly
+=== RUN   TestClassifiesCorrectly/Edge_case_(no_factors_other_than_itself)_is_classified_correctly
+=== RUN   TestClassifiesCorrectly/Zero_is_rejected_(as_it_is_not_a_positive_integer)
+=== RUN   TestClassifiesCorrectly/Negative_integer_is_rejected_(as_it_is_not_a_positive_integer)
+--- PASS: TestClassifiesCorrectly (1.15s)
+    --- PASS: TestClassifiesCorrectly/Smallest_perfect_number_is_classified_correctly (0.00s)
+    --- PASS: TestClassifiesCorrectly/Medium_perfect_number_is_classified_correctly (0.00s)
+    --- PASS: TestClassifiesCorrectly/Large_perfect_number_is_classified_correctly (0.39s)
+    --- PASS: TestClassifiesCorrectly/Smallest_abundant_number_is_classified_correctly (0.00s)
+    --- PASS: TestClassifiesCorrectly/Medium_abundant_number_is_classified_correctly (0.00s)
+    --- PASS: TestClassifiesCorrectly/Large_abundant_number_is_classified_correctly (0.38s)
+    --- PASS: TestClassifiesCorrectly/Smallest_prime_deficient_number_is_classified_correctly (0.00s)
+    --- PASS: TestClassifiesCorrectly/Smallest_non-prime_deficient_number_is_classified_correctly (0.00s)
+    --- PASS: TestClassifiesCorrectly/Medium_deficient_number_is_classified_correctly (0.00s)
+    --- PASS: TestClassifiesCorrectly/Large_deficient_number_is_classified_correctly (0.37s)
+    --- PASS: TestClassifiesCorrectly/Edge_case_(no_factors_other_than_itself)_is_classified_correctly (0.00s)
+    --- PASS: TestClassifiesCorrectly/Zero_is_rejected_(as_it_is_not_a_positive_integer) (0.00s)
+    --- PASS: TestClassifiesCorrectly/Negative_integer_is_rejected_(as_it_is_not_a_positive_integer) (0.00s)
+=== RUN   TestClassificationsNotEqual
+--- PASS: TestClassificationsNotEqual (0.00s)
+=== RUN   ExampleClassify
+--- PASS: ExampleClassify (0.00s)
+=== RUN   ExampleSum
+--- PASS: ExampleSum (0.00s)
+=== RUN   ExampleFactors
+--- PASS: ExampleFactors (0.00s)
+PASS
+ok  	perfect	1.177s
+
+real	0m1.713s
+user	0m1.747s
+sys	0m0.529s
+
+===============================================================================
+
+No old benchmarks to run benchstat against.
+
+===============================================================================
+
+gomarkdoc --output perfect-doc.md
+
+real	0m0.037s
+user	0m0.027s
+sys	0m0.014s
+
+===============================================================================
+
+go doc -all perfect
+package perfect // import "perfect"
+
+Package perfect is used to determinte the classification scheme of a number
+using Nicomachus' classification scheme for positive integers.
+
+VARIABLES
+
+var ClassificationNames = map[Classification]string{
+	Unknown:                 "unknown",
+	ClassificationAbundant:  "abundant",
+	ClassificationDeficient: "deficient",
+	ClassificationPerfect:   "perfect",
+}
+    ClassificationNames maps the classifications to strings mappings.
+
+var ErrOnlyPositive error = errors.New("only positive errors")
+    ErrOnlyPositive is returned when an input number is not positive.
+
+
+FUNCTIONS
+
+func Classify(number int64) (Classification, error)
+    Classify returns the classification of a number based on Nicomachus'
+    classification scheme for positive integers.
+
+func Factors(number int64) []int64
+    Factors returns an int64 list of factors the given natural number.
+    We include 1 but not the number itself.
+
+func Sum(numbers []int64) int64
+    Sum returns the sum of the list of numbers.
+
+
+TYPES
+
+type Classification int
+    Classification type used in Nicomachus' classification scheme.
+
+const (
+	Unknown Classification = iota
+	ClassificationAbundant
+	ClassificationDeficient
+	ClassificationPerfect
+)
+    The Classification enum.
+
+func (c Classification) String() string
+    String returns the lowercased classification name.
+
+
+real	0m0.176s
+user	0m0.074s
+sys	0m0.187s
+
+
+===============================================================================
+

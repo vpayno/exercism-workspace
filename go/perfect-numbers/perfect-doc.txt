@@ -1,0 +1,49 @@
+package perfect // import "perfect"
+
+Package perfect is used to determinte the classification scheme of a number
+using Nicomachus' classification scheme for positive integers.
+
+VARIABLES
+
+var ClassificationNames = map[Classification]string{
+	Unknown:                 "unknown",
+	ClassificationAbundant:  "abundant",
+	ClassificationDeficient: "deficient",
+	ClassificationPerfect:   "perfect",
+}
+    ClassificationNames maps the classifications to strings mappings.
+
+var ErrOnlyPositive error = errors.New("only positive errors")
+    ErrOnlyPositive is returned when an input number is not positive.
+
+
+FUNCTIONS
+
+func Classify(number int64) (Classification, error)
+    Classify returns the classification of a number based on Nicomachus'
+    classification scheme for positive integers.
+
+func Factors(number int64) []int64
+    Factors returns an int64 list of factors the given natural number.
+    We include 1 but not the number itself.
+
+func Sum(numbers []int64) int64
+    Sum returns the sum of the list of numbers.
+
+
+TYPES
+
+type Classification int
+    Classification type used in Nicomachus' classification scheme.
+
+const (
+	Unknown Classification = iota
+	ClassificationAbundant
+	ClassificationDeficient
+	ClassificationPerfect
+)
+    The Classification enum.
+
+func (c Classification) String() string
+    String returns the lowercased classification name.
+
