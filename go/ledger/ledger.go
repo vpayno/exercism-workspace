@@ -5,6 +5,7 @@ package ledger
 	1. Add documentation comments.
 	2. Whitespace clean up.
 	3. Move fast return to the top of the FormatLedger() function.
+	4. Use copy to copy entries slice to entriesCopy slice.
 */
 
 import (
@@ -28,10 +29,12 @@ func FormatLedger(currency string, locale string, entries []Entry) (string, erro
 		}
 	}
 
-	var entriesCopy []Entry
+	entriesCopy := make([]Entry, len(entries), cap(entries))
 
-	for _, e := range entries {
-		entriesCopy = append(entriesCopy, e)
+	size := copy(entriesCopy, entries)
+
+	if size != len(entries) {
+		return "", errors.New("unable to copy the entries slice")
 	}
 
 	m1 := map[bool]int{true: 0, false: 1}
