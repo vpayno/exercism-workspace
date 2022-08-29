@@ -10,6 +10,7 @@ package ledger
 	6. Use fmt.Sprintf instead of strconv.Itoa and a switch block.
 	7. Replace string formatting code with fmt.Sprintf.
 	8. Replace output/return string with a strings.Builder.
+	9. Format assignments so they're easier to read.
 */
 
 import (
@@ -100,7 +101,11 @@ func FormatLedger(currency string, locale string, entries []Entry) (string, erro
 				}
 			}
 
-			d1, d2, d3, d4, d5 := entry.Date[0:4], entry.Date[4], entry.Date[5:7], entry.Date[7], entry.Date[8:10]
+			d1 := entry.Date[0:4]
+			d2 := entry.Date[4]
+			d3 := entry.Date[5:7]
+			d4 := entry.Date[7]
+			d5 := entry.Date[8:10]
 
 			if d2 != '-' {
 				co <- struct {
