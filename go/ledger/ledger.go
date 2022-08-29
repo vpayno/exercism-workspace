@@ -9,11 +9,13 @@ package ledger
 	5. Replace some if-else blocks with switch statements.
 	6. Use fmt.Sprintf instead of strconv.Itoa and a switch block.
 	7. Replace string formatting code with fmt.Sprintf.
+	8. Replace output/return string with a strings.Builder.
 */
 
 import (
 	"errors"
 	"fmt"
+	"strings"
 )
 
 // Entry type consists of a date, description and change.
@@ -66,14 +68,14 @@ func FormatLedger(currency string, locale string, entries []Entry) (string, erro
 		es = es[1:]
 	}
 
-	var s string
+	var output strings.Builder
 
 	switch locale {
 	case "nl-NL":
-		s = fmt.Sprintf("% -10s | % -25s | %s\n", "Datum", "Omschrijving", "Verandering")
+		output.WriteString(fmt.Sprintf("% -10s | % -25s | %s\n", "Datum", "Omschrijving", "Verandering"))
 
 	case "en-US":
-		s = fmt.Sprintf("% -10s | % -25s | %s\n", "Date", "Description", "Change")
+		output.WriteString(fmt.Sprintf("% -10s | % -25s | %s\n", "Date", "Description", "Change"))
 
 	default:
 		return "", errors.New("")
@@ -288,8 +290,8 @@ func FormatLedger(currency string, locale string, entries []Entry) (string, erro
 	}
 
 	for i := 0; i < len(entriesCopy); i++ {
-		s += ss[i]
+		output.WriteString(ss[i])
 	}
 
-	return s, nil
+	return output.String(), nil
 }
