@@ -7,11 +7,12 @@ package ledger
 	3. Move fast return to the top of the FormatLedger() function.
 	4. Use copy to copy entries slice to entriesCopy slice.
 	5. Replace some if-else blocks with switch statements.
+	6. Use fmt.Sprintf instead of strconv.Itoa and a switch block.
 */
 
 import (
 	"errors"
-	"strconv"
+	"fmt"
 	"strings"
 )
 
@@ -178,15 +179,8 @@ func FormatLedger(currency string, locale string, entries []Entry) (string, erro
 				}
 
 				a += " "
-				centsStr := strconv.Itoa(cents)
 
-				switch len(centsStr) {
-				case 1:
-					centsStr = "00" + centsStr
-
-				case 2:
-					centsStr = "0" + centsStr
-				}
+				centsStr := fmt.Sprintf("%02d", cents)
 
 				rest := centsStr[:len(centsStr)-2]
 
@@ -234,15 +228,7 @@ func FormatLedger(currency string, locale string, entries []Entry) (string, erro
 					}
 				}
 
-				centsStr := strconv.Itoa(cents)
-
-				switch len(centsStr) {
-				case 1:
-					centsStr = "00" + centsStr
-
-				case 2:
-					centsStr = "0" + centsStr
-				}
+				centsStr := fmt.Sprintf("%03d", cents)
 
 				rest := centsStr[:len(centsStr)-2]
 
