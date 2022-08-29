@@ -4,6 +4,7 @@ package ledger
 /*
 	1. Add documentation comments.
 	2. Whitespace clean up.
+	3. Move fast return to the top of the FormatLedger() function.
 */
 
 import (
@@ -21,16 +22,16 @@ type Entry struct {
 
 // FormatLedger returns a string with the whole ledger.
 func FormatLedger(currency string, locale string, entries []Entry) (string, error) {
-	var entriesCopy []Entry
-
-	for _, e := range entries {
-		entriesCopy = append(entriesCopy, e)
-	}
-
 	if len(entries) == 0 {
 		if _, err := FormatLedger(currency, "en-US", []Entry{{Date: "2014-01-01", Description: "", Change: 0}}); err != nil {
 			return "", err
 		}
+	}
+
+	var entriesCopy []Entry
+
+	for _, e := range entries {
+		entriesCopy = append(entriesCopy, e)
 	}
 
 	m1 := map[bool]int{true: 0, false: 1}
