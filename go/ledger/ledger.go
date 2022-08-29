@@ -8,12 +8,12 @@ package ledger
 	4. Use copy to copy entries slice to entriesCopy slice.
 	5. Replace some if-else blocks with switch statements.
 	6. Use fmt.Sprintf instead of strconv.Itoa and a switch block.
+	7. Replace string formatting code with fmt.Sprintf.
 */
 
 import (
 	"errors"
 	"fmt"
-	"strings"
 )
 
 // Entry type consists of a date, description and change.
@@ -70,20 +70,10 @@ func FormatLedger(currency string, locale string, entries []Entry) (string, erro
 
 	switch locale {
 	case "nl-NL":
-		s = "Datum" +
-			strings.Repeat(" ", 10-len("Datum")) +
-			" | " +
-			"Omschrijving" +
-			strings.Repeat(" ", 25-len("Omschrijving")) +
-			" | " + "Verandering" + "\n"
+		s = fmt.Sprintf("% -10s | % -25s | %s\n", "Datum", "Omschrijving", "Verandering")
 
 	case "en-US":
-		s = "Date" +
-			strings.Repeat(" ", 10-len("Date")) +
-			" | " +
-			"Description" +
-			strings.Repeat(" ", 25-len("Description")) +
-			" | " + "Change" + "\n"
+		s = fmt.Sprintf("% -10s | % -25s | %s\n", "Date", "Description", "Change")
 
 	default:
 		return "", errors.New("")
@@ -133,19 +123,19 @@ func FormatLedger(currency string, locale string, entries []Entry) (string, erro
 			de := entry.Description
 
 			if len(de) > 25 {
-				de = de[:22] + "..."
+				de = fmt.Sprintf("% -22s...", de[:22])
 			} else {
-				de = de + strings.Repeat(" ", 25-len(de))
+				de = fmt.Sprintf("% -25s", de)
 			}
 
 			var d string
 
 			switch locale {
 			case "nl-NL":
-				d = d5 + "-" + d3 + "-" + d1
+				d = fmt.Sprintf("%s-%s-%s", d5, d3, d1)
 
 			case "en-US":
-				d = d3 + "/" + d5 + "/" + d1
+				d = fmt.Sprintf("%s/%s/%s", d3, d5, d1)
 			}
 
 			negative := false
@@ -279,7 +269,7 @@ func FormatLedger(currency string, locale string, entries []Entry) (string, erro
 				e error
 			}{
 				i: i,
-				s: d + strings.Repeat(" ", 10-len(d)) + " | " + de + " | " + strings.Repeat(" ", 13-al) + a + "\n",
+				s: fmt.Sprintf("% -10s | %s | % 13s\n", d, de, a),
 			}
 
 		}(i, et)
