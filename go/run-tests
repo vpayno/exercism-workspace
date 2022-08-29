@@ -70,6 +70,37 @@ main()
 
 	print_ruler
 
+	echo go vet ./...
+	time go vet ./...
+
+	print_ruler
+
+	echo go fix ./...
+	time go fix ./...
+
+	print_ruler
+
+	# go install github.com/fzipp/gocyclo/cmd/gocyclo@latest
+
+	echo gocyclo .
+	time gocyclo .
+
+	print_ruler
+
+	# go install github.com/client9/misspell/cmd/misspell@latest
+
+	echo misspell .
+	time misspell .
+
+	print_ruler
+
+	# go install github.com/securego/gosec/cmd/gosec@latest
+
+	echo gosec ./...
+	time gosec ./...
+
+	print_ruler
+
 	# go install golang.org/x/tools/cmd/cover@latest
 	# go install github.com/rakyll/gotest@latest
 
@@ -128,37 +159,6 @@ main()
 		printf "No old benchmarks to run benchstat against.\n"
 
 	fi
-
-	print_ruler
-
-	echo go vet ./...
-	time go vet ./...
-
-	print_ruler
-
-	echo go fix ./...
-	time go fix ./...
-
-	print_ruler
-
-	# go install github.com/fzipp/gocyclo/cmd/gocyclo@latest
-
-	echo gocyclo .
-	time gocyclo .
-
-	print_ruler
-
-	# go install github.com/client9/misspell/cmd/misspell@latest
-
-	echo misspell .
-	time misspell .
-
-	print_ruler
-
-	# go install github.com/securego/gosec/cmd/gosec@latest
-
-	echo gosec ./...
-	time gosec ./...
 
 	print_ruler
 
