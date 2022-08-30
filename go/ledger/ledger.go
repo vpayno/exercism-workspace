@@ -15,6 +15,7 @@ package ledger
 	11. Remove useless code.
 	12. Clean up check for input date separator.
 	13. Rename more variables.
+	14. Remove go coroutine code. It was pointless.
 */
 
 import (
@@ -223,99 +224,42 @@ func FormatLedger(currency string, locale string, entries []Entry) (string, erro
 
 	output.WriteString(header)
 
-	// Parallelism, always a great idea
-	co := make(chan struct {
-		i int
-		s string
-		e error
-	})
-
-	for i, entry := range entriesCopy {
-		go func(i int, entry Entry) {
-			if len(entry.Date) != 10 {
-				co <- struct {
-					i int
-					s string
-					e error
-				}{
-					e: errors.New(""),
-				}
-			}
-
-			d1 := entry.Date[0:4]
-			d2 := entry.Date[4]
-			d3 := entry.Date[5:7]
-			d4 := entry.Date[7]
-			d5 := entry.Date[8:10]
-
-			if d2 != '-' || d4 != '-' {
-				co <- struct {
-					i int
-					s string
-					e error
-				}{
-					e: errors.New("invalid date separator"),
-				}
-			}
-
-			description := entry.Description
-
-			if len(description) > 25 {
-				description = fmt.Sprintf("% -22s...", description[:22])
-			} else {
-				description = fmt.Sprintf("% -25s", description)
-			}
-
-			dateLine, err := localizedDate(locale, d1, d3, d5)
-
-			if err != nil {
-				co <- struct {
-					i int
-					s string
-					e error
-				}{
-					e: err,
-				}
-			}
-
-			currencyLine, err := localizedCurrency(locale, currency, entry.Change)
-
-			if err != nil {
-				co <- struct {
-					i int
-					s string
-					e error
-				}{
-					e: err,
-				}
-			}
-
-			co <- struct {
-				i int
-				s string
-				e error
-			}{
-				i: i,
-				s: fmt.Sprintf("% -10s | %s | % 13s\n", dateLine, description, currencyLine),
-			}
-
-		}(i, entry)
-	}
-
-	ss := make([]string, len(entriesCopy))
-
-	for range entriesCopy {
-		v := <-co
-
-		if v.e != nil {
-			return "", v.e
+	for _, entry := range entriesCopy {
+		if len(entry.Date) != 10 {
+			return "", errors.New("")
 		}
 
-		ss[v.i] = v.s
-	}
+		d1 := entry.Date[0:4]
+		d2 := entry.Date[4]
+		d3 := entry.Date[5:7]
+		d4 := entry.Date[7]
+		d5 := entry.Date[8:10]
 
-	for i := 0; i < len(entriesCopy); i++ {
-		output.WriteString(ss[i])
+		if d2 != '-' || d4 != '-' {
+			return "", errors.New("invalid date separator")
+		}
+
+		description := entry.Description
+
+		if len(description) > 25 {
+			description = fmt.Sprintf("% -22s...", description[:22])
+		} else {
+			description = fmt.Sprintf("% -25s", description)
+		}
+
+		dateLine, err := localizedDate(locale, d1, d3, d5)
+
+		if err != nil {
+			return "", err
+		}
+
+		currencyLine, err := localizedCurrency(locale, currency, entry.Change)
+
+		if err != nil {
+			return "", err
+		}
+
+		output.WriteString(fmt.Sprintf("% -10s | %s | % 13s\n", dateLine, description, currencyLine))
 	}
 
 	return output.String(), nil
