@@ -14,6 +14,7 @@ package ledger
 	10. Clean up localized code.
 	11. Remove useless code.
 	12. Clean up check for input date separator.
+	13. Rename more variables.
 */
 
 import (
@@ -229,7 +230,7 @@ func FormatLedger(currency string, locale string, entries []Entry) (string, erro
 		e error
 	})
 
-	for i, et := range entriesCopy {
+	for i, entry := range entriesCopy {
 		go func(i int, entry Entry) {
 			if len(entry.Date) != 10 {
 				co <- struct {
@@ -257,12 +258,12 @@ func FormatLedger(currency string, locale string, entries []Entry) (string, erro
 				}
 			}
 
-			de := entry.Description
+			description := entry.Description
 
-			if len(de) > 25 {
-				de = fmt.Sprintf("% -22s...", de[:22])
+			if len(description) > 25 {
+				description = fmt.Sprintf("% -22s...", description[:22])
 			} else {
-				de = fmt.Sprintf("% -25s", de)
+				description = fmt.Sprintf("% -25s", description)
 			}
 
 			dateLine, err := localizedDate(locale, d1, d3, d5)
@@ -295,10 +296,10 @@ func FormatLedger(currency string, locale string, entries []Entry) (string, erro
 				e error
 			}{
 				i: i,
-				s: fmt.Sprintf("% -10s | %s | % 13s\n", dateLine, de, currencyLine),
+				s: fmt.Sprintf("% -10s | %s | % 13s\n", dateLine, description, currencyLine),
 			}
 
-		}(i, et)
+		}(i, entry)
 	}
 
 	ss := make([]string, len(entriesCopy))
