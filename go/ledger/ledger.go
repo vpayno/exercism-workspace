@@ -13,6 +13,7 @@ package ledger
 	 9. Format assignments so they're easier to read.
 	10. Clean up localized code.
 	11. Remove useless code.
+	12. Clean up check for input date separator.
 */
 
 import (
@@ -246,23 +247,13 @@ func FormatLedger(currency string, locale string, entries []Entry) (string, erro
 			d4 := entry.Date[7]
 			d5 := entry.Date[8:10]
 
-			if d2 != '-' {
+			if d2 != '-' || d4 != '-' {
 				co <- struct {
 					i int
 					s string
 					e error
 				}{
-					e: errors.New(""),
-				}
-			}
-
-			if d4 != '-' {
-				co <- struct {
-					i int
-					s string
-					e error
-				}{
-					e: errors.New(""),
+					e: errors.New("invalid date separator"),
 				}
 			}
 
