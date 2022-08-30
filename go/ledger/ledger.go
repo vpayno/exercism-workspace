@@ -16,6 +16,7 @@ package ledger
 	12. Clean up check for input date separator.
 	13. Rename more variables.
 	14. Remove go coroutine code. It was pointless.
+	15. Move date separator check into localizedDate().
 */
 
 import (
@@ -31,8 +32,18 @@ type Entry struct {
 	Change      int // in cents
 }
 
-func localizedDate(locale, d1, d3, d5 string) (string, error) {
+func localizedDate(locale, date string) (string, error) {
 	var output string
+
+	d1 := date[0:4]
+	d2 := date[4]
+	d3 := date[5:7]
+	d4 := date[7]
+	d5 := date[8:10]
+
+	if d2 != '-' || d4 != '-' {
+		return "", errors.New("invalid date separator")
+	}
 
 	switch locale {
 	case "nl-NL":
@@ -229,16 +240,6 @@ func FormatLedger(currency string, locale string, entries []Entry) (string, erro
 			return "", errors.New("")
 		}
 
-		d1 := entry.Date[0:4]
-		d2 := entry.Date[4]
-		d3 := entry.Date[5:7]
-		d4 := entry.Date[7]
-		d5 := entry.Date[8:10]
-
-		if d2 != '-' || d4 != '-' {
-			return "", errors.New("invalid date separator")
-		}
-
 		description := entry.Description
 
 		if len(description) > 25 {
@@ -247,7 +248,7 @@ func FormatLedger(currency string, locale string, entries []Entry) (string, erro
 			description = fmt.Sprintf("% -25s", description)
 		}
 
-		dateLine, err := localizedDate(locale, d1, d3, d5)
+		dateLine, err := localizedDate(locale, entry.Date)
 
 		if err != nil {
 			return "", err
