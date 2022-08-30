@@ -12,6 +12,7 @@ package ledger
 	 8. Replace output/return string with a strings.Builder.
 	 9. Format assignments so they're easier to read.
 	10. Clean up localized code.
+	11. Remove useless code.
 */
 
 import (
@@ -295,12 +296,6 @@ func FormatLedger(currency string, locale string, entries []Entry) (string, erro
 				}{
 					e: err,
 				}
-			}
-
-			var al int
-
-			for range currencyLine {
-				al++
 			}
 
 			co <- struct {
