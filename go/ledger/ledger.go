@@ -18,6 +18,7 @@ package ledger
 	14. Remove go coroutine code. It was pointless.
 	15. Move date separator check into localizedDate().
 	16. Update use of entry.Description.
+	17. Move date lengh check to localizedDate().
 */
 
 import (
@@ -34,6 +35,10 @@ type Entry struct {
 }
 
 func localizedDate(locale, date string) (string, error) {
+	if len(date) != 10 {
+		return "", errors.New("wrong size date")
+	}
+
 	var output string
 
 	d1 := date[0:4]
@@ -237,10 +242,6 @@ func FormatLedger(currency string, locale string, entries []Entry) (string, erro
 	output.WriteString(header)
 
 	for _, entry := range entriesCopy {
-		if len(entry.Date) != 10 {
-			return "", errors.New("")
-		}
-
 		var description string
 
 		if len(entry.Description) > 25 {
