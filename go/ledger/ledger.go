@@ -19,6 +19,7 @@ package ledger
 	15. Move date separator check into localizedDate().
 	16. Update use of entry.Description.
 	17. Move date lengh check to localizedDate().
+	18. gocritic clean up.
 */
 
 import (
@@ -90,7 +91,7 @@ func localizedCurrency(locale, currency string, cents int) (string, error) {
 	negative := false
 
 	if cents < 0 {
-		cents = cents * -1
+		cents *= -1
 		negative = true
 	}
 
@@ -189,7 +190,7 @@ func localizedCurrency(locale, currency string, cents int) (string, error) {
 }
 
 // FormatLedger returns a string with the whole ledger.
-func FormatLedger(currency string, locale string, entries []Entry) (string, error) {
+func FormatLedger(currency, locale string, entries []Entry) (string, error) {
 	if len(entries) == 0 {
 		if _, err := FormatLedger(currency, "en-US", []Entry{{Date: "2014-01-01", Description: "", Change: 0}}); err != nil {
 			return "", err
