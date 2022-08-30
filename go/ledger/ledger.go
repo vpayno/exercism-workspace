@@ -2,15 +2,16 @@
 package ledger
 
 /*
-	1. Add documentation comments.
-	2. Whitespace clean up.
-	3. Move fast return to the top of the FormatLedger() function.
-	4. Use copy to copy entries slice to entriesCopy slice.
-	5. Replace some if-else blocks with switch statements.
-	6. Use fmt.Sprintf instead of strconv.Itoa and a switch block.
-	7. Replace string formatting code with fmt.Sprintf.
-	8. Replace output/return string with a strings.Builder.
-	9. Format assignments so they're easier to read.
+	 1. Add documentation comments.
+	 2. Whitespace clean up.
+	 3. Move fast return to the top of the FormatLedger() function.
+	 4. Use copy to copy entries slice to entriesCopy slice.
+	 5. Replace some if-else blocks with switch statements.
+	 6. Use fmt.Sprintf instead of strconv.Itoa and a switch block.
+	 7. Replace string formatting code with fmt.Sprintf.
+	 8. Replace output/return string with a strings.Builder.
+	 9. Format assignments so they're easier to read.
+	10. Clean up localized code.
 */
 
 import (
@@ -24,6 +25,146 @@ type Entry struct {
 	Date        string // "Y-m-d"
 	Description string
 	Change      int // in cents
+}
+
+func localizedDate(locale, d1, d3, d5 string) (string, error) {
+	var output string
+
+	switch locale {
+	case "nl-NL":
+		output = fmt.Sprintf("%s-%s-%s", d5, d3, d1)
+
+	case "en-US":
+		output = fmt.Sprintf("%s/%s/%s", d3, d5, d1)
+
+	default:
+		return output, errors.New("failed to render localized date")
+	}
+
+	return output, nil
+}
+
+func localizedHeader(locale string) (string, error) {
+	var output string
+
+	fmtStr := "% -10s | % -25s | %s\n"
+
+	switch locale {
+	case "nl-NL":
+		output = fmt.Sprintf(fmtStr, "Datum", "Omschrijving", "Verandering")
+
+	case "en-US":
+		output = fmt.Sprintf(fmtStr, "Date", "Description", "Change")
+
+	default:
+		return "", errors.New("failed to render localized header")
+	}
+
+	return output, nil
+}
+
+func localizedCurrency(locale, currency string, cents int) (string, error) {
+	var output strings.Builder
+
+	negative := false
+
+	if cents < 0 {
+		cents = cents * -1
+		negative = true
+	}
+
+	switch locale {
+	case "nl-NL":
+		output.WriteString(" ")
+
+	case "en-US":
+		if negative {
+			output.WriteString("(")
+		} else {
+			output.WriteString(" ")
+		}
+	}
+
+	switch currency {
+	case "EUR":
+		output.WriteString("€")
+
+	case "USD":
+		output.WriteString("$")
+
+	default:
+		return "", errors.New("invalid currency")
+	}
+
+	if locale == "nl-NL" {
+		output.WriteString(" ")
+	}
+
+	var centsStr string
+
+	switch locale {
+	case "nl-NL":
+		centsStr = fmt.Sprintf("%02d", cents)
+
+	case "en-US":
+		centsStr = fmt.Sprintf("%03d", cents)
+	}
+
+	rest := centsStr[:len(centsStr)-2]
+
+	var parts []string
+
+	for len(rest) > 3 {
+		parts = append(parts, rest[len(rest)-3:])
+		rest = rest[:len(rest)-3]
+	}
+
+	if len(rest) > 0 {
+		parts = append(parts, rest)
+	}
+
+	for i := len(parts) - 1; i >= 0; i-- {
+		output.WriteString(parts[i])
+
+		if i != 0 {
+			switch locale {
+			case "nl-NL":
+				output.WriteString(".")
+
+			case "en-US":
+				output.WriteString(",")
+			}
+		} else {
+			switch locale {
+			case "nl-NL":
+				output.WriteString(",")
+
+			case "en-US":
+				output.WriteString(".")
+			}
+
+		}
+	}
+
+	output.WriteString(centsStr[len(centsStr)-2:])
+
+	switch locale {
+	case "nl-NL":
+		if negative {
+			output.WriteString("-")
+		} else {
+			output.WriteString(" ")
+		}
+
+	case "en-US":
+		if negative {
+			output.WriteString(")")
+		} else {
+			output.WriteString(" ")
+		}
+	}
+
+	return output.String(), nil
 }
 
 // FormatLedger returns a string with the whole ledger.
@@ -69,18 +210,15 @@ func FormatLedger(currency string, locale string, entries []Entry) (string, erro
 		es = es[1:]
 	}
 
+	header, err := localizedHeader(locale)
+
+	if err != nil {
+		return "", err
+	}
+
 	var output strings.Builder
 
-	switch locale {
-	case "nl-NL":
-		output.WriteString(fmt.Sprintf("% -10s | % -25s | %s\n", "Datum", "Omschrijving", "Verandering"))
-
-	case "en-US":
-		output.WriteString(fmt.Sprintf("% -10s | % -25s | %s\n", "Date", "Description", "Change"))
-
-	default:
-		return "", errors.New("")
-	}
+	output.WriteString(header)
 
 	// Parallelism, always a great idea
 	co := make(chan struct {
@@ -135,138 +273,33 @@ func FormatLedger(currency string, locale string, entries []Entry) (string, erro
 				de = fmt.Sprintf("% -25s", de)
 			}
 
-			var d string
+			dateLine, err := localizedDate(locale, d1, d3, d5)
 
-			switch locale {
-			case "nl-NL":
-				d = fmt.Sprintf("%s-%s-%s", d5, d3, d1)
-
-			case "en-US":
-				d = fmt.Sprintf("%s/%s/%s", d3, d5, d1)
-			}
-
-			negative := false
-			cents := entry.Change
-
-			if cents < 0 {
-				cents = cents * -1
-				negative = true
-			}
-
-			var a string
-
-			switch locale {
-			case "nl-NL":
-
-				switch currency {
-				case "EUR":
-					a += "€"
-
-				case "USD":
-					a += "$"
-
-				default:
-					co <- struct {
-						i int
-						s string
-						e error
-					}{
-						e: errors.New(""),
-					}
-				}
-
-				a += " "
-
-				centsStr := fmt.Sprintf("%02d", cents)
-
-				rest := centsStr[:len(centsStr)-2]
-
-				var parts []string
-
-				for len(rest) > 3 {
-					parts = append(parts, rest[len(rest)-3:])
-					rest = rest[:len(rest)-3]
-				}
-
-				if len(rest) > 0 {
-					parts = append(parts, rest)
-				}
-
-				for i := len(parts) - 1; i >= 0; i-- {
-					a += parts[i] + "."
-				}
-
-				a = a[:len(a)-1]
-				a += ","
-				a += centsStr[len(centsStr)-2:]
-
-				if negative {
-					a += "-"
-				} else {
-					a += " "
-				}
-
-			case "en-US":
-				if negative {
-					a += "("
-				}
-
-				if currency == "EUR" {
-					a += "€"
-				} else if currency == "USD" {
-					a += "$"
-				} else {
-					co <- struct {
-						i int
-						s string
-						e error
-					}{
-						e: errors.New(""),
-					}
-				}
-
-				centsStr := fmt.Sprintf("%03d", cents)
-
-				rest := centsStr[:len(centsStr)-2]
-
-				var parts []string
-
-				for len(rest) > 3 {
-					parts = append(parts, rest[len(rest)-3:])
-					rest = rest[:len(rest)-3]
-				}
-
-				if len(rest) > 0 {
-					parts = append(parts, rest)
-				}
-
-				for i := len(parts) - 1; i >= 0; i-- {
-					a += parts[i] + ","
-				}
-
-				a = a[:len(a)-1]
-				a += "."
-				a += centsStr[len(centsStr)-2:]
-
-				if negative {
-					a += ")"
-				} else {
-					a += " "
-				}
-
-			default:
+			if err != nil {
 				co <- struct {
 					i int
 					s string
 					e error
 				}{
-					e: errors.New(""),
+					e: err,
+				}
+			}
+
+			currencyLine, err := localizedCurrency(locale, currency, entry.Change)
+
+			if err != nil {
+				co <- struct {
+					i int
+					s string
+					e error
+				}{
+					e: err,
 				}
 			}
 
 			var al int
 
-			for range a {
+			for range currencyLine {
 				al++
 			}
 
@@ -276,7 +309,7 @@ func FormatLedger(currency string, locale string, entries []Entry) (string, erro
 				e error
 			}{
 				i: i,
-				s: fmt.Sprintf("% -10s | %s | % 13s\n", d, de, a),
+				s: fmt.Sprintf("% -10s | %s | % 13s\n", dateLine, de, currencyLine),
 			}
 
 		}(i, et)
