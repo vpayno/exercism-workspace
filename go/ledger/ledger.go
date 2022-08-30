@@ -17,6 +17,7 @@ package ledger
 	13. Rename more variables.
 	14. Remove go coroutine code. It was pointless.
 	15. Move date separator check into localizedDate().
+	16. Update use of entry.Description.
 */
 
 import (
@@ -240,12 +241,12 @@ func FormatLedger(currency string, locale string, entries []Entry) (string, erro
 			return "", errors.New("")
 		}
 
-		description := entry.Description
+		var description string
 
-		if len(description) > 25 {
-			description = fmt.Sprintf("% -22s...", description[:22])
+		if len(entry.Description) > 25 {
+			description = fmt.Sprintf("% -22s...", entry.Description[:22])
 		} else {
-			description = fmt.Sprintf("% -25s", description)
+			description = fmt.Sprintf("% -25s", entry.Description)
 		}
 
 		dateLine, err := localizedDate(locale, entry.Date)
