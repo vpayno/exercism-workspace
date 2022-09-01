@@ -42,3 +42,12 @@ the right and left of the current position in the previous row.
 ### Based on
 
 Pascal's Triangle at Wolfram Math World - http://mathworld.wolfram.com/PascalsTriangle.html
+
+### My Solution
+
+- [my solution](./pascals_triangle.go)
+- [my examples](./pascals_triangle_examples_test.go)
+- [tests](./pascals_triangle_test.go)
+- [run-tests](./run-tests-go.txt)
+- [coverage](./coverage.html)
+- [documentation](./pascal-doc.md)
