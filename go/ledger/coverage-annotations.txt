@@ -1,0 +1,114 @@
+
+224     	func FormatLedger(currency, locale string, entries []Entry) (string, error) {
+225     		if len(entries) == 0 {
+226     			if _, err := FormatLedger(currency, "en-US", []Entry{{Date: "2014-01-01", Description: "", Change: 0}}); err != nil {
+227     				return "", err
+228     			}
+229     		}
+230     	
+231     		entriesCopy, err := sortEntries(entries)
+232     	
+233     		if err != nil {
+234 MISS			return "", err
+235     		}
+236     	
+237     		header, err := localizedHeader(locale)
+238     	
+239     		if err != nil {
+240     			return "", err
+241     		}
+242     	
+243     		var output strings.Builder
+244     	
+245     		output.WriteString(header)
+246     	
+247     		for _, entry := range entriesCopy {
+248     			var description string
+249     	
+250     			if len(entry.Description) > 25 {
+251     				description = fmt.Sprintf("% -22s...", entry.Description[:22])
+252     			} else {
+253     				description = fmt.Sprintf("% -25s", entry.Description)
+254     			}
+255     	
+256     			dateLine, err := localizedDate(locale, entry.Date)
+257     	
+258     			if err != nil {
+259     				return "", err
+260     			}
+261     	
+262     			currencyLine, err := localizedCurrency(locale, currency, entry.Change)
+263     	
+264     			if err != nil {
+265     				return "", err
+266     			}
+267     	
+268     			output.WriteString(fmt.Sprintf("% -10s | %s | % 13s\n", dateLine, description, currencyLine))
+269     		}
+270     	
+271     		return output.String(), nil
+272     	}
+
+
+39     	func localizedDate(locale, date string) (string, error) {
+40     		if len(date) != 10 {
+41     			return "", errors.New("wrong size date")
+42     		}
+43     	
+44     		var output string
+45     	
+46     		d1 := date[0:4]
+47     		d2 := date[4]
+48     		d3 := date[5:7]
+49     		d4 := date[7]
+50     		d5 := date[8:10]
+51     	
+52     		if d2 != '-' || d4 != '-' {
+53     			return "", errors.New("invalid date separator")
+54     		}
+55     	
+56     		switch locale {
+57     		case "nl-NL":
+58     			output = fmt.Sprintf("%s-%s-%s", d5, d3, d1)
+59     	
+60     		case "en-US":
+61     			output = fmt.Sprintf("%s/%s/%s", d3, d5, d1)
+62     	
+63     		default:
+64 MISS			return output, errors.New("failed to render localized date")
+65     		}
+66     	
+67     		return output, nil
+68     	}
+
+
+193     	func sortEntries(entries []Entry) ([]Entry, error) {
+194     		entriesCopy := make([]Entry, len(entries), cap(entries))
+195     	
+196     		size := copy(entriesCopy, entries)
+197     	
+198     		if size != len(entries) {
+199 MISS			return []Entry{}, errors.New("unable to copy the entries slice")
+200     		}
+201     	
+202     		es := entriesCopy
+203     	
+204     		for len(es) > 1 {
+205     			first, rest := es[0], es[1:]
+206     	
+207     			for i, e := range rest {
+208     				if e.Date == first.Date && e.Description == first.Description && e.Change == first.Change {
+209 MISS					continue
+210     				}
+211     	
+212     				if e.Date < first.Date || e.Description < first.Description || e.Change < first.Change {
+213     					es[0], es[i+1] = es[i+1], es[0]
+214     				}
+215     			}
+216     	
+217     			es = es[1:]
+218     		}
+219     	
+220     		return entriesCopy, nil
+221     	}
+

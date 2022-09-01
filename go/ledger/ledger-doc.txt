@@ -1,0 +1,20 @@
+package ledger // import "ledger"
+
+Package ledger prints a nicely formatted ledger, given a locale (American or
+Dutch) and a currency (US dollar or euro).
+
+FUNCTIONS
+
+func FormatLedger(currency, locale string, entries []Entry) (string, error)
+    FormatLedger returns a string with the whole ledger.
+
+
+TYPES
+
+type Entry struct {
+	Date        string // "Y-m-d"
+	Description string
+	Change      int // in cents
+}
+    Entry type consists of a date, description and change.
+
