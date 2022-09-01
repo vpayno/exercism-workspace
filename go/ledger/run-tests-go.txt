@@ -1,0 +1,470 @@
+Running automated test file(s):
+
+Go packages: ledger 
+
+
+===============================================================================
+
+golangci-lint run ./...
+ledger_test.go:291:14: Error return value is not checked (errcheck)
+	FormatLedger("USD", "en-US", entries)
+	            ^
+ledger_test.go:303:16: Error return value is not checked (errcheck)
+			FormatLedger(tt.currency, tt.locale, tt.entries)
+			            ^
+
+real	0m9.569s
+user	0m19.126s
+sys	0m3.935s
+
+===============================================================================
+
+golint ./...
+
+real	0m0.096s
+user	0m0.079s
+sys	0m0.068s
+
+===============================================================================
+
+revive -formatter=stylish ./...
+
+real	0m0.047s
+user	0m0.032s
+sys	0m0.016s
+
+===============================================================================
+
+ineffassign ./...
+
+real	0m0.285s
+user	0m0.279s
+sys	0m0.325s
+
+===============================================================================
+
+go-consistent -v ./...
+	info: check "./."
+
+real	0m0.455s
+user	0m0.519s
+sys	0m0.412s
+
+===============================================================================
+
+staticcheck ./...
+
+real	0m0.557s
+user	0m0.514s
+sys	0m0.455s
+
+===============================================================================
+
+gocritic check -enableAll ./...
+
+real	0m2.807s
+user	0m4.748s
+sys	0m1.332s
+
+===============================================================================
+
+go vet ./...
+
+real	0m0.296s
+user	0m0.307s
+sys	0m0.323s
+
+===============================================================================
+
+go fix ./...
+
+real	0m0.102s
+user	0m0.093s
+sys	0m0.121s
+
+===============================================================================
+
+gocyclo .
+22 ledger localizedCurrency ledger.go:89:1
+10 ledger sortEntries ledger.go:193:1
+9 ledger FormatLedger ledger.go:224:1
+6 ledger localizedDate ledger.go:39:1
+4 ledger BenchmarkFormatLedger ledger_test.go:297:1
+4 ledger TestFormatLedgerSuccess ledger_test.go:250:1
+3 ledger TestFormatLedgerFailure ledger_test.go:265:1
+3 ledger localizedHeader ledger.go:70:1
+2 ledger TestFormatLedgerNotChangeInput ledger_test.go:276:1
+
+real	0m0.020s
+user	0m0.013s
+sys	0m0.008s
+
+===============================================================================
+
+misspell .
+
+real	0m0.151s
+user	0m0.121s
+sys	0m0.087s
+
+===============================================================================
+
+gosec ./...
+[gosec] 2022/08/31 21:15:29 Including rules: default
+[gosec] 2022/08/31 21:15:29 Excluding rules: default
+[gosec] 2022/08/31 21:15:29 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/ledger
+2022/08/31 21:15:29 internal error: package "errors" without types was imported from "command-line-arguments"
+
+real	0m0.662s
+user	0m0.703s
+sys	0m0.498s
+
+===============================================================================
+
+gotest -v -covermode=count -coverprofile coverage.out ./...
+=== RUN   TestFormatLedgerSuccess
+=== RUN   TestFormatLedgerSuccess/empty_ledger
+=== RUN   TestFormatLedgerSuccess/one_entry
+=== RUN   TestFormatLedgerSuccess/credit_and_debit
+=== RUN   TestFormatLedgerSuccess/multiple_entries_on_same_date_ordered_by_description
+=== RUN   TestFormatLedgerSuccess/final_order_tie_breaker_is_change
+=== RUN   TestFormatLedgerSuccess/overlong_descriptions
+=== RUN   TestFormatLedgerSuccess/euros
+=== RUN   TestFormatLedgerSuccess/Dutch_locale
+=== RUN   TestFormatLedgerSuccess/Dutch_negative_number_with_3_digits_before_decimal_point
+=== RUN   TestFormatLedgerSuccess/American_negative_number_with_3_digits_before_decimal_point
+--- PASS: TestFormatLedgerSuccess (0.00s)
+    --- PASS: TestFormatLedgerSuccess/empty_ledger (0.00s)
+    --- PASS: TestFormatLedgerSuccess/one_entry (0.00s)
+    --- PASS: TestFormatLedgerSuccess/credit_and_debit (0.00s)
+    --- PASS: TestFormatLedgerSuccess/multiple_entries_on_same_date_ordered_by_description (0.00s)
+    --- PASS: TestFormatLedgerSuccess/final_order_tie_breaker_is_change (0.00s)
+    --- PASS: TestFormatLedgerSuccess/overlong_descriptions (0.00s)
+    --- PASS: TestFormatLedgerSuccess/euros (0.00s)
+    --- PASS: TestFormatLedgerSuccess/Dutch_locale (0.00s)
+    --- PASS: TestFormatLedgerSuccess/Dutch_negative_number_with_3_digits_before_decimal_point (0.00s)
+    --- PASS: TestFormatLedgerSuccess/American_negative_number_with_3_digits_before_decimal_point (0.00s)
+=== RUN   TestFormatLedgerFailure
+=== RUN   TestFormatLedgerFailure/empty_currency
+=== RUN   TestFormatLedgerFailure/invalid_currency
+=== RUN   TestFormatLedgerFailure/empty_locale
+=== RUN   TestFormatLedgerFailure/invalid_locale
+=== RUN   TestFormatLedgerFailure/invalid_date_(way_too_high_month)
+=== RUN   TestFormatLedgerFailure/invalid_date_(wrong_separator)
+--- PASS: TestFormatLedgerFailure (0.00s)
+    --- PASS: TestFormatLedgerFailure/empty_currency (0.00s)
+    --- PASS: TestFormatLedgerFailure/invalid_currency (0.00s)
+    --- PASS: TestFormatLedgerFailure/empty_locale (0.00s)
+    --- PASS: TestFormatLedgerFailure/invalid_locale (0.00s)
+    --- PASS: TestFormatLedgerFailure/invalid_date_(way_too_high_month) (0.00s)
+    --- PASS: TestFormatLedgerFailure/invalid_date_(wrong_separator) (0.00s)
+=== RUN   TestFormatLedgerNotChangeInput
+--- PASS: TestFormatLedgerNotChangeInput (0.00s)
+PASS
+coverage: 96.2% of statements
+ok  	ledger	0.020s	coverage: 96.2% of statements
+
+real	0m0.814s
+user	0m0.924s
+sys	0m0.677s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+ledger/ledger.go:39:	localizedDate		93.3%
+ledger/ledger.go:70:	localizedHeader		100.0%
+ledger/ledger.go:89:	localizedCurrency	100.0%
+ledger/ledger.go:193:	sortEntries		85.7%
+ledger/ledger.go:224:	FormatLedger		95.8%
+total:			(statements)		96.2%
+
+real	0m0.219s
+user	0m0.222s
+sys	0m0.238s
+
+===============================================================================
+
+go tool cover -html coverage.out -o coverage.html
+
+real	0m0.288s
+user	0m0.241s
+sys	0m0.306s
+
+===============================================================================
+
+gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+224     	func FormatLedger(currency, locale string, entries []Entry) (string, error) {
+225     		if len(entries) == 0 {
+226     			if _, err := FormatLedger(currency, "en-US", []Entry{{Date: "2014-01-01", Description: "", Change: 0}}); err != nil {
+227     				return "", err
+228     			}
+229     		}
+230     	
+231     		entriesCopy, err := sortEntries(entries)
+232     	
+233     		if err != nil {
+234 MISS			return "", err
+235     		}
+236     	
+237     		header, err := localizedHeader(locale)
+238     	
+239     		if err != nil {
+240     			return "", err
+241     		}
+242     	
+243     		var output strings.Builder
+244     	
+245     		output.WriteString(header)
+246     	
+247     		for _, entry := range entriesCopy {
+248     			var description string
+249     	
+250     			if len(entry.Description) > 25 {
+251     				description = fmt.Sprintf("% -22s...", entry.Description[:22])
+252     			} else {
+253     				description = fmt.Sprintf("% -25s", entry.Description)
+254     			}
+255     	
+256     			dateLine, err := localizedDate(locale, entry.Date)
+257     	
+258     			if err != nil {
+259     				return "", err
+260     			}
+261     	
+262     			currencyLine, err := localizedCurrency(locale, currency, entry.Change)
+263     	
+264     			if err != nil {
+265     				return "", err
+266     			}
+267     	
+268     			output.WriteString(fmt.Sprintf("% -10s | %s | % 13s\n", dateLine, description, currencyLine))
+269     		}
+270     	
+271     		return output.String(), nil
+272     	}
+
+
+39     	func localizedDate(locale, date string) (string, error) {
+40     		if len(date) != 10 {
+41     			return "", errors.New("wrong size date")
+42     		}
+43     	
+44     		var output string
+45     	
+46     		d1 := date[0:4]
+47     		d2 := date[4]
+48     		d3 := date[5:7]
+49     		d4 := date[7]
+50     		d5 := date[8:10]
+51     	
+52     		if d2 != '-' || d4 != '-' {
+53     			return "", errors.New("invalid date separator")
+54     		}
+55     	
+56     		switch locale {
+57     		case "nl-NL":
+58     			output = fmt.Sprintf("%s-%s-%s", d5, d3, d1)
+59     	
+60     		case "en-US":
+61     			output = fmt.Sprintf("%s/%s/%s", d3, d5, d1)
+62     	
+63     		default:
+64 MISS			return output, errors.New("failed to render localized date")
+65     		}
+66     	
+67     		return output, nil
+68     	}
+
+
+193     	func sortEntries(entries []Entry) ([]Entry, error) {
+194     		entriesCopy := make([]Entry, len(entries), cap(entries))
+195     	
+196     		size := copy(entriesCopy, entries)
+197     	
+198     		if size != len(entries) {
+199 MISS			return []Entry{}, errors.New("unable to copy the entries slice")
+200     		}
+201     	
+202     		es := entriesCopy
+203     	
+204     		for len(es) > 1 {
+205     			first, rest := es[0], es[1:]
+206     	
+207     			for i, e := range rest {
+208     				if e.Date == first.Date && e.Description == first.Description && e.Change == first.Change {
+209 MISS					continue
+210     				}
+211     	
+212     				if e.Date < first.Date || e.Description < first.Description || e.Change < first.Change {
+213     					es[0], es[i+1] = es[i+1], es[0]
+214     				}
+215     			}
+216     	
+217     			es = es[1:]
+218     		}
+219     	
+220     		return entriesCopy, nil
+221     	}
+
+
+real	0m0.106s
+user	0m0.072s
+sys	0m0.095s
+
+===============================================================================
+
+gotest -v -race -covermode=atomic ./...
+=== RUN   TestFormatLedgerSuccess
+=== RUN   TestFormatLedgerSuccess/empty_ledger
+=== RUN   TestFormatLedgerSuccess/one_entry
+=== RUN   TestFormatLedgerSuccess/credit_and_debit
+=== RUN   TestFormatLedgerSuccess/multiple_entries_on_same_date_ordered_by_description
+=== RUN   TestFormatLedgerSuccess/final_order_tie_breaker_is_change
+=== RUN   TestFormatLedgerSuccess/overlong_descriptions
+=== RUN   TestFormatLedgerSuccess/euros
+=== RUN   TestFormatLedgerSuccess/Dutch_locale
+=== RUN   TestFormatLedgerSuccess/Dutch_negative_number_with_3_digits_before_decimal_point
+=== RUN   TestFormatLedgerSuccess/American_negative_number_with_3_digits_before_decimal_point
+--- PASS: TestFormatLedgerSuccess (0.00s)
+    --- PASS: TestFormatLedgerSuccess/empty_ledger (0.00s)
+    --- PASS: TestFormatLedgerSuccess/one_entry (0.00s)
+    --- PASS: TestFormatLedgerSuccess/credit_and_debit (0.00s)
+    --- PASS: TestFormatLedgerSuccess/multiple_entries_on_same_date_ordered_by_description (0.00s)
+    --- PASS: TestFormatLedgerSuccess/final_order_tie_breaker_is_change (0.00s)
+    --- PASS: TestFormatLedgerSuccess/overlong_descriptions (0.00s)
+    --- PASS: TestFormatLedgerSuccess/euros (0.00s)
+    --- PASS: TestFormatLedgerSuccess/Dutch_locale (0.00s)
+    --- PASS: TestFormatLedgerSuccess/Dutch_negative_number_with_3_digits_before_decimal_point (0.00s)
+    --- PASS: TestFormatLedgerSuccess/American_negative_number_with_3_digits_before_decimal_point (0.00s)
+=== RUN   TestFormatLedgerFailure
+=== RUN   TestFormatLedgerFailure/empty_currency
+=== RUN   TestFormatLedgerFailure/invalid_currency
+=== RUN   TestFormatLedgerFailure/empty_locale
+=== RUN   TestFormatLedgerFailure/invalid_locale
+=== RUN   TestFormatLedgerFailure/invalid_date_(way_too_high_month)
+=== RUN   TestFormatLedgerFailure/invalid_date_(wrong_separator)
+--- PASS: TestFormatLedgerFailure (0.00s)
+    --- PASS: TestFormatLedgerFailure/empty_currency (0.00s)
+    --- PASS: TestFormatLedgerFailure/invalid_currency (0.00s)
+    --- PASS: TestFormatLedgerFailure/empty_locale (0.00s)
+    --- PASS: TestFormatLedgerFailure/invalid_locale (0.00s)
+    --- PASS: TestFormatLedgerFailure/invalid_date_(way_too_high_month) (0.00s)
+    --- PASS: TestFormatLedgerFailure/invalid_date_(wrong_separator) (0.00s)
+=== RUN   TestFormatLedgerNotChangeInput
+--- PASS: TestFormatLedgerNotChangeInput (0.00s)
+PASS
+coverage: 96.2% of statements
+ok  	ledger	0.037s	coverage: 96.2% of statements
+
+real	0m0.904s
+user	0m0.908s
+sys	0m0.603s
+
+===============================================================================
+
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+goos: linux
+goarch: amd64
+pkg: ledger
+cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+BenchmarkFormatLedger
+BenchmarkFormatLedger-4   	   26844	     46222 ns/op	    7281 B/op	     243 allocs/op
+PASS
+ok  	ledger	1.746s
+
+real	0m2.249s
+user	0m3.036s
+sys	0m0.590s
+
+===============================================================================
+
+gotest -v -tags bonus
+=== RUN   TestFormatLedgerSuccess
+=== RUN   TestFormatLedgerSuccess/empty_ledger
+=== RUN   TestFormatLedgerSuccess/one_entry
+=== RUN   TestFormatLedgerSuccess/credit_and_debit
+=== RUN   TestFormatLedgerSuccess/multiple_entries_on_same_date_ordered_by_description
+=== RUN   TestFormatLedgerSuccess/final_order_tie_breaker_is_change
+=== RUN   TestFormatLedgerSuccess/overlong_descriptions
+=== RUN   TestFormatLedgerSuccess/euros
+=== RUN   TestFormatLedgerSuccess/Dutch_locale
+=== RUN   TestFormatLedgerSuccess/Dutch_negative_number_with_3_digits_before_decimal_point
+=== RUN   TestFormatLedgerSuccess/American_negative_number_with_3_digits_before_decimal_point
+--- PASS: TestFormatLedgerSuccess (0.00s)
+    --- PASS: TestFormatLedgerSuccess/empty_ledger (0.00s)
+    --- PASS: TestFormatLedgerSuccess/one_entry (0.00s)
+    --- PASS: TestFormatLedgerSuccess/credit_and_debit (0.00s)
+    --- PASS: TestFormatLedgerSuccess/multiple_entries_on_same_date_ordered_by_description (0.00s)
+    --- PASS: TestFormatLedgerSuccess/final_order_tie_breaker_is_change (0.00s)
+    --- PASS: TestFormatLedgerSuccess/overlong_descriptions (0.00s)
+    --- PASS: TestFormatLedgerSuccess/euros (0.00s)
+    --- PASS: TestFormatLedgerSuccess/Dutch_locale (0.00s)
+    --- PASS: TestFormatLedgerSuccess/Dutch_negative_number_with_3_digits_before_decimal_point (0.00s)
+    --- PASS: TestFormatLedgerSuccess/American_negative_number_with_3_digits_before_decimal_point (0.00s)
+=== RUN   TestFormatLedgerFailure
+=== RUN   TestFormatLedgerFailure/empty_currency
+=== RUN   TestFormatLedgerFailure/invalid_currency
+=== RUN   TestFormatLedgerFailure/empty_locale
+=== RUN   TestFormatLedgerFailure/invalid_locale
+=== RUN   TestFormatLedgerFailure/invalid_date_(way_too_high_month)
+=== RUN   TestFormatLedgerFailure/invalid_date_(wrong_separator)
+--- PASS: TestFormatLedgerFailure (0.00s)
+    --- PASS: TestFormatLedgerFailure/empty_currency (0.00s)
+    --- PASS: TestFormatLedgerFailure/invalid_currency (0.00s)
+    --- PASS: TestFormatLedgerFailure/empty_locale (0.00s)
+    --- PASS: TestFormatLedgerFailure/invalid_locale (0.00s)
+    --- PASS: TestFormatLedgerFailure/invalid_date_(way_too_high_month) (0.00s)
+    --- PASS: TestFormatLedgerFailure/invalid_date_(wrong_separator) (0.00s)
+=== RUN   TestFormatLedgerNotChangeInput
+--- PASS: TestFormatLedgerNotChangeInput (0.00s)
+PASS
+ok  	ledger	0.015s
+
+real	0m0.531s
+user	0m0.591s
+sys	0m0.405s
+
+===============================================================================
+
+No old benchmarks to run benchstat against.
+
+===============================================================================
+
+gomarkdoc --output ledger-doc.md
+
+real	0m0.058s
+user	0m0.038s
+sys	0m0.049s
+
+===============================================================================
+
+go doc -all ledger
+package ledger // import "ledger"
+
+Package ledger prints a nicely formatted ledger, given a locale (American or
+Dutch) and a currency (US dollar or euro).
+
+FUNCTIONS
+
+func FormatLedger(currency, locale string, entries []Entry) (string, error)
+    FormatLedger returns a string with the whole ledger.
+
+
+TYPES
+
+type Entry struct {
+	Date        string // "Y-m-d"
+	Description string
+	Change      int // in cents
+}
+    Entry type consists of a date, description and change.
+
+
+real	0m0.208s
+user	0m0.125s
+sys	0m0.208s
+
+
+===============================================================================
+

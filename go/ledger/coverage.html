@@ -1,0 +1,384 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>ledger: Go Coverage Report</title>
+		<style>
+			body {
+				background: black;
+				color: rgb(80, 80, 80);
+			}
+			body, pre, #legend span {
+				font-family: Menlo, monospace;
+				font-weight: bold;
+			}
+			#topbar {
+				background: black;
+				position: fixed;
+				top: 0; left: 0; right: 0;
+				height: 42px;
+				border-bottom: 1px solid rgb(80, 80, 80);
+			}
+			#content {
+				margin-top: 50px;
+			}
+			#nav, #legend {
+				float: left;
+				margin-left: 10px;
+			}
+			#legend {
+				margin-top: 12px;
+			}
+			#nav {
+				margin-top: 10px;
+			}
+			#legend span {
+				margin: 0 5px;
+			}
+			.cov0 { color: rgb(192, 0, 0) }
+.cov1 { color: rgb(128, 128, 128) }
+.cov2 { color: rgb(116, 140, 131) }
+.cov3 { color: rgb(104, 152, 134) }
+.cov4 { color: rgb(92, 164, 137) }
+.cov5 { color: rgb(80, 176, 140) }
+.cov6 { color: rgb(68, 188, 143) }
+.cov7 { color: rgb(56, 200, 146) }
+.cov8 { color: rgb(44, 212, 149) }
+.cov9 { color: rgb(32, 224, 152) }
+.cov10 { color: rgb(20, 236, 155) }
+
+		</style>
+	</head>
+	<body>
+		<div id="topbar">
+			<div id="nav">
+				<select id="files">
+				
+				<option value="file0">ledger/ledger.go (96.2%)</option>
+				
+				</select>
+			</div>
+			<div id="legend">
+				<span>not tracked</span>
+			
+				<span class="cov0">no coverage</span>
+				<span class="cov1">low coverage</span>
+				<span class="cov2">*</span>
+				<span class="cov3">*</span>
+				<span class="cov4">*</span>
+				<span class="cov5">*</span>
+				<span class="cov6">*</span>
+				<span class="cov7">*</span>
+				<span class="cov8">*</span>
+				<span class="cov9">*</span>
+				<span class="cov10">high coverage</span>
+			
+			</div>
+		</div>
+		<div id="content">
+		
+		<pre class="file" id="file0" style="display: none">// Package ledger prints a nicely formatted ledger, given a locale (American or Dutch) and a currency (US dollar or euro).
+package ledger
+
+/*
+         1. Add documentation comments.
+         2. Whitespace clean up.
+         3. Move fast return to the top of the FormatLedger() function.
+         4. Use copy to copy entries slice to entriesCopy slice.
+         5. Replace some if-else blocks with switch statements.
+         6. Use fmt.Sprintf instead of strconv.Itoa and a switch block.
+         7. Replace string formatting code with fmt.Sprintf.
+         8. Replace output/return string with a strings.Builder.
+         9. Format assignments so they're easier to read.
+        10. Clean up localized code.
+        11. Remove useless code.
+        12. Clean up check for input date separator.
+        13. Rename more variables.
+        14. Remove go coroutine code. It was pointless.
+        15. Move date separator check into localizedDate().
+        16. Update use of entry.Description.
+        17. Move date lengh check to localizedDate().
+        18. gocritic clean up.
+        19. Simplify entries sorting code and move it to a function.
+*/
+
+import (
+        "errors"
+        "fmt"
+        "strings"
+)
+
+// Entry type consists of a date, description and change.
+type Entry struct {
+        Date        string // "Y-m-d"
+        Description string
+        Change      int // in cents
+}
+
+func localizedDate(locale, date string) (string, error) <span class="cov10" title="22">{
+        if len(date) != 10 </span><span class="cov1" title="1">{
+                return "", errors.New("wrong size date")
+        }</span>
+
+        <span class="cov9" title="21">var output string
+
+        d1 := date[0:4]
+        d2 := date[4]
+        d3 := date[5:7]
+        d4 := date[7]
+        d5 := date[8:10]
+
+        if d2 != '-' || d4 != '-' </span><span class="cov1" title="1">{
+                return "", errors.New("invalid date separator")
+        }</span>
+
+        <span class="cov9" title="20">switch locale </span>{
+        case "nl-NL":<span class="cov3" title="2">
+                output = fmt.Sprintf("%s-%s-%s", d5, d3, d1)</span>
+
+        case "en-US":<span class="cov9" title="18">
+                output = fmt.Sprintf("%s/%s/%s", d3, d5, d1)</span>
+
+        default:<span class="cov0" title="0">
+                return output, errors.New("failed to render localized date")</span>
+        }
+
+        <span class="cov9" title="20">return output, nil</span>
+}
+
+func localizedHeader(locale string) (string, error) <span class="cov9" title="20">{
+        var output string
+
+        fmtStr := "% -10s | % -25s | %s\n"
+
+        switch locale </span>{
+        case "nl-NL":<span class="cov3" title="2">
+                output = fmt.Sprintf(fmtStr, "Datum", "Omschrijving", "Verandering")</span>
+
+        case "en-US":<span class="cov9" title="16">
+                output = fmt.Sprintf(fmtStr, "Date", "Description", "Change")</span>
+
+        default:<span class="cov3" title="2">
+                return "", errors.New("failed to render localized header")</span>
+        }
+
+        <span class="cov9" title="18">return output, nil</span>
+}
+
+func localizedCurrency(locale, currency string, cents int) (string, error) <span class="cov9" title="20">{
+        var output strings.Builder
+
+        negative := false
+
+        if cents &lt; 0 </span><span class="cov7" title="9">{
+                cents *= -1
+                negative = true
+        }</span>
+
+        <span class="cov9" title="20">switch locale </span>{
+        case "nl-NL":<span class="cov3" title="2">
+                output.WriteString(" ")</span>
+
+        case "en-US":<span class="cov9" title="18">
+                if negative </span><span class="cov7" title="8">{
+                        output.WriteString("(")
+                }</span> else<span class="cov7" title="10"> {
+                        output.WriteString(" ")
+                }</span>
+        }
+
+        <span class="cov9" title="20">switch currency </span>{
+        case "EUR":<span class="cov1" title="1">
+                output.WriteString("€")</span>
+
+        case "USD":<span class="cov9" title="17">
+                output.WriteString("$")</span>
+
+        default:<span class="cov3" title="2">
+                return "", errors.New("invalid currency")</span>
+        }
+
+        <span class="cov9" title="18">if locale == "nl-NL" </span><span class="cov3" title="2">{
+                output.WriteString(" ")
+        }</span>
+
+        <span class="cov9" title="18">var centsStr string
+
+        switch locale </span>{
+        case "nl-NL":<span class="cov3" title="2">
+                centsStr = fmt.Sprintf("%02d", cents)</span>
+
+        case "en-US":<span class="cov9" title="16">
+                centsStr = fmt.Sprintf("%03d", cents)</span>
+        }
+
+        <span class="cov9" title="18">rest := centsStr[:len(centsStr)-2]
+
+        var parts []string
+
+        for len(rest) &gt; 3 </span><span class="cov3" title="2">{
+                parts = append(parts, rest[len(rest)-3:])
+                rest = rest[:len(rest)-3]
+        }</span>
+
+        <span class="cov9" title="18">if len(rest) &gt; 0 </span><span class="cov9" title="18">{
+                parts = append(parts, rest)
+        }</span>
+
+        <span class="cov9" title="18">for i := len(parts) - 1; i &gt;= 0; i-- </span><span class="cov9" title="20">{
+                output.WriteString(parts[i])
+
+                if i != 0 </span><span class="cov3" title="2">{
+                        switch locale </span>{
+                        case "nl-NL":<span class="cov1" title="1">
+                                output.WriteString(".")</span>
+
+                        case "en-US":<span class="cov1" title="1">
+                                output.WriteString(",")</span>
+                        }
+                } else<span class="cov9" title="18"> {
+                        switch locale </span>{
+                        case "nl-NL":<span class="cov3" title="2">
+                                output.WriteString(",")</span>
+
+                        case "en-US":<span class="cov9" title="16">
+                                output.WriteString(".")</span>
+                        }
+
+                }
+        }
+
+        <span class="cov9" title="18">output.WriteString(centsStr[len(centsStr)-2:])
+
+        switch locale </span>{
+        case "nl-NL":<span class="cov3" title="2">
+                if negative </span><span class="cov1" title="1">{
+                        output.WriteString("-")
+                }</span> else<span class="cov1" title="1"> {
+                        output.WriteString(" ")
+                }</span>
+
+        case "en-US":<span class="cov9" title="16">
+                if negative </span><span class="cov7" title="8">{
+                        output.WriteString(")")
+                }</span> else<span class="cov7" title="8"> {
+                        output.WriteString(" ")
+                }</span>
+        }
+
+        <span class="cov9" title="18">return output.String(), nil</span>
+}
+
+func sortEntries(entries []Entry) ([]Entry, error) <span class="cov9" title="20">{
+        entriesCopy := make([]Entry, len(entries), cap(entries))
+
+        size := copy(entriesCopy, entries)
+
+        if size != len(entries) </span><span class="cov0" title="0">{
+                return []Entry{}, errors.New("unable to copy the entries slice")
+        }</span>
+
+        <span class="cov9" title="20">es := entriesCopy
+
+        for len(es) &gt; 1 </span><span class="cov5" title="5">{
+                first, rest := es[0], es[1:]
+
+                for i, e := range rest </span><span class="cov6" title="6">{
+                        if e.Date == first.Date &amp;&amp; e.Description == first.Description &amp;&amp; e.Change == first.Change </span><span class="cov0" title="0">{
+                                continue</span>
+                        }
+
+                        <span class="cov6" title="6">if e.Date &lt; first.Date || e.Description &lt; first.Description || e.Change &lt; first.Change </span><span class="cov4" title="3">{
+                                es[0], es[i+1] = es[i+1], es[0]
+                        }</span>
+                }
+
+                <span class="cov5" title="5">es = es[1:]</span>
+        }
+
+        <span class="cov9" title="20">return entriesCopy, nil</span>
+}
+
+// FormatLedger returns a string with the whole ledger.
+func FormatLedger(currency, locale string, entries []Entry) (string, error) <span class="cov10" title="22">{
+        if len(entries) == 0 </span><span class="cov5" title="5">{
+                if _, err := FormatLedger(currency, "en-US", []Entry{{Date: "2014-01-01", Description: "", Change: 0}}); err != nil </span><span class="cov3" title="2">{
+                        return "", err
+                }</span>
+        }
+
+        <span class="cov9" title="20">entriesCopy, err := sortEntries(entries)
+
+        if err != nil </span><span class="cov0" title="0">{
+                return "", err
+        }</span>
+
+        <span class="cov9" title="20">header, err := localizedHeader(locale)
+
+        if err != nil </span><span class="cov3" title="2">{
+                return "", err
+        }</span>
+
+        <span class="cov9" title="18">var output strings.Builder
+
+        output.WriteString(header)
+
+        for _, entry := range entriesCopy </span><span class="cov10" title="22">{
+                var description string
+
+                if len(entry.Description) &gt; 25 </span><span class="cov3" title="2">{
+                        description = fmt.Sprintf("% -22s...", entry.Description[:22])
+                }</span> else<span class="cov9" title="20"> {
+                        description = fmt.Sprintf("% -25s", entry.Description)
+                }</span>
+
+                <span class="cov10" title="22">dateLine, err := localizedDate(locale, entry.Date)
+
+                if err != nil </span><span class="cov3" title="2">{
+                        return "", err
+                }</span>
+
+                <span class="cov9" title="20">currencyLine, err := localizedCurrency(locale, currency, entry.Change)
+
+                if err != nil </span><span class="cov3" title="2">{
+                        return "", err
+                }</span>
+
+                <span class="cov9" title="18">output.WriteString(fmt.Sprintf("% -10s | %s | % 13s\n", dateLine, description, currencyLine))</span>
+        }
+
+        <span class="cov8" title="14">return output.String(), nil</span>
+}
+</pre>
+		
+		</div>
+	</body>
+	<script>
+	(function() {
+		var files = document.getElementById('files');
+		var visible;
+		files.addEventListener('change', onChange, false);
+		function select(part) {
+			if (visible)
+				visible.style.display = 'none';
+			visible = document.getElementById(part);
+			if (!visible)
+				return;
+			files.value = part;
+			visible.style.display = 'block';
+			location.hash = part;
+		}
+		function onChange() {
+			select(files.value);
+			window.scrollTo(0, 0);
+		}
+		if (location.hash != "") {
+			select(location.hash.substr(1));
+		}
+		if (!visible) {
+			select("file0");
+		}
+	})();
+	</script>
+</html>
