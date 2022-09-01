@@ -97,3 +97,4 @@
 - [house](./house/README.md)
 - [sum-of-multiples](./sum-of-multiples/README.md)
 - [ledger](./ledger/README.md)
+- [pascals-triangle](./pascals-triangle/README.md)

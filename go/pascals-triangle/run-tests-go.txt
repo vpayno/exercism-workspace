@@ -1,0 +1,321 @@
+Running automated test file(s):
+
+Go packages: pascal 
+
+
+===============================================================================
+
+golangci-lint run ./...
+
+real	0m9.737s
+user	0m19.281s
+sys	0m3.785s
+
+===============================================================================
+
+golint ./...
+
+real	0m0.077s
+user	0m0.078s
+sys	0m0.072s
+
+===============================================================================
+
+revive -formatter=stylish ./...
+
+real	0m0.028s
+user	0m0.020s
+sys	0m0.021s
+
+===============================================================================
+
+ineffassign ./...
+
+real	0m0.284s
+user	0m0.264s
+sys	0m0.316s
+
+===============================================================================
+
+go-consistent -v ./...
+	info: check "./."
+
+real	0m0.566s
+user	0m0.533s
+sys	0m0.492s
+
+===============================================================================
+
+staticcheck ./...
+
+real	0m0.445s
+user	0m0.393s
+sys	0m0.473s
+
+===============================================================================
+
+gocritic check -enableAll ./...
+
+real	0m2.941s
+user	0m4.807s
+sys	0m1.254s
+
+===============================================================================
+
+go vet ./...
+
+real	0m0.356s
+user	0m0.334s
+sys	0m0.341s
+
+===============================================================================
+
+go fix ./...
+
+real	0m0.073s
+user	0m0.041s
+sys	0m0.065s
+
+===============================================================================
+
+gocyclo .
+4 pascal BenchmarkPascalsTriangleIncreasing pascals_triangle_test.go:66:1
+4 pascal Triangle pascals_triangle.go:9:1
+3 pascal BenchmarkPascalsTriangleFixed pascals_triangle_test.go:55:1
+3 pascal TestTriangle pascals_triangle_test.go:34:1
+3 pascal NChooseK pascals_triangle.go:48:1
+3 pascal Factorial pascals_triangle.go:32:1
+2 pascal format pascals_triangle_test.go:46:1
+2 pascal ExampleTriangle pascals_triangle_examples_test.go:56:1
+2 pascal ExampleNChooseK pascals_triangle_examples_test.go:25:1
+2 pascal ExampleFactorial pascals_triangle_examples_test.go:7:1
+
+real	0m0.006s
+user	0m0.002s
+sys	0m0.002s
+
+===============================================================================
+
+misspell .
+
+real	0m0.092s
+user	0m0.099s
+sys	0m0.056s
+
+===============================================================================
+
+gosec ./...
+[gosec] 2022/08/31 21:08:45 Including rules: default
+[gosec] 2022/08/31 21:08:45 Excluding rules: default
+[gosec] 2022/08/31 21:08:45 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/pascals-triangle
+2022/08/31 21:08:46 internal error: package "errors" without types was imported from "command-line-arguments"
+
+real	0m0.397s
+user	0m0.389s
+sys	0m0.358s
+
+===============================================================================
+
+gotest -v -covermode=count -coverprofile coverage.out ./...
+=== RUN   TestTriangle
+    pascals_triangle_test.go:43: 
+        [1]
+        [1 1]
+        [1 2 1]
+        [1 3 3 1]
+        [1 4 6 4 1]
+        [1 5 10 10 5 1]
+        [1 6 15 20 15 6 1]
+        [1 7 21 35 35 21 7 1]
+        [1 8 28 56 70 56 28 8 1]
+        [1 9 36 84 126 126 84 36 9 1]
+        [1 10 45 120 210 252 210 120 45 10 1]
+        [1 11 55 165 330 462 462 330 165 55 11 1]
+        [1 12 66 220 495 792 924 792 495 220 66 12 1]
+        [1 13 78 286 715 1287 1716 1716 1287 715 286 78 13 1]
+        [1 14 91 364 1001 2002 3003 3432 3003 2002 1001 364 91 14 1]
+        [1 15 105 455 1365 3003 5005 6435 6435 5005 3003 1365 455 105 15 1]
+        [1 16 120 560 1820 4368 8008 11440 12870 11440 8008 4368 1820 560 120 16 1]
+        [1 17 136 680 2380 6188 12376 19448 24310 24310 19448 12376 6188 2380 680 136 17 1]
+        [1 18 153 816 3060 8568 18564 31824 43758 48620 43758 31824 18564 8568 3060 816 153 18 1]
+        [1 19 171 969 3876 11628 27132 50388 75582 92378 92378 75582 50388 27132 11628 3876 969 171 19 1]
+--- PASS: TestTriangle (0.00s)
+=== RUN   ExampleFactorial
+--- PASS: ExampleFactorial (0.00s)
+=== RUN   ExampleNChooseK
+--- PASS: ExampleNChooseK (0.00s)
+=== RUN   ExampleTriangle
+--- PASS: ExampleTriangle (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	pascal	0.027s	coverage: 100.0% of statements
+
+real	0m0.775s
+user	0m0.808s
+sys	0m0.552s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+pascal/pascals_triangle.go:9:	Triangle	100.0%
+pascal/pascals_triangle.go:32:	Factorial	100.0%
+pascal/pascals_triangle.go:48:	NChooseK	100.0%
+total:				(statements)	100.0%
+
+real	0m0.156s
+user	0m0.121s
+sys	0m0.170s
+
+===============================================================================
+
+go tool cover -html coverage.out -o coverage.html
+
+real	0m0.150s
+user	0m0.100s
+sys	0m0.175s
+
+===============================================================================
+
+gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+real	0m0.070s
+user	0m0.058s
+sys	0m0.066s
+
+===============================================================================
+
+gotest -v -race -covermode=atomic ./...
+=== RUN   TestTriangle
+    pascals_triangle_test.go:43: 
+        [1]
+        [1 1]
+        [1 2 1]
+        [1 3 3 1]
+        [1 4 6 4 1]
+        [1 5 10 10 5 1]
+        [1 6 15 20 15 6 1]
+        [1 7 21 35 35 21 7 1]
+        [1 8 28 56 70 56 28 8 1]
+        [1 9 36 84 126 126 84 36 9 1]
+        [1 10 45 120 210 252 210 120 45 10 1]
+        [1 11 55 165 330 462 462 330 165 55 11 1]
+        [1 12 66 220 495 792 924 792 495 220 66 12 1]
+        [1 13 78 286 715 1287 1716 1716 1287 715 286 78 13 1]
+        [1 14 91 364 1001 2002 3003 3432 3003 2002 1001 364 91 14 1]
+        [1 15 105 455 1365 3003 5005 6435 6435 5005 3003 1365 455 105 15 1]
+        [1 16 120 560 1820 4368 8008 11440 12870 11440 8008 4368 1820 560 120 16 1]
+        [1 17 136 680 2380 6188 12376 19448 24310 24310 19448 12376 6188 2380 680 136 17 1]
+        [1 18 153 816 3060 8568 18564 31824 43758 48620 43758 31824 18564 8568 3060 816 153 18 1]
+        [1 19 171 969 3876 11628 27132 50388 75582 92378 92378 75582 50388 27132 11628 3876 969 171 19 1]
+--- PASS: TestTriangle (0.01s)
+=== RUN   ExampleFactorial
+--- PASS: ExampleFactorial (0.00s)
+=== RUN   ExampleNChooseK
+--- PASS: ExampleNChooseK (0.00s)
+=== RUN   ExampleTriangle
+--- PASS: ExampleTriangle (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	pascal	0.060s	coverage: 100.0% of statements
+
+real	0m0.955s
+user	0m0.940s
+sys	0m0.561s
+
+===============================================================================
+
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+goos: linux
+goarch: amd64
+pkg: pascal
+cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+BenchmarkPascalsTriangleFixed
+BenchmarkPascalsTriangleFixed-4        	   48778	     24572 ns/op	    6136 B/op	      95 allocs/op
+BenchmarkPascalsTriangleIncreasing
+BenchmarkPascalsTriangleIncreasing-4   	    5218	    235783 ns/op	   45312 B/op	     884 allocs/op
+PASS
+ok  	pascal	2.774s
+
+real	0m3.333s
+user	0m4.716s
+sys	0m0.847s
+
+===============================================================================
+
+gotest -v -tags bonus
+=== RUN   TestTriangle
+    pascals_triangle_test.go:43: 
+        [1]
+        [1 1]
+        [1 2 1]
+        [1 3 3 1]
+        [1 4 6 4 1]
+        [1 5 10 10 5 1]
+        [1 6 15 20 15 6 1]
+        [1 7 21 35 35 21 7 1]
+        [1 8 28 56 70 56 28 8 1]
+        [1 9 36 84 126 126 84 36 9 1]
+        [1 10 45 120 210 252 210 120 45 10 1]
+        [1 11 55 165 330 462 462 330 165 55 11 1]
+        [1 12 66 220 495 792 924 792 495 220 66 12 1]
+        [1 13 78 286 715 1287 1716 1716 1287 715 286 78 13 1]
+        [1 14 91 364 1001 2002 3003 3432 3003 2002 1001 364 91 14 1]
+        [1 15 105 455 1365 3003 5005 6435 6435 5005 3003 1365 455 105 15 1]
+        [1 16 120 560 1820 4368 8008 11440 12870 11440 8008 4368 1820 560 120 16 1]
+        [1 17 136 680 2380 6188 12376 19448 24310 24310 19448 12376 6188 2380 680 136 17 1]
+        [1 18 153 816 3060 8568 18564 31824 43758 48620 43758 31824 18564 8568 3060 816 153 18 1]
+        [1 19 171 969 3876 11628 27132 50388 75582 92378 92378 75582 50388 27132 11628 3876 969 171 19 1]
+--- PASS: TestTriangle (0.00s)
+=== RUN   ExampleFactorial
+--- PASS: ExampleFactorial (0.00s)
+=== RUN   ExampleNChooseK
+--- PASS: ExampleNChooseK (0.00s)
+=== RUN   ExampleTriangle
+--- PASS: ExampleTriangle (0.00s)
+PASS
+ok  	pascal	0.022s
+
+real	0m0.521s
+user	0m0.521s
+sys	0m0.492s
+
+===============================================================================
+
+No old benchmarks to run benchstat against.
+
+===============================================================================
+
+gomarkdoc --output pascal-doc.md
+
+real	0m0.045s
+user	0m0.027s
+sys	0m0.019s
+
+===============================================================================
+
+go doc -all pascal
+package pascal // import "pascal"
+
+Package pascal computes Pascal's Triangle.
+
+FUNCTIONS
+
+func Factorial(n int) (int, error)
+    Factorial returns the factorial of a number.
+    https://en.wikipedia.org/wiki/Factorial
+
+func NChooseK(n, k int) (int, error)
+    NChooseK returns the number of possible ways to choose 2 numbers from a set.
+    https://en.wikipedia.org/wiki/Binomial_coefficient
+
+func Triangle(limit int) [][]int
+    Triangle returns Pascal's Triangle for a given number.
+
+
+real	0m0.147s
+user	0m0.065s
+sys	0m0.139s
+
+
+===============================================================================
+
