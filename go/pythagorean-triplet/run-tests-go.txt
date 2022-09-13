@@ -1,0 +1,323 @@
+Running automated test file(s):
+
+Go packages: pythagorean 
+
+
+===============================================================================
+
+golangci-lint run ./...
+
+real	0m10.178s
+user	0m19.502s
+sys	0m3.677s
+
+===============================================================================
+
+golint ./...
+
+real	0m0.111s
+user	0m0.103s
+sys	0m0.065s
+
+===============================================================================
+
+revive -formatter=stylish ./...
+
+real	0m0.079s
+user	0m0.038s
+sys	0m0.024s
+
+===============================================================================
+
+ineffassign ./...
+
+real	0m0.516s
+user	0m0.465s
+sys	0m0.504s
+
+===============================================================================
+
+go-consistent -v ./...
+	info: check "./."
+
+real	0m0.534s
+user	0m0.515s
+sys	0m0.525s
+
+===============================================================================
+
+staticcheck ./...
+
+real	0m0.593s
+user	0m0.675s
+sys	0m0.591s
+
+===============================================================================
+
+gocritic check -enableAll ./...
+
+real	0m3.538s
+user	0m6.024s
+sys	0m1.526s
+
+===============================================================================
+
+go vet ./...
+
+real	0m0.315s
+user	0m0.307s
+sys	0m0.395s
+
+===============================================================================
+
+go fix ./...
+
+real	0m0.085s
+user	0m0.021s
+sys	0m0.082s
+
+===============================================================================
+
+gocyclo .
+8 pythagorean Range pythagorean_triplet.go:9:1
+4 pythagorean Sum pythagorean_triplet.go:62:1
+4 pythagorean CheckPythagoreanTriplets pythagorean_triplet.go:35:1
+3 pythagorean BenchmarkSum pythagorean_triplet_test.go:53:1
+3 pythagorean BenchmarkRange pythagorean_triplet_test.go:44:1
+3 pythagorean TestSum pythagorean_triplet_test.go:34:1
+3 pythagorean TestRange pythagorean_triplet_test.go:16:1
+2 pythagorean TripletSum pythagorean_triplet.go:50:1
+2 pythagorean ExampleSum pythagorean-triplet_examples_test.go:81:1
+2 pythagorean ExampleRange pythagorean-triplet_examples_test.go:54:1
+2 pythagorean ExampleTripletSum pythagorean-triplet_examples_test.go:37:1
+1 pythagorean Square pythagorean_triplet.go:30:1
+1 pythagorean ExampleCheckPythagoreanTriplets pythagorean-triplet_examples_test.go:23:1
+1 pythagorean ExampleSquare pythagorean-triplet_examples_test.go:12:1
+
+real	0m0.020s
+user	0m0.002s
+sys	0m0.009s
+
+===============================================================================
+
+misspell .
+
+real	0m0.129s
+user	0m0.087s
+sys	0m0.107s
+
+===============================================================================
+
+gosec ./...
+[gosec] 2022/09/12 20:08:28 Including rules: default
+[gosec] 2022/09/12 20:08:28 Excluding rules: default
+[gosec] 2022/09/12 20:08:28 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/pythagorean-triplet
+[gosec] 2022/09/12 20:08:28 Checking package: pythagorean
+[gosec] 2022/09/12 20:08:28 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/pythagorean-triplet/pythagorean_triplet.go
+Results:
+
+
+Summary:
+   Files: 1
+   Lines: 76
+   Nosec: 0
+  Issues: 0
+
+
+real	0m0.327s
+user	0m0.312s
+sys	0m0.260s
+
+===============================================================================
+
+gotest -v -covermode=count -coverprofile coverage.out ./...
+=== RUN   TestRange
+--- PASS: TestRange (0.00s)
+=== RUN   TestSum
+--- PASS: TestSum (1.07s)
+=== RUN   ExampleSquare
+--- PASS: ExampleSquare (0.00s)
+=== RUN   ExampleCheckPythagoreanTriplets
+--- PASS: ExampleCheckPythagoreanTriplets (0.00s)
+=== RUN   ExampleTripletSum
+--- PASS: ExampleTripletSum (0.00s)
+=== RUN   ExampleRange
+--- PASS: ExampleRange (0.00s)
+=== RUN   ExampleSum
+--- PASS: ExampleSum (1.17s)
+PASS
+coverage: 100.0% of statements
+ok  	pythagorean	2.251s	coverage: 100.0% of statements
+
+real	0m3.048s
+user	0m3.147s
+sys	0m0.661s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+pythagorean/pythagorean_triplet.go:9:	Range				100.0%
+pythagorean/pythagorean_triplet.go:30:	Square				100.0%
+pythagorean/pythagorean_triplet.go:35:	CheckPythagoreanTriplets	100.0%
+pythagorean/pythagorean_triplet.go:50:	TripletSum			100.0%
+pythagorean/pythagorean_triplet.go:62:	Sum				100.0%
+total:					(statements)			100.0%
+
+real	0m0.113s
+user	0m0.060s
+sys	0m0.129s
+
+===============================================================================
+
+go tool cover -html coverage.out -o coverage.html
+
+real	0m0.096s
+user	0m0.049s
+sys	0m0.113s
+
+===============================================================================
+
+gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+real	0m0.044s
+user	0m0.023s
+sys	0m0.042s
+
+===============================================================================
+
+gotest -v -race -covermode=atomic ./...
+=== RUN   TestRange
+--- PASS: TestRange (0.00s)
+=== RUN   TestSum
+--- PASS: TestSum (273.20s)
+=== RUN   ExampleSquare
+--- PASS: ExampleSquare (0.00s)
+=== RUN   ExampleCheckPythagoreanTriplets
+--- PASS: ExampleCheckPythagoreanTriplets (0.00s)
+=== RUN   ExampleTripletSum
+--- PASS: ExampleTripletSum (0.00s)
+=== RUN   ExampleRange
+--- PASS: ExampleRange (0.00s)
+=== RUN   ExampleSum
+--- PASS: ExampleSum (192.92s)
+PASS
+coverage: 100.0% of statements
+ok  	pythagorean	466.173s	coverage: 100.0% of statements
+
+real	7m47.257s
+user	7m1.347s
+sys	0m15.339s
+
+===============================================================================
+
+mv -v benchstat-new.txt benchstat-old.txt
+renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
+
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+goos: linux
+goarch: amd64
+pkg: pythagorean
+cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+BenchmarkRange
+BenchmarkRange-4   	    3255	    352880 ns/op	    3048 B/op	       7 allocs/op
+BenchmarkSum
+BenchmarkSum-4     	       4	 309411584 ns/op	   77824 B/op	      13 allocs/op
+PASS
+ok  	pythagorean	4.563s
+
+real	0m6.022s
+user	0m5.380s
+sys	0m1.064s
+
+===============================================================================
+
+gotest -v -tags bonus
+=== RUN   TestRange
+--- PASS: TestRange (0.00s)
+=== RUN   TestSum
+--- PASS: TestSum (0.38s)
+=== RUN   ExampleSquare
+--- PASS: ExampleSquare (0.00s)
+=== RUN   ExampleCheckPythagoreanTriplets
+--- PASS: ExampleCheckPythagoreanTriplets (0.00s)
+=== RUN   ExampleTripletSum
+--- PASS: ExampleTripletSum (0.00s)
+=== RUN   ExampleRange
+--- PASS: ExampleRange (0.00s)
+=== RUN   ExampleSum
+--- PASS: ExampleSum (0.30s)
+PASS
+ok  	pythagorean	0.697s
+
+real	0m1.265s
+user	0m1.224s
+sys	0m0.643s
+
+===============================================================================
+
+benchstat benchstat-old.txt benchstat-new.txt
+name     old time/op    new time/op    delta
+Range-4     362µs ± 0%     353µs ± 0%   ~     (p=1.000 n=1+1)
+Sum-4       335ms ± 0%     309ms ± 0%   ~     (p=1.000 n=1+1)
+
+name     old alloc/op   new alloc/op   delta
+Range-4    3.05kB ± 0%    3.05kB ± 0%   ~     (all equal)
+Sum-4      77.8kB ± 0%    77.8kB ± 0%   ~     (all equal)
+
+name     old allocs/op  new allocs/op  delta
+Range-4      7.00 ± 0%      7.00 ± 0%   ~     (all equal)
+Sum-4        13.0 ± 0%      13.0 ± 0%   ~     (all equal)
+
+real	0m0.057s
+user	0m0.027s
+sys	0m0.025s
+
+===============================================================================
+
+gomarkdoc --output pythagorean-doc.md
+
+real	0m0.087s
+user	0m0.015s
+sys	0m0.026s
+
+===============================================================================
+
+go doc -all pythagorean
+package pythagorean // import "pythagorean"
+
+Package pythagorean is used to find the triplets that sum to N.
+
+FUNCTIONS
+
+func CheckPythagoreanTriplets(a, b, c int) bool
+    CheckPythagoreanTriplets returns true when the triplets pass the checks.
+
+func Square(n int) int
+    Square returns the passed number to the power of 2.
+
+func TripletSum(t Triplet) int
+    TripletSum returns the sum of the Pythagorean Triplets.
+
+
+TYPES
+
+type Triplet [3]int
+    Triplet represents the Pythagorean Triplet. for a^2 + b^2 = c^2 -> a + b + c
+    = N
+
+func Range(min, max int) []Triplet
+    Range returns a list of all Pythagorean triplets with side lengths in the
+    provided range.
+
+func Sum(perimeter int) []Triplet
+    Sum returns a list of all Pythagorean triplets with a certain perimeter.
+    The instructions are really vague, I'm guessing min=1 and max=perimeter.
+
+
+real	0m0.135s
+user	0m0.065s
+sys	0m0.103s
+
+
+===============================================================================
+
