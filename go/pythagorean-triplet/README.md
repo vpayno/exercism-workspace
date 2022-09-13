@@ -58,3 +58,12 @@ The three elements of each returned triplet must be in order, `t[0] <= t[1] <= t
 ### Based on
 
 Problem 9 at Project Euler - http://projecteuler.net/problem=9
+
+### My Solution
+
+- [my solution](./pythagorean_triplet.go)
+- [my examples](./pythagorean-triplet_examples_test.go)
+- [tests](./pythagorean_triplet_test.go)
+- [run-tests](./run-tests-go.txt)
+- [coverage](./coverage.html)
+- [documentation](./pythagorean-doc.md)

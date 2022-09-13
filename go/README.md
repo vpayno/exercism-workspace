@@ -98,3 +98,4 @@
 - [sum-of-multiples](./sum-of-multiples/README.md)
 - [ledger](./ledger/README.md)
 - [pascals-triangle](./pascals-triangle/README.md)
+- [pythagorean-triplet](./pythagorean-triplet/README.md)
