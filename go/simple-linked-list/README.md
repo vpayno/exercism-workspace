@@ -46,3 +46,12 @@ implement your own abstract data type.
 ### Based on
 
 Inspired by 'Data Structures and Algorithms with Object-Oriented Design Patterns in Ruby', singly linked-lists. - https://web.archive.org/web/20160731005714/http://brpreiss.com/books/opus8/html/page96.html
+
+### My Solution
+
+- [my solution](./simple_linked_list.go)
+- [my examples](./simple_linked_list_examples_test.go)
+- [tests](./simple_linked_list_test.go)
+- [run-tests](./run-tests-go.txt)
+- [coverage](./coverage.html)
+- [documentation](./linkedlist-doc.md)
