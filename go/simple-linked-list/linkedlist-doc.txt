@@ -1,0 +1,41 @@
+package linkedlist // import "linkedlist"
+
+Package linkedlist implements a singly linked list.
+
+TYPES
+
+type Element struct {
+	// Has unexported fields.
+}
+    Element holds data and a pointer to the next Element.
+
+type List struct {
+	// Has unexported fields.
+}
+    List holds the 1st element of the list and the size of the list.
+
+func New(slice []int) *List
+    New returns a new list that is populated using the passed slice/array.
+
+func (l *List) Array() []int
+    Array returns the List as a slice.
+
+func (l *List) Next() *Element
+    Next returns a pointer to the next item in the List.
+
+func (l *List) Pop() (int, error)
+    Pop returns an interger and an error code from the last element of the List
+    while also removing it.
+
+func (l *List) Push(data int)
+    Push add a new number to the end of the List.
+
+func (l *List) Reset()
+    Reset resets a List to it's zero value.
+
+func (l *List) Reverse() *List
+    Reverse returns a new List in reversed order.
+
+func (l *List) Size() int
+    Size returns the size of the list.
+
