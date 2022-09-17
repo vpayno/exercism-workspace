@@ -1,0 +1,428 @@
+Running automated test file(s):
+
+Go packages: linkedlist 
+
+
+===============================================================================
+
+golangci-lint run ./...
+simple_linked_list_test.go:134:10: Error return value of `list.Pop` is not checked (errcheck)
+	list.Pop()
+	        ^
+simple_linked_list_test.go:137:10: Error return value of `list.Pop` is not checked (errcheck)
+	list.Pop()
+	        ^
+
+real	0m9.112s
+user	0m18.678s
+sys	0m3.623s
+
+===============================================================================
+
+golint ./...
+
+real	0m0.116s
+user	0m0.117s
+sys	0m0.074s
+
+===============================================================================
+
+revive -formatter=stylish ./...
+
+real	0m0.062s
+user	0m0.054s
+sys	0m0.037s
+
+===============================================================================
+
+ineffassign ./...
+
+real	0m0.318s
+user	0m0.326s
+sys	0m0.329s
+
+===============================================================================
+
+go-consistent -v ./...
+	info: check "./."
+
+real	0m0.425s
+user	0m0.501s
+sys	0m0.414s
+
+===============================================================================
+
+staticcheck ./...
+
+real	0m0.451s
+user	0m0.461s
+sys	0m0.459s
+
+===============================================================================
+
+gocritic check -enableAll ./...
+
+real	0m2.685s
+user	0m4.607s
+sys	0m1.238s
+
+===============================================================================
+
+go vet ./...
+
+real	0m0.303s
+user	0m0.335s
+sys	0m0.259s
+
+===============================================================================
+
+go fix ./...
+
+real	0m0.098s
+user	0m0.048s
+sys	0m0.103s
+
+===============================================================================
+
+gocyclo .
+5 linkedlist BenchmarkListPop simple_linked_list_test.go:200:1
+5 linkedlist (*List).Pop simple_linked_list.go:87:1
+4 linkedlist BenchmarkListPush simple_linked_list_test.go:186:1
+4 linkedlist TestPopFromNonEmptyList simple_linked_list_test.go:90:1
+4 linkedlist (*List).Array simple_linked_list.go:118:1
+3 linkedlist BenchmarkListReverse simple_linked_list_test.go:228:1
+3 linkedlist BenchmarkListToArray simple_linked_list_test.go:217:1
+3 linkedlist BenchmarkListSize simple_linked_list_test.go:175:1
+3 linkedlist BenchmarkNewList simple_linked_list_test.go:166:1
+3 linkedlist TestReverseEmptyList simple_linked_list_test.go:146:1
+3 linkedlist TestPushToEmptyList simple_linked_list_test.go:106:1
+3 linkedlist TestPopFromEmptyList simple_linked_list_test.go:79:1
+3 linkedlist TestEmptyListToEmptyArray simple_linked_list_test.go:59:1
+3 linkedlist TestEmptyListHasSizeZero simple_linked_list_test.go:10:1
+3 linkedlist (*List).Reverse simple_linked_list.go:139:1
+3 linkedlist (*List).Next simple_linked_list.go:46:1
+3 linkedlist New simple_linked_list.go:21:1
+2 linkedlist TestReverseNonEmptyList simple_linked_list_test.go:157:1
+2 linkedlist TestPushAndPop simple_linked_list_test.go:132:1
+2 linkedlist TestPushToNonEmptyList simple_linked_list_test.go:122:1
+2 linkedlist TestNonEmptyListToArray simple_linked_list_test.go:70:1
+2 linkedlist TestListHasCorrectSizeAfterPush simple_linked_list_test.go:47:1
+2 linkedlist TestListHasCorrectSizeAfterPop simple_linked_list_test.go:35:1
+2 linkedlist TestNonEmptyListHasCorrectSize simple_linked_list_test.go:28:1
+2 linkedlist TestSingletonListHasSizeOne simple_linked_list_test.go:21:1
+2 linkedlist ExampleList_next simple_linked_list_examples_test.go:31:1
+2 linkedlist (*List).Push simple_linked_list.go:58:1
+1 linkedlist ExampleList_reverse simple_linked_list_examples_test.go:138:1
+1 linkedlist ExampleList_array simple_linked_list_examples_test.go:126:1
+1 linkedlist ExampleList_pop simple_linked_list_examples_test.go:86:1
+1 linkedlist ExampleList_push simple_linked_list_examples_test.go:52:1
+1 linkedlist ExampleList_size simple_linked_list_examples_test.go:20:1
+1 linkedlist ExampleList_new simple_linked_list_examples_test.go:5:1
+1 linkedlist (*List).Reset simple_linked_list.go:79:1
+1 linkedlist (*List).Size simple_linked_list.go:41:1
+
+real	0m0.025s
+user	0m0.012s
+sys	0m0.013s
+
+===============================================================================
+
+misspell .
+
+real	0m0.122s
+user	0m0.171s
+sys	0m0.087s
+
+===============================================================================
+
+gosec ./...
+[gosec] 2022/09/17 15:21:13 Including rules: default
+[gosec] 2022/09/17 15:21:13 Excluding rules: default
+[gosec] 2022/09/17 15:21:13 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/simple-linked-list
+2022/09/17 15:21:14 internal error: package "errors" without types was imported from "command-line-arguments"
+
+real	0m0.497s
+user	0m0.390s
+sys	0m0.382s
+
+===============================================================================
+
+gotest -v -covermode=count -coverprofile coverage.out ./...
+=== RUN   TestEmptyListHasSizeZero
+--- PASS: TestEmptyListHasSizeZero (0.00s)
+=== RUN   TestSingletonListHasSizeOne
+--- PASS: TestSingletonListHasSizeOne (0.00s)
+=== RUN   TestNonEmptyListHasCorrectSize
+--- PASS: TestNonEmptyListHasCorrectSize (0.00s)
+=== RUN   TestListHasCorrectSizeAfterPop
+--- PASS: TestListHasCorrectSizeAfterPop (0.00s)
+=== RUN   TestListHasCorrectSizeAfterPush
+--- PASS: TestListHasCorrectSizeAfterPush (0.00s)
+=== RUN   TestEmptyListToEmptyArray
+--- PASS: TestEmptyListToEmptyArray (0.00s)
+=== RUN   TestNonEmptyListToArray
+--- PASS: TestNonEmptyListToArray (0.00s)
+=== RUN   TestPopFromEmptyList
+--- PASS: TestPopFromEmptyList (0.00s)
+=== RUN   TestPopFromNonEmptyList
+--- PASS: TestPopFromNonEmptyList (0.00s)
+=== RUN   TestPushToEmptyList
+--- PASS: TestPushToEmptyList (0.00s)
+=== RUN   TestPushToNonEmptyList
+--- PASS: TestPushToNonEmptyList (0.00s)
+=== RUN   TestPushAndPop
+--- PASS: TestPushAndPop (0.00s)
+=== RUN   TestReverseEmptyList
+--- PASS: TestReverseEmptyList (0.00s)
+=== RUN   TestReverseNonEmptyList
+--- PASS: TestReverseNonEmptyList (0.00s)
+=== RUN   ExampleList_new
+--- PASS: ExampleList_new (0.00s)
+=== RUN   ExampleList_size
+--- PASS: ExampleList_size (0.00s)
+=== RUN   ExampleList_next
+--- PASS: ExampleList_next (0.00s)
+=== RUN   ExampleList_push
+--- PASS: ExampleList_push (0.00s)
+=== RUN   ExampleList_pop
+--- PASS: ExampleList_pop (0.00s)
+=== RUN   ExampleList_array
+--- PASS: ExampleList_array (0.00s)
+=== RUN   ExampleList_reverse
+--- PASS: ExampleList_reverse (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	linkedlist	0.013s	coverage: 100.0% of statements
+
+real	0m0.776s
+user	0m0.970s
+sys	0m0.552s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+linkedlist/simple_linked_list.go:21:	New		100.0%
+linkedlist/simple_linked_list.go:41:	Size		100.0%
+linkedlist/simple_linked_list.go:46:	Next		100.0%
+linkedlist/simple_linked_list.go:58:	Push		100.0%
+linkedlist/simple_linked_list.go:79:	Reset		100.0%
+linkedlist/simple_linked_list.go:87:	Pop		100.0%
+linkedlist/simple_linked_list.go:118:	Array		100.0%
+linkedlist/simple_linked_list.go:139:	Reverse		100.0%
+total:					(statements)	100.0%
+
+real	0m0.219s
+user	0m0.196s
+sys	0m0.241s
+
+===============================================================================
+
+go tool cover -html coverage.out -o coverage.html
+
+real	0m0.157s
+user	0m0.118s
+sys	0m0.159s
+
+===============================================================================
+
+gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+real	0m0.061s
+user	0m0.037s
+sys	0m0.057s
+
+===============================================================================
+
+gotest -v -race -covermode=atomic ./...
+=== RUN   TestEmptyListHasSizeZero
+--- PASS: TestEmptyListHasSizeZero (0.00s)
+=== RUN   TestSingletonListHasSizeOne
+--- PASS: TestSingletonListHasSizeOne (0.00s)
+=== RUN   TestNonEmptyListHasCorrectSize
+--- PASS: TestNonEmptyListHasCorrectSize (0.00s)
+=== RUN   TestListHasCorrectSizeAfterPop
+--- PASS: TestListHasCorrectSizeAfterPop (0.00s)
+=== RUN   TestListHasCorrectSizeAfterPush
+--- PASS: TestListHasCorrectSizeAfterPush (0.00s)
+=== RUN   TestEmptyListToEmptyArray
+--- PASS: TestEmptyListToEmptyArray (0.00s)
+=== RUN   TestNonEmptyListToArray
+--- PASS: TestNonEmptyListToArray (0.00s)
+=== RUN   TestPopFromEmptyList
+--- PASS: TestPopFromEmptyList (0.00s)
+=== RUN   TestPopFromNonEmptyList
+--- PASS: TestPopFromNonEmptyList (0.00s)
+=== RUN   TestPushToEmptyList
+--- PASS: TestPushToEmptyList (0.00s)
+=== RUN   TestPushToNonEmptyList
+--- PASS: TestPushToNonEmptyList (0.00s)
+=== RUN   TestPushAndPop
+--- PASS: TestPushAndPop (0.00s)
+=== RUN   TestReverseEmptyList
+--- PASS: TestReverseEmptyList (0.00s)
+=== RUN   TestReverseNonEmptyList
+--- PASS: TestReverseNonEmptyList (0.00s)
+=== RUN   ExampleList_new
+--- PASS: ExampleList_new (0.00s)
+=== RUN   ExampleList_size
+--- PASS: ExampleList_size (0.00s)
+=== RUN   ExampleList_next
+--- PASS: ExampleList_next (0.00s)
+=== RUN   ExampleList_push
+--- PASS: ExampleList_push (0.00s)
+=== RUN   ExampleList_pop
+--- PASS: ExampleList_pop (0.01s)
+=== RUN   ExampleList_array
+--- PASS: ExampleList_array (0.00s)
+=== RUN   ExampleList_reverse
+--- PASS: ExampleList_reverse (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	linkedlist	(cached)	coverage: 100.0% of statements
+
+real	0m0.343s
+user	0m0.363s
+sys	0m0.340s
+
+===============================================================================
+
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+goos: linux
+goarch: amd64
+pkg: linkedlist
+cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+BenchmarkNewList
+BenchmarkNewList-4       	 1411635	       875.7 ns/op	     192 B/op	      11 allocs/op
+BenchmarkListSize
+BenchmarkListSize-4      	1000000000	         0.4249 ns/op	       0 B/op	       0 allocs/op
+BenchmarkListPush
+BenchmarkListPush-4      	   10000	    109892 ns/op	   16000 B/op	    1000 allocs/op
+BenchmarkListPop
+BenchmarkListPop-4       	     608	   1999668 ns/op	       0 B/op	       0 allocs/op
+BenchmarkListToArray
+BenchmarkListToArray-4   	294727376	         4.008 ns/op	       0 B/op	       0 allocs/op
+BenchmarkListReverse
+BenchmarkListReverse-4   	13296807	       108.0 ns/op	      32 B/op	       1 allocs/op
+PASS
+ok  	linkedlist	11.072s
+
+real	0m11.635s
+user	0m13.790s
+sys	0m1.802s
+
+===============================================================================
+
+gotest -v -tags bonus
+=== RUN   TestEmptyListHasSizeZero
+--- PASS: TestEmptyListHasSizeZero (0.00s)
+=== RUN   TestSingletonListHasSizeOne
+--- PASS: TestSingletonListHasSizeOne (0.00s)
+=== RUN   TestNonEmptyListHasCorrectSize
+--- PASS: TestNonEmptyListHasCorrectSize (0.00s)
+=== RUN   TestListHasCorrectSizeAfterPop
+--- PASS: TestListHasCorrectSizeAfterPop (0.00s)
+=== RUN   TestListHasCorrectSizeAfterPush
+--- PASS: TestListHasCorrectSizeAfterPush (0.00s)
+=== RUN   TestEmptyListToEmptyArray
+--- PASS: TestEmptyListToEmptyArray (0.00s)
+=== RUN   TestNonEmptyListToArray
+--- PASS: TestNonEmptyListToArray (0.00s)
+=== RUN   TestPopFromEmptyList
+--- PASS: TestPopFromEmptyList (0.00s)
+=== RUN   TestPopFromNonEmptyList
+--- PASS: TestPopFromNonEmptyList (0.00s)
+=== RUN   TestPushToEmptyList
+--- PASS: TestPushToEmptyList (0.00s)
+=== RUN   TestPushToNonEmptyList
+--- PASS: TestPushToNonEmptyList (0.00s)
+=== RUN   TestPushAndPop
+--- PASS: TestPushAndPop (0.00s)
+=== RUN   TestReverseEmptyList
+--- PASS: TestReverseEmptyList (0.00s)
+=== RUN   TestReverseNonEmptyList
+--- PASS: TestReverseNonEmptyList (0.00s)
+=== RUN   ExampleList_new
+--- PASS: ExampleList_new (0.00s)
+=== RUN   ExampleList_size
+--- PASS: ExampleList_size (0.00s)
+=== RUN   ExampleList_next
+--- PASS: ExampleList_next (0.00s)
+=== RUN   ExampleList_push
+--- PASS: ExampleList_push (0.00s)
+=== RUN   ExampleList_pop
+--- PASS: ExampleList_pop (0.00s)
+=== RUN   ExampleList_array
+--- PASS: ExampleList_array (0.00s)
+=== RUN   ExampleList_reverse
+--- PASS: ExampleList_reverse (0.00s)
+PASS
+ok  	linkedlist	0.006s
+
+real	0m0.514s
+user	0m0.591s
+sys	0m0.437s
+
+===============================================================================
+
+No old benchmarks to run benchstat against.
+
+===============================================================================
+
+gomarkdoc --output linkedlist-doc.md
+
+real	0m0.041s
+user	0m0.025s
+sys	0m0.021s
+
+===============================================================================
+
+go doc -all linkedlist
+package linkedlist // import "linkedlist"
+
+Package linkedlist implements a singly linked list.
+
+TYPES
+
+type Element struct {
+	// Has unexported fields.
+}
+    Element holds data and a pointer to the next Element.
+
+type List struct {
+	// Has unexported fields.
+}
+    List holds the 1st element of the list and the size of the list.
+
+func New(slice []int) *List
+    New returns a new list that is populated using the passed slice/array.
+
+func (l *List) Array() []int
+    Array returns the List as a slice.
+
+func (l *List) Next() *Element
+    Next returns a pointer to the next item in the List.
+
+func (l *List) Pop() (int, error)
+    Pop returns an interger and an error code from the last element of the List
+    while also removing it.
+
+func (l *List) Push(data int)
+    Push add a new number to the end of the List.
+
+func (l *List) Reset()
+    Reset resets a List to it's zero value.
+
+func (l *List) Reverse() *List
+    Reverse returns a new List in reversed order.
+
+func (l *List) Size() int
+    Size returns the size of the list.
+
+
+real	0m0.180s
+user	0m0.102s
+sys	0m0.136s
+
+
+===============================================================================
+
