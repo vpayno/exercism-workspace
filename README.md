@@ -33,6 +33,7 @@ Exercism Workspace (https://exercism.org/docs/tracks)
 
 - [bash](bash/README.md)
 - [go](go/README.md)
+- [dart](dart/README.md)
 
 
 ## Tools/Scripts
