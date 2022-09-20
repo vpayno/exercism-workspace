@@ -15,36 +15,36 @@ main()
 
 	# https://github.com/dart-lang/linter
 
-	echo dart analyze .
+	echo Running: dart analyze .
 	time dart analyze .
 
 	print_ruler
 
 	# https://github.com/dart-lang/test
 
-	echo dart test .
-	time dart test .
+	echo Running: dart test --no-color .
+	time dart test --no-color .
 
 	print_ruler
 
 	# https://github.com/dart-lang/coverage
 	# dart pub global activate coverage
 
-	echo dart pub global run coverage:test_with_coverage
+	echo Running: dart pub global run coverage:test_with_coverage
 	time dart pub global run coverage:test_with_coverage
 
 	print_ruler
 
 	# https://github.com/linux-test-project/lcov
 
-	echo lcov --summary ./coverage/lcov.info
+	echo Running: lcov --summary ./coverage/lcov.info
 	time lcov --summary ./coverage/lcov.info
 
 	print_ruler
 
 	# go install github.com/client9/misspell/cmd/misspell@latest
 
-	echo misspell .
+	echo Running: misspell .
 	time misspell .
 
 	print_ruler
@@ -52,14 +52,14 @@ main()
 	# https://github.com/dart-lang/pana
 	# dart pub global activate pana
 
-	#echo dart pub global run pana .
+	#echo Running: dart pub global run pana .
 	#time dart pub global run pana .
 
 	#print_ruler
 
 	# https://github.com/dart-lang/dartdoc
 
-	echo dart doc .
+	echo Running: dart doc .
 	time dart doc .
 
 	print_ruler
