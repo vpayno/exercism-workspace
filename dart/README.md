@@ -8,4 +8,5 @@
 ## Tools
 
 - [for_each](./for_each)
+- [run-tests](./run-tests)
 - [update_readmes](./update_readmes)
