@@ -1,0 +1,112 @@
+name: Dart Workflow
+
+on:
+  pull_request:
+
+jobs:
+  stage1:
+    name: Change Check
+
+    runs-on: 'ubuntu-latest'
+
+    outputs:
+      docs_changed: ${{ steps.check_file_changed.outputs.docs_changed }}
+
+    steps:
+    - name: Checkout Repo
+      id: checkout-repo
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+        ref: ${{ github.ref }}
+        submodules: recursive
+
+    - name: Get Change List
+      id: check_file_changed
+      shell: pwsh
+      run: |
+        # https://www.meziantou.net/executing-github-actions-jobs-or-steps-only-when-specific-files-change.htm#conditional-jobs
+
+        # Diff HEAD with the previous commit then output to stdout.
+        echo "=== Which files changed? ===" | Out-String -Stream
+        ([string[]] $diff = git diff --name-only HEAD^ HEAD)
+
+        # Check if the files are present in the changed file list (added, modified, deleted) then output to stdout.
+        echo "=== Which Dart files changed? ===" | Out-String -Stream
+        ([string[]] $SourceDiff = $diff | Where-Object { $_ -match '^.*[.]dart$' -or $_ -match '^.*/pubspec[.].*$' })
+
+        # Did Dart files change?
+        echo "=== Did Dart files change? ===" | Out-String -Stream
+        ([string[]] $HasDiff = $SourceDiff.Length -gt 0)
+
+        # Set the output named "docs_changed"
+        Write-Host "::set-output name=docs_changed::$HasDiff"
+
+  stage2:
+    name: Dart Checks
+    strategy:
+      matrix:
+        sdk: ["stable"]
+        os: ["ubuntu-latest"]
+
+    runs-on: "${{ matrix.os }}"
+
+    needs: [ stage1 ]
+    if: needs.stage1.outputs.docs_changed == 'True'
+
+    steps:
+    - name: Checkout Repo
+      id: checkout-repo
+      uses: actions/checkout@v3
+
+    - name: Set up Dart ${{ matrix.dart-version }}
+      id: setup-dart
+      uses: dart-lang/setup-dart@v1
+      with:
+        dart-version: ${{ matrix.dart-version }}
+
+    - name: Show Dart version
+      id: dart-version
+      run: |
+        dart --version
+
+    - name: Install Dart Tools
+      id: install-dart-tools
+      run: |
+        dart pub global activate coverage
+        sudo apt install -y lcov
+
+    - name: CD to Dart Dir
+      id: cd-to-dart-dir
+      run: |
+        pwd
+        ls
+        cd ./dart
+        pwd
+        ls
+
+    - name: Install dependencies
+      id: dart-install-deps
+      run: |
+        cd ./dart
+        ./for_each dart pub get
+
+    - name: Analysing the code with lint
+      id: dart-lint
+      run: |
+        cd ./dart
+        ./for_each dart analyze .
+
+    - name: Testing with Dart test
+      id: dart-test-run
+      run: |
+        cd ./dart
+        ./for_each dart test .
+
+    - name: Testing with Dart test coverage
+      id: dart-test-coverage
+      run: |
+        cd ./dart
+        ./for_each dart pub global run coverage:test_with_coverage
+        ./for_each lcov --summary ./coverage/lcov.info
+        git restore .
