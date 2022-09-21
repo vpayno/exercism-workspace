@@ -1,0 +1,82 @@
+#!/bin/bash
+
+print_ruler()
+{
+	printf "\n"
+	printf "=%.0s" {1..79}; printf "\n"
+	printf "\n"
+} # print_ruler()
+
+main()
+{
+	printf "Running automated test file(s):\n\n"
+
+	print_ruler
+
+	# https://github.com/mpeterv/luacheck
+	# sudo apt install -y lua-check
+	# sudo luarocks install lua-check
+
+	for tf in ./*.lua; do
+		if [[ ${tf} =~ _spec.lua ]]; then
+			continue
+		fi
+
+		echo Running: luacheck --no-color "${tf}"
+		time luacheck --no-color "${tf}"
+	done
+
+	print_ruler
+
+	# https://github.com/lunarmodules/busted
+	# sudo apt install -y lua-busted
+	# sudo luarocks install lua-busted
+
+	echo Running: busted -c .
+	time busted -c .
+
+	print_ruler
+
+	# https://github.com/lunarmodules/luacov
+	# sudo luarocks install luacov
+
+	echo Running: luacov .
+	time luacov .
+
+	print_ruler
+
+	# https://github.com/spacewander/luacov-console
+	# sudo luarocks install luacov-console
+	# luacov-console --list .
+
+	echo Running: luacov-console .
+	time luacov-console .
+	printf "\n"
+
+	echo Running: luacov-console --no-colored --summary .
+	time luacov-console --no-colored --summary .
+
+	print_ruler
+
+	# go install github.com/client9/misspell/cmd/misspell@latest
+
+	echo Running: misspell .
+	time misspell .
+
+	print_ruler
+
+	# https://github.com/lunarmodules/LDoc/blob/master/doc/doc.md
+
+	for m in *; do
+		if [[ ! -d ${m} ]] || [[ ${m} == doc ]]; then
+			continue
+		fi
+
+		ldoc --verbose --all "${m}/"
+		printf "\n"
+	done
+
+	print_ruler
+} # main()
+
+time main "$@" |& tee ./run-tests-tcl.txt
