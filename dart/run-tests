@@ -22,13 +22,14 @@ main()
 
 	# https://github.com/dart-lang/test
 
-	echo Running: dart test --no-color .
-	time dart test --no-color .
+	echo Running: dart test --run-skipped --no-color .
+	time dart test --run-skipped --no-color .
 
 	print_ruler
 
 	# https://github.com/dart-lang/coverage
 	# dart pub global activate coverage
+	# note: can't find a way to run skipped tests when testing coverage
 
 	echo Running: dart pub global run coverage:test_with_coverage
 	time dart pub global run coverage:test_with_coverage
