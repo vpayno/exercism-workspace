@@ -1,0 +1,62 @@
+#!/bin/bash
+
+print_ruler()
+{
+	printf "\n"
+	printf "=%.0s" {1..79}; printf "\n"
+	printf "\n"
+} # print_ruler()
+
+main()
+{
+	printf "Running automated test file(s):\n\n"
+
+	print_ruler
+
+	# http://www.xdobry.de/ttclcheck/
+	# sudo apt install xotcl
+
+	for tf in ./*.tcl; do
+		if [[ ${tf} =~ testHelpers.tcl ]]; then
+			continue
+		fi
+
+		echo Running: ttclcheck "${tf}"
+		time ttclcheck "${tf}"
+	done
+
+	print_ruler
+
+	for tf in ./*.tcl; do
+		if [[ ${tf} =~ testHelpers.tcl ]]; then
+			continue
+		fi
+
+		echo Running: nagelfar -s _ "${tf}"
+		time nagelfar -s _ "${tf}"
+	done
+
+	print_ruler
+
+	for tf in ./*.test; do
+		echo Running: RUN_ALL=1 tclsh "${tf}"
+		time RUN_ALL=1 tclsh "${tf}"
+		printf "\n"
+	done
+
+	print_ruler
+
+	# code coverage reporting
+	# note: look into using ActiveState's TCL Dev Kit - doesn't have cli only tools
+
+	# print_ruler
+
+	# go install github.com/client9/misspell/cmd/misspell@latest
+
+	echo Running: misspell .
+	time misspell .
+
+	print_ruler
+} # main()
+
+time main "$@" |& tee ./run-tests-tcl.txt
