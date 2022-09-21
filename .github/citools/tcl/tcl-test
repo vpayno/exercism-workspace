@@ -1,0 +1,12 @@
+#!/bin/bash
+
+main()
+{
+	for tf in ./*.test; do
+		echo Running: RUN_ALL=1 tclsh "${tf}"
+		time RUN_ALL=1 tclsh "${tf}"
+		printf "\n"
+	done
+} # main()
+
+main "$@"

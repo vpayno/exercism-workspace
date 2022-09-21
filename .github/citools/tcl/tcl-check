@@ -1,0 +1,15 @@
+#!/bin/bash
+
+main()
+{
+	for tf in ./*.tcl; do
+		if [[ ${tf} =~ testHelpers.tcl ]]; then
+			continue
+		fi
+
+		echo Running: ../../.github/citools/tcl/nagelfar -s _ "${tf}"
+		time ../../.github/citools/tcl/nagelfar -s _ "${tf}"
+	done
+} # main()
+
+main "$@"
