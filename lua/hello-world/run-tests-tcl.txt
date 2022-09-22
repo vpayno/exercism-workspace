@@ -1,0 +1,77 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: luacheck --no-color ./hello-world.lua
+Checking hello-world.lua                          OK
+
+Total: 0 warnings / 0 errors in 1 file
+
+real	0m0.238s
+user	0m0.112s
+sys	0m0.078s
+
+===============================================================================
+
+Running: busted --coverage --lpath= --cpath= --output=gtest -Xoutput --plain
+[==========] Running tests from scanned files.
+[----------] Global test environment setup.
+[----------] Running tests from ./hello-world_spec.lua
+[ RUN      ] ./hello-world_spec.lua @ 8: hello-world says hello world
+[       OK ] ./hello-world_spec.lua @ 8: hello-world says hello world (0.98 ms)
+[----------] 1 test from ./hello-world_spec.lua (10.69 ms total)
+
+[----------] Global test environment teardown.
+[==========] 1 test from 1 test file ran. (12.75 ms total)
+[  PASSED  ] 1 test.
+
+real	0m0.116s
+user	0m0.079s
+sys	0m0.041s
+
+===============================================================================
+
+Running: luacov .
+
+real	0m0.281s
+user	0m0.261s
+sys	0m0.019s
+
+===============================================================================
+
+Running: luacov-console .
+
+real	0m0.047s
+user	0m0.031s
+sys	0m0.017s
+
+Running: luacov-console --no-colored --summary .
+==============================================================================
+Summary
+==============================================================================
+
+File                   Hits Missed Coverage
+-------------------------------------------
+./hello-world.lua      4    0      100.00%
+./hello-world_spec.lua 5    0      100.00%
+-------------------------------------------
+Total                  9    0      100.00%
+
+real	0m0.044s
+user	0m0.023s
+sys	0m0.029s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.095s
+user	0m0.039s
+sys	0m0.051s
+
+===============================================================================
+
+
+===============================================================================
+
