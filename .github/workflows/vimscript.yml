@@ -1,0 +1,185 @@
+name: Vimscript Workflow
+
+on:
+  pull_request:
+
+jobs:
+  stage1:
+    name: Change Check
+
+    runs-on: 'ubuntu-latest'
+
+    outputs:
+      docs_changed: ${{ steps.check_file_changed.outputs.docs_changed }}
+
+    steps:
+    - name: Checkout Repo
+      id: checkout-repo
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+        ref: ${{ github.ref }}
+        submodules: recursive
+
+    - name: Get Change List
+      id: check_file_changed
+      shell: pwsh
+      run: |
+        # https://www.meziantou.net/executing-github-actions-jobs-or-steps-only-when-specific-files-change.htm#conditional-jobs
+
+        # Diff HEAD with the previous commit then output to stdout.
+        echo "=== Which files changed? ===" | Out-String -Stream
+        ([string[]] $diff = git diff --name-only HEAD^ HEAD)
+
+        # Check if the files are present in the changed file list (added, modified, deleted) then output to stdout.
+        echo "=== Which Vim files changed? ===" | Out-String -Stream
+        ([string[]] $SourceDiff = $diff | Where-Object { $_ -match '^.*[.](vim|vader|vimspec)$' })
+
+        # Did Vim files change?
+        echo "=== Did Vim files change? ===" | Out-String -Stream
+        ([string[]] $HasDiff = $SourceDiff.Length -gt 0)
+
+        # Set the output named "docs_changed"
+        Write-Host "::set-output name=docs_changed::$HasDiff"
+
+  stage2:
+    name: Vim Checks
+    strategy:
+      matrix:
+        os: ["ubuntu-latest"]
+
+    runs-on: "${{ matrix.os }}"
+
+    needs: [ stage1 ]
+    if: needs.stage1.outputs.docs_changed == 'True'
+
+    steps:
+    - name: Checkout Repo
+      id: checkout-repo
+      uses: actions/checkout@v3
+
+    - name: Get Repo Root
+      id: get-repo-root
+      run: |
+        printf "%s=\"%s\"\n" "REPO_ROOT" "${PWD}" | tee -a "${GITHUB_ENV}"
+
+    - name: Setup Vim
+      id: setup-vim
+      uses: rhysd/action-setup-vim@v1
+      with:
+        neovim: false
+        version: stable
+
+    - name: Setup Nvim
+      id: setup-nvim
+      uses: rhysd/action-setup-vim@v1
+      with:
+        neovim: true
+        version: stable
+
+    - name: Show Vim Versions
+      id: vim-version
+      run: |
+        which vim
+        vim --version
+        which nvim
+        nvim --version
+
+    - name: Install Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3'
+
+    - name: Install Tools
+      id: install-tools
+      run: |
+        # https://github.com/Vimjas/covimerage/issues/95
+        pip install 'click<8.0.0'
+        pip install covimerage
+        pip install vim-vint
+
+    - name: Show Tool Versions
+      id: tool-versions
+      run: |
+        covimerage --version
+        vint --version
+
+    - name: CD to Vim Dir
+      id: cd-to-vimscript-dir
+      run: |
+        pwd
+        ls
+        cd ./vimscript
+        pwd
+        ls
+
+    - name: Analysing the code with vint
+      id: vim-lint
+      run: |
+        cd ./vimscript
+        ./for_each vint --warning --verbose --enable-neovim .
+
+    - name: Vader Tests with Vim
+      if: false # disable - not usable with multiple projects in one repo
+      id: vim-tests-vader-vim
+      uses: PsychoLlama/vader-action@v1
+      with:
+        neovim: false
+        test-pattern: '**/*.vader'
+
+    - name: Vader Tests with NeoVim
+      if: false # disable - not usable with multiple projects in one repo
+      id: vim-tests-vader-neovim
+      uses: PsychoLlama/vader-action@v1
+      with:
+        neovim: true
+        test-pattern: '**/*.vader'
+
+    - name: Checkout vader.vim
+      if: false # disabled - for_each_vader didn't work
+      id: checkout-vader
+      uses: actions/checkout@v3
+      with:
+        repository: junegunn/vader.vim
+        path: vader.vim
+
+    - name: Run Vader Tests
+      if: false # disabled - for_each_vader didn't work
+      id: vader-tests
+      run: |
+        mkdir -pv /home/runner/.vim/pack/upstream/opt/
+        ln -svf vader.vim /home/runner/.vim/pack/upstream/opt/
+        cd ./vimscript
+        ./for_each_vader
+
+    - name: Checkout themis.vim
+      id: checkout-themis
+      uses: actions/checkout@v3
+      with:
+        repository: thinca/vim-themis
+        path: vim-themis
+
+    - name: Remove coverage output files
+      id: cov-cleanup
+      run: |
+        cd ./vimscript
+        ./for_each rm -fv profile.txt coverage.xml .coverage_covimerage
+
+    - name: Run Themis Tests
+      id: themis-tests-vim
+      env:
+        THEMIS_VIM: ${{ steps.setup-vim.outputs.executable }}
+        THEMIS_PROFILE: profile.txt
+      run: |
+        cd ./vimscript
+        ../vim-themis/bin/themis --version
+        ./for_each ../../vim-themis/bin/themis themis.vimspec
+        ./for_each ls
+
+    - name: Coverage Report
+      if: false # disable - themis step isn't generating profile.txt
+      id: vimscript-coverage-report
+      run: |
+        cd ./vimscript
+        ./for_each covimerage write_coverage profile.txt
+        ./for_each coverage report

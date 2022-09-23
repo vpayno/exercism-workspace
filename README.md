@@ -14,6 +14,7 @@ Exercism Workspace (https://exercism.org/docs/tracks)
  [![Dart Workflow](https://github.com/vpayno/exercism-workspace/actions/workflows/dart.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/dart.yml) |
  [![Tcl Workflow](https://github.com/vpayno/exercism-workspace/actions/workflows/tcl.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/tcl.yml) |
  [![Lua Workflow](https://github.com/vpayno/exercism-workspace/actions/workflows/lua.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/lua.yml) |
+ [![Vimscript Workflow](https://github.com/vpayno/exercism-workspace/actions/workflows/vimscript.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/vimscript.yml) |
 
  [![Git Checks](https://github.com/vpayno/exercism-workspace/actions/workflows/git.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/git.yml) |
  [![Check Links](https://github.com/vpayno/exercism-workspace/actions/workflows/links.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/links.yml) |
@@ -30,6 +31,7 @@ Exercism Workspace (https://exercism.org/docs/tracks)
 - [Dart Workflow](.github/workflows/dart.yml)
 - [Tcl Workflow](.github/workflows/tcl.yml)
 - [Lua Workflow](.github/workflows/lua.yml)
+- [Vimscript Workflow](.github/workflows/vimscript.yml)
 - [Link Checker Workflow](.github/workflows/links.yml)
 - [CodeQL Workflow](.github/workflows/codeql-analysis.yml)
 - [Woke PR](.github/workflows/woke-pr.yml)

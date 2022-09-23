@@ -1,0 +1,24 @@
+#!/bin/bash
+
+declare pkg_name
+declare d
+
+cat ./.vimrc >> ~/.vimrc
+
+time for d in ./*; do
+	[[ -d ${d} ]] || continue
+	[[ $(basename "${d}") == doc ]] && continue
+
+	cd "${d}" || continue
+	pkg_name="$(basename "${PWD}")"
+
+	printf "[dir: %s]\n\n" "${PWD}"
+	printf "[pkg: %s]\n\n" "${pkg_name}"
+
+	echo vim "'+source *vim | Vader!*'" ./*.vader
+	time vim '+source *vim | Vader!*' ./*.vader && echo Success || echo Failure
+
+	printf "\n"
+
+	cd - || break
+done
