@@ -43,6 +43,7 @@ Exercism Workspace (https://exercism.org/docs/tracks)
 - [Dart](dart/README.md)
 - [Tcl](tcl/README.md)
 - [Lua](lua/README.md)
+- [Vimscript](vimscript/README.md)
 
 
 ## Tools/Scripts
