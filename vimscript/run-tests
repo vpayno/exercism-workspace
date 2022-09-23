@@ -1,0 +1,53 @@
+#!/bin/bash
+
+print_ruler()
+{
+	printf "\n"
+	printf "=%.0s" {1..79}; printf "\n"
+	printf "\n"
+} # print_ruler()
+
+main()
+{
+	printf "Running automated test file(s):\n\n"
+
+	print_ruler
+
+	# pip install vim-vint
+	echo Running: vint --warning --verbose --enable-neovim .
+	time vint --warning --verbose --enable-neovim .
+
+	print_ruler
+
+	echo Running: "vim '+source *vim | Vader!*' ./*.vader && echo Success || echo Failure"
+	time vim '+source *vim | Vader!*' ./*.vader && echo Success || echo Failure
+
+	print_ruler
+
+	export THEMIS_HOME="${HOME}/.vim/pack/upstream/opt/vim-themis"
+	export PROFILE_LOG="profile.txt"
+
+	echo Running: themis ./themis.vimspec
+	time themis ./themis.vimspec
+
+	print_ruler
+
+	# https://github.com/Vimjas/covimerage/issues/95
+	# pip install 'click<8.0.0'
+	# pip install covimerage
+
+	covimerage write_coverage profile.txt
+	coverage report
+	coverage xml
+
+	print_ruler
+
+	# go install github.com/client9/misspell/cmd/misspell@latest
+
+	echo Running: misspell .
+	time misspell .
+
+	print_ruler
+} # main()
+
+time main "$@" |& tee ./run-tests-tcl.txt
