@@ -1,0 +1,15 @@
+" themis.vimspec
+
+let s:suite = themis#suite('thesis tests')
+let s:assert = themis#helper('assert')
+
+source *.vim
+
+" The function name(my_test_1) will be a test name.
+function s:suite.test_hello()
+	let got = Hello()
+	let want = 'Hello, World!'
+	call s:assert.equals(want, got)
+endfunction
+
+" vim: ft=vim

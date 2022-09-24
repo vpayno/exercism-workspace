@@ -1,3 +1,3 @@
 function! Hello() abort
-  return 'Goodbye, Mars!'
+  return 'Hello, World!'
 endfunction
