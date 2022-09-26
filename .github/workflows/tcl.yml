@@ -67,6 +67,7 @@ jobs:
       id: tcl-version
       run: |
         tclsh <<< 'puts [info patchlevel];exit 0'
+        # shellcheck disable=SC2016
         tclsh <<< 'puts $tcl_version;exit 0'
 
     - name: Install Tcl Tools
