@@ -37,4 +37,7 @@ This is an exercise to introduce users to using Exercism - http://en.wikipedia.o
 ### My Solution
 
 - [my solution](./hello_world.vim)
-- [run-tests](./run-tests-vimscript.txt)
+- [vader tests](./hello_world.vader)
+- [themis tests](./themis.vimspec)
+- [themis profile](./profile.txt)
+- [run-tests output](./run-tests-vimscript.txt)
