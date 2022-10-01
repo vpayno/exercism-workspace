@@ -15,3 +15,4 @@
 ## Exercises
 
 - [hello-world](./hello-world/README.md)
+- [reverse-string](./reverse-string/README.md)

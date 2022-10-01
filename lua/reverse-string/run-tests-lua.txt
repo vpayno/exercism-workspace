@@ -1,0 +1,85 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: luacheck --no-color ./reverse-string.lua
+Checking reverse-string.lua                       OK
+
+Total: 0 warnings / 0 errors in 1 file
+
+real	0m0.116s
+user	0m0.081s
+sys	0m0.047s
+
+===============================================================================
+
+Running: busted --coverage --lpath= --cpath= --output=gtest -Xoutput --plain
+[==========] Running tests from scanned files.
+[----------] Global test environment setup.
+[----------] Running tests from ./reverse-string_spec.lua
+[ RUN      ] ./reverse-string_spec.lua @ 4: reverse-string an empty string
+[       OK ] ./reverse-string_spec.lua @ 4: reverse-string an empty string (0.83 ms)
+[ RUN      ] ./reverse-string_spec.lua @ 8: reverse-string a word
+[       OK ] ./reverse-string_spec.lua @ 8: reverse-string a word (0.29 ms)
+[ RUN      ] ./reverse-string_spec.lua @ 12: reverse-string a capitalized word
+[       OK ] ./reverse-string_spec.lua @ 12: reverse-string a capitalized word (0.65 ms)
+[ RUN      ] ./reverse-string_spec.lua @ 16: reverse-string a sentence with punctuation
+[       OK ] ./reverse-string_spec.lua @ 16: reverse-string a sentence with punctuation (0.38 ms)
+[ RUN      ] ./reverse-string_spec.lua @ 20: reverse-string a palindrome
+[       OK ] ./reverse-string_spec.lua @ 20: reverse-string a palindrome (0.48 ms)
+[----------] 5 tests from ./reverse-string_spec.lua (20.34 ms total)
+
+[----------] Global test environment teardown.
+[==========] 5 tests from 1 test file ran. (21.86 ms total)
+[  PASSED  ] 5 tests.
+
+real	0m0.149s
+user	0m0.116s
+sys	0m0.043s
+
+===============================================================================
+
+Running: luacov .
+
+real	0m0.359s
+user	0m0.308s
+sys	0m0.037s
+
+===============================================================================
+
+Running: luacov-console .
+
+real	0m0.057s
+user	0m0.035s
+sys	0m0.032s
+
+Running: luacov-console --no-colored --summary .
+==============================================================================
+Summary
+==============================================================================
+
+File                      Hits Missed Coverage
+----------------------------------------------
+./reverse-string.lua      1    0      100.00%
+./reverse-string_spec.lua 12   0      100.00%
+----------------------------------------------
+Total                     13   0      100.00%
+
+real	0m0.048s
+user	0m0.031s
+sys	0m0.027s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.087s
+user	0m0.087s
+sys	0m0.057s
+
+===============================================================================
+
+
+===============================================================================
+
