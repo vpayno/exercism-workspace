@@ -10,3 +10,8 @@
 - [for_each](./for_each)
 - [update_readmes](./update_readmes)
 - [run-tests](./run-tests)
+
+
+## Exercises
+
+- [hello-world](./hello-world/README.md)

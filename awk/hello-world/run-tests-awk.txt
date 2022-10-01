@@ -1,0 +1,44 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+awk --lint --file=./hello-world.awk < /dev/null > /dev/null
+
+real	0m0.025s
+user	0m0.009s
+sys	0m0.016s
+
+
+===============================================================================
+
+Running: bats ./test-hello-world.bats
+1..1
+ok 1 Say Hi!
+
+real	0m0.405s
+user	0m0.241s
+sys	0m0.269s
+
+
+===============================================================================
+
+Running: gawk --file ./hello-world_test.awk && printf \n%s\n Tests Passed! || printf \n%s\n Tests Failed!
+Hello, World!
+
+real	0m0.008s
+user	0m0.002s
+sys	0m0.009s
+
+Tests Passed!
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.119s
+user	0m0.114s
+sys	0m0.091s
+
+===============================================================================
+
