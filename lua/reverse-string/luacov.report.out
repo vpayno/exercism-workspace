@@ -29,7 +29,13 @@
 ./reverse-string.lua
 ==============================================================================
   return function(s)
-* 	return string.reverse(s)
+* 	local r = ""
+
+* 	for i = 1, #s do
+* 		r = s:sub(i, i) .. r
+  	end
+
+* 	return r
   end
 
 ==============================================================================
@@ -38,7 +44,7 @@ Summary
 
 File                      Hits Missed Coverage
 ----------------------------------------------
-./reverse-string.lua      1    0      100.00%
+./reverse-string.lua      4    0      100.00%
 ./reverse-string_spec.lua 12   0      100.00%
 ----------------------------------------------
-Total                     13   0      100.00%
+Total                     16   0      100.00%
