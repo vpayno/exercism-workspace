@@ -1,0 +1,15 @@
+#!/bin/bash
+
+declare -i retval=0
+
+for tf in ./*.awk; do
+	if [[ ${tf} =~ _test.awk ]]; then
+		continue
+	fi
+
+	echo awk --lint --file="${tf}" "<" /dev/null ">" /dev/null
+	time awk --lint --file="${tf}" < /dev/null > /dev/null || (( retval++ ))
+	printf "\n"
+done
+
+exit "${retval}"

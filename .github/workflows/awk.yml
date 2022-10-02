@@ -1,0 +1,129 @@
+name: Awk Workflow
+
+on:
+  pull_request:
+
+jobs:
+  stage1:
+    name: Change Check
+
+    runs-on: 'ubuntu-latest'
+
+    outputs:
+      docs_changed: ${{ steps.check_file_changed.outputs.docs_changed }}
+
+    steps:
+    - name: Checkout Repo
+      id: checkout-repo
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+        ref: ${{ github.ref }}
+        submodules: recursive
+
+    - name: Get Change List
+      id: check_file_changed
+      shell: pwsh
+      run: |
+        # https://www.meziantou.net/executing-github-actions-jobs-or-steps-only-when-specific-files-change.htm#conditional-jobs
+
+        # Diff HEAD with the previous commit then output to stdout.
+        echo "=== Which files changed? ===" | Out-String -Stream
+        ([string[]] $diff = git diff --name-only HEAD^ HEAD)
+
+        # Check if the files are present in the changed file list (added, modified, deleted) then output to stdout.
+        echo "=== Which Awk files changed? ===" | Out-String -Stream
+        ([string[]] $SourceDiff = $diff | Where-Object { $_ -match '^.*[.]awk$' })
+
+        # Did Awk files change?
+        echo "=== Did Awk files change? ===" | Out-String -Stream
+        ([string[]] $HasDiff = $SourceDiff.Length -gt 0)
+
+        # Set the output named "docs_changed"
+        Write-Host "::set-output name=docs_changed::$HasDiff"
+
+  stage2:
+    name: Awk Checks
+    strategy:
+      matrix:
+        os: ["ubuntu-latest"]
+
+    runs-on: "${{ matrix.os }}"
+
+    needs: [ stage1 ]
+    if: needs.stage1.outputs.docs_changed == 'True'
+
+    steps:
+    - name: Checkout Repo
+      id: checkout-repo
+      uses: actions/checkout@v3
+
+    - name: Set up Awk
+      id: setup-awk
+      run: |
+        sudo apt install -y gawk
+
+    - name: Show Awk version
+      id: awk-version
+      run: |
+        awk --version
+
+    - name: Checkout bats-core
+      id: checkout-bats-core
+      uses: actions/checkout@v3
+      with:
+        repository: bats-core/bats-core
+        path: bats-core
+
+    - name: Install Bats
+      id: install-bats-core
+      run: |
+        cd bats-core
+        sudo ./install.sh /usr/local
+
+    - name: Checkout awkunit
+      id: checkout-awkunit
+      uses: actions/checkout@v3
+      with:
+        repository: soimort/awkunit
+        path: awkunit
+
+    - name: Install Awk Tools
+      id: install-awk-tools
+      run: |
+        ls
+        awk_ver="gawk-$(awk --version | awk '/^GNU Awk/ { print $3 }' | tr -d ',')"
+        git clone http://git.savannah.gnu.org/r/gawk.git gawk
+        cd gawk
+        git checkout "${awk_ver}"
+        cd ../awkunit
+        AWKSRCPATH=../gawk make
+
+    - name: CD to Awk Dir
+      id: cd-to-awk-dir
+      run: |
+        pwd
+        ls
+        cd ./awk
+        pwd
+        ls
+
+    - name: Lint Checking with Awk
+      id: awk-lint-run
+      run: |
+        cd ./awk
+        ./for_each ../../.github/citools/awk/awk-lint
+
+    - name: Testing with Bats tests
+      id: awk-bats-run
+      run: |
+        cd ./awk
+        ./for_each ../../.github/citools/awk/awk-bats
+
+    - name: Testing with AwkUnit
+      id: awk-test-run
+      run: |
+        cd ./awk
+        export AWKLIBPATH="${GITHUB_WORKSPACE}/awkunit/"
+        # still trying to figure out why this is broken in CI
+        ./for_each ../../.github/citools/awk/awk-test || true

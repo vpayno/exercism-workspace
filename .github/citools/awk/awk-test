@@ -1,0 +1,24 @@
+#!/bin/bash
+
+declare -i retval=0
+
+if [[ -f ${HOME}/.local/gawk/lib/awkunit.so ]]; then
+	export AWKLIBPATH="${HOME}/.local/gawk/lib/"
+else
+	export AWKLIBPATH="${GITHUB_WORKSPACE}/awkunit/"
+fi
+
+printf "AWKLIBPATH=%s\n\n" "${AWKLIBPATH}"
+ls "${AWKLIBPATH}"/
+printf "\n"
+
+# shellcheck disable=SC2028
+echo Running: gawk --file ./*_test.awk "&&" printf "\n%s\n" "Tests Passed!" "||" printf "\n%s\n" "Tests Failed!"
+if time gawk --file ./*_test.awk; then
+	printf "\n%s\n" "Tests Passed!"
+else
+	(( retval++ ))
+	printf "\n%s\n" "Tests Failed!"
+fi
+
+exit "${retval}"

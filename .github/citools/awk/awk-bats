@@ -1,0 +1,11 @@
+#!/bin/bash
+
+declare -i retval=0
+
+for tf in ./*.bats; do
+	echo Running: bats "${tf}"
+	time bats "${tf}" || (( retval++ ))
+	printf "\n"
+done
+
+exit "${retval}"
