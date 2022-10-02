@@ -1,0 +1,50 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+awk --lint --file=./two-fer.awk < /dev/null > /dev/null
+awk: ./two-fer.awk:16: warning: reference to uninitialized field `$0'
+
+real	0m0.017s
+user	0m0.010s
+sys	0m0.006s
+
+
+===============================================================================
+
+Running: bats ./test-two-fer.bats
+1..4
+ok 1 no file given
+ok 2 empty file given
+ok 3 a name given
+ok 4 name with a space
+
+real	0m0.659s
+user	0m0.514s
+sys	0m0.345s
+
+
+===============================================================================
+
+Running: gawk --file ./two-fer_test.awk && printf \n%s\n Tests Passed! || printf \n%s\n Tests Failed!
+
+3 out of 3 tests passed!
+One for you, one for me.
+
+real	0m0.011s
+user	0m0.006s
+sys	0m0.007s
+
+Tests Passed!
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.123s
+user	0m0.172s
+sys	0m0.084s
+
+===============================================================================
+
