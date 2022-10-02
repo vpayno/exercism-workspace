@@ -39,3 +39,10 @@ Here are some examples:
 ### Based on
 
 https://github.com/exercism/problem-specifications/issues/757
+
+
+### My Solution
+
+- [my solution](./two-fer.awk)
+- [awkunit tests](./two-fer_test.awk)
+- [run-tests](./run-tests-awk.txt)
