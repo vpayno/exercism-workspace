@@ -1,0 +1,62 @@
+#!/bin/bash
+
+print_ruler()
+{
+	printf "\n"
+	printf "=%.0s" {1..79}; printf "\n"
+	printf "\n"
+} # print_ruler()
+
+main()
+{
+	printf "Running automated test file(s):\n\n"
+
+	print_ruler
+
+	for tf in ./*.awk; do
+		if [[ ${tf} =~ _test.awk ]]; then
+			continue
+		fi
+
+		echo awk --lint --file="${tf}" "<" /dev/null ">" /dev/null
+		time awk --lint --file="${tf}" < /dev/null > /dev/null
+		printf "\n"
+	done
+
+	print_ruler
+
+	export BATS_RUN_SKIPPED=true
+
+	for tf in ./*.bats; do
+		echo Running: bats "${tf}"
+		time bats "${tf}"
+		printf "\n"
+	done
+
+	print_ruler
+
+	# git clone http://git.savannah.gnu.org/r/gawk.git
+	# cd gawk
+	# git checkout $(awk --version | awk '/^GNU Awk/ { print $3 }' | tr -d ',')
+	# cd ..
+	# git clone https://github.com/soimort/awkunit
+	# cd awkunit
+	# AWKSRCPATH=../gawk make
+	# cp -v awkunit.so ~/.local/gawk/lib/awkunit.so
+	export AWKLIBPATH="${HOME}/.local/gawk/lib/"
+
+	# shellcheck disable=SC2028
+	echo Running: gawk --file ./*_test.awk "&&" printf "\n%s\n" "Tests Passed!" "||" printf "\n%s\n" "Tests Failed!"
+	time gawk --file ./*_test.awk && printf "\n%s\n" "Tests Passed!" || printf "\n%s\n" "Tests Failed!"
+
+	print_ruler
+
+	# go install github.com/client9/misspell/cmd/misspell@latest
+
+	echo Running: misspell .
+	time misspell .
+
+	print_ruler
+} # main()
+
+time main "$@" |& tee ./run-tests-awk.txt
