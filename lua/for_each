@@ -1,5 +1,6 @@
 #!/bin/bash
 
+declare -i retval=0
 declare pkg_name
 declare d
 
@@ -14,9 +15,11 @@ time for d in ./*; do
 	printf "[pkg: %s]\n\n" "${pkg_name}"
 
 	echo "${@}"
-	time "${@}"
+	time "${@}" || (( retval++ ))
 
 	printf "\n"
 
 	cd - || break
 done
+
+exit "${retval}"
