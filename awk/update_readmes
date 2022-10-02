@@ -1,0 +1,47 @@
+#!/bin/bash
+
+if [[ ! -d .exercism ]]; then
+	printf "ERROR: Run from inside a project directory.\n\n"
+	exit 1
+fi
+
+declare package_name
+declare project_dir
+
+get_awk_package_name()
+{
+	awk '/^package / { print $NF }' ./*.awk | head -n 1
+} # get_awk_package_name()
+
+package_name="$(get_awk_package_name)"
+project_dir="$(basename "${PWD}")"
+
+if ! grep -q ./"${project_dir}"/README.md ../README.md; then
+
+cat >> ../README.md <<EOF
+- [${project_dir}](./${project_dir}/README.md)
+EOF
+
+fi
+
+if ! grep -q ./"${package_name}"-doc.md ./README.md; then
+
+	# Two empty spaces because the file is missing a traling new line.
+cat >> ./README.md <<EOF
+
+
+### My Solution
+
+- [my solution]($(printf "%s\n" ./*[.]awk | grep -v "_test[.]awk"))
+- [awkunit tests]($(printf "%s\n" ./*_test[.]awk))
+EOF
+
+cat >> ./README.md <<EOF
+- [run-tests](./run-tests-awk.txt)
+EOF
+
+fi
+
+printf "\n"
+git add ../README.md ./README.md
+git diff --cached ../README.md ./README.md
