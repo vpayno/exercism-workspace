@@ -46,6 +46,7 @@ Exercism Workspace (https://exercism.org/docs/tracks)
 - [Tcl](tcl/README.md)
 - [Lua](lua/README.md)
 - [Vimscript](vimscript/README.md)
+- [Awk](awk/README.md)
 
 
 ## Tools/Scripts
