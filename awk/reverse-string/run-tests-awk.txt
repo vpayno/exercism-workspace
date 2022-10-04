@@ -1,0 +1,107 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+awk --lint --file=./reverse-string.awk < /dev/null > /dev/null
+
+real	0m0.010s
+user	0m0.000s
+sys	0m0.010s
+
+awk --lint --file=./test-cases.awk < /dev/null > /dev/null
+awk: ./test-cases.awk:7: warning: subscript of array `cases' is null string
+
+real	0m0.008s
+user	0m0.009s
+sys	0m0.005s
+
+
+===============================================================================
+
+Running: bats ./test-reverse-string.bats
+1..6
+ok 1 an empty string
+ok 2 a word
+ok 3 a capitalised word
+ok 4 a sentence with punctuation
+ok 5 a palindrome
+ok 6 an even-sized word
+
+real	0m0.856s
+user	0m0.704s
+sys	0m0.439s
+
+
+===============================================================================
+
+Running: gawk --file ./reverse-string_test.awk && printf \n%s\n Tests Passed! || printf \n%s\n Tests Failed!
+
+Running 3 tests...
+
+Test 1:
+     input -> []
+    output -> []
+    result -> passed
+
+Test 2:
+     input -> [12345]
+    output -> [54321]
+    result -> passed
+
+Test 3:
+     input -> [01234 56789]
+    output -> [98765 43210]
+    result -> passed
+
+Running 6 test cases
+
+Test 4:
+     input -> []
+    output -> []
+    result -> passed
+
+Test 5:
+     input -> [robot]
+    output -> [tobor]
+    result -> passed
+
+Test 6:
+     input -> [I'm hungry!]
+    output -> [!yrgnuh m'I]
+    result -> passed
+
+Test 7:
+     input -> [racecar]
+    output -> [racecar]
+    result -> passed
+
+Test 8:
+     input -> [drawer]
+    output -> [reward]
+    result -> passed
+
+Test 9:
+     input -> [Ramen]
+    output -> [nemaR]
+    result -> passed
+
+
+9 out of 9 tests passed!
+
+real	0m0.026s
+user	0m0.012s
+sys	0m0.013s
+
+Tests Passed!
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.176s
+user	0m0.156s
+sys	0m0.064s
+
+===============================================================================
+

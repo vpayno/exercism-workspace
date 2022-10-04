@@ -20,3 +20,11 @@ output: "looc"
 ### Based on
 
 Introductory challenge to reverse an input string - https://medium.freecodecamp.org/how-to-reverse-a-string-in-javascript-in-3-different-ways-75e4763c68cb
+
+
+### My Solution
+
+- [my solution](./reverse-string.awk)
+- [awkunit tests](./reverse-string_test.awk)
+- [test cases](./test-cases.awk)
+- [run-tests](./run-tests-awk.txt)
