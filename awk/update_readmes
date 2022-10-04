@@ -32,8 +32,9 @@ cat >> ./README.md <<EOF
 
 ### My Solution
 
-- [my solution]($(printf "%s\n" ./*[.]awk | grep -v "_test[.]awk"))
+- [my solution]($(printf "%s\n" ./*[.]awk | grep -v -e "test-cases" -e "_test[.]awk"))
 - [awkunit tests]($(printf "%s\n" ./*_test[.]awk))
+- [test cases]($(printf "%s\n" ./test-cases[.]awk))
 EOF
 
 cat >> ./README.md <<EOF
