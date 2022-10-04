@@ -98,6 +98,8 @@ jobs:
         git checkout "${awk_ver}"
         cd ../awkunit
         AWKSRCPATH=../gawk make
+        mkdir -pv ../.lib
+        cp -v awkunit.so ../.lib
 
     - name: CD to Awk Dir
       id: cd-to-awk-dir
@@ -124,6 +126,5 @@ jobs:
       id: awk-test-run
       run: |
         cd ./awk
-        export AWKLIBPATH="${GITHUB_WORKSPACE}/awkunit/"
         # still trying to figure out why this is broken in CI
         ./for_each ../../.github/citools/awk/awk-test || true
