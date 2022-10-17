@@ -100,3 +100,4 @@
 - [pascals-triangle](./pascals-triangle/README.md)
 - [pythagorean-triplet](./pythagorean-triplet/README.md)
 - [simple-linked-list](./simple-linked-list/README.md)
+- [custom-set](./custom-set/README.md)

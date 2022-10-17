@@ -1,0 +1,48 @@
+package stringset // import "stringset"
+
+
+FUNCTIONS
+
+func Disjoint(s1, s2 Set) bool
+    Disjoint returns true when the intersection of two Sets is empty.
+
+func Equal(s1, s2 Set) bool
+    Equal returns true when two Sets are equal and false when they aren't.
+
+func Subset(s1, s2 Set) bool
+    Subset returns true if s2 is a subset of s1.
+
+
+TYPES
+
+type Set map[string]struct{}
+    Define the Set type here.
+
+func Difference(s1, s2 Set) Set
+    Difference returns the difference between two Sets.
+
+func Intersection(s1, s2 Set) Set
+    Intersection returns the common elements between two Sets.
+
+func New() Set
+    New returns a new empty Set.
+
+func NewFromSlice(list []string) Set
+    NewFromSlice returns a new Set populated with the strings from the passed
+    slice.
+
+func Union(s1, s2 Set) Set
+    Union returns a Set composed of both Sets.
+
+func (s Set) Add(elem string)
+    Add inserts an element into the Set.
+
+func (s Set) Has(elem string) bool
+    Has returns true if the string is found in the Set, false if it doesn't.
+
+func (s Set) IsEmpty() bool
+    IsEmpty returns true if the Set is empty, false if it isn't.
+
+func (s Set) String() string
+    String returns the string version of the Set.
+
