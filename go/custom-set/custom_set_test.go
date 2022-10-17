@@ -13,7 +13,7 @@ func TestNew(t *testing.T) {
 	// New must return an empty set.
 	want := "{}"
 	if got := New().String(); got != want {
-		t.Fatalf(`New().String() = %s, want %s.`, got, want)
+		t.Errorf(`New().String() = %s, want %s.`, got, want)
 	}
 }
 
@@ -21,18 +21,18 @@ func TestNewFromSlice(t *testing.T) {
 	// nil slice should give empty set
 	want := "{}"
 	if got := NewFromSlice(nil).String(); got != want {
-		t.Fatalf(`NewFromSlice(nil) = %s, want %s.`, got, want)
+		t.Errorf(`NewFromSlice(nil) = %s, want %s.`, got, want)
 	}
 
 	// slice with one element:
 	want = `{"a"}`
 	if got := NewFromSlice([]string{"a"}).String(); got != want {
-		t.Fatalf(`NewFromSlice([]string{"a"}) = %s, want %s.`, got, want)
+		t.Errorf(`NewFromSlice([]string{"a"}) = %s, want %s.`, got, want)
 	}
 
 	// slice with repeated element:
 	if got := NewFromSlice([]string{"a", "a"}).String(); got != want {
-		t.Fatalf(`NewFromSlice([]string{"a", "a"}) = %s, want %s.`, got, want)
+		t.Errorf(`NewFromSlice([]string{"a", "a"}) = %s, want %s.`, got, want)
 	}
 
 	// slice with two elements:
@@ -40,7 +40,7 @@ func TestNewFromSlice(t *testing.T) {
 	want1 := `{"a", "b"}`
 	want2 := `{"b", "a"}`
 	if got != want1 && got != want2 { // order undefined
-		t.Fatalf(`NewFromSlice([]string{"a", "b"}) = %s, want %s or (%s).`, got, want1, want2)
+		t.Errorf(`NewFromSlice([]string{"a", "b"}) = %s, want %s or (%s).`, got, want1, want2)
 	}
 }
 
@@ -62,7 +62,7 @@ func TestHas(t *testing.T) {
 			s := NewFromSlice(tc.set)
 			got := s.Has(tc.element)
 			if got != tc.want {
-				t.Fatalf("%v Has %q = %t, want %t", s, tc.element, got, tc.want)
+				t.Errorf("%v Has %q = %t, want %t", s, tc.element, got, tc.want)
 			}
 		})
 	}
@@ -101,7 +101,7 @@ func TestAdd(t *testing.T) {
 			s.Add(tc.element)
 			want := NewFromSlice(tc.want)
 			if !Equal(s, want) {
-				t.Fatalf("%v Add %q = %v, want %v", NewFromSlice(tc.set), tc.element, s, want)
+				t.Errorf("%v Add %q = %v, want %v", NewFromSlice(tc.set), tc.element, s, want)
 			}
 		})
 	}
@@ -116,7 +116,7 @@ func testBinOp(name string, f func(Set, Set) Set, cases []binOpCase, t *testing.
 			want := NewFromSlice(tc.want)
 			got := f(s1, s2)
 			if !Equal(got, want) {
-				t.Fatalf("%s(%v, %v) = %v, want %v", name, s1, s2, got, want)
+				t.Errorf("%s(%v, %v) = %v, want %v", name, s1, s2, got, want)
 			}
 		})
 	}

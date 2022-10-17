@@ -1,0 +1,283 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>stringset: Go Coverage Report</title>
+		<style>
+			body {
+				background: black;
+				color: rgb(80, 80, 80);
+			}
+			body, pre, #legend span {
+				font-family: Menlo, monospace;
+				font-weight: bold;
+			}
+			#topbar {
+				background: black;
+				position: fixed;
+				top: 0; left: 0; right: 0;
+				height: 42px;
+				border-bottom: 1px solid rgb(80, 80, 80);
+			}
+			#content {
+				margin-top: 50px;
+			}
+			#nav, #legend {
+				float: left;
+				margin-left: 10px;
+			}
+			#legend {
+				margin-top: 12px;
+			}
+			#nav {
+				margin-top: 10px;
+			}
+			#legend span {
+				margin: 0 5px;
+			}
+			.cov0 { color: rgb(192, 0, 0) }
+.cov1 { color: rgb(128, 128, 128) }
+.cov2 { color: rgb(116, 140, 131) }
+.cov3 { color: rgb(104, 152, 134) }
+.cov4 { color: rgb(92, 164, 137) }
+.cov5 { color: rgb(80, 176, 140) }
+.cov6 { color: rgb(68, 188, 143) }
+.cov7 { color: rgb(56, 200, 146) }
+.cov8 { color: rgb(44, 212, 149) }
+.cov9 { color: rgb(32, 224, 152) }
+.cov10 { color: rgb(20, 236, 155) }
+
+		</style>
+	</head>
+	<body>
+		<div id="topbar">
+			<div id="nav">
+				<select id="files">
+				
+				<option value="file0">stringset/custom_set.go (100.0%)</option>
+				
+				</select>
+			</div>
+			<div id="legend">
+				<span>not tracked</span>
+			
+				<span class="cov0">no coverage</span>
+				<span class="cov1">low coverage</span>
+				<span class="cov2">*</span>
+				<span class="cov3">*</span>
+				<span class="cov4">*</span>
+				<span class="cov5">*</span>
+				<span class="cov6">*</span>
+				<span class="cov7">*</span>
+				<span class="cov8">*</span>
+				<span class="cov9">*</span>
+				<span class="cov10">high coverage</span>
+			
+			</div>
+		</div>
+		<div id="content">
+		
+		<pre class="file" id="file0" style="display: none">package stringset
+
+import (
+        "sort"
+        "strings"
+)
+
+// Set type uses map keys since they have to be unique.
+type Set map[string]struct{}
+
+// New returns a new empty Set.
+func New() Set <span class="cov9" title="133">{
+        return make(Set)
+}</span>
+
+// NewFromSlice returns a new Set populated with the strings from the passed slice.
+func NewFromSlice(list []string) Set <span class="cov8" title="106">{
+        s := New()
+
+        for _, v := range list </span><span class="cov9" title="186">{
+                s.Add(v)
+        }</span>
+
+        <span class="cov8" title="106">return s</span>
+}
+
+// String returns the string version of the Set.
+func (s Set) String() string <span class="cov6" title="30">{
+        if len(s) == 0 </span><span class="cov2" title="3">{
+                return "{}"
+        }</span>
+
+        <span class="cov6" title="27">var sb strings.Builder
+
+        sb.WriteString("{")
+
+        var first = true
+
+        list := []string{}
+
+        for k := range s </span><span class="cov8" title="71">{
+                list = append(list, k)
+        }</span>
+
+        <span class="cov6" title="27">sort.Strings(list)
+
+        for _, v := range list </span><span class="cov8" title="71">{
+                if !first </span><span class="cov7" title="44">{
+                        sb.WriteString(", ")
+                }</span> else<span class="cov6" title="27"> {
+                        first = false
+                }</span>
+
+                <span class="cov8" title="71">sb.WriteString(`"`)
+                sb.WriteString(v)
+                sb.WriteString(`"`)</span>
+        }
+
+        <span class="cov6" title="27">sb.WriteString("}")
+
+        return sb.String()</span>
+}
+
+// IsEmpty returns true if the Set is empty, false if it isn't.
+func (s Set) IsEmpty() bool <span class="cov5" title="11">{
+        return len(s) == 0
+}</span>
+
+// Has returns true if the string is found in the Set, false if it doesn't.
+func (s Set) Has(elem string) bool <span class="cov8" title="80">{
+        _, found := s[elem]
+
+        return found
+}</span>
+
+// Add inserts an element into the Set.
+func (s Set) Add(elem string) <span class="cov10" title="218">{
+        // No need to check if it already exists since map keys are unique.
+        s[elem] = struct{}{}
+}</span>
+
+// Subset returns true if s2 is a subset of s1.
+func Subset(s1, s2 Set) bool <span class="cov4" title="7">{
+        // TestSubset/empty_set_is_a_subset_of_another_empty_set
+        if len(s1) == 0 &amp;&amp; len(s2) == 0 </span><span class="cov1" title="1">{
+                return true
+        }</span>
+
+        // TestSubset/empty_set_is_a_subset_of_non-empty_set
+        <span class="cov3" title="6">if len(s1) == 0 &amp;&amp; len(s2) &gt; 0 </span><span class="cov1" title="1">{
+                return true
+        }</span>
+
+        // TestSubset/non-empty_set_is_not_a_subset_of_empty_set
+        <span class="cov3" title="5">if len(s1) &gt; 0 &amp;&amp; len(s2) == 0 </span><span class="cov1" title="1">{
+                return false
+        }</span>
+
+        <span class="cov3" title="4">for k := range s1 </span><span class="cov5" title="11">{
+                if !s2.Has(k) </span><span class="cov2" title="2">{
+                        return false
+                }</span>
+        }
+
+        <span class="cov2" title="2">return true</span>
+}
+
+// Disjoint returns true when the intersection of two Sets is empty.
+func Disjoint(s1, s2 Set) bool <span class="cov4" title="7">{
+        return Intersection(s1, s2).IsEmpty()
+}</span>
+
+// Equal returns true when two Sets are equal and false when they aren't.
+func Equal(s1, s2 Set) bool <span class="cov6" title="24">{
+        if len(s1) != len(s2) </span><span class="cov2" title="3">{
+                return false
+        }</span>
+
+        <span class="cov6" title="21">for k := range s1 </span><span class="cov6" title="33">{
+                if !s2.Has(k) </span><span class="cov2" title="2">{
+                        return false
+                }</span>
+        }
+
+        <span class="cov5" title="19">return true</span>
+}
+
+// Intersection returns the common elements between two Sets.
+func Intersection(s1, s2 Set) Set <span class="cov5" title="13">{
+        i := New()
+
+        if len(s1) &gt; len(s2) </span><span class="cov2" title="3">{
+                s1, s2 = s2, s1
+        }</span>
+
+        <span class="cov5" title="13">for k := range s1 </span><span class="cov5" title="19">{
+                if s2.Has(k) </span><span class="cov3" title="5">{
+                        i.Add(k)
+                }</span>
+        }
+
+        <span class="cov5" title="13">return i</span>
+}
+
+// Difference returns the difference between two Sets.
+func Difference(s1, s2 Set) Set <span class="cov3" title="5">{
+        d := New()
+
+        for k := range s1 </span><span class="cov4" title="10">{
+                if !s2.Has(k) </span><span class="cov4" title="8">{
+                        d.Add(k)
+                }</span>
+        }
+
+        <span class="cov3" title="5">return d</span>
+}
+
+// Union returns a Set composed of both Sets.
+func Union(s1, s2 Set) Set <span class="cov3" title="5">{
+        u := New()
+
+        for k := range s1 </span><span class="cov4" title="7">{
+                u.Add(k)
+        }</span>
+
+        <span class="cov3" title="5">for k := range s2 </span><span class="cov3" title="6">{
+                u.Add(k)
+        }</span>
+
+        <span class="cov3" title="5">return u</span>
+}
+</pre>
+		
+		</div>
+	</body>
+	<script>
+	(function() {
+		var files = document.getElementById('files');
+		var visible;
+		files.addEventListener('change', onChange, false);
+		function select(part) {
+			if (visible)
+				visible.style.display = 'none';
+			visible = document.getElementById(part);
+			if (!visible)
+				return;
+			files.value = part;
+			visible.style.display = 'block';
+			location.hash = part;
+		}
+		function onChange() {
+			select(files.value);
+			window.scrollTo(0, 0);
+		}
+		if (location.hash != "") {
+			select(location.hash.substr(1));
+		}
+		if (!visible) {
+			select("file0");
+		}
+	})();
+	</script>
+</html>

@@ -29,3 +29,13 @@ unique elements.
 - @sebito91
 - @soniakeys
 - @eklatzer
+
+### My Solution
+
+- [my solution](./custom_set.go)
+- [my examples](./custom_set_examples_test.go)
+- [test cases](./cases_test.go)
+- [tests](./custom_set_test.go)
+- [run-tests](./run-tests-go.txt)
+- [coverage](./coverage.html)
+- [documentation](./stringset-doc.md)

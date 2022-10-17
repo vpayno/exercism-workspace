@@ -1,0 +1,670 @@
+Running automated test file(s):
+
+Go packages: stringset 
+
+
+===============================================================================
+
+golangci-lint run ./...
+
+real	0m10.506s
+user	0m20.868s
+sys	0m4.242s
+
+===============================================================================
+
+golint ./...
+
+real	0m0.078s
+user	0m0.084s
+sys	0m0.055s
+
+===============================================================================
+
+revive -formatter=stylish ./...
+
+real	0m0.048s
+user	0m0.061s
+sys	0m0.023s
+
+===============================================================================
+
+ineffassign ./...
+
+real	0m0.343s
+user	0m0.307s
+sys	0m0.311s
+
+===============================================================================
+
+go-consistent -v ./...
+	info: check "./."
+
+real	0m0.589s
+user	0m0.572s
+sys	0m0.500s
+
+===============================================================================
+
+staticcheck ./...
+
+real	0m0.783s
+user	0m0.934s
+sys	0m0.641s
+
+===============================================================================
+
+gocritic check -enableAll ./...
+./custom_set_examples_test.go:9:2: commentedOutCode: may want to remove commented-out code
+
+real	0m3.147s
+user	0m5.121s
+sys	0m1.454s
+
+===============================================================================
+
+go vet ./...
+
+real	0m0.320s
+user	0m0.414s
+sys	0m0.261s
+
+===============================================================================
+
+go fix ./...
+
+real	0m0.126s
+user	0m0.084s
+sys	0m0.126s
+
+===============================================================================
+
+gocyclo .
+9 stringset Subset custom_set.go:83:1
+6 stringset TestNewFromSlice custom_set_test.go:20:1
+5 stringset (Set).String custom_set.go:28:1
+4 stringset bench custom_set_test.go:142:1
+4 stringset Intersection custom_set.go:129:1
+4 stringset Equal custom_set.go:114:1
+3 stringset testBinOp custom_set_test.go:111:1
+3 stringset TestAdd custom_set_test.go:97:1
+3 stringset testBinBool custom_set_test.go:72:1
+3 stringset TestHas custom_set_test.go:59:1
+3 stringset TestIsEmpty custom_set_test.go:47:1
+3 stringset Union custom_set.go:159:1
+3 stringset Difference custom_set.go:146:1
+2 stringset TestNew custom_set_test.go:12:1
+2 stringset NewFromSlice custom_set.go:17:1
+1 stringset BenchmarkNewFromSlice1e4 custom_set_test.go:140:1
+1 stringset BenchmarkNewFromSlice1e3 custom_set_test.go:139:1
+1 stringset BenchmarkNewFromSlice1e2 custom_set_test.go:138:1
+1 stringset BenchmarkNewFromSlice1e1 custom_set_test.go:137:1
+1 stringset TestUnion custom_set_test.go:133:1
+1 stringset TestDifference custom_set_test.go:129:1
+1 stringset TestIntersection custom_set_test.go:125:1
+1 stringset TestEqual custom_set_test.go:93:1
+1 stringset TestDisjoint custom_set_test.go:89:1
+1 stringset TestSubset custom_set_test.go:85:1
+1 stringset ExampleUnion custom_set_examples_test.go:139:1
+1 stringset ExampleDifference custom_set_examples_test.go:128:1
+1 stringset ExampleIntersection custom_set_examples_test.go:117:1
+1 stringset ExampleEqual custom_set_examples_test.go:99:1
+1 stringset ExampleDisjoint custom_set_examples_test.go:80:1
+1 stringset ExampleSubset custom_set_examples_test.go:69:1
+1 stringset ExampleSet_Has custom_set_examples_test.go:54:1
+1 stringset ExampleSet_Add custom_set_examples_test.go:37:1
+1 stringset ExampleSet_IsEmpty custom_set_examples_test.go:24:1
+1 stringset ExampleNewFromSlice custom_set_examples_test.go:13:1
+1 stringset ExampleNew custom_set_examples_test.go:5:1
+1 stringset Disjoint custom_set.go:109:1
+1 stringset (Set).Add custom_set.go:77:1
+1 stringset (Set).Has custom_set.go:70:1
+1 stringset (Set).IsEmpty custom_set.go:65:1
+1 stringset New custom_set.go:12:1
+
+real	0m0.020s
+user	0m0.005s
+sys	0m0.012s
+
+===============================================================================
+
+misspell .
+
+real	0m0.107s
+user	0m0.123s
+sys	0m0.043s
+
+===============================================================================
+
+gosec ./...
+[gosec] 2022/10/16 20:49:10 Including rules: default
+[gosec] 2022/10/16 20:49:10 Excluding rules: default
+[gosec] 2022/10/16 20:49:10 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/custom-set
+2022/10/16 20:49:11 internal error: package "sort" without types was imported from "command-line-arguments"
+
+real	0m0.512s
+user	0m0.522s
+sys	0m0.340s
+
+===============================================================================
+
+gotest -v -covermode=count -coverprofile coverage.out ./...
+=== RUN   TestNew
+--- PASS: TestNew (0.00s)
+=== RUN   TestNewFromSlice
+--- PASS: TestNewFromSlice (0.00s)
+=== RUN   TestIsEmpty
+=== RUN   TestIsEmpty/sets_with_no_elements_are_empty
+=== RUN   TestIsEmpty/sets_with_elements_are_not_empty
+--- PASS: TestIsEmpty (0.00s)
+    --- PASS: TestIsEmpty/sets_with_no_elements_are_empty (0.00s)
+    --- PASS: TestIsEmpty/sets_with_elements_are_not_empty (0.00s)
+=== RUN   TestHas
+=== RUN   TestHas/nothing_is_contained_in_an_empty_set
+=== RUN   TestHas/when_the_element_is_in_the_set
+=== RUN   TestHas/when_the_element_is_not_in_the_set
+--- PASS: TestHas (0.00s)
+    --- PASS: TestHas/nothing_is_contained_in_an_empty_set (0.00s)
+    --- PASS: TestHas/when_the_element_is_in_the_set (0.00s)
+    --- PASS: TestHas/when_the_element_is_not_in_the_set (0.00s)
+=== RUN   TestSubset
+=== RUN   TestSubset/empty_set_is_a_subset_of_another_empty_set
+=== RUN   TestSubset/empty_set_is_a_subset_of_non-empty_set
+=== RUN   TestSubset/non-empty_set_is_not_a_subset_of_empty_set
+=== RUN   TestSubset/set_is_a_subset_of_set_with_exact_same_elements
+=== RUN   TestSubset/set_is_a_subset_of_larger_set_with_same_elements
+=== RUN   TestSubset/set_is_not_a_subset_of_set_that_does_not_contain_its_elements
+--- PASS: TestSubset (0.00s)
+    --- PASS: TestSubset/empty_set_is_a_subset_of_another_empty_set (0.00s)
+    --- PASS: TestSubset/empty_set_is_a_subset_of_non-empty_set (0.00s)
+    --- PASS: TestSubset/non-empty_set_is_not_a_subset_of_empty_set (0.00s)
+    --- PASS: TestSubset/set_is_a_subset_of_set_with_exact_same_elements (0.00s)
+    --- PASS: TestSubset/set_is_a_subset_of_larger_set_with_same_elements (0.00s)
+    --- PASS: TestSubset/set_is_not_a_subset_of_set_that_does_not_contain_its_elements (0.00s)
+=== RUN   TestDisjoint
+=== RUN   TestDisjoint/the_empty_set_is_disjoint_with_itself
+=== RUN   TestDisjoint/empty_set_is_disjoint_with_non-empty_set
+=== RUN   TestDisjoint/non-empty_set_is_disjoint_with_empty_set
+=== RUN   TestDisjoint/sets_are_not_disjoint_if_they_share_an_element
+=== RUN   TestDisjoint/sets_are_disjoint_if_they_share_no_elements
+--- PASS: TestDisjoint (0.00s)
+    --- PASS: TestDisjoint/the_empty_set_is_disjoint_with_itself (0.00s)
+    --- PASS: TestDisjoint/empty_set_is_disjoint_with_non-empty_set (0.00s)
+    --- PASS: TestDisjoint/non-empty_set_is_disjoint_with_empty_set (0.00s)
+    --- PASS: TestDisjoint/sets_are_not_disjoint_if_they_share_an_element (0.00s)
+    --- PASS: TestDisjoint/sets_are_disjoint_if_they_share_no_elements (0.00s)
+=== RUN   TestEqual
+=== RUN   TestEqual/empty_sets_are_equal
+=== RUN   TestEqual/empty_set_is_not_equal_to_non-empty_set
+=== RUN   TestEqual/non-empty_set_is_not_equal_to_empty_set
+=== RUN   TestEqual/sets_with_the_same_elements_are_equal
+=== RUN   TestEqual/sets_with_different_elements_are_not_equal
+=== RUN   TestEqual/set_is_not_equal_to_larger_set_with_same_elements
+--- PASS: TestEqual (0.00s)
+    --- PASS: TestEqual/empty_sets_are_equal (0.00s)
+    --- PASS: TestEqual/empty_set_is_not_equal_to_non-empty_set (0.00s)
+    --- PASS: TestEqual/non-empty_set_is_not_equal_to_empty_set (0.00s)
+    --- PASS: TestEqual/sets_with_the_same_elements_are_equal (0.00s)
+    --- PASS: TestEqual/sets_with_different_elements_are_not_equal (0.00s)
+    --- PASS: TestEqual/set_is_not_equal_to_larger_set_with_same_elements (0.00s)
+=== RUN   TestAdd
+=== RUN   TestAdd/add_to_empty_set
+=== RUN   TestAdd/add_to_non-empty_set
+=== RUN   TestAdd/adding_an_existing_element_does_not_change_the_set
+--- PASS: TestAdd (0.00s)
+    --- PASS: TestAdd/add_to_empty_set (0.00s)
+    --- PASS: TestAdd/add_to_non-empty_set (0.00s)
+    --- PASS: TestAdd/adding_an_existing_element_does_not_change_the_set (0.00s)
+=== RUN   TestIntersection
+=== RUN   TestIntersection/intersection_of_two_empty_sets_is_an_empty_set
+=== RUN   TestIntersection/intersection_of_an_empty_set_and_non-empty_set_is_an_empty_set
+=== RUN   TestIntersection/intersection_of_a_non-empty_set_and_an_empty_set_is_an_empty_set
+=== RUN   TestIntersection/intersection_of_two_sets_with_no_shared_elements_is_an_empty_set
+=== RUN   TestIntersection/intersection_of_two_sets_with_shared_elements_is_a_set_of_the_shared_elements
+--- PASS: TestIntersection (0.00s)
+    --- PASS: TestIntersection/intersection_of_two_empty_sets_is_an_empty_set (0.00s)
+    --- PASS: TestIntersection/intersection_of_an_empty_set_and_non-empty_set_is_an_empty_set (0.00s)
+    --- PASS: TestIntersection/intersection_of_a_non-empty_set_and_an_empty_set_is_an_empty_set (0.00s)
+    --- PASS: TestIntersection/intersection_of_two_sets_with_no_shared_elements_is_an_empty_set (0.00s)
+    --- PASS: TestIntersection/intersection_of_two_sets_with_shared_elements_is_a_set_of_the_shared_elements (0.00s)
+=== RUN   TestDifference
+=== RUN   TestDifference/difference_of_two_empty_sets_is_an_empty_set
+=== RUN   TestDifference/difference_of_empty_set_and_non-empty_set_is_an_empty_set
+=== RUN   TestDifference/difference_of_a_non-empty_set_and_an_empty_set_is_the_non-empty_set
+=== RUN   TestDifference/difference_of_two_non-empty_sets_is_a_set_of_elements_that_are_only_in_the_first_set
+--- PASS: TestDifference (0.00s)
+    --- PASS: TestDifference/difference_of_two_empty_sets_is_an_empty_set (0.00s)
+    --- PASS: TestDifference/difference_of_empty_set_and_non-empty_set_is_an_empty_set (0.00s)
+    --- PASS: TestDifference/difference_of_a_non-empty_set_and_an_empty_set_is_the_non-empty_set (0.00s)
+    --- PASS: TestDifference/difference_of_two_non-empty_sets_is_a_set_of_elements_that_are_only_in_the_first_set (0.00s)
+=== RUN   TestUnion
+=== RUN   TestUnion/union_of_empty_sets_is_an_empty_set
+=== RUN   TestUnion/union_of_an_empty_set_and_non-empty_set_is_the_non-empty_set
+=== RUN   TestUnion/union_of_a_non-empty_set_and_empty_set_is_the_non-empty_set
+=== RUN   TestUnion/union_of_non-empty_sets_contains_all_unique_elements
+--- PASS: TestUnion (0.00s)
+    --- PASS: TestUnion/union_of_empty_sets_is_an_empty_set (0.00s)
+    --- PASS: TestUnion/union_of_an_empty_set_and_non-empty_set_is_the_non-empty_set (0.00s)
+    --- PASS: TestUnion/union_of_a_non-empty_set_and_empty_set_is_the_non-empty_set (0.00s)
+    --- PASS: TestUnion/union_of_non-empty_sets_contains_all_unique_elements (0.00s)
+=== RUN   ExampleNew
+--- PASS: ExampleNew (0.00s)
+=== RUN   ExampleNewFromSlice
+--- PASS: ExampleNewFromSlice (0.00s)
+=== RUN   ExampleSet_IsEmpty
+--- PASS: ExampleSet_IsEmpty (0.00s)
+=== RUN   ExampleSet_Add
+--- PASS: ExampleSet_Add (0.00s)
+=== RUN   ExampleSet_Has
+--- PASS: ExampleSet_Has (0.00s)
+=== RUN   ExampleSubset
+--- PASS: ExampleSubset (0.00s)
+=== RUN   ExampleDisjoint
+--- PASS: ExampleDisjoint (0.00s)
+=== RUN   ExampleEqual
+--- PASS: ExampleEqual (0.00s)
+=== RUN   ExampleIntersection
+--- PASS: ExampleIntersection (0.00s)
+=== RUN   ExampleDifference
+--- PASS: ExampleDifference (0.00s)
+=== RUN   ExampleUnion
+--- PASS: ExampleUnion (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	stringset	0.018s	coverage: 100.0% of statements
+
+real	0m1.050s
+user	0m1.347s
+sys	0m0.737s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+stringset/custom_set.go:12:	New		100.0%
+stringset/custom_set.go:17:	NewFromSlice	100.0%
+stringset/custom_set.go:28:	String		100.0%
+stringset/custom_set.go:65:	IsEmpty		100.0%
+stringset/custom_set.go:70:	Has		100.0%
+stringset/custom_set.go:77:	Add		100.0%
+stringset/custom_set.go:83:	Subset		100.0%
+stringset/custom_set.go:109:	Disjoint	100.0%
+stringset/custom_set.go:114:	Equal		100.0%
+stringset/custom_set.go:129:	Intersection	100.0%
+stringset/custom_set.go:146:	Difference	100.0%
+stringset/custom_set.go:159:	Union		100.0%
+total:				(statements)	100.0%
+
+real	0m0.276s
+user	0m0.141s
+sys	0m0.277s
+
+===============================================================================
+
+go tool cover -html coverage.out -o coverage.html
+
+real	0m0.221s
+user	0m0.127s
+sys	0m0.202s
+
+===============================================================================
+
+gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+real	0m0.127s
+user	0m0.104s
+sys	0m0.099s
+
+===============================================================================
+
+gotest -v -race -covermode=atomic ./...
+=== RUN   TestNew
+--- PASS: TestNew (0.00s)
+=== RUN   TestNewFromSlice
+--- PASS: TestNewFromSlice (0.00s)
+=== RUN   TestIsEmpty
+=== RUN   TestIsEmpty/sets_with_no_elements_are_empty
+=== RUN   TestIsEmpty/sets_with_elements_are_not_empty
+--- PASS: TestIsEmpty (0.00s)
+    --- PASS: TestIsEmpty/sets_with_no_elements_are_empty (0.00s)
+    --- PASS: TestIsEmpty/sets_with_elements_are_not_empty (0.00s)
+=== RUN   TestHas
+=== RUN   TestHas/nothing_is_contained_in_an_empty_set
+=== RUN   TestHas/when_the_element_is_in_the_set
+=== RUN   TestHas/when_the_element_is_not_in_the_set
+--- PASS: TestHas (0.00s)
+    --- PASS: TestHas/nothing_is_contained_in_an_empty_set (0.00s)
+    --- PASS: TestHas/when_the_element_is_in_the_set (0.00s)
+    --- PASS: TestHas/when_the_element_is_not_in_the_set (0.00s)
+=== RUN   TestSubset
+=== RUN   TestSubset/empty_set_is_a_subset_of_another_empty_set
+=== RUN   TestSubset/empty_set_is_a_subset_of_non-empty_set
+=== RUN   TestSubset/non-empty_set_is_not_a_subset_of_empty_set
+=== RUN   TestSubset/set_is_a_subset_of_set_with_exact_same_elements
+=== RUN   TestSubset/set_is_a_subset_of_larger_set_with_same_elements
+=== RUN   TestSubset/set_is_not_a_subset_of_set_that_does_not_contain_its_elements
+--- PASS: TestSubset (0.00s)
+    --- PASS: TestSubset/empty_set_is_a_subset_of_another_empty_set (0.00s)
+    --- PASS: TestSubset/empty_set_is_a_subset_of_non-empty_set (0.00s)
+    --- PASS: TestSubset/non-empty_set_is_not_a_subset_of_empty_set (0.00s)
+    --- PASS: TestSubset/set_is_a_subset_of_set_with_exact_same_elements (0.00s)
+    --- PASS: TestSubset/set_is_a_subset_of_larger_set_with_same_elements (0.00s)
+    --- PASS: TestSubset/set_is_not_a_subset_of_set_that_does_not_contain_its_elements (0.00s)
+=== RUN   TestDisjoint
+=== RUN   TestDisjoint/the_empty_set_is_disjoint_with_itself
+=== RUN   TestDisjoint/empty_set_is_disjoint_with_non-empty_set
+=== RUN   TestDisjoint/non-empty_set_is_disjoint_with_empty_set
+=== RUN   TestDisjoint/sets_are_not_disjoint_if_they_share_an_element
+=== RUN   TestDisjoint/sets_are_disjoint_if_they_share_no_elements
+--- PASS: TestDisjoint (0.00s)
+    --- PASS: TestDisjoint/the_empty_set_is_disjoint_with_itself (0.00s)
+    --- PASS: TestDisjoint/empty_set_is_disjoint_with_non-empty_set (0.00s)
+    --- PASS: TestDisjoint/non-empty_set_is_disjoint_with_empty_set (0.00s)
+    --- PASS: TestDisjoint/sets_are_not_disjoint_if_they_share_an_element (0.00s)
+    --- PASS: TestDisjoint/sets_are_disjoint_if_they_share_no_elements (0.00s)
+=== RUN   TestEqual
+=== RUN   TestEqual/empty_sets_are_equal
+=== RUN   TestEqual/empty_set_is_not_equal_to_non-empty_set
+=== RUN   TestEqual/non-empty_set_is_not_equal_to_empty_set
+=== RUN   TestEqual/sets_with_the_same_elements_are_equal
+=== RUN   TestEqual/sets_with_different_elements_are_not_equal
+=== RUN   TestEqual/set_is_not_equal_to_larger_set_with_same_elements
+--- PASS: TestEqual (0.00s)
+    --- PASS: TestEqual/empty_sets_are_equal (0.00s)
+    --- PASS: TestEqual/empty_set_is_not_equal_to_non-empty_set (0.00s)
+    --- PASS: TestEqual/non-empty_set_is_not_equal_to_empty_set (0.00s)
+    --- PASS: TestEqual/sets_with_the_same_elements_are_equal (0.00s)
+    --- PASS: TestEqual/sets_with_different_elements_are_not_equal (0.00s)
+    --- PASS: TestEqual/set_is_not_equal_to_larger_set_with_same_elements (0.00s)
+=== RUN   TestAdd
+=== RUN   TestAdd/add_to_empty_set
+=== RUN   TestAdd/add_to_non-empty_set
+=== RUN   TestAdd/adding_an_existing_element_does_not_change_the_set
+--- PASS: TestAdd (0.00s)
+    --- PASS: TestAdd/add_to_empty_set (0.00s)
+    --- PASS: TestAdd/add_to_non-empty_set (0.00s)
+    --- PASS: TestAdd/adding_an_existing_element_does_not_change_the_set (0.00s)
+=== RUN   TestIntersection
+=== RUN   TestIntersection/intersection_of_two_empty_sets_is_an_empty_set
+=== RUN   TestIntersection/intersection_of_an_empty_set_and_non-empty_set_is_an_empty_set
+=== RUN   TestIntersection/intersection_of_a_non-empty_set_and_an_empty_set_is_an_empty_set
+=== RUN   TestIntersection/intersection_of_two_sets_with_no_shared_elements_is_an_empty_set
+=== RUN   TestIntersection/intersection_of_two_sets_with_shared_elements_is_a_set_of_the_shared_elements
+--- PASS: TestIntersection (0.00s)
+    --- PASS: TestIntersection/intersection_of_two_empty_sets_is_an_empty_set (0.00s)
+    --- PASS: TestIntersection/intersection_of_an_empty_set_and_non-empty_set_is_an_empty_set (0.00s)
+    --- PASS: TestIntersection/intersection_of_a_non-empty_set_and_an_empty_set_is_an_empty_set (0.00s)
+    --- PASS: TestIntersection/intersection_of_two_sets_with_no_shared_elements_is_an_empty_set (0.00s)
+    --- PASS: TestIntersection/intersection_of_two_sets_with_shared_elements_is_a_set_of_the_shared_elements (0.00s)
+=== RUN   TestDifference
+=== RUN   TestDifference/difference_of_two_empty_sets_is_an_empty_set
+=== RUN   TestDifference/difference_of_empty_set_and_non-empty_set_is_an_empty_set
+=== RUN   TestDifference/difference_of_a_non-empty_set_and_an_empty_set_is_the_non-empty_set
+=== RUN   TestDifference/difference_of_two_non-empty_sets_is_a_set_of_elements_that_are_only_in_the_first_set
+--- PASS: TestDifference (0.00s)
+    --- PASS: TestDifference/difference_of_two_empty_sets_is_an_empty_set (0.00s)
+    --- PASS: TestDifference/difference_of_empty_set_and_non-empty_set_is_an_empty_set (0.00s)
+    --- PASS: TestDifference/difference_of_a_non-empty_set_and_an_empty_set_is_the_non-empty_set (0.00s)
+    --- PASS: TestDifference/difference_of_two_non-empty_sets_is_a_set_of_elements_that_are_only_in_the_first_set (0.00s)
+=== RUN   TestUnion
+=== RUN   TestUnion/union_of_empty_sets_is_an_empty_set
+=== RUN   TestUnion/union_of_an_empty_set_and_non-empty_set_is_the_non-empty_set
+=== RUN   TestUnion/union_of_a_non-empty_set_and_empty_set_is_the_non-empty_set
+=== RUN   TestUnion/union_of_non-empty_sets_contains_all_unique_elements
+--- PASS: TestUnion (0.00s)
+    --- PASS: TestUnion/union_of_empty_sets_is_an_empty_set (0.00s)
+    --- PASS: TestUnion/union_of_an_empty_set_and_non-empty_set_is_the_non-empty_set (0.00s)
+    --- PASS: TestUnion/union_of_a_non-empty_set_and_empty_set_is_the_non-empty_set (0.00s)
+    --- PASS: TestUnion/union_of_non-empty_sets_contains_all_unique_elements (0.00s)
+=== RUN   ExampleNew
+--- PASS: ExampleNew (0.00s)
+=== RUN   ExampleNewFromSlice
+--- PASS: ExampleNewFromSlice (0.00s)
+=== RUN   ExampleSet_IsEmpty
+--- PASS: ExampleSet_IsEmpty (0.00s)
+=== RUN   ExampleSet_Add
+--- PASS: ExampleSet_Add (0.00s)
+=== RUN   ExampleSet_Has
+--- PASS: ExampleSet_Has (0.00s)
+=== RUN   ExampleSubset
+--- PASS: ExampleSubset (0.00s)
+=== RUN   ExampleDisjoint
+--- PASS: ExampleDisjoint (0.00s)
+=== RUN   ExampleEqual
+--- PASS: ExampleEqual (0.00s)
+=== RUN   ExampleIntersection
+--- PASS: ExampleIntersection (0.00s)
+=== RUN   ExampleDifference
+--- PASS: ExampleDifference (0.00s)
+=== RUN   ExampleUnion
+--- PASS: ExampleUnion (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	stringset	0.063s	coverage: 100.0% of statements
+
+real	0m1.092s
+user	0m1.125s
+sys	0m0.595s
+
+===============================================================================
+
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+goos: linux
+goarch: amd64
+pkg: stringset
+cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+BenchmarkNewFromSlice1e1
+BenchmarkNewFromSlice1e1-4   	 4052859	       298.9 ns/op	       0 B/op	       0 allocs/op
+BenchmarkNewFromSlice1e2
+BenchmarkNewFromSlice1e2-4   	   57602	     24311 ns/op	    5096 B/op	       7 allocs/op
+BenchmarkNewFromSlice1e3
+BenchmarkNewFromSlice1e3-4   	    4417	    243157 ns/op	   42533 B/op	      19 allocs/op
+BenchmarkNewFromSlice1e4
+BenchmarkNewFromSlice1e4-4   	     667	   2096502 ns/op	  351308 B/op	     176 allocs/op
+PASS
+ok  	stringset	6.011s
+
+real	0m6.579s
+user	0m9.115s
+sys	0m1.017s
+
+===============================================================================
+
+gotest -v -tags bonus
+=== RUN   TestNew
+--- PASS: TestNew (0.00s)
+=== RUN   TestNewFromSlice
+--- PASS: TestNewFromSlice (0.00s)
+=== RUN   TestIsEmpty
+=== RUN   TestIsEmpty/sets_with_no_elements_are_empty
+=== RUN   TestIsEmpty/sets_with_elements_are_not_empty
+--- PASS: TestIsEmpty (0.00s)
+    --- PASS: TestIsEmpty/sets_with_no_elements_are_empty (0.00s)
+    --- PASS: TestIsEmpty/sets_with_elements_are_not_empty (0.00s)
+=== RUN   TestHas
+=== RUN   TestHas/nothing_is_contained_in_an_empty_set
+=== RUN   TestHas/when_the_element_is_in_the_set
+=== RUN   TestHas/when_the_element_is_not_in_the_set
+--- PASS: TestHas (0.00s)
+    --- PASS: TestHas/nothing_is_contained_in_an_empty_set (0.00s)
+    --- PASS: TestHas/when_the_element_is_in_the_set (0.00s)
+    --- PASS: TestHas/when_the_element_is_not_in_the_set (0.00s)
+=== RUN   TestSubset
+=== RUN   TestSubset/empty_set_is_a_subset_of_another_empty_set
+=== RUN   TestSubset/empty_set_is_a_subset_of_non-empty_set
+=== RUN   TestSubset/non-empty_set_is_not_a_subset_of_empty_set
+=== RUN   TestSubset/set_is_a_subset_of_set_with_exact_same_elements
+=== RUN   TestSubset/set_is_a_subset_of_larger_set_with_same_elements
+=== RUN   TestSubset/set_is_not_a_subset_of_set_that_does_not_contain_its_elements
+--- PASS: TestSubset (0.00s)
+    --- PASS: TestSubset/empty_set_is_a_subset_of_another_empty_set (0.00s)
+    --- PASS: TestSubset/empty_set_is_a_subset_of_non-empty_set (0.00s)
+    --- PASS: TestSubset/non-empty_set_is_not_a_subset_of_empty_set (0.00s)
+    --- PASS: TestSubset/set_is_a_subset_of_set_with_exact_same_elements (0.00s)
+    --- PASS: TestSubset/set_is_a_subset_of_larger_set_with_same_elements (0.00s)
+    --- PASS: TestSubset/set_is_not_a_subset_of_set_that_does_not_contain_its_elements (0.00s)
+=== RUN   TestDisjoint
+=== RUN   TestDisjoint/the_empty_set_is_disjoint_with_itself
+=== RUN   TestDisjoint/empty_set_is_disjoint_with_non-empty_set
+=== RUN   TestDisjoint/non-empty_set_is_disjoint_with_empty_set
+=== RUN   TestDisjoint/sets_are_not_disjoint_if_they_share_an_element
+=== RUN   TestDisjoint/sets_are_disjoint_if_they_share_no_elements
+--- PASS: TestDisjoint (0.00s)
+    --- PASS: TestDisjoint/the_empty_set_is_disjoint_with_itself (0.00s)
+    --- PASS: TestDisjoint/empty_set_is_disjoint_with_non-empty_set (0.00s)
+    --- PASS: TestDisjoint/non-empty_set_is_disjoint_with_empty_set (0.00s)
+    --- PASS: TestDisjoint/sets_are_not_disjoint_if_they_share_an_element (0.00s)
+    --- PASS: TestDisjoint/sets_are_disjoint_if_they_share_no_elements (0.00s)
+=== RUN   TestEqual
+=== RUN   TestEqual/empty_sets_are_equal
+=== RUN   TestEqual/empty_set_is_not_equal_to_non-empty_set
+=== RUN   TestEqual/non-empty_set_is_not_equal_to_empty_set
+=== RUN   TestEqual/sets_with_the_same_elements_are_equal
+=== RUN   TestEqual/sets_with_different_elements_are_not_equal
+=== RUN   TestEqual/set_is_not_equal_to_larger_set_with_same_elements
+--- PASS: TestEqual (0.00s)
+    --- PASS: TestEqual/empty_sets_are_equal (0.00s)
+    --- PASS: TestEqual/empty_set_is_not_equal_to_non-empty_set (0.00s)
+    --- PASS: TestEqual/non-empty_set_is_not_equal_to_empty_set (0.00s)
+    --- PASS: TestEqual/sets_with_the_same_elements_are_equal (0.00s)
+    --- PASS: TestEqual/sets_with_different_elements_are_not_equal (0.00s)
+    --- PASS: TestEqual/set_is_not_equal_to_larger_set_with_same_elements (0.00s)
+=== RUN   TestAdd
+=== RUN   TestAdd/add_to_empty_set
+=== RUN   TestAdd/add_to_non-empty_set
+=== RUN   TestAdd/adding_an_existing_element_does_not_change_the_set
+--- PASS: TestAdd (0.00s)
+    --- PASS: TestAdd/add_to_empty_set (0.00s)
+    --- PASS: TestAdd/add_to_non-empty_set (0.00s)
+    --- PASS: TestAdd/adding_an_existing_element_does_not_change_the_set (0.00s)
+=== RUN   TestIntersection
+=== RUN   TestIntersection/intersection_of_two_empty_sets_is_an_empty_set
+=== RUN   TestIntersection/intersection_of_an_empty_set_and_non-empty_set_is_an_empty_set
+=== RUN   TestIntersection/intersection_of_a_non-empty_set_and_an_empty_set_is_an_empty_set
+=== RUN   TestIntersection/intersection_of_two_sets_with_no_shared_elements_is_an_empty_set
+=== RUN   TestIntersection/intersection_of_two_sets_with_shared_elements_is_a_set_of_the_shared_elements
+--- PASS: TestIntersection (0.00s)
+    --- PASS: TestIntersection/intersection_of_two_empty_sets_is_an_empty_set (0.00s)
+    --- PASS: TestIntersection/intersection_of_an_empty_set_and_non-empty_set_is_an_empty_set (0.00s)
+    --- PASS: TestIntersection/intersection_of_a_non-empty_set_and_an_empty_set_is_an_empty_set (0.00s)
+    --- PASS: TestIntersection/intersection_of_two_sets_with_no_shared_elements_is_an_empty_set (0.00s)
+    --- PASS: TestIntersection/intersection_of_two_sets_with_shared_elements_is_a_set_of_the_shared_elements (0.00s)
+=== RUN   TestDifference
+=== RUN   TestDifference/difference_of_two_empty_sets_is_an_empty_set
+=== RUN   TestDifference/difference_of_empty_set_and_non-empty_set_is_an_empty_set
+=== RUN   TestDifference/difference_of_a_non-empty_set_and_an_empty_set_is_the_non-empty_set
+=== RUN   TestDifference/difference_of_two_non-empty_sets_is_a_set_of_elements_that_are_only_in_the_first_set
+--- PASS: TestDifference (0.00s)
+    --- PASS: TestDifference/difference_of_two_empty_sets_is_an_empty_set (0.00s)
+    --- PASS: TestDifference/difference_of_empty_set_and_non-empty_set_is_an_empty_set (0.00s)
+    --- PASS: TestDifference/difference_of_a_non-empty_set_and_an_empty_set_is_the_non-empty_set (0.00s)
+    --- PASS: TestDifference/difference_of_two_non-empty_sets_is_a_set_of_elements_that_are_only_in_the_first_set (0.00s)
+=== RUN   TestUnion
+=== RUN   TestUnion/union_of_empty_sets_is_an_empty_set
+=== RUN   TestUnion/union_of_an_empty_set_and_non-empty_set_is_the_non-empty_set
+=== RUN   TestUnion/union_of_a_non-empty_set_and_empty_set_is_the_non-empty_set
+=== RUN   TestUnion/union_of_non-empty_sets_contains_all_unique_elements
+--- PASS: TestUnion (0.00s)
+    --- PASS: TestUnion/union_of_empty_sets_is_an_empty_set (0.00s)
+    --- PASS: TestUnion/union_of_an_empty_set_and_non-empty_set_is_the_non-empty_set (0.00s)
+    --- PASS: TestUnion/union_of_a_non-empty_set_and_empty_set_is_the_non-empty_set (0.00s)
+    --- PASS: TestUnion/union_of_non-empty_sets_contains_all_unique_elements (0.00s)
+=== RUN   ExampleNew
+--- PASS: ExampleNew (0.00s)
+=== RUN   ExampleNewFromSlice
+--- PASS: ExampleNewFromSlice (0.00s)
+=== RUN   ExampleSet_IsEmpty
+--- PASS: ExampleSet_IsEmpty (0.00s)
+=== RUN   ExampleSet_Add
+--- PASS: ExampleSet_Add (0.00s)
+=== RUN   ExampleSet_Has
+--- PASS: ExampleSet_Has (0.00s)
+=== RUN   ExampleSubset
+--- PASS: ExampleSubset (0.00s)
+=== RUN   ExampleDisjoint
+--- PASS: ExampleDisjoint (0.00s)
+=== RUN   ExampleEqual
+--- PASS: ExampleEqual (0.00s)
+=== RUN   ExampleIntersection
+--- PASS: ExampleIntersection (0.00s)
+=== RUN   ExampleDifference
+--- PASS: ExampleDifference (0.00s)
+=== RUN   ExampleUnion
+--- PASS: ExampleUnion (0.00s)
+PASS
+ok  	stringset	0.007s
+
+real	0m0.556s
+user	0m0.656s
+sys	0m0.396s
+
+===============================================================================
+
+No old benchmarks to run benchstat against.
+
+===============================================================================
+
+gomarkdoc --output stringset-doc.md
+
+real	0m0.034s
+user	0m0.020s
+sys	0m0.023s
+
+===============================================================================
+
+go doc -all stringset
+package stringset // import "stringset"
+
+
+FUNCTIONS
+
+func Disjoint(s1, s2 Set) bool
+    Disjoint returns true when the intersection of two Sets is empty.
+
+func Equal(s1, s2 Set) bool
+    Equal returns true when two Sets are equal and false when they aren't.
+
+func Subset(s1, s2 Set) bool
+    Subset returns true if s2 is a subset of s1.
+
+
+TYPES
+
+type Set map[string]struct{}
+    Set type uses map keys since they have to be unique.
+
+func Difference(s1, s2 Set) Set
+    Difference returns the difference between two Sets.
+
+func Intersection(s1, s2 Set) Set
+    Intersection returns the common elements between two Sets.
+
+func New() Set
+    New returns a new empty Set.
+
+func NewFromSlice(list []string) Set
+    NewFromSlice returns a new Set populated with the strings from the passed
+    slice.
+
+func Union(s1, s2 Set) Set
+    Union returns a Set composed of both Sets.
+
+func (s Set) Add(elem string)
+    Add inserts an element into the Set.
+
+func (s Set) Has(elem string) bool
+    Has returns true if the string is found in the Set, false if it doesn't.
+
+func (s Set) IsEmpty() bool
+    IsEmpty returns true if the Set is empty, false if it isn't.
+
+func (s Set) String() string
+    String returns the string version of the Set.
+
+
+real	0m0.153s
+user	0m0.086s
+sys	0m0.154s
+
+
+===============================================================================
+
