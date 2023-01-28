@@ -25,3 +25,8 @@ output: "looc"
 ### Based on
 
 Introductory challenge to reverse an input string - https://medium.freecodecamp.org/how-to-reverse-a-string-in-javascript-in-3-different-ways-75e4763c68cb
+
+### My Solution
+
+- [my solution](./lib/reverse_string.dart)
+- [run-tests](./run-tests-dart.txt)
