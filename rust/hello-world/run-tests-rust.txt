@@ -1,0 +1,168 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: cargo check --release
+    Checking hello-world v1.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/hello-world)
+    Finished release [optimized] target(s) in 0.05s
+
+real	0m0.089s
+user	0m0.062s
+sys	0m0.026s
+
+===============================================================================
+
+Running: cargo clippy --release
+    Checking hello-world v1.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/hello-world)
+    Finished release [optimized] target(s) in 0.12s
+
+real	0m0.218s
+user	0m0.141s
+sys	0m0.078s
+
+===============================================================================
+
+Running: cargo audit
+[0m[0m[1m[32m    Fetching[0m advisory database from `https://github.com/RustSec/advisory-db.git`
+[0m[0m[1m[32m      Loaded[0m 489 security advisories (from /home/vpayno/.cargo/advisory-db)
+[0m[0m[1m[32m    Updating[0m crates.io index
+[0m[0m[1m[32m    Scanning[0m Cargo.lock for vulnerabilities (1 crate dependencies)
+
+real	0m2.445s
+user	0m0.499s
+sys	0m0.432s
+
+===============================================================================
+
+rm -fv ./default_16986702263246235376_0_11700.profraw ./default_2656128741938430790_0_11670.profraw ./default_5250545155782118059_0_11696.profraw ./default_7810928959346101835_0_11701.profraw ./json5format.profdata
+removed './default_16986702263246235376_0_11700.profraw'
+removed './default_2656128741938430790_0_11670.profraw'
+removed './default_5250545155782118059_0_11696.profraw'
+removed './default_7810928959346101835_0_11701.profraw'
+removed './json5format.profdata'
+
+===============================================================================
+
+Running: cargo tarpaulin --release --timeout=300
+[2mJan 29 19:00:07.836[0m [32m INFO[0m cargo_tarpaulin::config: Creating config
+[2mJan 29 19:00:07.969[0m [32m INFO[0m cargo_tarpaulin: Running Tarpaulin
+[2mJan 29 19:00:07.969[0m [32m INFO[0m cargo_tarpaulin: Building project
+[2mJan 29 19:00:07.969[0m [32m INFO[0m cargo_tarpaulin::cargo: Cleaning project
+   Compiling hello-world v1.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/hello-world)
+    Finished release [optimized] target(s) in 0.44s
+[2mJan 29 19:00:08.463[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
+[2mJan 29 19:00:08.463[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/hello-world/target/release/deps/hello_world-ac4cb2e22d45b21a
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+[2mJan 29 19:00:08.960[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
+[2mJan 29 19:00:08.961[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/hello-world/target/release/deps/hello_world-3146558e46c526b5
+
+running 1 test
+test test_hello_world ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+[2mJan 29 19:00:09.488[0m [32m INFO[0m cargo_tarpaulin::report: Coverage Results:
+|| Uncovered Lines:
+|| Tested/Total Lines:
+|| src/lib.rs: 1/1 +0.00%
+|| 
+100.00% coverage, 1/1 lines covered, +0.00% change in coverage
+
+real	0m1.693s
+user	0m0.916s
+sys	0m1.303s
+
+===============================================================================
+
+RUSTFLAGS="-C instrument-coverage"
+
+===============================================================================
+
+RUSTDOCFLAGS="-C instrument-coverage"
+
+===============================================================================
+
+Running: cargo test
+   Compiling hello-world v1.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/hello-world)
+    Finished test [unoptimized + debuginfo] target(s) in 0.36s
+     Running unittests src/lib.rs (target/debug/deps/hello_world-3ad02b1b75723ccb)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/hello-world.rs (target/debug/deps/hello_world-cd8550fd92012f1d)
+
+running 1 test
+test test_hello_world ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests hello-world
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+real	0m0.447s
+user	0m0.427s
+sys	0m0.232s
+
+===============================================================================
+
+Running: llvm-profdata-14 merge -sparse default_16986702263246235376_0_10589.profraw default_7810928959346101835_0_10590.profraw -o json5format.profdata
+
+real	0m0.016s
+user	0m0.008s
+sys	0m0.008s
+
+===============================================================================
+
+    Finished test [unoptimized + debuginfo] target(s) in 0.00s
+llvm-cov-14 report -object /home/vpayno/git_vpayno/exercism-workspace/rust/hello-world/target/debug/deps/hello_world-cd8550fd92012f1d -object /home/vpayno/git_vpayno/exercism-workspace/rust/hello-world/target/debug/deps/hello_world-3ad02b1b75723ccb --instr-profile=json5format.profdata --summary-only
+    Finished test [unoptimized + debuginfo] target(s) in 0.00s
+Filename                      Regions    Missed Regions     Cover   Functions  Missed Functions  Executed       Lines      Missed Lines     Cover    Branches   Missed Branches     Cover
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+src/lib.rs                          2                 0   100.00%           2                 0   100.00%           4                 0   100.00%           0                 0         -
+tests/hello-world.rs                4                 0   100.00%           3                 0   100.00%           5                 0   100.00%           0                 0         -
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+TOTAL                               6                 0   100.00%           5                 0   100.00%           9                 0   100.00%           0                 0         -
+
+real	0m0.071s
+user	0m0.063s
+sys	0m0.028s
+
+===============================================================================
+
+unset RUSTFLAGS
+
+===============================================================================
+
+unset RUSTDOCFLAGS
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.045s
+user	0m0.124s
+sys	0m0.027s
+
+===============================================================================
+
+Running: cargo doc
+ Documenting hello-world v1.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/hello-world)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.28s
+
+real	0m0.316s
+user	0m0.241s
+sys	0m0.074s
+
+===============================================================================
+
