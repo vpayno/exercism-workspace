@@ -49,6 +49,7 @@ Exercism Workspace (https://exercism.org/docs/tracks)
 - [Lua](lua/README.md)
 - [Vimscript](vimscript/README.md)
 - [Awk](awk/README.md)
+- [Rust](rust/README.md)
 
 
 ## Tools/Scripts
@@ -60,3 +61,4 @@ Exercism Workspace (https://exercism.org/docs/tracks)
 - [Lua run-tests](./lua/run-tests)
 - [Vimscript run-tests](./vimscript/run-tests)
 - [Awk run-tests](./awk/run-tests)
+- [Rust run-tests](./rust/run-tests)
