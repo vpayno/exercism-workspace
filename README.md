@@ -13,7 +13,8 @@ Exercism Workspace (https://exercism.org/docs/tracks)
  [![Go Workflow](https://github.com/vpayno/exercism-workspace/actions/workflows/go.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/go.yml) |
  [![Dart Workflow](https://github.com/vpayno/exercism-workspace/actions/workflows/dart.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/dart.yml) |
  [![Tcl Workflow](https://github.com/vpayno/exercism-workspace/actions/workflows/tcl.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/tcl.yml) |
- [![Lua Workflow](https://github.com/vpayno/exercism-workspace/actions/workflows/lua.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/lua.yml) |
+ [![Lua Workflow](https://github.com/vpayno/exercism-workspace/actions/workflows/lua.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/lua.yml)
+
  [![Vimscript Workflow](https://github.com/vpayno/exercism-workspace/actions/workflows/vimscript.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/vimscript.yml) |
  [![Awk Workflow](https://github.com/vpayno/exercism-workspace/actions/workflows/awk.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/awk.yml) |
  [![Rust Workflow](https://github.com/vpayno/exercism-workspace/actions/workflows/rust.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/rust.yml) |
