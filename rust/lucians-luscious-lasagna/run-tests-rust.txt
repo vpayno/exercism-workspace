@@ -1,0 +1,179 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: cargo check --release
+    Checking lucians-luscious-lasagna v0.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/lucians-luscious-lasagna)
+    Finished release [optimized] target(s) in 0.05s
+
+real	0m0.092s
+user	0m0.053s
+sys	0m0.040s
+
+===============================================================================
+
+Running: cargo clippy --release
+    Checking lucians-luscious-lasagna v0.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/lucians-luscious-lasagna)
+    Finished release [optimized] target(s) in 0.13s
+
+real	0m0.222s
+user	0m0.132s
+sys	0m0.090s
+
+===============================================================================
+
+Running: cargo audit
+[0m[0m[1m[32m    Fetching[0m advisory database from `https://github.com/RustSec/advisory-db.git`
+[0m[0m[1m[32m      Loaded[0m 498 security advisories (from /home/vpayno/.cargo/advisory-db)
+[0m[0m[1m[32m    Updating[0m crates.io index
+[0m[0m[1m[32m    Scanning[0m Cargo.lock for vulnerabilities (1 crate dependencies)
+
+real	0m2.477s
+user	0m0.523s
+sys	0m0.760s
+
+===============================================================================
+
+rm -fv ./default_2675608528733903269_0_7659.profraw ./default_4139930476639817039_0_7660.profraw ./json5format.profdata
+removed './default_2675608528733903269_0_7659.profraw'
+removed './default_4139930476639817039_0_7660.profraw'
+removed './json5format.profdata'
+
+===============================================================================
+
+Running: cargo tarpaulin --release --timeout=300
+[2mFeb 04 13:42:48.138[0m [32m INFO[0m cargo_tarpaulin::config: Creating config
+[2mFeb 04 13:42:48.337[0m [32m INFO[0m cargo_tarpaulin: Running Tarpaulin
+[2mFeb 04 13:42:48.337[0m [32m INFO[0m cargo_tarpaulin: Building project
+[2mFeb 04 13:42:48.337[0m [32m INFO[0m cargo_tarpaulin::cargo: Cleaning project
+   Compiling lucians-luscious-lasagna v0.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/lucians-luscious-lasagna)
+    Finished release [optimized] target(s) in 0.66s
+[2mFeb 04 13:42:49.055[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
+[2mFeb 04 13:42:49.055[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/lucians-luscious-lasagna/target/release/deps/lucians_luscious_lasagna-a6bbc502dacfb3e1
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+[2mFeb 04 13:42:49.550[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
+[2mFeb 04 13:42:49.550[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/lucians-luscious-lasagna/target/release/deps/lucians_luscious_lasagna-9e44dbc796bd64b3
+
+running 6 tests
+test preparation_time_in_minutes_for_one_layer ... ok
+test preparation_time_in_minutes_for_multiple_layers ... ok
+test remaining_minutes_in_oven_after_fifteen_minutes ... ok
+test elapsed_time_in_minutes_for_one_layer ... ok
+test elapsed_time_in_minutes_for_multiple_layers ... ok
+test expected_minutes_in_oven_is_correct ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+[2mFeb 04 13:42:50.122[0m [32m INFO[0m cargo_tarpaulin::report: Coverage Results:
+|| Uncovered Lines:
+|| src/lib.rs: 23, 27, 34, 38
+|| Tested/Total Lines:
+|| src/lib.rs: 3/7 +0.00%
+|| 
+42.86% coverage, 3/7 lines covered, +0.00% change in coverage
+
+real	0m2.038s
+user	0m1.175s
+sys	0m1.542s
+
+===============================================================================
+
+RUSTFLAGS="-C instrument-coverage"
+
+===============================================================================
+
+RUSTDOCFLAGS="-C instrument-coverage"
+
+===============================================================================
+
+Running: cargo test
+   Compiling lucians-luscious-lasagna v0.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/lucians-luscious-lasagna)
+    Finished test [unoptimized + debuginfo] target(s) in 0.36s
+     Running unittests src/lib.rs (target/debug/deps/lucians_luscious_lasagna-575ec04f86d6490b)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/lucians-luscious-lasagna.rs (target/debug/deps/lucians_luscious_lasagna-8e5c8a5cba50fd25)
+
+running 6 tests
+test elapsed_time_in_minutes_for_multiple_layers ... ok
+test expected_minutes_in_oven_is_correct ... ok
+test preparation_time_in_minutes_for_one_layer ... ok
+test preparation_time_in_minutes_for_multiple_layers ... ok
+test elapsed_time_in_minutes_for_one_layer ... ok
+test remaining_minutes_in_oven_after_fifteen_minutes ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests lucians-luscious-lasagna
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+real	0m0.456s
+user	0m0.418s
+sys	0m0.263s
+
+===============================================================================
+
+Running: llvm-profdata-14 merge -sparse default_2675608528733903269_0_12264.profraw default_4139930476639817039_0_12265.profraw -o json5format.profdata
+
+real	0m0.018s
+user	0m0.004s
+sys	0m0.014s
+
+===============================================================================
+
+    Finished test [unoptimized + debuginfo] target(s) in 0.00s
+llvm-cov-14 report -object /home/vpayno/git_vpayno/exercism-workspace/rust/lucians-luscious-lasagna/target/debug/deps/lucians_luscious_lasagna-8e5c8a5cba50fd25 -object /home/vpayno/git_vpayno/exercism-workspace/rust/lucians-luscious-lasagna/target/debug/deps/lucians_luscious_lasagna-575ec04f86d6490b --instr-profile=json5format.profdata --summary-only
+    Finished test [unoptimized + debuginfo] target(s) in 0.00s
+Filename                              Regions    Missed Regions     Cover   Functions  Missed Functions  Executed       Lines      Missed Lines     Cover    Branches   Missed Branches     Cover
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+src/lib.rs                                  5                 0   100.00%           5                 0   100.00%          37                 0   100.00%           0                 0         -
+tests/lucians-luscious-lasagna.rs          19                 0   100.00%          13                 0   100.00%          25                 0   100.00%           0                 0         -
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+TOTAL                                      24                 0   100.00%          18                 0   100.00%          62                 0   100.00%           0                 0         -
+
+real	0m0.065s
+user	0m0.064s
+sys	0m0.029s
+
+===============================================================================
+
+unset RUSTFLAGS
+
+===============================================================================
+
+unset RUSTDOCFLAGS
+
+===============================================================================
+
+Running: misspell .
+HINTS.md:21:47: "multiplicaton" is a misspelling of "multiplication"
+run-tests-rust.txt:161:17: "multiplicaton" is a misspelling of "multiplication"
+
+real	0m0.056s
+user	0m0.170s
+sys	0m0.046s
+
+===============================================================================
+
+Running: cargo doc
+ Documenting lucians-luscious-lasagna v0.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/lucians-luscious-lasagna)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.31s
+
+real	0m0.350s
+user	0m0.235s
+sys	0m0.075s
+
+===============================================================================
+
