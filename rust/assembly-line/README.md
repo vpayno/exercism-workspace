@@ -86,3 +86,8 @@ Note that the value returned is an `u32`.
 
 - @LewisClement
 - @efx
+
+### My Solution
+
+- [my solution](./lib/*[.]rs)
+- [run-tests](./run-tests-rust.txt)
