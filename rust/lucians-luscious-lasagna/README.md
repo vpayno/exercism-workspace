@@ -157,3 +157,8 @@ elapsed_time_in_minutes(3, 20)
 
 - @coriolinus
 - @ErikSchierboom
+
+### My Solution
+
+- [my solution](./lib/*[.]rs)
+- [run-tests](./run-tests-rust.txt)

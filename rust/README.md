@@ -12,6 +12,12 @@
 - [update_readmes](./update_readmes)
 
 
-## Exercises
+## [Exercises](https://exercism.org/tracks/rust/exercises)
 
 - [hello-world](./hello-world/README.md)
+
+## [Concepts](https://exercism.org/tracks/rust/concepts)
+
+### [Functions](https://exercism.org/tracks/rust/concepts/functions)
+
+- [lucians-luscious-lasagna](./lucians-luscious-lasagna/README.md)
