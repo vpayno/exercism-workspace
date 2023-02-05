@@ -1,0 +1,176 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: cargo check --release
+    Checking semi_structured_logs v0.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/semi-structured-logs)
+    Finished release [optimized] target(s) in 0.20s
+
+real	0m0.246s
+user	0m0.157s
+sys	0m0.090s
+
+===============================================================================
+
+Running: cargo clippy --release
+    Checking semi_structured_logs v0.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/semi-structured-logs)
+    Finished release [optimized] target(s) in 0.16s
+
+real	0m0.252s
+user	0m0.165s
+sys	0m0.087s
+
+===============================================================================
+
+Running: cargo audit
+[0m[0m[1m[32m    Fetching[0m advisory database from `https://github.com/RustSec/advisory-db.git`
+[0m[0m[1m[32m      Loaded[0m 498 security advisories (from /home/vpayno/.cargo/advisory-db)
+[0m[0m[1m[32m    Updating[0m crates.io index
+[0m[0m[1m[32m    Scanning[0m Cargo.lock for vulnerabilities (1 crate dependencies)
+
+real	0m1.576s
+user	0m0.441s
+sys	0m0.422s
+
+===============================================================================
+
+rm -fv ./default_2780935613607227097_0_14204.profraw ./default_7000891861736475065_0_14203.profraw ./json5format.profdata
+removed './default_2780935613607227097_0_14204.profraw'
+removed './default_7000891861736475065_0_14203.profraw'
+removed './json5format.profdata'
+
+===============================================================================
+
+Running: cargo tarpaulin --release --timeout=300
+[2mFeb 04 19:29:29.353[0m [32m INFO[0m cargo_tarpaulin::config: Creating config
+[2mFeb 04 19:29:29.473[0m [32m INFO[0m cargo_tarpaulin: Running Tarpaulin
+[2mFeb 04 19:29:29.473[0m [32m INFO[0m cargo_tarpaulin: Building project
+[2mFeb 04 19:29:29.473[0m [32m INFO[0m cargo_tarpaulin::cargo: Cleaning project
+   Compiling semi_structured_logs v0.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/semi-structured-logs)
+    Finished release [optimized] target(s) in 0.50s
+[2mFeb 04 19:29:30.022[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
+[2mFeb 04 19:29:30.022[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/semi-structured-logs/target/release/deps/semi_structured_logs-5ccc7a8c1fddc8ee
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+[2mFeb 04 19:29:30.490[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
+[2mFeb 04 19:29:30.490[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/semi-structured-logs/target/release/deps/semi_structured_logs-60edcb8bbc6584e3
+
+running 6 tests
+test log_emits_warning ... ok
+test log_emits_error ... ok
+test emits_warning ... ok
+test emits_info ... ok
+test log_emits_info ... ok
+test emits_error ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+[2mFeb 04 19:29:30.992[0m [32m INFO[0m cargo_tarpaulin::report: Coverage Results:
+|| Uncovered Lines:
+|| Tested/Total Lines:
+|| src/lib.rs: 9/9
+|| 
+100.00% coverage, 9/9 lines covered
+
+real	0m1.679s
+user	0m1.187s
+sys	0m1.310s
+
+===============================================================================
+
+RUSTFLAGS="-C instrument-coverage"
+
+===============================================================================
+
+RUSTDOCFLAGS="-C instrument-coverage"
+
+===============================================================================
+
+Running: cargo test
+   Compiling semi_structured_logs v0.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/semi-structured-logs)
+    Finished test [unoptimized + debuginfo] target(s) in 0.39s
+     Running unittests src/lib.rs (target/debug/deps/semi_structured_logs-8f2341145045195f)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/semi-structured-logs.rs (target/debug/deps/semi_structured_logs-c2f24d46a0874161)
+
+running 6 tests
+test emits_warning ... ok
+test emits_error ... ok
+test emits_info ... ok
+test log_emits_error ... ok
+test log_emits_warning ... ok
+test log_emits_info ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests semi_structured_logs
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+real	0m0.484s
+user	0m0.502s
+sys	0m0.299s
+
+===============================================================================
+
+Running: llvm-profdata-14 merge -sparse default_2780782781490966233_0_17197.profraw default_7000848980782991801_0_17195.profraw -o json5format.profdata
+
+real	0m0.016s
+user	0m0.004s
+sys	0m0.012s
+
+===============================================================================
+
+    Finished test [unoptimized + debuginfo] target(s) in 0.00s
+llvm-cov-14 report -object /home/vpayno/git_vpayno/exercism-workspace/rust/semi-structured-logs/target/debug/deps/semi_structured_logs-c2f24d46a0874161 -object /home/vpayno/git_vpayno/exercism-workspace/rust/semi-structured-logs/target/debug/deps/semi_structured_logs-8f2341145045195f --instr-profile=json5format.profdata --summary-only
+    Finished test [unoptimized + debuginfo] target(s) in 0.00s
+Filename                          Regions    Missed Regions     Cover   Functions  Missed Functions  Executed       Lines      Missed Lines     Cover    Branches   Missed Branches     Cover
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+src/lib.rs                              7                 0   100.00%           6                 0   100.00%          21                 0   100.00%           0                 0         -
+tests/semi-structured-logs.rs          19                 0   100.00%          13                 0   100.00%          31                 0   100.00%           0                 0         -
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+TOTAL                                  26                 0   100.00%          19                 0   100.00%          52                 0   100.00%           0                 0         -
+
+real	0m0.056s
+user	0m0.049s
+sys	0m0.028s
+
+===============================================================================
+
+unset RUSTFLAGS
+
+===============================================================================
+
+unset RUSTDOCFLAGS
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.026s
+user	0m0.032s
+sys	0m0.021s
+
+===============================================================================
+
+Running: cargo doc
+ Documenting semi_structured_logs v0.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/semi-structured-logs)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.28s
+
+real	0m0.320s
+user	0m0.238s
+sys	0m0.081s
+
+===============================================================================
+

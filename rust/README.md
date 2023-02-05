@@ -25,3 +25,7 @@
 ### [Floating Point Numbers](https://exercism.org/tracks/rust/concepts/floating-point-numbers)
 
 - [assembly-line](./assembly-line/README.md)
+
+### [Enum Basics](https://exercism.org/tracks/rust/concepts/enums)
+
+- [semi-structured-logs](./semi-structured-logs/README.md)

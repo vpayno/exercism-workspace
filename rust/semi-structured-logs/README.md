@@ -62,3 +62,8 @@ This test is meant to show you how to add a variant to your enum.
 ### Created by
 
 - @efx
+
+### My Solution
+
+- [my solution](./lib/*[.]rs)
+- [run-tests](./run-tests-rust.txt)
