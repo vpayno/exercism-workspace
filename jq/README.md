@@ -14,4 +14,6 @@
 
 ## [Exercises](https://exercism.org/tracks/jq/exercises)
 
+- [hello-world](./hello-world/README.md)
+
 ## [Concepts](https://exercism.org/tracks/jq/concepts)
