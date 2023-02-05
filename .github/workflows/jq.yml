@@ -1,0 +1,97 @@
+name: jq Workflow
+
+on:
+  pull_request:
+
+jobs:
+  stage1:
+    name: Change Check
+
+    runs-on: 'ubuntu-latest'
+
+    outputs:
+      docs_changed: ${{ steps.check_file_changed.outputs.docs_changed }}
+
+    steps:
+    - name: Checkout Repo
+      id: checkout-repo
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+        ref: ${{ github.ref }}
+        submodules: recursive
+
+    - name: Get Change List
+      id: check_file_changed
+      shell: pwsh
+      run: |
+        # https://www.meziantou.net/executing-github-actions-jobs-or-steps-only-when-specific-files-change.htm#conditional-jobs
+
+        # Diff HEAD with the previous commit then output to stdout.
+        echo "=== Which files changed? ===" | Out-String -Stream
+        ([string[]] $diff = git diff --name-only HEAD^ HEAD)
+
+        # Check if the files are present in the changed file list (added, modified, deleted) then output to stdout.
+        echo "=== Which jq files changed? ===" | Out-String -Stream
+        ([string[]] $SourceDiff = $diff | Where-Object { $_ -match '^.*[.]jq$' })
+
+        # Did jq files change?
+        echo "=== Did jq files change? ===" | Out-String -Stream
+        ([string[]] $HasDiff = $SourceDiff.Length -gt 0)
+
+        # Set the output named "docs_changed"
+        Write-Host "::set-output name=docs_changed::$HasDiff"
+
+  stage2:
+    name: jq Checks
+    strategy:
+      matrix:
+        os: ["ubuntu-latest"]
+
+    runs-on: "${{ matrix.os }}"
+
+    needs: [ stage1 ]
+    if: needs.stage1.outputs.docs_changed == 'True'
+
+    steps:
+    - name: Checkout Repo
+      id: checkout-repo
+      uses: actions/checkout@v3
+
+    - name: Set up jq
+      id: setup-jq
+      run: |
+        sudo apt install -y jq
+
+    - name: Show jq version
+      id: jq-version
+      run: |
+        jq --version
+
+    - name: Checkout bats-core
+      id: checkout-bats-core
+      uses: actions/checkout@v3
+      with:
+        repository: bats-core/bats-core
+        path: bats-core
+
+    - name: Install Bats
+      id: install-bats-core
+      run: |
+        cd bats-core
+        sudo ./install.sh /usr/local
+
+    - name: CD to jq Dir
+      id: cd-to-jq-dir
+      run: |
+        pwd
+        ls
+        cd ./jq
+        pwd
+        ls
+
+    - name: Testing with Bats tests
+      id: jq-bats-run
+      run: |
+        cd ./jq
+        ./for_each ../../.github/citools/jq/jq-bats
