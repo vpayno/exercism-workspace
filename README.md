@@ -53,6 +53,7 @@ Exercism Workspace (https://exercism.org/docs/tracks)
 - [Vimscript](vimscript/README.md)
 - [Awk](awk/README.md)
 - [Rust](rust/README.md)
+- [jq](jq/README.md)
 
 
 ## Tools/Scripts
