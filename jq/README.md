@@ -20,3 +20,4 @@
 ## [Concepts](https://exercism.org/tracks/jq/concepts)
 
 - [shopping](./shopping/README.md)
+- [log-line-parser](./log-line-parser/README.md)

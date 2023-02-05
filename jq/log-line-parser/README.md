@@ -180,3 +180,8 @@ Implement the `reformat` function that reformats the log line, putting the messa
 ### Created by
 
 - @glennj
+
+### My Solution
+
+- [my solution](./log-line-parser.jq)
+- [run-tests](./run-tests-rust.txt)
