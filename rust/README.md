@@ -29,3 +29,7 @@
 ### [Enum Basics](https://exercism.org/tracks/rust/concepts/enums)
 
 - [semi-structured-logs](./semi-structured-logs/README.md)
+
+### [vec! macro](https://exercism.org/tracks/rust/concepts/vec-macro)
+
+- [short-fibonacci](./short-fibonacci/README.md)
