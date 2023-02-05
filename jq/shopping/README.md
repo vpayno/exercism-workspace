@@ -392,3 +392,8 @@ Include the optional ingredients in the mapping.
 ### Created by
 
 - @glennj
+
+### My Solution
+
+- [my solution](./shopping.jq)
+- [run-tests](./run-tests-rust.txt)

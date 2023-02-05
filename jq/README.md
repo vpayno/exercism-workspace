@@ -16,4 +16,7 @@
 
 - [hello-world](./hello-world/README.md)
 
+
 ## [Concepts](https://exercism.org/tracks/jq/concepts)
+
+- [shopping](./shopping/README.md)
