@@ -8,16 +8,19 @@
 def trim: sub("^\\s+"; "") | sub("\\s+$"; "");
 
 # Task 1. Get message from a log line
+# [ERROR]: message -> message
 def message:
   . | split(":")[1] | trim
 ;
 
 # Task 2. Get log level from a log line
+# [ERROR]: message -> error
 def log_level:
   . | split(":")[0][1:-1] | ascii_downcase | trim
 ;
 
 # Task 3. Reformat a log line
+# Reusing the above functions to create a new log line.
 def reformat:
   . | message + " (" + log_level + ")"
 ;
