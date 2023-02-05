@@ -396,4 +396,4 @@ Include the optional ingredients in the mapping.
 ### My Solution
 
 - [my solution](./shopping.jq)
-- [run-tests](./run-tests-jq.txt)
+- [run-tests](./run-tests-bats.txt)
