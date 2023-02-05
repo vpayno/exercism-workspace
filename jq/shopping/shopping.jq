@@ -34,4 +34,11 @@
 # Task 4: replace `null` with the mapping of ingredient names with their substitutions
 # (no comma after the last filter)
 # This isn't a basic filter, it shouldn't be in this exercise.
-([(.ingredients + ."optional ingredients")[] | select(.substitute)] | map({ (.item): .substitute }) | add)
+(
+	[
+		(.ingredients + ."optional ingredients")[] |
+		select(.substitute)
+	] |
+	map({ (.item): .substitute }) |
+	add
+)
