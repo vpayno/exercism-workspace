@@ -33,4 +33,4 @@ This is an exercise to introduce users to using Exercism - https://en.wikipedia.
 ### My Solution
 
 - [my solution](./hello-world.jq)
-- [run-tests](./run-tests-rust.txt)
+- [run-tests](./run-tests-jq.txt)

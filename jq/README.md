@@ -1,6 +1,6 @@
 # Exercism jq Track
 
-[Home Page](https://exercism.org/tracks/rust)
+[Home Page](https://exercism.org/tracks/jq)
 
 [My Profile](https://exercism.org/profiles/vpayno)
 
