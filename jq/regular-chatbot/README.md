@@ -346,3 +346,8 @@ We won't worry about any of the edge cases with the CSV format (such as fields c
 ### Created by
 
 - @glennj
+
+### My Solution
+
+- [my solution](./regular-chatbot.jq)
+- [run-tests](./run-tests-bats.txt)

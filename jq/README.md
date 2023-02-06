@@ -23,3 +23,4 @@
 - [log-line-parser](./log-line-parser/README.md)
 - [assembly-line](./assembly-line/README.md)
 - [bird-count](./bird-count/README.md)
+- [regular-chatbot](./regular-chatbot/README.md)

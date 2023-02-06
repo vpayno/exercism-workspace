@@ -6,17 +6,17 @@
 # output: {boolean} whether or not the command is valid
 #
 def is_valid_command:
-  . # implement the body of this function
+  . | test("^chatbot\\b"; "i")
 ;
 
-# Given a certain message, help the Chatbot get rid of all the 
+# Given a certain message, help the Chatbot get rid of all the
 # "encrypted" emojis throught the message.
 # - an "encrypted emoji" is the string "emoji" followed by digits
 #
 # input: {string} message
 # output: {string} the message without the emojis
 def remove_emoji:
-  . # implement the body of this function
+  . | gsub("emoji[0-9]+"; ""; "i")
 ;
 
 # Given a certain phone number, help the Chatbot recognize
@@ -27,7 +27,12 @@ def remove_emoji:
 # input: {string} number
 # output: {string} the Chatbot response to the phone validation
 def check_phone_number:
-  . # implement the body of this function
+  . |
+  if test("[(][+]\\d{2}[)] \\d{3}-\\d{3}-\\d{3}") then
+    "Thanks! Your phone number is OK."
+  else
+    "Oops, it seems like I can't reach out to " + . + "."
+  end
 ;
 
 # Given a certain response from the user, help the Chatbot get
@@ -37,7 +42,9 @@ def check_phone_number:
 # input: {string} userInput
 # output: {array} all the domains in the input
 def get_domains:
-  . # implement the body of this function
+  [
+    . | match("\\b[a-z]+[.][a-z]+\\b"; "ig").string
+  ]
 ;
 
 # Greet the user using their name
@@ -46,7 +53,10 @@ def get_domains:
 # input: {string} sentence with name clause
 # output: {string} greeting from the Chatbot
 def nice_to_meet_you:
-  . # implement the body of this function
+  . |
+  gsub(".*my name is "; ""; "i") |
+  split(" ")[0] |
+  "Nice to meet you, " + .
 ;
 
 # Perform very simple CSV parsing
@@ -55,5 +65,7 @@ def nice_to_meet_you:
 # input: {string} comma-separated row
 # output: {array} fields
 def parse_csv:
-  . # implement the body of this function
+  . |
+  gsub("[ \\t]"; "") |
+  split(",")
 ;
