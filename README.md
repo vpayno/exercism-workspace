@@ -4,6 +4,8 @@ Exercism Workspace (https://exercism.org/docs/tracks)
 
 [My Profile](https://exercism.org/profiles/vpayno)
 
+[12in23 Challenge Dashboard](https://exercism.org/challenges/12in23)
+
 
 ## CI
 
