@@ -22,3 +22,4 @@
 - [shopping](./shopping/README.md)
 - [log-line-parser](./log-line-parser/README.md)
 - [assembly-line](./assembly-line/README.md)
+- [bird-count](./bird-count/README.md)

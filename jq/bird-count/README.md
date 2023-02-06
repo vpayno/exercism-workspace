@@ -176,3 +176,8 @@ $ jq -f bird-count.jq < bird-counting-data.json
 ### Created by
 
 - @glennj
+
+### My Solution
+
+- [my solution](./bird-count.jq)
+- [run-tests](./run-tests-bats.txt)
