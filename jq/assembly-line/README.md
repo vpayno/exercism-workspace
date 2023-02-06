@@ -104,3 +104,8 @@ Calculate how many **completed, working cars** are produced per minute.
 ### Created by
 
 - @glennj
+
+### My Solution
+
+- [my solution](./assembly-line.jq)
+- [run-tests](./run-tests-bats.txt)
