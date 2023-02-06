@@ -24,7 +24,7 @@ Exercism Workspace (https://exercism.org/docs/tracks)
  [![Check Links](https://github.com/vpayno/exercism-workspace/actions/workflows/links.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/links.yml) |
  [![woke (pr)](https://github.com/vpayno/exercism-workspace/actions/workflows/woke-pr.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/woke-pr.yml) |
  [![Woke (push)](https://github.com/vpayno/exercism-workspace/actions/workflows/woke-push.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/woke-push.yml) |
- [![CodeQL](https://github.com/vpayno/exercism-workspace/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/codeql-analysis.yml) |
+ [![CodeQL](https://github.com/vpayno/exercism-workspace/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/codeql-analysis.yml)
 
 
 ### Yaml Configs
