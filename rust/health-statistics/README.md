@@ -89,3 +89,8 @@ Have fun!
 ### Created by
 
 - @seanchen1991
+
+### My Solution
+
+- [my solution](./lib/*[.]rs)
+- [run-tests](./run-tests-rust.txt)

@@ -33,3 +33,4 @@
 ### [vec! macro](https://exercism.org/tracks/rust/concepts/vec-macro)
 
 - [short-fibonacci](./short-fibonacci/README.md)
+- [health-statistics](./health-statistics/README.md)
