@@ -81,20 +81,24 @@
 		<pre class="file" id="file0" style="display: none">// Package leap is used to report if a year is a leap year in the Gregorian calendar.
 package leap
 
-// IsLeapYear retuns true if the year is a leap year.
+// IsLeapYear returns true if the year is a leap year.
+//
+// on every year that is evenly divisible by 4
+// except every year that is evenly divisible by 100
+// unless the year is also evenly divisible by 400
 func IsLeapYear(year int) bool <span class="cov10" title="13">{
-        if year%4 == 0 </span><span class="cov9" title="10">{
+        if year%400 == 0 </span><span class="cov4" title="3">{
+                return true
+        }</span>
 
-                if year%400 == 0 </span><span class="cov4" title="3">{
-                        return true
-                }</span>
+        <span class="cov9" title="10">if year%100 == 0 </span><span class="cov5" title="4">{
+                return false
+        }</span>
 
-                <span class="cov7" title="7">if year%100 == 00 </span><span class="cov5" title="4">{
-                        return false
-                }</span>
+        <span class="cov7" title="6">if year%4 == 0 </span><span class="cov4" title="3">{
 
-                <span class="cov4" title="3">return true</span>
-        }
+                return true
+        }</span>
 
         <span class="cov4" title="3">return false</span>
 }

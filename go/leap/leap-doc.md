@@ -6,20 +6,22 @@
 import "leap"
 ```
 
-Package leap is used to report if a year is a leap year in the Gregorian calendar\.
+Package leap is used to report if a year is a leap year in the Gregorian calendar.
 
 ## Index
 
 - [func IsLeapYear(year int) bool](<#func-isleapyear>)
 
 
-## func [IsLeapYear](<https://github.com/vpayno/exercism-workspace/blob/main/go/leap/leap.go#L5>)
+## func [IsLeapYear](<https://github.com/vpayno/exercism-workspace/blob/main/go/leap/leap.go#L9>)
 
 ```go
 func IsLeapYear(year int) bool
 ```
 
-IsLeapYear retuns true if the year is a leap year\.
+IsLeapYear returns true if the year is a leap year.
+
+on every year that is evenly divisible by 4 except every year that is evenly divisible by 100 unless the year is also evenly divisible by 400
 
 <details><summary>Example</summary>
 <p>
