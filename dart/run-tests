@@ -43,6 +43,27 @@ main()
 
 	print_ruler
 
+	# https://pub.dev/packages/test
+	echo  dart pub global run coverage:format_coverage --packages=.dart_tool/package_config.json --report-on=lib --lcov -o ./coverage/lcov.info -i ./coverage
+	time dart pub global run coverage:format_coverage --packages=.dart_tool/package_config.json --report-on=lib --lcov -o ./coverage/lcov.info -i ./coverage
+
+	print_ruler
+
+	echo dart run test --coverage=./coverage
+	time dart run test --coverage=./coverage
+
+	print_ruler
+
+	echo dart pub global activate coverage
+	time dart pub global activate coverage
+
+	print_ruler
+
+	echo genhtml -o ./coverage/report ./coverage/lcov.info
+	time genhtml -o ./coverage/report ./coverage/lcov.info
+
+	print_ruler
+
 	# go install github.com/client9/misspell/cmd/misspell@latest
 
 	echo Running: misspell .
