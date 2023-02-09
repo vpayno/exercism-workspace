@@ -7,59 +7,26 @@ Running: dart analyze .
 Analyzing ....
 No issues found!
 
-real	0m0.859s
-user	0m0.890s
-sys	0m0.351s
+real	0m0.866s
+user	0m0.968s
+sys	0m0.317s
+
+===============================================================================
+
+rm -rf ./coverage
+
+real	0m0.001s
+user	0m0.001s
+sys	0m0.000s
 
 ===============================================================================
 
 Running: dart test --run-skipped --no-color .
 00:00 +0: loading ./test/reverse_string_test.dart                                                                                                                                                      00:00 +0: ./test/reverse_string_test.dart: ReverseString an empty string                                                                                                                               00:00 +1: ./test/reverse_string_test.dart: ReverseString an empty string                                                                                                                               00:00 +1: ./test/reverse_string_test.dart: ReverseString a word                                                                                                                                        00:00 +2: ./test/reverse_string_test.dart: ReverseString a word                                                                                                                                        00:00 +2: ./test/reverse_string_test.dart: ReverseString a capitalized word                                                                                                                            00:00 +3: ./test/reverse_string_test.dart: ReverseString a capitalized word                                                                                                                            00:00 +3: ./test/reverse_string_test.dart: ReverseString a sentence with punctuation                                                                                                                   00:00 +4: ./test/reverse_string_test.dart: ReverseString a sentence with punctuation                                                                                                                   00:00 +4: ./test/reverse_string_test.dart: ReverseString a palindrome                                                                                                                                  00:00 +5: ./test/reverse_string_test.dart: ReverseString a palindrome                                                                                                                                  00:00 +5: ./test/reverse_string_test.dart: ReverseString an even-sized word                                                                                                                            00:00 +6: ./test/reverse_string_test.dart: ReverseString an even-sized word                                                                                                                            00:00 +6: All tests passed!                                                                                                                                                                            
 
-real	0m1.023s
-user	0m1.080s
-sys	0m0.406s
-
-===============================================================================
-
-Running: dart pub global run coverage:test_with_coverage
-The Dart VM service is listening on http://127.0.0.1:8181/
-The Dart DevTools debugger and profiler is available at: http://127.0.0.1:8181/devtools/#/?uri=ws%3A%2F%2F127.0.0.1%3A8181%2Fws
-00:00 [32m+0[0m: [1m[90mloading test/reverse_string_test.dart[0m[0m                                                                                                                                                        00:00 [32m+0[0m: test/reverse_string_test.dart: ReverseString an empty string[0m                                                                                                                                 00:00 [32m+1[0m: test/reverse_string_test.dart: ReverseString an empty string[0m                                                                                                                                 00:00 [32m+1[0m: test/reverse_string_test.dart: ReverseString a word[0m                                                                                                                                          00:00 [32m+1[0m[33m ~1[0m: test/reverse_string_test.dart: ReverseString a word[0m                                                                                                                                       00:00 [32m+1[0m[33m ~1[0m: test/reverse_string_test.dart: ReverseString a capitalized word[0m                                                                                                                           00:00 [32m+1[0m[33m ~2[0m: test/reverse_string_test.dart: ReverseString a capitalized word[0m                                                                                                                           00:00 [32m+1[0m[33m ~2[0m: test/reverse_string_test.dart: ReverseString a sentence with punctuation[0m                                                                                                                  00:00 [32m+1[0m[33m ~3[0m: test/reverse_string_test.dart: ReverseString a sentence with punctuation[0m                                                                                                                  00:00 [32m+1[0m[33m ~3[0m: test/reverse_string_test.dart: ReverseString a palindrome[0m                                                                                                                                 00:00 [32m+1[0m[33m ~4[0m: test/reverse_string_test.dart: ReverseString a palindrome[0m                                                                                                                                 00:00 [32m+1[0m[33m ~4[0m: test/reverse_string_test.dart: ReverseString an even-sized word[0m                                                                                                                           00:00 [32m+1[0m[33m ~5[0m: test/reverse_string_test.dart: ReverseString an even-sized word[0m                                                                                                                           00:00 [32m+1[0m[33m ~5[0m: All tests passed![0m                                                                                                                                                                         
-
-real	0m2.010s
-user	0m2.103s
-sys	0m0.619s
-
-===============================================================================
-
-Running: lcov --summary ./coverage/lcov.info
-Reading tracefile ./coverage/lcov.info
-Summary coverage rate:
-  lines......: 100.0% (4 of 4 lines)
-  functions..: no data found
-  branches...: no data found
-
-real	0m0.041s
-user	0m0.032s
-sys	0m0.009s
-
-===============================================================================
-
-dart pub global run coverage:format_coverage --packages=.dart_tool/package_config.json --report-on=lib --lcov -o ./coverage/lcov.info -i ./coverage
-
-real	0m0.368s
-user	0m0.441s
-sys	0m0.163s
-
-===============================================================================
-
-dart run test --run-skipped --no-color --coverage=./coverage
-00:00 +0: loading test/reverse_string_test.dart                                                                                                                                                        00:00 +0: test/reverse_string_test.dart: ReverseString an empty string                                                                                                                                 00:00 +1: test/reverse_string_test.dart: ReverseString an empty string                                                                                                                                 00:00 +1: test/reverse_string_test.dart: ReverseString a word                                                                                                                                          00:00 +2: test/reverse_string_test.dart: ReverseString a word                                                                                                                                          00:00 +2: test/reverse_string_test.dart: ReverseString a capitalized word                                                                                                                              00:00 +3: test/reverse_string_test.dart: ReverseString a capitalized word                                                                                                                              00:00 +3: test/reverse_string_test.dart: ReverseString a sentence with punctuation                                                                                                                     00:00 +4: test/reverse_string_test.dart: ReverseString a sentence with punctuation                                                                                                                     00:00 +4: test/reverse_string_test.dart: ReverseString a palindrome                                                                                                                                    00:00 +5: test/reverse_string_test.dart: ReverseString a palindrome                                                                                                                                    00:00 +5: test/reverse_string_test.dart: ReverseString an even-sized word                                                                                                                              00:00 +6: test/reverse_string_test.dart: ReverseString an even-sized word                                                                                                                              00:01 +6: test/reverse_string_test.dart: ReverseString an even-sized word                                                                                                                              00:01 +6: All tests passed!                                                                                                                                                                            
-
-real	0m1.956s
-user	0m2.198s
-sys	0m0.488s
+real	0m1.006s
+user	0m1.067s
+sys	0m0.325s
 
 ===============================================================================
 
@@ -76,9 +43,50 @@ You can fix that by adding this to your shell's config file (.bashrc, .bash_prof
 
 Activated coverage 1.6.3.
 
-real	0m0.756s
-user	0m0.741s
-sys	0m0.210s
+real	0m0.730s
+user	0m0.749s
+sys	0m0.199s
+
+===============================================================================
+
+Running: dart pub global run coverage:test_with_coverage
+The Dart VM service is listening on http://127.0.0.1:8181/
+The Dart DevTools debugger and profiler is available at: http://127.0.0.1:8181/devtools/#/?uri=ws%3A%2F%2F127.0.0.1%3A8181%2Fws
+00:00 [32m+0[0m: [1m[90mloading test/reverse_string_test.dart[0m[0m                                                                                                                                                        00:00 [32m+0[0m: test/reverse_string_test.dart: ReverseString an empty string[0m                                                                                                                                 00:00 [32m+1[0m: test/reverse_string_test.dart: ReverseString an empty string[0m                                                                                                                                 00:00 [32m+1[0m: test/reverse_string_test.dart: ReverseString a word[0m                                                                                                                                          00:00 [32m+1[0m[33m ~1[0m: test/reverse_string_test.dart: ReverseString a word[0m                                                                                                                                       00:00 [32m+1[0m[33m ~1[0m: test/reverse_string_test.dart: ReverseString a capitalized word[0m                                                                                                                           00:00 [32m+1[0m[33m ~2[0m: test/reverse_string_test.dart: ReverseString a capitalized word[0m                                                                                                                           00:00 [32m+1[0m[33m ~2[0m: test/reverse_string_test.dart: ReverseString a sentence with punctuation[0m                                                                                                                  00:00 [32m+1[0m[33m ~3[0m: test/reverse_string_test.dart: ReverseString a sentence with punctuation[0m                                                                                                                  00:00 [32m+1[0m[33m ~3[0m: test/reverse_string_test.dart: ReverseString a palindrome[0m                                                                                                                                 00:00 [32m+1[0m[33m ~4[0m: test/reverse_string_test.dart: ReverseString a palindrome[0m                                                                                                                                 00:00 [32m+1[0m[33m ~4[0m: test/reverse_string_test.dart: ReverseString an even-sized word[0m                                                                                                                           00:00 [32m+1[0m[33m ~5[0m: test/reverse_string_test.dart: ReverseString an even-sized word[0m                                                                                                                           00:00 [32m+1[0m[33m ~5[0m: All tests passed![0m                                                                                                                                                                         
+
+real	0m2.026s
+user	0m2.122s
+sys	0m0.635s
+
+===============================================================================
+
+dart run test --run-skipped --no-color --coverage=./coverage
+00:00 +0: loading test/reverse_string_test.dart                                                                                                                                                        00:00 +0: test/reverse_string_test.dart: ReverseString an empty string                                                                                                                                 00:00 +1: test/reverse_string_test.dart: ReverseString an empty string                                                                                                                                 00:00 +1: test/reverse_string_test.dart: ReverseString a word                                                                                                                                          00:00 +2: test/reverse_string_test.dart: ReverseString a word                                                                                                                                          00:00 +2: test/reverse_string_test.dart: ReverseString a capitalized word                                                                                                                              00:00 +3: test/reverse_string_test.dart: ReverseString a capitalized word                                                                                                                              00:00 +3: test/reverse_string_test.dart: ReverseString a sentence with punctuation                                                                                                                     00:00 +4: test/reverse_string_test.dart: ReverseString a sentence with punctuation                                                                                                                     00:00 +4: test/reverse_string_test.dart: ReverseString a palindrome                                                                                                                                    00:00 +5: test/reverse_string_test.dart: ReverseString a palindrome                                                                                                                                    00:00 +5: test/reverse_string_test.dart: ReverseString an even-sized word                                                                                                                              00:00 +6: test/reverse_string_test.dart: ReverseString an even-sized word                                                                                                                              00:01 +6: test/reverse_string_test.dart: ReverseString an even-sized word                                                                                                                              00:01 +6: All tests passed!                                                                                                                                                                            
+
+real	0m1.986s
+user	0m2.151s
+sys	0m0.578s
+
+===============================================================================
+
+dart pub global run coverage:format_coverage --packages=.dart_tool/package_config.json --report-on=lib --lcov -o ./coverage/lcov.info -i ./coverage
+
+real	0m0.374s
+user	0m0.472s
+sys	0m0.159s
+
+===============================================================================
+
+Running: lcov --summary ./coverage/lcov.info
+Reading tracefile ./coverage/lcov.info
+Summary coverage rate:
+  lines......: 100.0% (4 of 4 lines)
+  functions..: no data found
+  branches...: no data found
+
+real	0m0.037s
+user	0m0.028s
+sys	0m0.009s
 
 ===============================================================================
 
@@ -94,17 +102,17 @@ Overall coverage rate:
   lines......: 100.0% (4 of 4 lines)
   functions..: no data found
 
-real	0m0.039s
-user	0m0.031s
-sys	0m0.008s
+real	0m0.044s
+user	0m0.037s
+sys	0m0.007s
 
 ===============================================================================
 
 Running: misspell .
 
-real	0m0.070s
-user	0m0.194s
-sys	0m0.027s
+real	0m0.075s
+user	0m0.163s
+sys	0m0.030s
 
 ===============================================================================
 
@@ -116,9 +124,9 @@ no issues found
 Documented 1 public library in 11.7 seconds
 Success! Docs generated into /home/vpayno/git_vpayno/exercism-workspace/dart/reverse-string/doc/api
 
-real	0m11.929s
-user	0m18.027s
-sys	0m1.719s
+real	0m11.924s
+user	0m17.675s
+sys	0m1.705s
 
 ===============================================================================
 
