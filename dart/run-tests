@@ -27,6 +27,11 @@ main()
 
 	print_ruler
 
+	echo dart pub global activate coverage
+	time dart pub global activate coverage
+
+	print_ruler
+
 	# https://github.com/dart-lang/coverage
 	# dart pub global activate coverage
 	# note: can't find a way to run skipped tests when testing coverage
@@ -44,18 +49,18 @@ main()
 	print_ruler
 
 	# https://pub.dev/packages/test
-	echo  dart pub global run coverage:format_coverage --packages=.dart_tool/package_config.json --report-on=lib --lcov -o ./coverage/lcov.info -i ./coverage
+	echo dart pub global run coverage:format_coverage --packages=.dart_tool/package_config.json --report-on=lib --lcov -o ./coverage/lcov.info -i ./coverage
 	time dart pub global run coverage:format_coverage --packages=.dart_tool/package_config.json --report-on=lib --lcov -o ./coverage/lcov.info -i ./coverage
 
 	print_ruler
 
-	echo dart run test --coverage=./coverage
-	time dart run test --coverage=./coverage
+	echo dart run test --run-skipped --no-color --coverage=./coverage
+	time dart run test --run-skipped --no-color --coverage=./coverage
 
 	print_ruler
 
-	echo dart pub global activate coverage
-	time dart pub global activate coverage
+	echo Running: lcov --summary ./coverage/lcov.info
+	time lcov --summary ./coverage/lcov.info
 
 	print_ruler
 
