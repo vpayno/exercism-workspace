@@ -97,25 +97,21 @@ jobs:
         cd ./dart
         ./for_each dart analyze .
 
-    - name: Testing with Dart test
-      id: dart-test-run
-      run: |
-        cd ./dart
-        ./for_each dart test --run-skipped --no-color .
-
-    - name: Testing with Dart test coverage
-      id: dart-test-coverage-1
+    - name: Activate Coverage
+      id: dart-test-activate-coverage
       run: |
         cd ./dart
         ./for_each dart pub global activate coverage
-        ./for_each dart pub global run coverage:format_coverage --packages=.dart_tool/package_config.json --report-on=lib --lcov -o ./coverage/lcov.info -i ./coverage
-        ./for_each dart run test --run-skipped --no-color --coverage=./coverage
-        ./for_each lcov --summary ./coverage/lcov.info
 
-    - name: Testing with Dart test coverage
-      id: dart-test-coverage-2
+    - name: Testing with Dart
+      id: dart-test-run
       run: |
         cd ./dart
-        ./for_each dart pub global run coverage:test_with_coverage
+        ./for_each dart run test --run-skipped --no-color --coverage=./coverage
+
+    - name: Show Test Coverage
+      id: dart-test-coverage
+      run: |
+        cd ./dart
+        ./for_each dart pub global run coverage:format_coverage --packages=.dart_tool/package_config.json --report-on=lib --lcov -o ./coverage/lcov.info -i ./coverage
         ./for_each lcov --summary ./coverage/lcov.info
-        git restore .
