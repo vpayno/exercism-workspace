@@ -18,3 +18,4 @@
 - [two-fer](./two-fer/README.md)
 - [reverse-string](./reverse-string/README.md)
 - [leap](./leap/README.md)
+- [scrabble-score](./scrabble-score/README.md)
