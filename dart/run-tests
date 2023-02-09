@@ -20,6 +20,11 @@ main()
 
 	print_ruler
 
+	echo rm -rf ./coverage
+	time rm -rf ./coverage
+
+	print_ruler
+
 	# https://github.com/dart-lang/test
 
 	echo Running: dart test --run-skipped --no-color .
@@ -41,10 +46,8 @@ main()
 
 	print_ruler
 
-	# https://github.com/linux-test-project/lcov
-
-	echo Running: lcov --summary ./coverage/lcov.info
-	time lcov --summary ./coverage/lcov.info
+	echo dart run test --run-skipped --no-color --coverage=./coverage
+	time dart run test --run-skipped --no-color --coverage=./coverage
 
 	print_ruler
 
@@ -54,10 +57,7 @@ main()
 
 	print_ruler
 
-	echo dart run test --run-skipped --no-color --coverage=./coverage
-	time dart run test --run-skipped --no-color --coverage=./coverage
-
-	print_ruler
+	# https://github.com/linux-test-project/lcov
 
 	echo Running: lcov --summary ./coverage/lcov.info
 	time lcov --summary ./coverage/lcov.info
