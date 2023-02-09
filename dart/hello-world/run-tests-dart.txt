@@ -7,29 +7,29 @@ Running: dart analyze .
 Analyzing ....
 No issues found!
 
-real	0m6.366s
-user	0m8.056s
-sys	0m1.577s
+real	0m1.298s
+user	0m1.439s
+sys	0m0.373s
 
 ===============================================================================
 
-Running: dart test --no-color .
+Running: dart test --run-skipped --no-color .
 00:00 +0: loading ./test/hello_world_test.dart                                                                                                                                                         00:00 +0: ./test/hello_world_test.dart: Say Hi!                                                                                                                                                        00:00 +1: ./test/hello_world_test.dart: Say Hi!                                                                                                                                                        00:00 +1: All tests passed!                                                                                                                                                                            
 
-real	0m2.951s
-user	0m2.312s
-sys	0m0.732s
+real	0m1.096s
+user	0m1.168s
+sys	0m0.341s
 
 ===============================================================================
 
 Running: dart pub global run coverage:test_with_coverage
 The Dart VM service is listening on http://127.0.0.1:8181/
 The Dart DevTools debugger and profiler is available at: http://127.0.0.1:8181/devtools/#/?uri=ws%3A%2F%2F127.0.0.1%3A8181%2Fws
-00:00 [32m+0[0m: [1m[90mloading test/hello_world_test.dart[0m[0m                                                                                                                                                           00:01 [32m+0[0m: [1m[90mloading test/hello_world_test.dart[0m[0m                                                                                                                                                           00:01 [32m+0[0m: test/hello_world_test.dart: Say Hi![0m                                                                                                                                                          00:01 [32m+1[0m: test/hello_world_test.dart: Say Hi![0m                                                                                                                                                          00:01 [32m+1[0m: All tests passed![0m                                                                                                                                                                            
+00:00 [32m+0[0m: [1m[90mloading test/hello_world_test.dart[0m[0m                                                                                                                                                           00:00 [32m+0[0m: test/hello_world_test.dart: Say Hi![0m                                                                                                                                                          00:00 [32m+1[0m: test/hello_world_test.dart: Say Hi![0m                                                                                                                                                          00:00 [32m+1[0m: All tests passed![0m                                                                                                                                                                            
 
-real	0m5.640s
-user	0m5.561s
-sys	0m1.396s
+real	0m2.134s
+user	0m2.131s
+sys	0m0.594s
 
 ===============================================================================
 
@@ -40,17 +40,71 @@ Summary coverage rate:
   functions..: no data found
   branches...: no data found
 
-real	0m0.093s
-user	0m0.076s
-sys	0m0.019s
+real	0m0.044s
+user	0m0.029s
+sys	0m0.010s
+
+===============================================================================
+
+dart pub global run coverage:format_coverage --packages=.dart_tool/package_config.json --report-on=lib --lcov -o ./coverage/lcov.info -i ./coverage
+
+real	0m0.350s
+user	0m0.414s
+sys	0m0.150s
+
+===============================================================================
+
+dart run test --run-skipped --no-color --coverage=./coverage
+00:00 +0: loading test/hello_world_test.dart                                                                                                                                                           00:00 +0: test/hello_world_test.dart: Say Hi!                                                                                                                                                          00:00 +1: test/hello_world_test.dart: Say Hi!                                                                                                                                                          00:01 +1: test/hello_world_test.dart: Say Hi!                                                                                                                                                          00:01 +1: All tests passed!                                                                                                                                                                            
+
+real	0m1.964s
+user	0m2.092s
+sys	0m0.580s
+
+===============================================================================
+
+dart pub global activate coverage
+Package coverage is currently active at version 1.6.3.
+Resolving dependencies...
+The package coverage is already activated at newest available version.
+To recompile executables, first run `dart pub global deactivate coverage`.
+Installed executables collect_coverage, format_coverage and test_with_coverage.
+Warning: Pub installs executables into $HOME/.pub-cache/bin, which is not on your path.
+You can fix that by adding this to your shell's config file (.bashrc, .bash_profile, etc.):
+
+  export PATH="$PATH":"$HOME/.pub-cache/bin"
+
+Activated coverage 1.6.3.
+
+real	0m1.024s
+user	0m0.791s
+sys	0m0.233s
+
+===============================================================================
+
+genhtml -o ./coverage/report ./coverage/lcov.info
+Reading data file ./coverage/lcov.info
+Found 1 entries.
+Found common filename prefix "/home/vpayno/git_vpayno/exercism-workspace/dart/hello-world"
+Writing .css and .png files.
+Generating output.
+Processing file lib/hello_world.dart
+Writing directory view page.
+Overall coverage rate:
+  lines......: 100.0% (1 of 1 line)
+  functions..: no data found
+
+real	0m0.044s
+user	0m0.032s
+sys	0m0.011s
 
 ===============================================================================
 
 Running: misspell .
 
-real	0m0.160s
-user	0m0.297s
-sys	0m0.079s
+real	0m0.070s
+user	0m0.167s
+sys	0m0.029s
 
 ===============================================================================
 
@@ -59,12 +113,12 @@ Documenting hello_world...
 Initialized dartdoc with 40 libraries
 Generating docs for library hello_world from package:hello_world/hello_world.dart...
 no issues found
-Documented 1 public library in 31.6 seconds
+Documented 1 public library in 12.3 seconds
 Success! Docs generated into /home/vpayno/git_vpayno/exercism-workspace/dart/hello-world/doc/api
 
-real	0m33.319s
-user	0m47.919s
-sys	0m4.787s
+real	0m12.495s
+user	0m18.483s
+sys	0m1.817s
 
 ===============================================================================
 
