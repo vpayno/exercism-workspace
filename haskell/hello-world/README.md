@@ -43,3 +43,9 @@ but it is up to you to define the function.
 ### Based on
 
 This is an exercise to introduce users to using Exercism - https://en.wikipedia.org/wiki/%22Hello,_world!%22_program
+
+
+### My Solution
+
+- [my solution](./src/HelloWorld.hs)
+- [run-tests](./run-tests-haskell.txt)
