@@ -1,0 +1,60 @@
+#!/bin/bash
+
+print_ruler()
+{
+	printf "\n"
+	printf "=%.0s" {1..79}; printf "\n"
+	printf "\n"
+} # print_ruler()
+
+main()
+{
+	printf "Running automated test file(s):\n\n"
+
+	print_ruler
+
+	# curl -sSL https://get.haskellstack.org/ | sh -s - -f
+
+	# stack install hlint
+
+	echo Running: hlint src --report
+	time hlint src --report
+
+	print_ruler
+
+	# stack install weeder-2.4.1
+
+	# echo Running: stack weeder
+	# time stack weeder
+
+	# print_ruler
+
+	# stack install brittany # --resolver lts-16.31
+
+	echo Running: brittany --verbose --write-mode=inplace ./{src,test}/*hs
+	time brittany --verbose --write-mode=inplace ./{src,test}/*hs
+
+	print_ruler
+
+	# stack install stan
+
+	# echo Running: stan --hiedir ./.stack-work/dist/x86_64-linux-tinfo6/Cabal-*/build
+	# time stan --hiedir ./.stack-work/dist/x86_64-linux-tinfo6/Cabal-*/build
+
+	# print_ruler
+
+	echo Running: stack test --coverage
+	time stack test --coverage
+
+	print_ruler
+
+	# go install github.com/client9/misspell/cmd/misspell@latest
+	# still looking for a working version for rust
+
+	echo Running: misspell .
+	time misspell .
+
+	print_ruler
+} # main()
+
+time main "$@" |& tee ./run-tests-rust.txt
