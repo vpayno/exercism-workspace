@@ -1,0 +1,91 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: hlint src --report
+Writing report to report.html ...
+No hints
+
+real	0m0.147s
+user	0m0.095s
+sys	0m0.049s
+
+===============================================================================
+
+Running: brittany --verbose --write-mode=inplace ./src/LeapYear.hs ./test/Tests.hs
+
+real	0m0.044s
+user	0m0.027s
+sys	0m0.011s
+
+===============================================================================
+
+Running: stack test --coverage
+leap> build (lib + test)
+Preprocessing library for leap-1.6.0.10..
+Building library for leap-1.6.0.10..
+[2 of 2] Compiling LeapYear
+Preprocessing test suite 'test' for leap-1.6.0.10..
+Building test suite 'test' for leap-1.6.0.10..
+[2 of 2] Compiling Main
+Linking .stack-work/dist/x86_64-linux-tinfo6/Cabal-3.4.1.0/build/test/test ...
+leap> copy/register
+Installing library in /home/vpayno/git_vpayno/exercism-workspace/haskell/leap/.stack-work/install/x86_64-linux-tinfo6/d4732dabdb5453618fba7a618561cfb8a24515082a2659c92cceafc91bd21e9b/9.0.2/lib/x86_64-linux-ghc-9.0.2/leap-1.6.0.10-DrwYv48B5KvxrRvsZThHR
+Registering library for leap-1.6.0.10..
+leap> test (suite: test)
+
+
+isLeapYear
+  2015 - year not divisible by 4 in common year
+  1970 - year divisible by 2, not divisible by 4 in common year
+  1996 - year divisible by 4, not divisible by 100 in leap year
+  1960 - year divisible by 4 and 5 is still a leap year
+  2100 - year divisible by 100, not divisible by 400 in common year
+  1900 - year divisible by 100 but not by 3 is still not a leap year
+  2000 - year divisible by 400 in leap year
+  2400 - year divisible by 400 but not by 125 is still a leap year
+  1800 - year divisible by 200, not divisible by 400 in common year
+
+Finished in 0.0001 seconds
+9 examples, 0 failures
+
+leap> Test suite test passed
+Generating coverage report for leap's test-suite "test"
+100% expressions used (20/20)
+ 75% boolean coverage (3/4)
+      75% guards (3/4), 1 always True
+     100% 'if' conditions (0/0)
+     100% qualifiers (0/0)
+100% alternatives used (4/4)
+100% local declarations used (0/0)
+100% top-level declarations used (1/1)
+The coverage report for leap's test-suite "test" is available at /home/vpayno/git_vpayno/exercism-workspace/haskell/leap/.stack-work/install/x86_64-linux-tinfo6/d4732dabdb5453618fba7a618561cfb8a24515082a2659c92cceafc91bd21e9b/9.0.2/hpc/leap/test/hpc_index.html
+Completed 2 action(s).
+Generating unified report
+100% expressions used (20/20)
+ 75% boolean coverage (3/4)
+      75% guards (3/4), 1 always True
+     100% 'if' conditions (0/0)
+     100% qualifiers (0/0)
+100% alternatives used (4/4)
+100% local declarations used (0/0)
+100% top-level declarations used (1/1)
+The unified report is available at /home/vpayno/git_vpayno/exercism-workspace/haskell/leap/.stack-work/install/x86_64-linux-tinfo6/d4732dabdb5453618fba7a618561cfb8a24515082a2659c92cceafc91bd21e9b/9.0.2/hpc/combined/all/hpc_index.html
+
+An index of the generated HTML coverage reports is available at /home/vpayno/git_vpayno/exercism-workspace/haskell/leap/.stack-work/install/x86_64-linux-tinfo6/d4732dabdb5453618fba7a618561cfb8a24515082a2659c92cceafc91bd21e9b/9.0.2/hpc/index.html
+
+real	0m1.985s
+user	0m1.533s
+sys	0m0.684s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.057s
+user	0m0.078s
+sys	0m0.037s
+
+===============================================================================
+

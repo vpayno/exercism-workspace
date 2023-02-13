@@ -15,3 +15,4 @@
 ## [Exercises](https://exercism.org/tracks/haskell/exercises)
 
 - [hello-world](./hello-world/README.md)
+- [leap](./leap/README.md)

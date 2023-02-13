@@ -54,3 +54,8 @@ that takes a year and determines whether it is a leap year.
 ### Based on
 
 JavaRanch Cattle Drive, exercise 3 - https://www.javaranch.com/leap.jsp
+
+### My Solution
+
+- [my solution](./src/LeapYear.hs)
+- [run-tests](./run-tests-haskell.txt)
