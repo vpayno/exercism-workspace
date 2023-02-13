@@ -1,0 +1,107 @@
+name: Haskell Workflow
+
+on:
+  pull_request:
+
+jobs:
+  stage1:
+    name: Change Check
+
+    runs-on: 'ubuntu-latest'
+
+    outputs:
+      docs_changed: ${{ steps.check_file_changed.outputs.docs_changed }}
+
+    steps:
+    - name: Checkout Repo
+      id: checkout-repo
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+        ref: ${{ github.ref }}
+        submodules: recursive
+
+    - name: Get Change List
+      id: check_file_changed
+      shell: pwsh
+      run: |
+        # https://www.meziantou.net/executing-github-actions-jobs-or-steps-only-when-specific-files-change.htm#conditional-jobs
+
+        # Diff HEAD with the previous commit then output to stdout.
+        echo "=== Which files changed? ===" | Out-String -Stream
+        ([string[]] $diff = git diff --name-only HEAD^ HEAD)
+
+        # Check if the files are present in the changed file list (added, modified, deleted) then output to stdout.
+        echo "=== Which Haskell files changed? ===" | Out-String -Stream
+        ([string[]] $SourceDiff = $diff | Where-Object { $_ -match '^.*[.](hs|cabal)$' -or $_ -match '^.*/stack[.]yaml[.].*$' })
+
+        # Did Haskell files change?
+        echo "=== Did Haskell files change? ===" | Out-String -Stream
+        ([string[]] $HasDiff = $SourceDiff.Length -gt 0)
+
+        # Set the output named "docs_changed"
+        Write-Host "::set-output name=docs_changed::$HasDiff"
+
+  stage2:
+    name: Haskell Checks
+    strategy:
+      matrix:
+        os: ["ubuntu-latest", "windows-latest", "macos-latest"]
+        exclude:
+          - os: "macos-latest"
+          - os: "windows-latest"
+
+    runs-on: "${{ matrix.os }}"
+
+    needs: [ stage1 ]
+    if: needs.stage1.outputs.docs_changed == 'True'
+
+    steps:
+    - name: Checkout Repo
+      id: checkout-repo
+      uses: actions/checkout@v3
+
+    # https://github.com/haskell/actions/tree/main/setup
+    - name: Set up Haskell Toolchain
+      id: setup-haskell-toolchain
+      uses: haskell/actions/setup@v2
+      with:
+        ghc-version: "latest"
+        enable-stack: true
+        stack-version: "latest"
+        stack-setup-ghc: true
+        cabal-version: "latest"
+        cabal-update: true
+
+    - name: Check Versions
+      id: setup-haskell-check
+      run: |
+        stack --version
+        cabal --version
+
+    - name: Install Tools
+      id: setup-haskell-tools
+      run: |
+        stack install hlint
+        hlint --version
+
+    - name: CD to Haskell Dir
+      id: cd-to-haskell-dir
+      run: |
+        pwd
+        ls
+        cd ./haskell
+        pwd
+        ls
+
+    - name: Analysing the code with hlint
+      id: haskell-lint
+      run: |
+        cd ./haskell
+        ./for_each hlint src --report
+
+    - name: Testing with coverage
+      id: haskell-test-coverage
+      run: |
+        cd ./haskell
+        ./for_each stack test --coverage
