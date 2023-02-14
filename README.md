@@ -4,12 +4,32 @@ Exercism Workspace (https://exercism.org/docs/tracks)
 
 [My Profile](https://exercism.org/profiles/vpayno)
 
-[12in23 Challenge Dashboard](https://exercism.org/challenges/12in23)
+
+## [12in23 Challenge Dashboard](https://exercism.org/challenges/12in23)
+
+### Calendar
+
+- January: Introduction
+- February: Functional -> Haskell (done)
+- March: Mechanical ->
+- April: Analytical ->
+- May: Mindshifting ->
+- June: Summer of Sexps ->
+- July: Jurassic ->
+- August: Apps ->
+- September: Slimline ->
+- October: Object Oriented ->
+- November: Nibbly ->
+- December: Diversions ->
+
+### 12in23 Badges
+
+[My Exercism Badges](https://exercism.org/profiles/vpayno/badges)
 
 
 ## CI
 
-### Badges
+### CI Badges
 
  [![Bash Checks](https://github.com/vpayno/exercism-workspace/actions/workflows/bash.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/bash.yml) |
  [![Go Workflow](https://github.com/vpayno/exercism-workspace/actions/workflows/go.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/go.yml) |
