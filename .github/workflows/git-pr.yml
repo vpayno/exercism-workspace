@@ -1,0 +1,26 @@
+name: Git PR Checks
+
+on: [pull_request]
+
+jobs:
+  block-fixup:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repo
+      id: checkout-repo
+      uses: actions/checkout@v3
+
+    - name: Block Fixup Commit Merge
+      id: block-if-contains-fixups
+      uses: 13rac1/block-fixup-merge-action@v2.0.0
+
+    - name: Get File Diff
+      id: git-file-diff
+      run: |
+        git diff --name-only HEAD^..
+
+    - name: Get Log Diff
+      id: git-log-diff
+      run: |
+        git log --color=auto --graph --pretty=format:'%Cred%<(8)%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an> [%ce] %Creset%C(cyan)[gpg: %G?]%Creset' --abbrev-commit --decorate HEAD^..

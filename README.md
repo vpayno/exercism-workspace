@@ -44,7 +44,7 @@ Exercism Workspace (https://exercism.org/docs/tracks)
 
  [![Haskell Workflow](https://github.com/vpayno/exercism-workspace/actions/workflows/haskell.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/haskell.yml) |
 
- [![Git Checks](https://github.com/vpayno/exercism-workspace/actions/workflows/git.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/git.yml) |
+ [![Git PR Checks](https://github.com/vpayno/exercism-workspace/actions/workflows/git-pr.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/git-pr.yml) |
  [![Check Links](https://github.com/vpayno/exercism-workspace/actions/workflows/links.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/links.yml) |
  [![woke (pr)](https://github.com/vpayno/exercism-workspace/actions/workflows/woke-pr.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/woke-pr.yml) |
  [![Woke (push)](https://github.com/vpayno/exercism-workspace/actions/workflows/woke-push.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/woke-push.yml) |
@@ -54,7 +54,7 @@ Exercism Workspace (https://exercism.org/docs/tracks)
 ### Yaml Configs
 
 - [BASH Workflow](.github/workflows/bash.yml)
-- [Git Fixup Blocker Workflow](.github/workflows/git.yml)
+- [Git PR Fixup Blocker Workflow](.github/workflows/git.yml)
 - [Go Workflow](.github/workflows/go.yml)
 - [Dart Workflow](.github/workflows/dart.yml)
 - [Tcl Workflow](.github/workflows/tcl.yml)
