@@ -86,3 +86,8 @@ This part is entirely optional.
 ### Based on
 
 Inspired by the 'Deaf Grandma' exercise in Chris Pine's Learn to Program tutorial. - https://pine.fm/LearnToProgram/?Chapter=06
+
+### My Solution
+
+- [my solution](./src/Bob.hs)
+- [run-tests](./run-tests-haskell.txt)
