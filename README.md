@@ -21,6 +21,7 @@ Exercism Workspace (https://exercism.org/docs/tracks)
  [![Awk Workflow](https://github.com/vpayno/exercism-workspace/actions/workflows/awk.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/awk.yml) |
  [![Rust Workflow](https://github.com/vpayno/exercism-workspace/actions/workflows/rust.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/rust.yml) |
  [![jq Workflow](https://github.com/vpayno/exercism-workspace/actions/workflows/jq.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/jq.yml) |
+ [![Haskell Workflow](https://github.com/vpayno/exercism-workspace/actions/workflows/haskell.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/haskell.yml)
 
  [![Git Checks](https://github.com/vpayno/exercism-workspace/actions/workflows/git.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/git.yml) |
  [![Check Links](https://github.com/vpayno/exercism-workspace/actions/workflows/links.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/links.yml) |
@@ -41,6 +42,7 @@ Exercism Workspace (https://exercism.org/docs/tracks)
 - [Awk Workflow](.github/workflows/awk.yml)
 - [Rust Workflow](.github/workflows/rust.yml)
 - [jq Workflow](.github/workflows/jq.yml)
+- [Haskell Workflow](.github/workflows/haskell.yml)
 - [Link Checker Workflow](.github/workflows/links.yml)
 - [CodeQL Workflow](.github/workflows/codeql-analysis.yml)
 - [Woke PR](.github/workflows/woke-pr.yml)
@@ -58,6 +60,7 @@ Exercism Workspace (https://exercism.org/docs/tracks)
 - [Awk](awk/README.md)
 - [Rust](rust/README.md)
 - [jq](jq/README.md)
+- [Haskell](haskell/README.md)
 
 
 ## Tools/Scripts
@@ -71,3 +74,4 @@ Exercism Workspace (https://exercism.org/docs/tracks)
 - [Awk run-tests](./awk/run-tests)
 - [Rust run-tests](./rust/run-tests)
 - [jq run-tests](./jq/run-tests)
+- [Haskell run-tests](./haskell/run-tests)
