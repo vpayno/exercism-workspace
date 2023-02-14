@@ -21,7 +21,8 @@ Exercism Workspace (https://exercism.org/docs/tracks)
  [![Awk Workflow](https://github.com/vpayno/exercism-workspace/actions/workflows/awk.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/awk.yml) |
  [![Rust Workflow](https://github.com/vpayno/exercism-workspace/actions/workflows/rust.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/rust.yml) |
  [![jq Workflow](https://github.com/vpayno/exercism-workspace/actions/workflows/jq.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/jq.yml) |
- [![Haskell Workflow](https://github.com/vpayno/exercism-workspace/actions/workflows/haskell.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/haskell.yml)
+
+ [![Haskell Workflow](https://github.com/vpayno/exercism-workspace/actions/workflows/haskell.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/haskell.yml) |
 
  [![Git Checks](https://github.com/vpayno/exercism-workspace/actions/workflows/git.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/git.yml) |
  [![Check Links](https://github.com/vpayno/exercism-workspace/actions/workflows/links.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/links.yml) |
