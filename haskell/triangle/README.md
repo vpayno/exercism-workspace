@@ -50,3 +50,8 @@ a single line. Feel free to add your own code/tests to check for degenerate tria
 ### Based on
 
 The Ruby Koans triangle project, parts 1 & 2 - http://rubykoans.com
+
+### My Solution
+
+- [my solution](./src/Triangle.hs)
+- [run-tests](./run-tests-haskell.txt)

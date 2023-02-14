@@ -18,3 +18,4 @@
 - [leap](./leap/README.md)
 - [space-age](./space-age/README.md)
 - [bob](./bob/README.md)
+- [triangle](./triangle/README.md)
