@@ -48,7 +48,7 @@ Examples:
 ### My Solution
 
 - [my solution](./sublist.go)
-- [my examples](./submit_examples_test.go)
+- [my examples](./sublist_examples_test.go)
 - [test cases](./cases_test.go)
 - [tests](./sublist_test.go)
 - [run-tests](./run-tests-go.txt)

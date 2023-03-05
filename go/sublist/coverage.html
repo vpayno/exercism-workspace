@@ -86,17 +86,6 @@ import (
         "strings"
 )
 
-// Relation is a string that shows the relationship between two lists.
-type Relation string
-
-// "Enum" of list relations.
-const (
-        EqualR     Relation = "equal"
-        UnequalR            = "unequal"
-        SuperlistR          = "superlist"
-        SublistR            = "sublist"
-)
-
 // ListToString returns a string representation of an int slice.
 func ListToString(list []int) string <span class="cov10" title="42">{
         str := fmt.Sprint(list)
@@ -110,25 +99,25 @@ func ListToString(list []int) string <span class="cov10" title="42">{
 func Sublist(l1, l2 []int) Relation <span class="cov8" title="22">{
 
         if len(l1) == 0 &amp;&amp; len(l2) == 0 </span><span class="cov1" title="1">{
-                return EqualR
+                return RelationEqual
         }</span>
 
         <span class="cov8" title="21">s1 := ListToString(l1)
         s2 := ListToString(l2)
 
         if len(l1) == len(l2) &amp;&amp; s1 == s2 </span><span class="cov2" title="2">{
-                return EqualR
+                return RelationEqual
         }</span>
 
         <span class="cov8" title="19">if len(s1) &gt; len(s2) &amp;&amp; strings.Contains(s1, s2) </span><span class="cov4" title="5">{
-                return SuperlistR
+                return RelationSuperlist
         }</span>
 
         <span class="cov7" title="14">if len(s1) &lt; len(s2) &amp;&amp; strings.Contains(s2, s1) </span><span class="cov5" title="7">{
-                return SublistR
+                return RelationSublist
         }</span>
 
-        <span class="cov5" title="7">return UnequalR</span>
+        <span class="cov5" title="7">return RelationUnequal</span>
 }
 </pre>
 		
