@@ -131,3 +131,12 @@ You can greet someone in Portuguese with `"Olá {name}!"`.
 ### Created by
 
 - @junedev
+
+### My Solution
+
+- [my solution](./airport_robot.go)
+- [my examples](./airport_robot_examples_test.go)
+- [tests](./airport_robot_test.go)
+- [run-tests](./run-tests-go.txt)
+- [coverage](./coverage.html)
+- [documentation](./greeting-doc.md)
