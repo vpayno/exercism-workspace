@@ -140,6 +140,16 @@ func TestCanFinish(t *testing.T) {
 			expected:      true,
 		},
 		{
+			name: "Car has 60% battery. Car cannot finish the race",
+			car: Car{
+				speed:        3,
+				batteryDrain: 3,
+				battery:      60,
+			},
+			trackDistance: 61,
+			expected:      false,
+		},
+		{
 			name: "Car has 30% battery. Car cannot finish the race",
 			car: Car{
 				speed:        5,

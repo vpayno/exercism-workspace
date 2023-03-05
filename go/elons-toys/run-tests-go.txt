@@ -5,15 +5,147 @@ Go packages: elon
 
 ===============================================================================
 
-golint elon
+golangci-lint run ./...
+elons_toys_examples_test.go:7:1: tests: ExampleDrive refers to unknown identifier: Drive (govet)
+func ExampleDrive() {
+^
+elons_toys_examples_test.go:25:1: tests: ExampleDisplayDistance refers to unknown identifier: DisplayDistance (govet)
+func ExampleDisplayDistance() {
+^
+elons_toys_examples_test.go:35:1: tests: ExampleDisplayBattery refers to unknown identifier: DisplayBattery (govet)
+func ExampleDisplayBattery() {
+^
+elons_toys_examples_test.go:45:1: tests: ExampleCanFinish refers to unknown identifier: CanFinish (govet)
+func ExampleCanFinish() {
+^
 
-real	0m0.220s
-user	0m0.213s
-sys	0m0.212s
+real	0m0.222s
+user	0m0.358s
+sys	0m0.197s
 
 ===============================================================================
 
-go test -v -covermode=count -coverprofile coverage.out elon
+golint ./...
+
+real	0m0.009s
+user	0m0.007s
+sys	0m0.008s
+
+===============================================================================
+
+revive -formatter=stylish ./...
+car.go
+  (1, 1)  https://revive.run/r#package-comments  should have a package comment  
+
+elons_toys.go
+  (10, 14)  https://revive.run/r#var-declaration  should omit type bool from declaration of var success; it will be inferred from the right-hand side  
+
+
+ ✖ 2 problems (0 errors) (2 warnings)
+
+real	0m0.007s
+user	0m0.005s
+sys	0m0.003s
+
+===============================================================================
+
+ineffassign ./...
+
+real	0m0.079s
+user	0m0.140s
+sys	0m0.097s
+
+===============================================================================
+
+go-consistent -v ./...
+	info: check "./."
+internal error: package "fmt" without types was imported from "elon"
+
+real	0m0.101s
+user	0m0.137s
+sys	0m0.152s
+
+===============================================================================
+
+staticcheck ./...
+
+real	0m0.145s
+user	0m0.200s
+sys	0m0.150s
+
+===============================================================================
+
+gocritic check -enableAll ./...
+
+real	0m0.788s
+user	0m2.890s
+sys	0m0.408s
+
+===============================================================================
+
+go vet ./...
+# elon
+./elons_toys_examples_test.go:7:1: ExampleDrive refers to unknown identifier: Drive
+./elons_toys_examples_test.go:25:1: ExampleDisplayDistance refers to unknown identifier: DisplayDistance
+./elons_toys_examples_test.go:35:1: ExampleDisplayBattery refers to unknown identifier: DisplayBattery
+./elons_toys_examples_test.go:45:1: ExampleCanFinish refers to unknown identifier: CanFinish
+
+real	0m0.091s
+user	0m0.167s
+sys	0m0.122s
+
+===============================================================================
+
+go fix ./...
+
+real	0m0.026s
+user	0m0.014s
+sys	0m0.032s
+
+===============================================================================
+
+gocyclo .
+3 elon TestCanFinish elons_toys_test.go:115:1
+3 elon TestDisplayBattery elons_toys_test.go:86:1
+3 elon TestDisplayDistance elons_toys_test.go:57:1
+3 elon TestDrive elons_toys_test.go:7:1
+2 elon (*Car).Drive elons_toys.go:9:1
+1 elon ExampleCanFinish elons_toys_examples_test.go:45:1
+1 elon ExampleDisplayBattery elons_toys_examples_test.go:35:1
+1 elon ExampleDisplayDistance elons_toys_examples_test.go:25:1
+1 elon ExampleDrive elons_toys_examples_test.go:7:1
+1 elon (*Car).CanFinish elons_toys.go:33:1
+1 elon (*Car).DisplayBattery elons_toys.go:28:1
+1 elon (*Car).DisplayDistance elons_toys.go:23:1
+1 elon NewCar car.go:13:1
+
+real	0m0.003s
+user	0m0.000s
+sys	0m0.003s
+
+===============================================================================
+
+misspell .
+
+real	0m0.023s
+user	0m0.028s
+sys	0m0.013s
+
+===============================================================================
+
+gosec ./...
+[gosec] 2023/03/04 21:37:44 Including rules: default
+[gosec] 2023/03/04 21:37:44 Excluding rules: default
+[gosec] 2023/03/04 21:37:44 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/elons-toys
+2023/03/04 21:37:44 internal error: package "fmt" without types was imported from "command-line-arguments"
+
+real	0m0.116s
+user	0m0.161s
+sys	0m0.098s
+
+===============================================================================
+
+gotest -v -covermode=count -coverprofile coverage.out ./...
 === RUN   TestDrive
 === RUN   TestDrive/Drive_the_car_once.
 === RUN   TestDrive/Drive_when_battery_percentage_is_below_battery_drain
@@ -31,10 +163,12 @@ go test -v -covermode=count -coverprofile coverage.out elon
 === RUN   TestCanFinish
 === RUN   TestCanFinish/Car_has_100%_battery._Car_can_finish_the_race
 === RUN   TestCanFinish/Car_has_40%_battery._Car_can_finish_the_race
+=== RUN   TestCanFinish/Car_has_60%_battery._Car_cannot_finish_the_race
 === RUN   TestCanFinish/Car_has_30%_battery._Car_cannot_finish_the_race
 --- PASS: TestCanFinish (0.00s)
     --- PASS: TestCanFinish/Car_has_100%_battery._Car_can_finish_the_race (0.00s)
     --- PASS: TestCanFinish/Car_has_40%_battery._Car_can_finish_the_race (0.00s)
+    --- PASS: TestCanFinish/Car_has_60%_battery._Car_cannot_finish_the_race (0.00s)
     --- PASS: TestCanFinish/Car_has_30%_battery._Car_cannot_finish_the_race (0.00s)
 === RUN   ExampleDrive
 --- PASS: ExampleDrive (0.00s)
@@ -45,12 +179,12 @@ go test -v -covermode=count -coverprofile coverage.out elon
 === RUN   ExampleCanFinish
 --- PASS: ExampleCanFinish (0.00s)
 PASS
-coverage: 100.0% of statements
-ok  	elon	0.009s	coverage: 100.0% of statements
+	elon	coverage: 100.0% of statements
+ok  	elon	0.003s	coverage: 100.0% of statements
 
-real	0m0.731s
-user	0m0.774s
-sys	0m0.582s
+real	0m0.202s
+user	0m0.283s
+sys	0m0.224s
 
 ===============================================================================
 
@@ -62,13 +196,29 @@ elon/elons_toys.go:28:	DisplayBattery	100.0%
 elon/elons_toys.go:33:	CanFinish	100.0%
 total:			(statements)	100.0%
 
-real	0m0.247s
-user	0m0.279s
-sys	0m0.303s
+real	0m0.053s
+user	0m0.085s
+sys	0m0.117s
 
 ===============================================================================
 
-go test -v -race -covermode=atomic elon
+go tool cover -html coverage.out -o coverage.html
+
+real	0m0.061s
+user	0m0.093s
+sys	0m0.094s
+
+===============================================================================
+
+gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+real	0m0.019s
+user	0m0.016s
+sys	0m0.020s
+
+===============================================================================
+
+gotest -v -race -covermode=atomic ./...
 === RUN   TestDrive
 === RUN   TestDrive/Drive_the_car_once.
 === RUN   TestDrive/Drive_when_battery_percentage_is_below_battery_drain
@@ -86,10 +236,12 @@ go test -v -race -covermode=atomic elon
 === RUN   TestCanFinish
 === RUN   TestCanFinish/Car_has_100%_battery._Car_can_finish_the_race
 === RUN   TestCanFinish/Car_has_40%_battery._Car_can_finish_the_race
+=== RUN   TestCanFinish/Car_has_60%_battery._Car_cannot_finish_the_race
 === RUN   TestCanFinish/Car_has_30%_battery._Car_cannot_finish_the_race
 --- PASS: TestCanFinish (0.00s)
     --- PASS: TestCanFinish/Car_has_100%_battery._Car_can_finish_the_race (0.00s)
     --- PASS: TestCanFinish/Car_has_40%_battery._Car_can_finish_the_race (0.00s)
+    --- PASS: TestCanFinish/Car_has_60%_battery._Car_cannot_finish_the_race (0.00s)
     --- PASS: TestCanFinish/Car_has_30%_battery._Car_cannot_finish_the_race (0.00s)
 === RUN   ExampleDrive
 --- PASS: ExampleDrive (0.00s)
@@ -100,73 +252,83 @@ go test -v -race -covermode=atomic elon
 === RUN   ExampleCanFinish
 --- PASS: ExampleCanFinish (0.00s)
 PASS
-coverage: 100.0% of statements
-ok  	elon	0.058s	coverage: 100.0% of statements
+	elon	coverage: 100.0% of statements
+ok  	elon	0.022s	coverage: 100.0% of statements
 
-real	0m0.757s
-user	0m0.813s
-sys	0m0.477s
+real	0m0.280s
+user	0m0.382s
+sys	0m0.219s
 
 ===============================================================================
 
-go test --bench . --benchmem
+mv -v benchstat-new.txt benchstat-old.txt
+renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
+
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 PASS
-ok  	elon	0.072s
+ok  	elon	0.002s
 
-real	0m0.736s
-user	0m0.858s
-sys	0m0.516s
+real	0m0.160s
+user	0m0.300s
+sys	0m0.273s
 
 ===============================================================================
 
-go test -tags bonus
+gotest -v -tags bonus
+=== RUN   TestDrive
+=== RUN   TestDrive/Drive_the_car_once.
+=== RUN   TestDrive/Drive_when_battery_percentage_is_below_battery_drain
+--- PASS: TestDrive (0.00s)
+    --- PASS: TestDrive/Drive_the_car_once. (0.00s)
+    --- PASS: TestDrive/Drive_when_battery_percentage_is_below_battery_drain (0.00s)
+=== RUN   TestDisplayDistance
+=== RUN   TestDisplayDistance/Car_displays_driven_distance
+--- PASS: TestDisplayDistance (0.00s)
+    --- PASS: TestDisplayDistance/Car_displays_driven_distance (0.00s)
+=== RUN   TestDisplayBattery
+=== RUN   TestDisplayBattery/Display_battery_percentage
+--- PASS: TestDisplayBattery (0.00s)
+    --- PASS: TestDisplayBattery/Display_battery_percentage (0.00s)
+=== RUN   TestCanFinish
+=== RUN   TestCanFinish/Car_has_100%_battery._Car_can_finish_the_race
+=== RUN   TestCanFinish/Car_has_40%_battery._Car_can_finish_the_race
+=== RUN   TestCanFinish/Car_has_60%_battery._Car_cannot_finish_the_race
+=== RUN   TestCanFinish/Car_has_30%_battery._Car_cannot_finish_the_race
+--- PASS: TestCanFinish (0.00s)
+    --- PASS: TestCanFinish/Car_has_100%_battery._Car_can_finish_the_race (0.00s)
+    --- PASS: TestCanFinish/Car_has_40%_battery._Car_can_finish_the_race (0.00s)
+    --- PASS: TestCanFinish/Car_has_60%_battery._Car_cannot_finish_the_race (0.00s)
+    --- PASS: TestCanFinish/Car_has_30%_battery._Car_cannot_finish_the_race (0.00s)
+=== RUN   ExampleDrive
+--- PASS: ExampleDrive (0.00s)
+=== RUN   ExampleDisplayDistance
+--- PASS: ExampleDisplayDistance (0.00s)
+=== RUN   ExampleDisplayBattery
+--- PASS: ExampleDisplayBattery (0.00s)
+=== RUN   ExampleCanFinish
+--- PASS: ExampleCanFinish (0.00s)
 PASS
-ok  	elon	0.004s
+ok  	elon	0.002s
 
-real	0m0.602s
-user	0m0.676s
-sys	0m0.437s
-
-===============================================================================
-
-go vet elon
-# elon
-./elons_toys_examples_test.go:7:1: ExampleDrive refers to unknown identifier: Drive
-./elons_toys_examples_test.go:25:1: ExampleDisplayDistance refers to unknown identifier: DisplayDistance
-./elons_toys_examples_test.go:35:1: ExampleDisplayBattery refers to unknown identifier: DisplayBattery
-./elons_toys_examples_test.go:45:1: ExampleCanFinish refers to unknown identifier: CanFinish
-
-real	0m0.427s
-user	0m0.487s
-sys	0m0.366s
+real	0m0.153s
+user	0m0.300s
+sys	0m0.228s
 
 ===============================================================================
 
-go fix elon
+benchstat benchstat-old.txt benchstat-new.txt
 
-real	0m0.200s
-user	0m0.199s
-sys	0m0.122s
-
-===============================================================================
-
-gosec ./elons-toys
-[gosec] 2022/06/20 23:39:06 Including rules: default
-[gosec] 2022/06/20 23:39:06 Excluding rules: default
-[gosec] 2022/06/20 23:39:06 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/elons-toys
-2022/06/20 23:39:06 internal error: package "fmt" without types was imported from "command-line-arguments"
-
-real	0m0.536s
-user	0m0.528s
-sys	0m0.360s
+real	0m0.004s
+user	0m0.003s
+sys	0m0.004s
 
 ===============================================================================
 
 gomarkdoc --output elon-doc.md
 
-real	0m0.032s
-user	0m0.020s
-sys	0m0.014s
+real	0m0.011s
+user	0m0.007s
+sys	0m0.005s
 
 ===============================================================================
 
@@ -201,9 +363,9 @@ func (car *Car) Drive() bool
     and reduces the battery (`int`) according to the battery drainage.
 
 
-real	0m0.262s
-user	0m0.182s
-sys	0m0.259s
+real	0m0.039s
+user	0m0.034s
+sys	0m0.038s
 
 
 ===============================================================================

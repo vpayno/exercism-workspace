@@ -18,7 +18,7 @@ import "elon"
 
 ## type [Car](<https://github.com/vpayno/exercism-workspace/blob/main/go/elons-toys/car.go#L4-L10>)
 
-Car implements a remote controlled car\.
+Car implements a remote controlled car.
 
 ```go
 type Car struct {
@@ -32,7 +32,7 @@ type Car struct {
 func NewCar(speed, batteryDrain int) *Car
 ```
 
-NewCar creates a new car with given specifications\.
+NewCar creates a new car with given specifications.
 
 ### func \(\*Car\) [CanFinish](<https://github.com/vpayno/exercism-workspace/blob/main/go/elons-toys/elons_toys.go#L33>)
 
@@ -40,7 +40,7 @@ NewCar creates a new car with given specifications\.
 func (car *Car) CanFinish(trackDistance int) bool
 ```
 
-CanFinish returns true if the car can finish by testing the given trackDistance \(\`int\`\)\.
+CanFinish returns true if the car can finish by testing the given trackDistance \(\`int\`\).
 
 ### func \(\*Car\) [DisplayBattery](<https://github.com/vpayno/exercism-workspace/blob/main/go/elons-toys/elons_toys.go#L28>)
 
@@ -48,7 +48,7 @@ CanFinish returns true if the car can finish by testing the given trackDistance 
 func (car *Car) DisplayBattery() string
 ```
 
-DisplayBattery returns the battery percentage as displayed on the LED display as a \`string\`\.
+DisplayBattery returns the battery percentage as displayed on the LED display as a \`string\`.
 
 ### func \(\*Car\) [DisplayDistance](<https://github.com/vpayno/exercism-workspace/blob/main/go/elons-toys/elons_toys.go#L23>)
 
@@ -56,7 +56,7 @@ DisplayBattery returns the battery percentage as displayed on the LED display as
 func (car *Car) DisplayDistance() string
 ```
 
-DisplayDistance returns the distance as displayed on the LED display as a \`string\`\.
+DisplayDistance returns the distance as displayed on the LED display as a \`string\`.
 
 ### func \(\*Car\) [Drive](<https://github.com/vpayno/exercism-workspace/blob/main/go/elons-toys/elons_toys.go#L9>)
 
@@ -64,7 +64,7 @@ DisplayDistance returns the distance as displayed on the LED display as a \`stri
 func (car *Car) Drive() bool
 ```
 
-Drive updates the number of meters driven based on the car's speed \(\`int\`\)\, and reduces the battery \(\`int\`\) according to the battery drainage\.
+Drive updates the number of meters driven based on the car's speed \(\`int\`\), and reduces the battery \(\`int\`\) according to the battery drainage.
 
 
 

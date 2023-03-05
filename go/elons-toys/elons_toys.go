@@ -31,9 +31,7 @@ func (car *Car) DisplayBattery() string {
 
 // CanFinish returns true if the car can finish by testing the given trackDistance (`int`).
 func (car *Car) CanFinish(trackDistance int) bool {
-	var batteryNeeded int
-
-	batteryNeeded = (trackDistance / car.speed) * car.batteryDrain
+	batteryNeeded := int(float64(trackDistance) / float64(car.speed) * float64(car.batteryDrain))
 
 	return batteryNeeded <= car.battery
 }

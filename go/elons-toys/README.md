@@ -16,17 +16,23 @@ func (receiver type) MethodName(parameters) (returnTypes) {
 You can only define a method with a receiver whose type is defined in the same package as the method.
 
 ```go
+package person
+
 type Person struct {
 	Name string
 }
 
 func (p Person) Greetings() string {
-	return fmt.Sprintf("Welcome %s !", p.Name)
+	return fmt.Sprintf("Welcome %s!", p.Name)
 }
+```
 
+The method on the struct can be called via dot notation.
+
+```go
 p := Person{Name: "Bronson"}
 fmt.Println(p.Greetings())
-// Output: Welcome Bronson !
+// Output: Welcome Bronson!
 ```
 
 Notice the way we called the method `Greetings()` on the `Person` instance `p`.
@@ -148,7 +154,7 @@ car := NewCar(speed, batteryDrain)
 trackDistance := 100
 
 car.CanFinish(trackDistance)
-// Output: true
+// => true
 ```
 
 ## Source
