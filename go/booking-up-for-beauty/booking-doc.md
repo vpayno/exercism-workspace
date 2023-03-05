@@ -28,6 +28,7 @@ AnniversaryDate returns a Time with this year's anniversary
 
 ```go
 {
+
 	fmt.Println(AnniversaryDate())
 
 }
@@ -36,7 +37,7 @@ AnniversaryDate returns a Time with this year's anniversary
 #### Output
 
 ```
-2022-09-15 00:00:00 +0000 UTC
+2023-09-15 00:00:00 +0000 UTC
 ```
 
 </p>
@@ -81,7 +82,7 @@ You have an appointment on Wednesday, April 4, 2012, at 16:45.
 func HasPassed(date string) bool
 ```
 
-HasPassed returns whether a date has passed\.
+HasPassed returns whether a date has passed.
 
 <details><summary>Example</summary>
 <p>
@@ -141,7 +142,7 @@ false
 func Schedule(date string) time.Time
 ```
 
-Schedule returns a time\.Time from a string containing a date
+Schedule returns a time.Time from a string containing a date
 
 <details><summary>Example</summary>
 <p>

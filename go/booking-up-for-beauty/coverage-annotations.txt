@@ -1,0 +1,66 @@
+
+56     	func Description(date string) string {
+57     		const inputLayout = "1/2/2006 15:04:05"
+58     		const outputLayout = "Monday, January 2, 2006, at 15:04:05"
+59     	
+60     		t, e := time.Parse(inputLayout, date)
+61     	
+62     		if e != nil {
+63 MISS			panic(e)
+64     		}
+65     	
+66     		d := t.Format(outputLayout)
+67     	
+68     		re := regexp.MustCompile(`(.*[0-9][0-9]:[0-9][0-9]):[0-9][0-9]$`)
+69     	
+70     		appDate := re.ReplaceAllString(d, `$1`)
+71     	
+72     		return fmt.Sprintf("You have an appointment on %s.", appDate)
+73     	}
+
+
+22     	func HasPassed(date string) bool {
+23     		const layout = "January 2, 2006 15:04:05"
+24     		t, e := time.Parse(layout, date)
+25     	
+26     		if e != nil {
+27 MISS			panic(e)
+28     		}
+29     	
+30     		return t.Before(time.Now())
+31     	}
+
+
+34     	func IsAfternoonAppointment(date string) bool {
+35     		var result bool
+36     	
+37     		const layout = "Monday, January 2, 2006 15:04:05"
+38     		t, e := time.Parse(layout, date)
+39     	
+40     		if e != nil {
+41 MISS			panic(e)
+42     		}
+43     	
+44     		hour := t.Hour()
+45     	
+46     		if hour >= 12 && hour < 18 {
+47     			result = true
+48     		} else {
+49     			result = false
+50     		}
+51     	
+52     		return result
+53     	}
+
+
+10     	func Schedule(date string) time.Time {
+11     		const layout = "1/02/2006 15:04:05"
+12     		t, e := time.Parse(layout, date)
+13     	
+14     		if e != nil {
+15 MISS			panic(e)
+16     		}
+17     	
+18     		return t
+19     	}
+

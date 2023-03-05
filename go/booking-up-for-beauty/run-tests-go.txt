@@ -5,31 +5,146 @@ Go packages: booking
 
 ===============================================================================
 
-golint booking
+golangci-lint run ./...
 
-real	0m0.241s
-user	0m0.225s
-sys	0m0.219s
+real	0m0.295s
+user	0m0.528s
+sys	0m0.210s
 
 ===============================================================================
 
-go test -v -covermode=count -coverprofile coverage.out booking
+golint ./...
+
+real	0m0.027s
+user	0m0.013s
+sys	0m0.005s
+
+===============================================================================
+
+revive -formatter=stylish ./...
+booking_up_for_beauty.go
+  (1, 1)  https://revive.run/r#package-comments  should have a package comment  
+
+
+ ✖ 1 problem (0 errors) (1 warnings)
+
+real	0m0.011s
+user	0m0.005s
+sys	0m0.006s
+
+===============================================================================
+
+ineffassign ./...
+
+real	0m0.088s
+user	0m0.143s
+sys	0m0.107s
+
+===============================================================================
+
+go-consistent -v ./...
+	info: check "./."
+internal error: package "fmt" without types was imported from "booking"
+
+real	0m0.102s
+user	0m0.168s
+sys	0m0.148s
+
+===============================================================================
+
+staticcheck ./...
+
+real	0m0.141s
+user	0m0.223s
+sys	0m0.152s
+
+===============================================================================
+
+gocritic check -enableAll ./...
+./booking_up_for_beauty.go:68:27: regexpSimplify: can re-write `(.*[0-9][0-9]:[0-9][0-9]):[0-9][0-9]$` as `(.*\d{2}:\d{2}):\d{2}$`
+
+real	0m0.755s
+user	0m2.626s
+sys	0m0.439s
+
+===============================================================================
+
+go vet ./...
+
+real	0m0.090s
+user	0m0.187s
+sys	0m0.189s
+
+===============================================================================
+
+go fix ./...
+
+real	0m0.023s
+user	0m0.023s
+sys	0m0.030s
+
+===============================================================================
+
+gocyclo .
+4 booking IsAfternoonAppointment booking_up_for_beauty.go:34:1
+3 booking TestAnniversaryDate booking_up_for_beauty_test.go:78:1
+3 booking TestDescription booking_up_for_beauty_test.go:62:1
+3 booking TestIsAfternoonAppointment booking_up_for_beauty_test.go:44:1
+3 booking TestHasPassed booking_up_for_beauty_test.go:26:1
+3 booking TestSchedule booking_up_for_beauty_test.go:8:1
+2 booking Description booking_up_for_beauty.go:56:1
+2 booking HasPassed booking_up_for_beauty.go:22:1
+2 booking Schedule booking_up_for_beauty.go:10:1
+1 booking ExampleAnniversaryDate booking_up_for_beauty_examples_test.go:45:1
+1 booking ExampleDescription booking_up_for_beauty_examples_test.go:33:1
+1 booking ExampleIsAfternoonAppointment booking_up_for_beauty_examples_test.go:23:1
+1 booking ExampleHasPassed booking_up_for_beauty_examples_test.go:15:1
+1 booking ExampleSchedule booking_up_for_beauty_examples_test.go:9:1
+1 booking AnniversaryDate booking_up_for_beauty.go:76:1
+
+real	0m0.002s
+user	0m0.001s
+sys	0m0.001s
+
+===============================================================================
+
+misspell .
+
+real	0m0.032s
+user	0m0.025s
+sys	0m0.011s
+
+===============================================================================
+
+gosec ./...
+[gosec] 2023/03/04 21:52:20 Including rules: default
+[gosec] 2023/03/04 21:52:20 Excluding rules: default
+[gosec] 2023/03/04 21:52:20 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/booking-up-for-beauty
+2023/03/04 21:52:20 internal error: package "fmt" without types was imported from "command-line-arguments"
+
+real	0m0.127s
+user	0m0.196s
+sys	0m0.114s
+
+===============================================================================
+
+gotest -v -covermode=count -coverprofile coverage.out ./...
 === RUN   TestSchedule
+=== RUN   TestSchedule/Schedule_3
 === RUN   TestSchedule/Schedule_1
 === RUN   TestSchedule/Schedule_2
-=== RUN   TestSchedule/Schedule_3
 --- PASS: TestSchedule (0.00s)
+    --- PASS: TestSchedule/Schedule_3 (0.00s)
     --- PASS: TestSchedule/Schedule_1 (0.00s)
     --- PASS: TestSchedule/Schedule_2 (0.00s)
-    --- PASS: TestSchedule/Schedule_3 (0.00s)
 === RUN   TestHasPassed
-=== RUN   TestHasPassed/HasPassed_3
 === RUN   TestHasPassed/HasPassed_1
 === RUN   TestHasPassed/HasPassed_2
+=== RUN   TestHasPassed/HasPassed_3
 --- PASS: TestHasPassed (0.00s)
-    --- PASS: TestHasPassed/HasPassed_3 (0.00s)
     --- PASS: TestHasPassed/HasPassed_1 (0.00s)
     --- PASS: TestHasPassed/HasPassed_2 (0.00s)
+    --- PASS: TestHasPassed/HasPassed_3 (0.00s)
 === RUN   TestIsAfternoonAppointment
 === RUN   TestIsAfternoonAppointment/IsAfternoonAppointment_2
 === RUN   TestIsAfternoonAppointment/IsAfternoonAppointment_3
@@ -61,12 +176,12 @@ go test -v -covermode=count -coverprofile coverage.out booking
 === RUN   ExampleAnniversaryDate
 --- PASS: ExampleAnniversaryDate (0.00s)
 PASS
-coverage: 87.5% of statements
-ok  	booking	0.026s	coverage: 87.5% of statements
+	booking	coverage: 87.5% of statements
+ok  	booking	0.002s	coverage: 87.5% of statements
 
-real	0m0.496s
-user	0m0.571s
-sys	0m0.338s
+real	0m0.200s
+user	0m0.303s
+sys	0m0.229s
 
 ===============================================================================
 
@@ -78,13 +193,162 @@ booking/booking_up_for_beauty.go:56:	Description		88.9%
 booking/booking_up_for_beauty.go:76:	AnniversaryDate		100.0%
 total:					(statements)		87.5%
 
-real	0m0.298s
-user	0m0.281s
-sys	0m0.321s
+real	0m0.066s
+user	0m0.084s
+sys	0m0.085s
 
 ===============================================================================
 
-go test -v -race -covermode=atomic booking
+go tool cover -html coverage.out -o coverage.html
+
+real	0m0.068s
+user	0m0.102s
+sys	0m0.094s
+
+===============================================================================
+
+gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+56     	func Description(date string) string {
+57     		const inputLayout = "1/2/2006 15:04:05"
+58     		const outputLayout = "Monday, January 2, 2006, at 15:04:05"
+59     	
+60     		t, e := time.Parse(inputLayout, date)
+61     	
+62     		if e != nil {
+63 MISS			panic(e)
+64     		}
+65     	
+66     		d := t.Format(outputLayout)
+67     	
+68     		re := regexp.MustCompile(`(.*[0-9][0-9]:[0-9][0-9]):[0-9][0-9]$`)
+69     	
+70     		appDate := re.ReplaceAllString(d, `$1`)
+71     	
+72     		return fmt.Sprintf("You have an appointment on %s.", appDate)
+73     	}
+
+
+22     	func HasPassed(date string) bool {
+23     		const layout = "January 2, 2006 15:04:05"
+24     		t, e := time.Parse(layout, date)
+25     	
+26     		if e != nil {
+27 MISS			panic(e)
+28     		}
+29     	
+30     		return t.Before(time.Now())
+31     	}
+
+
+34     	func IsAfternoonAppointment(date string) bool {
+35     		var result bool
+36     	
+37     		const layout = "Monday, January 2, 2006 15:04:05"
+38     		t, e := time.Parse(layout, date)
+39     	
+40     		if e != nil {
+41 MISS			panic(e)
+42     		}
+43     	
+44     		hour := t.Hour()
+45     	
+46     		if hour >= 12 && hour < 18 {
+47     			result = true
+48     		} else {
+49     			result = false
+50     		}
+51     	
+52     		return result
+53     	}
+
+
+10     	func Schedule(date string) time.Time {
+11     		const layout = "1/02/2006 15:04:05"
+12     		t, e := time.Parse(layout, date)
+13     	
+14     		if e != nil {
+15 MISS			panic(e)
+16     		}
+17     	
+18     		return t
+19     	}
+
+
+real	0m0.027s
+user	0m0.023s
+sys	0m0.030s
+
+===============================================================================
+
+gotest -v -race -covermode=atomic ./...
+=== RUN   TestSchedule
+=== RUN   TestSchedule/Schedule_1
+=== RUN   TestSchedule/Schedule_2
+=== RUN   TestSchedule/Schedule_3
+--- PASS: TestSchedule (0.00s)
+    --- PASS: TestSchedule/Schedule_1 (0.00s)
+    --- PASS: TestSchedule/Schedule_2 (0.00s)
+    --- PASS: TestSchedule/Schedule_3 (0.00s)
+=== RUN   TestHasPassed
+=== RUN   TestHasPassed/HasPassed_3
+=== RUN   TestHasPassed/HasPassed_1
+=== RUN   TestHasPassed/HasPassed_2
+--- PASS: TestHasPassed (0.00s)
+    --- PASS: TestHasPassed/HasPassed_3 (0.00s)
+    --- PASS: TestHasPassed/HasPassed_1 (0.00s)
+    --- PASS: TestHasPassed/HasPassed_2 (0.00s)
+=== RUN   TestIsAfternoonAppointment
+=== RUN   TestIsAfternoonAppointment/IsAfternoonAppointment_1
+=== RUN   TestIsAfternoonAppointment/IsAfternoonAppointment_2
+=== RUN   TestIsAfternoonAppointment/IsAfternoonAppointment_3
+--- PASS: TestIsAfternoonAppointment (0.00s)
+    --- PASS: TestIsAfternoonAppointment/IsAfternoonAppointment_1 (0.00s)
+    --- PASS: TestIsAfternoonAppointment/IsAfternoonAppointment_2 (0.00s)
+    --- PASS: TestIsAfternoonAppointment/IsAfternoonAppointment_3 (0.00s)
+=== RUN   TestDescription
+=== RUN   TestDescription/Description_1
+=== RUN   TestDescription/Description_2
+=== RUN   TestDescription/Description_3
+--- PASS: TestDescription (0.00s)
+    --- PASS: TestDescription/Description_1 (0.00s)
+    --- PASS: TestDescription/Description_2 (0.00s)
+    --- PASS: TestDescription/Description_3 (0.00s)
+=== RUN   TestAnniversaryDate
+=== RUN   TestAnniversaryDate/AnniversaryDate_1
+--- PASS: TestAnniversaryDate (0.00s)
+    --- PASS: TestAnniversaryDate/AnniversaryDate_1 (0.00s)
+=== RUN   ExampleSchedule
+--- PASS: ExampleSchedule (0.00s)
+=== RUN   ExampleHasPassed
+--- PASS: ExampleHasPassed (0.00s)
+=== RUN   ExampleIsAfternoonAppointment
+--- PASS: ExampleIsAfternoonAppointment (0.00s)
+=== RUN   ExampleDescription
+--- PASS: ExampleDescription (0.00s)
+=== RUN   ExampleAnniversaryDate
+--- PASS: ExampleAnniversaryDate (0.00s)
+PASS
+	booking	coverage: 87.5% of statements
+ok  	booking	0.035s	coverage: 87.5% of statements
+
+real	0m0.292s
+user	0m0.434s
+sys	0m0.247s
+
+===============================================================================
+
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+PASS
+ok  	booking	0.002s
+
+real	0m0.144s
+user	0m0.245s
+sys	0m0.152s
+
+===============================================================================
+
+gotest -v -tags bonus
 === RUN   TestSchedule
 === RUN   TestSchedule/Schedule_1
 === RUN   TestSchedule/Schedule_2
@@ -132,68 +396,23 @@ go test -v -race -covermode=atomic booking
 === RUN   ExampleAnniversaryDate
 --- PASS: ExampleAnniversaryDate (0.00s)
 PASS
-coverage: 87.5% of statements
-ok  	booking	(cached)	coverage: 87.5% of statements
+ok  	booking	0.002s
 
-real	0m0.440s
-user	0m0.483s
-sys	0m0.394s
-
-===============================================================================
-
-go test --bench . --benchmem
-PASS
-ok  	booking	0.019s
-
-real	0m0.494s
-user	0m0.587s
-sys	0m0.360s
+real	0m0.156s
+user	0m0.312s
+sys	0m0.250s
 
 ===============================================================================
 
-go test -tags bonus
-PASS
-ok  	booking	0.005s
-
-real	0m0.474s
-user	0m0.557s
-sys	0m0.308s
-
-===============================================================================
-
-go vet booking
-
-real	0m0.343s
-user	0m0.414s
-sys	0m0.333s
-
-===============================================================================
-
-go fix booking
-
-real	0m0.163s
-user	0m0.194s
-sys	0m0.191s
-
-===============================================================================
-
-gosec ./booking-up-for-beauty
-[gosec] 2022/06/18 16:51:23 Including rules: default
-[gosec] 2022/06/18 16:51:23 Excluding rules: default
-[gosec] 2022/06/18 16:51:23 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/booking-up-for-beauty
-2022/06/18 16:51:23 internal error: package "fmt" without types was imported from "command-line-arguments"
-
-real	0m0.598s
-user	0m0.583s
-sys	0m0.422s
+No old benchmarks to run benchstat against.
 
 ===============================================================================
 
 gomarkdoc --output booking-doc.md
 
-real	0m0.024s
-user	0m0.021s
-sys	0m0.020s
+real	0m0.010s
+user	0m0.004s
+sys	0m0.006s
 
 ===============================================================================
 
@@ -219,9 +438,9 @@ func Schedule(date string) time.Time
     Schedule returns a time.Time from a string containing a date
 
 
-real	0m0.292s
-user	0m0.235s
-sys	0m0.263s
+real	0m0.037s
+user	0m0.025s
+sys	0m0.045s
 
 
 ===============================================================================

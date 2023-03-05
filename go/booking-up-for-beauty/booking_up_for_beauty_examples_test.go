@@ -43,7 +43,9 @@ func ExampleDescription() {
 }
 
 func ExampleAnniversaryDate() {
+	// Not sure how to fix this, you can't alter the "now" year from here and
+	// you can't make the example text dynamic.
 	fmt.Println(AnniversaryDate())
 	// Output:
-	// 2022-09-15 00:00:00 +0000 UTC
+	// 2023-09-15 00:00:00 +0000 UTC
 }
