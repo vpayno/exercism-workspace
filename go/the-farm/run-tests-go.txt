@@ -5,15 +5,115 @@ Go packages: thefarm
 
 ===============================================================================
 
-golint thefarm
+golangci-lint run ./...
 
-real	0m0.165s
-user	0m0.189s
-sys	0m0.172s
+real	0m0.187s
+user	0m0.264s
+sys	0m0.185s
 
 ===============================================================================
 
-go test -v -covermode=count -coverprofile coverage.out thefarm
+golint ./...
+
+real	0m0.010s
+user	0m0.010s
+sys	0m0.006s
+
+===============================================================================
+
+revive -formatter=stylish ./...
+
+real	0m0.009s
+user	0m0.002s
+sys	0m0.009s
+
+===============================================================================
+
+ineffassign ./...
+
+real	0m0.083s
+user	0m0.158s
+sys	0m0.087s
+
+===============================================================================
+
+go-consistent -v ./...
+	info: check "./."
+internal error: package "errors" without types was imported from "thefarm"
+
+real	0m0.095s
+user	0m0.188s
+sys	0m0.166s
+
+===============================================================================
+
+staticcheck ./...
+
+real	0m0.148s
+user	0m0.224s
+sys	0m0.178s
+
+===============================================================================
+
+gocritic check -enableAll ./...
+
+real	0m0.766s
+user	0m2.873s
+sys	0m0.474s
+
+===============================================================================
+
+go vet ./...
+
+real	0m0.089s
+user	0m0.229s
+sys	0m0.167s
+
+===============================================================================
+
+go fix ./...
+
+real	0m0.026s
+user	0m0.020s
+sys	0m0.038s
+
+===============================================================================
+
+gocyclo .
+9 thefarm TestDivideFood the_farm_test.go:17:1
+9 thefarm DivideFood the_farm.go:27:1
+4 thefarm TestDivideFoodNegativeFodderErrorPrecedence the_farm_test.go:207:1
+4 thefarm TestDivideFoodSillyNephewError the_farm_test.go:165:1
+1 thefarm (testWeightFodder).FodderAmount the_farm_test.go:13:1
+1 thefarm (*SillyNephewError).Error the_farm.go:16:1
+
+real	0m0.002s
+user	0m0.001s
+sys	0m0.001s
+
+===============================================================================
+
+misspell .
+
+real	0m0.022s
+user	0m0.020s
+sys	0m0.015s
+
+===============================================================================
+
+gosec ./...
+[gosec] 2023/03/04 21:11:44 Including rules: default
+[gosec] 2023/03/04 21:11:44 Excluding rules: default
+[gosec] 2023/03/04 21:11:44 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/the-farm
+2023/03/04 21:11:44 internal error: package "errors" without types was imported from "command-line-arguments"
+
+real	0m0.120s
+user	0m0.158s
+sys	0m0.099s
+
+===============================================================================
+
+gotest -v -covermode=count -coverprofile coverage.out ./...
 === RUN   TestDivideFood
 === RUN   TestDivideFood/100_fodder_for_10_cows
 === RUN   TestDivideFood/10_fodder_for_10_cows
@@ -46,28 +146,48 @@ go test -v -covermode=count -coverprofile coverage.out thefarm
 --- PASS: TestDivideFoodSillyNephewError (0.00s)
     --- PASS: TestDivideFoodSillyNephewError/Negative_ten_cows (0.00s)
     --- PASS: TestDivideFoodSillyNephewError/Negative_seven_cows (0.00s)
+=== RUN   TestDivideFoodNegativeFodderErrorPrecedence
+=== RUN   TestDivideFoodNegativeFodderErrorPrecedence/Negative_fodder_and_negative_cows
+--- PASS: TestDivideFoodNegativeFodderErrorPrecedence (0.00s)
+    --- PASS: TestDivideFoodNegativeFodderErrorPrecedence/Negative_fodder_and_negative_cows (0.00s)
 PASS
-coverage: 100.0% of statements
-ok  	thefarm	0.014s	coverage: 100.0% of statements
+	thefarm	coverage: 100.0% of statements
+ok  	thefarm	0.004s	coverage: 100.0% of statements
 
-real	0m0.765s
-user	0m0.866s
-sys	0m0.598s
+real	0m0.156s
+user	0m0.286s
+sys	0m0.204s
 
 ===============================================================================
 
 go tool cover -func=coverage.out
-thefarm/the_farm.go:15:	Error		100.0%
-thefarm/the_farm.go:26:	DivideFood	100.0%
+thefarm/the_farm.go:16:	Error		100.0%
+thefarm/the_farm.go:27:	DivideFood	100.0%
 total:			(statements)	100.0%
 
-real	0m0.247s
-user	0m0.216s
-sys	0m0.287s
+real	0m0.074s
+user	0m0.131s
+sys	0m0.147s
 
 ===============================================================================
 
-go test -v -race -covermode=atomic thefarm
+go tool cover -html coverage.out -o coverage.html
+
+real	0m0.061s
+user	0m0.104s
+sys	0m0.096s
+
+===============================================================================
+
+gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+real	0m0.020s
+user	0m0.020s
+sys	0m0.026s
+
+===============================================================================
+
+gotest -v -race -covermode=atomic ./...
 === RUN   TestDivideFood
 === RUN   TestDivideFood/100_fodder_for_10_cows
 === RUN   TestDivideFood/10_fodder_for_10_cows
@@ -81,7 +201,7 @@ go test -v -race -covermode=atomic thefarm
 === RUN   TestDivideFood/Negative_fodder
 === RUN   TestDivideFood/Negative_fodder_with_ScaleError
 === RUN   TestDivideFood/Zero_cows
---- PASS: TestDivideFood (0.01s)
+--- PASS: TestDivideFood (0.00s)
     --- PASS: TestDivideFood/100_fodder_for_10_cows (0.00s)
     --- PASS: TestDivideFood/10_fodder_for_10_cows (0.00s)
     --- PASS: TestDivideFood/10.5_fodder_for_2_cows (0.00s)
@@ -100,75 +220,99 @@ go test -v -race -covermode=atomic thefarm
 --- PASS: TestDivideFoodSillyNephewError (0.00s)
     --- PASS: TestDivideFoodSillyNephewError/Negative_ten_cows (0.00s)
     --- PASS: TestDivideFoodSillyNephewError/Negative_seven_cows (0.00s)
+=== RUN   TestDivideFoodNegativeFodderErrorPrecedence
+=== RUN   TestDivideFoodNegativeFodderErrorPrecedence/Negative_fodder_and_negative_cows
+--- PASS: TestDivideFoodNegativeFodderErrorPrecedence (0.00s)
+    --- PASS: TestDivideFoodNegativeFodderErrorPrecedence/Negative_fodder_and_negative_cows (0.00s)
 PASS
-coverage: 100.0% of statements
-ok  	thefarm	0.047s	coverage: 100.0% of statements
+	thefarm	coverage: 100.0% of statements
+ok  	thefarm	(cached)	coverage: 100.0% of statements
 
-real	0m0.844s
-user	0m1.056s
-sys	0m0.600s
+real	0m0.104s
+user	0m0.284s
+sys	0m0.203s
 
 ===============================================================================
 
-go test --bench . --benchmem
+mv -v benchstat-new.txt benchstat-old.txt
+renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
+
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 PASS
-ok  	thefarm	0.011s
+ok  	thefarm	0.003s
 
-real	0m0.846s
-user	0m0.974s
-sys	0m0.598s
+real	0m0.156s
+user	0m0.255s
+sys	0m0.199s
 
 ===============================================================================
 
-go test -tags bonus
+gotest -v -tags bonus
+=== RUN   TestDivideFood
+=== RUN   TestDivideFood/100_fodder_for_10_cows
+=== RUN   TestDivideFood/10_fodder_for_10_cows
+=== RUN   TestDivideFood/10.5_fodder_for_2_cows
+=== RUN   TestDivideFood/5_fodder_for_2_cows
+=== RUN   TestDivideFood/0_fodder_for_2_cows
+=== RUN   TestDivideFood/Generic_error_from_the_scale_is_returned
+=== RUN   TestDivideFood/Negative_fodder_with_generic_error_from_the_scale_is_returned
+=== RUN   TestDivideFood/Scale_returns_10_with_ErrScaleMalfunction_for_2_cows
+=== RUN   TestDivideFood/Scale_returns_1_with_ErrScaleMalfunction_for_10_cows
+=== RUN   TestDivideFood/Negative_fodder
+=== RUN   TestDivideFood/Negative_fodder_with_ScaleError
+=== RUN   TestDivideFood/Zero_cows
+--- PASS: TestDivideFood (0.00s)
+    --- PASS: TestDivideFood/100_fodder_for_10_cows (0.00s)
+    --- PASS: TestDivideFood/10_fodder_for_10_cows (0.00s)
+    --- PASS: TestDivideFood/10.5_fodder_for_2_cows (0.00s)
+    --- PASS: TestDivideFood/5_fodder_for_2_cows (0.00s)
+    --- PASS: TestDivideFood/0_fodder_for_2_cows (0.00s)
+    --- PASS: TestDivideFood/Generic_error_from_the_scale_is_returned (0.00s)
+    --- PASS: TestDivideFood/Negative_fodder_with_generic_error_from_the_scale_is_returned (0.00s)
+    --- PASS: TestDivideFood/Scale_returns_10_with_ErrScaleMalfunction_for_2_cows (0.00s)
+    --- PASS: TestDivideFood/Scale_returns_1_with_ErrScaleMalfunction_for_10_cows (0.00s)
+    --- PASS: TestDivideFood/Negative_fodder (0.00s)
+    --- PASS: TestDivideFood/Negative_fodder_with_ScaleError (0.00s)
+    --- PASS: TestDivideFood/Zero_cows (0.00s)
+=== RUN   TestDivideFoodSillyNephewError
+=== RUN   TestDivideFoodSillyNephewError/Negative_ten_cows
+=== RUN   TestDivideFoodSillyNephewError/Negative_seven_cows
+--- PASS: TestDivideFoodSillyNephewError (0.00s)
+    --- PASS: TestDivideFoodSillyNephewError/Negative_ten_cows (0.00s)
+    --- PASS: TestDivideFoodSillyNephewError/Negative_seven_cows (0.00s)
+=== RUN   TestDivideFoodNegativeFodderErrorPrecedence
+=== RUN   TestDivideFoodNegativeFodderErrorPrecedence/Negative_fodder_and_negative_cows
+--- PASS: TestDivideFoodNegativeFodderErrorPrecedence (0.00s)
+    --- PASS: TestDivideFoodNegativeFodderErrorPrecedence/Negative_fodder_and_negative_cows (0.00s)
 PASS
-ok  	thefarm	0.009s
+ok  	thefarm	0.002s
 
-real	0m0.571s
-user	0m0.689s
-sys	0m0.364s
-
-===============================================================================
-
-go vet thefarm
-
-real	0m0.387s
-user	0m0.429s
-sys	0m0.435s
+real	0m0.152s
+user	0m0.272s
+sys	0m0.225s
 
 ===============================================================================
 
-go fix thefarm
+benchstat benchstat-old.txt benchstat-new.txt
 
-real	0m0.159s
-user	0m0.159s
-sys	0m0.151s
-
-===============================================================================
-
-gosec ./the-farm
-[gosec] 2022/06/19 21:35:00 Including rules: default
-[gosec] 2022/06/19 21:35:00 Excluding rules: default
-[gosec] 2022/06/19 21:35:00 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/the-farm
-2022/06/19 21:35:00 internal error: package "errors" without types was imported from "command-line-arguments"
-
-real	0m0.569s
-user	0m0.721s
-sys	0m0.410s
+real	0m0.005s
+user	0m0.002s
+sys	0m0.006s
 
 ===============================================================================
 
 gomarkdoc --output thefarm-doc.md
 
-real	0m0.027s
-user	0m0.017s
-sys	0m0.013s
+real	0m0.011s
+user	0m0.007s
+sys	0m0.005s
 
 ===============================================================================
 
 go doc -all thefarm
 package thefarm // import "thefarm"
 
+Package thefarm exercise is about Go Errors.
 
 VARIABLES
 
@@ -203,9 +347,9 @@ type WeightFodder interface {
     WeightFodder returns the amount of available fodder.
 
 
-real	0m0.271s
-user	0m0.239s
-sys	0m0.239s
+real	0m0.230s
+user	0m0.078s
+sys	0m0.066s
 
 
 ===============================================================================
