@@ -46,3 +46,14 @@ brown-green-violet should return 15 too, ignoring the third color.
 ### Based on
 
 Maud de Vries, Erik Schierboom - https://github.com/exercism/problem-specifications/issues/1464
+
+### My Solution
+
+- [my solution](./resistor_color_duo.go)
+- [my examples](./)
+- [test cases](./cases_test.go)
+- [tests](./resistor_color_duo_example_test.go
+resistor_color_duo_test.go)
+- [run-tests](./run-tests-go.txt)
+- [coverage](./coverage.html)
+- [documentation](./resistorcolorduo-doc.md)

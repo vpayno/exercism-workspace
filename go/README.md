@@ -103,3 +103,4 @@
 - [custom-set](./custom-set/README.md)
 - [airport-robot](./airport-robot/README.md)
 - [resistor-color](./resistor-color/README.md)
+- [resistor-color-duo](./resistor-color-duo/README.md)
