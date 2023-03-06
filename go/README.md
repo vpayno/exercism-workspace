@@ -41,6 +41,7 @@
 - [expenses](./expenses/README.md)
 - [sorting-room](./sorting-room/README.md)
 - [meteorology](./meteorology/README.md)
+- [airport-robot](./airport-robot/README.md)
 
 ## Exercises
 
@@ -101,7 +102,6 @@
 - [pythagorean-triplet](./pythagorean-triplet/README.md)
 - [simple-linked-list](./simple-linked-list/README.md)
 - [custom-set](./custom-set/README.md)
-- [airport-robot](./airport-robot/README.md)
 - [resistor-color](./resistor-color/README.md)
 - [resistor-color-duo](./resistor-color-duo/README.md)
 - [resistor-color-trio](./resistor-color-trio/README.md)
