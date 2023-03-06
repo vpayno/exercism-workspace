@@ -1,0 +1,217 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>resistorcolor: Go Coverage Report</title>
+		<style>
+			body {
+				background: black;
+				color: rgb(80, 80, 80);
+			}
+			body, pre, #legend span {
+				font-family: Menlo, monospace;
+				font-weight: bold;
+			}
+			#topbar {
+				background: black;
+				position: fixed;
+				top: 0; left: 0; right: 0;
+				height: 42px;
+				border-bottom: 1px solid rgb(80, 80, 80);
+			}
+			#content {
+				margin-top: 50px;
+			}
+			#nav, #legend {
+				float: left;
+				margin-left: 10px;
+			}
+			#legend {
+				margin-top: 12px;
+			}
+			#nav {
+				margin-top: 10px;
+			}
+			#legend span {
+				margin: 0 5px;
+			}
+			.cov0 { color: rgb(192, 0, 0) }
+.cov1 { color: rgb(128, 128, 128) }
+.cov2 { color: rgb(116, 140, 131) }
+.cov3 { color: rgb(104, 152, 134) }
+.cov4 { color: rgb(92, 164, 137) }
+.cov5 { color: rgb(80, 176, 140) }
+.cov6 { color: rgb(68, 188, 143) }
+.cov7 { color: rgb(56, 200, 146) }
+.cov8 { color: rgb(44, 212, 149) }
+.cov9 { color: rgb(32, 224, 152) }
+.cov10 { color: rgb(20, 236, 155) }
+
+		</style>
+	</head>
+	<body>
+		<div id="topbar">
+			<div id="nav">
+				<select id="files">
+				
+				<option value="file0">resistorcolor/resistor_color.go (100.0%)</option>
+				
+				</select>
+			</div>
+			<div id="legend">
+				<span>not tracked</span>
+			
+				<span class="cov0">no coverage</span>
+				<span class="cov1">low coverage</span>
+				<span class="cov2">*</span>
+				<span class="cov3">*</span>
+				<span class="cov4">*</span>
+				<span class="cov5">*</span>
+				<span class="cov6">*</span>
+				<span class="cov7">*</span>
+				<span class="cov8">*</span>
+				<span class="cov9">*</span>
+				<span class="cov10">high coverage</span>
+			
+			</div>
+		</div>
+		<div id="content">
+		
+		<pre class="file" id="file0" style="display: none">// Package resistorcolor duo helps users identify resistors using their color bands.
+package resistorcolor
+
+// Color type represents the value of a resistor's band.
+type Color int
+
+// Color constants used as an Enum. Starts with -1 for which is used as an
+// undefined color.
+const (
+        Undefined Color = iota - 1
+        Black
+        Brown
+        Red
+        Orange
+        Yellow
+        Green
+        Blue
+        Violet
+        Grey
+        White
+)
+
+// To make Color lower and upper bound tests clearer, let's define constants.
+// Black and White are at the lower and upper boundaries.
+// All other colors should be between them.
+const (
+        ColorMin Color = Black
+        ColorMax       = White
+)
+
+// ColorNames maps Color type to it's string representation.
+var ColorNames = map[Color]string{
+        Undefined: "undefined",
+        Black:     "black",
+        Brown:     "brown",
+        Red:       "red",
+        Orange:    "orange",
+        Yellow:    "yellow",
+        Green:     "green",
+        Blue:      "blue",
+        Violet:    "violet",
+        Grey:      "grey",
+        White:     "white",
+}
+
+// String implements the Stringer interface.
+// Another way of getting the String equivalent of a Color.
+// We're going to use both to help make this exercise interesting.
+// You can also use a switch in here; But, since we have our min/max constants,
+// this should be easier to maintain.
+// This also allows us to provide a response for undefined colors without complicated
+// error checking since this exercise lacks error returns on the functions being
+// tested.
+func (c Color) String() string <span class="cov10" title="204">{
+        if c &gt;= ColorMin &amp;&amp; c &lt;= ColorMax </span><span class="cov9" title="200">{
+                return ColorNames[c]
+        }</span>
+
+        <span class="cov3" title="4">return ColorNames[Undefined]</span>
+}
+
+// Int returns the integer representation of a Color.
+// Yes, we could just use int(Color); But, this is more fun.
+func (c Color) Int() int <span class="cov5" title="12">{
+        if c &gt;= ColorMin &amp;&amp; c &lt;= ColorMax </span><span class="cov4" title="10">{
+                return int(c)
+        }</span>
+
+        <span class="cov2" title="2">return int(Undefined)</span>
+}
+
+// Colors should return the list of all colors.
+// They are limiting your implementation possibilities. Not sure why even bother
+// having a function since the contents of it are very static.
+// I don't wan't to use an array to store the color data, I'm going to use an Enum
+// instead. Now to find a clever way of generating the data from an Enum type that
+// isn't a type and it's just a bunch of constants.
+func Colors() []string <span class="cov5" title="16">{
+        colors := []string{}
+
+        // You can't specify the type in the for loop, you have to do it outside.
+        var color Color
+
+        // Using int for our constants, lets us iterate over them like Enums were a
+        // real type.
+        for color = ColorMin; color &lt;= ColorMax; color++ </span><span class="cov9" title="160">{
+                colors = append(colors, color.String())
+        }</span>
+
+        <span class="cov5" title="16">return colors</span>
+}
+
+// ColorCode returns the resistance value of the given color.
+// I guess instead of having a map[String]int{} to do the lookups, we have to
+// search a []String{} array and find the element with that string and return the index.
+// They really sucked the fun out of this function.
+func ColorCode(color string) int <span class="cov5" title="14">{
+        for value, name := range Colors() </span><span class="cov8" title="80">{
+                if name == color </span><span class="cov5" title="13">{
+                        return value
+                }</span>
+        }
+
+        <span class="cov1" title="1">return Undefined.Int()</span>
+}
+</pre>
+		
+		</div>
+	</body>
+	<script>
+	(function() {
+		var files = document.getElementById('files');
+		var visible;
+		files.addEventListener('change', onChange, false);
+		function select(part) {
+			if (visible)
+				visible.style.display = 'none';
+			visible = document.getElementById(part);
+			if (!visible)
+				return;
+			files.value = part;
+			visible.style.display = 'block';
+			location.hash = part;
+		}
+		function onChange() {
+			select(files.value);
+			window.scrollTo(0, 0);
+		}
+		if (location.hash != "") {
+			select(location.hash.substr(1));
+		}
+		if (!visible) {
+			select("file0");
+		}
+	})();
+	</script>
+</html>

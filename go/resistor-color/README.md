@@ -52,3 +52,13 @@ More information on the color encoding of resistors can be found in the [Electro
 ### Based on
 
 Maud de Vries, Erik Schierboom - https://github.com/exercism/problem-specifications/issues/1458
+
+### My Solution
+
+- [my solution](./resistor_color.go)
+- [my examples](./)
+- [test cases](./cases_test.go)
+- [tests](./resistor_color_test.go)
+- [run-tests](./run-tests-go.txt)
+- [coverage](./coverage.html)
+- [documentation](./resistorcolor-doc.md)

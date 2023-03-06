@@ -1,0 +1,379 @@
+Running automated test file(s):
+
+Go packages: resistorcolor 
+
+
+===============================================================================
+
+golangci-lint run ./...
+cases_test.go:16:2: field `input` is unused (unused)
+	input       string
+	^
+
+real	0m0.240s
+user	0m0.478s
+sys	0m0.271s
+
+===============================================================================
+
+golint ./...
+
+real	0m0.005s
+user	0m0.003s
+sys	0m0.002s
+
+===============================================================================
+
+revive -formatter=stylish ./...
+
+real	0m0.122s
+user	0m0.196s
+sys	0m0.177s
+
+===============================================================================
+
+ineffassign ./...
+
+real	0m0.088s
+user	0m0.172s
+sys	0m0.125s
+
+===============================================================================
+
+go-consistent -v ./...
+	info: check "./."
+internal error: package "fmt" without types was imported from "resistorcolor [resistorcolor.test]"
+
+real	0m0.106s
+user	0m0.188s
+sys	0m0.130s
+
+===============================================================================
+
+staticcheck ./...
+cases_test.go:16:2: field input is unused (U1000)
+
+real	0m0.155s
+user	0m0.263s
+sys	0m0.217s
+
+===============================================================================
+
+gocritic check -enableAll ./...
+
+real	0m0.735s
+user	0m2.450s
+sys	0m0.492s
+
+===============================================================================
+
+go vet ./...
+
+real	0m0.099s
+user	0m0.252s
+sys	0m0.184s
+
+===============================================================================
+
+go fix ./...
+
+real	0m0.016s
+user	0m0.010s
+sys	0m0.012s
+
+===============================================================================
+
+gocyclo .
+4 resistorcolor mapsEqual resistor_color_test.go:64:1
+4 resistorcolor TestColors resistor_color_test.go:17:1
+3 resistorcolor BenchmarkColorCode resistor_color_test.go:39:1
+3 resistorcolor TestColorCode resistor_color_test.go:5:1
+3 resistorcolor ColorCode resistor_color.go:97:1
+3 resistorcolor (Color).Int resistor_color.go:64:1
+3 resistorcolor (Color).String resistor_color.go:54:1
+2 resistorcolor makeMap resistor_color_test.go:56:1
+2 resistorcolor BenchmarkColors resistor_color_test.go:50:1
+2 resistorcolor ExampleColorCode resistor_color_example_test.go:77:1
+2 resistorcolor ExampleColor_Int resistor_color_example_test.go:40:1
+2 resistorcolor ExampleColor_String resistor_color_example_test.go:10:1
+2 resistorcolor Colors resistor_color.go:78:1
+1 resistorcolor ExampleColors resistor_color_example_test.go:70:1
+
+real	0m0.002s
+user	0m0.001s
+sys	0m0.001s
+
+===============================================================================
+
+misspell .
+
+real	0m0.024s
+user	0m0.028s
+sys	0m0.020s
+
+===============================================================================
+
+gosec ./...
+[gosec] 2023/03/05 16:31:32 Including rules: default
+[gosec] 2023/03/05 16:31:32 Excluding rules: default
+[gosec] 2023/03/05 16:31:32 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/resistor-color
+[gosec] 2023/03/05 16:31:33 Checking package: resistorcolor
+[gosec] 2023/03/05 16:31:33 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/resistor-color/resistor_color.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 105
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.083s
+user	0m0.073s
+sys	0m0.060s
+
+===============================================================================
+
+gotest -v -covermode=count -coverprofile coverage.out ./...
+=== RUN   TestColorCode
+=== RUN   TestColorCode/Black
+=== RUN   TestColorCode/White
+=== RUN   TestColorCode/Orange
+--- PASS: TestColorCode (0.00s)
+    --- PASS: TestColorCode/Black (0.00s)
+    --- PASS: TestColorCode/White (0.00s)
+    --- PASS: TestColorCode/Orange (0.00s)
+=== RUN   TestColors
+=== RUN   TestColors/Colors
+--- PASS: TestColors (0.00s)
+    --- PASS: TestColors/Colors (0.00s)
+=== RUN   ExampleColor_String
+--- PASS: ExampleColor_String (0.00s)
+=== RUN   ExampleColor_Int
+--- PASS: ExampleColor_Int (0.00s)
+=== RUN   ExampleColors
+--- PASS: ExampleColors (0.00s)
+=== RUN   ExampleColorCode
+--- PASS: ExampleColorCode (0.00s)
+PASS
+	resistorcolor	coverage: 100.0% of statements
+ok  	resistorcolor	0.003s	coverage: 100.0% of statements
+
+real	0m0.196s
+user	0m0.358s
+sys	0m0.218s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+resistorcolor/resistor_color.go:54:	String		100.0%
+resistorcolor/resistor_color.go:64:	Int		100.0%
+resistorcolor/resistor_color.go:78:	Colors		100.0%
+resistorcolor/resistor_color.go:97:	ColorCode	100.0%
+total:					(statements)	100.0%
+
+real	0m0.025s
+user	0m0.015s
+sys	0m0.020s
+
+===============================================================================
+
+go tool cover -html coverage.out -o coverage.html
+
+real	0m0.025s
+user	0m0.012s
+sys	0m0.024s
+
+===============================================================================
+
+gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+real	0m0.010s
+user	0m0.002s
+sys	0m0.014s
+
+===============================================================================
+
+gotest -v -race -covermode=atomic ./...
+=== RUN   TestColorCode
+=== RUN   TestColorCode/Black
+=== RUN   TestColorCode/White
+=== RUN   TestColorCode/Orange
+--- PASS: TestColorCode (0.00s)
+    --- PASS: TestColorCode/Black (0.00s)
+    --- PASS: TestColorCode/White (0.00s)
+    --- PASS: TestColorCode/Orange (0.00s)
+=== RUN   TestColors
+=== RUN   TestColors/Colors
+--- PASS: TestColors (0.00s)
+    --- PASS: TestColors/Colors (0.00s)
+=== RUN   ExampleColor_String
+--- PASS: ExampleColor_String (0.00s)
+=== RUN   ExampleColor_Int
+--- PASS: ExampleColor_Int (0.00s)
+=== RUN   ExampleColors
+--- PASS: ExampleColors (0.00s)
+=== RUN   ExampleColorCode
+--- PASS: ExampleColorCode (0.00s)
+PASS
+	resistorcolor	coverage: 100.0% of statements
+ok  	resistorcolor	(cached)	coverage: 100.0% of statements
+
+real	0m0.148s
+user	0m0.323s
+sys	0m0.156s
+
+===============================================================================
+
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+goos: linux
+goarch: amd64
+pkg: resistorcolor
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+BenchmarkColorCode
+BenchmarkColorCode-16    	 1274251	       967.5 ns/op	    1488 B/op	      15 allocs/op
+BenchmarkColors
+BenchmarkColors-16       	 3843514	       291.0 ns/op	     496 B/op	       5 allocs/op
+PASS
+ok  	resistorcolor	3.494s
+
+real	0m3.652s
+user	0m4.524s
+sys	0m0.369s
+
+===============================================================================
+
+gotest -v -tags bonus
+=== RUN   TestColorCode
+=== RUN   TestColorCode/Black
+=== RUN   TestColorCode/White
+=== RUN   TestColorCode/Orange
+--- PASS: TestColorCode (0.00s)
+    --- PASS: TestColorCode/Black (0.00s)
+    --- PASS: TestColorCode/White (0.00s)
+    --- PASS: TestColorCode/Orange (0.00s)
+=== RUN   TestColors
+=== RUN   TestColors/Colors
+--- PASS: TestColors (0.00s)
+    --- PASS: TestColors/Colors (0.00s)
+=== RUN   ExampleColor_String
+--- PASS: ExampleColor_String (0.00s)
+=== RUN   ExampleColor_Int
+--- PASS: ExampleColor_Int (0.00s)
+=== RUN   ExampleColors
+--- PASS: ExampleColors (0.00s)
+=== RUN   ExampleColorCode
+--- PASS: ExampleColorCode (0.00s)
+PASS
+ok  	resistorcolor	0.002s
+
+real	0m0.161s
+user	0m0.356s
+sys	0m0.236s
+
+===============================================================================
+
+No old benchmarks to run benchstat against.
+
+===============================================================================
+
+gomarkdoc --output resistorcolor-doc.md
+
+real	0m0.011s
+user	0m0.005s
+sys	0m0.007s
+
+===============================================================================
+
+go doc -all resistorcolor
+package resistorcolor // import "resistorcolor"
+
+Package resistorcolor duo helps users identify resistors using their color
+bands.
+
+VARIABLES
+
+var ColorNames = map[Color]string{
+	Undefined: "undefined",
+	Black:     "black",
+	Brown:     "brown",
+	Red:       "red",
+	Orange:    "orange",
+	Yellow:    "yellow",
+	Green:     "green",
+	Blue:      "blue",
+	Violet:    "violet",
+	Grey:      "grey",
+	White:     "white",
+}
+    ColorNames maps Color type to it's string representation.
+
+
+FUNCTIONS
+
+func ColorCode(color string) int
+    ColorCode returns the resistance value of the given color. I guess instead
+    of having a map[String]int{} to do the lookups, we have to search a
+    []String{} array and find the element with that string and return the index.
+    They really sucked the fun out of this function.
+
+func Colors() []string
+    Colors should return the list of all colors. They are limiting your
+    implementation possibilities. Not sure why even bother having a function
+    since the contents of it are very static. I don't wan't to use an array to
+    store the color data, I'm going to use an Enum instead. Now to find a clever
+    way of generating the data from an Enum type that isn't a type and it's just
+    a bunch of constants.
+
+
+TYPES
+
+type Color int
+    Color type represents the value of a resistor's band.
+
+const (
+	Undefined Color = iota - 1
+	Black
+	Brown
+	Red
+	Orange
+	Yellow
+	Green
+	Blue
+	Violet
+	Grey
+	White
+)
+    Color constants used as an Enum. Starts with -1 for which is used as an
+    undefined color.
+
+const (
+	ColorMin Color = Black
+	ColorMax       = White
+)
+    To make Color lower and upper bound tests clearer, let's define constants.
+    Black and White are at the lower and upper boundaries. All other colors
+    should be between them.
+
+func (c Color) Int() int
+    Int returns the integer representation of a Color. Yes, we could just use
+    int(Color); But, this is more fun.
+
+func (c Color) String() string
+    String implements the Stringer interface. Another way of getting the String
+    equivalent of a Color. We're going to use both to help make this exercise
+    interesting. You can also use a switch in here; But, since we have our
+    min/max constants, this should be easier to maintain. This also allows us to
+    provide a response for undefined colors without complicated error checking
+    since this exercise lacks error returns on the functions being tested.
+
+
+real	0m0.030s
+user	0m0.011s
+sys	0m0.033s
+
+
+===============================================================================
+

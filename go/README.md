@@ -102,3 +102,4 @@
 - [simple-linked-list](./simple-linked-list/README.md)
 - [custom-set](./custom-set/README.md)
 - [airport-robot](./airport-robot/README.md)
+- [resistor-color](./resistor-color/README.md)
