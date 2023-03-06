@@ -1,0 +1,577 @@
+Running automated test file(s):
+
+Go packages: resistorcolortrio 
+
+
+===============================================================================
+
+golangci-lint run ./...
+resistor_color_trio_example_test.go:11:12: SA1019: strings.Title has been deprecated since Go 1.18 and an alternative has been available since Go 1.0: The rule Title uses for word boundaries does not handle Unicode punctuation properly. Use golang.org/x/text/cases instead. (staticcheck)
+	result := strings.Title(text)
+	          ^
+
+real	0m0.238s
+user	0m0.401s
+sys	0m0.264s
+
+===============================================================================
+
+golint ./...
+resistor_color_trio.go:123:1: exported method MetricPrefix.Magnitude should have comment or be unexported
+
+real	0m0.005s
+user	0m0.003s
+sys	0m0.002s
+
+===============================================================================
+
+revive -formatter=stylish ./...
+resistor_color_trio.go
+  (123, 1)  https://revive.run/r#exported  exported method MetricPrefix.Magnitude should have comment or be unexported  
+
+
+ ✖ 1 problem (0 errors) (1 warnings)
+
+real	0m0.204s
+user	0m0.386s
+sys	0m0.348s
+
+===============================================================================
+
+ineffassign ./...
+
+real	0m0.094s
+user	0m0.135s
+sys	0m0.106s
+
+===============================================================================
+
+go-consistent -v ./...
+	info: check "./."
+internal error: package "fmt" without types was imported from "resistorcolortrio"
+
+real	0m0.103s
+user	0m0.186s
+sys	0m0.142s
+
+===============================================================================
+
+staticcheck ./...
+resistor_color_trio_example_test.go:11:12: strings.Title has been deprecated since Go 1.18 and an alternative has been available since Go 1.0: The rule Title uses for word boundaries does not handle Unicode punctuation properly. Use golang.org/x/text/cases instead.  (SA1019)
+
+real	0m0.157s
+user	0m0.245s
+sys	0m0.273s
+
+===============================================================================
+
+gocritic check -enableAll ./...
+
+real	0m0.752s
+user	0m2.435s
+sys	0m0.441s
+
+===============================================================================
+
+go vet ./...
+
+real	0m0.114s
+user	0m0.230s
+sys	0m0.227s
+
+===============================================================================
+
+go fix ./...
+
+real	0m0.026s
+user	0m0.023s
+sys	0m0.030s
+
+===============================================================================
+
+gocyclo .
+6 resistorcolortrio Label resistor_color_trio.go:209:1
+4 resistorcolortrio Unit resistor_color_trio.go:186:1
+3 resistorcolortrio BenchmarkLabel resistor_color_trio_test.go:20:1
+3 resistorcolortrio TestLabel resistor_color_trio_test.go:5:1
+3 resistorcolortrio ColorCode resistor_color_trio.go:152:1
+3 resistorcolortrio (MetricPrefix).Int resistor_color_trio.go:115:1
+3 resistorcolortrio (MetricPrefix).String resistor_color_trio.go:106:1
+3 resistorcolortrio (Color).Int resistor_color_trio.go:70:1
+3 resistorcolortrio (Color).String resistor_color_trio.go:60:1
+2 resistorcolortrio ExampleLabel resistor_color_trio_example_test.go:186:1
+2 resistorcolortrio ExampleColorCode resistor_color_trio_example_test.go:134:1
+2 resistorcolortrio ExampleMetricPrefix_Magnitude resistor_color_trio_example_test.go:108:1
+2 resistorcolortrio ExampleMetricPrefix_Int resistor_color_trio_example_test.go:89:1
+2 resistorcolortrio ExampleMetricPrefix_String resistor_color_trio_example_test.go:70:1
+2 resistorcolortrio ExampleColor_Int resistor_color_trio_example_test.go:45:1
+2 resistorcolortrio ExampleColor_String resistor_color_trio_example_test.go:20:1
+2 resistorcolortrio Value resistor_color_trio.go:163:1
+2 resistorcolortrio Colors resistor_color_trio.go:133:1
+1 resistorcolortrio ExampleValue resistor_color_trio_example_test.go:159:1
+1 resistorcolortrio ExampleColors resistor_color_trio_example_test.go:127:1
+1 resistorcolortrio toTitleCase resistor_color_trio_example_test.go:9:1
+1 resistorcolortrio (MetricPrefix).Magnitude resistor_color_trio.go:123:1
+
+real	0m0.002s
+user	0m0.001s
+sys	0m0.001s
+
+===============================================================================
+
+misspell .
+
+real	0m0.026s
+user	0m0.035s
+sys	0m0.010s
+
+===============================================================================
+
+gosec ./...
+[gosec] 2023/03/05 20:42:22 Including rules: default
+[gosec] 2023/03/05 20:42:22 Excluding rules: default
+[gosec] 2023/03/05 20:42:22 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/resistor-color-trio
+[gosec] 2023/03/05 20:42:22 Checking package: resistorcolortrio
+[gosec] 2023/03/05 20:42:22 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/resistor-color-trio/resistor_color_trio.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 250
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.138s
+user	0m0.181s
+sys	0m0.117s
+
+===============================================================================
+
+gotest -v -covermode=count -coverprofile coverage.out ./...
+=== RUN   TestLabel
+=== RUN   TestLabel/Orange_and_orange_and_black
+=== RUN   TestLabel/Blue_and_grey_and_brown
+=== RUN   TestLabel/Red_and_black_and_red
+=== RUN   TestLabel/Green_and_brown_and_orange
+=== RUN   TestLabel/Yellow_and_violet_and_yellow
+=== RUN   TestLabel/Blue_and_violet_and_blue
+=== RUN   TestLabel/Minimum_possible_value
+=== RUN   TestLabel/Maximum_possible_value
+=== RUN   TestLabel/First_two_colors_make_an_invalid_octal_number
+=== RUN   TestLabel/Ignore_extra_colors
+--- PASS: TestLabel (0.00s)
+    --- PASS: TestLabel/Orange_and_orange_and_black (0.00s)
+    --- PASS: TestLabel/Blue_and_grey_and_brown (0.00s)
+    --- PASS: TestLabel/Red_and_black_and_red (0.00s)
+    --- PASS: TestLabel/Green_and_brown_and_orange (0.00s)
+    --- PASS: TestLabel/Yellow_and_violet_and_yellow (0.00s)
+    --- PASS: TestLabel/Blue_and_violet_and_blue (0.00s)
+    --- PASS: TestLabel/Minimum_possible_value (0.00s)
+    --- PASS: TestLabel/Maximum_possible_value (0.00s)
+    --- PASS: TestLabel/First_two_colors_make_an_invalid_octal_number (0.00s)
+    --- PASS: TestLabel/Ignore_extra_colors (0.00s)
+=== RUN   ExampleColor_String
+--- PASS: ExampleColor_String (0.00s)
+=== RUN   ExampleColor_Int
+--- PASS: ExampleColor_Int (0.00s)
+=== RUN   ExampleMetricPrefix_String
+--- PASS: ExampleMetricPrefix_String (0.00s)
+=== RUN   ExampleMetricPrefix_Int
+--- PASS: ExampleMetricPrefix_Int (0.00s)
+=== RUN   ExampleMetricPrefix_Magnitude
+--- PASS: ExampleMetricPrefix_Magnitude (0.00s)
+=== RUN   ExampleColors
+--- PASS: ExampleColors (0.00s)
+=== RUN   ExampleColorCode
+--- PASS: ExampleColorCode (0.00s)
+=== RUN   ExampleValue
+--- PASS: ExampleValue (0.00s)
+=== RUN   ExampleLabel
+--- PASS: ExampleLabel (0.00s)
+PASS
+	resistorcolortrio	coverage: 96.2% of statements
+ok  	resistorcolortrio	0.004s	coverage: 96.2% of statements
+
+real	0m0.226s
+user	0m0.374s
+sys	0m0.277s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+resistorcolortrio/resistor_color_trio.go:60:	String		100.0%
+resistorcolortrio/resistor_color_trio.go:70:	Int		100.0%
+resistorcolortrio/resistor_color_trio.go:106:	String		100.0%
+resistorcolortrio/resistor_color_trio.go:115:	Int		100.0%
+resistorcolortrio/resistor_color_trio.go:123:	Magnitude	100.0%
+resistorcolortrio/resistor_color_trio.go:133:	Colors		100.0%
+resistorcolortrio/resistor_color_trio.go:152:	ColorCode	100.0%
+resistorcolortrio/resistor_color_trio.go:163:	Value		100.0%
+resistorcolortrio/resistor_color_trio.go:186:	Unit		100.0%
+resistorcolortrio/resistor_color_trio.go:209:	Label		88.2%
+total:						(statements)	96.2%
+
+real	0m0.061s
+user	0m0.100s
+sys	0m0.098s
+
+===============================================================================
+
+go tool cover -html coverage.out -o coverage.html
+
+real	0m0.061s
+user	0m0.099s
+sys	0m0.096s
+
+===============================================================================
+
+gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+209     	func Label(colors []string) string {
+210     		if len(colors) < 3 {
+211     			return "-1 ohms"
+212     		}
+213     	
+214     		var value int
+215     	
+216     		// the first band is in the 10s position
+217     		value += ColorCode(colors[0]) * 10
+218     	
+219     		// the second band is in the 1s position
+220     		value += ColorCode(colors[1])
+221     	
+222     		// the third band is factor (^1 -> x10, ^2 -> x100, ...)
+223     		value *= int(math.Pow(float64(10), float64(ColorCode(colors[2]))))
+224     	
+225     		// figure out what the MetricPrefix is before we remove one or more 1k from the value.
+226     		unit := Unit(value)
+227     	
+228     		// factor out 1k chunks
+229     		for value > 0 && value/1_000 != 0 {
+230     			value /= 1_000
+231     		}
+232     	
+233     		var sb strings.Builder
+234     	
+235     		_, e := sb.WriteString(fmt.Sprintf("%d", value))
+236     	
+237     		// Not sure how to get this to fail so it can be tested.
+238     		if e != nil {
+239 MISS			return "-1 ohms"
+240     		}
+241     	
+242     		_, e = sb.WriteString(" " + unit)
+243     	
+244     		// Not sure how to get this to fail so it can be tested.
+245     		if e != nil {
+246 MISS			return "-1 ohms"
+247     		}
+248     	
+249     		return sb.String()
+250     	}
+
+
+real	0m0.018s
+user	0m0.022s
+sys	0m0.023s
+
+===============================================================================
+
+gotest -v -race -covermode=atomic ./...
+=== RUN   TestLabel
+=== RUN   TestLabel/Orange_and_orange_and_black
+=== RUN   TestLabel/Blue_and_grey_and_brown
+=== RUN   TestLabel/Red_and_black_and_red
+=== RUN   TestLabel/Green_and_brown_and_orange
+=== RUN   TestLabel/Yellow_and_violet_and_yellow
+=== RUN   TestLabel/Blue_and_violet_and_blue
+=== RUN   TestLabel/Minimum_possible_value
+=== RUN   TestLabel/Maximum_possible_value
+=== RUN   TestLabel/First_two_colors_make_an_invalid_octal_number
+=== RUN   TestLabel/Ignore_extra_colors
+--- PASS: TestLabel (0.00s)
+    --- PASS: TestLabel/Orange_and_orange_and_black (0.00s)
+    --- PASS: TestLabel/Blue_and_grey_and_brown (0.00s)
+    --- PASS: TestLabel/Red_and_black_and_red (0.00s)
+    --- PASS: TestLabel/Green_and_brown_and_orange (0.00s)
+    --- PASS: TestLabel/Yellow_and_violet_and_yellow (0.00s)
+    --- PASS: TestLabel/Blue_and_violet_and_blue (0.00s)
+    --- PASS: TestLabel/Minimum_possible_value (0.00s)
+    --- PASS: TestLabel/Maximum_possible_value (0.00s)
+    --- PASS: TestLabel/First_two_colors_make_an_invalid_octal_number (0.00s)
+    --- PASS: TestLabel/Ignore_extra_colors (0.00s)
+=== RUN   ExampleColor_String
+--- PASS: ExampleColor_String (0.00s)
+=== RUN   ExampleColor_Int
+--- PASS: ExampleColor_Int (0.00s)
+=== RUN   ExampleMetricPrefix_String
+--- PASS: ExampleMetricPrefix_String (0.00s)
+=== RUN   ExampleMetricPrefix_Int
+--- PASS: ExampleMetricPrefix_Int (0.00s)
+=== RUN   ExampleMetricPrefix_Magnitude
+--- PASS: ExampleMetricPrefix_Magnitude (0.00s)
+=== RUN   ExampleColors
+--- PASS: ExampleColors (0.00s)
+=== RUN   ExampleColorCode
+--- PASS: ExampleColorCode (0.00s)
+=== RUN   ExampleValue
+--- PASS: ExampleValue (0.00s)
+=== RUN   ExampleLabel
+--- PASS: ExampleLabel (0.00s)
+PASS
+	resistorcolortrio	coverage: 96.2% of statements
+ok  	resistorcolortrio	0.033s	coverage: 96.2% of statements
+
+real	0m0.317s
+user	0m0.417s
+sys	0m0.244s
+
+===============================================================================
+
+mv -v benchstat-new.txt benchstat-old.txt
+renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
+
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+goos: linux
+goarch: amd64
+pkg: resistorcolortrio
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+BenchmarkLabel
+BenchmarkLabel-16    	  109490	     11654 ns/op	   15192 B/op	     182 allocs/op
+PASS
+ok  	resistorcolortrio	1.394s
+
+real	0m1.563s
+user	0m1.976s
+sys	0m0.339s
+
+===============================================================================
+
+gotest -v -tags bonus
+=== RUN   TestLabel
+=== RUN   TestLabel/Orange_and_orange_and_black
+=== RUN   TestLabel/Blue_and_grey_and_brown
+=== RUN   TestLabel/Red_and_black_and_red
+=== RUN   TestLabel/Green_and_brown_and_orange
+=== RUN   TestLabel/Yellow_and_violet_and_yellow
+=== RUN   TestLabel/Blue_and_violet_and_blue
+=== RUN   TestLabel/Minimum_possible_value
+=== RUN   TestLabel/Maximum_possible_value
+=== RUN   TestLabel/First_two_colors_make_an_invalid_octal_number
+=== RUN   TestLabel/Ignore_extra_colors
+--- PASS: TestLabel (0.00s)
+    --- PASS: TestLabel/Orange_and_orange_and_black (0.00s)
+    --- PASS: TestLabel/Blue_and_grey_and_brown (0.00s)
+    --- PASS: TestLabel/Red_and_black_and_red (0.00s)
+    --- PASS: TestLabel/Green_and_brown_and_orange (0.00s)
+    --- PASS: TestLabel/Yellow_and_violet_and_yellow (0.00s)
+    --- PASS: TestLabel/Blue_and_violet_and_blue (0.00s)
+    --- PASS: TestLabel/Minimum_possible_value (0.00s)
+    --- PASS: TestLabel/Maximum_possible_value (0.00s)
+    --- PASS: TestLabel/First_two_colors_make_an_invalid_octal_number (0.00s)
+    --- PASS: TestLabel/Ignore_extra_colors (0.00s)
+=== RUN   ExampleColor_String
+--- PASS: ExampleColor_String (0.00s)
+=== RUN   ExampleColor_Int
+--- PASS: ExampleColor_Int (0.00s)
+=== RUN   ExampleMetricPrefix_String
+--- PASS: ExampleMetricPrefix_String (0.00s)
+=== RUN   ExampleMetricPrefix_Int
+--- PASS: ExampleMetricPrefix_Int (0.00s)
+=== RUN   ExampleMetricPrefix_Magnitude
+--- PASS: ExampleMetricPrefix_Magnitude (0.00s)
+=== RUN   ExampleColors
+--- PASS: ExampleColors (0.00s)
+=== RUN   ExampleColorCode
+--- PASS: ExampleColorCode (0.00s)
+=== RUN   ExampleValue
+--- PASS: ExampleValue (0.00s)
+=== RUN   ExampleLabel
+--- PASS: ExampleLabel (0.00s)
+PASS
+ok  	resistorcolortrio	0.003s
+
+real	0m0.152s
+user	0m0.275s
+sys	0m0.236s
+
+===============================================================================
+
+benchstat benchstat-old.txt benchstat-new.txt
+benchstat-old.txt:5: missing iteration count
+benchstat-new.txt:5: missing iteration count
+goos: linux
+goarch: amd64
+pkg: resistorcolortrio
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+         │ benchstat-old.txt │        benchstat-new.txt        │
+         │      sec/op       │    sec/op     vs base           │
+Label-16        11.60µ ± ∞ ¹   11.65µ ± ∞ ¹  ~ (p=1.000 n=1) ²
+¹ need >= 6 samples for confidence interval at level 0.95
+² need >= 4 samples to detect a difference at alpha level 0.05
+
+         │ benchstat-old.txt │        benchstat-new.txt         │
+         │       B/op        │     B/op       vs base           │
+Label-16       14.84Ki ± ∞ ¹   14.84Ki ± ∞ ¹  ~ (p=1.000 n=1) ²
+¹ need >= 6 samples for confidence interval at level 0.95
+² all samples are equal
+
+         │ benchstat-old.txt │       benchstat-new.txt        │
+         │     allocs/op     │  allocs/op   vs base           │
+Label-16         182.0 ± ∞ ¹   182.0 ± ∞ ¹  ~ (p=1.000 n=1) ²
+¹ need >= 6 samples for confidence interval at level 0.95
+² all samples are equal
+
+real	0m0.003s
+user	0m0.003s
+sys	0m0.000s
+
+===============================================================================
+
+gomarkdoc --output resistorcolortrio-doc.md
+
+real	0m0.014s
+user	0m0.009s
+sys	0m0.005s
+
+===============================================================================
+
+go doc -all resistorcolortrio
+package resistorcolortrio // import "resistorcolortrio"
+
+Package resistorcolortrio helps users identify resistors using their color
+bands.
+
+VARIABLES
+
+var ColorNames = map[Color]string{
+	Undefined: "undefined",
+	Black:     "black",
+	Brown:     "brown",
+	Red:       "red",
+	Orange:    "orange",
+	Yellow:    "yellow",
+	Green:     "green",
+	Blue:      "blue",
+	Violet:    "violet",
+	Grey:      "grey",
+	White:     "white",
+}
+    ColorNames maps Color type to it's string representation.
+
+var MetricPrefixNames = map[MetricPrefix]string{
+	NoPrefix: "",
+	Kilo:     "kilo",
+	Mega:     "mega",
+	Giga:     "giga",
+}
+    MetricPrefixNames maps MetrixPrefix to it's string representation.
+
+
+FUNCTIONS
+
+func ColorCode(color string) int
+    ColorCode returns the resistance value of the given color. I guess instead
+    of having a map[String]int{} to do the lookups, we have to search a
+    []String{} array and find the element with that string and return the index.
+    They really sucked the fun out of this function.
+
+func Colors() []string
+    Colors should return the list of all colors. They are limiting your
+    implementation possibilities. Not sure why even bother having a function
+    since the contents of it are very static. I don't wan't to use an array to
+    store the color data, I'm going to use an Enum instead. Now to find a clever
+    way of generating the data from an Enum type that isn't a type and it's just
+    a bunch of constants.
+
+func Label(colors []string) string
+    Label describes the resistance label given the colors of a resistor.
+    The label is a string with a resistance value with an unit appended (e.g.
+    "33 ohms", "470 kiloohms").
+
+func Unit(value int) string
+    Unit returns the units for a given set of bands.
+
+func Value(colors []string) int
+    Value returns the resistance value of a resistor with a given colors.
+
+
+TYPES
+
+type Color int
+    Color type represents the value of a resistor's band.
+
+const (
+	Undefined Color = iota - 1
+	Black
+	Brown
+	Red
+	Orange
+	Yellow
+	Green
+	Blue
+	Violet
+	Grey
+	White
+)
+    Color constants used as an Enum. Starts with -1 for which is used as an
+    undefined color.
+
+const (
+	ColorMin Color = Black
+	ColorMax       = White
+)
+    To make Color lower and upper bound tests clearer, let's define constants.
+    Black and White are at the lower and upper boundaries. All other colors
+    should be between them.
+
+func (c Color) Int() int
+    Int returns the integer representation of a Color. Yes, we could just use
+    int(Color); But, this is more fun.
+
+func (c Color) String() string
+    String implements the Stringer interface. Another way of getting the String
+    equivalent of a Color. We're going to use both to help make this exercise
+    interesting. You can also use a switch in here; But, since we have our
+    min/max constants, this should be easier to maintain. This also allows us to
+    provide a response for undefined colors without complicated error checking
+    since this exercise lacks error returns on the functions being tested.
+
+type MetricPrefix int
+    MetricPrefix type represents the metric prefix of our resistor value.
+
+const (
+	NoPrefix MetricPrefix = 3 * iota
+	Kilo
+	Mega
+	Giga
+)
+    Enum of MetricPrefixes
+
+const (
+	MetricPrefixMin MetricPrefix = Kilo
+	MetricPrefixMax              = Giga
+)
+    To make MetricPrefix lower and upper bound tests clearer, let's define
+    constants. Kilo and Giga are at the lower and upper boundaries. All other
+    MetricPrefixes should be between them.
+
+func (m MetricPrefix) Int() int
+    Int returns the integer representation of a MetricPrefix.
+
+func (m MetricPrefix) Magnitude() int
+
+func (m MetricPrefix) String() string
+    String implements the Stringer interface for MetricPrefix.
+
+
+real	0m0.038s
+user	0m0.035s
+sys	0m0.034s
+
+
+===============================================================================
+

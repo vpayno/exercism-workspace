@@ -1,0 +1,44 @@
+
+209     	func Label(colors []string) string {
+210     		if len(colors) < 3 {
+211     			return "-1 ohms"
+212     		}
+213     	
+214     		var value int
+215     	
+216     		// the first band is in the 10s position
+217     		value += ColorCode(colors[0]) * 10
+218     	
+219     		// the second band is in the 1s position
+220     		value += ColorCode(colors[1])
+221     	
+222     		// the third band is factor (^1 -> x10, ^2 -> x100, ...)
+223     		value *= int(math.Pow(float64(10), float64(ColorCode(colors[2]))))
+224     	
+225     		// figure out what the MetricPrefix is before we remove one or more 1k from the value.
+226     		unit := Unit(value)
+227     	
+228     		// factor out 1k chunks
+229     		for value > 0 && value/1_000 != 0 {
+230     			value /= 1_000
+231     		}
+232     	
+233     		var sb strings.Builder
+234     	
+235     		_, e := sb.WriteString(fmt.Sprintf("%d", value))
+236     	
+237     		// Not sure how to get this to fail so it can be tested.
+238     		if e != nil {
+239 MISS			return "-1 ohms"
+240     		}
+241     	
+242     		_, e = sb.WriteString(" " + unit)
+243     	
+244     		// Not sure how to get this to fail so it can be tested.
+245     		if e != nil {
+246 MISS			return "-1 ohms"
+247     		}
+248     	
+249     		return sb.String()
+250     	}
+
