@@ -1,4 +1,4 @@
-// Package resistorcolor duo helps users identify resistors using their color bands.
+// Package resistorcolor single helps users identify resistors using their color bands.
 package resistorcolor
 
 // Color type represents the value of a resistor's band.

@@ -9,34 +9,40 @@ golangci-lint run ./...
 cases_test.go:16:2: field `input` is unused (unused)
 	input       string
 	^
+resistor_color_example_test.go:14:11: SA1019: strings.Title has been deprecated since Go 1.18 and an alternative has been available since Go 1.0: The rule Title uses for word boundaries does not handle Unicode punctuation properly. Use golang.org/x/text/cases instead. (staticcheck)
+		name := strings.Title(color.String())
+		        ^
+resistor_color_example_test.go:45:11: SA1019: strings.Title has been deprecated since Go 1.18 and an alternative has been available since Go 1.0: The rule Title uses for word boundaries does not handle Unicode punctuation properly. Use golang.org/x/text/cases instead. (staticcheck)
+		name := strings.Title(color.String())
+		        ^
 
-real	0m0.226s
-user	0m0.427s
-sys	0m0.256s
+real	0m0.216s
+user	0m0.339s
+sys	0m0.238s
 
 ===============================================================================
 
 golint ./...
 
-real	0m0.005s
+real	0m0.006s
 user	0m0.005s
-sys	0m0.000s
+sys	0m0.001s
 
 ===============================================================================
 
 revive -formatter=stylish ./...
 
-real	0m0.188s
-user	0m0.254s
-sys	0m0.280s
+real	0m0.190s
+user	0m0.318s
+sys	0m0.282s
 
 ===============================================================================
 
 ineffassign ./...
 
-real	0m0.096s
-user	0m0.201s
-sys	0m0.177s
+real	0m0.092s
+user	0m0.210s
+sys	0m0.206s
 
 ===============================================================================
 
@@ -44,42 +50,44 @@ go-consistent -v ./...
 	info: check "./."
 internal error: package "fmt" without types was imported from "resistorcolor [resistorcolor.test]"
 
-real	0m0.114s
-user	0m0.203s
-sys	0m0.116s
+real	0m0.104s
+user	0m0.167s
+sys	0m0.136s
 
 ===============================================================================
 
 staticcheck ./...
 cases_test.go:16:2: field input is unused (U1000)
+resistor_color_example_test.go:14:11: strings.Title has been deprecated since Go 1.18 and an alternative has been available since Go 1.0: The rule Title uses for word boundaries does not handle Unicode punctuation properly. Use golang.org/x/text/cases instead.  (SA1019)
+resistor_color_example_test.go:45:11: strings.Title has been deprecated since Go 1.18 and an alternative has been available since Go 1.0: The rule Title uses for word boundaries does not handle Unicode punctuation properly. Use golang.org/x/text/cases instead.  (SA1019)
 
-real	0m0.148s
-user	0m0.253s
-sys	0m0.177s
+real	0m0.157s
+user	0m0.238s
+sys	0m0.150s
 
 ===============================================================================
 
 gocritic check -enableAll ./...
 
-real	0m0.808s
-user	0m2.506s
-sys	0m0.513s
+real	0m0.767s
+user	0m2.586s
+sys	0m0.444s
 
 ===============================================================================
 
 go vet ./...
 
-real	0m0.107s
-user	0m0.244s
-sys	0m0.231s
+real	0m0.105s
+user	0m0.224s
+sys	0m0.191s
 
 ===============================================================================
 
 go fix ./...
 
 real	0m0.014s
-user	0m0.006s
-sys	0m0.014s
+user	0m0.008s
+sys	0m0.010s
 
 ===============================================================================
 
@@ -100,25 +108,25 @@ gocyclo .
 1 resistorcolor ExampleColors resistor_color_example_test.go:70:1
 
 real	0m0.003s
-user	0m0.002s
-sys	0m0.001s
+user	0m0.000s
+sys	0m0.003s
 
 ===============================================================================
 
 misspell .
 
-real	0m0.029s
-user	0m0.035s
-sys	0m0.013s
+real	0m0.022s
+user	0m0.027s
+sys	0m0.014s
 
 ===============================================================================
 
 gosec ./...
-[gosec] 2023/03/05 16:41:52 Including rules: default
-[gosec] 2023/03/05 16:41:52 Excluding rules: default
-[gosec] 2023/03/05 16:41:52 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/resistor-color
-[gosec] 2023/03/05 16:41:52 Checking package: resistorcolor
-[gosec] 2023/03/05 16:41:52 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/resistor-color/resistor_color.go
+[gosec] 2023/03/05 20:47:49 Including rules: default
+[gosec] 2023/03/05 20:47:49 Excluding rules: default
+[gosec] 2023/03/05 20:47:49 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/resistor-color
+[gosec] 2023/03/05 20:47:49 Checking package: resistorcolor
+[gosec] 2023/03/05 20:47:49 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/resistor-color/resistor_color.go
 Results:
 
 
@@ -130,9 +138,9 @@ Results:
   Issues : [1;32m0[0m
 
 
-real	0m0.071s
-user	0m0.067s
-sys	0m0.050s
+real	0m0.068s
+user	0m0.061s
+sys	0m0.049s
 
 ===============================================================================
 
@@ -159,11 +167,11 @@ gotest -v -covermode=count -coverprofile coverage.out ./...
 --- PASS: ExampleColorCode (0.00s)
 PASS
 	resistorcolor	coverage: 100.0% of statements
-ok  	resistorcolor	0.002s	coverage: 100.0% of statements
+ok  	resistorcolor	0.003s	coverage: 100.0% of statements
 
-real	0m0.207s
-user	0m0.311s
-sys	0m0.216s
+real	0m0.172s
+user	0m0.326s
+sys	0m0.271s
 
 ===============================================================================
 
@@ -174,25 +182,25 @@ resistorcolor/resistor_color.go:78:	Colors		100.0%
 resistorcolor/resistor_color.go:97:	ColorCode	100.0%
 total:					(statements)	100.0%
 
-real	0m0.022s
-user	0m0.011s
-sys	0m0.021s
+real	0m0.021s
+user	0m0.008s
+sys	0m0.023s
 
 ===============================================================================
 
 go tool cover -html coverage.out -o coverage.html
 
-real	0m0.024s
-user	0m0.014s
-sys	0m0.022s
+real	0m0.021s
+user	0m0.013s
+sys	0m0.015s
 
 ===============================================================================
 
 gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
 
-real	0m0.011s
+real	0m0.009s
 user	0m0.006s
-sys	0m0.015s
+sys	0m0.006s
 
 ===============================================================================
 
@@ -219,16 +227,13 @@ gotest -v -race -covermode=atomic ./...
 --- PASS: ExampleColorCode (0.00s)
 PASS
 	resistorcolor	coverage: 100.0% of statements
-ok  	resistorcolor	0.025s	coverage: 100.0% of statements
+ok  	resistorcolor	(cached)	coverage: 100.0% of statements
 
-real	0m0.288s
-user	0m0.438s
-sys	0m0.237s
+real	0m0.201s
+user	0m0.357s
+sys	0m0.256s
 
 ===============================================================================
-
-mv -v benchstat-new.txt benchstat-old.txt
-renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
 
 gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 goos: linux
@@ -236,15 +241,15 @@ goarch: amd64
 pkg: resistorcolor
 cpu: 12th Gen Intel(R) Core(TM) i5-1240P
 BenchmarkColorCode
-BenchmarkColorCode-16    	 1259546	       938.4 ns/op	    1488 B/op	      15 allocs/op
+BenchmarkColorCode-16    	 1000000	      1016 ns/op	    1488 B/op	      15 allocs/op
 BenchmarkColors
-BenchmarkColors-16       	 3957564	       316.6 ns/op	     496 B/op	       5 allocs/op
+BenchmarkColors-16       	 3770556	       301.9 ns/op	     496 B/op	       5 allocs/op
 PASS
-ok  	resistorcolor	3.687s
+ok  	resistorcolor	2.496s
 
-real	0m3.858s
-user	0m4.791s
-sys	0m0.441s
+real	0m2.662s
+user	0m3.301s
+sys	0m0.390s
 
 ===============================================================================
 
@@ -270,65 +275,30 @@ gotest -v -tags bonus
 === RUN   ExampleColorCode
 --- PASS: ExampleColorCode (0.00s)
 PASS
-ok  	resistorcolor	0.003s
+ok  	resistorcolor	0.002s
 
-real	0m0.155s
-user	0m0.300s
-sys	0m0.258s
+real	0m0.152s
+user	0m0.238s
+sys	0m0.178s
 
 ===============================================================================
 
-benchstat benchstat-old.txt benchstat-new.txt
-benchstat-old.txt:5: missing iteration count
-benchstat-old.txt:7: missing iteration count
-benchstat-new.txt:5: missing iteration count
-benchstat-new.txt:7: missing iteration count
-goos: linux
-goarch: amd64
-pkg: resistorcolor
-cpu: 12th Gen Intel(R) Core(TM) i5-1240P
-             │ benchstat-old.txt │          benchstat-new.txt           │
-             │      sec/op       │    sec/op     vs base                │
-ColorCode-16        967.5n ± ∞ ¹   938.4n ± ∞ ¹       ~ (p=1.000 n=1) ²
-Colors-16           291.0n ± ∞ ¹   316.6n ± ∞ ¹       ~ (p=1.000 n=1) ²
-geomean             530.6n         545.1n        +2.73%
-¹ need >= 6 samples for confidence interval at level 0.95
-² need >= 4 samples to detect a difference at alpha level 0.05
-
-             │ benchstat-old.txt │           benchstat-new.txt           │
-             │       B/op        │     B/op       vs base                │
-ColorCode-16       1.453Ki ± ∞ ¹   1.453Ki ± ∞ ¹       ~ (p=1.000 n=1) ²
-Colors-16            496.0 ± ∞ ¹     496.0 ± ∞ ¹       ~ (p=1.000 n=1) ²
-geomean              859.1           859.1        +0.00%
-¹ need >= 6 samples for confidence interval at level 0.95
-² all samples are equal
-
-             │ benchstat-old.txt │          benchstat-new.txt          │
-             │     allocs/op     │  allocs/op   vs base                │
-ColorCode-16         15.00 ± ∞ ¹   15.00 ± ∞ ¹       ~ (p=1.000 n=1) ²
-Colors-16            5.000 ± ∞ ¹   5.000 ± ∞ ¹       ~ (p=1.000 n=1) ²
-geomean              8.660         8.660        +0.00%
-¹ need >= 6 samples for confidence interval at level 0.95
-² all samples are equal
-
-real	0m0.003s
-user	0m0.000s
-sys	0m0.004s
+No old benchmarks to run benchstat against.
 
 ===============================================================================
 
 gomarkdoc --output resistorcolor-doc.md
 
 real	0m0.011s
-user	0m0.008s
-sys	0m0.002s
+user	0m0.007s
+sys	0m0.005s
 
 ===============================================================================
 
 go doc -all resistorcolor
 package resistorcolor // import "resistorcolor"
 
-Package resistorcolor duo helps users identify resistors using their color
+Package resistorcolor single helps users identify resistors using their color
 bands.
 
 VARIABLES
@@ -408,9 +378,9 @@ func (c Color) String() string
     since this exercise lacks error returns on the functions being tested.
 
 
-real	0m0.236s
-user	0m0.046s
-sys	0m0.057s
+real	0m0.032s
+user	0m0.014s
+sys	0m0.028s
 
 
 ===============================================================================

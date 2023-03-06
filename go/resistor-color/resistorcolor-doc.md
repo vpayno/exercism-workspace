@@ -6,7 +6,7 @@
 import "resistorcolor"
 ```
 
-Package resistorcolor duo helps users identify resistors using their color bands.
+Package resistorcolor single helps users identify resistors using their color bands.
 
 ## Index
 
