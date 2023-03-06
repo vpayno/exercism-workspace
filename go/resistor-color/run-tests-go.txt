@@ -10,33 +10,33 @@ cases_test.go:16:2: field `input` is unused (unused)
 	input       string
 	^
 
-real	0m0.240s
-user	0m0.478s
-sys	0m0.271s
+real	0m0.226s
+user	0m0.427s
+sys	0m0.256s
 
 ===============================================================================
 
 golint ./...
 
 real	0m0.005s
-user	0m0.003s
-sys	0m0.002s
+user	0m0.005s
+sys	0m0.000s
 
 ===============================================================================
 
 revive -formatter=stylish ./...
 
-real	0m0.122s
-user	0m0.196s
-sys	0m0.177s
+real	0m0.188s
+user	0m0.254s
+sys	0m0.280s
 
 ===============================================================================
 
 ineffassign ./...
 
-real	0m0.088s
-user	0m0.172s
-sys	0m0.125s
+real	0m0.096s
+user	0m0.201s
+sys	0m0.177s
 
 ===============================================================================
 
@@ -44,42 +44,42 @@ go-consistent -v ./...
 	info: check "./."
 internal error: package "fmt" without types was imported from "resistorcolor [resistorcolor.test]"
 
-real	0m0.106s
-user	0m0.188s
-sys	0m0.130s
+real	0m0.114s
+user	0m0.203s
+sys	0m0.116s
 
 ===============================================================================
 
 staticcheck ./...
 cases_test.go:16:2: field input is unused (U1000)
 
-real	0m0.155s
-user	0m0.263s
-sys	0m0.217s
+real	0m0.148s
+user	0m0.253s
+sys	0m0.177s
 
 ===============================================================================
 
 gocritic check -enableAll ./...
 
-real	0m0.735s
-user	0m2.450s
-sys	0m0.492s
+real	0m0.808s
+user	0m2.506s
+sys	0m0.513s
 
 ===============================================================================
 
 go vet ./...
 
-real	0m0.099s
-user	0m0.252s
-sys	0m0.184s
+real	0m0.107s
+user	0m0.244s
+sys	0m0.231s
 
 ===============================================================================
 
 go fix ./...
 
-real	0m0.016s
-user	0m0.010s
-sys	0m0.012s
+real	0m0.014s
+user	0m0.006s
+sys	0m0.014s
 
 ===============================================================================
 
@@ -94,31 +94,31 @@ gocyclo .
 2 resistorcolor makeMap resistor_color_test.go:56:1
 2 resistorcolor BenchmarkColors resistor_color_test.go:50:1
 2 resistorcolor ExampleColorCode resistor_color_example_test.go:77:1
-2 resistorcolor ExampleColor_Int resistor_color_example_test.go:40:1
-2 resistorcolor ExampleColor_String resistor_color_example_test.go:10:1
+2 resistorcolor ExampleColor_Int resistor_color_example_test.go:39:1
+2 resistorcolor ExampleColor_String resistor_color_example_test.go:8:1
 2 resistorcolor Colors resistor_color.go:78:1
 1 resistorcolor ExampleColors resistor_color_example_test.go:70:1
 
-real	0m0.002s
-user	0m0.001s
+real	0m0.003s
+user	0m0.002s
 sys	0m0.001s
 
 ===============================================================================
 
 misspell .
 
-real	0m0.024s
-user	0m0.028s
-sys	0m0.020s
+real	0m0.029s
+user	0m0.035s
+sys	0m0.013s
 
 ===============================================================================
 
 gosec ./...
-[gosec] 2023/03/05 16:31:32 Including rules: default
-[gosec] 2023/03/05 16:31:32 Excluding rules: default
-[gosec] 2023/03/05 16:31:32 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/resistor-color
-[gosec] 2023/03/05 16:31:33 Checking package: resistorcolor
-[gosec] 2023/03/05 16:31:33 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/resistor-color/resistor_color.go
+[gosec] 2023/03/05 16:41:52 Including rules: default
+[gosec] 2023/03/05 16:41:52 Excluding rules: default
+[gosec] 2023/03/05 16:41:52 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/resistor-color
+[gosec] 2023/03/05 16:41:52 Checking package: resistorcolor
+[gosec] 2023/03/05 16:41:52 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/resistor-color/resistor_color.go
 Results:
 
 
@@ -130,9 +130,9 @@ Results:
   Issues : [1;32m0[0m
 
 
-real	0m0.083s
-user	0m0.073s
-sys	0m0.060s
+real	0m0.071s
+user	0m0.067s
+sys	0m0.050s
 
 ===============================================================================
 
@@ -159,11 +159,11 @@ gotest -v -covermode=count -coverprofile coverage.out ./...
 --- PASS: ExampleColorCode (0.00s)
 PASS
 	resistorcolor	coverage: 100.0% of statements
-ok  	resistorcolor	0.003s	coverage: 100.0% of statements
+ok  	resistorcolor	0.002s	coverage: 100.0% of statements
 
-real	0m0.196s
-user	0m0.358s
-sys	0m0.218s
+real	0m0.207s
+user	0m0.311s
+sys	0m0.216s
 
 ===============================================================================
 
@@ -174,25 +174,25 @@ resistorcolor/resistor_color.go:78:	Colors		100.0%
 resistorcolor/resistor_color.go:97:	ColorCode	100.0%
 total:					(statements)	100.0%
 
-real	0m0.025s
-user	0m0.015s
-sys	0m0.020s
+real	0m0.022s
+user	0m0.011s
+sys	0m0.021s
 
 ===============================================================================
 
 go tool cover -html coverage.out -o coverage.html
 
-real	0m0.025s
-user	0m0.012s
-sys	0m0.024s
+real	0m0.024s
+user	0m0.014s
+sys	0m0.022s
 
 ===============================================================================
 
 gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
 
-real	0m0.010s
-user	0m0.002s
-sys	0m0.014s
+real	0m0.011s
+user	0m0.006s
+sys	0m0.015s
 
 ===============================================================================
 
@@ -219,13 +219,16 @@ gotest -v -race -covermode=atomic ./...
 --- PASS: ExampleColorCode (0.00s)
 PASS
 	resistorcolor	coverage: 100.0% of statements
-ok  	resistorcolor	(cached)	coverage: 100.0% of statements
+ok  	resistorcolor	0.025s	coverage: 100.0% of statements
 
-real	0m0.148s
-user	0m0.323s
-sys	0m0.156s
+real	0m0.288s
+user	0m0.438s
+sys	0m0.237s
 
 ===============================================================================
+
+mv -v benchstat-new.txt benchstat-old.txt
+renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
 
 gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 goos: linux
@@ -233,15 +236,15 @@ goarch: amd64
 pkg: resistorcolor
 cpu: 12th Gen Intel(R) Core(TM) i5-1240P
 BenchmarkColorCode
-BenchmarkColorCode-16    	 1274251	       967.5 ns/op	    1488 B/op	      15 allocs/op
+BenchmarkColorCode-16    	 1259546	       938.4 ns/op	    1488 B/op	      15 allocs/op
 BenchmarkColors
-BenchmarkColors-16       	 3843514	       291.0 ns/op	     496 B/op	       5 allocs/op
+BenchmarkColors-16       	 3957564	       316.6 ns/op	     496 B/op	       5 allocs/op
 PASS
-ok  	resistorcolor	3.494s
+ok  	resistorcolor	3.687s
 
-real	0m3.652s
-user	0m4.524s
-sys	0m0.369s
+real	0m3.858s
+user	0m4.791s
+sys	0m0.441s
 
 ===============================================================================
 
@@ -267,23 +270,58 @@ gotest -v -tags bonus
 === RUN   ExampleColorCode
 --- PASS: ExampleColorCode (0.00s)
 PASS
-ok  	resistorcolor	0.002s
+ok  	resistorcolor	0.003s
 
-real	0m0.161s
-user	0m0.356s
-sys	0m0.236s
+real	0m0.155s
+user	0m0.300s
+sys	0m0.258s
 
 ===============================================================================
 
-No old benchmarks to run benchstat against.
+benchstat benchstat-old.txt benchstat-new.txt
+benchstat-old.txt:5: missing iteration count
+benchstat-old.txt:7: missing iteration count
+benchstat-new.txt:5: missing iteration count
+benchstat-new.txt:7: missing iteration count
+goos: linux
+goarch: amd64
+pkg: resistorcolor
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+             │ benchstat-old.txt │          benchstat-new.txt           │
+             │      sec/op       │    sec/op     vs base                │
+ColorCode-16        967.5n ± ∞ ¹   938.4n ± ∞ ¹       ~ (p=1.000 n=1) ²
+Colors-16           291.0n ± ∞ ¹   316.6n ± ∞ ¹       ~ (p=1.000 n=1) ²
+geomean             530.6n         545.1n        +2.73%
+¹ need >= 6 samples for confidence interval at level 0.95
+² need >= 4 samples to detect a difference at alpha level 0.05
+
+             │ benchstat-old.txt │           benchstat-new.txt           │
+             │       B/op        │     B/op       vs base                │
+ColorCode-16       1.453Ki ± ∞ ¹   1.453Ki ± ∞ ¹       ~ (p=1.000 n=1) ²
+Colors-16            496.0 ± ∞ ¹     496.0 ± ∞ ¹       ~ (p=1.000 n=1) ²
+geomean              859.1           859.1        +0.00%
+¹ need >= 6 samples for confidence interval at level 0.95
+² all samples are equal
+
+             │ benchstat-old.txt │          benchstat-new.txt          │
+             │     allocs/op     │  allocs/op   vs base                │
+ColorCode-16         15.00 ± ∞ ¹   15.00 ± ∞ ¹       ~ (p=1.000 n=1) ²
+Colors-16            5.000 ± ∞ ¹   5.000 ± ∞ ¹       ~ (p=1.000 n=1) ²
+geomean              8.660         8.660        +0.00%
+¹ need >= 6 samples for confidence interval at level 0.95
+² all samples are equal
+
+real	0m0.003s
+user	0m0.000s
+sys	0m0.004s
 
 ===============================================================================
 
 gomarkdoc --output resistorcolor-doc.md
 
 real	0m0.011s
-user	0m0.005s
-sys	0m0.007s
+user	0m0.008s
+sys	0m0.002s
 
 ===============================================================================
 
@@ -370,9 +408,9 @@ func (c Color) String() string
     since this exercise lacks error returns on the functions being tested.
 
 
-real	0m0.030s
-user	0m0.011s
-sys	0m0.033s
+real	0m0.236s
+user	0m0.046s
+sys	0m0.057s
 
 
 ===============================================================================

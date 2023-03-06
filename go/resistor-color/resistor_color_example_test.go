@@ -2,9 +2,7 @@ package resistorcolor
 
 import (
 	"fmt"
-
-	"golang.org/x/text/cases"
-	"golang.org/x/text/language"
+	"strings"
 )
 
 func ExampleColor_String() {
@@ -13,10 +11,11 @@ func ExampleColor_String() {
 	// Starting with Undefined instead of ColorMin since I want to test it as well.
 	for color = Undefined; color <= ColorMax; color++ {
 		// strings.Title() is deprecated
-		// name := strings.Title(color.String())
+		name := strings.Title(color.String())
 
-		transform := cases.Title(language.English)
-		name := transform.String(color.String())
+		// You can't download modules or run `go mod tidy` in the Exercism test environment.
+		// transform := cases.Title(language.English)
+		// name := transform.String(color.String())
 
 		value := color.String()
 
@@ -43,10 +42,11 @@ func ExampleColor_Int() {
 	// Starting with Undefined instead of ColorMin since I want to test it as well.
 	for color = Undefined; color <= ColorMax; color++ {
 		// strings.Title() is deprecated
-		// name := strings.Title(color.String())
+		name := strings.Title(color.String())
 
-		transform := cases.Title(language.English)
-		name := transform.String(color.String())
+		// You can't download modules or run `go mod tidy` in the Exercism test environment.
+		// transform := cases.Title(language.English)
+		// name := transform.String(color.String())
 
 		value := color.Int()
 

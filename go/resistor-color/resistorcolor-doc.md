@@ -161,8 +161,7 @@ Int returns the integer representation of a Color. Yes, we could just use int\(C
 
 	for color = Undefined; color <= ColorMax; color++ {
 
-		transform := cases.Title(language.English)
-		name := transform.String(color.String())
+		name := strings.Title(color.String())
 
 		value := color.Int()
 
@@ -208,8 +207,7 @@ String implements the Stringer interface. Another way of getting the String equi
 
 	for color = Undefined; color <= ColorMax; color++ {
 
-		transform := cases.Title(language.English)
-		name := transform.String(color.String())
+		name := strings.Title(color.String())
 
 		value := color.String()
 
