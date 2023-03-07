@@ -1,0 +1,71 @@
+package bottlesong // import "bottlesong"
+
+Package bottlesong generates the lrics to the Ten Green Bottles Bootles song.
+Adapted from the 99 Bottles of Beer exercise.
+
+CONSTANTS
+
+const (
+	MinNumber = One
+	MaxNumber = Ten
+)
+    The lower and upper bound numbers.
+
+
+VARIABLES
+
+var NumberNames = map[Number]string{
+	Zero:  "Zero",
+	One:   "One",
+	Two:   "Two",
+	Three: "Three",
+	Four:  "Four",
+	Five:  "Five",
+	Six:   "Six",
+	Seven: "Seven",
+	Eight: "Eight",
+	Nine:  "Nine",
+	Ten:   "Ten",
+}
+    NumberNames maps Number to string representations.
+
+
+FUNCTIONS
+
+func Recite(startBottles, takeDown int) []string
+    Recite returns the verses of the song.
+
+func Verse(bootleCount int) (string, error)
+    Verse returns a single verse from 99 Bottles of Beer on the Wall song.
+
+func Verses(start, takeDown int) (string, error)
+    Verses returns select verselyricss 10 Green Bottles Hanging on the Wall
+    song.
+
+
+TYPES
+
+type Number int
+    Number type let's us map numbers to strings for the song.
+
+const (
+	Zero Number = iota
+	One
+	Two
+	Three
+	Four
+	Five
+	Six
+	Seven
+	Eight
+	Nine
+	Ten
+)
+    The numbers.
+
+func (n Number) Int() int
+    Int implements the Stringer interface for a Number.
+
+func (n Number) String() string
+    String implements the Stringer interface for a Number.
+

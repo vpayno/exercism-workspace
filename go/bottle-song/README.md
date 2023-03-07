@@ -70,3 +70,13 @@ There'll be no green bottles hanging on the wall.
 ### Based on
 
 Wikipedia - https://en.wikipedia.org/wiki/Ten_Green_Bottles
+
+### My Solution
+
+- [my solution](./bottle_song.go)
+- [my examples](./)
+- [test cases](./cases_test.go)
+- [tests](./bottle_song_test.go)
+- [run-tests](./run-tests-go.txt)
+- [coverage](./coverage.html)
+- [documentation](./bottlesong-doc.md)

@@ -1,0 +1,362 @@
+Running automated test file(s):
+
+Go packages: bottlesong 
+
+
+===============================================================================
+
+golangci-lint run ./...
+
+real	0m0.251s
+user	0m0.445s
+sys	0m0.259s
+
+===============================================================================
+
+golint ./...
+
+real	0m0.005s
+user	0m0.003s
+sys	0m0.002s
+
+===============================================================================
+
+revive -formatter=stylish ./...
+
+real	0m0.239s
+user	0m0.349s
+sys	0m0.346s
+
+===============================================================================
+
+ineffassign ./...
+
+real	0m0.086s
+user	0m0.158s
+sys	0m0.117s
+
+===============================================================================
+
+go-consistent -v ./...
+	info: check "./."
+internal error: package "errors" without types was imported from "bottlesong"
+
+real	0m0.096s
+user	0m0.195s
+sys	0m0.169s
+
+===============================================================================
+
+staticcheck ./...
+
+real	0m0.149s
+user	0m0.204s
+sys	0m0.164s
+
+===============================================================================
+
+gocritic check -enableAll ./...
+
+real	0m0.731s
+user	0m2.281s
+sys	0m0.458s
+
+===============================================================================
+
+go vet ./...
+
+real	0m0.089s
+user	0m0.185s
+sys	0m0.155s
+
+===============================================================================
+
+go fix ./...
+
+real	0m0.026s
+user	0m0.019s
+sys	0m0.030s
+
+===============================================================================
+
+gocyclo .
+11 bottlesong isSeparator bottle_song_test.go:57:1
+7 bottlesong Verse bottle_song.go:61:1
+5 bottlesong Recite bottle_song.go:129:1
+4 bottlesong equal bottle_song_test.go:21:1
+4 bottlesong Verses bottle_song.go:107:1
+3 bottlesong TestRecite bottle_song_test.go:10:1
+2 bottlesong Title bottle_song_test.go:39:1
+2 bottlesong ExampleRecite bottle_song_examples_test.go:103:1
+1 bottlesong ExampleVerses bottle_song_examples_test.go:48:1
+1 bottlesong ExampleVerse bottle_song_examples_test.go:7:1
+1 bottlesong (Number).Int bottle_song.go:56:1
+1 bottlesong (Number).String bottle_song.go:51:1
+
+real	0m0.002s
+user	0m0.001s
+sys	0m0.001s
+
+===============================================================================
+
+misspell .
+
+real	0m0.024s
+user	0m0.029s
+sys	0m0.016s
+
+===============================================================================
+
+gosec ./...
+[gosec] 2023/03/06 22:06:22 Including rules: default
+[gosec] 2023/03/06 22:06:22 Excluding rules: default
+[gosec] 2023/03/06 22:06:22 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/bottle-song
+[gosec] 2023/03/06 22:06:22 Checking package: bottlesong
+[gosec] 2023/03/06 22:06:22 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/bottle-song/bottle_song.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 142
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.140s
+user	0m0.155s
+sys	0m0.116s
+
+===============================================================================
+
+gotest -v -covermode=count -coverprofile coverage.out ./...
+=== RUN   TestRecite
+=== RUN   TestRecite/first_generic_verse
+=== RUN   TestRecite/last_generic_verse
+=== RUN   TestRecite/verse_with_2_bottles
+=== RUN   TestRecite/verse_with_1_bottle
+=== RUN   TestRecite/first_two_verses
+=== RUN   TestRecite/last_three_verses
+=== RUN   TestRecite/all_verses
+--- PASS: TestRecite (0.00s)
+    --- PASS: TestRecite/first_generic_verse (0.00s)
+    --- PASS: TestRecite/last_generic_verse (0.00s)
+    --- PASS: TestRecite/verse_with_2_bottles (0.00s)
+    --- PASS: TestRecite/verse_with_1_bottle (0.00s)
+    --- PASS: TestRecite/first_two_verses (0.00s)
+    --- PASS: TestRecite/last_three_verses (0.00s)
+    --- PASS: TestRecite/all_verses (0.00s)
+=== RUN   ExampleVerse
+--- PASS: ExampleVerse (0.00s)
+=== RUN   ExampleVerses
+--- PASS: ExampleVerses (0.00s)
+=== RUN   ExampleRecite
+--- PASS: ExampleRecite (0.00s)
+PASS
+	bottlesong	coverage: 100.0% of statements
+ok  	bottlesong	0.004s	coverage: 100.0% of statements
+
+real	0m0.206s
+user	0m0.339s
+sys	0m0.255s
+
+===============================================================================
+
+go tool cover -func=coverage.out
+bottlesong/bottle_song.go:51:	String		100.0%
+bottlesong/bottle_song.go:56:	Int		100.0%
+bottlesong/bottle_song.go:61:	Verse		100.0%
+bottlesong/bottle_song.go:107:	Verses		100.0%
+bottlesong/bottle_song.go:129:	Recite		100.0%
+total:				(statements)	100.0%
+
+real	0m0.077s
+user	0m0.160s
+sys	0m0.123s
+
+===============================================================================
+
+go tool cover -html coverage.out -o coverage.html
+
+real	0m0.072s
+user	0m0.133s
+sys	0m0.116s
+
+===============================================================================
+
+gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+real	0m0.020s
+user	0m0.020s
+sys	0m0.025s
+
+===============================================================================
+
+gotest -v -race -covermode=atomic ./...
+=== RUN   TestRecite
+=== RUN   TestRecite/first_generic_verse
+=== RUN   TestRecite/last_generic_verse
+=== RUN   TestRecite/verse_with_2_bottles
+=== RUN   TestRecite/verse_with_1_bottle
+=== RUN   TestRecite/first_two_verses
+=== RUN   TestRecite/last_three_verses
+=== RUN   TestRecite/all_verses
+--- PASS: TestRecite (0.00s)
+    --- PASS: TestRecite/first_generic_verse (0.00s)
+    --- PASS: TestRecite/last_generic_verse (0.00s)
+    --- PASS: TestRecite/verse_with_2_bottles (0.00s)
+    --- PASS: TestRecite/verse_with_1_bottle (0.00s)
+    --- PASS: TestRecite/first_two_verses (0.00s)
+    --- PASS: TestRecite/last_three_verses (0.00s)
+    --- PASS: TestRecite/all_verses (0.00s)
+=== RUN   ExampleVerse
+--- PASS: ExampleVerse (0.00s)
+=== RUN   ExampleVerses
+--- PASS: ExampleVerses (0.00s)
+=== RUN   ExampleRecite
+--- PASS: ExampleRecite (0.00s)
+PASS
+	bottlesong	coverage: 100.0% of statements
+ok  	bottlesong	0.036s	coverage: 100.0% of statements
+
+real	0m0.310s
+user	0m0.504s
+sys	0m0.329s
+
+===============================================================================
+
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+PASS
+ok  	bottlesong	0.003s
+
+real	0m0.196s
+user	0m0.339s
+sys	0m0.268s
+
+===============================================================================
+
+gotest -v -tags bonus
+=== RUN   TestRecite
+=== RUN   TestRecite/first_generic_verse
+=== RUN   TestRecite/last_generic_verse
+=== RUN   TestRecite/verse_with_2_bottles
+=== RUN   TestRecite/verse_with_1_bottle
+=== RUN   TestRecite/first_two_verses
+=== RUN   TestRecite/last_three_verses
+=== RUN   TestRecite/all_verses
+--- PASS: TestRecite (0.00s)
+    --- PASS: TestRecite/first_generic_verse (0.00s)
+    --- PASS: TestRecite/last_generic_verse (0.00s)
+    --- PASS: TestRecite/verse_with_2_bottles (0.00s)
+    --- PASS: TestRecite/verse_with_1_bottle (0.00s)
+    --- PASS: TestRecite/first_two_verses (0.00s)
+    --- PASS: TestRecite/last_three_verses (0.00s)
+    --- PASS: TestRecite/all_verses (0.00s)
+=== RUN   ExampleVerse
+--- PASS: ExampleVerse (0.00s)
+=== RUN   ExampleVerses
+--- PASS: ExampleVerses (0.00s)
+=== RUN   ExampleRecite
+--- PASS: ExampleRecite (0.00s)
+PASS
+ok  	bottlesong	0.002s
+
+real	0m0.155s
+user	0m0.299s
+sys	0m0.208s
+
+===============================================================================
+
+No old benchmarks to run benchstat against.
+
+===============================================================================
+
+gomarkdoc --output bottlesong-doc.md
+
+real	0m0.012s
+user	0m0.005s
+sys	0m0.007s
+
+===============================================================================
+
+go doc -all bottlesong
+package bottlesong // import "bottlesong"
+
+Package bottlesong generates the lrics to the Ten Green Bottles Bootles song.
+Adapted from the 99 Bottles of Beer exercise.
+
+CONSTANTS
+
+const (
+	MinNumber = One
+	MaxNumber = Ten
+)
+    The lower and upper bound numbers.
+
+
+VARIABLES
+
+var NumberNames = map[Number]string{
+	Zero:  "Zero",
+	One:   "One",
+	Two:   "Two",
+	Three: "Three",
+	Four:  "Four",
+	Five:  "Five",
+	Six:   "Six",
+	Seven: "Seven",
+	Eight: "Eight",
+	Nine:  "Nine",
+	Ten:   "Ten",
+}
+    NumberNames maps Number to string representations.
+
+
+FUNCTIONS
+
+func Recite(startBottles, takeDown int) []string
+    Recite returns the verses of the song.
+
+func Verse(bootleCount int) (string, error)
+    Verse returns a single verse from 99 Bottles of Beer on the Wall song.
+
+func Verses(start, takeDown int) (string, error)
+    Verses returns select verselyricss 10 Green Bottles Hanging on the Wall
+    song.
+
+
+TYPES
+
+type Number int
+    Number type let's us map numbers to strings for the song.
+
+const (
+	Zero Number = iota
+	One
+	Two
+	Three
+	Four
+	Five
+	Six
+	Seven
+	Eight
+	Nine
+	Ten
+)
+    The numbers.
+
+func (n Number) Int() int
+    Int implements the Stringer interface for a Number.
+
+func (n Number) String() string
+    String implements the Stringer interface for a Number.
+
+
+real	0m0.042s
+user	0m0.029s
+sys	0m0.053s
+
+
+===============================================================================
+
