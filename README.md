@@ -11,7 +11,7 @@ Exercism Workspace (https://exercism.org/docs/tracks)
 
 - January: Introduction
 - February: Functional -> Haskell (done)
-- March: Mechanical ->
+- March: Mechanical -> Go (done)
 - April: Analytical ->
 - May: Mindshifting ->
 - June: Summer of Sexps ->
