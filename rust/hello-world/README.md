@@ -54,5 +54,5 @@ This is an exercise to introduce users to using Exercism - http://en.wikipedia.o
 
 ### My Solution
 
-- [my solution](./lib/*[.]rs)
+- [my solution](./src/lib.rs)
 - [run-tests](./run-tests-rust.txt)

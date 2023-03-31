@@ -92,5 +92,5 @@ Have fun!
 
 ### My Solution
 
-- [my solution](./lib/*[.]rs)
+- [my solution](./src/lib.rs)
 - [run-tests](./run-tests-rust.txt)

@@ -25,7 +25,7 @@ let my_buffer = create_buffer(5);
 
 ## 2. List the first five elements of the Fibonacci sequence
 
-Create a function that returns the first five numbers of the Fibonacci sequence. 
+Create a function that returns the first five numbers of the Fibonacci sequence.
 Its first five elements are `1, 1, 2, 3, 5`
 ```rust
 let first_five = fibonacci();
@@ -41,5 +41,5 @@ let first_five = fibonacci();
 
 ### My Solution
 
-- [my solution](./lib/*[.]rs)
+- [my solution](./src/lib.rs)
 - [run-tests](./run-tests-rust.txt)

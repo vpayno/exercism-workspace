@@ -65,5 +65,5 @@ This test is meant to show you how to add a variant to your enum.
 
 ### My Solution
 
-- [my solution](./lib/*[.]rs)
+- [my solution](./src/lib.rs)
 - [run-tests](./run-tests-rust.txt)

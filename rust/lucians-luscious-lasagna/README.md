@@ -160,5 +160,5 @@ elapsed_time_in_minutes(3, 20)
 
 ### My Solution
 
-- [my solution](./lib/*[.]rs)
+- [my solution](./src/lib.rs)
 - [run-tests](./run-tests-rust.txt)

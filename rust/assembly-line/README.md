@@ -89,5 +89,5 @@ Note that the value returned is an `u32`.
 
 ### My Solution
 
-- [my solution](./lib/*[.]rs)
+- [my solution](./src/lib.rs)
 - [run-tests](./run-tests-rust.txt)
