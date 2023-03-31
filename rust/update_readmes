@@ -1,5 +1,7 @@
 #!/bin/bash
 
+shopt -s nullglob
+
 if [[ ! -d .exercism ]]; then
 	printf "ERROR: Run from inside a project directory.\n\n"
 	exit 1
@@ -32,7 +34,7 @@ cat >> ./README.md <<EOF
 
 ### My Solution
 
-- [my solution]($(printf "%s\n" ./lib/*[.]rs | grep -v "test[.]rs"))
+- [my solution]($(printf "%s\n" ./src/*[.]rs | grep -v "test[.]rs"))
 EOF
 
 cat >> ./README.md <<EOF
