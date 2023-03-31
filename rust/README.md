@@ -34,3 +34,4 @@
 
 - [short-fibonacci](./short-fibonacci/README.md)
 - [health-statistics](./health-statistics/README.md)
+- [reverse-string](./reverse-string/README.md)
