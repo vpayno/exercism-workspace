@@ -1,5 +1,9 @@
+#
+# .github/workflows/dart.yml
+#
+---
 name: Dart Workflow
-on:
+on:  # yamllint disable-line rule:truthy
   pull_request:
 jobs:
   stage1:
@@ -98,5 +102,6 @@ jobs:
         id: dart-test-coverage
         run: |
           cd ./dart
-          ./for_each dart pub global run coverage:format_coverage --packages=.dart_tool/package_config.json --report-on=lib --lcov -o ./coverage/lcov.info -i ./coverage
+          ./for_each dart pub global run coverage:format_coverage --packages=.dart_tool/package_config.json \
+            --report-on=lib --lcov -o ./coverage/lcov.info -i ./coverage
           ./for_each lcov --summary ./coverage/lcov.info

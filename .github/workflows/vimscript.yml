@@ -1,5 +1,9 @@
+#
+# .github/workflows/vimscript.yml
+#
+---
 name: Vimscript Workflow
-on:
+on:  # yamllint disable-line rule:truthy
   pull_request:
 jobs:
   stage1:
@@ -104,28 +108,28 @@ jobs:
           cd ./vimscript
           ./for_each vint --warning --verbose --enable-neovim .
       - name: Vader Tests with Vim
-        if: false # disable - not usable with multiple projects in one repo
+        if: false  # disable - not usable with multiple projects in one repo
         id: vim-tests-vader-vim
         uses: PsychoLlama/vader-action@v1
         with:
           neovim: false
           test-pattern: '**/*.vader'
       - name: Vader Tests with NeoVim
-        if: false # disable - not usable with multiple projects in one repo
+        if: false  # disable - not usable with multiple projects in one repo
         id: vim-tests-vader-neovim
         uses: PsychoLlama/vader-action@v1
         with:
           neovim: true
           test-pattern: '**/*.vader'
       - name: Checkout vader.vim
-        if: false # disabled - for_each_vader didn't work
+        if: false  # disabled - for_each_vader didn't work
         id: checkout-vader
         uses: actions/checkout@v3
         with:
           repository: junegunn/vader.vim
           path: vader.vim
       - name: Run Vader Tests
-        if: false # disabled - for_each_vader didn't work
+        if: false  # disabled - for_each_vader didn't work
         id: vader-tests
         run: |
           mkdir -pv /home/runner/.vim/pack/upstream/opt/
@@ -154,7 +158,7 @@ jobs:
           ./for_each ../../vim-themis/bin/themis themis.vimspec
           ./for_each ls
       - name: Coverage Report
-        if: false # disable - themis step isn't generating profile.txt
+        if: false  # disable - themis step isn't generating profile.txt
         id: vimscript-coverage-report
         run: |
           cd ./vimscript

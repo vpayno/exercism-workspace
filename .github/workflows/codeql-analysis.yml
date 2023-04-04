@@ -1,3 +1,6 @@
+#
+# .github/workflows/codeql-analysis.yml
+#
 # For most projects, this workflow file will not need changing; you simply need
 # to commit it to your repository.
 #
@@ -9,8 +12,9 @@
 # the `language` matrix defined below to confirm you have the correct set of
 # supported CodeQL languages.
 #
+---
 name: "CodeQL"
-on:
+on:  # yamllint disable-line rule:truthy
   push:
     branches: ["main"]
   pull_request:
@@ -46,7 +50,8 @@ jobs:
       # Autobuild attempts to build any compiled languages  (C/C++, C#, or Java).
       # If this step fails, then you should remove it and run the build manually (see below)
       - name: Autobuild
-        # Details on CodeQL's query packs refer to : https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/configuring-code-scanning#using-queries-in-ql-packs
+        # Details on CodeQL's query packs refer to:
+        # https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/configuring-code-scanning#using-queries-in-ql-packs
         # queries: security-extended,security-and-quality
 
         uses: github/codeql-action/autobuild@v2
