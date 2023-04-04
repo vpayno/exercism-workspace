@@ -13,34 +13,38 @@ jobs:
       docs_changed: ${{ steps.check_file_changed.outputs.docs_changed }}
 
     steps:
-    - name: Checkout Repo
-      id: checkout-repo
-      uses: actions/checkout@v3
-      with:
-        fetch-depth: 0
-        ref: ${{ github.ref }}
-        submodules: recursive
+      - name: Checkout Repo
+        id: checkout-repo
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: ${{ github.ref }}
+          submodules: recursive
 
-    - name: Get Change List
-      id: check_file_changed
-      shell: pwsh
-      run: |
-        # https://www.meziantou.net/executing-github-actions-jobs-or-steps-only-when-specific-files-change.htm#conditional-jobs
+      - name: Get Change List
+        id: check_file_changed
+        run: |
+          # Diff HEAD with the previous commit then output to stdout.
+          printf "=== Which files changed? ===\n"
+          GIT_DIFF="$(git diff --name-only HEAD^ HEAD)"
+          printf "%s\n" "${GIT_DIFF}"
+          printf "\n"
 
-        # Diff HEAD with the previous commit then output to stdout.
-        echo "=== Which files changed? ===" | Out-String -Stream
-        ([string[]] $diff = git diff --name-only HEAD^ HEAD)
+          # Check if the files are present in the changed file list (added, modified, deleted) then output to stdout.
+          HAS_DIFF=false
+          printf "=== Which Rust files changed? ===\n"
+          if printf "%s\n" "${GIT_DIFF}" | grep -E '^(.*[.]rs|.*/Cargo[.]toml)$'; then
+            HAS_DIFF=true
+          fi
+          printf "\n"
 
-        # Check if the files are present in the changed file list (added, modified, deleted) then output to stdout.
-        echo "=== Which Rust files changed? ===" | Out-String -Stream
-        ([string[]] $SourceDiff = $diff | Where-Object { $_ -match '^.*[.]rs$' -or $_ -match '^.*/Cargo[.]toml$' })
+          # Did Golang files change?
+          printf "=== Did Golang files change? ===\n"
+          printf "%s\n" "${HAS_DIFF}"
+          printf "\n"
 
-        # Did Rust files change?
-        echo "=== Did Rust files change? ===" | Out-String -Stream
-        ([string[]] $HasDiff = $SourceDiff.Length -gt 0)
-
-        # Set the output named "docs_changed"
-        Write-Host "::set-output name=docs_changed::$HasDiff"
+          # Set the output named "docs_changed"
+          printf "%s=%s\n" "docs_changed" "${HAS_DIFF}" >> "${GITHUB_OUTPUT}"
 
   stage2:
     name: Rust Checks
