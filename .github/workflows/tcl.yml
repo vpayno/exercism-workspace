@@ -1,17 +1,12 @@
 name: Tcl Workflow
-
 on:
   pull_request:
-
 jobs:
   stage1:
     name: Change Check
-
     runs-on: 'ubuntu-latest'
-
     outputs:
       docs_changed: ${{ steps.check_file_changed.outputs.docs_changed }}
-
     steps:
       - name: Checkout Repo
         id: checkout-repo
@@ -20,7 +15,6 @@ jobs:
           fetch-depth: 0
           ref: ${{ github.ref }}
           submodules: recursive
-
       - name: Get Change List
         id: check_file_changed
         run: |
@@ -45,57 +39,47 @@ jobs:
 
           # Set the output named "docs_changed"
           printf "%s=%s\n" "docs_changed" "${HAS_DIFF}" >> "${GITHUB_OUTPUT}"
-
   stage2:
     name: Tcl Checks
     strategy:
       matrix:
         os: ["ubuntu-latest"]
-
     runs-on: "${{ matrix.os }}"
-
-    needs: [ stage1 ]
+    needs: [stage1]
     if: needs.stage1.outputs.docs_changed == 'True'
-
     steps:
-    - name: Checkout Repo
-      id: checkout-repo
-      uses: actions/checkout@v3
-
-    - name: Set up Tcl
-      id: setup-tcl
-      run: |
-        sudo apt install -y tcl
-
-    - name: Show Tcl version
-      id: tcl-version
-      run: |
-        tclsh <<< 'puts [info patchlevel];exit 0'
-        # shellcheck disable=SC2016
-        tclsh <<< 'puts $tcl_version;exit 0'
-
-    - name: Install Tcl Tools
-      id: install-tcl-tools
-      run: |
-        ./.github/citools/tcl/nagelfar -h | grep -- Version
-
-    - name: CD to Tcl Dir
-      id: cd-to-tcl-dir
-      run: |
-        pwd
-        ls
-        cd ./tcl
-        pwd
-        ls
-
-    - name: Analysing the code with lint
-      id: tcl-lint
-      run: |
-        cd ./tcl
-        ./for_each ../../.github/citools/tcl/tcl-check
-
-    - name: Testing with Tcl test
-      id: tcl-test-run
-      run: |
-        cd ./tcl
-        ./for_each ../../.github/citools/tcl/tcl-test
+      - name: Checkout Repo
+        id: checkout-repo
+        uses: actions/checkout@v3
+      - name: Set up Tcl
+        id: setup-tcl
+        run: |
+          sudo apt install -y tcl
+      - name: Show Tcl version
+        id: tcl-version
+        run: |
+          tclsh <<< 'puts [info patchlevel];exit 0'
+          # shellcheck disable=SC2016
+          tclsh <<< 'puts $tcl_version;exit 0'
+      - name: Install Tcl Tools
+        id: install-tcl-tools
+        run: |
+          ./.github/citools/tcl/nagelfar -h | grep -- Version
+      - name: CD to Tcl Dir
+        id: cd-to-tcl-dir
+        run: |
+          pwd
+          ls
+          cd ./tcl
+          pwd
+          ls
+      - name: Analysing the code with lint
+        id: tcl-lint
+        run: |
+          cd ./tcl
+          ./for_each ../../.github/citools/tcl/tcl-check
+      - name: Testing with Tcl test
+        id: tcl-test-run
+        run: |
+          cd ./tcl
+          ./for_each ../../.github/citools/tcl/tcl-test

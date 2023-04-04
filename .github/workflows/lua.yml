@@ -1,17 +1,12 @@
 name: Lua Workflow
-
 on:
   pull_request:
-
 jobs:
   stage1:
     name: Change Check
-
     runs-on: 'ubuntu-latest'
-
     outputs:
       docs_changed: ${{ steps.check_file_changed.outputs.docs_changed }}
-
     steps:
       - name: Checkout Repo
         id: checkout-repo
@@ -20,7 +15,6 @@ jobs:
           fetch-depth: 0
           ref: ${{ github.ref }}
           submodules: recursive
-
       - name: Get Change List
         id: check_file_changed
         run: |
@@ -45,91 +39,77 @@ jobs:
 
           # Set the output named "docs_changed"
           printf "%s=%s\n" "docs_changed" "${HAS_DIFF}" >> "${GITHUB_OUTPUT}"
-
   stage2:
     name: Lua Checks
     strategy:
       matrix:
         luaVersion: ["5.4"]
         os: ["ubuntu-latest"]
-
     runs-on: "${{ matrix.os }}"
-
-    needs: [ stage1 ]
+    needs: [stage1]
     if: needs.stage1.outputs.docs_changed == 'True'
-
     steps:
-    - name: Checkout Repo
-      id: checkout-repo
-      uses: actions/checkout@v3
-
-    - name: Set up Lua
-      id: setup-lua
-      uses: leafo/gh-actions-lua@v9
-      with:
-        luaVersion: ${{ matrix.luaVersion }}
-
-    - name: Show Lua Versions
-      id: lua-version
-      run: |
-        which lua
-        lua -v
-        ls .lua/bin
-
-    - name: Setup Lua-Rocks
-      id: setup-lua-rocks
-      uses: leafo/gh-actions-luarocks@v4
-
-    - name: Show Lua-Rocks Versions
-      id: luarocks-version
-      run: |
-        which luarocks
-        luarocks --version
-        ls .luarocks/bin
-
-    - name: Install Lua Tools
-      id: install-lua-tools
-      run: |
-        luarocks install luacheck
-        luarocks install busted
-        luarocks install luacov
-        luarocks install luacov-console
-
-    - name: Show Lua Tool Versions
-      id: lua-tool-versions
-      run: |
-        luacheck -v
-        busted --version
-        luacov -h | head -n 1
-        luacov-console --version
-
-    - name: CD to Lua Dir
-      id: cd-to-lua-dir
-      run: |
-        pwd
-        ls
-        cd ./lua
-        pwd
-        ls
-
-    - name: Analysing the code with lua-check
-      id: lua-lint
-      run: |
-        cd ./lua
-        ./for_each luacheck . --exclude-files '*_spec.lua'
-
-    - name: Testing with Lua test
-      id: lua-test-run
-      run: |
-        cd ./lua
-        ./for_each rm -fv luacov.report.out luacov.report.out.index luacov.stats.out
-        ./for_each busted --coverage --lpath="" --cpath="" --output=gtest -Xoutput --color
-
-    - name: Coverage Report
-      id: lua-coverage-report
-      run: |
-        cd ./lua
-        ./for_each luacov .
-        ./for_each luacov-console .
-        ./for_each luacov-console --summary .
-        git status .
+      - name: Checkout Repo
+        id: checkout-repo
+        uses: actions/checkout@v3
+      - name: Set up Lua
+        id: setup-lua
+        uses: leafo/gh-actions-lua@v9
+        with:
+          luaVersion: ${{ matrix.luaVersion }}
+      - name: Show Lua Versions
+        id: lua-version
+        run: |
+          which lua
+          lua -v
+          ls .lua/bin
+      - name: Setup Lua-Rocks
+        id: setup-lua-rocks
+        uses: leafo/gh-actions-luarocks@v4
+      - name: Show Lua-Rocks Versions
+        id: luarocks-version
+        run: |
+          which luarocks
+          luarocks --version
+          ls .luarocks/bin
+      - name: Install Lua Tools
+        id: install-lua-tools
+        run: |
+          luarocks install luacheck
+          luarocks install busted
+          luarocks install luacov
+          luarocks install luacov-console
+      - name: Show Lua Tool Versions
+        id: lua-tool-versions
+        run: |
+          luacheck -v
+          busted --version
+          luacov -h | head -n 1
+          luacov-console --version
+      - name: CD to Lua Dir
+        id: cd-to-lua-dir
+        run: |
+          pwd
+          ls
+          cd ./lua
+          pwd
+          ls
+      - name: Analysing the code with lua-check
+        id: lua-lint
+        run: |
+          cd ./lua
+          ./for_each luacheck . --exclude-files '*_spec.lua'
+      - name: Testing with Lua test
+        id: lua-test-run
+        run: |
+          cd ./lua
+          ./for_each rm -fv luacov.report.out luacov.report.out.index luacov.stats.out
+          ./for_each busted --coverage --lpath="" --cpath="" --output=gtest -Xoutput --color
+      - name: Coverage Report
+        id: lua-coverage-report
+        run: |
+          cd ./lua
+          ./for_each luacov .
+          ./for_each luacov-console .
+          ./for_each luacov-console --summary .
+          git status .

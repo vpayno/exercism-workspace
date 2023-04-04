@@ -1,17 +1,12 @@
 name: Haskell Workflow
-
 on:
   pull_request:
-
 jobs:
   stage1:
     name: Change Check
-
     runs-on: 'ubuntu-latest'
-
     outputs:
       docs_changed: ${{ steps.check_file_changed.outputs.docs_changed }}
-
     steps:
       - name: Checkout Repo
         id: checkout-repo
@@ -20,7 +15,6 @@ jobs:
           fetch-depth: 0
           ref: ${{ github.ref }}
           submodules: recursive
-
       - name: Get Change List
         id: check_file_changed
         run: |
@@ -45,8 +39,6 @@ jobs:
 
           # Set the output named "docs_changed"
           printf "%s=%s\n" "docs_changed" "${HAS_DIFF}" >> "${GITHUB_OUTPUT}"
-
-
   stage2:
     name: Haskell Checks
     strategy:
@@ -55,58 +47,49 @@ jobs:
         exclude:
           - os: "macos-latest"
           - os: "windows-latest"
-
     runs-on: "${{ matrix.os }}"
-
-    needs: [ stage1 ]
+    needs: [stage1]
     if: needs.stage1.outputs.docs_changed == 'True'
-
     steps:
-    - name: Checkout Repo
-      id: checkout-repo
-      uses: actions/checkout@v3
-
-    # https://github.com/haskell/actions/tree/main/setup
-    - name: Set up Haskell Toolchain
-      id: setup-haskell-toolchain
-      uses: haskell/actions/setup@v2
-      with:
-        ghc-version: "latest"
-        enable-stack: true
-        stack-version: "latest"
-        stack-setup-ghc: true
-        cabal-version: "latest"
-        cabal-update: true
-
-    - name: Check Versions
-      id: setup-haskell-check
-      run: |
-        stack --version
-        cabal --version
-
-    - name: Install Tools
-      id: setup-haskell-tools
-      run: |
-        stack install hlint
-        hlint --version
-
-    - name: CD to Haskell Dir
-      id: cd-to-haskell-dir
-      run: |
-        pwd
-        ls
-        cd ./haskell
-        pwd
-        ls
-
-    - name: Analysing the code with hlint
-      id: haskell-lint
-      run: |
-        cd ./haskell
-        ./for_each hlint src --report
-
-    - name: Testing with coverage
-      id: haskell-test-coverage
-      run: |
-        cd ./haskell
-        ./for_each stack test --coverage
+      - name: Checkout Repo
+        id: checkout-repo
+        uses: actions/checkout@v3
+      # https://github.com/haskell/actions/tree/main/setup
+      - name: Set up Haskell Toolchain
+        id: setup-haskell-toolchain
+        uses: haskell/actions/setup@v2
+        with:
+          ghc-version: "latest"
+          enable-stack: true
+          stack-version: "latest"
+          stack-setup-ghc: true
+          cabal-version: "latest"
+          cabal-update: true
+      - name: Check Versions
+        id: setup-haskell-check
+        run: |
+          stack --version
+          cabal --version
+      - name: Install Tools
+        id: setup-haskell-tools
+        run: |
+          stack install hlint
+          hlint --version
+      - name: CD to Haskell Dir
+        id: cd-to-haskell-dir
+        run: |
+          pwd
+          ls
+          cd ./haskell
+          pwd
+          ls
+      - name: Analysing the code with hlint
+        id: haskell-lint
+        run: |
+          cd ./haskell
+          ./for_each hlint src --report
+      - name: Testing with coverage
+        id: haskell-test-coverage
+        run: |
+          cd ./haskell
+          ./for_each stack test --coverage

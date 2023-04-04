@@ -3,29 +3,22 @@
 #
 
 name: Woke (push-request)
-
 on: [pull_request]
-
 jobs:
   woke:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout Repo
         id: checkout-repo
         uses: actions/checkout@v3
-
       - name: woke with reviewdog
         id: woke
         uses: get-woke/woke-action-reviewdog@v0
         with:
           github-token: ${{ github.token }}
-
           # [github-pr-check, github-check, github-pr-review].
           reporter: github-pr-review
-
           # GitHub Status Check won't become failure with warning.
           level: warning
-
           # Enable this to fail the check when violations are found
           fail-on-error: false

@@ -1,17 +1,12 @@
 name: Dart Workflow
-
 on:
   pull_request:
-
 jobs:
   stage1:
     name: Change Check
-
     runs-on: 'ubuntu-latest'
-
     outputs:
       docs_changed: ${{ steps.check_file_changed.outputs.docs_changed }}
-
     steps:
       - name: Checkout Repo
         id: checkout-repo
@@ -20,7 +15,6 @@ jobs:
           fetch-depth: 0
           ref: ${{ github.ref }}
           submodules: recursive
-
       - name: Get Change List
         id: check_file_changed
         run: |
@@ -45,77 +39,64 @@ jobs:
 
           # Set the output named "docs_changed"
           printf "%s=%s\n" "docs_changed" "${HAS_DIFF}" >> "${GITHUB_OUTPUT}"
-
   stage2:
     name: Dart Checks
     strategy:
       matrix:
         sdk: ["stable"]
         os: ["ubuntu-latest"]
-
     runs-on: "${{ matrix.os }}"
-
-    needs: [ stage1 ]
+    needs: [stage1]
     if: needs.stage1.outputs.docs_changed == 'True'
-
     steps:
-    - name: Checkout Repo
-      id: checkout-repo
-      uses: actions/checkout@v3
-
-    - name: Set up Dart ${{ matrix.sdk}}
-      id: setup-dart
-      uses: dart-lang/setup-dart@v1
-      with:
-        sdk: ${{ matrix.sdk }}
-
-    - name: Show Dart version
-      id: dart-version
-      run: |
-        dart --version
-
-    - name: Install Dart Tools
-      id: install-dart-tools
-      run: |
-        dart pub global activate coverage
-        sudo apt install -y lcov
-
-    - name: CD to Dart Dir
-      id: cd-to-dart-dir
-      run: |
-        pwd
-        ls
-        cd ./dart
-        pwd
-        ls
-
-    - name: Install dependencies
-      id: dart-install-deps
-      run: |
-        cd ./dart
-        ./for_each dart pub get
-
-    - name: Analysing the code with lint
-      id: dart-lint
-      run: |
-        cd ./dart
-        ./for_each dart analyze .
-
-    - name: Activate Coverage
-      id: dart-test-activate-coverage
-      run: |
-        cd ./dart
-        ./for_each dart pub global activate coverage
-
-    - name: Testing with Dart
-      id: dart-test-run
-      run: |
-        cd ./dart
-        ./for_each dart run test --run-skipped --no-color --coverage=./coverage
-
-    - name: Show Test Coverage
-      id: dart-test-coverage
-      run: |
-        cd ./dart
-        ./for_each dart pub global run coverage:format_coverage --packages=.dart_tool/package_config.json --report-on=lib --lcov -o ./coverage/lcov.info -i ./coverage
-        ./for_each lcov --summary ./coverage/lcov.info
+      - name: Checkout Repo
+        id: checkout-repo
+        uses: actions/checkout@v3
+      - name: Set up Dart ${{ matrix.sdk}}
+        id: setup-dart
+        uses: dart-lang/setup-dart@v1
+        with:
+          sdk: ${{ matrix.sdk }}
+      - name: Show Dart version
+        id: dart-version
+        run: |
+          dart --version
+      - name: Install Dart Tools
+        id: install-dart-tools
+        run: |
+          dart pub global activate coverage
+          sudo apt install -y lcov
+      - name: CD to Dart Dir
+        id: cd-to-dart-dir
+        run: |
+          pwd
+          ls
+          cd ./dart
+          pwd
+          ls
+      - name: Install dependencies
+        id: dart-install-deps
+        run: |
+          cd ./dart
+          ./for_each dart pub get
+      - name: Analysing the code with lint
+        id: dart-lint
+        run: |
+          cd ./dart
+          ./for_each dart analyze .
+      - name: Activate Coverage
+        id: dart-test-activate-coverage
+        run: |
+          cd ./dart
+          ./for_each dart pub global activate coverage
+      - name: Testing with Dart
+        id: dart-test-run
+        run: |
+          cd ./dart
+          ./for_each dart run test --run-skipped --no-color --coverage=./coverage
+      - name: Show Test Coverage
+        id: dart-test-coverage
+        run: |
+          cd ./dart
+          ./for_each dart pub global run coverage:format_coverage --packages=.dart_tool/package_config.json --report-on=lib --lcov -o ./coverage/lcov.info -i ./coverage
+          ./for_each lcov --summary ./coverage/lcov.info
