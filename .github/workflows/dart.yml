@@ -31,7 +31,7 @@ jobs:
           # Check if the files are present in the changed file list (added, modified, deleted) then output to stdout.
           HAS_DIFF=false
           printf "=== Which Dart files changed? ===\n"
-          if printf "%s\n" "${GIT_DIFF}" | grep -E '^(.*[.]dart|.*/pubspec[.].*)$'; then
+          if printf "%s\n" "${GIT_DIFF}" | grep -E '^(.*[.]dart|.*/pubspec[.].*|.github/workflows/dart.yml)$'; then
             HAS_DIFF=true
           fi
           printf "\n"

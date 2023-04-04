@@ -31,7 +31,7 @@ jobs:
           # Check if the files are present in the changed file list (added, modified, deleted) then output to stdout.
           HAS_DIFF=false
           printf "=== Which Haskell files changed? ===\n"
-          if printf "%s\n" "${GIT_DIFF}" | grep -E '^(.*[.](hs|cabal)|.*/stack[.]yaml[.].*)$'; then
+          if printf "%s\n" "${GIT_DIFF}" | grep -E '^(.*[.](hs|cabal)|.*/stack[.]yaml[.].*|.github/workflows/haskell.yml)$'; then
             HAS_DIFF=true
           fi
           printf "\n"

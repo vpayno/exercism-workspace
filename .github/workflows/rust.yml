@@ -31,7 +31,7 @@ jobs:
           # Check if the files are present in the changed file list (added, modified, deleted) then output to stdout.
           HAS_DIFF=false
           printf "=== Which Rust files changed? ===\n"
-          if printf "%s\n" "${GIT_DIFF}" | grep -E '^(.*[.]rs|.*/Cargo[.]toml)$'; then
+          if printf "%s\n" "${GIT_DIFF}" | grep -E '^(.*[.]rs|.*/Cargo[.]toml|.github/workflows/rust.yml)$'; then
             HAS_DIFF=true
           fi
           printf "\n"
