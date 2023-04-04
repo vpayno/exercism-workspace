@@ -77,7 +77,7 @@ func Allergies(flags allergy) []string {
 	allergies := []string{}
 
 	// walk through all the known allergies
-	for flag, _ := range allergyNames {
+	for flag := range allergyNames {
 		if AllergicTo(flags, flag) {
 			allergies = append(allergies, allergy(flag).String())
 		}

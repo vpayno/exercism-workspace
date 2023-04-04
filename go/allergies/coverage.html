@@ -157,7 +157,7 @@ func Allergies(flags allergy) []string <span class="cov5" title="11">{
         <span class="cov5" title="10">allergies := []string{}
 
         // walk through all the known allergies
-        for flag, _ := range allergyNames </span><span class="cov9" title="80">{
+        for flag := range allergyNames </span><span class="cov9" title="80">{
                 if AllergicTo(flags, flag) </span><span class="cov7" title="36">{
                         allergies = append(allergies, allergy(flag).String())
                 }</span>
@@ -169,7 +169,7 @@ func Allergies(flags allergy) []string <span class="cov5" title="11">{
                 allergyFlags[name] = bits
         }</span>
 
-        <span class="cov5" title="10">sort.Slice(allergies, func(i, j int) bool </span><span class="cov8" title="66">{
+        <span class="cov5" title="10">sort.Slice(allergies, func(i, j int) bool </span><span class="cov8" title="52">{
                 return allergyFlags[allergies[i]] &lt; allergyFlags[allergies[j]]
         }</span>)
 
