@@ -6,7 +6,7 @@
 import "listops"
 ```
 
-Package listops is a library of list utility functions\.
+Package listops is a library of list utility functions.
 
 ## Index
 
@@ -35,7 +35,7 @@ type IntList []int
 func (s IntList) Append(lst IntList) IntList
 ```
 
-Append returns an end\-appended list\.
+Append returns an end\-appended list.
 
 ### func \(IntList\) [Concat](<https://github.com/vpayno/exercism-workspace/blob/main/go/list-ops/list_ops.go#L89>)
 
@@ -43,7 +43,7 @@ Append returns an end\-appended list\.
 func (s IntList) Concat(lists []IntList) IntList
 ```
 
-Concat returns a flattened list from all the lists passed\.
+Concat returns a flattened list from all the lists passed.
 
 ### func \(IntList\) [Filter](<https://github.com/vpayno/exercism-workspace/blob/main/go/list-ops/list_ops.go#L32>)
 
@@ -51,7 +51,7 @@ Concat returns a flattened list from all the lists passed\.
 func (s IntList) Filter(fn func(int) bool) IntList
 ```
 
-Filter returns list of all items for which predicate\(item\) is True\.
+Filter returns list of all items for which predicate\(item\) is True.
 
 ### func \(IntList\) [Foldl](<https://github.com/vpayno/exercism-workspace/blob/main/go/list-ops/list_ops.go#L8>)
 
@@ -59,7 +59,7 @@ Filter returns list of all items for which predicate\(item\) is True\.
 func (s IntList) Foldl(fn func(int, int) int, acc int) int
 ```
 
-Foldl returns the left to right reduced value using the passed function\.
+Foldl returns the left to right reduced value using the passed function.
 
 ### func \(IntList\) [Foldr](<https://github.com/vpayno/exercism-workspace/blob/main/go/list-ops/list_ops.go#L19>)
 
@@ -67,7 +67,7 @@ Foldl returns the left to right reduced value using the passed function\.
 func (s IntList) Foldr(fn func(int, int) int, acc int) int
 ```
 
-Foldl returns the right to left reduced value using the passed function\.
+Foldl returns the right to left reduced value using the passed function.
 
 ### func \(IntList\) [Length](<https://github.com/vpayno/exercism-workspace/blob/main/go/list-ops/list_ops.go#L47>)
 
@@ -75,7 +75,7 @@ Foldl returns the right to left reduced value using the passed function\.
 func (s IntList) Length() int
 ```
 
-Length returns the length of the list\.
+Length returns the length of the list.
 
 ### func \(IntList\) [Map](<https://github.com/vpayno/exercism-workspace/blob/main/go/list-ops/list_ops.go#L54>)
 
@@ -83,7 +83,7 @@ Length returns the length of the list\.
 func (s IntList) Map(fn func(int) int) IntList
 ```
 
-Map returns a list of the results of applying function\(item\) on all items\.
+Map returns a list of the results of applying function\(item\) on all items.
 
 ### func \(IntList\) [Reverse](<https://github.com/vpayno/exercism-workspace/blob/main/go/list-ops/list_ops.go#L67>)
 
@@ -91,7 +91,7 @@ Map returns a list of the results of applying function\(item\) on all items\.
 func (s IntList) Reverse() IntList
 ```
 
-Reverse returns a reversed list\.
+Reverse returns a reversed list.
 
 
 

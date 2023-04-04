@@ -69,7 +69,7 @@ func (s IntList) Reverse() IntList {
 
 	r := IntList{}
 
-	for i, _ := range s {
+	for i := range s {
 		r = append(r, s[len(s)-1-i])
 	}
 
