@@ -153,6 +153,7 @@ jobs:
 
           # shellcheck disable=SC2046
           printf "#!/bin/bash\n\n" > ./llvm-cov-14-report
+          # shellcheck disable=SC2016
           echo 'llvm-cov-14 report $(for file in $(cargo test --tests --no-run --message-format=json | jq -r "select(.profile.test == true) | .filenames[]" | grep -v dSYM - ); do printf "%s %s " -object "${file}"; done) --instr-profile=json5format.profdata --summary-only' >> ./llvm-cov-14-report
           chmod -v a+x ./llvm-cov-14-report
           ./for_each ../llvm-cov-14-report
