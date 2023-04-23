@@ -93,15 +93,6 @@ jobs:
           pip install --upgrade pyright
           cd ./python
           ./for_each pyright --stats . || true
-      - name: Analysing the code with mypy
-        id: mypy
-        run: |
-          pip install --upgrade mypy
-          cd ./python
-          ./for_each mypy --install-types --non-interactive --show-error-context --show-column-numbers \
-            --show-error-codes --strict-equality --no-implicit-optional --check-untyped-defs --warn-return-any \
-            --disallow-untyped-calls --disallow-untyped-defs --check-untyped-defs --disallow-untyped-decorators ./*py \
-            || true
       - name: Analysing the code with bandit
         id: bandit
         run: |
