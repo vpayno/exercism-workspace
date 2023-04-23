@@ -12,4 +12,6 @@
 
 ## [Exercises](https://exercism.org/tracks/python/exercises)
 
+- [hello-world](./hello-world/README.md)
+
 ## [Concepts](https://exercism.org/tracks/python/concepts)
