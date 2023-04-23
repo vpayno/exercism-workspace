@@ -15,3 +15,4 @@
 - [hello-world](./hello-world/README.md)
 
 ## [Concepts](https://exercism.org/tracks/python/concepts)
+- [guidos-gorgeous-lasagna](./guidos-gorgeous-lasagna/README.md)

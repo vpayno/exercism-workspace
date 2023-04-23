@@ -8,11 +8,15 @@ of a module and its functions and/or classes.
 """
 
 
-#TODO: define the 'EXPECTED_BAKE_TIME' constant.
+# how long the lasagna should take to bake
+EXPECTED_BAKE_TIME: int = 40
+
+# the amount of time each layer needs to bake
+PREPARATION_TIME: int = 2
 
 
-#TODO: Remove 'pass' and complete the 'bake_time_remaining()' function below.
-def bake_time_remaining():
+# TODO: Remove 'pass' and complete the 'bake_time_remaining()' function below.
+def bake_time_remaining(elapsed_bake_time: int) -> int:
     """Calculate the bake time remaining.
 
     :param elapsed_bake_time: int - baking time already elapsed.
@@ -22,14 +26,28 @@ def bake_time_remaining():
     an argument and returns how many minutes the lasagna still needs to bake
     based on the `EXPECTED_BAKE_TIME`.
     """
-
-    pass
-
-
-#TODO: Define the 'preparation_time_in_minutes()' function below.
-# You might also consider using 'PREPARATION_TIME' here, if you have it defined.
+    return EXPECTED_BAKE_TIME - elapsed_bake_time
 
 
+def preparation_time_in_minutes(number_of_layers: int) -> int:
+    """Calculate preparation time.
 
-#TODO: define the 'elapsed_time_in_minutes()' function below.
-# Remember to add a docstring (you can copy and then alter the one from bake_time_remaining.)
+    :param number_of_layers: int - number of layers in the lasagna
+    :return: int - preparation time for the lasagna
+
+    Takes the number of layers you want to add to the lasagna as an argument and
+    returns how many minutes they take to bake.
+    """
+    return PREPARATION_TIME * number_of_layers
+
+
+def elapsed_time_in_minutes(number_of_layers: int, actual_minutes_in_oven: int) -> int:
+    """Calculate elapsed preparing and baking time.
+
+    :param number_of_layers: int - number of layers in the lasagna
+    :param actual_minutes_in_oven_bake_time: int - time already in the oven
+    :return: int - elapsed cooking time
+
+    Returns `actual_minutes_in_oven` added to `preparation_time_in_minutes()`.
+    """
+    return preparation_time_in_minutes(number_of_layers) + actual_minutes_in_oven
