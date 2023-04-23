@@ -12,7 +12,7 @@ Exercism Workspace (https://exercism.org/docs/tracks)
 - January: Introduction
 - February: Functional -> Haskell (done)
 - March: Mechanical -> Go (done)
-- April: Analytical ->
+- April: Analytical -> Python
 - May: Mindshifting ->
 - June: Summer of Sexps ->
 - July: Jurassic ->
@@ -82,6 +82,7 @@ Exercism Workspace (https://exercism.org/docs/tracks)
 - [Rust](rust/README.md)
 - [jq](jq/README.md)
 - [Haskell](haskell/README.md)
+- [Python](python/README.md)
 
 
 ## Tools/Scripts
@@ -96,3 +97,4 @@ Exercism Workspace (https://exercism.org/docs/tracks)
 - [Rust run-tests](./rust/run-tests)
 - [jq run-tests](./jq/run-tests)
 - [Haskell run-tests](./haskell/run-tests)
+- [Python run-tests](./python/run-tests)

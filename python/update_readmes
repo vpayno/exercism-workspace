@@ -1,0 +1,53 @@
+#!/bin/bash
+
+# cspell: disable
+
+shopt -s nullglob
+
+if [[ ! -d .exercism ]]; then
+	printf "ERROR: Run from inside a project directory.\n\n"
+	exit 1
+fi
+
+declare package_name
+declare project_dir
+
+get_python_package_name()
+{
+	basename "${PWD}"
+} # get_python_package_name()
+
+package_name="$(get_python_package_name)"
+project_dir="$(basename "${PWD}")"
+
+if ! grep -q ./"${project_dir}"/README.md ../README.md; then
+
+cat >> ../README.md <<EOF
+- [${project_dir}](./${project_dir}/README.md)
+EOF
+
+fi
+
+if ! grep -q ./"${package_name}"-doc.md ./README.md; then
+
+	# Two empty spaces because the file is missing a traling new line.
+cat >> ./README.md <<EOF
+
+
+### My Solution
+
+- [my solution]($(printf "%s\n" ./*[.]py | grep -v "_test[.]py"))
+EOF
+
+cat >> ./README.md <<EOF
+- [run-tests](./run-tests-python.txt)
+EOF
+
+fi
+
+printf "\n"
+git add ../README.md ./README.md
+git diff --cached ../README.md ./README.md
+
+[[ -d __init__.py ]] || touch __init__.py
+[[ -f .coveragerc ]] || cp -v ../.coveragerc .

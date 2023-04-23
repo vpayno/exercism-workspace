@@ -1,0 +1,70 @@
+#!/bin/bash
+
+# cspell:disable
+
+print_ruler()
+{
+	printf "\n"
+	printf "=%.0s" {1..79}; printf "\n"
+	printf "\n"
+} # print_ruler()
+
+main()
+{
+	printf "Running automated test file(s):\n\n"
+
+	print_ruler
+
+	# https://github.com/charliermarsh/ruff
+
+	echo Running: ruff check .
+	time ruff check .
+
+	print_ruler
+
+	# https://github.com/microsoft/pyright
+
+	echo Running: pyright --stats .
+	time pyright --stats .
+
+	print_ruler
+
+	# https://github.com/PyCQA/bandit
+
+	echo Running: bandit --verbose --recursive .
+	time bandit --verbose --recursive .
+
+	print_ruler
+
+	# https://github.com/dosisod/refurb
+
+	echo Running: refurb .
+	time refurb .
+
+	print_ruler
+
+	# https://github.com/pytest-dev/pytest
+
+	tail -v -n 1000 .coveragerc
+	printf "\n"
+
+	echo Running: pytest --verbose --cov=. --cov-branch --cov-report={term-missing,xml:.coverage.xml} -p no:randomly
+	time pytest --verbose --cov=. --cov-branch --cov-report={term-missing,xml:.coverage.xml} -p no:randomly
+
+	print_ruler
+
+	echo Running: coverage report --show-missing
+	time coverage report --show-missing
+
+	print_ruler
+
+	# go install github.com/client9/misspell/cmd/misspell@latest
+
+	echo Running: misspell ./*py
+	time misspell ./*py
+
+	print_ruler
+
+} # main()
+
+time main "$@" |& tee ./run-tests-python.txt
