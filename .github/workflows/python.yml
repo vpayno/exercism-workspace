@@ -1,0 +1,118 @@
+---
+name: Python Workflow
+on:  # yamllint disable-line rule:truthy
+  pull_request:
+
+jobs:
+  stage1:
+    name: Change Check
+    runs-on: ubuntu-latest
+    outputs:
+      docs_changed: ${{ steps.check_file_changed.outputs.docs_changed }}
+    steps:
+      - name: Checkout Repo
+        id: checkout-repo
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: ${{ github.ref }}
+          submodules: recursive
+      - name: Get Change List
+        id: check_file_changed
+        run: |
+          # Diff HEAD with the previous commit then output to stdout.
+          printf "=== Which files changed? ===\n"
+          GIT_DIFF="$(git diff --name-only HEAD^ HEAD)"
+          printf "%s\n" "${GIT_DIFF}"
+          printf "\n"
+
+          # Check if the files are present in the changed file list (added, modified, deleted) then output to stdout.
+          HAS_DIFF=false
+          printf "=== Which Python files changed? ===\n"
+          if printf "%s\n" "${GIT_DIFF}" | grep -E '^(.*[.]py|.github/workflows/python.yml)'; then
+            HAS_DIFF=true
+          fi
+          printf "\n"
+
+          # Did Python files change?
+          printf "=== Did Python files change? ===\n"
+          printf "%s\n" "${HAS_DIFF}"
+          printf "\n"
+
+          # Set the output named "docs_changed"
+          printf "%s=%s\n" "docs_changed" "${HAS_DIFF}" >> "${GITHUB_OUTPUT}"
+  stage2:
+    name: Python Checks
+    strategy:
+      matrix:
+        python-version: ['3.10', '3.11']
+        os: [ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    needs: [stage1]
+    if: needs.stage1.outputs.docs_changed == 'True'
+    steps:
+      - name: Checkout Repo
+        id: checkout-repo
+        uses: actions/checkout@v3
+      - name: Set up Python ${{ matrix.python-version }}
+        id: setup-python
+        uses: actions/setup-python@v3
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Show Python version
+        id: python-version
+        run: |
+          python --version
+      - name: Install Python Tools
+        id: install-python-tools
+        run: |
+          python -m pip install --upgrade pip
+      - name: CD to Python Dir
+        id: cd-to-python-dir
+        run: |
+          pwd
+          ls
+          cd ./python
+          pwd
+          ls
+      - name: Analysing the code with pylint
+        id: pylint
+        run: |
+          pip install --upgrade pylint
+          cd ./python
+          ./for_each pylint . || true
+      - name: Analysing the code with ruff
+        id: ruff
+        run: |
+          pip install --upgrade ruff
+          cd ./python
+          ./for_each ruff . || true
+      - name: Analysing the code with pyright
+        id: pyright
+        run: |
+          pip install --upgrade pyright
+          cd ./python
+          ./for_each pyright --stats . || true
+      - name: Analysing the code with mypy
+        id: mypy
+        run: |
+          pip install --upgrade mypy
+          cd ./python
+          ./for_each mypy --install-types --non-interactive --show-error-context --show-column-numbers \
+            --show-error-codes --strict-equality --no-implicit-optional --check-untyped-defs --warn-return-any \
+            --disallow-untyped-calls --disallow-untyped-defs --check-untyped-defs --disallow-untyped-decorators ./*py \
+            || true
+      - name: Analysing the code with bandit
+        id: bandit
+        run: |
+          pip install --upgrade bandit[toml]
+          cd ./python
+          ./for_each bandit --verbose --recursive -n 3 . || true
+      - name: Testing with pytest
+        id: pytest-test-run
+        run: |-
+          sudo apt install libsqlite3-dev
+          pip install --upgrade db-sqlite3 pysqlite3
+          pip install --upgrade pytest coverage pytest-cov
+          cd ./python
+          ./for_each pytest --verbose --cov=. --cov-branch --cov-report={term-missing,xml:.coverage.xml} || true

@@ -43,6 +43,7 @@ Exercism Workspace (https://exercism.org/docs/tracks)
  [![jq Workflow](https://github.com/vpayno/exercism-workspace/actions/workflows/jq.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/jq.yml) |
 
  [![Haskell Workflow](https://github.com/vpayno/exercism-workspace/actions/workflows/haskell.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/haskell.yml) |
+ [![Python Workflow](https://github.com/p/exercism-workspace/actions/workflows/python.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/python.yml) |
 
  [![Git PR Checks](https://github.com/vpayno/exercism-workspace/actions/workflows/git-pr.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/git-pr.yml) |
  [![Check Links](https://github.com/vpayno/exercism-workspace/actions/workflows/links.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/links.yml) |
@@ -64,6 +65,7 @@ Exercism Workspace (https://exercism.org/docs/tracks)
 - [Rust Workflow](.github/workflows/rust.yml)
 - [jq Workflow](.github/workflows/jq.yml)
 - [Haskell Workflow](.github/workflows/haskell.yml)
+- [Python Workflow](.github/workflows/python.yml)
 - [Link Checker Workflow](.github/workflows/links.yml)
 - [CodeQL Workflow](.github/workflows/codeql-analysis.yml)
 - [Woke PR](.github/workflows/woke-pr.yml)
