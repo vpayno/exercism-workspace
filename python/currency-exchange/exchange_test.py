@@ -1,16 +1,19 @@
 import unittest
+
 import pytest
+
 from exchange import (
     exchange_money,
+    exchangeable_value,
+    get_actual_exchange_rate,
     get_change,
-    get_value_of_bills,
-    get_number_of_bills,
     get_leftover_of_bills,
-    exchangeable_value)
+    get_number_of_bills,
+    get_value_of_bills,
+)
 
 
 class CurrencyExchangeTest(unittest.TestCase):
-
     @pytest.mark.task(taskno=1)
     def test_exchange_money(self):
         input_data = [(100000, 0.8), (700000, 10.0)]
@@ -56,6 +59,15 @@ class CurrencyExchangeTest(unittest.TestCase):
             with self.subTest(f"variation #{variant}", input_data=input_data, output_data=output_data):
                 self.assertAlmostEqual(get_leftover_of_bills(input_data[0], input_data[1]), output_data)
 
+    @pytest.mark.task(taskno=7)
+    def test_get_actual_exchange_rate(self):
+        input_data = [(1.20, 10), (1.20, 5), (1.20, 20)]
+        output_data = [1.32, 1.26, 1.44]
+
+        for variant, (input_data, output_data) in enumerate(zip(input_data, output_data), start=1):
+            with self.subTest(f"variation #{variant}", input_data=input_data, output_data=output_data):
+                self.assertAlmostEqual(get_actual_exchange_rate(input_data[0], input_data[1]), output_data)
+
     @pytest.mark.task(taskno=6)
     def test_exchangeable_value(self):
         inputs = [
@@ -63,7 +75,8 @@ class CurrencyExchangeTest(unittest.TestCase):
             (1500, 0.84, 25, 40),
             (470000, 1050, 30, 10000000000),
             (470000, 0.00000009, 30, 700),
-            (425.33, 0.0009, 30, 700)]
+            (425.33, 0.0009, 30, 700),
+        ]
 
         output_data = [8568, 1400, 0, 4017094016600, 363300]
 

@@ -193,3 +193,8 @@ Remember that the currency *denomination* is a whole number, and cannot be sub-d
 ### Contributed to by
 
 - @pranasziaukas
+
+### My Solution
+
+- [my solution](./exchange.py)
+- [run-tests](./run-tests-python.txt)

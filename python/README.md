@@ -16,3 +16,4 @@
 
 ## [Concepts](https://exercism.org/tracks/python/concepts)
 - [guidos-gorgeous-lasagna](./guidos-gorgeous-lasagna/README.md)
+- [currency-exchange](./currency-exchange/README.md)

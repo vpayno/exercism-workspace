@@ -1,0 +1,170 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: ruff check .
+
+real	0m0.071s
+user	0m0.031s
+sys	0m0.044s
+
+===============================================================================
+
+Running: pyright --stats .
+No configuration file found.
+No pyproject.toml file found.
+Assuming Python platform Linux
+Searching for source files
+Found 3 source files
+pyright 1.1.304
+0 errors, 0 warnings, 0 informations 
+Completed in 0.787sec
+
+Analysis stats
+Total files parsed and bound: 81
+Total files checked: 3
+
+Timing stats
+Find Source Files:    0sec
+Read Source Files:    0.01sec
+Tokenize:             0.06sec
+Parse:                0.09sec
+Resolve Imports:      0.06sec
+Bind:                 0.07sec
+Check:                0.18sec
+Detect Cycles:        0sec
+
+real	0m1.367s
+user	0m1.892s
+sys	0m0.136s
+
+===============================================================================
+
+Running: bandit --verbose --recursive .
+[main]	INFO	profile include tests: None
+[main]	INFO	profile exclude tests: None
+[main]	INFO	cli include tests: None
+[main]	INFO	cli exclude tests: None
+[main]	INFO	running on Python 3.11.3
+Run started:2023-04-23 22:57:16.581964
+Files in scope (3):
+	./__init__.py (score: {SEVERITY: 0, CONFIDENCE: 0})
+	./exchange.py (score: {SEVERITY: 0, CONFIDENCE: 0})
+	./exchange_test.py (score: {SEVERITY: 0, CONFIDENCE: 0})
+Files excluded (17):
+	./.coverage
+	./.coverage.xml
+	./.coveragerc
+	./.exchange.py.swp
+	./.exchange_test.py.swp
+	./.exercism/config.json
+	./.exercism/metadata.json
+	./.mypy_cache/.gitignore
+	./.mypy_cache/3.11/@plugins_snapshot.json
+	./.mypy_cache/CACHEDIR.TAG
+	./HELP.md
+	./HINTS.md
+	./README.md
+	./__pycache__/__init__.cpython-311.pyc
+	./__pycache__/exchange.cpython-311.pyc
+	./__pycache__/exchange_test.cpython-311-pytest-7.3.1.pyc
+	./run-tests-python.txt
+
+Test results:
+	No issues identified.
+
+Code scanned:
+	Total lines of code: 126
+	Total lines skipped (#nosec): 0
+	Total potential issues skipped due to specifically being disabled (e.g., #nosec BXXX): 0
+
+Run metrics:
+	Total issues (by severity):
+		Undefined: 0
+		Low: 0
+		Medium: 0
+		High: 0
+	Total issues (by confidence):
+		Undefined: 0
+		Low: 0
+		Medium: 0
+		High: 0
+Files skipped (0):
+
+real	0m0.247s
+user	0m0.179s
+sys	0m0.071s
+
+===============================================================================
+
+Running: refurb .
+./exchange_test.py:55:51 [FURB152]: Replace `3.14` with `math.pi`
+
+Run `refurb --explain ERR` to further explain an error. Use `--quiet` to silence this message
+
+real	0m5.681s
+user	0m5.536s
+sys	0m0.147s
+
+===============================================================================
+
+==> .coveragerc <==
+[run]
+omit = __init__.py, *_test.py
+
+Running: pytest --verbose --cov=. --cov-branch --cov-report=term-missing --cov-report=xml:.coverage.xml -p no:randomly
+============================= test session starts ==============================
+platform linux -- Python 3.11.3, pytest-7.3.1, pluggy-1.0.0 -- /home/vpayno/.pyenv/versions/3.11.3/bin/python
+cachedir: .pytest_cache
+rootdir: /home/vpayno/git_vpayno/exercism-workspace/python
+configfile: pytest.ini
+plugins: anyio-3.6.2, libtmux-0.21.1, pylama-8.4.1, cov-4.0.0, datafiles-3.0.0, docker-1.0.1, subprocess-1.5.0, typeguard-3.0.2
+collecting ... collected 7 items
+
+exchange_test.py::CurrencyExchangeTest::test_exchange_money PASSED       [ 14%]
+exchange_test.py::CurrencyExchangeTest::test_exchangeable_value PASSED   [ 28%]
+exchange_test.py::CurrencyExchangeTest::test_get_actual_exchange_rate PASSED [ 42%]
+exchange_test.py::CurrencyExchangeTest::test_get_change PASSED           [ 57%]
+exchange_test.py::CurrencyExchangeTest::test_get_leftover_of_bills PASSED [ 71%]
+exchange_test.py::CurrencyExchangeTest::test_get_number_of_bills PASSED  [ 85%]
+exchange_test.py::CurrencyExchangeTest::test_get_value_of_bills PASSED   [100%]
+
+---------- coverage: platform linux, python 3.11.3-final-0 -----------
+Name          Stmts   Miss Branch BrPart  Cover   Missing
+---------------------------------------------------------
+exchange.py      18      0      0      0   100%
+---------------------------------------------------------
+TOTAL            18      0      0      0   100%
+Coverage XML written to file .coverage.xml
+
+
+============================== 7 passed in 0.05s ===============================
+
+real	0m1.017s
+user	0m0.881s
+sys	0m0.138s
+
+===============================================================================
+
+Running: coverage report --show-missing
+Name          Stmts   Miss Branch BrPart  Cover   Missing
+---------------------------------------------------------
+exchange.py      18      0      0      0   100%
+---------------------------------------------------------
+TOTAL            18      0      0      0   100%
+
+real	0m0.171s
+user	0m0.101s
+sys	0m0.072s
+
+===============================================================================
+
+Running: misspell ./exchange.py ./exchange_test.py ./__init__.py
+
+real	0m0.027s
+user	0m0.030s
+sys	0m0.008s
+
+===============================================================================
+
