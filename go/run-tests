@@ -1,23 +1,23 @@
 #!/bin/bash
 
-print_ruler()
-{
+print_ruler() {
 	printf "\n"
-	printf "=%.0s" {1..79}; printf "\n"
+	printf "=%.0s" {1..79}
+	printf "\n"
 	printf "\n"
 } # print_ruler()
 
-get_go_package_name()
-{
+get_go_package_name() {
 	awk '/^package / { print $NF }' ./*.go | head -n 1
 } # get_go_package_name()
 
-main()
-{
+main() {
 	printf "Running automated test file(s):\n\n"
 
 	mapfile -t packages < <(get_go_package_name)
-	printf "Go packages: "; printf "%s " "${packages[@]}"; printf "\n\n"
+	printf "Go packages: "
+	printf "%s " "${packages[@]}"
+	printf "\n\n"
 
 	print_ruler
 

@@ -8,8 +8,7 @@ fi
 declare package_name
 declare project_dir
 
-get_tcl_package_name()
-{
+get_tcl_package_name() {
 	awk '/^package / { print $NF }' ./*.tcl | head -n 1
 } # get_tcl_package_name()
 
@@ -18,7 +17,7 @@ project_dir="$(basename "${PWD}")"
 
 if ! grep -q ./"${project_dir}"/README.md ../README.md; then
 
-cat >> ../README.md <<EOF
+	cat >>../README.md <<EOF
 - [${project_dir}](./${project_dir}/README.md)
 EOF
 
@@ -27,7 +26,7 @@ fi
 if ! grep -q ./"${package_name}"-doc.md ./README.md; then
 
 	# Two empty spaces because the file is missing a trailing new line.
-cat >> ./README.md <<EOF
+	cat >>./README.md <<EOF
 
 
 ### My Solution
@@ -35,7 +34,7 @@ cat >> ./README.md <<EOF
 - [my solution]($(printf "%s\n" ./lib/*[.]tcl | grep -v "test[.]tcl"))
 EOF
 
-cat >> ./README.md <<EOF
+	cat >>./README.md <<EOF
 - [run-tests](./run-tests-tcl.txt)
 EOF
 

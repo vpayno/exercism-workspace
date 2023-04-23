@@ -3,8 +3,7 @@
 declare pkg_name
 declare d
 
-get_go_package_names()
-{
+get_go_package_names() {
 	awk '/^package / { print $NF }' ./*.go | sort -Vu
 } # get_go_package_names()
 

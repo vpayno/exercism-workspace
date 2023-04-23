@@ -1,14 +1,13 @@
 #!/bin/bash
 
-print_ruler()
-{
+print_ruler() {
 	printf "\n"
-	printf "=%.0s" {1..79}; printf "\n"
+	printf "=%.0s" {1..79}
+	printf "\n"
 	printf "\n"
 } # print_ruler()
 
-main()
-{
+main() {
 	printf "Running automated test file(s):\n\n"
 
 	print_ruler
@@ -77,37 +76,35 @@ main()
 
 	# shellcheck disable=SC2046
 	echo llvm-cov-14 report \
-		$( \
-		for file in \
-			$( \
-			RUSTFLAGS="-C instrument-coverage" \
-			RUSTDOCFLAGS="-C instrument-coverage -Z unstable-options --persist-doctests target/debug/doctestbins" \
-				cargo test --no-run --message-format=json \
-				| jq -r "select(.profile.test == true) | .filenames[]" \
-				| grep -v dSYM - \
-			) \
-			target/debug/doctestbins/*/rust_out; \
-		do \
-			[[ -x $file ]] && printf "%s %s " -object "${file}"; \
-		done \
+		$(
+			for file in \
+				$(
+					RUSTFLAGS="-C instrument-coverage" \
+						RUSTDOCFLAGS="-C instrument-coverage -Z unstable-options --persist-doctests target/debug/doctestbins" \
+						cargo test --no-run --message-format=json |
+						jq -r "select(.profile.test == true) | .filenames[]" |
+						grep -v dSYM -
+				) \
+				target/debug/doctestbins/*/rust_out; do
+				[[ -x $file ]] && printf "%s %s " -object "${file}"
+			done
 		) \
 		--instr-profile=json5format.profdata --summary-only
 
 	# shellcheck disable=SC2046,SC2086
 	time llvm-cov-14 report \
-		$( \
-		for file in \
-			$( \
-			RUSTFLAGS="-C instrument-coverage" \
-			RUSTDOCFLAGS="-C instrument-coverage -Z unstable-options --persist-doctests target/debug/doctestbins" \
-				cargo test --no-run --message-format=json \
-				| jq -r "select(.profile.test == true) | .filenames[]" \
-				| grep -v dSYM - \
-			) \
-			target/debug/doctestbins/*/rust_out; \
-		do \
-			[[ -x $file ]] && printf "%s %s " -object "${file}"; \
-		done \
+		$(
+			for file in \
+				$(
+					RUSTFLAGS="-C instrument-coverage" \
+						RUSTDOCFLAGS="-C instrument-coverage -Z unstable-options --persist-doctests target/debug/doctestbins" \
+						cargo test --no-run --message-format=json |
+						jq -r "select(.profile.test == true) | .filenames[]" |
+						grep -v dSYM -
+				) \
+				target/debug/doctestbins/*/rust_out; do
+				[[ -x $file ]] && printf "%s %s " -object "${file}"
+			done
 		) \
 		--instr-profile=json5format.profdata --summary-only
 

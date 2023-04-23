@@ -1,14 +1,13 @@
 #!/bin/bash
 
-print_ruler()
-{
+print_ruler() {
 	printf "\n"
-	printf "=%.0s" {1..79}; printf "\n"
+	printf "=%.0s" {1..79}
+	printf "\n"
 	printf "\n"
 } # print_ruler()
 
-main()
-{
+main() {
 	printf "Running automated test file(s):\n\n"
 
 	print_ruler
@@ -19,7 +18,7 @@ main()
 		fi
 
 		echo awk --lint --file="${tf}" "<" /dev/null ">" /dev/null
-		time awk --lint --file="${tf}" < /dev/null > /dev/null
+		time awk --lint --file="${tf}" </dev/null >/dev/null
 		printf "\n"
 	done
 

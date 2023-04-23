@@ -13,7 +13,7 @@ project_dir="$(basename "${PWD}")"
 
 if ! grep -q ./"${project_dir}"/README.md ../README.md; then
 
-cat >> ../README.md <<EOF
+	cat >>../README.md <<EOF
 - [${project_dir}](./${project_dir}/README.md)
 EOF
 
@@ -23,7 +23,7 @@ if ! grep -q ./"${package_name}"-doc.md ./README.md; then
 
 	# Two empty spaces because the file is missing a trailing new line.
 	# shellcheck disable=SC2129
-cat >> ./README.md <<EOF
+	cat >>./README.md <<EOF
 
 
 ### My Solution
@@ -31,19 +31,19 @@ cat >> ./README.md <<EOF
 - [my solution]($(printf "%s\n" ./*[.]vim | grep -v -E "[.](vader|vimspec)"))
 EOF
 
-cat >> ./README.md <<EOF
+	cat >>./README.md <<EOF
 - [vader tests]($(printf "%s\n" ./*[.]vader))
 EOF
 
-cat >> ./README.md <<EOF
+	cat >>./README.md <<EOF
 - [themis tests](./themis.vimspec)
 EOF
 
-cat >> ./README.md <<EOF
+	cat >>./README.md <<EOF
 - [themis profile](./profile.txt)
 EOF
 
-cat >> ./README.md <<EOF
+	cat >>./README.md <<EOF
 - [run-tests output](./run-tests-vimscript.txt)
 EOF
 
