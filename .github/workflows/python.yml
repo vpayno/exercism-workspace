@@ -80,7 +80,7 @@ jobs:
         run: |
           pip install --upgrade pylint
           cd ./python
-          ./for_each pylint . || true
+          pylint --ignore-patterns '(__init__|.*_test).py' ./*/*py
       - name: Analysing the code with ruff
         id: ruff
         run: |
