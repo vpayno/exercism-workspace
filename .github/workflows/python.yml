@@ -86,7 +86,7 @@ jobs:
         run: |
           pip install --upgrade ruff
           cd ./python
-          ./for_each ruff . || true
+          ruff check --ignore E501 ./*/*py
       - name: Analysing the code with pyright
         id: pyright
         run: |
