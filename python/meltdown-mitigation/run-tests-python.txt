@@ -1,0 +1,182 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: pylint --ignore-patterns (__init__|.*_test).py ./conditionals.py ./conditionals_test.py ./__init__.py
+************* Module meltdown-mitigation.conditionals
+conditionals.py:104:18: R1716: Simplify chained comparison between the operands (chained-comparison)
+
+-------------------------------------------------------------------
+Your code has been rated at 9.55/10 (previous run: 10.00/10, -0.45)
+
+
+real	0m0.798s
+user	0m0.724s
+sys	0m0.077s
+
+===============================================================================
+
+Running: ruff check .
+
+real	0m0.073s
+user	0m0.032s
+sys	0m0.047s
+
+===============================================================================
+
+Running: pyright --stats .
+No configuration file found.
+No pyproject.toml file found.
+Assuming Python platform Linux
+Searching for source files
+Found 3 source files
+pyright 1.1.304
+0 errors, 0 warnings, 0 informations 
+Completed in 0.756sec
+
+Analysis stats
+Total files parsed and bound: 81
+Total files checked: 3
+
+Timing stats
+Find Source Files:    0sec
+Read Source Files:    0.01sec
+Tokenize:             0.07sec
+Parse:                0.07sec
+Resolve Imports:      0.08sec
+Bind:                 0.07sec
+Check:                0.14sec
+Detect Cycles:        0sec
+
+real	0m1.382s
+user	0m1.627s
+sys	0m0.148s
+
+===============================================================================
+
+Running: bandit --verbose --recursive .
+[main]	INFO	profile include tests: None
+[main]	INFO	profile exclude tests: None
+[main]	INFO	cli include tests: None
+[main]	INFO	cli exclude tests: None
+[main]	INFO	running on Python 3.11.3
+Run started:2023-04-24 01:10:56.521532
+Files in scope (3):
+	./__init__.py (score: {SEVERITY: 0, CONFIDENCE: 0})
+	./conditionals.py (score: {SEVERITY: 0, CONFIDENCE: 0})
+	./conditionals_test.py (score: {SEVERITY: 0, CONFIDENCE: 0})
+Files excluded (16):
+	./.conditionals.py.swp
+	./.coverage
+	./.coverage.xml
+	./.coveragerc
+	./.exercism/config.json
+	./.exercism/metadata.json
+	./.mypy_cache/.gitignore
+	./.mypy_cache/3.11/@plugins_snapshot.json
+	./.mypy_cache/CACHEDIR.TAG
+	./HELP.md
+	./HINTS.md
+	./README.md
+	./__pycache__/__init__.cpython-311.pyc
+	./__pycache__/conditionals.cpython-311.pyc
+	./__pycache__/conditionals_test.cpython-311-pytest-7.3.1.pyc
+	./run-tests-python.txt
+
+Test results:
+	No issues identified.
+
+Code scanned:
+	Total lines of code: 254
+	Total lines skipped (#nosec): 0
+	Total potential issues skipped due to specifically being disabled (e.g., #nosec BXXX): 0
+
+Run metrics:
+	Total issues (by severity):
+		Undefined: 0
+		Low: 0
+		Medium: 0
+		High: 0
+	Total issues (by confidence):
+		Undefined: 0
+		Low: 0
+		Medium: 0
+		High: 0
+Files skipped (0):
+
+real	0m0.263s
+user	0m0.191s
+sys	0m0.075s
+
+===============================================================================
+
+Running: refurb .
+./conditionals.py:67:13 [FURB126]: Replace `case _: return x` with `return x`
+./conditionals.py:107:13 [FURB126]: Replace `case _: return x` with `return x`
+
+Run `refurb --explain ERR` to further explain an error. Use `--quiet` to silence this message
+
+real	0m6.158s
+user	0m5.979s
+sys	0m0.178s
+
+===============================================================================
+
+==> .coveragerc <==
+[run]
+omit = __init__.py, *_test.py
+
+Running: pytest --verbose --cov=. --cov-branch --cov-report=term-missing --cov-report=xml:.coverage.xml -p no:randomly
+============================= test session starts ==============================
+platform linux -- Python 3.11.3, pytest-7.3.1, pluggy-1.0.0 -- /home/vpayno/.pyenv/versions/3.11.3/bin/python
+cachedir: .pytest_cache
+rootdir: /home/vpayno/git_vpayno/exercism-workspace/python
+configfile: pytest.ini
+plugins: anyio-3.6.2, libtmux-0.21.1, pylama-8.4.1, cov-4.0.0, datafiles-3.0.0, docker-1.0.1, subprocess-1.5.0, typeguard-3.0.2
+collecting ... collected 5 items
+
+conditionals_test.py::MeltdownMitigationTest::test_fail_safe PASSED      [ 20%]
+conditionals_test.py::MeltdownMitigationTest::test_get_efficiency_rate PASSED [ 40%]
+conditionals_test.py::MeltdownMitigationTest::test_get_energy_output PASSED [ 60%]
+conditionals_test.py::MeltdownMitigationTest::test_is_criticality_balanced PASSED [ 80%]
+conditionals_test.py::MeltdownMitigationTest::test_reactor_efficiency PASSED [100%]
+
+---------- coverage: platform linux, python 3.11.3-final-0 -----------
+Name              Stmts   Miss Branch BrPart  Cover   Missing
+-------------------------------------------------------------
+conditionals.py      29      0     10      0   100%
+-------------------------------------------------------------
+TOTAL                29      0     10      0   100%
+Coverage XML written to file .coverage.xml
+
+
+============================== 5 passed in 0.05s ===============================
+
+real	0m1.035s
+user	0m0.907s
+sys	0m0.128s
+
+===============================================================================
+
+Running: coverage report --show-missing
+Name              Stmts   Miss Branch BrPart  Cover   Missing
+-------------------------------------------------------------
+conditionals.py      29      0     10      0   100%
+-------------------------------------------------------------
+TOTAL                29      0     10      0   100%
+
+real	0m0.151s
+user	0m0.098s
+sys	0m0.055s
+
+===============================================================================
+
+Running: misspell ./conditionals.py ./conditionals_test.py ./__init__.py
+
+real	0m0.023s
+user	0m0.028s
+sys	0m0.008s
+
+===============================================================================
+

@@ -171,3 +171,8 @@ Implement the function called `fail_safe()`, which takes 3 parameters: `temperat
 ### Contributed to by
 
 - @kbuc
+
+### My Solution
+
+- [my solution](./conditionals.py)
+- [run-tests](./run-tests-python.txt)
