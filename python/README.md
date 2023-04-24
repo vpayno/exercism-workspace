@@ -19,3 +19,4 @@
 - [currency-exchange](./currency-exchange/README.md)
 - [ghost-gobble-arcade-game](./ghost-gobble-arcade-game/README.md)
 - [meltdown-mitigation](./meltdown-mitigation/README.md)
+- [little-sisters-vocab](./little-sisters-vocab/README.md)

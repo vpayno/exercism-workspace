@@ -63,8 +63,8 @@ class LittleSistersVocabTest(unittest.TestCase):
 
     @pytest.mark.task(taskno=3)
     def test_remove_suffix_ness(self):
-        input_data = ['heaviness', 'sadness', 'softness', 'crabbiness', 'lightness', 'artiness', 'edginess']
-        result_data = ['heavy', 'sad', 'soft', 'crabby', 'light', 'arty', 'edgy']
+        input_data = ['heaviness', 'sadness', 'softness', 'crabbiness', 'lightness', 'artiness', 'edginess', 'blah']
+        result_data = ['heavy', 'sad', 'soft', 'crabby', 'light', 'arty', 'edgy', 'blah']
         number_of_variants = range(1, len(input_data) + 1)
 
         for variant, word, result in zip(number_of_variants, input_data, result_data):

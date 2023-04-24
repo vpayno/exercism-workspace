@@ -338,3 +338,8 @@ Implement the `adjective_to_verb(<sentence>, <index>)` function that takes two p
 
 - @aldraco
 - @bethanyg
+
+### My Solution
+
+- [my solution](./strings.py)
+- [run-tests](./run-tests-python.txt)
