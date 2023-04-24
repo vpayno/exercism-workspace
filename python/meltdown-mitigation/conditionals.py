@@ -101,7 +101,7 @@ def fail_safe(
     match safety_rating:
         case _ if safety_rating < 90:
             return "LOW"
-        case _ if safety_rating >= 90 and safety_rating <= 110:
+        case _ if 90 <= safety_rating <= 110:
             return "NORMAL"
         case _:
             return "DANGER"
