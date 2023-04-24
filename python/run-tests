@@ -12,6 +12,13 @@ main() {
 
 	print_ruler
 
+	# https://github.com/pylint-dev/pylint
+
+	echo Running: pylint --ignore-patterns '(__init__|.*_test).py' ./*py
+	time pylint --ignore-patterns '(__init__|.*_test).py' ./*py
+
+	print_ruler
+
 	# https://github.com/charliermarsh/ruff
 
 	echo Running: ruff check .
