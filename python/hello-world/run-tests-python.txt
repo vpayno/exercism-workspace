@@ -3,13 +3,25 @@ Running automated test file(s):
 
 ===============================================================================
 
+Running: pylint --ignore-patterns (__init__|.*_test).py ./hello_world.py ./hello_world_test.py ./__init__.py
+
+------------------------------------
+Your code has been rated at 10.00/10
+
+
+real	0m0.440s
+user	0m0.373s
+sys	0m0.067s
+
+===============================================================================
+
 Running: ruff check .
 hello_world_test.py:25:121: E501 Line too long (125 > 120 characters)
 Found 1 error.
 
-real	0m0.089s
-user	0m0.028s
-sys	0m0.062s
+real	0m0.070s
+user	0m0.035s
+sys	0m0.039s
 
 ===============================================================================
 
@@ -21,7 +33,7 @@ Searching for source files
 Found 3 source files
 pyright 1.1.304
 0 errors, 0 warnings, 0 informations 
-Completed in 0.551sec
+Completed in 0.575sec
 
 Analysis stats
 Total files parsed and bound: 36
@@ -30,16 +42,16 @@ Total files checked: 3
 Timing stats
 Find Source Files:    0sec
 Read Source Files:    0.01sec
-Tokenize:             0.04sec
-Parse:                0.04sec
+Tokenize:             0.05sec
+Parse:                0.05sec
 Resolve Imports:      0.06sec
 Bind:                 0.04sec
 Check:                0.05sec
 Detect Cycles:        0sec
 
-real	0m1.342s
-user	0m1.167s
-sys	0m0.151s
+real	0m1.370s
+user	0m1.245s
+sys	0m0.147s
 
 ===============================================================================
 
@@ -49,7 +61,7 @@ Running: bandit --verbose --recursive .
 [main]	INFO	cli include tests: None
 [main]	INFO	cli exclude tests: None
 [main]	INFO	running on Python 3.11.3
-Run started:2023-04-23 07:08:38.022022
+Run started:2023-04-24 01:25:54.714261
 Files in scope (3):
 	./__init__.py (score: {SEVERITY: 0, CONFIDENCE: 0})
 	./hello_world.py (score: {SEVERITY: 0, CONFIDENCE: 0})
@@ -206,7 +218,7 @@ Test results:
 	No issues identified.
 
 Code scanned:
-	Total lines of code: 21
+	Total lines of code: 23
 	Total lines skipped (#nosec): 0
 	Total potential issues skipped due to specifically being disabled (e.g., #nosec BXXX): 0
 
@@ -223,17 +235,17 @@ Run metrics:
 		High: 0
 Files skipped (0):
 
-real	0m0.229s
-user	0m0.174s
-sys	0m0.058s
+real	0m0.222s
+user	0m0.168s
+sys	0m0.056s
 
 ===============================================================================
 
 Running: refurb .
 
-real	0m1.414s
-user	0m1.339s
-sys	0m0.077s
+real	0m1.375s
+user	0m1.278s
+sys	0m0.099s
 
 ===============================================================================
 
@@ -245,7 +257,8 @@ Running: pytest --verbose --cov=. --cov-branch --cov-report=term-missing --cov-r
 ============================= test session starts ==============================
 platform linux -- Python 3.11.3, pytest-7.3.1, pluggy-1.0.0 -- /home/vpayno/.pyenv/versions/3.11.3/bin/python
 cachedir: .pytest_cache
-rootdir: /home/vpayno/git_vpayno/exercism-workspace/python/hello-world
+rootdir: /home/vpayno/git_vpayno/exercism-workspace/python
+configfile: pytest.ini
 plugins: anyio-3.6.2, libtmux-0.21.1, pylama-8.4.1, cov-4.0.0, datafiles-3.0.0, docker-1.0.1, subprocess-1.5.0, typeguard-3.0.2
 collecting ... collected 1 item
 
@@ -262,9 +275,9 @@ Coverage XML written to file .coverage.xml
 
 ============================== 1 passed in 0.03s ===============================
 
-real	0m0.999s
-user	0m0.860s
-sys	0m0.142s
+real	0m0.972s
+user	0m0.846s
+sys	0m0.125s
 
 ===============================================================================
 
@@ -275,17 +288,17 @@ hello_world.py       2      0      0      0   100%
 ------------------------------------------------------------
 TOTAL                2      0      0      0   100%
 
-real	0m0.154s
-user	0m0.101s
-sys	0m0.056s
+real	0m0.141s
+user	0m0.091s
+sys	0m0.052s
 
 ===============================================================================
 
 Running: misspell ./hello_world.py ./hello_world_test.py ./__init__.py
 
-real	0m0.024s
-user	0m0.020s
-sys	0m0.016s
+real	0m0.023s
+user	0m0.024s
+sys	0m0.014s
 
 ===============================================================================
 
