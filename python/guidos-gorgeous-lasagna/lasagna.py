@@ -15,7 +15,6 @@ EXPECTED_BAKE_TIME: int = 40
 PREPARATION_TIME: int = 2
 
 
-# TODO: Remove 'pass' and complete the 'bake_time_remaining()' function below.
 def bake_time_remaining(elapsed_bake_time: int) -> int:
     """Calculate the bake time remaining.
 
