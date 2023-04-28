@@ -20,3 +20,4 @@
 - [ghost-gobble-arcade-game](./ghost-gobble-arcade-game/README.md)
 - [meltdown-mitigation](./meltdown-mitigation/README.md)
 - [little-sisters-vocab](./little-sisters-vocab/README.md)
+- [black-jack](./black-jack/README.md)

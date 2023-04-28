@@ -390,3 +390,8 @@ False
 ### Contributed to by
 
 - @PaulT89
+
+### My Solution
+
+- [my solution](./black_jack.py)
+- [run-tests](./run-tests-python.txt)

@@ -4,8 +4,10 @@ How to play blackjack:    https://bicyclecards.com/how-to-play/blackjack/
 "Standard" playing cards: https://en.wikipedia.org/wiki/Standard_52-card_deck
 """
 
+from typing import List, Tuple
 
-def value_of_card(card):
+
+def value_of_card(card: str) -> int:
     """Determine the scoring value of a card.
 
     :param card: str - given card.
@@ -15,11 +17,23 @@ def value_of_card(card):
     2.  'A' (ace card) = 1
     3.  '2' - '10' = numerical value.
     """
+    try:
+        match card:
+            case _ if card in ("J", "Q", "K"):
+                return 10
+            case "A":
+                return 1
+            case _ if 2 <= int(card) <= 10:
+                return int(card)
+            case _:
+                return 0
+    except ValueError as exception:
+        print(f"ERROR: invalid card value {card}")
+        print(f"{exception}")
+        return 0
 
-    pass
 
-
-def higher_card(card_one, card_two):
+def higher_card(card_one: str, card_two: str) -> str | Tuple[str, str]:
     """Determine which card has a higher value in the hand.
 
     :param card_one, card_two: str - cards dealt in hand.  See below for values.
@@ -29,11 +43,16 @@ def higher_card(card_one, card_two):
     2.  'A' (ace card) = 1
     3.  '2' - '10' = numerical value.
     """
+    if value_of_card(card_one) > value_of_card(card_two):
+        return card_one
 
-    pass
+    if value_of_card(card_one) < value_of_card(card_two):
+        return card_two
+
+    return card_one, card_two
 
 
-def value_of_ace(card_one, card_two):
+def value_of_ace(card_one: str, card_two: str) -> int:
     """Calculate the most advantageous value for the ace card.
 
     :param card_one, card_two: str - card dealt. See below for values.
@@ -43,11 +62,25 @@ def value_of_ace(card_one, card_two):
     2.  'A' (ace card) = 11 (if already in hand)
     3.  '2' - '10' = numerical value.
     """
+    tens: List[str] = ["10", "J", "Q", "K"]
+    ones: List[str] = [str(num) for num in range(2, 9)]
 
-    pass
+    if "A" in (card_one, card_two):
+        return 1
+
+    if card_one in tens or card_two in tens:
+        return 1
+
+    if card_one in ones and card_two in ones:
+        if int(card_one) + int(card_two) >= 12:
+            return 1
+
+        return 11
+
+    return 1
 
 
-def is_blackjack(card_one, card_two):
+def is_blackjack(card_one: str, card_two: str) -> bool:
     """Determine if the hand is a 'natural' or 'blackjack'.
 
     :param card_one, card_two: str - card dealt. See below for values.
@@ -57,18 +90,56 @@ def is_blackjack(card_one, card_two):
     2.  'A' (ace card) = 11 (if already in hand)
     3.  '2' - '10' = numerical value.
     """
+    result: int = 0
+    ace: int = 0
 
-    pass
+    if card_one == card_two == "A":
+        ace = 1
+        result = ace * 2
+        print(f"1)\nace = {ace}\nresult = {result}\n")
+        return result == 21
+
+    if card_one == "A":
+        ace = 11
+        result = ace + value_of_card(card_two)
+        print(f"2)\nace = {ace}\nresult = {result}\n")
+        return result == 21
+
+    if card_two == "A":
+        ace = 11
+        result = ace + value_of_card(card_one)
+        print(f"3)\nace = {ace}\nresult = {result}\n")
+        return result == 21
+
+    result = value_of_card(card_one) + value_of_card(card_two)
+    print(f"4)\nace = {ace}\nresult = {result}\n")
+    return result == 21
 
 
-def can_split_pairs(card_one, card_two):
+def can_split_pairs(card_one: str, card_two: str) -> bool:
     """Determine if a player can split their hand into two hands.
 
     :param card_one, card_two: str - cards dealt.
     :return: bool - can the hand be split into two pairs? (i.e. cards are of the same value).
     """
+    tens: List[str] = ["10", "J", "Q", "K"]
 
-    pass
+    if card_one == card_two:
+        return True
+
+    if card_one in tens and card_two in tens:
+        return True
+
+    if is_blackjack(card_one, card_two):
+        return False
+
+    if card_two == "A":
+        if value_of_card(card_one) > 9:
+            return True
+
+        return False
+
+    return False
 
 
 def can_double_down(card_one, card_two):
@@ -77,5 +148,9 @@ def can_double_down(card_one, card_two):
     :param card_one, card_two: str - first and second cards in hand.
     :return: bool - can the hand can be doubled down? (i.e. totals 9, 10 or 11 points).
     """
+    result = value_of_card(card_one) + value_of_card(card_two)
 
-    pass
+    if result in (9, 10, 11):
+        return True
+
+    return False

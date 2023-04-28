@@ -62,6 +62,15 @@ main() {
 
 	print_ruler
 
+	echo coverage annotate
+	time coverage annotate
+	printf "\n"
+
+	echo tail -n 10000 './*,cover' '|' grep -E -C 3 "'^> def |^! '"
+	tail -n 10000 ./*,cover | grep -E -C 3 '^> def |^! '
+
+	print_ruler
+
 	# go install github.com/client9/misspell/cmd/misspell@latest
 
 	echo Running: misspell ./*py
