@@ -318,3 +318,8 @@ If no 100 scores are found in `student_info`, an empty list `[]` should be retur
 ### Contributed to by
 
 - @pranasziaukas
+
+### My Solution
+
+- [my solution](./loops.py)
+- [run-tests](./run-tests-python.txt)

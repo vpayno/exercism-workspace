@@ -1,0 +1,218 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: pylint --ignore-patterns (__init__|.*_test).py ./__init__.py ./loops.py ./loops_test.py
+
+--------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
+
+
+real	0m0.912s
+user	0m0.809s
+sys	0m0.104s
+
+===============================================================================
+
+Running: ruff check --ignore E501 ./__init__.py ./loops.py ./loops_test.py
+
+real	0m0.071s
+user	0m0.039s
+sys	0m0.039s
+
+===============================================================================
+
+Running: pyright --stats .
+No configuration file found.
+No pyproject.toml file found.
+Assuming Python platform Linux
+Searching for source files
+Found 3 source files
+pyright 1.1.305
+/home/vpayno/git_vpayno/exercism-workspace/python/making-the-grade/loops_test.py
+  /home/vpayno/git_vpayno/exercism-workspace/python/making-the-grade/loops_test.py:84:34 - error: Argument of type "list[int]" cannot be assigned to parameter "student_scores" of type "List[int | float]" in function "student_ranking"
+    "list[int]" is incompatible with "List[int | float]"
+      TypeVar "_T@list" is invariant
+        Type "int" cannot be assigned to type "int | float"
+          "int" is incompatible with "float" (reportGeneralTypeIssues)
+1 error, 0 warnings, 0 informations 
+Completed in 0.741sec
+
+Analysis stats
+Total files parsed and bound: 80
+Total files checked: 3
+
+Timing stats
+Find Source Files:    0sec
+Read Source Files:    0.01sec
+Tokenize:             0.06sec
+Parse:                0.06sec
+Resolve Imports:      0.07sec
+Bind:                 0.08sec
+Check:                0.14sec
+Detect Cycles:        0sec
+
+real	0m1.546s
+user	0m1.696s
+sys	0m0.151s
+
+===============================================================================
+
+Running: bandit --verbose --recursive .
+[main]	INFO	profile include tests: None
+[main]	INFO	profile exclude tests: None
+[main]	INFO	cli include tests: None
+[main]	INFO	cli exclude tests: None
+[main]	INFO	running on Python 3.11.3
+Run started:2023-04-30 06:51:51.054767
+Files in scope (3):
+	./__init__.py (score: {SEVERITY: 0, CONFIDENCE: 0})
+	./loops.py (score: {SEVERITY: 0, CONFIDENCE: 0})
+	./loops_test.py (score: {SEVERITY: 0, CONFIDENCE: 0})
+Files excluded (16):
+	./.coverage
+	./.coverage.xml
+	./.coveragerc
+	./.exercism/config.json
+	./.exercism/metadata.json
+	./.mypy_cache/.gitignore
+	./.mypy_cache/3.11/@plugins_snapshot.json
+	./.mypy_cache/CACHEDIR.TAG
+	./HELP.md
+	./HINTS.md
+	./README.md
+	./__pycache__/__init__.cpython-311.pyc
+	./__pycache__/loops.cpython-311.pyc
+	./__pycache__/loops_test.cpython-311-pytest-7.3.1.pyc
+	./loops.py,cover
+	./run-tests-python.txt
+
+Test results:
+	No issues identified.
+
+Code scanned:
+	Total lines of code: 148
+	Total lines skipped (#nosec): 0
+	Total potential issues skipped due to specifically being disabled (e.g., #nosec BXXX): 0
+
+Run metrics:
+	Total issues (by severity):
+		Undefined: 0
+		Low: 0
+		Medium: 0
+		High: 0
+	Total issues (by confidence):
+		Undefined: 0
+		Low: 0
+		Medium: 0
+		High: 0
+Files skipped (0):
+
+real	0m0.249s
+user	0m0.185s
+sys	0m0.065s
+
+===============================================================================
+
+Running: refurb .
+
+real	0m6.325s
+user	0m6.132s
+sys	0m0.191s
+
+===============================================================================
+
+==> .coveragerc <==
+[run]
+omit = __init__.py, *_test.py
+
+Running: pytest --verbose --cov=. --cov-branch --cov-report=term-missing --cov-report=xml:.coverage.xml -p no:randomly
+============================= test session starts ==============================
+platform linux -- Python 3.11.3, pytest-7.3.1, pluggy-1.0.0 -- /home/vpayno/.pyenv/versions/3.11.3/bin/python
+cachedir: .pytest_cache
+rootdir: /home/vpayno/git_vpayno/exercism-workspace/python
+configfile: pytest.ini
+plugins: anyio-3.6.2, libtmux-0.21.1, pylama-8.4.1, cov-4.0.0, datafiles-3.0.0, docker-1.0.1, subprocess-1.5.0, typeguard-2.13.3
+collecting ... collected 6 items
+
+loops_test.py::MakingTheGradeTest::test_above_threshold PASSED           [ 16%]
+loops_test.py::MakingTheGradeTest::test_count_failed_students PASSED     [ 33%]
+loops_test.py::MakingTheGradeTest::test_letter_grades PASSED             [ 50%]
+loops_test.py::MakingTheGradeTest::test_perfect_score PASSED             [ 66%]
+loops_test.py::MakingTheGradeTest::test_round_scores PASSED              [ 83%]
+loops_test.py::MakingTheGradeTest::test_student_ranking PASSED           [100%]
+
+---------- coverage: platform linux, python 3.11.3-final-0 -----------
+Name       Stmts   Miss Branch BrPart  Cover   Missing
+------------------------------------------------------
+loops.py      27      0     16      0   100%
+------------------------------------------------------
+TOTAL         27      0     16      0   100%
+Coverage XML written to file .coverage.xml
+
+
+============================== 6 passed in 0.05s ===============================
+
+real	0m1.022s
+user	0m0.895s
+sys	0m0.130s
+
+===============================================================================
+
+Running: coverage report --show-missing
+Name       Stmts   Miss Branch BrPart  Cover   Missing
+------------------------------------------------------
+loops.py      27      0     16      0   100%
+------------------------------------------------------
+TOTAL         27      0     16      0   100%
+
+real	0m0.143s
+user	0m0.105s
+sys	0m0.039s
+
+===============================================================================
+
+coverage annotate
+The annotate command will be removed in a future version.
+Get in touch if you still use it: ned@nedbatchelder.com
+
+real	0m0.151s
+user	0m0.098s
+sys	0m0.055s
+
+tail -n 10000 ./*,cover | grep -E -C 3 '^> def |^! '
+  
+> def round_scores(student_scores: List[int | float]) -> List[int]:
+>     """Round all provided student scores.
+--
+  
+> def count_failed_students(student_scores: List[int | float]) -> int:
+>     """Count the number of failing students out of the group provided.
+--
+  
+> def above_threshold(student_scores: List[int | float], threshold: int) -> List[int | float]:
+>     """Determine how many of the provided student scores were 'the best' based on the provided threshold.
+--
+  
+> def letter_grades(highest: int) -> List[int]:
+>     """Create a list of grade thresholds based on the provided highest grade.
+--
+  
+> def student_ranking(student_scores: List[int | float], student_names: List[str]) -> List[str]:
+>     """Organize the student's rank, name, and grade information in ascending order.
+--
+  
+> def perfect_score(student_info: List[List[Union[str, int]]]) -> List[Union[str, int]]:
+>     """Create a list that contains the name and grade of the first student to make a perfect score on the exam.
+
+===============================================================================
+
+Running: misspell ./__init__.py ./loops.py ./loops_test.py
+
+real	0m0.021s
+user	0m0.026s
+sys	0m0.008s
+
+===============================================================================
+
