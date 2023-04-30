@@ -192,3 +192,8 @@ This function should replace all instances of the `old_word` with the `new_word`
 
 - @valentin-p
 - @bethanyg
+
+### My Solution
+
+- [my solution](./string_methods.py)
+- [run-tests](./run-tests-python.txt)

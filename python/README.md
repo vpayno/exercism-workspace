@@ -21,3 +21,4 @@
 - [meltdown-mitigation](./meltdown-mitigation/README.md)
 - [little-sisters-vocab](./little-sisters-vocab/README.md)
 - [black-jack](./black-jack/README.md)
+- [little-sisters-essay](./little-sisters-essay/README.md)

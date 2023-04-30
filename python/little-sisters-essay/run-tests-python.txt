@@ -1,0 +1,206 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: pylint --ignore-patterns (__init__|.*_test).py ./__init__.py ./string_methods.py ./string_methods_test.py
+
+--------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
+
+
+real	0m0.437s
+user	0m0.358s
+sys	0m0.082s
+
+===============================================================================
+
+Running: ruff check --ignore E501 ./__init__.py ./string_methods.py ./string_methods_test.py
+
+real	0m0.072s
+user	0m0.034s
+sys	0m0.044s
+
+===============================================================================
+
+Running: pyright --stats .
+No configuration file found.
+No pyproject.toml file found.
+Assuming Python platform Linux
+Searching for source files
+Found 3 source files
+pyright 1.1.305
+0 errors, 0 warnings, 0 informations 
+Completed in 0.684sec
+
+Analysis stats
+Total files parsed and bound: 80
+Total files checked: 3
+
+Timing stats
+Find Source Files:    0sec
+Read Source Files:    0.01sec
+Tokenize:             0.05sec
+Parse:                0.07sec
+Resolve Imports:      0.07sec
+Bind:                 0.06sec
+Check:                0.1sec
+Detect Cycles:        0sec
+
+real	0m1.313s
+user	0m1.534s
+sys	0m0.178s
+
+===============================================================================
+
+Running: bandit --verbose --recursive .
+[main]	INFO	profile include tests: None
+[main]	INFO	profile exclude tests: None
+[main]	INFO	cli include tests: None
+[main]	INFO	cli exclude tests: None
+[main]	INFO	running on Python 3.11.3
+Run started:2023-04-30 01:42:19.992498
+Files in scope (3):
+	./__init__.py (score: {SEVERITY: 0, CONFIDENCE: 0})
+	./string_methods.py (score: {SEVERITY: 0, CONFIDENCE: 0})
+	./string_methods_test.py (score: {SEVERITY: 0, CONFIDENCE: 0})
+Files excluded (16):
+	./.coverage
+	./.coverage.xml
+	./.coveragerc
+	./.exercism/config.json
+	./.exercism/metadata.json
+	./.mypy_cache/.gitignore
+	./.mypy_cache/3.11/@plugins_snapshot.json
+	./.mypy_cache/CACHEDIR.TAG
+	./HELP.md
+	./HINTS.md
+	./README.md
+	./__pycache__/__init__.cpython-311.pyc
+	./__pycache__/string_methods.cpython-311.pyc
+	./__pycache__/string_methods_test.cpython-311-pytest-7.3.1.pyc
+	./run-tests-python.txt
+	./string_methods.py,cover
+
+Test results:
+	No issues identified.
+
+Code scanned:
+	Total lines of code: 63
+	Total lines skipped (#nosec): 0
+	Total potential issues skipped due to specifically being disabled (e.g., #nosec BXXX): 0
+
+Run metrics:
+	Total issues (by severity):
+		Undefined: 0
+		Low: 0
+		Medium: 0
+		High: 0
+	Total issues (by confidence):
+		Undefined: 0
+		Low: 0
+		Medium: 0
+		High: 0
+Files skipped (0):
+
+real	0m0.242s
+user	0m0.172s
+sys	0m0.073s
+
+===============================================================================
+
+Running: refurb .
+
+real	0m5.656s
+user	0m5.510s
+sys	0m0.148s
+
+===============================================================================
+
+==> .coveragerc <==
+[run]
+omit = __init__.py, *_test.py
+
+Running: pytest --verbose --cov=. --cov-branch --cov-report=term-missing --cov-report=xml:.coverage.xml -p no:randomly
+============================= test session starts ==============================
+platform linux -- Python 3.11.3, pytest-7.3.1, pluggy-1.0.0 -- /home/vpayno/.pyenv/versions/3.11.3/bin/python
+cachedir: .pytest_cache
+rootdir: /home/vpayno/git_vpayno/exercism-workspace/python
+configfile: pytest.ini
+plugins: anyio-3.6.2, libtmux-0.21.1, pylama-8.4.1, cov-4.0.0, datafiles-3.0.0, docker-1.0.1, subprocess-1.5.0, typeguard-2.13.3
+collecting ... collected 8 items
+
+string_methods_test.py::LittleSistersEssayTest::test_capitalize_title PASSED [ 12%]
+string_methods_test.py::LittleSistersEssayTest::test_capitalize_word PASSED [ 25%]
+string_methods_test.py::LittleSistersEssayTest::test_remove_extra_spaces PASSED [ 37%]
+string_methods_test.py::LittleSistersEssayTest::test_remove_extra_spaces_only_start PASSED [ 50%]
+string_methods_test.py::LittleSistersEssayTest::test_replace_word_choice PASSED [ 62%]
+string_methods_test.py::LittleSistersEssayTest::test_replace_word_not_exist PASSED [ 75%]
+string_methods_test.py::LittleSistersEssayTest::test_sentence_ending PASSED [ 87%]
+string_methods_test.py::LittleSistersEssayTest::test_sentence_ending_without_period PASSED [100%]
+
+---------- coverage: platform linux, python 3.11.3-final-0 -----------
+Name                Stmts   Miss Branch BrPart  Cover   Missing
+---------------------------------------------------------------
+string_methods.py       8      0      0      0   100%
+---------------------------------------------------------------
+TOTAL                   8      0      0      0   100%
+Coverage XML written to file .coverage.xml
+
+
+============================== 8 passed in 0.04s ===============================
+
+real	0m0.969s
+user	0m0.852s
+sys	0m0.117s
+
+===============================================================================
+
+Running: coverage report --show-missing
+Name                Stmts   Miss Branch BrPart  Cover   Missing
+---------------------------------------------------------------
+string_methods.py       8      0      0      0   100%
+---------------------------------------------------------------
+TOTAL                   8      0      0      0   100%
+
+real	0m0.141s
+user	0m0.100s
+sys	0m0.042s
+
+===============================================================================
+
+coverage annotate
+The annotate command will be removed in a future version.
+Get in touch if you still use it: ned@nedbatchelder.com
+
+real	0m0.144s
+user	0m0.096s
+sys	0m0.050s
+
+tail -n 10000 ./*,cover | grep -E -C 3 '^> def |^! '
+  
+> def capitalize_title(title: str) -> str:
+>     """Convert the first letter of each word in the title to uppercase if needed.
+--
+  
+> def check_sentence_ending(sentence: str) -> bool:
+>     """Check the ending of the sentence to verify that a period is present.
+--
+  
+> def clean_up_spacing(sentence: str) -> str:
+>     """Verify that there isn't any whitespace at the start and end of the sentence.
+--
+  
+> def replace_word_choice(sentence: str, old_word: str, new_word: str) -> str:
+>     """Replace a word in the provided sentence with a new one.
+
+===============================================================================
+
+Running: misspell ./__init__.py ./string_methods.py ./string_methods_test.py
+
+real	0m0.021s
+user	0m0.019s
+sys	0m0.010s
+
+===============================================================================
+
