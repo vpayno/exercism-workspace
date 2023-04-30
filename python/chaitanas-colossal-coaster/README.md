@@ -409,3 +409,8 @@ Define the `sorted_names()` function that takes 1 argument,  `queue`, (the `list
 
 - @valentin-p
 - @pranasziaukas
+
+### My Solution
+
+- [my solution](./list_methods.py)
+- [run-tests](./run-tests-python.txt)

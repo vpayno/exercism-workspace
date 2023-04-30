@@ -1,0 +1,219 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: pylint --ignore-patterns (__init__|.*_test).py ./__init__.py ./list_methods.py ./list_methods_test.py
+
+------------------------------------
+Your code has been rated at 10.00/10
+
+
+real	0m0.798s
+user	0m0.718s
+sys	0m0.082s
+
+===============================================================================
+
+Running: ruff check --ignore E501 ./__init__.py ./list_methods.py ./list_methods_test.py
+
+real	0m0.068s
+user	0m0.033s
+sys	0m0.044s
+
+===============================================================================
+
+Running: pyright --stats .
+No configuration file found.
+No pyproject.toml file found.
+Assuming Python platform Linux
+Searching for source files
+Found 3 source files
+pyright 1.1.305
+0 errors, 0 warnings, 0 informations 
+Completed in 0.738sec
+
+Analysis stats
+Total files parsed and bound: 81
+Total files checked: 3
+
+Timing stats
+Find Source Files:    0sec
+Read Source Files:    0.01sec
+Tokenize:             0.06sec
+Parse:                0.06sec
+Resolve Imports:      0.09sec
+Bind:                 0.08sec
+Check:                0.13sec
+Detect Cycles:        0sec
+
+real	0m1.591s
+user	0m1.637s
+sys	0m0.173s
+
+===============================================================================
+
+Running: bandit --verbose --recursive .
+[main]	INFO	profile include tests: None
+[main]	INFO	profile exclude tests: None
+[main]	INFO	cli include tests: None
+[main]	INFO	cli exclude tests: None
+[main]	INFO	running on Python 3.11.3
+Run started:2023-04-30 04:11:34.060983
+Files in scope (3):
+	./__init__.py (score: {SEVERITY: 0, CONFIDENCE: 0})
+	./list_methods.py (score: {SEVERITY: 0, CONFIDENCE: 0})
+	./list_methods_test.py (score: {SEVERITY: 0, CONFIDENCE: 0})
+Files excluded (15):
+	./.coverage
+	./.coverage.xml
+	./.coveragerc
+	./.exercism/config.json
+	./.exercism/metadata.json
+	./.mypy_cache/.gitignore
+	./.mypy_cache/3.11/@plugins_snapshot.json
+	./.mypy_cache/CACHEDIR.TAG
+	./HELP.md
+	./HINTS.md
+	./README.md
+	./__pycache__/__init__.cpython-311.pyc
+	./__pycache__/list_methods.cpython-311.pyc
+	./__pycache__/list_methods_test.cpython-311-pytest-7.3.1.pyc
+	./run-tests-python.txt
+
+Test results:
+	No issues identified.
+
+Code scanned:
+	Total lines of code: 167
+	Total lines skipped (#nosec): 0
+	Total potential issues skipped due to specifically being disabled (e.g., #nosec BXXX): 0
+
+Run metrics:
+	Total issues (by severity):
+		Undefined: 0
+		Low: 0
+		Medium: 0
+		High: 0
+	Total issues (by confidence):
+		Undefined: 0
+		Low: 0
+		Medium: 0
+		High: 0
+Files skipped (0):
+
+real	0m0.229s
+user	0m0.182s
+sys	0m0.048s
+
+===============================================================================
+
+Running: refurb .
+
+real	0m5.859s
+user	0m5.708s
+sys	0m0.151s
+
+===============================================================================
+
+==> .coveragerc <==
+[run]
+omit = __init__.py, *_test.py
+
+Running: pytest --verbose --cov=. --cov-branch --cov-report=term-missing --cov-report=xml:.coverage.xml -p no:randomly
+============================= test session starts ==============================
+platform linux -- Python 3.11.3, pytest-7.3.1, pluggy-1.0.0 -- /home/vpayno/.pyenv/versions/3.11.3/bin/python
+cachedir: .pytest_cache
+rootdir: /home/vpayno/git_vpayno/exercism-workspace/python
+configfile: pytest.ini
+plugins: anyio-3.6.2, libtmux-0.21.1, pylama-8.4.1, cov-4.0.0, datafiles-3.0.0, docker-1.0.1, subprocess-1.5.0, typeguard-2.13.3
+collecting ... collected 7 items
+
+list_methods_test.py::ListMethodsTest::test_add_me_to_the_queue PASSED   [ 14%]
+list_methods_test.py::ListMethodsTest::test_add_me_with_my_friends PASSED [ 28%]
+list_methods_test.py::ListMethodsTest::test_find_my_friend PASSED        [ 42%]
+list_methods_test.py::ListMethodsTest::test_how_many_namefellows PASSED  [ 57%]
+list_methods_test.py::ListMethodsTest::test_remove_the_last_person PASSED [ 71%]
+list_methods_test.py::ListMethodsTest::test_remove_the_mean_person PASSED [ 85%]
+list_methods_test.py::ListMethodsTest::test_sorted_names PASSED          [100%]
+
+---------- coverage: platform linux, python 3.11.3-final-0 -----------
+Name              Stmts   Miss Branch BrPart  Cover   Missing
+-------------------------------------------------------------
+list_methods.py      23      1      4      1    93%   23
+-------------------------------------------------------------
+TOTAL                23      1      4      1    93%
+Coverage XML written to file .coverage.xml
+
+
+============================== 7 passed in 0.05s ===============================
+
+real	0m1.004s
+user	0m0.880s
+sys	0m0.125s
+
+===============================================================================
+
+Running: coverage report --show-missing
+Name              Stmts   Miss Branch BrPart  Cover   Missing
+-------------------------------------------------------------
+list_methods.py      23      1      4      1    93%   23
+-------------------------------------------------------------
+TOTAL                23      1      4      1    93%
+
+real	0m0.147s
+user	0m0.100s
+sys	0m0.049s
+
+===============================================================================
+
+coverage annotate
+The annotate command will be removed in a future version.
+Get in touch if you still use it: ned@nedbatchelder.com
+
+real	0m0.142s
+user	0m0.098s
+sys	0m0.046s
+
+tail -n 10000 ./*,cover | grep -E -C 3 '^> def |^! '
+  
+> def add_me_to_the_queue(
+>     express_queue: List[str], normal_queue: List[str], ticket_type: int, person_name: str
+--
+  
+!     return [] + [person_name]
+  
+  
+> def find_my_friend(queue: List[str], friend_name: str) -> int:
+>     """Search the queue for a name and return their queue position (index).
+--
+  
+> def add_me_with_my_friends(queue: List[str], index: int, person_name: str) -> List[str]:
+>     """Insert the late arrival's name at a specific index of the queue.
+--
+  
+> def remove_the_mean_person(queue: List[str], person_name: str) -> List[str]:
+>     """Remove the mean person from the queue by the provided name.
+--
+  
+> def how_many_namefellows(queue: List[str], person_name: str) -> int:
+>     """Count how many times the provided name appears in the queue.
+--
+  
+> def remove_the_last_person(queue: List[str]) -> str:
+>     """Remove the person in the last index from the queue and return their name.
+--
+  
+> def sorted_names(queue: List[str]) -> List[str]:
+>     """Sort the names in the queue in alphabetical order and return the result.
+
+===============================================================================
+
+Running: misspell ./__init__.py ./list_methods.py ./list_methods_test.py
+
+real	0m0.025s
+user	0m0.029s
+sys	0m0.009s
+
+===============================================================================
+
