@@ -41,9 +41,11 @@ def add_me_with_my_friends(queue: List[str], index: int, person_name: str) -> Li
     :param person_name: str - the name to add.
     :return: list - queue updated with new name.
     """
-    queue.insert(index, person_name)
+    new_queue: List[str] = queue.copy()
 
-    return queue
+    new_queue.insert(index, person_name)
+
+    return new_queue
 
 
 def remove_the_mean_person(queue: List[str], person_name: str) -> List[str]:
@@ -53,9 +55,11 @@ def remove_the_mean_person(queue: List[str], person_name: str) -> List[str]:
     :param person_name: str - name of mean person.
     :return: list - queue update with the mean persons name removed.
     """
-    queue.remove(person_name)
+    new_queue: List[str] = queue.copy()
 
-    return queue
+    new_queue.remove(person_name)
+
+    return new_queue
 
 
 def how_many_namefellows(queue: List[str], person_name: str) -> int:
@@ -74,7 +78,7 @@ def remove_the_last_person(queue: List[str]) -> str:
     :param queue: list - names in the queue.
     :return: str - name that has been removed from the end of the queue.
     """
-    return queue.pop()
+    return queue[-1]
 
 
 def sorted_names(queue: List[str]) -> List[str]:
@@ -83,6 +87,5 @@ def sorted_names(queue: List[str]) -> List[str]:
     :param queue: list - names in the queue.
     :return: list - copy of the queue in alphabetical order.
     """
-    queue.sort()
 
-    return queue
+    return sorted(queue)
