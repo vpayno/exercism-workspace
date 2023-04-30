@@ -391,3 +391,8 @@ Implement a function `maybe_double_last(<hand>)` that takes a hand and checks if
 
 - @valentin-p
 - @pranasziaukas
+
+### My Solution
+
+- [my solution](./lists.py)
+- [run-tests](./run-tests-python.txt)

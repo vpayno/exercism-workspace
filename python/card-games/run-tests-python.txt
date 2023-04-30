@@ -1,0 +1,216 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: pylint --ignore-patterns (__init__|.*_test).py ./__init__.py ./lists.py ./lists_test.py
+
+------------------------------------
+Your code has been rated at 10.00/10
+
+
+real	0m0.771s
+user	0m0.687s
+sys	0m0.086s
+
+===============================================================================
+
+Running: ruff check --ignore E501 ./__init__.py ./lists.py ./lists_test.py
+
+real	0m0.076s
+user	0m0.044s
+sys	0m0.039s
+
+===============================================================================
+
+Running: pyright --stats .
+No configuration file found.
+No pyproject.toml file found.
+Assuming Python platform Linux
+Searching for source files
+Found 3 source files
+pyright 1.1.305
+0 errors, 0 warnings, 0 informations 
+Completed in 0.8sec
+
+Analysis stats
+Total files parsed and bound: 81
+Total files checked: 3
+
+Timing stats
+Find Source Files:    0sec
+Read Source Files:    0.01sec
+Tokenize:             0.05sec
+Parse:                0.08sec
+Resolve Imports:      0.08sec
+Bind:                 0.09sec
+Check:                0.16sec
+Detect Cycles:        0sec
+
+real	0m1.663s
+user	0m1.999s
+sys	0m0.171s
+
+===============================================================================
+
+Running: bandit --verbose --recursive .
+[main]	INFO	profile include tests: None
+[main]	INFO	profile exclude tests: None
+[main]	INFO	cli include tests: None
+[main]	INFO	cli exclude tests: None
+[main]	INFO	running on Python 3.11.3
+Run started:2023-04-30 03:42:56.185754
+Files in scope (3):
+	./__init__.py (score: {SEVERITY: 0, CONFIDENCE: 0})
+	./lists.py (score: {SEVERITY: 0, CONFIDENCE: 0})
+	./lists_test.py (score: {SEVERITY: 0, CONFIDENCE: 0})
+Files excluded (15):
+	./.coverage
+	./.coverage.xml
+	./.coveragerc
+	./.exercism/config.json
+	./.exercism/metadata.json
+	./.mypy_cache/.gitignore
+	./.mypy_cache/3.11/@plugins_snapshot.json
+	./.mypy_cache/CACHEDIR.TAG
+	./HELP.md
+	./HINTS.md
+	./README.md
+	./__pycache__/__init__.cpython-311.pyc
+	./__pycache__/lists.cpython-311.pyc
+	./__pycache__/lists_test.cpython-311-pytest-7.3.1.pyc
+	./run-tests-python.txt
+
+Test results:
+	No issues identified.
+
+Code scanned:
+	Total lines of code: 136
+	Total lines skipped (#nosec): 0
+	Total potential issues skipped due to specifically being disabled (e.g., #nosec BXXX): 0
+
+Run metrics:
+	Total issues (by severity):
+		Undefined: 0
+		Low: 0
+		Medium: 0
+		High: 0
+	Total issues (by confidence):
+		Undefined: 0
+		Low: 0
+		Medium: 0
+		High: 0
+Files skipped (0):
+
+real	0m0.240s
+user	0m0.187s
+sys	0m0.055s
+
+===============================================================================
+
+Running: refurb .
+
+real	0m6.219s
+user	0m6.013s
+sys	0m0.206s
+
+===============================================================================
+
+==> .coveragerc <==
+[run]
+omit = __init__.py, *_test.py
+
+Running: pytest --verbose --cov=. --cov-branch --cov-report=term-missing --cov-report=xml:.coverage.xml -p no:randomly
+============================= test session starts ==============================
+platform linux -- Python 3.11.3, pytest-7.3.1, pluggy-1.0.0 -- /home/vpayno/.pyenv/versions/3.11.3/bin/python
+cachedir: .pytest_cache
+rootdir: /home/vpayno/git_vpayno/exercism-workspace/python
+configfile: pytest.ini
+plugins: anyio-3.6.2, libtmux-0.21.1, pylama-8.4.1, cov-4.0.0, datafiles-3.0.0, docker-1.0.1, subprocess-1.5.0, typeguard-2.13.3
+collecting ... collected 7 items
+
+lists_test.py::CardGamesTest::test_approx_average_is_average PASSED      [ 14%]
+lists_test.py::CardGamesTest::test_average_even_is_average_odd PASSED    [ 28%]
+lists_test.py::CardGamesTest::test_card_average PASSED                   [ 42%]
+lists_test.py::CardGamesTest::test_concatenate_rounds PASSED             [ 57%]
+lists_test.py::CardGamesTest::test_get_rounds PASSED                     [ 71%]
+lists_test.py::CardGamesTest::test_list_contains_round PASSED            [ 85%]
+lists_test.py::CardGamesTest::test_maybe_double_last PASSED              [100%]
+
+---------- coverage: platform linux, python 3.11.3-final-0 -----------
+Name       Stmts   Miss Branch BrPart  Cover   Missing
+------------------------------------------------------
+lists.py      26      0      2      0   100%
+------------------------------------------------------
+TOTAL         26      0      2      0   100%
+Coverage XML written to file .coverage.xml
+
+
+============================== 7 passed in 0.05s ===============================
+
+real	0m0.986s
+user	0m0.859s
+sys	0m0.129s
+
+===============================================================================
+
+Running: coverage report --show-missing
+Name       Stmts   Miss Branch BrPart  Cover   Missing
+------------------------------------------------------
+lists.py      26      0      2      0   100%
+------------------------------------------------------
+TOTAL         26      0      2      0   100%
+
+real	0m0.145s
+user	0m0.093s
+sys	0m0.054s
+
+===============================================================================
+
+coverage annotate
+The annotate command will be removed in a future version.
+Get in touch if you still use it: ned@nedbatchelder.com
+
+real	0m0.156s
+user	0m0.111s
+sys	0m0.047s
+
+tail -n 10000 ./*,cover | grep -E -C 3 '^> def |^! '
+  
+> def get_rounds(number: int) -> List[int]:
+>     """Create a list containing the current and next two round numbers.
+--
+  
+> def concatenate_rounds(rounds_1: List[int], rounds_2: List[int]) -> List[int]:
+>     """Concatenate two lists of round numbers.
+--
+  
+> def list_contains_round(rounds: List[int], number: int) -> bool:
+>     """Check if the list of rounds contains the specified number.
+--
+  
+> def card_average(hand: List[int]) -> float:
+>     """Calculate and returns the average card value from the list.
+--
+  
+> def approx_average_is_average(hand: List[int]) -> bool:
+>     """Return if an average is using (first + last index values ) OR ('middle' card) == calculated average.
+--
+  
+> def average_even_is_average_odd(hand: List[int]) -> bool:
+>     """Return if the (average of even indexed card values) == (average of odd indexed card values).
+--
+  
+> def maybe_double_last(hand: List[int]) -> List[int]:
+>     """Multiply a Jack card value in the last index position by 2.
+
+===============================================================================
+
+Running: misspell ./__init__.py ./lists.py ./lists_test.py
+
+real	0m0.023s
+user	0m0.026s
+sys	0m0.010s
+
+===============================================================================
+
