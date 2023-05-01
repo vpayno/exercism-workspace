@@ -166,3 +166,8 @@ Implement the `list_inventory()` function that takes an inventory and returns a 
 - @bethanyG
 - @mukeshgurpude
 - @kotp
+
+### My Solution
+
+- [my solution](./dicts.py)
+- [run-tests](./run-tests-python.txt)
