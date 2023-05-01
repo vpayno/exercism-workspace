@@ -25,3 +25,4 @@
 - [card-games](./card-games/README.md)
 - [chaitanas-colossal-coaster](./chaitanas-colossal-coaster/README.md)
 - [making-the-grade](./making-the-grade/README.md)
+- [tisbury-treasure-hunt](./tisbury-treasure-hunt/README.md)

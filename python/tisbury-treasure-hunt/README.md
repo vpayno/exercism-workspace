@@ -275,3 +275,8 @@ Format and return the 'report' so that there is one cleaned record on each line.
 ### Created by
 
 - @bethanyg
+
+### My Solution
+
+- [my solution](./tuples.py)
+- [run-tests](./run-tests-python.txt)
