@@ -1,5 +1,6 @@
 > """Functions to keep track and alter inventory."""
   
+> from collections import defaultdict
 > from typing import Dict, List, Tuple
   
   
@@ -19,19 +20,19 @@
 >     :param items: list - list of items to update the inventory with.
 >     :return: dict - the inventory updated with the new items.
 >     """
->     new_inventory: Dict[str, int] = create_inventory(items)
+      # defaultdict assumes a value of int:0 when the key doesn't exist
+>     new_inventory: Dict[str, int] = defaultdict(int)
+  
+>     new_inventory.update(create_inventory(items))
   
 >     item: str
 >     count: int
 >     for item in inventory:
 >         count = inventory[item]
+>         new_inventory[item] += count
   
->         if item in new_inventory:
->             new_inventory[item] += count
->         else:
->             new_inventory[item] = count
-  
->     return new_inventory
+      # defaultdict to dict
+>     return new_inventory.copy()
   
   
 > def decrement_items(inventory: Dict[str, int], items: List[str]) -> Dict[str, int]:
@@ -41,7 +42,6 @@
 >     :param items: list - list of items to decrement from the inventory.
 >     :return: dict - updated inventory with items decremented.
 >     """
-  
 >     return {name: max(inventory[name] - items.count(name), 0) for name in set(items)}
   
   
