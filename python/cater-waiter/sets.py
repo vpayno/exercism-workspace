@@ -46,7 +46,7 @@ def check_drinks(drink_name: str, drink_ingredients: List[str]) -> str:
     return drink_name + " Mocktail"
 
 
-def categorize_dish(dish_name: str, dish_ingredients: List[str]) -> str | None:
+def categorize_dish(dish_name: str, dish_ingredients: List[str]) -> str:
     """Categorize `dish_name` based on `dish_ingredients`.
 
     :param dish_name: str - dish to be categorized.
@@ -74,8 +74,10 @@ def categorize_dish(dish_name: str, dish_ingredients: List[str]) -> str | None:
         if set(dish_ingredients) <= set(category_ingredients):
             return f"{dish_name}: {category_name}"
 
+    return ""  # it would be nicer if we could return an error like in Go or Rust
 
-def tag_special_ingredients(dish: Tuple[str, List[str]]) -> Tuple[str, Set[str]] | None:
+
+def tag_special_ingredients(dish: Tuple[str, List[str]]) -> Tuple[str, Set[str]]:
     """Compare `dish` ingredients to `SPECIAL_INGREDIENTS`.
 
     :param dish: tuple - of (dish name, list of dish ingredients).
@@ -90,6 +92,8 @@ def tag_special_ingredients(dish: Tuple[str, List[str]]) -> Tuple[str, Set[str]]
 
     if ingredients := SPECIAL_INGREDIENTS.intersection(set(dish[1])):
         return dish_name, ingredients
+
+    return ("", set())  # it would be nicer if we could return an error like in Go or Rust
 
 
 def compile_ingredients(dishes: List[Set[str]]) -> Set[str]:
