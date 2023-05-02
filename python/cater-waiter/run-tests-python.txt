@@ -6,14 +6,16 @@ Running automated test file(s):
 Running: pylint --ignore-patterns (__init__|.*_test).py ./__init__.py ./sets_categories_data.py ./sets.py ./sets_test_data.py ./sets_test.py
 ************* Module cater-waiter.sets
 sets.py:6:0: E0401: Unable to import 'sets_categories_data' (import-error)
+sets.py:49:0: R1710: Either all return statements in a function should return an expression, or none of them should. (inconsistent-return-statements)
+sets.py:78:0: R1710: Either all return statements in a function should return an expression, or none of them should. (inconsistent-return-statements)
 
 ------------------------------------------------------------------
-Your code has been rated at 9.17/10 (previous run: 9.00/10, +0.17)
+Your code has been rated at 7.41/10 (previous run: 7.41/10, +0.00)
 
 
 real	0m0.897s
-user	0m0.809s
-sys	0m0.090s
+user	0m0.819s
+sys	0m0.081s
 
 ===============================================================================
 
@@ -28,9 +30,9 @@ sets_test.py:25:35: F401 [*] `sets_categories_data.OMNIVORE_INTERSECTIONS` impor
 Found 7 errors.
 [*] 7 potentially fixable with the --fix option.
 
-real	0m0.087s
-user	0m0.035s
-sys	0m0.061s
+real	0m0.070s
+user	0m0.043s
+sys	0m0.033s
 
 ===============================================================================
 
@@ -42,14 +44,10 @@ Searching for source files
 Found 5 source files
 pyright 1.1.305
 /home/vpayno/git_vpayno/exercism-workspace/python/cater-waiter/sets_test.py
-  /home/vpayno/git_vpayno/exercism-workspace/python/cater-waiter/sets_test.py:95:54 - error: Argument of type "list[set[str]]" cannot be assigned to parameter "dishes" of type "List[Tuple[str]]" in function "compile_ingredients"
-    "list[set[str]]" is incompatible with "List[Tuple[str]]"
-      TypeVar "_T@list" is invariant
-        "set[str]" is incompatible with "Tuple[str]" (reportGeneralTypeIssues)
   /home/vpayno/git_vpayno/exercism-workspace/python/cater-waiter/sets_test.py:119:65 - error: Argument of type "set[str]" cannot be assigned to parameter "intersection" of type "List[str]" in function "singleton_ingredients"
     "set[str]" is incompatible with "List[str]" (reportGeneralTypeIssues)
-2 errors, 0 warnings, 0 informations 
-Completed in 0.897sec
+1 error, 0 warnings, 0 informations 
+Completed in 0.855sec
 
 Analysis stats
 Total files parsed and bound: 82
@@ -58,16 +56,16 @@ Total files checked: 5
 Timing stats
 Find Source Files:    0sec
 Read Source Files:    0.01sec
-Tokenize:             0.05sec
-Parse:                0.12sec
-Resolve Imports:      0.07sec
+Tokenize:             0.06sec
+Parse:                0.1sec
+Resolve Imports:      0.08sec
 Bind:                 0.06sec
-Check:                0.26sec
+Check:                0.22sec
 Detect Cycles:        0sec
 
-real	0m1.510s
-user	0m2.294s
-sys	0m0.151s
+real	0m2.167s
+user	0m2.068s
+sys	0m0.168s
 
 ===============================================================================
 
@@ -77,7 +75,7 @@ Running: bandit --verbose --recursive .
 [main]	INFO	cli include tests: None
 [main]	INFO	cli exclude tests: None
 [main]	INFO	running on Python 3.11.3
-Run started:2023-05-02 05:39:42.999367
+Run started:2023-05-02 06:43:06.906480
 Files in scope (5):
 	./__init__.py (score: {SEVERITY: 0, CONFIDENCE: 0})
 	./sets.py (score: {SEVERITY: 0, CONFIDENCE: 0})
@@ -110,7 +108,7 @@ Test results:
 	No issues identified.
 
 Code scanned:
-	Total lines of code: 776
+	Total lines of code: 750
 	Total lines skipped (#nosec): 0
 	Total potential issues skipped due to specifically being disabled (e.g., #nosec BXXX): 0
 
@@ -127,17 +125,17 @@ Run metrics:
 		High: 0
 Files skipped (0):
 
-real	0m0.367s
-user	0m0.305s
-sys	0m0.064s
+real	0m0.382s
+user	0m0.324s
+sys	0m0.060s
 
 ===============================================================================
 
 Running: refurb .
 
-real	0m5.931s
-user	0m5.780s
-sys	0m0.153s
+real	0m5.898s
+user	0m5.735s
+sys	0m0.163s
 
 ===============================================================================
 
@@ -165,34 +163,34 @@ sets_test.py::SetsTest::test_tag_special_ingredients PASSED              [100%]
 ---------- coverage: platform linux, python 3.11.3-final-0 -----------
 Name                      Stmts   Miss Branch BrPart  Cover   Missing
 ---------------------------------------------------------------------
-sets.py                      57      0     40      0   100%
+sets.py                      24      0     11      2    94%   73->exit, 91->exit
 sets_categories_data.py      14      0      0      0   100%
 sets_test_data.py            41      0     10      2    96%   452->exit, 453->exit
 ---------------------------------------------------------------------
-TOTAL                       112      0     50      2    99%
+TOTAL                        79      0     21      4    96%
 Coverage XML written to file .coverage.xml
 
 
 ============================== 7 passed in 0.21s ===============================
 
-real	0m1.146s
-user	0m1.009s
-sys	0m0.140s
+real	0m1.145s
+user	0m1.038s
+sys	0m0.110s
 
 ===============================================================================
 
 Running: coverage report --show-missing
 Name                      Stmts   Miss Branch BrPart  Cover   Missing
 ---------------------------------------------------------------------
-sets.py                      57      0     40      0   100%
+sets.py                      24      0     11      2    94%   73->exit, 91->exit
 sets_categories_data.py      14      0      0      0   100%
 sets_test_data.py            41      0     10      2    96%   452->exit, 453->exit
 ---------------------------------------------------------------------
-TOTAL                       112      0     50      2    99%
+TOTAL                        79      0     21      4    96%
 
-real	0m0.221s
-user	0m0.181s
-sys	0m0.043s
+real	0m0.211s
+user	0m0.166s
+sys	0m0.047s
 
 ===============================================================================
 
@@ -200,8 +198,8 @@ coverage annotate
 The annotate command will be removed in a future version.
 Get in touch if you still use it: ned@nedbatchelder.com
 
-real	0m0.214s
-user	0m0.168s
+real	0m0.208s
+user	0m0.160s
 sys	0m0.049s
 
 tail -n 10000 ./*,cover | grep -E -C 3 '^> def |^! '
@@ -214,15 +212,15 @@ tail -n 10000 ./*,cover | grep -E -C 3 '^> def |^! '
 >     """Append "Cocktail" (alcohol)  or "Mocktail" (no alcohol) to `drink_name`, based on `drink_ingredients`.
 --
   
-> def categorize_dish(dish_name: str, dish_ingredients: List[str]) -> str:
+> def categorize_dish(dish_name: str, dish_ingredients: List[str]) -> str | None:
 >     """Categorize `dish_name` based on `dish_ingredients`.
 --
   
-> def tag_special_ingredients(dish: Tuple[str, List[str]]) -> Tuple[str, Set[str]]:
+> def tag_special_ingredients(dish: Tuple[str, List[str]]) -> Tuple[str, Set[str]] | None:
 >     """Compare `dish` ingredients to `SPECIAL_INGREDIENTS`.
 --
   
-> def compile_ingredients(dishes: List[Tuple[str]]) -> Set[str]:
+> def compile_ingredients(dishes: List[Set[str]]) -> Set[str]:
 >     """Create a master list of ingredients.
 --
   
@@ -237,9 +235,9 @@ tail -n 10000 ./*,cover | grep -E -C 3 '^> def |^! '
 
 Running: misspell ./__init__.py ./sets_categories_data.py ./sets.py ./sets_test_data.py ./sets_test.py
 
-real	0m0.024s
-user	0m0.028s
-sys	0m0.010s
+real	0m0.025s
+user	0m0.024s
+sys	0m0.012s
 
 ===============================================================================
 
