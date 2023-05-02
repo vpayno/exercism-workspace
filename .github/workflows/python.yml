@@ -80,13 +80,13 @@ jobs:
         run: |
           pip install --upgrade pylint
           cd ./python
-          pylint --ignore-patterns '(__init__|.*_test).py' ./*/*py
+          ./for_each pylint --ignore-patterns '(__init__|.*_test).py' .
       - name: Analysing the code with ruff
         id: ruff
         run: |
           pip install --upgrade ruff
           cd ./python
-          ruff check --ignore E501 ./*/*py
+          ./for_each ruff check --ignore E501 --exclude ./*_test.py .
       - name: Analysing the code with pyright
         id: pyright
         run: |
@@ -106,4 +106,4 @@ jobs:
           pip install --upgrade db-sqlite3 pysqlite3
           pip install --upgrade pytest coverage pytest-cov
           cd ./python
-          ./for_each pytest --verbose --cov=. --cov-branch --cov-report={term-missing,xml:.coverage.xml}
+          PYTHONPATH="." ./for_each pytest --verbose --cov=. --cov-branch --cov-report={term-missing,xml:.coverage.xml}

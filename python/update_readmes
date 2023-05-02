@@ -17,6 +17,13 @@ get_python_package_name() {
 package_name="$(get_python_package_name)"
 project_dir="$(basename "${PWD}")"
 
+git mv -v "../${project_dir}" "../${project_dir//-/_}"
+printf "\n"
+
+project_dir="${project_dir//-/_}"
+cd "../${project_dir//-/_}" || exit
+printf "\n"
+
 if ! grep -q ./"${project_dir}"/README.md ../README.md; then
 
 	cat >>../README.md <<EOF
@@ -41,10 +48,13 @@ EOF
 EOF
 
 fi
-
 printf "\n"
+
 git add ../README.md ./README.md
 git diff --cached ../README.md ./README.md
+printf "\n"
 
 [[ -d __init__.py ]] || touch __init__.py
 [[ -f .coveragerc ]] || cp -v ../.coveragerc .
+git add __init__.py .coveragerc
+printf "\n"
