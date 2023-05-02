@@ -448,3 +448,10 @@ from sets_categories_data import example_dishes, EXAMPLE_INTERSECTION
 ### Contributed to by
 
 - @zepam
+
+### My Solution
+
+- [my solution](./sets_categories_data.py
+./sets.py
+./sets_test_data.py)
+- [run-tests](./run-tests-python.txt)
