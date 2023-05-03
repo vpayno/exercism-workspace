@@ -413,3 +413,8 @@ For example:
 - @DjangoFett
 - @kotp
 - @IsaacG
+
+### My Solution
+
+- [my solution](./classes.py)
+- [run-tests](./run-tests-python.txt)

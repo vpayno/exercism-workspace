@@ -1,0 +1,200 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: pylint --ignore-patterns (__init__|.*_test).py .
+
+real	0m0.438s
+user	0m0.346s
+sys	0m0.095s
+
+===============================================================================
+
+Running: ruff check --ignore E501 ./classes.py ./classes_test.py ./__init__.py
+
+real	0m0.065s
+user	0m0.028s
+sys	0m0.043s
+
+===============================================================================
+
+Running: pyright --stats .
+Found 3 source files
+pyright 1.1.306
+0 errors, 0 warnings, 0 informations 
+Completed in 0.717sec
+
+Analysis stats
+Total files parsed and bound: 80
+Total files checked: 3
+
+Timing stats
+Find Source Files:    0sec
+Read Source Files:    0.01sec
+Tokenize:             0.05sec
+Parse:                0.07sec
+Resolve Imports:      0.09sec
+Bind:                 0.07sec
+Check:                0.12sec
+Detect Cycles:        0sec
+
+real	0m1.355s
+user	0m1.560s
+sys	0m0.163s
+
+===============================================================================
+
+Running: bandit --verbose --recursive .
+[main]	INFO	profile include tests: None
+[main]	INFO	profile exclude tests: None
+[main]	INFO	cli include tests: None
+[main]	INFO	cli exclude tests: None
+[main]	INFO	running on Python 3.11.3
+Run started:2023-05-03 07:04:33.699836
+Files in scope (3):
+	./__init__.py (score: {SEVERITY: 0, CONFIDENCE: 0})
+	./classes.py (score: {SEVERITY: 0, CONFIDENCE: 0})
+	./classes_test.py (score: {SEVERITY: 0, CONFIDENCE: 0})
+Files excluded (16):
+	./.coverage
+	./.coverage.xml
+	./.coveragerc
+	./.exercism/config.json
+	./.exercism/metadata.json
+	./.mypy_cache/.gitignore
+	./.mypy_cache/3.11/@plugins_snapshot.json
+	./.mypy_cache/CACHEDIR.TAG
+	./HELP.md
+	./HINTS.md
+	./README.md
+	./__pycache__/classes.cpython-311.pyc
+	./__pycache__/classes_test.cpython-311-pytest-7.3.1.pyc
+	./classes.py,cover
+	./classes_test.py,cover
+	./run-tests-python.txt
+
+Test results:
+	No issues identified.
+
+Code scanned:
+	Total lines of code: 147
+	Total lines skipped (#nosec): 0
+	Total potential issues skipped due to specifically being disabled (e.g., #nosec BXXX): 0
+
+Run metrics:
+	Total issues (by severity):
+		Undefined: 0
+		Low: 0
+		Medium: 0
+		High: 0
+	Total issues (by confidence):
+		Undefined: 0
+		Low: 0
+		Medium: 0
+		High: 0
+Files skipped (0):
+
+real	0m0.235s
+user	0m0.189s
+sys	0m0.047s
+
+===============================================================================
+
+Running: refurb .
+
+real	0m5.721s
+user	0m5.563s
+sys	0m0.159s
+
+===============================================================================
+
+==> .coveragerc <==
+[run]
+omit = __init__.py, *_test.py
+
+Running: pytest --verbose --cov=. --cov-branch --cov-report=term-missing --cov-report=xml:.coverage.xml -p no:randomly
+============================= test session starts ==============================
+platform linux -- Python 3.11.3, pytest-7.3.1, pluggy-1.0.0 -- /home/vpayno/.pyenv/versions/3.11.3/bin/python
+cachedir: .pytest_cache
+rootdir: /home/vpayno/git_vpayno/exercism-workspace/python
+configfile: pytest.ini
+plugins: anyio-3.6.2, libtmux-0.21.1, pylama-8.4.1, cov-4.0.0, datafiles-3.0.0, docker-1.0.1, subprocess-1.5.0, typeguard-2.13.3
+collecting ... collected 10 items
+
+classes_test.py::ClassesTest::test_alien_class_variable PASSED           [ 10%]
+classes_test.py::ClassesTest::test_alien_collision_detection_method PASSED [ 20%]
+classes_test.py::ClassesTest::test_alien_has_correct_initial_coordinates PASSED [ 30%]
+classes_test.py::ClassesTest::test_alien_has_health PASSED               [ 40%]
+classes_test.py::ClassesTest::test_alien_hit_method PASSED               [ 50%]
+classes_test.py::ClassesTest::test_alien_instance_variables PASSED       [ 60%]
+classes_test.py::ClassesTest::test_alien_is_alive_method PASSED          [ 70%]
+classes_test.py::ClassesTest::test_alien_teleport_method PASSED          [ 80%]
+classes_test.py::ClassesTest::test_alien_total_aliens_created PASSED     [ 90%]
+classes_test.py::ClassesTest::test_new_aliens_collection PASSED          [100%]
+
+---------- coverage: platform linux, python 3.11.3-final-0 -----------
+Name         Stmts   Miss Branch BrPart  Cover   Missing
+--------------------------------------------------------
+classes.py      23      0      4      0   100%
+--------------------------------------------------------
+TOTAL           23      0      4      0   100%
+Coverage XML written to file .coverage.xml
+
+
+============================== 10 passed in 0.05s ==============================
+
+real	0m0.984s
+user	0m0.862s
+sys	0m0.125s
+
+===============================================================================
+
+Running: coverage report --show-missing
+Name         Stmts   Miss Branch BrPart  Cover   Missing
+--------------------------------------------------------
+classes.py      23      0      4      0   100%
+--------------------------------------------------------
+TOTAL           23      0      4      0   100%
+
+real	0m0.143s
+user	0m0.096s
+sys	0m0.048s
+
+===============================================================================
+
+coverage annotate
+The annotate command will be removed in a future version.
+Get in touch if you still use it: ned@nedbatchelder.com
+
+real	0m0.151s
+user	0m0.106s
+sys	0m0.047s
+
+tail -n 10000 ./*,cover | grep -E -C 3 '^> def |^! '
+  
+> def new_aliens_collection(positions: List[Tuple[int, int]]) -> List[Alien]:
+>     return [Alien(*position) for position in positions]
+--
+>     from classes import new_aliens_collection
+! except ImportError as err:
+!     raise ImportError("We tried to import the new_aliens_collection() function, "
+!                       "but could not find it. Did you remember to create it?") from err
+  
+--
+>     from classes import Alien
+! except ImportError as err:
+!     raise ImportError("We tried to import the 'Alien' class from the classes.py file, but could not find it. "
+!                       "Did you remember to create it?") from err
+  
+
+===============================================================================
+
+Running: misspell ./classes.py ./classes_test.py ./__init__.py
+
+real	0m0.021s
+user	0m0.025s
+sys	0m0.009s
+
+===============================================================================
+
