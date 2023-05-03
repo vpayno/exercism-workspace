@@ -28,3 +28,4 @@
 - [tisbury-treasure-hunt](./tisbury-treasure-hunt/README.md)
 - [inventory-management](./inventory-management/README.md)
 - [cater-waiter](./cater-waiter/README.md)
+- [locomotive-engineer](./locomotive-engineer/README.md)

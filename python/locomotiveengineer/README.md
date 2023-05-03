@@ -493,3 +493,8 @@ Your function should return a `list` with the three "row" `lists` reordered to h
 ### Contributed to by
 
 - @IsaacG
+
+### My Solution
+
+- [my solution](./locomotive_engineer.py)
+- [run-tests](./run-tests-python.txt)

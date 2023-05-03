@@ -1,0 +1,207 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: pylint --ignore-patterns (__init__|.*_test).py .
+************* Module locomotive-engineer
+__init__.py:1:0: C0103: Module name "locomotive-engineer" doesn't conform to snake_case naming style (invalid-name)
+
+real	0m0.422s
+user	0m0.359s
+sys	0m0.065s
+
+===============================================================================
+
+Running: ruff check --ignore E501 ./__init__.py ./locomotive_engineer.py ./locomotive_engineer_test.py
+
+real	0m0.066s
+user	0m0.032s
+sys	0m0.039s
+
+===============================================================================
+
+Running: pyright --stats .
+Found 3 source files
+pyright 1.1.306
+/home/vpayno/git_vpayno/exercism-workspace/python/locomotive-engineer/locomotive_engineer_test.py
+  /home/vpayno/git_vpayno/exercism-workspace/python/locomotive-engineer/locomotive_engineer_test.py:54:52 - error: Argument of type "dict[str, str]" cannot be assigned to parameter "route" of type "Dict[str, str | List[str]]" in function "add_missing_stops"
+    "dict[str, str]" is incompatible with "Dict[str, str | List[str]]"
+      TypeVar "_VT@dict" is invariant
+        Type "str" cannot be assigned to type "str | List[str]"
+          "str" is incompatible with "List[str]" (reportGeneralTypeIssues)
+1 error, 0 warnings, 0 informations 
+Completed in 0.7sec
+
+Analysis stats
+Total files parsed and bound: 80
+Total files checked: 3
+
+Timing stats
+Find Source Files:    0sec
+Read Source Files:    0.01sec
+Tokenize:             0.04sec
+Parse:                0.07sec
+Resolve Imports:      0.06sec
+Bind:                 0.05sec
+Check:                0.14sec
+Detect Cycles:        0sec
+
+real	0m1.506s
+user	0m1.537s
+sys	0m0.141s
+
+===============================================================================
+
+Running: bandit --verbose --recursive .
+[main]	INFO	profile include tests: None
+[main]	INFO	profile exclude tests: None
+[main]	INFO	cli include tests: None
+[main]	INFO	cli exclude tests: None
+[main]	INFO	running on Python 3.11.3
+Run started:2023-05-03 06:24:45.019651
+Files in scope (3):
+	./__init__.py (score: {SEVERITY: 0, CONFIDENCE: 0})
+	./locomotive_engineer.py (score: {SEVERITY: 0, CONFIDENCE: 0})
+	./locomotive_engineer_test.py (score: {SEVERITY: 0, CONFIDENCE: 0})
+Files excluded (16):
+	./.coverage
+	./.coverage.xml
+	./.coveragerc
+	./.exercism/config.json
+	./.exercism/metadata.json
+	./.mypy_cache/.gitignore
+	./.mypy_cache/3.11/@plugins_snapshot.json
+	./.mypy_cache/CACHEDIR.TAG
+	./HELP.md
+	./HINTS.md
+	./README.md
+	./__pycache__/__init__.cpython-311.pyc
+	./__pycache__/locomotive_engineer.cpython-311.pyc
+	./__pycache__/locomotive_engineer_test.cpython-311-pytest-7.3.1.pyc
+	./locomotive_engineer.py,cover
+	./run-tests-python.txt
+
+Test results:
+	No issues identified.
+
+Code scanned:
+	Total lines of code: 124
+	Total lines skipped (#nosec): 0
+	Total potential issues skipped due to specifically being disabled (e.g., #nosec BXXX): 0
+
+Run metrics:
+	Total issues (by severity):
+		Undefined: 0
+		Low: 0
+		Medium: 0
+		High: 0
+	Total issues (by confidence):
+		Undefined: 0
+		Low: 0
+		Medium: 0
+		High: 0
+Files skipped (0):
+
+real	0m0.242s
+user	0m0.195s
+sys	0m0.048s
+
+===============================================================================
+
+Running: refurb .
+
+real	0m5.492s
+user	0m5.339s
+sys	0m0.155s
+
+===============================================================================
+
+==> .coveragerc <==
+[run]
+omit = __init__.py, *_test.py
+
+Running: pytest --verbose --cov=. --cov-branch --cov-report=term-missing --cov-report=xml:.coverage.xml -p no:randomly
+============================= test session starts ==============================
+platform linux -- Python 3.11.3, pytest-7.3.1, pluggy-1.0.0 -- /home/vpayno/.pyenv/versions/3.11.3/bin/python
+cachedir: .pytest_cache
+rootdir: /home/vpayno/git_vpayno/exercism-workspace/python
+configfile: pytest.ini
+plugins: anyio-3.6.2, libtmux-0.21.1, pylama-8.4.1, cov-4.0.0, datafiles-3.0.0, docker-1.0.1, subprocess-1.5.0, typeguard-2.13.3
+collecting ... collected 5 items
+
+locomotive_engineer_test.py::LocomotiveEngineerTest::test_add_missing_stops PASSED [ 20%]
+locomotive_engineer_test.py::LocomotiveEngineerTest::test_extend_route_information PASSED [ 40%]
+locomotive_engineer_test.py::LocomotiveEngineerTest::test_fix_list_of_wagons PASSED [ 60%]
+locomotive_engineer_test.py::LocomotiveEngineerTest::test_fix_wagon_depot PASSED [ 80%]
+locomotive_engineer_test.py::LocomotiveEngineerTest::test_get_list_of_wagons PASSED [100%]
+
+---------- coverage: platform linux, python 3.11.3-final-0 -----------
+Name                     Stmts   Miss Branch BrPart  Cover   Missing
+--------------------------------------------------------------------
+locomotive_engineer.py      19      0      4      0   100%
+--------------------------------------------------------------------
+TOTAL                       19      0      4      0   100%
+Coverage XML written to file .coverage.xml
+
+
+============================== 5 passed in 0.04s ===============================
+
+real	0m0.938s
+user	0m0.808s
+sys	0m0.132s
+
+===============================================================================
+
+Running: coverage report --show-missing
+Name                     Stmts   Miss Branch BrPart  Cover   Missing
+--------------------------------------------------------------------
+locomotive_engineer.py      19      0      4      0   100%
+--------------------------------------------------------------------
+TOTAL                       19      0      4      0   100%
+
+real	0m0.145s
+user	0m0.104s
+sys	0m0.042s
+
+===============================================================================
+
+coverage annotate
+The annotate command will be removed in a future version.
+Get in touch if you still use it: ned@nedbatchelder.com
+
+real	0m0.139s
+user	0m0.099s
+sys	0m0.042s
+
+tail -n 10000 ./*,cover | grep -E -C 3 '^> def |^! '
+  
+> def get_list_of_wagons(*args: str) -> List[str]:
+>     """Return a list of wagons.
+--
+  
+> def fix_list_of_wagons(each_wagons_id: List[int], missing_wagons: List[int]) -> List[int]:
+>     """Fix the list of wagons.
+--
+  
+> def add_missing_stops(route: Dict[str, str | List[str]], **kwargs: str) -> Dict[str, str | List[str]]:
+>     """Add missing stops to route dict.
+--
+  
+> def extend_route_information(route: Dict[str, str], more_route_information: Dict[str, str]) -> Dict[str, str]:
+>     """Extend route information with more_route_information.
+--
+  
+> def fix_wagon_depot(wagons_rows: List[List[Tuple[int, str]]]) -> List[List[Tuple[int, str]]]:
+>     """Fix the list of rows of wagons.
+
+===============================================================================
+
+Running: misspell ./__init__.py ./locomotive_engineer.py ./locomotive_engineer_test.py
+
+real	0m0.029s
+user	0m0.021s
+sys	0m0.013s
+
+===============================================================================
+
