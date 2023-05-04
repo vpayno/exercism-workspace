@@ -56,3 +56,8 @@ More information on the color encoding of resistors can be found in the [Electro
 ### Based on
 
 Maud de Vries, Erik Schierboom - https://github.com/exercism/problem-specifications/issues/1458
+
+### My Solution
+
+- [my solution](./lib/*[.]tcl)
+- [run-tests](./run-tests-tcl.txt)
