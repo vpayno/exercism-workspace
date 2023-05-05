@@ -15,14 +15,8 @@ main() {
 	# http://www.xdobry.de/ttclcheck/
 	# sudo apt install xotcl
 
-	for tf in ./*.tcl; do
-		if [[ ${tf} =~ testHelpers.tcl ]]; then
-			continue
-		fi
-
-		echo Running: ttclcheck "${tf}"
-		time ttclcheck "${tf}"
-	done
+	echo Running: ttclcheck -scan "${PWD}"
+	time ttclcheck -scan "${PWD}"
 
 	print_ruler
 
