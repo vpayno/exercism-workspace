@@ -73,3 +73,8 @@ For example, an input of `"orange", "orange", "orange"` should return:
 ### Based on
 
 Maud de Vries, Erik Schierboom - https://github.com/exercism/problem-specifications/issues/1549
+
+### My Solution
+
+- [my solution](./lib/*[.]tcl)
+- [run-tests](./run-tests-tcl.txt)
