@@ -50,3 +50,8 @@ brown-green-violet should return 15 too, ignoring the third color.
 ### Based on
 
 Maud de Vries, Erik Schierboom - https://github.com/exercism/problem-specifications/issues/1464
+
+### My Solution
+
+- [my solution](./lib/*[.]tcl)
+- [run-tests](./run-tests-tcl.txt)
