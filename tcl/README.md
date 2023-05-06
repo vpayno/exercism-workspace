@@ -19,3 +19,4 @@
 - [resistor-color](./resistor-color/README.md)
 - [resistor-color-duo](./resistor-color-duo/README.md)
 - [resistor-color-trio](./resistor-color-trio/README.md)
+- [beer-song](./beer-song/README.md)

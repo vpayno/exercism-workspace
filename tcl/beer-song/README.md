@@ -338,3 +338,8 @@ experiment make the code better? Worse? Did you learn anything from it?
 ### Based on
 
 Learn to Program by Chris Pine - http://pine.fm/LearnToProgram/?Chapter=06
+
+### My Solution
+
+- [my solution](./lib/*[.]tcl)
+- [run-tests](./run-tests-tcl.txt)
