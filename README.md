@@ -13,7 +13,7 @@ Exercism Workspace (https://exercism.org/docs/tracks)
 - February: Functional -> Haskell (done)
 - March: Mechanical -> Go (done)
 - April: Analytical -> Python (done)
-- May: Mindshifting -> Tcl
+- May: Mindshifting -> Tcl (done)
 - June: Summer of Sexps ->
 - July: Jurassic ->
 - August: Apps ->
