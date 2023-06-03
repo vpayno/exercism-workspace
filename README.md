@@ -14,7 +14,7 @@ Exercism Workspace (https://exercism.org/docs/tracks)
 - March: Mechanical -> Go (done)
 - April: Analytical -> Python (done)
 - May: Mindshifting -> Tcl (done)
-- June: Summer of Sexps ->
+- June: Summer of Sexps -> Common Lisp (in progress)
 - July: Jurassic ->
 - August: Apps ->
 - September: Slimline ->
@@ -85,6 +85,7 @@ Exercism Workspace (https://exercism.org/docs/tracks)
 - [jq](jq/README.md)
 - [Haskell](haskell/README.md)
 - [Python](python/README.md)
+- [Common Lisp](common-lisp/README.md)
 
 
 ## Tools/Scripts
