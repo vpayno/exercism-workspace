@@ -88,3 +88,21 @@ jobs:
           ros install cxxxr/sblint
           cd ./common-lisp
           ./for_each sblint -v
+      - name: Run tests
+        id: run-tests
+        run: |-
+          export PATH="${HOME}/.roswell/bin/:${PATH}"
+          cd ./common-lisp
+          curl -sSO https://beta.quicklisp.org/quicklisp.lisp
+          clisp <<EOF
+          (load "quicklisp.lisp")
+          (quicklisp-quickstart:install)
+          (ql:system-apropos "vecto")
+          (ql:quickload "vecto")
+          (ql:add-to-init-file)
+          (ql:quickload "quicklisp-slime-helper")
+          (ql:update-dist "quicklisp")
+          (ql:update-client)
+          EOF
+          cp -v .clisprc.lisp "${HOME}/"
+          ./for_each clisp ./run-tests.lisp
