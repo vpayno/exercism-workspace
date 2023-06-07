@@ -1,0 +1,90 @@
+---
+#
+# .github/workflows/common-lisp.yml
+#
+name: Common Lisp Workflow
+on:  # yamllint disable-line rule:truthy
+  pull_request:
+
+jobs:
+  stage1:
+    name: Change Check
+    runs-on: 'ubuntu-latest'
+    outputs:
+      docs_changed: ${{ steps.check_file_changed.outputs.docs_changed }}
+    steps:
+      - name: Checkout Repo
+        id: checkout-repo
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: ${{ github.ref }}
+          submodules: recursive
+      - name: Get Change List
+        id: check_file_changed
+        run: |
+          # Diff HEAD with the previous commit then output to stdout.
+          printf "=== Which files changed? ===\n"
+          GIT_DIFF="$(git diff --name-only HEAD^ HEAD)"
+          printf "%s\n" "${GIT_DIFF}"
+          printf "\n"
+
+          # Check if the files are present in the changed file list (added, modified, deleted) then output to stdout.
+          HAS_DIFF=false
+          printf "=== Which Lisp files changed? ===\n"
+          if printf "%s\n" "${GIT_DIFF}" | grep -E '^(.*[.]lisp|.github/workflows/common-lisp.yml)'; then
+            HAS_DIFF=true
+          fi
+          printf "\n"
+
+          # Did Lisp files change?
+          printf "=== Did Lisp files change? ===\n"
+          printf "%s\n" "${HAS_DIFF}"
+          printf "\n"
+
+          # Set the output named "docs_changed"
+          printf "%s=%s\n" "docs_changed" "${HAS_DIFF}" >> "${GITHUB_OUTPUT}"
+  stage2:
+    name: Lisp Checks
+    strategy:
+      matrix:
+        os: ["ubuntu-latest", "windows-latest", "macos-latest"]
+        exclude:
+          - os: "macos-latest"
+          - os: "windows-latest"
+    runs-on: "${{ matrix.os }}"
+    needs: [stage1]
+    if: needs.stage1.outputs.docs_changed == 'True'
+    steps:
+      - name: Checkout Repo
+        id: checkout-repo
+        uses: actions/checkout@v3
+      - name: Set up Lisp
+        id: setup-lisp
+        run: |
+          sudo apt install -y clisp clisp-doc cl-fiveam sbcl sbcl-doc cl-launch emacs-nox
+      - name: Show Lisp version
+        id: lisp-version
+        run: |
+          clisp --version
+      - name: Install Lisp Tools
+        id: install-lisp-tools
+        run: |
+          ros_deb="$(curl -sS https://api.github.com/repos/roswell/roswell/releases/latest | jq -r '.assets | .[] | select(.name|test("[.]deb$")) | .browser_download_url')"
+          curl -sSOL "${ros_deb}"
+          sudo apt install -y "./${ros_deb##*/}"
+      - name: CD to Common Lisp Dir
+        id: cd-to-lisp-dir
+        run: |
+          pwd
+          ls
+          cd ./common-lisp
+          pwd
+          ls
+      - name: Analysing the code with sblint
+        id: sblint
+        run: |-
+          export PATH="${HOME}/.roswell/bin/:${PATH}"
+          ros install cxxxr/sblint
+          cd ./common-lisp
+          ./for_each sblint -v
