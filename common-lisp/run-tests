@@ -1,0 +1,44 @@
+#!/bin/bash
+
+print_ruler() {
+	printf "\n"
+	printf "=%.0s" {1..79}
+	printf "\n"
+	printf "\n"
+} # print_ruler()
+
+main() {
+	PATH="${HOME}/.roswell/bin/:${PATH}"
+
+	printf "Running automated test file(s):\n\n"
+
+	print_ruler
+
+	echo Running: clisp ./run-tests.lisp
+	time clisp ./run-tests.lisp
+
+	print_ruler
+
+	echo sblint -v ./*[.]lisp
+	time sblint -v ./*[.]lisp
+
+	# print_ruler
+
+	# code coverage reporting
+
+	print_ruler
+
+	echo lisp-format -verbose -style=llvm -i ./*[.]lisp
+	time lisp-format -verbose -style=llvm -i ./*[.]lisp
+
+	# print_ruler
+
+	# go install github.com/client9/misspell/cmd/misspell@latest
+
+	echo Running: misspell .
+	time misspell .
+
+	print_ruler
+} # main()
+
+time main "$@" |& tee ./run-tests-lisp.txt

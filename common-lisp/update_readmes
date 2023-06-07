@@ -1,0 +1,60 @@
+#!/bin/bash
+
+if [[ ! -d .exercism ]]; then
+	printf "ERROR: Run from inside a project directory.\n\n"
+	exit 1
+fi
+
+declare package_name
+declare project_dir
+
+get_lisp_package_name() {
+	basename "${PWD}"
+} # get_lisp_package_name()
+
+package_name="$(get_lisp_package_name)"
+project_dir="$(basename "${PWD}")"
+
+if ! grep -q ./"${project_dir}"/README.md ../README.md; then
+
+	cat >>../README.md <<EOF
+- [${project_dir}](./${project_dir}/README.md)
+EOF
+
+fi
+
+if ! grep -q "my solution" ./README.md; then
+
+	# Two empty spaces because the file is missing a trailing new line.
+	cat >>./README.md <<EOF
+
+### My Solution
+
+- [my solution]($(printf "%s\n" ./*[.]lisp | grep -v -e run-tests.lisp -e "test[.]lisp"))
+EOF
+
+	cat >>./README.md <<EOF
+- [run-tests script](./run-tests.lisp)
+- [run-tests output](./run-tests-lisp.txt)
+EOF
+
+fi
+
+printf "\n"
+git add ../README.md ./README.md
+git diff --cached ../README.md ./README.md
+
+cat >run-tests.lisp <<EOF
+(load "~/.clisprc.lisp")
+
+EOF
+
+for f in ./*-test.lisp; do
+	printf "(load \"%s\")\n\n" "${f}"
+done >>run-tests.lisp
+
+cat >>run-tests.lisp <<EOF
+(${package_name}-test:run-tests)
+
+(quit)
+EOF
