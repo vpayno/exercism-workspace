@@ -1,0 +1,54 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: clisp ./run-tests.lisp
+To load "fiveam":
+  Load 1 ASDF system:
+    fiveam
+; Loading "fiveam"
+
+
+Running test suite HELLO-WORLD-SUITE
+ Running test SAY-HI! .
+ Did 1 check.
+    Pass: 1 (100%)
+    Skip: 0 ( 0%)
+    Fail: 0 ( 0%)
+
+
+real	0m2.798s
+user	0m2.455s
+sys	0m0.342s
+
+===============================================================================
+
+sblint -v ./hello-world.lisp ./hello-world-test.lisp ./run-tests.lisp
+[INFO] Lint file hello-world.lisp
+
+real	0m0.654s
+user	0m0.552s
+sys	0m0.102s
+
+===============================================================================
+
+lisp-format -verbose -style=llvm -i ./hello-world.lisp ./hello-world-test.lisp ./run-tests.lisp
+Indenting region... 
+Indenting region...done
+Indenting region... 
+Indenting region...done
+Indenting region... 
+Indenting region...done
+
+real	0m0.103s
+user	0m0.073s
+sys	0m0.030s
+Running: misspell .
+
+real	0m0.025s
+user	0m0.026s
+sys	0m0.012s
+
+===============================================================================
+
