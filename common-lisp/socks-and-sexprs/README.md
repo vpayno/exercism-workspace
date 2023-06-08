@@ -139,3 +139,8 @@ Again, some of Common Lisp's built-in functions might come in handy here.
 
 - @verdammelt
 - @TheLostLambda
+### My Solution
+
+- [my solution](./socks-and-sexprs.lisp)
+- [run-tests script](./run-tests.lisp)
+- [run-tests output](./run-tests-lisp.txt)

@@ -308,8 +308,9 @@ Bye.
 
 ## Concepts
 
-- [comments](./comments/README.md)
+- [comments, cons, expressions, symbols](./socks-and-sexprs/README.md)
 
 ## Exercises
 
 - [hello-world](./hello-world/README.md)
+- [socks-and-sexprs](./socks-and-sexprs/README.md)
