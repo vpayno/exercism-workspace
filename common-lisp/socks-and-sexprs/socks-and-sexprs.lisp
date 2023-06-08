@@ -27,10 +27,10 @@
 
 ;; Evaluates to the first part of CONS
 (defun first-thing (cons)
-  (car cons)
+  (first cons)
   )
 
 ;; Evaluates to the 'rest' of the CONS
 (defun rest-of-it (cons)
-  (cdr cons)
+  (rest cons)
   )
