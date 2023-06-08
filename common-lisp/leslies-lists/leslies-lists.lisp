@@ -16,22 +16,52 @@
 
 (in-package :leslies-lists)
 
-(defun new-list () 'this-is-wrong)
+;;; returns empty list
+(defun new-list ()
+  '()
+  ) ; => ()
 
-(defun list-of-things (thing1 thing2 thing3))
+;;; returns a list with 3 things
+(defun list-of-things (thing1 thing2 thing3)
+  (list thing1 thing2 thing3)
+  ) ; => (thing1 thing2 thing3)
 
-(defun add-to-list (item list))
+;;; returns a list with the new item prepended
+(defun add-to-list (item list)
+  (cons item list)
+  ) ; => (item list_items...)
 
-(defun first-thing (list))
+;;; returns the first thing on the list
+(defun first-thing (list)
+  (first list)
+  ) ; 1st item or nil
 
-(defun second-thing (list))
+;;; returns the second thing on the list
+(defun second-thing (list)
+  (second list)
+  ) ; 2nd item or nil
 
-(defun third-thing (list))
+;;; returns the third thing on the list
+(defun third-thing (list)
+  (third list)
+  ) ; 3rd item or nil
 
-(defun twenty-third-thing (list))
+;;; returns the 23rd (index 22) thing on the list
+(defun twenty-third-thing (list)
+  (nth 22 list)
+  ) ; => 23rd item or nil
 
-(defun remove-first-item (list))
+;;; returns a new list without the first item
+(defun remove-first-item (list)
+  (rest list)
+  ) ; => list[1:]
 
-(defun list-append (list1 list2))
+;;; returns one list after merging two lists
+(defun list-append (list1 list2)
+  (append list1 list2)
+  ) ; => (list1[], list2[])
 
-(defun just-how-long (list))
+;; returns the length of the list
+(defun just-how-long (list)
+  (length list)
+  ) ; => n>=0

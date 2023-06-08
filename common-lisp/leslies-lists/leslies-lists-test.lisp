@@ -1,7 +1,7 @@
 ;; Ensures that leslies-lists.lisp and the testing library are always loaded
 (eval-when (:compile-toplevel :load-toplevel :execute)
-  (load "leslies-lists")
-  (ql:quickload :fiveam))
+	   (load "leslies-lists")
+	   (ql:quickload :fiveam))
 
 ;; Defines the testing package with symbols from leslies-lists and FiveAM in scope
 ;; The `run-tests` function is exported for use by both the user and test-runner
@@ -31,12 +31,12 @@
 
 (test peeking-at-the-list "Leslie needs a way to see what items are coming up on the list"
       (let ((shopping-list '(left-handed-frobz salt skquargzes butter sananab
-                             motor-oil dilithium-crystals photonic-oscillators
-                             digestive-biscuits marmalade jelly-babies
-                             hazramfoobles crisps chips right-handed-macaroni
-                             various-nozzles seedless-snozzberries ronopotolo
-                             cran-apple apple-cran raisins dihydrogen-oxide
-                             birthday-candles cupcakes)))
+					       motor-oil dilithium-crystals photonic-oscillators
+					       digestive-biscuits marmalade jelly-babies
+					       hazramfoobles crisps chips right-handed-macaroni
+					       various-nozzles seedless-snozzberries ronopotolo
+					       cran-apple apple-cran raisins dihydrogen-oxide
+					       birthday-candles cupcakes)))
         (is (equal 'left-handed-frobz (first-thing shopping-list)))
         (is (equal 'salt (second-thing shopping-list)))
         (is (equal 'skquargzes (third-thing shopping-list)))
@@ -58,8 +58,8 @@
       (is (= 3 (just-how-long '(left-handed-frobz salt skquargzes))))
       (is (= 2 (just-how-long '(left-handed-frobz salt))))
       (is (= 11 (just-how-long '(left-handed-frobz salt skquargzes butter sananab
-                                 motor-oil dilithium-crystals photonic-oscillators
-                                 digestive-biscuits marmalade jelly-babies)))))
+						   motor-oil dilithium-crystals photonic-oscillators
+						   digestive-biscuits marmalade jelly-babies)))))
 
 (defun run-tests (&optional (test-or-suite 'leslies-lists-suite))
   "Provides human readable results of test run. Default to entire suite."

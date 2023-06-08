@@ -142,3 +142,8 @@ Leslie is getting worried that this shopping trip will take a while. Just how ma
 ### Created by
 
 - @verdammelt
+### My Solution
+
+- [my solution](./leslies-lists.lisp)
+- [run-tests script](./run-tests.lisp)
+- [run-tests output](./run-tests-lisp.txt)

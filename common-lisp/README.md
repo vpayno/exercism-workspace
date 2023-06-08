@@ -310,9 +310,11 @@ Bye.
 
 - [comments, cons, expressions, symbols](./socks-and-sexprs/README.md)
 - [arithmetic, floating point numbers, integers](./pizza-pi/README.md)
+- [lists](./leslies-lists/README.md)
 
 ## Exercises
 
 - [hello-world](./hello-world/README.md)
 - [socks-and-sexprs](./socks-and-sexprs/README.md)
 - [pizza-pi](./pizza-pi/README.md)
+- [leslies-lists](./leslies-lists/README.md)
