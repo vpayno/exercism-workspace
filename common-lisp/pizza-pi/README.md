@@ -130,3 +130,8 @@ For example:
 
 - @TheLostLambda
 - @verdammelt
+### My Solution
+
+- [my solution](./pizza-pi.lisp)
+- [run-tests script](./run-tests.lisp)
+- [run-tests output](./run-tests-lisp.txt)

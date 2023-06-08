@@ -1,0 +1,57 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: clisp ./run-tests.lisp
+To load "fiveam":
+  Load 1 ASDF system:
+    fiveam
+; Loading "fiveam"
+
+
+Running test suite PIZZA-PI-SUITE
+ Running test FAIR-SHARE ..........
+ Running test CHEESE-PLEASE .....
+ Running test SPLASH-OF-SAUCES ..........
+ Running test DOUGH-RATIO .....
+ Did 30 checks.
+    Pass: 30 (100%)
+    Skip: 0 ( 0%)
+    Fail: 0 ( 0%)
+
+
+real	0m2.493s
+user	0m2.205s
+sys	0m0.287s
+
+===============================================================================
+
+sblint -v ./pizza-pi.lisp ./pizza-pi-test.lisp ./run-tests.lisp
+[INFO] Lint file pizza-pi.lisp
+
+real	0m0.579s
+user	0m0.496s
+sys	0m0.083s
+
+===============================================================================
+
+lisp-format -verbose -style=llvm -i ./pizza-pi.lisp ./pizza-pi-test.lisp ./run-tests.lisp
+Indenting region... 
+Indenting region...done
+Indenting region... 
+Indenting region...done
+Indenting region... 
+Indenting region...done
+
+real	0m0.098s
+user	0m0.068s
+sys	0m0.030s
+Running: misspell .
+
+real	0m0.035s
+user	0m0.032s
+sys	0m0.011s
+
+===============================================================================
+
