@@ -162,3 +162,8 @@ syllabus in the Strings lesson.
 ### Created by
 
 - @TheLostLambda
+### My Solution
+
+- [my solution](./pal-picker.lisp)
+- [run-tests script](./run-tests.lisp)
+- [run-tests output](./run-tests-lisp.txt)

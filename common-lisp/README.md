@@ -311,6 +311,7 @@ Bye.
 - [comments, cons, expressions, symbols](./socks-and-sexprs/README.md)
 - [arithmetic, floating point numbers, integers](./pizza-pi/README.md)
 - [lists](./leslies-lists/README.md)
+- [conditionals, booleans](./pal-picker/README.md)
 
 ## Exercises
 
@@ -318,3 +319,4 @@ Bye.
 - [socks-and-sexprs](./socks-and-sexprs/README.md)
 - [pizza-pi](./pizza-pi/README.md)
 - [leslies-lists](./leslies-lists/README.md)
+- [pal-picker](./pal-picker/README.md)
