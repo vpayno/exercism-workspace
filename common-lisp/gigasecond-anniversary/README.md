@@ -128,3 +128,8 @@ This function should return the date as a list of the same order and meaning as 
 ### Created by
 
 - @verdammelt
+### My Solution
+
+- [my solution](./gigasecond-anniversary.lisp)
+- [run-tests script](./run-tests.lisp)
+- [run-tests output](./run-tests-lisp.txt)

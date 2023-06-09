@@ -313,6 +313,7 @@ Bye.
 - [lists](./leslies-lists/README.md)
 - [conditionals, booleans](./pal-picker/README.md)
 - [functions](./lillys-lasagna/README.md)
+- [multiple return values, date and time](./gigasecond-anniversary/README.md)
 
 ## Exercises
 
@@ -322,3 +323,4 @@ Bye.
 - [leslies-lists](./leslies-lists/README.md)
 - [pal-picker](./pal-picker/README.md)
 - [lillys-lasagna](./lillys-lasagna/README.md)
+- [gigasecond-anniversary](./gigasecond-anniversary/README.md)
