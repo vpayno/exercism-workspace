@@ -10,11 +10,11 @@ Exercism Workspace
 ### Calendar
 
 - January: Introduction
-- February: Functional -> Haskell (done)
-- March: Mechanical -> Go (done)
-- April: Analytical -> Python (done)
-- May: Mindshifting -> Tcl (done)
-- June: Summer of Sexps -> Common Lisp (in progress)
+- February: Functional -> Haskell
+- March: Mechanical -> Go
+- April: Analytical -> Python
+- May: Mindshifting -> Tcl
+- June: Summer of Sexps -> Common Lisp
 - July: Jurassic ->
 - August: Apps ->
 - September: Slimline ->
