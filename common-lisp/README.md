@@ -312,6 +312,7 @@ Bye.
 - [arithmetic, floating point numbers, integers](./pizza-pi/README.md)
 - [lists](./leslies-lists/README.md)
 - [conditionals, booleans](./pal-picker/README.md)
+- [functions](./lillys-lasagna/README.md)
 
 ## Exercises
 
@@ -320,3 +321,4 @@ Bye.
 - [pizza-pi](./pizza-pi/README.md)
 - [leslies-lists](./leslies-lists/README.md)
 - [pal-picker](./pal-picker/README.md)
+- [lillys-lasagna](./lillys-lasagna/README.md)

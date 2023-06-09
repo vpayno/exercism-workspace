@@ -116,3 +116,8 @@ has spent in the oven at the moment.
 ### Created by
 
 - @verdammelt
+### My Solution
+
+- [my solution](./lillys-lasagna.lisp)
+- [run-tests script](./run-tests.lisp)
+- [run-tests output](./run-tests-lisp.txt)
