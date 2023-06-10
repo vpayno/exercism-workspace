@@ -67,3 +67,8 @@ Write a function `type-of-char` that will evaluate to `:alpha` if the character 
 ### Created by
 
 - @verdammelt
+### My Solution
+
+- [my solution](./character-study.lisp)
+- [run-tests script](./run-tests.lisp)
+- [run-tests output](./run-tests-lisp.txt)

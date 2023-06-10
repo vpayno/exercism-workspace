@@ -315,6 +315,7 @@ Bye.
 - [functions](./lillys-lasagna/README.md)
 - [multiple return values, date and time](./gigasecond-anniversary/README.md)
 - [strings](./log-levels/README.md)
+- [characters](./character-study/README.md)
 
 ## Exercises
 
@@ -326,3 +327,4 @@ Bye.
 - [lillys-lasagna](./lillys-lasagna/README.md)
 - [gigasecond-anniversary](./gigasecond-anniversary/README.md)
 - [log-levels](./log-levels/README.md)
+- [character-study](./character-study/README.md)
