@@ -118,3 +118,8 @@ Obviously after a player is removed if one gets their score from the table it wi
 ### Created by
 
 - @verdammelt
+### My Solution
+
+- [my solution](./high-scores.lisp)
+- [run-tests script](./run-tests.lisp)
+- [run-tests output](./run-tests-lisp.txt)

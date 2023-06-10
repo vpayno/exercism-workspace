@@ -323,6 +323,7 @@ Bye.
 - [Conditionals](https://exercism.org/tracks/common-lisp/concepts/conditionals)
 - [Functions](https://exercism.org/tracks/common-lisp/concepts/functions)
 - [Multiple Values](https://exercism.org/tracks/common-lisp/concepts/multiple-values)
+- [Hash Tables](https://exercism.org/tracks/common-lisp/concepts/hash-tables)
 
 ## [Exercises](https://exercism.org/tracks/common-lisp/exercises)
 
@@ -335,3 +336,4 @@ Bye.
 - [gigasecond-anniversary](./gigasecond-anniversary/README.md)
 - [log-levels](./log-levels/README.md)
 - [character-study](./character-study/README.md)
+- [high-scores](./high-scores/README.md)
