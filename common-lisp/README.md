@@ -306,18 +306,24 @@ Bye.
 - [run-tests](./run-tests)
 - [update_readmes](./update_readmes)
 
-## Concepts
+## [Concepts](https://exercism.org/tracks/common-lisp/concepts)
 
-- [comments, cons, expressions, symbols](./socks-and-sexprs/README.md)
-- [arithmetic, floating point numbers, integers](./pizza-pi/README.md)
-- [lists](./leslies-lists/README.md)
-- [conditionals, booleans](./pal-picker/README.md)
-- [functions](./lillys-lasagna/README.md)
-- [multiple return values, date and time](./gigasecond-anniversary/README.md)
-- [strings](./log-levels/README.md)
-- [characters](./character-study/README.md)
+- [Comments](https://exercism.org/tracks/common-lisp/concepts/comments)
+- [Cons](https://exercism.org/tracks/common-lisp/concepts/cons)
+- [Expressions](https://exercism.org/tracks/common-lisp/concepts/expressions)
+- [Symbols](https://exercism.org/tracks/common-lisp/concepts/symbols)
+- [Lists](https://exercism.org/tracks/common-lisp/concepts/lists)
+- [Strings](https://exercism.org/tracks/common-lisp/concepts/strings)
+- [Characters](https://exercism.org/tracks/common-lisp/concepts/characters)
+- [Integers](https://exercism.org/tracks/common-lisp/concepts/integers)
+- [Floating Point Numbers](https://exercism.org/tracks/common-lisp/concepts/floating-point-numbers)
+- [Arithmetic](https://exercism.org/tracks/common-lisp/concepts/arithmetic)
+- [Date and Time](https://exercism.org/tracks/common-lisp/concepts/date-time)
+- [Truty and Falsy](https://exercism.org/tracks/common-lisp/concepts/truthy-and-falsy)
+- [Conditionals](https://exercism.org/tracks/common-lisp/concepts/conditionals)
+- [Functions](https://exercism.org/tracks/common-lisp/concepts/functions)
+- [Multiple Values](https://exercism.org/tracks/common-lisp/concepts/multiple-values)
 
-## Exercises
 
 - [hello-world](./hello-world/README.md)
 - [socks-and-sexprs](./socks-and-sexprs/README.md)
