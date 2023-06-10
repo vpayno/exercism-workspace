@@ -324,6 +324,7 @@ Bye.
 - [Functions](https://exercism.org/tracks/common-lisp/concepts/functions)
 - [Multiple Values](https://exercism.org/tracks/common-lisp/concepts/multiple-values)
 
+## [Exercises](https://exercism.org/tracks/common-lisp/exercises)
 
 - [hello-world](./hello-world/README.md)
 - [socks-and-sexprs](./socks-and-sexprs/README.md)
