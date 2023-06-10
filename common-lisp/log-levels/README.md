@@ -96,3 +96,8 @@ Define a function `log-format` that takes a log message and evaluates to a prope
 ### Created by
 
 - @verdammelt
+### My Solution
+
+- [my solution](./log-levels.lisp)
+- [run-tests script](./run-tests.lisp)
+- [run-tests output](./run-tests-lisp.txt)

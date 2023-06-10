@@ -314,6 +314,7 @@ Bye.
 - [conditionals, booleans](./pal-picker/README.md)
 - [functions](./lillys-lasagna/README.md)
 - [multiple return values, date and time](./gigasecond-anniversary/README.md)
+- [strings](./log-levels/README.md)
 
 ## Exercises
 
@@ -324,3 +325,4 @@ Bye.
 - [pal-picker](./pal-picker/README.md)
 - [lillys-lasagna](./lillys-lasagna/README.md)
 - [gigasecond-anniversary](./gigasecond-anniversary/README.md)
+- [log-levels](./log-levels/README.md)

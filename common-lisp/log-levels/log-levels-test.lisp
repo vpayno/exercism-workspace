@@ -1,7 +1,7 @@
 ;; Ensures that log-levels.lisp and the testing library are always loaded
 (eval-when (:compile-toplevel :load-toplevel :execute)
-  (load "log-levels")
-  (ql:quickload :fiveam))
+	   (load "log-levels")
+	   (ql:quickload :fiveam))
 
 ;; Defines the testing package with symbols from log-levels and FiveAM in scope
 ;; The `run-tests` function is exported for use by both the user and test-runner

@@ -1,0 +1,60 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: clisp ./run-tests.lisp
+To load "fiveam":
+  Load 1 ASDF system:
+    fiveam
+; Loading "fiveam"
+
+
+Running test suite LOG-LEVELS-SUITE
+ Running test LOG-FORMAT ...
+ Running test LOG-SEVERITY-CASE-INSENSITIVE ...
+ Running test LOG-SEVERITY ...
+ Running test LOG-MESSAGE ...
+ Did 12 checks.
+    Pass: 12 (100%)
+    Skip: 0 ( 0%)
+    Fail: 0 ( 0%)
+
+
+real	0m2.545s
+user	0m2.256s
+sys	0m0.288s
+
+===============================================================================
+
+sblint -v ./log-levels.lisp ./log-levels-test.lisp ./run-tests.lisp
+[INFO] Lint file log-levels.lisp
+
+real	0m0.559s
+user	0m0.477s
+sys	0m0.082s
+
+===============================================================================
+
+lisp-format -verbose -style=llvm -i ./log-levels.lisp ./log-levels-test.lisp ./run-tests.lisp
+Indenting region... 
+Indenting region...done
+Indenting region... 
+Indenting region...done
+Indenting region... 
+Indenting region...done
+
+real	0m0.106s
+user	0m0.070s
+sys	0m0.036s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.028s
+user	0m0.033s
+sys	0m0.010s
+
+===============================================================================
+
