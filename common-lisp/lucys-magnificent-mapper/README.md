@@ -89,3 +89,8 @@ You'll need to write a function `only-the-best` which takes a function and a lis
 ### Created by
 
 - @verdammelt
+### My Solution
+
+- [my solution](./lucys-magnificent-mapper.lisp)
+- [run-tests script](./run-tests.lisp)
+- [run-tests output](./run-tests-lisp.txt)

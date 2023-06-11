@@ -326,6 +326,8 @@ Bye.
 - [Hash Tables](https://exercism.org/tracks/common-lisp/concepts/hash-tables)
 - [Vectors](https://exercism.org/tracks/common-lisp/concepts/vectors)
 - [Arrays](https://exercism.org/tracks/common-lisp/concepts/arrays)
+- [Filtering](https://exercism.org/tracks/common-lisp/concepts/filtering)
+- [Mapping](https://exercism.org/tracks/common-lisp/concepts/mapping)
 
 ## [Exercises](https://exercism.org/tracks/common-lisp/exercises)
 
@@ -340,3 +342,4 @@ Bye.
 - [character-study](./character-study/README.md)
 - [high-scores](./high-scores/README.md)
 - [larrys-winning-checker](./larrys-winning-checker/README.md)
+- [lucys-magnificent-mapper](./lucys-magnificent-mapper/README.md)
