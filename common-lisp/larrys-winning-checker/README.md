@@ -106,3 +106,8 @@ The function `column` will take a board and a column number and should return an
 ### Created by
 
 - @verdammelt
+### My Solution
+
+- [my solution](./larrys-winning-checker.lisp)
+- [run-tests script](./run-tests.lisp)
+- [run-tests output](./run-tests-lisp.txt)
