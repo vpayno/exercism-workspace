@@ -190,3 +190,8 @@ because a permissive equality predicate will not consider numeric type when comp
 
 - @verdammelt
 - @TheLostLambda
+### My Solution
+
+- [my solution](./key-comparison.lisp)
+- [run-tests script](./run-tests.lisp)
+- [run-tests output](./run-tests-lisp.txt)
