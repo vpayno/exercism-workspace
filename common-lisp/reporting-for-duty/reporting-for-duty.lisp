@@ -5,8 +5,25 @@
 
 (in-package :reporting-for-duty)
 
-;; Define format-quarter-value function.
+;; return the given values as a formatted string
+(defun format-quarter-value (quarter data)
+  (format nil "The value ~A quarter: ~A" quarter data)
+  ) ; => "The value X quarter: Y"
 
-;; Define format-two-quarters function.
+;; return the given values as a formatted string
+(defun format-two-quarters (s q1 d1 q2 d2)
+  (format s "~%~A~%~A~%"
+    (format-quarter-value q1 d1)
+    (format-quarter-value q2 d2)
+    )
+  ) ; => "\nThe value Q1 quarter: D1\nThe value Q2 quarter: D2\n"
 
-;; Define format-two-quarters-for-reading function.
+;; return the given values as a formatted string
+(defun format-two-quarters-for-reading (s q1 d1 q2 d2)
+  (format s "~S"
+    (list
+     (format-quarter-value q1 d1)
+     (format-quarter-value q2 d2)
+     )
+    )
+  ) ; => "(\"line1\" \"line2\")"

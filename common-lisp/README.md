@@ -329,6 +329,7 @@ Bye.
 - [Filtering](https://exercism.org/tracks/common-lisp/concepts/filtering)
 - [Mapping](https://exercism.org/tracks/common-lisp/concepts/mapping)
 - [Equality](https://exercism.org/tracks/common-lisp/concepts/equality)
+- [Format](https://exercism.org/tracks/common-lisp/concepts/format-basics)
 
 ## [Exercises](https://exercism.org/tracks/common-lisp/exercises)
 
@@ -345,3 +346,4 @@ Bye.
 - [larrys-winning-checker](./larrys-winning-checker/README.md)
 - [lucys-magnificent-mapper](./lucys-magnificent-mapper/README.md)
 - [key-comparison](./key-comparison/README.md)
+- [reporting-for-duty](./reporting-for-duty/README.md)

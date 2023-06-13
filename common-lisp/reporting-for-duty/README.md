@@ -109,3 +109,8 @@ Layla forgot to tell you that Lisp Aliens like to see values in a way that is re
 ### Created by
 
 - @verdammelt
+### My Solution
+
+- [my solution](./reporting-for-duty.lisp)
+- [run-tests script](./run-tests.lisp)
+- [run-tests output](./run-tests-lisp.txt)

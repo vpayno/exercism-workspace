@@ -1,0 +1,63 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: clisp ./run-tests.lisp
+To load "fiveam":
+  Load 1 ASDF system:
+    fiveam
+; Loading "fiveam"
+
+
+Running test suite REPORTING-FOR-DUTY-SUITE
+ Running test FORMAT-READABLE-STDOUT .
+ Running test FORMAT-READABLE-STREAM .
+ Running test FORMAT-READABLE-STRING .
+ Running test FORMAT-TWO-QUARTERS-STDOUT .
+ Running test FORMAT-TWO-QUARTERS-STREAM .
+ Running test FORMAT-TWO-QUARTERS-STRING .
+ Running test FORMAT-QUARTER-VALUE ..
+ Did 8 checks.
+    Pass: 8 (100%)
+    Skip: 0 ( 0%)
+    Fail: 0 ( 0%)
+
+
+real	0m2.133s
+user	0m1.903s
+sys	0m0.230s
+
+===============================================================================
+
+sblint -v ./reporting-for-duty.lisp ./reporting-for-duty-test.lisp ./run-tests.lisp
+[INFO] Lint file reporting-for-duty.lisp
+
+real	0m0.464s
+user	0m0.399s
+sys	0m0.064s
+
+===============================================================================
+
+lisp-format -verbose -style=llvm -i ./reporting-for-duty.lisp ./reporting-for-duty-test.lisp ./run-tests.lisp
+Indenting region... 
+Indenting region...done
+Indenting region... 
+Indenting region...done
+Indenting region... 
+Indenting region...done
+
+real	0m0.091s
+user	0m0.063s
+sys	0m0.028s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.020s
+user	0m0.025s
+sys	0m0.007s
+
+===============================================================================
+
