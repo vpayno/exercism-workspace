@@ -199,3 +199,8 @@ provided and it is `nil` then it should return
 ### Created by
 
 - @verdammelt
+### My Solution
+
+- [my solution](./lillys-lasagna-leftovers.lisp)
+- [run-tests script](./run-tests.lisp)
+- [run-tests output](./run-tests-lisp.txt)

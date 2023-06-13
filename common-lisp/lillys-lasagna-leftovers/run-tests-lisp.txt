@@ -1,0 +1,65 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: clisp ./run-tests.lisp
+To load "fiveam":
+  Load 1 ASDF system:
+    fiveam
+; Loading "fiveam"
+
+
+Running test suite LILLYS-LASAGNA-LEFTOVERS-SUITE
+ Running test SPLITTING-LEFTOVERS-DEFAULT-WEIGHT ..
+ Running test SPLITTING-LEFTOVERS-DEFAULTING-CONTAINERS ...
+ Running test SPLITTING-LEFTOVERS ..
+ Running test REMAINING-MINUTES-IN-OVEN-VERY-VERY-SHORT .
+ Running test REMAINING-MINUTES-IN-OVEN-LONGER ..
+ Running test REMAINING-MINTUES-IN-OVEN-SHORTER ..
+ Running test REMAINING-MINUTES-IN-OVEN-NORMAL ..
+ Running test PREPARATION-TIME ...
+ Did 17 checks.
+    Pass: 17 (100%)
+    Skip: 0 ( 0%)
+    Fail: 0 ( 0%)
+
+
+real	0m2.160s
+user	0m1.905s
+sys	0m0.254s
+
+===============================================================================
+
+sblint -v ./lillys-lasagna-leftovers.lisp ./lillys-lasagna-leftovers-test.lisp ./run-tests.lisp
+[INFO] Lint file lillys-lasagna-leftovers.lisp
+lillys-lasagna-leftovers.lisp:28:0: style-warning: The variable WEIGHT-SUPPLIED-P is defined but never used.
+
+real	0m0.460s
+user	0m0.401s
+sys	0m0.060s
+
+===============================================================================
+
+lisp-format -verbose -style=llvm -i ./lillys-lasagna-leftovers.lisp ./lillys-lasagna-leftovers-test.lisp ./run-tests.lisp
+Indenting region... 
+Indenting region...done
+Indenting region... 
+Indenting region...done
+Indenting region... 
+Indenting region...done
+
+real	0m0.095s
+user	0m0.062s
+sys	0m0.033s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.024s
+user	0m0.026s
+sys	0m0.012s
+
+===============================================================================
+
