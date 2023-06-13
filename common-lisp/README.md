@@ -321,6 +321,7 @@ Bye.
 - [Date and Time](https://exercism.org/tracks/common-lisp/concepts/date-time)
 - [Truty and Falsy](https://exercism.org/tracks/common-lisp/concepts/truthy-and-falsy)
 - [Conditionals](https://exercism.org/tracks/common-lisp/concepts/conditionals)
+- [Equality](https://exercism.org/tracks/common-lisp/concepts/equality)
 - [Functions](https://exercism.org/tracks/common-lisp/concepts/functions)
 - [Lambda List](https://exercism.org/tracks/common-lisp/concepts/lambda-list)
 - [Keyword Parameters](https://exercism.org/tracks/common-lisp/concepts/keyword-parameters)
@@ -332,7 +333,7 @@ Bye.
 - [Arrays](https://exercism.org/tracks/common-lisp/concepts/arrays)
 - [Filtering](https://exercism.org/tracks/common-lisp/concepts/filtering)
 - [Mapping](https://exercism.org/tracks/common-lisp/concepts/mapping)
-- [Equality](https://exercism.org/tracks/common-lisp/concepts/equality)
+- [Reducing](https://exercism.org/tracks/common-lisp/concepts/reducing)
 - [Format](https://exercism.org/tracks/common-lisp/concepts/format-basics)
 
 ## [Exercises](https://exercism.org/tracks/common-lisp/exercises)
@@ -352,3 +353,4 @@ Bye.
 - [key-comparison](./key-comparison/README.md)
 - [reporting-for-duty](./reporting-for-duty/README.md)
 - [lillys-lasagna-leftovers](./lillys-lasagna-leftovers/README.md)
+- [logans-numeric-partition](./logans-numeric-partition/README.md)

@@ -55,3 +55,8 @@ Now that function you can write a function which takes a list of numbers and cat
 ### Created by
 
 - @verdammelt
+### My Solution
+
+- [my solution](./logans-numeric-partition.lisp)
+- [run-tests script](./run-tests.lisp)
+- [run-tests output](./run-tests-lisp.txt)

@@ -1,7 +1,7 @@
 ;; Ensures that logans-numeric-partition.lisp and the testing library are always loaded
 (eval-when (:compile-toplevel :load-toplevel :execute)
-  (load "logans-numeric-partition")
-  (ql:quickload :fiveam))
+	   (load "logans-numeric-partition")
+	   (ql:quickload :fiveam))
 
 ;; Defines the testing package with symbols from logans-numeric-partition and FiveAM in scope
 ;; The `run-tests` function is exported for use by both the user and test-runner
@@ -17,22 +17,22 @@
 (in-suite logans-numeric-partition-suite)
 
 (test categorize-odd-numbers-collection-is-empty
-  (is (equal '((1) . ()) (categorize-number '(() . ()) 1))))
+      (is (equal '((1) . ()) (categorize-number '(() . ()) 1))))
 
 (test categorize-odd-numbers-add-to-existing-collection
-  (is (equal '((3 1) . ()) (categorize-number '((1) . ()) 3))))
+      (is (equal '((3 1) . ()) (categorize-number '((1) . ()) 3))))
 
 (test categorize-odd-numbers-does-not-affect-even-collection
-  (is (equal '((3 1) . (2)) (categorize-number '((1) . (2)) 3))))
+      (is (equal '((3 1) . (2)) (categorize-number '((1) . (2)) 3))))
 
 (test categorize-even-numbers-collection-is-empty
       (is (equal '(() . (2)) (categorize-number '(() . ()) 2))))
 
 (test categorize-even-numbers-add-to-existing-collection
-  (is (equal '(() . (4 2)) (categorize-number '(() . (2)) 4))))
+      (is (equal '(() . (4 2)) (categorize-number '(() . (2)) 4))))
 
 (test categorize-even-numbers-does-not-affect-even-collection
-  (is (equal '((1) . (4 2)) (categorize-number '((1) . (2)) 4))))
+      (is (equal '((1) . (4 2)) (categorize-number '((1) . (2)) 4))))
 
 (test partion-an-empty-list
       (is (equal '(() . ()) (partition-numbers '()))))
