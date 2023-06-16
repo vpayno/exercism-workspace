@@ -52,3 +52,8 @@ Here are some examples:
 ### Based on
 
 https://github.com/exercism/problem-specifications/issues/757
+### My Solution
+
+- [my solution](./two-fer.lisp)
+- [run-tests script](./run-tests.lisp)
+- [run-tests output](./run-tests-lisp.txt)
