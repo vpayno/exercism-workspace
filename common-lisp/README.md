@@ -355,3 +355,4 @@ Bye.
 - [lillys-lasagna-leftovers](./lillys-lasagna-leftovers/README.md)
 - [logans-numeric-partition](./logans-numeric-partition/README.md)
 - [two-fer](./two-fer/README.md)
+- [raindrops](./raindrops/README.md)

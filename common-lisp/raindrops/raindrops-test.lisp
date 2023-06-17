@@ -1,7 +1,7 @@
 ;; Ensures that raindrops.lisp and the testing library are always loaded
 (eval-when (:compile-toplevel :load-toplevel :execute)
-  (load "raindrops")
-  (quicklisp-client:quickload :fiveam))
+	   (load "raindrops")
+	   (quicklisp-client:quickload :fiveam))
 
 ;; Defines the testing package with symbols from raindrops and FiveAM in scope
 ;; The `run-tests` function is exported for use by both the user and test-runner
