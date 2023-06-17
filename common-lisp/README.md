@@ -356,3 +356,4 @@ Bye.
 - [logans-numeric-partition](./logans-numeric-partition/README.md)
 - [two-fer](./two-fer/README.md)
 - [raindrops](./raindrops/README.md)
+- [grains](./grains/README.md)

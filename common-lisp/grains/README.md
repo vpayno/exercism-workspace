@@ -28,3 +28,8 @@ Write code that shows:
 ### Based on
 
 The CodeRanch Cattle Drive, Assignment 6 - https://coderanch.com/wiki/718824/Grains
+### My Solution
+
+- [my solution](./grains.lisp)
+- [run-tests script](./run-tests.lisp)
+- [run-tests output](./run-tests-lisp.txt)

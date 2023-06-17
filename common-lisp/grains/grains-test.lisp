@@ -1,7 +1,7 @@
 ;; Ensures that grains.lisp and the testing library are always loaded
 (eval-when (:compile-toplevel :load-toplevel :execute)
-  (load "grains")
-  (quicklisp-client:quickload :fiveam))
+	   (load "grains")
+	   (quicklisp-client:quickload :fiveam))
 
 ;; Defines the testing package with symbols from grains and FiveAM in scope
 ;; The `run-tests` function is exported for use by both the user and test-runner

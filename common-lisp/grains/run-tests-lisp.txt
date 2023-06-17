@@ -1,0 +1,64 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: clisp ./run-tests.lisp
+To load "fiveam":
+  Load 1 ASDF system:
+    fiveam
+; Loading "fiveam"
+
+
+Running test suite GRAINS-SUITE
+ Running test TOTAL-GRAINS .
+ Running test SQUARE-64 .
+ Running test SQUARE-32 .
+ Running test SQUARE-16 .
+ Running test SQUARE-4 .
+ Running test SQUARE-3 .
+ Running test SQUARE-2 .
+ Running test SQUARE-1 .
+ Did 8 checks.
+    Pass: 8 (100%)
+    Skip: 0 ( 0%)
+    Fail: 0 ( 0%)
+
+
+real	0m2.326s
+user	0m2.101s
+sys	0m0.225s
+
+===============================================================================
+
+sblint -v ./grains.lisp ./grains-test.lisp ./run-tests.lisp
+[INFO] Lint file grains.lisp
+
+real	0m0.485s
+user	0m0.427s
+sys	0m0.058s
+
+===============================================================================
+
+lisp-format -verbose -style=llvm -i ./grains.lisp ./grains-test.lisp ./run-tests.lisp
+Indenting region... 
+Indenting region...done
+Indenting region... 
+Indenting region...done
+Indenting region... 
+Indenting region...done
+
+real	0m0.083s
+user	0m0.063s
+sys	0m0.020s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.021s
+user	0m0.027s
+sys	0m0.009s
+
+===============================================================================
+
