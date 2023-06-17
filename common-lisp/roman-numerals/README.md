@@ -58,3 +58,8 @@ Learn more about [Roman numerals on Wikipedia][roman-numerals].
 ### Based on
 
 The Roman Numeral Kata - https://codingdojo.org/kata/RomanNumerals/
+### My Solution
+
+- [my solution](./roman-numerals.lisp)
+- [run-tests script](./run-tests.lisp)
+- [run-tests output](./run-tests-lisp.txt)
