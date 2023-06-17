@@ -39,11 +39,11 @@
   "Converts a number to a string of raindrop sounds."
 
   (let ((str "")) ; create a local scope variable to the let expression
-    (setf str (format nil "~A~A~A"
-		      (pling n)
-		      (plang n)
-		      (plong n)
-		      ) ; set str to the format expression which concatenates 3 strings
+    (setf str (concatenate 'string
+			   (pling n)
+			   (plang n)
+			   (plong n)
+			   ) ; set str to the format expression which concatenates 3 strings
 	  ) ; setf str
 
     (if (= 0 (length str))
