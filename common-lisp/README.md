@@ -358,3 +358,4 @@ Bye.
 - [raindrops](./raindrops/README.md)
 - [grains](./grains/README.md)
 - [roman-numerals](./roman-numerals/README.md)
+- [scrabble-score](./scrabble-score/README.md)

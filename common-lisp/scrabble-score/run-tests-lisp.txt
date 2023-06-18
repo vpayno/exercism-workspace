@@ -1,0 +1,83 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: clisp ./run-tests.lisp
+To load "fiveam":
+  Load 1 ASDF system:
+    fiveam
+; Loading "fiveam"
+
+
+Running test suite SCRABBLE-SCORE-SUITE
+ Running test SCORES-A-VERY-LONG-WORD .
+ Running test SCORES-A-PECULIAR-WORD .
+ Running test SCORES-A-MIDDLE-OF-THE-ROAD-WORD .
+ Running test SCORES-A-SLIGHTLY-BIGGER-WORD .
+ Running test IS-CASE-INSENSITIVE .
+ Running test SCORES-SMALL-WORD .
+ Running test WHITESPACE-ONLY-ALSO-HAS-ZERO-SCORE .
+ Running test NO-WORD-HAS-ZERO-SCORE .
+ Did 8 checks.
+    Pass: 8 (100%)
+    Skip: 0 ( 0%)
+    Fail: 0 ( 0%)
+
+
+real	0m2.195s
+user	0m1.929s
+sys	0m0.266s
+
+===============================================================================
+
+sblint -v ./run-tests.lisp ./scrabble-score.lisp ./scrabble-score-test.lisp
+[INFO] Lint file run-tests.lisp
+To load "fiveam":
+  Load 1 ASDF system:
+    fiveam
+; Loading "fiveam"
+
+
+Running test suite SCRABBLE-SCORE-SUITE
+ Running test NO-WORD-HAS-ZERO-SCORE .
+ Running test WHITESPACE-ONLY-ALSO-HAS-ZERO-SCORE .
+ Running test SCORES-SMALL-WORD .
+ Running test IS-CASE-INSENSITIVE .
+ Running test SCORES-A-SLIGHTLY-BIGGER-WORD .
+ Running test SCORES-A-MIDDLE-OF-THE-ROAD-WORD .
+ Running test SCORES-A-PECULIAR-WORD .
+ Running test SCORES-A-VERY-LONG-WORD .
+ Did 8 checks.
+    Pass: 8 (100%)
+    Skip: 0 ( 0%)
+    Fail: 0 ( 0%)
+
+real	0m0.484s
+user	0m0.410s
+sys	0m0.073s
+
+===============================================================================
+
+lisp-format -verbose -style=llvm -i ./run-tests.lisp ./scrabble-score.lisp ./scrabble-score-test.lisp
+Indenting region... 
+Indenting region...done
+Indenting region... 
+Indenting region...done
+Indenting region... 
+Indenting region...done
+
+real	0m0.081s
+user	0m0.061s
+sys	0m0.019s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.020s
+user	0m0.027s
+sys	0m0.006s
+
+===============================================================================
+
