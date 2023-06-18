@@ -1,0 +1,61 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: clisp ./run-tests.lisp
+To load "fiveam":
+  Load 1 ASDF system:
+    fiveam
+; Loading "fiveam"
+
+
+Running test suite LEAP-SUITE
+ Running test EXCEPTIONAL-CENTURY .
+ Running test CENTURY .
+ Running test NON-LEAP-EVEN-YEAR .
+ Running test ANY-OLD-YEAR .
+ Running test VANILLA-LEAP-YEAR .
+ Did 5 checks.
+    Pass: 5 (100%)
+    Skip: 0 ( 0%)
+    Fail: 0 ( 0%)
+
+
+real	0m2.079s
+user	0m1.826s
+sys	0m0.252s
+
+===============================================================================
+
+sblint -v ./leap.lisp ./leap-test.lisp ./run-tests.lisp
+[INFO] Lint file leap.lisp
+
+real	0m0.498s
+user	0m0.416s
+sys	0m0.082s
+
+===============================================================================
+
+lisp-format -verbose -style=llvm -i ./leap.lisp ./leap-test.lisp ./run-tests.lisp
+Indenting region... 
+Indenting region...done
+Indenting region... 
+Indenting region...done
+Indenting region... 
+Indenting region...done
+
+real	0m0.095s
+user	0m0.067s
+sys	0m0.028s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.026s
+user	0m0.030s
+sys	0m0.015s
+
+===============================================================================
+

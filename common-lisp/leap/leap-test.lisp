@@ -1,7 +1,7 @@
 ;; Ensures that leap.lisp and the testing library are always loaded
 (eval-when (:compile-toplevel :load-toplevel :execute)
-  (load "leap")
-  (quicklisp-client:quickload :fiveam))
+	   (load "leap")
+	   (quicklisp-client:quickload :fiveam))
 
 ;; Defines the testing package with symbols from leap and FiveAM in scope
 ;; The `run-tests` function is exported for use by both the user and test-runner
