@@ -12,10 +12,13 @@
 
 ;;; returns the score for a single dart throw
 (defun score (x y)
-  (cond
-   ((and (> (radius x y) 5) (<= (radius x y) 10)) 1)
-   ((and (> (radius x y) 1) (<= (radius x y) 5)) 5)
-   ((<= (radius x y) 1) 10)
-   (t 0)
-   )
+  (let ((r 0))
+    (setf r (radius x y))
+    (cond
+     ((and (> r 5) (<= r 10)) 1)
+     ((and (> r 1) (<= r 5)) 5)
+     ((<= r 1) 10)
+     (t 0)
+     ) ; cond
+    ) ; let
   ) ; => int
