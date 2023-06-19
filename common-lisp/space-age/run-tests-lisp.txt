@@ -1,0 +1,86 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: clisp ./run-tests.lisp
+To load "fiveam":
+  Load 1 ASDF system:
+    fiveam
+; Loading "fiveam"
+
+earth: 67.648865
+
+Running test suite SPACE-AGE-SUITE
+ Running test AGE-ON-NEPTUNE ..
+ Running test AGE-ON-URANUS ..
+ Running test AGE-ON-SATURN ..
+ Running test AGE-ON-JUPITER ..
+ Running test AGE-ON-MARS ..
+ Running test AGE-IN-VENUS-YEARS ..
+ Running test AGE-IN-MERCURY-YEARS ..
+ Running test AGE-IN-EARTH-YEARS .
+ Did 15 checks.
+    Pass: 15 (100%)
+    Skip: 0 ( 0%)
+    Fail: 0 ( 0%)
+
+
+real	0m2.415s
+user	0m2.122s
+sys	0m0.293s
+
+===============================================================================
+
+sblint -v ./run-tests.lisp ./space-age.lisp ./space-age-test.lisp
+[INFO] Lint file run-tests.lisp
+space-age.lisp:64:23: style-warning: undefined function: SPACE-AGE::DO-PLANET
+To load "fiveam":
+  Load 1 ASDF system:
+    fiveam
+; Loading "fiveam"
+
+earth: 67.648865
+
+Running test suite SPACE-AGE-SUITE
+ Running test AGE-IN-EARTH-YEARS .
+ Running test AGE-IN-MERCURY-YEARS ..
+ Running test AGE-IN-VENUS-YEARS ..
+ Running test AGE-ON-MARS ..
+ Running test AGE-ON-JUPITER ..
+ Running test AGE-ON-SATURN ..
+ Running test AGE-ON-URANUS ..
+ Running test AGE-ON-NEPTUNE ..
+ Did 15 checks.
+    Pass: 15 (100%)
+    Skip: 0 ( 0%)
+    Fail: 0 ( 0%)
+
+real	0m0.588s
+user	0m0.454s
+sys	0m0.135s
+
+===============================================================================
+
+lisp-format -verbose -style=llvm -i ./run-tests.lisp ./space-age.lisp ./space-age-test.lisp
+Indenting region... 
+Indenting region...done
+Indenting region... 
+Indenting region...done
+Indenting region... 
+Indenting region...done
+
+real	0m0.090s
+user	0m0.069s
+sys	0m0.021s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.022s
+user	0m0.024s
+sys	0m0.010s
+
+===============================================================================
+

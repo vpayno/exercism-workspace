@@ -42,3 +42,8 @@ See [Year on Wikipedia][year] for more ways to measure a year.
 ### Based on
 
 Partially inspired by Chapter 1 in Chris Pine's online Learn to Program tutorial. - https://pine.fm/LearnToProgram/?Chapter=01
+### My Solution
+
+- [my solution](./space-age.lisp)
+- [run-tests script](./run-tests.lisp)
+- [run-tests output](./run-tests-lisp.txt)
