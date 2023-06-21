@@ -10,67 +10,45 @@
 ;;; tradditional OOP.
 
 ;;; Committing this example to learn from it but not submitting it.
-;;; https://exercism.org/tracks/common-lisp/exercises/robot-name/solutions/kruschk
+;;; https://exercism.org/tracks/common-lisp/exercises/robot-name/solutions/kahgoh
 
-(defparameter *alphabetic* "ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+(defstruct robot name)
 
-(defparameter *digital* "0123456789")
+(defvar *used-names* '())
 
-(defparameter *name-pattern*
-  (list *alphabetic* *alphabetic* *digital* *digital* *digital*)
+(defun choose-char (range-start range-end)
+  (let ((start-code (char-code range-start))
+        (end-code (char-code range-end))
+	) ; let
+    (code-char (+ start-code (random (- end-code start-code)))
+               ) ; code-char
+    ) ; let
   )
 
-(defparameter *robot-names* (make-hash-table))
+(defun letter () (choose-char #\A #\Z))
 
-;;; Some handy utility functions
+(defun digit () (choose-char #\0 #\9))
 
-(defun decode (nmbr)
-  (macrolet (
-             (quotrem (dividend divisor)
-		      `(multiple-value-list (truncate ,dividend ,divisor)))
-             )
-            (coerce
-             (loop for string in *name-pattern*
-                   for lngth in (mapcar #'length *name-pattern*)
-                   for (qtnt rmndr) = (quotrem nmbr lngth) then (quotrem qtnt lngth)
-                   collecting (elt string rmndr))
-             'string) ; coerce
-            ) ; macrolet
+(defun pick-name ()
+  (concatenate 'string (list (letter) (letter) (digit) (digit) (digit)))
   )
 
 (defun generate-name ()
-  (decode (random (apply #'* (mapcar #'length *name-pattern*))))
+  (loop
+   (let ((next (pick-name)))
+     (unless
+         (member next *used-names*)
+       (append *used-names* next)
+       (return next)
+       ) ; unless
+     ) ; let
+   ) ; loop
   )
 
-;;; The generic object interface
-
-(defgeneric build-robot ())
-
-(defgeneric reset-name (robot))
-
-(defgeneric robot-name (robot))
-
-;;; Define the class and methods
-
-(defclass robot ()
-  ((name :initform "" :reader name))
+(defun build-robot ()
+  (make-robot :name (generate-name))
   )
 
-(defmethod build-robot ()
-  (make-instance 'robot)
-  )
-
-(defmethod reset-name ((robot robot))
-  (setf (slot-value robot 'name) "")
-  )
-
-(defmethod robot-name ((robot robot))
-  (when (string= (name robot) "")
-    (loop for name = (generate-name)
-	  while (gethash name *robot-names*)
-	  finally (setf (gethash name *robot-names*) t)
-	  finally (setf (slot-value robot 'name) name)
-	  ) ; loop
-    ) ; when
-  (name robot)
+(defun reset-name (robot)
+  (setf (robot-name robot) (generate-name))
   )
