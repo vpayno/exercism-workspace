@@ -1,0 +1,60 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: clisp ./run-tests.lisp
+To load "fiveam":
+  Load 1 ASDF system:
+    fiveam
+; Loading "fiveam"
+
+
+Running test suite ROBOT-NAME-SUITE
+ Running test NAME-CAN-BE-RESET .
+ Running test DIFFERENT-ROBOTS-HAVE-DIFFERENT-NAMES .
+ Running test NAME-IS-PERSISTENT .
+ Running test NAME-MATCHES-EXPECTED-PATTERN ...
+ Did 6 checks.
+    Pass: 6 (100%)
+    Skip: 0 ( 0%)
+    Fail: 0 ( 0%)
+
+
+real	0m2.095s
+user	0m1.856s
+sys	0m0.238s
+
+===============================================================================
+
+sblint -v ./robot-name.lisp ./robot-name-test.lisp ./run-tests.lisp
+[INFO] Lint file robot-name.lisp
+
+real	0m0.455s
+user	0m0.391s
+sys	0m0.064s
+
+===============================================================================
+
+lisp-format -verbose -style=llvm -i ./robot-name.lisp ./robot-name-test.lisp ./run-tests.lisp
+Indenting region... 
+Indenting region...done
+Indenting region... 
+Indenting region...done
+Indenting region... 
+Indenting region...done
+
+real	0m0.089s
+user	0m0.068s
+sys	0m0.022s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.020s
+user	0m0.016s
+sys	0m0.010s
+
+===============================================================================
+
