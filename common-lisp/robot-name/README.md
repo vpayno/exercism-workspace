@@ -31,3 +31,8 @@ Your solution must ensure that every existing robot has a unique name.
 ### Based on
 
 A debugging session with Paul Blackwell at gSchool.
+### My Solution
+
+- [my solution](./robot-name.lisp)
+- [run-tests script](./run-tests.lisp)
+- [run-tests output](./run-tests-lisp.txt)
