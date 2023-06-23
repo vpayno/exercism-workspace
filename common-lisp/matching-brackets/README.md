@@ -21,3 +21,8 @@ The string may also contain other characters, which for the purposes of this exe
 ### Based on
 
 Ginna Baker
+### My Solution
+
+- [my solution](./matching-brackets.lisp)
+- [run-tests script](./run-tests.lisp)
+- [run-tests output](./run-tests-lisp.txt)
