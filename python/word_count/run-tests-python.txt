@@ -1,0 +1,191 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: pylint --ignore-patterns (__init__|.*_test).py .
+
+real	0m0.438s
+user	0m0.352s
+sys	0m0.088s
+
+===============================================================================
+
+Running: ruff check --ignore E501 ./__init__.py ./word_count.py ./word_count_test.py
+
+real	0m0.082s
+user	0m0.036s
+sys	0m0.049s
+
+===============================================================================
+
+Running: pyright --stats .
+Found 3 source files
+pyright 1.1.315
+0 errors, 0 warnings, 0 informations 
+Completed in 0.635sec
+
+Analysis stats
+Total files parsed and bound: 32
+Total files checked: 3
+
+Timing stats
+Find Source Files:    0sec
+Read Source Files:    0sec
+Tokenize:             0.04sec
+Parse:                0.06sec
+Resolve Imports:      0.04sec
+Bind:                 0.08sec
+Check:                0.08sec
+Detect Cycles:        0sec
+
+real	0m1.608s
+user	0m1.430s
+sys	0m0.161s
+
+===============================================================================
+
+Running: bandit --verbose --recursive .
+[main]	INFO	profile include tests: None
+[main]	INFO	profile exclude tests: None
+[main]	INFO	cli include tests: None
+[main]	INFO	cli exclude tests: None
+[main]	INFO	running on Python 3.11.3
+Run started:2023-06-25 07:43:58.115760
+Files in scope (3):
+	./__init__.py (score: {SEVERITY: 0, CONFIDENCE: 0})
+	./word_count.py (score: {SEVERITY: 0, CONFIDENCE: 0})
+	./word_count_test.py (score: {SEVERITY: 0, CONFIDENCE: 0})
+Files excluded (16):
+	./.coverage
+	./.coverage.xml
+	./.coveragerc
+	./.exercism/config.json
+	./.exercism/metadata.json
+	./.mypy_cache/.gitignore
+	./.mypy_cache/3.11/@plugins_snapshot.json
+	./.mypy_cache/CACHEDIR.TAG
+	./HELP.md
+	./HINTS.md
+	./README.md
+	./__pycache__/__init__.cpython-311.pyc
+	./__pycache__/word_count.cpython-311.pyc
+	./__pycache__/word_count_test.cpython-311-pytest-7.3.1.pyc
+	./run-tests-python.txt
+	./word_count.py,cover
+
+Test results:
+	No issues identified.
+
+Code scanned:
+	Total lines of code: 104
+	Total lines skipped (#nosec): 0
+	Total potential issues skipped due to specifically being disabled (e.g., #nosec BXXX): 0
+
+Run metrics:
+	Total issues (by severity):
+		Undefined: 0
+		Low: 0
+		Medium: 0
+		High: 0
+	Total issues (by confidence):
+		Undefined: 0
+		Low: 0
+		Medium: 0
+		High: 0
+Files skipped (0):
+
+real	0m0.230s
+user	0m0.181s
+sys	0m0.050s
+
+===============================================================================
+
+Running: refurb .
+
+real	0m1.301s
+user	0m1.233s
+sys	0m0.069s
+
+===============================================================================
+
+==> .coveragerc <==
+[run]
+omit = __init__.py, *_test.py
+
+Running: pytest --verbose --cov=. --cov-branch --cov-report=term-missing --cov-report=xml:.coverage.xml -p no:randomly
+============================= test session starts ==============================
+platform linux -- Python 3.11.3, pytest-7.3.1, pluggy-1.0.0 -- /home/vpayno/.pyenv/versions/3.11.3/bin/python
+cachedir: .pytest_cache
+rootdir: /home/vpayno/git_vpayno/exercism-workspace/python
+configfile: pytest.ini
+plugins: anyio-3.6.2, libtmux-0.21.1, pylama-8.4.1, cov-4.0.0, datafiles-3.0.0, docker-1.0.1, subprocess-1.5.0, typeguard-2.13.3
+collecting ... /home/vpayno/.pyenv/versions/3.11.3/lib/python3.11/site-packages/coverage/control.py:858: CoverageWarning: No data was collected. (no-data-collected)
+  self._warn("No data was collected.", slug="no-data-collected")
+collected 0 items / 1 error
+
+==================================== ERRORS ====================================
+________________ ERROR collecting word_count/word_count_test.py ________________
+ImportError while importing test module '/home/vpayno/git_vpayno/exercism-workspace/python/word_count/word_count_test.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+../../../../.pyenv/versions/3.11.3/lib/python3.11/importlib/__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+word_count_test.py:3: in <module>
+    from word_count import (
+E   ImportError: cannot import name 'count_words' from 'word_count' (/home/vpayno/git_vpayno/exercism-workspace/python/word_count/__init__.py)
+
+---------- coverage: platform linux, python 3.11.3-final-0 -----------
+Name            Stmts   Miss  Cover   Missing
+---------------------------------------------
+word_count.py       2      2     0%   1-2
+---------------------------------------------
+TOTAL               2      2     0%
+Coverage XML written to file .coverage.xml
+
+=========================== short test summary info ============================
+ERROR word_count_test.py
+!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+=============================== 1 error in 0.07s ===============================
+
+real	0m0.954s
+user	0m0.822s
+sys	0m0.121s
+
+===============================================================================
+
+Running: coverage report --show-missing
+Name            Stmts   Miss  Cover   Missing
+---------------------------------------------
+word_count.py       2      2     0%   1-2
+---------------------------------------------
+TOTAL               2      2     0%
+
+real	0m0.135s
+user	0m0.088s
+sys	0m0.047s
+
+===============================================================================
+
+coverage annotate
+The annotate command will be removed in a future version.
+Get in touch if you still use it: ned@nedbatchelder.com
+
+real	0m0.142s
+user	0m0.097s
+sys	0m0.046s
+
+tail -n 10000 ./*,cover | grep -E -C 3 '^> def |^! '
+! def count_words(sentence):
+!     pass
+
+===============================================================================
+
+Running: misspell ./__init__.py ./word_count.py ./word_count_test.py
+
+real	0m0.021s
+user	0m0.017s
+sys	0m0.015s
+
+===============================================================================
+
