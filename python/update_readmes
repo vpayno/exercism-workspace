@@ -52,9 +52,8 @@ printf "\n"
 git add __init__.py .coveragerc
 printf "\n"
 
-git mv -v "../${project_dir}" "../${project_dir//-/_}"
-printf "\n"
+cd ..
 
-project_dir="${project_dir//-/_}"
-cd "../${project_dir//-/_}" || exit
+ln -sv "${project_dir//_/-}" "${project_dir}"
+git add "./${project_dir//_/-}"
 printf "\n"
