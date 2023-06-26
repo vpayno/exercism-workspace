@@ -16,6 +16,9 @@ def count_words(sentence: str) -> Dict[str, int]:
     # remove surrounding quotes
     sentence = sentence.strip("'")
 
+    # replace tabs with spaces
+    sentence = sentence.expandtabs(tabsize=1)
+
     # replace punctuation and funny characters with spaces
     sentence = re.sub(r"[,.;:_!&@$%^&]", " ", sentence)
 

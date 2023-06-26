@@ -96,7 +96,7 @@ class WordCountTest(unittest.TestCase):
     def test_tabs(self):
         self.assertEqual(
             count_words(
-                "rah rah ah ah ah   roma roma ma    ga ga oh la la  want your bad romance"
+                "rah rah ah ah ah	roma roma ma	ga ga oh la la	want your bad romance"
             ),
             {
                 "rah": 2,
