@@ -5,17 +5,17 @@ Running automated test file(s):
 
 Running: pylint --ignore-patterns (__init__|.*_test).py .
 
-real	0m0.438s
-user	0m0.352s
-sys	0m0.088s
+real	0m0.447s
+user	0m0.373s
+sys	0m0.071s
 
 ===============================================================================
 
 Running: ruff check --ignore E501 ./__init__.py ./word_count.py ./word_count_test.py
 
-real	0m0.082s
-user	0m0.036s
-sys	0m0.049s
+real	0m0.065s
+user	0m0.026s
+sys	0m0.040s
 
 ===============================================================================
 
@@ -23,25 +23,25 @@ Running: pyright --stats .
 Found 3 source files
 pyright 1.1.315
 0 errors, 0 warnings, 0 informations 
-Completed in 0.635sec
+Completed in 0.73sec
 
 Analysis stats
-Total files parsed and bound: 32
+Total files parsed and bound: 35
 Total files checked: 3
 
 Timing stats
 Find Source Files:    0sec
-Read Source Files:    0sec
-Tokenize:             0.04sec
-Parse:                0.06sec
-Resolve Imports:      0.04sec
-Bind:                 0.08sec
-Check:                0.08sec
+Read Source Files:    0.01sec
+Tokenize:             0.05sec
+Parse:                0.07sec
+Resolve Imports:      0.06sec
+Bind:                 0.09sec
+Check:                0.11sec
 Detect Cycles:        0sec
 
-real	0m1.608s
-user	0m1.430s
-sys	0m0.161s
+real	0m1.560s
+user	0m1.559s
+sys	0m0.149s
 
 ===============================================================================
 
@@ -51,7 +51,7 @@ Running: bandit --verbose --recursive .
 [main]	INFO	cli include tests: None
 [main]	INFO	cli exclude tests: None
 [main]	INFO	running on Python 3.11.3
-Run started:2023-06-25 07:43:58.115760
+Run started:2023-06-26 06:33:57.719077
 Files in scope (3):
 	./__init__.py (score: {SEVERITY: 0, CONFIDENCE: 0})
 	./word_count.py (score: {SEVERITY: 0, CONFIDENCE: 0})
@@ -78,7 +78,7 @@ Test results:
 	No issues identified.
 
 Code scanned:
-	Total lines of code: 104
+	Total lines of code: 121
 	Total lines skipped (#nosec): 0
 	Total potential issues skipped due to specifically being disabled (e.g., #nosec BXXX): 0
 
@@ -95,17 +95,17 @@ Run metrics:
 		High: 0
 Files skipped (0):
 
-real	0m0.230s
-user	0m0.181s
-sys	0m0.050s
+real	0m0.212s
+user	0m0.160s
+sys	0m0.053s
 
 ===============================================================================
 
 Running: refurb .
 
-real	0m1.301s
-user	0m1.233s
-sys	0m0.069s
+real	0m1.323s
+user	0m1.248s
+sys	0m0.076s
 
 ===============================================================================
 
@@ -120,50 +120,53 @@ cachedir: .pytest_cache
 rootdir: /home/vpayno/git_vpayno/exercism-workspace/python
 configfile: pytest.ini
 plugins: anyio-3.6.2, libtmux-0.21.1, pylama-8.4.1, cov-4.0.0, datafiles-3.0.0, docker-1.0.1, subprocess-1.5.0, typeguard-2.13.3
-collecting ... /home/vpayno/.pyenv/versions/3.11.3/lib/python3.11/site-packages/coverage/control.py:858: CoverageWarning: No data was collected. (no-data-collected)
-  self._warn("No data was collected.", slug="no-data-collected")
-collected 0 items / 1 error
+collecting ... collected 17 items
 
-==================================== ERRORS ====================================
-________________ ERROR collecting word_count/word_count_test.py ________________
-ImportError while importing test module '/home/vpayno/git_vpayno/exercism-workspace/python/word_count/word_count_test.py'.
-Hint: make sure your test modules/packages have valid Python names.
-Traceback:
-../../../../.pyenv/versions/3.11.3/lib/python3.11/importlib/__init__.py:126: in import_module
-    return _bootstrap._gcd_import(name[level:], package, level)
-word_count_test.py:3: in <module>
-    from word_count import (
-E   ImportError: cannot import name 'count_words' from 'word_count' (/home/vpayno/git_vpayno/exercism-workspace/python/word_count/__init__.py)
+word_count_test.py::WordCountTest::test_alternating_word_separators_not_detected_as_a_word PASSED [  5%]
+word_count_test.py::WordCountTest::test_count_one_of_each_word PASSED    [ 11%]
+word_count_test.py::WordCountTest::test_count_one_word PASSED            [ 17%]
+word_count_test.py::WordCountTest::test_handles_cramped_lists PASSED     [ 23%]
+word_count_test.py::WordCountTest::test_handles_expanded_lists PASSED    [ 29%]
+word_count_test.py::WordCountTest::test_ignore_punctuation PASSED        [ 35%]
+word_count_test.py::WordCountTest::test_include_numbers PASSED           [ 41%]
+word_count_test.py::WordCountTest::test_multiple_apostrophes_ignored PASSED [ 47%]
+word_count_test.py::WordCountTest::test_multiple_occurrences_of_a_word PASSED [ 52%]
+word_count_test.py::WordCountTest::test_multiple_spaces_not_detected_as_a_word PASSED [ 58%]
+word_count_test.py::WordCountTest::test_non_alphanumeric PASSED          [ 64%]
+word_count_test.py::WordCountTest::test_normalize_case PASSED            [ 70%]
+word_count_test.py::WordCountTest::test_quotation_for_word_with_apostrophe PASSED [ 76%]
+word_count_test.py::WordCountTest::test_substrings_from_the_beginning PASSED [ 82%]
+word_count_test.py::WordCountTest::test_tabs PASSED                      [ 88%]
+word_count_test.py::WordCountTest::test_with_apostrophes PASSED          [ 94%]
+word_count_test.py::WordCountTest::test_with_quotations PASSED           [100%]
 
 ---------- coverage: platform linux, python 3.11.3-final-0 -----------
-Name            Stmts   Miss  Cover   Missing
----------------------------------------------
-word_count.py       2      2     0%   1-2
----------------------------------------------
-TOTAL               2      2     0%
+Name            Stmts   Miss Branch BrPart  Cover   Missing
+-----------------------------------------------------------
+word_count.py      14      0      6      0   100%
+-----------------------------------------------------------
+TOTAL              14      0      6      0   100%
 Coverage XML written to file .coverage.xml
 
-=========================== short test summary info ============================
-ERROR word_count_test.py
-!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
-=============================== 1 error in 0.07s ===============================
 
-real	0m0.954s
-user	0m0.822s
-sys	0m0.121s
+============================== 17 passed in 0.05s ==============================
+
+real	0m0.936s
+user	0m0.809s
+sys	0m0.128s
 
 ===============================================================================
 
 Running: coverage report --show-missing
-Name            Stmts   Miss  Cover   Missing
----------------------------------------------
-word_count.py       2      2     0%   1-2
----------------------------------------------
-TOTAL               2      2     0%
+Name            Stmts   Miss Branch BrPart  Cover   Missing
+-----------------------------------------------------------
+word_count.py      14      0      6      0   100%
+-----------------------------------------------------------
+TOTAL              14      0      6      0   100%
 
-real	0m0.135s
-user	0m0.088s
-sys	0m0.047s
+real	0m0.138s
+user	0m0.089s
+sys	0m0.049s
 
 ===============================================================================
 
@@ -171,21 +174,22 @@ coverage annotate
 The annotate command will be removed in a future version.
 Get in touch if you still use it: ned@nedbatchelder.com
 
-real	0m0.142s
-user	0m0.097s
-sys	0m0.046s
+real	0m0.136s
+user	0m0.094s
+sys	0m0.043s
 
 tail -n 10000 ./*,cover | grep -E -C 3 '^> def |^! '
-! def count_words(sentence):
-!     pass
+  
+> def count_words(sentence: str) -> Dict[str, int]:
+>     """Counts the number of times each word in a string is used.
 
 ===============================================================================
 
 Running: misspell ./__init__.py ./word_count.py ./word_count_test.py
 
 real	0m0.021s
-user	0m0.017s
-sys	0m0.015s
+user	0m0.021s
+sys	0m0.009s
 
 ===============================================================================
 
