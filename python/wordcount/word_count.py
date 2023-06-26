@@ -2,6 +2,7 @@
 
 
 import re
+from collections import defaultdict
 from typing import Dict
 
 
@@ -11,7 +12,7 @@ def count_words(sentence: str) -> Dict[str, int]:
     :param sentence: str - string we're going to count
     :return: Dict[str, int] - current round and the two that follow.
     """
-    counts: Dict[str, int] = {}
+    counts: Dict[str, int] = defaultdict(int)
 
     # remove surrounding quotes
     sentence = sentence.strip("'")
@@ -35,6 +36,6 @@ def count_words(sentence: str) -> Dict[str, int]:
             word = word.strip("'")
 
             # increment the word count in the dictionary
-            counts[word] = 1 + counts.setdefault(word, 0)
+            counts[word] += 1
 
     return counts
