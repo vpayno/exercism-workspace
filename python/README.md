@@ -31,4 +31,3 @@
 - [locomotive-engineer](./locomotive-engineer/README.md)
 - [ellens-alien-game](./ellens-alien-game/README.md)
 - [word-count](./word-count/README.md)
-- [sum-of-multiples](./sum-of-multiples/README.md)
