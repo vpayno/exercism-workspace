@@ -72,3 +72,8 @@ and sorted in ascending order.
 ### Based on
 
 A variation on Problem 1 at Project Euler - https://projecteuler.net/problem=1
+
+### My Solution
+
+- [my solution](./sum_of_multiples.py)
+- [run-tests](./run-tests-python.txt)
