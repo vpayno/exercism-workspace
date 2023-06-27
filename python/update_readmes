@@ -54,6 +54,7 @@ printf "\n"
 
 cd ..
 
-ln -sv "${project_dir//_/-}" "${project_dir}"
+mv -v "${project_dir}" "${project_dir//-/}"
+ln -sv "${project_dir//-/}" "${project_dir}"
 git add "./${project_dir//_/-}"
 printf "\n"
