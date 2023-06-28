@@ -1,6 +1,6 @@
 import unittest
 
-from etl import (
+from .etl import (
     transform,
 )
 

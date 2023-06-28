@@ -70,3 +70,8 @@ If you want to look at how the data was previously structured and how it needs t
 ### Based on
 
 Based on an exercise by the JumpstartLab team for students at The Turing School of Software and Design. - https://turing.edu
+
+### My Solution
+
+- [my solution](./etl.py)
+- [run-tests](./run-tests-python.txt)
