@@ -1,0 +1,48 @@
+> """ Largest Series Product Python Exercism"""
+  
+> import re
+> from typing import List
+  
+  
+> def largest_product(series: str, size: int) -> int:
+>     """Returns the largest product for a contiguous substring of digits of size n.
+  
+>     :param series: str - sequence of positive integers
+>     :param size: int - length of sequence substring
+>     :return: int - the largest product of the substrings in the sequence
+>     """
+  
+>     if not series:
+          # this is catching a different test, test for this doesn't exist
+>         raise ValueError("span must be smaller than string length")
+  
+>     if size <= 0:
+>         raise ValueError("span must not be negative")
+  
+>     if len(series) < size:
+>         raise ValueError("span must be smaller than string length")
+  
+>     if not re.match(r"^[0-9]+$", series):
+>         raise ValueError("digits input must only contain digits")
+  
+>     result: int = 0
+>     words: List[str] = []
+>     word: str = ""
+>     digits: str = series
+  
+>     for _ in range(len(series)):
+>         if len(digits) < size:
+>             break
+  
+>         words.append(digits[0:size])
+>         digits = digits[1:]
+  
+>     for word in words.copy():
+>         product = 1
+>         for n in list(word):
+>             product *= int(n)
+  
+>         if result < product:
+>             result = product
+  
+>     return result

@@ -79,3 +79,8 @@ raise ValueError("digits input must only contain digits")
 ### Based on
 
 A variation on Problem 8 at Project Euler - https://projecteuler.net/problem=8
+
+### My Solution
+
+- [my solution](./largest_series_product.py)
+- [run-tests](./run-tests-python.txt)

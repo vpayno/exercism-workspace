@@ -1,6 +1,6 @@
 import unittest
 
-from largest_series_product import (
+from .largest_series_product import (
     largest_product,
 )
 
