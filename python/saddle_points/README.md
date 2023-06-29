@@ -82,3 +82,8 @@ raise ValueError("irregular matrix")
 ### Based on
 
 J Dalbey's Programming Practice problems - https://users.csc.calpoly.edu/~jdalbey/103/Projects/ProgrammingPractice.html
+
+### My Solution
+
+- [my solution](./saddle_points.py)
+- [run-tests](./run-tests-python.txt)
