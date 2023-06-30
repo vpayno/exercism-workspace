@@ -1,30 +1,45 @@
 """Saddle Points Python Exercism"""
 
-from typing import Dict, List, Set
+from typing import Set
+
+# SaddlePoint: TypeAlias = dict[str, int]
+# SaddlePoints: TypeAlias = Iterable[None] or list[None] or list[dict[str, int]] or list[SaddlePoint]
+
+# SaddlePoint = NewType("SaddePoint", dict[str, int])
+# SaddlePoints = NewType("SaddlePoints", list[None] or list[dict[str, int]] or list[SaddlePoint])
+# SaddlePoints = NewType("SaddlePoints", list[None] or list[SaddlePoint])
 
 
-def rotate_matrix(matrix: List[List[int]]) -> List[List[int]]:
-    rotated_matrix: List[List[int]] = []
-
-    row: List[int] = []
-    col: List[int] = []
-
-    for i in range(len(row)):
-        for row in matrix:
-            col.append(row[i])
-
-        rotated_matrix.append(col)
-
-    return rotated_matrix
-
-
-def saddle_points(matrix: List[List[int]]) -> List[Dict[str, int]]:
+def saddle_points(matrix: list[list[int]]) -> list[dict[str, int]]:
     """Finds the potential trees where you could build your tree house.
 
-    param: matrix: List[List[int]] - matrix of tree hights
-    returns: List[Dict[str, int]] -
+    Run doctests with the command: python -m doctest -v saddle_points.py
+
+    >>> matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+    >>> list(map(max, matrix))
+    [3, 6, 9]
+
+    >>> print(*matrix)
+    [1, 2, 3] [4, 5, 6] [7, 8, 9]
+    >>> list(zip(*matrix))
+    [(1, 4, 7), (2, 5, 8), (3, 6, 9)]
+    >>> list(map(min, zip(*matrix)))
+    [1, 2, 3]
+
+    >>> max_rows = list(map(max, matrix))
+    >>> min_columns = list(map(min, zip(*matrix)))
+    >>> list(enumerate(max_rows))
+    [(0, 3), (1, 6), (2, 9)]
+    >>> list(enumerate(min_columns))
+    [(0, 1), (1, 2), (2, 3)]
+    >>> [{"row": row_id + 1, "column": col_id + 1} for row_id, row_maximums in enumerate(max_rows) for col_id, col_minimums in enumerate(min_columns) if row_maximums == col_minimums]
+    [{'row': 1, 'column': 3}]
+
+    param: matrix: list[list[int]] - matrix of tree hights
+    returns: list[Dict[str, int]] -
     """
-    result: List[Dict[str, int]] = []
+    # result: SaddlePoints = SaddlePoints([])
+    result: list[dict[str, int]] = []
 
     # fast return: empty matrix
     if not matrix:
@@ -35,9 +50,9 @@ def saddle_points(matrix: List[List[int]]) -> List[Dict[str, int]]:
     if len(lengths) > 1:
         raise ValueError("irregular matrix")
 
-    max_rows: List[int] = list(map(max, matrix))
-    min_columns: List[int] = list(map(min, zip(*matrix)))
+    max_rows: list[int] = list(map(max, matrix))
+    min_columns: list[int] = list(map(min, zip(*matrix)))
 
-    result = [{"row": r + 1, "column": c + 1} for r, row_max in enumerate(max_rows) for c, col_min in enumerate(min_columns) if row_max == col_min]
+    result = [{"row": row_id + 1, "column": col_id + 1} for row_id, row_maximums in enumerate(max_rows) for col_id, col_minimums in enumerate(min_columns) if row_maximums == col_minimums]
 
     return result

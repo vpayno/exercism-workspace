@@ -5,17 +5,17 @@ Running automated test file(s):
 
 Running: pylint --ignore-patterns (__init__|.*_test).py .
 
-real	0m0.399s
-user	0m0.334s
-sys	0m0.067s
+real	0m0.436s
+user	0m0.352s
+sys	0m0.085s
 
 ===============================================================================
 
 Running: ruff check --ignore E501 ./__init__.py ./saddle_points.py ./saddle_points_test.py
 
-real	0m0.067s
-user	0m0.030s
-sys	0m0.039s
+real	0m0.064s
+user	0m0.023s
+sys	0m0.042s
 
 ===============================================================================
 
@@ -23,7 +23,7 @@ Running: pyright --stats .
 Found 3 source files
 pyright 1.1.316
 0 errors, 0 warnings, 0 informations 
-Completed in 0.741sec
+Completed in 0.727sec
 
 Analysis stats
 Total files parsed and bound: 32
@@ -31,17 +31,17 @@ Total files checked: 3
 
 Timing stats
 Find Source Files:    0sec
-Read Source Files:    0.01sec
-Tokenize:             0.04sec
-Parse:                0.06sec
+Read Source Files:    0sec
+Tokenize:             0.05sec
+Parse:                0.07sec
 Resolve Imports:      0.03sec
-Bind:                 0.08sec
-Check:                0.19sec
+Bind:                 0.06sec
+Check:                0.18sec
 Detect Cycles:        0sec
 
-real	0m1.743s
-user	0m1.440s
-sys	0m0.162s
+real	0m1.522s
+user	0m1.427s
+sys	0m0.149s
 
 ===============================================================================
 
@@ -51,25 +51,23 @@ Running: bandit --verbose --recursive .
 [main]	INFO	cli include tests: None
 [main]	INFO	cli exclude tests: None
 [main]	INFO	running on Python 3.11.3
-Run started:2023-06-29 05:56:23.825913
+Run started:2023-06-30 06:39:40.376755
 Files in scope (3):
 	./__init__.py (score: {SEVERITY: 0, CONFIDENCE: 0})
 	./saddle_points.py (score: {SEVERITY: 0, CONFIDENCE: 0})
 	./saddle_points_test.py (score: {SEVERITY: 0, CONFIDENCE: 0})
-Files excluded (15):
+Files excluded (13):
 	./.coverage
 	./.coverage.xml
 	./.coveragerc
 	./.exercism/config.json
 	./.exercism/metadata.json
-	./.mypy_cache/.gitignore
-	./.mypy_cache/3.11/@plugins_snapshot.json
-	./.mypy_cache/CACHEDIR.TAG
 	./HELP.md
 	./README.md
 	./__pycache__/__init__.cpython-311.pyc
 	./__pycache__/saddle_points.cpython-311.pyc
 	./__pycache__/saddle_points_test.cpython-311-pytest-7.3.1.pyc
+	./__pycache__/saddle_points_test.cpython-311.pyc
 	./run-tests-python.txt
 	./saddle_points.py,cover
 
@@ -77,7 +75,7 @@ Test results:
 	No issues identified.
 
 Code scanned:
-	Total lines of code: 107
+	Total lines of code: 116
 	Total lines skipped (#nosec): 0
 	Total potential issues skipped due to specifically being disabled (e.g., #nosec BXXX): 0
 
@@ -94,17 +92,80 @@ Run metrics:
 		High: 0
 Files skipped (0):
 
-real	0m0.248s
-user	0m0.193s
-sys	0m0.056s
+real	0m0.210s
+user	0m0.160s
+sys	0m0.050s
 
 ===============================================================================
 
 Running: refurb .
 
-real	0m1.304s
-user	0m1.229s
-sys	0m0.076s
+real	0m1.287s
+user	0m1.200s
+sys	0m0.088s
+
+===============================================================================
+
+python -m doctest -v ./saddle_points.py
+Trying:
+    matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+Expecting nothing
+ok
+Trying:
+    list(map(max, matrix))
+Expecting:
+    [3, 6, 9]
+ok
+Trying:
+    print(*matrix)
+Expecting:
+    [1, 2, 3] [4, 5, 6] [7, 8, 9]
+ok
+Trying:
+    list(zip(*matrix))
+Expecting:
+    [(1, 4, 7), (2, 5, 8), (3, 6, 9)]
+ok
+Trying:
+    list(map(min, zip(*matrix)))
+Expecting:
+    [1, 2, 3]
+ok
+Trying:
+    max_rows = list(map(max, matrix))
+Expecting nothing
+ok
+Trying:
+    min_columns = list(map(min, zip(*matrix)))
+Expecting nothing
+ok
+Trying:
+    list(enumerate(max_rows))
+Expecting:
+    [(0, 3), (1, 6), (2, 9)]
+ok
+Trying:
+    list(enumerate(min_columns))
+Expecting:
+    [(0, 1), (1, 2), (2, 3)]
+ok
+Trying:
+    [{"row": row_id + 1, "column": col_id + 1} for row_id, row_maximums in enumerate(max_rows) for col_id, col_minimums in enumerate(min_columns) if row_maximums == col_minimums]
+Expecting:
+    [{'row': 1, 'column': 3}]
+ok
+1 items had no tests:
+    saddle_points
+1 items passed all tests:
+  10 tests in saddle_points.saddle_points
+10 tests in 2 items.
+10 passed and 0 failed.
+Test passed.
+
+real	0m0.117s
+user	0m0.081s
+sys	0m0.037s
+
 
 ===============================================================================
 
@@ -119,46 +180,47 @@ cachedir: .pytest_cache
 rootdir: /home/vpayno/git_vpayno/exercism-workspace/python
 configfile: pytest.ini
 plugins: anyio-3.6.2, libtmux-0.21.1, pylama-8.4.1, cov-4.0.0, datafiles-3.0.0, docker-1.0.1, subprocess-1.5.0, typeguard-2.13.3
-collecting ... collected 10 items
+collecting ... collected 11 items
 
-saddle_points_test.py::SaddlePointsTest::test_can_identify_lack_of_saddle_points_when_there_are_none PASSED [ 10%]
-saddle_points_test.py::SaddlePointsTest::test_can_identify_multiple_saddle_points_in_a_column PASSED [ 20%]
-saddle_points_test.py::SaddlePointsTest::test_can_identify_multiple_saddle_points_in_a_row PASSED [ 30%]
-saddle_points_test.py::SaddlePointsTest::test_can_identify_saddle_point_in_bottom_right_corner PASSED [ 40%]
-saddle_points_test.py::SaddlePointsTest::test_can_identify_saddle_points_in_a_non_square_matrix PASSED [ 50%]
-saddle_points_test.py::SaddlePointsTest::test_can_identify_single_saddle_point PASSED [ 60%]
-saddle_points_test.py::SaddlePointsTest::test_can_identify_that_empty_matrix_has_no_saddle_points PASSED [ 70%]
-saddle_points_test.py::SaddlePointsTest::test_can_identify_that_saddle_points_in_a_single_column_matrix_are_those_with_the_minimum_value PASSED [ 80%]
+saddle_points.py::saddle_points.saddle_points.saddle_points PASSED       [  9%]
+saddle_points_test.py::SaddlePointsTest::test_can_identify_lack_of_saddle_points_when_there_are_none PASSED [ 18%]
+saddle_points_test.py::SaddlePointsTest::test_can_identify_multiple_saddle_points_in_a_column PASSED [ 27%]
+saddle_points_test.py::SaddlePointsTest::test_can_identify_multiple_saddle_points_in_a_row PASSED [ 36%]
+saddle_points_test.py::SaddlePointsTest::test_can_identify_saddle_point_in_bottom_right_corner PASSED [ 45%]
+saddle_points_test.py::SaddlePointsTest::test_can_identify_saddle_points_in_a_non_square_matrix PASSED [ 54%]
+saddle_points_test.py::SaddlePointsTest::test_can_identify_single_saddle_point PASSED [ 63%]
+saddle_points_test.py::SaddlePointsTest::test_can_identify_that_empty_matrix_has_no_saddle_points PASSED [ 72%]
+saddle_points_test.py::SaddlePointsTest::test_can_identify_that_saddle_points_in_a_single_column_matrix_are_those_with_the_minimum_value PASSED [ 81%]
 saddle_points_test.py::SaddlePointsTest::test_can_identify_that_saddle_points_in_a_single_row_matrix_are_those_with_the_maximum_value PASSED [ 90%]
 saddle_points_test.py::SaddlePointsTest::test_irregular_matrix PASSED    [100%]
 
 ---------- coverage: platform linux, python 3.11.3-final-0 -----------
 Name               Stmts   Miss Branch BrPart  Cover   Missing
 --------------------------------------------------------------
-saddle_points.py      21      8     12      0    64%   7-18
+saddle_points.py      12      0      8      0   100%
 --------------------------------------------------------------
-TOTAL                 21      8     12      0    64%
+TOTAL                 12      0      8      0   100%
 Coverage XML written to file .coverage.xml
 
 
-============================== 10 passed in 0.06s ==============================
+============================== 11 passed in 0.05s ==============================
 
-real	0m0.925s
-user	0m0.813s
-sys	0m0.112s
+real	0m0.945s
+user	0m0.816s
+sys	0m0.129s
 
 ===============================================================================
 
 Running: coverage report --show-missing
 Name               Stmts   Miss Branch BrPart  Cover   Missing
 --------------------------------------------------------------
-saddle_points.py      21      8     12      0    64%   7-18
+saddle_points.py      12      0      8      0   100%
 --------------------------------------------------------------
-TOTAL                 21      8     12      0    64%
+TOTAL                 12      0      8      0   100%
 
-real	0m0.136s
-user	0m0.094s
-sys	0m0.043s
+real	0m0.142s
+user	0m0.101s
+sys	0m0.041s
 
 ===============================================================================
 
@@ -166,28 +228,13 @@ coverage annotate
 The annotate command will be removed in a future version.
 Get in touch if you still use it: ned@nedbatchelder.com
 
-real	0m0.147s
-user	0m0.098s
-sys	0m0.050s
+real	0m0.129s
+user	0m0.092s
+sys	0m0.038s
 
 tail -n 10000 ./*,cover | grep -E -C 3 '^> def |^! '
   
-> def rotate_matrix(matrix: List[List[int]]) -> List[List[int]]:
-!     rotated_matrix: List[List[int]] = []
-  
-!     row: List[int] = []
-!     col: List[int] = []
-  
-!     for i in range(len(row)):
-!         for row in matrix:
-!             col.append(row[i])
-  
-!         rotated_matrix.append(col)
-  
-!     return rotated_matrix
-  
-  
-> def saddle_points(matrix: List[List[int]]) -> List[Dict[str, int]]:
+> def saddle_points(matrix: list[list[int]]) -> list[dict[str, int]]:
 >     """Finds the potential trees where you could build your tree house.
 
 ===============================================================================
@@ -195,8 +242,8 @@ tail -n 10000 ./*,cover | grep -E -C 3 '^> def |^! '
 Running: misspell ./__init__.py ./saddle_points.py ./saddle_points_test.py
 
 real	0m0.021s
-user	0m0.026s
-sys	0m0.006s
+user	0m0.020s
+sys	0m0.011s
 
 ===============================================================================
 
