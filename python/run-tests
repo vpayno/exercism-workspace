@@ -49,6 +49,18 @@ main() {
 
 	print_ruler
 
+	for f in ./*[.]py; do
+		if [[ ${f} =~ _test.py || ${f} == ./__init__.py ]]; then
+			continue
+		fi
+
+		echo python -m doctest -v "${f}"
+		time python -m doctest -v "${f}"
+		printf "\n"
+	done
+
+	print_ruler
+
 	# https://github.com/pytest-dev/pytest
 
 	tail -v -n 1000 .coveragerc
