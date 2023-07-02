@@ -11,9 +11,9 @@ Exercism Workspace
 
 - January: Introduction
 - February: Functional -> Haskell
-- March: Mechanical -> Go
+- March: Mechanical -> Go, Rust
 - April: Analytical -> Python
-- May: Mindshifting -> Tcl
+- May: Mindshifting -> Rust, Tcl
 - June: Summer of Sexps -> Common Lisp
 - July: Jurassic ->
 - August: Apps ->
