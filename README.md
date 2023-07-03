@@ -99,3 +99,4 @@ Exercism Workspace
 - [Haskell run-tests](./haskell/run-tests)
 - [Python run-tests](./python/run-tests)
 - [Common Lisp run-tests](./common-lisp/run-tests)
+- [C run-tests](./c/run-tests)

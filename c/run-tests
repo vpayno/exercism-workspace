@@ -1,0 +1,57 @@
+#!/bin/bash
+
+print_ruler() {
+	printf "\n"
+	printf "=%.0s" {1..79}
+	printf "\n"
+	printf "\n"
+} # print_ruler()
+
+main() {
+	printf "Running automated test file(s):\n\n"
+
+	print_ruler
+
+	echo Running: make clean
+	time make clean
+
+	print_ruler
+
+	# https://www.throwtheswitch.org/unity
+
+	echo Running: make test
+	time make test
+
+	print_ruler
+
+	# https://www.throwtheswitch.org/unity
+
+	echo Running: make memcheck
+	time make memcheck
+
+	print_ruler
+
+	# https://clang.llvm.org/docs/ClangCheck.html
+
+	echo Running: clang-check-16 ./*.c ./*.h --
+	time clang-check-16 ./*.c ./*.h --
+
+	print_ruler
+
+	# https://clang.llvm.org/extra/clang-tidy/
+
+	echo Running: clang-tidy-16 ./*.c ./*.h -checks=*,-llvm-header-guard --
+	time clang-tidy-16 ./*.c ./*.h -checks=*,-llvm-header-guard --
+
+	print_ruler
+
+	# https://clang.llvm.org/docs/ClangFormat.html
+
+	echo Running: clang-format-16 -style=file -i ./*.c ./*.h
+	time clang-format-16 -style=file -i ./*.c ./*.h
+
+	print_ruler
+
+} # main()
+
+time main "$@" |& tee ./run-tests-c.txt
