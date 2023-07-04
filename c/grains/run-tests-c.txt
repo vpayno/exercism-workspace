@@ -29,9 +29,9 @@ test_grains.c:67:test_total:[42mPASS[00m
 10 Tests 0 Failures 0 Ignored 
 [42mOK[00m
 
-real	0m0.122s
-user	0m0.079s
-sys	0m0.043s
+real	0m0.108s
+user	0m0.072s
+sys	0m0.035s
 
 ===============================================================================
 
@@ -53,17 +53,17 @@ test_grains.c:67:test_total:[42mPASS[00m
 [42mOK[00m
 Memory check passed
 
-real	0m0.126s
-user	0m0.086s
-sys	0m0.040s
+real	0m0.129s
+user	0m0.093s
+sys	0m0.036s
 
 ===============================================================================
 
 Running: clang-check-16 ./grains.c ./test_grains.c ./grains.h --
 
-real	0m0.039s
-user	0m0.024s
-sys	0m0.015s
+real	0m0.035s
+user	0m0.018s
+sys	0m0.017s
 
 ===============================================================================
 
@@ -71,9 +71,9 @@ Running: clang-tidy-16 ./grains.c ./test_grains.c ./grains.h -checks=*,-llvm-hea
 1168 warnings generated.
 3367 warnings generated.
 4133 warnings generated.
-/home/vpayno/git_vpayno/exercism-workspace/c/grains/grains.c:16:29: warning: 64 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
-    return (uint64_t)pow(2, 64);
-                            ^
+/home/vpayno/git_vpayno/exercism-workspace/c/grains/grains.c:20:31: warning: 63 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+    return (((1UL << (uint8_t)63) - (uint8_t)1) << (uint8_t)1) + 1;
+                              ^
 /home/vpayno/git_vpayno/exercism-workspace/c/grains/test_grains.c:8:60: warning: integer literal has suffix 'ull', which is not uppercase [hicpp-uppercase-literal-suffix,readability-uppercase-literal-suffix]
 static void test_square_1(void) { TEST_ASSERT_EQUAL_UINT64(1ull, square(1)); }
                                                            ^~~~
@@ -110,16 +110,16 @@ Suppressed 4115 warnings (4115 in non-user code).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 
 real	0m0.158s
-user	0m0.138s
-sys	0m0.020s
+user	0m0.139s
+sys	0m0.019s
 
 ===============================================================================
 
 Running: clang-format-16 -style=file -i ./grains.c ./test_grains.c ./grains.h
 
-real	0m0.021s
-user	0m0.011s
-sys	0m0.009s
+real	0m0.022s
+user	0m0.010s
+sys	0m0.012s
 
 ===============================================================================
 
