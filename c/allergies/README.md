@@ -51,3 +51,8 @@ For example, if the allergy score is 257, your program should only report the eg
 ### Based on
 
 Jumpstart Lab Warm-up - http://jumpstartlab.com
+
+### My Solution
+
+- [my solution](./allergies.c)
+- [run-tests](./run-tests-c.txt)

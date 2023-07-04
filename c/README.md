@@ -18,3 +18,4 @@
 - [square-root](./square-root/README.md)
 - [reverse-string](./reverse-string/README.md)
 - [raindrops](./raindrops/README.md)
+- [allergies](./allergies/README.md)
