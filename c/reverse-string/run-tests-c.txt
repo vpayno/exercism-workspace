@@ -1,0 +1,103 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: make clean
+rm -rf *.o *.out *.out.dSYM
+
+real	0m0.006s
+user	0m0.003s
+sys	0m0.002s
+
+===============================================================================
+
+Running: make test
+Compiling tests.out
+test_reverse_string.c:35:test_an_empty_string:[42mPASS[00m
+test_reverse_string.c:36:test_a_word:[42mPASS[00m
+test_reverse_string.c:37:test_a_capitalized_word:[42mPASS[00m
+test_reverse_string.c:38:test_a_sentence_with_punctuation:[42mPASS[00m
+test_reverse_string.c:39:test_a_palindrome:[42mPASS[00m
+test_reverse_string.c:40:test_an_even_sized_word:[42mPASS[00m
+
+-----------------------
+6 Tests 0 Failures 0 Ignored 
+[42mOK[00m
+
+real	0m0.129s
+user	0m0.090s
+sys	0m0.038s
+
+===============================================================================
+
+Running: make memcheck
+Compiling memcheck
+test_reverse_string.c:35:test_an_empty_string:[42mPASS[00m
+test_reverse_string.c:36:test_a_word:[42mPASS[00m
+test_reverse_string.c:37:test_a_capitalized_word:[42mPASS[00m
+test_reverse_string.c:38:test_a_sentence_with_punctuation:[42mPASS[00m
+test_reverse_string.c:39:test_a_palindrome:[42mPASS[00m
+test_reverse_string.c:40:test_an_even_sized_word:[42mPASS[00m
+
+-----------------------
+6 Tests 0 Failures 0 Ignored 
+[42mOK[00m
+Memory check passed
+
+real	0m0.130s
+user	0m0.097s
+sys	0m0.033s
+
+===============================================================================
+
+Running: clang-check-16 ./reverse_string.c ./test_reverse_string.c ./reverse_string.h --
+
+real	0m0.040s
+user	0m0.023s
+sys	0m0.016s
+
+===============================================================================
+
+Running: clang-tidy-16 ./reverse_string.c ./test_reverse_string.c ./reverse_string.h -checks=*,-llvm-header-guard,-llvmlibc-restrict-system-libc-headers --
+2465 warnings generated.
+6235 warnings generated.
+6235 warnings generated.
+/home/vpayno/git_vpayno/exercism-workspace/c/reverse-string/reverse_string.c:11:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
+    for (long long i = (long long)size-1, j = 0LL; i >= 0LL; i--, j++) {
+    ^
+/home/vpayno/git_vpayno/exercism-workspace/c/reverse-string/reverse_string.c:11:52: warning: backward branch (for loop) is ID-dependent due to variable reference to 'i' and may cause performance degradation [altera-id-dependent-backward-branch]
+    for (long long i = (long long)size-1, j = 0LL; i >= 0LL; i--, j++) {
+                                                   ^
+/home/vpayno/git_vpayno/exercism-workspace/c/reverse-string/test_reverse_string.c:10:26: warning: 2 adjacent parameters of 'test_reverse' of similar type ('char *') are easily swapped by mistake [bugprone-easily-swappable-parameters]
+static void test_reverse(char *phrase, char *expected) {
+                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/reverse-string/test_reverse_string.c:10:32: note: the first parameter in the range is 'phrase'
+static void test_reverse(char *phrase, char *expected) {
+                               ^~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/reverse-string/test_reverse_string.c:10:46: note: the last parameter in the range is 'expected'
+static void test_reverse(char *phrase, char *expected) {
+                                             ^~~~~~~~
+/usr/include/x86_64-linux-gnu/bits/types/__locale_t.h:39:23: warning: 13 is a magic number; consider replacing it with a named constant [readability-magic-numbers]
+  const char *__names[13];
+                      ^
+/home/vpayno/git_vpayno/exercism-workspace/c/reverse-string/reverse_string.c:11:10: note: inferred assignment of ID-dependent value from ID-dependent variable size [altera-id-dependent-backward-branch]
+    for (long long i = (long long)size-1, j = 0LL; i >= 0LL; i--, j++) {
+         ^
+Suppressed 6231 warnings (6231 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+
+real	0m0.187s
+user	0m0.167s
+sys	0m0.020s
+
+===============================================================================
+
+Running: clang-format-16 -style=file -i ./reverse_string.c ./test_reverse_string.c ./reverse_string.h
+
+real	0m0.019s
+user	0m0.012s
+sys	0m0.007s
+
+===============================================================================
+
