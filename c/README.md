@@ -14,3 +14,4 @@
 ## [Exercises](https://exercism.org/tracks/c/exercises)
 
 - [hello-world](./hello-world/README.md)
+- [two-fer](./two-fer/README.md)

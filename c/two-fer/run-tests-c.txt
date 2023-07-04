@@ -1,0 +1,89 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: make clean
+rm -rf *.o *.out *.out.dSYM
+
+real	0m0.007s
+user	0m0.002s
+sys	0m0.005s
+
+===============================================================================
+
+Running: make test
+Compiling tests.out
+test_two_fer.c:37:test_two_fer_no_name_given:[42mPASS[00m
+test_two_fer.c:38:test_two_fer_a_name_given:[42mPASS[00m
+test_two_fer.c:39:test_two_fer_another_name_given:[42mPASS[00m
+
+-----------------------
+3 Tests 0 Failures 0 Ignored 
+[42mOK[00m
+
+real	0m0.119s
+user	0m0.082s
+sys	0m0.036s
+
+===============================================================================
+
+Running: make memcheck
+Compiling memcheck
+test_two_fer.c:37:test_two_fer_no_name_given:[42mPASS[00m
+test_two_fer.c:38:test_two_fer_a_name_given:[42mPASS[00m
+test_two_fer.c:39:test_two_fer_another_name_given:[42mPASS[00m
+
+-----------------------
+3 Tests 0 Failures 0 Ignored 
+[42mOK[00m
+Memory check passed
+
+real	0m0.124s
+user	0m0.086s
+sys	0m0.038s
+
+===============================================================================
+
+Running: clang-check-16 ./test_two_fer.c ./two_fer.c ./two_fer.h --
+
+real	0m0.032s
+user	0m0.021s
+sys	0m0.011s
+
+===============================================================================
+
+Running: clang-tidy-16 ./test_two_fer.c ./two_fer.c ./two_fer.h -checks=*,-llvm-header-guard,-llvmlibc-restrict-system-libc-headers --
+2142 warnings generated.
+3525 warnings generated.
+3525 warnings generated.
+/home/vpayno/git_vpayno/exercism-workspace/c/two-fer/test_two_fer.c:5:1: warning: replace macro with enum [modernize-macro-to-enum]
+#define BUFFER_SIZE (100)
+^~~~~~~~
+                    =
+/home/vpayno/git_vpayno/exercism-workspace/c/two-fer/test_two_fer.c:5:9: warning: macro 'BUFFER_SIZE' defines an integral constant; prefer an enum instead [modernize-macro-to-enum]
+#define BUFFER_SIZE (100)
+        ^
+/home/vpayno/git_vpayno/exercism-workspace/c/two-fer/two_fer.c:7:16: warning: Call to function 'sprintf' is insecure as it does not provide bounding of the memory buffer or security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'sprintf_s' in case of C11 [clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling]
+    int size = sprintf(buffer, "One for %s, one for me.", for_name);
+               ^~~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/two-fer/two_fer.c:7:16: note: Call to function 'sprintf' is insecure as it does not provide bounding of the memory buffer or security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'sprintf_s' in case of C11
+    int size = sprintf(buffer, "One for %s, one for me.", for_name);
+               ^~~~~~~
+Suppressed 3522 warnings (3522 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+
+real	0m0.129s
+user	0m0.112s
+sys	0m0.016s
+
+===============================================================================
+
+Running: clang-format-16 -style=file -i ./test_two_fer.c ./two_fer.c ./two_fer.h
+
+real	0m0.021s
+user	0m0.011s
+sys	0m0.010s
+
+===============================================================================
+
