@@ -15,3 +15,4 @@
 
 - [hello-world](./hello-world/README.md)
 - [two-fer](./two-fer/README.md)
+- [square-root](./square-root/README.md)

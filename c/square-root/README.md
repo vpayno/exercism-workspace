@@ -30,3 +30,8 @@ Recall also that natural numbers are positive real whole numbers (i.e. 1, 2, 3 a
 ### Based on
 
 wolf99 - https://github.com/exercism/problem-specifications/pull/1582
+
+### My Solution
+
+- [my solution](./square_root.c)
+- [run-tests](./run-tests-c.txt)
