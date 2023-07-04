@@ -17,3 +17,4 @@
 - [two-fer](./two-fer/README.md)
 - [square-root](./square-root/README.md)
 - [reverse-string](./reverse-string/README.md)
+- [raindrops](./raindrops/README.md)

@@ -1,0 +1,184 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: make clean
+rm -rf *.o *.out *.out.dSYM
+
+real	0m0.007s
+user	0m0.003s
+sys	0m0.004s
+
+===============================================================================
+
+Running: make test
+Compiling tests.out
+test_raindrops.c:109:test_the_sound_for_1_is_1:[42mPASS[00m
+test_raindrops.c:110:test_the_sound_for_3_is_pling:[42mPASS[00m
+test_raindrops.c:111:test_the_sound_for_5_is_plang:[42mPASS[00m
+test_raindrops.c:112:test_the_sound_for_7_is_plong:[42mPASS[00m
+test_raindrops.c:113:test_the_sound_for_6_is_pling_as_it_has_a_factor_3:[42mPASS[00m
+test_raindrops.c:114:test_2_to_the_power_3_does_not_make_a_raindrop_sound_as_3_is_the_exponent_not_the_base:[42mPASS[00m
+test_raindrops.c:116:test_the_sound_for_9_is_pling_as_it_has_a_factor_3:[42mPASS[00m
+test_raindrops.c:117:test_the_sound_for_10_is_plang_as_it_has_a_factor_5:[42mPASS[00m
+test_raindrops.c:118:test_the_sound_for_14_is_plong_as_it_has_a_factor_7:[42mPASS[00m
+test_raindrops.c:119:test_the_sound_for_15_is_plingplang_as_it_has_factors_3_and_5:[42mPASS[00m
+test_raindrops.c:120:test_the_sound_for_21_is_plingplong_as_it_has_factors_3_and_7:[42mPASS[00m
+test_raindrops.c:121:test_the_sound_for_25_is_plingplang_as_it_has_a_factor_5:[42mPASS[00m
+test_raindrops.c:122:test_the_sound_for_35_is_plangplong_as_it_has_factors_5_and_7:[42mPASS[00m
+test_raindrops.c:123:test_the_sound_for_49_is_plong_as_it_has_a_factor_7:[42mPASS[00m
+test_raindrops.c:124:test_the_sound_for_52_is_52:[42mPASS[00m
+test_raindrops.c:125:test_the_sound_for_105_is_plangplangplong_as_it_has_factor_3_5_and_7:[42mPASS[00m
+test_raindrops.c:127:test_the_sound_for_3125_is_plang_as_it_has_a_factor_5:[42mPASS[00m
+
+-----------------------
+17 Tests 0 Failures 0 Ignored 
+[42mOK[00m
+
+real	0m0.124s
+user	0m0.079s
+sys	0m0.044s
+
+===============================================================================
+
+Running: make memcheck
+Compiling memcheck
+test_raindrops.c:109:test_the_sound_for_1_is_1:[42mPASS[00m
+test_raindrops.c:110:test_the_sound_for_3_is_pling:[42mPASS[00m
+test_raindrops.c:111:test_the_sound_for_5_is_plang:[42mPASS[00m
+test_raindrops.c:112:test_the_sound_for_7_is_plong:[42mPASS[00m
+test_raindrops.c:113:test_the_sound_for_6_is_pling_as_it_has_a_factor_3:[42mPASS[00m
+test_raindrops.c:114:test_2_to_the_power_3_does_not_make_a_raindrop_sound_as_3_is_the_exponent_not_the_base:[42mPASS[00m
+test_raindrops.c:116:test_the_sound_for_9_is_pling_as_it_has_a_factor_3:[42mPASS[00m
+test_raindrops.c:117:test_the_sound_for_10_is_plang_as_it_has_a_factor_5:[42mPASS[00m
+test_raindrops.c:118:test_the_sound_for_14_is_plong_as_it_has_a_factor_7:[42mPASS[00m
+test_raindrops.c:119:test_the_sound_for_15_is_plingplang_as_it_has_factors_3_and_5:[42mPASS[00m
+test_raindrops.c:120:test_the_sound_for_21_is_plingplong_as_it_has_factors_3_and_7:[42mPASS[00m
+test_raindrops.c:121:test_the_sound_for_25_is_plingplang_as_it_has_a_factor_5:[42mPASS[00m
+test_raindrops.c:122:test_the_sound_for_35_is_plangplong_as_it_has_factors_5_and_7:[42mPASS[00m
+test_raindrops.c:123:test_the_sound_for_49_is_plong_as_it_has_a_factor_7:[42mPASS[00m
+test_raindrops.c:124:test_the_sound_for_52_is_52:[42mPASS[00m
+test_raindrops.c:125:test_the_sound_for_105_is_plangplangplong_as_it_has_factor_3_5_and_7:[42mPASS[00m
+test_raindrops.c:127:test_the_sound_for_3125_is_plang_as_it_has_a_factor_5:[42mPASS[00m
+
+-----------------------
+17 Tests 0 Failures 0 Ignored 
+[42mOK[00m
+Memory check passed
+
+real	0m0.131s
+user	0m0.090s
+sys	0m0.039s
+
+===============================================================================
+
+Running: clang-check-16 ./raindrops.c ./test_raindrops.c ./raindrops.h --
+
+real	0m0.044s
+user	0m0.034s
+sys	0m0.010s
+
+===============================================================================
+
+Running: clang-tidy-16 ./raindrops.c ./test_raindrops.c ./raindrops.h -checks=*,-llvm-header-guard,-llvmlibc-restrict-system-libc-headers --
+3128 warnings generated.
+6930 warnings generated.
+10051 warnings generated.
+/home/vpayno/git_vpayno/exercism-workspace/c/raindrops/raindrops.c:5:9: warning: Call to function 'strncat' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'strncat_s' in case of C11 [clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling]
+        strncat(result, sound_names[PLING], RESULT_SIZE);
+        ^~~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/raindrops/raindrops.c:5:9: note: Call to function 'strncat' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'strncat_s' in case of C11
+        strncat(result, sound_names[PLING], RESULT_SIZE);
+        ^~~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/raindrops/raindrops.c:9:9: warning: Call to function 'strncat' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'strncat_s' in case of C11 [clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling]
+        strncat(result, sound_names[PLANG], RESULT_SIZE);
+        ^~~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/raindrops/raindrops.c:9:9: note: Call to function 'strncat' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'strncat_s' in case of C11
+        strncat(result, sound_names[PLANG], RESULT_SIZE);
+        ^~~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/raindrops/raindrops.c:13:9: warning: Call to function 'strncat' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'strncat_s' in case of C11 [clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling]
+        strncat(result, sound_names[PLONG], RESULT_SIZE);
+        ^~~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/raindrops/raindrops.c:13:9: note: Call to function 'strncat' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'strncat_s' in case of C11
+        strncat(result, sound_names[PLONG], RESULT_SIZE);
+        ^~~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/raindrops/raindrops.c:17:9: warning: the value returned by this function should be used [cert-err33-c]
+        sprintf(result, "%d", drops);
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/raindrops/raindrops.c:17:9: note: cast the expression to void to silence this warning
+/home/vpayno/git_vpayno/exercism-workspace/c/raindrops/raindrops.c:17:9: warning: Call to function 'sprintf' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'sprintf_s' in case of C11 [clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling]
+        sprintf(result, "%d", drops);
+        ^~~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/raindrops/raindrops.c:17:9: note: Call to function 'sprintf' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'sprintf_s' in case of C11
+        sprintf(result, "%d", drops);
+        ^~~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/raindrops/test_raindrops.c:6:1: warning: replace macro with enum [modernize-macro-to-enum]
+#define BUFFER_LENGTH 16
+^~~~~~~~
+                      =
+/home/vpayno/git_vpayno/exercism-workspace/c/raindrops/test_raindrops.c:6:9: warning: macro 'BUFFER_LENGTH' defines an integral constant; prefer an enum instead [modernize-macro-to-enum]
+#define BUFFER_LENGTH 16
+        ^
+/home/vpayno/git_vpayno/exercism-workspace/c/raindrops/test_raindrops.c:27:25: warning: 5 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+    check_convert_drops(5, "Plang");
+                        ^
+/home/vpayno/git_vpayno/exercism-workspace/c/raindrops/test_raindrops.c:32:25: warning: 7 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+    check_convert_drops(7, "Plong");
+                        ^
+/home/vpayno/git_vpayno/exercism-workspace/c/raindrops/test_raindrops.c:37:25: warning: 6 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+    check_convert_drops(6, "Pling");
+                        ^
+/home/vpayno/git_vpayno/exercism-workspace/c/raindrops/test_raindrops.c:44:25: warning: 8 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+    check_convert_drops(8, "8");
+                        ^
+/home/vpayno/git_vpayno/exercism-workspace/c/raindrops/test_raindrops.c:49:25: warning: 9 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+    check_convert_drops(9, "Pling");
+                        ^
+/home/vpayno/git_vpayno/exercism-workspace/c/raindrops/test_raindrops.c:54:25: warning: 10 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+    check_convert_drops(10, "Plang");
+                        ^
+/home/vpayno/git_vpayno/exercism-workspace/c/raindrops/test_raindrops.c:59:25: warning: 14 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+    check_convert_drops(14, "Plong");
+                        ^
+/home/vpayno/git_vpayno/exercism-workspace/c/raindrops/test_raindrops.c:65:25: warning: 15 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+    check_convert_drops(15, "PlingPlang");
+                        ^
+/home/vpayno/git_vpayno/exercism-workspace/c/raindrops/test_raindrops.c:71:25: warning: 21 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+    check_convert_drops(21, "PlingPlong");
+                        ^
+/home/vpayno/git_vpayno/exercism-workspace/c/raindrops/test_raindrops.c:76:25: warning: 25 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+    check_convert_drops(25, "Plang");
+                        ^
+/home/vpayno/git_vpayno/exercism-workspace/c/raindrops/test_raindrops.c:82:25: warning: 35 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+    check_convert_drops(35, "PlangPlong");
+                        ^
+/home/vpayno/git_vpayno/exercism-workspace/c/raindrops/test_raindrops.c:87:25: warning: 49 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+    check_convert_drops(49, "Plong");
+                        ^
+/home/vpayno/git_vpayno/exercism-workspace/c/raindrops/test_raindrops.c:92:25: warning: 52 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+    check_convert_drops(52, "52");
+                        ^
+/home/vpayno/git_vpayno/exercism-workspace/c/raindrops/test_raindrops.c:98:25: warning: 105 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+    check_convert_drops(105, "PlingPlangPlong");
+                        ^
+/home/vpayno/git_vpayno/exercism-workspace/c/raindrops/test_raindrops.c:103:25: warning: 3125 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+    check_convert_drops(3125, "Plang");
+                        ^
+Suppressed 10014 warnings (10014 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+
+real	0m0.251s
+user	0m0.234s
+sys	0m0.017s
+
+===============================================================================
+
+Running: clang-format-16 -style=file -i ./raindrops.c ./test_raindrops.c ./raindrops.h
+
+real	0m0.019s
+user	0m0.009s
+sys	0m0.010s
+
+===============================================================================
+
