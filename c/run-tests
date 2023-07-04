@@ -19,15 +19,15 @@ main() {
 
 	# https://www.throwtheswitch.org/unity
 
-	echo Running: make test
-	time make test
+	echo Running: make test '|' ansifilter
+	time make test | ansifilter
 
 	print_ruler
 
 	# https://www.throwtheswitch.org/unity
 
-	echo Running: make memcheck
-	time make memcheck
+	echo Running: make memcheck '|' ansifilter
+	time make memcheck | ansifilter
 
 	print_ruler
 
@@ -42,8 +42,8 @@ main() {
 
 	CLANG_TIDY_CHECKS="*,-llvm-header-guard,-llvmlibc-restrict-system-libc-headers"
 
-	echo Running: clang-tidy-16 ./*.c ./*.h -checks="${CLANG_TIDY_CHECKS}" --
-	time clang-tidy-16 ./*.c ./*.h -checks="${CLANG_TIDY_CHECKS}" --
+	echo Running: clang-tidy-16 ./*.c ./*.h -checks="${CLANG_TIDY_CHECKS}" -- '|' head -n 100
+	time clang-tidy-16 ./*.c ./*.h -checks="${CLANG_TIDY_CHECKS}" -- | head -n 100
 
 	print_ruler
 
