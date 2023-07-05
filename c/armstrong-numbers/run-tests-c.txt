@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf *.o *.out *.out.dSYM
 
-real	0m0.018s
-user	0m0.001s
-sys	0m0.007s
+real	0m0.008s
+user	0m0.003s
+sys	0m0.005s
 
 ===============================================================================
 
@@ -28,96 +28,65 @@ test_armstrong_numbers.c:63:test_seven_digit_number_that_is_not_an_armstrong_num
 9 Tests 0 Failures 0 Ignored 
 OK
 
-real	0m0.133s
-user	0m0.096s
-sys	0m0.040s
+real	0m0.114s
+user	0m0.082s
+sys	0m0.035s
 
 ===============================================================================
 
 Running: make memcheck | ansifilter
-=================================================================
-==7430==ERROR: AddressSanitizer: dynamic-stack-buffer-overflow on address 0x7ffe39ba34e2 at pc 0x78e63a8486f7 bp 0x7ffe39ba33c0 sp 0x7ffe39ba2b70
-WRITE of size 3 at 0x7ffe39ba34e2 thread T0
-    #0 0x78e63a8486f6 in __interceptor_vsprintf ../../../../src/libsanitizer/sanitizer_common/sanitizer_common_interceptors.inc:1666
-    #1 0x78e63a8488e6 in __interceptor_sprintf ../../../../src/libsanitizer/sanitizer_common/sanitizer_common_interceptors.inc:1709
-    #2 0x5c4bcbc36de6 in is_armstrong_number armstrong_numbers.c:12
-    #3 0x5c4bcbc36f86 in test_there_are_no_two_digit_armstrong_numbers test_armstrong_numbers.c:19
-    #4 0x5c4bcbc36b0a in UnityDefaultTestRun test-framework/unity.c:1837
-    #5 0x5c4bcbc37109 in main test_armstrong_numbers.c:57
-    #6 0x78e63a4f9d09 in __libc_start_main ../csu/libc-start.c:308
-    #7 0x5c4bcbc331e9 in _start (/home/vpayno/git_vpayno/exercism-workspace/c/armstrong-numbers/memcheck.out+0x31e9)
-
-Address 0x7ffe39ba34e2 is located in stack of thread T0
-SUMMARY: AddressSanitizer: dynamic-stack-buffer-overflow ../../../../src/libsanitizer/sanitizer_common/sanitizer_common_interceptors.inc:1666 in __interceptor_vsprintf
-Shadow bytes around the buggy address:
-  0x10004736c640: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-  0x10004736c650: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-  0x10004736c660: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-  0x10004736c670: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-  0x10004736c680: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-=>0x10004736c690: 00 00 00 00 00 00 00 00 ca ca ca ca[02]cb cb cb
-  0x10004736c6a0: cb cb cb cb 00 00 00 00 00 00 00 00 00 00 00 00
-  0x10004736c6b0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-  0x10004736c6c0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-  0x10004736c6d0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-  0x10004736c6e0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-Shadow byte legend (one shadow byte represents 8 application bytes):
-  Addressable:           00
-  Partially addressable: 01 02 03 04 05 06 07 
-  Heap left redzone:       fa
-  Freed heap region:       fd
-  Stack left redzone:      f1
-  Stack mid redzone:       f2
-  Stack right redzone:     f3
-  Stack after return:      f5
-  Stack use after scope:   f8
-  Global redzone:          f9
-  Global init order:       f6
-  Poisoned by user:        f7
-  Container overflow:      fc
-  Array cookie:            ac
-  Intra object redzone:    bb
-  ASan internal:           fe
-  Left alloca redzone:     ca
-  Right alloca redzone:    cb
-  Shadow gap:              cc
-==7430==ABORTING
-make: *** [makefile:28: memcheck] Error 1
 Compiling memcheck
+test_armstrong_numbers.c:55:test_zero_is_an_armstrong_number:PASS
+test_armstrong_numbers.c:56:test_single_digit_numbers_are_armstrong_numbers:PASS
+test_armstrong_numbers.c:57:test_there_are_no_two_digit_armstrong_numbers:PASS
+test_armstrong_numbers.c:58:test_three_digit_number_that_is_an_armstrong_number:PASS
+test_armstrong_numbers.c:59:test_three_digit_number_that_is_not_an_armstrong_number:PASS
+test_armstrong_numbers.c:60:test_four_digit_number_that_is_an_armstrong_number:PASS
+test_armstrong_numbers.c:61:test_four_digit_number_that_is_not_an_armstrong_number:PASS
+test_armstrong_numbers.c:62:test_seven_digit_number_that_is_an_armstrong_number:PASS
+test_armstrong_numbers.c:63:test_seven_digit_number_that_is_not_an_armstrong_number:PASS
 
-real	0m0.220s
-user	0m0.166s
-sys	0m0.044s
+-----------------------
+9 Tests 0 Failures 0 Ignored 
+OK
+Memory check passed
+
+real	0m0.130s
+user	0m0.089s
+sys	0m0.041s
 
 ===============================================================================
 
 Running: clang-check-16 ./armstrong_numbers.c ./test_armstrong_numbers.c ./armstrong_numbers.h --
 
-real	0m0.060s
-user	0m0.036s
-sys	0m0.014s
+real	0m0.049s
+user	0m0.033s
+sys	0m0.016s
 
 ===============================================================================
 
 Running: clang-tidy-16 ./armstrong_numbers.c ./test_armstrong_numbers.c ./armstrong_numbers.h -checks=*,-llvm-header-guard,-llvmlibc-restrict-system-libc-headers -- | head -n 100
-3429 warnings generated.
-7220 warnings generated.
-10644 warnings generated.
+3433 warnings generated.
+7224 warnings generated.
+10648 warnings generated.
 /home/vpayno/git_vpayno/exercism-workspace/c/armstrong-numbers/armstrong_numbers.c:4:21: warning: 10 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
     if (candidate < 10) {
                     ^
-/home/vpayno/git_vpayno/exercism-workspace/c/armstrong-numbers/armstrong_numbers.c:12:12: warning: Call to function 'sprintf' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'sprintf_s' in case of C11 [clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling]
-    (void) sprintf(str, "%d", candidate);
-           ^~~~~~~
-/home/vpayno/git_vpayno/exercism-workspace/c/armstrong-numbers/armstrong_numbers.c:12:12: note: Call to function 'sprintf' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'sprintf_s' in case of C11
-    (void) sprintf(str, "%d", candidate);
-           ^~~~~~~
-/home/vpayno/git_vpayno/exercism-workspace/c/armstrong-numbers/armstrong_numbers.c:17:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
-    for (int i = 0; i < str_len; i++) {
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/c/armstrong-numbers/armstrong_numbers.c:17:21: warning: backward branch (for loop) is ID-dependent due to variable reference to 'str_len' and may cause performance degradation [altera-id-dependent-backward-branch]
-    for (int i = 0; i < str_len; i++) {
-                    ^
+/home/vpayno/git_vpayno/exercism-workspace/c/armstrong-numbers/armstrong_numbers.c:12:12: warning: backward branch (while loop) is ID-dependent due to variable reference to 'num' and may cause performance degradation [altera-id-dependent-backward-branch]
+    while (num > 0) {
+           ^
+/home/vpayno/git_vpayno/exercism-workspace/c/armstrong-numbers/armstrong_numbers.c:13:30: warning: 10 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+        int pow_temp = num % 10;
+                             ^
+/home/vpayno/git_vpayno/exercism-workspace/c/armstrong-numbers/armstrong_numbers.c:16:9: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
+        for (int i = 0; i < digit_count; i++) {
+        ^
+/home/vpayno/git_vpayno/exercism-workspace/c/armstrong-numbers/armstrong_numbers.c:16:25: warning: backward branch (for loop) is ID-dependent due to variable reference to 'digit_count' and may cause performance degradation [altera-id-dependent-backward-branch]
+        for (int i = 0; i < digit_count; i++) {
+                        ^
+/home/vpayno/git_vpayno/exercism-workspace/c/armstrong-numbers/armstrong_numbers.c:21:16: warning: 10 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+        num /= 10;
+               ^
 /home/vpayno/git_vpayno/exercism-workspace/c/armstrong-numbers/test_armstrong_numbers.c:9:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
     TEST_ASSERT_TRUE(is_armstrong_number(0));
     ^
@@ -200,23 +169,20 @@ Running: clang-tidy-16 ./armstrong_numbers.c ./test_armstrong_numbers.c ./armstr
 #define UNITY_TEST_ASSERT(condition, line, message)                                              do {if (condition) {} else {UNITY_TEST_FAIL((UNITY_LINE_TYPE)(line), (message));}} while(0)
                                                                                                  ^
 /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h:39:23: warning: 13 is a magic number; consider replacing it with a named constant [readability-magic-numbers]
-  const char *__names[13];
-                      ^
-/home/vpayno/git_vpayno/exercism-workspace/c/armstrong-numbers/armstrong_numbers.c:15:5: note: inferred assignment of ID-dependent value from ID-dependent  [altera-id-dependent-backward-branch]
 Suppressed 10629 warnings (10629 in non-user code).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 
-real	0m0.317s
-user	0m0.297s
-sys	0m0.021s
+real	0m0.333s
+user	0m0.310s
+sys	0m0.025s
 
 ===============================================================================
 
 Running: clang-format-16 -style=file -i ./armstrong_numbers.c ./test_armstrong_numbers.c ./armstrong_numbers.h
 
-real	0m0.021s
-user	0m0.008s
-sys	0m0.013s
+real	0m0.020s
+user	0m0.009s
+sys	0m0.011s
 
 ===============================================================================
 

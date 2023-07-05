@@ -5,21 +5,21 @@ bool is_armstrong_number(int candidate) {
         return true;
     }
 
-    size_t size_of_char_array =
-        (size_t)((ceil(log10(candidate)) + 1) * sizeof(char));
-    char str[size_of_char_array];
+    int digit_count = (int)log10(candidate) + 1;
+    int num = candidate;
+    int pow_total = 0;
 
-    (void)sprintf(str, "%d", candidate);
+    while (num > 0) {
+        int pow_temp = num % 10;
+        int pow_temp_total = 1;
 
-    int sum = 0;
-    int str_len = (int)strlen(str);
+        for (int i = 0; i < digit_count; i++) {
+            pow_temp_total *= pow_temp;
+        }
 
-    for (int i = 0; i < str_len; i++) {
-        char letter = str[i];
-        int digit = letter - '0';
-
-        sum += (int)pow(digit, str_len);
+        pow_total += pow_temp_total;
+        num /= 10;
     }
 
-    return sum == candidate;
+    return pow_total == candidate;
 }
