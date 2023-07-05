@@ -42,3 +42,8 @@ The player's game scores can be read from
 ### Based on
 
 Tribute to the eighties' arcade game Frogger
+
+### My Solution
+
+- [my solution](./high_scores.c)
+- [run-tests](./run-tests-c.txt)
