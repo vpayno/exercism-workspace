@@ -19,3 +19,4 @@
 - [reverse-string](./reverse-string/README.md)
 - [raindrops](./raindrops/README.md)
 - [allergies](./allergies/README.md)
+- [armstrong-numbers](./armstrong-numbers/README.md)
