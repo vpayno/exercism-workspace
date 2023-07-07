@@ -50,3 +50,8 @@ For a delightful, four minute explanation of the whole leap year phenomenon, go 
 ### Based on
 
 JavaRanch Cattle Drive, exercise 3 - http://www.javaranch.com/leap.jsp
+
+### My Solution
+
+- [my solution](./leap.c)
+- [run-tests](./run-tests-c.txt)

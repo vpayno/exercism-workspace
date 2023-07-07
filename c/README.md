@@ -23,3 +23,4 @@
 - [high-scores](./high-scores/README.md)
 - [bob](./bob/README.md)
 - [triangle](./triangle/README.md)
+- [leap](./leap/README.md)
