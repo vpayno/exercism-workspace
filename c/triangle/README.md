@@ -52,3 +52,8 @@ See [Triangle Inequality][triangle-inequality]
 ### Based on
 
 The Ruby Koans triangle project, parts 1 & 2 - http://rubykoans.com
+
+### My Solution
+
+- [my solution](./triangle.c)
+- [run-tests](./run-tests-c.txt)
