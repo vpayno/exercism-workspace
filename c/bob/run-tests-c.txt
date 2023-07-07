@@ -1,0 +1,882 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: make clean
+rm -rf *.o *.out *.out.dSYM
+
+real	0m0.007s
+user	0m0.001s
+sys	0m0.005s
+
+===============================================================================
+
+Running: make test | ansifilter
+Compiling tests.out
+test_bob.c:148:test_stating_something:PASS
+test_bob.c:149:test_shouting:PASS
+test_bob.c:150:test_shouting_gibberish:PASS
+test_bob.c:151:test_asking_a_question:PASS
+test_bob.c:152:test_asking_a_numeric_question:PASS
+test_bob.c:153:test_asking_gibberish:PASS
+test_bob.c:154:test_talking_forcefully:PASS
+test_bob.c:155:test_using_acronyms_in_regular_speech:PASS
+test_bob.c:156:test_forceful_question:PASS
+test_bob.c:157:test_shouting_numbers:PASS
+test_bob.c:158:test_only_numbers:PASS
+test_bob.c:159:test_question_with_only_numbers:PASS
+test_bob.c:160:test_shouting_with_special_characters:PASS
+test_bob.c:161:test_shouting_with_no_exclamation_mark:PASS
+test_bob.c:162:test_statement_containing_question_mark:PASS
+test_bob.c:163:test_non_letters_with_question:PASS
+test_bob.c:164:test_prattling_on:PASS
+test_bob.c:165:test_silence:PASS
+test_bob.c:166:test_prolonged_silence:PASS
+test_bob.c:167:test_alternate_silence:PASS
+test_bob.c:168:test_multiple_line_question:PASS
+test_bob.c:169:test_starting_with_whitespace:PASS
+test_bob.c:170:test_ending_with_whitespace:PASS
+test_bob.c:171:test_other_whitespace:PASS
+test_bob.c:172:test_non_question_ending_with_whitespace:PASS
+
+-----------------------
+25 Tests 0 Failures 0 Ignored 
+OK
+
+real	0m0.121s
+user	0m0.080s
+sys	0m0.044s
+
+===============================================================================
+
+Running: make memcheck | ansifilter
+
+=================================================================
+==2745==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 4608 byte(s) in 18 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6f0df9 in __GI___regcomp posix/regcomp.c:472
+
+Direct leak of 4032 byte(s) in 18 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6f05d8 in re_compile_internal posix/regcomp.c:750
+
+Indirect leak of 90112 byte(s) in 44 object(s) allocated from:
+    #0 0x7b3deb890037 in __interceptor_calloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:154
+    #1 0x7b3deb6ea515 in build_trtable posix/regexec.c:3403
+    #2 0x7b3deb6ecb04 in transit_state posix/regexec.c:2252
+    #3 0x7b3deb6ecb04 in check_matching posix/regexec.c:1120
+    #4 0x7b3deb6ecb04 in re_search_internal posix/regexec.c:792
+
+Indirect leak of 11776 byte(s) in 18 object(s) allocated from:
+    #0 0x7b3deb890037 in __interceptor_calloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:154
+    #1 0x7b3deb6ef5d7 in init_dfa posix/regcomp.c:866
+    #2 0x7b3deb6ef5d7 in re_compile_internal posix/regcomp.c:758
+
+Indirect leak of 8888 byte(s) in 101 object(s) allocated from:
+    #0 0x7b3deb890037 in __interceptor_calloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:154
+    #1 0x7b3deb6e6545 in create_cd_newstate posix/regex_internal.c:1678
+    #2 0x7b3deb6e6545 in re_acquire_state_context posix/regex_internal.c:1553
+
+Indirect leak of 8864 byte(s) in 18 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6efa5c in analyze posix/regcomp.c:1171
+    #2 0x7b3deb6efa5c in re_compile_internal posix/regcomp.c:795
+
+Indirect leak of 8864 byte(s) in 18 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6ef5a8 in init_dfa posix/regcomp.c:859
+    #2 0x7b3deb6ef5a8 in re_compile_internal posix/regcomp.c:758
+
+Indirect leak of 8864 byte(s) in 18 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6efa6c in analyze posix/regcomp.c:1172
+    #2 0x7b3deb6efa6c in re_compile_internal posix/regcomp.c:795
+
+Indirect leak of 4400 byte(s) in 50 object(s) allocated from:
+    #0 0x7b3deb890037 in __interceptor_calloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:154
+    #1 0x7b3deb6e6545 in create_cd_newstate posix/regex_internal.c:1678
+    #2 0x7b3deb6e6545 in re_acquire_state_context posix/regex_internal.c:1553
+    #3 0x7b3deb6ecb04 in transit_state posix/regexec.c:2252
+    #4 0x7b3deb6ecb04 in check_matching posix/regexec.c:1120
+    #5 0x7b3deb6ecb04 in re_search_internal posix/regexec.c:792
+
+Indirect leak of 3632 byte(s) in 178 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e2381 in re_node_set_insert_last posix/regex_internal.c:1337
+
+Indirect leak of 3076 byte(s) in 151 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6e6395 in re_node_set_alloc posix/regex_internal.c:972
+    #2 0x7b3deb6e6395 in register_state posix/regex_internal.c:1574
+
+Indirect leak of 2848 byte(s) in 8 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6efe25 in analyze posix/regcomp.c:1213
+    #2 0x7b3deb6efe25 in re_compile_internal posix/regcomp.c:795
+
+Indirect leak of 2256 byte(s) in 141 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6e674a in create_cd_newstate posix/regex_internal.c:1713
+    #2 0x7b3deb6e674a in re_acquire_state_context posix/regex_internal.c:1553
+
+Indirect leak of 2216 byte(s) in 18 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6efa39 in analyze posix/regcomp.c:1169
+    #2 0x7b3deb6efa39 in re_compile_internal posix/regcomp.c:795
+
+Indirect leak of 2144 byte(s) in 122 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e643d in register_state posix/regex_internal.c:1589
+
+Indirect leak of 1216 byte(s) in 38 object(s) allocated from:
+    #0 0x7b3deb890037 in __interceptor_calloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:154
+    #1 0x7b3deb6ed510 in parse_bracket_exp posix/regcomp.c:3122
+    #2 0x7b3deb6ed510 in parse_expression posix/regcomp.c:2288
+
+Indirect leak of 1132 byte(s) in 198 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6e7cd9 in re_node_set_alloc posix/regex_internal.c:972
+    #2 0x7b3deb6e7cd9 in calc_eclosure_iter posix/regcomp.c:1700
+
+Indirect leak of 384 byte(s) in 48 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6f0145 in re_node_set_init_2 posix/regex_internal.c:1000
+    #2 0x7b3deb6f0145 in link_nfa_nodes posix/regcomp.c:1457
+    #3 0x7b3deb6f0145 in preorder posix/regcomp.c:1265
+    #4 0x7b3deb6f0145 in analyze posix/regcomp.c:1201
+    #5 0x7b3deb6f0145 in re_compile_internal posix/regcomp.c:795
+
+Indirect leak of 272 byte(s) in 68 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6f00da in re_node_set_init_1 posix/regex_internal.c:985
+    #2 0x7b3deb6f00da in link_nfa_nodes posix/regcomp.c:1464
+    #3 0x7b3deb6f00da in preorder posix/regcomp.c:1265
+    #4 0x7b3deb6f00da in analyze posix/regcomp.c:1201
+    #5 0x7b3deb6f00da in re_compile_internal posix/regcomp.c:795
+
+Indirect leak of 244 byte(s) in 7 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6e5216 in re_node_set_init_copy posix/regex_internal.c:1033
+    #2 0x60800000a21f  (<unknown module>)
+
+Indirect leak of 240 byte(s) in 6 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6e5216 in re_node_set_init_copy posix/regex_internal.c:1033
+    #2 0x60b000000dff  (<unknown module>)
+
+Indirect leak of 240 byte(s) in 6 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6e5216 in re_node_set_init_copy posix/regex_internal.c:1033
+    #2 0x60b00000092f  (<unknown module>)
+
+Indirect leak of 240 byte(s) in 6 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6e5216 in re_node_set_init_copy posix/regex_internal.c:1033
+    #2 0x60b0000002ff  (<unknown module>)
+
+Indirect leak of 240 byte(s) in 6 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6e5216 in re_node_set_init_copy posix/regex_internal.c:1033
+    #2 0x60b00000045f  (<unknown module>)
+
+Indirect leak of 240 byte(s) in 6 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6e5216 in re_node_set_init_copy posix/regex_internal.c:1033
+    #2 0x60b0000009df  (<unknown module>)
+
+Indirect leak of 240 byte(s) in 6 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6e5216 in re_node_set_init_copy posix/regex_internal.c:1033
+    #2 0x60b000000b3f  (<unknown module>)
+
+Indirect leak of 240 byte(s) in 6 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6e5216 in re_node_set_init_copy posix/regex_internal.c:1033
+    #2 0x60b000000bef  (<unknown module>)
+
+Indirect leak of 240 byte(s) in 6 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6e5216 in re_node_set_init_copy posix/regex_internal.c:1033
+    #2 0x60b00000024f  (<unknown module>)
+
+Indirect leak of 240 byte(s) in 6 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6e5216 in re_node_set_init_copy posix/regex_internal.c:1033
+    #2 0x60b000000d4f  (<unknown module>)
+
+Indirect leak of 240 byte(s) in 6 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6e5216 in re_node_set_init_copy posix/regex_internal.c:1033
+    #2 0x60b00000050f  (<unknown module>)
+
+Indirect leak of 224 byte(s) in 8 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6e5216 in re_node_set_init_copy posix/regex_internal.c:1033
+    #2 0x60300000420f  (<unknown module>)
+
+Indirect leak of 224 byte(s) in 8 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6e5216 in re_node_set_init_copy posix/regex_internal.c:1033
+    #2 0x603000010fbf  (<unknown module>)
+
+Indirect leak of 224 byte(s) in 8 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6e5216 in re_node_set_init_copy posix/regex_internal.c:1033
+    #2 0x60300000e91f  (<unknown module>)
+
+Indirect leak of 224 byte(s) in 8 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6e5216 in re_node_set_init_copy posix/regex_internal.c:1033
+    #2 0x60300000b46f  (<unknown module>)
+
+Indirect leak of 224 byte(s) in 8 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6e5216 in re_node_set_init_copy posix/regex_internal.c:1033
+    #2 0x603000002b5f  (<unknown module>)
+
+Indirect leak of 192 byte(s) in 6 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6e5216 in re_node_set_init_copy posix/regex_internal.c:1033
+    #2 0x60800000ca9f  (<unknown module>)
+
+Indirect leak of 192 byte(s) in 6 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6e5216 in re_node_set_init_copy posix/regex_internal.c:1033
+    #2 0x60800000cc9f  (<unknown module>)
+
+Indirect leak of 188 byte(s) in 7 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6e5216 in re_node_set_init_copy posix/regex_internal.c:1033
+    #2 0x6060000035bf  (<unknown module>)
+
+Indirect leak of 168 byte(s) in 6 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6e5216 in re_node_set_init_copy posix/regex_internal.c:1033
+    #2 0x60400000640f  (<unknown module>)
+
+Indirect leak of 168 byte(s) in 6 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6e5216 in re_node_set_init_copy posix/regex_internal.c:1033
+    #2 0x60400000b2cf  (<unknown module>)
+
+Indirect leak of 168 byte(s) in 6 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6e5216 in re_node_set_init_copy posix/regex_internal.c:1033
+    #2 0x60400000908f  (<unknown module>)
+
+Indirect leak of 168 byte(s) in 6 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6e5216 in re_node_set_init_copy posix/regex_internal.c:1033
+    #2 0x604000002a4f  (<unknown module>)
+
+Indirect leak of 168 byte(s) in 6 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6e5216 in re_node_set_init_copy posix/regex_internal.c:1033
+    #2 0x60400000340f  (<unknown module>)
+
+Indirect leak of 168 byte(s) in 6 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6e5216 in re_node_set_init_copy posix/regex_internal.c:1033
+    #2 0x60400000304f  (<unknown module>)
+
+Indirect leak of 160 byte(s) in 8 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6e5216 in re_node_set_init_copy posix/regex_internal.c:1033
+    #2 0x60300001860f  (<unknown module>)
+
+Indirect leak of 160 byte(s) in 8 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6e5216 in re_node_set_init_copy posix/regex_internal.c:1033
+    #2 0x603000009a5f  (<unknown module>)
+
+Indirect leak of 160 byte(s) in 8 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6e5216 in re_node_set_init_copy posix/regex_internal.c:1033
+    #2 0x603000013f2f  (<unknown module>)
+
+Indirect leak of 160 byte(s) in 8 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6e5216 in re_node_set_init_copy posix/regex_internal.c:1033
+    #2 0x603000013cef  (<unknown module>)
+
+Indirect leak of 160 byte(s) in 8 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6e5216 in re_node_set_init_copy posix/regex_internal.c:1033
+    #2 0x603000013aaf  (<unknown module>)
+
+Indirect leak of 160 byte(s) in 8 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6e5216 in re_node_set_init_copy posix/regex_internal.c:1033
+    #2 0x60300000c42f  (<unknown module>)
+
+Indirect leak of 128 byte(s) in 16 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e77ad in re_node_set_insert posix/regex_internal.c:1299
+
+Indirect leak of 96 byte(s) in 6 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6e5216 in re_node_set_init_copy posix/regex_internal.c:1033
+    #2 0x6040000093cf  (<unknown module>)
+
+Indirect leak of 96 byte(s) in 6 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6e5216 in re_node_set_init_copy posix/regex_internal.c:1033
+    #2 0x60400000928f  (<unknown module>)
+
+Indirect leak of 96 byte(s) in 8 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6e5216 in re_node_set_init_copy posix/regex_internal.c:1033
+    #2 0x602000027c8f  (<unknown module>)
+
+Indirect leak of 96 byte(s) in 6 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6e5216 in re_node_set_init_copy posix/regex_internal.c:1033
+    #2 0x60400000b40f  (<unknown module>)
+
+Indirect leak of 88 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x60200002374f  (<unknown module>)
+
+Indirect leak of 88 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x60200002388f  (<unknown module>)
+
+Indirect leak of 88 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x6020000205ef  (<unknown module>)
+
+Indirect leak of 88 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x6020000204af  (<unknown module>)
+
+Indirect leak of 88 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x60200001924f  (<unknown module>)
+
+Indirect leak of 88 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x602000008e0f  (<unknown module>)
+
+Indirect leak of 88 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x602000005b6f  (<unknown module>)
+
+Indirect leak of 88 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x602000008f4f  (<unknown module>)
+
+Indirect leak of 88 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x60200001910f  (<unknown module>)
+
+Indirect leak of 88 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x602000005caf  (<unknown module>)
+
+Indirect leak of 72 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x6020000204cf  (<unknown module>)
+
+Indirect leak of 72 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x60200002376f  (<unknown module>)
+
+Indirect leak of 72 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x60200001b90f  (<unknown module>)
+
+Indirect leak of 72 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x60200001b80f  (<unknown module>)
+
+Indirect leak of 72 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x60200001912f  (<unknown module>)
+
+Indirect leak of 72 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x602000005b8f  (<unknown module>)
+
+Indirect leak of 72 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x602000008e2f  (<unknown module>)
+
+Indirect leak of 64 byte(s) in 8 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6e5216 in re_node_set_init_copy posix/regex_internal.c:1033
+    #2 0x60200000e86f  (<unknown module>)
+
+Indirect leak of 64 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x602000015f6f  (<unknown module>)
+
+Indirect leak of 64 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x60200000592f  (<unknown module>)
+
+Indirect leak of 64 byte(s) in 8 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6e5216 in re_node_set_init_copy posix/regex_internal.c:1033
+    #2 0x60200000cd2f  (<unknown module>)
+
+Indirect leak of 64 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x602000008bcf  (<unknown module>)
+
+Indirect leak of 64 byte(s) in 8 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6e5216 in re_node_set_init_copy posix/regex_internal.c:1033
+    #2 0x6020000335cf  (<unknown module>)
+
+Indirect leak of 64 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x602000018ecf  (<unknown module>)
+
+Indirect leak of 64 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x60200001604f  (<unknown module>)
+
+Indirect leak of 64 byte(s) in 8 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6e5216 in re_node_set_init_copy posix/regex_internal.c:1033
+    #2 0x60200000afef  (<unknown module>)
+
+Indirect leak of 64 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x60200002026f  (<unknown module>)
+
+Indirect leak of 64 byte(s) in 8 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6e5216 in re_node_set_init_copy posix/regex_internal.c:1033
+    #2 0x602000029a2f  (<unknown module>)
+
+Indirect leak of 64 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x60200002350f  (<unknown module>)
+
+Indirect leak of 64 byte(s) in 8 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6e5216 in re_node_set_init_copy posix/regex_internal.c:1033
+    #2 0x60200001d6af  (<unknown module>)
+
+Indirect leak of 56 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x60200002368f  (<unknown module>)
+
+Indirect leak of 56 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x6020000235cf  (<unknown module>)
+
+Indirect leak of 56 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x6020000204ef  (<unknown module>)
+
+Indirect leak of 56 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x6020000203ef  (<unknown module>)
+
+Indirect leak of 56 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x60200002032f  (<unknown module>)
+
+Indirect leak of 56 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x60200001b82f  (<unknown module>)
+
+Indirect leak of 56 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x60200001904f  (<unknown module>)
+
+Indirect leak of 56 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x602000018f8f  (<unknown module>)
+
+Indirect leak of 56 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x602000015f8f  (<unknown module>)
+
+Indirect leak of 56 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x602000008e4f  (<unknown module>)
+
+Indirect leak of 56 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x602000008d4f  (<unknown module>)
+
+Indirect leak of 56 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x602000008c8f  (<unknown module>)
+
+Indirect leak of 56 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x602000005baf  (<unknown module>)
+
+Indirect leak of 56 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x602000005aaf  (<unknown module>)
+
+Indirect leak of 56 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x6020000059ef  (<unknown module>)
+
+Indirect leak of 56 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x60200001914f  (<unknown module>)
+
+Indirect leak of 56 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x60200002378f  (<unknown module>)
+
+Indirect leak of 48 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x602000008e6f  (<unknown module>)
+
+Indirect leak of 48 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x602000008d6f  (<unknown module>)
+
+Indirect leak of 48 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x602000008caf  (<unknown module>)
+
+Indirect leak of 48 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x602000005bcf  (<unknown module>)
+
+Indirect leak of 48 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x602000005acf  (<unknown module>)
+
+Indirect leak of 48 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x602000033b4f  (<unknown module>)
+
+Indirect leak of 48 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x60200002a82f  (<unknown module>)
+
+Indirect leak of 48 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x602000005a0f  (<unknown module>)
+
+Indirect leak of 48 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x60200002a26f  (<unknown module>)
+
+Indirect leak of 48 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x602000029eef  (<unknown module>)
+
+Indirect leak of 48 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x602000027a4f  (<unknown module>)
+
+Indirect leak of 48 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x6020000279af  (<unknown module>)
+
+Indirect leak of 48 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x6020000237af  (<unknown module>)
+
+Indirect leak of 48 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x6020000236af  (<unknown module>)
+
+Indirect leak of 48 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x6020000235ef  (<unknown module>)
+
+Indirect leak of 48 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x60200002050f  (<unknown module>)
+
+Indirect leak of 48 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x60200002040f  (<unknown module>)
+
+Indirect leak of 48 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x60200002034f  (<unknown module>)
+
+Indirect leak of 48 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x60200001b68f  (<unknown module>)
+
+Indirect leak of 48 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x60200001916f  (<unknown module>)
+
+Indirect leak of 48 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x60200001906f  (<unknown module>)
+
+Indirect leak of 48 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x602000018faf  (<unknown module>)
+
+Indirect leak of 48 byte(s) in 12 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6e76f6 in re_node_set_init_1 posix/regex_internal.c:985
+    #2 0x7b3deb6e76f6 in re_node_set_insert posix/regex_internal.c:1284
+
+Indirect leak of 48 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x602000015def  (<unknown module>)
+
+Indirect leak of 40 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x60200000e7ef  (<unknown module>)
+
+Indirect leak of 40 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x60200000ccaf  (<unknown module>)
+
+Indirect leak of 40 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x60200000af6f  (<unknown module>)
+
+Indirect leak of 40 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x602000033c6f  (<unknown module>)
+
+Indirect leak of 40 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x602000033bcf  (<unknown module>)
+
+Indirect leak of 40 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x60200003354f  (<unknown module>)
+
+Indirect leak of 40 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x60200002a94f  (<unknown module>)
+
+Indirect leak of 40 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x60200002a8af  (<unknown module>)
+
+Indirect leak of 40 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x60200002a38f  (<unknown module>)
+
+Indirect leak of 40 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x60200002a2ef  (<unknown module>)
+
+Indirect leak of 40 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x60200002a00f  (<unknown module>)
+
+Indirect leak of 40 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x602000029f6f  (<unknown module>)
+
+Indirect leak of 40 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x6020000299af  (<unknown module>)
+
+Indirect leak of 40 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x6020000279cf  (<unknown module>)
+
+Indirect leak of 40 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x60200001d62f  (<unknown module>)
+
+Indirect leak of 40 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x60200001b84f  (<unknown module>)
+
+Indirect leak of 40 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x60200001b78f  (<unknown module>)
+
+Indirect leak of 40 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x60200001b70f  (<unknown module>)
+
+Indirect leak of 40 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x602000015faf  (<unknown module>)
+
+Indirect leak of 40 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x602000015eef  (<unknown module>)
+
+Indirect leak of 40 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x602000015e6f  (<unknown module>)
+
+Indirect leak of 32 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb8901f8 in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7b3deb6e3194 in re_node_set_merge posix/regex_internal.c:1204
+    #2 0x6020000278ef  (<unknown module>)
+
+Indirect leak of 28 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6e5216 in re_node_set_init_copy posix/regex_internal.c:1033
+    #2 0x607000003b2f  (<unknown module>)
+
+Indirect leak of 20 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6e5216 in re_node_set_init_copy posix/regex_internal.c:1033
+    #2 0x60600000355f  (<unknown module>)
+
+Indirect leak of 12 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6e5216 in re_node_set_init_copy posix/regex_internal.c:1033
+    #2 0x6040000033cf  (<unknown module>)
+
+Indirect leak of 12 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6e5216 in re_node_set_init_copy posix/regex_internal.c:1033
+    #2 0x60400000b28f  (<unknown module>)
+
+Indirect leak of 12 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6e5216 in re_node_set_init_copy posix/regex_internal.c:1033
+    #2 0x60400000300f  (<unknown module>)
+
+Indirect leak of 12 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6e5216 in re_node_set_init_copy posix/regex_internal.c:1033
+    #2 0x60400000904f  (<unknown module>)
+
+Indirect leak of 12 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6e5216 in re_node_set_init_copy posix/regex_internal.c:1033
+    #2 0x6040000063cf  (<unknown module>)
+
+Indirect leak of 12 byte(s) in 1 object(s) allocated from:
+    #0 0x7b3deb88fe8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x7b3deb6e5216 in re_node_set_init_copy posix/regex_internal.c:1033
+    #2 0x604000002a0f  (<unknown module>)
+
+SUMMARY: AddressSanitizer: 181712 byte(s) leaked in 1679 allocation(s).
+make: *** [makefile:28: memcheck] Error 1
+Compiling memcheck
+
+real	0m0.325s
+user	0m0.194s
+sys	0m0.132s
+
+===============================================================================
+
+Running: clang-check-16 ./bob.c ./test_bob.c ./bob.h --
+
+real	0m0.048s
+user	0m0.035s
+sys	0m0.013s
+
+===============================================================================
+
+Running: clang-tidy-16 ./bob.c ./test_bob.c ./bob.h -checks=*,-llvm-header-guard,-llvmlibc-restrict-system-libc-headers -- | head -n 100
+3441 warnings generated.
+7529 warnings generated.
+10970 warnings generated.
+Suppressed 10970 warnings (10970 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+
+real	0m0.320s
+user	0m0.299s
+sys	0m0.022s
+
+===============================================================================
+
+Running: clang-format-16 -style=file -i ./bob.c ./test_bob.c ./bob.h
+
+real	0m0.025s
+user	0m0.013s
+sys	0m0.012s
+
+===============================================================================
+

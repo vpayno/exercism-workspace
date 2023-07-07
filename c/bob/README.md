@@ -59,3 +59,8 @@ Bob only ever answers one of five things:
 ### Based on
 
 Inspired by the 'Deaf Grandma' exercise in Chris Pine's Learn to Program tutorial. - http://pine.fm/LearnToProgram/?Chapter=06
+
+### My Solution
+
+- [my solution](./bob.c)
+- [run-tests](./run-tests-c.txt)

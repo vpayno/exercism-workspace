@@ -21,3 +21,4 @@
 - [allergies](./allergies/README.md)
 - [armstrong-numbers](./armstrong-numbers/README.md)
 - [high-scores](./high-scores/README.md)
+- [bob](./bob/README.md)
