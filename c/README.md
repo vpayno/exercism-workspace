@@ -26,3 +26,4 @@
 - [leap](./leap/README.md)
 - [isogram](./isogram/README.md)
 - [pangram](./pangram/README.md)
+- [scrabble-score](./scrabble-score/README.md)

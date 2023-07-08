@@ -1,0 +1,104 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: make clean
+rm -rf *.o *.out *.out.dSYM
+
+real	0m0.006s
+user	0m0.002s
+sys	0m0.004s
+
+===============================================================================
+
+Running: make test | ansifilter
+Compiling tests.out
+test_scrabble_score.c:63:test_lowercase_letter:PASS
+test_scrabble_score.c:64:test_uppercase_letter:PASS
+test_scrabble_score.c:65:test_valuable_letter:PASS
+test_scrabble_score.c:66:test_short_word:PASS
+test_scrabble_score.c:67:test_short_valuable_word:PASS
+test_scrabble_score.c:68:test_medium_word:PASS
+test_scrabble_score.c:69:test_medium_valuable_word:PASS
+test_scrabble_score.c:70:test_long_mixed_case_word:PASS
+test_scrabble_score.c:71:test_english_like_word:PASS
+test_scrabble_score.c:72:test_empty_input:PASS
+test_scrabble_score.c:73:test_entire_alphabet_available:PASS
+
+-----------------------
+11 Tests 0 Failures 0 Ignored 
+OK
+
+real	0m0.123s
+user	0m0.082s
+sys	0m0.044s
+
+===============================================================================
+
+Running: make memcheck | ansifilter
+Compiling memcheck
+test_scrabble_score.c:63:test_lowercase_letter:PASS
+test_scrabble_score.c:64:test_uppercase_letter:PASS
+test_scrabble_score.c:65:test_valuable_letter:PASS
+test_scrabble_score.c:66:test_short_word:PASS
+test_scrabble_score.c:67:test_short_valuable_word:PASS
+test_scrabble_score.c:68:test_medium_word:PASS
+test_scrabble_score.c:69:test_medium_valuable_word:PASS
+test_scrabble_score.c:70:test_long_mixed_case_word:PASS
+test_scrabble_score.c:71:test_english_like_word:PASS
+test_scrabble_score.c:72:test_empty_input:PASS
+test_scrabble_score.c:73:test_entire_alphabet_available:PASS
+
+-----------------------
+11 Tests 0 Failures 0 Ignored 
+OK
+Memory check passed
+
+real	0m0.138s
+user	0m0.093s
+sys	0m0.047s
+
+===============================================================================
+
+Running: clang-format-16 -style=file -i ./scrabble_score.c ./test_scrabble_score.c ./scrabble_score.h
+
+real	0m0.023s
+user	0m0.013s
+sys	0m0.010s
+
+===============================================================================
+
+Running: clang-check-16 ./scrabble_score.c ./test_scrabble_score.c ./scrabble_score.h --
+
+real	0m0.037s
+user	0m0.022s
+sys	0m0.015s
+
+===============================================================================
+
+Running: clang-tidy-16 ./scrabble_score.c ./test_scrabble_score.c ./scrabble_score.h -checks=*,-llvm-header-guard,-llvmlibc-restrict-system-libc-headers -- | head -n 100
+1322 warnings generated.
+4108 warnings generated.
+5423 warnings generated.
+Suppressed 5416 warnings (5416 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+/home/vpayno/git_vpayno/exercism-workspace/c/scrabble-score/scrabble_score.c:14:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
+    while (*word) {
+    ^
+/home/vpayno/git_vpayno/exercism-workspace/c/scrabble-score/scrabble_score.c:36:23: warning: 5 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+            result += 5;
+                      ^
+/home/vpayno/git_vpayno/exercism-workspace/c/scrabble-score/scrabble_score.c:40:23: warning: 8 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+            result += 8;
+                      ^
+/home/vpayno/git_vpayno/exercism-workspace/c/scrabble-score/scrabble_score.c:44:23: warning: 10 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+            result += 10;
+                      ^
+
+real	0m0.197s
+user	0m0.178s
+sys	0m0.020s
+
+===============================================================================
+
