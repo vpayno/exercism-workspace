@@ -25,3 +25,4 @@
 - [triangle](./triangle/README.md)
 - [leap](./leap/README.md)
 - [isogram](./isogram/README.md)
+- [pangram](./pangram/README.md)

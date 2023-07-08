@@ -51,3 +51,8 @@ For this exercise we only use the basic letters used in the English alphabet: `a
 ### Based on
 
 Wikipedia - https://en.wikipedia.org/wiki/Pangram
+
+### My Solution
+
+- [my solution](./pangram.c)
+- [run-tests](./run-tests-c.txt)

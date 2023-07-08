@@ -1,0 +1,229 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: make clean
+rm -rf *.o *.out *.out.dSYM
+
+real	0m0.004s
+user	0m0.003s
+sys	0m0.002s
+
+===============================================================================
+
+Running: make test | ansifilter
+Compiling tests.out
+test_pangram.c:85:test_null:PASS
+test_pangram.c:86:test_empty_sentence:PASS
+test_pangram.c:87:test_perfect_lower_case:PASS
+test_pangram.c:88:test_only_lower_case:PASS
+test_pangram.c:89:test_missing_letter_x:PASS
+test_pangram.c:90:test_missing_letter_h:PASS
+test_pangram.c:91:test_with_underscores:PASS
+test_pangram.c:92:test_with_numbers:PASS
+test_pangram.c:93:test_missing_letters_replaced_by_numbers:PASS
+test_pangram.c:94:test_mixed_case_and_punctuation:PASS
+test_pangram.c:95:test_a_to_m_and_A_to_M_are_26_different_characters_but_not_pangram:PASS
+
+-----------------------
+11 Tests 0 Failures 0 Ignored 
+OK
+
+real	0m0.108s
+user	0m0.078s
+sys	0m0.032s
+
+===============================================================================
+
+Running: make memcheck | ansifilter
+=================================================================
+==17877==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x60300000002c at pc 0x7be9ba0bdb11 bp 0x7fff49960c30 sp 0x7fff499603e0
+READ of size 29 at 0x60300000002c thread T0
+    #0 0x7be9ba0bdb10 in __interceptor_strlen ../../../../src/libsanitizer/sanitizer_common/sanitizer_common_interceptors.inc:370
+    #1 0x5bec64327f54 in is_pangram pangram.c:27
+    #2 0x5bec64328480 in test_perfect_lower_case test_pangram.c:21
+    #3 0x5bec64327b0a in UnityDefaultTestRun test-framework/unity.c:1837
+    #4 0x5bec64329373 in main test_pangram.c:87
+    #5 0x7be9b9ed0d09 in __libc_start_main ../csu/libc-start.c:308
+    #6 0x5bec643241e9 in _start (/home/vpayno/git_vpayno/exercism-workspace/c/pangram/memcheck.out+0x31e9)
+
+0x60300000002c is located 0 bytes to the right of 28-byte region [0x603000000010,0x60300000002c)
+allocated by thread T0 here:
+    #0 0x7be9ba12ae8f in __interceptor_malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:145
+    #1 0x5bec64327d8e in is_pangram pangram.c:17
+    #2 0x5bec64328480 in test_perfect_lower_case test_pangram.c:21
+    #3 0x5bec64327b0a in UnityDefaultTestRun test-framework/unity.c:1837
+    #4 0x5bec64329373 in main test_pangram.c:87
+    #5 0x7be9b9ed0d09 in __libc_start_main ../csu/libc-start.c:308
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow ../../../../src/libsanitizer/sanitizer_common/sanitizer_common_interceptors.inc:370 in __interceptor_strlen
+Shadow bytes around the buggy address:
+  0x0c067fff7fb0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c067fff7fc0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c067fff7fd0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c067fff7fe0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c067fff7ff0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x0c067fff8000: fa fa 00 00 00[04]fa fa fa fa fa fa fa fa fa fa
+  0x0c067fff8010: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c067fff8020: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c067fff8030: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c067fff8040: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c067fff8050: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+  Shadow gap:              cc
+==17877==ABORTING
+make: *** [makefile:28: memcheck] Error 1
+Compiling memcheck
+
+real	0m0.211s
+user	0m0.169s
+sys	0m0.043s
+
+===============================================================================
+
+Running: clang-check-16 ./pangram.c ./test_pangram.c ./pangram.h --
+
+real	0m0.039s
+user	0m0.026s
+sys	0m0.013s
+
+===============================================================================
+
+Running: clang-tidy-16 ./pangram.c ./test_pangram.c ./pangram.h -checks=*,-llvm-header-guard,-llvmlibc-restrict-system-libc-headers -- | head -n 100
+2681 warnings generated.
+6674 warnings generated.
+9351 warnings generated.
+/home/vpayno/git_vpayno/exercism-workspace/c/pangram/pangram.c:20:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
+    for (int i = 0, j = 0; i < (int)strlen(sentence); i++) {
+    ^
+/home/vpayno/git_vpayno/exercism-workspace/c/pangram/pangram.c:17:5: note: inferred assignment of ID-dependent value from ID-dependent  [altera-id-dependent-backward-branch]
+    char *new_sentence = malloc(strlen(sentence) + 2);
+    ^
+/home/vpayno/git_vpayno/exercism-workspace/c/pangram/pangram.c:22:33: warning: narrowing conversion from 'int' to signed type 'char' is implementation-defined [bugprone-narrowing-conversions,cppcoreguidelines-narrowing-conversions]
+            new_sentence[j++] = tolower(sentence[i]);
+                                ^
+/home/vpayno/git_vpayno/exercism-workspace/c/pangram/pangram.c:35:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
+    for (int i = 0; i < (int)strlen(new_sentence); i++) {
+    ^
+/home/vpayno/git_vpayno/exercism-workspace/c/pangram/pangram.c:35:21: warning: backward branch (for loop) is ID-dependent due to variable reference to 'new_sentence' and may cause performance degradation [altera-id-dependent-backward-branch]
+    for (int i = 0; i < (int)strlen(new_sentence); i++) {
+                    ^
+/home/vpayno/git_vpayno/exercism-workspace/c/pangram/pangram.c:36:43: warning: The left operand of '-' is a garbage value [clang-analyzer-core.UndefinedBinaryOperatorResult]
+        int offset = (int)new_sentence[i] - CHAR_INT_OFFSET;
+                          ~~~~~~~~~~~~~~~ ^
+/home/vpayno/git_vpayno/exercism-workspace/c/pangram/pangram.c:8:9: note: Assuming 'sentence' is non-null
+    if (!sentence) {
+        ^~~~~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/pangram/pangram.c:8:5: note: Taking false branch
+    if (!sentence) {
+    ^
+/home/vpayno/git_vpayno/exercism-workspace/c/pangram/pangram.c:13:9: note: Assuming the condition is false
+    if ((int)strlen(sentence) == 0) {
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/pangram/pangram.c:13:5: note: Taking false branch
+    if ((int)strlen(sentence) == 0) {
+    ^
+/home/vpayno/git_vpayno/exercism-workspace/c/pangram/pangram.c:17:26: note: Storing uninitialized value
+    char *new_sentence = malloc(strlen(sentence) + 2);
+                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/pangram/pangram.c:20:5: note: Loop condition is true.  Entering loop body
+    for (int i = 0, j = 0; i < (int)strlen(sentence); i++) {
+    ^
+/home/vpayno/git_vpayno/exercism-workspace/c/pangram/pangram.c:21:13: note: Assuming the condition is false
+        if (isalpha(sentence[i])) {
+            ^
+/usr/include/ctype.h:190:21: note: expanded from macro 'isalpha'
+# define isalpha(c)     __isctype((c), _ISalpha)
+                        ^~~~~~~~~~~~~~~~~~~~~~~~
+/usr/include/ctype.h:89:4: note: expanded from macro '__isctype'
+  ((*__ctype_b_loc ())[(int) (c)] & (unsigned short int) type)
+   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/pangram/pangram.c:21:9: note: Taking false branch
+        if (isalpha(sentence[i])) {
+        ^
+/home/vpayno/git_vpayno/exercism-workspace/c/pangram/pangram.c:20:28: note: Assuming the condition is false
+    for (int i = 0, j = 0; i < (int)strlen(sentence); i++) {
+                           ^~~~~~~~~~~~~~~~~~~~~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/pangram/pangram.c:20:5: note: Loop condition is false. Execution continues on line 27
+    for (int i = 0, j = 0; i < (int)strlen(sentence); i++) {
+    ^
+/home/vpayno/git_vpayno/exercism-workspace/c/pangram/pangram.c:27:9: note: Assuming the condition is false
+    if (strlen(new_sentence) < ALPHABET_SIZE) {
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/pangram/pangram.c:27:5: note: Taking false branch
+    if (strlen(new_sentence) < ALPHABET_SIZE) {
+    ^
+/home/vpayno/git_vpayno/exercism-workspace/c/pangram/pangram.c:35:10: note: 'i' initialized to 0
+    for (int i = 0; i < (int)strlen(new_sentence); i++) {
+         ^~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/pangram/pangram.c:35:5: note: Loop condition is true.  Entering loop body
+    for (int i = 0; i < (int)strlen(new_sentence); i++) {
+    ^
+/home/vpayno/git_vpayno/exercism-workspace/c/pangram/pangram.c:36:43: note: The left operand of '-' is a garbage value
+        int offset = (int)new_sentence[i] - CHAR_INT_OFFSET;
+                          ~~~~~~~~~~~~~~~ ^
+/home/vpayno/git_vpayno/exercism-workspace/c/pangram/pangram.c:41:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
+    for (int i = 0; i < ALPHABET_SIZE; i++) {
+    ^
+/home/vpayno/git_vpayno/exercism-workspace/c/pangram/test_pangram.c:8:31: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
+static void test_null(void) { TEST_ASSERT_FALSE(is_pangram(NULL)); }
+                              ^
+/home/vpayno/git_vpayno/exercism-workspace/c/pangram/test-framework/unity.h:128:100: note: expanded from macro 'TEST_ASSERT_FALSE'
+#define TEST_ASSERT_FALSE(condition)                                                               UNITY_TEST_ASSERT(      !(condition), __LINE__, " Expected FALSE Was TRUE")
+                                                                                                   ^
+/home/vpayno/git_vpayno/exercism-workspace/c/pangram/test-framework/unity_internals.h:775:98: note: expanded from macro 'UNITY_TEST_ASSERT'
+#define UNITY_TEST_ASSERT(condition, line, message)                                              do {if (condition) {} else {UNITY_TEST_FAIL((UNITY_LINE_TYPE)(line), (message));}} while(0)
+                                                                                                 ^
+/home/vpayno/git_vpayno/exercism-workspace/c/pangram/test_pangram.c:14:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
+    TEST_ASSERT_FALSE(is_pangram(sentence));
+    ^
+/home/vpayno/git_vpayno/exercism-workspace/c/pangram/test-framework/unity.h:128:100: note: expanded from macro 'TEST_ASSERT_FALSE'
+#define TEST_ASSERT_FALSE(condition)                                                               UNITY_TEST_ASSERT(      !(condition), __LINE__, " Expected FALSE Was TRUE")
+                                                                                                   ^
+/home/vpayno/git_vpayno/exercism-workspace/c/pangram/test-framework/unity_internals.h:775:98: note: expanded from macro 'UNITY_TEST_ASSERT'
+#define UNITY_TEST_ASSERT(condition, line, message)                                              do {if (condition) {} else {UNITY_TEST_FAIL((UNITY_LINE_TYPE)(line), (message));}} while(0)
+                                                                                                 ^
+/home/vpayno/git_vpayno/exercism-workspace/c/pangram/test_pangram.c:21:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
+    TEST_ASSERT_TRUE(is_pangram(sentence));
+    ^
+/home/vpayno/git_vpayno/exercism-workspace/c/pangram/test-framework/unity.h:126:100: note: expanded from macro 'TEST_ASSERT_TRUE'
+#define TEST_ASSERT_TRUE(condition)                                                                UNITY_TEST_ASSERT(       (condition), __LINE__, " Expected TRUE Was FALSE")
+                                                                                                   ^
+/home/vpayno/git_vpayno/exercism-workspace/c/pangram/test-framework/unity_internals.h:775:98: note: expanded from macro 'UNITY_TEST_ASSERT'
+#define UNITY_TEST_ASSERT(condition, line, message)                                              do {if (condition) {} else {UNITY_TEST_FAIL((UNITY_LINE_TYPE)(line), (message));}} while(0)
+                                                                                                 ^
+/home/vpayno/git_vpayno/exercism-workspace/c/pangram/test_pangram.c:28:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
+
+real	0m0.254s
+user	0m0.229s
+sys	0m0.025s
+
+===============================================================================
+
+Running: clang-format-16 -style=file -i ./pangram.c ./test_pangram.c ./pangram.h
+
+real	0m0.018s
+user	0m0.007s
+sys	0m0.011s
+
+===============================================================================
+
