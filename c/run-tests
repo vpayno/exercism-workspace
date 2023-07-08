@@ -31,6 +31,13 @@ main() {
 
 	print_ruler
 
+	# https://clang.llvm.org/docs/ClangFormat.html
+
+	echo Running: clang-format-16 -style=file -i ./*.c ./*.h
+	time clang-format-16 -style=file -i ./*.c ./*.h
+
+	print_ruler
+
 	# https://clang.llvm.org/docs/ClangCheck.html
 
 	echo Running: clang-check-16 ./*.c ./*.h --
@@ -44,13 +51,6 @@ main() {
 
 	echo Running: clang-tidy-16 ./*.c ./*.h -checks="${CLANG_TIDY_CHECKS}" -- '|' head -n 100
 	time clang-tidy-16 ./*.c ./*.h -checks="${CLANG_TIDY_CHECKS}" -- | head -n 100
-
-	print_ruler
-
-	# https://clang.llvm.org/docs/ClangFormat.html
-
-	echo Running: clang-format-16 -style=file -i ./*.c ./*.h
-	time clang-format-16 -style=file -i ./*.c ./*.h
 
 	print_ruler
 
