@@ -1,0 +1,196 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: make clean
+rm -rf *.o *.out *.out.dSYM
+
+real	0m0.008s
+user	0m0.002s
+sys	0m0.006s
+
+===============================================================================
+
+Running: make test | ansifilter
+Compiling tests.out
+test_darts.c:115:test_missed_target:PASS
+test_darts.c:116:test_on_the_outer_circle:PASS
+test_darts.c:117:test_on_the_middle_circle:PASS
+test_darts.c:118:test_on_the_inner_circle:PASS
+test_darts.c:119:test_exactly_on_center:PASS
+test_darts.c:120:test_near_the_center:PASS
+test_darts.c:121:test_just_within_the_inner_circle:PASS
+test_darts.c:122:test_just_outside_the_inner_circle:PASS
+test_darts.c:123:test_just_within_the_middle_circle:PASS
+test_darts.c:124:test_just_outside_the_middle_circle:PASS
+test_darts.c:125:test_just_within_the_outer_circle:PASS
+test_darts.c:126:test_just_outside_the_outer_circle:PASS
+test_darts.c:127:test_asymmetric_position_between_the_inner_and_middle_circles:PASS
+
+-----------------------
+13 Tests 0 Failures 0 Ignored 
+OK
+
+real	0m0.113s
+user	0m0.084s
+sys	0m0.031s
+
+===============================================================================
+
+Running: make memcheck | ansifilter
+Compiling memcheck
+test_darts.c:115:test_missed_target:PASS
+test_darts.c:116:test_on_the_outer_circle:PASS
+test_darts.c:117:test_on_the_middle_circle:PASS
+test_darts.c:118:test_on_the_inner_circle:PASS
+test_darts.c:119:test_exactly_on_center:PASS
+test_darts.c:120:test_near_the_center:PASS
+test_darts.c:121:test_just_within_the_inner_circle:PASS
+test_darts.c:122:test_just_outside_the_inner_circle:PASS
+test_darts.c:123:test_just_within_the_middle_circle:PASS
+test_darts.c:124:test_just_outside_the_middle_circle:PASS
+test_darts.c:125:test_just_within_the_outer_circle:PASS
+test_darts.c:126:test_just_outside_the_outer_circle:PASS
+test_darts.c:127:test_asymmetric_position_between_the_inner_and_middle_circles:PASS
+
+-----------------------
+13 Tests 0 Failures 0 Ignored 
+OK
+Memory check passed
+
+real	0m0.135s
+user	0m0.092s
+sys	0m0.044s
+
+===============================================================================
+
+Running: clang-format-16 -style=file -i ./darts.c ./test_darts.c ./darts.h
+
+real	0m0.021s
+user	0m0.009s
+sys	0m0.012s
+
+===============================================================================
+
+Running: clang-check-16 ./darts.c ./test_darts.c ./darts.h --
+
+real	0m0.039s
+user	0m0.024s
+sys	0m0.014s
+
+===============================================================================
+
+Running: clang-tidy-16 ./darts.c ./test_darts.c ./darts.h -checks=*,-llvm-header-guard,-llvmlibc-restrict-system-libc-headers -- | head -n 100
+1177 warnings generated.
+3459 warnings generated.
+4626 warnings generated.
+/home/vpayno/git_vpayno/exercism-workspace/c/darts/darts.c:8:18: warning: 5 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+    if (radius > 5 && radius <= 10) {
+                 ^
+/home/vpayno/git_vpayno/exercism-workspace/c/darts/darts.c:8:33: warning: 10 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+    if (radius > 5 && radius <= 10) {
+                                ^
+/home/vpayno/git_vpayno/exercism-workspace/c/darts/darts.c:12:33: warning: 5 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+    if (radius > 1 && radius <= 5) {
+                                ^
+/home/vpayno/git_vpayno/exercism-workspace/c/darts/darts.c:13:16: warning: 5 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+        return 5;
+               ^
+/home/vpayno/git_vpayno/exercism-workspace/c/darts/darts.c:17:16: warning: 10 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+        return 10;
+               ^
+/home/vpayno/git_vpayno/exercism-workspace/c/darts/darts.h:7:9: warning: accessing fields in struct 'coordinate_t' is inefficient due to poor alignment; currently aligned to 4 bytes, but recommended alignment is 8 bytes [altera-struct-pack-align]
+typedef struct {
+        ^
+/home/vpayno/git_vpayno/exercism-workspace/c/darts/darts.h:7:9: note: use "__attribute__((aligned(8)))" to align struct 'coordinate_t' to 8 bytes
+/home/vpayno/git_vpayno/exercism-workspace/c/darts/test_darts.c:9:39: warning: 9.0F is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+    coordinate_t landing_position = {-9.0F, 9.0F};
+                                      ^
+/home/vpayno/git_vpayno/exercism-workspace/c/darts/test_darts.c:9:45: warning: 9.0F is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+    coordinate_t landing_position = {-9.0F, 9.0F};
+                                            ^
+/home/vpayno/git_vpayno/exercism-workspace/c/darts/test_darts.c:17:44: warning: 10.0F is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+    coordinate_t landing_position = {0.0F, 10.0F};
+                                           ^
+/home/vpayno/git_vpayno/exercism-workspace/c/darts/test_darts.c:25:39: warning: 5.0F is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+    coordinate_t landing_position = {-5.0F, 0.0F};
+                                      ^
+/home/vpayno/git_vpayno/exercism-workspace/c/darts/test_darts.c:26:24: warning: 5 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+    uint8_t expected = 5;
+                       ^
+/home/vpayno/git_vpayno/exercism-workspace/c/darts/test_darts.c:34:24: warning: 10 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+    uint8_t expected = 10;
+                       ^
+/home/vpayno/git_vpayno/exercism-workspace/c/darts/test_darts.c:42:24: warning: 10 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+    uint8_t expected = 10;
+                       ^
+/home/vpayno/git_vpayno/exercism-workspace/c/darts/test_darts.c:49:39: warning: 0.1F is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+    coordinate_t landing_position = {-0.1F, -0.1F};
+                                      ^
+/home/vpayno/git_vpayno/exercism-workspace/c/darts/test_darts.c:49:46: warning: 0.1F is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+    coordinate_t landing_position = {-0.1F, -0.1F};
+                                             ^
+/home/vpayno/git_vpayno/exercism-workspace/c/darts/test_darts.c:50:24: warning: 10 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+    uint8_t expected = 10;
+                       ^
+/home/vpayno/git_vpayno/exercism-workspace/c/darts/test_darts.c:57:38: warning: 0.7F is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+    coordinate_t landing_position = {0.7F, 0.7F};
+                                     ^
+/home/vpayno/git_vpayno/exercism-workspace/c/darts/test_darts.c:57:44: warning: 0.7F is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+    coordinate_t landing_position = {0.7F, 0.7F};
+                                           ^
+/home/vpayno/git_vpayno/exercism-workspace/c/darts/test_darts.c:58:24: warning: 10 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+    uint8_t expected = 10;
+                       ^
+/home/vpayno/git_vpayno/exercism-workspace/c/darts/test_darts.c:65:38: warning: 0.8F is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+    coordinate_t landing_position = {0.8F, -0.8F};
+                                     ^
+/home/vpayno/git_vpayno/exercism-workspace/c/darts/test_darts.c:65:45: warning: 0.8F is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+    coordinate_t landing_position = {0.8F, -0.8F};
+                                            ^
+/home/vpayno/git_vpayno/exercism-workspace/c/darts/test_darts.c:66:24: warning: 5 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+    uint8_t expected = 5;
+                       ^
+/home/vpayno/git_vpayno/exercism-workspace/c/darts/test_darts.c:73:39: warning: 3.5F is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+    coordinate_t landing_position = {-3.5F, 3.5F};
+                                      ^
+/home/vpayno/git_vpayno/exercism-workspace/c/darts/test_darts.c:73:45: warning: 3.5F is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+    coordinate_t landing_position = {-3.5F, 3.5F};
+                                            ^
+/home/vpayno/git_vpayno/exercism-workspace/c/darts/test_darts.c:74:24: warning: 5 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+    uint8_t expected = 5;
+                       ^
+/home/vpayno/git_vpayno/exercism-workspace/c/darts/test_darts.c:81:39: warning: 3.6F is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+    coordinate_t landing_position = {-3.6F, -3.6F};
+                                      ^
+/home/vpayno/git_vpayno/exercism-workspace/c/darts/test_darts.c:81:46: warning: 3.6F is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+    coordinate_t landing_position = {-3.6F, -3.6F};
+                                             ^
+/home/vpayno/git_vpayno/exercism-workspace/c/darts/test_darts.c:89:39: warning: 7.0F is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+    coordinate_t landing_position = {-7.0F, 7.0F};
+                                      ^
+/home/vpayno/Suppressed 4519 warnings (4519 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+git_vpayno/exercism-workspace/c/darts/test_darts.c:89:45: warning: 7.0F is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+    coordinate_t landing_position = {-7.0F, 7.0F};
+                                            ^
+/home/vpayno/git_vpayno/exercism-workspace/c/darts/test_darts.c:97:38: warning: 7.1F is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+    coordinate_t landing_position = {7.1F, -7.1F};
+                                     ^
+/home/vpayno/git_vpayno/exercism-workspace/c/darts/test_darts.c:97:45: warning: 7.1F is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+    coordinate_t landing_position = {7.1F, -7.1F};
+                                            ^
+/home/vpayno/git_vpayno/exercism-workspace/c/darts/test_darts.c:106:39: warning: 0.5F is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+    coordinate_t landing_position = {-0.5F, -4.0F};
+                                      ^
+/home/vpayno/git_vpayno/exercism-workspace/c/darts/test_darts.c:106:46: warning: 4.0F is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+    coordinate_t landing_position = {-0.5F, -4.0F};
+                                             ^
+
+real	0m0.201s
+user	0m0.178s
+sys	0m0.025s
+
+===============================================================================
+

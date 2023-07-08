@@ -27,3 +27,4 @@
 - [isogram](./isogram/README.md)
 - [pangram](./pangram/README.md)
 - [scrabble-score](./scrabble-score/README.md)
+- [darts](./darts/README.md)
