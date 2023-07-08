@@ -25,10 +25,11 @@ EOF
 
 fi
 
-if ! grep -q ./"${package_name}"-doc.md ./README.md; then
+if ! grep -q 'My Solution' ./README.md; then
+	if ! grep -q ./"${package_name}"-doc.md ./README.md; then
 
-	# Two empty spaces because the file is missing a trailing new line.
-	cat >>./README.md <<EOF
+		# Two empty spaces because the file is missing a trailing new line.
+		cat >>./README.md <<EOF
 
 
 ### My Solution
@@ -36,14 +37,40 @@ if ! grep -q ./"${package_name}"-doc.md ./README.md; then
 - [my solution]($(printf "%s\n" ./*[.]c | grep -v -E "test.*[.]c"))
 EOF
 
-	cat >>./README.md <<EOF
+		cat >>./README.md <<EOF
 - [run-tests](./run-tests-c.txt)
 EOF
 
+	fi
 fi
 
 printf "\n"
 git add ../README.md ./README.md
 git diff --cached ../README.md ./README.md
 
-sed -r -i -e 's:(TEST_IGNORE):// \1:g' ./test_*.c
+if ! grep -q '// TEST_IGNORE' ./test_*.c; then
+	sed -r -i -e 's:(TEST_IGNORE):// \1:g' ./test_*.c
+fi
+
+if [[ ! -f compile_commands.json ]]; then
+	jq --sort-keys . >./compile_commands.json <<EOF
+[
+      {
+            "directory": ".",
+            "arguments": [
+                  "/usr/bin/clang-16",
+                  "-Irelative",
+                  "-DSOMEDEF=With spaces, quotes and \\-es.",
+                  "-c",
+                  "-o",
+                  "${package_name}.o",
+                  "${package_name}.c"
+            ],
+            "file": "${package_name}.c"
+      }
+]
+EOF
+fi
+
+git add .
+git status .
