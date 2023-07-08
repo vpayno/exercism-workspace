@@ -52,15 +52,15 @@ if ! grep -q '// TEST_IGNORE' ./test_*.c; then
 	sed -r -i -e 's:(TEST_IGNORE):// \1:g' ./test_*.c
 fi
 
-if [[ ! -f compile_commands.json ]]; then
-	jq --sort-keys . >./compile_commands.json <<EOF
+if [[ ! -f ./compile_commands.json ]]; then
+	jq . >./compile_commands.json <<EOF
 [
       {
             "directory": ".",
             "arguments": [
                   "/usr/bin/clang-16",
                   "-Irelative",
-                  "-DSOMEDEF=With spaces, quotes and \\-es.",
+                  "-DSOMEDEF=With spaces, quotes and -es.",
                   "-c",
                   "-o",
                   "${package_name}.o",
