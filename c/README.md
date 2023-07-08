@@ -24,3 +24,4 @@
 - [bob](./bob/README.md)
 - [triangle](./triangle/README.md)
 - [leap](./leap/README.md)
+- [isogram](./isogram/README.md)

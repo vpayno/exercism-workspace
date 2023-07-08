@@ -1,0 +1,198 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: make clean
+rm -rf *.o *.out *.out.dSYM
+
+real	0m0.004s
+user	0m0.001s
+sys	0m0.003s
+
+===============================================================================
+
+Running: make test | ansifilter
+Compiling tests.out
+test_isogram.c:86:test_empty_string:PASS
+test_isogram.c:87:test_null:PASS
+test_isogram.c:88:test_isogram_with_only_lower_case_characters:PASS
+test_isogram.c:89:test_word_with_one_duplicated_character:PASS
+test_isogram.c:90:test_word_with_one_duplicated_character_from_end_of_alphabet:PASS
+test_isogram.c:91:test_longest_reported_english_isogram:PASS
+test_isogram.c:92:test_word_with_duplicated_letter_in_mixed_case:PASS
+test_isogram.c:93:test_word_with_duplicated_letter_in_mixed_case_lowercase_first:PASS
+test_isogram.c:94:test_hypothetical_isogrammic_word_with_hyphen:PASS
+test_isogram.c:95:test_hypothetical_word_with_duplicated_character_following_hyphen:PASS
+test_isogram.c:96:test_isogram_with_duplicated_hyphen:PASS
+test_isogram.c:97:test_made_up_name_that_is_an_isogram:PASS
+test_isogram.c:98:test_duplicated_character_in_the_middle:PASS
+test_isogram.c:99:test_same_first_and_last_characters:PASS
+test_isogram.c:100:test_word_with_duplicated_character_and_with_two_hyphens:PASS
+
+-----------------------
+15 Tests 0 Failures 0 Ignored 
+OK
+
+real	0m0.116s
+user	0m0.087s
+sys	0m0.030s
+
+===============================================================================
+
+Running: make memcheck | ansifilter
+Compiling memcheck
+test_isogram.c:86:test_empty_string:PASS
+test_isogram.c:87:test_null:PASS
+test_isogram.c:88:test_isogram_with_only_lower_case_characters:PASS
+test_isogram.c:89:test_word_with_one_duplicated_character:PASS
+test_isogram.c:90:test_word_with_one_duplicated_character_from_end_of_alphabet:PASS
+test_isogram.c:91:test_longest_reported_english_isogram:PASS
+test_isogram.c:92:test_word_with_duplicated_letter_in_mixed_case:PASS
+test_isogram.c:93:test_word_with_duplicated_letter_in_mixed_case_lowercase_first:PASS
+test_isogram.c:94:test_hypothetical_isogrammic_word_with_hyphen:PASS
+test_isogram.c:95:test_hypothetical_word_with_duplicated_character_following_hyphen:PASS
+test_isogram.c:96:test_isogram_with_duplicated_hyphen:PASS
+test_isogram.c:97:test_made_up_name_that_is_an_isogram:PASS
+test_isogram.c:98:test_duplicated_character_in_the_middle:PASS
+test_isogram.c:99:test_same_first_and_last_characters:PASS
+test_isogram.c:100:test_word_with_duplicated_character_and_with_two_hyphens:PASS
+
+-----------------------
+15 Tests 0 Failures 0 Ignored 
+OK
+Memory check passed
+
+real	0m0.155s
+user	0m0.106s
+sys	0m0.050s
+
+===============================================================================
+
+Running: clang-check-16 ./isogram.c ./test_isogram.c ./isogram.h --
+
+real	0m0.043s
+user	0m0.021s
+sys	0m0.022s
+
+===============================================================================
+
+Running: clang-tidy-16 ./isogram.c ./test_isogram.c ./isogram.h -checks=*,-llvm-header-guard,-llvmlibc-restrict-system-libc-headers -- | head -n 100
+1318 warnings generated.
+5312 warnings generated.
+6633 warnings generated.
+/home/vpayno/git_vpayno/exercism-workspace/c/isogram/isogram.c:14:21: warning: backward branch (for loop) is ID-dependent due to variable reference to 'phrase_length' and may cause performance degradation [altera-id-dependent-backward-branch]
+    for (int i = 0; i < (phrase_length - 1); i++) {
+                    ^
+/home/vpayno/git_vpayno/exercism-workspace/c/isogram/isogram.c:22:14: note: inferred assignment of ID-dependent value from ID-dependent 
+        for (int j = i + 1; j < phrase_length; j++) {
+             ^
+/home/vpayno/git_vpayno/exercism-workspace/c/isogram/isogram.c:22:9: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
+        for (int j = i + 1; j < phrase_length; j++) {
+        ^
+/home/vpayno/git_vpayno/exercism-workspace/c/isogram/isogram.c:22:29: warning: backward branch (for loop) is ID-dependent due to variable reference to 'j' and may cause performance degradation [altera-id-dependent-backward-branch]
+        for (int j = i + 1; j < phrase_length; j++) {
+                            ^
+/home/vpayno/git_vpayno/exercism-workspace/c/isogram/test_isogram.c:9:39: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
+static void test_empty_string(void) { TEST_ASSERT_TRUE(is_isogram("")); }
+                                      ^
+/home/vpayno/git_vpayno/exercism-workspace/c/isogram/test-framework/unity.h:126:100: note: expanded from macro 'TEST_ASSERT_TRUE'
+#define TEST_ASSERT_TRUE(condition)                                                                UNITY_TEST_ASSERT(       (condition), __LINE__, " Expected TRUE Was FALSE")
+                                                                                                   ^
+/home/vpayno/git_vpayno/exercism-workspace/c/isogram/test-framework/unity_internals.h:775:98: note: expanded from macro 'UNITY_TEST_ASSERT'
+#define UNITY_TEST_ASSERT(condition, line, message)                                              do {if (condition) {} else {UNITY_TEST_FAIL((UNITY_LINE_TYPE)(line), (message));}} while(0)
+                                                                                                 ^
+/home/vpayno/git_vpayno/exercism-workspace/c/isogram/test_isogram.c:13:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
+    TEST_ASSERT_FALSE(is_isogram(NULL));
+    ^
+/home/vpayno/git_vpayno/exercism-workspace/c/isogram/test-framework/unity.h:128:100: note: expanded from macro 'TEST_ASSERT_FALSE'
+#define TEST_ASSERT_FALSE(condition)                                                               UNITY_TEST_ASSERT(      !(condition), __LINE__, " Expected FALSE Was TRUE")
+                                                                                                   ^
+/home/vpayno/git_vpayno/exercism-workspace/c/isogram/test-framework/unity_internals.h:775:98: note: expanded from macro 'UNITY_TEST_ASSERT'
+#define UNITY_TEST_ASSERT(condition, line, message)                                              do {if (condition) {} else {UNITY_TEST_FAIL((UNITY_LINE_TYPE)(line), (message));}} while(0)
+                                                                                                 ^
+/home/vpayno/git_vpayno/exercism-workspace/c/isogram/test_isogram.c:18:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
+    TEST_ASSERT_TRUE(is_isogram("isogram"));
+    ^
+/home/vpayno/git_vpayno/exercism-workspace/c/isogram/test-framework/unity.h:126:100: note: expanded from macro 'TEST_ASSERT_TRUE'
+#define TEST_ASSERT_TRUE(condition)                                                                UNITY_TEST_ASSERT(       (condition), __LINE__, " Expected TRUE Was FALSE")
+                                                                                                   ^
+/home/vpayno/git_vpayno/exercism-workspace/c/isogram/test-framework/unity_internals.h:775:98: note: expanded from macro 'UNITY_TEST_ASSERT'
+#define UNITY_TEST_ASSERT(condition, line, message)                                              do {if (condition) {} else {UNITY_TEST_FAIL((UNITY_LINE_TYPE)(line), (message));}} while(0)
+                                                                                                 ^
+/home/vpayno/git_vpayno/exercism-workspace/c/isogram/test_isogram.c:23:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
+    TEST_ASSERT_FALSE(is_isogram("eleven"));
+    ^
+/home/vpayno/git_vpayno/exercism-workspace/c/isogram/test-framework/unity.h:128:100: note: expanded from macro 'TEST_ASSERT_FALSE'
+#define TEST_ASSERT_FALSE(condition)                                                               UNITY_TEST_ASSERT(      !(condition), __LINE__, " Expected FALSE Was TRUE")
+                                                                                                   ^
+/home/vpayno/git_vpayno/exercism-workspace/c/isogram/test-framework/unity_internals.h:775:98: note: expanded from macro 'UNITY_TEST_ASSERT'
+#define UNITY_TEST_ASSERT(condition, line, message)                                              do {if (condition) {} else {UNITY_TEST_FAIL((UNITY_LINE_TYPE)(line), (message));}} while(0)
+                                                                                                 ^
+/home/vpayno/git_vpayno/exercism-workspace/c/isogram/test_isogram.c:28:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
+    TEST_ASSERT_FALSE(is_isogram("zzyzx"));
+    ^
+/home/vpayno/git_vpayno/exercism-workspace/c/isogram/test-framework/unity.h:128:100: note: expanded from macro 'TEST_ASSERT_FALSE'
+#define TEST_ASSERT_FALSE(condition)                                                               UNITY_TEST_ASSERT(      !(condition), __LINE__, " Expected FALSE Was TRUE")
+                                                                                                   ^
+/home/vpayno/git_vpayno/exercism-workspace/c/isogram/test-framework/unity_internals.h:775:98: note: expanded from macro 'UNITY_TEST_ASSERT'
+#define UNITY_TEST_ASSERT(condition, line, message)                                              do {if (condition) {} else {UNITY_TEST_FAIL((UNITY_LINE_TYPE)(line), (message));}} while(0)
+                                                                                                 ^
+/home/vpayno/git_vpayno/exercism-workspace/c/isogram/test_isogram.c:33:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
+    TEST_ASSERT_TRUE(is_isogram("subdermatoglyphic"));
+    ^
+/home/vpayno/git_vpayno/exercism-workspace/c/isogram/test-framework/unity.h:126:100: note: expanded from macro 'TEST_ASSERT_TRUE'
+#define TEST_ASSERT_TRUE(condition)                                                                UNITY_TEST_ASSERT(       (condition), __LINE__, " Expected TRUE Was FALSE")
+                                                                                                   ^
+/home/vpayno/git_vpayno/exercism-workspace/c/isogram/test-framework/unity_internals.h:775:98: note: expanded from macro 'UNITY_TEST_ASSERT'
+#define UNITY_TEST_ASSERT(condition, line, message)                                              do {if (condition) {} else {UNITY_TEST_FAIL((UNITY_LINE_TYPE)(line), (message));}} while(0)
+                                                                                                 ^
+/home/vpayno/git_vpayno/exercism-workspace/c/isogram/test_isogram.c:38:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
+    TEST_ASSERT_FALSE(is_isogram("Alphabet"));
+    ^
+/home/vpayno/git_vpayno/exercism-workspace/c/isogram/test-framework/unity.h:128:100: note: expanded from macro 'TEST_ASSERT_FALSE'
+#define TEST_ASSERT_FALSE(condition)                                                               UNITY_TEST_ASSERT(      !(condition), __LINE__, " Expected FALSE Was TRUE")
+                                                                                                   ^
+/home/vpayno/git_vpayno/exercism-workspace/c/isogram/test-framework/unity_internals.h:775:98: note: expanded from macro 'UNITY_TEST_ASSERT'
+#define UNITY_TEST_ASSERT(condition, line, message)                                              do {if (condition) {} else {UNITY_TEST_FAIL((UNITY_LINE_TYPE)(line), (message));}} while(0)
+                                                                                                 ^
+/home/vpayno/git_vpayno/exercism-workspace/c/isogram/test_isogram.c:44:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
+    TEST_ASSERT_FALSE(is_isogram("alphAbet"));
+    ^
+/home/vpayno/git_vpayno/exercism-workspace/c/isogram/test-framework/unity.h:128:100: note: expanded from macro 'TEST_ASSERT_FALSE'
+#define TEST_ASSERT_FALSE(condition)                                                               UNITY_TEST_ASSERT(      !(condition), __LINE__, " Expected FALSE Was TRUE")
+                                                                                                   ^
+/home/vpayno/git_vpayno/exercism-workspace/c/isogram/test-framework/unity_internals.h:775:98: note: expanded from macro 'UNITY_TEST_ASSERT'
+#define UNITY_TEST_ASSERT(condition, line, message)                                              do {if (condition) {} else {UNITY_TEST_FAIL((UNITY_LINE_TYPE)(line), (message));}} while(0)
+                                                                                                 ^
+/home/vpayno/git_vpayno/exercism-workspace/c/isogram/test_isogram.c:49:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
+    TEST_ASSERT_TRUE(is_isogram("thumbscrew-japingly"));
+    ^
+/home/vpayno/git_vpayno/exercism-workspace/c/isogram/test-framework/unity.h:126:100: note: expanded from macro 'TEST_ASSERT_TRUE'
+#define TEST_ASSERT_TRUE(condition)                                                                UNITY_TEST_ASSERT(       (condition), __LINE__, " Expected TRUE Was FALSE")
+                                                                                                   ^
+/home/vpayno/git_vpayno/exercism-workspace/c/isogram/test-framework/unity_internals.h:775:98: note: expanded from macro 'UNITY_TEST_ASSERT'
+#define UNITY_TEST_ASSERT(condition, line, message)                                              do {if (condition) {} else {UNITY_TEST_FAIL((UNITY_LINE_TYPE)(line), (message));}} while(0)
+                                                                                                 ^
+/home/vpayno/git_vpayno/exercism-workspace/c/isogram/test_isogram.c:55:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
+    TEST_ASSERT_FALSE(is_isogram("thumbscrew-jappingly"));
+    ^
+/home/vpayno/git_vpayno/exercism-workspace/c/isogram/test-framework/unity.h:128:100: note: expanded from macro 'TEST_ASSERT_FALSE'
+#define TEST_ASSERT_FALSE(condition)                                                               UNITY_TEST_ASSERT(      !(condition), __LINE__, " Expected FALSE Was TRUE")
+                                                                                                   ^
+/home/vpayno/git_vpayno/exercism-workspace/c/isogram/test-framework/unity_internals.h:775:98: note: expanded from macro 'UNITY_TEST_ASSERT'
+
+real	0m0.272s
+user	0m0.238s
+sys	0m0.035s
+
+===============================================================================
+
+Running: clang-format-16 -style=file -i ./isogram.c ./test_isogram.c ./isogram.h
+
+real	0m0.020s
+user	0m0.010s
+sys	0m0.010s
+
+===============================================================================
+

@@ -39,3 +39,8 @@ The word *isograms*, however, is not an isogram, because the s repeats.
 ### Based on
 
 Wikipedia - https://en.wikipedia.org/wiki/Isogram
+
+### My Solution
+
+- [my solution](./isogram.c)
+- [run-tests](./run-tests-c.txt)
