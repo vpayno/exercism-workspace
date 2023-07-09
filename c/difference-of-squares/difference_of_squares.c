@@ -5,9 +5,9 @@ unsigned int sum_of_squares(unsigned int number) {
 }
 
 unsigned int square_of_sum(unsigned int number) {
-    float numf = (float)number;
+    unsigned int sum = number * (number + 1) / 2;
 
-    return (unsigned int)powf(numf * (numf + 1.0F) / 2.0F, 2);
+    return sum * sum;
 }
 
 unsigned int difference_of_squares(unsigned int number) {

@@ -1,0 +1,91 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: make clean
+rm -rf *.o *.out *.out.dSYM
+
+real	0m0.007s
+user	0m0.001s
+sys	0m0.005s
+
+===============================================================================
+
+Running: make test | ansifilter
+Compiling tests.out
+test_difference_of_squares.c:55:test_square_of_sum_1:PASS
+test_difference_of_squares.c:56:test_square_of_sum_5:PASS
+test_difference_of_squares.c:57:test_square_of_sum_100:PASS
+test_difference_of_squares.c:58:test_sum_of_squares_1:PASS
+test_difference_of_squares.c:59:test_sum_of_squares_5:PASS
+test_difference_of_squares.c:60:test_sum_of_squares_100:PASS
+test_difference_of_squares.c:61:test_difference_of_squares_1:PASS
+test_difference_of_squares.c:62:test_difference_of_squares_5:PASS
+test_difference_of_squares.c:63:test_difference_of_squares_100:PASS
+
+-----------------------
+9 Tests 0 Failures 0 Ignored 
+OK
+
+real	0m0.118s
+user	0m0.075s
+sys	0m0.046s
+
+===============================================================================
+
+Running: make memcheck | ansifilter
+Compiling memcheck
+test_difference_of_squares.c:55:test_square_of_sum_1:PASS
+test_difference_of_squares.c:56:test_square_of_sum_5:PASS
+test_difference_of_squares.c:57:test_square_of_sum_100:PASS
+test_difference_of_squares.c:58:test_sum_of_squares_1:PASS
+test_difference_of_squares.c:59:test_sum_of_squares_5:PASS
+test_difference_of_squares.c:60:test_sum_of_squares_100:PASS
+test_difference_of_squares.c:61:test_difference_of_squares_1:PASS
+test_difference_of_squares.c:62:test_difference_of_squares_5:PASS
+test_difference_of_squares.c:63:test_difference_of_squares_100:PASS
+
+-----------------------
+9 Tests 0 Failures 0 Ignored 
+OK
+Memory check passed
+
+real	0m0.130s
+user	0m0.097s
+sys	0m0.034s
+
+===============================================================================
+
+Running: clang-format-16 -style=file -i ./difference_of_squares.c ./test_difference_of_squares.c ./difference_of_squares.h
+
+real	0m0.020s
+user	0m0.008s
+sys	0m0.012s
+
+===============================================================================
+
+Running: clang-check-16 ./difference_of_squares.c ./test_difference_of_squares.c ./difference_of_squares.h --
+
+real	0m0.037s
+user	0m0.026s
+sys	0m0.010s
+
+===============================================================================
+
+Running: clang-tidy-16 ./difference_of_squares.c ./test_difference_of_squares.c ./difference_of_squares.h -checks=*,-llvm-header-guard,-llvmlibc-restrict-system-libc-headers -- | head -n 100
+1084 warnings generated.
+3236 warnings generated.
+4318 warnings generated.
+Suppressed 4316 warnings (4316 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+/home/vpayno/git_vpayno/exercism-workspace/c/difference-of-squares/difference_of_squares.c:4:56: warning: 6 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+    return (number * (number + 1) * (2 * number + 1) / 6);
+                                                       ^
+
+real	0m0.178s
+user	0m0.159s
+sys	0m0.020s
+
+===============================================================================
+
