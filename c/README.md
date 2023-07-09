@@ -28,3 +28,4 @@
 - [pangram](./pangram/README.md)
 - [scrabble-score](./scrabble-score/README.md)
 - [darts](./darts/README.md)
+- [difference-of-squares](./difference-of-squares/README.md)
