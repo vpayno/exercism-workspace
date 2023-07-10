@@ -32,3 +32,4 @@
 - [anagram](./anagram/README.md)
 - [space-age](./space-age/README.md)
 - [gigasecond](./gigasecond/README.md)
+- [collatz-conjecture](./collatz-conjecture/README.md)
