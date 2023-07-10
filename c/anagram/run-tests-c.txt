@@ -1,0 +1,200 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: make clean
+rm -rf *.o *.out *.out.dSYM
+
+real	0m0.012s
+user	0m0.006s
+sys	0m0.007s
+
+===============================================================================
+
+Running: make test | ansifilter
+Compiling tests.out
+test_anagram.c:257:test_no_matches:PASS
+test_anagram.c:258:test_detect_two_anagrams:PASS
+test_anagram.c:259:test_does_not_detect_anagram_subsets:PASS
+test_anagram.c:260:test_detects_anagram:PASS
+test_anagram.c:261:test_three_anagrams:PASS
+test_anagram.c:262:test_detects_multiple_anagrams_with_different_case:PASS
+test_anagram.c:263:test_does_not_detect_non_anagrams_with_identical_checksum:PASS
+test_anagram.c:264:test_detects_anagrams_case_insensitively:PASS
+test_anagram.c:265:test_detects_anagram_using_case_insensitive_subject:PASS
+test_anagram.c:266:test_detects_anagrams_using_case_insensitive_possible_matches:PASS
+test_anagram.c:267:test_does_not_detect_an_anagram_if_the_original_word_is_repeated:PASS
+test_anagram.c:268:test_anagrams_must_use_all_letters_exactly_once:PASS
+test_anagram.c:269:test_words_are_not_anagrams_of_themselves:PASS
+test_anagram.c:270:test_words_are_not_anagrams_of_themselves_even_if_letter_case_is_partially_different:PASS
+test_anagram.c:272:test_words_are_not_anagrams_of_themselves_even_if_letter_case_is_completely_different:PASS
+test_anagram.c:274:test_words_other_than_themselves_can_be_anagrams:PASS
+
+-----------------------
+16 Tests 0 Failures 0 Ignored 
+OK
+
+real	0m0.124s
+user	0m0.088s
+sys	0m0.036s
+
+===============================================================================
+
+Running: make memcheck | ansifilter
+Compiling memcheck
+test_anagram.c:257:test_no_matches:PASS
+test_anagram.c:258:test_detect_two_anagrams:PASS
+test_anagram.c:259:test_does_not_detect_anagram_subsets:PASS
+test_anagram.c:260:test_detects_anagram:PASS
+test_anagram.c:261:test_three_anagrams:PASS
+test_anagram.c:262:test_detects_multiple_anagrams_with_different_case:PASS
+test_anagram.c:263:test_does_not_detect_non_anagrams_with_identical_checksum:PASS
+test_anagram.c:264:test_detects_anagrams_case_insensitively:PASS
+test_anagram.c:265:test_detects_anagram_using_case_insensitive_subject:PASS
+test_anagram.c:266:test_detects_anagrams_using_case_insensitive_possible_matches:PASS
+test_anagram.c:267:test_does_not_detect_an_anagram_if_the_original_word_is_repeated:PASS
+test_anagram.c:268:test_anagrams_must_use_all_letters_exactly_once:PASS
+test_anagram.c:269:test_words_are_not_anagrams_of_themselves:PASS
+test_anagram.c:270:test_words_are_not_anagrams_of_themselves_even_if_letter_case_is_partially_different:PASS
+test_anagram.c:272:test_words_are_not_anagrams_of_themselves_even_if_letter_case_is_completely_different:PASS
+test_anagram.c:274:test_words_other_than_themselves_can_be_anagrams:PASS
+
+-----------------------
+16 Tests 0 Failures 0 Ignored 
+OK
+Memory check passed
+
+real	0m0.158s
+user	0m0.124s
+sys	0m0.034s
+
+===============================================================================
+
+Running: clang-format-16 -style=file -i ./anagram.c ./test_anagram.c ./anagram.h
+
+real	0m0.024s
+user	0m0.010s
+sys	0m0.014s
+
+===============================================================================
+
+Running: clang-check-16 ./anagram.c ./test_anagram.c ./anagram.h --
+
+real	0m0.046s
+user	0m0.025s
+sys	0m0.020s
+
+===============================================================================
+
+Running: clang-tidy-16 ./anagram.c ./test_anagram.c ./anagram.h -checks=*,-llvm-header-guard,-llvmlibc-restrict-system-libc-headers -- | head -n 100
+3374 warnings generated.
+7363 warnings generated.
+10721 warnings generated.
+/home/vpayno/git_vpayno/exercism-workspace/c/anagram/anagram.c:11:5: warning: Call to function 'strcpy' is insecure as it does not provide bounding of the memory buffer. Replace unbounded copy functions with analogous functions that support length arguments such as 'strlcpy'. CWE-119 [clang-analyzer-security.insecureAPI.strcpy]
+    strcpy(sub_lc, subject);
+    ^~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/anagram/anagram.c:11:5: note: Call to function 'strcpy' is insecure as it does not provide bounding of the memory buffer. Replace unbounded copy functions with analogous functions that support length arguments such as 'strlcpy'. CWE-119
+    strcpy(sub_lc, subject);
+    ^~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/anagram/anagram.c:14:5: warning: Call to function 'strcpy' is insecure as it does not provide bounding of the memory buffer. Replace unbounded copy functions with analogous functions that support length arguments such as 'strlcpy'. CWE-119 [clang-analyzer-security.insecureAPI.strcpy]
+    strcpy(sub_lc_sorted, sub_lc);
+    ^~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/anagram/anagram.c:14:5: note: Call to function 'strcpy' is insecure as it does not provide bounding of the memory buffer. Replace unbounded copy functions with analogous functions that support length arguments such as 'strlcpy'. CWE-119
+    strcpy(sub_lc_sorted, sub_lc);
+    ^~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/anagram/anagram.c:17:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
+    for (size_t i = 0; i < candidates->count; i++) {
+    ^
+/home/vpayno/git_vpayno/exercism-workspace/c/anagram/anagram.c:22:9: warning: Call to function 'strcpy' is insecure as it does not provide bounding of the memory buffer. Replace unbounded copy functions with analogous functions that support length arguments such as 'strlcpy'. CWE-119 [clang-analyzer-security.insecureAPI.strcpy]
+        strcpy(word_lc, candidates->candidate[i].word);
+        ^~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/anagram/anagram.c:22:9: note: Call to function 'strcpy' is insecure as it does not provide bounding of the memory buffer. Replace unbounded copy functions with analogous functions that support length arguments such as 'strlcpy'. CWE-119
+        strcpy(word_lc, candidates->candidate[i].word);
+        ^~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/anagram/anagram.c:31:9: warning: Call to function 'strcpy' is insecure as it does not provide bounding of the memory buffer. Replace unbounded copy functions with analogous functions that support length arguments such as 'strlcpy'. CWE-119 [clang-analyzer-security.insecureAPI.strcpy]
+        strcpy(word_lc_sorted, word_lc);
+        ^~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/anagram/anagram.c:31:9: note: Call to function 'strcpy' is insecure as it does not provide bounding of the memory buffer. Replace unbounded copy functions with analogous functions that support length arguments such as 'strlcpy'. CWE-119
+        strcpy(word_lc_sorted, word_lc);
+        ^~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/anagram/anagram.c:41:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
+    for (int i = 0; str[i]; i++) {
+    ^
+/home/vpayno/git_vpayno/exercism-workspace/c/anagram/anagram.c:42:18: warning: narrowing conversion from 'int' to signed type 'char' is implementation-defined [bugprone-narrowing-conversions,cppcoreguidelines-narrowing-conversions]
+        str[i] = tolower(str[i]);
+                 ^
+/home/vpayno/git_vpayno/exercism-workspace/c/anagram/anagram.c:47:15: warning: narrowing conversion from 'unsigned long' to signed type 'int' is implementation-defined [bugprone-narrowing-conversions,cppcoreguidelines-narrowing-conversions]
+    int len = strlen(str);
+              ^
+/home/vpayno/git_vpayno/exercism-workspace/c/anagram/anagram.c:48:10: warning: variable 'temp' is not initialized [cppcoreguidelines-init-variables]
+    char temp;
+         ^
+              = 0
+/home/vpayno/git_vpayno/exercism-workspace/c/anagram/anagram.c:51:14: note: inferred assignment of ID-dependent value from ID-dependent  [altera-id-dependent-backward-branch]
+        for (int j = i + 1; j < len; j++) {
+             ^
+/home/vpayno/git_vpayno/exercism-workspace/c/anagram/anagram.c:50:21: warning: backward branch (for loop) is ID-dependent due to variable reference to 'len' and may cause performance degradation [altera-id-dependent-backward-branch]
+    for (int i = 0; i < len - 1; i++) {
+                    ^
+/home/vpayno/git_vpayno/exercism-workspace/c/anagram/anagram.c:51:9: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
+        for (int j = i + 1; j < len; j++) {
+        ^
+/home/vpayno/git_vpayno/exercism-workspace/c/anagram/anagram.c:51:29: warning: backward branch (for loop) is ID-dependent due to variable reference to 'j' and may cause performance degradation [altera-id-dependent-backward-branch]
+        for (int j = i + 1; j < len; j++) {
+                            ^
+/home/vpayno/git_vpayno/exercism-workspace/c/anagram/anagram.h:14:8: warning: accessing fields in struct 'candidate' is inefficient due to poor alignment; currently aligned to 8 bytes, but recommended alignment is 16 bytes [altera-struct-pack-align]
+struct candidate {
+       ^
+/home/vpayno/git_vpayno/exercism-workspace/c/anagram/anagram.h:14:8: note: use "__attribute__((aligned(16)))" to align struct 'candidate' to 16 bytes
+/home/vpayno/git_vpayno/exercism-workspace/c/anagram/anagram.h:19:8: warning: accessing fields in struct 'candidates' is inefficient due to poor alignment; currently aligned to 8 bytes, but recommended alignment is 16 bytes [altera-struct-pack-align]
+struct candidates {
+       ^
+/home/vpayno/git_vpayno/exercism-workspace/c/anagram/anagram.h:19:8: note: use "__attribute__((aligned(16)))" to align struct 'candidates' to 16 bytes
+/home/vpayno/git_vpayno/exercism-workspace/c/anagram/test_anagram.c:7:1: warning: replace macro with enum [modernize-macro-to-enum]
+#define MAX_STR_LEN 20
+^~~~~~~~
+                    =
+/home/vpayno/git_vpayno/exercism-workspace/c/anagram/test_anagram.c:7:9: warning: macro 'MAX_STR_LEN' defines an integral constant; prefer an enum instead [modernize-macro-to-enum]
+#define MAX_STR_LEN 20
+        ^
+/home/vpayno/git_vpayno/exercism-workspace/c/anagram/test_anagram.c:9:19: warning: variable 'candidates' is non-const and globally accessible, consider making it const [cppcoreguidelines-avoid-non-const-global-variables]
+struct candidates candidates;
+                  ^
+/home/vpayno/git_vpayno/exercism-workspace/c/anagram/test_anagram.c:18:49: warning: pointer parameter 'inputs' can be pointer to const [readability-non-const-parameter]
+static struct candidates build_candidates(char *inputs, size_t count) {
+                                                ^
+                                          const 
+/home/vpayno/git_vpayno/exercism-workspace/c/anagram/test_anagram.c:22:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
+    for (int i = 0; i < (int)count; i++) {
+    ^
+/home/vpayno/git_vpayno/exercism-workspace/c/anagram/test_anagram.c:23:37: warning: result of multiplication in type 'int' is used as a pointer offset after an implicit widening conversion to type 'ptrdiff_t' [bugprone-implicit-widening-of-multiplication-result]
+        result.candidate[i].word = &inputs[i * MAX_STR_LEN];
+                                    ^
+/home/vpayno/git_vpayno/exercism-workspace/c/anagram/test_anagram.c:23:44: note: make conversion explicit to silence this warning
+        result.candidate[i].word = &inputs[i * MAX_STR_LEN];
+                                           ^~~~~~~~~~~~~~~
+                                           (ptrdiff_t)( )
+/home/vpayno/git_vpayno/exercism-workspace/c/anagram/test_anagram.c:23:44: note: perform multiplication in a wider type
+        result.candidate[i].word = &inputs[i * MAX_STR_LEN];
+                                           ^
+                                           (ptrdiff_t)
+/home/vpayno/git_vpayno/exercism-workspace/c/anagram/anagram.h:21:5: note: inferred assignment of ID-dependent member from ID-dependent  [altera-id-dependent-backward-branch]
+    size_t count;
+    ^
+/home/vpayno/git_vpayno/exercism-workspace/c/anagram/test_anagram.c:32:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
+    for (int i = 0; i < (int)candidates->count; i++) {
+    ^
+/home/vpayno/git_vpayno/exercism-workspace/c/anagram/test_anagram.c:32:21: warning: backward branch (for loop) is ID-dependent due to member reference to 'count' and may cause performance degradation [altera-id-dependent-backward-branch]
+    for (int i = 0; i < (int)candidates->count; i++) {
+                    ^
+/home/vpayno/git_vpayno/exercism-workspace/c/anagram/test_anagram.c:33:9: warning: 1st function call argument is an uninitialized value [clang-analyzer-core.CallAndMessage]
+        TEST_ASSERT_EQUAL(expected[i], candidates->candidate[i].is_anagram);
+        ^
+
+real	0m0.635s
+user	0m0.609s
+sys	0m0.027s
+
+===============================================================================
+
