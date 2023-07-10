@@ -1,0 +1,102 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: make clean
+rm -rf *.o *.out *.out.dSYM
+
+real	0m0.006s
+user	0m0.002s
+sys	0m0.004s
+
+===============================================================================
+
+Running: make test | ansifilter
+Compiling tests.out
+test_perfect_numbers.c:76:test_smallest_perfect_number_is_classified_correctly:PASS
+test_perfect_numbers.c:77:test_medium_perfect_number_is_classified_correctly:PASS
+test_perfect_numbers.c:78:test_large_perfect_number_is_classified_correctly:PASS
+test_perfect_numbers.c:79:test_smallest_abundant_number_is_classified_correctly:PASS
+test_perfect_numbers.c:80:test_medium_abundant_number_is_classified_correctly:PASS
+test_perfect_numbers.c:81:test_large_abundant_number_is_classified_correctly:PASS
+test_perfect_numbers.c:82:test_smallest_prime_deficient_number_is_classified_correctly:PASS
+test_perfect_numbers.c:83:test_smallest_non_prime_deficient_number_is_classified_correctly:PASS
+test_perfect_numbers.c:84:test_medium_deficient_number_is_classified_correctly:PASS
+test_perfect_numbers.c:85:test_large_deficient_number_is_classified_correctly:PASS
+test_perfect_numbers.c:86:test_edge_case_is_classified_correctly:PASS
+test_perfect_numbers.c:87:test_zero_is_rejected:PASS
+test_perfect_numbers.c:88:test_negative_integer_is_rejected:PASS
+
+-----------------------
+13 Tests 0 Failures 0 Ignored 
+OK
+
+real	0m0.361s
+user	0m0.320s
+sys	0m0.043s
+
+===============================================================================
+
+Running: make memcheck | ansifilter
+Compiling memcheck
+test_perfect_numbers.c:76:test_smallest_perfect_number_is_classified_correctly:PASS
+test_perfect_numbers.c:77:test_medium_perfect_number_is_classified_correctly:PASS
+test_perfect_numbers.c:78:test_large_perfect_number_is_classified_correctly:PASS
+test_perfect_numbers.c:79:test_smallest_abundant_number_is_classified_correctly:PASS
+test_perfect_numbers.c:80:test_medium_abundant_number_is_classified_correctly:PASS
+test_perfect_numbers.c:81:test_large_abundant_number_is_classified_correctly:PASS
+test_perfect_numbers.c:82:test_smallest_prime_deficient_number_is_classified_correctly:PASS
+test_perfect_numbers.c:83:test_smallest_non_prime_deficient_number_is_classified_correctly:PASS
+test_perfect_numbers.c:84:test_medium_deficient_number_is_classified_correctly:PASS
+test_perfect_numbers.c:85:test_large_deficient_number_is_classified_correctly:PASS
+test_perfect_numbers.c:86:test_edge_case_is_classified_correctly:PASS
+test_perfect_numbers.c:87:test_zero_is_rejected:PASS
+test_perfect_numbers.c:88:test_negative_integer_is_rejected:PASS
+
+-----------------------
+13 Tests 0 Failures 0 Ignored 
+OK
+Memory check passed
+
+real	0m0.357s
+user	0m0.322s
+sys	0m0.037s
+
+===============================================================================
+
+Running: clang-format-16 -style=file -i ./perfect_numbers.c ./test_perfect_numbers.c ./perfect_numbers.h
+
+real	0m0.025s
+user	0m0.011s
+sys	0m0.014s
+
+===============================================================================
+
+Running: clang-check-16 ./perfect_numbers.c ./test_perfect_numbers.c ./perfect_numbers.h --
+
+real	0m0.038s
+user	0m0.023s
+sys	0m0.015s
+
+===============================================================================
+
+Running: clang-tidy-16 ./perfect_numbers.c ./test_perfect_numbers.c ./perfect_numbers.h -checks=*,-llvm-header-guard,-llvmlibc-restrict-system-libc-headers -- | head -n 100
+2140 warnings generated.
+5520 warnings generated.
+7656 warnings generated.
+Suppressed 7654 warnings (7654 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+/home/vpayno/git_vpayno/exercism-workspace/c/perfect-numbers/perfect_numbers.c:32:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
+    for (size_t i = 0; i < size; i++) {
+    ^
+/home/vpayno/git_vpayno/exercism-workspace/c/perfect-numbers/perfect_numbers.c:47:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
+    for (int64_t factor = 1; factor < number; factor++) {
+    ^
+
+real	0m0.218s
+user	0m0.198s
+sys	0m0.022s
+
+===============================================================================
+

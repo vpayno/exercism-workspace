@@ -33,3 +33,4 @@
 - [space-age](./space-age/README.md)
 - [gigasecond](./gigasecond/README.md)
 - [collatz-conjecture](./collatz-conjecture/README.md)
+- [perfect-numbers](./perfect-numbers/README.md)

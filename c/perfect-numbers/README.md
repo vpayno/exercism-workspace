@@ -47,3 +47,8 @@ Depending on your language track, you may also need to implement a way to determ
 ### Based on
 
 Taken from Chapter 2 of Functional Thinking by Neal Ford. - http://shop.oreilly.com/product/0636920029687.do
+
+### My Solution
+
+- [my solution](./perfect_numbers.c)
+- [run-tests](./run-tests-c.txt)
