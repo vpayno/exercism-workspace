@@ -7,12 +7,8 @@ kind classify_number(int64_t number) {
         return result;
     }
 
-    int64_t *numbers = factors(number);
+    factors_list_t numbers = factors(number);
     int64_t aliquotSum = sum(numbers);
-
-    // need to release memory allocated in factors()
-    // should have allocated in classify()
-    free(numbers);
 
     if (aliquotSum > number) {
         result = ABUNDANT_NUMBER;
@@ -25,20 +21,23 @@ kind classify_number(int64_t number) {
     return result;
 }
 
-int64_t sum(const int64_t *numbers) {
+int64_t sum(const factors_list_t numbers) {
     int64_t total = 0;
-    size_t size = MAX_FACTORS;
 
-    for (size_t i = 0; i < size; i++) {
-        total += numbers[i];
+    if (numbers.size <= 0) {
+        return total;
+    }
+
+    for (size_t i = 0; i < numbers.size; i++) {
+        total += numbers.factors[i];
     }
 
     return total;
 }
 
-int64_t *factors(int64_t number) {
-    int64_t *numbers = (int64_t *)calloc(MAX_FACTORS, sizeof(int64_t));
-    size_t count = 0;
+factors_list_t factors(int64_t number) {
+    factors_list_t numbers;
+    numbers.size = 0;
 
     if (number <= 0) {
         return numbers;
@@ -46,7 +45,7 @@ int64_t *factors(int64_t number) {
 
     for (int64_t factor = 1; factor < number; factor++) {
         if (number % factor == 0) {
-            numbers[count++] = factor;
+            numbers.factors[numbers.size++] = factor;
         }
     }
 

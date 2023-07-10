@@ -1,6 +1,7 @@
 #ifndef PERFECT_NUMBERS_H
 #define PERFECT_NUMBERS_H
 
+#define STRUCT_BYTE_ALIGN (128)
 #define MAX_FACTORS (256)
 
 #include <stdint.h>
@@ -13,9 +14,14 @@ typedef enum {
     ERROR = -1
 } kind;
 
-int64_t sum(const int64_t numbers[]);
+typedef struct {
+    size_t size;
+    int64_t factors[MAX_FACTORS];
+} factors_list_t;
 
-int64_t *factors(int64_t number);
+int64_t sum(factors_list_t numbers);
+
+factors_list_t factors(int64_t number);
 
 kind classify_number(int64_t number);
 
