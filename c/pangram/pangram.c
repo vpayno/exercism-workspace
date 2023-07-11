@@ -14,7 +14,7 @@ bool is_pangram(const char *sentence) {
         return false;
     }
 
-    char *new_sentence = malloc(strlen(sentence) + 2);
+    char *new_sentence = calloc(strlen(sentence) + 2, sizeof(char));
 
     // make a new string with just lowercase letters in it
     for (int i = 0, j = 0; i < (int)strlen(sentence); i++) {
@@ -46,6 +46,5 @@ bool is_pangram(const char *sentence) {
     }
 
     free(new_sentence);
-
     return true;
 }
