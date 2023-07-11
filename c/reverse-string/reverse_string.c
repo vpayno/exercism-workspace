@@ -15,5 +15,6 @@ char *reverse(const char *value) {
     // make it a null-terminated string
     reversed[size] = '\0';
 
+    // caller is responsible for calling free()
     return reversed;
 }
