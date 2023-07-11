@@ -12,10 +12,10 @@ char *hey_bob(char *greeting) {
         abort();
     }
     regex_compile_result = regexec(&re_comp, greeting, 0, NULL, 0);
+    regfree(&re_comp);
     if (!regex_compile_result) {
         return "Fine. Be that way!";
     }
-    regfree(&re_comp);
 
     // Question with only spaces and punctuation.
     regex_compile_result =
@@ -25,10 +25,10 @@ char *hey_bob(char *greeting) {
         abort();
     }
     regex_compile_result = regexec(&re_comp, greeting, 0, NULL, 0);
+    regfree(&re_comp);
     if (!regex_compile_result) {
         return "Sure.";
     }
-    regfree(&re_comp);
 
     // Question with uppercase letters, punctuation and spaces.
     regex_compile_result = regcomp(
@@ -38,10 +38,10 @@ char *hey_bob(char *greeting) {
         abort();
     }
     regex_compile_result = regexec(&re_comp, greeting, 0, NULL, 0);
+    regfree(&re_comp);
     if (!regex_compile_result) {
         return "Calm down, I know what I'm doing!";
     }
-    regfree(&re_comp);
 
     // All remaining questions.
     regex_compile_result =
@@ -51,10 +51,10 @@ char *hey_bob(char *greeting) {
         abort();
     }
     regex_compile_result = regexec(&re_comp, greeting, 0, NULL, 0);
+    regfree(&re_comp);
     if (!regex_compile_result) {
         return "Sure.";
     }
-    regfree(&re_comp);
 
     // Generic statement.
     regex_compile_result = regcomp(
@@ -64,10 +64,10 @@ char *hey_bob(char *greeting) {
         abort();
     }
     regex_compile_result = regexec(&re_comp, greeting, 0, NULL, 0);
+    regfree(&re_comp);
     if (!regex_compile_result) {
         return "Whatever.";
     }
-    regfree(&re_comp);
 
     // Yelling statement.
     regex_compile_result =
@@ -78,10 +78,10 @@ char *hey_bob(char *greeting) {
         abort();
     }
     regex_compile_result = regexec(&re_comp, greeting, 0, NULL, 0);
+    regfree(&re_comp);
     if (!regex_compile_result) {
         return "Whoa, chill out!";
     }
-    regfree(&re_comp);
 
     return "Whatever.";
 }
