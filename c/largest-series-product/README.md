@@ -55,3 +55,8 @@ Let's work through an example, with the input `"63915"`.
 ### Based on
 
 A variation on Problem 8 at Project Euler - http://projecteuler.net/problem=8
+
+### My Solution
+
+- [my solution](./largest_series_product.c)
+- [run-tests](./run-tests-c.txt)

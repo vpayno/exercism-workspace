@@ -35,3 +35,4 @@
 - [collatz-conjecture](./collatz-conjecture/README.md)
 - [perfect-numbers](./perfect-numbers/README.md)
 - [luhn](./luhn/README.md)
+- [largest-series-product](./largest-series-product/README.md)
