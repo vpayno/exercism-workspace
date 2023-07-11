@@ -34,3 +34,4 @@
 - [gigasecond](./gigasecond/README.md)
 - [collatz-conjecture](./collatz-conjecture/README.md)
 - [perfect-numbers](./perfect-numbers/README.md)
+- [luhn](./luhn/README.md)
