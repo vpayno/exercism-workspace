@@ -38,3 +38,4 @@
 - [largest-series-product](./largest-series-product/README.md)
 - [acronym](./acronym/README.md)
 - [resistor-color](./resistor-color/README.md)
+- [resistor-color-duo](./resistor-color-duo/README.md)

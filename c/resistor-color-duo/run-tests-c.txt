@@ -1,0 +1,87 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: make clean
+rm -rf *.o *.out *.out.dSYM
+
+real	0m0.003s
+user	0m0.000s
+sys	0m0.003s
+
+===============================================================================
+
+Running: make test | ansifilter
+Compiling tests.out
+test_resistor_color_duo.c:52:test_brown_and_black:PASS
+test_resistor_color_duo.c:53:test_blue_and_grey:PASS
+test_resistor_color_duo.c:54:test_yellow_and_violet:PASS
+test_resistor_color_duo.c:55:test_white_and_red:PASS
+test_resistor_color_duo.c:56:test_orange_and_orange:PASS
+test_resistor_color_duo.c:57:test_ignore_additional_colors:PASS
+test_resistor_color_duo.c:58:test_black_and_brown_one_digit:PASS
+
+-----------------------
+7 Tests 0 Failures 0 Ignored 
+OK
+
+real	0m0.119s
+user	0m0.078s
+sys	0m0.042s
+
+===============================================================================
+
+Running: make memcheck | ansifilter
+Compiling memcheck
+test_resistor_color_duo.c:52:test_brown_and_black:PASS
+test_resistor_color_duo.c:53:test_blue_and_grey:PASS
+test_resistor_color_duo.c:54:test_yellow_and_violet:PASS
+test_resistor_color_duo.c:55:test_white_and_red:PASS
+test_resistor_color_duo.c:56:test_orange_and_orange:PASS
+test_resistor_color_duo.c:57:test_ignore_additional_colors:PASS
+test_resistor_color_duo.c:58:test_black_and_brown_one_digit:PASS
+
+-----------------------
+7 Tests 0 Failures 0 Ignored 
+OK
+Memory check passed
+
+real	0m0.137s
+user	0m0.099s
+sys	0m0.039s
+
+===============================================================================
+
+Running: clang-format-16 -style=file -i ./resistor_color_duo.c ./test_resistor_color_duo.c ./resistor_color_duo.h
+
+real	0m0.020s
+user	0m0.009s
+sys	0m0.011s
+
+===============================================================================
+
+Running: clang-check-16 ./resistor_color_duo.c ./test_resistor_color_duo.c ./resistor_color_duo.h --
+
+real	0m0.029s
+user	0m0.016s
+sys	0m0.013s
+
+===============================================================================
+
+Running: clang-tidy-16 ./resistor_color_duo.c ./test_resistor_color_duo.c ./resistor_color_duo.h -checks=*,-llvm-header-guard,-llvmlibc-restrict-system-libc-headers -- | head -n 100
+2 warnings generated.
+2142 warnings generated.
+2142 warnings generated.
+Suppressed 2140 warnings (2140 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+/home/vpayno/git_vpayno/exercism-workspace/c/resistor-color-duo/resistor_color_duo.c:7:33: warning: 10 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+    resistor_value = bands[0] * 10;
+                                ^
+
+real	0m0.112s
+user	0m0.082s
+sys	0m0.030s
+
+===============================================================================
+
