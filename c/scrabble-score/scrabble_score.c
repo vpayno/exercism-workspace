@@ -11,7 +11,7 @@ unsigned int score(const char *word) {
         return result;
     }
 
-    while (*word) {
+    while (*word != '\0') {
         char letter = (char)tolower(*word++);
 
         switch (letter) {
