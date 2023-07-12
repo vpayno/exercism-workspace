@@ -1,0 +1,85 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: make clean
+rm -rf *.o *.out *.out.dSYM
+
+real	0m0.003s
+user	0m0.002s
+sys	0m0.001s
+
+===============================================================================
+
+Running: make test | ansifilter
+Compiling tests.out
+test_resistor_color.c:44:test_black:PASS
+test_resistor_color.c:45:test_white:PASS
+test_resistor_color.c:46:test_orange:PASS
+test_resistor_color.c:47:test_colors:PASS
+
+-----------------------
+4 Tests 0 Failures 0 Ignored 
+OK
+
+real	0m0.100s
+user	0m0.072s
+sys	0m0.029s
+
+===============================================================================
+
+Running: make memcheck | ansifilter
+Compiling memcheck
+test_resistor_color.c:44:test_black:PASS
+test_resistor_color.c:45:test_white:PASS
+test_resistor_color.c:46:test_orange:PASS
+test_resistor_color.c:47:test_colors:PASS
+
+-----------------------
+4 Tests 0 Failures 0 Ignored 
+OK
+Memory check passed
+
+real	0m0.137s
+user	0m0.093s
+sys	0m0.044s
+
+===============================================================================
+
+Running: clang-format-16 -style=file -i ./resistor_color.c ./test_resistor_color.c ./resistor_color.h
+
+real	0m0.020s
+user	0m0.010s
+sys	0m0.010s
+
+===============================================================================
+
+Running: clang-check-16 ./resistor_color.c ./test_resistor_color.c ./resistor_color.h --
+
+real	0m0.030s
+user	0m0.018s
+sys	0m0.011s
+
+===============================================================================
+
+Running: clang-tidy-16 ./resistor_color.c ./test_resistor_color.c ./resistor_color.h -checks=*,-llvm-header-guard,-llvmlibc-restrict-system-libc-headers -- | head -n 100
+1 warning generated.
+2142 warnings generated.
+2142 warnings generated.
+Suppressed 2140 warnings (2140 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+/home/vpayno/git_vpayno/exercism-workspace/c/resistor-color/resistor_color.c:8:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
+    for (int i = 0; i < NUMBER_OF_COLORS; i++) {
+    ^
+/home/vpayno/git_vpayno/exercism-workspace/c/resistor-color/test_resistor_color.c:4:45: warning: macro argument should be enclosed in parentheses [bugprone-macro-parentheses]
+#define ARRAY_LENGTH(A) (sizeof(A) / sizeof(A[0]))
+                                            ^
+                                            ()
+
+real	0m0.107s
+user	0m0.090s
+sys	0m0.018s
+
+===============================================================================
+

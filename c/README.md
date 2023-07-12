@@ -37,3 +37,4 @@
 - [luhn](./luhn/README.md)
 - [largest-series-product](./largest-series-product/README.md)
 - [acronym](./acronym/README.md)
+- [resistor-color](./resistor-color/README.md)
