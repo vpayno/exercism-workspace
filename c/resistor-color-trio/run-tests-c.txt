@@ -1,0 +1,96 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: make clean
+rm -rf *.o *.out *.out.dSYM
+
+real	0m0.007s
+user	0m0.002s
+sys	0m0.005s
+
+===============================================================================
+
+Running: make test | ansifilter
+Compiling tests.out
+test_resistor_color_trio.c:49:test_orange_orange_black:PASS
+test_resistor_color_trio.c:50:test_blue_grey_brown:PASS
+test_resistor_color_trio.c:51:test_red_black_red:PASS
+test_resistor_color_trio.c:52:test_green_brown_orange:PASS
+test_resistor_color_trio.c:53:test_yellow_violet_yellow:PASS
+
+-----------------------
+5 Tests 0 Failures 0 Ignored 
+OK
+
+real	0m0.125s
+user	0m0.096s
+sys	0m0.031s
+
+===============================================================================
+
+Running: make memcheck | ansifilter
+Compiling memcheck
+test_resistor_color_trio.c:49:test_orange_orange_black:PASS
+test_resistor_color_trio.c:50:test_blue_grey_brown:PASS
+test_resistor_color_trio.c:51:test_red_black_red:PASS
+test_resistor_color_trio.c:52:test_green_brown_orange:PASS
+test_resistor_color_trio.c:53:test_yellow_violet_yellow:PASS
+
+-----------------------
+5 Tests 0 Failures 0 Ignored 
+OK
+Memory check passed
+
+real	0m0.131s
+user	0m0.094s
+sys	0m0.038s
+
+===============================================================================
+
+Running: clang-format-16 -style=file -i ./resistor_color_trio.c ./test_resistor_color_trio.c ./resistor_color_trio.h
+
+real	0m0.021s
+user	0m0.012s
+sys	0m0.009s
+
+===============================================================================
+
+Running: clang-check-16 ./resistor_color_trio.c ./test_resistor_color_trio.c ./resistor_color_trio.h --
+
+real	0m0.038s
+user	0m0.025s
+sys	0m0.013s
+
+===============================================================================
+
+Running: clang-tidy-16 ./resistor_color_trio.c ./test_resistor_color_trio.c ./resistor_color_trio.h -checks=*,-llvm-header-guard,-llvmlibc-restrict-system-libc-headers -- | head -n 100
+1091 warnings generated.
+3244 warnings generated.
+4327 warnings generated.
+Suppressed 4318 warnings (4318 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+/home/vpayno/git_vpayno/exercism-workspace/c/resistor-color-trio/resistor_color_trio.c:9:39: warning: 10 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+    resistor_value.value = bands[0] * 10;
+                                      ^
+/home/vpayno/git_vpayno/exercism-workspace/c/resistor-color-trio/resistor_color_trio.c:15:47: warning: 10 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+    resistor_value.value *= (unsigned int)pow(10, bands[2]);
+                                              ^
+/home/vpayno/git_vpayno/exercism-workspace/c/resistor-color-trio/resistor_color_trio.c:17:33: warning: 1000 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+    if (resistor_value.value >= 1000) {
+                                ^
+/home/vpayno/git_vpayno/exercism-workspace/c/resistor-color-trio/resistor_color_trio.c:18:33: warning: 1000 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+        resistor_value.value /= 1000;
+                                ^
+/home/vpayno/git_vpayno/exercism-workspace/c/resistor-color-trio/resistor_color_trio.h:24:9: warning: accessing fields in struct 'resistor_value_t' is inefficient due to poor alignment; currently aligned to 4 bytes, but recommended alignment is 8 bytes [altera-struct-pack-align]
+typedef struct {
+        ^
+/home/vpayno/git_vpayno/exercism-workspace/c/resistor-color-trio/resistor_color_trio.h:24:9: note: use "__attribute__((aligned(8)))" to align struct 'resistor_value_t' to 8 bytes
+
+real	0m0.187s
+user	0m0.170s
+sys	0m0.018s
+
+===============================================================================
+

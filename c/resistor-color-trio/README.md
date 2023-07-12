@@ -71,3 +71,8 @@ So an input of `"orange", "orange", "orange"` should return:
 ### Based on
 
 Maud de Vries, Erik Schierboom - https://github.com/exercism/problem-specifications/issues/1549
+
+### My Solution
+
+- [my solution](./resistor_color_trio.c)
+- [run-tests](./run-tests-c.txt)
