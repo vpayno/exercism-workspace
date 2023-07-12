@@ -41,3 +41,8 @@ For example:
 ### Based on
 
 Julien Vanier - https://github.com/monkbroc
+
+### My Solution
+
+- [my solution](./acronym.c)
+- [run-tests](./run-tests-c.txt)
