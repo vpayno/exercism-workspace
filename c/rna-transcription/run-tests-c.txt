@@ -1,0 +1,103 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: make clean
+rm -rf *.o *.out *.out.dSYM
+
+real	0m0.004s
+user	0m0.003s
+sys	0m0.001s
+
+===============================================================================
+
+Running: make test | ansifilter
+Compiling tests.out
+test_rna_transcription.c:59:test_empty_rna_sequence:PASS
+test_rna_transcription.c:60:test_rna_complement_of_cytosine_is_guanine:PASS
+test_rna_transcription.c:61:test_rna_complement_of_guanine_is_cytosine:PASS
+test_rna_transcription.c:62:test_rna_complement_of_thymine_is_adenine:PASS
+test_rna_transcription.c:63:test_rna_complement_of_adenine_is_uracil:PASS
+test_rna_transcription.c:64:test_rna_complement:PASS
+
+-----------------------
+6 Tests 0 Failures 0 Ignored 
+OK
+
+real	0m0.101s
+user	0m0.072s
+sys	0m0.031s
+
+===============================================================================
+
+Running: make memcheck | ansifilter
+Compiling memcheck
+test_rna_transcription.c:59:test_empty_rna_sequence:PASS
+test_rna_transcription.c:60:test_rna_complement_of_cytosine_is_guanine:PASS
+test_rna_transcription.c:61:test_rna_complement_of_guanine_is_cytosine:PASS
+test_rna_transcription.c:62:test_rna_complement_of_thymine_is_adenine:PASS
+test_rna_transcription.c:63:test_rna_complement_of_adenine_is_uracil:PASS
+test_rna_transcription.c:64:test_rna_complement:PASS
+
+-----------------------
+6 Tests 0 Failures 0 Ignored 
+OK
+Memory check passed
+
+real	0m0.117s
+user	0m0.079s
+sys	0m0.039s
+
+===============================================================================
+
+Running: clang-format-16 -style=file -i ./rna_transcription.c ./test_rna_transcription.c ./rna_transcription.h
+
+real	0m0.021s
+user	0m0.008s
+sys	0m0.013s
+
+===============================================================================
+
+Running: clang-check-16 ./rna_transcription.c ./test_rna_transcription.c ./rna_transcription.h --
+
+real	0m0.042s
+user	0m0.023s
+sys	0m0.018s
+
+===============================================================================
+
+Running: clang-tidy-16 ./rna_transcription.c ./test_rna_transcription.c ./rna_transcription.h -checks=*,-llvm-header-guard,-llvmlibc-restrict-system-libc-headers -- | head -n 100
+2675 warnings generated.
+6651 warnings generated.
+9322 warnings generated.
+Suppressed 9318 warnings (9318 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+/home/vpayno/git_vpayno/exercism-workspace/c/rna-transcription/rna_transcription.c:11:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
+    for (size_t i = 0; i < dna_length; i++) {
+    ^
+/home/vpayno/git_vpayno/exercism-workspace/c/rna-transcription/rna_transcription.c:11:24: warning: backward branch (for loop) is ID-dependent due to variable reference to 'dna_length' and may cause performance degradation [altera-id-dependent-backward-branch]
+    for (size_t i = 0; i < dna_length; i++) {
+                       ^
+/home/vpayno/git_vpayno/exercism-workspace/c/rna-transcription/test_rna_transcription.c:9:33: warning: 2 adjacent parameters of 'check_transcription' of similar type ('const char *') are easily swapped by mistake [bugprone-easily-swappable-parameters]
+static void check_transcription(const char *dna, const char *expected) {
+                                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/rna-transcription/test_rna_transcription.c:9:45: note: the first parameter in the range is 'dna'
+static void check_transcription(const char *dna, const char *expected) {
+                                            ^~~
+/home/vpayno/git_vpayno/exercism-workspace/c/rna-transcription/test_rna_transcription.c:9:62: note: the last parameter in the range is 'expected'
+static void check_transcription(const char *dna, const char *expected) {
+                                                             ^~~~~~~~
+/usr/include/stdlib.h:532:50: warning: 7 is a magic number; consider replacing it with a named constant [readability-magic-numbers]
+extern int lcong48_r (unsigned short int __param[7],
+                                                 ^
+/home/vpayno/git_vpayno/exercism-workspace/c/rna-transcription/rna_transcription.c:4:5: note: inferred assignment of ID-dependent value from ID-dependent  [altera-id-dependent-backward-branch]
+    size_t dna_length = strlen(dna);
+    ^
+
+real	0m0.294s
+user	0m0.266s
+sys	0m0.029s
+
+===============================================================================
+
