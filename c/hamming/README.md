@@ -58,3 +58,8 @@ The Hamming distance is only defined for sequences of equal length, so an attemp
 ### Based on
 
 The Calculating Point Mutations problem at Rosalind - http://rosalind.info/problems/hamm/
+
+### My Solution
+
+- [my solution](./hamming.c)
+- [run-tests](./run-tests-c.txt)
