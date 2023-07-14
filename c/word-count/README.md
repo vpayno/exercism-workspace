@@ -85,3 +85,8 @@ the: 2
 ### Based on
 
 This is a classic toy problem, but we were reminded of it by seeing it in the Go Tour.
+
+### My Solution
+
+- [my solution](./word_count.c)
+- [run-tests](./run-tests-c.txt)

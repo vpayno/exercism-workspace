@@ -43,3 +43,4 @@
 - [hamming](./hamming/README.md)
 - [rna-transcription](./rna-transcription/README.md)
 - [etl](./etl/README.md)
+- [word-count](./word-count/README.md)

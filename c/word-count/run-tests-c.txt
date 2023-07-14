@@ -1,0 +1,196 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: make clean
+rm -rf *.o *.out *.out.dSYM
+
+real	0m0.004s
+user	0m0.000s
+sys	0m0.004s
+
+===============================================================================
+
+Running: make test | ansifilter
+Compiling tests.out
+test_word_count.c:456:test_count_one_word:PASS
+test_word_count.c:457:test_count_one_of_each_word:PASS
+test_word_count.c:458:test_multiple_occurrences_of_a_word:PASS
+test_word_count.c:459:test_handles_cramped_lists:PASS
+test_word_count.c:460:test_handles_expanded_lists:PASS
+test_word_count.c:461:test_ignore_punctuation:PASS
+test_word_count.c:462:test_include_numbers:PASS
+test_word_count.c:463:test_normalize_case:PASS
+test_word_count.c:464:test_with_apostrophes:PASS
+test_word_count.c:465:test_with_quotations:PASS
+test_word_count.c:466:test_substrings_from_the_beginning:PASS
+test_word_count.c:467:test_multiple_spaces_not_detected_as_a_word:PASS
+test_word_count.c:468:test_alternating_word_separators_not_detected_as_a_word:PASS
+test_word_count.c:469:test_quotation_for_word_with_apostrophe:PASS
+
+-----------------------
+14 Tests 0 Failures 0 Ignored 
+OK
+
+real	0m0.149s
+user	0m0.105s
+sys	0m0.045s
+
+===============================================================================
+
+Running: make memcheck | ansifilter
+Compiling memcheck
+test_word_count.c:456:test_count_one_word:PASS
+test_word_count.c:457:test_count_one_of_each_word:PASS
+test_word_count.c:458:test_multiple_occurrences_of_a_word:PASS
+test_word_count.c:459:test_handles_cramped_lists:PASS
+test_word_count.c:460:test_handles_expanded_lists:PASS
+test_word_count.c:461:test_ignore_punctuation:PASS
+test_word_count.c:462:test_include_numbers:PASS
+test_word_count.c:463:test_normalize_case:PASS
+test_word_count.c:464:test_with_apostrophes:PASS
+test_word_count.c:465:test_with_quotations:PASS
+test_word_count.c:466:test_substrings_from_the_beginning:PASS
+test_word_count.c:467:test_multiple_spaces_not_detected_as_a_word:PASS
+test_word_count.c:468:test_alternating_word_separators_not_detected_as_a_word:PASS
+test_word_count.c:469:test_quotation_for_word_with_apostrophe:PASS
+
+-----------------------
+14 Tests 0 Failures 0 Ignored 
+OK
+Memory check passed
+
+real	0m0.222s
+user	0m0.171s
+sys	0m0.053s
+
+===============================================================================
+
+Running: clang-format-16 -style=file -i ./test_word_count.c ./word_count.c ./word_count.h
+
+real	0m0.051s
+user	0m0.030s
+sys	0m0.021s
+
+===============================================================================
+
+Running: clang-check-16 ./test_word_count.c ./word_count.c ./word_count.h --
+
+real	0m0.046s
+user	0m0.030s
+sys	0m0.016s
+
+===============================================================================
+
+Running: clang-tidy-16 ./test_word_count.c ./word_count.c ./word_count.h -checks=*,-llvm-header-guard,-llvmlibc-restrict-system-libc-headers -- | head -n 100
+4083 warnings generated.
+6769 warnings generated.
+9442 warnings generated.
+/home/vpayno/git_vpayno/exercism-workspace/c/word-count/test_word_count.c:9:19: warning: variable 'actual_solution' is non-const and globally accessible, consider making it const [cppcoreguidelines-avoid-non-const-global-variables]
+word_count_word_t actual_solution[MAX_WORDS];
+                  ^
+/home/vpayno/git_vpayno/exercism-workspace/c/word-count/test_word_count.c:10:19: warning: variable 'expected_solution' is non-const and globally accessible, consider making it const [cppcoreguidelines-avoid-non-const-global-variables]
+word_count_word_t expected_solution[MAX_WORDS + 1];
+                  ^
+/home/vpayno/git_vpayno/exercism-workspace/c/word-count/test_word_count.c:24:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
+    for (int index = 0; index < MAX_WORDS; index++) {
+    ^
+/home/vpayno/git_vpayno/exercism-workspace/c/word-count/test_word_count.c:36:9: warning: variable 'actual_word_count' is not initialized [cppcoreguidelines-init-variables]
+    int actual_word_count;
+        ^
+                          = 0
+/home/vpayno/git_vpayno/exercism-workspace/c/word-count/test_word_count.c:41:5: warning: Call to function 'memset' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'memset_s' in case of C11 [clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling]
+    memset(expected_solution, 0,
+    ^~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/word-count/test_word_count.c:41:5: note: Call to function 'memset' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'memset_s' in case of C11
+    memset(expected_solution, 0,
+    ^~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/word-count/test_word_count.c:43:5: warning: Call to function 'memset' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'memset_s' in case of C11 [clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling]
+    memset(actual_solution, 0, sizeof(actual_solution));
+    ^~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/word-count/test_word_count.c:43:5: note: Call to function 'memset' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'memset_s' in case of C11
+    memset(actual_solution, 0, sizeof(actual_solution));
+    ^~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/word-count/test_word_count.c:47:5: warning: Call to function 'strncpy' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'strncpy_s' in case of C11 [clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling]
+    strncpy(expected_solution[index++].text, "word", STRING_SIZE);
+    ^~~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/word-count/test_word_count.c:47:5: note: Call to function 'strncpy' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'strncpy_s' in case of C11
+    strncpy(expected_solution[index++].text, "word", STRING_SIZE);
+    ^~~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/word-count/test_word_count.c:58:9: warning: variable 'actual_word_count' is not initialized [cppcoreguidelines-init-variables]
+    int actual_word_count;
+        ^
+                          = 0
+/home/vpayno/git_vpayno/exercism-workspace/c/word-count/test_word_count.c:63:5: warning: Call to function 'memset' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'memset_s' in case of C11 [clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling]
+    memset(expected_solution, 0,
+    ^~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/word-count/test_word_count.c:63:5: note: Call to function 'memset' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'memset_s' in case of C11
+    memset(expected_solution, 0,
+    ^~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/word-count/test_word_count.c:65:5: warning: Call to function 'memset' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'memset_s' in case of C11 [clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling]
+    memset(actual_solution, 0, sizeof(actual_solution));
+    ^~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/word-count/test_word_count.c:65:5: note: Call to function 'memset' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'memset_s' in case of C11
+    memset(actual_solution, 0, sizeof(actual_solution));
+    ^~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/word-count/test_word_count.c:69:5: warning: Call to function 'strncpy' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'strncpy_s' in case of C11 [clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling]
+    strncpy(expected_solution[index++].text, "one", STRING_SIZE);
+    ^~~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/word-count/test_word_count.c:69:5: note: Call to function 'strncpy' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'strncpy_s' in case of C11
+    strncpy(expected_solution[index++].text, "one", STRING_SIZE);
+    ^~~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/word-count/test_word_count.c:72:5: warning: Call to function 'strncpy' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'strncpy_s' in case of C11 [clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling]
+    strncpy(expected_solution[index++].text, "of", STRING_SIZE);
+    ^~~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/word-count/test_word_count.c:72:5: note: Call to function 'strncpy' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'strncpy_s' in case of C11
+    strncpy(expected_solution[index++].text, "of", STRING_SIZE);
+    ^~~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/word-count/test_word_count.c:75:5: warning: Call to function 'strncpy' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'strncpy_s' in case of C11 [clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling]
+    strncpy(expected_solution[index++].text, "each", STRING_SIZE);
+    ^~~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/word-count/test_word_count.c:75:5: note: Call to function 'strncpy' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'strncpy_s' in case of C11
+    strncpy(expected_solution[index++].text, "each", STRING_SIZE);
+    ^~~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/word-count/test_word_count.c:86:9: warning: variable 'actual_word_count' is not initialized [cppcoreguidelines-init-variables]
+    int actual_word_count;
+        ^
+                          = 0
+/home/vpayno/git_vpayno/exercism-workspace/c/word-count/test_word_count.c:91:5: warning: Call to function 'memset' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'memset_s' in case of C11 [clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling]
+    memset(expected_solution, 0,
+    ^~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/word-count/test_word_count.c:91:5: note: Call to function 'memset' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'memset_s' in case of C11
+    memset(expected_solution, 0,
+    ^~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/word-count/test_word_count.c:93:5: warning: Call to function 'memset' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'memset_s' in case of C11 [clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling]
+    memset(actual_solution, 0, sizeof(actual_solution));
+    ^~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/word-count/test_word_count.c:93:5: note: Call to function 'memset' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'memset_s' in case of C11
+    memset(actual_solution, 0, sizeof(actual_solution));
+    ^~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/word-count/test_word_count.c:96:5: warning: Call to function 'strncpy' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'strncpy_s' in case of C11 [clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling]
+    strncpy(expected_solution[index++].text, "one", STRING_SIZE);
+    ^~~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/word-count/test_word_count.c:96:5: note: Call to function 'strncpy' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'strncpy_s' in case of C11
+    strncpy(expected_solution[index++].text, "one", STRING_SIZE);
+    ^~~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/word-count/test_word_count.c:99:5: warning: Call to function 'strncpy' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'strncpy_s' in case of C11 [clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling]
+    strncpy(expected_solution[index++].text, "fish", STRING_SIZE);
+    ^~~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/word-count/test_word_count.c:99:5: note: Call to function 'strncpy' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'strncpy_s' in case of C11
+    strncpy(expected_solution[index++].text, "fish", STRING_SIZE);
+    ^~~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/word-count/test_word_count.c:102:5: warning: Call to function 'strncpy' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'strncpy_s' in case of C11 [clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling]
+    strncpy(expected_solution[index++].text, "two", STRING_SIZE);
+    ^~~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/word-count/test_word_count.c:102:5: note: Call to function 'strncpy' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'strncpy_s' in case of C11
+    strncpy(expected_solution[index++].text, "two", STRING_SIZE);
+    ^~~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/word-count/test_word_count.c:105:5: warning: Call to function 'strncpy' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'strncpy_s' in case of C11 [clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling]
+
+real	0m0.874s
+user	0m0.818s
+sys	0m0.057s
+
+===============================================================================
+
