@@ -1,0 +1,178 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: make clean
+rm -rf *.o *.out *.out.dSYM
+
+real	0m0.007s
+user	0m0.002s
+sys	0m0.004s
+
+===============================================================================
+
+Running: make test | ansifilter
+Compiling tests.out
+test_etl.c:95:test_a_single_letter:PASS
+test_etl.c:96:test_single_score_with_multiple_letters:PASS
+test_etl.c:97:test_multiple_scores_with_multiple_letters:PASS
+test_etl.c:98:test_multiple_scores_with_differing_numbers_of_letters:PASS
+
+-----------------------
+4 Tests 0 Failures 0 Ignored 
+OK
+
+real	0m0.118s
+user	0m0.077s
+sys	0m0.045s
+
+===============================================================================
+
+Running: make memcheck | ansifilter
+Compiling memcheck
+test_etl.c:95:test_a_single_letter:PASS
+test_etl.c:96:test_single_score_with_multiple_letters:PASS
+test_etl.c:97:test_multiple_scores_with_multiple_letters:PASS
+test_etl.c:98:test_multiple_scores_with_differing_numbers_of_letters:PASS
+
+-----------------------
+4 Tests 0 Failures 0 Ignored 
+OK
+Memory check passed
+
+real	0m0.137s
+user	0m0.104s
+sys	0m0.034s
+
+===============================================================================
+
+Running: clang-format-16 -style=file -i ./etl.c ./test_etl.c ./etl.h
+
+real	0m0.023s
+user	0m0.010s
+sys	0m0.012s
+
+===============================================================================
+
+Running: clang-check-16 ./etl.c ./test_etl.c ./etl.h --
+
+real	0m0.039s
+user	0m0.027s
+sys	0m0.011s
+
+===============================================================================
+
+Running: clang-tidy-16 ./etl.c ./test_etl.c ./etl.h -checks=*,-llvm-header-guard,-llvmlibc-restrict-system-libc-headers -- | head -n 100
+2709 warnings generated.
+6778 warnings generated.
+9482 warnings generated.
+/home/vpayno/git_vpayno/exercism-workspace/c/etl/etl.c:7:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
+    for (size_t i = 0; i < input_len; i++) {
+    ^
+/home/vpayno/git_vpayno/exercism-workspace/c/etl/etl.c:11:15: warning: Call to 'calloc' has an allocation size of 0 bytes [clang-analyzer-optin.portability.UnixAPI]
+    *output = calloc(size, sizeof(new_map));
+              ^      ~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/etl/etl.c:5:5: note: 'size' initialized to 0
+    size_t size = 0;
+    ^~~~~~~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/etl/etl.c:7:24: note: Assuming 'i' is >= 'input_len'
+    for (size_t i = 0; i < input_len; i++) {
+                       ^~~~~~~~~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/etl/etl.c:7:5: note: Loop condition is false. Execution continues on line 11
+    for (size_t i = 0; i < input_len; i++) {
+    ^
+/home/vpayno/git_vpayno/exercism-workspace/c/etl/etl.c:11:15: note: Call to 'calloc' has an allocation size of 0 bytes
+    *output = calloc(size, sizeof(new_map));
+              ^      ~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/etl/etl.c:15:9: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
+        for (size_t j = 0; j < strlen(input[i].keys); j++) {
+        ^
+/home/vpayno/git_vpayno/exercism-workspace/c/etl/etl.c:16:34: warning: narrowing conversion from 'int' to signed type 'char' is implementation-defined [bugprone-narrowing-conversions,cppcoreguidelines-narrowing-conversions]
+            (*output)[key].key = tolower(input[i].keys[j]);
+                                 ^
+/home/vpayno/git_vpayno/exercism-workspace/c/etl/etl.h:9:9: warning: accessing fields in struct 'legacy_map' is inefficient due to poor alignment; currently aligned to 8 bytes, but recommended alignment is 16 bytes [altera-struct-pack-align]
+typedef struct {
+        ^
+/home/vpayno/git_vpayno/exercism-workspace/c/etl/etl.h:9:9: note: use "__attribute__((aligned(16)))" to align struct 'legacy_map' to 16 bytes
+/home/vpayno/git_vpayno/exercism-workspace/c/etl/etl.h:14:9: warning: accessing fields in struct 'new_map' is inefficient due to poor alignment; currently aligned to 4 bytes, but recommended alignment is 8 bytes [altera-struct-pack-align]
+typedef struct {
+        ^
+/home/vpayno/git_vpayno/exercism-workspace/c/etl/etl.h:14:9: note: use "__attribute__((aligned(8)))" to align struct 'new_map' to 8 bytes
+/home/vpayno/git_vpayno/exercism-workspace/c/etl/etl.h:19:41: warning: parameter 'input_len' is const-qualified in the function declaration; const-qualification of parameters only has an effect in function definitions [readability-avoid-const-params-in-decls]
+size_t convert(const legacy_map *input, const size_t input_len,
+                                        ^~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/etl/test_etl.c:9:33: warning: parameter name 'a' is too short, expected at least 3 characters [readability-identifier-length]
+static int compare_map(new_map *a, new_map *b, int len) {
+                                ^
+/home/vpayno/git_vpayno/exercism-workspace/c/etl/test_etl.c:9:45: warning: parameter name 'b' is too short, expected at least 3 characters [readability-identifier-length]
+static int compare_map(new_map *a, new_map *b, int len) {
+                                            ^
+/home/vpayno/git_vpayno/exercism-workspace/c/etl/test_etl.c:10:19: warning: statement should be inside braces [google-readability-braces-around-statements,hicpp-braces-around-statements,readability-braces-around-statements]
+    if (a == NULL)
+                  ^
+                   {
+/home/vpayno/git_vpayno/exercism-workspace/c/etl/test_etl.c:12:19: warning: statement should be inside braces [google-readability-braces-around-statements,hicpp-braces-around-statements,readability-braces-around-statements]
+    if (b == NULL)
+                  ^
+                   {
+/home/vpayno/git_vpayno/exercism-workspace/c/etl/test_etl.c:14:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
+    while (--len >= 0)
+    ^
+/home/vpayno/git_vpayno/exercism-workspace/c/etl/test_etl.c:14:23: warning: statement should be inside braces [google-readability-braces-around-statements,hicpp-braces-around-statements,readability-braces-around-statements]
+    while (--len >= 0)
+                      ^
+                       {
+/home/vpayno/git_vpayno/exercism-workspace/c/etl/test_etl.c:15:74: warning: statement should be inside braces [google-readability-braces-around-statements,hicpp-braces-around-statements,readability-braces-around-statements]
+        if ((a[len].key != b[len].key) || (a[len].value != b[len].value))
+                                                                         ^
+                                                                          {
+/home/vpayno/git_vpayno/exercism-workspace/c/etl/test_etl.c:28:25: warning: narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'int' is implementation-defined [bugprone-narrowing-conversions,cppcoreguidelines-narrowing-conversions]
+    int actual_length = convert(input, input_len, &output);
+                        ^
+/home/vpayno/git_vpayno/exercism-workspace/c/etl/test_etl.c:42:27: warning: 5 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+    int expected_length = 5;
+                          ^
+/home/vpayno/git_vpayno/exercism-workspace/c/etl/test_etl.c:45:25: warning: narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'int' is implementation-defined [bugprone-narrowing-conversions,cppcoreguidelines-narrowing-conversions]
+    int actual_length = convert(input, input_len, &output);
+                        ^
+/home/vpayno/git_vpayno/exercism-workspace/c/etl/test_etl.c:62:25: warning: narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'int' is implementation-defined [bugprone-narrowing-conversions,cppcoreguidelines-narrowing-conversions]
+    int actual_length = convert(input, input_len, &output);
+                        ^
+/home/vpayno/git_vpayno/exercism-workspace/c/etl/test_etl.c:72:28: warning: 10 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+    legacy_map input[] = {{10, "QZ"}, {1, "AEIOULNRST"}, {3, "BCMP"}, {2, "DG"},
+                           ^
+/home/vpayno/git_vpayno/exercism-workspace/c/etl/test_etl.c:73:28: warning: 5 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+                          {5, "K"},   {4, "FHVWY"},      {8, "JX"}};
+                           ^
+/home/vpayno/git_vpayno/exercism-workspace/c/etl/test_etl.c:73:59: warning: 8 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+                          {5, "K"},   {4, "FHVWY"},      {8, "JX"}};
+                                                          ^
+/home/vpayno/git_vpayno/exercism-workspace/c/etl/test_etl.c:74:21: warning: 7 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+    int input_len = 7;
+                    ^
+/home/vpayno/git_vpayno/exercism-workspace/c/etl/test_etl.c:78:35: warning: 8 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+        {'h', 4}, {'i', 1}, {'j', 8},  {'k', 5}, {'l', 1}, {'m', 3}, {'n', 1},
+                                  ^
+/home/vpayno/git_vpayno/exercism-workspace/c/etl/test_etl.c:78:46: warning: 5 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+        {'h', 4}, {'i', 1}, {'j', 8},  {'k', 5}, {'l', 1}, {'m', 3}, {'n', 1},
+                                             ^
+/home/vpayno/git_vpayno/exercism-workspace/c/etl/test_etl.c:79:35: warSuppressed 9381 warnings (9381 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+ning: 10 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+        {'o', 1}, {'p', 3}, {'q', 10}, {'r', 1}, {'s', 1}, {'t', 1}, {'u', 1},
+                                  ^
+/home/vpayno/git_vpayno/exercism-workspace/c/etl/test_etl.c:80:35: warning: 8 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+        {'v', 4}, {'w', 4}, {'x', 8},  {'y', 4}, {'z', 10}};
+                                  ^
+/home/vpayno/git_vpayno/exercism-workspace/c/etl/test_etl.c:80:56: warning: 10 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+        {'v', 4}, {'w', 4}, {'x', 8},  {'y', 4}, {'z', 10}};
+                                                       ^
+/home/vpayno/git_vpayno/exercism-workspace/c/etl/test_etl.c:81:27: warning: 26 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
+
+real	0m0.279s
+user	0m0.252s
+sys	0m0.028s
+
+===============================================================================
+
