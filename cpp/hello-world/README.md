@@ -36,3 +36,8 @@ If everything goes well, you will be ready to fetch your first real exercise.
 ### Based on
 
 This is an exercise to introduce users to using Exercism - http://en.wikipedia.org/wiki/%22Hello,_world!%22_program
+
+### My Solution
+
+- [my solution]()
+- [run-tests](./run-tests-cpp.txt)

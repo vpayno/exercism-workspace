@@ -17,6 +17,6 @@ namespace hello_world {
 // 'hello_world::hello()'.
 std::string hello();
 
-}  // namespace hello_world
+} // namespace hello_world
 
 #endif

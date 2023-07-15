@@ -12,3 +12,4 @@
 
 ## [Exercises](https://exercism.org/tracks/cpp/exercises)
 
+- [hello-world](./hello-world/README.md)
