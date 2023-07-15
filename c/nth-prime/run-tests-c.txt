@@ -1,0 +1,112 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: make clean
+rm -rf *.o *.out *.out.dSYM
+
+real	0m0.004s
+user	0m0.001s
+sys	0m0.003s
+
+===============================================================================
+
+Running: make test | ansifilter
+Compiling tests.out
+test_nth_prime.c:33:test_first_prime:PASS
+test_nth_prime.c:34:test_second_prime:PASS
+test_nth_prime.c:35:test_sixth_prime:PASS
+test_nth_prime.c:36:test_big_prime:PASS
+test_nth_prime.c:37:test_there_is_no_zeroth_prime:PASS
+
+-----------------------
+5 Tests 0 Failures 0 Ignored 
+OK
+
+real	0m0.148s
+user	0m0.107s
+sys	0m0.042s
+
+===============================================================================
+
+Running: make memcheck | ansifilter
+Compiling memcheck
+test_nth_prime.c:33:test_first_prime:PASS
+test_nth_prime.c:34:test_second_prime:PASS
+test_nth_prime.c:35:test_sixth_prime:PASS
+test_nth_prime.c:36:test_big_prime:PASS
+test_nth_prime.c:37:test_there_is_no_zeroth_prime:PASS
+
+-----------------------
+5 Tests 0 Failures 0 Ignored 
+OK
+Memory check passed
+
+real	0m0.168s
+user	0m0.128s
+sys	0m0.042s
+
+===============================================================================
+
+Running: clang-format-16 -style=file -i ./nth_prime.c ./test_nth_prime.c ./nth_prime.h
+
+real	0m0.026s
+user	0m0.011s
+sys	0m0.015s
+
+===============================================================================
+
+Running: clang-check-16 ./nth_prime.c ./test_nth_prime.c ./nth_prime.h --
+
+real	0m0.041s
+user	0m0.022s
+sys	0m0.019s
+
+===============================================================================
+
+Running: clang-tidy-16 ./nth_prime.c ./test_nth_prime.c ./nth_prime.h -checks=*,-llvm-header-guard,-llvmlibc-restrict-system-libc-headers -- | head -n 100
+2591 warnings generated.
+6401 warnings generated.
+8984 warnings generated.
+Suppressed 8979 warnings (8979 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+/home/vpayno/git_vpayno/exercism-workspace/c/nth-prime/nth_prime.c:5:32: warning: 2 adjacent parameters of 'sieve' of similar type ('size_t') are easily swapped by mistake [bugprone-easily-swappable-parameters]
+uint32_t sieve(uint32_t limit, size_t max_primes, size_t nth_prime) {
+                               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/nth-prime/nth_prime.c:5:39: note: the first parameter in the range is 'max_primes'
+uint32_t sieve(uint32_t limit, size_t max_primes, size_t nth_prime) {
+                                      ^~~~~~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/nth-prime/nth_prime.c:5:58: note: the last parameter in the range is 'nth_prime'
+uint32_t sieve(uint32_t limit, size_t max_primes, size_t nth_prime) {
+                                                         ^~~~~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/nth-prime/nth_prime.c:24:5: warning: Call to function 'memset' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'memset_s' in case of C11 [clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling]
+    memset(is_prime, true, sizeof(is_prime));
+    ^~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/nth-prime/nth_prime.c:24:5: note: Call to function 'memset' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'memset_s' in case of C11
+    memset(is_prime, true, sizeof(is_prime));
+    ^~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/nth-prime/nth_prime.c:34:13: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
+            for (uint32_t j = 2; i * j <= limit; j++) {
+            ^
+/home/vpayno/git_vpayno/exercism-workspace/c/nth-prime/nth_prime.c:35:17: warning: result of multiplication in type 'uint32_t' (aka 'unsigned int') is used as a pointer offset after an implicit widening conversion to type 'size_t' [bugprone-implicit-widening-of-multiplication-result]
+                is_prime[i * j] = false;
+                ^
+/home/vpayno/git_vpayno/exercism-workspace/c/nth-prime/nth_prime.c:35:26: note: make conversion explicit to silence this warning
+                is_prime[i * j] = false;
+                         ^~~~~
+                         (size_t)( )
+/home/vpayno/git_vpayno/exercism-workspace/c/nth-prime/nth_prime.c:35:26: note: perform multiplication in a wider type
+                is_prime[i * j] = false;
+                         ^
+                         (size_t)
+/home/vpayno/git_vpayno/exercism-workspace/c/nth-prime/nth_prime.c:41:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
+    for (uint32_t i = 2; i <= limit; i++) {
+    ^
+
+real	0m0.234s
+user	0m0.216s
+sys	0m0.019s
+
+===============================================================================
+

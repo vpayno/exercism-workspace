@@ -45,3 +45,4 @@
 - [etl](./etl/README.md)
 - [word-count](./word-count/README.md)
 - [sieve](./sieve/README.md)
+- [nth-prime](./nth-prime/README.md)
