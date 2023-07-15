@@ -15,7 +15,7 @@ Exercism Workspace
 - April: Analytical -> Python
 - May: Mindshifting -> Rust, Tcl
 - June: Summer of Sexps -> Common Lisp
-- July: Jurassic -> C
+- July: Jurassic -> C, C++
 - August: Apps ->
 - September: Slimline ->
 - October: Object Oriented ->
@@ -86,6 +86,7 @@ Exercism Workspace
 - [Python](python/README.md)
 - [Common Lisp](common-lisp/README.md)
 - [C](c/README.md)
+- [C++](cpp/README.md)
 
 ## Tools/Scripts
 
