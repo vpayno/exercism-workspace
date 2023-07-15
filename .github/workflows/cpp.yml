@@ -1,0 +1,104 @@
+---
+name: C++ Workflow
+on:  # yamllint disable-line rule:truthy
+  pull_request:
+
+jobs:
+  stage1:
+    name: Change Check
+    runs-on: 'ubuntu-latest'
+    outputs:
+      docs_changed: ${{ steps.check_file_changed.outputs.docs_changed }}
+    steps:
+      - name: Checkout Repo
+        id: checkout-repo
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: ${{ github.ref }}
+          submodules: recursive
+      - name: Get Change List
+        id: check_file_changed
+        run: |
+          # Diff HEAD with the previous commit then output to stdout.
+          printf "=== Which files changed? ===\n"
+          GIT_DIFF="$(git diff --name-only HEAD^ HEAD)"
+          printf "%s\n" "${GIT_DIFF}"
+          printf "\n"
+
+          # Check if the files are present in the changed file list (added, modified, deleted) then output to stdout.
+          HAS_DIFF=false
+          printf "=== Which C++ files changed? ===\n"
+          if printf "%s\n" "${GIT_DIFF}" | grep -E '^(.*[.](cpp|h|hpp)|.*/[Ma]akefile|.github/workflows/cpp.yml)$'; then
+            HAS_DIFF=true
+          fi
+          printf "\n"
+
+          # Did Golang files change?
+          printf "=== Did C++ files change? ===\n"
+          printf "%s\n" "${HAS_DIFF}"
+          printf "\n"
+
+          # Set the output named "docs_changed"
+          printf "%s=%s\n" "docs_changed" "${HAS_DIFF}" >> "${GITHUB_OUTPUT}"
+  stage2:
+    name: C++ Checks
+    strategy:
+      matrix:
+        os: ["ubuntu-latest", "windows-latest", "macos-latest"]
+        exclude:
+          - os: "macos-latest"
+          - os: "windows-latest"
+    runs-on: "${{ matrix.os }}"
+    needs: [stage1]
+    if: needs.stage1.outputs.docs_changed == 'True'
+    steps:
+      - name: Checkout Repo
+        id: checkout-repo
+        uses: actions/checkout@v3
+      - name: Install C++ Tools
+        id: install-c-tools
+        run: |
+          sudo tee -a /etc/apt/sources.list <<EOF
+          # deb http://apt.llvm.org/jammy/ llvm-toolchain-jammy main
+          # deb-src http://apt.llvm.org/jammy/ llvm-toolchain-jammy main
+          # deb http://apt.llvm.org/jammy/ llvm-toolchain-jammy-14 main
+          # deb-src http://apt.llvm.org/jammy/ llvm-toolchain-jammy-14 main
+          # deb http://apt.llvm.org/jammy/ llvm-toolchain-jammy-15 main
+          # deb-src http://apt.llvm.org/jammy/ llvm-toolchain-jammy-15 main
+          deb http://apt.llvm.org/jammy/ llvm-toolchain-jammy-16 main
+          deb-src http://apt.llvm.org/jammy/ llvm-toolchain-jammy-16 main
+          EOF
+          wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
+          sudo apt update
+          # sudo apt install -y clang-16 lldb-16 lld-16
+          # sudo apt install -y libllvm-14-ocaml-dev libllvm14 llvm-14 llvm-14-dev llvm-14-doc llvm-14-examples llvm-14-runtime
+          sudo apt install -y g++ clang-16 clang-tools-16 clang-tidy-16 cmake gcovr
+          sudo apt install -y g++ gcovr
+          sudo apt install -y g++ cmake
+          # sudo apt install -y libssl-dev
+          # sudo apt install -y lcov
+          sudo apt install -y make
+      - name: CD to C++ Dir
+        id: cd-to-c-dir
+        run: |
+          pwd
+          ls
+          cd ./cpp
+          pwd
+          ls
+      - name: Analysing the code with clang-check
+        id: clang-check-16
+        run: |
+          cd ./cpp
+          ./for_each ../../.github/citools/cpp/clang-check
+      - name: Analysing the code clang-tidy-16
+        id: clang-tidy-16
+        run: |
+          cd ./cpp
+          ./for_each ../../.github/citools/cpp/clang-tidy
+      - name: Run Unit Tests with Coverage
+        id: make-test
+        run: |-
+          cd ./cpp
+          ./for_each make coverage
