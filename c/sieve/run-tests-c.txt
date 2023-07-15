@@ -1,0 +1,112 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: make clean
+rm -rf *.o *.out *.out.dSYM
+
+real	0m0.006s
+user	0m0.003s
+sys	0m0.002s
+
+===============================================================================
+
+Running: make test | ansifilter
+Compiling tests.out
+test_sieve.c:104:test_no_primes_under_two:PASS
+test_sieve.c:105:test_find_first_prime:PASS
+test_sieve.c:106:test_find_primes_up_to_10:PASS
+test_sieve.c:107:test_limit_is_prime:PASS
+test_sieve.c:108:test_limit_is_prime_and_small_max_primes:PASS
+test_sieve.c:109:test_find_primes_up_to_1000:PASS
+
+-----------------------
+6 Tests 0 Failures 0 Ignored 
+OK
+
+real	0m0.127s
+user	0m0.095s
+sys	0m0.033s
+
+===============================================================================
+
+Running: make memcheck | ansifilter
+Compiling memcheck
+test_sieve.c:104:test_no_primes_under_two:PASS
+test_sieve.c:105:test_find_first_prime:PASS
+test_sieve.c:106:test_find_primes_up_to_10:PASS
+test_sieve.c:107:test_limit_is_prime:PASS
+test_sieve.c:108:test_limit_is_prime_and_small_max_primes:PASS
+test_sieve.c:109:test_find_primes_up_to_1000:PASS
+
+-----------------------
+6 Tests 0 Failures 0 Ignored 
+OK
+Memory check passed
+
+real	0m0.174s
+user	0m0.138s
+sys	0m0.038s
+
+===============================================================================
+
+Running: clang-format-16 -style=file -i ./sieve.c ./test_sieve.c ./sieve.h
+
+real	0m0.023s
+user	0m0.009s
+sys	0m0.014s
+
+===============================================================================
+
+Running: clang-check-16 ./sieve.c ./test_sieve.c ./sieve.h --
+
+real	0m0.042s
+user	0m0.025s
+sys	0m0.016s
+
+===============================================================================
+
+Running: clang-tidy-16 ./sieve.c ./test_sieve.c ./sieve.h -checks=*,-llvm-header-guard,-llvmlibc-restrict-system-libc-headers -- | head -n 100
+2586 warnings generated.
+6396 warnings generated.
+8979 warnings generated.
+Suppressed 8973 warnings (8973 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+/home/vpayno/git_vpayno/exercism-workspace/c/sieve/sieve.c:12:5: warning: Call to function 'memset' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'memset_s' in case of C11 [clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling]
+    memset(is_prime, true, sizeof(is_prime));
+    ^~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/sieve/sieve.c:12:5: note: Call to function 'memset' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'memset_s' in case of C11
+    memset(is_prime, true, sizeof(is_prime));
+    ^~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/c/sieve/sieve.c:22:13: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
+            for (uint32_t j = 2; i * j <= limit; j++) {
+            ^
+/home/vpayno/git_vpayno/exercism-workspace/c/sieve/sieve.c:23:17: warning: result of multiplication in type 'uint32_t' (aka 'unsigned int') is used as a pointer offset after an implicit widening conversion to type 'size_t' [bugprone-implicit-widening-of-multiplication-result]
+                is_prime[i * j] = false;
+                ^
+/home/vpayno/git_vpayno/exercism-workspace/c/sieve/sieve.c:23:26: note: make conversion explicit to silence this warning
+                is_prime[i * j] = false;
+                         ^~~~~
+                         (size_t)( )
+/home/vpayno/git_vpayno/exercism-workspace/c/sieve/sieve.c:23:26: note: perform multiplication in a wider type
+                is_prime[i * j] = false;
+                         ^
+                         (size_t)
+/home/vpayno/git_vpayno/exercism-workspace/c/sieve/test_sieve.c:5:1: warning: replace macro with enum [modernize-macro-to-enum]
+#define RESULT_ARRAY_LEN (1000)
+^~~~~~~~
+                         =
+/home/vpayno/git_vpayno/exercism-workspace/c/sieve/test_sieve.c:5:9: warning: macro 'RESULT_ARRAY_LEN' defines an integral constant; prefer an enum instead [modernize-macro-to-enum]
+#define RESULT_ARRAY_LEN (1000)
+        ^
+/home/vpayno/git_vpayno/exercism-workspace/c/sieve/test_sieve.c:6:17: warning: variable 'result_array' is non-const and globally accessible, consider making it const [cppcoreguidelines-avoid-non-const-global-variables]
+static uint32_t result_array[RESULT_ARRAY_LEN];
+                ^
+
+real	0m0.251s
+user	0m0.224s
+sys	0m0.027s
+
+===============================================================================
+
