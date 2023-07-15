@@ -1,0 +1,86 @@
+#!/bin/bash
+
+shopt -s nullglob
+
+if [[ ! -d .exercism ]]; then
+	printf "ERROR: Run from inside a project directory.\n\n"
+	exit 1
+fi
+
+declare package_name
+declare project_dir
+
+get_cpp_package_name() {
+	basename "${PWD}"
+} # get_cpp_package_name()
+
+package_name="$(get_cpp_package_name)"
+project_dir="$(basename "${PWD}")"
+
+if ! grep -q ./"${project_dir}"/README.md ../README.md; then
+
+	cat >>../README.md <<EOF
+- [${project_dir}](./${project_dir}/README.md)
+EOF
+
+fi
+
+if ! grep -q 'My Solution' ./README.md; then
+	if ! grep -q ./"${package_name}"-doc.md ./README.md; then
+
+		# Two empty spaces because the file is missing a trailing new line.
+		cat >>./README.md <<EOF
+
+
+### My Solution
+
+- [my solution]($(printf "%s\n" ./*[.]c | grep -v -E "test.*[.]c"))
+EOF
+
+		cat >>./README.md <<EOF
+- [run-tests](./run-tests-cpp.txt)
+EOF
+
+	fi
+fi
+
+printf "\n"
+git add ../README.md ./README.md
+git diff --cached ../README.md ./README.md
+
+if ! grep -q '// TEST_IGNORE' ./*_test.cpp; then
+	sed -r -i -e 's:(TEST_IGNORE):// \1:g' ./*_test.cpp
+fi
+
+if [[ ! -f ./compile_flags.txt ]]; then
+	cat >./compile_flags.txt <<EOF
+-std=c++17
+-stdlib=libstdc++
+EOF
+fi
+
+cat >Makefile <<EOF
+.PHONY: clean
+clean:
+	rm -rf ./build
+
+.PHONY: test
+test: clean
+	mkdir -pv ./build
+
+	@printf "\n"
+	@# each line is executed in a subshell, we have to daisy chain them so they
+	@# run in the build directory
+	cd ./build; LDFLAGS="-lgcov --coverage" CXXFLAGS="--coverage" cmake -G 'Unix Makefiles' ../; if make; then printf "\n=== All Tests Passed ===\n"; else printf "\n=== Test Failure ===\n"; false; fi
+
+.PHONY: coverage
+coverage: test
+	@printf "\n"
+	find . -regextype posix-egrep -regex "^.*(test|CompilerId).*[.](gcda|gcno)\$$" -print -delete
+
+	@printf "\n"
+	gcovr --print-summary
+EOF
+
+git add .
+git status .

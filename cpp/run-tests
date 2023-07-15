@@ -1,0 +1,65 @@
+#!/bin/bash
+
+print_ruler() {
+	printf "\n"
+	printf "=%.0s" {1..79}
+	printf "\n"
+	printf "\n"
+} # print_ruler()
+
+main() {
+	printf "Running automated test file(s):\n\n"
+
+	print_ruler
+
+	echo Running: make clean
+	time make clean
+
+	print_ruler
+
+	# https://jasoncarloscox.com/blog/cpp-testing-with-coverage/
+	# https://gcovr.com/en/master/guide/compiling.html
+
+	echo Running: make coverage '|' ansifilter
+	time make coverage | ansifilter
+
+	print_ruler
+
+	# cmake-format
+
+	echo cmake-format --in-place CMakeLists.txt
+	time cmake-format --in-place CMakeLists.txt
+
+	print_ruler
+
+	# cmake-lint
+
+	echo cmake-lint CMakeLists.txt
+	time cmake-lint CMakeLists.txt
+
+	print_ruler
+
+	# https://clang.llvm.org/docs/ClangFormat.html
+
+	echo Running: clang-format-16 -style=file -i ./*.cpp ./*.h
+	time clang-format-16 -style=file -i ./*.cpp ./*.h
+
+	print_ruler
+
+	# https://clang.llvm.org/docs/ClangCheck.html
+
+	echo Running: ../../.github/citools/cpp/clang-check
+	time ../../.github/citools/cpp/clang-check
+
+	print_ruler
+
+	# https://clang.llvm.org/extra/clang-tidy/
+
+	echo Running: ../../.github/citools/cpp/clang-tidy '|' head -n 100
+	time ../../.github/citools/cpp/clang-tidy | head -n 100
+
+	print_ruler
+
+} # main()
+
+time main "$@" |& tee ./run-tests-c.txt

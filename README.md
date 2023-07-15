@@ -103,3 +103,4 @@ Exercism Workspace
 - [Python run-tests](./python/run-tests)
 - [Common Lisp run-tests](./common-lisp/run-tests)
 - [C run-tests](./c/run-tests)
+- [C++ run-tests](./cpp/run-tests)
