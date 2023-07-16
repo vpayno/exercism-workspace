@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.012s
-user	0m0.000s
-sys	0m0.012s
+real	0m0.003s
+user	0m0.002s
+sys	0m0.001s
 
 ===============================================================================
 
@@ -59,6 +59,10 @@ find . -regextype posix-egrep -regex "^.*(tests-main|CompilerId).*[.](gcda|gcno)
 ./build/CMakeFiles/pacman-rules.dir/test/tests-main.cpp.gcno
 ./build/CMakeFiles/pacman-rules.dir/test/tests-main.cpp.gcda
 
+find . -regextype posix-egrep -regex "^.*[.](gcda|gcno)$"
+./build/CMakeFiles/pacman-rules.dir/pacman_rules_test.cpp.gcno
+./build/CMakeFiles/pacman-rules.dir/pacman_rules_test.cpp.gcda
+
 gcovr --print-summary
 ------------------------------------------------------------------------------
                            GCC Code Coverage Report
@@ -67,25 +71,25 @@ Directory: .
 File                                       Lines    Exec  Cover   Missing
 ------------------------------------------------------------------------------
 pacman_rules.cpp                               8       8   100%   
-pacman_rules_test.cpp                         39      39   100%   
+pacman_rules_test.cpp                         31      31   100%   
 test/catch.hpp                                34      29    85%   1642-1643,2301-2302,2560
 ------------------------------------------------------------------------------
-TOTAL                                         81      76    93%
+TOTAL                                         73      68    93%
 ------------------------------------------------------------------------------
-lines: 93.8% (76 out of 81)
+lines: 93.2% (68 out of 73)
 branches: 39.6% (76 out of 192)
 
-real	0m8.912s
-user	0m8.173s
-sys	0m0.738s
+real	0m10.325s
+user	0m9.558s
+sys	0m0.759s
 
 ===============================================================================
 
 cmake-format --in-place CMakeLists.txt
 
-real	0m0.182s
-user	0m0.130s
-sys	0m0.052s
+real	0m0.178s
+user	0m0.135s
+sys	0m0.044s
 
 ===============================================================================
 
@@ -111,92 +115,51 @@ found lint:
   Convention: 5
 
 
-real	0m0.160s
-user	0m0.114s
-sys	0m0.047s
+real	0m0.186s
+user	0m0.138s
+sys	0m0.049s
 
 ===============================================================================
 
 Running: clang-format-16 -style=file -i ./pacman_rules.cpp ./pacman_rules_test.cpp
 
-real	0m0.019s
-user	0m0.006s
-sys	0m0.012s
+real	0m0.042s
+user	0m0.022s
+sys	0m0.020s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 ./pacman_rules.cpp ./pacman_rules_test.cpp -- --std=c++17 -x c++
+clang-check-16 --analyze ./pacman_rules.cpp ./pacman_rules_test.cpp
 
-real	0m0.387s
-user	0m0.348s
-sys	0m0.038s
+real	0m0.511s
+user	0m0.457s
+sys	0m0.053s
 
 
-real	0m0.388s
-user	0m0.349s
-sys	0m0.039s
+real	0m0.515s
+user	0m0.459s
+sys	0m0.055s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
-9 warnings generated.
-110094 warnings generated.
-Suppressed 110091 warnings (110081 in non-user code, 10 NOLINT).
+35377 warnings generated.
+Suppressed 35381 warnings (35376 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 
-real	0m9.130s
-user	0m9.049s
-sys	0m0.080s
-Running: clang-tidy-16 ./pacman_rules.cpp ./pacman_rules_test.cpp -checks=*,-llvm-header-guard,-llvmlibc-restrict-system-libc-headers -- --std=c++17 -x c++
-/home/vpayno/git_vpayno/exercism-workspace/cpp/pacman-rules/pacman_rules.cpp:4:6: warning: declaration must be declared within the '__llvm_libc' namespace [llvmlibc-implementation-in-namespace]
-bool can_eat_ghost(bool power_pellet_active, bool touching_ghost) {
-     ^
-/home/vpayno/git_vpayno/exercism-workspace/cpp/pacman-rules/pacman_rules.cpp:4:6: warning: use a trailing return type for this function [modernize-use-trailing-return-type]
-bool can_eat_ghost(bool power_pellet_active, bool touching_ghost) {
-~~~~ ^
-auto                                                              -> bool
-/home/vpayno/git_vpayno/exercism-workspace/cpp/pacman-rules/pacman_rules.cpp:11:6: warning: declaration must be declared within the '__llvm_libc' namespace [llvmlibc-implementation-in-namespace]
-bool scored(bool touching_power_pellet, bool touching_dot) {
-     ^
-/home/vpayno/git_vpayno/exercism-workspace/cpp/pacman-rules/pacman_rules.cpp:11:6: warning: use a trailing return type for this function [modernize-use-trailing-return-type]
-bool scored(bool touching_power_pellet, bool touching_dot) {
-~~~~ ^
-auto                                                       -> bool
-/home/vpayno/git_vpayno/exercism-workspace/cpp/pacman-rules/pacman_rules.cpp:18:6: warning: declaration must be declared within the '__llvm_libc' namespace [llvmlibc-implementation-in-namespace]
-bool lost(bool power_pellet_active, bool touching_ghost) {
-     ^
-/home/vpayno/git_vpayno/exercism-workspace/cpp/pacman-rules/pacman_rules.cpp:18:6: warning: use a trailing return type for this function [modernize-use-trailing-return-type]
-bool lost(bool power_pellet_active, bool touching_ghost) {
-~~~~ ^
-auto                                                     -> bool
-/home/vpayno/git_vpayno/exercism-workspace/cpp/pacman-rules/pacman_rules.cpp:25:6: warning: declaration must be declared within the '__llvm_libc' namespace [llvmlibc-implementation-in-namespace]
-bool won(bool has_eaten_all_dots, bool power_pellet_active,
-     ^
-/home/vpayno/git_vpayno/exercism-workspace/cpp/pacman-rules/pacman_rules.cpp:25:6: warning: use a trailing return type for this function [modernize-use-trailing-return-type]
-bool won(bool has_eaten_all_dots, bool power_pellet_active,
-~~~~ ^
-auto
-/home/vpayno/git_vpayno/exercism-workspace/cpp/pacman-rules/pacman_rules.cpp:27:39: warning: 'lost' must resolve to a function declared within the '__llvm_libc' namespace [llvmlibc-callee-namespace]
-    return has_eaten_all_dots and not lost(power_pellet_active, touching_ghost);
-                                      ^
-/home/vpayno/git_vpayno/exercism-workspace/cpp/pacman-rules/pacman_rules.cpp:18:6: note: resolves to this declaration
-bool lost(bool power_pellet_active, bool touching_ghost) {
-     ^
+real	0m5.028s
+user	0m4.979s
+sys	0m0.049s
+Running: clang-tidy-16 ./pacman_rules.cpp ./pacman_rules_test.cpp
 /home/vpayno/git_vpayno/exercism-workspace/cpp/pacman-rules/pacman_rules_test.cpp:1:11: warning: suspicious #include of file with '.cpp' extension [bugprone-suspicious-include]
 #include "pacman_rules.cpp"
           ^
-/home/vpayno/git_vpayno/exercism-workspace/cpp/pacman-rules/pacman_rules_test.cpp:8:41: warning: 'can_eat_ghost' must resolve to a function declared within the '__llvm_libc' namespace [llvmlibc-callee-namespace]
-TEST_CASE("ghost gets eaten") { REQUIRE(can_eat_ghost(true, true)); }
-                                        ^
-/home/vpayno/git_vpayno/exercism-workspace/cpp/pacman-rules/pacman_rules.cpp:4:6: note: resolves to this declaration
-bool can_eat_ghost(bool power_pellet_active, bool touching_ghost) {
-     ^
 
 
-real	0m9.131s
-user	0m9.051s
-sys	0m0.081s
+real	0m5.030s
+user	0m4.981s
+sys	0m0.050s
 
 ===============================================================================
 
