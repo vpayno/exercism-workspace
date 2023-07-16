@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.021s
-user	0m0.002s
-sys	0m0.018s
+real	0m0.011s
+user	0m0.003s
+sys	0m0.008s
 
 ===============================================================================
 
@@ -78,17 +78,17 @@ TOTAL                                         95      88    92%
 lines: 92.6% (88 out of 95)
 branches: 38.5% (121 out of 314)
 
-real	0m9.178s
-user	0m8.282s
-sys	0m0.885s
+real	0m10.030s
+user	0m9.094s
+sys	0m0.929s
 
 ===============================================================================
 
 cmake-format --in-place CMakeLists.txt
 
-real	0m0.153s
-user	0m0.101s
-sys	0m0.054s
+real	0m0.139s
+user	0m0.106s
+sys	0m0.034s
 
 ===============================================================================
 
@@ -110,64 +110,65 @@ found lint:
   Convention: 4
 
 
-real	0m0.151s
-user	0m0.104s
-sys	0m0.048s
+real	0m0.184s
+user	0m0.134s
+sys	0m0.051s
 
 ===============================================================================
 
 Running: clang-format-16 -style=file -i ./raindrops.cpp ./raindrops_test.cpp ./raindrops.h
 
 real	0m0.020s
-user	0m0.012s
-sys	0m0.008s
+user	0m0.013s
+sys	0m0.007s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./raindrops.cpp ./raindrops_test.cpp ./raindrops.h
+clang-check-16 --analyze ./raindrops.cpp ./raindrops_test.cpp ./raindrops.hpp ./raindrops.h
 error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
 error: invalid argument '-std=c++17' not allowed with 'C'
-/home/vpayno/git_vpayno/exercism-workspace/cpp/raindrops/raindrops.h:7:10: fatal error: 'string' file not found
+/home/vpayno/git_vpayno/exercism-workspace/cpp/raindrops/raindrops.h:15:10: fatal error: 'string' file not found
 #include <string>
          ^~~~~~~~
 1 error generated.
 Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/raindrops/raindrops.h.
 
-real	0m0.778s
-user	0m0.697s
-sys	0m0.054s
+real	0m0.693s
+user	0m0.647s
+sys	0m0.046s
 
 
-real	0m0.780s
-user	0m0.698s
-sys	0m0.054s
+real	0m0.695s
+user	0m0.647s
+sys	0m0.048s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 11390 warnings generated.
 46779 warnings generated.
-46779 warnings and 3 errors generated.
+58159 warnings generated.
+58159 warnings and 3 errors generated.
 Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/raindrops/raindrops.h.
-Suppressed 46784 warnings (46779 in non-user code, 5 NOLINT).
+Suppressed 58164 warnings (58159 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 Found compiler error(s).
 
-real	0m7.429s
-user	0m7.335s
-sys	0m0.094s
-Running: clang-tidy-16 ./raindrops.cpp ./raindrops_test.cpp ./raindrops.h
+real	0m9.105s
+user	0m9.023s
+sys	0m0.080s
+Running: clang-tidy-16 ./raindrops.cpp ./raindrops_test.cpp ./raindrops.hpp ./raindrops.h
 error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
 error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
-/home/vpayno/git_vpayno/exercism-workspace/cpp/raindrops/raindrops.h:7:10: error: 'string' file not found [clang-diagnostic-error]
+/home/vpayno/git_vpayno/exercism-workspace/cpp/raindrops/raindrops.h:15:10: error: 'string' file not found [clang-diagnostic-error]
 #include <string>
          ^~~~~~~~
 
 
-real	0m7.431s
-user	0m7.335s
-sys	0m0.096s
+real	0m9.107s
+user	0m9.024s
+sys	0m0.083s
 
 ===============================================================================
 

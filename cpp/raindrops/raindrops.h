@@ -1,13 +1,27 @@
 #if !defined(RAINDROPS_H)
 #define RAINDROPS_H
 
-// this should be a .hpp file
+/*
+ * We can't modify/submit raindrops_test.cpp (that would lead to cheating) so
+ * we this file needs to work in a C++ world (kind of).
+ *
+ * I would rather just include raindrops.hpp in the test file
+ * raindrops_test.cpp.
+ */
 
-// E: 'string' file not found [clang-diagnostic-error]
+#ifdef __cplusplus
+
+// :( still getting: E: 'string' file not found [clang-diagnostic-error]
+// clang just doesn't want .h files with c++ >=17
 #include <string>
+
+// clang-format keeps messing up formatting here since a C header file doesn't
+// have namespace support
 
 namespace raindrops {
     std::string convert(int num);
-} // namespace raindrops
+}
+
+#endif
 
 #endif // RAINDROPS_H
