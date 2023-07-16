@@ -6,9 +6,13 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.015s
+real	0m0.004s
 user	0m0.002s
-sys	0m0.013s
+sys	0m0.002s
+
+===============================================================================
+
+export LDFLAGS="-lgcov --coverage" CXXFLAGS="--coverage"
 
 ===============================================================================
 
@@ -17,7 +21,7 @@ rm -rf ./build
 mkdir -pv ./build
 mkdir: created directory './build'
 
-cd ./build; LDFLAGS="-lgcov --coverage" CXXFLAGS="--coverage" cmake -G 'Unix Makefiles' ../; if make; then printf "\n=== All Tests Passed ===\n"; else printf "\n=== Test Failure ===\n"; false; fi
+cd ./build; export LDFLAGS="-lgcov --coverage" CXXFLAGS="--coverage"; cmake -DEXERCISM_RUN_ALL_TESTS=1 -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -G 'Unix Makefiles' ../; if make; then printf "\n=== All Tests Passed ===\n"; else printf "\n=== Test Failure ===\n"; false; fi
 -- The CXX compiler identification is GNU 10.2.1
 -- Detecting CXX compiler ABI info
 -- Detecting CXX compiler ABI info - done
@@ -51,11 +55,15 @@ make[1]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/hello
 
 === All Tests Passed ===
 
-find . -regextype posix-egrep -regex "^.*(test|CompilerId).*[.](gcda|gcno)$" -print -delete
+find . -regextype posix-egrep -regex "^.*(tests-main|CompilerId).*[.](gcda|gcno)$" -print -delete
 ./build/CMakeFiles/3.22.2/CompilerIdCXX/CMakeCXXCompilerId.gcno
 ./build/CMakeFiles/hello-world.dir/test/tests-main.cpp.gcno
 ./build/CMakeFiles/hello-world.dir/test/tests-main.cpp.gcda
+
+find . -regextype posix-egrep -regex "^.*[.](gcda|gcno)$"
 ./build/CMakeFiles/hello-world.dir/hello_world_test.cpp.gcno
+./build/CMakeFiles/hello-world.dir/hello_world.cpp.gcno
+./build/CMakeFiles/hello-world.dir/hello_world.cpp.gcda
 ./build/CMakeFiles/hello-world.dir/hello_world_test.cpp.gcda
 
 gcovr --print-summary
@@ -66,23 +74,25 @@ Directory: .
 File                                       Lines    Exec  Cover   Missing
 ------------------------------------------------------------------------------
 hello_world.cpp                                1       1   100%   
+hello_world_test.cpp                           3       3   100%   
+test/catch.hpp                                34      27    79%   1642-1643,1710-1711,2227,2229,2560
 ------------------------------------------------------------------------------
-TOTAL                                          1       1   100%
+TOTAL                                         38      31    81%
 ------------------------------------------------------------------------------
-lines: 100.0% (1 out of 1)
-branches: 50.0% (1 out of 2)
+lines: 81.6% (31 out of 38)
+branches: 28.6% (8 out of 28)
 
-real	0m8.911s
-user	0m8.253s
-sys	0m0.655s
+real	0m9.165s
+user	0m8.313s
+sys	0m0.844s
 
 ===============================================================================
 
 cmake-format --in-place CMakeLists.txt
 
-real	0m0.159s
-user	0m0.111s
-sys	0m0.048s
+real	0m0.224s
+user	0m0.178s
+sys	0m0.047s
 
 ===============================================================================
 
@@ -104,94 +114,64 @@ found lint:
   Convention: 4
 
 
-real	0m0.147s
-user	0m0.110s
-sys	0m0.038s
+real	0m0.198s
+user	0m0.139s
+sys	0m0.059s
 
 ===============================================================================
 
 Running: clang-format-16 -style=file -i ./hello_world.cpp ./hello_world_test.cpp ./hello_world.h
 
-real	0m0.024s
-user	0m0.010s
-sys	0m0.014s
+real	0m0.020s
+user	0m0.009s
+sys	0m0.011s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 ./hello_world.cpp ./hello_world_test.cpp ./hello_world.h -- --std=c++17 -x c++
+clang-check-16 --analyze ./hello_world.cpp ./hello_world_test.cpp ./hello_world.h
+error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
+error: invalid argument '-std=c++17' not allowed with 'C'
+/home/vpayno/git_vpayno/exercism-workspace/cpp/hello-world/hello_world.h:8:10: fatal error: 'string' file not found
+#include <string>
+         ^~~~~~~~
+1 error generated.
+Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/hello-world/hello_world.h.
 
-real	0m0.540s
-user	0m0.509s
-sys	0m0.031s
+real	0m0.544s
+user	0m0.491s
+sys	0m0.053s
 
 
-real	0m0.542s
-user	0m0.510s
-sys	0m0.032s
+real	0m0.546s
+user	0m0.492s
+sys	0m0.053s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
-33313 warnings generated.
-143486 warnings generated.
-176792 warnings generated.
-Suppressed 176789 warnings (176779 in non-user code, 10 NOLINT).
+11382 warnings generated.
+46771 warnings generated.
+46771 warnings and 3 errors generated.
+Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/hello-world/hello_world.h.
+Suppressed 46776 warnings (46771 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+Found compiler error(s).
 
-real	0m13.057s
-user	0m12.988s
-sys	0m0.068s
-Running: clang-tidy-16 ./hello_world.cpp ./hello_world_test.cpp ./hello_world.h -checks=*,-llvm-header-guard,-llvmlibc-restrict-system-libc-headers -- --std=c++17 -x c++
-/home/vpayno/git_vpayno/exercism-workspace/cpp/hello-world/hello_world.cpp:3:1: warning: do not use namespace using-directives; use using-declarations instead [google-build-using-namespace]
-using namespace std;
-^
-/home/vpayno/git_vpayno/exercism-workspace/cpp/hello-world/hello_world.cpp:3:17: warning: declaration must be declared within the '__llvm_libc' namespace [llvmlibc-implementation-in-namespace]
-using namespace std;
-                ^
-/home/vpayno/git_vpayno/exercism-workspace/cpp/hello-world/hello_world.cpp:5:11: warning: '__llvm_libc' needs to be the outermost namespace [llvmlibc-implementation-in-namespace]
-namespace hello_world {
-          ^
-/home/vpayno/git_vpayno/exercism-workspace/cpp/hello-world/hello_world.cpp:7:8: warning: use a trailing return type for this function [modernize-use-trailing-return-type]
-string hello() { return "Hello, World!"; }
-~~~~~~ ^
-auto           -> string
-/home/vpayno/git_vpayno/exercism-workspace/cpp/hello-world/hello_world.cpp:7:25: warning: calling a function that uses a default argument is disallowed [fuchsia-default-arguments-calls]
-string hello() { return "Hello, World!"; }
-                        ^
-/usr/lib/gcc/x86_64-linux-gnu/10/../../../../include/c++/10/bits/basic_string.h:525:39: note: default parameter was declared here
-      basic_string(const _CharT* __s, const _Alloc& __a = _Alloc())
-                                      ^
-/home/vpayno/git_vpayno/exercism-workspace/cpp/hello-world/hello_world.h:12:11: warning: '__llvm_libc' needs to be the outermost namespace [llvmlibc-implementation-in-namespace]
-namespace hello_world {
-          ^
-/home/vpayno/git_vpayno/exercism-workspace/cpp/hello-world/hello_world.h:18:13: warning: use a trailing return type for this function [modernize-use-trailing-return-type]
-std::string hello();
-~~~~~~~~~~~ ^
-auto                -> std::string
-/home/vpayno/git_vpayno/exercism-workspace/cpp/hello-world/hello_world_test.cpp:14:13: warning: 'hello' must resolve to a function declared within the '__llvm_libc' namespace [llvmlibc-callee-namespace]
-    REQUIRE(hello_world::hello() == "Hello, World!");
-            ^
-/home/vpayno/git_vpayno/exercism-workspace/cpp/hello-world/hello_world.h:18:13: note: resolves to this declaration
-std::string hello();
-            ^
-/home/vpayno/git_vpayno/exercism-workspace/cpp/hello-world/hello_world_test.cpp:14:34: warning: 'operator==<char, std::char_traits<char>, std::allocator<char>>' must resolve to a function declared within the '__llvm_libc' namespace [llvmlibc-callee-namespace]
-    REQUIRE(hello_world::hello() == "Hello, World!");
-                                 ^
-/usr/lib/gcc/x86_64-linux-gnu/10/../../../../include/c++/10/bits/basic_string.h:6185:5: note: resolves to this declaration
-    operator==(const basic_string<_CharT, _Traits, _Alloc>& __lhs,
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/cpp/hello-world/hello_world_test.cpp:14:34: warning: 'operator==<char[14]>' must resolve to a function declared within the '__llvm_libc' namespace [llvmlibc-callee-namespace]
-    REQUIRE(hello_world::hello() == "Hello, World!");
-                                 ^
-/home/vpayno/git_vpayno/exercism-workspace/cpp/hello-world/test/catch.hpp:2342:14: note: resolves to this declaration
-        auto operator == ( RhsT const& rhs ) -> BinaryExpr<LhsT, RhsT const&> const {
-             ^
+real	0m6.209s
+user	0m6.139s
+sys	0m0.069s
+Running: clang-tidy-16 ./hello_world.cpp ./hello_world_test.cpp ./hello_world.h
+error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
+error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
+/home/vpayno/git_vpayno/exercism-workspace/cpp/hello-world/hello_world.h:8:10: error: 'string' file not found [clang-diagnostic-error]
+#include <string>
+         ^~~~~~~~
 
 
-real	0m13.059s
-user	0m12.991s
-sys	0m0.068s
+real	0m6.212s
+user	0m6.140s
+sys	0m0.073s
 
 ===============================================================================
 
