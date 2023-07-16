@@ -9,7 +9,7 @@ test: clean
 	@printf "\n"
 	@# each line is executed in a subshell, we have to daisy chain them so they
 	@# run in the build directory
-	cd ./build; export LDFLAGS="-lgcov --coverage" CXXFLAGS="--coverage"; cmake -G 'Unix Makefiles' ../; if make; then printf "\n=== All Tests Passed ===\n"; else printf "\n=== Test Failure ===\n"; false; fi
+	cd ./build; export LDFLAGS="-lgcov --coverage" CXXFLAGS="--coverage"; cmake -DEXERCISM_RUN_ALL_TESTS=1 -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -G 'Unix Makefiles' ../; if make; then printf "\n=== All Tests Passed ===\n"; else printf "\n=== Test Failure ===\n"; false; fi
 
 .PHONY: coverage
 coverage: test
