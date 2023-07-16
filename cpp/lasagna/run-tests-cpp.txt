@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.008s
+real	0m0.003s
 user	0m0.001s
-sys	0m0.006s
+sys	0m0.002s
 
 ===============================================================================
 
@@ -44,80 +44,52 @@ make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/lasag
 make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/lasagna/build'
 make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/lasagna/build'
 make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/lasagna/build'
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-lasagna is a Catch v2.13.6 host application.
-Run with -? for options
-
--------------------------------------------------------------------------------
-Correct for six layers
--------------------------------------------------------------------------------
-/home/vpayno/git_vpayno/exercism-workspace/cpp/lasagna/lasagna_test.cpp:18
-...............................................................................
-
-/home/vpayno/git_vpayno/exercism-workspace/cpp/lasagna/lasagna_test.cpp:24: FAILED:
-  REQUIRE( expected == actual )
-with expansion:
-  12 == 120
-
--------------------------------------------------------------------------------
-Correct for 11 layers
--------------------------------------------------------------------------------
-/home/vpayno/git_vpayno/exercism-workspace/cpp/lasagna/lasagna_test.cpp:27
-...............................................................................
-
-/home/vpayno/git_vpayno/exercism-workspace/cpp/lasagna/lasagna_test.cpp:33: FAILED:
-  REQUIRE( expected == actual )
-with expansion:
-  22 == 220
-
--------------------------------------------------------------------------------
-Fresh in the oven, 12 layers!
--------------------------------------------------------------------------------
-/home/vpayno/git_vpayno/exercism-workspace/cpp/lasagna/lasagna_test.cpp:54
-...............................................................................
-
-/home/vpayno/git_vpayno/exercism-workspace/cpp/lasagna/lasagna_test.cpp:61: FAILED:
-  REQUIRE( expected == actual )
-with expansion:
-  22 == 220
-
--------------------------------------------------------------------------------
-One minute left, 5 layers!
--------------------------------------------------------------------------------
-/home/vpayno/git_vpayno/exercism-workspace/cpp/lasagna/lasagna_test.cpp:64
-...............................................................................
-
-/home/vpayno/git_vpayno/exercism-workspace/cpp/lasagna/lasagna_test.cpp:71: FAILED:
-  REQUIRE( expected == actual )
-with expansion:
-  49 == 139
-
 ===============================================================================
-test cases: 7 | 3 passed | 4 failed
-assertions: 7 | 3 passed | 4 failed
-make[3]: *** [CMakeFiles/test_lasagna.dir/build.make:70: CMakeFiles/test_lasagna] Error 4
+All tests passed (7 assertions in 7 test cases)
 
-make[2]: *** [CMakeFiles/Makefile2:111: CMakeFiles/test_lasagna.dir/all] Error 2
 make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/lasagna/build'
-make[1]: *** [Makefile:91: all] Error 2
+[100%] Built target test_lasagna
 make[2]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/lasagna/build'
 make[1]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/lasagna/build'
 
-make: *** [Makefile:11: test] Error 1
-=== Test Failure ===
+=== All Tests Passed ===
 
-real	0m8.642s
-user	0m7.882s
-sys	0m0.729s
+find . -regextype posix-egrep -regex "^.*(tests-main|CompilerId).*[.](gcda|gcno)$" -print -delete
+./build/CMakeFiles/3.22.2/CompilerIdCXX/CMakeCXXCompilerId.gcno
+./build/CMakeFiles/lasagna.dir/test/tests-main.cpp.gcno
+./build/CMakeFiles/lasagna.dir/test/tests-main.cpp.gcda
+
+find . -regextype posix-egrep -regex "^.*[.](gcda|gcno)$"
+./build/CMakeFiles/lasagna.dir/lasagna_test.cpp.gcno
+./build/CMakeFiles/lasagna.dir/lasagna_test.cpp.gcda
+
+gcovr --print-summary
+------------------------------------------------------------------------------
+                           GCC Code Coverage Report
+Directory: .
+------------------------------------------------------------------------------
+File                                       Lines    Exec  Cover   Missing
+------------------------------------------------------------------------------
+lasagna.cpp                                    7       7   100%   
+lasagna_test.cpp                              49      49   100%   
+test/catch.hpp                                32      27    84%   1642-1643,2227,2229,2560
+------------------------------------------------------------------------------
+TOTAL                                         88      83    94%
+------------------------------------------------------------------------------
+lines: 94.3% (83 out of 88)
+branches: 34.6% (36 out of 104)
+
+real	0m9.390s
+user	0m8.629s
+sys	0m0.750s
 
 ===============================================================================
 
 cmake-format --in-place CMakeLists.txt
 
-real	0m0.178s
-user	0m0.116s
-sys	0m0.063s
+real	0m0.175s
+user	0m0.130s
+sys	0m0.047s
 
 ===============================================================================
 
@@ -143,38 +115,44 @@ found lint:
   Convention: 5
 
 
-real	0m0.146s
-user	0m0.110s
-sys	0m0.038s
+real	0m0.153s
+user	0m0.107s
+sys	0m0.046s
 
 ===============================================================================
 
 Running: clang-format-16 -style=file -i ./lasagna.cpp ./lasagna_test.cpp
 
 real	0m0.022s
-user	0m0.010s
+user	0m0.011s
 sys	0m0.011s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 ./lasagna.cpp ./lasagna_test.cpp -- --std=c++17 -x c++
+clang-check-16 --analyze ./lasagna.cpp ./lasagna_test.cpp
 
-real	0m0.361s
-user	0m0.328s
-sys	0m0.033s
+real	0m0.391s
+user	0m0.361s
+sys	0m0.030s
 
 
-real	0m0.363s
-user	0m0.328s
-sys	0m0.035s
+real	0m0.393s
+user	0m0.363s
+sys	0m0.030s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
-16 warnings generated.
-110168 warnings generated.
-Running: clang-tidy-16 ./lasagna.cpp ./lasagna_test.cpp -checks=*,-llvm-header-guard,-llvmlibc-restrict-system-libc-headers -- --std=c++17 -x c++
+3 warnings generated.
+35392 warnings generated.
+Suppressed 35391 warnings (35386 in non-user code, 5 NOLINT).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+
+real	0m5.330s
+user	0m5.281s
+sys	0m0.049s
+Running: clang-tidy-16 ./lasagna.cpp ./lasagna_test.cpp
 /home/vpayno/git_vpayno/exercism-workspace/cpp/lasagna/lasagna.cpp:1:1: warning: replace macro with enum [modernize-macro-to-enum]
 #define OVEN_TIME (40)
 ^~~~~~~~
@@ -183,103 +161,24 @@ Running: clang-tidy-16 ./lasagna.cpp ./lasagna_test.cpp -checks=*,-llvm-header-g
 #define OVEN_TIME (40)
         ^
 /home/vpayno/git_vpayno/exercism-workspace/cpp/lasagna/lasagna.cpp:2:9: warning: macro 'TIME_PER_LAYER' defines an integral constant; prefer an enum instead [modernize-macro-to-enum]
-#define TIME_PER_LAYER (20)
+#define TIME_PER_LAYER (2)
         ^
-/home/vpayno/git_vpayno/exercism-workspace/cpp/lasagna/lasagna.cpp:6:5: warning: declaration must be declared within the '__llvm_libc' namespace [llvmlibc-implementation-in-namespace]
-int ovenTime() { return OVEN_TIME; }
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/cpp/lasagna/lasagna.cpp:6:5: warning: use a trailing return type for this function [modernize-use-trailing-return-type]
-int ovenTime() { return OVEN_TIME; }
-~~~ ^
-auto           -> int
-/home/vpayno/git_vpayno/exercism-workspace/cpp/lasagna/lasagna.cpp:11:5: warning: declaration must be declared within the '__llvm_libc' namespace [llvmlibc-implementation-in-namespace]
-int remainingOvenTime(int actualMinutesInOven) {
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/cpp/lasagna/lasagna.cpp:11:5: warning: use a trailing return type for this function [modernize-use-trailing-return-type]
-int remainingOvenTime(int actualMinutesInOven) {
-~~~ ^
-auto                                           -> int
-/home/vpayno/git_vpayno/exercism-workspace/cpp/lasagna/lasagna.cpp:12:5: warning: missing username/bug in TODO [google-readability-todo]
-    // TODO: Calculate and return the remaining in the oven based on the time
-    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    // TODO(vpayno): Calculate and return the remaining in the oven based on the time
-/home/vpayno/git_vpayno/exercism-workspace/cpp/lasagna/lasagna.cpp:14:12: warning: 'ovenTime' must resolve to a function declared within the '__llvm_libc' namespace [llvmlibc-callee-namespace]
-    return ovenTime() - actualMinutesInOven;
-           ^
-/home/vpayno/git_vpayno/exercism-workspace/cpp/lasagna/lasagna.cpp:6:5: note: resolves to this declaration
-int ovenTime() { return OVEN_TIME; }
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/cpp/lasagna/lasagna.cpp:20:5: warning: declaration must be declared within the '__llvm_libc' namespace [llvmlibc-implementation-in-namespace]
-int preparationTime(int numberOfLayers) {
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/cpp/lasagna/lasagna.cpp:20:5: warning: use a trailing return type for this function [modernize-use-trailing-return-type]
-int preparationTime(int numberOfLayers) {
-~~~ ^
-auto                                    -> int
-/home/vpayno/git_vpayno/exercism-workspace/cpp/lasagna/lasagna.cpp:21:5: warning: missing username/bug in TODO [google-readability-todo]
-    // TODO: Calculate and return the preparation time with the
-    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    // TODO(vpayno): Calculate and return the preparation time with the
-/home/vpayno/git_vpayno/exercism-workspace/cpp/lasagna/lasagna.cpp:28:5: warning: declaration must be declared within the '__llvm_libc' namespace [llvmlibc-implementation-in-namespace]
-int elapsedTime(int numberOfLayers, int actualMinutesInOven) {
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/cpp/lasagna/lasagna.cpp:28:5: warning: use a trailing return type for this function [modernize-use-trailing-return-type]
-int elapsedTime(int numberOfLayers, int actualMinutesInOven) {
-~~~ ^
-auto                                                         -> int
-/home/vpayno/git_vpayno/exercism-workspace/cpp/lasagna/lasagna.cpp:29:5: warning: missing username/bug in TODO [google-readability-todo]
-    // TODO: Calculate and return the total time so far.
-    ^Suppressed 110153 warnings (110143 in non-user code, 10 NOLINT).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-
-real	0m8.600s
-user	0m8.540s
-sys	0m0.060s
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    // TODO(vpayno): Calculate and return the total time so far.
-/home/vpayno/git_vpayno/exercism-workspace/cpp/lasagna/lasagna.cpp:30:12: warning: 'preparationTime' must resolve to a function declared within the '__llvm_libc' namespace [llvmlibc-callee-namespace]
-    return preparationTime(numberOfLayers) + actualMinutesInOven;
-           ^
-/home/vpayno/git_vpayno/exercism-workspace/cpp/lasagna/lasagna.cpp:20:5: note: resolves to this declaration
-int preparationTime(int numberOfLayers) {
-    ^
 /home/vpayno/git_vpayno/exercism-workspace/cpp/lasagna/lasagna_test.cpp:1:11: warning: suspicious #include of file with '.cpp' extension [bugprone-suspicious-include]
 #include "lasagna.cpp"
           ^
-/home/vpayno/git_vpayno/exercism-workspace/cpp/lasagna/lasagna_test.cpp:8:1: warning: do not use namespace using-directives; use using-declarations instead [google-build-using-namespace]
-using namespace std;
-^
-/home/vpayno/git_vpayno/exercism-workspace/cpp/lasagna/lasagna_test.cpp:8:17: warning: declaration must be declared within the '__llvm_libc' namespace [llvmlibc-implementation-in-namespace]
-using namespace std;
-                ^
 /home/vpayno/git_vpayno/exercism-workspace/cpp/lasagna/lasagna_test.cpp:11:5: warning: variable 'actual' of type 'int' can be declared 'const' [misc-const-correctness]
     int actual = 40;
     ^
         const 
-/home/vpayno/git_vpayno/exercism-workspace/cpp/lasagna/lasagna_test.cpp:11:18: warning: 40 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
-    int actual = 40;
-                 ^
 /home/vpayno/git_vpayno/exercism-workspace/cpp/lasagna/lasagna_test.cpp:12:5: warning: variable 'expected' of type 'int' can be declared 'const' [misc-const-correctness]
     int expected = ovenTime();
     ^
         const 
-/home/vpayno/git_vpayno/exercism-workspace/cpp/lasagna/lasagna_test.cpp:12:20: warning: 'ovenTime' must resolve to a function declared within the '__llvm_libc' namespace [llvmlibc-callee-namespace]
-    int expected = ovenTime();
-                   ^
-/home/vpayno/git_vpayno/exercism-workspace/cpp/lasagna/lasagna.cpp:6:5: note: resolves to this declaration
-int ovenTime() { return OVEN_TIME; }
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/cpp/lasagna/lasagna_test.cpp:14:22: warning: 'operator==<int>' must resolve to a function declared within the '__llvm_libc' namespace [llvmlibc-callee-namespace]
-    REQUIRE(expected == actual);
-                     ^
-/home/vpayno/git_vpayno/exercism-workspace/cpp/lasagna/test/catch.hpp:2342:14: note: resolves to this declaration
-        auto operator == ( RhsT const& rhs ) -> BinaryExpr<LhsT, RhsT const&> const {
-             ^
 
 
-real	0m8.602s
-user	0m8.542s
-sys	0m0.061s
+real	0m5.332s
+user	0m5.281s
+sys	0m0.051s
 
 ===============================================================================
 
