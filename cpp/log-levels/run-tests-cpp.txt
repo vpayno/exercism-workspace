@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.005s
-user	0m0.001s
-sys	0m0.004s
+real	0m0.011s
+user	0m0.003s
+sys	0m0.008s
 
 ===============================================================================
 
@@ -68,26 +68,26 @@ Directory: .
 ------------------------------------------------------------------------------
 File                                       Lines    Exec  Cover   Missing
 ------------------------------------------------------------------------------
-log_levels.cpp                                11      11   100%   
+log_levels.cpp                                15      15   100%   
 log_levels_test.cpp                           45      45   100%   
 test/catch.hpp                                32      27    84%   1642-1643,2227,2229,2560
 ------------------------------------------------------------------------------
-TOTAL                                         88      83    94%
+TOTAL                                         92      87    94%
 ------------------------------------------------------------------------------
-lines: 94.3% (83 out of 88)
-branches: 40.0% (80 out of 200)
+lines: 94.6% (87 out of 92)
+branches: 39.9% (79 out of 198)
 
-real	0m8.782s
-user	0m8.165s
-sys	0m0.609s
+real	0m8.795s
+user	0m8.204s
+sys	0m0.586s
 
 ===============================================================================
 
 cmake-format --in-place CMakeLists.txt
 
-real	0m0.161s
-user	0m0.110s
-sys	0m0.053s
+real	0m0.166s
+user	0m0.123s
+sys	0m0.044s
 
 ===============================================================================
 
@@ -109,52 +109,68 @@ found lint:
   Convention: 4
 
 
-real	0m0.159s
-user	0m0.108s
-sys	0m0.052s
+real	0m0.144s
+user	0m0.099s
+sys	0m0.045s
 
 ===============================================================================
 
 Running: clang-format-16 -style=file -i ./log_levels.cpp ./log_levels_test.cpp
 
-real	0m0.021s
-user	0m0.010s
-sys	0m0.010s
+real	0m0.020s
+user	0m0.008s
+sys	0m0.011s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
 clang-check-16 --analyze ./log_levels.cpp ./log_levels_test.cpp
 
-real	0m0.473s
-user	0m0.441s
-sys	0m0.031s
-
-
-real	0m0.475s
-user	0m0.441s
+real	0m0.492s
+user	0m0.459s
 sys	0m0.033s
+
+
+real	0m0.495s
+user	0m0.460s
+sys	0m0.035s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
-11382 warnings generated.
-46766 warnings generated.
-Suppressed 46770 warnings (46765 in non-user code, 5 NOLINT).
+11388 warnings generated.
+46776 warnings generated.
+Suppressed 46774 warnings (46769 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 
-real	0m6.290s
-user	0m6.217s
-sys	0m0.072s
+real	0m6.270s
+user	0m6.193s
+sys	0m0.076s
 Running: clang-tidy-16 ./log_levels.cpp ./log_levels_test.cpp
+/home/vpayno/git_vpayno/exercism-workspace/cpp/log-levels/log_levels.cpp:30:5: warning: do not declare C-style arrays, use std::array<> instead [cppcoreguidelines-avoid-c-arrays,modernize-avoid-c-arrays]
+    char buffer[size];
+    ^
+/home/vpayno/git_vpayno/exercism-workspace/cpp/log-levels/log_levels.cpp:32:5: warning: do not call c-style vararg functions [cppcoreguidelines-pro-type-vararg]
+    sprintf(buffer, "%s (%s)", msg.c_str(), level.c_str());
+    ^
+/home/vpayno/git_vpayno/exercism-workspace/cpp/log-levels/log_levels.cpp:32:13: warning: do not implicitly decay an array into a pointer; consider using gsl::array_view or an explicit cast instead [cppcoreguidelines-pro-bounds-array-to-pointer-decay]
+    sprintf(buffer, "%s (%s)", msg.c_str(), level.c_str());
+            ^
+/home/vpayno/git_vpayno/exercism-workspace/cpp/log-levels/log_levels.cpp:34:17: warning: redundant string initialization [readability-redundant-string-init]
+    std::string new_log_line = "";
+                ^~~~~~~~~~~~~~~~~
+                new_log_line
+/home/vpayno/git_vpayno/exercism-workspace/cpp/log-levels/log_levels.cpp:37:20: warning: do not implicitly decay an array into a pointer; consider using gsl::array_view or an explicit cast instead [cppcoreguidelines-pro-bounds-array-to-pointer-decay]
+    new_log_line = buffer;
+                   ^
 /home/vpayno/git_vpayno/exercism-workspace/cpp/log-levels/log_levels_test.cpp:1:11: warning: suspicious #include of file with '.cpp' extension [bugprone-suspicious-include]
 #include "log_levels.cpp"
           ^
 
 
-real	0m6.292s
-user	0m6.218s
-sys	0m0.074s
+real	0m6.272s
+user	0m6.195s
+sys	0m0.077s
 
 ===============================================================================
 
