@@ -1,8 +1,13 @@
 #if !defined(RAINDROPS_H)
 #define RAINDROPS_H
 
-namespace raindrops {
+// this should be a .hpp file
 
-}  // namespace raindrops
+// E: 'string' file not found [clang-diagnostic-error]
+#include <string>
+
+namespace raindrops {
+    std::string convert(int num);
+} // namespace raindrops
 
 #endif // RAINDROPS_H

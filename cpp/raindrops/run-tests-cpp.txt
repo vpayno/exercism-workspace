@@ -1,0 +1,173 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: make clean
+rm -rf ./build
+
+real	0m0.021s
+user	0m0.002s
+sys	0m0.018s
+
+===============================================================================
+
+export LDFLAGS="-lgcov --coverage" CXXFLAGS="--coverage"
+
+===============================================================================
+
+Running: make coverage | ansifilter
+rm -rf ./build
+mkdir -pv ./build
+mkdir: created directory './build'
+
+cd ./build; export LDFLAGS="-lgcov --coverage" CXXFLAGS="--coverage"; cmake -DEXERCISM_RUN_ALL_TESTS=1 -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -G 'Unix Makefiles' ../; if make; then printf "\n=== All Tests Passed ===\n"; else printf "\n=== Test Failure ===\n"; false; fi
+-- The CXX compiler identification is GNU 10.2.1
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/vpayno/git_vpayno/exercism-workspace/cpp/raindrops/build
+make[1]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/raindrops/build'
+make[2]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/raindrops/build'
+make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/raindrops/build'
+make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/raindrops/build'
+make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/raindrops/build'
+[ 25%] Building CXX object CMakeFiles/raindrops.dir/raindrops_test.cpp.o
+[ 50%] Building CXX object CMakeFiles/raindrops.dir/raindrops.cpp.o
+[ 75%] Building CXX object CMakeFiles/raindrops.dir/test/tests-main.cpp.o
+[100%] Linking CXX executable raindrops
+make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/raindrops/build'
+[100%] Built target raindrops
+make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/raindrops/build'
+make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/raindrops/build'
+make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/raindrops/build'
+===============================================================================
+All tests passed (18 assertions in 18 test cases)
+
+make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/raindrops/build'
+[100%] Built target test_raindrops
+make[2]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/raindrops/build'
+make[1]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/raindrops/build'
+
+=== All Tests Passed ===
+
+find . -regextype posix-egrep -regex "^.*(tests-main|CompilerId).*[.](gcda|gcno)$" -print -delete
+./build/CMakeFiles/3.22.2/CompilerIdCXX/CMakeCXXCompilerId.gcno
+./build/CMakeFiles/raindrops.dir/test/tests-main.cpp.gcno
+./build/CMakeFiles/raindrops.dir/test/tests-main.cpp.gcda
+
+find . -regextype posix-egrep -regex "^.*[.](gcda|gcno)7353"
+
+gcovr --print-summary
+------------------------------------------------------------------------------
+                           GCC Code Coverage Report
+Directory: .
+------------------------------------------------------------------------------
+File                                       Lines    Exec  Cover   Missing
+------------------------------------------------------------------------------
+raindrops.cpp                                 11      11   100%   
+raindrops_test.cpp                            50      50   100%   
+test/catch.hpp                                34      27    79%   1642-1643,1710-1711,2227,2229,2560
+------------------------------------------------------------------------------
+TOTAL                                         95      88    92%
+------------------------------------------------------------------------------
+lines: 92.6% (88 out of 95)
+branches: 38.5% (121 out of 314)
+
+real	0m9.178s
+user	0m8.282s
+sys	0m0.885s
+
+===============================================================================
+
+cmake-format --in-place CMakeLists.txt
+
+real	0m0.153s
+user	0m0.101s
+sys	0m0.054s
+
+===============================================================================
+
+cmake-lint CMakeLists.txt
+CMakeLists.txt
+==============
+CMakeLists.txt:15,06: [C0103] Invalid directory variable name "exercise_cpp" doesn't match `[A-Z][0-9A-Z_]+|_[0-9a-z_]+`
+CMakeLists.txt:17,06: [C0103] Invalid directory variable name "exercise_cpp" doesn't match `[A-Z][0-9A-Z_]+|_[0-9a-z_]+`
+CMakeLists.txt:61,70: [C0307] Bad indentation:
+                                               )
+  ^----BodyNode: 1:0->IfBlockNode: 59:0->BodyNode: 59:11->StatementNode: 60:2->TreeNode: 61:70
+
+CMakeLists.txt:66,02: [C0113] Missing COMMENT in statement which allows it
+
+Summary
+=======
+files scanned: 1
+found lint:
+  Convention: 4
+
+
+real	0m0.151s
+user	0m0.104s
+sys	0m0.048s
+
+===============================================================================
+
+Running: clang-format-16 -style=file -i ./raindrops.cpp ./raindrops_test.cpp ./raindrops.h
+
+real	0m0.020s
+user	0m0.012s
+sys	0m0.008s
+
+===============================================================================
+
+Running: ../../.github/citools/cpp/clang-check
+clang-check-16 --analyze ./raindrops.cpp ./raindrops_test.cpp ./raindrops.h
+error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
+error: invalid argument '-std=c++17' not allowed with 'C'
+/home/vpayno/git_vpayno/exercism-workspace/cpp/raindrops/raindrops.h:7:10: fatal error: 'string' file not found
+#include <string>
+         ^~~~~~~~
+1 error generated.
+Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/raindrops/raindrops.h.
+
+real	0m0.778s
+user	0m0.697s
+sys	0m0.054s
+
+
+real	0m0.780s
+user	0m0.698s
+sys	0m0.054s
+
+===============================================================================
+
+Running: ../../.github/citools/cpp/clang-tidy | head -n 100
+11390 warnings generated.
+46779 warnings generated.
+46779 warnings and 3 errors generated.
+Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/raindrops/raindrops.h.
+Suppressed 46784 warnings (46779 in non-user code, 5 NOLINT).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+Found compiler error(s).
+
+real	0m7.429s
+user	0m7.335s
+sys	0m0.094s
+Running: clang-tidy-16 ./raindrops.cpp ./raindrops_test.cpp ./raindrops.h
+error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
+error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
+/home/vpayno/git_vpayno/exercism-workspace/cpp/raindrops/raindrops.h:7:10: error: 'string' file not found [clang-diagnostic-error]
+#include <string>
+         ^~~~~~~~
+
+
+real	0m7.431s
+user	0m7.335s
+sys	0m0.096s
+
+===============================================================================
+

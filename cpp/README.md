@@ -17,3 +17,4 @@
 - [pacman-rules](./pacman-rules/README.md)
 - [last-will](./last-will/README.md)
 - [log-levels](./log-levels/README.md)
+- [raindrops](./raindrops/README.md)
