@@ -52,10 +52,23 @@ if ! grep -q '// TEST_IGNORE' ./*_test.cpp; then
 	sed -r -i -e 's:(TEST_IGNORE):// \1:g' ./*_test.cpp
 fi
 
+if [[ ! -f compile_commands.json ]]; then
+	mkdir ./build/
+	cmake -DEXERCISM_RUN_ALL_TESTS=1 -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -G 'Unix Makefiles' ../
+	cp -v ./build/compile_commands.json .
+	rm -rf ./build/
+fi
+
 if [[ ! -f ./compile_flags.txt ]]; then
 	cat >./compile_flags.txt <<EOF
 -std=c++17
 -stdlib=libstdc++
+-g
+-Wall
+-Wextra
+-Wpedantic
+-Werror
+-Wno-unused-parameter
 EOF
 fi
 
@@ -77,6 +90,9 @@ test: clean
 coverage: test
 	@printf "\n"
 	find . -regextype posix-egrep -regex "^.*(tests-main|CompilerId).*[.](gcda|gcno)\$$" -print -delete
+
+	@printf "\n"
+	find . -regextype posix-egrep -regex "^.*[.](gcda|gcno)$$"
 
 	@printf "\n"
 	gcovr --print-summary

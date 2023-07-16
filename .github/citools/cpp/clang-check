@@ -2,6 +2,6 @@
 
 shopt -s nullglob
 
-echo clang-check-16 ./*.cpp ./*.h -- --std=c++17 -x c++
-time clang-check-16 ./*.cpp ./*.h -- --std=c++17 -x c++
+echo clang-check-16 --analyze "${@}" ./*.cpp ./*.hpp ./*.h
+time clang-check-16 --analyze "${@}" ./*.cpp ./*.hpp ./*.h
 printf "\n"
