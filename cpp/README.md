@@ -15,3 +15,4 @@
 - [hello-world](./hello-world/README.md)
 - [lasagna](./lasagna/README.md)
 - [pacman-rules](./pacman-rules/README.md)
+- [last-will](./last-will/README.md)

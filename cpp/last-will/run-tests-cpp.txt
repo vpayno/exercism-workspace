@@ -1,0 +1,182 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: make clean
+rm -rf ./build
+
+real	0m0.011s
+user	0m0.002s
+sys	0m0.009s
+
+===============================================================================
+
+export LDFLAGS="-lgcov --coverage" CXXFLAGS="--coverage"
+
+===============================================================================
+
+Running: make coverage | ansifilter
+rm -rf ./build
+mkdir -pv ./build
+mkdir: created directory './build'
+
+cd ./build; export LDFLAGS="-lgcov --coverage" CXXFLAGS="--coverage"; cmake -DEXERCISM_RUN_ALL_TESTS=1 -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -G 'Unix Makefiles' ../; if make; then printf "\n=== All Tests Passed ===\n"; else printf "\n=== Test Failure ===\n"; false; fi
+-- The CXX compiler identification is GNU 10.2.1
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/vpayno/git_vpayno/exercism-workspace/cpp/last-will/build
+make[1]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/last-will/build'
+make[2]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/last-will/build'
+make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/last-will/build'
+make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/last-will/build'
+make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/last-will/build'
+[ 33%] Building CXX object CMakeFiles/last-will.dir/last_will_test.cpp.o
+[ 66%] Building CXX object CMakeFiles/last-will.dir/test/tests-main.cpp.o
+[100%] Linking CXX executable last-will
+make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/last-will/build'
+[100%] Built target last-will
+make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/last-will/build'
+make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/last-will/build'
+make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/last-will/build'
+===============================================================================
+All tests passed (17 assertions in 5 test cases)
+
+make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/last-will/build'
+[100%] Built target test_last-will
+make[2]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/last-will/build'
+make[1]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/last-will/build'
+
+=== All Tests Passed ===
+
+find . -regextype posix-egrep -regex "^.*(tests-main|CompilerId).*[.](gcda|gcno)$" -print -delete
+./build/CMakeFiles/3.22.2/CompilerIdCXX/CMakeCXXCompilerId.gcno
+./build/CMakeFiles/last-will.dir/test/tests-main.cpp.gcno
+./build/CMakeFiles/last-will.dir/test/tests-main.cpp.gcda
+
+find . -regextype posix-egrep -regex "^.*[.](gcda|gcno)$"
+./build/CMakeFiles/last-will.dir/last_will_test.cpp.gcno
+./build/CMakeFiles/last-will.dir/last_will_test.cpp.gcda
+
+gcovr --print-summary
+------------------------------------------------------------------------------
+                           GCC Code Coverage Report
+Directory: .
+------------------------------------------------------------------------------
+File                                       Lines    Exec  Cover   Missing
+------------------------------------------------------------------------------
+last_will.cpp                                 32      32   100%   
+last_will_test.cpp                            31      31   100%   
+test/catch.hpp                                32      27    84%   1642-1643,2227,2229,2560
+------------------------------------------------------------------------------
+TOTAL                                         95      90    94%
+------------------------------------------------------------------------------
+lines: 94.7% (90 out of 95)
+branches: 35.4% (87 out of 246)
+
+real	0m8.632s
+user	0m7.922s
+sys	0m0.706s
+
+===============================================================================
+
+cmake-format --in-place CMakeLists.txt
+
+real	0m0.304s
+user	0m0.193s
+sys	0m0.085s
+
+===============================================================================
+
+cmake-lint CMakeLists.txt
+CMakeLists.txt
+==============
+CMakeLists.txt:15,06: [C0103] Invalid directory variable name "exercise_cpp" doesn't match `[A-Z][0-9A-Z_]+|_[0-9a-z_]+`
+CMakeLists.txt:17,06: [C0103] Invalid directory variable name "exercise_cpp" doesn't match `[A-Z][0-9A-Z_]+|_[0-9a-z_]+`
+CMakeLists.txt:52,71: [C0307] Bad indentation:
+               )
+  ^----BodyNode: 1:0->IfBlockNode: 46:0->BodyNode: 46:52->StatementNode: 47:2->TreeNode: 52:71
+
+CMakeLists.txt:63,70: [C0307] Bad indentation:
+                                               )
+  ^----BodyNode: 1:0->IfBlockNode: 61:0->BodyNode: 61:11->StatementNode: 62:2->TreeNode: 63:70
+
+CMakeLists.txt:68,02: [C0113] Missing COMMENT in statement which allows it
+
+Summary
+=======
+files scanned: 1
+found lint:
+  Convention: 5
+
+
+real	0m0.156s
+user	0m0.105s
+sys	0m0.051s
+
+===============================================================================
+
+Running: clang-format-16 -style=file -i ./last_will.cpp ./last_will_test.cpp
+
+real	0m0.021s
+user	0m0.009s
+sys	0m0.011s
+
+===============================================================================
+
+Running: ../../.github/citools/cpp/clang-check
+clang-check-16 --analyze ./last_will.cpp ./last_will_test.cpp
+
+real	0m0.398s
+user	0m0.358s
+sys	0m0.039s
+
+
+real	0m0.399s
+user	0m0.358s
+sys	0m0.041s
+
+===============================================================================
+
+Running: ../../.github/citools/cpp/clang-tidy | head -n 100
+3 warnings generated.
+35406 warnings generated.
+Suppressed 35407 warnings (35401 in non-user code, 6 NOLINT).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+
+real	0m5.123s
+user	0m5.057s
+sys	0m0.065s
+Running: clang-tidy-16 ./last_will.cpp ./last_will_test.cpp
+/home/vpayno/git_vpayno/exercism-workspace/cpp/last-will/last_will.cpp:6:5: warning: variable 'zhang_part' of type 'int' can be declared 'const' [misc-const-correctness]
+    int zhang_part{8'541};
+    ^
+        const 
+/home/vpayno/git_vpayno/exercism-workspace/cpp/last-will/last_will.cpp:20:5: warning: variable 'khan_part' of type 'int' can be declared 'const' [misc-const-correctness]
+    int khan_part{4'142};
+    ^
+        const 
+/home/vpayno/git_vpayno/exercism-workspace/cpp/last-will/last_will.cpp:34:5: warning: variable 'garcia_part' of type 'int' can be declared 'const' [misc-const-correctness]
+    int garcia_part{4'023};
+    ^
+        const 
+/home/vpayno/git_vpayno/exercism-workspace/cpp/last-will/last_will_test.cpp:3:32: warning: all parameters should be named in a function [readability-named-parameter]
+int assemble_account_number(int) __attribute__((weak));
+                               ^
+                                /*secret_modifier*/
+/home/vpayno/git_vpayno/exercism-workspace/cpp/last-will/last_will_test.cpp:7:11: warning: suspicious #include of file with '.cpp' extension [bugprone-suspicious-include]
+#include "last_will.cpp"
+          ^
+
+
+real	0m5.125s
+user	0m5.059s
+sys	0m0.067s
+
+===============================================================================
+
