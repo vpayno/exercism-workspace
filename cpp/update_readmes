@@ -48,18 +48,23 @@ printf "\n"
 git add ../README.md ./README.md
 git diff --cached ../README.md ./README.md
 
-if ! grep -q '// TEST_IGNORE' ./*_test.cpp; then
-	sed -r -i -e 's:(TEST_IGNORE):// \1:g' ./*_test.cpp
-fi
-
 if [[ ! -f compile_commands.json ]]; then
+	printf "\n"
+	printf "Generating [%s]...\n" "compile_commands.json"
+	rm -rf ./build/
 	mkdir ./build/
-	cmake -DEXERCISM_RUN_ALL_TESTS=1 -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -G 'Unix Makefiles' ../
+	(
+		cd ./build/ || exit 1
+		cmake -DEXERCISM_RUN_ALL_TESTS=1 -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -G 'Unix Makefiles' ../
+	)
 	cp -v ./build/compile_commands.json .
 	rm -rf ./build/
+	git add compile_commands.json
 fi
 
 if [[ ! -f ./compile_flags.txt ]]; then
+	printf "\n"
+	printf "Generating [%s]...\n" "compile_flags.txt"
 	cat >./compile_flags.txt <<EOF
 -std=c++17
 -stdlib=libstdc++
@@ -70,9 +75,13 @@ if [[ ! -f ./compile_flags.txt ]]; then
 -Werror
 -Wno-unused-parameter
 EOF
+	git add compile_flags.txt
 fi
 
-cat >Makefile <<EOF
+if [[ ! -f Makefile ]]; then
+	printf "\n"
+	printf "Generating [%s]...\n" "Makefile"
+	cat >Makefile <<EOF
 .PHONY: clean
 clean:
 	rm -rf ./build
@@ -97,6 +106,8 @@ coverage: test
 	@printf "\n"
 	gcovr --print-summary
 EOF
+	git add Makefile
+fi
 
 git add .
 git status .
