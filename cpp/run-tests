@@ -1,5 +1,7 @@
 #!/bin/bash
 
+shopt -s nullglob
+
 print_ruler() {
 	printf "\n"
 	printf "=%.0s" {1..79}
@@ -19,6 +21,11 @@ main() {
 
 	# https://jasoncarloscox.com/blog/cpp-testing-with-coverage/
 	# https://gcovr.com/en/master/guide/compiling.html
+
+	echo export LDFLAGS=\"-lgcov --coverage\" CXXFLAGS=\"--coverage\"
+	export LDFLAGS="-lgcov --coverage" CXXFLAGS="--coverage"
+
+	print_ruler
 
 	echo Running: make coverage '|' ansifilter
 	time make coverage | ansifilter

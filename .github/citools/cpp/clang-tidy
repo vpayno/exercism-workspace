@@ -1,5 +1,7 @@
 #!/bin/bash
 
+shopt -s nullglob
+
 CLANG_TIDY_CHECKS="*,-llvm-header-guard,-llvmlibc-restrict-system-libc-headers"
 
 echo Running: clang-tidy-16 ./*.cpp ./*.h -checks="${CLANG_TIDY_CHECKS}" -- --std=c++17 -x c++

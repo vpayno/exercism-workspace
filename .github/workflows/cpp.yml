@@ -101,4 +101,5 @@ jobs:
         id: make-test
         run: |-
           cd ./cpp
+          export LDFLAGS="-lgcov --coverage" CXXFLAGS="--coverage"
           ./for_each make coverage
