@@ -1,32 +1,40 @@
-// INFO: Headers from the standard library should be inserted at the top via
-// #include <LIBRARY_NAME>
+#include <cmath>
 
 // daily_rate calculates the daily rate given an hourly rate
 double daily_rate(double hourly_rate) {
-    // TODO: Implement a function to calculate the daily rate given an hourly
-    // rate
-    return 0.0;
+    const double hours = 8.0;
+
+    return hours * hourly_rate;
 }
 
 // apply_discount calculates the price after a discount
 double apply_discount(double before_discount, double discount) {
-    // TODO: Implement a function to calculate the price after a discount.
-    return 0.0;
+    const double charge_rate = (100 - discount) / 100;
+
+    return before_discount * charge_rate;
 }
 
 // monthly_rate calculates the monthly rate, given an hourly rate and a discount
 // The returned monthly rate is rounded up to the nearest integer.
 int monthly_rate(double hourly_rate, double discount) {
-    // TODO: Implement a function to calculate the monthly rate, and apply a
-    // discount.
-    return 0;
+    const double billable_days = 22.0;
+
+    const double monthly_cost = daily_rate(hourly_rate) * billable_days;
+
+    const double discounted_cost = apply_discount(monthly_cost, discount);
+
+    return std::ceil(discounted_cost);
 }
 
 // days_in_budget calculates the number of workdays given a budget, hourly rate,
 // and discount The returned number of days is rounded down (take the floor) to
 // the next integer.
 int days_in_budget(int budget, double hourly_rate, double discount) {
-    // TODO: Implement a function that takes a budget, an hourly rate, and a
-    // discount, and calculates how many complete days of work that covers.
-    return 0;
+    const double daily_cost = daily_rate(hourly_rate);
+
+    const double discounted_hourly = apply_discount(daily_cost, discount);
+
+    const double days = budget / std::ceil(discounted_hourly);
+
+    return std::floor(days);
 }
