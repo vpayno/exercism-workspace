@@ -1,0 +1,202 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: make clean
+rm -rf ./build
+
+real	0m0.012s
+user	0m0.000s
+sys	0m0.012s
+
+===============================================================================
+
+export LDFLAGS="-lgcov --coverage" CXXFLAGS="--coverage"
+
+===============================================================================
+
+Running: make coverage | ansifilter
+rm -rf ./build
+mkdir -pv ./build
+mkdir: created directory './build'
+
+cd ./build; export LDFLAGS="-lgcov --coverage" CXXFLAGS="--coverage"; cmake -DEXERCISM_RUN_ALL_TESTS=1 -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -G 'Unix Makefiles' ../; if make; then printf "\n=== All Tests Passed ===\n"; else printf "\n=== Test Failure ===\n"; false; fi
+-- The CXX compiler identification is GNU 10.2.1
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/vpayno/git_vpayno/exercism-workspace/cpp/pacman-rules/build
+make[1]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/pacman-rules/build'
+make[2]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/pacman-rules/build'
+make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/pacman-rules/build'
+make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/pacman-rules/build'
+make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/pacman-rules/build'
+[ 33%] Building CXX object CMakeFiles/pacman-rules.dir/pacman_rules_test.cpp.o
+[ 66%] Building CXX object CMakeFiles/pacman-rules.dir/test/tests-main.cpp.o
+[100%] Linking CXX executable pacman-rules
+make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/pacman-rules/build'
+[100%] Built target pacman-rules
+make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/pacman-rules/build'
+make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/pacman-rules/build'
+make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/pacman-rules/build'
+===============================================================================
+All tests passed (13 assertions in 13 test cases)
+
+make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/pacman-rules/build'
+[100%] Built target test_pacman-rules
+make[2]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/pacman-rules/build'
+make[1]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/pacman-rules/build'
+
+=== All Tests Passed ===
+
+find . -regextype posix-egrep -regex "^.*(tests-main|CompilerId).*[.](gcda|gcno)$" -print -delete
+./build/CMakeFiles/3.22.2/CompilerIdCXX/CMakeCXXCompilerId.gcno
+./build/CMakeFiles/pacman-rules.dir/test/tests-main.cpp.gcno
+./build/CMakeFiles/pacman-rules.dir/test/tests-main.cpp.gcda
+
+gcovr --print-summary
+------------------------------------------------------------------------------
+                           GCC Code Coverage Report
+Directory: .
+------------------------------------------------------------------------------
+File                                       Lines    Exec  Cover   Missing
+------------------------------------------------------------------------------
+pacman_rules.cpp                               8       8   100%   
+pacman_rules_test.cpp                         39      39   100%   
+test/catch.hpp                                34      29    85%   1642-1643,2301-2302,2560
+------------------------------------------------------------------------------
+TOTAL                                         81      76    93%
+------------------------------------------------------------------------------
+lines: 93.8% (76 out of 81)
+branches: 39.6% (76 out of 192)
+
+real	0m8.912s
+user	0m8.173s
+sys	0m0.738s
+
+===============================================================================
+
+cmake-format --in-place CMakeLists.txt
+
+real	0m0.182s
+user	0m0.130s
+sys	0m0.052s
+
+===============================================================================
+
+cmake-lint CMakeLists.txt
+CMakeLists.txt
+==============
+CMakeLists.txt:15,06: [C0103] Invalid directory variable name "exercise_cpp" doesn't match `[A-Z][0-9A-Z_]+|_[0-9a-z_]+`
+CMakeLists.txt:17,06: [C0103] Invalid directory variable name "exercise_cpp" doesn't match `[A-Z][0-9A-Z_]+|_[0-9a-z_]+`
+CMakeLists.txt:52,71: [C0307] Bad indentation:
+               )
+  ^----BodyNode: 1:0->IfBlockNode: 46:0->BodyNode: 46:52->StatementNode: 47:2->TreeNode: 52:71
+
+CMakeLists.txt:63,70: [C0307] Bad indentation:
+                                               )
+  ^----BodyNode: 1:0->IfBlockNode: 61:0->BodyNode: 61:11->StatementNode: 62:2->TreeNode: 63:70
+
+CMakeLists.txt:68,02: [C0113] Missing COMMENT in statement which allows it
+
+Summary
+=======
+files scanned: 1
+found lint:
+  Convention: 5
+
+
+real	0m0.160s
+user	0m0.114s
+sys	0m0.047s
+
+===============================================================================
+
+Running: clang-format-16 -style=file -i ./pacman_rules.cpp ./pacman_rules_test.cpp
+
+real	0m0.019s
+user	0m0.006s
+sys	0m0.012s
+
+===============================================================================
+
+Running: ../../.github/citools/cpp/clang-check
+clang-check-16 ./pacman_rules.cpp ./pacman_rules_test.cpp -- --std=c++17 -x c++
+
+real	0m0.387s
+user	0m0.348s
+sys	0m0.038s
+
+
+real	0m0.388s
+user	0m0.349s
+sys	0m0.039s
+
+===============================================================================
+
+Running: ../../.github/citools/cpp/clang-tidy | head -n 100
+9 warnings generated.
+110094 warnings generated.
+Suppressed 110091 warnings (110081 in non-user code, 10 NOLINT).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+
+real	0m9.130s
+user	0m9.049s
+sys	0m0.080s
+Running: clang-tidy-16 ./pacman_rules.cpp ./pacman_rules_test.cpp -checks=*,-llvm-header-guard,-llvmlibc-restrict-system-libc-headers -- --std=c++17 -x c++
+/home/vpayno/git_vpayno/exercism-workspace/cpp/pacman-rules/pacman_rules.cpp:4:6: warning: declaration must be declared within the '__llvm_libc' namespace [llvmlibc-implementation-in-namespace]
+bool can_eat_ghost(bool power_pellet_active, bool touching_ghost) {
+     ^
+/home/vpayno/git_vpayno/exercism-workspace/cpp/pacman-rules/pacman_rules.cpp:4:6: warning: use a trailing return type for this function [modernize-use-trailing-return-type]
+bool can_eat_ghost(bool power_pellet_active, bool touching_ghost) {
+~~~~ ^
+auto                                                              -> bool
+/home/vpayno/git_vpayno/exercism-workspace/cpp/pacman-rules/pacman_rules.cpp:11:6: warning: declaration must be declared within the '__llvm_libc' namespace [llvmlibc-implementation-in-namespace]
+bool scored(bool touching_power_pellet, bool touching_dot) {
+     ^
+/home/vpayno/git_vpayno/exercism-workspace/cpp/pacman-rules/pacman_rules.cpp:11:6: warning: use a trailing return type for this function [modernize-use-trailing-return-type]
+bool scored(bool touching_power_pellet, bool touching_dot) {
+~~~~ ^
+auto                                                       -> bool
+/home/vpayno/git_vpayno/exercism-workspace/cpp/pacman-rules/pacman_rules.cpp:18:6: warning: declaration must be declared within the '__llvm_libc' namespace [llvmlibc-implementation-in-namespace]
+bool lost(bool power_pellet_active, bool touching_ghost) {
+     ^
+/home/vpayno/git_vpayno/exercism-workspace/cpp/pacman-rules/pacman_rules.cpp:18:6: warning: use a trailing return type for this function [modernize-use-trailing-return-type]
+bool lost(bool power_pellet_active, bool touching_ghost) {
+~~~~ ^
+auto                                                     -> bool
+/home/vpayno/git_vpayno/exercism-workspace/cpp/pacman-rules/pacman_rules.cpp:25:6: warning: declaration must be declared within the '__llvm_libc' namespace [llvmlibc-implementation-in-namespace]
+bool won(bool has_eaten_all_dots, bool power_pellet_active,
+     ^
+/home/vpayno/git_vpayno/exercism-workspace/cpp/pacman-rules/pacman_rules.cpp:25:6: warning: use a trailing return type for this function [modernize-use-trailing-return-type]
+bool won(bool has_eaten_all_dots, bool power_pellet_active,
+~~~~ ^
+auto
+/home/vpayno/git_vpayno/exercism-workspace/cpp/pacman-rules/pacman_rules.cpp:27:39: warning: 'lost' must resolve to a function declared within the '__llvm_libc' namespace [llvmlibc-callee-namespace]
+    return has_eaten_all_dots and not lost(power_pellet_active, touching_ghost);
+                                      ^
+/home/vpayno/git_vpayno/exercism-workspace/cpp/pacman-rules/pacman_rules.cpp:18:6: note: resolves to this declaration
+bool lost(bool power_pellet_active, bool touching_ghost) {
+     ^
+/home/vpayno/git_vpayno/exercism-workspace/cpp/pacman-rules/pacman_rules_test.cpp:1:11: warning: suspicious #include of file with '.cpp' extension [bugprone-suspicious-include]
+#include "pacman_rules.cpp"
+          ^
+/home/vpayno/git_vpayno/exercism-workspace/cpp/pacman-rules/pacman_rules_test.cpp:8:41: warning: 'can_eat_ghost' must resolve to a function declared within the '__llvm_libc' namespace [llvmlibc-callee-namespace]
+TEST_CASE("ghost gets eaten") { REQUIRE(can_eat_ghost(true, true)); }
+                                        ^
+/home/vpayno/git_vpayno/exercism-workspace/cpp/pacman-rules/pacman_rules.cpp:4:6: note: resolves to this declaration
+bool can_eat_ghost(bool power_pellet_active, bool touching_ghost) {
+     ^
+
+
+real	0m9.131s
+user	0m9.051s
+sys	0m0.081s
+
+===============================================================================
+
