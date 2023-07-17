@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.011s
-user	0m0.004s
-sys	0m0.008s
+real	0m0.013s
+user	0m0.001s
+sys	0m0.012s
 
 ===============================================================================
 
@@ -78,17 +78,17 @@ TOTAL                                        156     140    89%
 lines: 89.7% (140 out of 156)
 branches: 38.6% (139 out of 360)
 
-real	0m8.324s
-user	0m7.492s
-sys	0m0.831s
+real	0m8.555s
+user	0m7.867s
+sys	0m0.686s
 
 ===============================================================================
 
 cmake-format --in-place CMakeLists.txt
 
-real	0m0.139s
-user	0m0.095s
-sys	0m0.046s
+real	0m0.152s
+user	0m0.110s
+sys	0m0.043s
 
 ===============================================================================
 
@@ -110,63 +110,50 @@ found lint:
   Convention: 4
 
 
-real	0m0.164s
-user	0m0.107s
-sys	0m0.058s
+real	0m0.162s
+user	0m0.110s
+sys	0m0.053s
 
 ===============================================================================
 
 Running: clang-format-16 -style=file -i ./vehicle_purchase.cpp ./vehicle_purchase_test.cpp
 
-real	0m0.023s
+real	0m0.020s
 user	0m0.009s
-sys	0m0.014s
+sys	0m0.010s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
 clang-check-16 --analyze ./vehicle_purchase.cpp ./vehicle_purchase_test.cpp ./vehicle_purchase.hpp
 
-real	0m0.620s
-user	0m0.579s
-sys	0m0.041s
+real	0m0.657s
+user	0m0.616s
+sys	0m0.040s
 
 
-real	0m0.622s
-user	0m0.579s
+real	0m0.658s
+user	0m0.616s
 sys	0m0.042s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
-15010 warnings generated.
-50356 warnings generated.
-65355 warnings generated.
-Suppressed 65358 warnings (65353 in non-user code, 5 NOLINT).
+15009 warnings generated.
+50354 warnings generated.
+65353 warnings generated.
+Suppressed 65359 warnings (65353 in non-user code, 6 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 
-real	0m9.103s
-user	0m9.037s
-sys	0m0.063s
+real	0m10.193s
+user	0m10.117s
+sys	0m0.075s
 Running: clang-tidy-16 ./vehicle_purchase.cpp ./vehicle_purchase_test.cpp ./vehicle_purchase.hpp
-/home/vpayno/git_vpayno/exercism-workspace/cpp/vehicle-purchase/vehicle_purchase.cpp:28:31: warning: 2 adjacent parameters of 'calculate_resell_price' of similar type ('double') are easily swapped by mistake [bugprone-easily-swappable-parameters]
-double calculate_resell_price(double original_price, double age) {
-                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/home/vpayno/git_vpayno/exercism-workspace/cpp/vehicle-purchase/vehicle_purchase.cpp:28:38: note: the first parameter in the range is 'original_price'
-double calculate_resell_price(double original_price, double age) {
-                                     ^~~~~~~~~~~~~~
-/home/vpayno/git_vpayno/exercism-workspace/cpp/vehicle-purchase/vehicle_purchase.cpp:28:61: note: the last parameter in the range is 'age'
-double calculate_resell_price(double original_price, double age) {
-                                                            ^~~
-/home/vpayno/git_vpayno/exercism-workspace/cpp/vehicle-purchase/vehicle_purchase_test.cpp:10:5: warning: variable 'kind' of type 'std::string' (aka 'basic_string<char>') can be declared 'const' [misc-const-correctness]
-    std::string kind{"car"};
-    ^
-                const 
 
 
-real	0m9.104s
-user	0m9.037s
-sys	0m0.066s
+real	0m10.196s
+user	0m10.119s
+sys	0m0.076s
 
 ===============================================================================
 
