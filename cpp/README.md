@@ -26,3 +26,4 @@
 - [reverse-string](./reverse-string/README.md)
 - [armstrong-numbers](./armstrong-numbers/README.md)
 - [bob](./bob/README.md)
+- [difference-of-squares](./difference-of-squares/README.md)

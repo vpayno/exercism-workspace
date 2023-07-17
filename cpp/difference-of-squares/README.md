@@ -39,3 +39,8 @@ Finding the best algorithm for the problem is a key skill in software engineerin
 ### Based on
 
 Problem 6 at Project Euler - http://projecteuler.net/problem=6
+
+### My Solution
+
+- [my solution]()
+- [run-tests](./run-tests-cpp.txt)
