@@ -1,4 +1,4 @@
-#include "darts.h"
+#include "darts.hpp"
 #ifdef EXERCISM_TEST_SUITE
 #include <catch2/catch.hpp>
 #else

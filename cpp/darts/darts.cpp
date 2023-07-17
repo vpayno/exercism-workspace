@@ -1,5 +1,4 @@
-#include "darts.h"
-#include <cmath>
+#include "darts.hpp"
 
 namespace darts {
 

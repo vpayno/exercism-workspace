@@ -7,8 +7,8 @@ Running: make clean
 rm -rf ./build
 
 real	0m0.006s
-user	0m0.001s
-sys	0m0.005s
+user	0m0.002s
+sys	0m0.004s
 
 ===============================================================================
 
@@ -70,24 +70,24 @@ Directory: .
 File                                       Lines    Exec  Cover   Missing
 ------------------------------------------------------------------------------
 darts.cpp                                      9       9   100%   
-darts_test.cpp                                39      39   100%   
+darts_test.cpp                                27      27   100%   
 test/catch.hpp                                32      27    84%   1642-1643,2227,2229,2560
 ------------------------------------------------------------------------------
-TOTAL                                         80      75    93%
+TOTAL                                         68      63    92%
 ------------------------------------------------------------------------------
-lines: 93.8% (75 out of 80)
+lines: 92.6% (63 out of 68)
 branches: 38.6% (85 out of 220)
 
-real	0m10.053s
-user	0m9.148s
-sys	0m0.903s
+real	0m10.058s
+user	0m9.218s
+sys	0m0.835s
 
 ===============================================================================
 
 cmake-format --in-place CMakeLists.txt
 
-real	0m0.175s
-user	0m0.128s
+real	0m0.157s
+user	0m0.111s
 sys	0m0.048s
 
 ===============================================================================
@@ -110,72 +110,66 @@ found lint:
   Convention: 4
 
 
-real	0m0.164s
-user	0m0.114s
-sys	0m0.052s
+real	0m0.161s
+user	0m0.121s
+sys	0m0.041s
 
 ===============================================================================
 
-Running: clang-format-16 -style=file -i ./darts.cpp ./darts_test.cpp ./darts.h
+Running: clang-format-16 -style=file -i ./darts.cpp ./darts_test.cpp
 
-real	0m0.023s
-user	0m0.008s
-sys	0m0.015s
+real	0m0.022s
+user	0m0.010s
+sys	0m0.012s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./darts.cpp ./darts_test.cpp ./darts.h
-error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
-error: invalid argument '-std=c++17' not allowed with 'C'
+clang-check-16 --analyze ./darts.cpp ./darts_test.cpp ./darts.hpp
 
-real	0m0.552s
-user	0m0.516s
-sys	0m0.035s
-
-
-real	0m0.554s
+real	0m0.553s
 user	0m0.517s
-sys	0m0.037s
+sys	0m0.036s
+
+
+real	0m0.555s
+user	0m0.519s
+sys	0m0.036s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 8744 warnings generated.
-44129 warnings generated.
-44131 warnings and 2 errors generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/darts/darts.h.
-Suppressed 44131 warnings (44126 in non-user code, 5 NOLINT).
+44098 warnings generated.
+52839 warnings generated.
+Suppressed 52839 warnings (52834 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-Found compiler error(s).
 
-real	0m7.615s
-user	0m7.527s
-sys	0m0.087s
-Running: clang-tidy-16 ./darts.cpp ./darts_test.cpp ./darts.h
-error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
-error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
-/home/vpayno/git_vpayno/exercism-workspace/cpp/darts/darts.cpp:6:18: warning: parameter name 'x' is too short, expected at least 3 characters [readability-identifier-length]
+real	0m8.772s
+user	0m8.698s
+sys	0m0.074s
+Running: clang-tidy-16 ./darts.cpp ./darts_test.cpp ./darts.hpp
+/home/vpayno/git_vpayno/exercism-workspace/cpp/darts/darts.cpp:5:18: warning: parameter name 'x' is too short, expected at least 3 characters [readability-identifier-length]
 int score(double x, double y) {
                  ^
-/home/vpayno/git_vpayno/exercism-workspace/cpp/darts/darts.cpp:6:28: warning: parameter name 'y' is too short, expected at least 3 characters [readability-identifier-length]
+/home/vpayno/git_vpayno/exercism-workspace/cpp/darts/darts.cpp:5:28: warning: parameter name 'y' is too short, expected at least 3 characters [readability-identifier-length]
 int score(double x, double y) {
                            ^
-/home/vpayno/git_vpayno/exercism-workspace/cpp/darts/darts.cpp:7:5: warning: variable 'distance' of type 'double' can be declared 'const' [misc-const-correctness]
+/home/vpayno/git_vpayno/exercism-workspace/cpp/darts/darts.cpp:6:5: warning: variable 'distance' of type 'double' can be declared 'const' [misc-const-correctness]
     double distance = std::hypot(x, y);
     ^
            const 
-/home/vpayno/git_vpayno/exercism-workspace/cpp/darts/darts.h:8:18: warning: parameter name 'x' is too short, expected at least 3 characters [readability-identifier-length]
-int score(double x, double y);
-                 ^
-/home/vpayno/git_vpayno/exercism-workspace/cpp/darts/darts.h:8:28: warning: parameter name 'y' is too short, expected at least 3 characters [readability-identifier-length]
-int score(double x, double y);
-                           ^
+/home/vpayno/git_vpayno/exercism-workspace/cpp/darts/darts.hpp:8:22: warning: parameter name 'x' is too short, expected at least 3 characters [readability-identifier-length]
+    int score(double x, double y);
+                     ^
+/home/vpayno/git_vpayno/exercism-workspace/cpp/darts/darts.hpp:8:32: warning: parameter name 'y' is too short, expected at least 3 characters [readability-identifier-length]
+    int score(double x, double y);
+                               ^
 
 
-real	0m7.617s
-user	0m7.528s
-sys	0m0.089s
+real	0m8.774s
+user	0m8.699s
+sys	0m0.076s
 
 ===============================================================================
 
