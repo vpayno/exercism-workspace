@@ -24,3 +24,4 @@
 - [darts](./darts/README.md)
 - [interest-is-interesting](./interest-is-interesting/README.md)
 - [reverse-string](./reverse-string/README.md)
+- [armstrong-numbers](./armstrong-numbers/README.md)

@@ -33,3 +33,8 @@ Write some code to determine whether a number is an Armstrong number.
 ### Based on
 
 Wikipedia - https://en.wikipedia.org/wiki/Narcissistic_number
+
+### My Solution
+
+- [my solution]()
+- [run-tests](./run-tests-cpp.txt)
