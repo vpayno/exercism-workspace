@@ -26,3 +26,8 @@ output: "looc"
 ### Based on
 
 Introductory challenge to reverse an input string - https://medium.freecodecamp.org/how-to-reverse-a-string-in-javascript-in-3-different-ways-75e4763c68cb
+
+### My Solution
+
+- [my solution]()
+- [run-tests](./run-tests-cpp.txt)

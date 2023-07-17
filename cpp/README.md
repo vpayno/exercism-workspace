@@ -23,3 +23,4 @@
 - [leap](./leap/README.md)
 - [darts](./darts/README.md)
 - [interest-is-interesting](./interest-is-interesting/README.md)
+- [reverse-string](./reverse-string/README.md)
