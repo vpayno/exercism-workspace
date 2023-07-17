@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.007s
+real	0m0.010s
 user	0m0.001s
-sys	0m0.006s
+sys	0m0.009s
 
 ===============================================================================
 
@@ -70,25 +70,25 @@ Directory: .
 File                                       Lines    Exec  Cover   Missing
 ------------------------------------------------------------------------------
 leap.cpp                                       8       8   100%   
-leap_test.cpp                                 18      18   100%   
+leap_test.cpp                                 14      14   100%   
 test/catch.hpp                                34      29    85%   1642-1643,2301-2302,2560
 ------------------------------------------------------------------------------
-TOTAL                                         60      55    91%
+TOTAL                                         56      51    91%
 ------------------------------------------------------------------------------
-lines: 91.7% (55 out of 60)
+lines: 91.1% (51 out of 56)
 branches: 39.6% (38 out of 96)
 
-real	0m9.146s
-user	0m8.484s
-sys	0m0.659s
+real	0m9.643s
+user	0m8.761s
+sys	0m0.877s
 
 ===============================================================================
 
 cmake-format --in-place CMakeLists.txt
 
-real	0m0.265s
-user	0m0.181s
-sys	0m0.081s
+real	0m0.347s
+user	0m0.246s
+sys	0m0.080s
 
 ===============================================================================
 
@@ -110,55 +110,49 @@ found lint:
   Convention: 4
 
 
-real	0m0.158s
-user	0m0.104s
-sys	0m0.056s
+real	0m0.172s
+user	0m0.115s
+sys	0m0.058s
 
 ===============================================================================
 
-Running: clang-format-16 -style=file -i ./leap.cpp ./leap_test.cpp ./leap.h
+Running: clang-format-16 -style=file -i ./leap.cpp ./leap_test.cpp
 
-real	0m0.023s
-user	0m0.014s
-sys	0m0.008s
+real	0m0.019s
+user	0m0.009s
+sys	0m0.010s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./leap.cpp ./leap_test.cpp ./leap.h
-error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
-error: invalid argument '-std=c++17' not allowed with 'C'
+clang-check-16 --analyze ./leap.cpp ./leap_test.cpp ./leap.hpp
 
-real	0m0.466s
-user	0m0.398s
-sys	0m0.067s
+real	0m0.413s
+user	0m0.373s
+sys	0m0.039s
 
 
-real	0m0.467s
-user	0m0.398s
-sys	0m0.069s
+real	0m0.414s
+user	0m0.375s
+sys	0m0.040s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 35376 warnings generated.
-35376 warnings and 2 errors generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/leap/leap.h.
+35376 warnings generated.
 Suppressed 35381 warnings (35376 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-Found compiler error(s).
 
-real	0m5.255s
-user	0m5.190s
-sys	0m0.064s
-Running: clang-tidy-16 ./leap.cpp ./leap_test.cpp ./leap.h
-error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
-error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
+real	0m5.439s
+user	0m5.378s
+sys	0m0.060s
+Running: clang-tidy-16 ./leap.cpp ./leap_test.cpp ./leap.hpp
 
 
-real	0m5.257s
-user	0m5.190s
-sys	0m0.068s
+real	0m5.440s
+user	0m5.379s
+sys	0m0.062s
 
 ===============================================================================
 
