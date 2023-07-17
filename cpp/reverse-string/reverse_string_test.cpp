@@ -6,7 +6,7 @@
 #endif
 
 TEST_CASE("an_empty_string") {
-    REQUIRE("" == reverse_string::reverse_string(""));
+    REQUIRE(reverse_string::reverse_string("").empty());
 }
 
 #if defined(EXERCISM_RUN_ALL_TESTS)

@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.016s
-user	0m0.006s
-sys	0m0.010s
+real	0m0.014s
+user	0m0.002s
+sys	0m0.012s
 
 ===============================================================================
 
@@ -71,24 +71,24 @@ File                                       Lines    Exec  Cover   Missing
 ------------------------------------------------------------------------------
 reverse_string.cpp                             6       6   100%   
 reverse_string_test.cpp                       15      15   100%   
-test/catch.hpp                                34      27    79%   1642-1643,1710-1711,2227,2229,2560
+test/catch.hpp                                46      37    80%   1642-1643,1710-1711,2227,2229,2301-2302,2560
 ------------------------------------------------------------------------------
-TOTAL                                         55      48    87%
+TOTAL                                         67      58    86%
 ------------------------------------------------------------------------------
-lines: 87.3% (48 out of 55)
-branches: 37.7% (40 out of 106)
+lines: 86.6% (58 out of 67)
+branches: 37.0% (40 out of 108)
 
-real	0m10.882s
-user	0m10.102s
-sys	0m0.761s
+real	0m9.301s
+user	0m8.441s
+sys	0m0.858s
 
 ===============================================================================
 
 cmake-format --in-place CMakeLists.txt
 
-real	0m0.175s
-user	0m0.119s
-sys	0m0.055s
+real	0m0.144s
+user	0m0.099s
+sys	0m0.045s
 
 ===============================================================================
 
@@ -110,66 +110,50 @@ found lint:
   Convention: 4
 
 
-real	0m0.165s
-user	0m0.117s
-sys	0m0.045s
+real	0m0.150s
+user	0m0.111s
+sys	0m0.039s
 
 ===============================================================================
 
 Running: clang-format-16 -style=file -i ./reverse_string.cpp ./reverse_string_test.cpp
 
-real	0m0.028s
-user	0m0.009s
-sys	0m0.019s
+real	0m0.021s
+user	0m0.010s
+sys	0m0.011s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
 clang-check-16 --analyze ./reverse_string.cpp ./reverse_string_test.cpp ./reverse_string.hpp
 
-real	0m0.738s
-user	0m0.693s
-sys	0m0.043s
+real	0m0.598s
+user	0m0.562s
+sys	0m0.036s
 
 
-real	0m0.740s
-user	0m0.695s
-sys	0m0.043s
+real	0m0.600s
+user	0m0.563s
+sys	0m0.036s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 12523 warnings generated.
-47957 warnings generated.
-60471 warnings generated.
-Suppressed 60474 warnings (60469 in non-user code, 5 NOLINT).
+47942 warnings generated.
+60456 warnings generated.
+Suppressed 60461 warnings (60456 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 
-real	0m8.601s
-user	0m8.513s
-sys	0m0.080s
+real	0m7.613s
+user	0m7.534s
+sys	0m0.078s
 Running: clang-tidy-16 ./reverse_string.cpp ./reverse_string_test.cpp ./reverse_string.hpp
-/home/vpayno/git_vpayno/exercism-workspace/cpp/reverse-string/reverse_string_test.cpp:9:13: warning: the 'empty' method should be used to check for emptiness instead of comparing to an empty object [readability-container-size-empty]
-    REQUIRE("" == reverse_string::reverse_string(""));
-            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-            reverse_string::reverse_string("").empty()
-/home/vpayno/git_vpayno/exercism-workspace/cpp/reverse-string/test/catch.hpp:17637:90: note: expanded from macro 'REQUIRE'
-#define REQUIRE( ... ) INTERNAL_CATCH_TEST( "REQUIRE", Catch::ResultDisposition::Normal, __VA_ARGS__  )
-                                                                                         ^
-/home/vpayno/git_vpayno/exercism-workspace/cpp/reverse-string/test/catch.hpp:2703:40: note: expanded from macro 'INTERNAL_CATCH_TEST'
-        CATCH_INTERNAL_IGNORE_BUT_WARN(__VA_ARGS__); \
-                                       ^
-/home/vpayno/git_vpayno/exercism-workspace/cpp/reverse-string/test/catch.hpp:165:76: note: expanded from macro 'CATCH_INTERNAL_IGNORE_BUT_WARN'
-#    define CATCH_INTERNAL_IGNORE_BUT_WARN(...) (void)__builtin_constant_p(__VA_ARGS__) /* NOLINT(cppcoreguidelines-pro-type-vararg, hicpp-vararg) */
-                                                                           ^
-/usr/lib/gcc/x86_64-linux-gnu/10/../../../../include/c++/10/bits/basic_string.h:1002:7: note: method 'basic_string<char>'::empty() defined here
-      empty() const _GLIBCXX_NOEXCEPT
-      ^
 
 
-real	0m8.604s
-user	0m8.514s
-sys	0m0.083s
+real	0m7.616s
+user	0m7.535s
+sys	0m0.081s
 
 ===============================================================================
 
