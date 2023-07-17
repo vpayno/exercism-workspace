@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.003s
-user	0m0.001s
-sys	0m0.002s
+real	0m0.009s
+user	0m0.000s
+sys	0m0.009s
 
 ===============================================================================
 
@@ -79,17 +79,17 @@ TOTAL                                         88      83    94%
 lines: 94.3% (83 out of 88)
 branches: 34.6% (36 out of 104)
 
-real	0m9.390s
-user	0m8.629s
-sys	0m0.750s
+real	0m9.587s
+user	0m8.739s
+sys	0m0.824s
 
 ===============================================================================
 
 cmake-format --in-place CMakeLists.txt
 
-real	0m0.175s
-user	0m0.130s
-sys	0m0.047s
+real	0m0.178s
+user	0m0.134s
+sys	0m0.046s
 
 ===============================================================================
 
@@ -115,70 +115,51 @@ found lint:
   Convention: 5
 
 
-real	0m0.153s
-user	0m0.107s
-sys	0m0.046s
+real	0m0.166s
+user	0m0.111s
+sys	0m0.055s
 
 ===============================================================================
 
 Running: clang-format-16 -style=file -i ./lasagna.cpp ./lasagna_test.cpp
 
-real	0m0.022s
+real	0m0.024s
 user	0m0.011s
-sys	0m0.011s
+sys	0m0.012s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
 clang-check-16 --analyze ./lasagna.cpp ./lasagna_test.cpp
 
-real	0m0.391s
-user	0m0.361s
-sys	0m0.030s
+real	0m0.396s
+user	0m0.356s
+sys	0m0.039s
 
 
-real	0m0.393s
-user	0m0.363s
-sys	0m0.030s
+real	0m0.397s
+user	0m0.358s
+sys	0m0.040s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
-3 warnings generated.
-35392 warnings generated.
-Suppressed 35391 warnings (35386 in non-user code, 5 NOLINT).
+35384 warnings generated.
+Suppressed 35388 warnings (35383 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 
-real	0m5.330s
-user	0m5.281s
-sys	0m0.049s
+real	0m5.267s
+user	0m5.194s
+sys	0m0.072s
 Running: clang-tidy-16 ./lasagna.cpp ./lasagna_test.cpp
-/home/vpayno/git_vpayno/exercism-workspace/cpp/lasagna/lasagna.cpp:1:1: warning: replace macro with enum [modernize-macro-to-enum]
-#define OVEN_TIME (40)
-^~~~~~~~
-                  =   ,
-/home/vpayno/git_vpayno/exercism-workspace/cpp/lasagna/lasagna.cpp:1:9: warning: macro 'OVEN_TIME' defines an integral constant; prefer an enum instead [modernize-macro-to-enum]
-#define OVEN_TIME (40)
-        ^
-/home/vpayno/git_vpayno/exercism-workspace/cpp/lasagna/lasagna.cpp:2:9: warning: macro 'TIME_PER_LAYER' defines an integral constant; prefer an enum instead [modernize-macro-to-enum]
-#define TIME_PER_LAYER (2)
-        ^
 /home/vpayno/git_vpayno/exercism-workspace/cpp/lasagna/lasagna_test.cpp:1:11: warning: suspicious #include of file with '.cpp' extension [bugprone-suspicious-include]
 #include "lasagna.cpp"
           ^
-/home/vpayno/git_vpayno/exercism-workspace/cpp/lasagna/lasagna_test.cpp:11:5: warning: variable 'actual' of type 'int' can be declared 'const' [misc-const-correctness]
-    int actual = 40;
-    ^
-        const 
-/home/vpayno/git_vpayno/exercism-workspace/cpp/lasagna/lasagna_test.cpp:12:5: warning: variable 'expected' of type 'int' can be declared 'const' [misc-const-correctness]
-    int expected = ovenTime();
-    ^
-        const 
 
 
-real	0m5.332s
-user	0m5.281s
-sys	0m0.051s
+real	0m5.269s
+user	0m5.197s
+sys	0m0.073s
 
 ===============================================================================
 

@@ -1,5 +1,7 @@
-#define OVEN_TIME (40)
-#define TIME_PER_LAYER (2)
+enum {
+    OVEN_TIME = 40,
+    TIME_PER_LAYER = 2,
+};
 
 // ovenTime returns the amount in minutes that the lasagna should stay in the
 // oven.
