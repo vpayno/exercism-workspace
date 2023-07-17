@@ -1,3 +1,7 @@
+#include "interest_is_interesting.hpp"
+
+namespace interest_is_interesting {
+
 // interest_rate returns the interest rate for the provided balance.
 double interest_rate(double balance) {
     double rate{0.0};
@@ -41,3 +45,5 @@ int years_until_desired_balance(double balance, double target_balance) {
     return years_needed;
     ;
 }
+
+} // namespace interest_is_interesting

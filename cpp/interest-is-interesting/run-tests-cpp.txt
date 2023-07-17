@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.008s
+real	0m0.014s
 user	0m0.002s
-sys	0m0.005s
+sys	0m0.011s
 
 ===============================================================================
 
@@ -36,8 +36,9 @@ make[2]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/inte
 make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/interest-is-interesting/build'
 make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/interest-is-interesting/build'
 make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/interest-is-interesting/build'
-[ 33%] Building CXX object CMakeFiles/interest-is-interesting.dir/interest_is_interesting_test.cpp.o
-[ 66%] Building CXX object CMakeFiles/interest-is-interesting.dir/test/tests-main.cpp.o
+[ 25%] Building CXX object CMakeFiles/interest-is-interesting.dir/interest_is_interesting_test.cpp.o
+[ 50%] Building CXX object CMakeFiles/interest-is-interesting.dir/interest_is_interesting.cpp.o
+[ 75%] Building CXX object CMakeFiles/interest-is-interesting.dir/test/tests-main.cpp.o
 [100%] Linking CXX executable interest-is-interesting
 make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/interest-is-interesting/build'
 [100%] Built target interest-is-interesting
@@ -75,19 +76,19 @@ test/catch.hpp                                45      34    75%   1642-1643,2227
 TOTAL                                        229     218    95%
 ------------------------------------------------------------------------------
 lines: 95.2% (218 out of 229)
-branches: 35.7% (168 out of 470)
+branches: 37.4% (199 out of 532)
 
-real	0m9.602s
-user	0m8.751s
-sys	0m0.850s
+real	0m9.636s
+user	0m8.932s
+sys	0m0.703s
 
 ===============================================================================
 
 cmake-format --in-place CMakeLists.txt
 
-real	0m0.176s
-user	0m0.135s
-sys	0m0.042s
+real	0m0.173s
+user	0m0.124s
+sys	0m0.050s
 
 ===============================================================================
 
@@ -96,15 +97,15 @@ CMakeLists.txt
 ==============
 CMakeLists.txt:15,06: [C0103] Invalid directory variable name "exercise_cpp" doesn't match `[A-Z][0-9A-Z_]+|_[0-9a-z_]+`
 CMakeLists.txt:17,06: [C0103] Invalid directory variable name "exercise_cpp" doesn't match `[A-Z][0-9A-Z_]+|_[0-9a-z_]+`
-CMakeLists.txt:52,71: [C0307] Bad indentation:
+CMakeLists.txt:54,71: [C0307] Bad indentation:
                )
-  ^----BodyNode: 1:0->IfBlockNode: 46:0->BodyNode: 46:52->StatementNode: 47:2->TreeNode: 52:71
+  ^----BodyNode: 1:0->IfBlockNode: 48:0->BodyNode: 48:52->StatementNode: 49:2->TreeNode: 54:71
 
-CMakeLists.txt:63,70: [C0307] Bad indentation:
+CMakeLists.txt:65,70: [C0307] Bad indentation:
                                                )
-  ^----BodyNode: 1:0->IfBlockNode: 61:0->BodyNode: 61:11->StatementNode: 62:2->TreeNode: 63:70
+  ^----BodyNode: 1:0->IfBlockNode: 63:0->BodyNode: 63:11->StatementNode: 64:2->TreeNode: 65:70
 
-CMakeLists.txt:68,02: [C0113] Missing COMMENT in statement which allows it
+CMakeLists.txt:70,02: [C0113] Missing COMMENT in statement which allows it
 
 Summary
 =======
@@ -113,59 +114,50 @@ found lint:
   Convention: 5
 
 
-real	0m0.172s
-user	0m0.098s
-sys	0m0.071s
+real	0m0.155s
+user	0m0.109s
+sys	0m0.046s
 
 ===============================================================================
 
 Running: clang-format-16 -style=file -i ./interest_is_interesting.cpp ./interest_is_interesting_test.cpp
 
-real	0m0.029s
-user	0m0.012s
-sys	0m0.017s
+real	0m0.023s
+user	0m0.009s
+sys	0m0.014s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./interest_is_interesting.cpp ./interest_is_interesting_test.cpp
+clang-check-16 --analyze ./interest_is_interesting.cpp ./interest_is_interesting_test.cpp ./interest_is_interesting.hpp
 
-real	0m0.590s
-user	0m0.529s
-sys	0m0.060s
+real	0m0.565s
+user	0m0.519s
+sys	0m0.046s
 
 
-real	0m0.592s
-user	0m0.529s
-sys	0m0.062s
+real	0m0.567s
+user	0m0.519s
+sys	0m0.048s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
-35381 warnings generated.
-Suppressed 35385 warnings (35378 in non-user code, 7 NOLINT).
+8739 warnings generated.
+44086 warnings generated.
+52825 warnings generated.
+Suppressed 52831 warnings (52825 in non-user code, 6 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 
-real	0m5.396s
-user	0m5.330s
-sys	0m0.066s
-Running: clang-tidy-16 ./interest_is_interesting.cpp ./interest_is_interesting_test.cpp
-/home/vpayno/git_vpayno/exercism-workspace/cpp/interest-is-interesting/interest_is_interesting_test.cpp:1:11: warning: suspicious #include of file with '.cpp' extension [bugprone-suspicious-include]
-#include "interest_is_interesting.cpp"
-          ^
-/home/vpayno/git_vpayno/exercism-workspace/cpp/interest-is-interesting/interest_is_interesting_test.cpp:9:5: warning: variable 'balance' of type 'double' can be declared 'const' [misc-const-correctness]
-    double balance{0};
-    ^
-           const 
-/home/vpayno/git_vpayno/exercism-workspace/cpp/interest-is-interesting/interest_is_interesting_test.cpp:10:5: warning: variable 'want' of type 'double' can be declared 'const' [misc-const-correctness]
-    double want{0.5};
-    ^
-           const 
+real	0m8.699s
+user	0m8.620s
+sys	0m0.078s
+Running: clang-tidy-16 ./interest_is_interesting.cpp ./interest_is_interesting_test.cpp ./interest_is_interesting.hpp
 
 
-real	0m5.399s
-user	0m5.330s
-sys	0m0.070s
+real	0m8.701s
+user	0m8.621s
+sys	0m0.081s
 
 ===============================================================================
 
