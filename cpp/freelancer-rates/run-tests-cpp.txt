@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.009s
-user	0m0.000s
-sys	0m0.009s
+real	0m0.010s
+user	0m0.003s
+sys	0m0.007s
 
 ===============================================================================
 
@@ -77,17 +77,17 @@ TOTAL                                         90      79    87%
 lines: 87.8% (79 out of 90)
 branches: 32.8% (67 out of 204)
 
-real	0m10.424s
-user	0m9.702s
-sys	0m0.717s
+real	0m9.836s
+user	0m8.967s
+sys	0m0.867s
 
 ===============================================================================
 
 cmake-format --in-place CMakeLists.txt
 
-real	0m0.190s
-user	0m0.117s
-sys	0m0.048s
+real	0m0.157s
+user	0m0.091s
+sys	0m0.066s
 
 ===============================================================================
 
@@ -109,82 +109,52 @@ found lint:
   Convention: 4
 
 
-real	0m0.158s
-user	0m0.105s
-sys	0m0.042s
+real	0m0.165s
+user	0m0.116s
+sys	0m0.050s
 
 ===============================================================================
 
 Running: clang-format-16 -style=file -i ./freelancer_rates.cpp ./freelancer_rates_test.cpp
 
-real	0m0.029s
-user	0m0.011s
-sys	0m0.011s
+real	0m0.019s
+user	0m0.010s
+sys	0m0.009s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
 clang-check-16 --analyze ./freelancer_rates.cpp ./freelancer_rates_test.cpp
 
-real	0m0.482s
-user	0m0.445s
-sys	0m0.036s
+real	0m0.502s
+user	0m0.461s
+sys	0m0.041s
 
 
-real	0m0.484s
-user	0m0.447s
-sys	0m0.037s
+real	0m0.504s
+user	0m0.461s
+sys	0m0.042s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
-8742 warnings generated.
-44098 warnings generated.
-Suppressed 44099 warnings (44094 in non-user code, 5 NOLINT).
+8739 warnings generated.
+44092 warnings generated.
+Suppressed 44102 warnings (44091 in non-user code, 11 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 
-real	0m6.984s
-user	0m6.916s
-sys	0m0.066s
+real	0m6.923s
+user	0m6.850s
+sys	0m0.072s
 Running: clang-tidy-16 ./freelancer_rates.cpp ./freelancer_rates_test.cpp
-/home/vpayno/git_vpayno/exercism-workspace/cpp/freelancer-rates/freelancer_rates.cpp:11:23: warning: 2 adjacent parameters of 'apply_discount' of similar type ('double') are easily swapped by mistake [bugprone-easily-swappable-parameters]
-double apply_discount(double before_discount, double discount) {
-                      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/home/vpayno/git_vpayno/exercism-workspace/cpp/freelancer-rates/freelancer_rates.cpp:11:30: note: the first parameter in the range is 'before_discount'
-double apply_discount(double before_discount, double discount) {
-                             ^~~~~~~~~~~~~~~
-/home/vpayno/git_vpayno/exercism-workspace/cpp/freelancer-rates/freelancer_rates.cpp:11:54: note: the last parameter in the range is 'discount'
-double apply_discount(double before_discount, double discount) {
-                                                     ^~~~~~~~
-/home/vpayno/git_vpayno/exercism-workspace/cpp/freelancer-rates/freelancer_rates.cpp:19:18: warning: 2 adjacent parameters of 'monthly_rate' of similar type ('double') are easily swapped by mistake [bugprone-easily-swappable-parameters]
-int monthly_rate(double hourly_rate, double discount) {
-                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/home/vpayno/git_vpayno/exercism-workspace/cpp/freelancer-rates/freelancer_rates.cpp:19:25: note: the first parameter in the range is 'hourly_rate'
-int monthly_rate(double hourly_rate, double discount) {
-                        ^~~~~~~~~~~
-/home/vpayno/git_vpayno/exercism-workspace/cpp/freelancer-rates/freelancer_rates.cpp:19:45: note: the last parameter in the range is 'discount'
-int monthly_rate(double hourly_rate, double discount) {
-                                            ^~~~~~~~
-/home/vpayno/git_vpayno/exercism-workspace/cpp/freelancer-rates/freelancer_rates.cpp:32:20: warning: 3 adjacent parameters of 'days_in_budget' of convertible types are easily swapped by mistake [bugprone-easily-swappable-parameters]
-int days_in_budget(int budget, double hourly_rate, double discount) {
-                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/home/vpayno/git_vpayno/exercism-workspace/cpp/freelancer-rates/freelancer_rates.cpp:32:24: note: the first parameter in the range is 'budget'
-int days_in_budget(int budget, double hourly_rate, double discount) {
-                       ^~~~~~
-/home/vpayno/git_vpayno/exercism-workspace/cpp/freelancer-rates/freelancer_rates.cpp:32:59: note: the last parameter in the range is 'discount'
-int days_in_budget(int budget, double hourly_rate, double discount) {
-                                                          ^~~~~~~~
-/home/vpayno/git_vpayno/exercism-workspace/cpp/freelancer-rates/freelancer_rates.cpp:32:32: note: 'int' and 'double' may be implicitly converted
-int days_in_budget(int budget, double hourly_rate, double discount) {
-                               ^
 /home/vpayno/git_vpayno/exercism-workspace/cpp/freelancer-rates/freelancer_rates_test.cpp:1:11: warning: suspicious #include of file with '.cpp' extension [bugprone-suspicious-include]
 #include "freelancer_rates.cpp"
           ^
 
 
-real	0m6.987s
-user	0m6.918s
-sys	0m0.068s
+real	0m6.925s
+user	0m6.850s
+sys	0m0.075s
 
 ===============================================================================
 

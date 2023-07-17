@@ -8,6 +8,7 @@ double daily_rate(double hourly_rate) {
 }
 
 // apply_discount calculates the price after a discount
+// NOLINTNEXTLINE(bugprone-easily-swappable-parameters)
 double apply_discount(double before_discount, double discount) {
     const double charge_rate = (100 - discount) / 100;
 
@@ -16,7 +17,9 @@ double apply_discount(double before_discount, double discount) {
 
 // monthly_rate calculates the monthly rate, given an hourly rate and a discount
 // The returned monthly rate is rounded up to the nearest integer.
+// NOLINTNEXTLINE(bugprone-easily-swappable-parameters)
 int monthly_rate(double hourly_rate, double discount) {
+
     const double billable_days = 22.0;
 
     const double monthly_cost = daily_rate(hourly_rate) * billable_days;
@@ -29,6 +32,7 @@ int monthly_rate(double hourly_rate, double discount) {
 // days_in_budget calculates the number of workdays given a budget, hourly rate,
 // and discount The returned number of days is rounded down (take the floor) to
 // the next integer.
+// NOLINTNEXTLINE(bugprone-easily-swappable-parameters)
 int days_in_budget(int budget, double hourly_rate, double discount) {
     const double daily_cost = daily_rate(hourly_rate);
 
