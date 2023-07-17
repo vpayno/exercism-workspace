@@ -7,8 +7,8 @@ Running: make clean
 rm -rf ./build
 
 real	0m0.009s
-user	0m0.004s
-sys	0m0.006s
+user	0m0.001s
+sys	0m0.009s
 
 ===============================================================================
 
@@ -70,25 +70,25 @@ Directory: .
 File                                       Lines    Exec  Cover   Missing
 ------------------------------------------------------------------------------
 bob.cpp                                       20      20   100%   
-bob_test.cpp                                  75      75   100%   
+bob_test.cpp                                  63      63   100%   
 test/catch.hpp                                34      27    79%   1642-1643,1710-1711,2227,2229,2560
 ------------------------------------------------------------------------------
-TOTAL                                        129     122    94%
+TOTAL                                        117     110    94%
 ------------------------------------------------------------------------------
-lines: 94.6% (122 out of 129)
+lines: 94.0% (110 out of 117)
 branches: 40.6% (207 out of 510)
 
-real	0m12.991s
-user	0m11.780s
-sys	0m1.162s
+real	0m13.019s
+user	0m11.922s
+sys	0m1.094s
 
 ===============================================================================
 
 cmake-format --in-place CMakeLists.txt
 
-real	0m0.142s
-user	0m0.105s
-sys	0m0.038s
+real	0m0.261s
+user	0m0.180s
+sys	0m0.082s
 
 ===============================================================================
 
@@ -111,63 +111,49 @@ found lint:
 
 
 real	0m0.167s
-user	0m0.111s
-sys	0m0.057s
+user	0m0.119s
+sys	0m0.050s
 
 ===============================================================================
 
-Running: clang-format-16 -style=file -i ./bob.cpp ./bob_test.cpp ./bob.h
+Running: clang-format-16 -style=file -i ./bob.cpp ./bob_test.cpp
 
 real	0m0.020s
-user	0m0.011s
-sys	0m0.009s
+user	0m0.009s
+sys	0m0.010s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./bob.cpp ./bob_test.cpp ./bob.h
-error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
-error: invalid argument '-std=c++17' not allowed with 'C'
-/home/vpayno/git_vpayno/exercism-workspace/cpp/bob/bob.h:7:10: fatal error: 'regex' file not found
-#include <regex>
-         ^~~~~~~
-1 error generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/bob/bob.h.
+clang-check-16 --analyze ./bob.cpp ./bob_test.cpp ./bob.hpp
 
-real	0m3.266s
-user	0m3.125s
-sys	0m0.141s
+real	0m3.590s
+user	0m3.461s
+sys	0m0.128s
 
 
-real	0m3.268s
-user	0m3.125s
-sys	0m0.143s
+real	0m3.592s
+user	0m3.462s
+sys	0m0.130s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 36224 warnings generated.
 80430 warnings generated.
-80430 warnings and 3 errors generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/bob/bob.h.
-Suppressed 80435 warnings (80430 in non-user code, 5 NOLINT).
+115443 warnings generated.
+Suppressed 115448 warnings (115443 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-Found compiler error(s).
 
-real	0m16.950s
-user	0m16.768s
-sys	0m0.181s
-Running: clang-tidy-16 ./bob.cpp ./bob_test.cpp ./bob.h
-error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
-error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
-/home/vpayno/git_vpayno/exercism-workspace/cpp/bob/bob.h:7:10: error: 'regex' file not found [clang-diagnostic-error]
-#include <regex>
-         ^~~~~~~
+real	0m21.367s
+user	0m21.201s
+sys	0m0.162s
+Running: clang-tidy-16 ./bob.cpp ./bob_test.cpp ./bob.hpp
 
 
-real	0m16.952s
-user	0m16.770s
-sys	0m0.182s
+real	0m21.369s
+user	0m21.201s
+sys	0m0.165s
 
 ===============================================================================
 

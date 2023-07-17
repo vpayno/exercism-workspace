@@ -1,4 +1,4 @@
-#include "bob.h"
+#include "bob.hpp"
 #ifdef EXERCISM_TEST_SUITE
 #include <catch2/catch.hpp>
 #else
