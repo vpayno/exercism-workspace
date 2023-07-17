@@ -1,5 +1,5 @@
 // Include the header file with the definitions of the functions you create.
-#include "hello_world.h"
+#include "hello_world.hpp"
 
 // Include the test framework.
 #ifdef EXERCISM_TEST_SUITE

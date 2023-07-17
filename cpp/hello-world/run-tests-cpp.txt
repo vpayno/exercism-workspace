@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.004s
-user	0m0.002s
-sys	0m0.002s
+real	0m0.007s
+user	0m0.001s
+sys	0m0.006s
 
 ===============================================================================
 
@@ -82,17 +82,17 @@ TOTAL                                         38      31    81%
 lines: 81.6% (31 out of 38)
 branches: 28.6% (8 out of 28)
 
-real	0m9.165s
-user	0m8.313s
-sys	0m0.844s
+real	0m10.253s
+user	0m9.264s
+sys	0m0.980s
 
 ===============================================================================
 
 cmake-format --in-place CMakeLists.txt
 
-real	0m0.224s
-user	0m0.178s
-sys	0m0.047s
+real	0m0.183s
+user	0m0.116s
+sys	0m0.069s
 
 ===============================================================================
 
@@ -114,64 +114,50 @@ found lint:
   Convention: 4
 
 
-real	0m0.198s
-user	0m0.139s
+real	0m0.165s
+user	0m0.107s
 sys	0m0.059s
 
 ===============================================================================
 
-Running: clang-format-16 -style=file -i ./hello_world.cpp ./hello_world_test.cpp ./hello_world.h
+Running: clang-format-16 -style=file -i ./hello_world.cpp ./hello_world_test.cpp
 
-real	0m0.020s
-user	0m0.009s
-sys	0m0.011s
+real	0m0.022s
+user	0m0.008s
+sys	0m0.014s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./hello_world.cpp ./hello_world_test.cpp ./hello_world.h
-error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
-error: invalid argument '-std=c++17' not allowed with 'C'
-/home/vpayno/git_vpayno/exercism-workspace/cpp/hello-world/hello_world.h:8:10: fatal error: 'string' file not found
-#include <string>
-         ^~~~~~~~
-1 error generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/hello-world/hello_world.h.
+clang-check-16 --analyze ./hello_world.cpp ./hello_world_test.cpp ./hello_world.hpp
 
-real	0m0.544s
-user	0m0.491s
-sys	0m0.053s
+real	0m0.734s
+user	0m0.675s
+sys	0m0.058s
 
 
-real	0m0.546s
-user	0m0.492s
-sys	0m0.053s
+real	0m0.736s
+user	0m0.676s
+sys	0m0.060s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 11382 warnings generated.
 46771 warnings generated.
-46771 warnings and 3 errors generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/hello-world/hello_world.h.
-Suppressed 46776 warnings (46771 in non-user code, 5 NOLINT).
+58151 warnings generated.
+Suppressed 58156 warnings (58151 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-Found compiler error(s).
 
-real	0m6.209s
-user	0m6.139s
-sys	0m0.069s
-Running: clang-tidy-16 ./hello_world.cpp ./hello_world_test.cpp ./hello_world.h
-error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
-error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
-/home/vpayno/git_vpayno/exercism-workspace/cpp/hello-world/hello_world.h:8:10: error: 'string' file not found [clang-diagnostic-error]
-#include <string>
-         ^~~~~~~~
+real	0m7.959s
+user	0m7.889s
+sys	0m0.068s
+Running: clang-tidy-16 ./hello_world.cpp ./hello_world_test.cpp ./hello_world.hpp
 
 
-real	0m6.212s
-user	0m6.140s
-sys	0m0.073s
+real	0m7.961s
+user	0m7.892s
+sys	0m0.068s
 
 ===============================================================================
 
