@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.012s
-user	0m0.002s
-sys	0m0.009s
+real	0m0.011s
+user	0m0.001s
+sys	0m0.010s
 
 ===============================================================================
 
@@ -78,17 +78,17 @@ TOTAL                                         54      49    90%
 lines: 90.7% (49 out of 54)
 branches: 36.7% (55 out of 150)
 
-real	0m9.256s
-user	0m8.352s
-sys	0m0.869s
+real	0m9.520s
+user	0m8.649s
+sys	0m0.863s
 
 ===============================================================================
 
 cmake-format --in-place CMakeLists.txt
 
-real	0m0.146s
-user	0m0.106s
-sys	0m0.040s
+real	0m0.153s
+user	0m0.107s
+sys	0m0.047s
 
 ===============================================================================
 
@@ -110,63 +110,49 @@ found lint:
   Convention: 4
 
 
-real	0m0.320s
-user	0m0.238s
-sys	0m0.084s
+real	0m0.284s
+user	0m0.217s
+sys	0m0.068s
 
 ===============================================================================
 
-Running: clang-format-16 -style=file -i ./difference_of_squares.cpp ./difference_of_squares_test.cpp ./difference_of_squares.h
+Running: clang-format-16 -style=file -i ./difference_of_squares.cpp ./difference_of_squares_test.cpp
 
-real	0m0.033s
-user	0m0.016s
-sys	0m0.017s
+real	0m0.042s
+user	0m0.022s
+sys	0m0.020s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./difference_of_squares.cpp ./difference_of_squares_test.cpp ./difference_of_squares.h
-error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
-error: invalid argument '-std=c++17' not allowed with 'C'
-/home/vpayno/git_vpayno/exercism-workspace/cpp/difference-of-squares/difference_of_squares.h:6:10: fatal error: 'cmath' file not found
-#include <cmath>
-         ^~~~~~~
-1 error generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/difference-of-squares/difference_of_squares.h.
+clang-check-16 --analyze ./difference_of_squares.cpp ./difference_of_squares_test.cpp ./difference_of_squares.hpp
 
-real	0m0.545s
-user	0m0.497s
-sys	0m0.049s
+real	0m0.680s
+user	0m0.617s
+sys	0m0.063s
 
 
-real	0m0.548s
-user	0m0.497s
-sys	0m0.051s
+real	0m0.683s
+user	0m0.620s
+sys	0m0.063s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 8739 warnings generated.
 44094 warnings generated.
-44094 warnings and 3 errors generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/difference-of-squares/difference_of_squares.h.
-Suppressed 44099 warnings (44094 in non-user code, 5 NOLINT).
+52833 warnings generated.
+Suppressed 52838 warnings (52833 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-Found compiler error(s).
 
-real	0m6.693s
-user	0m6.611s
+real	0m8.396s
+user	0m8.314s
 sys	0m0.081s
-Running: clang-tidy-16 ./difference_of_squares.cpp ./difference_of_squares_test.cpp ./difference_of_squares.h
-error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
-error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
-/home/vpayno/git_vpayno/exercism-workspace/cpp/difference-of-squares/difference_of_squares.h:6:10: error: 'cmath' file not found [clang-diagnostic-error]
-#include <cmath>
-         ^~~~~~~
+Running: clang-tidy-16 ./difference_of_squares.cpp ./difference_of_squares_test.cpp ./difference_of_squares.hpp
 
 
-real	0m6.695s
-user	0m6.611s
+real	0m8.398s
+user	0m8.314s
 sys	0m0.084s
 
 ===============================================================================

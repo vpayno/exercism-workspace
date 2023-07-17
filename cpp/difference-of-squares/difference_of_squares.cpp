@@ -1,4 +1,4 @@
-#include "difference_of_squares.h"
+#include "difference_of_squares.hpp"
 
 namespace difference_of_squares {
 

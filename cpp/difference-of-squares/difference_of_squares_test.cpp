@@ -1,4 +1,4 @@
-#include "difference_of_squares.h"
+#include "difference_of_squares.hpp"
 #ifdef EXERCISM_TEST_SUITE
 #include <catch2/catch.hpp>
 #else

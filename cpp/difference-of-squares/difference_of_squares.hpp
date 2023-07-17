@@ -1,7 +1,5 @@
-#if !defined(DIFFERENCE_OF_SQUARES_H)
-#define DIFFERENCE_OF_SQUARES_H
-
-// This is not a C++ header file (change extension to .hpp)
+#if !defined(DIFFERENCE_OF_SQUARES_HPP)
+#define DIFFERENCE_OF_SQUARES_HPP
 
 #include <cmath>
 
@@ -13,4 +11,4 @@ unsigned int difference(unsigned int number);
 
 } // namespace difference_of_squares
 
-#endif // DIFFERENCE_OF_SQUARES_H
+#endif // DIFFERENCE_OF_SQUARES_HPP
