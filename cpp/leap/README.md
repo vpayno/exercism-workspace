@@ -48,3 +48,8 @@ phenomenon, go watch [this youtube video][video].
 ### Based on
 
 JavaRanch Cattle Drive, exercise 3 - http://www.javaranch.com/leap.jsp
+
+### My Solution
+
+- [my solution]()
+- [run-tests](./run-tests-cpp.txt)
