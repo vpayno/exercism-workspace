@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.014s
-user	0m0.002s
-sys	0m0.012s
+real	0m0.016s
+user	0m0.006s
+sys	0m0.010s
 
 ===============================================================================
 
@@ -78,17 +78,17 @@ TOTAL                                         55      48    87%
 lines: 87.3% (48 out of 55)
 branches: 37.7% (40 out of 106)
 
-real	0m10.027s
-user	0m9.203s
-sys	0m0.814s
+real	0m10.882s
+user	0m10.102s
+sys	0m0.761s
 
 ===============================================================================
 
 cmake-format --in-place CMakeLists.txt
 
-real	0m0.154s
-user	0m0.112s
-sys	0m0.042s
+real	0m0.175s
+user	0m0.119s
+sys	0m0.055s
 
 ===============================================================================
 
@@ -111,58 +111,44 @@ found lint:
 
 
 real	0m0.165s
-user	0m0.120s
-sys	0m0.046s
+user	0m0.117s
+sys	0m0.045s
 
 ===============================================================================
 
-Running: clang-format-16 -style=file -i ./reverse_string.cpp ./reverse_string_test.cpp ./reverse_string.h
+Running: clang-format-16 -style=file -i ./reverse_string.cpp ./reverse_string_test.cpp
 
-real	0m0.020s
-user	0m0.013s
-sys	0m0.007s
+real	0m0.028s
+user	0m0.009s
+sys	0m0.019s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./reverse_string.cpp ./reverse_string_test.cpp ./reverse_string.h
-error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
-error: invalid argument '-std=c++17' not allowed with 'C'
-/home/vpayno/git_vpayno/exercism-workspace/cpp/reverse-string/reverse_string.h:6:10: fatal error: 'iterator' file not found
-#include <iterator>
-         ^~~~~~~~~~
-1 error generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/reverse-string/reverse_string.h.
+clang-check-16 --analyze ./reverse_string.cpp ./reverse_string_test.cpp ./reverse_string.hpp
 
-real	0m0.534s
-user	0m0.495s
-sys	0m0.039s
+real	0m0.738s
+user	0m0.693s
+sys	0m0.043s
 
 
-real	0m0.536s
-user	0m0.497s
-sys	0m0.039s
+real	0m0.740s
+user	0m0.695s
+sys	0m0.043s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 12523 warnings generated.
 47957 warnings generated.
-47957 warnings and 3 errors generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/reverse-string/reverse_string.h.
-Suppressed 47960 warnings (47955 in non-user code, 5 NOLINT).
+60471 warnings generated.
+Suppressed 60474 warnings (60469 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-Found compiler error(s).
 
-real	0m6.967s
-user	0m6.889s
-sys	0m0.077s
-Running: clang-tidy-16 ./reverse_string.cpp ./reverse_string_test.cpp ./reverse_string.h
-error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
-error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
-/home/vpayno/git_vpayno/exercism-workspace/cpp/reverse-string/reverse_string.h:6:10: error: 'iterator' file not found [clang-diagnostic-error]
-#include <iterator>
-         ^~~~~~~~~~
+real	0m8.601s
+user	0m8.513s
+sys	0m0.080s
+Running: clang-tidy-16 ./reverse_string.cpp ./reverse_string_test.cpp ./reverse_string.hpp
 /home/vpayno/git_vpayno/exercism-workspace/cpp/reverse-string/reverse_string_test.cpp:9:13: warning: the 'empty' method should be used to check for emptiness instead of comparing to an empty object [readability-container-size-empty]
     REQUIRE("" == reverse_string::reverse_string(""));
             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -181,9 +167,9 @@ error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic
       ^
 
 
-real	0m6.970s
-user	0m6.891s
-sys	0m0.080s
+real	0m8.604s
+user	0m8.514s
+sys	0m0.083s
 
 ===============================================================================
 
