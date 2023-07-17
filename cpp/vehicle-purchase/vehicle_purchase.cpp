@@ -1,5 +1,9 @@
 #include "vehicle_purchase.h"
 
+// didn't work when added to the C header file (why isn't it a c++ header
+// file?????)
+#include <cmath>
+
 namespace vehicle_purchase {
 
 // needs_license determines whether a license is needed to drive a type of
@@ -12,7 +16,7 @@ bool needs_license(std::string kind) {
 // vehicle that comes first in lexicographical order.
 std::string choose_vehicle(std::string option1, std::string option2) {
     std::string choice;
-    std::string comment = " is clearly the better choice.";
+    const std::string comment = " is clearly the better choice.";
 
     if (option1 <= option2) {
         choice = option1;
