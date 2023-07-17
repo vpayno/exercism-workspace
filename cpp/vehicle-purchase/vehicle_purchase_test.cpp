@@ -1,5 +1,5 @@
 
-#include "vehicle_purchase.h"
+#include "vehicle_purchase.hpp"
 #ifdef EXERCISM_TEST_SUITE
 #include <catch2/catch.hpp>
 #else

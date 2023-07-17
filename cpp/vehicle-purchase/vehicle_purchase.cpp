@@ -1,8 +1,4 @@
-#include "vehicle_purchase.h"
-
-// didn't work when added to the C header file (why isn't it a c++ header
-// file?????)
-#include <cmath>
+#include "vehicle_purchase.hpp"
 
 namespace vehicle_purchase {
 
