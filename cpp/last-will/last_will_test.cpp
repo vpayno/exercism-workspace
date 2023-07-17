@@ -1,6 +1,6 @@
 // Trick to let the code compile, even if the function has not been implemented:
 namespace estate_executor {
-int assemble_account_number(int) __attribute__((weak));
+int assemble_account_number(int secret_modifier) __attribute__((weak));
 int assemble_code() __attribute__((weak));
 } // namespace estate_executor
 

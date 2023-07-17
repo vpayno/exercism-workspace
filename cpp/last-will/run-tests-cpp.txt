@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.011s
-user	0m0.002s
-sys	0m0.009s
+real	0m0.004s
+user	0m0.000s
+sys	0m0.004s
 
 ===============================================================================
 
@@ -79,17 +79,17 @@ TOTAL                                         95      90    94%
 lines: 94.7% (90 out of 95)
 branches: 35.4% (87 out of 246)
 
-real	0m8.632s
-user	0m7.922s
-sys	0m0.706s
+real	0m9.632s
+user	0m8.644s
+sys	0m0.929s
 
 ===============================================================================
 
 cmake-format --in-place CMakeLists.txt
 
-real	0m0.304s
-user	0m0.193s
-sys	0m0.085s
+real	0m0.180s
+user	0m0.130s
+sys	0m0.051s
 
 ===============================================================================
 
@@ -115,68 +115,51 @@ found lint:
   Convention: 5
 
 
-real	0m0.156s
-user	0m0.105s
-sys	0m0.051s
+real	0m0.299s
+user	0m0.227s
+sys	0m0.074s
 
 ===============================================================================
 
 Running: clang-format-16 -style=file -i ./last_will.cpp ./last_will_test.cpp
 
-real	0m0.021s
-user	0m0.009s
-sys	0m0.011s
+real	0m0.034s
+user	0m0.019s
+sys	0m0.015s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
 clang-check-16 --analyze ./last_will.cpp ./last_will_test.cpp
 
-real	0m0.398s
-user	0m0.358s
-sys	0m0.039s
+real	0m0.540s
+user	0m0.504s
+sys	0m0.036s
 
 
-real	0m0.399s
-user	0m0.358s
-sys	0m0.041s
+real	0m0.542s
+user	0m0.504s
+sys	0m0.038s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
-3 warnings generated.
-35406 warnings generated.
-Suppressed 35407 warnings (35401 in non-user code, 6 NOLINT).
+35399 warnings generated.
+Suppressed 35404 warnings (35398 in non-user code, 6 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 
-real	0m5.123s
-user	0m5.057s
-sys	0m0.065s
+real	0m5.723s
+user	0m5.647s
+sys	0m0.073s
 Running: clang-tidy-16 ./last_will.cpp ./last_will_test.cpp
-/home/vpayno/git_vpayno/exercism-workspace/cpp/last-will/last_will.cpp:6:5: warning: variable 'zhang_part' of type 'int' can be declared 'const' [misc-const-correctness]
-    int zhang_part{8'541};
-    ^
-        const 
-/home/vpayno/git_vpayno/exercism-workspace/cpp/last-will/last_will.cpp:20:5: warning: variable 'khan_part' of type 'int' can be declared 'const' [misc-const-correctness]
-    int khan_part{4'142};
-    ^
-        const 
-/home/vpayno/git_vpayno/exercism-workspace/cpp/last-will/last_will.cpp:34:5: warning: variable 'garcia_part' of type 'int' can be declared 'const' [misc-const-correctness]
-    int garcia_part{4'023};
-    ^
-        const 
-/home/vpayno/git_vpayno/exercism-workspace/cpp/last-will/last_will_test.cpp:3:32: warning: all parameters should be named in a function [readability-named-parameter]
-int assemble_account_number(int) __attribute__((weak));
-                               ^
-                                /*secret_modifier*/
 /home/vpayno/git_vpayno/exercism-workspace/cpp/last-will/last_will_test.cpp:7:11: warning: suspicious #include of file with '.cpp' extension [bugprone-suspicious-include]
 #include "last_will.cpp"
           ^
 
 
-real	0m5.125s
-user	0m5.059s
-sys	0m0.067s
+real	0m5.726s
+user	0m5.650s
+sys	0m0.074s
 
 ===============================================================================
 
