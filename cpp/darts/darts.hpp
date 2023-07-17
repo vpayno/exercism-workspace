@@ -5,7 +5,7 @@
 
 namespace darts {
 
-    int score(double x, double y);
+    int score(double x, double y); // NOLINT(readability-identifier-length)
 
 } // namespace darts
 

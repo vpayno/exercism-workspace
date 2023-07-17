@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.006s
-user	0m0.002s
-sys	0m0.004s
+real	0m0.017s
+user	0m0.003s
+sys	0m0.014s
 
 ===============================================================================
 
@@ -78,17 +78,17 @@ TOTAL                                         68      63    92%
 lines: 92.6% (63 out of 68)
 branches: 38.6% (85 out of 220)
 
-real	0m10.058s
-user	0m9.218s
-sys	0m0.835s
+real	0m9.722s
+user	0m8.891s
+sys	0m0.827s
 
 ===============================================================================
 
 cmake-format --in-place CMakeLists.txt
 
-real	0m0.157s
-user	0m0.111s
-sys	0m0.048s
+real	0m0.144s
+user	0m0.107s
+sys	0m0.038s
 
 ===============================================================================
 
@@ -110,16 +110,16 @@ found lint:
   Convention: 4
 
 
-real	0m0.161s
-user	0m0.121s
-sys	0m0.041s
+real	0m0.169s
+user	0m0.123s
+sys	0m0.046s
 
 ===============================================================================
 
 Running: clang-format-16 -style=file -i ./darts.cpp ./darts_test.cpp
 
-real	0m0.022s
-user	0m0.010s
+real	0m0.018s
+user	0m0.006s
 sys	0m0.012s
 
 ===============================================================================
@@ -127,49 +127,33 @@ sys	0m0.012s
 Running: ../../.github/citools/cpp/clang-check
 clang-check-16 --analyze ./darts.cpp ./darts_test.cpp ./darts.hpp
 
-real	0m0.553s
-user	0m0.517s
-sys	0m0.036s
-
-
 real	0m0.555s
-user	0m0.519s
-sys	0m0.036s
+user	0m0.526s
+sys	0m0.029s
+
+
+real	0m0.557s
+user	0m0.526s
+sys	0m0.031s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
-8744 warnings generated.
-44098 warnings generated.
-52839 warnings generated.
-Suppressed 52839 warnings (52834 in non-user code, 5 NOLINT).
+8739 warnings generated.
+44091 warnings generated.
+52830 warnings generated.
+Suppressed 52843 warnings (52830 in non-user code, 13 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 
-real	0m8.772s
-user	0m8.698s
-sys	0m0.074s
-Running: clang-tidy-16 ./darts.cpp ./darts_test.cpp ./darts.hpp
-/home/vpayno/git_vpayno/exercism-workspace/cpp/darts/darts.cpp:5:18: warning: parameter name 'x' is too short, expected at least 3 characters [readability-identifier-length]
-int score(double x, double y) {
-                 ^
-/home/vpayno/git_vpayno/exercism-workspace/cpp/darts/darts.cpp:5:28: warning: parameter name 'y' is too short, expected at least 3 characters [readability-identifier-length]
-int score(double x, double y) {
-                           ^
-/home/vpayno/git_vpayno/exercism-workspace/cpp/darts/darts.cpp:6:5: warning: variable 'distance' of type 'double' can be declared 'const' [misc-const-correctness]
-    double distance = std::hypot(x, y);
-    ^
-           const 
-/home/vpayno/git_vpayno/exercism-workspace/cpp/darts/darts.hpp:8:22: warning: parameter name 'x' is too short, expected at least 3 characters [readability-identifier-length]
-    int score(double x, double y);
-                     ^
-/home/vpayno/git_vpayno/exercism-workspace/cpp/darts/darts.hpp:8:32: warning: parameter name 'y' is too short, expected at least 3 characters [readability-identifier-length]
-    int score(double x, double y);
-                               ^
-
-
-real	0m8.774s
-user	0m8.699s
+real	0m8.648s
+user	0m8.571s
 sys	0m0.076s
+Running: clang-tidy-16 ./darts.cpp ./darts_test.cpp ./darts.hpp
+
+
+real	0m8.650s
+user	0m8.571s
+sys	0m0.079s
 
 ===============================================================================
 

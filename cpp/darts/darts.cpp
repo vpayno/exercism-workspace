@@ -2,8 +2,9 @@
 
 namespace darts {
 
+// NOLINTNEXTLINE(readability-identifier-length)
 int score(double x, double y) {
-    double distance = std::hypot(x, y);
+    const double distance = std::hypot(x, y);
 
     if (distance <= 1.0) {
         return 10;
