@@ -28,6 +28,7 @@ double annual_balance_update(double balance) {
 
 // years_until_desired_balance calculates the minimum number of years required
 // to reach the desired balance.
+// NOLINTNEXTLINE(bugprone-easily-swappable-parameters)
 int years_until_desired_balance(double balance, double target_balance) {
     double moving_balance{balance};
     int years_needed{0};
