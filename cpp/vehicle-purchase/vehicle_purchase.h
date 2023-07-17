@@ -1,5 +1,8 @@
 #pragma once
 
+// this file should be a C++ header file (*.hpp)
+
+#include <cmath>
 #include <string>
 
 namespace vehicle_purchase {
@@ -8,4 +11,4 @@ namespace vehicle_purchase {
     std::string choose_vehicle(std::string option1, std::string option2);
     double calculate_resell_price(double original_price, double age);
 
-}  // namespace vehicle_purchase
+} // namespace vehicle_purchase

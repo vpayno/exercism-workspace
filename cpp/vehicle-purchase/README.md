@@ -164,3 +164,8 @@ calculate_resell_price(1000.0, 15)
 ### Created by
 
 - @vaeng
+
+### My Solution
+
+- [my solution]()
+- [run-tests](./run-tests-cpp.txt)

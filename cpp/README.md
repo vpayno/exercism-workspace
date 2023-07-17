@@ -19,3 +19,4 @@
 - [log-levels](./log-levels/README.md)
 - [raindrops](./raindrops/README.md)
 - [freelancer-rates](./freelancer-rates/README.md)
+- [vehicle-purchase](./vehicle-purchase/README.md)
