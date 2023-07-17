@@ -1,7 +1,7 @@
 #if !defined(ARMSTRONG_NUMBERS_H)
 #define ARMSTRONG_NUMBERS_H
 
-// the C++ version is set to 17, why are you using C header files!
+#include <cmath>
 
 namespace armstrong_numbers {
 

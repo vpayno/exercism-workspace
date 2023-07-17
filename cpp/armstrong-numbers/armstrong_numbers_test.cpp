@@ -3,7 +3,7 @@
 #else
 #include "test/catch.hpp"
 #endif
-#include "armstrong_numbers.h"
+#include "armstrong_numbers.hpp"
 
 // Armstrong-numbers exercise test case data version 1.1.0
 

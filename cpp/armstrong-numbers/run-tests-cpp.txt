@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.007s
-user	0m0.001s
-sys	0m0.006s
+real	0m0.011s
+user	0m0.003s
+sys	0m0.008s
 
 ===============================================================================
 
@@ -78,17 +78,17 @@ TOTAL                                         75      70    93%
 lines: 93.3% (70 out of 75)
 branches: 39.0% (57 out of 146)
 
-real	0m10.788s
-user	0m9.654s
-sys	0m1.012s
+real	0m10.112s
+user	0m9.255s
+sys	0m0.848s
 
 ===============================================================================
 
 cmake-format --in-place CMakeLists.txt
 
-real	0m0.164s
-user	0m0.113s
-sys	0m0.051s
+real	0m0.151s
+user	0m0.102s
+sys	0m0.049s
 
 ===============================================================================
 
@@ -110,56 +110,50 @@ found lint:
   Convention: 4
 
 
-real	0m0.212s
-user	0m0.136s
-sys	0m0.070s
+real	0m0.165s
+user	0m0.112s
+sys	0m0.053s
 
 ===============================================================================
 
-Running: clang-format-16 -style=file -i ./armstrong_numbers.cpp ./armstrong_numbers_test.cpp ./armstrong_numbers.h
+Running: clang-format-16 -style=file -i ./armstrong_numbers.cpp ./armstrong_numbers_test.cpp
 
-real	0m0.031s
-user	0m0.016s
-sys	0m0.015s
+real	0m0.024s
+user	0m0.011s
+sys	0m0.013s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./armstrong_numbers.cpp ./armstrong_numbers_test.cpp ./armstrong_numbers.h
-error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
-error: invalid argument '-std=c++17' not allowed with 'C'
+clang-check-16 --analyze ./armstrong_numbers.cpp ./armstrong_numbers_test.cpp ./armstrong_numbers.hpp
 
-real	0m0.540s
-user	0m0.491s
-sys	0m0.049s
+real	0m0.753s
+user	0m0.699s
+sys	0m0.053s
 
 
-real	0m0.542s
-user	0m0.492s
-sys	0m0.050s
+real	0m0.755s
+user	0m0.699s
+sys	0m0.055s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 8739 warnings generated.
-44115 warnings generated.
-44115 warnings and 2 errors generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/armstrong-numbers/armstrong_numbers.h.
-Suppressed 44120 warnings (44115 in non-user code, 5 NOLINT).
+44116 warnings generated.
+52855 warnings generated.
+Suppressed 52860 warnings (52855 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-Found compiler error(s).
 
-real	0m8.110s
-user	0m8.018s
-sys	0m0.087s
-Running: clang-tidy-16 ./armstrong_numbers.cpp ./armstrong_numbers_test.cpp ./armstrong_numbers.h
-error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
-error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
+real	0m8.840s
+user	0m8.742s
+sys	0m0.098s
+Running: clang-tidy-16 ./armstrong_numbers.cpp ./armstrong_numbers_test.cpp ./armstrong_numbers.hpp
 
 
-real	0m8.112s
-user	0m8.021s
-sys	0m0.089s
+real	0m8.842s
+user	0m8.742s
+sys	0m0.102s
 
 ===============================================================================
 
