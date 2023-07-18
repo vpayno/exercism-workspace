@@ -2,7 +2,7 @@
 
 namespace luhn {
 
-bool valid(std::string number) {
+bool valid(const std::string number) {
     bool result = false;
 
     // fail fast if the string isn't a valid (only numbers and spaces)
@@ -40,7 +40,7 @@ bool valid(std::string number) {
 }
 
 // does the string only have digits and spaces in it?
-bool is_valid_input(std::string sequence) {
+bool is_valid_input(const std::string sequence) {
     if (sequence.size() <= 1) {
         return false;
     }
@@ -61,7 +61,7 @@ bool is_valid_input(std::string sequence) {
 }
 
 // sums numbers in an array
-int sum(std::array<int, 256> numbers) {
+int sum(const std::array<int, 256> numbers) {
     const int sum = std::accumulate(numbers.begin(), numbers.end(), 0);
 
     return sum;
