@@ -27,3 +27,4 @@
 - [armstrong-numbers](./armstrong-numbers/README.md)
 - [bob](./bob/README.md)
 - [difference-of-squares](./difference-of-squares/README.md)
+- [luhn](./luhn/README.md)
