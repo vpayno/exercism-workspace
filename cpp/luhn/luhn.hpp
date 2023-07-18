@@ -1,7 +1,6 @@
 #if !defined(LUHN_HPP)
 #define LUHN_HPP
 
-#include <array>
 #include <cctype>
 #include <iterator>
 #include <numeric>
@@ -14,9 +13,9 @@ bool valid(std::string number);
 
 bool is_valid_input(std::string sequence);
 
-int sum(std::array<int, 256> numbers);
+int sum(std::vector<int> numbers);
 
-std::array<int, 256> get_numbers(std::string data);
+std::vector<int> get_numbers(std::string data);
 
 } // namespace luhn
 

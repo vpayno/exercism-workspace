@@ -11,12 +11,12 @@ bool valid(const std::string number) {
     }
 
     // extract the numbers from the string in reverse order
-    std::array<int, 256> numbers = get_numbers(number);
+    std::vector<int> numbers = get_numbers(number);
 
     // double numbers with index 1, 3, 5, ...
-    for (auto *it = std::next(numbers.begin()); it != numbers.end();
+    for (auto it = std::next(numbers.begin()); it != numbers.end();
          std::advance(it, 2)) {
-        // make sure it+=2 hasn't moved us past the end of the array
+        // make sure it+=2 hasn't moved us past the end of the vector
         if (it >= numbers.end()) {
             break;
         }
@@ -60,22 +60,20 @@ bool is_valid_input(const std::string sequence) {
     return digit_count >= 2;
 }
 
-// sums numbers in an array
-int sum(const std::array<int, 256> numbers) {
+// sums numbers in an vector
+int sum(const std::vector<int> numbers) {
     const int sum = std::accumulate(numbers.begin(), numbers.end(), 0);
 
     return sum;
 }
 
 // extract the numbers from the string in reverse order
-std::array<int, 256> get_numbers(const std::string data) {
-    std::array<int, 256> numbers = {};
-    auto *dst_it = numbers.begin();
+std::vector<int> get_numbers(const std::string data) {
+    std::vector<int> numbers = {};
 
     for (auto src_it = data.crbegin(); src_it != data.crend(); src_it++) {
         if (std::isdigit(*src_it) > 0) {
-            *dst_it = *src_it - '0';
-            std::advance(dst_it, 1);
+            numbers.emplace_back(*src_it - '0');
         }
     }
 
