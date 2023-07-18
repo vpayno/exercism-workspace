@@ -1,4 +1,4 @@
-#include "luhn.h"
+#include "luhn.hpp"
 #ifdef EXERCISM_TEST_SUITE
 #include <catch2/catch.hpp>
 #else

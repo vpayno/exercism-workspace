@@ -1,10 +1,4 @@
-#include "luhn.h"
-#include <cctype>
-#include <iterator>
-#include <numeric>
-#include <vector>
-
-#include <iostream>
+#include "luhn.hpp"
 
 namespace luhn {
 

@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.012s
-user	0m0.000s
-sys	0m0.012s
+real	0m0.009s
+user	0m0.001s
+sys	0m0.008s
 
 ===============================================================================
 
@@ -69,26 +69,26 @@ Directory: .
 ------------------------------------------------------------------------------
 File                                       Lines    Exec  Cover   Missing
 ------------------------------------------------------------------------------
-luhn.cpp                                      36      36   100%   
+luhn.cpp                                      37      37   100%   
 luhn_test.cpp                                 85      85   100%   
 test/catch.hpp                                31      26    83%   1642-1643,2227,2229,2560
 ------------------------------------------------------------------------------
-TOTAL                                        152     147    96%
+TOTAL                                        153     148    96%
 ------------------------------------------------------------------------------
-lines: 96.7% (147 out of 152)
+lines: 96.7% (148 out of 153)
 branches: 42.9% (150 out of 350)
 
-real	0m9.731s
-user	0m8.841s
-sys	0m0.886s
+real	0m9.443s
+user	0m8.727s
+sys	0m0.700s
 
 ===============================================================================
 
 cmake-format --in-place CMakeLists.txt
 
-real	0m0.154s
-user	0m0.110s
-sys	0m0.045s
+real	0m0.141s
+user	0m0.103s
+sys	0m0.039s
 
 ===============================================================================
 
@@ -110,64 +110,50 @@ found lint:
   Convention: 4
 
 
-real	0m0.165s
-user	0m0.107s
-sys	0m0.059s
+real	0m0.153s
+user	0m0.109s
+sys	0m0.045s
 
 ===============================================================================
 
-Running: clang-format-16 -style=file -i ./luhn.cpp ./luhn_test.cpp ./luhn.h
+Running: clang-format-16 -style=file -i ./luhn.cpp ./luhn_test.cpp
 
-real	0m0.021s
-user	0m0.013s
-sys	0m0.008s
+real	0m0.020s
+user	0m0.010s
+sys	0m0.010s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./luhn.cpp ./luhn_test.cpp ./luhn.h
-error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
-error: invalid argument '-std=c++17' not allowed with 'C'
-/home/vpayno/git_vpayno/exercism-workspace/cpp/luhn/luhn.h:4:10: fatal error: 'array' file not found
-#include <array>
-         ^~~~~~~
-1 error generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/luhn/luhn.h.
+clang-check-16 --analyze ./luhn.cpp ./luhn_test.cpp ./luhn.hpp
 
-real	0m0.694s
-user	0m0.638s
-sys	0m0.056s
+real	0m0.782s
+user	0m0.750s
+sys	0m0.032s
 
 
-real	0m0.696s
-user	0m0.640s
-sys	0m0.056s
+real	0m0.783s
+user	0m0.751s
+sys	0m0.032s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
-17049 warnings generated.
-52427 warnings generated.
-52427 warnings and 3 errors generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/luhn/luhn.h.
-Suppressed 52433 warnings (52427 in non-user code, 6 NOLINT).
+14669 warnings generated.
+50086 warnings generated.
+64732 warnings generated.
+Suppressed 64737 warnings (64732 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-Found compiler error(s).
 
-real	0m7.441s
-user	0m7.371s
-sys	0m0.069s
-Running: clang-tidy-16 ./luhn.cpp ./luhn_test.cpp ./luhn.h
-error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
-error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
-/home/vpayno/git_vpayno/exercism-workspace/cpp/luhn/luhn.h:4:10: error: 'array' file not found [clang-diagnostic-error]
-#include <array>
-         ^~~~~~~
+real	0m8.297s
+user	0m8.222s
+sys	0m0.074s
+Running: clang-tidy-16 ./luhn.cpp ./luhn_test.cpp ./luhn.hpp
 
 
-real	0m7.444s
-user	0m7.373s
-sys	0m0.071s
+real	0m8.299s
+user	0m8.223s
+sys	0m0.075s
 
 ===============================================================================
 
