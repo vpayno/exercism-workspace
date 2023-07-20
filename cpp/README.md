@@ -28,3 +28,4 @@
 - [bob](./bob/README.md)
 - [difference-of-squares](./difference-of-squares/README.md)
 - [luhn](./luhn/README.md)
+- [making-the-grade](./making-the-grade/README.md)

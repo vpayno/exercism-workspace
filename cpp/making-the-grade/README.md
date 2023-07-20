@@ -200,3 +200,8 @@ perfect_score({"Nur", "Tony"}, {90, 80});
 ### Created by
 
 - @vaeng
+
+### My Solution
+
+- [my solution]()
+- [run-tests](./run-tests-cpp.txt)
