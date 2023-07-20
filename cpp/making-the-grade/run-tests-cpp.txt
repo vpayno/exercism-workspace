@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.013s
-user	0m0.004s
-sys	0m0.009s
+real	0m0.012s
+user	0m0.005s
+sys	0m0.007s
 
 ===============================================================================
 
@@ -44,57 +44,49 @@ make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/makin
 make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/making-the-grade/build'
 make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/making-the-grade/build'
 make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/making-the-grade/build'
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-making-the-grade is a Catch v2.13.6 host application.
-Run with -? for options
-
--------------------------------------------------------------------------------
-Test letter grades: 97
--------------------------------------------------------------------------------
-/home/vpayno/git_vpayno/exercism-workspace/cpp/making-the-grade/making_the_grade_test.cpp:95
-...............................................................................
-
-/home/vpayno/git_vpayno/exercism-workspace/cpp/making-the-grade/making_the_grade_test.cpp:100: FAILED:
-  REQUIRE( expected == actual )
-with expansion:
-  { 41, 55, 69, 83 } == { 41, 54, 67, 80 }
-
--------------------------------------------------------------------------------
-Test letter grades: 81
--------------------------------------------------------------------------------
-/home/vpayno/git_vpayno/exercism-workspace/cpp/making-the-grade/making_the_grade_test.cpp:102
-...............................................................................
-
-/home/vpayno/git_vpayno/exercism-workspace/cpp/making-the-grade/making_the_grade_test.cpp:107: FAILED:
-  REQUIRE( expected == actual )
-with expansion:
-  { 41, 51, 61, 71 } == { 41, 50, 59, 68 }
-
 ===============================================================================
-test cases: 17 | 15 passed | 2 failed
-assertions: 17 | 15 passed | 2 failed
-make[3]: *** [CMakeFiles/test_making-the-grade.dir/build.make:70: CMakeFiles/test_making-the-grade] Error 2
+All tests passed (17 assertions in 17 test cases)
 
-make[2]: *** [CMakeFiles/Makefile2:111: CMakeFiles/test_making-the-grade.dir/all] Error 2
 make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/making-the-grade/build'
-make[1]: *** [Makefile:91: all] Error 2
+[100%] Built target test_making-the-grade
 make[2]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/making-the-grade/build'
 make[1]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/making-the-grade/build'
 
-make: *** [Makefile:11: test] Error 1
-=== Test Failure ===
+=== All Tests Passed ===
 
-real	0m10.021s
-user	0m9.142s
-sys	0m0.873s
+find . -regextype posix-egrep -regex "^.*(tests-main|CompilerId).*[.](gcda|gcno)$" -print -delete
+./build/CMakeFiles/3.22.2/CompilerIdCXX/CMakeCXXCompilerId.gcno
+./build/CMakeFiles/making-the-grade.dir/test/tests-main.cpp.gcno
+./build/CMakeFiles/making-the-grade.dir/test/tests-main.cpp.gcda
+
+find . -regextype posix-egrep -regex "^.*[.](gcda|gcno)18894"
+
+gcovr --print-summary
+------------------------------------------------------------------------------
+                           GCC Code Coverage Report
+Directory: .
+------------------------------------------------------------------------------
+File                                       Lines    Exec  Cover   Missing
+------------------------------------------------------------------------------
+making_the_grade.cpp                          62      58    93%   82,86,117,121
+making_the_grade_test.cpp                    111     111   100%   
+test/catch.hpp                                48      27    56%   1448-1450,1642-1643,1827-1833,1835-1836,2016-2017,2039-2040,2227,2229,2560
+------------------------------------------------------------------------------
+TOTAL                                        221     196    88%
+------------------------------------------------------------------------------
+lines: 88.7% (196 out of 221)
+branches: 41.5% (222 out of 535)
+
+real	0m9.866s
+user	0m9.113s
+sys	0m0.740s
 
 ===============================================================================
 
 cmake-format --in-place CMakeLists.txt
 
-real	0m0.208s
-user	0m0.161s
+real	0m0.193s
+user	0m0.147s
 sys	0m0.047s
 
 ===============================================================================
@@ -117,31 +109,31 @@ found lint:
   Convention: 4
 
 
-real	0m0.156s
-user	0m0.109s
-sys	0m0.046s
+real	0m0.149s
+user	0m0.106s
+sys	0m0.044s
 
 ===============================================================================
 
 Running: clang-format-16 -style=file -i ./making_the_grade.cpp ./making_the_grade_test.cpp
 
-real	0m0.022s
-user	0m0.010s
-sys	0m0.012s
+real	0m0.023s
+user	0m0.011s
+sys	0m0.011s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
 clang-check-16 --analyze ./making_the_grade.cpp ./making_the_grade_test.cpp ./range.hpp
 
-real	0m2.600s
-user	0m2.504s
-sys	0m0.096s
+real	0m2.616s
+user	0m2.536s
+sys	0m0.080s
 
 
-real	0m2.602s
-user	0m2.504s
-sys	0m0.099s
+real	0m2.618s
+user	0m2.537s
+sys	0m0.080s
 
 ===============================================================================
 
@@ -211,9 +203,9 @@ namespace util::lang
 /home/vpayno/git_vpayno/exercism-workspace/cpp/making-the-grade/range.hpp:126:18: Suppressed 79648 warnings (79643 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 
-real	0m15.144s
-user	0m15.034s
-sys	0m0.109s
+real	0m14.764s
+user	0m14.657s
+sys	0m0.106s
 warning: 2 adjacent parameters of 'iterator' of similar type ('T') are easily swapped by mistake [bugprone-easily-swappable-parameters]
         iterator(T current = T(), T step = T())
                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -248,9 +240,9 @@ range_proxy<std::size_t> indices(T (&)[N]) {
                                       /*unused*/
 
 
-real	0m15.147s
-user	0m15.034s
-sys	0m0.112s
+real	0m14.766s
+user	0m14.659s
+sys	0m0.107s
 
 ===============================================================================
 

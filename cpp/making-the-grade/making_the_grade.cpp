@@ -65,7 +65,7 @@ std::array<int, 4> letter_grades(int highest_score) {
             continue;
         }
 
-        grade += offset + (highest_score == 100 ? 1 : 0);
+        grade += offset + 1;
         iter = grade;
     }
 
