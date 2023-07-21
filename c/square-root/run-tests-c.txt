@@ -6,77 +6,87 @@ Running automated test file(s):
 Running: make clean
 rm -rf *.o *.out *.out.dSYM
 
-real	0m0.007s
-user	0m0.001s
-sys	0m0.006s
+real	0m0.004s
+user	0m0.002s
+sys	0m0.002s
 
 ===============================================================================
 
-Running: make test
+Running: make test | ansifilter
 Compiling tests.out
-test_square_root.c:40:test_root_of_1:[42mPASS[00m
-test_square_root.c:41:test_root_of_4:[42mPASS[00m
-test_square_root.c:42:test_root_of_25:[42mPASS[00m
-test_square_root.c:43:test_root_of_81:[42mPASS[00m
-test_square_root.c:44:test_root_of_196:[42mPASS[00m
-test_square_root.c:45:test_root_of_65025:[42mPASS[00m
+test_square_root.c:40:test_root_of_1:PASS
+test_square_root.c:41:test_root_of_4:PASS
+test_square_root.c:42:test_root_of_25:PASS
+test_square_root.c:43:test_root_of_81:PASS
+test_square_root.c:44:test_root_of_196:PASS
+test_square_root.c:45:test_root_of_65025:PASS
 
 -----------------------
 6 Tests 0 Failures 0 Ignored 
-[42mOK[00m
+OK
 
-real	0m0.117s
-user	0m0.083s
-sys	0m0.033s
-
-===============================================================================
-
-Running: make memcheck
-Compiling memcheck
-test_square_root.c:40:test_root_of_1:[42mPASS[00m
-test_square_root.c:41:test_root_of_4:[42mPASS[00m
-test_square_root.c:42:test_root_of_25:[42mPASS[00m
-test_square_root.c:43:test_root_of_81:[42mPASS[00m
-test_square_root.c:44:test_root_of_196:[42mPASS[00m
-test_square_root.c:45:test_root_of_65025:[42mPASS[00m
-
------------------------
-6 Tests 0 Failures 0 Ignored 
-[42mOK[00m
-Memory check passed
-
-real	0m0.134s
-user	0m0.092s
+real	0m0.119s
+user	0m0.078s
 sys	0m0.041s
 
 ===============================================================================
 
-Running: clang-check-16 ./square_root.c ./test_square_root.c ./square_root.h --
+Running: make memcheck | ansifilter
+Compiling memcheck
+test_square_root.c:40:test_root_of_1:PASS
+test_square_root.c:41:test_root_of_4:PASS
+test_square_root.c:42:test_root_of_25:PASS
+test_square_root.c:43:test_root_of_81:PASS
+test_square_root.c:44:test_root_of_196:PASS
+test_square_root.c:45:test_root_of_65025:PASS
 
-real	0m0.040s
-user	0m0.028s
-sys	0m0.011s
+-----------------------
+6 Tests 0 Failures 0 Ignored 
+OK
+Memory check passed
 
-===============================================================================
-
-Running: clang-tidy-16 ./square_root.c ./test_square_root.c ./square_root.h -checks=*,-llvm-header-guard,-llvmlibc-restrict-system-libc-headers --
-1082 warnings generated.
-3234 warnings generated.
-4316 warnings generated.
-Suppressed 4316 warnings (4316 in non-user code).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-
-real	0m0.184s
-user	0m0.169s
-sys	0m0.015s
+real	0m0.131s
+user	0m0.090s
+sys	0m0.041s
 
 ===============================================================================
 
 Running: clang-format-16 -style=file -i ./square_root.c ./test_square_root.c ./square_root.h
 
-real	0m0.022s
-user	0m0.009s
-sys	0m0.013s
+real	0m0.023s
+user	0m0.012s
+sys	0m0.011s
+
+===============================================================================
+
+Running: ../../.github/citools/cpp/clang-check
+clang-check-16 --analyze ./square_root.h
+
+real	0m0.025s
+user	0m0.017s
+sys	0m0.008s
+
+
+real	0m0.027s
+user	0m0.018s
+sys	0m0.009s
+
+===============================================================================
+
+Running: ../../.github/citools/cpp/clang-tidy | head -n 100
+353 warnings generated.
+Suppressed 353 warnings (353 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+
+real	0m0.048s
+user	0m0.034s
+sys	0m0.014s
+Running: clang-tidy-16 ./square_root.h
+
+
+real	0m0.050s
+user	0m0.037s
+sys	0m0.014s
 
 ===============================================================================
 
