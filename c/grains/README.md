@@ -40,3 +40,8 @@ Write code that shows:
 ### Based on
 
 JavaRanch Cattle Drive, exercise 6 - http://www.javaranch.com/grains.jsp
+
+### My Solution
+
+- [my solution](./grains.c)
+- [run-tests](./run-tests-c.txt)
