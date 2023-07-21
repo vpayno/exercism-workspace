@@ -6,113 +6,97 @@ Running automated test file(s):
 Running: make clean
 rm -rf *.o *.out *.out.dSYM
 
-real	0m0.008s
-user	0m0.004s
-sys	0m0.004s
+real	0m0.005s
+user	0m0.002s
+sys	0m0.003s
 
 ===============================================================================
 
 Running: make test | ansifilter
 Compiling tests.out
-test_acronym.c:117:test_null_string:PASS
-test_acronym.c:118:test_empty_string:PASS
-test_acronym.c:119:test_basic_abbreviation:PASS
-test_acronym.c:120:test_lowercase_words:PASS
-test_acronym.c:121:test_punctuation:PASS
-test_acronym.c:122:test_all_caps_words:PASS
-test_acronym.c:123:test_punctuation_without_whitespace:PASS
-test_acronym.c:124:test_long_abbreviation:PASS
-test_acronym.c:125:test_consecutive_delimiters_abbreviation:PASS
-test_acronym.c:126:test_apostrophes:PASS
-test_acronym.c:127:test_underscore_emphasis:PASS
+test_acronym.c:101:test_null_string:PASS
+test_acronym.c:102:test_empty_string:PASS
+test_acronym.c:103:test_basic_abbreviation:PASS
+test_acronym.c:104:test_lowercase_words:PASS
+test_acronym.c:105:test_punctuation:PASS
+test_acronym.c:106:test_all_caps_words:PASS
+test_acronym.c:107:test_punctuation_without_whitespace:PASS
+test_acronym.c:108:test_long_abbreviation:PASS
+test_acronym.c:109:test_consecutive_delimiters_abbreviation:PASS
+test_acronym.c:110:test_apostrophes:PASS
+test_acronym.c:111:test_underscore_emphasis:PASS
 
 -----------------------
 11 Tests 0 Failures 0 Ignored 
 OK
 
-real	0m0.120s
-user	0m0.086s
+real	0m0.111s
+user	0m0.077s
 sys	0m0.037s
 
 ===============================================================================
 
 Running: make memcheck | ansifilter
 Compiling memcheck
-test_acronym.c:117:test_null_string:PASS
-test_acronym.c:118:test_empty_string:PASS
-test_acronym.c:119:test_basic_abbreviation:PASS
-test_acronym.c:120:test_lowercase_words:PASS
-test_acronym.c:121:test_punctuation:PASS
-test_acronym.c:122:test_all_caps_words:PASS
-test_acronym.c:123:test_punctuation_without_whitespace:PASS
-test_acronym.c:124:test_long_abbreviation:PASS
-test_acronym.c:125:test_consecutive_delimiters_abbreviation:PASS
-test_acronym.c:126:test_apostrophes:PASS
-test_acronym.c:127:test_underscore_emphasis:PASS
+test_acronym.c:101:test_null_string:PASS
+test_acronym.c:102:test_empty_string:PASS
+test_acronym.c:103:test_basic_abbreviation:PASS
+test_acronym.c:104:test_lowercase_words:PASS
+test_acronym.c:105:test_punctuation:PASS
+test_acronym.c:106:test_all_caps_words:PASS
+test_acronym.c:107:test_punctuation_without_whitespace:PASS
+test_acronym.c:108:test_long_abbreviation:PASS
+test_acronym.c:109:test_consecutive_delimiters_abbreviation:PASS
+test_acronym.c:110:test_apostrophes:PASS
+test_acronym.c:111:test_underscore_emphasis:PASS
 
 -----------------------
 11 Tests 0 Failures 0 Ignored 
 OK
 Memory check passed
 
-real	0m0.130s
-user	0m0.085s
-sys	0m0.046s
+real	0m0.128s
+user	0m0.096s
+sys	0m0.034s
 
 ===============================================================================
 
 Running: clang-format-16 -style=file -i ./acronym.c ./test_acronym.c ./acronym.h
 
-real	0m0.022s
-user	0m0.010s
+real	0m0.030s
+user	0m0.013s
 sys	0m0.012s
 
 ===============================================================================
 
-Running: clang-check-16 ./acronym.c ./test_acronym.c ./acronym.h --
+Running: ../../.github/citools/cpp/clang-check
+clang-check-16 --analyze ./acronym.h
 
-real	0m0.040s
-user	0m0.022s
-sys	0m0.017s
+real	0m0.025s
+user	0m0.011s
+sys	0m0.014s
+
+
+real	0m0.028s
+user	0m0.013s
+sys	0m0.015s
 
 ===============================================================================
 
-Running: clang-tidy-16 ./acronym.c ./test_acronym.c ./acronym.h -checks=*,-llvm-header-guard,-llvmlibc-restrict-system-libc-headers -- | head -n 100
-2673 warnings generated.
-6658 warnings generated.
-9335 warnings generated.
-Suppressed 9327 warnings (9327 in non-user code).
+Running: ../../.github/citools/cpp/clang-tidy | head -n 100
+429 warnings generated.
+Suppressed 429 warnings (429 in non-user code).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-/home/vpayno/git_vpayno/exercism-workspace/c/acronym/acronym.c:12:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
-    for (size_t i = 0; i < strlen(phrase); i++) {
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/c/acronym/acronym.c:20:13: warning: Call to function 'strncat' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'strncat_s' in case of C11 [clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling]
-            strncat(acronym, &candidate, sizeof(char));
-            ^~~~~~~
-/home/vpayno/git_vpayno/exercism-workspace/c/acronym/acronym.c:20:13: note: Call to function 'strncat' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'strncat_s' in case of C11
-            strncat(acronym, &candidate, sizeof(char));
-            ^~~~~~~
-/home/vpayno/git_vpayno/exercism-workspace/c/acronym/test_acronym.c:6:14: warning: variable 'actual' is non-const and globally accessible, consider making it const [cppcoreguidelines-avoid-non-const-global-variables]
-static char *actual = NULL;
-             ^
-/home/vpayno/git_vpayno/exercism-workspace/c/acronym/test_acronym.c:6:14: warning: variable 'actual' provides global access to a non-const object; consider making the pointed-to data 'const' [cppcoreguidelines-avoid-non-const-global-variables]
-/home/vpayno/git_vpayno/exercism-workspace/c/acronym/test_acronym.c:10:16: warning: statement should be inside braces [google-readability-braces-around-statements,hicpp-braces-around-statements,readability-braces-around-statements]
-    if (actual)
-               ^
-                {
-/home/vpayno/git_vpayno/exercism-workspace/c/acronym/test_acronym.c:15:32: warning: 2 adjacent parameters of 'check_abbreviation' of similar type ('char *') are easily swapped by mistake [bugprone-easily-swappable-parameters]
-static void check_abbreviation(char *phrase, char *expected) {
-                               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/home/vpayno/git_vpayno/exercism-workspace/c/acronym/test_acronym.c:15:38: note: the first parameter in the range is 'phrase'
-static void check_abbreviation(char *phrase, char *expected) {
-                                     ^~~~~~
-/home/vpayno/git_vpayno/exercism-workspace/c/acronym/test_acronym.c:15:52: note: the last parameter in the range is 'expected'
-static void check_abbreviation(char *phrase, char *expected) {
-                                                   ^~~~~~~~
 
-real	0m0.297s
-user	0m0.269s
-sys	0m0.029s
+real	0m0.039s
+user	0m0.026s
+sys	0m0.013s
+Running: clang-tidy-16 ./acronym.h
+
+
+real	0m0.041s
+user	0m0.026s
+sys	0m0.016s
 
 ===============================================================================
 
