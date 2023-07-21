@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf *.o *.out *.out.dSYM
 
-real	0m0.004s
-user	0m0.001s
-sys	0m0.003s
+real	0m0.005s
+user	0m0.002s
+sys	0m0.002s
 
 ===============================================================================
 
@@ -69,9 +69,9 @@ test_allergies.c:405:test_no_allergen_score_parts_without_highest_valid_score:PA
 50 Tests 0 Failures 0 Ignored 
 OK
 
-real	0m0.132s
-user	0m0.100s
-sys	0m0.034s
+real	0m0.125s
+user	0m0.092s
+sys	0m0.036s
 
 ===============================================================================
 
@@ -133,135 +133,47 @@ test_allergies.c:405:test_no_allergen_score_parts_without_highest_valid_score:PA
 OK
 Memory check passed
 
-real	0m0.150s
-user	0m0.120s
-sys	0m0.032s
-
-===============================================================================
-
-Running: clang-check-16 ./allergies.c ./test_allergies.c ./allergies.h --
-
-real	0m0.035s
-user	0m0.023s
-sys	0m0.012s
-
-===============================================================================
-
-Running: clang-tidy-16 ./allergies.c ./test_allergies.c ./allergies.h -checks=*,-llvm-header-guard,-llvmlibc-restrict-system-libc-headers -- | head -n 100
-776 warnings generated.
-4249 warnings generated.
-5024 warnings generated.
-/home/vpayno/git_vpayno/exercism-workspace/c/allergies/allergies.c:11:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
-    for (allergen_t allergen = ALLERGEN_EGGS; allergen < ALLERGEN_COUNT;
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/c/allergies/allergies.h:19:9: warning: accessing fields in struct 'allergen_list_t' is inefficient due to poor alignment; currently aligned to 4 bytes, but recommended alignment is 16 bytes [altera-struct-pack-align]
-typedef struct {
-        ^
-/home/vpayno/git_vpayno/exercism-workspace/c/allergies/allergies.h:19:9: note: use "__attribute__((aligned(16)))" to align struct 'allergen_list_t' to 16 bytes
-/home/vpayno/git_vpayno/exercism-workspace/c/allergies/test_allergies.c:10:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
-    TEST_ASSERT_FALSE(is_allergic_to(ALLERGEN_EGGS, 0));
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/c/allergies/test-framework/unity.h:128:100: note: expanded from macro 'TEST_ASSERT_FALSE'
-#define TEST_ASSERT_FALSE(condition)                                                               UNITY_TEST_ASSERT(      !(condition), __LINE__, " Expected FALSE Was TRUE")
-                                                                                                   ^
-/home/vpayno/git_vpayno/exercism-workspace/c/allergies/test-framework/unity_internals.h:775:98: note: expanded from macro 'UNITY_TEST_ASSERT'
-#define UNITY_TEST_ASSERT(condition, line, message)                                              do {if (condition) {} else {UNITY_TEST_FAIL((UNITY_LINE_TYPE)(line), (message));}} while(0)
-                                                                                                 ^
-/home/vpayno/git_vpayno/exercism-workspace/c/allergies/test_allergies.c:16:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
-    TEST_ASSERT_TRUE(is_allergic_to(ALLERGEN_EGGS, 1));
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/c/allergies/test-framework/unity.h:126:100: note: expanded from macro 'TEST_ASSERT_TRUE'
-#define TEST_ASSERT_TRUE(condition)                                                                UNITY_TEST_ASSERT(       (condition), __LINE__, " Expected TRUE Was FALSE")
-                                                                                                   ^
-/home/vpayno/git_vpayno/exercism-workspace/c/allergies/test-framework/unity_internals.h:775:98: note: expanded from macro 'UNITY_TEST_ASSERT'
-#define UNITY_TEST_ASSERT(condition, line, message)                                              do {if (condition) {} else {UNITY_TEST_FAIL((UNITY_LINE_TYPE)(line), (message));}} while(0)
-                                                                                                 ^
-/home/vpayno/git_vpayno/exercism-workspace/c/allergies/test_allergies.c:22:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
-    TEST_ASSERT_TRUE(is_allergic_to(ALLERGEN_EGGS, 3));
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/c/allergies/test-framework/unity.h:126:100: note: expanded from macro 'TEST_ASSERT_TRUE'
-#define TEST_ASSERT_TRUE(condition)                                                                UNITY_TEST_ASSERT(       (condition), __LINE__, " Expected TRUE Was FALSE")
-                                                                                                   ^
-/home/vpayno/git_vpayno/exercism-workspace/c/allergies/test-framework/unity_internals.h:775:98: note: expanded from macro 'UNITY_TEST_ASSERT'
-#define UNITY_TEST_ASSERT(condition, line, message)                                              do {if (condition) {} else {UNITY_TEST_FAIL((UNITY_LINE_TYPE)(line), (message));}} while(0)
-                                                                                                 ^
-/home/vpayno/git_vpayno/exercism-workspace/c/allergies/test_allergies.c:28:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
-    TEST_ASSERT_FALSE(is_allergic_to(ALLERGEN_EGGS, 2));
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/c/allergies/test-framework/unity.h:128:100: note: expanded from macro 'TEST_ASSERT_FALSE'
-#define TEST_ASSERT_FALSE(condition)                                                               UNITY_TEST_ASSERT(      !(condition), __LINE__, " Expected FALSE Was TRUE")
-                                                                                                   ^
-/home/vpayno/git_vpayno/exercism-workspace/c/allergies/test-framework/unity_internals.h:775:98: note: expanded from macro 'UNITY_TEST_ASSERT'
-#define UNITY_TEST_ASSERT(condition, line, message)                                              do {if (condition) {} else {UNITY_TEST_FAIL((UNITY_LINE_TYPE)(line), (message));}} while(0)
-                                                                                                 ^
-/home/vpayno/git_vpayno/exercism-workspace/c/allergies/test_allergies.c:34:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
-    TEST_ASSERT_TRUE(is_allergic_to(ALLERGEN_EGGS, 255));
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/c/allergies/test-framework/unity.h:126:100: note: expanded from macro 'TEST_ASSERT_TRUE'
-#define TEST_ASSERT_TRUE(condition)                                                                UNITY_TEST_ASSERT(       (condition), __LINE__, " Expected TRUE Was FALSE")
-                                                                                                   ^
-/home/vpayno/git_vpayno/exercism-workspace/c/allergies/test-framework/unity_internals.h:775:98: note: expanded from macro 'UNITY_TEST_ASSERT'
-#define UNITY_TEST_ASSERT(condition, line, message)                                              do {if (condition) {} else {UNITY_TEST_FAIL((UNITY_LINE_TYPE)(line), (message));}} while(0)
-                                                                                                 ^
-/home/vpayno/git_vpayno/exercism-workspace/c/allergies/test_allergies.c:40:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
-    TEST_ASSERT_FALSE(is_allergic_to(ALLERGEN_PEANUTS, 0));
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/c/allergies/test-framework/unity.h:128:100: note: expanded from macro 'TEST_ASSERT_FALSE'
-#define TEST_ASSERT_FALSE(condition)                                                               UNITY_TEST_ASSERT(      !(condition), __LINE__, " Expected FALSE Was TRUE")
-                                                                                                   ^
-/home/vpayno/git_vpayno/exercism-workspace/c/allergies/test-framework/unity_internals.h:775:98: note: expanded from macro 'UNITY_TEST_ASSERT'
-#define UNITY_TEST_ASSERT(condition, line, message)                                              do {if (condition) {} else {UNITY_TEST_FAIL((UNITY_LINE_TYPE)(line), (message));}} while(0)
-                                                                                                 ^
-/home/vpayno/git_vpayno/exercism-workspace/c/allergies/test_allergies.c:46:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
-    TEST_ASSERT_TRUE(is_allergic_to(ALLERGEN_PEANUTS, 2));
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/c/allergies/test-framework/unity.h:126:100: note: expanded from macro 'TEST_ASSERT_TRUE'
-#define TEST_ASSERT_TRUE(condition)                                                                UNITY_TEST_ASSERT(       (condition), __LINE__, " Expected TRUE Was FALSE")
-                                                                                                   ^
-/home/vpayno/git_vpayno/exercism-workspace/c/allergies/test-framework/unity_internals.h:775:98: note: expanded from macro 'UNITY_TEST_ASSERT'
-#define UNITY_TEST_ASSERT(condition, line, message)                                              do {if (condition) {} else {UNITY_TEST_FAIL((UNITY_LINE_TYPE)(line), (message));}} while(0)
-                                                                                                 ^
-/home/vpayno/git_vpayno/exercism-workspace/c/allergies/test_allergies.c:52:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
-    TEST_ASSERT_TRUE(is_allergic_to(ALLERGEN_EGGS, 7));
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/c/allergies/test-framework/unity.h:126:100: note: expanded from macro 'TEST_ASSERT_TRUE'
-#define TEST_ASSERT_TRUE(condition)                                                                UNITY_TEST_ASSERT(       (condition), __LINE__, " Expected TRUE Was FALSE")
-                                                                                                   ^
-/home/vpayno/git_vpayno/exercism-workspace/c/allergies/test-framework/unity_internals.h:775:98: note: expanded from macro 'UNITY_TEST_ASSERT'
-#define UNITY_TEST_ASSERT(condition, line, message)                                              do {if (condition) {} else {UNITY_TEST_FAIL((UNITY_LINE_TYPE)(line), (message));}} while(0)
-                                                                                                 ^
-/home/vpayno/git_vpayno/exercism-workspace/c/allergies/test_allergies.c:58:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
-    TEST_ASSERT_FALSE(is_allergic_to(ALLERGEN_PEANUTS, 5));
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/c/allergies/test-framework/unity.h:128:100: note: expanded from macro 'TEST_ASSERT_FALSE'
-#define TEST_ASSERT_FALSE(condition)                                                               UNITY_TEST_ASSERT(      !(condition), __LINE__, " Expected FALSE Was TRUE")
-                                                                                                   ^
-/home/vpayno/git_vpayno/exercism-workspace/c/allergies/test-framework/unity_internals.h:775:98: note: expanded from macro 'UNITY_TEST_ASSERT'
-#define UNITY_TEST_ASSERT(condition, line, message)                                              do {if (condition) {} else {UNITY_TEST_FAIL((UNITY_LINE_TYPE)(line), (message));}} while(0)
-                                                                                                 ^
-/home/vpayno/git_vpayno/exercism-workspace/c/allergies/test_allergies.c:64:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
-    TEST_ASSERT_TRUE(is_allergic_to(ALLERGEN_PEANUTS, 255));
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/c/allergies/test-framework/unity.h:126:100: note: expanded from macro 'TEST_ASSERT_TRUE'
-#define TEST_ASSERT_TRUE(condition)                                                                UNITY_TEST_ASSERT(       (condition), __LINE__, " Expected TRUE Was FALSE")
-                                                                                                   ^
-/home/vpayno/git_vpayno/exercism-workspace/c/allergies/test-framework/unity_internals.h:775:98: note: expanded from macro 'UNITY_TEST_ASSERT'
-#define UNITY_TEST_ASSERT(condition, line, message)                                              do {if (condition) {} else {UNITY_TEST_FAIL((UNITY_LINE_TYPE)(line), (message));}} while(0)
-                                                                                                 ^
-/home/vpayno/git_vpayno/exercism-workspace/c/allergies/test_allergies.c:70:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
-    TEST_ASSERT_FALSE(is_allergic_to(ALLERGEN_SHELLFISH, 0));
-    ^
-
-real	0m0.205s
-user	0m0.182s
-sys	0m0.025s
+real	0m0.162s
+user	0m0.109s
+sys	0m0.054s
 
 ===============================================================================
 
 Running: clang-format-16 -style=file -i ./allergies.c ./test_allergies.c ./allergies.h
 
 real	0m0.025s
-user	0m0.012s
+user	0m0.013s
+sys	0m0.012s
+
+===============================================================================
+
+Running: ../../.github/citools/cpp/clang-check
+clang-check-16 --analyze ./allergies.h
+
+real	0m0.022s
+user	0m0.010s
+sys	0m0.012s
+
+
+real	0m0.024s
+user	0m0.011s
+sys	0m0.013s
+
+===============================================================================
+
+Running: ../../.github/citools/cpp/clang-tidy | head -n 100
+273 warnings generated.
+Suppressed 273 warnings (273 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+
+real	0m0.030s
+user	0m0.019s
+sys	0m0.011s
+Running: clang-tidy-16 ./allergies.h
+
+
+real	0m0.033s
+user	0m0.022s
 sys	0m0.012s
 
 ===============================================================================
