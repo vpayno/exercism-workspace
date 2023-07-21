@@ -7,8 +7,8 @@ Running: make clean
 rm -rf *.o *.out *.out.dSYM
 
 real	0m0.004s
-user	0m0.002s
-sys	0m0.002s
+user	0m0.000s
+sys	0m0.004s
 
 ===============================================================================
 
@@ -41,8 +41,8 @@ test_triangle.c:157:test_scalene_triangle_sides_may_be_floats:PASS
 OK
 
 real	0m0.119s
-user	0m0.089s
-sys	0m0.032s
+user	0m0.074s
+sys	0m0.048s
 
 ===============================================================================
 
@@ -75,136 +75,48 @@ test_triangle.c:157:test_scalene_triangle_sides_may_be_floats:PASS
 OK
 Memory check passed
 
-real	0m0.169s
-user	0m0.133s
-sys	0m0.038s
-
-===============================================================================
-
-Running: clang-check-16 ./test_triangle.c ./triangle.c ./triangle.h --
-
-real	0m0.036s
-user	0m0.016s
-sys	0m0.020s
-
-===============================================================================
-
-Running: clang-tidy-16 ./test_triangle.c ./triangle.c ./triangle.h -checks=*,-llvm-header-guard,-llvmlibc-restrict-system-libc-headers -- | head -n 100
-2224 warnings generated.
-2233 warnings generated.
-2242 warnings generated.
-/home/vpayno/git_vpayno/exercism-workspace/c/triangle/test_triangle.c:10:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
-    TEST_ASSERT_TRUE(is_equilateral(sides));
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/c/triangle/test-framework/unity.h:126:100: note: expanded from macro 'TEST_ASSERT_TRUE'
-#define TEST_ASSERT_TRUE(condition)                                                                UNITY_TEST_ASSERT(       (condition), __LINE__, " Expected TRUE Was FALSE")
-                                                                                                   ^
-/home/vpayno/git_vpayno/exercism-workspace/c/triangle/test-framework/unity_internals.h:775:98: note: expanded from macro 'UNITY_TEST_ASSERT'
-#define UNITY_TEST_ASSERT(condition, line, message)                                              do {if (condition) {} else {UNITY_TEST_FAIL((UNITY_LINE_TYPE)(line), (message));}} while(0)
-                                                                                                 ^
-/home/vpayno/git_vpayno/exercism-workspace/c/triangle/test_triangle.c:16:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
-    TEST_ASSERT_FALSE(is_equilateral(sides));
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/c/triangle/test-framework/unity.h:128:100: note: expanded from macro 'TEST_ASSERT_FALSE'
-#define TEST_ASSERT_FALSE(condition)                                                               UNITY_TEST_ASSERT(      !(condition), __LINE__, " Expected FALSE Was TRUE")
-                                                                                                   ^
-/home/vpayno/git_vpayno/exercism-workspace/c/triangle/test-framework/unity_internals.h:775:98: note: expanded from macro 'UNITY_TEST_ASSERT'
-#define UNITY_TEST_ASSERT(condition, line, message)                                              do {if (condition) {} else {UNITY_TEST_FAIL((UNITY_LINE_TYPE)(line), (message));}} while(0)
-                                                                                                 ^
-/home/vpayno/git_vpayno/exercism-workspace/c/triangle/test_triangle.c:21:25: warning: 5 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
-    triangle_t sides = {5, 4, 6};
-                        ^
-/home/vpayno/git_vpayno/exercism-workspace/c/triangle/test_triangle.c:21:31: warning: 6 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
-    triangle_t sides = {5, 4, 6};
-                              ^
-/home/vpayno/git_vpayno/exercism-workspace/c/triangle/test_triangle.c:22:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
-    TEST_ASSERT_FALSE(is_equilateral(sides));
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/c/triangle/test-framework/unity.h:128:100: note: expanded from macro 'TEST_ASSERT_FALSE'
-#define TEST_ASSERT_FALSE(condition)                                                               UNITY_TEST_ASSERT(      !(condition), __LINE__, " Expected FALSE Was TRUE")
-                                                                                                   ^
-/home/vpayno/git_vpayno/exercism-workspace/c/triangle/test-framework/unity_internals.h:775:98: note: expanded from macro 'UNITY_TEST_ASSERT'
-#define UNITY_TEST_ASSERT(condition, line, message)                                              do {if (condition) {} else {UNITY_TEST_FAIL((UNITY_LINE_TYPE)(line), (message));}} while(0)
-                                                                                                 ^
-/home/vpayno/git_vpayno/exercism-workspace/c/triangle/test_triangle.c:28:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
-    TEST_ASSERT_FALSE(is_equilateral(sides));
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/c/triangle/test-framework/unity.h:128:100: note: expanded from macro 'TEST_ASSERT_FALSE'
-#define TEST_ASSERT_FALSE(condition)                                                               UNITY_TEST_ASSERT(      !(condition), __LINE__, " Expected FALSE Was TRUE")
-                                                                                                   ^
-/home/vpayno/git_vpayno/exercism-workspace/c/triangle/test-framework/unity_internals.h:775:98: note: expanded from macro 'UNITY_TEST_ASSERT'
-#define UNITY_TEST_ASSERT(condition, line, message)                                              do {if (condition) {} else {UNITY_TEST_FAIL((UNITY_LINE_TYPE)(line), (message));}} while(0)
-                                                                                                 ^
-/home/vpayno/git_vpayno/exercism-workspace/c/triangle/test_triangle.c:33:25: warning: 0.5 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
-    triangle_t sides = {0.5, 0.5, 0.5};
-                        ^
-/home/vpayno/git_vpayno/exercism-workspace/c/triangle/test_triangle.c:33:30: warning: 0.5 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
-    triangle_t sides = {0.5, 0.5, 0.5};
-                             ^
-/home/vpayno/git_vpayno/exercism-workspace/c/triangle/test_triangle.c:33:35: warning: 0.5 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
-    triangle_t sides = {0.5, 0.5, 0.5};
-                                  ^
-/home/vpayno/git_vpayno/exercism-workspace/c/triangle/test_triangle.c:34:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
-    TEST_ASSERT_TRUE(is_equilateral(sides));
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/c/triangle/test-framework/unity.h:126:100: note: expanded from macro 'TEST_ASSERT_TRUE'
-#define TEST_ASSERT_TRUE(condition)                                                                UNITY_TEST_ASSERT(       (condition), __LINE__, " Expected TRUE Was FALSE")
-                                                                                                   ^
-/home/vpayno/git_vpayno/exercism-workspace/c/triangle/test-framework/unity_internals.h:775:98: note: expanded from macro 'UNITY_TEST_ASSERT'
-#define UNITY_TEST_ASSERT(condition, line, message)                                              do {if (condition) {} else {UNITY_TEST_FAIL((UNITY_LINE_TYPE)(line), (message));}} while(0)
-                                                                                                 ^
-/home/vpayno/git_vpayno/exercism-workspace/c/triangle/test_triangle.c:40:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
-    TEST_ASSERT_TRUE(is_isosceles(sides));
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/c/triangle/test-framework/unity.h:126:100: note: expanded from macro 'TEST_ASSERT_TRUE'
-#define TEST_ASSERT_TRUE(condition)                                                                UNITY_TEST_ASSERT(       (condition), __LINE__, " Expected TRUE Was FALSE")
-                                                                                                   ^
-/home/vpayno/git_vpayno/exercism-workspace/c/triangle/test-framework/unity_internals.h:775:98: note: expanded from macro 'UNITY_TEST_ASSERT'
-#define UNITY_TEST_ASSERT(condition, line, message)                                              do {if (condition) {} else {UNITY_TEST_FAIL((UNITY_LINE_TYPE)(line), (message));}} while(0)
-                                                                                                 ^
-/home/vpayno/git_vpayno/exercism-workspace/c/triangle/test_triangle.c:46:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
-    TEST_ASSERT_TRUE(is_isosceles(sides));
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/c/triangle/test-framework/unity.h:126:100: note: expanded from macro 'TEST_ASSERT_TRUE'
-#define TEST_ASSERT_TRUE(condition)                                                                UNITY_TEST_ASSERT(       (condition), __LINE__, " Expected TRUE Was FALSE")
-                                                                                                   ^
-/home/vpayno/git_vpayno/exercism-workspace/c/triangle/test-framework/unity_internals.h:775:98: note: expanded from macro 'UNITY_TEST_ASSERT'
-#define UNITY_TEST_ASSERT(condition, line, message)                                              do {if (condition) {} else {UNITY_TEST_FAIL((UNITY_LINE_TYPE)(line), (message));}} while(0)
-                                                                                                 ^
-/home/vpayno/git_vpayno/exercism-workspace/c/triangle/test_triangle.c:52:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
-    TEST_ASSERT_TRUE(is_isosceles(sides));
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/c/triangle/test-framework/unity.h:126:100: note: expanded from macro 'TEST_ASSERT_TRUE'
-#define TEST_ASSERT_TRUE(condition)                                                                UNITY_TEST_ASSERT(       (condition), __LINE__, " Expected TRUE Was FALSE")
-                                                                                                   ^
-/home/vpayno/git_vpayno/exercism-workspace/c/triangle/test-framework/unity_internals.h:775:98: note: expanded from macro 'UNITY_TEST_ASSERT'
-#define UNITY_TEST_ASSERT(condition, line, message)                                              do {if (condition) {} else {UNITY_TEST_FAIL((UNITY_LINE_TYPE)(line), (message));}} while(0)
-                                                                                                 ^
-/home/vpayno/git_vpayno/exercism-workspace/c/triangle/test_triangle.c:59:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
-    TEST_ASSERT_TRUE(is_isosceles(sides));
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/c/triangle/test-framework/unity.h:126:100: note: expanded from macro 'TEST_ASSERT_TRUE'
-#define TEST_ASSERT_TRUE(condition)                                                                UNITY_TEST_ASSERT(       (condition), __LINE__, " Expected TRUE Was FALSE")
-                                                                                                   ^
-/home/vpayno/git_vpayno/exercism-workspace/c/triangle/test-framework/unity_internals.h:775:98: note: expanded from macro 'UNITY_TEST_ASSERT'
-#define UNITY_TEST_ASSERT(condition, line, message)                                              do {if (condition) {} else {UNITY_TEST_FAIL((UNITY_LINE_TYPE)(line), (message));}} while(0)
-                                                                                                 ^
-/home/vpayno/git_vpayno/exercism-workspace/c/triangle/test_triangle.c:65:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
-    TEST_ASSERT_FALSE(is_isosceles(sides));
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/c/triangle/test-framework/unity.h:128:100: note: expanded from macro 'TEST_ASSERT_FALSE'
-
-real	0m0.149s
-user	0m0.122s
-sys	0m0.028s
+real	0m0.141s
+user	0m0.111s
+sys	0m0.030s
 
 ===============================================================================
 
 Running: clang-format-16 -style=file -i ./test_triangle.c ./triangle.c ./triangle.h
 
 real	0m0.022s
-user	0m0.012s
-sys	0m0.010s
+user	0m0.010s
+sys	0m0.011s
+
+===============================================================================
+
+Running: ../../.github/citools/cpp/clang-check
+clang-check-16 --analyze ./triangle.h
+
+real	0m0.023s
+user	0m0.010s
+sys	0m0.013s
+
+
+real	0m0.025s
+user	0m0.011s
+sys	0m0.014s
+
+===============================================================================
+
+Running: ../../.github/citools/cpp/clang-tidy | head -n 100
+4 warnings generated.
+Suppressed 4 warnings (4 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+
+real	0m0.026s
+user	0m0.015s
+sys	0m0.011s
+Running: clang-tidy-16 ./triangle.h
+
+
+real	0m0.028s
+user	0m0.016s
+sys	0m0.013s
 
 ===============================================================================
 
