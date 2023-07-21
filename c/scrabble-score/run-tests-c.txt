@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf *.o *.out *.out.dSYM
 
-real	0m0.006s
-user	0m0.004s
-sys	0m0.001s
+real	0m0.004s
+user	0m0.001s
+sys	0m0.003s
 
 ===============================================================================
 
@@ -30,9 +30,9 @@ test_scrabble_score.c:73:test_entire_alphabet_available:PASS
 11 Tests 0 Failures 0 Ignored 
 OK
 
-real	0m0.125s
-user	0m0.089s
-sys	0m0.036s
+real	0m0.138s
+user	0m0.092s
+sys	0m0.047s
 
 ===============================================================================
 
@@ -55,50 +55,48 @@ test_scrabble_score.c:73:test_entire_alphabet_available:PASS
 OK
 Memory check passed
 
-real	0m0.138s
-user	0m0.098s
-sys	0m0.041s
+real	0m0.167s
+user	0m0.112s
+sys	0m0.057s
 
 ===============================================================================
 
 Running: clang-format-16 -style=file -i ./scrabble_score.c ./test_scrabble_score.c ./scrabble_score.h
 
-real	0m0.022s
-user	0m0.014s
-sys	0m0.008s
-
-===============================================================================
-
-Running: clang-check-16 ./scrabble_score.c ./test_scrabble_score.c ./scrabble_score.h --
-
-real	0m0.037s
-user	0m0.019s
+real	0m0.031s
+user	0m0.013s
 sys	0m0.018s
 
 ===============================================================================
 
-Running: clang-tidy-16 ./scrabble_score.c ./test_scrabble_score.c ./scrabble_score.h -checks=*,-llvm-header-guard,-llvmlibc-restrict-system-libc-headers -- | head -n 100
-1322 warnings generated.
-4108 warnings generated.
-5423 warnings generated.
-Suppressed 5416 warnings (5416 in non-user code).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-/home/vpayno/git_vpayno/exercism-workspace/c/scrabble-score/scrabble_score.c:14:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
-    while (*word != '\0') {
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/c/scrabble-score/scrabble_score.c:36:23: warning: 5 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
-            result += 5;
-                      ^
-/home/vpayno/git_vpayno/exercism-workspace/c/scrabble-score/scrabble_score.c:40:23: warning: 8 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
-            result += 8;
-                      ^
-/home/vpayno/git_vpayno/exercism-workspace/c/scrabble-score/scrabble_score.c:44:23: warning: 10 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
-            result += 10;
-                      ^
+Running: ../../.github/citools/cpp/clang-check
+clang-check-16 --analyze ./scrabble_score.h
 
-real	0m0.186s
-user	0m0.166s
-sys	0m0.020s
+real	0m0.029s
+user	0m0.012s
+sys	0m0.016s
+
+
+real	0m0.031s
+user	0m0.012s
+sys	0m0.018s
+
+===============================================================================
+
+Running: ../../.github/citools/cpp/clang-tidy | head -n 100
+302 warnings generated.
+Suppressed 302 warnings (302 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+
+real	0m0.045s
+user	0m0.026s
+sys	0m0.018s
+Running: clang-tidy-16 ./scrabble_score.h
+
+
+real	0m0.048s
+user	0m0.028s
+sys	0m0.021s
 
 ===============================================================================
 
