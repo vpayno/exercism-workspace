@@ -1,5 +1,5 @@
-#if !defined(HEXADECIMAL_H)
-#define HEXADECIMAL_H
+#if !defined(HEXADECIMAL_HPP)
+#define HEXADECIMAL_HPP
 
 #include <cmath>
 #include <numeric>
@@ -14,4 +14,4 @@ bool is_valid_input(std::string hexadecimal);
 
 } // namespace hexadecimal
 
-#endif // HEXADECIMAL_H
+#endif // HEXADECIMAL_HPP

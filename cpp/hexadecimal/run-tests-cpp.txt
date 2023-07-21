@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.013s
+real	0m0.014s
 user	0m0.002s
-sys	0m0.011s
+sys	0m0.012s
 
 ===============================================================================
 
@@ -78,17 +78,17 @@ TOTAL                                         67      62    92%
 lines: 92.5% (62 out of 67)
 branches: 40.0% (80 out of 200)
 
-real	0m12.943s
-user	0m11.796s
-sys	0m1.141s
+real	0m11.988s
+user	0m10.923s
+sys	0m1.042s
 
 ===============================================================================
 
 cmake-format --in-place CMakeLists.txt
 
-real	0m0.144s
-user	0m0.102s
-sys	0m0.042s
+real	0m0.175s
+user	0m0.116s
+sys	0m0.060s
 
 ===============================================================================
 
@@ -110,70 +110,50 @@ found lint:
   Convention: 4
 
 
-real	0m0.171s
-user	0m0.113s
-sys	0m0.059s
+real	0m0.160s
+user	0m0.104s
+sys	0m0.057s
 
 ===============================================================================
 
-Running: clang-format-16 -style=file -i ./hexadecimal.cpp ./hexadecimal_test.cpp ./hexadecimal.h
+Running: clang-format-16 -style=file -i ./hexadecimal.cpp ./hexadecimal_test.cpp
 
-real	0m0.019s
-user	0m0.008s
-sys	0m0.011s
+real	0m0.021s
+user	0m0.011s
+sys	0m0.010s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./hexadecimal.cpp ./hexadecimal_test.cpp ./hexadecimal.h
-error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
-error: invalid argument '-std=c++17' not allowed with 'C'
-/home/vpayno/git_vpayno/exercism-workspace/cpp/hexadecimal/hexadecimal.h:4:10: fatal error: 'cmath' file not found
-#include <cmath>
-         ^~~~~~~
-1 error generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/hexadecimal/hexadecimal.h.
+clang-check-16 --analyze ./hexadecimal.cpp ./hexadecimal_test.cpp ./hexadecimal.hpp
 
-real	0m3.244s
-user	0m3.139s
-sys	0m0.104s
+real	0m3.494s
+user	0m3.408s
+sys	0m0.086s
 
 
-real	0m3.246s
-user	0m3.139s
-sys	0m0.107s
+real	0m3.495s
+user	0m3.409s
+sys	0m0.086s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 40226 warnings generated.
 84427 warnings generated.
-84429 warnings and 3 errors generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/hexadecimal/hexadecimal.h.
-Suppressed 84432 warnings (84427 in non-user code, 5 NOLINT).
+123441 warnings generated.
+Suppressed 123446 warnings (123441 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-Found compiler error(s).
 
-real	0m17.793s
-user	0m17.645s
-sys	0m0.148s
-Running: clang-tidy-16 ./hexadecimal.cpp ./hexadecimal_test.cpp ./hexadecimal.h
-error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
-error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
-/home/vpayno/git_vpayno/exercism-workspace/cpp/hexadecimal/hexadecimal.h:4:10: error: 'cmath' file not found [clang-diagnostic-error]
-#include <cmath>
-         ^~~~~~~
-/home/vpayno/git_vpayno/exercism-workspace/cpp/hexadecimal/hexadecimal.h:11:5: warning: variable 'convert' is non-const and globally accessible, consider making it const [cppcoreguidelines-avoid-non-const-global-variables]
-int convert(std::string hexadecimal);
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/cpp/hexadecimal/hexadecimal.h:13:6: warning: variable 'is_valid_input' is non-const and globally accessible, consider making it const [cppcoreguidelines-avoid-non-const-global-variables]
-bool is_valid_input(std::string hexadecimal);
-     ^
+real	0m24.011s
+user	0m23.869s
+sys	0m0.141s
+Running: clang-tidy-16 ./hexadecimal.cpp ./hexadecimal_test.cpp ./hexadecimal.hpp
 
 
-real	0m17.795s
-user	0m17.645s
-sys	0m0.151s
+real	0m24.013s
+user	0m23.870s
+sys	0m0.143s
 
 ===============================================================================
 

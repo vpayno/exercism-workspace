@@ -1,4 +1,4 @@
-#include "hexadecimal.h"
+#include "hexadecimal.hpp"
 
 namespace hexadecimal {
 
