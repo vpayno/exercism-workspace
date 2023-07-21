@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf *.o *.out *.out.dSYM
 
-real	0m0.007s
-user	0m0.001s
-sys	0m0.006s
+real	0m0.004s
+user	0m0.003s
+sys	0m0.001s
 
 ===============================================================================
 
@@ -26,9 +26,9 @@ test_high_scores.c:87:test_personal_top_when_there_is_only_one:PASS
 7 Tests 0 Failures 0 Ignored 
 OK
 
-real	0m0.132s
-user	0m0.088s
-sys	0m0.041s
+real	0m0.133s
+user	0m0.097s
+sys	0m0.037s
 
 ===============================================================================
 
@@ -47,58 +47,48 @@ test_high_scores.c:87:test_personal_top_when_there_is_only_one:PASS
 OK
 Memory check passed
 
-real	0m0.135s
-user	0m0.098s
-sys	0m0.037s
-
-===============================================================================
-
-Running: clang-check-16 ./high_scores.c ./test_high_scores.c ./high_scores.h --
-
-real	0m0.043s
-user	0m0.027s
-sys	0m0.016s
-
-===============================================================================
-
-Running: clang-tidy-16 ./high_scores.c ./test_high_scores.c ./high_scores.h -checks=*,-llvm-header-guard,-llvmlibc-restrict-system-libc-headers -- | head -n 100
-2579 warnings generated.
-6383 warnings generated.
-8958 warnings generated.
-Suppressed 8953 warnings (8953 in non-user code).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-/home/vpayno/git_vpayno/exercism-workspace/c/high-scores/high_scores.c:17:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
-    for (size_t i = 1; i < scores_len; i++) {
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/c/high-scores/high_scores.c:35:5: warning: Call to function 'memcpy' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'memcpy_s' in case of C11 [clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling]
-    memcpy(sorted, scores, sizeof(int) * scores_len);
-    ^~~~~~
-/home/vpayno/git_vpayno/exercism-workspace/c/high-scores/high_scores.c:35:5: note: Call to function 'memcpy' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'memcpy_s' in case of C11
-    memcpy(sorted, scores, sizeof(int) * scores_len);
-    ^~~~~~
-/home/vpayno/git_vpayno/exercism-workspace/c/high-scores/test_high_scores.c:5:47: warning: macro argument should be enclosed in parentheses [bugprone-macro-parentheses]
-#define ARRAY_SIZE(arr) (sizeof(arr) / sizeof(arr[0]))
-                                              ^
-                                              (  )
-/home/vpayno/git_vpayno/exercism-workspace/c/high-scores/test_high_scores.c:7:1: warning: replace macro with enum [modernize-macro-to-enum]
-#define TOP_SCORES_ARRAY_SIZE (3)
-^~~~~~~~
-                              =
-/home/vpayno/git_vpayno/exercism-workspace/c/high-scores/test_high_scores.c:7:9: warning: macro 'TOP_SCORES_ARRAY_SIZE' defines an integral constant; prefer an enum instead [modernize-macro-to-enum]
-#define TOP_SCORES_ARRAY_SIZE (3)
-        ^
-
-real	0m0.250s
-user	0m0.224s
-sys	0m0.026s
+real	0m0.171s
+user	0m0.126s
+sys	0m0.046s
 
 ===============================================================================
 
 Running: clang-format-16 -style=file -i ./high_scores.c ./test_high_scores.c ./high_scores.h
 
-real	0m0.021s
-user	0m0.012s
+real	0m0.026s
+user	0m0.017s
 sys	0m0.009s
+
+===============================================================================
+
+Running: ../../.github/citools/cpp/clang-check
+clang-check-16 --analyze ./high_scores.h
+
+real	0m0.029s
+user	0m0.014s
+sys	0m0.015s
+
+
+real	0m0.032s
+user	0m0.014s
+sys	0m0.017s
+
+===============================================================================
+
+Running: ../../.github/citools/cpp/clang-tidy | head -n 100
+468 warnings generated.
+Suppressed 468 warnings (468 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+
+real	0m0.050s
+user	0m0.037s
+sys	0m0.013s
+Running: clang-tidy-16 ./high_scores.h
+
+
+real	0m0.052s
+user	0m0.038s
+sys	0m0.015s
 
 ===============================================================================
 
