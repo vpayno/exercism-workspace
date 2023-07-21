@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf *.o *.out *.out.dSYM
 
-real	0m0.006s
-user	0m0.005s
-sys	0m0.001s
+real	0m0.004s
+user	0m0.002s
+sys	0m0.003s
 
 ===============================================================================
 
@@ -28,9 +28,9 @@ test_space_age.c:65:test_invalid_planet_causes_error:PASS
 9 Tests 0 Failures 0 Ignored 
 OK
 
-real	0m0.111s
-user	0m0.082s
-sys	0m0.031s
+real	0m0.115s
+user	0m0.074s
+sys	0m0.044s
 
 ===============================================================================
 
@@ -51,107 +51,48 @@ test_space_age.c:65:test_invalid_planet_causes_error:PASS
 OK
 Memory check passed
 
-real	0m0.129s
-user	0m0.083s
-sys	0m0.047s
+real	0m0.131s
+user	0m0.090s
+sys	0m0.042s
 
 ===============================================================================
 
 Running: clang-format-16 -style=file -i ./space_age.c ./test_space_age.c ./space_age.h
 
 real	0m0.021s
-user	0m0.012s
-sys	0m0.009s
+user	0m0.008s
+sys	0m0.013s
 
 ===============================================================================
 
-Running: clang-check-16 ./space_age.c ./test_space_age.c ./space_age.h --
+Running: ../../.github/citools/cpp/clang-check
+clang-check-16 --analyze ./space_age.h
 
-real	0m0.033s
-user	0m0.021s
-sys	0m0.012s
+real	0m0.019s
+user	0m0.009s
+sys	0m0.010s
+
+
+real	0m0.021s
+user	0m0.011s
+sys	0m0.010s
 
 ===============================================================================
 
-Running: clang-tidy-16 ./space_age.c ./test_space_age.c ./space_age.h -checks=*,-llvm-header-guard,-llvmlibc-restrict-system-libc-headers -- | head -n 100
-788 warnings generated.
-3007 warnings generated.
-3781 warnings generated.
-/home/vpayno/git_vpayno/exercism-workspace/c/space-age/space_age.c:20:24: warning: 0.2408467F is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
-    planets[MERCURY] = 0.2408467F;
-                       ^
-/home/vpayno/git_vpayno/exercism-workspace/c/space-age/space_age.c:21:22: warning: 0.61519726F is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
-    planets[VENUS] = 0.61519726F;
-                     ^
-/home/vpayno/git_vpayno/exercism-workspace/c/space-age/space_age.c:23:21: warning: 1.8808158F is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
-    planets[MARS] = 1.8808158F;
-                    ^
-/home/vpayno/git_vpayno/exercism-workspace/c/space-age/space_age.c:24:24: warning: 11.862615F is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
-    planets[JUPITER] = 11.862615F;
-                       ^
-/home/vpayno/git_vpayno/exercism-workspace/c/space-age/space_age.c:25:23: warning: 29.447498F is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
-    planets[SATURN] = 29.447498F;
-                      ^
-/home/vpayno/git_vpayno/exercism-workspace/c/space-age/space_age.c:26:23: warning: 84.016846F is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
-    planets[URANUS] = 84.016846F;
-                      ^
-/home/vpayno/git_vpayno/exercism-workspace/c/space-age/space_age.c:27:24: warning: 164.79132F is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
-    planets[NEPTUNE] = 164.79132F;
-                       ^
-/home/vpayno/git_vpayno/exercism-workspace/c/space-age/test_space_age.c:9:33: warning: 31.69 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
-    TEST_ASSERT_FLOAT_WITHIN(1, 31.69, age(EARTH, 1000000000));
-                                ^
-/home/vpayno/git_vpayno/exercism-workspace/c/space-age/test_space_age.c:14:33: warning: 280.88 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
-    TEST_ASSERT_FLOAT_WITHIN(3, 280.88, age(MERCURY, 2134835688));
-                                ^
-/home/vpayno/git_vpayno/exercism-workspace/c/space-age/test_space_age.c:19:33: warning: 9.78 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
-    TEST_ASSERT_FLOAT_WITHIN(1, 9.78, age(VENUS, 189839836));
-                                ^
-/home/vpayno/git_vpayno/exercism-workspace/c/space-age/test_space_age.c:24:33: warning: 35.88 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
-    TEST_ASSERT_FLOAT_WITHIN(1, 35.88, age(MARS, 2129871239));
-                                ^
-/home/vpayno/git_vpayno/exercism-workspace/c/space-age/test_space_age.c:29:30: warning: 0.1 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
-    TEST_ASSERT_FLOAT_WITHIN(0.1, 2.41, age(JUPITER, 901876382));
-                             ^
-/home/vpayno/git_vpayno/exercism-workspace/c/space-age/test_space_age.c:29:35: warning: 2.41 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
-    TEST_ASSERT_FLOAT_WITHIN(0.1, 2.41, age(JUPITER, 901876382));
-                                  ^
-/home/vpayno/git_vpayno/exercism-workspace/c/space-age/test_space_age.c:34:30: warning: 0.1 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readabilSuppressed 3741 warnings (3741 in non-user code).
+Running: ../../.github/citools/cpp/clang-tidy | head -n 100
+273 warnings generated.
+Suppressed 273 warnings (273 in non-user code).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-ity-magic-numbers]
-    TEST_ASSERT_FLOAT_WITHIN(0.1, 2.15, age(SATURN, 2000000000));
-                             ^
-/home/vpayno/git_vpayno/exercism-workspace/c/space-age/test_space_age.c:34:35: warning: 2.15 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
-    TEST_ASSERT_FLOAT_WITHIN(0.1, 2.15, age(SATURN, 2000000000));
-                                  ^
-/home/vpayno/git_vpayno/exercism-workspace/c/space-age/test_space_age.c:39:30: warning: 0.1 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
-    TEST_ASSERT_FLOAT_WITHIN(0.1, 0.46, age(URANUS, 1210123456));
-                             ^
-/home/vpayno/git_vpayno/exercism-workspace/c/space-age/test_space_age.c:39:35: warning: 0.46 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
-    TEST_ASSERT_FLOAT_WITHIN(0.1, 0.46, age(URANUS, 1210123456));
-                                  ^
-/home/vpayno/git_vpayno/exercism-workspace/c/space-age/test_space_age.c:44:30: warning: 0.1 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
-    TEST_ASSERT_FLOAT_WITHIN(0.1, 0.35, age(NEPTUNE, 1821023456));
-                             ^
-/home/vpayno/git_vpayno/exercism-workspace/c/space-age/test_space_age.c:44:35: warning: 0.35 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
-    TEST_ASSERT_FLOAT_WITHIN(0.1, 0.35, age(NEPTUNE, 1821023456));
-                                  ^
-/home/vpayno/git_vpayno/exercism-workspace/c/space-age/test_space_age.c:51:5: warning:  is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
-    TEST_ASSERT_EQUAL_FLOAT(-1.0, age((planet_t)-1, 680804807));
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/c/space-age/test-framework/unity.h:340:100: note: expanded from macro 'TEST_ASSERT_EQUAL_FLOAT'
-#define TEST_ASSERT_EQUAL_FLOAT(expected, actual)                                                  UNITY_TEST_ASSERT_EQUAL_FLOAT((expected), (actual), __LINE__, NULL)
-                                                                                                   ^
-/home/vpayno/git_vpayno/exercism-workspace/c/space-age/test-framework/unity_internals.h:997:168: note: expanded from macro 'UNITY_TEST_ASSERT_EQUAL_FLOAT'
-#define UNITY_TEST_ASSERT_EQUAL_FLOAT(expected, actual, line, message)                           UNITY_TEST_ASSERT_FLOAT_WITHIN((UNITY_FLOAT)(expected) * (UNITY_FLOAT)UNITY_FLOAT_PRECISION, (UNITY_FLOAT)(expected), (UNITY_FLOAT)(actual), (UNITY_LINE_TYPE)(line), (message))
-                                                                                                                                                                       ^
-/home/vpayno/git_vpayno/exercism-workspace/c/space-age/test-framework/unity_internals.h:201:32: note: expanded from macro 'UNITY_FLOAT_PRECISION'
-#define UNITY_FLOAT_PRECISION (0.00001f)
-                               ^
 
-real	0m0.130s
-user	0m0.109s
-sys	0m0.022s
+real	0m0.029s
+user	0m0.016s
+sys	0m0.013s
+Running: clang-tidy-16 ./space_age.h
+
+
+real	0m0.031s
+user	0m0.017s
+sys	0m0.015s
 
 ===============================================================================
 
