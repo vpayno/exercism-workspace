@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf *.o *.out *.out.dSYM
 
-real	0m0.007s
-user	0m0.002s
-sys	0m0.005s
+real	0m0.003s
+user	0m0.003s
+sys	0m0.000s
 
 ===============================================================================
 
@@ -30,9 +30,9 @@ test_pangram.c:95:test_a_to_m_and_A_to_M_are_26_different_characters_but_not_pan
 11 Tests 0 Failures 0 Ignored 
 OK
 
-real	0m0.111s
-user	0m0.072s
-sys	0m0.042s
+real	0m0.108s
+user	0m0.071s
+sys	0m0.038s
 
 ===============================================================================
 
@@ -55,136 +55,48 @@ test_pangram.c:95:test_a_to_m_and_A_to_M_are_26_different_characters_but_not_pan
 OK
 Memory check passed
 
-real	0m0.139s
-user	0m0.101s
-sys	0m0.039s
+real	0m0.140s
+user	0m0.106s
+sys	0m0.035s
 
 ===============================================================================
 
 Running: clang-format-16 -style=file -i ./pangram.c ./test_pangram.c ./pangram.h
 
-real	0m0.019s
-user	0m0.009s
-sys	0m0.009s
+real	0m0.023s
+user	0m0.012s
+sys	0m0.010s
 
 ===============================================================================
 
-Running: clang-check-16 ./pangram.c ./test_pangram.c ./pangram.h --
+Running: ../../.github/citools/cpp/clang-check
+clang-check-16 --analyze ./pangram.h
 
-real	0m0.043s
-user	0m0.031s
+real	0m0.025s
+user	0m0.015s
+sys	0m0.010s
+
+
+real	0m0.027s
+user	0m0.015s
 sys	0m0.012s
 
 ===============================================================================
 
-Running: clang-tidy-16 ./pangram.c ./test_pangram.c ./pangram.h -checks=*,-llvm-header-guard,-llvmlibc-restrict-system-libc-headers -- | head -n 100
-2680 warnings generated.
-6673 warnings generated.
-9350 warnings generated.
-/home/vpayno/git_vpayno/exercism-workspace/c/pangram/pangram.c:20:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
-    for (int i = 0, j = 0; i < (int)strlen(sentence); i++) {
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/c/pangram/pangram.c:17:5: note: inferred assignment of ID-dependent value from ID-dependent  [altera-id-dependent-backward-branch]
-    char *new_sentence = calloc(strlen(sentence) + 2, sizeof(char));
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/c/pangram/pangram.c:22:33: warning: narrowing conversion from 'int' to signed type 'char' is implementation-defined [bugprone-narrowing-conversions,cppcoreguidelines-narrowing-conversions]
-            new_sentence[j++] = tolower(sentence[i]);
-                                ^
-/home/vpayno/git_vpayno/exercism-workspace/c/pangram/pangram.c:35:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
-    for (int i = 0; i < (int)strlen(new_sentence); i++) {
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/c/pangram/pangram.c:35:21: warning: backward branch (for loop) is ID-dependent due to variable reference to 'new_sentence' and may cause performance degradation [altera-id-dependent-backward-branch]
-    for (int i = 0; i < (int)strlen(new_sentence); i++) {
-                    ^
-/home/vpayno/git_vpayno/exercism-workspace/c/pangram/pangram.c:41:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
-    for (int i = 0; i < ALPHABET_SIZE; i++) {
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/c/pangram/test_pangram.c:8:31: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
-static void test_null(void) { TEST_ASSERT_FALSE(is_pangram(NULL)); }
-                              ^
-/home/vpayno/git_vpayno/exercism-workspace/c/pangram/test-framework/unity.h:128:100: note: expanded from macro 'TEST_ASSERT_FALSE'
-#define TEST_ASSERT_FALSE(condition)                                                               UNITY_TEST_ASSERT(      !(condition), __LINE__, " Expected FALSE Was TRUE")
-                                                                                                   ^
-/home/vpayno/git_vpayno/exercism-workspace/c/pangram/test-framework/unity_internals.h:775:98: note: expanded from macro 'UNITY_TEST_ASSERT'
-#define UNITY_TEST_ASSERT(condition, line, message)                                              do {if (condition) {} else {UNITY_TEST_FAIL((UNITY_LINE_TYPE)(line), (message));}} while(0)
-                                                                                                 ^
-/home/vpayno/git_vpayno/exercism-workspace/c/pangram/test_pangram.c:14:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
-    TEST_ASSERT_FALSE(is_pangram(sentence));
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/c/pangram/test-framework/unity.h:128:100: note: expanded from macro 'TEST_ASSERT_FALSE'
-#define TEST_ASSERT_FALSE(condition)                                                               UNITY_TEST_ASSERT(      !(condition), __LINE__, " Expected FALSE Was TRUE")
-                                                                                                   ^
-/home/vpayno/git_vpayno/exercism-workspace/c/pangram/test-framework/unity_internals.h:775:98: note: expanded from macro 'UNITY_TEST_ASSERT'
-#define UNITY_TEST_ASSERT(condition, line, message)                                              do {if (condition) {} else {UNITY_TEST_FAIL((UNITY_LINE_TYPE)(line), (message));}} while(0)
-                                                                                                 ^
-/home/vpayno/git_vpayno/exercism-workspace/c/pangram/test_pangram.c:21:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
-    TEST_ASSERT_TRUE(is_pangram(sentence));
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/c/pangram/test-framework/unity.h:126:100: note: expanded from macro 'TEST_ASSERT_TRUE'
-#define TEST_ASSERT_TRUE(condition)                                                                UNITY_TEST_ASSERT(       (condition), __LINE__, " Expected TRUE Was FALSE")
-                                                                                                   ^
-/home/vpayno/git_vpayno/exercism-workspace/c/pangram/test-framework/unity_internals.h:775:98: note: expanded from macro 'UNITY_TEST_ASSERT'
-#define UNITY_TEST_ASSERT(condition, line, message)                                              do {if (condition) {} else {UNITY_TEST_FAIL((UNITY_LINE_TYPE)(line), (message));}} while(0)
-                                                                                                 ^
-/home/vpayno/git_vpayno/exercism-workspace/c/pangram/test_pangram.c:28:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
-    TEST_ASSERT_TRUE(is_pangram(sentence));
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/c/pangram/test-framework/unity.h:126:100: note: expanded from macro 'TEST_ASSERT_TRUE'
-#define TEST_ASSERT_TRUE(condition)                                                                UNITY_TEST_ASSERT(       (condition), __LINE__, " Expected TRUE Was FALSE")
-                                                                                                   ^
-/home/vpayno/git_vpayno/exercism-workspace/c/pangram/test-framework/unity_internals.h:775:98: note: expanded from macro 'UNITY_TEST_ASSERT'
-#define UNITY_TEST_ASSERT(condition, line, message)                                              do {if (condition) {} else {UNITY_TEST_FAIL((UNITY_LINE_TYPE)(line), (message));}} while(0)
-                                                                                                 ^
-/home/vpayno/git_vpayno/exercism-workspace/c/pangram/test_pangram.c:36:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
-    TEST_ASSERT_FALSE(is_pangram(sentence));
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/c/pangram/test-framework/unity.h:128:100: note: expanded from macro 'TEST_ASSERT_FALSE'
-#define TEST_ASSERT_FALSE(condition)                                                               UNITY_TEST_ASSERT(      !(condition), __LINE__, " Expected FALSE Was TRUE")
-                                                                                                   ^
-/home/vpayno/git_vpayno/exercism-workspace/c/pangram/test-framework/unity_internals.h:775:98: note: expanded from macro 'UNITY_TEST_ASSERT'
-#define UNITY_TEST_ASSERT(condition, line, message)                                              do {if (condition) {} else {UNITY_TEST_FAIL((UNITY_LINE_TYPE)(line), (message));}} while(0)
-                                                                                                 ^
-/home/vpayno/git_vpayno/exercism-workspace/c/pangram/test_pangram.c:43:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
-    TEST_ASSERT_FALSE(is_pangram(sentence));
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/c/pangram/test-framework/unity.h:128:100: note: expanded from macro 'TEST_ASSERT_FALSE'
-#define TEST_ASSERT_FALSE(condition)                                                               UNITY_TEST_ASSERT(      !(condition), __LINE__, " Expected FALSE Was TRUE")
-                                                                                                   ^
-/home/vpayno/git_vpayno/exercism-workspace/c/pangram/test-framework/unity_internals.h:775:98: note: expanded from macro 'UNITY_TEST_ASSERT'
-#define UNITY_TEST_ASSERT(condition, line, message)                                              do {if (condition) {} else {UNITY_TEST_FAIL((UNITY_LINE_TYPE)(line), (message));}} while(0)
-                                                                                                 ^
-/home/vpayno/git_vpayno/exercism-workspace/c/pangram/test_pangram.c:50:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
-    TEST_ASSERT_TRUE(is_pangram(sentence));
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/c/pangram/test-framework/unity.h:126:100: note: expanded from macro 'TEST_ASSERT_TRUE'
-#define TEST_ASSERT_TRUE(condition)                                                                UNITY_TEST_ASSERT(       (condition), __LINE__, " Expected TRUE Was FALSE")
-                                                                                                   ^
-/home/vpayno/git_vpayno/exercism-workspace/c/pangram/test-framework/unity_internals.h:775:98: note: expanded from macro 'UNITY_TEST_ASSERT'
-#define UNITY_TEST_ASSERT(condition, line, message)                                              do {if (condition) {} else {UNITY_TEST_FAIL((UNITY_LINE_TYPE)(line), (message));}} while(0)
-                                                                                                 ^
-/home/vpayno/git_vpayno/exercism-workspace/c/pangram/test_pangram.c:57:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
-    TEST_ASSERT_TRUE(is_pangram(sentence));
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/c/pangram/test-framework/unity.h:126:100: note: expanded from macro 'TEST_ASSERT_TRUE'
-#define TEST_ASSERT_TRUE(condition)                                                                UNITY_TEST_ASSERT(       (condition), __LINE__, " Expected TRUE Was FALSE")
-                                                                                                   ^
-/home/vpayno/git_vpayno/exercism-workspace/c/pangram/test-framework/unity_internals.h:775:98: note: expanded from macro 'UNITY_TEST_ASSERT'
-#define UNITY_TEST_ASSERT(condition, line, message)                                              do {if (condition) {} else {UNITY_TEST_FAIL((UNITY_LINE_TYPE)(line), (message));}} while(0)
-                                                                                                 ^
-/home/vpayno/git_vpayno/exercism-workspace/c/pangram/test_pangram.c:64:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
-    TEST_ASSERT_FALSE(is_pangram(sentence));
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/c/pangram/test-framework/unity.h:128:100: note: expanded from macro 'TEST_ASSERT_FALSE'
-#define TEST_ASSERT_FALSE(condition)                                                               UNITY_TEST_ASSERT(      !(condition), __LINE__, " Expected FALSE Was TRUE")
-                                                                                                   ^
-/home/vpayno/git_vpayno/exercism-workspace/c/pangram/test-framework/unity_internals.h:775:98: note: expanded from macro 'UNITY_TEST_ASSERT'
-#define UNITY_TEST_ASSERT(condition, line, message)                                              do {if (condition) {} else {UNITY_TEST_FAIL((UNITY_LINE_TYPE)(line), (message));}} while(0)
-                                                                                                 ^
-/home/vpayno/git_vpayno/exercism-workspace/c/pangram/test_pangram.c:71:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
+Running: ../../.github/citools/cpp/clang-tidy | head -n 100
+429 warnings generated.
+Suppressed 429 warnings (429 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 
-real	0m0.260s
-user	0m0.237s
-sys	0m0.025s
+real	0m0.039s
+user	0m0.020s
+sys	0m0.019s
+Running: clang-tidy-16 ./pangram.h
+
+
+real	0m0.041s
+user	0m0.023s
+sys	0m0.019s
 
 ===============================================================================
 
