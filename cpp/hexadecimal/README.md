@@ -30,3 +30,8 @@ The program should handle invalid hexadecimal strings.
 ### Based on
 
 All of Computer Science - http://www.wolframalpha.com/examples/NumberBases.html
+
+### My Solution
+
+- [my solution]()
+- [run-tests](./run-tests-cpp.txt)
