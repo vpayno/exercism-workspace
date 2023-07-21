@@ -1,5 +1,5 @@
-#if !defined(TRINARY_H)
-#define TRINARY_H
+#if !defined(TRINARY_HPP)
+#define TRINARY_HPP
 
 #include <cmath>
 #include <numeric>
@@ -14,4 +14,4 @@ bool is_valid_input(std::string trinary);
 
 } // namespace trinary
 
-#endif // TRINARY_H
+#endif // TRINARY_HPP

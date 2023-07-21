@@ -1,4 +1,4 @@
-#include "trinary.h"
+#include "trinary.hpp"
 
 namespace trinary {
 

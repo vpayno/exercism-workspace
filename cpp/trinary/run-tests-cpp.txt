@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.011s
-user	0m0.003s
-sys	0m0.007s
+real	0m0.012s
+user	0m0.001s
+sys	0m0.011s
 
 ===============================================================================
 
@@ -71,24 +71,24 @@ File                                       Lines    Exec  Cover   Missing
 ------------------------------------------------------------------------------
 test/catch.hpp                                32      27    84%   1642-1643,2227,2229,2560
 trinary.cpp                                   12      12   100%   
-trinary_test.cpp                              27      27   100%   
+trinary_test.cpp                              17      17   100%   
 ------------------------------------------------------------------------------
-TOTAL                                         71      66    93%
+TOTAL                                         61      56    91%
 ------------------------------------------------------------------------------
-lines: 93.0% (66 out of 71)
+lines: 91.8% (56 out of 61)
 branches: 39.4% (71 out of 180)
 
-real	0m12.260s
-user	0m11.194s
-sys	0m1.040s
+real	0m11.510s
+user	0m10.700s
+sys	0m0.805s
 
 ===============================================================================
 
 cmake-format --in-place CMakeLists.txt
 
-real	0m0.153s
-user	0m0.110s
-sys	0m0.043s
+real	0m0.148s
+user	0m0.107s
+sys	0m0.042s
 
 ===============================================================================
 
@@ -110,70 +110,50 @@ found lint:
   Convention: 4
 
 
-real	0m0.176s
-user	0m0.129s
-sys	0m0.045s
+real	0m0.159s
+user	0m0.118s
+sys	0m0.041s
 
 ===============================================================================
 
-Running: clang-format-16 -style=file -i ./trinary.cpp ./trinary_test.cpp ./trinary.h
+Running: clang-format-16 -style=file -i ./trinary.cpp ./trinary_test.cpp
 
-real	0m0.024s
+real	0m0.023s
 user	0m0.013s
 sys	0m0.010s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./trinary.cpp ./trinary_test.cpp ./trinary.h
-error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
-error: invalid argument '-std=c++17' not allowed with 'C'
-/home/vpayno/git_vpayno/exercism-workspace/cpp/trinary/trinary.h:4:10: fatal error: 'cmath' file not found
-#include <cmath>
-         ^~~~~~~
-1 error generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/trinary/trinary.h.
+clang-check-16 --analyze ./trinary.cpp ./trinary_test.cpp ./trinary.hpp
 
-real	0m3.260s
-user	0m3.149s
-sys	0m0.110s
+real	0m3.425s
+user	0m3.320s
+sys	0m0.104s
 
 
-real	0m3.261s
-user	0m3.149s
-sys	0m0.112s
+real	0m3.427s
+user	0m3.320s
+sys	0m0.106s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 40226 warnings generated.
 84427 warnings generated.
-84429 warnings and 3 errors generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/trinary/trinary.h.
-Suppressed 84432 warnings (84427 in non-user code, 5 NOLINT).
+123441 warnings generated.
+Suppressed 123446 warnings (123441 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-Found compiler error(s).
 
-real	0m19.965s
-user	0m19.805s
-sys	0m0.160s
-Running: clang-tidy-16 ./trinary.cpp ./trinary_test.cpp ./trinary.h
-error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
-error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
-/home/vpayno/git_vpayno/exercism-workspace/cpp/trinary/trinary.h:4:10: error: 'cmath' file not found [clang-diagnostic-error]
-#include <cmath>
-         ^~~~~~~
-/home/vpayno/git_vpayno/exercism-workspace/cpp/trinary/trinary.h:11:5: warning: variable 'to_decimal' is non-const and globally accessible, consider making it const [cppcoreguidelines-avoid-non-const-global-variables]
-int to_decimal(std::string trinary);
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/cpp/trinary/trinary.h:13:6: warning: variable 'is_valid_input' is non-const and globally accessible, consider making it const [cppcoreguidelines-avoid-non-const-global-variables]
-bool is_valid_input(std::string trinary);
-     ^
+real	0m24.009s
+user	0m23.853s
+sys	0m0.149s
+Running: clang-tidy-16 ./trinary.cpp ./trinary_test.cpp ./trinary.hpp
 
 
-real	0m19.968s
-user	0m19.807s
-sys	0m0.163s
+real	0m24.012s
+user	0m23.854s
+sys	0m0.150s
 
 ===============================================================================
 
