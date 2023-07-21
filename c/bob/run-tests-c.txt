@@ -6,8 +6,8 @@ Running automated test file(s):
 Running: make clean
 rm -rf *.o *.out *.out.dSYM
 
-real	0m0.006s
-user	0m0.004s
+real	0m0.003s
+user	0m0.001s
 sys	0m0.002s
 
 ===============================================================================
@@ -44,9 +44,9 @@ test_bob.c:172:test_non_question_ending_with_whitespace:PASS
 25 Tests 0 Failures 0 Ignored 
 OK
 
-real	0m0.129s
-user	0m0.087s
-sys	0m0.041s
+real	0m0.123s
+user	0m0.083s
+sys	0m0.031s
 
 ===============================================================================
 
@@ -83,38 +83,48 @@ test_bob.c:172:test_non_question_ending_with_whitespace:PASS
 OK
 Memory check passed
 
-real	0m0.132s
-user	0m0.091s
-sys	0m0.041s
+real	0m0.137s
+user	0m0.096s
+sys	0m0.043s
 
 ===============================================================================
 
 Running: clang-format-16 -style=file -i ./bob.c ./test_bob.c ./bob.h
 
 real	0m0.021s
+user	0m0.011s
+sys	0m0.010s
+
+===============================================================================
+
+Running: ../../.github/citools/cpp/clang-check
+clang-check-16 --analyze ./bob.h
+
+real	0m0.025s
 user	0m0.013s
-sys	0m0.008s
+sys	0m0.012s
+
+
+real	0m0.027s
+user	0m0.015s
+sys	0m0.012s
 
 ===============================================================================
 
-Running: clang-check-16 ./bob.c ./test_bob.c ./bob.h --
-
-real	0m0.044s
-user	0m0.028s
-sys	0m0.016s
-
-===============================================================================
-
-Running: clang-tidy-16 ./bob.c ./test_bob.c ./bob.h -checks=*,-llvm-header-guard,-llvmlibc-restrict-system-libc-headers -- | head -n 100
-3441 warnings generated.
-7529 warnings generated.
-10970 warnings generated.
-Suppressed 10970 warnings (10970 in non-user code).
+Running: ../../.github/citools/cpp/clang-tidy | head -n 100
+633 warnings generated.
+Suppressed 633 warnings (633 in non-user code).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 
-real	0m0.295s
-user	0m0.273s
-sys	0m0.022s
+real	0m0.049s
+user	0m0.032s
+sys	0m0.016s
+Running: clang-tidy-16 ./bob.h
+
+
+real	0m0.051s
+user	0m0.033s
+sys	0m0.019s
 
 ===============================================================================
 
