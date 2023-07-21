@@ -14,78 +14,85 @@ sys	0m0.003s
 
 Running: make test | ansifilter
 Compiling tests.out
-test_hamming.c:69:test_empty_strands:PASS
-test_hamming.c:70:test_single_identical_strands:PASS
-test_hamming.c:71:test_single_letter_different_strands:PASS
-test_hamming.c:72:test_long_identical_strands:PASS
-test_hamming.c:73:test_long_different_strands:PASS
-test_hamming.c:74:test_disallow_first_strand_when_longer:PASS
-test_hamming.c:75:test_disallow_second_strand_when_longer:PASS
-test_hamming.c:76:test_disallow_empty_first_strand:PASS
-test_hamming.c:77:test_disallow_empty_second_strand:PASS
+test_hamming.c:53:test_empty_strands:PASS
+test_hamming.c:54:test_single_identical_strands:PASS
+test_hamming.c:55:test_single_letter_different_strands:PASS
+test_hamming.c:56:test_long_identical_strands:PASS
+test_hamming.c:57:test_long_different_strands:PASS
+test_hamming.c:58:test_disallow_first_strand_when_longer:PASS
+test_hamming.c:59:test_disallow_second_strand_when_longer:PASS
+test_hamming.c:60:test_disallow_empty_first_strand:PASS
+test_hamming.c:61:test_disallow_empty_second_strand:PASS
 
 -----------------------
 9 Tests 0 Failures 0 Ignored 
 OK
 
-real	0m0.129s
-user	0m0.090s
-sys	0m0.041s
+real	0m0.137s
+user	0m0.097s
+sys	0m0.042s
 
 ===============================================================================
 
 Running: make memcheck | ansifilter
 Compiling memcheck
-test_hamming.c:69:test_empty_strands:PASS
-test_hamming.c:70:test_single_identical_strands:PASS
-test_hamming.c:71:test_single_letter_different_strands:PASS
-test_hamming.c:72:test_long_identical_strands:PASS
-test_hamming.c:73:test_long_different_strands:PASS
-test_hamming.c:74:test_disallow_first_strand_when_longer:PASS
-test_hamming.c:75:test_disallow_second_strand_when_longer:PASS
-test_hamming.c:76:test_disallow_empty_first_strand:PASS
-test_hamming.c:77:test_disallow_empty_second_strand:PASS
+test_hamming.c:53:test_empty_strands:PASS
+test_hamming.c:54:test_single_identical_strands:PASS
+test_hamming.c:55:test_single_letter_different_strands:PASS
+test_hamming.c:56:test_long_identical_strands:PASS
+test_hamming.c:57:test_long_different_strands:PASS
+test_hamming.c:58:test_disallow_first_strand_when_longer:PASS
+test_hamming.c:59:test_disallow_second_strand_when_longer:PASS
+test_hamming.c:60:test_disallow_empty_first_strand:PASS
+test_hamming.c:61:test_disallow_empty_second_strand:PASS
 
 -----------------------
 9 Tests 0 Failures 0 Ignored 
 OK
 Memory check passed
 
-real	0m0.125s
-user	0m0.100s
-sys	0m0.027s
+real	0m0.164s
+user	0m0.113s
+sys	0m0.053s
 
 ===============================================================================
 
 Running: clang-format-16 -style=file -i ./hamming.c ./test_hamming.c ./hamming.h
 
-real	0m0.021s
-user	0m0.010s
-sys	0m0.011s
+real	0m0.023s
+user	0m0.011s
+sys	0m0.012s
 
 ===============================================================================
 
-Running: clang-check-16 ./hamming.c ./test_hamming.c ./hamming.h --
+Running: ../../.github/citools/cpp/clang-check
+clang-check-16 --analyze ./hamming.h
 
-real	0m0.034s
-user	0m0.018s
-sys	0m0.016s
+real	0m0.030s
+user	0m0.009s
+sys	0m0.021s
+
+
+real	0m0.033s
+user	0m0.009s
+sys	0m0.024s
 
 ===============================================================================
 
-Running: clang-tidy-16 ./hamming.c ./test_hamming.c ./hamming.h -checks=*,-llvm-header-guard,-llvmlibc-restrict-system-libc-headers -- | head -n 100
-1318 warnings generated.
-4106 warnings generated.
-5421 warnings generated.
-Suppressed 5420 warnings (5420 in non-user code).
+Running: ../../.github/citools/cpp/clang-tidy | head -n 100
+302 warnings generated.
+Suppressed 302 warnings (302 in non-user code).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-/home/vpayno/git_vpayno/exercism-workspace/c/hamming/hamming.c:10:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
-    while (*lhs != '\0' || *rhs != '\0') {
-    ^
 
-real	0m0.201s
-user	0m0.181s
-sys	0m0.020s
+real	0m0.040s
+user	0m0.026s
+sys	0m0.015s
+Running: clang-tidy-16 ./hamming.h
+
+
+real	0m0.043s
+user	0m0.026s
+sys	0m0.018s
 
 ===============================================================================
 
