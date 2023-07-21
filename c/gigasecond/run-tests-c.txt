@@ -7,172 +7,84 @@ Running: make clean
 rm -rf *.o *.out *.out.dSYM
 
 real	0m0.003s
-user	0m0.002s
+user	0m0.001s
 sys	0m0.002s
 
 ===============================================================================
 
 Running: make test | ansifilter
 Compiling tests.out
-test_gigasecond.c:102:test_date:PASS
-test_gigasecond.c:103:test_another_date:PASS
-test_gigasecond.c:104:test_third_date:PASS
-test_gigasecond.c:105:test_date_and_time:PASS
-test_gigasecond.c:106:test_date_and_time_with_day_rollover:PASS
+test_gigasecond.c:88:test_date:PASS
+test_gigasecond.c:89:test_another_date:PASS
+test_gigasecond.c:90:test_third_date:PASS
+test_gigasecond.c:91:test_date_and_time:PASS
+test_gigasecond.c:92:test_date_and_time_with_day_rollover:PASS
 
 -----------------------
 5 Tests 0 Failures 0 Ignored 
 OK
 
-real	0m0.113s
-user	0m0.087s
-sys	0m0.025s
+real	0m0.105s
+user	0m0.067s
+sys	0m0.040s
 
 ===============================================================================
 
 Running: make memcheck | ansifilter
 Compiling memcheck
-test_gigasecond.c:102:test_date:PASS
-test_gigasecond.c:103:test_another_date:PASS
-test_gigasecond.c:104:test_third_date:PASS
-test_gigasecond.c:105:test_date_and_time:PASS
-test_gigasecond.c:106:test_date_and_time_with_day_rollover:PASS
+test_gigasecond.c:88:test_date:PASS
+test_gigasecond.c:89:test_another_date:PASS
+test_gigasecond.c:90:test_third_date:PASS
+test_gigasecond.c:91:test_date_and_time:PASS
+test_gigasecond.c:92:test_date_and_time_with_day_rollover:PASS
 
 -----------------------
 5 Tests 0 Failures 0 Ignored 
 OK
 Memory check passed
 
-real	0m0.123s
-user	0m0.090s
-sys	0m0.035s
+real	0m0.135s
+user	0m0.087s
+sys	0m0.050s
 
 ===============================================================================
 
 Running: clang-format-16 -style=file -i ./gigasecond.c ./test_gigasecond.c ./gigasecond.h
 
-real	0m0.029s
-user	0m0.015s
-sys	0m0.014s
+real	0m0.026s
+user	0m0.016s
+sys	0m0.010s
 
 ===============================================================================
 
-Running: clang-check-16 ./gigasecond.c ./test_gigasecond.c ./gigasecond.h --
+Running: ../../.github/citools/cpp/clang-check
+clang-check-16 --analyze ./gigasecond.h
 
-real	0m0.034s
+real	0m0.020s
+user	0m0.011s
+sys	0m0.008s
+
+
+real	0m0.022s
+user	0m0.012s
+sys	0m0.009s
+
+===============================================================================
+
+Running: ../../.github/citools/cpp/clang-tidy | head -n 100
+237 warnings generated.
+Suppressed 237 warnings (237 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+
+real	0m0.032s
+user	0m0.019s
+sys	0m0.012s
+Running: clang-tidy-16 ./gigasecond.h
+
+
+real	0m0.035s
 user	0m0.020s
-sys	0m0.014s
-
-===============================================================================
-
-Running: clang-tidy-16 ./gigasecond.c ./test_gigasecond.c ./gigasecond.h -checks=*,-llvm-header-guard,-llvmlibc-restrict-system-libc-headers -- | head -n 100
-951 warnings generated.
-3464 warnings generated.
-4413 warnings generated.
-/home/vpayno/git_vpayno/exercism-workspace/c/gigasecond/test_gigasecond.c:5:16: warning: 400 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
-    if (year % 400 == 0)
-               ^
-/home/vpayno/git_vpayno/exercism-workspace/c/gigasecond/test_gigasecond.c:5:25: warning: statement should be inside braces [google-readability-braces-around-statements,hicpp-braces-around-statements,readability-braces-around-statements]
-    if (year % 400 == 0)
-                        ^
-                         {
-/home/vpayno/git_vpayno/exercism-workspace/c/gigasecond/test_gigasecond.c:7:16: warning: 100 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
-    if (year % 100 == 0)
-               ^
-/home/vpayno/git_vpayno/exercism-workspace/c/gigasecond/test_gigasecond.c:7:25: warning: statement should be inside braces [google-readability-braces-around-statements,hicpp-braces-around-statements,readability-braces-around-statements]
-    if (year % 100 == 0)
-                        ^
-                         {
-/home/vpayno/git_vpayno/exercism-workspace/c/gigasecond/test_gigasecond.c:9:23: warning: statement should be inside braces [google-readability-braces-around-statements,hicpp-braces-around-statements,readability-braces-around-statements]
-    if (year % 4 == 0)
-                      ^
-                       {
-/home/vpayno/git_vpayno/exercism-workspace/c/gigasecond/test_gigasecond.c:20:12: warning: 365 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
-    return 365 * year + (year / 400) - (year / 100) + (year / 4);
-           ^
-/home/vpayno/git_vpayno/exercism-workspace/c/gigasecond/test_gigasecond.c:20:33: warning: 400 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
-    return 365 * year + (year / 400) - (year / 100) + (year / 4);
-                                ^
-/home/vpayno/git_vpayno/exercism-workspace/c/gigasecond/test_gigasecond.c:20:48: warning: 100 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
-    return 365 * year + (year / 400) - (year / 100) + (year / 4);
-                                               ^
-/home/vpayno/git_vpayno/exercism-workspace/c/gigasecond/test_gigasecond.c:23:51: warning: 2 adjacent parameters of 'construct_date' of similar type ('int') are easily swapped by mistake [bugprone-easily-swappable-parameters]
-static time_t construct_date(int year, int month, int day, int hour, int min,
-                                                  ^~~~~~~~~~~~~~~~~
-/home/vpayno/git_vpayno/exercism-workspace/c/gigasecond/test_gigasecond.c:23:55: note: the first parameter in the range is 'day'
-static time_t construct_date(int year, int month, int day, int hour, int min,
-                                                      ^~~
-/home/vpayno/git_vpayno/exercism-workspace/c/gigasecond/test_gigasecond.c:23:64: note: the last parameter in the range is 'hour'
-static time_t construct_date(int year, int month, int day, int hour, int min,
-                                                               ^~~~
-/home/vpayno/git_vpayno/exercism-workspace/c/gigasecond/test_gigasecond.c:30:68: warning: 1970 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
-    time_t days_since_epoch = (days_from_1ad(year) - days_from_1ad(1970)) +
-                                                                   ^
-/home/vpayno/git_vpayno/exercism-workspace/c/gigasecond/test_gigasecond.c:33:48: warning: 60 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
-        (seconds_in_day * days_since_epoch) + (60 * ((hour * 60) + min) + sec);
-                                               ^
-/home/vpayno/git_vpayno/exercism-workspace/c/gigasecond/test_gigasecond.c:33:62: warning: 60 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
-        (seconds_in_day * days_since_epoch) + (60 * ((hour * 60) + min) + sec);
-                                                             ^
-/home/vpayno/git_vpayno/exercism-workspace/c/gigasecond/test_gigasecond.c:43:38: warning: 2043 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
-    time_t expected = construct_date(2043, 1, 1, 1, 46, 40);
-                                     ^
-/home/vpayno/git_vpayno/exercism-workspace/c/gigasecond/test_gigasecond.c:43:53: warning: 46 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
-    time_t expected = construct_date(2043, 1, 1, 1, 46, 40);
-                                                    ^
-/home/vpayno/git_vpayno/exercism-workspace/c/gigasecond/test_gigasecond.c:43:57: warning: 40 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
-    time_t expected = construct_date(2043, 1, 1, 1, 46, 40);
-                                                        ^
-/home/vpayno/git_vpayno/exercism-workspace/c/gigasecond/test_gigasecond.c:44:53: warning: 2011 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
-    time_t actual = gigasecond_after(construct_date(2011, 4, 25, 0, 0, 0));
-                                                    ^
-/home/vpayno/git_vpayno/exercism-workspace/c/gigasecond/test_gigasecond.c:44:62: warning: 25 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
-    time_t actual = gigasecond_after(construct_date(2011, 4, 25, 0, 0, 0));
-                                                             ^
-/home/vpayno/git_vpayno/exercism-workspace/c/gigasecond/test_gigasecond.c:45:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
-    TEST_ASSERT(expected == actual);
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/c/gigasecond/test-framework/unity.h:125:100: note: expanded from macro 'TEST_ASSERT'
-#define TEST_ASSERT(condition)                                                                     UNITY_TEST_ASSERT(       (condition), __LINE__, " Expression Evaluated To FALSE")
-                                                                                                   ^
-/home/vpayno/git_vpayno/exercism-workspace/c/gigasecond/test-framework/unity_internals.h:775:98: note: expanded from macro 'UNITY_TEST_ASSERT'
-#define UNITY_TEST_ASSERT(condition, line, message)                                              do {if (condition) {} else {UNITY_TEST_FAIL((UNITY_LINE_TYPE)(line), (message));}} while(0)
-                                                                                                 ^
-/home/vpayno/git_vpayno/exercism-workspace/c/gigasecond/test_gigasecond.c:50:38: warning: 2009 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
-    time_t expected = construct_date(2009, 2, 19, 1, 46, 40);
-                                     ^
-/home/vpayno/git_vpayno/exercism-workspace/c/gigasecond/test_gigasecond.c:50:47: warning: 19 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
-    time_t expected = construct_date(2009, 2, 19, 1, 46, 40);
-                                              ^
-/home/vpayno/git_vpayno/exercism-workspace/c/gigasecond/test_gigasecond.c:50:54: warning: 46 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
-    time_t expected = construct_date(2009, 2, 19, 1, 46, 40);
-                                                     ^
-/home/vpayno/git_vpayno/exercism-workspace/c/gigasecond/test_gigasecond.c:50:58: warning: 40 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
-    time_t expected = construct_date(2009, 2, 19, 1, 46, 40);
-                                                         ^
-/home/vpayno/git_vpayno/exercism-workspace/c/gigasecond/test_gigasecond.c:51:53: warning: 1977 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
-    time_t actual = gigasecond_after(construct_date(1977, 6, 13, 0, 0, 0));
-                                                    ^
-/home/vpayno/git_vpayno/exercism-workspace/c/gigasecond/test_gigasecond.c:51:59: warning: 6 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
-    time_t actual = gigasecond_after(construct_date(1977, 6, 13, 0, 0, 0));
-                                                          ^
-/home/vpayno/git_vpayno/exercism-workspace/c/gigasecond/test_gigasecond.c:51:62: warning: 13 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
-    time_t actual = gigasecond_after(construct_date(1977, 6, 13, 0, 0, 0));
-                                                             ^
-/home/vpayno/git_vpayno/exercism-workspace/c/gigasecond/test_gigasecond.c:52:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
-    TEST_ASSERT(expected == actual);
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/c/gigasecond/test-framework/unity.h:125:100: note: expanded from macro 'TEST_ASSERT'
-#define TEST_ASSERT(condition)                                                                     UNITY_TEST_ASSERT(       (condition), __LINE__, " Expression Evaluated To FALSE")
-                                                                                                   ^
-/home/vpayno/git_vpayno/exercism-workspace/c/gigasecond/test-framework/unity_internals.h:775:98: note: expanded from macro 'UNITY_TEST_ASSERT'
-#define UNITY_TEST_ASSERT(condition, line, message)                                              do {if (condition) {} else {UNITY_TEST_FAIL((UNITY_LINE_TYPE)(line), (message));}} while(0)
-                                                                                                 ^
-/home/vpayno/git_vpayno/exercism-workspace/c/gigasecond/test_gigasecond.c:57:38: warning: 1991 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
-
-real	0m0.151s
-user	0m0.136s
-sys	0m0.016s
+sys	0m0.017s
 
 ===============================================================================
 
