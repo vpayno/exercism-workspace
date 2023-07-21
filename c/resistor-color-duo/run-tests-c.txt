@@ -7,8 +7,8 @@ Running: make clean
 rm -rf *.o *.out *.out.dSYM
 
 real	0m0.003s
-user	0m0.000s
-sys	0m0.003s
+user	0m0.001s
+sys	0m0.002s
 
 ===============================================================================
 
@@ -26,9 +26,9 @@ test_resistor_color_duo.c:58:test_black_and_brown_one_digit:PASS
 7 Tests 0 Failures 0 Ignored 
 OK
 
-real	0m0.119s
-user	0m0.078s
-sys	0m0.042s
+real	0m0.108s
+user	0m0.076s
+sys	0m0.034s
 
 ===============================================================================
 
@@ -47,41 +47,45 @@ test_resistor_color_duo.c:58:test_black_and_brown_one_digit:PASS
 OK
 Memory check passed
 
-real	0m0.137s
-user	0m0.099s
+real	0m0.122s
+user	0m0.084s
 sys	0m0.039s
 
 ===============================================================================
 
 Running: clang-format-16 -style=file -i ./resistor_color_duo.c ./test_resistor_color_duo.c ./resistor_color_duo.h
 
-real	0m0.020s
-user	0m0.009s
+real	0m0.021s
+user	0m0.014s
+sys	0m0.007s
+
+===============================================================================
+
+Running: ../../.github/citools/cpp/clang-check
+clang-check-16 --analyze ./resistor_color_duo.h
+
+real	0m0.022s
+user	0m0.013s
+sys	0m0.009s
+
+
+real	0m0.024s
+user	0m0.013s
 sys	0m0.011s
 
 ===============================================================================
 
-Running: clang-check-16 ./resistor_color_duo.c ./test_resistor_color_duo.c ./resistor_color_duo.h --
+Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 
-real	0m0.029s
-user	0m0.016s
-sys	0m0.013s
+real	0m0.025s
+user	0m0.013s
+sys	0m0.012s
+Running: clang-tidy-16 ./resistor_color_duo.h
 
-===============================================================================
 
-Running: clang-tidy-16 ./resistor_color_duo.c ./test_resistor_color_duo.c ./resistor_color_duo.h -checks=*,-llvm-header-guard,-llvmlibc-restrict-system-libc-headers -- | head -n 100
-2 warnings generated.
-2142 warnings generated.
-2142 warnings generated.
-Suppressed 2140 warnings (2140 in non-user code).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-/home/vpayno/git_vpayno/exercism-workspace/c/resistor-color-duo/resistor_color_duo.c:7:33: warning: 10 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
-    resistor_value = bands[0] * 10;
-                                ^
-
-real	0m0.112s
-user	0m0.082s
-sys	0m0.030s
+real	0m0.027s
+user	0m0.014s
+sys	0m0.014s
 
 ===============================================================================
 
