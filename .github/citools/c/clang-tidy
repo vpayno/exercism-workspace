@@ -1,7 +1,7 @@
 #!/bin/bash
 
-CLANG_TIDY_CHECKS="*,-llvm-header-guard,-llvmlibc-restrict-system-libc-headers"
+shopt -s nullglob
 
-echo Running: clang-tidy-16 ./*.c ./*.h -checks="${CLANG_TIDY_CHECKS}" --
-time clang-tidy-16 ./*.c ./*.h -checks="${CLANG_TIDY_CHECKS}" --
+echo Running: clang-tidy-16 "${@}" ./*.c ./*.h
+time clang-tidy-16 "${@}" ./*.c ./*.h
 printf "\n"

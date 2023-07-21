@@ -40,17 +40,15 @@ main() {
 
 	# https://clang.llvm.org/docs/ClangCheck.html
 
-	echo Running: clang-check-16 ./*.c ./*.h --
-	time clang-check-16 ./*.c ./*.h --
+	echo Running: ../../.github/citools/cpp/clang-check
+	time ../../.github/citools/cpp/clang-check
 
 	print_ruler
 
 	# https://clang.llvm.org/extra/clang-tidy/
 
-	CLANG_TIDY_CHECKS="*,-llvm-header-guard,-llvmlibc-restrict-system-libc-headers"
-
-	echo Running: clang-tidy-16 ./*.c ./*.h -checks="${CLANG_TIDY_CHECKS}" -- '|' head -n 100
-	time clang-tidy-16 ./*.c ./*.h -checks="${CLANG_TIDY_CHECKS}" -- | head -n 100
+	echo Running: ../../.github/citools/cpp/clang-tidy '|' head -n 100
+	time ../../.github/citools/cpp/clang-tidy | head -n 100
 
 	print_ruler
 
