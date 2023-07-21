@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf *.o *.out *.out.dSYM
 
-real	0m0.003s
+real	0m0.004s
 user	0m0.002s
-sys	0m0.001s
+sys	0m0.002s
 
 ===============================================================================
 
@@ -25,8 +25,8 @@ test_collatz_conjecture.c:34:test_negative_value_is_an_error:PASS
 6 Tests 0 Failures 0 Ignored 
 OK
 
-real	0m0.115s
-user	0m0.079s
+real	0m0.107s
+user	0m0.072s
 sys	0m0.037s
 
 ===============================================================================
@@ -45,44 +45,45 @@ test_collatz_conjecture.c:34:test_negative_value_is_an_error:PASS
 OK
 Memory check passed
 
-real	0m0.119s
-user	0m0.081s
-sys	0m0.039s
+real	0m0.122s
+user	0m0.085s
+sys	0m0.038s
 
 ===============================================================================
 
 Running: clang-format-16 -style=file -i ./collatz_conjecture.c ./test_collatz_conjecture.c ./collatz_conjecture.h
 
-real	0m0.020s
-user	0m0.010s
+real	0m0.022s
+user	0m0.013s
 sys	0m0.009s
 
 ===============================================================================
 
-Running: clang-check-16 ./collatz_conjecture.c ./test_collatz_conjecture.c ./collatz_conjecture.h --
+Running: ../../.github/citools/cpp/clang-check
+clang-check-16 --analyze ./collatz_conjecture.h
 
-real	0m0.031s
-user	0m0.015s
-sys	0m0.015s
+real	0m0.022s
+user	0m0.009s
+sys	0m0.013s
+
+
+real	0m0.024s
+user	0m0.010s
+sys	0m0.014s
 
 ===============================================================================
 
-Running: clang-tidy-16 ./collatz_conjecture.c ./test_collatz_conjecture.c ./collatz_conjecture.h -checks=*,-llvm-header-guard,-llvmlibc-restrict-system-libc-headers -- | head -n 100
-4 warnings generated.
-2146 warnings generated.
-2146 warnings generated.
-Suppressed 2144 warnings (2144 in non-user code).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-/home/vpayno/git_vpayno/exercism-workspace/c/collatz-conjecture/collatz_conjecture.c:15:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
-    while (num > 1) {
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/c/collatz-conjecture/collatz_conjecture.c:15:12: warning: backward branch (while loop) is ID-dependent due to variable reference to 'num' and may cause performance degradation [altera-id-dependent-backward-branch]
-    while (num > 1) {
-           ^
+Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 
-real	0m0.112s
-user	0m0.088s
-sys	0m0.025s
+real	0m0.030s
+user	0m0.016s
+sys	0m0.014s
+Running: clang-tidy-16 ./collatz_conjecture.h
+
+
+real	0m0.033s
+user	0m0.017s
+sys	0m0.017s
 
 ===============================================================================
 
