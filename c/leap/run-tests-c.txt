@@ -7,8 +7,8 @@ Running: make clean
 rm -rf *.o *.out *.out.dSYM
 
 real	0m0.004s
-user	0m0.002s
-sys	0m0.001s
+user	0m0.001s
+sys	0m0.002s
 
 ===============================================================================
 
@@ -28,9 +28,9 @@ test_leap.c:67:test_year_divisible_by_200_not_divisible_by_400_in_common_year:PA
 9 Tests 0 Failures 0 Ignored 
 OK
 
-real	0m0.102s
-user	0m0.071s
-sys	0m0.031s
+real	0m0.115s
+user	0m0.075s
+sys	0m0.042s
 
 ===============================================================================
 
@@ -51,125 +51,48 @@ test_leap.c:67:test_year_divisible_by_200_not_divisible_by_400_in_common_year:PA
 OK
 Memory check passed
 
-real	0m0.124s
-user	0m0.093s
-sys	0m0.032s
-
-===============================================================================
-
-Running: clang-check-16 ./leap.c ./test_leap.c ./leap.h --
-
-real	0m0.035s
-user	0m0.022s
-sys	0m0.013s
-
-===============================================================================
-
-Running: clang-tidy-16 ./leap.c ./test_leap.c ./leap.h -checks=*,-llvm-header-guard,-llvmlibc-restrict-system-libc-headers -- | head -n 100
-12 warnings generated.
-2169 warnings generated.
-2177 warnings generated.
-/home/vpayno/git_vpayno/exercism-workspace/c/leap/leap.c:4:16: warning: 400 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
-    if (year % 400== 0) {
-               ^
-/home/vpayno/git_vpayno/exercism-workspace/c/leap/leap.c:8:16: warning: 100 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
-    if (year % 100== 0) {
-               ^
-/home/vpayno/git_vpayno/exercism-workspace/c/leap/test_leap.c:9:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
-    TEST_ASSERT_FALSE(leap_year(2015));
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/c/leap/test-framework/unity.h:128:100: note: expanded from macro 'TEST_ASSERT_FALSE'
-#define TEST_ASSERT_FALSE(condition)                                                               UNITY_TEST_ASSERT(      !(condition), __LINE__, " Expected FALSE Was TRUE")
-                                                                                                   ^
-/home/vpayno/git_vpayno/exercism-workspace/c/leap/test-framework/unity_internals.h:775:98: note: expanded from macro 'UNITY_TEST_ASSERT'
-#define UNITY_TEST_ASSERT(condition, line, message)                                              do {if (condition) {} else {UNITY_TEST_FAIL((UNITY_LINE_TYPE)(line), (message));}} while(0)
-                                                                                                 ^
-/home/vpayno/git_vpayno/exercism-workspace/c/leap/test_leap.c:14:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
-    TEST_ASSERT_FALSE(leap_year(1970));
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/c/leap/test-framework/unity.h:128:100: note: expanded from macro 'TEST_ASSERT_FALSE'
-#define TEST_ASSERT_FALSE(condition)                                                               UNITY_TEST_ASSERT(      !(condition), __LINE__, " Expected FALSE Was TRUE")
-                                                                                                   ^
-/home/vpayno/git_vpayno/exercism-workspace/c/leap/test-framework/unity_internals.h:775:98: note: expanded from macro 'UNITY_TEST_ASSERT'
-#define UNITY_TEST_ASSERT(condition, line, message)                                              do {if (condition) {} else {UNITY_TEST_FAIL((UNITY_LINE_TYPE)(line), (message));}} while(0)
-                                                                                                 ^
-/home/vpayno/git_vpayno/exercism-workspace/c/leap/test_leap.c:19:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
-    TEST_ASSERT_TRUE(leap_year(1996));
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/c/leap/test-framework/unity.h:126:100: note: expanded from macro 'TEST_ASSERT_TRUE'
-#define TEST_ASSERT_TRUE(condition)                                                                UNITY_TEST_ASSERT(       (condition), __LINE__, " Expected TRUE Was FALSE")
-                                                                                                   ^
-/home/vpayno/git_vpayno/exercism-workspace/c/leap/test-framework/unity_internals.h:775:98: note: expanded from macro 'UNITY_TEST_ASSERT'
-#define UNITY_TEST_ASSERT(condition, line, message)                                              do {if (condition) {} else {UNITY_TEST_FAIL((UNITY_LINE_TYPE)(line), (message));}} while(0)
-                                                                                                 ^
-/home/vpayno/git_vpayno/exercism-workspace/c/leap/test_leap.c:24:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
-    TEST_ASSERT_TRUE(leap_year(1960));
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/c/leap/test-framework/unity.h:126:100: note: expanded from macro 'TEST_ASSERT_TRUE'
-#define TEST_ASSERT_TRUE(condition)                                                                UNITY_TEST_ASSERT(       (condition), __LINE__, " Expected TRUE Was FALSE")
-                                                                                                   ^
-/home/vpayno/git_vpayno/exercism-workspace/c/leap/test-framework/unity_internals.h:775:98: note: expanded from macro 'UNITY_TEST_ASSERT'
-#define UNITY_TEST_ASSERT(condition, line, message)                                              do {if (condition) {} else {UNITY_TEST_FAIL((UNITY_LINE_TYPE)(line), (message));}} while(0)
-                                                                                                 ^
-/home/vpayno/git_vpayno/exercism-workspace/c/leap/test_leap.c:30:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
-    TEST_ASSERT_FALSE(leap_year(2100));
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/c/leap/test-framework/unity.h:128:100: note: expanded from macro 'TEST_ASSERT_FALSE'
-#define TEST_ASSERT_FALSE(condition)                                                               UNITY_TEST_ASSERT(      !(condition), __LINE__, " Expected FALSE Was TRUE")
-                                                                                                   ^
-/home/vpayno/git_vpayno/exercism-workspace/c/leap/test-framework/unity_internals.h:775:98: note: expanded from macro 'UNITY_TEST_ASSERT'
-#define UNITY_TEST_ASSERT(condition, line, message)                                              do {if (condition) {} else {UNITY_TEST_FAIL((UNITY_LINE_TYPE)(line), (message));}} while(0)
-                                                                                                 ^
-/home/vpayno/git_vpayno/exercism-workspace/c/leap/test_leap.c:36:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
-    TEST_ASSERT_FALSE(leap_year(1900));
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/c/leap/test-framework/unity.h:128:100: note: expanded from macro 'TEST_ASSERT_FALSE'
-#define TEST_ASSERT_FALSE(condition)                                                               UNITY_TEST_ASSERT(      !(condition), __LINE__, " Expected FALSE Was TRUE")
-                                                                                                   ^
-/home/vpayno/git_vpayno/exercism-workspace/c/leap/test-framework/unity_internals.h:775:98: note: expanded from macro 'UNITY_TEST_ASSERT'
-#define UNITY_TEST_ASSERT(condition, line, message)                                              do {if (condition) {} else {UNITY_TEST_FAIL((UNITY_LINE_TYPE)(line), (message));}} while(0)
-                                                                                                 ^
-/home/vpayno/git_vpayno/exercism-workspace/c/leap/test_leap.c:41:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
-    TEST_ASSERT_TRUE(leap_year(2000));
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/c/leap/test-framework/unity.h:126:100: note: expanded from macro 'TEST_ASSERT_TRUE'
-#define TEST_ASSERT_TRUE(condition)                                                                UNITY_TEST_ASSERT(       (condition), __LINE__, " Expected TRUE Was FALSE")
-                                                                                                   ^
-/home/vpayno/git_vpayno/exercism-workspace/c/leap/test-framework/unity_internals.h:775:98: note: expanded from macro 'UNITY_TEST_ASSERT'
-#define UNITY_TEST_ASSERT(condition, line, message)                                              do {if (condition) {} else {UNITY_TEST_FAIL((UNITY_LINE_TYPE)(line), (message));}} while(0)
-                                                                                                 ^
-/home/vpayno/git_vpayno/exercism-workspace/c/leap/test_leap.c:47:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
-    TEST_ASSERT_TRUE(leap_year(240Suppressed 2164 warnings (2164 in non-user code).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-0));
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/c/leap/test-framework/unity.h:126:100: note: expanded from macro 'TEST_ASSERT_TRUE'
-#define TEST_ASSERT_TRUE(condition)                                                                UNITY_TEST_ASSERT(       (condition), __LINE__, " Expected TRUE Was FALSE")
-                                                                                                   ^
-/home/vpayno/git_vpayno/exercism-workspace/c/leap/test-framework/unity_internals.h:775:98: note: expanded from macro 'UNITY_TEST_ASSERT'
-#define UNITY_TEST_ASSERT(condition, line, message)                                              do {if (condition) {} else {UNITY_TEST_FAIL((UNITY_LINE_TYPE)(line), (message));}} while(0)
-                                                                                                 ^
-/home/vpayno/git_vpayno/exercism-workspace/c/leap/test_leap.c:53:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
-    TEST_ASSERT_FALSE(leap_year(1800));
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/c/leap/test-framework/unity.h:128:100: note: expanded from macro 'TEST_ASSERT_FALSE'
-#define TEST_ASSERT_FALSE(condition)                                                               UNITY_TEST_ASSERT(      !(condition), __LINE__, " Expected FALSE Was TRUE")
-                                                                                                   ^
-/home/vpayno/git_vpayno/exercism-workspace/c/leap/test-framework/unity_internals.h:775:98: note: expanded from macro 'UNITY_TEST_ASSERT'
-#define UNITY_TEST_ASSERT(condition, line, message)                                              do {if (condition) {} else {UNITY_TEST_FAIL((UNITY_LINE_TYPE)(line), (message));}} while(0)
-                                                                                                 ^
-
-real	0m0.109s
-user	0m0.092s
-sys	0m0.018s
+real	0m0.127s
+user	0m0.084s
+sys	0m0.044s
 
 ===============================================================================
 
 Running: clang-format-16 -style=file -i ./leap.c ./test_leap.c ./leap.h
 
-real	0m0.020s
-user	0m0.014s
-sys	0m0.006s
+real	0m0.026s
+user	0m0.008s
+sys	0m0.018s
+
+===============================================================================
+
+Running: ../../.github/citools/cpp/clang-check
+clang-check-16 --analyze ./leap.h
+
+real	0m0.019s
+user	0m0.009s
+sys	0m0.010s
+
+
+real	0m0.021s
+user	0m0.011s
+sys	0m0.010s
+
+===============================================================================
+
+Running: ../../.github/citools/cpp/clang-tidy | head -n 100
+4 warnings generated.
+Suppressed 4 warnings (4 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+
+real	0m0.030s
+user	0m0.011s
+sys	0m0.019s
+Running: clang-tidy-16 ./leap.h
+
+
+real	0m0.032s
+user	0m0.013s
+sys	0m0.020s
 
 ===============================================================================
 
