@@ -2,6 +2,7 @@
 #define HEXADECIMAL_H
 
 #include <cmath>
+#include <numeric>
 #include <regex>
 #include <string>
 
