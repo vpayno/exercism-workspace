@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf *.o *.out *.out.dSYM
 
-real	0m0.007s
-user	0m0.001s
-sys	0m0.005s
+real	0m0.004s
+user	0m0.000s
+sys	0m0.004s
 
 ===============================================================================
 
@@ -28,9 +28,9 @@ test_difference_of_squares.c:63:test_difference_of_squares_100:PASS
 9 Tests 0 Failures 0 Ignored 
 OK
 
-real	0m0.118s
-user	0m0.075s
-sys	0m0.046s
+real	0m0.124s
+user	0m0.097s
+sys	0m0.028s
 
 ===============================================================================
 
@@ -52,40 +52,47 @@ OK
 Memory check passed
 
 real	0m0.130s
-user	0m0.097s
-sys	0m0.034s
+user	0m0.085s
+sys	0m0.045s
 
 ===============================================================================
 
 Running: clang-format-16 -style=file -i ./difference_of_squares.c ./test_difference_of_squares.c ./difference_of_squares.h
 
-real	0m0.020s
-user	0m0.008s
-sys	0m0.012s
+real	0m0.019s
+user	0m0.011s
+sys	0m0.008s
 
 ===============================================================================
 
-Running: clang-check-16 ./difference_of_squares.c ./test_difference_of_squares.c ./difference_of_squares.h --
+Running: ../../.github/citools/cpp/clang-check
+clang-check-16 --analyze ./difference_of_squares.h
 
-real	0m0.037s
-user	0m0.026s
-sys	0m0.010s
+real	0m0.023s
+user	0m0.014s
+sys	0m0.009s
+
+
+real	0m0.025s
+user	0m0.014s
+sys	0m0.011s
 
 ===============================================================================
 
-Running: clang-tidy-16 ./difference_of_squares.c ./test_difference_of_squares.c ./difference_of_squares.h -checks=*,-llvm-header-guard,-llvmlibc-restrict-system-libc-headers -- | head -n 100
-1084 warnings generated.
-3236 warnings generated.
-4318 warnings generated.
-Suppressed 4316 warnings (4316 in non-user code).
+Running: ../../.github/citools/cpp/clang-tidy | head -n 100
+353 warnings generated.
+Suppressed 353 warnings (353 in non-user code).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-/home/vpayno/git_vpayno/exercism-workspace/c/difference-of-squares/difference_of_squares.c:4:56: warning: 6 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers]
-    return (number * (number + 1) * (2 * number + 1) / 6);
-                                                       ^
 
-real	0m0.178s
-user	0m0.159s
-sys	0m0.020s
+real	0m0.049s
+user	0m0.036s
+sys	0m0.013s
+Running: clang-tidy-16 ./difference_of_squares.h
+
+
+real	0m0.051s
+user	0m0.037s
+sys	0m0.015s
 
 ===============================================================================
 
