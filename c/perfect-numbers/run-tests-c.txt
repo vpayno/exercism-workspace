@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf *.o *.out *.out.dSYM
 
-real	0m0.005s
-user	0m0.002s
-sys	0m0.002s
+real	0m0.003s
+user	0m0.003s
+sys	0m0.001s
 
 ===============================================================================
 
@@ -32,9 +32,9 @@ test_perfect_numbers.c:88:test_negative_integer_is_rejected:PASS
 13 Tests 0 Failures 0 Ignored 
 OK
 
-real	0m0.351s
-user	0m0.322s
-sys	0m0.030s
+real	0m0.348s
+user	0m0.317s
+sys	0m0.032s
 
 ===============================================================================
 
@@ -59,48 +59,48 @@ test_perfect_numbers.c:88:test_negative_integer_is_rejected:PASS
 OK
 Memory check passed
 
-real	0m0.356s
-user	0m0.321s
-sys	0m0.036s
+real	0m0.362s
+user	0m0.325s
+sys	0m0.038s
 
 ===============================================================================
 
 Running: clang-format-16 -style=file -i ./perfect_numbers.c ./test_perfect_numbers.c ./perfect_numbers.h
 
 real	0m0.021s
-user	0m0.012s
-sys	0m0.009s
+user	0m0.008s
+sys	0m0.013s
 
 ===============================================================================
 
-Running: clang-check-16 ./perfect_numbers.c ./test_perfect_numbers.c ./perfect_numbers.h --
+Running: ../../.github/citools/cpp/clang-check
+clang-check-16 --analyze ./perfect_numbers.h
 
-real	0m0.041s
-user	0m0.027s
-sys	0m0.014s
+real	0m0.025s
+user	0m0.014s
+sys	0m0.011s
+
+
+real	0m0.027s
+user	0m0.015s
+sys	0m0.012s
 
 ===============================================================================
 
-Running: clang-tidy-16 ./perfect_numbers.c ./test_perfect_numbers.c ./perfect_numbers.h -checks=*,-llvm-header-guard,-llvmlibc-restrict-system-libc-headers -- | head -n 100
-2142 warnings generated.
-5524 warnings generated.
-7661 warnings generated.
-Suppressed 7658 warnings (7658 in non-user code).
+Running: ../../.github/citools/cpp/clang-tidy | head -n 100
+399 warnings generated.
+Suppressed 399 warnings (399 in non-user code).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-/home/vpayno/git_vpayno/exercism-workspace/c/perfect-numbers/perfect_numbers.c:31:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
-    for (size_t i = 0; i < numbers.size; i++) {
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/c/perfect-numbers/perfect_numbers.c:46:5: warning: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops]
-    for (int64_t factor = 1; factor < number; factor++) {
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/c/perfect-numbers/perfect_numbers.h:17:9: warning: accessing fields in struct 'factors_list_t' is inefficient due to poor alignment; currently aligned to 8 bytes, but recommended alignment is 128 bytes [altera-struct-pack-align]
-typedef struct {
-        ^
-/home/vpayno/git_vpayno/exercism-workspace/c/perfect-numbers/perfect_numbers.h:17:9: note: use "__attribute__((aligned(128)))" to align struct 'factors_list_t' to 128 bytes
 
-real	0m0.213s
-user	0m0.196s
-sys	0m0.019s
+real	0m0.036s
+user	0m0.023s
+sys	0m0.013s
+Running: clang-tidy-16 ./perfect_numbers.h
+
+
+real	0m0.038s
+user	0m0.023s
+sys	0m0.016s
 
 ===============================================================================
 
