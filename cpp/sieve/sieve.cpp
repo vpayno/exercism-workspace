@@ -1,4 +1,4 @@
-#include "sieve.h"
+#include "sieve.hpp"
 
 namespace sieve {
 

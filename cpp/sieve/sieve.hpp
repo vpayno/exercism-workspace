@@ -1,5 +1,5 @@
-#if !defined(SIEVE_H)
-#define SIEVE_H
+#if !defined(SIEVE_HPP)
+#define SIEVE_HPP
 
 #include <vector>
 
@@ -9,4 +9,4 @@ std::vector<int> primes(int limit);
 
 } // namespace sieve
 
-#endif // SIEVE_H
+#endif // SIEVE_HPP

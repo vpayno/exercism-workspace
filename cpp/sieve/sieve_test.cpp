@@ -1,4 +1,4 @@
-#include "sieve.h"
+#include "sieve.hpp"
 #ifdef EXERCISM_TEST_SUITE
 #include <catch2/catch.hpp>
 #else

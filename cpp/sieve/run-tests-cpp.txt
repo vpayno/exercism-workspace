@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.021s
-user	0m0.002s
-sys	0m0.017s
+real	0m0.015s
+user	0m0.004s
+sys	0m0.011s
 
 ===============================================================================
 
@@ -78,17 +78,17 @@ TOTAL                                         95      74    77%
 lines: 77.9% (74 out of 95)
 branches: 38.1% (51 out of 134)
 
-real	0m10.310s
-user	0m9.357s
-sys	0m0.949s
+real	0m10.591s
+user	0m9.572s
+sys	0m1.018s
 
 ===============================================================================
 
 cmake-format --in-place CMakeLists.txt
 
-real	0m0.235s
-user	0m0.148s
-sys	0m0.090s
+real	0m0.241s
+user	0m0.150s
+sys	0m0.094s
 
 ===============================================================================
 
@@ -110,64 +110,50 @@ found lint:
   Convention: 4
 
 
-real	0m0.417s
-user	0m0.246s
-sys	0m0.176s
+real	0m0.218s
+user	0m0.145s
+sys	0m0.075s
 
 ===============================================================================
 
-Running: clang-format-16 -style=file -i ./sieve.cpp ./sieve_test.cpp ./sieve.h
+Running: clang-format-16 -style=file -i ./sieve.cpp ./sieve_test.cpp ./sieve.hpp
 
-real	0m0.041s
-user	0m0.026s
+real	0m0.035s
+user	0m0.020s
 sys	0m0.015s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./sieve.cpp ./sieve_test.cpp ./sieve.h
-error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
-error: invalid argument '-std=c++17' not allowed with 'C'
-/home/vpayno/git_vpayno/exercism-workspace/cpp/sieve/sieve.h:4:10: fatal error: 'vector' file not found
-#include <vector>
-         ^~~~~~~~
-1 error generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/sieve/sieve.h.
+clang-check-16 --analyze ./sieve.cpp ./sieve_test.cpp ./sieve.hpp
 
-real	0m1.446s
-user	0m1.369s
+real	0m1.504s
+user	0m1.431s
 sys	0m0.073s
 
 
-real	0m1.452s
-user	0m1.370s
-sys	0m0.077s
+real	0m1.506s
+user	0m1.433s
+sys	0m0.073s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 6314 warnings generated.
 41702 warnings generated.
-41702 warnings and 3 errors generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/sieve/sieve.h.
-Suppressed 41707 warnings (41702 in non-user code, 5 NOLINT).
+47935 warnings generated.
+Suppressed 47940 warnings (47935 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-Found compiler error(s).
 
-real	0m7.494s
-user	0m7.410s
-sys	0m0.083s
-Running: clang-tidy-16 ./sieve.cpp ./sieve_test.cpp ./sieve.h
-error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
-error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
-/home/vpayno/git_vpayno/exercism-workspace/cpp/sieve/sieve.h:4:10: error: 'vector' file not found [clang-diagnostic-error]
-#include <vector>
-         ^~~~~~~~
+real	0m7.926s
+user	0m7.806s
+sys	0m0.118s
+Running: clang-tidy-16 ./sieve.cpp ./sieve_test.cpp ./sieve.hpp
 
 
-real	0m7.497s
-user	0m7.412s
-sys	0m0.085s
+real	0m7.928s
+user	0m7.807s
+sys	0m0.120s
 
 ===============================================================================
 
