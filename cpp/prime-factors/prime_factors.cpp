@@ -1,4 +1,4 @@
-#include "prime_factors.h"
+#include "prime_factors.hpp"
 
 namespace prime_factors {
 

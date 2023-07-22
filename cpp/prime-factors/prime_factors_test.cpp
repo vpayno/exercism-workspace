@@ -1,4 +1,4 @@
-#include "prime_factors.h"
+#include "prime_factors.hpp"
 #ifdef EXERCISM_TEST_SUITE
 #include <catch2/catch.hpp>
 #else

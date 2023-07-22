@@ -6,8 +6,8 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.015s
-user	0m0.001s
+real	0m0.018s
+user	0m0.004s
 sys	0m0.014s
 
 ===============================================================================
@@ -78,17 +78,17 @@ TOTAL                                        118      97    82%
 lines: 82.2% (97 out of 118)
 branches: 37.3% (84 out of 225)
 
-real	0m10.124s
-user	0m9.174s
-sys	0m0.945s
+real	0m9.884s
+user	0m8.948s
+sys	0m0.928s
 
 ===============================================================================
 
 cmake-format --in-place CMakeLists.txt
 
-real	0m0.233s
-user	0m0.142s
-sys	0m0.093s
+real	0m0.245s
+user	0m0.148s
+sys	0m0.092s
 
 ===============================================================================
 
@@ -110,64 +110,50 @@ found lint:
   Convention: 4
 
 
-real	0m0.224s
-user	0m0.144s
-sys	0m0.082s
+real	0m0.269s
+user	0m0.202s
+sys	0m0.068s
 
 ===============================================================================
 
-Running: clang-format-16 -style=file -i ./prime_factors.cpp ./prime_factors_test.cpp ./prime_factors.h
+Running: clang-format-16 -style=file -i ./prime_factors.cpp ./prime_factors_test.cpp ./prime_factors.hpp
 
-real	0m0.019s
-user	0m0.012s
-sys	0m0.006s
+real	0m0.044s
+user	0m0.019s
+sys	0m0.025s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./prime_factors.cpp ./prime_factors_test.cpp ./prime_factors.h
-error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
-error: invalid argument '-std=c++17' not allowed with 'C'
-/home/vpayno/git_vpayno/exercism-workspace/cpp/prime-factors/prime_factors.h:6:10: fatal error: 'vector' file not found
-#include <vector>
-         ^~~~~~~~
-1 error generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/prime-factors/prime_factors.h.
+clang-check-16 --analyze ./prime_factors.cpp ./prime_factors_test.cpp ./prime_factors.hpp
 
-real	0m0.502s
-user	0m0.464s
-sys	0m0.038s
+real	0m0.595s
+user	0m0.539s
+sys	0m0.056s
 
 
-real	0m0.504s
-user	0m0.464s
-sys	0m0.040s
+real	0m0.600s
+user	0m0.539s
+sys	0m0.060s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 6271 warnings generated.
 41659 warnings generated.
-41659 warnings and 3 errors generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/prime-factors/prime_factors.h.
-Suppressed 41664 warnings (41659 in non-user code, 5 NOLINT).
+47892 warnings generated.
+Suppressed 47897 warnings (47892 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-Found compiler error(s).
 
-real	0m6.074s
-user	0m5.994s
-sys	0m0.080s
-Running: clang-tidy-16 ./prime_factors.cpp ./prime_factors_test.cpp ./prime_factors.h
-error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
-error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
-/home/vpayno/git_vpayno/exercism-workspace/cpp/prime-factors/prime_factors.h:6:10: error: 'vector' file not found [clang-diagnostic-error]
-#include <vector>
-         ^~~~~~~~
+real	0m6.440s
+user	0m6.371s
+sys	0m0.068s
+Running: clang-tidy-16 ./prime_factors.cpp ./prime_factors_test.cpp ./prime_factors.hpp
 
 
-real	0m6.077s
-user	0m5.997s
-sys	0m0.080s
+real	0m6.442s
+user	0m6.373s
+sys	0m0.070s
 
 ===============================================================================
 
