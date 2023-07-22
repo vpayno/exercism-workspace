@@ -52,3 +52,8 @@ You can check this yourself:
 ### Based on
 
 The Prime Factors Kata by Uncle Bob - http://butunclebob.com/ArticleS.UncleBob.ThePrimeFactorsKata
+
+### My Solution
+
+- [my solution]()
+- [run-tests](./run-tests-cpp.txt)
