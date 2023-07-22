@@ -32,6 +32,18 @@ std::vector<int> primes(int limit) {
     std::vector<int> result{};
     std::vector<bool> numbers{};
 
+    // odd looking fast-return block
+    switch (limit) {
+    case 0:
+        [[fallthrough]];
+    case 1:
+        return result;
+    case 2:
+        return std::vector<int>{2};
+    case 3:
+        return std::vector<int>{2, 3};
+    }
+
     numbers.resize(limit + 1, true);
     int index = 0;
     for (auto iter = numbers.begin(); iter < numbers.end(); iter++) {
