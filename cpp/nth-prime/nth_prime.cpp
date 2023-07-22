@@ -1,4 +1,4 @@
-#include "nth_prime.h"
+#include "nth_prime.hpp"
 
 namespace nth_prime {
 

@@ -1,7 +1,5 @@
-#if !defined(NTH_PRIME_H)
-#define NTH_PRIME_H
-
-// please stop trying to use *.h files as c++ headers (*.hpp)
+#if !defined(NTH_PRIME_HPP)
+#define NTH_PRIME_HPP
 
 #include <stdexcept>
 #include <vector>
@@ -12,7 +10,7 @@ int nth(int loc);
 
 } // namespace nth_prime
 
-#endif // NTH_PRIME_H
+#endif // NTH_PRIME_HPP
 
 // CMakeLists.txt doesn't pull in other cpp or hpp files so just appending it
 // here.

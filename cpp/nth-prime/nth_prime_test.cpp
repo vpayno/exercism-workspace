@@ -1,4 +1,4 @@
-#include "nth_prime.h"
+#include "nth_prime.hpp"
 #ifdef EXERCISM_TEST_SUITE
 #include <catch2/catch.hpp>
 #else

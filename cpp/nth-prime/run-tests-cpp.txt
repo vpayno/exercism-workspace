@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.017s
+real	0m0.015s
 user	0m0.001s
-sys	0m0.016s
+sys	0m0.014s
 
 ===============================================================================
 
@@ -78,17 +78,17 @@ TOTAL                                         78      67    85%
 lines: 85.9% (67 out of 78)
 branches: 45.1% (64 out of 142)
 
-real	0m11.507s
-user	0m10.581s
-sys	0m0.882s
+real	0m10.891s
+user	0m9.968s
+sys	0m0.910s
 
 ===============================================================================
 
 cmake-format --in-place CMakeLists.txt
 
-real	0m0.234s
-user	0m0.139s
-sys	0m0.097s
+real	0m0.425s
+user	0m0.342s
+sys	0m0.084s
 
 ===============================================================================
 
@@ -110,64 +110,50 @@ found lint:
   Convention: 4
 
 
-real	0m0.248s
-user	0m0.168s
-sys	0m0.081s
+real	0m0.283s
+user	0m0.191s
+sys	0m0.097s
 
 ===============================================================================
 
-Running: clang-format-16 -style=file -i ./nth_prime.cpp ./nth_prime_test.cpp ./nth_prime.h
+Running: clang-format-16 -style=file -i ./nth_prime.cpp ./nth_prime_test.cpp ./nth_prime.hpp
 
-real	0m0.025s
-user	0m0.012s
-sys	0m0.013s
+real	0m0.032s
+user	0m0.017s
+sys	0m0.014s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./nth_prime.cpp ./nth_prime_test.cpp ./nth_prime.h
-error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
-error: invalid argument '-std=c++17' not allowed with 'C'
-/home/vpayno/git_vpayno/exercism-workspace/cpp/nth-prime/nth_prime.h:6:10: fatal error: 'stdexcept' file not found
-#include <stdexcept>
-         ^~~~~~~~~~~
-1 error generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/nth-prime/nth_prime.h.
+clang-check-16 --analyze ./nth_prime.cpp ./nth_prime_test.cpp ./nth_prime.hpp
 
-real	0m0.873s
-user	0m0.823s
-sys	0m0.049s
+real	0m0.786s
+user	0m0.741s
+sys	0m0.044s
 
 
-real	0m0.876s
-user	0m0.826s
-sys	0m0.050s
+real	0m0.788s
+user	0m0.741s
+sys	0m0.046s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 12927 warnings generated.
 48310 warnings generated.
-48310 warnings and 3 errors generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/nth-prime/nth_prime.h.
-Suppressed 48315 warnings (48310 in non-user code, 5 NOLINT).
+61154 warnings generated.
+Suppressed 61159 warnings (61154 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-Found compiler error(s).
 
-real	0m7.876s
-user	0m7.789s
-sys	0m0.086s
-Running: clang-tidy-16 ./nth_prime.cpp ./nth_prime_test.cpp ./nth_prime.h
-error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
-error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
-/home/vpayno/git_vpayno/exercism-workspace/cpp/nth-prime/nth_prime.h:6:10: error: 'stdexcept' file not found [clang-diagnostic-error]
-#include <stdexcept>
-         ^~~~~~~~~~~
+real	0m8.881s
+user	0m8.797s
+sys	0m0.084s
+Running: clang-tidy-16 ./nth_prime.cpp ./nth_prime_test.cpp ./nth_prime.hpp
 
 
-real	0m7.878s
-user	0m7.791s
-sys	0m0.089s
+real	0m8.884s
+user	0m8.798s
+sys	0m0.087s
 
 ===============================================================================
 
