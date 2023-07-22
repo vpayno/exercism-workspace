@@ -31,3 +31,4 @@
 - [making-the-grade](./making-the-grade/README.md)
 - [hexadecimal](./hexadecimal/README.md)
 - [trinary](./trinary/README.md)
+- [sieve](./sieve/README.md)
