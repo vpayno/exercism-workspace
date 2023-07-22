@@ -32,3 +32,4 @@
 - [hexadecimal](./hexadecimal/README.md)
 - [trinary](./trinary/README.md)
 - [sieve](./sieve/README.md)
+- [nth-prime](./nth-prime/README.md)

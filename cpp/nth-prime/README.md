@@ -31,3 +31,8 @@ numbers, pretend they don't exist and implement them yourself.
 ### Based on
 
 A variation on Problem 7 at Project Euler - http://projecteuler.net/problem=7
+
+### My Solution
+
+- [my solution]()
+- [run-tests](./run-tests-cpp.txt)
