@@ -8,7 +8,7 @@
 using namespace targets;
 
 TEST_CASE("Alien has correct initial coordinates", "[task_1]") {
-    Alien alien{2, -1};
+    Alien const alien{2, -1};
     REQUIRE(alien.x_coordinate == 2);
     REQUIRE(alien.y_coordinate == -1);
 }
