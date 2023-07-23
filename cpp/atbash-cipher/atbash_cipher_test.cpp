@@ -1,4 +1,4 @@
-#include "atbash_cipher.h"
+#include "atbash_cipher.hpp"
 #ifdef EXERCISM_TEST_SUITE
 #include <catch2/catch.hpp>
 #else

@@ -1,4 +1,4 @@
-#include "atbash_cipher.h"
+#include "atbash_cipher.hpp"
 
 namespace atbash_cipher {
 

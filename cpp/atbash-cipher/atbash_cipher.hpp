@@ -1,7 +1,5 @@
-#if !defined(ATBASH_CIPHER_H)
-#define ATBASH_CIPHER_H
-
-// not a c++ (*.hpp) header file
+#if !defined(ATBASH_CIPHER_HPP)
+#define ATBASH_CIPHER_HPP
 
 #include <algorithm>
 #include <string>
@@ -15,4 +13,4 @@ char shift_char(char plain);
 
 } // namespace atbash_cipher
 
-#endif // ATBASH_CIPHER_H
+#endif // ATBASH_CIPHER_HPP

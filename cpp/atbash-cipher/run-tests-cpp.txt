@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.010s
-user	0m0.002s
-sys	0m0.008s
+real	0m0.016s
+user	0m0.001s
+sys	0m0.015s
 
 ===============================================================================
 
@@ -70,25 +70,25 @@ Directory: .
 File                                       Lines    Exec  Cover   Missing
 ------------------------------------------------------------------------------
 atbash_cipher.cpp                             28      26    92%   9,32
-atbash_cipher_test.cpp                        36      36   100%   
+atbash_cipher_test.cpp                        28      28   100%   
 test/catch.hpp                                34      27    79%   1642-1643,1710-1711,2227,2229,2560
 ------------------------------------------------------------------------------
-TOTAL                                         98      89    90%
+TOTAL                                         90      81    90%
 ------------------------------------------------------------------------------
-lines: 90.8% (89 out of 98)
+lines: 90.0% (81 out of 90)
 branches: 41.6% (104 out of 250)
 
-real	0m10.536s
-user	0m9.374s
-sys	0m1.099s
+real	0m10.849s
+user	0m9.639s
+sys	0m1.208s
 
 ===============================================================================
 
 cmake-format --in-place CMakeLists.txt
 
-real	0m0.240s
-user	0m0.151s
-sys	0m0.091s
+real	0m0.237s
+user	0m0.138s
+sys	0m0.102s
 
 ===============================================================================
 
@@ -110,64 +110,50 @@ found lint:
   Convention: 4
 
 
-real	0m0.231s
-user	0m0.170s
-sys	0m0.062s
+real	0m0.225s
+user	0m0.144s
+sys	0m0.083s
 
 ===============================================================================
 
-Running: clang-format-16 -style=file -i ./atbash_cipher.cpp ./atbash_cipher_test.cpp ./atbash_cipher.h
+Running: clang-format-16 -style=file -i ./atbash_cipher.cpp ./atbash_cipher_test.cpp ./atbash_cipher.hpp
 
-real	0m0.036s
-user	0m0.024s
-sys	0m0.012s
+real	0m0.023s
+user	0m0.012s
+sys	0m0.011s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./atbash_cipher.cpp ./atbash_cipher_test.cpp ./atbash_cipher.h
-error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
-error: invalid argument '-std=c++17' not allowed with 'C'
-/home/vpayno/git_vpayno/exercism-workspace/cpp/atbash-cipher/atbash_cipher.h:6:10: fatal error: 'algorithm' file not found
-#include <algorithm>
-         ^~~~~~~~~~~
-1 error generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/atbash-cipher/atbash_cipher.h.
+clang-check-16 --analyze ./atbash_cipher.cpp ./atbash_cipher_test.cpp ./atbash_cipher.hpp
 
-real	0m0.599s
-user	0m0.553s
-sys	0m0.046s
+real	0m0.764s
+user	0m0.725s
+sys	0m0.039s
 
 
-real	0m0.602s
-user	0m0.554s
-sys	0m0.048s
+real	0m0.767s
+user	0m0.725s
+sys	0m0.042s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 21249 warnings generated.
 56605 warnings generated.
-56605 warnings and 3 errors generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/atbash-cipher/atbash_cipher.h.
-Suppressed 56610 warnings (56605 in non-user code, 5 NOLINT).
+77852 warnings generated.
+Suppressed 77857 warnings (77852 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-Found compiler error(s).
 
-real	0m7.375s
-user	0m7.297s
-sys	0m0.078s
-Running: clang-tidy-16 ./atbash_cipher.cpp ./atbash_cipher_test.cpp ./atbash_cipher.h
-error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
-error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
-/home/vpayno/git_vpayno/exercism-workspace/cpp/atbash-cipher/atbash_cipher.h:6:10: error: 'algorithm' file not found [clang-diagnostic-error]
-#include <algorithm>
-         ^~~~~~~~~~~
+real	0m9.799s
+user	0m9.716s
+sys	0m0.076s
+Running: clang-tidy-16 ./atbash_cipher.cpp ./atbash_cipher_test.cpp ./atbash_cipher.hpp
 
 
-real	0m7.378s
-user	0m7.299s
-sys	0m0.080s
+real	0m9.801s
+user	0m9.719s
+sys	0m0.077s
 
 ===============================================================================
 
