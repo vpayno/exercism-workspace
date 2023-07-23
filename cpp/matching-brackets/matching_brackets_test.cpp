@@ -1,4 +1,4 @@
-#include "matching_brackets.h"
+#include "matching_brackets.hpp"
 #ifdef EXERCISM_TEST_SUITE
 #include <catch2/catch.hpp>
 #else

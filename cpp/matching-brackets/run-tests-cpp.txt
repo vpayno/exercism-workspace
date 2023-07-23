@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.018s
-user	0m0.000s
-sys	0m0.018s
+real	0m0.017s
+user	0m0.002s
+sys	0m0.014s
 
 ===============================================================================
 
@@ -70,25 +70,25 @@ Directory: .
 File                                       Lines    Exec  Cover   Missing
 ------------------------------------------------------------------------------
 matching_brackets.cpp                         31      31   100%   
-matching_brackets_test.cpp                    42      42   100%   
+matching_brackets_test.cpp                    34      34   100%   
 test/catch.hpp                                34      29    85%   1642-1643,2301-2302,2560
 ------------------------------------------------------------------------------
-TOTAL                                        107     102    95%
+TOTAL                                         99      94    94%
 ------------------------------------------------------------------------------
-lines: 95.3% (102 out of 107)
+lines: 94.9% (94 out of 99)
 branches: 46.0% (126 out of 274)
 
-real	0m10.449s
-user	0m9.331s
-sys	0m1.124s
+real	0m10.380s
+user	0m9.457s
+sys	0m0.918s
 
 ===============================================================================
 
 cmake-format --in-place CMakeLists.txt
 
-real	0m0.249s
-user	0m0.154s
-sys	0m0.097s
+real	0m0.259s
+user	0m0.149s
+sys	0m0.113s
 
 ===============================================================================
 
@@ -110,37 +110,30 @@ found lint:
   Convention: 4
 
 
-real	0m0.337s
-user	0m0.171s
-sys	0m0.153s
+real	0m0.221s
+user	0m0.140s
+sys	0m0.083s
 
 ===============================================================================
 
-Running: clang-format-16 -style=file -i ./matching_brackets.cpp ./matching_brackets_test.cpp ./matching_brackets.h
+Running: clang-format-16 -style=file -i ./matching_brackets.cpp ./matching_brackets_test.cpp ./matching_brackets.hpp
 
 real	0m0.021s
-user	0m0.009s
-sys	0m0.011s
+user	0m0.012s
+sys	0m0.009s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./matching_brackets.cpp ./matching_brackets_test.cpp ./matching_brackets.h
-error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
-error: invalid argument '-std=c++17' not allowed with 'C'
-/home/vpayno/git_vpayno/exercism-workspace/cpp/matching-brackets/matching_brackets.h:6:10: fatal error: 'stack' file not found
-#include <stack>
-         ^~~~~~~
-1 error generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/matching-brackets/matching_brackets.h.
+clang-check-16 --analyze ./matching_brackets.cpp ./matching_brackets_test.cpp ./matching_brackets.hpp
 
-real	0m0.559s
-user	0m0.515s
-sys	0m0.044s
+real	0m0.683s
+user	0m0.639s
+sys	0m0.043s
 
 
-real	0m0.561s
-user	0m0.517s
+real	0m0.685s
+user	0m0.640s
 sys	0m0.045s
 
 ===============================================================================
@@ -148,26 +141,19 @@ sys	0m0.045s
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 12922 warnings generated.
 49261 warnings generated.
-49261 warnings and 3 errors generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/matching-brackets/matching_brackets.h.
-Suppressed 49266 warnings (49261 in non-user code, 5 NOLINT).
+62136 warnings generated.
+Suppressed 62141 warnings (62136 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-Found compiler error(s).
 
-real	0m7.019s
-user	0m6.950s
-sys	0m0.068s
-Running: clang-tidy-16 ./matching_brackets.cpp ./matching_brackets_test.cpp ./matching_brackets.h
-error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
-error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
-/home/vpayno/git_vpayno/exercism-workspace/cpp/matching-brackets/matching_brackets.h:6:10: error: 'stack' file not found [clang-diagnostic-error]
-#include <stack>
-         ^~~~~~~
+real	0m8.435s
+user	0m8.351s
+sys	0m0.082s
+Running: clang-tidy-16 ./matching_brackets.cpp ./matching_brackets_test.cpp ./matching_brackets.hpp
 
 
-real	0m7.022s
-user	0m6.952s
-sys	0m0.070s
+real	0m8.437s
+user	0m8.352s
+sys	0m0.085s
 
 ===============================================================================
 

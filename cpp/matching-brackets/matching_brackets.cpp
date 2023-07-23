@@ -1,4 +1,4 @@
-#include "matching_brackets.h"
+#include "matching_brackets.hpp"
 
 namespace matching_brackets {
 

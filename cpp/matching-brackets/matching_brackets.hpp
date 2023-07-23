@@ -1,7 +1,5 @@
-#if !defined(MATCHING_BRACKETS_H)
-#define MATCHING_BRACKETS_H
-
-// this is not a c++ (*.hpp) header file
+#if !defined(MATCHING_BRACKETS_HPP)
+#define MATCHING_BRACKETS_HPP
 
 #include <stack>
 #include <string>
@@ -20,4 +18,4 @@ bool bracket_either(char bracket);
 
 } // namespace matching_brackets
 
-#endif // MATCHING_BRACKETS_H
+#endif // MATCHING_BRACKETS_HPP
