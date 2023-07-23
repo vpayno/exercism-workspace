@@ -51,3 +51,8 @@ This is to make it harder to guess things based on word boundaries.
 ### Based on
 
 Wikipedia - http://en.wikipedia.org/wiki/Atbash
+
+### My Solution
+
+- [my solution]()
+- [run-tests](./run-tests-cpp.txt)
