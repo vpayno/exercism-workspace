@@ -42,3 +42,8 @@ If you're wondering why Pluto didn't make the cut, go watch [this YouTube video]
 ### Based on
 
 Partially inspired by Chapter 1 in Chris Pine's online Learn to Program tutorial. - https://pine.fm/LearnToProgram/?Chapter=01
+
+### My Solution
+
+- [my solution]()
+- [run-tests](./run-tests-cpp.txt)
