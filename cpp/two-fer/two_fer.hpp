@@ -1,5 +1,5 @@
-#if !defined(TWO_FER_H)
-#define TWO_FER_H
+#if !defined(TWO_FER_HPP)
+#define TWO_FER_HPP
 
 #include <string>
 
@@ -9,4 +9,4 @@ std::string two_fer(const std::string &name = "you");
 
 } // namespace two_fer
 
-#endif // TWO_FER_H
+#endif // TWO_FER_HPP

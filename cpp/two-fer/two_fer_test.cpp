@@ -1,4 +1,4 @@
-#include "two_fer.h"
+#include "two_fer.hpp"
 #ifdef EXERCISM_TEST_SUITE
 #include <catch2/catch.hpp>
 #else
