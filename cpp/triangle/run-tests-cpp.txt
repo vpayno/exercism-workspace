@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.009s
+real	0m0.006s
 user	0m0.001s
-sys	0m0.008s
+sys	0m0.005s
 
 ===============================================================================
 
@@ -70,25 +70,25 @@ Directory: .
 File                                       Lines    Exec  Cover   Missing
 ------------------------------------------------------------------------------
 test/catch.hpp                                38      27    71%   1593-1594,1628,1630,1642-1643,1647-1648,2227,2229,2560
-triangle.cpp                                  26      25    96%   22
+triangle.cpp                                  25      24    96%   22
 triangle_test.cpp                             45      45   100%   
 ------------------------------------------------------------------------------
-TOTAL                                        109      97    89%
+TOTAL                                        108      96    88%
 ------------------------------------------------------------------------------
-lines: 89.0% (97 out of 109)
+lines: 88.9% (96 out of 108)
 branches: 40.8% (129 out of 316)
 
-real	0m9.579s
-user	0m8.926s
-sys	0m0.651s
+real	0m9.195s
+user	0m8.595s
+sys	0m0.597s
 
 ===============================================================================
 
 cmake-format --in-place CMakeLists.txt
 
-real	0m0.137s
-user	0m0.095s
-sys	0m0.044s
+real	0m0.167s
+user	0m0.110s
+sys	0m0.060s
 
 ===============================================================================
 
@@ -110,63 +110,49 @@ found lint:
   Convention: 4
 
 
-real	0m0.169s
-user	0m0.112s
-sys	0m0.059s
+real	0m0.156s
+user	0m0.108s
+sys	0m0.050s
 
 ===============================================================================
 
-Running: clang-format-16 -style=file -i ./triangle.cpp ./triangle_test.cpp ./triangle.h
+Running: clang-format-16 -style=file -i ./triangle.cpp ./triangle_test.cpp ./triangle.hpp
 
-real	0m0.020s
-user	0m0.012s
-sys	0m0.008s
+real	0m0.019s
+user	0m0.010s
+sys	0m0.009s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./triangle.cpp ./triangle_test.cpp ./triangle.h
-error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
-error: invalid argument '-std=c++17' not allowed with 'C'
-/home/vpayno/git_vpayno/exercism-workspace/cpp/triangle/triangle.h:4:10: fatal error: 'stdexcept' file not found
-#include <stdexcept>
-         ^~~~~~~~~~~
-1 error generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/triangle/triangle.h.
+clang-check-16 --analyze ./triangle.cpp ./triangle_test.cpp ./triangle.hpp
 
-real	0m0.470s
-user	0m0.440s
+real	0m0.559s
+user	0m0.528s
 sys	0m0.030s
 
 
-real	0m0.471s
-user	0m0.441s
-sys	0m0.030s
+real	0m0.560s
+user	0m0.529s
+sys	0m0.031s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 11416 warnings generated.
 46801 warnings generated.
-46801 warnings and 3 errors generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/triangle/triangle.h.
-Suppressed 46806 warnings (46801 in non-user code, 5 NOLINT).
+58217 warnings generated.
+Suppressed 58222 warnings (58217 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-Found compiler error(s).
 
-real	0m6.241s
-user	0m6.175s
-sys	0m0.065s
-Running: clang-tidy-16 ./triangle.cpp ./triangle_test.cpp ./triangle.h
-error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
-error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
-/home/vpayno/git_vpayno/exercism-workspace/cpp/triangle/triangle.h:4:10: error: 'stdexcept' file not found [clang-diagnostic-error]
-#include <stdexcept>
-         ^~~~~~~~~~~
+real	0m7.461s
+user	0m7.394s
+sys	0m0.066s
+Running: clang-tidy-16 ./triangle.cpp ./triangle_test.cpp ./triangle.hpp
 
 
-real	0m6.243s
-user	0m6.175s
+real	0m7.463s
+user	0m7.395s
 sys	0m0.068s
 
 ===============================================================================

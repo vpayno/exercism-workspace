@@ -1,5 +1,5 @@
-#if !defined(TRIANGLE_H)
-#define TRIANGLE_H
+#if !defined(TRIANGLE_HPP)
+#define TRIANGLE_HPP
 
 #include <stdexcept>
 
@@ -20,4 +20,4 @@ bool is_scalene(double side_a, double side_b, double side_c);
 
 } // namespace triangle
 
-#endif // TRIANGLE_H
+#endif // TRIANGLE_HPP

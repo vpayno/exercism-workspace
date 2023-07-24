@@ -1,4 +1,4 @@
-#include "triangle.h"
+#include "triangle.hpp"
 
 namespace triangle {
 
@@ -19,6 +19,7 @@ flavor kind(double side_a, double side_b, double side_c) {
         return flavor::scalene;
     }
 
+    // I know this doesn't get used.
     return flavor::scalene;
 }
 

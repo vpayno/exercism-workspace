@@ -1,4 +1,4 @@
-#include "triangle.h"
+#include "triangle.hpp"
 #ifdef EXERCISM_TEST_SUITE
 #include <catch2/catch.hpp>
 #else
