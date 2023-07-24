@@ -68,3 +68,8 @@ This doubles the range of the prefixed integer, but will not let it turn negativ
 ### Based on
 
 Jumpstart Lab Warm-up - http://jumpstartlab.com
+
+### My Solution
+
+- [my solution]()
+- [run-tests](./run-tests-cpp.txt)

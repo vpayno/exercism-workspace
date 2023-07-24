@@ -37,3 +37,4 @@
 - [matching-brackets](./matching-brackets/README.md)
 - [atbash-cipher](./atbash-cipher/README.md)
 - [ellens-alien-game](./ellens-alien-game/README.md)
+- [allergies](./allergies/README.md)
