@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.008s
-user	0m0.000s
-sys	0m0.008s
+real	0m0.011s
+user	0m0.002s
+sys	0m0.009s
 
 ===============================================================================
 
@@ -69,26 +69,26 @@ Directory: .
 ------------------------------------------------------------------------------
 File                                       Lines    Exec  Cover   Missing
 ------------------------------------------------------------------------------
-grains.cpp                                     8       7    87%   10
-grains_test.cpp                               24      24   100%   
+grains.cpp                                     7       6    85%   10
+grains_test.cpp                               10      10   100%   
 test/catch.hpp                                32      27    84%   1642-1643,2227,2229,2560
 ------------------------------------------------------------------------------
-TOTAL                                         64      58    90%
+TOTAL                                         49      43    87%
 ------------------------------------------------------------------------------
-lines: 90.6% (58 out of 64)
+lines: 87.8% (43 out of 49)
 branches: 37.0% (51 out of 138)
 
-real	0m8.965s
-user	0m8.345s
-sys	0m0.598s
+real	0m9.700s
+user	0m9.057s
+sys	0m0.641s
 
 ===============================================================================
 
 cmake-format --in-place CMakeLists.txt
 
-real	0m0.146s
-user	0m0.102s
-sys	0m0.045s
+real	0m0.152s
+user	0m0.111s
+sys	0m0.042s
 
 ===============================================================================
 
@@ -110,64 +110,50 @@ found lint:
   Convention: 4
 
 
-real	0m0.154s
-user	0m0.107s
-sys	0m0.048s
+real	0m0.177s
+user	0m0.119s
+sys	0m0.061s
 
 ===============================================================================
 
-Running: clang-format-16 -style=file -i ./grains.cpp ./grains_test.cpp ./grains.h
+Running: clang-format-16 -style=file -i ./grains.cpp ./grains_test.cpp ./grains.hpp
 
-real	0m0.019s
-user	0m0.012s
-sys	0m0.007s
+real	0m0.021s
+user	0m0.010s
+sys	0m0.011s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./grains.cpp ./grains_test.cpp ./grains.h
-error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
-error: invalid argument '-std=c++17' not allowed with 'C'
-/home/vpayno/git_vpayno/exercism-workspace/cpp/grains/grains.h:4:10: fatal error: 'cmath' file not found
-#include <cmath>
-         ^~~~~~~
-1 error generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/grains/grains.h.
+clang-check-16 --analyze ./grains.cpp ./grains_test.cpp ./grains.hpp
 
-real	0m0.460s
-user	0m0.425s
-sys	0m0.034s
+real	0m0.532s
+user	0m0.495s
+sys	0m0.037s
 
 
-real	0m0.462s
-user	0m0.425s
-sys	0m0.036s
+real	0m0.534s
+user	0m0.495s
+sys	0m0.039s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 8739 warnings generated.
 44091 warnings generated.
-44091 warnings and 3 errors generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/grains/grains.h.
-Suppressed 44096 warnings (44091 in non-user code, 5 NOLINT).
+52830 warnings generated.
+Suppressed 52835 warnings (52830 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-Found compiler error(s).
 
-real	0m6.501s
-user	0m6.444s
-sys	0m0.057s
-Running: clang-tidy-16 ./grains.cpp ./grains_test.cpp ./grains.h
-error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
-error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
-/home/vpayno/git_vpayno/exercism-workspace/cpp/grains/grains.h:4:10: error: 'cmath' file not found [clang-diagnostic-error]
-#include <cmath>
-         ^~~~~~~
+real	0m8.751s
+user	0m8.688s
+sys	0m0.062s
+Running: clang-tidy-16 ./grains.cpp ./grains_test.cpp ./grains.hpp
 
 
-real	0m6.504s
-user	0m6.446s
-sys	0m0.059s
+real	0m8.754s
+user	0m8.690s
+sys	0m0.064s
 
 ===============================================================================
 

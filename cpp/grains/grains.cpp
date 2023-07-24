@@ -1,4 +1,4 @@
-#include "grains.h"
+#include "grains.hpp"
 
 namespace grains {
 

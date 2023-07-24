@@ -1,4 +1,4 @@
-#include "grains.h"
+#include "grains.hpp"
 #ifdef EXERCISM_TEST_SUITE
 #include <catch2/catch.hpp>
 #else

@@ -1,5 +1,5 @@
-#if !defined(GRAINS_H)
-#define GRAINS_H
+#if !defined(GRAINS_HPP)
+#define GRAINS_HPP
 
 #include <cmath>
 
@@ -10,4 +10,4 @@ unsigned long long total();
 
 } // namespace grains
 
-#endif // GRAINS_H
+#endif // GRAINS_HPP
