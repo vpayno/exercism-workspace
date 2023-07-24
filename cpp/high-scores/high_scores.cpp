@@ -1,27 +1,31 @@
 #include "high_scores.h"
 
-#include <algorithm>
+#include <iostream>
 
 namespace arcade {
 
-    std::vector<int> HighScores::list_scores() {
-        // TODO: Return all scores for this session.
-        return {0, 1, 2};
+// Return all scores for this session.
+std::vector<int> HighScores::list_scores() { return scores; }
+
+// Return the latest score for this session.
+int HighScores::latest_score() { return scores.back(); }
+
+// Return the highest score for this session.
+int HighScores::personal_best() {
+    return *std::max_element(scores.begin(), scores.end());
+}
+
+// Return the top 3 scores for this session in descending order.
+std::vector<int> HighScores::top_three() {
+    std::vector<int> sorted(scores.size());
+    std::partial_sort_copy(scores.begin(), scores.end(), sorted.begin(),
+                           sorted.end(), std::greater<>());
+
+    if (scores.size() >= 3) {
+        return {sorted.begin(), sorted.begin() + 3};
     }
 
-    int HighScores::latest_score() {
-        // TODO: Return the latest score for this session.
-        return 0;
-    }
+    return sorted;
+}
 
-    int HighScores::personal_best() {
-        // TODO: Return the highest score for this session.
-        return 0;
-    }
-
-    std::vector<int> HighScores::top_three() {
-        // TODO: Return the top 3 scores for this session in descending order.
-        return {0, 1, 2};
-    }
-
-}  // namespace arcade
+} // namespace arcade

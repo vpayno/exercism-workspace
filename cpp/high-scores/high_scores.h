@@ -1,15 +1,16 @@
 #pragma once
 
+#include <algorithm>
 #include <array>
 #include <vector>
 
 namespace arcade {
 
 class HighScores {
-   private:
+  private:
     std::vector<int> scores;
 
-   public:
+  public:
     HighScores(std::vector<int> scores) : scores(scores){};
 
     std::vector<int> list_scores();
@@ -21,4 +22,4 @@ class HighScores {
     std::vector<int> top_three();
 };
 
-}  // namespace arcade
+} // namespace arcade

@@ -39,3 +39,8 @@ If you want some extra practice, you can implement a function that adds new scor
 ### Based on
 
 Tribute to the eighties' arcade game Frogger
+
+### My Solution
+
+- [my solution]()
+- [run-tests](./run-tests-cpp.txt)

@@ -39,3 +39,4 @@
 - [ellens-alien-game](./ellens-alien-game/README.md)
 - [allergies](./allergies/README.md)
 - [election-day](./election-day/README.md)
+- [high-scores](./high-scores/README.md)
