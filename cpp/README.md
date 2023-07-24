@@ -45,3 +45,4 @@
 - [grains](./grains/README.md)
 - [two-fer](./two-fer/README.md)
 - [collatz-conjecture](./collatz-conjecture/README.md)
+- [largest-series-product](./largest-series-product/README.md)

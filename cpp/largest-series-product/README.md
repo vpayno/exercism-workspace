@@ -49,3 +49,8 @@ Let's work through an example, with the input `"63915"`.
 ### Based on
 
 A variation on Problem 8 at Project Euler - https://projecteuler.net/problem=8
+
+### My Solution
+
+- [my solution]()
+- [run-tests](./run-tests-cpp.txt)
