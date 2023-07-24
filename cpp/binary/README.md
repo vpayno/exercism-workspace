@@ -54,3 +54,8 @@ So: `101 => 1*2^2 + 0*2^1 + 1*2^0 => 1*4 + 0*2 + 1*1 => 4 + 1 => 5 base 10`.
 ### Based on
 
 All of Computer Science - http://www.wolframalpha.com/input/?i=binary&a=*C.binary-_*MathWorld-
+
+### My Solution
+
+- [my solution]()
+- [run-tests](./run-tests-cpp.txt)
