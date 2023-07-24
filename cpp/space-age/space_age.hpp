@@ -1,5 +1,5 @@
-#if !defined(SPACE_AGE_H)
-#define SPACE_AGE_H
+#if !defined(SPACE_AGE_HPP)
+#define SPACE_AGE_HPP
 
 #include <map>
 #include <string>
@@ -35,4 +35,4 @@ class space_age {
 
 } // namespace space_age
 
-#endif // SPACE_AGE_H
+#endif // SPACE_AGE_HPP

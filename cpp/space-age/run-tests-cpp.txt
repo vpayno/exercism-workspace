@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.006s
-user	0m0.002s
-sys	0m0.004s
+real	0m0.009s
+user	0m0.003s
+sys	0m0.006s
 
 ===============================================================================
 
@@ -69,27 +69,27 @@ Directory: .
 ------------------------------------------------------------------------------
 File                                       Lines    Exec  Cover   Missing
 ------------------------------------------------------------------------------
-space_age.cpp                                 22      22   100%   
-space_age.h                                    9       9   100%   
+space_age.cpp                                 12      12   100%   
+space_age.hpp                                  4       4   100%   
 space_age_test.cpp                            43      43   100%   
 test/catch.hpp                                39      34    87%   1642-1643,2227,2229,2560
 ------------------------------------------------------------------------------
-TOTAL                                        113     108    95%
+TOTAL                                         98      93    94%
 ------------------------------------------------------------------------------
-lines: 95.6% (108 out of 113)
+lines: 94.9% (93 out of 98)
 branches: 41.0% (155 out of 378)
 
-real	0m9.651s
-user	0m9.026s
-sys	0m0.621s
+real	0m9.848s
+user	0m9.088s
+sys	0m0.756s
 
 ===============================================================================
 
 cmake-format --in-place CMakeLists.txt
 
-real	0m0.147s
-user	0m0.103s
-sys	0m0.046s
+real	0m0.146s
+user	0m0.121s
+sys	0m0.027s
 
 ===============================================================================
 
@@ -111,64 +111,50 @@ found lint:
   Convention: 4
 
 
-real	0m0.154s
-user	0m0.117s
-sys	0m0.037s
+real	0m0.161s
+user	0m0.123s
+sys	0m0.041s
 
 ===============================================================================
 
-Running: clang-format-16 -style=file -i ./space_age.cpp ./space_age_test.cpp ./space_age.h
+Running: clang-format-16 -style=file -i ./space_age.cpp ./space_age_test.cpp ./space_age.hpp
 
-real	0m0.019s
-user	0m0.010s
-sys	0m0.009s
+real	0m0.020s
+user	0m0.012s
+sys	0m0.008s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./space_age.cpp ./space_age_test.cpp ./space_age.h
-error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
-error: invalid argument '-std=c++17' not allowed with 'C'
-/home/vpayno/git_vpayno/exercism-workspace/cpp/space-age/space_age.h:4:10: fatal error: 'map' file not found
-#include <map>
-         ^~~~~
-1 error generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/space-age/space_age.h.
+clang-check-16 --analyze ./space_age.cpp ./space_age_test.cpp ./space_age.hpp
 
-real	0m0.594s
-user	0m0.555s
+real	0m0.734s
+user	0m0.696s
 sys	0m0.038s
 
 
-real	0m0.596s
-user	0m0.555s
-sys	0m0.040s
+real	0m0.736s
+user	0m0.696s
+sys	0m0.039s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 14912 warnings generated.
 51952 warnings generated.
-51952 warnings and 3 errors generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/space-age/space_age.h.
-Suppressed 51957 warnings (51952 in non-user code, 5 NOLINT).
+66826 warnings generated.
+Suppressed 66831 warnings (66826 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-Found compiler error(s).
 
-real	0m7.679s
-user	0m7.604s
-sys	0m0.075s
-Running: clang-tidy-16 ./space_age.cpp ./space_age_test.cpp ./space_age.h
-error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
-error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
-/home/vpayno/git_vpayno/exercism-workspace/cpp/space-age/space_age.h:4:10: error: 'map' file not found [clang-diagnostic-error]
-#include <map>
-         ^~~~~
+real	0m8.932s
+user	0m8.859s
+sys	0m0.072s
+Running: clang-tidy-16 ./space_age.cpp ./space_age_test.cpp ./space_age.hpp
 
 
-real	0m7.681s
-user	0m7.605s
-sys	0m0.077s
+real	0m8.934s
+user	0m8.859s
+sys	0m0.076s
 
 ===============================================================================
 

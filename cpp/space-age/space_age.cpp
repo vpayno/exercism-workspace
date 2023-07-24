@@ -1,4 +1,4 @@
-#include "space_age.h"
+#include "space_age.hpp"
 
 namespace space_age {
 
