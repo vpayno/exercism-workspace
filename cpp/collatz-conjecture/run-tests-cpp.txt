@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.005s
-user	0m0.000s
-sys	0m0.004s
+real	0m0.007s
+user	0m0.002s
+sys	0m0.005s
 
 ===============================================================================
 
@@ -70,25 +70,25 @@ Directory: .
 File                                       Lines    Exec  Cover   Missing
 ------------------------------------------------------------------------------
 collatz_conjecture.cpp                        13      13   100%   
-collatz_conjecture_test.cpp                   18      18   100%   
+collatz_conjecture_test.cpp                   12      12   100%   
 test/catch.hpp                                32      27    84%   1642-1643,2227,2229,2560
 ------------------------------------------------------------------------------
-TOTAL                                         63      58    92%
+TOTAL                                         57      52    91%
 ------------------------------------------------------------------------------
-lines: 92.1% (58 out of 63)
+lines: 91.2% (52 out of 57)
 branches: 38.7% (48 out of 124)
 
-real	0m9.419s
-user	0m8.687s
-sys	0m0.728s
+real	0m10.086s
+user	0m9.442s
+sys	0m0.640s
 
 ===============================================================================
 
 cmake-format --in-place CMakeLists.txt
 
-real	0m0.135s
-user	0m0.096s
-sys	0m0.041s
+real	0m0.148s
+user	0m0.105s
+sys	0m0.044s
 
 ===============================================================================
 
@@ -110,64 +110,50 @@ found lint:
   Convention: 4
 
 
-real	0m0.144s
-user	0m0.103s
-sys	0m0.043s
+real	0m0.155s
+user	0m0.115s
+sys	0m0.042s
 
 ===============================================================================
 
-Running: clang-format-16 -style=file -i ./collatz_conjecture.cpp ./collatz_conjecture_test.cpp ./collatz_conjecture.h
+Running: clang-format-16 -style=file -i ./collatz_conjecture.cpp ./collatz_conjecture_test.cpp ./collatz_conjecture.hpp
 
-real	0m0.022s
-user	0m0.011s
-sys	0m0.011s
+real	0m0.020s
+user	0m0.012s
+sys	0m0.008s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./collatz_conjecture.cpp ./collatz_conjecture_test.cpp ./collatz_conjecture.h
-error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
-error: invalid argument '-std=c++17' not allowed with 'C'
-/home/vpayno/git_vpayno/exercism-workspace/cpp/collatz-conjecture/collatz_conjecture.h:4:10: fatal error: 'stdexcept' file not found
-#include <stdexcept>
-         ^~~~~~~~~~~
-1 error generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/collatz-conjecture/collatz_conjecture.h.
+clang-check-16 --analyze ./collatz_conjecture.cpp ./collatz_conjecture_test.cpp ./collatz_conjecture.hpp
 
-real	0m0.498s
-user	0m0.465s
-sys	0m0.033s
+real	0m0.592s
+user	0m0.557s
+sys	0m0.035s
 
 
-real	0m0.500s
-user	0m0.466s
-sys	0m0.034s
+real	0m0.594s
+user	0m0.559s
+sys	0m0.035s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 11416 warnings generated.
 46799 warnings generated.
-46799 warnings and 3 errors generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/collatz-conjecture/collatz_conjecture.h.
-Suppressed 46804 warnings (46799 in non-user code, 5 NOLINT).
+58215 warnings generated.
+Suppressed 58220 warnings (58215 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-Found compiler error(s).
 
-real	0m6.449s
-user	0m6.394s
-sys	0m0.054s
-Running: clang-tidy-16 ./collatz_conjecture.cpp ./collatz_conjecture_test.cpp ./collatz_conjecture.h
-error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
-error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
-/home/vpayno/git_vpayno/exercism-workspace/cpp/collatz-conjecture/collatz_conjecture.h:4:10: error: 'stdexcept' file not found [clang-diagnostic-error]
-#include <stdexcept>
-         ^~~~~~~~~~~
+real	0m7.643s
+user	0m7.576s
+sys	0m0.065s
+Running: clang-tidy-16 ./collatz_conjecture.cpp ./collatz_conjecture_test.cpp ./collatz_conjecture.hpp
 
 
-real	0m6.451s
-user	0m6.395s
-sys	0m0.056s
+real	0m7.645s
+user	0m7.578s
+sys	0m0.065s
 
 ===============================================================================
 

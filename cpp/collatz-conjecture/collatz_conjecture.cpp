@@ -1,4 +1,4 @@
-#include "collatz_conjecture.h"
+#include "collatz_conjecture.hpp"
 
 namespace collatz_conjecture {
 

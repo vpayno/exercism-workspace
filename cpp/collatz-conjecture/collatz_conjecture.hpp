@@ -1,5 +1,5 @@
-#if !defined(COLLATZ_CONJECTURE_H)
-#define COLLATZ_CONJECTURE_H
+#if !defined(COLLATZ_CONJECTURE_HPP)
+#define COLLATZ_CONJECTURE_HPP
 
 #include <stdexcept>
 
@@ -9,4 +9,4 @@ int steps(int start);
 
 } // namespace collatz_conjecture
 
-#endif // COLLATZ_CONJECTURE_H
+#endif // COLLATZ_CONJECTURE_HPP

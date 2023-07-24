@@ -1,4 +1,4 @@
-#include "collatz_conjecture.h"
+#include "collatz_conjecture.hpp"
 #ifdef EXERCISM_TEST_SUITE
 #include <catch2/catch.hpp>
 #else
