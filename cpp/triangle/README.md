@@ -54,3 +54,8 @@ See [Triangle Inequality][triangle-inequality]
 ### Based on
 
 The Ruby Koans triangle project, parts 1 & 2 - http://rubykoans.com
+
+### My Solution
+
+- [my solution]()
+- [run-tests](./run-tests-cpp.txt)

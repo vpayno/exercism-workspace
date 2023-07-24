@@ -41,3 +41,4 @@
 - [election-day](./election-day/README.md)
 - [high-scores](./high-scores/README.md)
 - [space-age](./space-age/README.md)
+- [triangle](./triangle/README.md)
