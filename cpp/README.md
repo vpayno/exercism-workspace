@@ -44,3 +44,4 @@
 - [triangle](./triangle/README.md)
 - [grains](./grains/README.md)
 - [two-fer](./two-fer/README.md)
+- [collatz-conjecture](./collatz-conjecture/README.md)
