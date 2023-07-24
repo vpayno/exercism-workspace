@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.008s
-user	0m0.002s
-sys	0m0.007s
+real	0m0.009s
+user	0m0.001s
+sys	0m0.008s
 
 ===============================================================================
 
@@ -78,17 +78,17 @@ TOTAL                                        154     133    86%
 lines: 86.4% (133 out of 154)
 branches: 39.6% (212 out of 536)
 
-real	0m9.740s
-user	0m9.072s
-sys	0m0.660s
+real	0m9.486s
+user	0m8.786s
+sys	0m0.696s
 
 ===============================================================================
 
 cmake-format --in-place CMakeLists.txt
 
-real	0m0.142s
-user	0m0.105s
-sys	0m0.038s
+real	0m0.148s
+user	0m0.110s
+sys	0m0.039s
 
 ===============================================================================
 
@@ -110,68 +110,54 @@ found lint:
   Convention: 4
 
 
-real	0m0.145s
-user	0m0.109s
+real	0m0.142s
+user	0m0.106s
 sys	0m0.037s
 
 ===============================================================================
 
-Running: clang-format-16 -style=file -i ./allergies.cpp ./allergies_test.cpp ./allergies.h
+Running: clang-format-16 -style=file -i ./allergies.cpp ./allergies_test.cpp ./allergies.hpp
 
 real	0m0.020s
-user	0m0.010s
-sys	0m0.010s
+user	0m0.009s
+sys	0m0.011s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./allergies.cpp ./allergies_test.cpp ./allergies.h
-error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
-error: invalid argument '-std=c++17' not allowed with 'C'
-/home/vpayno/git_vpayno/exercism-workspace/cpp/allergies/allergies.h:6:10: fatal error: 'map' file not found
-#include <map>
-         ^~~~~
-1 error generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/allergies/allergies.h.
+clang-check-16 --analyze ./allergies.cpp ./allergies_test.cpp ./allergies.hpp
 
-real	0m0.759s
-user	0m0.717s
-sys	0m0.041s
+real	0m0.798s
+user	0m0.751s
+sys	0m0.046s
 
 
-real	0m0.761s
-user	0m0.717s
-sys	0m0.043s
+real	0m0.799s
+user	0m0.751s
+sys	0m0.048s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 18010 warnings generated.
 55499 warnings generated.
-55499 warnings and 3 errors generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/allergies/allergies.h.
-Suppressed 55503 warnings (55498 in non-user code, 5 NOLINT).
+73376 warnings generated.
+Suppressed 73380 warnings (73375 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-Found compiler error(s).
 
-real	0m8.276s
-user	0m8.208s
-sys	0m0.067s
-Running: clang-tidy-16 ./allergies.cpp ./allergies_test.cpp ./allergies.h
-error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
-error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
-/home/vpayno/git_vpayno/exercism-workspace/cpp/allergies/allergies.h:6:10: error: 'map' file not found [clang-diagnostic-error]
-#include <map>
-         ^~~~~
+real	0m10.060s
+user	0m10.002s
+sys	0m0.058s
+Running: clang-tidy-16 ./allergies.cpp ./allergies_test.cpp ./allergies.hpp
 /home/vpayno/git_vpayno/exercism-workspace/cpp/allergies/allergies_test.cpp:12:5: warning: variable 'score' of type 'allergies::allergy_test' can be declared 'const' [misc-const-correctness]
     allergies::allergy_test score(0);
     ^
                             const 
 
 
-real	0m8.278s
-user	0m8.210s
-sys	0m0.068s
+real	0m10.062s
+user	0m10.004s
+sys	0m0.059s
 
 ===============================================================================
 

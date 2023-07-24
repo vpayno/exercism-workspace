@@ -1,4 +1,4 @@
-#include "allergies.h"
+#include "allergies.hpp"
 
 namespace allergies {
 
@@ -26,13 +26,18 @@ allergy_test::allergy_test(int score) {
     }
     */
 
-    // I've been enjoing using std map/reduce functions over simpler for loops
-    // so here's today's nightmare. Using accumulate to sum nothing while
-    // binary_op inserts to the captured set. This would have been easier with
-    // std::copy_if if the set wasn't comprised of std::pair elements since the
-    // target only has strings in it. The std::copy_if unary_op only returns a
-    // boolean so we can't tell it to only copy pair.first instead of the whole
-    // pair.
+    /* I've been enjoing using std map/reduce functions over simpler for loops
+       so here's today's nightmare.
+
+       Using accumulate to sum nothing while binary_op inserts to the captured
+       set.
+
+       This would have been easier with std::copy_if if the set wasn't comprised
+       of std::pair elements since the target only has strings in it.
+
+       The std::copy_if unary_op only returns a boolean so we can't tell it to
+       only copy pair.first instead of the whole pair.
+       */
 
     auto binary_op = [score, set = &allergic_reactions](
                          int, std::pair<std::string, int> allergy) {

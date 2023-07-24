@@ -1,7 +1,5 @@
-#if !defined(ALLERGIES_H)
-#define ALLERGIES_H
-
-// this is treated as a C header, please use *.hpp files for C++ headers
+#if !defined(ALLERGIES_HPP)
+#define ALLERGIES_HPP
 
 #include <map>
 #include <numeric>
@@ -24,4 +22,4 @@ class allergy_test {
 
 } // namespace allergies
 
-#endif // ALLERGIES_H
+#endif // ALLERGIES_HPP
