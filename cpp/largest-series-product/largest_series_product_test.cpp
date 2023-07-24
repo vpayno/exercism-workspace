@@ -1,4 +1,4 @@
-#include "largest_series_product.h"
+#include "largest_series_product.hpp"
 #ifdef EXERCISM_TEST_SUITE
 #include <catch2/catch.hpp>
 #else

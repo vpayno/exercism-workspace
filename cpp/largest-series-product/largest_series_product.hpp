@@ -1,5 +1,5 @@
-#if !defined(LARGEST_SERIES_PRODUCT_H)
-#define LARGEST_SERIES_PRODUCT_H
+#if !defined(LARGEST_SERIES_PRODUCT_HPP)
+#define LARGEST_SERIES_PRODUCT_HPP
 
 #include <regex>
 #include <stdexcept>
@@ -12,4 +12,4 @@ bool is_valid_input(std::string digits, int span);
 
 } // namespace largest_series_product
 
-#endif // LARGEST_SERIES_PRODUCT_H
+#endif // LARGEST_SERIES_PRODUCT_HPP

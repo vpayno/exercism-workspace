@@ -1,4 +1,4 @@
-#include "largest_series_product.h"
+#include "largest_series_product.hpp"
 
 namespace largest_series_product {
 

@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.010s
-user	0m0.001s
-sys	0m0.009s
+real	0m0.009s
+user	0m0.002s
+sys	0m0.007s
 
 ===============================================================================
 
@@ -69,7 +69,7 @@ Directory: .
 ------------------------------------------------------------------------------
 File                                       Lines    Exec  Cover   Missing
 ------------------------------------------------------------------------------
-largest_series_product.cpp                    33      32    97%   9
+largest_series_product.cpp                    33      32    97%   8
 largest_series_product_test.cpp               39      39   100%   
 test/catch.hpp                                32      27    84%   1642-1643,2227,2229,2560
 ------------------------------------------------------------------------------
@@ -78,17 +78,17 @@ TOTAL                                        104      98    94%
 lines: 94.2% (98 out of 104)
 branches: 40.7% (123 out of 302)
 
-real	0m12.558s
-user	0m11.744s
-sys	0m0.811s
+real	0m11.818s
+user	0m10.983s
+sys	0m0.834s
 
 ===============================================================================
 
 cmake-format --in-place CMakeLists.txt
 
-real	0m0.144s
+real	0m0.151s
 user	0m0.102s
-sys	0m0.045s
+sys	0m0.051s
 
 ===============================================================================
 
@@ -110,64 +110,50 @@ found lint:
   Convention: 4
 
 
-real	0m0.157s
-user	0m0.113s
-sys	0m0.047s
+real	0m0.147s
+user	0m0.108s
+sys	0m0.041s
 
 ===============================================================================
 
-Running: clang-format-16 -style=file -i ./largest_series_product.cpp ./largest_series_product_test.cpp ./largest_series_product.h
+Running: clang-format-16 -style=file -i ./largest_series_product.cpp ./largest_series_product_test.cpp ./largest_series_product.hpp
 
-real	0m0.021s
+real	0m0.019s
 user	0m0.010s
-sys	0m0.011s
+sys	0m0.009s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./largest_series_product.cpp ./largest_series_product_test.cpp ./largest_series_product.h
-error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
-error: invalid argument '-std=c++17' not allowed with 'C'
-/home/vpayno/git_vpayno/exercism-workspace/cpp/largest-series-product/largest_series_product.h:4:10: fatal error: 'regex' file not found
-#include <regex>
-         ^~~~~~~
-1 error generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/largest-series-product/largest_series_product.h.
+clang-check-16 --analyze ./largest_series_product.cpp ./largest_series_product_test.cpp ./largest_series_product.hpp
 
-real	0m3.103s
-user	0m3.009s
-sys	0m0.094s
+real	0m3.295s
+user	0m3.210s
+sys	0m0.085s
 
 
-real	0m3.105s
-user	0m3.009s
-sys	0m0.096s
+real	0m3.297s
+user	0m3.211s
+sys	0m0.086s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 36222 warnings generated.
 80422 warnings generated.
-80422 warnings and 3 errors generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/largest-series-product/largest_series_product.h.
-Suppressed 80427 warnings (80422 in non-user code, 5 NOLINT).
+115435 warnings generated.
+Suppressed 115440 warnings (115435 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-Found compiler error(s).
 
-real	0m16.732s
-user	0m16.618s
-sys	0m0.112s
-Running: clang-tidy-16 ./largest_series_product.cpp ./largest_series_product_test.cpp ./largest_series_product.h
-error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
-error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
-/home/vpayno/git_vpayno/exercism-workspace/cpp/largest-series-product/largest_series_product.h:4:10: error: 'regex' file not found [clang-diagnostic-error]
-#include <regex>
-         ^~~~~~~
+real	0m21.167s
+user	0m21.019s
+sys	0m0.147s
+Running: clang-tidy-16 ./largest_series_product.cpp ./largest_series_product_test.cpp ./largest_series_product.hpp
 
 
-real	0m16.735s
-user	0m16.619s
-sys	0m0.115s
+real	0m21.169s
+user	0m21.019s
+sys	0m0.149s
 
 ===============================================================================
 
