@@ -42,3 +42,4 @@
 - [high-scores](./high-scores/README.md)
 - [space-age](./space-age/README.md)
 - [triangle](./triangle/README.md)
+- [grains](./grains/README.md)
