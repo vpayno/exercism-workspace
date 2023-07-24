@@ -46,7 +46,7 @@ TEST_CASE("Presidency, one candidate", "[task_3]") {
     ElectionResult option1{"Coriolanus Snow", 13};
     std::vector<ElectionResult> final_count{option1};
 
-    ElectionResult& result = determine_result(final_count);
+    ElectionResult &result = determine_result(final_count);
     std::string expected{"President Coriolanus Snow"};
 
     REQUIRE(result.name == expected);
@@ -57,12 +57,11 @@ TEST_CASE("Presidency, two candidates", "[task_3]") {
     ElectionResult option2{"Optimus Prime", 76};
     std::vector<ElectionResult> final_count{option1, option2};
 
-    ElectionResult& result = determine_result(final_count);
+    ElectionResult &result = determine_result(final_count);
     std::string expected{"President Optimus Prime"};
 
     REQUIRE(result.name == expected);
 }
-
 
 TEST_CASE("Presidency, several candidates", "[task_3]") {
     ElectionResult option1{"David", 11};
@@ -71,7 +70,7 @@ TEST_CASE("Presidency, several candidates", "[task_3]") {
     ElectionResult option4{"Call", 8};
     std::vector<ElectionResult> final_count{option1, option2, option3, option4};
 
-    ElectionResult& result = determine_result(final_count);
+    ElectionResult &result = determine_result(final_count);
     std::string expected{"President Ripley"};
 
     REQUIRE(result.name == expected);

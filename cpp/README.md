@@ -38,3 +38,4 @@
 - [atbash-cipher](./atbash-cipher/README.md)
 - [ellens-alien-game](./ellens-alien-game/README.md)
 - [allergies](./allergies/README.md)
+- [election-day](./election-day/README.md)
