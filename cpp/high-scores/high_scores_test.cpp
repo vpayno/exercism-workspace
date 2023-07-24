@@ -1,5 +1,5 @@
 // Include the header file with the definitions of the functions you create.
-#include "high_scores.h"
+#include "high_scores.hpp"
 
 // Include the test framework.
 #ifdef EXERCISM_TEST_SUITE

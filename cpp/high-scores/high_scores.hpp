@@ -2,6 +2,7 @@
 
 #include <algorithm>
 #include <array>
+#include <utility>
 #include <vector>
 
 namespace arcade {
@@ -11,7 +12,7 @@ class HighScores {
     std::vector<int> scores;
 
   public:
-    HighScores(std::vector<int> scores) : scores(scores){};
+    HighScores(std::vector<int> scores) : scores(std::move(scores)){};
 
     std::vector<int> list_scores();
 

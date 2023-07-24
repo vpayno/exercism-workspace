@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.006s
-user	0m0.000s
-sys	0m0.006s
+real	0m0.012s
+user	0m0.003s
+sys	0m0.008s
 
 ===============================================================================
 
@@ -208,27 +208,27 @@ Directory: .
 ------------------------------------------------------------------------------
 File                                       Lines    Exec  Cover   Missing
 ------------------------------------------------------------------------------
-high_scores.cpp                               12      12   100%   
-high_scores.h                                  1       1   100%   
+high_scores.cpp                               10      10   100%   
+high_scores.hpp                                1       1   100%   
 high_scores_test.cpp                          73      73   100%   
 test/catch.hpp                                49      48    98%   2560
 ------------------------------------------------------------------------------
-TOTAL                                        135     134    99%
+TOTAL                                        133     132    99%
 ------------------------------------------------------------------------------
-lines: 99.3% (134 out of 135)
-branches: 43.1% (137 out of 318)
+lines: 99.2% (132 out of 133)
+branches: 42.5% (125 out of 294)
 
-real	0m9.324s
-user	0m8.660s
-sys	0m0.661s
+real	0m9.547s
+user	0m8.711s
+sys	0m0.818s
 
 ===============================================================================
 
 cmake-format --in-place CMakeLists.txt
 
-real	0m0.150s
-user	0m0.107s
-sys	0m0.045s
+real	0m0.143s
+user	0m0.098s
+sys	0m0.047s
 
 ===============================================================================
 
@@ -250,62 +250,45 @@ found lint:
   Convention: 4
 
 
-real	0m0.143s
-user	0m0.103s
-sys	0m0.041s
+real	0m0.148s
+user	0m0.114s
+sys	0m0.036s
 
 ===============================================================================
 
-Running: clang-format-16 -style=file -i ./high_scores.cpp ./high_scores_test.cpp ./high_scores.h
+Running: clang-format-16 -style=file -i ./high_scores.cpp ./high_scores_test.cpp ./high_scores.hpp
 
 real	0m0.020s
-user	0m0.012s
-sys	0m0.008s
+user	0m0.013s
+sys	0m0.007s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./high_scores.cpp ./high_scores_test.cpp ./high_scores.h
-error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
-error: invalid argument '-std=c++17' not allowed with 'C'
-/home/vpayno/git_vpayno/exercism-workspace/cpp/high-scores/high_scores.h:3:10: fatal error: 'algorithm' file not found
-#include <algorithm>
-         ^~~~~~~~~~~
-1 error generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/high-scores/high_scores.h.
+clang-check-16 --analyze ./high_scores.cpp ./high_scores_test.cpp ./high_scores.hpp
 
-real	0m2.723s
-user	0m2.617s
-sys	0m0.106s
+real	0m2.694s
+user	0m2.600s
+sys	0m0.093s
 
 
-real	0m2.725s
-user	0m2.617s
-sys	0m0.108s
+real	0m2.696s
+user	0m2.600s
+sys	0m0.095s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
-24766 warnings generated.
-60136 warnings generated.
-60137 warnings and 3 errors generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/high-scores/high_scores.h.
-Suppressed 60139 warnings (60134 in non-user code, 5 NOLINT).
+24765 warnings generated.
+60134 warnings generated.
+76450 warnings generated.
+Suppressed 76453 warnings (76448 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-Found compiler error(s).
 
-real	0m10.813s
-user	0m10.662s
-sys	0m0.150s
-Running: clang-tidy-16 ./high_scores.cpp ./high_scores_test.cpp ./high_scores.h
-error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
-error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
-/home/vpayno/git_vpayno/exercism-workspace/cpp/high-scores/high_scores.h:3:10: error: 'algorithm' file not found [clang-diagnostic-error]
-#include <algorithm>
-         ^~~~~~~~~~~
-/home/vpayno/git_vpayno/exercism-workspace/cpp/high-scores/high_scores.h:14:5: warning: constructor does not initialize these fields: scores [cppcoreguidelines-pro-type-member-init]
-    HighScores(std::vector<int> scores) : scores(scores){};
-    ^
+real	0m11.617s
+user	0m11.481s
+sys	0m0.136s
+Running: clang-tidy-16 ./high_scores.cpp ./high_scores_test.cpp ./high_scores.hpp
 /home/vpayno/git_vpayno/exercism-workspace/cpp/high-scores/high_scores_test.cpp:13:5: warning: variable 'scores' of type 'std::vector<int>' can be declared 'const' [misc-const-correctness]
     std::vector<int> scores{30, 50, 20, 70};
     ^
@@ -315,9 +298,9 @@ error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic
                        ^
 
 
-real	0m10.815s
-user	0m10.663s
-sys	0m0.152s
+real	0m11.619s
+user	0m11.481s
+sys	0m0.139s
 
 ===============================================================================
 

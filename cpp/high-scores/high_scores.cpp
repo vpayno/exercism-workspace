@@ -1,4 +1,4 @@
-#include "high_scores.h"
+#include "high_scores.hpp"
 
 #include <iostream>
 
