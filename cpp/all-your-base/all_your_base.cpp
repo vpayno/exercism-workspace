@@ -16,14 +16,14 @@ convert(const unsigned int input_base,
             "output base must be greaterthan or equal to 2"};
     }
 
-    if (std::find_if(input_sequence.begin(), input_sequence.end(),
-                     compare(input_base)) != input_sequence.end()) {
-        throw std::invalid_argument{
-            "invalid input sequence for given input base"};
-    }
-
     if (input_sequence.empty()) {
         return std::vector<unsigned int>{};
+    }
+
+    if (*std::max_element(input_sequence.begin(), input_sequence.end()) >=
+        input_base) {
+        throw std::invalid_argument{
+            "invalid input sequence for given input base"};
     }
 
     auto base2ten_op = [input_base](unsigned int base_ten, unsigned int digit) {
