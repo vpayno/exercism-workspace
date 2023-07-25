@@ -1,4 +1,4 @@
-#include "perfect_numbers.h"
+#include "perfect_numbers.hpp"
 
 namespace perfect_numbers {
 

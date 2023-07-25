@@ -8,7 +8,7 @@
 #include <string>
 #include <vector>
 
-#include "perfect_numbers.h"
+#include "perfect_numbers.hpp"
 
 using namespace std;
 TEST_CASE("Smallest perfect number is classified correctly") {

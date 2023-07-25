@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.005s
+real	0m0.013s
 user	0m0.001s
-sys	0m0.004s
+sys	0m0.012s
 
 ===============================================================================
 
@@ -69,26 +69,26 @@ Directory: .
 ------------------------------------------------------------------------------
 File                                       Lines    Exec  Cover   Missing
 ------------------------------------------------------------------------------
-perfect_numbers.cpp                           17      17   100%   
+perfect_numbers.cpp                           16      16   100%   
 perfect_numbers_test.cpp                      39      39   100%   
 test/catch.hpp                                39      27    69%   1448-1450,1617-1618,1621-1622,1642-1643,2227,2229,2560
 ------------------------------------------------------------------------------
-TOTAL                                         95      83    87%
+TOTAL                                         94      82    87%
 ------------------------------------------------------------------------------
-lines: 87.4% (83 out of 95)
+lines: 87.2% (82 out of 94)
 branches: 37.8% (93 out of 246)
 
-real	0m10.445s
-user	0m9.527s
-sys	0m0.918s
+real	0m10.346s
+user	0m9.675s
+sys	0m0.669s
 
 ===============================================================================
 
 cmake-format --in-place CMakeLists.txt
 
-real	0m0.152s
-user	0m0.109s
-sys	0m0.046s
+real	0m0.154s
+user	0m0.113s
+sys	0m0.043s
 
 ===============================================================================
 
@@ -110,64 +110,50 @@ found lint:
   Convention: 4
 
 
-real	0m0.151s
-user	0m0.106s
-sys	0m0.047s
+real	0m0.160s
+user	0m0.121s
+sys	0m0.040s
 
 ===============================================================================
 
-Running: clang-format-16 -style=file -i ./perfect_numbers.cpp ./perfect_numbers_test.cpp ./perfect_numbers.h
+Running: clang-format-16 -style=file -i ./perfect_numbers.cpp ./perfect_numbers_test.cpp ./perfect_numbers.hpp
 
-real	0m0.019s
-user	0m0.008s
-sys	0m0.011s
+real	0m0.023s
+user	0m0.009s
+sys	0m0.014s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./perfect_numbers.cpp ./perfect_numbers_test.cpp ./perfect_numbers.h
-error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
-error: invalid argument '-std=c++17' not allowed with 'C'
-/home/vpayno/git_vpayno/exercism-workspace/cpp/perfect-numbers/perfect_numbers.h:4:10: fatal error: 'algorithm' file not found
-#include <algorithm>
-         ^~~~~~~~~~~
-1 error generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/perfect-numbers/perfect_numbers.h.
+clang-check-16 --analyze ./perfect_numbers.cpp ./perfect_numbers_test.cpp ./perfect_numbers.hpp
 
-real	0m0.604s
-user	0m0.570s
-sys	0m0.034s
+real	0m0.850s
+user	0m0.812s
+sys	0m0.038s
 
 
-real	0m0.605s
-user	0m0.571s
-sys	0m0.035s
+real	0m0.853s
+user	0m0.814s
+sys	0m0.039s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 21719 warnings generated.
 57108 warnings generated.
-57108 warnings and 3 errors generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/perfect-numbers/perfect_numbers.h.
-Suppressed 57115 warnings (57108 in non-user code, 7 NOLINT).
+78793 warnings generated.
+Suppressed 78800 warnings (78793 in non-user code, 7 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-Found compiler error(s).
 
-real	0m7.907s
-user	0m7.835s
-sys	0m0.070s
-Running: clang-tidy-16 ./perfect_numbers.cpp ./perfect_numbers_test.cpp ./perfect_numbers.h
-error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
-error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
-/home/vpayno/git_vpayno/exercism-workspace/cpp/perfect-numbers/perfect_numbers.h:4:10: error: 'algorithm' file not found [clang-diagnostic-error]
-#include <algorithm>
-         ^~~~~~~~~~~
+real	0m10.840s
+user	0m10.763s
+sys	0m0.076s
+Running: clang-tidy-16 ./perfect_numbers.cpp ./perfect_numbers_test.cpp ./perfect_numbers.hpp
 
 
-real	0m7.909s
-user	0m7.838s
-sys	0m0.071s
+real	0m10.842s
+user	0m10.764s
+sys	0m0.078s
 
 ===============================================================================
 
