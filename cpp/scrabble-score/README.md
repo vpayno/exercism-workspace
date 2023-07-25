@@ -63,3 +63,8 @@ And to total:
 ### Based on
 
 Inspired by the Extreme Startup game - https://github.com/rchatley/extreme_startup
+
+### My Solution
+
+- [my solution]()
+- [run-tests](./run-tests-cpp.txt)
