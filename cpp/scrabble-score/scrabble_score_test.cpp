@@ -1,4 +1,4 @@
-#include "scrabble_score.h"
+#include "scrabble_score.hpp"
 #ifdef EXERCISM_TEST_SUITE
 #include <catch2/catch.hpp>
 #else

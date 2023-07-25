@@ -1,5 +1,5 @@
-#if !defined(SCRABBLE_SCORE_H)
-#define SCRABBLE_SCORE_H
+#if !defined(SCRABBLE_SCORE_HPP)
+#define SCRABBLE_SCORE_HPP
 
 #include <cctype>
 #include <regex>
@@ -11,4 +11,4 @@ unsigned int score(std::string word);
 
 } // namespace scrabble_score
 
-#endif // SCRABBLE_SCORE_H
+#endif // SCRABBLE_SCORE_HPP

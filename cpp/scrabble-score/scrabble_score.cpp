@@ -1,4 +1,4 @@
-#include "scrabble_score.h"
+#include "scrabble_score.hpp"
 
 namespace scrabble_score {
 
