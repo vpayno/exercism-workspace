@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.008s
-user	0m0.001s
-sys	0m0.007s
+real	0m0.006s
+user	0m0.002s
+sys	0m0.004s
 
 ===============================================================================
 
@@ -79,17 +79,17 @@ TOTAL                                         67      55    82%
 lines: 82.1% (55 out of 67)
 branches: 39.0% (53 out of 136)
 
-real	0m12.631s
-user	0m11.648s
-sys	0m0.979s
+real	0m13.077s
+user	0m12.117s
+sys	0m0.930s
 
 ===============================================================================
 
 cmake-format --in-place CMakeLists.txt
 
-real	0m0.153s
-user	0m0.108s
-sys	0m0.048s
+real	0m0.147s
+user	0m0.109s
+sys	0m0.040s
 
 ===============================================================================
 
@@ -113,66 +113,50 @@ found lint:
   Convention: 6
 
 
-real	0m0.160s
-user	0m0.116s
-sys	0m0.046s
+real	0m0.167s
+user	0m0.113s
+sys	0m0.056s
 
 ===============================================================================
 
-Running: clang-format-16 -style=file -i ./gigasecond.cpp ./gigasecond_test.cpp ./gigasecond.h
+Running: clang-format-16 -style=file -i ./gigasecond.cpp ./gigasecond_test.cpp ./gigasecond.hpp
 
-real	0m0.022s
-user	0m0.008s
-sys	0m0.014s
+real	0m0.018s
+user	0m0.010s
+sys	0m0.008s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./gigasecond.cpp ./gigasecond_test.cpp ./gigasecond.h
-error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
-error: invalid argument '-std=c++17' not allowed with 'C'
-In file included from /home/vpayno/git_vpayno/exercism-workspace/cpp/gigasecond/gigasecond.h:4:
-In file included from /usr/include/boost/date_time/posix_time/posix_time.hpp:14:
-/usr/include/boost/date_time/compiler_config.hpp:11:10: fatal error: 'cstdlib' file not found
-#include <cstdlib>
-         ^~~~~~~~~
-1 error generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/gigasecond/gigasecond.h.
+clang-check-16 --analyze ./gigasecond.cpp ./gigasecond_test.cpp ./gigasecond.hpp
 
-real	0m3.722s
-user	0m3.601s
-sys	0m0.120s
+real	0m4.384s
+user	0m4.257s
+sys	0m0.125s
 
 
-real	0m3.724s
-user	0m3.603s
-sys	0m0.120s
+real	0m4.386s
+user	0m4.257s
+sys	0m0.127s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 53446 warnings generated.
 113040 warnings generated.
-129514 warnings and 3 errors generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/gigasecond/gigasecond.h.
-Suppressed 129519 warnings (129514 in non-user code, 5 NOLINT).
+166481 warnings generated.
+Suppressed 166486 warnings (166481 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-Found compiler error(s).
 
-real	0m24.047s
-user	0m23.877s
-sys	0m0.168s
-Running: clang-tidy-16 ./gigasecond.cpp ./gigasecond_test.cpp ./gigasecond.h
-error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
-error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
-/usr/include/boost/date_time/compiler_config.hpp:11:10: error: 'cstdlib' file not found [clang-diagnostic-error]
-#include <cstdlib>
-         ^~~~~~~~~
+real	0m34.626s
+user	0m34.430s
+sys	0m0.194s
+Running: clang-tidy-16 ./gigasecond.cpp ./gigasecond_test.cpp ./gigasecond.hpp
 
 
-real	0m24.048s
-user	0m23.878s
-sys	0m0.170s
+real	0m34.628s
+user	0m34.431s
+sys	0m0.196s
 
 ===============================================================================
 

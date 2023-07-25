@@ -1,4 +1,4 @@
-#include "gigasecond.h"
+#include "gigasecond.hpp"
 #ifdef EXERCISM_TEST_SUITE
 #include <catch2/catch.hpp>
 #else

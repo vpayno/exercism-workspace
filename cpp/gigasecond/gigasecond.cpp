@@ -1,4 +1,4 @@
-#include "gigasecond.h"
+#include "gigasecond.hpp"
 
 namespace gigasecond {
 
