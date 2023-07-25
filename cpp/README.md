@@ -47,3 +47,4 @@
 - [collatz-conjecture](./collatz-conjecture/README.md)
 - [largest-series-product](./largest-series-product/README.md)
 - [binary](./binary/README.md)
+- [all-your-base](./all-your-base/README.md)
