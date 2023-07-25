@@ -48,3 +48,4 @@
 - [largest-series-product](./largest-series-product/README.md)
 - [binary](./binary/README.md)
 - [all-your-base](./all-your-base/README.md)
+- [perfect-numbers](./perfect-numbers/README.md)
