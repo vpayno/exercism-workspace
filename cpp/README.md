@@ -50,3 +50,4 @@
 - [all-your-base](./all-your-base/README.md)
 - [perfect-numbers](./perfect-numbers/README.md)
 - [scrabble-score](./scrabble-score/README.md)
+- [gigasecond](./gigasecond/README.md)
