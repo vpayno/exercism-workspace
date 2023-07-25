@@ -1,4 +1,4 @@
-#include "all_your_base.h"
+#include "all_your_base.hpp"
 #ifdef EXERCISM_TEST_SUITE
 #include <catch2/catch.hpp>
 #else

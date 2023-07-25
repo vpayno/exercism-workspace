@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.006s
+real	0m0.010s
 user	0m0.001s
-sys	0m0.005s
+sys	0m0.009s
 
 ===============================================================================
 
@@ -78,17 +78,17 @@ TOTAL                                        164     143    87%
 lines: 87.2% (143 out of 164)
 branches: 38.0% (164 out of 432)
 
-real	0m9.746s
-user	0m9.068s
-sys	0m0.677s
+real	0m9.443s
+user	0m8.767s
+sys	0m0.672s
 
 ===============================================================================
 
 cmake-format --in-place CMakeLists.txt
 
-real	0m0.148s
-user	0m0.109s
-sys	0m0.041s
+real	0m0.154s
+user	0m0.112s
+sys	0m0.044s
 
 ===============================================================================
 
@@ -110,59 +110,45 @@ found lint:
   Convention: 4
 
 
-real	0m0.143s
-user	0m0.105s
-sys	0m0.040s
+real	0m0.142s
+user	0m0.103s
+sys	0m0.041s
 
 ===============================================================================
 
-Running: clang-format-16 -style=file -i ./all_your_base.cpp ./all_your_base_test.cpp ./all_your_base.h
+Running: clang-format-16 -style=file -i ./all_your_base.cpp ./all_your_base_test.cpp ./all_your_base.hpp
 
-real	0m0.021s
-user	0m0.011s
+real	0m0.020s
+user	0m0.010s
 sys	0m0.010s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./all_your_base.cpp ./all_your_base_test.cpp ./all_your_base.h
-error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
-error: invalid argument '-std=c++17' not allowed with 'C'
-/home/vpayno/git_vpayno/exercism-workspace/cpp/all-your-base/all_your_base.h:4:10: fatal error: 'algorithm' file not found
-#include <algorithm>
-         ^~~~~~~~~~~
-1 error generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/all-your-base/all_your_base.h.
+clang-check-16 --analyze ./all_your_base.cpp ./all_your_base_test.cpp ./all_your_base.hpp
 
-real	0m0.667s
-user	0m0.623s
-sys	0m0.044s
-
-
-real	0m0.668s
-user	0m0.623s
+real	0m0.819s
+user	0m0.772s
 sys	0m0.046s
+
+
+real	0m0.820s
+user	0m0.772s
+sys	0m0.048s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 21728 warnings generated.
 57095 warnings generated.
-57095 warnings and 3 errors generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/all-your-base/all_your_base.h.
-Suppressed 57097 warnings (57092 in non-user code, 5 NOLINT).
+78780 warnings generated.
+Suppressed 78782 warnings (78777 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-Found compiler error(s).
 
-real	0m7.997s
-user	0m7.913s
-sys	0m0.082s
-Running: clang-tidy-16 ./all_your_base.cpp ./all_your_base_test.cpp ./all_your_base.h
-error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
-error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
-/home/vpayno/git_vpayno/exercism-workspace/cpp/all-your-base/all_your_base.h:4:10: error: 'algorithm' file not found [clang-diagnostic-error]
-#include <algorithm>
-         ^~~~~~~~~~~
+real	0m9.952s
+user	0m9.888s
+sys	0m0.064s
+Running: clang-tidy-16 ./all_your_base.cpp ./all_your_base_test.cpp ./all_your_base.hpp
 /home/vpayno/git_vpayno/exercism-workspace/cpp/all-your-base/all_your_base_test.cpp:13:5: warning: variable 'in_digits' of type 'vector<unsigned int>' can be declared 'const' [misc-const-correctness]
     vector<unsigned int> in_digits{1};
     ^
@@ -177,9 +163,9 @@ error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic
                          const 
 
 
-real	0m7.999s
-user	0m7.914s
-sys	0m0.084s
+real	0m9.954s
+user	0m9.888s
+sys	0m0.067s
 
 ===============================================================================
 

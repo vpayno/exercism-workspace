@@ -1,5 +1,5 @@
-#if !defined(ALL_YOUR_BASE_H)
-#define ALL_YOUR_BASE_H
+#if !defined(ALL_YOUR_BASE_HPP)
+#define ALL_YOUR_BASE_HPP
 
 #include <algorithm>
 #include <numeric>
@@ -15,4 +15,4 @@ std::vector<unsigned int> convert(unsigned int input_base,
 
 } // namespace all_your_base
 
-#endif // ALL_YOUR_BASE_H
+#endif // ALL_YOUR_BASE_HPP
