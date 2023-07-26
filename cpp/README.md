@@ -51,3 +51,4 @@
 - [perfect-numbers](./perfect-numbers/README.md)
 - [scrabble-score](./scrabble-score/README.md)
 - [gigasecond](./gigasecond/README.md)
+- [pangram](./pangram/README.md)
