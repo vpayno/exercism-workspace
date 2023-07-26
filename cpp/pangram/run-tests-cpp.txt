@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.007s
+real	0m0.011s
 user	0m0.001s
-sys	0m0.005s
+sys	0m0.010s
 
 ===============================================================================
 
@@ -182,96 +182,82 @@ TOTAL                                         73      72    98%
 lines: 98.6% (72 out of 73)
 branches: 40.7% (66 out of 162)
 
-real	0m9.806s
-user	0m9.093s
-sys	0m0.710s
+real	0m9.838s
+user	0m8.956s
+sys	0m0.874s
 
 ===============================================================================
 
 cmake-format --in-place CMakeLists.txt
+WARNING config_util.py:307: The following configuration options were ignored:
+  max_subargs_per_line
 
-real	0m0.148s
-user	0m0.104s
-sys	0m0.047s
+real	0m0.160s
+user	0m0.112s
+sys	0m0.050s
 
 ===============================================================================
 
 cmake-lint CMakeLists.txt
+WARNING The following configuration options were ignored:
+  max_subargs_per_line
 CMakeLists.txt
 ==============
 CMakeLists.txt:15,06: [C0103] Invalid directory variable name "exercise_cpp" doesn't match `[A-Z][0-9A-Z_]+|_[0-9a-z_]+`
 CMakeLists.txt:17,06: [C0103] Invalid directory variable name "exercise_cpp" doesn't match `[A-Z][0-9A-Z_]+|_[0-9a-z_]+`
-CMakeLists.txt:61,70: [C0307] Bad indentation:
-                                               )
-  ^----BodyNode: 1:0->IfBlockNode: 59:0->BodyNode: 59:11->StatementNode: 60:2->TreeNode: 61:70
-
-CMakeLists.txt:66,02: [C0113] Missing COMMENT in statement which allows it
+CMakeLists.txt:61,02: [C0113] Missing COMMENT in statement which allows it
 
 Summary
 =======
 files scanned: 1
 found lint:
-  Convention: 4
+  Convention: 3
 
 
-real	0m0.152s
-user	0m0.108s
-sys	0m0.046s
+real	0m0.156s
+user	0m0.116s
+sys	0m0.042s
 
 ===============================================================================
 
-Running: clang-format-16 -style=file -i ./pangram.cpp ./pangram_test.cpp ./pangram.h
+Running: clang-format-16 -style=file -i ./pangram.cpp ./pangram_test.cpp ./pangram.hpp
 
-real	0m0.020s
-user	0m0.010s
-sys	0m0.010s
+real	0m0.018s
+user	0m0.011s
+sys	0m0.008s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./pangram.cpp ./pangram_test.cpp ./pangram.h
-error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
-error: invalid argument '-std=c++17' not allowed with 'C'
-/home/vpayno/git_vpayno/exercism-workspace/cpp/pangram/pangram.h:4:10: fatal error: 'algorithm' file not found
-#include <algorithm>
-         ^~~~~~~~~~~
-1 error generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/pangram/pangram.h.
+clang-check-16 --analyze ./pangram.cpp ./pangram_test.cpp ./pangram.hpp
 
-real	0m0.673s
-user	0m0.629s
-sys	0m0.045s
+real	0m0.852s
+user	0m0.812s
+sys	0m0.040s
 
 
-real	0m0.675s
-user	0m0.629s
-sys	0m0.046s
+real	0m0.854s
+user	0m0.814s
+sys	0m0.040s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 26401 warnings generated.
 63323 warnings generated.
-63323 warnings and 3 errors generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/pangram/pangram.h.
-Suppressed 63328 warnings (63323 in non-user code, 5 NOLINT).
+86149 warnings generated.
+Suppressed 86154 warnings (86149 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-Found compiler error(s).
 
-real	0m8.470s
-user	0m8.389s
-sys	0m0.080s
-Running: clang-tidy-16 ./pangram.cpp ./pangram_test.cpp ./pangram.h
-error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
-error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
-/home/vpayno/git_vpayno/exercism-workspace/cpp/pangram/pangram.h:4:10: error: 'algorithm' file not found [clang-diagnostic-error]
-#include <algorithm>
-         ^~~~~~~~~~~
+real	0m11.299s
+user	0m11.224s
+sys	0m0.073s
+Running: clang-tidy-16 ./pangram.cpp ./pangram_test.cpp ./pangram.hpp
 
 
-real	0m8.475s
-user	0m8.393s
-sys	0m0.084s
+real	0m11.301s
+user	0m11.225s
+sys	0m0.075s
 
 ===============================================================================
 

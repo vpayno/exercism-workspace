@@ -1,5 +1,5 @@
-#if !defined(PANGRAM_H)
-#define PANGRAM_H
+#if !defined(PANGRAM_HPP)
+#define PANGRAM_HPP
 
 #include <algorithm>
 #include <map>
@@ -11,4 +11,4 @@ bool is_pangram(std::string input);
 
 } // namespace pangram
 
-#endif // PANGRAM_H
+#endif // PANGRAM_HPP

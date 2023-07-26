@@ -1,4 +1,4 @@
-#include "pangram.h"
+#include "pangram.hpp"
 
 #include <iostream>
 
