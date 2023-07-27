@@ -1,5 +1,13 @@
 namespace hellmath {
 
+/* I'm not seeing how bitmask enums would make things more readable with these
+ * switch statements.
+ *
+ * The if blocks are definitely more readable than nested switches.
+ *
+ * Am I the troll? Is this exercise trolling me?
+ */
+
 // Task 1 - Define an `AccountStatus` enumeration to represent the four
 // account types: `troll`, `guest`, `user`, and `mod`.
 enum class AccountStatus {
@@ -24,13 +32,18 @@ enum class Action {
 // poster(trol) - not visible to everyone
 // NOLINTNEXTLINE(bugprone-easily-swappable-parameters)
 bool display_post(AccountStatus poster, AccountStatus viewer) {
-    if (poster == AccountStatus::troll and viewer != AccountStatus::troll) {
-        // just returning the value of the if statement expression doesn't work
-        // NOLINTNEXTLINE(readability-simplify-boolean-expr)
-        return false;
+    switch (poster) {
+    case AccountStatus::troll:
+        switch (viewer) {
+        case AccountStatus::troll:
+            return true;
+        default:
+            return false;
+        }
+        break;
+    default:
+        return true;
     }
-
-    return true;
 }
 
 // Task 3 - Implement the `permission_check` function, that takes an
@@ -42,20 +55,30 @@ bool display_post(AccountStatus poster, AccountStatus viewer) {
 // mod - read, write, remove
 // NOLINTNEXTLINE(bugprone-easily-swappable-parameters)
 bool permission_check(Action action, AccountStatus viewer) {
-    if (action == Action::read) {
+    switch (action) {
+    case Action::read:
         return true;
+    case Action::remove:
+        switch (viewer) {
+        case AccountStatus::mod:
+            return true;
+        default:
+            return false;
+        }
+        break;
+    case Action::write:
+        switch (viewer) {
+        case AccountStatus::guest:
+            return false;
+        default:
+            return true;
+        }
+        break;
+    default:
+        return false;
     }
-
-    if (action == Action::remove and viewer == AccountStatus::mod) {
-        return true;
-    }
-
-    if (action == Action::write and viewer != AccountStatus::guest) {
-        return true;
-    }
-
-    return false;
 }
+
 // Task 4 - Implement the `valid_player_combination` function that
 // checks if two players can join the same game. The function has two parameters
 // of type `AccountStatus` and returns a `bool`.
