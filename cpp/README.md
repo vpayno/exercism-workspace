@@ -54,3 +54,4 @@
 - [pangram](./pangram/README.md)
 - [isogram](./isogram/README.md)
 - [anagram](./anagram/README.md)
+- [troll-the-trolls](./troll-the-trolls/README.md)

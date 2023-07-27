@@ -47,7 +47,7 @@ TEST_CASE("Non-troll posts are visible to mods", "[task_2]") {
     REQUIRE(display_post(poster, viewer));
 }
 
-TEST_CASE("Troll posts are visible to non-trolls", "[task_2]") {
+TEST_CASE("Troll posts aren't visible to non-trolls", "[task_2]") {
     AccountStatus poster{AccountStatus::troll};
 
     AccountStatus viewer{AccountStatus::guest};
