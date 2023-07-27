@@ -24,12 +24,9 @@ enum class Action {
 // poster(trol) - not visible to everyone
 // NOLINTNEXTLINE(bugprone-easily-swappable-parameters)
 bool display_post(AccountStatus poster, AccountStatus viewer) {
-    if (poster == AccountStatus::troll and viewer == AccountStatus::troll) {
-        return true;
-    }
-
-    if (poster == AccountStatus::troll) {
-        // not visible by anyone
+    if (poster == AccountStatus::troll and viewer != AccountStatus::troll) {
+        // just returning the value of the if statement expression doesn't work
+        // NOLINTNEXTLINE(readability-simplify-boolean-expr)
         return false;
     }
 
@@ -80,16 +77,7 @@ bool valid_player_combination(AccountStatus player1, AccountStatus player2) {
         return false;
     }
 
-    if (player1 == AccountStatus::user) {
-        return player2 == AccountStatus::user or player2 == AccountStatus::mod;
-    }
-
-    if (player1 == AccountStatus::mod) {
-        return player2 == AccountStatus::user or player2 == AccountStatus::mod;
-    }
-
-    // never reached
-    return false;
+    return true;
 }
 
 // Task 5 - Implement the `has_priority` function that takes two
@@ -99,29 +87,7 @@ bool valid_player_combination(AccountStatus player1, AccountStatus player2) {
 // mod > user > guest > troll
 // two of the same is false
 bool has_priority(AccountStatus player1, AccountStatus player2) {
-    if (player1 == player2) {
-        return false;
-    }
-
-    if (player1 == AccountStatus::mod) {
-        return true;
-    }
-
-    if (player1 == AccountStatus::user) {
-        return player2 == AccountStatus::guest or
-               player2 == AccountStatus::troll;
-    }
-
-    if (player1 == AccountStatus::guest) {
-        return player2 == AccountStatus::troll;
-    }
-
-    if (player1 == AccountStatus::troll) {
-        return false;
-    }
-
-    // never reached
-    return false;
+    return player1 > player2;
 }
 
 } // namespace hellmath
