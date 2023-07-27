@@ -1,4 +1,4 @@
-#include "isogram.h"
+#include "isogram.hpp"
 #ifdef EXERCISM_TEST_SUITE
 #include <catch2/catch.hpp>
 #else

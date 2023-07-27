@@ -1,5 +1,5 @@
-#if !defined(ISOGRAM_H)
-#define ISOGRAM_H
+#if !defined(ISOGRAM_HPP)
+#define ISOGRAM_HPP
 
 #include <algorithm>
 #include <cctype>
@@ -12,4 +12,4 @@ bool is_isogram(std::string input);
 
 } // namespace isogram
 
-#endif // ISOGRAM_H
+#endif // ISOGRAM_HPP

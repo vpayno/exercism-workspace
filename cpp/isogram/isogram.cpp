@@ -1,4 +1,4 @@
-#include "isogram.h"
+#include "isogram.hpp"
 
 namespace isogram {
 

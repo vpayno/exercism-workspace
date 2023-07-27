@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.018s
-user	0m0.002s
-sys	0m0.015s
+real	0m0.008s
+user	0m0.001s
+sys	0m0.006s
 
 ===============================================================================
 
@@ -78,9 +78,9 @@ TOTAL                                        113     107    94%
 lines: 94.7% (107 out of 113)
 branches: 40.7% (105 out of 258)
 
-real	0m9.727s
-user	0m8.893s
-sys	0m0.830s
+real	0m9.662s
+user	0m9.022s
+sys	0m0.636s
 
 ===============================================================================
 
@@ -88,9 +88,9 @@ cmake-format --in-place CMakeLists.txt
 WARNING config_util.py:307: The following configuration options were ignored:
   max_subargs_per_line
 
-real	0m0.263s
-user	0m0.212s
-sys	0m0.054s
+real	0m0.165s
+user	0m0.117s
+sys	0m0.051s
 
 ===============================================================================
 
@@ -110,64 +110,50 @@ found lint:
   Convention: 3
 
 
-real	0m0.327s
-user	0m0.245s
-sys	0m0.084s
+real	0m0.166s
+user	0m0.121s
+sys	0m0.048s
 
 ===============================================================================
 
-Running: clang-format-16 -style=file -i ./isogram.cpp ./isogram_test.cpp ./isogram.h
+Running: clang-format-16 -style=file -i ./isogram.cpp ./isogram_test.cpp ./isogram.hpp
 
-real	0m0.032s
-user	0m0.018s
-sys	0m0.014s
+real	0m0.020s
+user	0m0.009s
+sys	0m0.011s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./isogram.cpp ./isogram_test.cpp ./isogram.h
-error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
-error: invalid argument '-std=c++17' not allowed with 'C'
-/home/vpayno/git_vpayno/exercism-workspace/cpp/isogram/isogram.h:4:10: fatal error: 'algorithm' file not found
-#include <algorithm>
-         ^~~~~~~~~~~
-1 error generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/isogram/isogram.h.
+clang-check-16 --analyze ./isogram.cpp ./isogram_test.cpp ./isogram.hpp
 
-real	0m0.663s
-user	0m0.618s
-sys	0m0.045s
+real	0m0.860s
+user	0m0.825s
+sys	0m0.035s
 
 
-real	0m0.667s
-user	0m0.620s
-sys	0m0.046s
+real	0m0.862s
+user	0m0.827s
+sys	0m0.036s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 22934 warnings generated.
 59858 warnings generated.
-59858 warnings and 3 errors generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/isogram/isogram.h.
-Suppressed 59863 warnings (59858 in non-user code, 5 NOLINT).
+82684 warnings generated.
+Suppressed 82689 warnings (82684 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-Found compiler error(s).
 
-real	0m8.053s
-user	0m7.990s
-sys	0m0.062s
-Running: clang-tidy-16 ./isogram.cpp ./isogram_test.cpp ./isogram.h
-error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
-error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
-/home/vpayno/git_vpayno/exercism-workspace/cpp/isogram/isogram.h:4:10: error: 'algorithm' file not found [clang-diagnostic-error]
-#include <algorithm>
-         ^~~~~~~~~~~
+real	0m10.519s
+user	0m10.462s
+sys	0m0.056s
+Running: clang-tidy-16 ./isogram.cpp ./isogram_test.cpp ./isogram.hpp
 
 
-real	0m8.055s
-user	0m7.990s
-sys	0m0.066s
+real	0m10.521s
+user	0m10.464s
+sys	0m0.057s
 
 ===============================================================================
 
