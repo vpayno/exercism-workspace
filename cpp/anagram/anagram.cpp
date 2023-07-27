@@ -1,4 +1,4 @@
-#include "anagram.h"
+#include "anagram.hpp"
 
 namespace anagram {
 

@@ -1,5 +1,5 @@
-#if !defined(ANAGRAM_H)
-#define ANAGRAM_H
+#if !defined(ANAGRAM_HPP)
+#define ANAGRAM_HPP
 
 #include <algorithm>
 #include <string>
@@ -27,4 +27,4 @@ class anagram {
 
 } // namespace anagram
 
-#endif // ANAGRAM_H
+#endif // ANAGRAM_HPP

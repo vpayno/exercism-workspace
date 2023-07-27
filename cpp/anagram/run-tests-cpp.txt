@@ -6,8 +6,8 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.008s
-user	0m0.000s
+real	0m0.009s
+user	0m0.002s
 sys	0m0.008s
 
 ===============================================================================
@@ -70,7 +70,7 @@ Directory: .
 File                                       Lines    Exec  Cover   Missing
 ------------------------------------------------------------------------------
 anagram.cpp                                   19      17    89%   9,14
-anagram.h                                      5       5   100%   
+anagram.hpp                                    5       5   100%   
 anagram_test.cpp                              84      84   100%   
 test/catch.hpp                                48      27    56%   1448-1450,1642-1643,1827-1833,1835-1836,2016-2017,2039-2040,2227,2229,2560
 ------------------------------------------------------------------------------
@@ -79,9 +79,9 @@ TOTAL                                        156     133    85%
 lines: 85.3% (133 out of 156)
 branches: 42.4% (208 out of 490)
 
-real	0m10.620s
-user	0m9.783s
-sys	0m0.826s
+real	0m9.963s
+user	0m9.143s
+sys	0m0.815s
 
 ===============================================================================
 
@@ -89,9 +89,9 @@ cmake-format --in-place CMakeLists.txt
 WARNING config_util.py:307: The following configuration options were ignored:
   max_subargs_per_line
 
-real	0m0.167s
-user	0m0.109s
-sys	0m0.060s
+real	0m0.148s
+user	0m0.112s
+sys	0m0.038s
 
 ===============================================================================
 
@@ -111,68 +111,54 @@ found lint:
   Convention: 3
 
 
-real	0m0.163s
+real	0m0.155s
 user	0m0.119s
-sys	0m0.046s
+sys	0m0.037s
 
 ===============================================================================
 
-Running: clang-format-16 -style=file -i ./anagram.cpp ./anagram_test.cpp ./anagram.h
+Running: clang-format-16 -style=file -i ./anagram.cpp ./anagram_test.cpp ./anagram.hpp
 
 real	0m0.020s
 user	0m0.008s
-sys	0m0.012s
+sys	0m0.011s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./anagram.cpp ./anagram_test.cpp ./anagram.h
-error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
-error: invalid argument '-std=c++17' not allowed with 'C'
-/home/vpayno/git_vpayno/exercism-workspace/cpp/anagram/anagram.h:4:10: fatal error: 'algorithm' file not found
-#include <algorithm>
-         ^~~~~~~~~~~
-1 error generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/anagram/anagram.h.
+clang-check-16 --analyze ./anagram.cpp ./anagram_test.cpp ./anagram.hpp
 
-real	0m4.944s
-user	0m4.740s
-sys	0m0.202s
+real	0m5.081s
+user	0m4.901s
+sys	0m0.178s
 
 
-real	0m4.945s
-user	0m4.741s
-sys	0m0.203s
+real	0m5.083s
+user	0m4.903s
+sys	0m0.178s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 21300 warnings generated.
 56677 warnings generated.
-56677 warnings and 3 errors generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/anagram/anagram.h.
-Suppressed 56681 warnings (56676 in non-user code, 5 NOLINT).
+77939 warnings generated.
+Suppressed 77943 warnings (77938 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-Found compiler error(s).
 
-real	0m13.023s
-user	0m12.745s
-sys	0m0.277s
-Running: clang-tidy-16 ./anagram.cpp ./anagram_test.cpp ./anagram.h
-error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
-error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
-/home/vpayno/git_vpayno/exercism-workspace/cpp/anagram/anagram.h:4:10: error: 'algorithm' file not found [clang-diagnostic-error]
-#include <algorithm>
-         ^~~~~~~~~~~
+real	0m17.971s
+user	0m17.666s
+sys	0m0.305s
+Running: clang-tidy-16 ./anagram.cpp ./anagram_test.cpp ./anagram.hpp
 /home/vpayno/git_vpayno/exercism-workspace/cpp/anagram/anagram_test.cpp:16:5: warning: variable 'expected' of type 'vector<string>' (aka 'vector<basic_string<char>>') can be declared 'const' [misc-const-correctness]
     vector<string> expected;
     ^
                    const 
 
 
-real	0m13.025s
-user	0m12.748s
-sys	0m0.277s
+real	0m17.973s
+user	0m17.668s
+sys	0m0.305s
 
 ===============================================================================
 
