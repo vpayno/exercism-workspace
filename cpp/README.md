@@ -53,3 +53,4 @@
 - [gigasecond](./gigasecond/README.md)
 - [pangram](./pangram/README.md)
 - [isogram](./isogram/README.md)
+- [anagram](./anagram/README.md)

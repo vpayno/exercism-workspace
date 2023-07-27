@@ -1,0 +1,178 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: make clean
+rm -rf ./build
+
+real	0m0.008s
+user	0m0.000s
+sys	0m0.008s
+
+===============================================================================
+
+export LDFLAGS="-lgcov --coverage" CXXFLAGS="--coverage"
+
+===============================================================================
+
+Running: make coverage | ansifilter
+rm -rf ./build
+mkdir -pv ./build
+mkdir: created directory './build'
+
+cd ./build; export LDFLAGS="-lgcov --coverage" CXXFLAGS="--coverage"; cmake -DEXERCISM_RUN_ALL_TESTS=1 -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -G 'Unix Makefiles' ../; if make; then printf "\n=== All Tests Passed ===\n"; else printf "\n=== Test Failure ===\n"; false; fi
+-- The CXX compiler identification is GNU 10.2.1
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/vpayno/git_vpayno/exercism-workspace/cpp/anagram/build
+make[1]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/anagram/build'
+make[2]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/anagram/build'
+make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/anagram/build'
+make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/anagram/build'
+make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/anagram/build'
+[ 25%] Building CXX object CMakeFiles/anagram.dir/anagram_test.cpp.o
+[ 50%] Building CXX object CMakeFiles/anagram.dir/anagram.cpp.o
+[ 75%] Building CXX object CMakeFiles/anagram.dir/test/tests-main.cpp.o
+[100%] Linking CXX executable anagram
+make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/anagram/build'
+[100%] Built target anagram
+make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/anagram/build'
+make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/anagram/build'
+make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/anagram/build'
+===============================================================================
+All tests passed (14 assertions in 14 test cases)
+
+make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/anagram/build'
+[100%] Built target test_anagram
+make[2]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/anagram/build'
+make[1]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/anagram/build'
+
+=== All Tests Passed ===
+
+find . -regextype posix-egrep -regex "^.*(tests-main|CompilerId).*[.](gcda|gcno)$" -print -delete
+./build/CMakeFiles/3.22.2/CompilerIdCXX/CMakeCXXCompilerId.gcno
+./build/CMakeFiles/anagram.dir/test/tests-main.cpp.gcno
+./build/CMakeFiles/anagram.dir/test/tests-main.cpp.gcda
+
+find . -regextype posix-egrep -regex "^.*[.](gcda|gcno)30931"
+
+gcovr --print-summary
+------------------------------------------------------------------------------
+                           GCC Code Coverage Report
+Directory: .
+------------------------------------------------------------------------------
+File                                       Lines    Exec  Cover   Missing
+------------------------------------------------------------------------------
+anagram.cpp                                   19      17    89%   9,14
+anagram.h                                      5       5   100%   
+anagram_test.cpp                              84      84   100%   
+test/catch.hpp                                48      27    56%   1448-1450,1642-1643,1827-1833,1835-1836,2016-2017,2039-2040,2227,2229,2560
+------------------------------------------------------------------------------
+TOTAL                                        156     133    85%
+------------------------------------------------------------------------------
+lines: 85.3% (133 out of 156)
+branches: 42.4% (208 out of 490)
+
+real	0m10.620s
+user	0m9.783s
+sys	0m0.826s
+
+===============================================================================
+
+cmake-format --in-place CMakeLists.txt
+WARNING config_util.py:307: The following configuration options were ignored:
+  max_subargs_per_line
+
+real	0m0.167s
+user	0m0.109s
+sys	0m0.060s
+
+===============================================================================
+
+cmake-lint CMakeLists.txt
+WARNING The following configuration options were ignored:
+  max_subargs_per_line
+CMakeLists.txt
+==============
+CMakeLists.txt:15,06: [C0103] Invalid directory variable name "exercise_cpp" doesn't match `[A-Z][0-9A-Z_]+|_[0-9a-z_]+`
+CMakeLists.txt:17,06: [C0103] Invalid directory variable name "exercise_cpp" doesn't match `[A-Z][0-9A-Z_]+|_[0-9a-z_]+`
+CMakeLists.txt:61,02: [C0113] Missing COMMENT in statement which allows it
+
+Summary
+=======
+files scanned: 1
+found lint:
+  Convention: 3
+
+
+real	0m0.163s
+user	0m0.119s
+sys	0m0.046s
+
+===============================================================================
+
+Running: clang-format-16 -style=file -i ./anagram.cpp ./anagram_test.cpp ./anagram.h
+
+real	0m0.020s
+user	0m0.008s
+sys	0m0.012s
+
+===============================================================================
+
+Running: ../../.github/citools/cpp/clang-check
+clang-check-16 --analyze ./anagram.cpp ./anagram_test.cpp ./anagram.h
+error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
+error: invalid argument '-std=c++17' not allowed with 'C'
+/home/vpayno/git_vpayno/exercism-workspace/cpp/anagram/anagram.h:4:10: fatal error: 'algorithm' file not found
+#include <algorithm>
+         ^~~~~~~~~~~
+1 error generated.
+Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/anagram/anagram.h.
+
+real	0m4.944s
+user	0m4.740s
+sys	0m0.202s
+
+
+real	0m4.945s
+user	0m4.741s
+sys	0m0.203s
+
+===============================================================================
+
+Running: ../../.github/citools/cpp/clang-tidy | head -n 100
+21300 warnings generated.
+56677 warnings generated.
+56677 warnings and 3 errors generated.
+Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/anagram/anagram.h.
+Suppressed 56681 warnings (56676 in non-user code, 5 NOLINT).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+Found compiler error(s).
+
+real	0m13.023s
+user	0m12.745s
+sys	0m0.277s
+Running: clang-tidy-16 ./anagram.cpp ./anagram_test.cpp ./anagram.h
+error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
+error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
+/home/vpayno/git_vpayno/exercism-workspace/cpp/anagram/anagram.h:4:10: error: 'algorithm' file not found [clang-diagnostic-error]
+#include <algorithm>
+         ^~~~~~~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/cpp/anagram/anagram_test.cpp:16:5: warning: variable 'expected' of type 'vector<string>' (aka 'vector<basic_string<char>>') can be declared 'const' [misc-const-correctness]
+    vector<string> expected;
+    ^
+                   const 
+
+
+real	0m13.025s
+user	0m12.748s
+sys	0m0.277s
+
+===============================================================================
+
