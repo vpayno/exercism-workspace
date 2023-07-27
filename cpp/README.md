@@ -52,3 +52,4 @@
 - [scrabble-score](./scrabble-score/README.md)
 - [gigasecond](./gigasecond/README.md)
 - [pangram](./pangram/README.md)
+- [isogram](./isogram/README.md)
