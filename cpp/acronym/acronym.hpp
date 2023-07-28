@@ -1,5 +1,5 @@
-#if !defined(ACRONYM_H)
-#define ACRONYM_H
+#if !defined(ACRONYM_HPP)
+#define ACRONYM_HPP
 
 #include <string>
 
@@ -9,4 +9,4 @@ std::string acronym(std::string text);
 
 } // namespace acronym
 
-#endif // ACRONYM_H
+#endif // ACRONYM_HPP

@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.011s
+real	0m0.012s
 user	0m0.002s
-sys	0m0.008s
+sys	0m0.010s
 
 ===============================================================================
 
@@ -78,9 +78,9 @@ TOTAL                                         91      85    93%
 lines: 93.4% (85 out of 91)
 branches: 42.5% (85 out of 200)
 
-real	0m8.985s
-user	0m8.310s
-sys	0m0.673s
+real	0m9.142s
+user	0m8.437s
+sys	0m0.704s
 
 ===============================================================================
 
@@ -88,9 +88,9 @@ cmake-format --in-place CMakeLists.txt
 WARNING config_util.py:307: The following configuration options were ignored:
   max_subargs_per_line
 
-real	0m0.160s
+real	0m0.157s
 user	0m0.114s
-sys	0m0.048s
+sys	0m0.044s
 
 ===============================================================================
 
@@ -110,64 +110,50 @@ found lint:
   Convention: 3
 
 
-real	0m0.160s
-user	0m0.114s
-sys	0m0.047s
+real	0m0.167s
+user	0m0.124s
+sys	0m0.045s
 
 ===============================================================================
 
-Running: clang-format-16 -style=file -i ./acronym.cpp ./acronym_test.cpp ./acronym.h
+Running: clang-format-16 -style=file -i ./acronym.cpp ./acronym_test.cpp ./acronym.hpp
 
-real	0m0.026s
-user	0m0.011s
-sys	0m0.015s
+real	0m0.020s
+user	0m0.010s
+sys	0m0.010s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./acronym.cpp ./acronym_test.cpp ./acronym.h
-error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
-error: invalid argument '-std=c++17' not allowed with 'C'
-/home/vpayno/git_vpayno/exercism-workspace/cpp/acronym/acronym.h:4:10: fatal error: 'string' file not found
-#include <string>
-         ^~~~~~~~
-1 error generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/acronym/acronym.h.
+clang-check-16 --analyze ./acronym.cpp ./acronym_test.cpp ./acronym.hpp
 
-real	0m0.552s
-user	0m0.514s
-sys	0m0.038s
+real	0m0.606s
+user	0m0.574s
+sys	0m0.032s
 
 
-real	0m0.554s
-user	0m0.514s
-sys	0m0.040s
+real	0m0.608s
+user	0m0.575s
+sys	0m0.033s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 14850 warnings generated.
 50232 warnings generated.
-50232 warnings and 3 errors generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/acronym/acronym.h.
-Suppressed 50237 warnings (50232 in non-user code, 5 NOLINT).
+61612 warnings generated.
+Suppressed 61617 warnings (61612 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-Found compiler error(s).
 
-real	0m7.026s
-user	0m6.952s
-sys	0m0.072s
-Running: clang-tidy-16 ./acronym.cpp ./acronym_test.cpp ./acronym.h
-error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
-error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
-/home/vpayno/git_vpayno/exercism-workspace/cpp/acronym/acronym.h:4:10: error: 'string' file not found [clang-diagnostic-error]
-#include <string>
-         ^~~~~~~~
+real	0m8.200s
+user	0m8.106s
+sys	0m0.092s
+Running: clang-tidy-16 ./acronym.cpp ./acronym_test.cpp ./acronym.hpp
 
 
-real	0m7.028s
-user	0m6.953s
-sys	0m0.074s
+real	0m8.202s
+user	0m8.107s
+sys	0m0.094s
 
 ===============================================================================
 

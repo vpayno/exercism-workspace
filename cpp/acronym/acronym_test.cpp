@@ -1,4 +1,4 @@
-#include "acronym.h"
+#include "acronym.hpp"
 #ifdef EXERCISM_TEST_SUITE
 #include <catch2/catch.hpp>
 #else

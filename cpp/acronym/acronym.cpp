@@ -1,4 +1,4 @@
-#include "acronym.h"
+#include "acronym.hpp"
 
 #include <iostream>
 
