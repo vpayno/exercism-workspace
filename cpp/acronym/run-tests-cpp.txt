@@ -1,0 +1,173 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: make clean
+rm -rf ./build
+
+real	0m0.011s
+user	0m0.002s
+sys	0m0.008s
+
+===============================================================================
+
+export LDFLAGS="-lgcov --coverage" CXXFLAGS="--coverage"
+
+===============================================================================
+
+Running: make coverage | ansifilter
+rm -rf ./build
+mkdir -pv ./build
+mkdir: created directory './build'
+
+cd ./build; export LDFLAGS="-lgcov --coverage" CXXFLAGS="--coverage"; cmake -DEXERCISM_RUN_ALL_TESTS=1 -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -G 'Unix Makefiles' ../; if make; then printf "\n=== All Tests Passed ===\n"; else printf "\n=== Test Failure ===\n"; false; fi
+-- The CXX compiler identification is GNU 10.2.1
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/vpayno/git_vpayno/exercism-workspace/cpp/acronym/build
+make[1]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/acronym/build'
+make[2]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/acronym/build'
+make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/acronym/build'
+make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/acronym/build'
+make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/acronym/build'
+[ 25%] Building CXX object CMakeFiles/acronym.dir/acronym_test.cpp.o
+[ 50%] Building CXX object CMakeFiles/acronym.dir/acronym.cpp.o
+[ 75%] Building CXX object CMakeFiles/acronym.dir/test/tests-main.cpp.o
+[100%] Linking CXX executable acronym
+make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/acronym/build'
+[100%] Built target acronym
+make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/acronym/build'
+make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/acronym/build'
+make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/acronym/build'
+===============================================================================
+All tests passed (9 assertions in 9 test cases)
+
+make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/acronym/build'
+[100%] Built target test_acronym
+make[2]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/acronym/build'
+make[1]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/acronym/build'
+
+=== All Tests Passed ===
+
+find . -regextype posix-egrep -regex "^.*(tests-main|CompilerId).*[.](gcda|gcno)$" -print -delete
+./build/CMakeFiles/3.22.2/CompilerIdCXX/CMakeCXXCompilerId.gcno
+./build/CMakeFiles/acronym.dir/test/tests-main.cpp.gcno
+./build/CMakeFiles/acronym.dir/test/tests-main.cpp.gcda
+
+find . -regextype posix-egrep -regex "^.*[.](gcda|gcno)17398"
+
+gcovr --print-summary
+------------------------------------------------------------------------------
+                           GCC Code Coverage Report
+Directory: .
+------------------------------------------------------------------------------
+File                                       Lines    Exec  Cover   Missing
+------------------------------------------------------------------------------
+acronym.cpp                                   14      13    92%   11
+acronym_test.cpp                              45      45   100%   
+test/catch.hpp                                32      27    84%   1642-1643,2227,2229,2560
+------------------------------------------------------------------------------
+TOTAL                                         91      85    93%
+------------------------------------------------------------------------------
+lines: 93.4% (85 out of 91)
+branches: 42.5% (85 out of 200)
+
+real	0m8.985s
+user	0m8.310s
+sys	0m0.673s
+
+===============================================================================
+
+cmake-format --in-place CMakeLists.txt
+WARNING config_util.py:307: The following configuration options were ignored:
+  max_subargs_per_line
+
+real	0m0.160s
+user	0m0.114s
+sys	0m0.048s
+
+===============================================================================
+
+cmake-lint CMakeLists.txt
+WARNING The following configuration options were ignored:
+  max_subargs_per_line
+CMakeLists.txt
+==============
+CMakeLists.txt:15,06: [C0103] Invalid directory variable name "exercise_cpp" doesn't match `[A-Z][0-9A-Z_]+|_[0-9a-z_]+`
+CMakeLists.txt:17,06: [C0103] Invalid directory variable name "exercise_cpp" doesn't match `[A-Z][0-9A-Z_]+|_[0-9a-z_]+`
+CMakeLists.txt:61,02: [C0113] Missing COMMENT in statement which allows it
+
+Summary
+=======
+files scanned: 1
+found lint:
+  Convention: 3
+
+
+real	0m0.160s
+user	0m0.114s
+sys	0m0.047s
+
+===============================================================================
+
+Running: clang-format-16 -style=file -i ./acronym.cpp ./acronym_test.cpp ./acronym.h
+
+real	0m0.026s
+user	0m0.011s
+sys	0m0.015s
+
+===============================================================================
+
+Running: ../../.github/citools/cpp/clang-check
+clang-check-16 --analyze ./acronym.cpp ./acronym_test.cpp ./acronym.h
+error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
+error: invalid argument '-std=c++17' not allowed with 'C'
+/home/vpayno/git_vpayno/exercism-workspace/cpp/acronym/acronym.h:4:10: fatal error: 'string' file not found
+#include <string>
+         ^~~~~~~~
+1 error generated.
+Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/acronym/acronym.h.
+
+real	0m0.552s
+user	0m0.514s
+sys	0m0.038s
+
+
+real	0m0.554s
+user	0m0.514s
+sys	0m0.040s
+
+===============================================================================
+
+Running: ../../.github/citools/cpp/clang-tidy | head -n 100
+14850 warnings generated.
+50232 warnings generated.
+50232 warnings and 3 errors generated.
+Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/acronym/acronym.h.
+Suppressed 50237 warnings (50232 in non-user code, 5 NOLINT).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+Found compiler error(s).
+
+real	0m7.026s
+user	0m6.952s
+sys	0m0.072s
+Running: clang-tidy-16 ./acronym.cpp ./acronym_test.cpp ./acronym.h
+error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
+error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
+/home/vpayno/git_vpayno/exercism-workspace/cpp/acronym/acronym.h:4:10: error: 'string' file not found [clang-diagnostic-error]
+#include <string>
+         ^~~~~~~~
+
+
+real	0m7.028s
+user	0m6.953s
+sys	0m0.074s
+
+===============================================================================
+
