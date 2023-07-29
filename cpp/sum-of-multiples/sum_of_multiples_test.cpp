@@ -1,4 +1,4 @@
-#include "sum_of_multiples.h"
+#include "sum_of_multiples.hpp"
 #ifdef EXERCISM_TEST_SUITE
 #include <catch2/catch.hpp>
 #else

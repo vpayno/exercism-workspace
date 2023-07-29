@@ -1,4 +1,4 @@
-#include "sum_of_multiples.h"
+#include "sum_of_multiples.hpp"
 
 namespace sum_of_multiples {
 

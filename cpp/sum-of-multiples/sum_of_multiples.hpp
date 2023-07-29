@@ -1,5 +1,5 @@
-#if !defined(SUM_OF_MULTIPLES_H)
-#define SUM_OF_MULTIPLES_H
+#if !defined(SUM_OF_MULTIPLES_HPP)
+#define SUM_OF_MULTIPLES_HPP
 
 #include <algorithm>
 #include <numeric>
@@ -13,4 +13,4 @@ int to(std::vector<int> items, int points);
 
 } // namespace sum_of_multiples
 
-#endif // SUM_OF_MULTIPLES_H
+#endif // SUM_OF_MULTIPLES_HPP

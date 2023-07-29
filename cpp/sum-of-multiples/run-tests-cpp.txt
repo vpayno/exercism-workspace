@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.007s
-user	0m0.002s
-sys	0m0.005s
+real	0m0.006s
+user	0m0.001s
+sys	0m0.006s
 
 ===============================================================================
 
@@ -69,18 +69,18 @@ Directory: .
 ------------------------------------------------------------------------------
 File                                       Lines    Exec  Cover   Missing
 ------------------------------------------------------------------------------
-sum_of_multiples.cpp                          13      13   100%   
-sum_of_multiples_test.cpp                     36      36   100%   
+sum_of_multiples.cpp                          12      12   100%   
+sum_of_multiples_test.cpp                     34      34   100%   
 test/catch.hpp                                32      27    84%   1642-1643,2227,2229,2560
 ------------------------------------------------------------------------------
-TOTAL                                         81      76    93%
+TOTAL                                         78      73    93%
 ------------------------------------------------------------------------------
-lines: 93.8% (76 out of 81)
+lines: 93.6% (73 out of 78)
 branches: 40.4% (93 out of 230)
 
-real	0m10.156s
-user	0m9.209s
-sys	0m0.938s
+real	0m9.720s
+user	0m9.028s
+sys	0m0.671s
 
 ===============================================================================
 
@@ -88,9 +88,9 @@ cmake-format --in-place CMakeLists.txt
 WARNING config_util.py:307: The following configuration options were ignored:
   max_subargs_per_line
 
-real	0m0.157s
-user	0m0.109s
-sys	0m0.049s
+real	0m0.153s
+user	0m0.115s
+sys	0m0.037s
 
 ===============================================================================
 
@@ -110,64 +110,50 @@ found lint:
   Convention: 3
 
 
-real	0m0.166s
-user	0m0.123s
-sys	0m0.044s
+real	0m0.176s
+user	0m0.137s
+sys	0m0.041s
 
 ===============================================================================
 
-Running: clang-format-16 -style=file -i ./sum_of_multiples.cpp ./sum_of_multiples_test.cpp ./sum_of_multiples.h
+Running: clang-format-16 -style=file -i ./sum_of_multiples.cpp ./sum_of_multiples_test.cpp ./sum_of_multiples.hpp
 
-real	0m0.020s
-user	0m0.009s
-sys	0m0.011s
+real	0m0.022s
+user	0m0.010s
+sys	0m0.012s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./sum_of_multiples.cpp ./sum_of_multiples_test.cpp ./sum_of_multiples.h
-error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
-error: invalid argument '-std=c++17' not allowed with 'C'
-/home/vpayno/git_vpayno/exercism-workspace/cpp/sum-of-multiples/sum_of_multiples.h:4:10: fatal error: 'algorithm' file not found
-#include <algorithm>
-         ^~~~~~~~~~~
-1 error generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/sum-of-multiples/sum_of_multiples.h.
+clang-check-16 --analyze ./sum_of_multiples.cpp ./sum_of_multiples_test.cpp ./sum_of_multiples.hpp
 
-real	0m0.573s
-user	0m0.539s
-sys	0m0.034s
+real	0m0.757s
+user	0m0.713s
+sys	0m0.043s
 
 
-real	0m0.575s
-user	0m0.539s
-sys	0m0.036s
+real	0m0.759s
+user	0m0.714s
+sys	0m0.045s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 18294 warnings generated.
 55116 warnings generated.
-55116 warnings and 3 errors generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/sum-of-multiples/sum_of_multiples.h.
-Suppressed 55123 warnings (55116 in non-user code, 7 NOLINT).
+73267 warnings generated.
+Suppressed 73272 warnings (73267 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-Found compiler error(s).
 
-real	0m7.426s
-user	0m7.357s
-sys	0m0.068s
-Running: clang-tidy-16 ./sum_of_multiples.cpp ./sum_of_multiples_test.cpp ./sum_of_multiples.h
-error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
-error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
-/home/vpayno/git_vpayno/exercism-workspace/cpp/sum-of-multiples/sum_of_multiples.h:4:10: error: 'algorithm' file not found [clang-diagnostic-error]
-#include <algorithm>
-         ^~~~~~~~~~~
+real	0m9.375s
+user	0m9.280s
+sys	0m0.064s
+Running: clang-tidy-16 ./sum_of_multiples.cpp ./sum_of_multiples_test.cpp ./sum_of_multiples.hpp
 
 
-real	0m7.428s
-user	0m7.359s
-sys	0m0.068s
+real	0m9.377s
+user	0m9.281s
+sys	0m0.066s
 
 ===============================================================================
 
