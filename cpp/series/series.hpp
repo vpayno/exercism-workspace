@@ -1,5 +1,5 @@
-#if !defined(SERIES_H)
-#define SERIES_H
+#if !defined(SERIES_HPP)
+#define SERIES_HPP
 
 #include <iterator>
 #include <stdexcept>
@@ -12,4 +12,4 @@ std::vector<std::string> slice(std::string sequence, int span);
 
 } // namespace series
 
-#endif // SERIES_H
+#endif // SERIES_HPP

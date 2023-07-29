@@ -1,4 +1,4 @@
-#include "series.h"
+#include "series.hpp"
 
 namespace series {
 

@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.007s
-user	0m0.002s
-sys	0m0.004s
+real	0m0.006s
+user	0m0.001s
+sys	0m0.005s
 
 ===============================================================================
 
@@ -78,9 +78,9 @@ TOTAL                                        118      97    82%
 lines: 82.2% (97 out of 118)
 branches: 39.6% (126 out of 318)
 
-real	0m10.310s
-user	0m9.555s
-sys	0m0.741s
+real	0m9.466s
+user	0m8.788s
+sys	0m0.680s
 
 ===============================================================================
 
@@ -88,9 +88,9 @@ cmake-format --in-place CMakeLists.txt
 WARNING config_util.py:307: The following configuration options were ignored:
   max_subargs_per_line
 
-real	0m0.160s
-user	0m0.107s
-sys	0m0.056s
+real	0m0.175s
+user	0m0.122s
+sys	0m0.055s
 
 ===============================================================================
 
@@ -110,64 +110,50 @@ found lint:
   Convention: 3
 
 
-real	0m0.201s
-user	0m0.143s
-sys	0m0.060s
+real	0m0.176s
+user	0m0.134s
+sys	0m0.045s
 
 ===============================================================================
 
-Running: clang-format-16 -style=file -i ./series.cpp ./series_test.cpp ./series.h
+Running: clang-format-16 -style=file -i ./series.cpp ./series_test.cpp ./series.hpp
 
-real	0m0.044s
-user	0m0.024s
-sys	0m0.020s
+real	0m0.019s
+user	0m0.011s
+sys	0m0.008s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./series.cpp ./series_test.cpp ./series.h
-error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
-error: invalid argument '-std=c++17' not allowed with 'C'
-/home/vpayno/git_vpayno/exercism-workspace/cpp/series/series.h:4:10: fatal error: 'iterator' file not found
-#include <iterator>
-         ^~~~~~~~~~
-1 error generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/series/series.h.
+clang-check-16 --analyze ./series.cpp ./series_test.cpp ./series.hpp
 
-real	0m0.630s
-user	0m0.589s
-sys	0m0.041s
+real	0m0.725s
+user	0m0.697s
+sys	0m0.028s
 
 
-real	0m0.633s
-user	0m0.589s
-sys	0m0.044s
+real	0m0.726s
+user	0m0.698s
+sys	0m0.028s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 13979 warnings generated.
 49414 warnings generated.
-49414 warnings and 3 errors generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/series/series.h.
-Suppressed 49419 warnings (49414 in non-user code, 5 NOLINT).
+63356 warnings generated.
+Suppressed 63361 warnings (63356 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-Found compiler error(s).
 
-real	0m7.191s
-user	0m7.115s
-sys	0m0.076s
-Running: clang-tidy-16 ./series.cpp ./series_test.cpp ./series.h
-error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
-error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
-/home/vpayno/git_vpayno/exercism-workspace/cpp/series/series.h:4:10: error: 'iterator' file not found [clang-diagnostic-error]
-#include <iterator>
-         ^~~~~~~~~~
+real	0m8.483s
+user	0m8.412s
+sys	0m0.069s
+Running: clang-tidy-16 ./series.cpp ./series_test.cpp ./series.hpp
 
 
-real	0m7.194s
-user	0m7.117s
-sys	0m0.078s
+real	0m8.485s
+user	0m8.413s
+sys	0m0.072s
 
 ===============================================================================
 
