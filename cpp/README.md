@@ -56,3 +56,4 @@
 - [anagram](./anagram/README.md)
 - [troll-the-trolls](./troll-the-trolls/README.md)
 - [acronym](./acronym/README.md)
+- [sum-of-multiples](./sum-of-multiples/README.md)

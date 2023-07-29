@@ -1,0 +1,173 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: make clean
+rm -rf ./build
+
+real	0m0.007s
+user	0m0.002s
+sys	0m0.005s
+
+===============================================================================
+
+export LDFLAGS="-lgcov --coverage" CXXFLAGS="--coverage"
+
+===============================================================================
+
+Running: make coverage | ansifilter
+rm -rf ./build
+mkdir -pv ./build
+mkdir: created directory './build'
+
+cd ./build; export LDFLAGS="-lgcov --coverage" CXXFLAGS="--coverage"; cmake -DEXERCISM_RUN_ALL_TESTS=1 -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -G 'Unix Makefiles' ../; if make; then printf "\n=== All Tests Passed ===\n"; else printf "\n=== Test Failure ===\n"; false; fi
+-- The CXX compiler identification is GNU 10.2.1
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/vpayno/git_vpayno/exercism-workspace/cpp/sum-of-multiples/build
+make[1]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/sum-of-multiples/build'
+make[2]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/sum-of-multiples/build'
+make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/sum-of-multiples/build'
+make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/sum-of-multiples/build'
+make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/sum-of-multiples/build'
+[ 25%] Building CXX object CMakeFiles/sum-of-multiples.dir/sum_of_multiples_test.cpp.o
+[ 50%] Building CXX object CMakeFiles/sum-of-multiples.dir/sum_of_multiples.cpp.o
+[ 75%] Building CXX object CMakeFiles/sum-of-multiples.dir/test/tests-main.cpp.o
+[100%] Linking CXX executable sum-of-multiples
+make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/sum-of-multiples/build'
+[100%] Built target sum-of-multiples
+make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/sum-of-multiples/build'
+make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/sum-of-multiples/build'
+make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/sum-of-multiples/build'
+===============================================================================
+All tests passed (12 assertions in 12 test cases)
+
+make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/sum-of-multiples/build'
+[100%] Built target test_sum-of-multiples
+make[2]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/sum-of-multiples/build'
+make[1]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/sum-of-multiples/build'
+
+=== All Tests Passed ===
+
+find . -regextype posix-egrep -regex "^.*(tests-main|CompilerId).*[.](gcda|gcno)$" -print -delete
+./build/CMakeFiles/3.22.2/CompilerIdCXX/CMakeCXXCompilerId.gcno
+./build/CMakeFiles/sum-of-multiples.dir/test/tests-main.cpp.gcno
+./build/CMakeFiles/sum-of-multiples.dir/test/tests-main.cpp.gcda
+
+find . -regextype posix-egrep -regex "^.*[.](gcda|gcno)25885"
+
+gcovr --print-summary
+------------------------------------------------------------------------------
+                           GCC Code Coverage Report
+Directory: .
+------------------------------------------------------------------------------
+File                                       Lines    Exec  Cover   Missing
+------------------------------------------------------------------------------
+sum_of_multiples.cpp                          13      13   100%   
+sum_of_multiples_test.cpp                     36      36   100%   
+test/catch.hpp                                32      27    84%   1642-1643,2227,2229,2560
+------------------------------------------------------------------------------
+TOTAL                                         81      76    93%
+------------------------------------------------------------------------------
+lines: 93.8% (76 out of 81)
+branches: 40.4% (93 out of 230)
+
+real	0m10.156s
+user	0m9.209s
+sys	0m0.938s
+
+===============================================================================
+
+cmake-format --in-place CMakeLists.txt
+WARNING config_util.py:307: The following configuration options were ignored:
+  max_subargs_per_line
+
+real	0m0.157s
+user	0m0.109s
+sys	0m0.049s
+
+===============================================================================
+
+cmake-lint CMakeLists.txt
+WARNING The following configuration options were ignored:
+  max_subargs_per_line
+CMakeLists.txt
+==============
+CMakeLists.txt:15,06: [C0103] Invalid directory variable name "exercise_cpp" doesn't match `[A-Z][0-9A-Z_]+|_[0-9a-z_]+`
+CMakeLists.txt:17,06: [C0103] Invalid directory variable name "exercise_cpp" doesn't match `[A-Z][0-9A-Z_]+|_[0-9a-z_]+`
+CMakeLists.txt:61,02: [C0113] Missing COMMENT in statement which allows it
+
+Summary
+=======
+files scanned: 1
+found lint:
+  Convention: 3
+
+
+real	0m0.166s
+user	0m0.123s
+sys	0m0.044s
+
+===============================================================================
+
+Running: clang-format-16 -style=file -i ./sum_of_multiples.cpp ./sum_of_multiples_test.cpp ./sum_of_multiples.h
+
+real	0m0.020s
+user	0m0.009s
+sys	0m0.011s
+
+===============================================================================
+
+Running: ../../.github/citools/cpp/clang-check
+clang-check-16 --analyze ./sum_of_multiples.cpp ./sum_of_multiples_test.cpp ./sum_of_multiples.h
+error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
+error: invalid argument '-std=c++17' not allowed with 'C'
+/home/vpayno/git_vpayno/exercism-workspace/cpp/sum-of-multiples/sum_of_multiples.h:4:10: fatal error: 'algorithm' file not found
+#include <algorithm>
+         ^~~~~~~~~~~
+1 error generated.
+Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/sum-of-multiples/sum_of_multiples.h.
+
+real	0m0.573s
+user	0m0.539s
+sys	0m0.034s
+
+
+real	0m0.575s
+user	0m0.539s
+sys	0m0.036s
+
+===============================================================================
+
+Running: ../../.github/citools/cpp/clang-tidy | head -n 100
+18294 warnings generated.
+55116 warnings generated.
+55116 warnings and 3 errors generated.
+Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/sum-of-multiples/sum_of_multiples.h.
+Suppressed 55123 warnings (55116 in non-user code, 7 NOLINT).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+Found compiler error(s).
+
+real	0m7.426s
+user	0m7.357s
+sys	0m0.068s
+Running: clang-tidy-16 ./sum_of_multiples.cpp ./sum_of_multiples_test.cpp ./sum_of_multiples.h
+error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
+error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
+/home/vpayno/git_vpayno/exercism-workspace/cpp/sum-of-multiples/sum_of_multiples.h:4:10: error: 'algorithm' file not found [clang-diagnostic-error]
+#include <algorithm>
+         ^~~~~~~~~~~
+
+
+real	0m7.428s
+user	0m7.359s
+sys	0m0.068s
+
+===============================================================================
+
