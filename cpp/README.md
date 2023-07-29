@@ -58,3 +58,4 @@
 - [acronym](./acronym/README.md)
 - [sum-of-multiples](./sum-of-multiples/README.md)
 - [word-count](./word-count/README.md)
+- [series](./series/README.md)

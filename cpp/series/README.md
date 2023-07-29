@@ -41,3 +41,8 @@ the digits need not be *numerically consecutive*.
 ### Based on
 
 A subset of the Problem 8 at Project Euler - https://projecteuler.net/problem=8
+
+### My Solution
+
+- [my solution]()
+- [run-tests](./run-tests-cpp.txt)
