@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.008s
-user	0m0.001s
-sys	0m0.007s
+real	0m0.010s
+user	0m0.002s
+sys	0m0.008s
 
 ===============================================================================
 
@@ -78,9 +78,9 @@ TOTAL                                        136     108    79%
 lines: 79.4% (108 out of 136)
 branches: 41.5% (171 out of 412)
 
-real	0m12.471s
-user	0m11.636s
-sys	0m0.827s
+real	0m11.391s
+user	0m10.600s
+sys	0m0.776s
 
 ===============================================================================
 
@@ -88,9 +88,9 @@ cmake-format --in-place CMakeLists.txt
 WARNING config_util.py:307: The following configuration options were ignored:
   max_subargs_per_line
 
-real	0m0.164s
-user	0m0.111s
-sys	0m0.056s
+real	0m0.161s
+user	0m0.114s
+sys	0m0.049s
 
 ===============================================================================
 
@@ -110,64 +110,50 @@ found lint:
   Convention: 3
 
 
-real	0m0.166s
-user	0m0.126s
+real	0m0.162s
+user	0m0.122s
 sys	0m0.041s
 
 ===============================================================================
 
-Running: clang-format-16 -style=file -i ./word_count.cpp ./word_count_test.cpp ./word_count.h
+Running: clang-format-16 -style=file -i ./word_count.cpp ./word_count_test.cpp ./word_count.hpp
 
-real	0m0.020s
-user	0m0.015s
-sys	0m0.005s
+real	0m0.027s
+user	0m0.016s
+sys	0m0.011s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./word_count.cpp ./word_count_test.cpp ./word_count.h
-error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
-error: invalid argument '-std=c++17' not allowed with 'C'
-/home/vpayno/git_vpayno/exercism-workspace/cpp/word-count/word_count.h:4:10: fatal error: 'algorithm' file not found
-#include <algorithm>
-         ^~~~~~~~~~~
-1 error generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/word-count/word_count.h.
+clang-check-16 --analyze ./word_count.cpp ./word_count_test.cpp ./word_count.hpp
 
-real	0m2.995s
-user	0m2.905s
-sys	0m0.090s
+real	0m3.371s
+user	0m3.283s
+sys	0m0.087s
 
 
-real	0m2.997s
-user	0m2.906s
-sys	0m0.090s
+real	0m3.373s
+user	0m3.284s
+sys	0m0.088s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 36357 warnings generated.
 80661 warnings generated.
-80661 warnings and 3 errors generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/word-count/word_count.h.
-Suppressed 80666 warnings (80661 in non-user code, 5 NOLINT).
+115674 warnings generated.
+Suppressed 115679 warnings (115674 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-Found compiler error(s).
 
-real	0m16.867s
-user	0m16.752s
-sys	0m0.113s
-Running: clang-tidy-16 ./word_count.cpp ./word_count_test.cpp ./word_count.h
-error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
-error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
-/home/vpayno/git_vpayno/exercism-workspace/cpp/word-count/word_count.h:4:10: error: 'algorithm' file not found [clang-diagnostic-error]
-#include <algorithm>
-         ^~~~~~~~~~~
+real	0m21.393s
+user	0m21.262s
+sys	0m0.130s
+Running: clang-tidy-16 ./word_count.cpp ./word_count_test.cpp ./word_count.hpp
 
 
-real	0m16.869s
-user	0m16.754s
-sys	0m0.114s
+real	0m21.394s
+user	0m21.264s
+sys	0m0.130s
 
 ===============================================================================
 
