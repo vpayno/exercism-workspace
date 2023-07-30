@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.009s
+real	0m0.004s
 user	0m0.000s
-sys	0m0.009s
+sys	0m0.004s
 
 ===============================================================================
 
@@ -79,67 +79,63 @@ TOTAL                                         88      83    94%
 lines: 94.3% (83 out of 88)
 branches: 34.6% (36 out of 104)
 
-real	0m9.587s
-user	0m8.739s
-sys	0m0.824s
+real	0m9.316s
+user	0m8.559s
+sys	0m0.756s
 
 ===============================================================================
 
 cmake-format --in-place CMakeLists.txt
+WARNING config_util.py:307: The following configuration options were ignored:
+  max_subargs_per_line
 
-real	0m0.178s
-user	0m0.134s
-sys	0m0.046s
+real	0m0.156s
+user	0m0.117s
+sys	0m0.041s
 
 ===============================================================================
 
 cmake-lint CMakeLists.txt
+WARNING The following configuration options were ignored:
+  max_subargs_per_line
 CMakeLists.txt
 ==============
 CMakeLists.txt:15,06: [C0103] Invalid directory variable name "exercise_cpp" doesn't match `[A-Z][0-9A-Z_]+|_[0-9a-z_]+`
 CMakeLists.txt:17,06: [C0103] Invalid directory variable name "exercise_cpp" doesn't match `[A-Z][0-9A-Z_]+|_[0-9a-z_]+`
-CMakeLists.txt:52,71: [C0307] Bad indentation:
-               )
-  ^----BodyNode: 1:0->IfBlockNode: 46:0->BodyNode: 46:52->StatementNode: 47:2->TreeNode: 52:71
-
-CMakeLists.txt:63,70: [C0307] Bad indentation:
-                                               )
-  ^----BodyNode: 1:0->IfBlockNode: 61:0->BodyNode: 61:11->StatementNode: 62:2->TreeNode: 63:70
-
-CMakeLists.txt:68,02: [C0113] Missing COMMENT in statement which allows it
+CMakeLists.txt:65,02: [C0113] Missing COMMENT in statement which allows it
 
 Summary
 =======
 files scanned: 1
 found lint:
-  Convention: 5
+  Convention: 3
 
 
-real	0m0.166s
-user	0m0.111s
-sys	0m0.055s
+real	0m0.167s
+user	0m0.125s
+sys	0m0.044s
 
 ===============================================================================
 
 Running: clang-format-16 -style=file -i ./lasagna.cpp ./lasagna_test.cpp
 
-real	0m0.024s
+real	0m0.019s
 user	0m0.011s
-sys	0m0.012s
+sys	0m0.007s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
 clang-check-16 --analyze ./lasagna.cpp ./lasagna_test.cpp
 
-real	0m0.396s
-user	0m0.356s
-sys	0m0.039s
+real	0m0.406s
+user	0m0.370s
+sys	0m0.036s
 
 
-real	0m0.397s
-user	0m0.358s
-sys	0m0.040s
+real	0m0.408s
+user	0m0.370s
+sys	0m0.038s
 
 ===============================================================================
 
@@ -148,18 +144,18 @@ Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 Suppressed 35388 warnings (35383 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 
-real	0m5.267s
-user	0m5.194s
-sys	0m0.072s
+real	0m5.392s
+user	0m5.330s
+sys	0m0.062s
 Running: clang-tidy-16 ./lasagna.cpp ./lasagna_test.cpp
 /home/vpayno/git_vpayno/exercism-workspace/cpp/lasagna/lasagna_test.cpp:1:11: warning: suspicious #include of file with '.cpp' extension [bugprone-suspicious-include]
 #include "lasagna.cpp"
           ^
 
 
-real	0m5.269s
-user	0m5.197s
-sys	0m0.073s
+real	0m5.394s
+user	0m5.332s
+sys	0m0.063s
 
 ===============================================================================
 
