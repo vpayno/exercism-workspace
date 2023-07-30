@@ -1,4 +1,4 @@
-#include "nucleotide_count.h"
+#include "nucleotide_count.hpp"
 #ifdef EXERCISM_TEST_SUITE
 #include <catch2/catch.hpp>
 #else

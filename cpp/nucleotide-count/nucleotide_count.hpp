@@ -1,7 +1,5 @@
-#if !defined(NUCLEOTIDE_COUNT_H)
-#define NUCLEOTIDE_COUNT_H
-
-// This isn't a valid C++ header file (should be nucleotide_count.hpp).
+#if !defined(NUCLEOTIDE_COUNT_HPP)
+#define NUCLEOTIDE_COUNT_HPP
 
 #include <map>
 #include <regex>
@@ -19,4 +17,4 @@ bool is_valid_dna_sequence(dna_sequence_t dna_sequence);
 
 } // namespace nucleotide_count
 
-#endif // NUCLEOTIDE_COUNT_H
+#endif // NUCLEOTIDE_COUNT_HPP

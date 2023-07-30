@@ -6,8 +6,8 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.008s
-user	0m0.000s
+real	0m0.009s
+user	0m0.001s
 sys	0m0.008s
 
 ===============================================================================
@@ -78,9 +78,9 @@ TOTAL                                         87      62    71%
 lines: 71.3% (62 out of 87)
 branches: 35.5% (54 out of 152)
 
-real	0m11.755s
-user	0m10.818s
-sys	0m0.936s
+real	0m12.418s
+user	0m11.535s
+sys	0m0.881s
 
 ===============================================================================
 
@@ -88,9 +88,9 @@ cmake-format --in-place CMakeLists.txt
 WARNING config_util.py:307: The following configuration options were ignored:
   max_subargs_per_line
 
-real	0m0.167s
-user	0m0.122s
-sys	0m0.047s
+real	0m0.162s
+user	0m0.112s
+sys	0m0.052s
 
 ===============================================================================
 
@@ -110,64 +110,50 @@ found lint:
   Convention: 3
 
 
-real	0m0.172s
-user	0m0.134s
-sys	0m0.039s
+real	0m0.173s
+user	0m0.133s
+sys	0m0.041s
 
 ===============================================================================
 
-Running: clang-format-16 -style=file -i ./nucleotide_count.cpp ./nucleotide_count_test.cpp ./nucleotide_count.h
+Running: clang-format-16 -style=file -i ./nucleotide_count.cpp ./nucleotide_count_test.cpp ./nucleotide_count.hpp
 
-real	0m0.021s
-user	0m0.011s
+real	0m0.020s
+user	0m0.010s
 sys	0m0.010s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./nucleotide_count.cpp ./nucleotide_count_test.cpp ./nucleotide_count.h
-error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
-error: invalid argument '-std=c++17' not allowed with 'C'
-/home/vpayno/git_vpayno/exercism-workspace/cpp/nucleotide-count/nucleotide_count.h:6:10: fatal error: 'map' file not found
-#include <map>
-         ^~~~~
-1 error generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/nucleotide-count/nucleotide_count.h.
+clang-check-16 --analyze ./nucleotide_count.cpp ./nucleotide_count_test.cpp ./nucleotide_count.hpp
 
-real	0m3.211s
-user	0m3.115s
-sys	0m0.095s
+real	0m3.791s
+user	0m3.684s
+sys	0m0.107s
 
 
-real	0m3.213s
-user	0m3.115s
-sys	0m0.097s
+real	0m3.793s
+user	0m3.685s
+sys	0m0.107s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 36336 warnings generated.
 80635 warnings generated.
-80635 warnings and 3 errors generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/nucleotide-count/nucleotide_count.h.
-Suppressed 80640 warnings (80635 in non-user code, 5 NOLINT).
+115648 warnings generated.
+Suppressed 115653 warnings (115648 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-Found compiler error(s).
 
-real	0m16.787s
-user	0m16.656s
-sys	0m0.128s
-Running: clang-tidy-16 ./nucleotide_count.cpp ./nucleotide_count_test.cpp ./nucleotide_count.h
-error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
-error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
-/home/vpayno/git_vpayno/exercism-workspace/cpp/nucleotide-count/nucleotide_count.h:6:10: error: 'map' file not found [clang-diagnostic-error]
-#include <map>
-         ^~~~~
+real	0m23.480s
+user	0m23.307s
+sys	0m0.169s
+Running: clang-tidy-16 ./nucleotide_count.cpp ./nucleotide_count_test.cpp ./nucleotide_count.hpp
 
 
-real	0m16.789s
-user	0m16.656s
-sys	0m0.131s
+real	0m23.482s
+user	0m23.309s
+sys	0m0.169s
 
 ===============================================================================
 
