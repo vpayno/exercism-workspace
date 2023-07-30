@@ -22,13 +22,12 @@ if(EXERCISM_COMMON_CATCH)
   # For Exercism track development only
   add_executable(${exercise} ${file}_test.cpp $<TARGET_OBJECTS:catchlib>)
 elseif(EXERCISM_TEST_SUITE)
-  # The Exercism test suite is being run, the Docker image already includes a
-  # pre-built version of Catch.
+  # The Exercism test suite is being run, the Docker image already includes a pre-built version of Catch.
   find_package(Catch2 REQUIRED)
   add_executable(${exercise} ${file}_test.cpp)
   target_link_libraries(${exercise} PRIVATE Catch2::Catch2WithMain)
-  # When Catch is installed system wide we need to include a different header,
-  # we need this define to use the correct one.
+  # When Catch is installed system wide we need to include a different header, we need this define to use the correct
+  # one.
   target_compile_definitions(${exercise} PRIVATE EXERCISM_TEST_SUITE)
 else()
   # Build executable from sources and headers
@@ -58,8 +57,7 @@ endif()
 
 # Tell MSVC not to warn us about unchecked iterators in debug builds
 if(${MSVC})
-  set_target_properties(${exercise} PROPERTIES COMPILE_DEFINITIONS_DEBUG
-                                               _SCL_SECURE_NO_WARNINGS)
+  set_target_properties(${exercise} PROPERTIES COMPILE_DEFINITIONS_DEBUG _SCL_SECURE_NO_WARNINGS)
 endif()
 
 # Run the tests on every build

@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.011s
-user	0m0.003s
-sys	0m0.008s
+real	0m0.007s
+user	0m0.000s
+sys	0m0.007s
 
 ===============================================================================
 
@@ -68,109 +68,93 @@ Directory: .
 ------------------------------------------------------------------------------
 File                                       Lines    Exec  Cover   Missing
 ------------------------------------------------------------------------------
-log_levels.cpp                                15      15   100%   
+log_levels.cpp                                12      12   100%   
 log_levels_test.cpp                           45      45   100%   
 test/catch.hpp                                32      27    84%   1642-1643,2227,2229,2560
 ------------------------------------------------------------------------------
-TOTAL                                         92      87    94%
+TOTAL                                         89      84    94%
 ------------------------------------------------------------------------------
-lines: 94.6% (87 out of 92)
-branches: 39.9% (79 out of 198)
+lines: 94.4% (84 out of 89)
+branches: 40.0% (80 out of 200)
 
-real	0m8.795s
-user	0m8.204s
-sys	0m0.586s
+real	0m9.942s
+user	0m9.135s
+sys	0m0.805s
 
 ===============================================================================
 
 cmake-format --in-place CMakeLists.txt
+WARNING config_util.py:307: The following configuration options were ignored:
+  max_subargs_per_line
 
-real	0m0.166s
-user	0m0.123s
-sys	0m0.044s
+real	0m0.160s
+user	0m0.114s
+sys	0m0.048s
 
 ===============================================================================
 
 cmake-lint CMakeLists.txt
+WARNING The following configuration options were ignored:
+  max_subargs_per_line
 CMakeLists.txt
 ==============
 CMakeLists.txt:15,06: [C0103] Invalid directory variable name "exercise_cpp" doesn't match `[A-Z][0-9A-Z_]+|_[0-9a-z_]+`
 CMakeLists.txt:17,06: [C0103] Invalid directory variable name "exercise_cpp" doesn't match `[A-Z][0-9A-Z_]+|_[0-9a-z_]+`
-CMakeLists.txt:62,70: [C0307] Bad indentation:
-                                               )
-  ^----BodyNode: 1:0->IfBlockNode: 60:0->BodyNode: 60:11->StatementNode: 61:2->TreeNode: 62:70
-
-CMakeLists.txt:67,02: [C0113] Missing COMMENT in statement which allows it
+CMakeLists.txt:65,02: [C0113] Missing COMMENT in statement which allows it
 
 Summary
 =======
 files scanned: 1
 found lint:
-  Convention: 4
+  Convention: 3
 
 
-real	0m0.144s
-user	0m0.099s
+real	0m0.164s
+user	0m0.121s
 sys	0m0.045s
 
 ===============================================================================
 
 Running: clang-format-16 -style=file -i ./log_levels.cpp ./log_levels_test.cpp
 
-real	0m0.020s
+real	0m0.018s
 user	0m0.008s
-sys	0m0.011s
+sys	0m0.010s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
 clang-check-16 --analyze ./log_levels.cpp ./log_levels_test.cpp
 
-real	0m0.492s
-user	0m0.459s
-sys	0m0.033s
+real	0m0.505s
+user	0m0.471s
+sys	0m0.034s
 
 
-real	0m0.495s
-user	0m0.460s
-sys	0m0.035s
+real	0m0.507s
+user	0m0.471s
+sys	0m0.036s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
-11388 warnings generated.
-46776 warnings generated.
-Suppressed 46774 warnings (46769 in non-user code, 5 NOLINT).
+11378 warnings generated.
+46758 warnings generated.
+Suppressed 46762 warnings (46757 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 
-real	0m6.270s
-user	0m6.193s
-sys	0m0.076s
+real	0m6.753s
+user	0m6.679s
+sys	0m0.072s
 Running: clang-tidy-16 ./log_levels.cpp ./log_levels_test.cpp
-/home/vpayno/git_vpayno/exercism-workspace/cpp/log-levels/log_levels.cpp:30:5: warning: do not declare C-style arrays, use std::array<> instead [cppcoreguidelines-avoid-c-arrays,modernize-avoid-c-arrays]
-    char buffer[size];
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/cpp/log-levels/log_levels.cpp:32:5: warning: do not call c-style vararg functions [cppcoreguidelines-pro-type-vararg]
-    sprintf(buffer, "%s (%s)", msg.c_str(), level.c_str());
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/cpp/log-levels/log_levels.cpp:32:13: warning: do not implicitly decay an array into a pointer; consider using gsl::array_view or an explicit cast instead [cppcoreguidelines-pro-bounds-array-to-pointer-decay]
-    sprintf(buffer, "%s (%s)", msg.c_str(), level.c_str());
-            ^
-/home/vpayno/git_vpayno/exercism-workspace/cpp/log-levels/log_levels.cpp:34:17: warning: redundant string initialization [readability-redundant-string-init]
-    std::string new_log_line = "";
-                ^~~~~~~~~~~~~~~~~
-                new_log_line
-/home/vpayno/git_vpayno/exercism-workspace/cpp/log-levels/log_levels.cpp:37:20: warning: do not implicitly decay an array into a pointer; consider using gsl::array_view or an explicit cast instead [cppcoreguidelines-pro-bounds-array-to-pointer-decay]
-    new_log_line = buffer;
-                   ^
 /home/vpayno/git_vpayno/exercism-workspace/cpp/log-levels/log_levels_test.cpp:1:11: warning: suspicious #include of file with '.cpp' extension [bugprone-suspicious-include]
 #include "log_levels.cpp"
           ^
 
 
-real	0m6.272s
-user	0m6.195s
-sys	0m0.077s
+real	0m6.755s
+user	0m6.681s
+sys	0m0.073s
 
 ===============================================================================
 
