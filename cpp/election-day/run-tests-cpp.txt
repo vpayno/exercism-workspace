@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.008s
-user	0m0.000s
-sys	0m0.008s
+real	0m0.011s
+user	0m0.002s
+sys	0m0.009s
 
 ===============================================================================
 
@@ -77,63 +77,63 @@ TOTAL                                        104      99    95%
 lines: 95.2% (99 out of 104)
 branches: 40.7% (74 out of 182)
 
-real	0m10.037s
-user	0m9.408s
-sys	0m0.627s
+real	0m9.191s
+user	0m8.565s
+sys	0m0.625s
 
 ===============================================================================
 
 cmake-format --in-place CMakeLists.txt
+WARNING config_util.py:307: The following configuration options were ignored:
+  max_subargs_per_line
 
-real	0m0.194s
-user	0m0.155s
-sys	0m0.041s
+real	0m0.435s
+user	0m0.329s
+sys	0m0.057s
 
 ===============================================================================
 
 cmake-lint CMakeLists.txt
+WARNING The following configuration options were ignored:
+  max_subargs_per_line
 CMakeLists.txt
 ==============
 CMakeLists.txt:15,06: [C0103] Invalid directory variable name "exercise_cpp" doesn't match `[A-Z][0-9A-Z_]+|_[0-9a-z_]+`
 CMakeLists.txt:17,06: [C0103] Invalid directory variable name "exercise_cpp" doesn't match `[A-Z][0-9A-Z_]+|_[0-9a-z_]+`
-CMakeLists.txt:66,70: [C0307] Bad indentation:
-                                               )
-  ^----BodyNode: 1:0->IfBlockNode: 64:0->BodyNode: 64:11->StatementNode: 65:2->TreeNode: 66:70
-
-CMakeLists.txt:71,02: [C0113] Missing COMMENT in statement which allows it
+CMakeLists.txt:66,02: [C0113] Missing COMMENT in statement which allows it
 
 Summary
 =======
 files scanned: 1
 found lint:
-  Convention: 4
+  Convention: 3
 
 
-real	0m0.149s
-user	0m0.108s
-sys	0m0.043s
+real	0m0.161s
+user	0m0.116s
+sys	0m0.046s
 
 ===============================================================================
 
 Running: clang-format-16 -style=file -i ./election_day.cpp ./election_day_test.cpp
 
-real	0m0.018s
-user	0m0.009s
-sys	0m0.009s
+real	0m0.019s
+user	0m0.005s
+sys	0m0.014s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
 clang-check-16 --analyze ./election_day.cpp ./election_day_test.cpp
 
-real	0m0.606s
-user	0m0.570s
-sys	0m0.036s
+real	0m0.612s
+user	0m0.587s
+sys	0m0.025s
 
 
-real	0m0.608s
-user	0m0.570s
-sys	0m0.038s
+real	0m0.613s
+user	0m0.588s
+sys	0m0.025s
 
 ===============================================================================
 
@@ -143,9 +143,9 @@ Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 Suppressed 56682 warnings (56677 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 
-real	0m7.258s
-user	0m7.186s
-sys	0m0.072s
+real	0m7.570s
+user	0m7.489s
+sys	0m0.081s
 Running: clang-tidy-16 ./election_day.cpp ./election_day_test.cpp
 /home/vpayno/git_vpayno/exercism-workspace/cpp/election-day/election_day_test.cpp:1:11: warning: suspicious #include of file with '.cpp' extension [bugprone-suspicious-include]
 #include "election_day.cpp"
@@ -156,9 +156,9 @@ Running: clang-tidy-16 ./election_day.cpp ./election_day_test.cpp
         const 
 
 
-real	0m7.260s
-user	0m7.186s
-sys	0m0.075s
+real	0m7.574s
+user	0m7.490s
+sys	0m0.085s
 
 ===============================================================================
 
