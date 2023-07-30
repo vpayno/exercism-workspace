@@ -45,3 +45,8 @@ exception vs returning a special value) may differ between languages.
 ### Based on
 
 The Calculating Point Mutations problem at Rosalind - http://rosalind.info/problems/hamm/
+
+### My Solution
+
+- [my solution]()
+- [run-tests](./run-tests-cpp.txt)
