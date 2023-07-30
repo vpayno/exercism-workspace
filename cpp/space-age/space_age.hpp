@@ -6,31 +6,34 @@
 
 namespace space_age {
 
+using seconds_t = double;
+using planet_name_t = std::string;
+
 class space_age {
   public:
-    space_age(double seconds);
+    space_age(seconds_t seconds);
 
-    [[nodiscard]] double seconds() const;
-    [[nodiscard]] double on_earth() const;
-    [[nodiscard]] double on_mercury() const;
-    [[nodiscard]] double on_venus() const;
-    [[nodiscard]] double on_mars() const;
-    [[nodiscard]] double on_jupiter() const;
-    [[nodiscard]] double on_saturn() const;
-    [[nodiscard]] double on_uranus() const;
-    [[nodiscard]] double on_neptune() const;
+    [[nodiscard]] seconds_t seconds() const;
+    [[nodiscard]] seconds_t on_earth() const;
+    [[nodiscard]] seconds_t on_mercury() const;
+    [[nodiscard]] seconds_t on_venus() const;
+    [[nodiscard]] seconds_t on_mars() const;
+    [[nodiscard]] seconds_t on_jupiter() const;
+    [[nodiscard]] seconds_t on_saturn() const;
+    [[nodiscard]] seconds_t on_uranus() const;
+    [[nodiscard]] seconds_t on_neptune() const;
 
   private:
-    double age_in_seconds{0};
-    double seconds_in_earth_year{365.25 * 24 * 60 * 60};
+    seconds_t age_in_seconds{0};
+    seconds_t seconds_in_earth_year{365.25 * 24 * 60 * 60};
 
-    std::map<std::string, double> planets{
+    std::map<planet_name_t, seconds_t> planets{
         {"mercury", 0.2408467}, {"venus", 0.61519726F}, {"earth", 1.0},
         {"mars", 1.8808158},    {"jupiter", 11.862615}, {"saturn", 29.447498},
         {"uranus", 84.016846},  {"neptune", 164.79132},
     };
 
-    [[nodiscard]] double on_planet(std::string name) const;
+    [[nodiscard]] seconds_t on_planet(planet_name_t name) const;
 };
 
 } // namespace space_age
