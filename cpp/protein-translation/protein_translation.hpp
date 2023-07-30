@@ -1,5 +1,5 @@
-#if !defined(PROTEIN_TRANSLATION_H)
-#define PROTEIN_TRANSLATION_H
+#if !defined(PROTEIN_TRANSLATION_HPP)
+#define PROTEIN_TRANSLATION_HPP
 
 #include <map>
 #include <regex>
@@ -67,4 +67,4 @@ ProteinList proteins(RnaSequence rna_sequence);
 
 } // namespace protein_translation
 
-#endif // PROTEIN_TRANSLATION_H
+#endif // PROTEIN_TRANSLATION_HPP

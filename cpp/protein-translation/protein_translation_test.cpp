@@ -3,7 +3,7 @@
 #else
 #include "test/catch.hpp"
 #endif
-#include "protein_translation.h"
+#include "protein_translation.hpp"
 #include <string>
 #include <vector>
 

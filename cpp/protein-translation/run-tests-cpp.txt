@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.012s
-user	0m0.003s
-sys	0m0.008s
+real	0m0.008s
+user	0m0.001s
+sys	0m0.006s
 
 ===============================================================================
 
@@ -69,7 +69,7 @@ Directory: .
 ------------------------------------------------------------------------------
 File                                       Lines    Exec  Cover   Missing
 ------------------------------------------------------------------------------
-protein_translation.cpp                       27      20    74%   10,14,18,38,40,51,53
+protein_translation.cpp                       27      20    74%   11,15,19,40,42,53,55
 protein_translation_test.cpp                  69      69   100%   
 test/catch.hpp                                48      27    56%   1448-1450,1642-1643,1827-1833,1835-1836,2016-2017,2039-2040,2227,2229,2560
 ------------------------------------------------------------------------------
@@ -78,9 +78,9 @@ TOTAL                                        144     116    80%
 lines: 80.6% (116 out of 144)
 branches: 40.9% (265 out of 648)
 
-real	0m13.620s
-user	0m12.437s
-sys	0m1.141s
+real	0m12.058s
+user	0m11.233s
+sys	0m0.822s
 
 ===============================================================================
 
@@ -88,9 +88,9 @@ cmake-format --in-place CMakeLists.txt
 WARNING config_util.py:307: The following configuration options were ignored:
   max_subargs_per_line
 
-real	0m0.165s
-user	0m0.113s
-sys	0m0.054s
+real	0m0.153s
+user	0m0.100s
+sys	0m0.055s
 
 ===============================================================================
 
@@ -110,68 +110,50 @@ found lint:
   Convention: 3
 
 
-real	0m0.165s
-user	0m0.120s
-sys	0m0.048s
+real	0m0.179s
+user	0m0.139s
+sys	0m0.042s
 
 ===============================================================================
 
-Running: clang-format-16 -style=file -i ./protein_translation.cpp ./protein_translation_test.cpp ./protein_translation.h
+Running: clang-format-16 -style=file -i ./protein_translation.cpp ./protein_translation_test.cpp ./protein_translation.hpp
 
-real	0m0.025s
-user	0m0.010s
-sys	0m0.015s
+real	0m0.020s
+user	0m0.011s
+sys	0m0.009s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./protein_translation.cpp ./protein_translation_test.cpp ./protein_translation.h
-error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
-error: invalid argument '-std=c++17' not allowed with 'C'
-/home/vpayno/git_vpayno/exercism-workspace/cpp/protein-translation/protein_translation.h:4:10: fatal error: 'map' file not found
-#include <map>
-         ^~~~~
-1 error generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/protein-translation/protein_translation.h.
+clang-check-16 --analyze ./protein_translation.cpp ./protein_translation_test.cpp ./protein_translation.hpp
 
-real	0m3.056s
-user	0m2.968s
-sys	0m0.088s
+real	0m3.521s
+user	0m3.415s
+sys	0m0.106s
 
 
-real	0m3.058s
-user	0m2.968s
-sys	0m0.089s
+real	0m3.523s
+user	0m3.416s
+sys	0m0.106s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
-36438 warnings generated.
-80887 warnings generated.
-80887 warnings and 3 errors generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/protein-translation/protein_translation.h.
-Suppressed 80891 warnings (80886 in non-user code, 5 NOLINT).
+36437 warnings generated.
+80886 warnings generated.
+116108 warnings generated.
+Suppressed 116113 warnings (116108 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-Found compiler error(s).
 
-real	0m17.525s
-user	0m17.414s
-sys	0m0.109s
-Running: clang-tidy-16 ./protein_translation.cpp ./protein_translation_test.cpp ./protein_translation.h
-error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
-error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
-/home/vpayno/git_vpayno/exercism-workspace/cpp/protein-translation/protein_translation.cpp:34:9: warning: variable 'codon' of type 'CodonSequence' (aka 'basic_string<char>') can be declared 'const' [misc-const-correctness]
-        CodonSequence codon{match[0]};
-        ^
-                      const 
-/home/vpayno/git_vpayno/exercism-workspace/cpp/protein-translation/protein_translation.h:4:10: error: 'map' file not found [clang-diagnostic-error]
-#include <map>
-         ^~~~~
+real	0m22.911s
+user	0m22.779s
+sys	0m0.128s
+Running: clang-tidy-16 ./protein_translation.cpp ./protein_translation_test.cpp ./protein_translation.hpp
 
 
-real	0m17.527s
-user	0m17.414s
-sys	0m0.112s
+real	0m22.913s
+user	0m22.780s
+sys	0m0.130s
 
 ===============================================================================
 

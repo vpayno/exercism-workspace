@@ -1,4 +1,4 @@
-#include "protein_translation.h"
+#include "protein_translation.hpp"
 
 namespace protein_translation {
 
@@ -31,7 +31,7 @@ ProteinList proteins(RnaSequence rna_sequence) {
     for (auto i = words_begin; i != words_end; ++i) {
         auto match = *i;
 
-        CodonSequence codon{match[0]};
+        const CodonSequence codon{match[0]};
 
         Proteins protein{};
 
