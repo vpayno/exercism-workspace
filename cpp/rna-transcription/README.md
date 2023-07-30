@@ -59,3 +59,8 @@ If you want to look at how the inputs and outputs are structured, take a look at
 ### Based on
 
 Hyperphysics - http://hyperphysics.phy-astr.gsu.edu/hbase/Organic/transcription.html
+
+### My Solution
+
+- [my solution]()
+- [run-tests](./run-tests-cpp.txt)

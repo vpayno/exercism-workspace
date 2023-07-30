@@ -63,3 +63,4 @@
 - [protein-translation](./protein-translation/README.md)
 - [hamming](./hamming/README.md)
 - [nucleotide-count](./nucleotide-count/README.md)
+- [rna-transcription](./rna-transcription/README.md)

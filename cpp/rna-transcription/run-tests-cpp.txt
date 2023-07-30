@@ -1,0 +1,173 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: make clean
+rm -rf ./build
+
+real	0m0.010s
+user	0m0.001s
+sys	0m0.008s
+
+===============================================================================
+
+export LDFLAGS="-lgcov --coverage" CXXFLAGS="--coverage"
+
+===============================================================================
+
+Running: make coverage | ansifilter
+rm -rf ./build
+mkdir -pv ./build
+mkdir: created directory './build'
+
+cd ./build; export LDFLAGS="-lgcov --coverage" CXXFLAGS="--coverage"; cmake -DEXERCISM_RUN_ALL_TESTS=1 -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -G 'Unix Makefiles' ../; if make; then printf "\n=== All Tests Passed ===\n"; else printf "\n=== Test Failure ===\n"; false; fi
+-- The CXX compiler identification is GNU 10.2.1
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/vpayno/git_vpayno/exercism-workspace/cpp/rna-transcription/build
+make[1]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/rna-transcription/build'
+make[2]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/rna-transcription/build'
+make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/rna-transcription/build'
+make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/rna-transcription/build'
+make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/rna-transcription/build'
+[ 25%] Building CXX object CMakeFiles/rna-transcription.dir/rna_transcription_test.cpp.o
+[ 50%] Building CXX object CMakeFiles/rna-transcription.dir/rna_transcription.cpp.o
+[ 75%] Building CXX object CMakeFiles/rna-transcription.dir/test/tests-main.cpp.o
+[100%] Linking CXX executable rna-transcription
+make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/rna-transcription/build'
+[100%] Built target rna-transcription
+make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/rna-transcription/build'
+make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/rna-transcription/build'
+make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/rna-transcription/build'
+===============================================================================
+All tests passed (5 assertions in 5 test cases)
+
+make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/rna-transcription/build'
+[100%] Built target test_rna-transcription
+make[2]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/rna-transcription/build'
+make[1]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/rna-transcription/build'
+
+=== All Tests Passed ===
+
+find . -regextype posix-egrep -regex "^.*(tests-main|CompilerId).*[.](gcda|gcno)$" -print -delete
+./build/CMakeFiles/3.22.2/CompilerIdCXX/CMakeCXXCompilerId.gcno
+./build/CMakeFiles/rna-transcription.dir/test/tests-main.cpp.gcno
+./build/CMakeFiles/rna-transcription.dir/test/tests-main.cpp.gcda
+
+find . -regextype posix-egrep -regex "^.*[.](gcda|gcno)8456"
+
+gcovr --print-summary
+------------------------------------------------------------------------------
+                           GCC Code Coverage Report
+Directory: .
+------------------------------------------------------------------------------
+File                                       Lines    Exec  Cover   Missing
+------------------------------------------------------------------------------
+rna_transcription.cpp                         16      14    87%   19,23
+rna_transcription_test.cpp                    15      15   100%   
+test/catch.hpp                                34      27    79%   1642-1643,1710-1711,2227,2229,2560
+------------------------------------------------------------------------------
+TOTAL                                         65      56    86%
+------------------------------------------------------------------------------
+lines: 86.2% (56 out of 65)
+branches: 38.2% (42 out of 110)
+
+real	0m12.876s
+user	0m11.907s
+sys	0m0.967s
+
+===============================================================================
+
+cmake-format --in-place CMakeLists.txt
+WARNING config_util.py:307: The following configuration options were ignored:
+  max_subargs_per_line
+
+real	0m0.153s
+user	0m0.112s
+sys	0m0.041s
+
+===============================================================================
+
+cmake-lint CMakeLists.txt
+WARNING The following configuration options were ignored:
+  max_subargs_per_line
+CMakeLists.txt
+==============
+CMakeLists.txt:15,06: [C0103] Invalid directory variable name "exercise_cpp" doesn't match `[A-Z][0-9A-Z_]+|_[0-9a-z_]+`
+CMakeLists.txt:17,06: [C0103] Invalid directory variable name "exercise_cpp" doesn't match `[A-Z][0-9A-Z_]+|_[0-9a-z_]+`
+CMakeLists.txt:61,02: [C0113] Missing COMMENT in statement which allows it
+
+Summary
+=======
+files scanned: 1
+found lint:
+  Convention: 3
+
+
+real	0m0.176s
+user	0m0.131s
+sys	0m0.047s
+
+===============================================================================
+
+Running: clang-format-16 -style=file -i ./rna_transcription.cpp ./rna_transcription_test.cpp ./rna_transcription.h
+
+real	0m0.021s
+user	0m0.010s
+sys	0m0.011s
+
+===============================================================================
+
+Running: ../../.github/citools/cpp/clang-check
+clang-check-16 --analyze ./rna_transcription.cpp ./rna_transcription_test.cpp ./rna_transcription.h
+error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
+error: invalid argument '-std=c++17' not allowed with 'C'
+/home/vpayno/git_vpayno/exercism-workspace/cpp/rna-transcription/rna_transcription.h:4:10: fatal error: 'map' file not found
+#include <map>
+         ^~~~~
+1 error generated.
+Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/rna-transcription/rna_transcription.h.
+
+real	0m3.263s
+user	0m3.155s
+sys	0m0.108s
+
+
+real	0m3.265s
+user	0m3.156s
+sys	0m0.108s
+
+===============================================================================
+
+Running: ../../.github/citools/cpp/clang-tidy | head -n 100
+36320 warnings generated.
+80617 warnings generated.
+80617 warnings and 3 errors generated.
+Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/rna-transcription/rna_transcription.h.
+Suppressed 80622 warnings (80617 in non-user code, 5 NOLINT).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+Found compiler error(s).
+
+real	0m17.415s
+user	0m17.246s
+sys	0m0.166s
+Running: clang-tidy-16 ./rna_transcription.cpp ./rna_transcription_test.cpp ./rna_transcription.h
+error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
+error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
+/home/vpayno/git_vpayno/exercism-workspace/cpp/rna-transcription/rna_transcription.h:4:10: error: 'map' file not found [clang-diagnostic-error]
+#include <map>
+         ^~~~~
+
+
+real	0m17.417s
+user	0m17.247s
+sys	0m0.170s
+
+===============================================================================
+
