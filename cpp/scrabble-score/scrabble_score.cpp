@@ -2,8 +2,8 @@
 
 namespace scrabble_score {
 
-unsigned int score(std::string word) {
-    unsigned int score{0};
+score_t score(word_t word) {
+    score_t score{0};
 
     if (word.empty()) {
         return score;
@@ -16,7 +16,7 @@ unsigned int score(std::string word) {
 
     const std::regex re_word_fixme("^.*[A-Z]+.*$", std::regex_constants::egrep);
     if (std::regex_search(word, re_word_fixme)) {
-        auto lc_op = [](char rune) { return (char)tolower(rune); };
+        auto lc_op = [](letter_t rune) { return (letter_t)tolower(rune); };
 
         std::transform(word.begin(), word.end(), word.begin(), lc_op);
     }

@@ -7,7 +7,11 @@
 
 namespace scrabble_score {
 
-unsigned int score(std::string word);
+using score_t = unsigned int;
+using word_t = std::string;
+using letter_t = char;
+
+score_t score(word_t word);
 
 } // namespace scrabble_score
 
