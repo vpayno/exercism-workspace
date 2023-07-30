@@ -1,5 +1,5 @@
-#if !defined(GRADE_SCHOOL_H)
-#define GRADE_SCHOOL_H
+#if !defined(GRADE_SCHOOL_HPP)
+#define GRADE_SCHOOL_HPP
 
 #include <algorithm>
 #include <map>
@@ -42,4 +42,4 @@ class school {
 
 } // namespace grade_school
 
-#endif // GRADE_SCHOOL_H
+#endif // GRADE_SCHOOL_HPP

@@ -1,4 +1,4 @@
-#include "grade_school.h"
+#include "grade_school.hpp"
 #include <map>
 #ifdef EXERCISM_TEST_SUITE
 #include <catch2/catch.hpp>

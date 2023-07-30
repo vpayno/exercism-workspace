@@ -1,4 +1,4 @@
-#include "grade_school.h"
+#include "grade_school.hpp"
 
 namespace grade_school {
 
