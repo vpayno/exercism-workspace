@@ -1,5 +1,5 @@
-#if !defined(RNA_TRANSCRIPTION_H)
-#define RNA_TRANSCRIPTION_H
+#if !defined(RNA_TRANSCRIPTION_HPP)
+#define RNA_TRANSCRIPTION_HPP
 
 #include <map>
 #include <regex>
@@ -25,4 +25,4 @@ rna_sequence_t to_rna(dna_sequence_t dna_sequence);
 
 } // namespace rna_transcription
 
-#endif // RNA_TRANSCRIPTION_H
+#endif // RNA_TRANSCRIPTION_HPP

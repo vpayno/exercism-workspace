@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.010s
+real	0m0.008s
 user	0m0.001s
-sys	0m0.008s
+sys	0m0.007s
 
 ===============================================================================
 
@@ -78,9 +78,9 @@ TOTAL                                         65      56    86%
 lines: 86.2% (56 out of 65)
 branches: 38.2% (42 out of 110)
 
-real	0m12.876s
-user	0m11.907s
-sys	0m0.967s
+real	0m12.858s
+user	0m11.847s
+sys	0m1.004s
 
 ===============================================================================
 
@@ -88,9 +88,9 @@ cmake-format --in-place CMakeLists.txt
 WARNING config_util.py:307: The following configuration options were ignored:
   max_subargs_per_line
 
-real	0m0.153s
-user	0m0.112s
-sys	0m0.041s
+real	0m0.173s
+user	0m0.125s
+sys	0m0.050s
 
 ===============================================================================
 
@@ -110,64 +110,50 @@ found lint:
   Convention: 3
 
 
-real	0m0.176s
-user	0m0.131s
-sys	0m0.047s
+real	0m0.181s
+user	0m0.139s
+sys	0m0.043s
 
 ===============================================================================
 
-Running: clang-format-16 -style=file -i ./rna_transcription.cpp ./rna_transcription_test.cpp ./rna_transcription.h
+Running: clang-format-16 -style=file -i ./rna_transcription.cpp ./rna_transcription_test.cpp ./rna_transcription.hpp
 
-real	0m0.021s
+real	0m0.019s
 user	0m0.010s
-sys	0m0.011s
+sys	0m0.009s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./rna_transcription.cpp ./rna_transcription_test.cpp ./rna_transcription.h
-error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
-error: invalid argument '-std=c++17' not allowed with 'C'
-/home/vpayno/git_vpayno/exercism-workspace/cpp/rna-transcription/rna_transcription.h:4:10: fatal error: 'map' file not found
-#include <map>
-         ^~~~~
-1 error generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/rna-transcription/rna_transcription.h.
+clang-check-16 --analyze ./rna_transcription.cpp ./rna_transcription_test.cpp ./rna_transcription.hpp
 
-real	0m3.263s
-user	0m3.155s
-sys	0m0.108s
+real	0m3.863s
+user	0m3.752s
+sys	0m0.111s
 
 
-real	0m3.265s
-user	0m3.156s
-sys	0m0.108s
+real	0m3.865s
+user	0m3.752s
+sys	0m0.113s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 36320 warnings generated.
 80617 warnings generated.
-80617 warnings and 3 errors generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/rna-transcription/rna_transcription.h.
-Suppressed 80622 warnings (80617 in non-user code, 5 NOLINT).
+115727 warnings generated.
+Suppressed 115732 warnings (115727 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-Found compiler error(s).
 
-real	0m17.415s
-user	0m17.246s
-sys	0m0.166s
-Running: clang-tidy-16 ./rna_transcription.cpp ./rna_transcription_test.cpp ./rna_transcription.h
-error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
-error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
-/home/vpayno/git_vpayno/exercism-workspace/cpp/rna-transcription/rna_transcription.h:4:10: error: 'map' file not found [clang-diagnostic-error]
-#include <map>
-         ^~~~~
+real	0m23.140s
+user	0m23.001s
+sys	0m0.138s
+Running: clang-tidy-16 ./rna_transcription.cpp ./rna_transcription_test.cpp ./rna_transcription.hpp
 
 
-real	0m17.417s
-user	0m17.247s
-sys	0m0.170s
+real	0m23.142s
+user	0m23.002s
+sys	0m0.140s
 
 ===============================================================================
 
