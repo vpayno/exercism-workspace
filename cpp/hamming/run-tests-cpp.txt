@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.007s
-user	0m0.001s
-sys	0m0.005s
+real	0m0.009s
+user	0m0.003s
+sys	0m0.006s
 
 ===============================================================================
 
@@ -78,9 +78,9 @@ TOTAL                                         76      69    90%
 lines: 90.8% (69 out of 76)
 branches: 39.4% (85 out of 216)
 
-real	0m9.700s
-user	0m8.880s
-sys	0m0.815s
+real	0m9.500s
+user	0m8.830s
+sys	0m0.667s
 
 ===============================================================================
 
@@ -88,9 +88,9 @@ cmake-format --in-place CMakeLists.txt
 WARNING config_util.py:307: The following configuration options were ignored:
   max_subargs_per_line
 
-real	0m0.161s
-user	0m0.106s
-sys	0m0.057s
+real	0m0.168s
+user	0m0.119s
+sys	0m0.051s
 
 ===============================================================================
 
@@ -110,64 +110,50 @@ found lint:
   Convention: 3
 
 
-real	0m0.169s
-user	0m0.124s
-sys	0m0.047s
+real	0m0.160s
+user	0m0.119s
+sys	0m0.042s
 
 ===============================================================================
 
-Running: clang-format-16 -style=file -i ./hamming.cpp ./hamming_test.cpp ./hamming.h
+Running: clang-format-16 -style=file -i ./hamming.cpp ./hamming_test.cpp ./hamming.hpp
 
-real	0m0.019s
+real	0m0.020s
 user	0m0.011s
-sys	0m0.008s
+sys	0m0.009s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./hamming.cpp ./hamming_test.cpp ./hamming.h
-error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
-error: invalid argument '-std=c++17' not allowed with 'C'
-/home/vpayno/git_vpayno/exercism-workspace/cpp/hamming/hamming.h:6:10: fatal error: 'stdexcept' file not found
-#include <stdexcept>
-         ^~~~~~~~~~~
-1 error generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/hamming/hamming.h.
+clang-check-16 --analyze ./hamming.cpp ./hamming_test.cpp ./hamming.hpp
 
-real	0m0.523s
-user	0m0.493s
-sys	0m0.030s
+real	0m0.625s
+user	0m0.583s
+sys	0m0.042s
 
 
-real	0m0.525s
-user	0m0.494s
-sys	0m0.030s
+real	0m0.628s
+user	0m0.584s
+sys	0m0.043s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 11417 warnings generated.
 46801 warnings generated.
-46801 warnings and 3 errors generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/hamming/hamming.h.
-Suppressed 46806 warnings (46801 in non-user code, 5 NOLINT).
+58217 warnings generated.
+Suppressed 58222 warnings (58217 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-Found compiler error(s).
 
-real	0m6.450s
-user	0m6.376s
-sys	0m0.073s
-Running: clang-tidy-16 ./hamming.cpp ./hamming_test.cpp ./hamming.h
-error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
-error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
-/home/vpayno/git_vpayno/exercism-workspace/cpp/hamming/hamming.h:6:10: error: 'stdexcept' file not found [clang-diagnostic-error]
-#include <stdexcept>
-         ^~~~~~~~~~~
+real	0m7.829s
+user	0m7.760s
+sys	0m0.067s
+Running: clang-tidy-16 ./hamming.cpp ./hamming_test.cpp ./hamming.hpp
 
 
-real	0m6.452s
-user	0m6.376s
-sys	0m0.077s
+real	0m7.831s
+user	0m7.762s
+sys	0m0.069s
 
 ===============================================================================
 

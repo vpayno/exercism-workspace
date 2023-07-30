@@ -1,4 +1,4 @@
-#include "hamming.h"
+#include "hamming.hpp"
 
 namespace hamming {
 

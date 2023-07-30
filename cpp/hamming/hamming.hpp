@@ -1,7 +1,5 @@
-#if !defined(HAMMING_H)
-#define HAMMING_H
-
-// This isn't a C++ header file!
+#if !defined(HAMMING_HPP)
+#define HAMMING_HPP
 
 #include <stdexcept>
 #include <string>
@@ -16,4 +14,4 @@ distance_t compute(dna_sequence_t lhs, dna_sequence_t rhs);
 
 } // namespace hamming
 
-#endif // HAMMING_H
+#endif // HAMMING_HPP
