@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.009s
-user	0m0.001s
-sys	0m0.008s
+real	0m0.007s
+user	0m0.000s
+sys	0m0.007s
 
 ===============================================================================
 
@@ -78,63 +78,63 @@ TOTAL                                        154     133    86%
 lines: 86.4% (133 out of 154)
 branches: 39.6% (212 out of 536)
 
-real	0m9.486s
-user	0m8.786s
-sys	0m0.696s
+real	0m10.122s
+user	0m9.131s
+sys	0m0.987s
 
 ===============================================================================
 
 cmake-format --in-place CMakeLists.txt
+WARNING config_util.py:307: The following configuration options were ignored:
+  max_subargs_per_line
 
-real	0m0.148s
-user	0m0.110s
-sys	0m0.039s
+real	0m0.163s
+user	0m0.113s
+sys	0m0.051s
 
 ===============================================================================
 
 cmake-lint CMakeLists.txt
+WARNING The following configuration options were ignored:
+  max_subargs_per_line
 CMakeLists.txt
 ==============
 CMakeLists.txt:15,06: [C0103] Invalid directory variable name "exercise_cpp" doesn't match `[A-Z][0-9A-Z_]+|_[0-9a-z_]+`
 CMakeLists.txt:17,06: [C0103] Invalid directory variable name "exercise_cpp" doesn't match `[A-Z][0-9A-Z_]+|_[0-9a-z_]+`
-CMakeLists.txt:61,70: [C0307] Bad indentation:
-                                               )
-  ^----BodyNode: 1:0->IfBlockNode: 59:0->BodyNode: 59:11->StatementNode: 60:2->TreeNode: 61:70
-
-CMakeLists.txt:66,02: [C0113] Missing COMMENT in statement which allows it
+CMakeLists.txt:61,02: [C0113] Missing COMMENT in statement which allows it
 
 Summary
 =======
 files scanned: 1
 found lint:
-  Convention: 4
+  Convention: 3
 
 
-real	0m0.142s
-user	0m0.106s
-sys	0m0.037s
+real	0m0.200s
+user	0m0.155s
+sys	0m0.047s
 
 ===============================================================================
 
 Running: clang-format-16 -style=file -i ./allergies.cpp ./allergies_test.cpp ./allergies.hpp
 
-real	0m0.020s
-user	0m0.009s
-sys	0m0.011s
+real	0m0.023s
+user	0m0.011s
+sys	0m0.012s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
 clang-check-16 --analyze ./allergies.cpp ./allergies_test.cpp ./allergies.hpp
 
-real	0m0.798s
-user	0m0.751s
-sys	0m0.046s
+real	0m0.892s
+user	0m0.839s
+sys	0m0.052s
 
 
-real	0m0.799s
-user	0m0.751s
-sys	0m0.048s
+real	0m0.894s
+user	0m0.841s
+sys	0m0.053s
 
 ===============================================================================
 
@@ -145,9 +145,9 @@ Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 Suppressed 73380 warnings (73375 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 
-real	0m10.060s
-user	0m10.002s
-sys	0m0.058s
+real	0m10.366s
+user	0m10.284s
+sys	0m0.078s
 Running: clang-tidy-16 ./allergies.cpp ./allergies_test.cpp ./allergies.hpp
 /home/vpayno/git_vpayno/exercism-workspace/cpp/allergies/allergies_test.cpp:12:5: warning: variable 'score' of type 'allergies::allergy_test' can be declared 'const' [misc-const-correctness]
     allergies::allergy_test score(0);
@@ -155,9 +155,9 @@ Running: clang-tidy-16 ./allergies.cpp ./allergies_test.cpp ./allergies.hpp
                             const 
 
 
-real	0m10.062s
-user	0m10.004s
-sys	0m0.059s
+real	0m10.368s
+user	0m10.285s
+sys	0m0.080s
 
 ===============================================================================
 

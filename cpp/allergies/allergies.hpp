@@ -8,16 +8,20 @@
 
 namespace allergies {
 
+using AllergyScore = int;
+using AllergyName = std::string;
+using PatientAllergies = std::unordered_set<AllergyName>;
+
 class allergy_test {
   public:
-    allergy_test(int score);
+    allergy_test(AllergyScore score);
 
-    [[nodiscard]] bool is_allergic_to(std::string allergy) const;
-    [[nodiscard]] std::unordered_set<std::string> get_allergies() const;
+    [[nodiscard]] bool is_allergic_to(AllergyName allergy) const;
+    [[nodiscard]] PatientAllergies get_allergies() const;
 
   private:
-    std::map<std::string, int> allergies;
-    std::unordered_set<std::string> allergic_reactions;
+    std::map<AllergyName, AllergyScore> allergies;
+    PatientAllergies allergic_reactions;
 };
 
 } // namespace allergies

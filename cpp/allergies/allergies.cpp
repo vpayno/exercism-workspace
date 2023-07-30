@@ -2,16 +2,16 @@
 
 namespace allergies {
 
-bool allergy_test::is_allergic_to(std::string allergy) const {
+bool allergy_test::is_allergic_to(AllergyName allergy) const {
     // count seems to be the easiest choice for a "is in set" check
     return allergic_reactions.count(allergy) > 0;
 }
 
-std::unordered_set<std::string> allergy_test::get_allergies() const {
+PatientAllergies allergy_test::get_allergies() const {
     return allergic_reactions;
 }
 
-allergy_test::allergy_test(int score) {
+allergy_test::allergy_test(AllergyScore score) {
     allergies = {
         {"eggs", 1},         {"peanuts", 2},   {"shellfish", 4},
         {"strawberries", 8}, {"tomatoes", 16}, {"chocolate", 32},
@@ -40,7 +40,7 @@ allergy_test::allergy_test(int score) {
        */
 
     auto binary_op = [score, set = &allergic_reactions](
-                         int, std::pair<std::string, int> allergy) {
+                         int, std::pair<AllergyName, AllergyScore> allergy) {
         if ((allergy.second & score) != 0) {
             set->emplace(allergy.first);
         }
