@@ -5,8 +5,10 @@
 
 namespace grains {
 
-unsigned long long square(size_t index);
-unsigned long long total();
+using GrainCount = unsigned long long;
+
+GrainCount square(size_t index);
+GrainCount total();
 
 } // namespace grains
 

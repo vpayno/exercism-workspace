@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.011s
+real	0m0.012s
 user	0m0.002s
-sys	0m0.009s
+sys	0m0.010s
 
 ===============================================================================
 
@@ -78,63 +78,63 @@ TOTAL                                         49      43    87%
 lines: 87.8% (43 out of 49)
 branches: 37.0% (51 out of 138)
 
-real	0m9.700s
-user	0m9.057s
-sys	0m0.641s
+real	0m9.392s
+user	0m8.706s
+sys	0m0.678s
 
 ===============================================================================
 
 cmake-format --in-place CMakeLists.txt
+WARNING config_util.py:307: The following configuration options were ignored:
+  max_subargs_per_line
 
-real	0m0.152s
+real	0m0.155s
 user	0m0.111s
-sys	0m0.042s
+sys	0m0.046s
 
 ===============================================================================
 
 cmake-lint CMakeLists.txt
+WARNING The following configuration options were ignored:
+  max_subargs_per_line
 CMakeLists.txt
 ==============
 CMakeLists.txt:15,06: [C0103] Invalid directory variable name "exercise_cpp" doesn't match `[A-Z][0-9A-Z_]+|_[0-9a-z_]+`
 CMakeLists.txt:17,06: [C0103] Invalid directory variable name "exercise_cpp" doesn't match `[A-Z][0-9A-Z_]+|_[0-9a-z_]+`
-CMakeLists.txt:61,70: [C0307] Bad indentation:
-                                               )
-  ^----BodyNode: 1:0->IfBlockNode: 59:0->BodyNode: 59:11->StatementNode: 60:2->TreeNode: 61:70
-
-CMakeLists.txt:66,02: [C0113] Missing COMMENT in statement which allows it
+CMakeLists.txt:61,02: [C0113] Missing COMMENT in statement which allows it
 
 Summary
 =======
 files scanned: 1
 found lint:
-  Convention: 4
+  Convention: 3
 
 
-real	0m0.177s
-user	0m0.119s
-sys	0m0.061s
+real	0m0.172s
+user	0m0.135s
+sys	0m0.039s
 
 ===============================================================================
 
 Running: clang-format-16 -style=file -i ./grains.cpp ./grains_test.cpp ./grains.hpp
 
-real	0m0.021s
-user	0m0.010s
-sys	0m0.011s
+real	0m0.019s
+user	0m0.012s
+sys	0m0.007s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
 clang-check-16 --analyze ./grains.cpp ./grains_test.cpp ./grains.hpp
 
-real	0m0.532s
-user	0m0.495s
-sys	0m0.037s
+real	0m0.513s
+user	0m0.480s
+sys	0m0.033s
 
 
-real	0m0.534s
-user	0m0.495s
-sys	0m0.039s
+real	0m0.515s
+user	0m0.482s
+sys	0m0.033s
 
 ===============================================================================
 
@@ -145,15 +145,15 @@ Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 Suppressed 52835 warnings (52830 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 
-real	0m8.751s
-user	0m8.688s
-sys	0m0.062s
+real	0m8.396s
+user	0m8.323s
+sys	0m0.071s
 Running: clang-tidy-16 ./grains.cpp ./grains_test.cpp ./grains.hpp
 
 
-real	0m8.754s
-user	0m8.690s
-sys	0m0.064s
+real	0m8.398s
+user	0m8.325s
+sys	0m0.073s
 
 ===============================================================================
 
