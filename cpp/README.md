@@ -59,3 +59,4 @@
 - [sum-of-multiples](./sum-of-multiples/README.md)
 - [word-count](./word-count/README.md)
 - [series](./series/README.md)
+- [grade-school](./grade-school/README.md)
