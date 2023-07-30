@@ -59,3 +59,8 @@ Learn more about [protein translation on Wikipedia](http://en.wikipedia.org/wiki
 ### Based on
 
 Tyler Long
+
+### My Solution
+
+- [my solution]()
+- [run-tests](./run-tests-cpp.txt)
