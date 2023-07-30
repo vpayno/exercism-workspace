@@ -62,3 +62,4 @@
 - [grade-school](./grade-school/README.md)
 - [protein-translation](./protein-translation/README.md)
 - [hamming](./hamming/README.md)
+- [nucleotide-count](./nucleotide-count/README.md)

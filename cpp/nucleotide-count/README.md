@@ -47,3 +47,8 @@ For example:
 ### Based on
 
 The Calculating DNA Nucleotides_problem at Rosalind - https://rosalind.info/problems/dna/
+
+### My Solution
+
+- [my solution]()
+- [run-tests](./run-tests-cpp.txt)
