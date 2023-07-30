@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.007s
-user	0m0.001s
-sys	0m0.006s
+real	0m0.004s
+user	0m0.000s
+sys	0m0.004s
 
 ===============================================================================
 
@@ -82,63 +82,63 @@ TOTAL                                         38      31    81%
 lines: 81.6% (31 out of 38)
 branches: 28.6% (8 out of 28)
 
-real	0m10.253s
-user	0m9.264s
-sys	0m0.980s
+real	0m9.058s
+user	0m8.450s
+sys	0m0.606s
 
 ===============================================================================
 
 cmake-format --in-place CMakeLists.txt
+WARNING config_util.py:307: The following configuration options were ignored:
+  max_subargs_per_line
 
-real	0m0.183s
-user	0m0.116s
-sys	0m0.069s
+real	0m0.153s
+user	0m0.110s
+sys	0m0.045s
 
 ===============================================================================
 
 cmake-lint CMakeLists.txt
+WARNING The following configuration options were ignored:
+  max_subargs_per_line
 CMakeLists.txt
 ==============
 CMakeLists.txt:15,06: [C0103] Invalid directory variable name "exercise_cpp" doesn't match `[A-Z][0-9A-Z_]+|_[0-9a-z_]+`
 CMakeLists.txt:17,06: [C0103] Invalid directory variable name "exercise_cpp" doesn't match `[A-Z][0-9A-Z_]+|_[0-9a-z_]+`
-CMakeLists.txt:61,70: [C0307] Bad indentation:
-                                               )
-  ^----BodyNode: 1:0->IfBlockNode: 59:0->BodyNode: 59:11->StatementNode: 60:2->TreeNode: 61:70
-
-CMakeLists.txt:66,02: [C0113] Missing COMMENT in statement which allows it
+CMakeLists.txt:61,02: [C0113] Missing COMMENT in statement which allows it
 
 Summary
 =======
 files scanned: 1
 found lint:
-  Convention: 4
+  Convention: 3
 
 
-real	0m0.165s
-user	0m0.107s
-sys	0m0.059s
+real	0m0.160s
+user	0m0.126s
+sys	0m0.036s
 
 ===============================================================================
 
-Running: clang-format-16 -style=file -i ./hello_world.cpp ./hello_world_test.cpp
+Running: clang-format-16 -style=file -i ./hello_world.cpp ./hello_world_test.cpp ./hello_world.hpp
 
-real	0m0.022s
-user	0m0.008s
-sys	0m0.014s
+real	0m0.019s
+user	0m0.009s
+sys	0m0.011s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
 clang-check-16 --analyze ./hello_world.cpp ./hello_world_test.cpp ./hello_world.hpp
 
-real	0m0.734s
-user	0m0.675s
-sys	0m0.058s
+real	0m0.557s
+user	0m0.517s
+sys	0m0.040s
 
 
-real	0m0.736s
-user	0m0.676s
-sys	0m0.060s
+real	0m0.559s
+user	0m0.519s
+sys	0m0.040s
 
 ===============================================================================
 
@@ -149,15 +149,15 @@ Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 Suppressed 58156 warnings (58151 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 
-real	0m7.959s
-user	0m7.889s
+real	0m7.378s
+user	0m7.310s
 sys	0m0.068s
 Running: clang-tidy-16 ./hello_world.cpp ./hello_world_test.cpp ./hello_world.hpp
 
 
-real	0m7.961s
-user	0m7.892s
-sys	0m0.068s
+real	0m7.380s
+user	0m7.311s
+sys	0m0.070s
 
 ===============================================================================
 

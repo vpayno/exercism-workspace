@@ -1,3 +1,5 @@
+// This is a C++ Header file (*.hpp)
+
 // This is an include guard.
 // You could alternatively use '#pragma once'
 // See https://en.wikipedia.org/wiki/Include_guard
@@ -11,11 +13,15 @@
 // https://en.cppreference.com/w/cpp/language/namespace
 namespace hello_world {
 
+// Using a named type to help with code readability.
+// https://en.cppreference.com/w/cpp/keyword/using
+using message_t = std::string;
+
 // Declare the 'hello()' function, which takes no arguments and returns a
-// 'std::string'. The function itself is defined in the hello_world.cpp source
+// 'message_t'. The function itself is defined in the hello_world.cpp source
 // file. Because it is inside of the 'hello_world' namespace, it's full name is
 // 'hello_world::hello()'.
-std::string hello();
+message_t hello();
 
 } // namespace hello_world
 

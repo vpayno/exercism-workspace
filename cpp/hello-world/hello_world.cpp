@@ -1,9 +1,10 @@
-#include "hello_world.hpp"
+// This is a C++ Source file (*.cpp)
 
-using namespace std;
+// This directive "copy+pastes" the include file to here.
+#include "hello_world.hpp"
 
 namespace hello_world {
 
-string hello() { return "Hello, World!"; }
+message_t hello() { return "Hello, World!"; }
 
 } // namespace hello_world
