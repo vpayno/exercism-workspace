@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.012s
-user	0m0.005s
-sys	0m0.007s
+real	0m0.010s
+user	0m0.000s
+sys	0m0.010s
 
 ===============================================================================
 
@@ -68,7 +68,7 @@ Directory: .
 ------------------------------------------------------------------------------
 File                                       Lines    Exec  Cover   Missing
 ------------------------------------------------------------------------------
-making_the_grade.cpp                          62      58    93%   82,86,117,121
+making_the_grade.cpp                          62      58    93%   86,90,121,125
 making_the_grade_test.cpp                    111     111   100%   
 test/catch.hpp                                48      27    56%   1448-1450,1642-1643,1827-1833,1835-1836,2016-2017,2039-2040,2227,2229,2560
 ------------------------------------------------------------------------------
@@ -77,71 +77,76 @@ TOTAL                                        221     196    88%
 lines: 88.7% (196 out of 221)
 branches: 41.5% (222 out of 535)
 
-real	0m9.866s
-user	0m9.113s
-sys	0m0.740s
+real	0m9.307s
+user	0m8.574s
+sys	0m0.728s
 
 ===============================================================================
 
 cmake-format --in-place CMakeLists.txt
+WARNING config_util.py:307: The following configuration options were ignored:
+  max_subargs_per_line
 
-real	0m0.193s
-user	0m0.147s
-sys	0m0.047s
+real	0m0.186s
+user	0m0.133s
+sys	0m0.054s
 
 ===============================================================================
 
 cmake-lint CMakeLists.txt
+WARNING The following configuration options were ignored:
+  max_subargs_per_line
 CMakeLists.txt
 ==============
 CMakeLists.txt:15,06: [C0103] Invalid directory variable name "exercise_cpp" doesn't match `[A-Z][0-9A-Z_]+|_[0-9a-z_]+`
 CMakeLists.txt:17,06: [C0103] Invalid directory variable name "exercise_cpp" doesn't match `[A-Z][0-9A-Z_]+|_[0-9a-z_]+`
-CMakeLists.txt:66,70: [C0307] Bad indentation:
-                                               )
-  ^----BodyNode: 1:0->IfBlockNode: 64:0->BodyNode: 64:11->StatementNode: 65:2->TreeNode: 66:70
-
-CMakeLists.txt:71,02: [C0113] Missing COMMENT in statement which allows it
+CMakeLists.txt:66,02: [C0113] Missing COMMENT in statement which allows it
 
 Summary
 =======
 files scanned: 1
 found lint:
-  Convention: 4
+  Convention: 3
 
 
-real	0m0.149s
-user	0m0.106s
-sys	0m0.044s
+real	0m0.167s
+user	0m0.122s
+sys	0m0.046s
 
 ===============================================================================
 
 Running: clang-format-16 -style=file -i ./making_the_grade.cpp ./making_the_grade_test.cpp
 
-real	0m0.023s
-user	0m0.011s
-sys	0m0.011s
+real	0m0.022s
+user	0m0.016s
+sys	0m0.006s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./making_the_grade.cpp ./making_the_grade_test.cpp ./range.hpp
+clang-check-16 --analyze ./making_the_grade.cpp ./making_the_grade_test.cpp
 
-real	0m2.616s
-user	0m2.536s
-sys	0m0.080s
+real	0m2.265s
+user	0m2.188s
+sys	0m0.077s
 
 
-real	0m2.618s
-user	0m2.537s
-sys	0m0.080s
+real	0m2.267s
+user	0m2.189s
+sys	0m0.077s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 28090 warnings generated.
 63515 warnings generated.
-79669 warnings generated.
-Running: clang-tidy-16 ./making_the_grade.cpp ./making_the_grade_test.cpp ./range.hpp
+Suppressed 63516 warnings (63511 in non-user code, 5 NOLINT).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+
+real	0m11.979s
+user	0m11.856s
+sys	0m0.119s
+Running: clang-tidy-16 ./making_the_grade.cpp ./making_the_grade_test.cpp
 /home/vpayno/git_vpayno/exercism-workspace/cpp/making-the-grade/making_the_grade_test.cpp:1:11: warning: suspicious #include of file with '.cpp' extension [bugprone-suspicious-include]
 #include "making_the_grade.cpp"
           ^
@@ -157,92 +162,11 @@ Running: clang-tidy-16 ./making_the_grade.cpp ./making_the_grade_test.cpp ./rang
     vector<int> actual = round_down_scores(input);
     ^
                 const 
-/home/vpayno/git_vpayno/exercism-workspace/cpp/making-the-grade/range.hpp:8:1: warning: nested namespaces can be concatenated [modernize-concat-nested-namespaces]
-namespace util { namespace lang {
-^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-namespace util::lang
-/home/vpayno/git_vpayno/exercism-workspace/cpp/making-the-grade/range.hpp:40:7: warning: member variable 'current' has protected visibility [cppcoreguidelines-non-private-member-variables-in-classes,misc-non-private-member-variables-in-classes]
-    T current;
-      ^
-/home/vpayno/git_vpayno/exercism-workspace/cpp/making-the-grade/range.hpp:48:18: warning: 2 adjacent parameters of 'iterator' of similar type ('T') are easily swapped by mistake [bugprone-easily-swappable-parameters]
-        iterator(T current, T step)
-                 ^~~~~~~~~~~~~~~~~
-/home/vpayno/git_vpayno/exercism-workspace/cpp/making-the-grade/range.hpp:48:20: note: the first parameter in the range is 'current'
-        iterator(T current, T step)
-                   ^~~~~~~
-/home/vpayno/git_vpayno/exercism-workspace/cpp/making-the-grade/range.hpp:48:31: note: the last parameter in the range is 'step'
-        iterator(T current, T step)
-                              ^~~~
-/home/vpayno/git_vpayno/exercism-workspace/cpp/making-the-grade/range.hpp:74:11: warning: member variable 'step_' has public visibility [misc-non-private-member-variables-in-classes]
-        T step_;
-          ^
-/home/vpayno/git_vpayno/exercism-workspace/cpp/making-the-grade/range.hpp:84:5: warning: function 'size' should be marked [[nodiscard]] [modernize-use-nodiscard]
-    std::size_t size() const { 
-    ^
-    [[nodiscard]] 
-/home/vpayno/git_vpayno/exercism-workspace/cpp/making-the-grade/range.hpp:87:37: warning: statement should be inside braces [readability-braces-around-statements]
-            if (begin_.step_ < T{0}) return 0;
-                                    ^
-                                     {
-/home/vpayno/git_vpayno/exercism-workspace/cpp/making-the-grade/range.hpp:90:37: warning: statement should be inside braces [readability-braces-around-statements]
-            if (begin_.step_ > T{0}) return 0;
-                                    ^
-                                     {
-/home/vpayno/git_vpayno/exercism-workspace/cpp/making-the-grade/range.hpp:112:5: warning: function 'begin' should be marked [[nodiscard]] [modernize-use-nodiscard]
-    iterator begin() const { return begin_; }
-    ^
-    [[nodiscard]] 
-/home/vpayno/git_vpayno/exercism-workspace/cpp/making-the-grade/range.hpp:114:5: warning: function 'end' should be marked [[nodiscard]] [modernize-use-nodiscard]
-    iterator end() const { return end_; }
-    ^
-    [[nodiscard]] 
-/home/vpayno/git_vpayno/exercism-workspace/cpp/making-the-grade/range.hpp:116:5: warning: function 'size' should be marked [[nodiscard]] [modernize-use-nodiscard]
-    std::size_t size() const { return *end_ - *begin_; }
-    ^
-    [[nodiscard]] 
-/home/vpayno/git_vpayno/exercism-workspace/cpp/making-the-grade/range.hpp:126:18: Suppressed 79648 warnings (79643 in non-user code, 5 NOLINT).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-
-real	0m14.764s
-user	0m14.657s
-sys	0m0.106s
-warning: 2 adjacent parameters of 'iterator' of similar type ('T') are easily swapped by mistake [bugprone-easily-swappable-parameters]
-        iterator(T current = T(), T step = T())
-                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/home/vpayno/git_vpayno/exercism-workspace/cpp/making-the-grade/range.hpp:126:20: note: the first parameter in the range is 'current'
-        iterator(T current = T(), T step = T())
-                   ^~~~~~~
-/home/vpayno/git_vpayno/exercism-workspace/cpp/making-the-grade/range.hpp:126:37: note: the last parameter in the range is 'step'
-        iterator(T current = T(), T step = T())
-                                    ^~~~
-/home/vpayno/git_vpayno/exercism-workspace/cpp/making-the-grade/range.hpp:142:41: warning: all parameters should be named in a function [readability-named-parameter]
-        bool operator ==(iterator const&) const { return false; }
-                                        ^
-                                         /*unused*/
-/home/vpayno/git_vpayno/exercism-workspace/cpp/making-the-grade/range.hpp:144:41: warning: all parameters should be named in a function [readability-named-parameter]
-        bool operator !=(iterator const&) const { return true; }
-                                        ^
-                                         /*unused*/
-/home/vpayno/git_vpayno/exercism-workspace/cpp/making-the-grade/range.hpp:165:41: warning: all parameters should be named in a function [readability-named-parameter]
-        bool operator ==(iterator const&) const { return false; }
-                                        ^
-                                         /*unused*/
-/home/vpayno/git_vpayno/exercism-workspace/cpp/making-the-grade/range.hpp:167:41: warning: all parameters should be named in a function [readability-named-parameter]
-        bool operator !=(iterator const&) const { return true; }
-                                        ^
-                                         /*unused*/
-/home/vpayno/git_vpayno/exercism-workspace/cpp/making-the-grade/range.hpp:219:34: warning: do not declare C-style arrays, use std::array<> instead [cppcoreguidelines-avoid-c-arrays,modernize-avoid-c-arrays]
-range_proxy<std::size_t> indices(T (&)[N]) {
-                                 ^
-/home/vpayno/git_vpayno/exercism-workspace/cpp/making-the-grade/range.hpp:219:38: warning: all parameters should be named in a function [readability-named-parameter]
-range_proxy<std::size_t> indices(T (&)[N]) {
-                                     ^
-                                      /*unused*/
 
 
-real	0m14.766s
-user	0m14.659s
-sys	0m0.107s
+real	0m11.981s
+user	0m11.859s
+sys	0m0.119s
 
 ===============================================================================
 

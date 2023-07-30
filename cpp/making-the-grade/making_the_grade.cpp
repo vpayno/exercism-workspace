@@ -7,12 +7,17 @@
 #include <string_view>
 #include <vector>
 
+using score_t = int;
+using scores_t = std::vector<int>;
+using scores_input_t = std::vector<double>;
+using student_names_t = std::vector<std::string>;
+
 // Round down all provided student scores.
-std::vector<int> round_down_scores(std::vector<double> student_scores) {
-    std::vector<int> rounded{};
+scores_t round_down_scores(scores_input_t student_scores) {
+    scores_t rounded{};
     rounded.resize(student_scores.size());
 
-    auto unary_op = [](int score) { return std::lround(score); };
+    auto unary_op = [](score_t score) { return std::lround(score); };
 
     std::transform(student_scores.begin(), student_scores.end(),
                    rounded.begin(), unary_op);
@@ -21,10 +26,10 @@ std::vector<int> round_down_scores(std::vector<double> student_scores) {
 }
 
 // Count the number of failing students out of the group provided.
-int count_failed_students(std::vector<int> student_scores) {
+int count_failed_students(scores_t student_scores) {
     int count{0};
 
-    auto unary_op = [](int score) { return score <= 40; };
+    auto unary_op = [](score_t score) { return score <= 40; };
 
     count = (int)std::count_if(student_scores.begin(), student_scores.end(),
                                unary_op);
@@ -34,12 +39,11 @@ int count_failed_students(std::vector<int> student_scores) {
 
 // Determine how many of the provided student scores were 'the best' based on
 // the provided threshold.
-std::vector<int> above_threshold(std::vector<int> student_scores,
-                                 int threshold) {
-    std::vector<int> result{};
+scores_t above_threshold(scores_t student_scores, score_t threshold) {
+    scores_t result{};
 
     // this is a closure that captures threshold
-    auto unary_op = [threshold](int score) { return score >= threshold; };
+    auto unary_op = [threshold](score_t score) { return score >= threshold; };
 
     std::copy_if(student_scores.begin(), student_scores.end(),
                  std::back_inserter(result), unary_op);
@@ -48,14 +52,14 @@ std::vector<int> above_threshold(std::vector<int> student_scores,
 }
 
 // Create a list of grade thresholds based on the provided highest grade.
-std::array<int, 4> letter_grades(int highest_score) {
-    const int offset =
-        14 - (int)std::lround((double)((100 - highest_score) / 4.0));
-    const int lower = 41;
+std::array<score_t, 4> letter_grades(score_t highest_score) {
+    const score_t offset =
+        14 - (score_t)std::lround((double)((100 - highest_score) / 4.0));
+    const score_t lower = 41;
 
-    int grade = lower;
+    score_t grade = lower;
 
-    std::array<int, 4> grades{grade, 0, 0, 0};
+    std::array<score_t, 4> grades{grade, 0, 0, 0};
 
     bool first = true;
 
@@ -74,7 +78,7 @@ std::array<int, 4> letter_grades(int highest_score) {
 
 // Organize the student's rank, name, and grade information in ascending order.
 std::vector<std::string>
-student_ranking(std::vector<int> student_scores,
+student_ranking(scores_t student_scores,
                 std::vector<std::string> student_names) {
     std::vector<std::string> rankings{};
 
@@ -88,7 +92,7 @@ student_ranking(std::vector<int> student_scores,
 
     std::vector<std::string> str_scores{};
 
-    auto itos_op = [](const int score) { return std::to_string(score); };
+    auto itos_op = [](const score_t score) { return std::to_string(score); };
 
     std::transform(student_scores.begin(), student_scores.end(),
                    std::back_inserter(str_scores), itos_op);
@@ -109,7 +113,7 @@ student_ranking(std::vector<int> student_scores,
 
 // Create a string that contains the name of the first student to make a perfect
 // score on the exam.
-std::string perfect_score(std::vector<int> student_scores,
+std::string perfect_score(scores_t student_scores,
                           std::vector<std::string> student_names) {
     std::string perfect_student;
 
