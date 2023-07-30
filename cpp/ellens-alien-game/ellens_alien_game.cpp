@@ -1,5 +1,8 @@
 namespace targets {
 
+using HealthScore = int;
+// coordinates should be a struct or class
+
 class Alien {
   public:
     // NOLINTNEXTLINE(cppcoreguidelines-non-private-member-variables-in-classes,misc-non-private-member-variables-in-classes)
@@ -9,7 +12,7 @@ class Alien {
 
     Alien(int x_new, int y_new) : x_coordinate(x_new), y_coordinate(y_new) {}
 
-    [[nodiscard]] int get_health() const { return health; }
+    [[nodiscard]] HealthScore get_health() const { return health; }
 
     [[nodiscard]] bool is_alive() const { return health > 0; }
 
@@ -44,7 +47,7 @@ class Alien {
     }
 
   private:
-    int health{3};
+    HealthScore health{3};
     bool shield_up{false};
     bool teleport_blocked{false};
 };
