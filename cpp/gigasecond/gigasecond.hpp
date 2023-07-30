@@ -5,7 +5,10 @@
 
 namespace gigasecond {
 
-boost::posix_time::ptime advance(const boost::posix_time::ptime &date);
+using time = boost::posix_time::ptime;
+using seconds = boost::posix_time::seconds;
+
+time advance(const time &date);
 
 } // namespace gigasecond
 

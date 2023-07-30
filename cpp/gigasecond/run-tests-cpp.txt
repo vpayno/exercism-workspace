@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.006s
-user	0m0.002s
-sys	0m0.004s
+real	0m0.013s
+user	0m0.003s
+sys	0m0.010s
 
 ===============================================================================
 
@@ -79,65 +79,65 @@ TOTAL                                         67      55    82%
 lines: 82.1% (55 out of 67)
 branches: 39.0% (53 out of 136)
 
-real	0m13.077s
-user	0m12.117s
-sys	0m0.930s
+real	0m12.069s
+user	0m11.159s
+sys	0m0.900s
 
 ===============================================================================
 
 cmake-format --in-place CMakeLists.txt
+WARNING config_util.py:307: The following configuration options were ignored:
+  max_subargs_per_line
 
-real	0m0.147s
-user	0m0.109s
-sys	0m0.040s
+real	0m0.167s
+user	0m0.126s
+sys	0m0.043s
 
 ===============================================================================
 
 cmake-lint CMakeLists.txt
+WARNING The following configuration options were ignored:
+  max_subargs_per_line
 CMakeLists.txt
 ==============
 CMakeLists.txt:11,04: [C0103] Invalid directory variable name "Boost_USE_MULTITHREADED" doesn't match `[A-Z][0-9A-Z_]+|_[0-9a-z_]+`
 CMakeLists.txt:12,04: [C0103] Invalid directory variable name "Boost_USE_STATIC_RUNTIME" doesn't match `[A-Z][0-9A-Z_]+|_[0-9a-z_]+`
 CMakeLists.txt:20,06: [C0103] Invalid directory variable name "exercise_cpp" doesn't match `[A-Z][0-9A-Z_]+|_[0-9a-z_]+`
 CMakeLists.txt:22,06: [C0103] Invalid directory variable name "exercise_cpp" doesn't match `[A-Z][0-9A-Z_]+|_[0-9a-z_]+`
-CMakeLists.txt:69,70: [C0307] Bad indentation:
-                                               )
-  ^----BodyNode: 1:0->IfBlockNode: 67:0->BodyNode: 67:11->StatementNode: 68:2->TreeNode: 69:70
-
-CMakeLists.txt:74,02: [C0113] Missing COMMENT in statement which allows it
+CMakeLists.txt:69,02: [C0113] Missing COMMENT in statement which allows it
 
 Summary
 =======
 files scanned: 1
 found lint:
-  Convention: 6
+  Convention: 5
 
 
 real	0m0.167s
-user	0m0.113s
-sys	0m0.056s
+user	0m0.128s
+sys	0m0.041s
 
 ===============================================================================
 
 Running: clang-format-16 -style=file -i ./gigasecond.cpp ./gigasecond_test.cpp ./gigasecond.hpp
 
-real	0m0.018s
-user	0m0.010s
-sys	0m0.008s
+real	0m0.019s
+user	0m0.011s
+sys	0m0.007s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
 clang-check-16 --analyze ./gigasecond.cpp ./gigasecond_test.cpp ./gigasecond.hpp
 
-real	0m4.384s
-user	0m4.257s
-sys	0m0.125s
+real	0m4.921s
+user	0m4.786s
+sys	0m0.132s
 
 
-real	0m4.386s
-user	0m4.257s
-sys	0m0.127s
+real	0m4.923s
+user	0m4.787s
+sys	0m0.132s
 
 ===============================================================================
 
@@ -148,15 +148,15 @@ Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 Suppressed 166486 warnings (166481 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 
-real	0m34.626s
-user	0m34.430s
-sys	0m0.194s
+real	0m31.711s
+user	0m31.520s
+sys	0m0.181s
 Running: clang-tidy-16 ./gigasecond.cpp ./gigasecond_test.cpp ./gigasecond.hpp
 
 
-real	0m34.628s
-user	0m34.431s
-sys	0m0.196s
+real	0m31.712s
+user	0m31.520s
+sys	0m0.184s
 
 ===============================================================================
 
