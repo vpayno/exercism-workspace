@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.012s
-user	0m0.003s
-sys	0m0.008s
+real	0m0.010s
+user	0m0.001s
+sys	0m0.009s
 
 ===============================================================================
 
@@ -218,89 +218,93 @@ TOTAL                                        133     132    99%
 lines: 99.2% (132 out of 133)
 branches: 42.5% (125 out of 294)
 
-real	0m9.547s
-user	0m8.711s
-sys	0m0.818s
+real	0m9.601s
+user	0m8.684s
+sys	0m0.916s
 
 ===============================================================================
 
 cmake-format --in-place CMakeLists.txt
+WARNING config_util.py:307: The following configuration options were ignored:
+  max_subargs_per_line
 
-real	0m0.143s
-user	0m0.098s
-sys	0m0.047s
+real	0m0.162s
+user	0m0.121s
+sys	0m0.043s
 
 ===============================================================================
 
 cmake-lint CMakeLists.txt
+WARNING The following configuration options were ignored:
+  max_subargs_per_line
 CMakeLists.txt
 ==============
 CMakeLists.txt:15,06: [C0103] Invalid directory variable name "exercise_cpp" doesn't match `[A-Z][0-9A-Z_]+|_[0-9a-z_]+`
 CMakeLists.txt:17,06: [C0103] Invalid directory variable name "exercise_cpp" doesn't match `[A-Z][0-9A-Z_]+|_[0-9a-z_]+`
-CMakeLists.txt:61,70: [C0307] Bad indentation:
-                                               )
-  ^----BodyNode: 1:0->IfBlockNode: 59:0->BodyNode: 59:11->StatementNode: 60:2->TreeNode: 61:70
-
-CMakeLists.txt:66,02: [C0113] Missing COMMENT in statement which allows it
+CMakeLists.txt:61,02: [C0113] Missing COMMENT in statement which allows it
 
 Summary
 =======
 files scanned: 1
 found lint:
-  Convention: 4
+  Convention: 3
 
 
-real	0m0.148s
-user	0m0.114s
-sys	0m0.036s
+real	0m0.181s
+user	0m0.128s
+sys	0m0.056s
 
 ===============================================================================
 
 Running: clang-format-16 -style=file -i ./high_scores.cpp ./high_scores_test.cpp ./high_scores.hpp
 
-real	0m0.020s
-user	0m0.013s
-sys	0m0.007s
+real	0m0.021s
+user	0m0.011s
+sys	0m0.009s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
 clang-check-16 --analyze ./high_scores.cpp ./high_scores_test.cpp ./high_scores.hpp
 
-real	0m2.694s
-user	0m2.600s
-sys	0m0.093s
+real	0m2.833s
+user	0m2.735s
+sys	0m0.097s
 
 
-real	0m2.696s
-user	0m2.600s
-sys	0m0.095s
+real	0m2.835s
+user	0m2.736s
+sys	0m0.098s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 24765 warnings generated.
-60134 warnings generated.
-76450 warnings generated.
-Suppressed 76453 warnings (76448 in non-user code, 5 NOLINT).
+60135 warnings generated.
+76451 warnings generated.
+Suppressed 76459 warnings (76448 in non-user code, 11 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 
-real	0m11.617s
-user	0m11.481s
-sys	0m0.136s
+real	0m11.997s
+user	0m11.879s
+sys	0m0.118s
 Running: clang-tidy-16 ./high_scores.cpp ./high_scores_test.cpp ./high_scores.hpp
 /home/vpayno/git_vpayno/exercism-workspace/cpp/high-scores/high_scores_test.cpp:13:5: warning: variable 'scores' of type 'std::vector<int>' can be declared 'const' [misc-const-correctness]
     std::vector<int> scores{30, 50, 20, 70};
     ^
                      const 
+/home/vpayno/git_vpayno/exercism-workspace/cpp/high-scores/high_scores_test.cpp:14:5: warning: variable 'hs' of type 'arcade::HighScores' can be declared 'const' [misc-const-correctness]
+    arcade::HighScores hs{scores};
+    ^
+                       const 
 /home/vpayno/git_vpayno/exercism-workspace/cpp/high-scores/high_scores_test.cpp:14:24: warning: variable name 'hs' is too short, expected at least 3 characters [readability-identifier-length]
     arcade::HighScores hs{scores};
                        ^
 
 
-real	0m11.619s
-user	0m11.481s
-sys	0m0.139s
+real	0m11.999s
+user	0m11.881s
+sys	0m0.118s
 
 ===============================================================================
 

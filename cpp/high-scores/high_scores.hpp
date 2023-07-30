@@ -7,20 +7,27 @@
 
 namespace arcade {
 
+using score_t = int;
+using scores_t = std::vector<score_t>;
+
 class HighScores {
-  private:
-    std::vector<int> scores;
-
   public:
-    HighScores(std::vector<int> scores) : scores(std::move(scores)){};
+    HighScores(scores_t _scores) : _scores(std::move(_scores)){};
 
-    std::vector<int> list_scores();
+    [[nodiscard]] scores_t list_scores() const;
 
-    int latest_score();
+    [[nodiscard]] score_t latest_score() const;
 
-    int personal_best();
+    // tests are calling functions and not capturing results :)
+    // NOLINTNEXTLINE(modernize-use-nodiscard)
+    score_t personal_best() const;
 
-    std::vector<int> top_three();
+    // tests are calling functions and not capturing results :)
+    // NOLINTNEXTLINE(modernize-use-nodiscard)
+    scores_t top_three() const;
+
+  private:
+    scores_t _scores;
 };
 
 } // namespace arcade

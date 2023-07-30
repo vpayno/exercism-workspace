@@ -5,27 +5,29 @@
 namespace arcade {
 
 // Return all scores for this session.
-std::vector<int> HighScores::list_scores() { return scores; }
+scores_t HighScores::list_scores() const { return _scores; }
 
 // Return the latest score for this session.
-int HighScores::latest_score() { return scores.back(); }
+score_t HighScores::latest_score() const { return _scores.back(); }
 
 // Return the highest score for this session.
-int HighScores::personal_best() {
-    return *std::max_element(scores.begin(), scores.end());
+score_t HighScores::personal_best() const {
+    return *std::max_element(_scores.begin(), _scores.end());
 }
 
 // Return the top 3 scores for this session in descending order.
-std::vector<int> HighScores::top_three() {
-    std::vector<int> sorted(scores.size());
-    std::partial_sort_copy(scores.begin(), scores.end(), sorted.begin(),
-                           sorted.end(), std::greater<>());
+scores_t HighScores::top_three() const {
+    scores_t sorted_scores(_scores.size());
 
-    if (scores.size() >= 3) {
-        return {sorted.begin(), sorted.begin() + 3};
+    std::partial_sort_copy(_scores.begin(), _scores.end(),
+                           sorted_scores.begin(), sorted_scores.end(),
+                           std::greater<>());
+
+    if (_scores.size() >= 3) {
+        return {sorted_scores.begin(), sorted_scores.begin() + 3};
     }
 
-    return sorted;
+    return sorted_scores;
 }
 
 } // namespace arcade
