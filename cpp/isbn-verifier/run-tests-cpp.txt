@@ -1,0 +1,173 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: make clean
+rm -rf ./build
+
+real	0m0.010s
+user	0m0.000s
+sys	0m0.010s
+
+===============================================================================
+
+export LDFLAGS="-lgcov --coverage" CXXFLAGS="--coverage"
+
+===============================================================================
+
+Running: make coverage | ansifilter
+rm -rf ./build
+mkdir -pv ./build
+mkdir: created directory './build'
+
+cd ./build; export LDFLAGS="-lgcov --coverage" CXXFLAGS="--coverage"; cmake -DEXERCISM_RUN_ALL_TESTS=1 -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -G 'Unix Makefiles' ../; if make; then printf "\n=== All Tests Passed ===\n"; else printf "\n=== Test Failure ===\n"; false; fi
+-- The CXX compiler identification is GNU 10.2.1
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/vpayno/git_vpayno/exercism-workspace/cpp/isbn-verifier/build
+make[1]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/isbn-verifier/build'
+make[2]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/isbn-verifier/build'
+make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/isbn-verifier/build'
+make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/isbn-verifier/build'
+make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/isbn-verifier/build'
+[ 25%] Building CXX object CMakeFiles/isbn-verifier.dir/isbn_verifier_test.cpp.o
+[ 50%] Building CXX object CMakeFiles/isbn-verifier.dir/isbn_verifier.cpp.o
+[ 75%] Building CXX object CMakeFiles/isbn-verifier.dir/test/tests-main.cpp.o
+[100%] Linking CXX executable isbn-verifier
+make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/isbn-verifier/build'
+[100%] Built target isbn-verifier
+make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/isbn-verifier/build'
+make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/isbn-verifier/build'
+make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/isbn-verifier/build'
+===============================================================================
+All tests passed (19 assertions in 19 test cases)
+
+make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/isbn-verifier/build'
+[100%] Built target test_isbn-verifier
+make[2]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/isbn-verifier/build'
+make[1]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/isbn-verifier/build'
+
+=== All Tests Passed ===
+
+find . -regextype posix-egrep -regex "^.*(tests-main|CompilerId).*[.](gcda|gcno)$" -print -delete
+./build/CMakeFiles/3.22.2/CompilerIdCXX/CMakeCXXCompilerId.gcno
+./build/CMakeFiles/isbn-verifier.dir/test/tests-main.cpp.gcno
+./build/CMakeFiles/isbn-verifier.dir/test/tests-main.cpp.gcda
+
+find . -regextype posix-egrep -regex "^.*[.](gcda|gcno)9260"
+
+gcovr --print-summary
+------------------------------------------------------------------------------
+                           GCC Code Coverage Report
+Directory: .
+------------------------------------------------------------------------------
+File                                       Lines    Exec  Cover   Missing
+------------------------------------------------------------------------------
+isbn_verifier.cpp                             29      29   100%   
+isbn_verifier_test.cpp                        57      57   100%   
+test/catch.hpp                                34      29    85%   1642-1643,2301-2302,2560
+------------------------------------------------------------------------------
+TOTAL                                        120     115    95%
+------------------------------------------------------------------------------
+lines: 95.8% (115 out of 120)
+branches: 41.1% (156 out of 380)
+
+real	0m11.865s
+user	0m10.990s
+sys	0m0.875s
+
+===============================================================================
+
+cmake-format --in-place CMakeLists.txt
+WARNING config_util.py:307: The following configuration options were ignored:
+  max_subargs_per_line
+
+real	0m0.163s
+user	0m0.115s
+sys	0m0.050s
+
+===============================================================================
+
+cmake-lint CMakeLists.txt
+WARNING The following configuration options were ignored:
+  max_subargs_per_line
+CMakeLists.txt
+==============
+CMakeLists.txt:15,06: [C0103] Invalid directory variable name "exercise_cpp" doesn't match `[A-Z][0-9A-Z_]+|_[0-9a-z_]+`
+CMakeLists.txt:17,06: [C0103] Invalid directory variable name "exercise_cpp" doesn't match `[A-Z][0-9A-Z_]+|_[0-9a-z_]+`
+CMakeLists.txt:61,02: [C0113] Missing COMMENT in statement which allows it
+
+Summary
+=======
+files scanned: 1
+found lint:
+  Convention: 3
+
+
+real	0m0.171s
+user	0m0.131s
+sys	0m0.042s
+
+===============================================================================
+
+Running: clang-format-16 -style=file -i ./isbn_verifier.cpp ./isbn_verifier_test.cpp ./isbn_verifier.h
+
+real	0m0.025s
+user	0m0.010s
+sys	0m0.015s
+
+===============================================================================
+
+Running: ../../.github/citools/cpp/clang-check
+clang-check-16 --analyze ./isbn_verifier.cpp ./isbn_verifier_test.cpp ./isbn_verifier.h
+error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
+error: invalid argument '-std=c++17' not allowed with 'C'
+/home/vpayno/git_vpayno/exercism-workspace/cpp/isbn-verifier/isbn_verifier.h:6:10: fatal error: 'numeric' file not found
+#include <numeric>
+         ^~~~~~~~~
+1 error generated.
+Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/isbn-verifier/isbn_verifier.h.
+
+real	0m3.244s
+user	0m3.151s
+sys	0m0.092s
+
+
+real	0m3.246s
+user	0m3.152s
+sys	0m0.093s
+
+===============================================================================
+
+Running: ../../.github/citools/cpp/clang-tidy | head -n 100
+36631 warnings generated.
+80824 warnings generated.
+80824 warnings and 3 errors generated.
+Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/isbn-verifier/isbn_verifier.h.
+Suppressed 80829 warnings (80824 in non-user code, 5 NOLINT).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+Found compiler error(s).
+
+real	0m17.414s
+user	0m17.240s
+sys	0m0.172s
+Running: clang-tidy-16 ./isbn_verifier.cpp ./isbn_verifier_test.cpp ./isbn_verifier.h
+error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
+error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
+/home/vpayno/git_vpayno/exercism-workspace/cpp/isbn-verifier/isbn_verifier.h:6:10: error: 'numeric' file not found [clang-diagnostic-error]
+#include <numeric>
+         ^~~~~~~~~
+
+
+real	0m17.417s
+user	0m17.241s
+sys	0m0.175s
+
+===============================================================================
+

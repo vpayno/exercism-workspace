@@ -59,3 +59,8 @@ For instance `3-598-21507-X` is a valid ISBN-10.
 ### Based on
 
 Converting a string into a number and some basic processing utilizing a relatable real world example. - https://en.wikipedia.org/wiki/International_Standard_Book_Number#ISBN-10_check_digit_calculation
+
+### My Solution
+
+- [my solution]()
+- [run-tests](./run-tests-cpp.txt)
