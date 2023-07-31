@@ -63,3 +63,8 @@ Learn more about [Roman numberals on Wikipedia][roman-numerals].
 ### Based on
 
 The Roman Numeral Kata - https://codingdojo.org/kata/RomanNumerals/
+
+### My Solution
+
+- [my solution]()
+- [run-tests](./run-tests-cpp.txt)
