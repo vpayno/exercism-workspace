@@ -72,3 +72,8 @@ If you aren't sure what binary is or how it works, check out [this binary tutori
 ### Based on
 
 Bert, in Mary Poppins - http://www.imdb.com/title/tt0058331/quotes/qt0437047
+
+### My Solution
+
+- [my solution]()
+- [run-tests](./run-tests-cpp.txt)
