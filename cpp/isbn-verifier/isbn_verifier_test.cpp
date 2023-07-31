@@ -1,4 +1,4 @@
-#include "isbn_verifier.h"
+#include "isbn_verifier.hpp"
 #ifdef EXERCISM_TEST_SUITE
 #include <catch2/catch.hpp>
 #else

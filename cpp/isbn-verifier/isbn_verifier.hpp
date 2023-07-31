@@ -1,7 +1,5 @@
-#if !defined(ISBN_VERIFIER_H)
-#define ISBN_VERIFIER_H
-
-// this isn't a c++ header file
+#if !defined(ISBN_VERIFIER_HPP)
+#define ISBN_VERIFIER_HPP
 
 #include <numeric>
 #include <regex>
@@ -15,4 +13,4 @@ bool is_valid(isbn_number_t number);
 
 } // namespace isbn_verifier
 
-#endif // ISBN_VERIFIER_H
+#endif // ISBN_VERIFIER_HPP

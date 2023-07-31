@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.010s
-user	0m0.000s
-sys	0m0.010s
+real	0m0.011s
+user	0m0.002s
+sys	0m0.007s
 
 ===============================================================================
 
@@ -70,17 +70,17 @@ Directory: .
 File                                       Lines    Exec  Cover   Missing
 ------------------------------------------------------------------------------
 isbn_verifier.cpp                             29      29   100%   
-isbn_verifier_test.cpp                        57      57   100%   
+isbn_verifier_test.cpp                        51      51   100%   
 test/catch.hpp                                34      29    85%   1642-1643,2301-2302,2560
 ------------------------------------------------------------------------------
-TOTAL                                        120     115    95%
+TOTAL                                        114     109    95%
 ------------------------------------------------------------------------------
-lines: 95.8% (115 out of 120)
+lines: 95.6% (109 out of 114)
 branches: 41.1% (156 out of 380)
 
-real	0m11.865s
-user	0m10.990s
-sys	0m0.875s
+real	0m12.048s
+user	0m11.206s
+sys	0m0.836s
 
 ===============================================================================
 
@@ -88,9 +88,9 @@ cmake-format --in-place CMakeLists.txt
 WARNING config_util.py:307: The following configuration options were ignored:
   max_subargs_per_line
 
-real	0m0.163s
-user	0m0.115s
-sys	0m0.050s
+real	0m0.158s
+user	0m0.117s
+sys	0m0.043s
 
 ===============================================================================
 
@@ -110,64 +110,50 @@ found lint:
   Convention: 3
 
 
-real	0m0.171s
-user	0m0.131s
-sys	0m0.042s
+real	0m0.173s
+user	0m0.139s
+sys	0m0.037s
 
 ===============================================================================
 
-Running: clang-format-16 -style=file -i ./isbn_verifier.cpp ./isbn_verifier_test.cpp ./isbn_verifier.h
+Running: clang-format-16 -style=file -i ./isbn_verifier.cpp ./isbn_verifier_test.cpp ./isbn_verifier.hpp
 
-real	0m0.025s
-user	0m0.010s
-sys	0m0.015s
+real	0m0.028s
+user	0m0.014s
+sys	0m0.014s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./isbn_verifier.cpp ./isbn_verifier_test.cpp ./isbn_verifier.h
-error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
-error: invalid argument '-std=c++17' not allowed with 'C'
-/home/vpayno/git_vpayno/exercism-workspace/cpp/isbn-verifier/isbn_verifier.h:6:10: fatal error: 'numeric' file not found
-#include <numeric>
-         ^~~~~~~~~
-1 error generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/isbn-verifier/isbn_verifier.h.
+clang-check-16 --analyze ./isbn_verifier.cpp ./isbn_verifier_test.cpp ./isbn_verifier.hpp
 
-real	0m3.244s
-user	0m3.151s
-sys	0m0.092s
+real	0m3.501s
+user	0m3.396s
+sys	0m0.105s
 
 
-real	0m3.246s
-user	0m3.152s
-sys	0m0.093s
+real	0m3.503s
+user	0m3.397s
+sys	0m0.106s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 36631 warnings generated.
 80824 warnings generated.
-80824 warnings and 3 errors generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/isbn-verifier/isbn_verifier.h.
-Suppressed 80829 warnings (80824 in non-user code, 5 NOLINT).
+116239 warnings generated.
+Suppressed 116244 warnings (116239 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-Found compiler error(s).
 
-real	0m17.414s
-user	0m17.240s
-sys	0m0.172s
-Running: clang-tidy-16 ./isbn_verifier.cpp ./isbn_verifier_test.cpp ./isbn_verifier.h
-error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
-error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
-/home/vpayno/git_vpayno/exercism-workspace/cpp/isbn-verifier/isbn_verifier.h:6:10: error: 'numeric' file not found [clang-diagnostic-error]
-#include <numeric>
-         ^~~~~~~~~
+real	0m21.584s
+user	0m21.439s
+sys	0m0.142s
+Running: clang-tidy-16 ./isbn_verifier.cpp ./isbn_verifier_test.cpp ./isbn_verifier.hpp
 
 
-real	0m17.417s
-user	0m17.241s
-sys	0m0.175s
+real	0m21.586s
+user	0m21.442s
+sys	0m0.142s
 
 ===============================================================================
 
