@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.013s
-user	0m0.001s
-sys	0m0.009s
+real	0m0.008s
+user	0m0.002s
+sys	0m0.006s
 
 ===============================================================================
 
@@ -69,18 +69,18 @@ Directory: .
 ------------------------------------------------------------------------------
 File                                       Lines    Exec  Cover   Missing
 ------------------------------------------------------------------------------
-roman_numerals.cpp                             9       8    88%   9
-roman_numerals_test.cpp                       78      78   100%   
+roman_numerals.cpp                            10       9    90%   9
+roman_numerals_test.cpp                       36      36   100%   
 test/catch.hpp                                34      27    79%   1642-1643,1710-1711,2227,2229,2560
 ------------------------------------------------------------------------------
-TOTAL                                        121     113    93%
+TOTAL                                         80      72    90%
 ------------------------------------------------------------------------------
-lines: 93.4% (113 out of 121)
+lines: 90.0% (72 out of 80)
 branches: 37.9% (169 out of 446)
 
-real	0m14.733s
-user	0m13.473s
-sys	0m1.257s
+real	0m9.895s
+user	0m9.074s
+sys	0m0.822s
 
 ===============================================================================
 
@@ -88,9 +88,9 @@ cmake-format --in-place CMakeLists.txt
 WARNING config_util.py:307: The following configuration options were ignored:
   max_subargs_per_line
 
-real	0m0.182s
-user	0m0.142s
-sys	0m0.042s
+real	0m0.158s
+user	0m0.118s
+sys	0m0.043s
 
 ===============================================================================
 
@@ -110,64 +110,50 @@ found lint:
   Convention: 3
 
 
-real	0m0.237s
-user	0m0.181s
-sys	0m0.059s
+real	0m0.412s
+user	0m0.297s
+sys	0m0.090s
 
 ===============================================================================
 
-Running: clang-format-16 -style=file -i ./roman_numerals.cpp ./roman_numerals_test.cpp ./roman_numerals.h
+Running: clang-format-16 -style=file -i ./roman_numerals.cpp ./roman_numerals_test.cpp ./roman_numerals.hpp
 
-real	0m0.050s
-user	0m0.032s
-sys	0m0.018s
+real	0m0.019s
+user	0m0.007s
+sys	0m0.012s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./roman_numerals.cpp ./roman_numerals_test.cpp ./roman_numerals.h
-error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
-error: invalid argument '-std=c++17' not allowed with 'C'
-/home/vpayno/git_vpayno/exercism-workspace/cpp/roman-numerals/roman_numerals.h:4:10: fatal error: 'map' file not found
-#include <map>
-         ^~~~~
-1 error generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/roman-numerals/roman_numerals.h.
+clang-check-16 --analyze ./roman_numerals.cpp ./roman_numerals_test.cpp ./roman_numerals.hpp
 
-real	0m0.738s
-user	0m0.688s
-sys	0m0.049s
+real	0m0.729s
+user	0m0.692s
+sys	0m0.037s
 
 
-real	0m0.741s
-user	0m0.688s
-sys	0m0.052s
+real	0m0.731s
+user	0m0.694s
+sys	0m0.037s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 14916 warnings generated.
 51990 warnings generated.
-51990 warnings and 3 errors generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/roman-numerals/roman_numerals.h.
-Suppressed 51995 warnings (51990 in non-user code, 5 NOLINT).
+66902 warnings generated.
+Suppressed 66907 warnings (66902 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-Found compiler error(s).
 
-real	0m8.071s
-user	0m7.994s
-sys	0m0.076s
-Running: clang-tidy-16 ./roman_numerals.cpp ./roman_numerals_test.cpp ./roman_numerals.h
-error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
-error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
-/home/vpayno/git_vpayno/exercism-workspace/cpp/roman-numerals/roman_numerals.h:4:10: error: 'map' file not found [clang-diagnostic-error]
-#include <map>
-         ^~~~~
+real	0m9.360s
+user	0m9.266s
+sys	0m0.093s
+Running: clang-tidy-16 ./roman_numerals.cpp ./roman_numerals_test.cpp ./roman_numerals.hpp
 
 
-real	0m8.073s
-user	0m7.994s
-sys	0m0.079s
+real	0m9.362s
+user	0m9.266s
+sys	0m0.095s
 
 ===============================================================================
 

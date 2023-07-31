@@ -1,4 +1,4 @@
-#include "roman_numerals.h"
+#include "roman_numerals.hpp"
 #ifdef EXERCISM_TEST_SUITE
 #include <catch2/catch.hpp>
 #else

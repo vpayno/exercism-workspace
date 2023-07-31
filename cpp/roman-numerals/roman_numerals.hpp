@@ -1,5 +1,5 @@
-#if !defined(ROMAN_NUMERALS_H)
-#define ROMAN_NUMERALS_H
+#if !defined(ROMAN_NUMERALS_HPP)
+#define ROMAN_NUMERALS_HPP
 
 #include <map>
 #include <string>
@@ -24,4 +24,4 @@ roman_number_t convert(decimal_t number);
 
 } // namespace roman_numerals
 
-#endif // ROMAN_NUMERALS_H
+#endif // ROMAN_NUMERALS_HPP
