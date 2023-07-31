@@ -1,4 +1,4 @@
-#include "secret_handshake.h"
+#include "secret_handshake.hpp"
 
 namespace secret_handshake {
 

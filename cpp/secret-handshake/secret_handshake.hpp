@@ -1,5 +1,5 @@
-#if !defined(SECRET_HANDSHAKE_H)
-#define SECRET_HANDSHAKE_H
+#if !defined(SECRET_HANDSHAKE_HPP)
+#define SECRET_HANDSHAKE_HPP
 
 #include <algorithm>
 #include <map>
@@ -33,4 +33,4 @@ steps_t commands(commands_t commands);
 
 } // namespace secret_handshake
 
-#endif // SECRET_HANDSHAKE_H
+#endif // SECRET_HANDSHAKE_HPP

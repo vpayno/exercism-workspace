@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.008s
-user	0m0.001s
-sys	0m0.007s
+real	0m0.012s
+user	0m0.002s
+sys	0m0.011s
 
 ===============================================================================
 
@@ -78,9 +78,9 @@ TOTAL                                         98      76    77%
 lines: 77.6% (76 out of 98)
 branches: 41.0% (133 out of 324)
 
-real	0m9.976s
-user	0m9.184s
-sys	0m0.780s
+real	0m9.668s
+user	0m8.968s
+sys	0m0.693s
 
 ===============================================================================
 
@@ -88,9 +88,9 @@ cmake-format --in-place CMakeLists.txt
 WARNING config_util.py:307: The following configuration options were ignored:
   max_subargs_per_line
 
-real	0m0.157s
-user	0m0.116s
-sys	0m0.043s
+real	0m0.150s
+user	0m0.108s
+sys	0m0.044s
 
 ===============================================================================
 
@@ -110,64 +110,50 @@ found lint:
   Convention: 3
 
 
-real	0m0.174s
-user	0m0.130s
-sys	0m0.046s
+real	0m0.176s
+user	0m0.122s
+sys	0m0.056s
 
 ===============================================================================
 
-Running: clang-format-16 -style=file -i ./secret_handshake.cpp ./secret_handshake_test.cpp ./secret_handshake.h
+Running: clang-format-16 -style=file -i ./secret_handshake.cpp ./secret_handshake_test.cpp ./secret_handshake.hpp
 
-real	0m0.021s
-user	0m0.011s
-sys	0m0.010s
+real	0m0.023s
+user	0m0.010s
+sys	0m0.013s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./secret_handshake.cpp ./secret_handshake_test.cpp ./secret_handshake.h
-error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
-error: invalid argument '-std=c++17' not allowed with 'C'
-/home/vpayno/git_vpayno/exercism-workspace/cpp/secret-handshake/secret_handshake.h:4:10: fatal error: 'algorithm' file not found
-#include <algorithm>
-         ^~~~~~~~~~~
-1 error generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/secret-handshake/secret_handshake.h.
+clang-check-16 --analyze ./secret_handshake.cpp ./secret_handshake_test.cpp ./secret_handshake.hpp
 
-real	0m0.713s
-user	0m0.667s
-sys	0m0.045s
+real	0m0.904s
+user	0m0.863s
+sys	0m0.040s
 
 
-real	0m0.714s
-user	0m0.668s
-sys	0m0.046s
+real	0m0.906s
+user	0m0.865s
+sys	0m0.040s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 22976 warnings generated.
 60054 warnings generated.
-60054 warnings and 3 errors generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/secret-handshake/secret_handshake.h.
-Suppressed 60059 warnings (60054 in non-user code, 5 NOLINT).
+82989 warnings generated.
+Suppressed 82994 warnings (82989 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-Found compiler error(s).
 
-real	0m8.631s
-user	0m8.559s
-sys	0m0.070s
-Running: clang-tidy-16 ./secret_handshake.cpp ./secret_handshake_test.cpp ./secret_handshake.h
-error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
-error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
-/home/vpayno/git_vpayno/exercism-workspace/cpp/secret-handshake/secret_handshake.h:4:10: error: 'algorithm' file not found [clang-diagnostic-error]
-#include <algorithm>
-         ^~~~~~~~~~~
+real	0m11.388s
+user	0m11.297s
+sys	0m0.090s
+Running: clang-tidy-16 ./secret_handshake.cpp ./secret_handshake_test.cpp ./secret_handshake.hpp
 
 
-real	0m8.634s
-user	0m8.561s
-sys	0m0.073s
+real	0m11.390s
+user	0m11.297s
+sys	0m0.092s
 
 ===============================================================================
 

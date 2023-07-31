@@ -3,7 +3,7 @@
 #else
 #include "test/catch.hpp"
 #endif
-#include "secret_handshake.h"
+#include "secret_handshake.hpp"
 #include <string>
 #include <vector>
 
