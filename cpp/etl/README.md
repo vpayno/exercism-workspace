@@ -67,3 +67,8 @@ If you want to look at how the data was previously structured and how it needs t
 ### Based on
 
 The Jumpstart Lab team - http://jumpstartlab.com
+
+### My Solution
+
+- [my solution]()
+- [run-tests](./run-tests-cpp.txt)
