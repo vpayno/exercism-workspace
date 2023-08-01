@@ -1,0 +1,411 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: make clean
+rm -rf ./build
+
+real	0m0.008s
+user	0m0.003s
+sys	0m0.005s
+
+===============================================================================
+
+export LDFLAGS="-lgcov --coverage" CXXFLAGS="--coverage"
+
+===============================================================================
+
+Running: make coverage | ansifilter
+rm -rf ./build
+mkdir -pv ./build
+mkdir: created directory './build'
+
+cd ./build; export LDFLAGS="-lgcov --coverage" CXXFLAGS="--coverage"; cmake -DEXERCISM_RUN_ALL_TESTS=1 -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -G 'Unix Makefiles' ../; if make; then printf "\n=== All Tests Passed ===\n"; else printf "\n=== Test Failure ===\n"; false; fi
+-- The CXX compiler identification is GNU 10.2.1
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/vpayno/git_vpayno/exercism-workspace/cpp/phone-number/build
+make[1]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/phone-number/build'
+make[2]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/phone-number/build'
+make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/phone-number/build'
+make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/phone-number/build'
+make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/phone-number/build'
+[ 25%] Building CXX object CMakeFiles/phone-number.dir/phone_number_test.cpp.o
+[ 50%] Building CXX object CMakeFiles/phone-number.dir/phone_number.cpp.o
+[ 75%] Building CXX object CMakeFiles/phone-number.dir/test/tests-main.cpp.o
+[100%] Linking CXX executable phone-number
+make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/phone-number/build'
+[100%] Built target phone-number
+make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/phone-number/build'
+make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/phone-number/build'
+make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/phone-number/build'
+
+vvv===============================================================================vvv
+validate number: [(223) 456-7890]
+validate: digit_count: 10
+validate: letters_count: 0
+validate: punct_count: 0
+eleven digits: 12234567890
+converting from 11 to 10 digits: [12234567890] [2234567890]
+ten digits: 2234567890
+area code starts with 0? (2) no
+area code starts with 1? (2) no
+exchange code starts with 0? (4) no
+exchange code starts with 1? (4) no
+dirty: [(223) 456-7890]
+cleaned: [2234567890]
+storing: [2234567890]
+_number: [2234567890]
+
+vvv===============================================================================vvv
+validate number: [223.456.7890]
+validate: digit_count: 10
+validate: letters_count: 0
+validate: punct_count: 0
+eleven digits: 12234567890
+converting from 11 to 10 digits: [12234567890] [2234567890]
+ten digits: 2234567890
+area code starts with 0? (2) no
+area code starts with 1? (2) no
+exchange code starts with 0? (4) no
+exchange code starts with 1? (4) no
+dirty: [223.456.7890]
+cleaned: [2234567890]
+storing: [2234567890]
+_number: [2234567890]
+
+vvv===============================================================================vvv
+validate number: [223 456   7890   ]
+validate: digit_count: 10
+validate: letters_count: 0
+validate: punct_count: 0
+eleven digits: 12234567890
+converting from 11 to 10 digits: [12234567890] [2234567890]
+ten digits: 2234567890
+area code starts with 0? (2) no
+area code starts with 1? (2) no
+exchange code starts with 0? (4) no
+exchange code starts with 1? (4) no
+dirty: [223 456   7890   ]
+cleaned: [2234567890]
+storing: [2234567890]
+_number: [2234567890]
+
+vvv===============================================================================vvv
+validate number: [+1 (223) 456-7890]
+validate: digit_count: 11
+validate: letters_count: 0
+validate: punct_count: 0
+eleven digits: 12234567890
+converting from 11 to 10 digits: [12234567890] [2234567890]
+ten digits: 2234567890
+area code starts with 0? (2) no
+area code starts with 1? (2) no
+exchange code starts with 0? (4) no
+exchange code starts with 1? (4) no
+dirty: [+1 (223) 456-7890]
+cleaned: [12234567890]
+storing: [2234567890]
+area code: [223]
+
+vvv===============================================================================vvv
+validate number: [+1 (223) 456-7890]
+validate: digit_count: 11
+validate: letters_count: 0
+validate: punct_count: 0
+eleven digits: 12234567890
+converting from 11 to 10 digits: [12234567890] [2234567890]
+ten digits: 2234567890
+area code starts with 0? (2) no
+area code starts with 1? (2) no
+exchange code starts with 0? (4) no
+exchange code starts with 1? (4) no
+dirty: [+1 (223) 456-7890]
+cleaned: [12234567890]
+storing: [2234567890]
+area code: [223]
+exchange: [456]
+subscriber: [7890]
+
+vvv===============================================================================vvv
+validate number: [123456789]
+validate: digit_count: 9
+
+vvv===============================================================================vvv
+validate number: [22234567890]
+validate: digit_count: 11
+validate: letters_count: 0
+validate: punct_count: 0
+eleven digits: 22234567890
+converting from 11 to 10 digits: [22234567890] [2234567890]
+ten digits: 2234567890
+
+vvv===============================================================================vvv
+validate number: [12234567890]
+validate: digit_count: 11
+validate: letters_count: 0
+validate: punct_count: 0
+eleven digits: 12234567890
+converting from 11 to 10 digits: [12234567890] [2234567890]
+ten digits: 2234567890
+area code starts with 0? (2) no
+area code starts with 1? (2) no
+exchange code starts with 0? (4) no
+exchange code starts with 1? (4) no
+dirty: [12234567890]
+cleaned: [12234567890]
+storing: [2234567890]
+_number: [2234567890]
+
+vvv===============================================================================vvv
+validate number: [+1 (223) 456-7890]
+validate: digit_count: 11
+validate: letters_count: 0
+validate: punct_count: 0
+eleven digits: 12234567890
+converting from 11 to 10 digits: [12234567890] [2234567890]
+ten digits: 2234567890
+area code starts with 0? (2) no
+area code starts with 1? (2) no
+exchange code starts with 0? (4) no
+exchange code starts with 1? (4) no
+dirty: [+1 (223) 456-7890]
+cleaned: [12234567890]
+storing: [2234567890]
+_number: [2234567890]
+
+vvv===============================================================================vvv
+validate number: [321234567890]
+validate: digit_count: 12
+
+vvv===============================================================================vvv
+validate number: [123-abc-7890]
+validate: digit_count: 7
+
+vvv===============================================================================vvv
+validate number: [123-@:!-7890]
+validate: digit_count: 7
+
+vvv===============================================================================vvv
+validate number: [(023) 456-7890]
+validate: digit_count: 10
+validate: letters_count: 0
+validate: punct_count: 0
+eleven digits: 10234567890
+converting from 11 to 10 digits: [10234567890] [0234567890]
+ten digits: 0234567890
+area code starts with 0? (0) yes
+
+vvv===============================================================================vvv
+validate number: [(123) 456-7890]
+validate: digit_count: 10
+validate: letters_count: 0
+validate: punct_count: 0
+eleven digits: 11234567890
+converting from 11 to 10 digits: [11234567890] [1234567890]
+ten digits: 1234567890
+area code starts with 0? (1) no
+area code starts with 1? (1) yes
+
+vvv===============================================================================vvv
+validate number: [(223) 056-7890]
+validate: digit_count: 10
+validate: letters_count: 0
+validate: punct_count: 0
+eleven digits: 12230567890
+converting from 11 to 10 digits: [12230567890] [2230567890]
+ten digits: 2230567890
+area code starts with 0? (2) no
+area code starts with 1? (2) no
+exchange code starts with 0? (0) yes
+
+vvv===============================================================================vvv
+validate number: [(223) 156-7890]
+validate: digit_count: 10
+validate: letters_count: 0
+validate: punct_count: 0
+eleven digits: 12231567890
+converting from 11 to 10 digits: [12231567890] [2231567890]
+ten digits: 2231567890
+area code starts with 0? (2) no
+area code starts with 1? (2) no
+exchange code starts with 0? (1) no
+exchange code starts with 1? (1) yes
+
+vvv===============================================================================vvv
+validate number: [1 (023) 456-7890]
+validate: digit_count: 11
+validate: letters_count: 0
+validate: punct_count: 0
+eleven digits: 10234567890
+converting from 11 to 10 digits: [10234567890] [0234567890]
+ten digits: 0234567890
+area code starts with 0? (0) yes
+
+vvv===============================================================================vvv
+validate number: [1 (123) 456-7890]
+validate: digit_count: 11
+validate: letters_count: 0
+validate: punct_count: 0
+eleven digits: 11234567890
+converting from 11 to 10 digits: [11234567890] [1234567890]
+ten digits: 1234567890
+area code starts with 0? (1) no
+area code starts with 1? (1) yes
+
+vvv===============================================================================vvv
+validate number: [1 (223) 056-7890]
+validate: digit_count: 11
+validate: letters_count: 0
+validate: punct_count: 0
+eleven digits: 12230567890
+converting from 11 to 10 digits: [12230567890] [2230567890]
+ten digits: 2230567890
+area code starts with 0? (2) no
+area code starts with 1? (2) no
+exchange code starts with 0? (0) yes
+
+vvv===============================================================================vvv
+validate number: [1 (223) 156-7890]
+validate: digit_count: 11
+validate: letters_count: 0
+validate: punct_count: 0
+eleven digits: 12231567890
+converting from 11 to 10 digits: [12231567890] [2231567890]
+ten digits: 2231567890
+area code starts with 0? (2) no
+area code starts with 1? (2) no
+exchange code starts with 0? (1) no
+exchange code starts with 1? (1) yes
+===============================================================================
+All tests passed (20 assertions in 20 test cases)
+
+make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/phone-number/build'
+[100%] Built target test_phone-number
+make[2]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/phone-number/build'
+make[1]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/phone-number/build'
+
+=== All Tests Passed ===
+
+find . -regextype posix-egrep -regex "^.*(tests-main|CompilerId).*[.](gcda|gcno)$" -print -delete
+./build/CMakeFiles/3.22.2/CompilerIdCXX/CMakeCXXCompilerId.gcno
+./build/CMakeFiles/phone-number.dir/test/tests-main.cpp.gcno
+./build/CMakeFiles/phone-number.dir/test/tests-main.cpp.gcda
+
+find . -regextype posix-egrep -regex "^.*[.](gcda|gcno)23911"
+
+gcovr --print-summary
+------------------------------------------------------------------------------
+                           GCC Code Coverage Report
+Directory: .
+------------------------------------------------------------------------------
+File                                       Lines    Exec  Cover   Missing
+------------------------------------------------------------------------------
+phone_number.cpp                              98      96    98%   103,119
+phone_number_test.cpp                         61      61   100%   
+test/catch.hpp                                34      27    79%   1642-1643,1710-1711,2227,2229,2560
+------------------------------------------------------------------------------
+TOTAL                                        193     184    95%
+------------------------------------------------------------------------------
+lines: 95.3% (184 out of 193)
+branches: 41.9% (323 out of 770)
+
+real	0m11.805s
+user	0m10.743s
+sys	0m1.062s
+
+===============================================================================
+
+cmake-format --in-place CMakeLists.txt
+WARNING config_util.py:307: The following configuration options were ignored:
+  max_subargs_per_line
+
+real	0m0.165s
+user	0m0.119s
+sys	0m0.048s
+
+===============================================================================
+
+cmake-lint CMakeLists.txt
+WARNING The following configuration options were ignored:
+  max_subargs_per_line
+CMakeLists.txt
+==============
+CMakeLists.txt:15,06: [C0103] Invalid directory variable name "exercise_cpp" doesn't match `[A-Z][0-9A-Z_]+|_[0-9a-z_]+`
+CMakeLists.txt:17,06: [C0103] Invalid directory variable name "exercise_cpp" doesn't match `[A-Z][0-9A-Z_]+|_[0-9a-z_]+`
+CMakeLists.txt:61,02: [C0113] Missing COMMENT in statement which allows it
+
+Summary
+=======
+files scanned: 1
+found lint:
+  Convention: 3
+
+
+real	0m0.169s
+user	0m0.122s
+sys	0m0.049s
+
+===============================================================================
+
+Running: clang-format-16 -style=file -i ./phone_number.cpp ./phone_number_test.cpp ./phone_number.h
+
+real	0m0.021s
+user	0m0.010s
+sys	0m0.010s
+
+===============================================================================
+
+Running: ../../.github/citools/cpp/clang-check
+clang-check-16 --analyze ./phone_number.cpp ./phone_number_test.cpp ./phone_number.h
+error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
+error: invalid argument '-std=c++17' not allowed with 'C'
+/home/vpayno/git_vpayno/exercism-workspace/cpp/phone-number/phone_number.h:4:10: fatal error: 'regex' file not found
+#include <regex>
+         ^~~~~~~
+1 error generated.
+Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/phone-number/phone_number.h.
+
+real	0m2.834s
+user	0m2.744s
+sys	0m0.090s
+
+
+real	0m2.836s
+user	0m2.746s
+sys	0m0.090s
+
+===============================================================================
+
+Running: ../../.github/citools/cpp/clang-tidy | head -n 100
+36244 warnings generated.
+80450 warnings generated.
+80450 warnings and 3 errors generated.
+Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/phone-number/phone_number.h.
+Suppressed 80456 warnings (80450 in non-user code, 6 NOLINT).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+Found compiler error(s).
+
+real	0m16.167s
+user	0m16.051s
+sys	0m0.115s
+Running: clang-tidy-16 ./phone_number.cpp ./phone_number_test.cpp ./phone_number.h
+error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
+error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
+/home/vpayno/git_vpayno/exercism-workspace/cpp/phone-number/phone_number.h:4:10: error: 'regex' file not found [clang-diagnostic-error]
+#include <regex>
+         ^~~~~~~
+
+
+real	0m16.169s
+user	0m16.051s
+sys	0m0.118s
+
+===============================================================================
+

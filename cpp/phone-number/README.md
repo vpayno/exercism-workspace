@@ -52,3 +52,8 @@ should all produce the output
 ### Based on
 
 Event Manager by JumpstartLab - http://tutorials.jumpstartlab.com/projects/eventmanager.html
+
+### My Solution
+
+- [my solution]()
+- [run-tests](./run-tests-cpp.txt)
