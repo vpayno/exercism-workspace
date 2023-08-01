@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.008s
-user	0m0.001s
-sys	0m0.007s
+real	0m0.015s
+user	0m0.003s
+sys	0m0.011s
 
 ===============================================================================
 
@@ -70,7 +70,7 @@ Directory: .
 File                                       Lines    Exec  Cover   Missing
 ------------------------------------------------------------------------------
 etl.cpp                                        7       7   100%   
-etl_test.cpp                                  31      24    77%   43-49
+etl_test.cpp                                  31      24    77%   30,41-46
 test/catch.hpp                                52      27    51%   1448-1450,1580-1581,1628,1630,1642-1643,1827-1833,1835-1836,2016-2017,2039-2040,2227,2229,2560
 ------------------------------------------------------------------------------
 TOTAL                                         90      58    64%
@@ -78,9 +78,9 @@ TOTAL                                         90      58    64%
 lines: 64.4% (58 out of 90)
 branches: 38.6% (64 out of 166)
 
-real	0m10.713s
-user	0m9.729s
-sys	0m0.941s
+real	0m9.936s
+user	0m9.175s
+sys	0m0.758s
 
 ===============================================================================
 
@@ -88,9 +88,9 @@ cmake-format --in-place CMakeLists.txt
 WARNING config_util.py:307: The following configuration options were ignored:
   max_subargs_per_line
 
-real	0m0.158s
-user	0m0.117s
-sys	0m0.043s
+real	0m0.151s
+user	0m0.112s
+sys	0m0.041s
 
 ===============================================================================
 
@@ -110,64 +110,50 @@ found lint:
   Convention: 3
 
 
-real	0m0.161s
-user	0m0.125s
-sys	0m0.037s
+real	0m0.159s
+user	0m0.115s
+sys	0m0.045s
 
 ===============================================================================
 
-Running: clang-format-16 -style=file -i ./etl.cpp ./etl_test.cpp ./etl.h
+Running: clang-format-16 -style=file -i ./etl.cpp ./etl_test.cpp ./etl.hpp
 
-real	0m0.021s
-user	0m0.012s
-sys	0m0.009s
+real	0m0.026s
+user	0m0.014s
+sys	0m0.012s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./etl.cpp ./etl_test.cpp ./etl.h
-error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
-error: invalid argument '-std=c++17' not allowed with 'C'
-/home/vpayno/git_vpayno/exercism-workspace/cpp/etl/etl.h:4:10: fatal error: 'map' file not found
-#include <map>
-         ^~~~~
-1 error generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/etl/etl.h.
+clang-check-16 --analyze ./etl.cpp ./etl_test.cpp ./etl.hpp
 
-real	0m0.656s
-user	0m0.623s
-sys	0m0.033s
+real	0m0.826s
+user	0m0.782s
+sys	0m0.044s
 
 
-real	0m0.658s
-user	0m0.625s
-sys	0m0.033s
+real	0m0.829s
+user	0m0.783s
+sys	0m0.045s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 16433 warnings generated.
 53617 warnings generated.
-53617 warnings and 3 errors generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/etl/etl.h.
-Suppressed 53622 warnings (53617 in non-user code, 5 NOLINT).
+69849 warnings generated.
+Suppressed 69854 warnings (69849 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-Found compiler error(s).
 
-real	0m8.302s
-user	0m8.225s
-sys	0m0.075s
-Running: clang-tidy-16 ./etl.cpp ./etl_test.cpp ./etl.h
-error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
-error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
-/home/vpayno/git_vpayno/exercism-workspace/cpp/etl/etl.h:4:10: error: 'map' file not found [clang-diagnostic-error]
-#include <map>
-         ^~~~~
+real	0m9.741s
+user	0m9.661s
+sys	0m0.077s
+Running: clang-tidy-16 ./etl.cpp ./etl_test.cpp ./etl.hpp
 
 
-real	0m8.304s
-user	0m8.227s
-sys	0m0.076s
+real	0m9.743s
+user	0m9.663s
+sys	0m0.079s
 
 ===============================================================================
 

@@ -1,5 +1,5 @@
-#if !defined(ETL_H)
-#define ETL_H
+#if !defined(ETL_HPP)
+#define ETL_HPP
 
 #include <map>
 #include <string>
@@ -16,4 +16,4 @@ new_format_t transform(old_format_t old_format);
 
 } // namespace etl
 
-#endif // ETL_H
+#endif // ETL_HPP
