@@ -5,6 +5,8 @@
 
 namespace meetup {
 
+using func_name_t = std::string;
+
 using date_t = boost::gregorian::date;
 
 using day_t = boost::gregorian::greg_day;
@@ -70,6 +72,9 @@ struct scheduler final {
     [[nodiscard]] date_t _third_weekday(weekday_t day) const;
     [[nodiscard]] date_t _fourth_weekday(weekday_t day) const;
     [[nodiscard]] date_t _last_weekday(weekday_t day) const;
+
+    [[nodiscard]] static weekday_t
+    _get_day_from_func_name(func_name_t func_name);
 
     month_t _month;
     year_t _year;
