@@ -72,3 +72,4 @@
 - [meetup](./meetup/README.md)
 - [robot-name](./robot-name/README.md)
 - [robot-simulator](./robot-simulator/README.md)
+- [pascals-triangle](./pascals-triangle/README.md)

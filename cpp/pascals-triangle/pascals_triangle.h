@@ -1,8 +1,18 @@
 #if !defined(PASCALS_TRIANGLE_H)
 #define PASCALS_TRIANGLE_H
 
+#include <string>
+#include <vector>
+
 namespace pascals_triangle {
 
-}  // namespace pascals_triangle
+using row_t = std::vector<int>;
+using triangle_t = std::vector<row_t>;
+
+triangle_t generate_rows(int limit);
+int factorial(int number);
+int n_choose_k(int n, int k); // NOLINT(readability-identifier-length)
+
+} // namespace pascals_triangle
 
 #endif // PASCALS_TRIANGLE_H
