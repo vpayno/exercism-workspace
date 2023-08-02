@@ -55,7 +55,7 @@
 			<div id="nav">
 				<select id="files">
 				
-				<option value="file0">beer/beer_song.go (97.7%)</option>
+				<option value="file0">beer/beer_song.go (97.6%)</option>
 				
 				</select>
 			</div>
@@ -100,10 +100,13 @@ func Song() string <span class="cov1" title="1">{
 // Verses returns select verselyricss 99 Bottles of Beer on the Wall song.
 func Verses(start, stop int) (string, error) <span class="cov4" title="8">{
         var verses string
-        var count int
 
         if start &lt; stop </span><span class="cov1" title="1">{
-                return "", fmt.Errorf("starting verse, %d, needs to be greater than or equal to the ending verse, %d", start, stop)
+                return "", fmt.Errorf(
+                        "starting verse, %d, needs to be greater than or equal to the ending verse, %d",
+                        start,
+                        stop,
+                )
         }</span>
 
         <span class="cov4" title="7">for i := start; i &gt;= stop; i-- </span><span class="cov9" title="311">{
@@ -115,11 +118,9 @@ func Verses(start, stop int) (string, error) <span class="cov4" title="8">{
 
                 <span class="cov9" title="309">verses += verse
 
-                if count%2 == 0 </span><span class="cov9" title="309">{
+                if stop != 0 </span><span class="cov8" title="109">{
                         verses += "\n"
-                        count++
                 }</span>
-                <span class="cov9" title="309">count = 0</span>
         }
 
         <span class="cov3" title="5">return verses, nil</span>

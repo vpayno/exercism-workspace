@@ -20,10 +20,13 @@ func Song() string {
 // Verses returns select verselyricss 99 Bottles of Beer on the Wall song.
 func Verses(start, stop int) (string, error) {
 	var verses string
-	var count int
 
 	if start < stop {
-		return "", fmt.Errorf("starting verse, %d, needs to be greater than or equal to the ending verse, %d", start, stop)
+		return "", fmt.Errorf(
+			"starting verse, %d, needs to be greater than or equal to the ending verse, %d",
+			start,
+			stop,
+		)
 	}
 
 	for i := start; i >= stop; i-- {
@@ -35,11 +38,9 @@ func Verses(start, stop int) (string, error) {
 
 		verses += verse
 
-		if count%2 == 0 {
+		if stop != 0 {
 			verses += "\n"
-			count++
 		}
-		count = 0
 	}
 
 	return verses, nil

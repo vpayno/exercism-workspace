@@ -5,139 +5,415 @@ Go packages: beer
 
 ===============================================================================
 
-golint beer
+golangci-lint run --enable-all ./...
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+beer_song_test.go:119:10: Error return value is not checked (errcheck)
+			Verses(tt.upperBound, tt.lowerBound)
+			      ^
+beer_song_test.go:7: File is not `gofumpt`-ed (gofumpt)
+const verse8 = "8 bottles of beer on the wall, 8 bottles of beer.\nTake one down and pass it around, 7 bottles of beer on the wall.\n"
+const verse3 = "3 bottles of beer on the wall, 3 bottles of beer.\nTake one down and pass it around, 2 bottles of beer on the wall.\n"
+const verse2 = "2 bottles of beer on the wall, 2 bottles of beer.\nTake one down and pass it around, 1 bottle of beer on the wall.\n"
+const verse1 = "1 bottle of beer on the wall, 1 bottle of beer.\nTake it down and pass it around, no more bottles of beer on the wall.\n"
+const verse0 = "No more bottles of beer on the wall, no more bottles of beer.\nGo to the store and buy some more, 99 bottles of beer on the wall.\n"
+beer_song_test.go:88: File is not `gofumpt`-ed (gofumpt)
 
-real	0m0.223s
-user	0m0.231s
-sys	0m0.247s
+beer_song_test.go:117: File is not `gofumpt`-ed (gofumpt)
+
+beer_song_test.go:8: line is 134 characters (lll)
+const verse3 = "3 bottles of beer on the wall, 3 bottles of beer.\nTake one down and pass it around, 2 bottles of beer on the wall.\n"
+beer_song_test.go:9: line is 133 characters (lll)
+const verse2 = "2 bottles of beer on the wall, 2 bottles of beer.\nTake one down and pass it around, 1 bottle of beer on the wall.\n"
+beer_song_test.go:10: line is 137 characters (lll)
+const verse1 = "1 bottle of beer on the wall, 1 bottle of beer.\nTake it down and pass it around, no more bottles of beer on the wall.\n"
+beer_song_test.go:11: line is 148 characters (lll)
+const verse0 = "No more bottles of beer on the wall, no more bottles of beer.\nGo to the store and buy some more, 99 bottles of beer on the wall.\n"
+beer_song.go:51:10: var-declaration: should omit type string from declaration of var fs1; it will be inferred from the right-hand side (revive)
+	var fs1 string = "%[1]d bottle%[2]s of beer on the wall, %[1]d bottle%[2]s of beer.\n"
+	        ^
+beer_song.go:52:10: var-declaration: should omit type string from declaration of var fs2; it will be inferred from the right-hand side (revive)
+	var fs2 string = "Take %[3]s down and pass it around, %[1]v bottle%[2]s of beer on the wall.\n"
+	        ^
+beer_song.go:53:16: var-declaration: should omit type string from declaration of var countWord; it will be inferred from the right-hand side (revive)
+	var countWord string = "one"
+	              ^
+beer_song_test.go:87: unnecessary leading newline (whitespace)
+func TestSeveralVerses(t *testing.T) {
+
+beer_song_test.go:116: unnecessary leading newline (whitespace)
+	for i := 0; i < b.N; i++ {
+
+beer_song.go:54:2: declarations should never be cuddled (wsl)
+	var plural string
+	^
+beer_song_test.go:52:3: if statements should only be cuddled with assignments used in the if statement itself (wsl)
+		if tt.expectErr {
+		^
+beer_song_test.go:91:3: if statements should only be cuddled with assignments used in the if statement itself (wsl)
+		if tt.expectErr {
+		^
+beer_song_test.go:122:2: block should not end with a whitespace (or comment) (wsl)
+	}
+	^
+beer_song_test.go:127:2: declarations should never be cuddled (wsl)
+	var _ error = err
+	^
+beer_song_test.go:128:2: only one cuddle assignment allowed before if statement (wsl)
+	if err != nil {
+	^
+beer_song_test.go:131:2: assignments should only be cuddled with other assignments (wsl)
+	actual := Song()
+	^
+beer_song_test.go:153:2: for statements should only be cuddled with assignments used in the iteration (wsl)
+	for i := 0; i < b.N; i++ {
+	^
+beer_song_test.go:35:5: verseTestCases is a global variable (gochecknoglobals)
+var verseTestCases = []struct {
+    ^
+beer_song_test.go:73:5: versesTestCases is a global variable (gochecknoglobals)
+var versesTestCases = []struct {
+    ^
+beer_song.go:25:14: err113: do not define dynamic errors, use wrapped static errors instead: "fmt.Errorf(\n\t\"starting verse, %d, needs to be greater than or equal to the ending verse, %d\",\n\tstart,\n\tstop,\n)" (goerr113)
+		return "", fmt.Errorf(
+		           ^
+beer_song.go:57:14: err113: do not define dynamic errors, use wrapped static errors instead: "errors.New(\"you can't have a negative amount of beer bottles\")" (goerr113)
+		return "", errors.New("you can't have a negative amount of beer bottles")
+		           ^
+beer_song.go:61:14: err113: do not define dynamic errors, use wrapped static errors instead: "errors.New(\"you can't have more than 99 beer bottles\")" (goerr113)
+		return "", errors.New("you can't have more than 99 beer bottles")
+		           ^
+beer_song.go:11:22: mnd: Magic number: 99, in <argument> detected (gomnd)
+	lyrics, e := Verses(99, 0)
+	                    ^
+beer_song.go:60:17: mnd: Magic number: 99, in <condition> detected (gomnd)
+	if beerCount > 99 {
+	               ^
+beer_song_test.go:49:1: Function TestBottlesVerse missing the call to method parallel (paralleltest)
+func TestBottlesVerse(t *testing.T) {
+^
+beer_song_test.go:125:1: Function TestEntireSong missing the call to method parallel (paralleltest)
+func TestEntireSong(t *testing.T) {
+^
+beer_song_examples_test.go:1:9: package should be `beer_test` instead of `beer` (testpackage)
+package beer
+        ^
+beer_song_test.go:1:9: package should be `beer_test` instead of `beer` (testpackage)
+package beer
+        ^
+beer_song_test.go:50:6: variable name 'tt' is too short for the scope of its usage (varnamelen)
+	for _, tt := range verseTestCases {
+	    ^
+beer_song_test.go:89:6: variable name 'tt' is too short for the scope of its usage (varnamelen)
+	for _, tt := range versesTestCases {
+	    ^
+
+real	0m0.639s
+user	0m0.972s
+sys	0m0.454s
 
 ===============================================================================
 
-go test -v -covermode=count -coverprofile coverage.out beer
+golint ./...
+
+real	0m0.006s
+user	0m0.003s
+sys	0m0.003s
+
+===============================================================================
+
+revive -formatter=stylish ./...
+beer_song.go
+  (51, 10)  https://revive.run/r#var-declaration  should omit type string from declaration of var fs1; it will be inferred from the right-hand side        
+  (52, 10)  https://revive.run/r#var-declaration  should omit type string from declaration of var fs2; it will be inferred from the right-hand side        
+  (53, 16)  https://revive.run/r#var-declaration  should omit type string from declaration of var countWord; it will be inferred from the right-hand side  
+
+
+ ✖ 3 problems (0 errors) (3 warnings)
+
+real	0m0.038s
+user	0m0.019s
+sys	0m0.029s
+
+===============================================================================
+
+ineffassign ./...
+
+real	0m0.087s
+user	0m0.151s
+sys	0m0.127s
+
+===============================================================================
+
+go-consistent -v ./...
+	info: check "./."
+internal error: package "errors" without types was imported from "beer"
+
+real	0m0.098s
+user	0m0.115s
+sys	0m0.108s
+
+===============================================================================
+
+staticcheck ./...
+
+real	0m0.171s
+user	0m0.229s
+sys	0m0.125s
+
+===============================================================================
+
+gocritic check -enableAll ./...
+
+real	0m0.851s
+user	0m1.878s
+sys	0m0.381s
+
+===============================================================================
+
+go vet ./...
+
+real	0m0.088s
+user	0m0.134s
+sys	0m0.109s
+
+===============================================================================
+
+go fix ./...
+
+real	0m0.037s
+user	0m0.034s
+sys	0m0.039s
+
+===============================================================================
+
+errcheck ./...
+beer_song_test.go:119:10:	Verses(tt.upperBound, tt.lowerBound)
+
+real	0m0.532s
+user	0m1.318s
+sys	0m0.395s
+
+===============================================================================
+
+gocyclo .
+8 beer Verse beer_song.go:50:1
+6 beer TestSeveralVerses beer_song_test.go:87:1
+6 beer TestBottlesVerse beer_song_test.go:49:1
+5 beer Verses beer_song.go:21:1
+4 beer BenchmarkSeveralVerses beer_song_test.go:112:1
+3 beer BenchmarkEntireSong beer_song_test.go:149:1
+3 beer TestEntireSong beer_song_test.go:125:1
+2 beer Song beer_song.go:10:1
+1 beer ExampleVerses beer_song_examples_test.go:27:1
+1 beer ExampleVerse beer_song_examples_test.go:7:1
+
+real	0m0.002s
+user	0m0.000s
+sys	0m0.002s
+
+===============================================================================
+
+misspell .
+
+real	0m0.025s
+user	0m0.027s
+sys	0m0.007s
+
+===============================================================================
+
+gosec ./...
+[gosec] 2023/08/02 13:11:21 Including rules: default
+[gosec] 2023/08/02 13:11:21 Excluding rules: default
+[gosec] 2023/08/02 13:11:21 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/beer-song
+[gosec] 2023/08/02 13:11:21 Checking package: beer
+[gosec] 2023/08/02 13:11:21 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/beer-song/beer_song.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 96
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.138s
+user	0m0.155s
+sys	0m0.126s
+
+===============================================================================
+
+gotest -v -covermode=count -coverprofile coverage.out ./...
 === RUN   TestBottlesVerse
 --- PASS: TestBottlesVerse (0.00s)
 === RUN   TestSeveralVerses
 --- PASS: TestSeveralVerses (0.00s)
 === RUN   TestEntireSong
---- PASS: TestEntireSong (0.02s)
+--- PASS: TestEntireSong (0.01s)
 === RUN   ExampleVerse
 --- PASS: ExampleVerse (0.00s)
 === RUN   ExampleVerses
 --- PASS: ExampleVerses (0.00s)
 PASS
-coverage: 97.7% of statements
-ok  	beer	0.044s	coverage: 97.7% of statements
+	beer	coverage: 97.6% of statements
+ok  	beer	0.016s	coverage: 97.6% of statements
 
-real	0m0.733s
-user	0m0.831s
-sys	0m0.552s
+real	0m0.267s
+user	0m0.282s
+sys	0m0.179s
 
 ===============================================================================
 
 go tool cover -func=coverage.out
 beer/beer_song.go:10:	Song		75.0%
 beer/beer_song.go:21:	Verses		100.0%
-beer/beer_song.go:49:	Verse		100.0%
-total:			(statements)	97.7%
+beer/beer_song.go:50:	Verse		100.0%
+total:			(statements)	97.6%
 
-real	0m0.262s
-user	0m0.282s
-sys	0m0.260s
+real	0m0.056s
+user	0m0.059s
+sys	0m0.064s
 
 ===============================================================================
 
 go tool cover -html coverage.out -o coverage.html
 
-real	0m0.216s
-user	0m0.229s
-sys	0m0.227s
+real	0m0.061s
+user	0m0.065s
+sys	0m0.073s
 
 ===============================================================================
 
-go test -v -race -covermode=atomic beer
+gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+10     	func Song() string {
+11     		lyrics, e := Verses(99, 0)
+12     	
+13     		if e != nil {
+14 MISS			panic(e)
+15     		}
+16     	
+17     		return lyrics
+18     	}
+
+
+real	0m0.244s
+user	0m0.109s
+sys	0m0.179s
+
+===============================================================================
+
+gotest -v -race -covermode=atomic ./...
 === RUN   TestBottlesVerse
 --- PASS: TestBottlesVerse (0.00s)
 === RUN   TestSeveralVerses
---- PASS: TestSeveralVerses (0.01s)
+--- PASS: TestSeveralVerses (0.00s)
 === RUN   TestEntireSong
---- PASS: TestEntireSong (0.03s)
+--- PASS: TestEntireSong (0.01s)
 === RUN   ExampleVerse
 --- PASS: ExampleVerse (0.00s)
 === RUN   ExampleVerses
 --- PASS: ExampleVerses (0.00s)
 PASS
-coverage: 97.7% of statements
-ok  	beer	0.071s	coverage: 97.7% of statements
+	beer	coverage: 97.6% of statements
+ok  	beer	0.044s	coverage: 97.6% of statements
 
-real	0m0.874s
-user	0m0.909s
-sys	0m0.577s
+real	0m0.429s
+user	0m0.432s
+sys	0m0.278s
 
 ===============================================================================
 
-go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+mv -v benchstat-new.txt benchstat-old.txt
+renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
+
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 goos: linux
 goarch: amd64
 pkg: beer
-cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
-BenchmarkSeveralVerses-4   	     687	   2691060 ns/op	 1312166 B/op	    1037 allocs/op
-BenchmarkEntireSong-4      	     540	   2518290 ns/op	 1307392 B/op	     981 allocs/op
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+BenchmarkSeveralVerses
+BenchmarkSeveralVerses-8   	    3228	    323315 ns/op	 1312432 B/op	    1037 allocs/op
+BenchmarkEntireSong
+BenchmarkEntireSong-8      	    5156	    195579 ns/op	  665279 B/op	     880 allocs/op
 PASS
-ok  	beer	3.700s
+ok  	beer	2.125s
 
-real	0m4.242s
-user	0m5.926s
-sys	0m1.942s
+real	0m2.294s
+user	0m2.448s
+sys	0m0.602s
 
 ===============================================================================
 
-go test -tags bonus
+gotest -v -tags bonus
+=== RUN   TestBottlesVerse
+--- PASS: TestBottlesVerse (0.00s)
+=== RUN   TestSeveralVerses
+--- PASS: TestSeveralVerses (0.00s)
+=== RUN   TestEntireSong
+--- PASS: TestEntireSong (0.00s)
+=== RUN   ExampleVerse
+--- PASS: ExampleVerse (0.00s)
+=== RUN   ExampleVerses
+--- PASS: ExampleVerses (0.00s)
 PASS
-ok  	beer	0.027s
+ok  	beer	0.004s
 
-real	0m0.529s
-user	0m0.609s
-sys	0m0.423s
-
-===============================================================================
-
-No old benchmarks to run benchstat against.
+real	0m0.161s
+user	0m0.215s
+sys	0m0.141s
 
 ===============================================================================
 
-go vet beer
+benchstat benchstat-old.txt benchstat-new.txt
+benchstat-new.txt:5: missing iteration count
+benchstat-new.txt:7: missing iteration count
+goos: linux
+goarch: amd64
+pkg: beer
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+                │ benchstat-new.txt │
+                │      sec/op       │
+SeveralVerses-8        323.3µ ± ∞ ¹
+EntireSong-8           195.6µ ± ∞ ¹
+geomean                251.5µ
+¹ need >= 6 samples for confidence interval at level 0.95
 
-real	0m0.351s
-user	0m0.446s
-sys	0m0.347s
+                │ benchstat-new.txt │
+                │       B/op        │
+SeveralVerses-8       1.252Mi ± ∞ ¹
+EntireSong-8          649.7Ki ± ∞ ¹
+geomean               912.5Ki
+¹ need >= 6 samples for confidence interval at level 0.95
 
-===============================================================================
+                │ benchstat-new.txt │
+                │     allocs/op     │
+SeveralVerses-8        1.037k ± ∞ ¹
+EntireSong-8            880.0 ± ∞ ¹
+geomean                 955.3
+¹ need >= 6 samples for confidence interval at level 0.95
 
-go fix beer
-
-real	0m0.173s
-user	0m0.176s
-sys	0m0.147s
-
-===============================================================================
-
-gosec ./beer-song
-[gosec] 2022/07/03 11:18:16 Including rules: default
-[gosec] 2022/07/03 11:18:16 Excluding rules: default
-[gosec] 2022/07/03 11:18:16 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/beer-song
-2022/07/03 11:18:17 internal error: package "errors" without types was imported from "command-line-arguments"
-
-real	0m0.490s
-user	0m0.550s
-sys	0m0.362s
+real	0m0.005s
+user	0m0.000s
+sys	0m0.004s
 
 ===============================================================================
 
 gomarkdoc --output beer-doc.md
 
-real	0m0.043s
-user	0m0.023s
-sys	0m0.028s
+real	0m0.013s
+user	0m0.003s
+sys	0m0.010s
 
 ===============================================================================
 
@@ -158,9 +434,9 @@ func Verses(start, stop int) (string, error)
     Verses returns select verselyricss 99 Bottles of Beer on the Wall song.
 
 
-real	0m0.253s
-user	0m0.217s
-sys	0m0.261s
+real	0m0.041s
+user	0m0.030s
+sys	0m0.039s
 
 
 ===============================================================================

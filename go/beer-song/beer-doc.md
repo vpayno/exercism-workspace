@@ -6,7 +6,7 @@
 import "beer"
 ```
 
-Package beer generates the lrics to the 99 Bootles of Beer on the Wall\.
+Package beer generates the lrics to the 99 Bootles of Beer on the Wall.
 
 ## Index
 
@@ -21,15 +21,15 @@ Package beer generates the lrics to the 99 Bootles of Beer on the Wall\.
 func Song() string
 ```
 
-Song returns the whole 99 Bottles of Beer on the Wall song\.
+Song returns the whole 99 Bottles of Beer on the Wall song.
 
-## func [Verse](<https://github.com/vpayno/exercism-workspace/blob/main/go/beer-song/beer_song.go#L49>)
+## func [Verse](<https://github.com/vpayno/exercism-workspace/blob/main/go/beer-song/beer_song.go#L50>)
 
 ```go
 func Verse(beerCount int) (string, error)
 ```
 
-Verse returns a single verse from 99 Bottles of Beer on the Wall song\.
+Verse returns a single verse from 99 Bottles of Beer on the Wall song.
 
 <details><summary>Example</summary>
 <p>
@@ -70,7 +70,7 @@ Go to the store and buy some more, 99 bottles of beer on the wall.
 func Verses(start, stop int) (string, error)
 ```
 
-Verses returns select verselyricss 99 Bottles of Beer on the Wall song\.
+Verses returns select verselyricss 99 Bottles of Beer on the Wall song.
 
 <details><summary>Example</summary>
 <p>
