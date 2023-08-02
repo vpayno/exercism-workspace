@@ -38,3 +38,8 @@ every existing robot has a unique name.
 ### Based on
 
 A debugging session with Paul Blackwell at gSchool.
+
+### My Solution
+
+- [my solution]()
+- [run-tests](./run-tests-cpp.txt)
