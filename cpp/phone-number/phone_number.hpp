@@ -1,5 +1,5 @@
-#if !defined(PHONE_NUMBER_H)
-#define PHONE_NUMBER_H
+#if !defined(PHONE_NUMBER_HPP)
+#define PHONE_NUMBER_HPP
 
 #include <regex>
 #include <stdexcept>
@@ -39,4 +39,4 @@ struct phone_number final {
 
 } // namespace phone_number
 
-#endif // PHONE_NUMBER_H
+#endif // PHONE_NUMBER_HPP

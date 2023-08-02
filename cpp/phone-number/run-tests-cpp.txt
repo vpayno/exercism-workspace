@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.008s
+real	0m0.009s
 user	0m0.003s
-sys	0m0.005s
+sys	0m0.007s
 
 ===============================================================================
 
@@ -316,9 +316,9 @@ TOTAL                                        193     184    95%
 lines: 95.3% (184 out of 193)
 branches: 41.9% (323 out of 770)
 
-real	0m11.805s
-user	0m10.743s
-sys	0m1.062s
+real	0m12.625s
+user	0m11.526s
+sys	0m1.095s
 
 ===============================================================================
 
@@ -326,9 +326,9 @@ cmake-format --in-place CMakeLists.txt
 WARNING config_util.py:307: The following configuration options were ignored:
   max_subargs_per_line
 
-real	0m0.165s
-user	0m0.119s
-sys	0m0.048s
+real	0m0.177s
+user	0m0.127s
+sys	0m0.053s
 
 ===============================================================================
 
@@ -348,64 +348,50 @@ found lint:
   Convention: 3
 
 
-real	0m0.169s
-user	0m0.122s
-sys	0m0.049s
+real	0m0.185s
+user	0m0.130s
+sys	0m0.057s
 
 ===============================================================================
 
-Running: clang-format-16 -style=file -i ./phone_number.cpp ./phone_number_test.cpp ./phone_number.h
+Running: clang-format-16 -style=file -i ./phone_number.cpp ./phone_number_test.cpp ./phone_number.hpp
 
-real	0m0.021s
-user	0m0.010s
-sys	0m0.010s
+real	0m0.030s
+user	0m0.018s
+sys	0m0.012s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./phone_number.cpp ./phone_number_test.cpp ./phone_number.h
-error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
-error: invalid argument '-std=c++17' not allowed with 'C'
-/home/vpayno/git_vpayno/exercism-workspace/cpp/phone-number/phone_number.h:4:10: fatal error: 'regex' file not found
-#include <regex>
-         ^~~~~~~
-1 error generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/phone-number/phone_number.h.
+clang-check-16 --analyze ./phone_number.cpp ./phone_number_test.cpp ./phone_number.hpp
 
-real	0m2.834s
-user	0m2.744s
-sys	0m0.090s
+real	0m3.838s
+user	0m3.732s
+sys	0m0.105s
 
 
-real	0m2.836s
-user	0m2.746s
-sys	0m0.090s
+real	0m3.840s
+user	0m3.732s
+sys	0m0.107s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 36244 warnings generated.
 80450 warnings generated.
-80450 warnings and 3 errors generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/phone-number/phone_number.h.
-Suppressed 80456 warnings (80450 in non-user code, 6 NOLINT).
+115465 warnings generated.
+Suppressed 115471 warnings (115465 in non-user code, 6 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-Found compiler error(s).
 
-real	0m16.167s
-user	0m16.051s
-sys	0m0.115s
-Running: clang-tidy-16 ./phone_number.cpp ./phone_number_test.cpp ./phone_number.h
-error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
-error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
-/home/vpayno/git_vpayno/exercism-workspace/cpp/phone-number/phone_number.h:4:10: error: 'regex' file not found [clang-diagnostic-error]
-#include <regex>
-         ^~~~~~~
+real	0m22.765s
+user	0m22.604s
+sys	0m0.160s
+Running: clang-tidy-16 ./phone_number.cpp ./phone_number_test.cpp ./phone_number.hpp
 
 
-real	0m16.169s
-user	0m16.051s
-sys	0m0.118s
+real	0m22.767s
+user	0m22.607s
+sys	0m0.160s
 
 ===============================================================================
 

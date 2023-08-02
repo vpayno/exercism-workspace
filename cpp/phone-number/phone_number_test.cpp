@@ -1,4 +1,4 @@
-#include "phone_number.h"
+#include "phone_number.hpp"
 
 #ifdef EXERCISM_TEST_SUITE
 #include <catch2/catch.hpp>
