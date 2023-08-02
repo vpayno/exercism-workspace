@@ -1,5 +1,5 @@
-#if !defined(PASCALS_TRIANGLE_H)
-#define PASCALS_TRIANGLE_H
+#if !defined(PASCALS_TRIANGLE_HPP)
+#define PASCALS_TRIANGLE_HPP
 
 #include <string>
 #include <vector>
@@ -15,4 +15,4 @@ int n_choose_k(int n, int k); // NOLINT(readability-identifier-length)
 
 } // namespace pascals_triangle
 
-#endif // PASCALS_TRIANGLE_H
+#endif // PASCALS_TRIANGLE_HPP

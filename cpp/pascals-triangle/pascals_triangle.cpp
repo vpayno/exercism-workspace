@@ -1,4 +1,4 @@
-#include "pascals_triangle.h"
+#include "pascals_triangle.hpp"
 
 namespace pascals_triangle {
 

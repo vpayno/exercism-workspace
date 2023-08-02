@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.006s
-user	0m0.000s
-sys	0m0.005s
+real	0m0.011s
+user	0m0.001s
+sys	0m0.009s
 
 ===============================================================================
 
@@ -78,9 +78,9 @@ TOTAL                                        115      92    80%
 lines: 80.0% (92 out of 115)
 branches: 40.1% (101 out of 252)
 
-real	0m9.793s
-user	0m8.970s
-sys	0m0.822s
+real	0m10.191s
+user	0m9.441s
+sys	0m0.748s
 
 ===============================================================================
 
@@ -88,9 +88,9 @@ cmake-format --in-place CMakeLists.txt
 WARNING config_util.py:307: The following configuration options were ignored:
   max_subargs_per_line
 
-real	0m0.268s
-user	0m0.198s
-sys	0m0.071s
+real	0m0.159s
+user	0m0.120s
+sys	0m0.038s
 
 ===============================================================================
 
@@ -110,13 +110,13 @@ found lint:
   Convention: 3
 
 
-real	0m0.162s
-user	0m0.118s
-sys	0m0.046s
+real	0m0.211s
+user	0m0.157s
+sys	0m0.056s
 
 ===============================================================================
 
-Running: clang-format-16 -style=file -i ./pascals_triangle.cpp ./pascals_triangle_test.cpp ./pascals_triangle.h
+Running: clang-format-16 -style=file -i ./pascals_triangle.cpp ./pascals_triangle_test.cpp ./pascals_triangle.hpp
 
 real	0m0.030s
 user	0m0.017s
@@ -125,49 +125,35 @@ sys	0m0.013s
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./pascals_triangle.cpp ./pascals_triangle_test.cpp ./pascals_triangle.h
-error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
-error: invalid argument '-std=c++17' not allowed with 'C'
-/home/vpayno/git_vpayno/exercism-workspace/cpp/pascals-triangle/pascals_triangle.h:4:10: fatal error: 'string' file not found
-#include <string>
-         ^~~~~~~~
-1 error generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/pascals-triangle/pascals_triangle.h.
+clang-check-16 --analyze ./pascals_triangle.cpp ./pascals_triangle_test.cpp ./pascals_triangle.hpp
 
-real	0m0.892s
-user	0m0.800s
-sys	0m0.092s
+real	0m1.201s
+user	0m1.137s
+sys	0m0.063s
 
 
-real	0m0.894s
-user	0m0.802s
-sys	0m0.092s
+real	0m1.203s
+user	0m1.137s
+sys	0m0.065s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 12883 warnings generated.
 48301 warnings generated.
-48301 warnings and 3 errors generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/pascals-triangle/pascals_triangle.h.
-Suppressed 48311 warnings (48301 in non-user code, 10 NOLINT).
+61109 warnings generated.
+Suppressed 61119 warnings (61109 in non-user code, 10 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-Found compiler error(s).
 
-real	0m7.285s
-user	0m7.160s
-sys	0m0.126s
-Running: clang-tidy-16 ./pascals_triangle.cpp ./pascals_triangle_test.cpp ./pascals_triangle.h
-error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
-error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
-/home/vpayno/git_vpayno/exercism-workspace/cpp/pascals-triangle/pascals_triangle.h:4:10: error: 'string' file not found [clang-diagnostic-error]
-#include <string>
-         ^~~~~~~~
+real	0m9.692s
+user	0m9.611s
+sys	0m0.079s
+Running: clang-tidy-16 ./pascals_triangle.cpp ./pascals_triangle_test.cpp ./pascals_triangle.hpp
 
 
-real	0m7.288s
-user	0m7.163s
-sys	0m0.126s
+real	0m9.695s
+user	0m9.612s
+sys	0m0.082s
 
 ===============================================================================
 
