@@ -31,6 +31,8 @@ robot_name_t robot::_new_name() {
         candidate = _new_name_candidate();
     }
 
+    g_name_history.emplace(candidate);
+
     return candidate;
 }
 
