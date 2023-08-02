@@ -1,5 +1,5 @@
-#if !defined(ROBOT_NAME_H)
-#define ROBOT_NAME_H
+#if !defined(ROBOT_NAME_HPP)
+#define ROBOT_NAME_HPP
 
 #include <algorithm>
 #include <set>
@@ -29,4 +29,4 @@ struct robot final {
 
 } // namespace robot_name
 
-#endif // ROBOT_NAME_H
+#endif // ROBOT_NAME_HPP

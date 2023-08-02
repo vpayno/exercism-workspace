@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.008s
+real	0m0.009s
 user	0m0.001s
-sys	0m0.007s
+sys	0m0.008s
 
 ===============================================================================
 
@@ -78,9 +78,9 @@ TOTAL                                        101      93    92%
 lines: 92.1% (93 out of 101)
 branches: 42.3% (71 out of 168)
 
-real	0m11.960s
-user	0m11.024s
-sys	0m0.926s
+real	0m11.173s
+user	0m10.500s
+sys	0m0.671s
 
 ===============================================================================
 
@@ -88,9 +88,9 @@ cmake-format --in-place CMakeLists.txt
 WARNING config_util.py:307: The following configuration options were ignored:
   max_subargs_per_line
 
-real	0m0.189s
-user	0m0.127s
-sys	0m0.064s
+real	0m0.162s
+user	0m0.120s
+sys	0m0.045s
 
 ===============================================================================
 
@@ -110,59 +110,45 @@ found lint:
   Convention: 3
 
 
-real	0m0.161s
-user	0m0.115s
-sys	0m0.048s
+real	0m0.168s
+user	0m0.120s
+sys	0m0.050s
 
 ===============================================================================
 
-Running: clang-format-16 -style=file -i ./robot_name.cpp ./robot_name_test.cpp ./robot_name.h
+Running: clang-format-16 -style=file -i ./robot_name.cpp ./robot_name_test.cpp ./robot_name.hpp
 
-real	0m0.020s
-user	0m0.006s
-sys	0m0.014s
+real	0m0.022s
+user	0m0.014s
+sys	0m0.008s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./robot_name.cpp ./robot_name_test.cpp ./robot_name.h
-error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
-error: invalid argument '-std=c++17' not allowed with 'C'
-/home/vpayno/git_vpayno/exercism-workspace/cpp/robot-name/robot_name.h:4:10: fatal error: 'algorithm' file not found
-#include <algorithm>
-         ^~~~~~~~~~~
-1 error generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/robot-name/robot_name.h.
+clang-check-16 --analyze ./robot_name.cpp ./robot_name_test.cpp ./robot_name.hpp
 
-real	0m1.551s
-user	0m1.483s
-sys	0m0.068s
+real	0m1.690s
+user	0m1.636s
+sys	0m0.054s
 
 
-real	0m1.553s
-user	0m1.485s
-sys	0m0.068s
+real	0m1.692s
+user	0m1.637s
+sys	0m0.055s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 22814 warnings generated.
 60051 warnings generated.
-60051 warnings and 3 errors generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/robot-name/robot_name.h.
-Suppressed 60050 warnings (60044 in non-user code, 6 NOLINT).
+82761 warnings generated.
+Suppressed 82760 warnings (82754 in non-user code, 6 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-Found compiler error(s).
 
-real	0m10.280s
-user	0m10.157s
-sys	0m0.121s
-Running: clang-tidy-16 ./robot_name.cpp ./robot_name_test.cpp ./robot_name.h
-error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
-error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
-/home/vpayno/git_vpayno/exercism-workspace/cpp/robot-name/robot_name.h:4:10: error: 'algorithm' file not found [clang-diagnostic-error]
-#include <algorithm>
-         ^~~~~~~~~~~
+real	0m11.433s
+user	0m11.363s
+sys	0m0.068s
+Running: clang-tidy-16 ./robot_name.cpp ./robot_name_test.cpp ./robot_name.hpp
 /home/vpayno/git_vpayno/exercism-workspace/cpp/robot-name/robot_name_test.cpp:17:13: warning: 'validate_name' is a static definition in anonymous namespace; static is redundant here [readability-static-definition-in-anonymous-namespace]
 static bool validate_name(const string &name) {
 ~~~~~~~     ^
@@ -192,9 +178,9 @@ static bool validate_name(const string &name) {
                                (                != 0)
 
 
-real	0m10.282s
-user	0m10.158s
-sys	0m0.124s
+real	0m11.435s
+user	0m11.366s
+sys	0m0.069s
 
 ===============================================================================
 

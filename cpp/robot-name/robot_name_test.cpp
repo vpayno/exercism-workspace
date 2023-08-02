@@ -1,4 +1,4 @@
-#include "robot_name.h"
+#include "robot_name.hpp"
 #ifdef EXERCISM_TEST_SUITE
 #include <catch2/catch.hpp>
 #else
