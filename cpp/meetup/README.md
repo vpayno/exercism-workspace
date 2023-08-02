@@ -50,3 +50,8 @@ descriptor calculate the date of the actual meetup.  For example, if given
 ### Based on
 
 Jeremy Hinegardner mentioned a Boulder meetup that happens on the Wednesteenth of every month - https://twitter.com/copiousfreetime
+
+### My Solution
+
+- [my solution]()
+- [run-tests](./run-tests-cpp.txt)
