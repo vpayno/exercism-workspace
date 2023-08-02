@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.013s
-user	0m0.002s
-sys	0m0.011s
+real	0m0.007s
+user	0m0.004s
+sys	0m0.003s
 
 ===============================================================================
 
@@ -70,7 +70,7 @@ Directory: .
 File                                       Lines    Exec  Cover   Missing
 ------------------------------------------------------------------------------
 robot_simulator.cpp                           64      64   100%   
-robot_simulator.h                              1       1   100%   
+robot_simulator.hpp                            1       1   100%   
 robot_simulator_test.cpp                     158     158   100%   
 test/catch.hpp                                40      27    67%   1580-1581,1593-1594,1628,1630,1642-1643,1647-1648,2227,2229,2560
 ------------------------------------------------------------------------------
@@ -79,9 +79,9 @@ TOTAL                                        263     250    95%
 lines: 95.1% (250 out of 263)
 branches: 39.9% (272 out of 681)
 
-real	0m9.500s
-user	0m8.618s
-sys	0m0.873s
+real	0m10.672s
+user	0m9.805s
+sys	0m0.866s
 
 ===============================================================================
 
@@ -89,9 +89,9 @@ cmake-format --in-place CMakeLists.txt
 WARNING config_util.py:307: The following configuration options were ignored:
   max_subargs_per_line
 
-real	0m0.264s
-user	0m0.182s
-sys	0m0.085s
+real	0m0.177s
+user	0m0.136s
+sys	0m0.043s
 
 ===============================================================================
 
@@ -111,67 +111,53 @@ found lint:
   Convention: 3
 
 
-real	0m0.158s
-user	0m0.119s
-sys	0m0.040s
+real	0m0.181s
+user	0m0.135s
+sys	0m0.049s
 
 ===============================================================================
 
-Running: clang-format-16 -style=file -i ./robot_simulator.cpp ./robot_simulator_test.cpp ./robot_simulator.h
+Running: clang-format-16 -style=file -i ./robot_simulator.cpp ./robot_simulator_test.cpp ./robot_simulator.hpp
 
-real	0m0.022s
-user	0m0.012s
-sys	0m0.010s
+real	0m0.028s
+user	0m0.017s
+sys	0m0.011s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./robot_simulator.cpp ./robot_simulator_test.cpp ./robot_simulator.h
-error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
-error: invalid argument '-std=c++17' not allowed with 'C'
-/home/vpayno/git_vpayno/exercism-workspace/cpp/robot-simulator/robot_simulator.h:4:10: fatal error: 'string' file not found
-#include <string>
-         ^~~~~~~~
-1 error generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/robot-simulator/robot_simulator.h.
+clang-check-16 --analyze ./robot_simulator.cpp ./robot_simulator_test.cpp ./robot_simulator.hpp
 
-real	0m0.545s
-user	0m0.511s
-sys	0m0.034s
+real	0m0.696s
+user	0m0.658s
+sys	0m0.038s
 
 
-real	0m0.547s
-user	0m0.512s
-sys	0m0.035s
+real	0m0.698s
+user	0m0.658s
+sys	0m0.040s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 11555 warnings generated.
 46957 warnings generated.
-46957 warnings and 3 errors generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/robot-simulator/robot_simulator.h.
-Suppressed 46961 warnings (46956 in non-user code, 5 NOLINT).
+58512 warnings generated.
+Suppressed 58516 warnings (58511 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-Found compiler error(s).
 
-real	0m6.474s
-user	0m6.414s
-sys	0m0.059s
-Running: clang-tidy-16 ./robot_simulator.cpp ./robot_simulator_test.cpp ./robot_simulator.h
-error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
-error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
-/home/vpayno/git_vpayno/exercism-workspace/cpp/robot-simulator/robot_simulator.h:4:10: error: 'string' file not found [clang-diagnostic-error]
-#include <string>
-         ^~~~~~~~
+real	0m8.139s
+user	0m8.056s
+sys	0m0.083s
+Running: clang-tidy-16 ./robot_simulator.cpp ./robot_simulator_test.cpp ./robot_simulator.hpp
 /home/vpayno/git_vpayno/exercism-workspace/cpp/robot-simulator/robot_simulator_test.cpp:14:17: warning: variable name 'r' is too short, expected at least 3 characters [readability-identifier-length]
     const Robot r;
                 ^
 
 
-real	0m6.476s
-user	0m6.417s
-sys	0m0.059s
+real	0m8.142s
+user	0m8.056s
+sys	0m0.086s
 
 ===============================================================================
 

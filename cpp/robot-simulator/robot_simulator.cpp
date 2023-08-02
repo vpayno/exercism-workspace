@@ -1,4 +1,4 @@
-#include "robot_simulator.h"
+#include "robot_simulator.hpp"
 
 namespace robot_simulator {
 

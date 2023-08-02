@@ -1,5 +1,5 @@
-#if !defined(ROBOT_SIMULATOR_H)
-#define ROBOT_SIMULATOR_H
+#if !defined(ROBOT_SIMULATOR_HPP)
+#define ROBOT_SIMULATOR_HPP
 
 #include <string>
 #include <utility>
@@ -45,4 +45,4 @@ struct Robot final {
 
 } // namespace robot_simulator
 
-#endif // ROBOT_SIMULATOR_H
+#endif // ROBOT_SIMULATOR_HPP
