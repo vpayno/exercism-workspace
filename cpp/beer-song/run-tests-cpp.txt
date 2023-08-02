@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.010s
+real	0m0.009s
 user	0m0.002s
-sys	0m0.008s
+sys	0m0.007s
 
 ===============================================================================
 
@@ -69,18 +69,18 @@ Directory: .
 ------------------------------------------------------------------------------
 File                                       Lines    Exec  Cover   Missing
 ------------------------------------------------------------------------------
-beer_song.cpp                                 40      36    90%   10,12,34,38
+beer_song.cpp                                 42      36    85%   10-12,14,38,42
 beer_song_test.cpp                            20      20   100%   
 test/catch.hpp                                32      27    84%   1642-1643,2227,2229,2560
 ------------------------------------------------------------------------------
-TOTAL                                         92      83    90%
+TOTAL                                         94      83    88%
 ------------------------------------------------------------------------------
-lines: 90.2% (83 out of 92)
+lines: 88.3% (83 out of 94)
 branches: 44.1% (89 out of 202)
 
-real	0m10.748s
-user	0m9.712s
-sys	0m1.001s
+real	0m11.044s
+user	0m10.007s
+sys	0m1.033s
 
 ===============================================================================
 
@@ -88,9 +88,9 @@ cmake-format --in-place CMakeLists.txt
 WARNING config_util.py:307: The following configuration options were ignored:
   max_subargs_per_line
 
-real	0m0.173s
-user	0m0.119s
-sys	0m0.039s
+real	0m0.341s
+user	0m0.248s
+sys	0m0.096s
 
 ===============================================================================
 
@@ -110,69 +110,54 @@ found lint:
   Convention: 3
 
 
-real	0m0.184s
-user	0m0.122s
-sys	0m0.054s
+real	0m0.220s
+user	0m0.145s
+sys	0m0.075s
 
 ===============================================================================
 
-Running: clang-format-16 -style=file -i ./beer_song.cpp ./beer_song_test.cpp ./beer_song.h
+Running: clang-format-16 -style=file -i ./beer_song.cpp ./beer_song_test.cpp ./beer_song.hpp
 
-real	0m0.021s
-user	0m0.011s
-sys	0m0.009s
+real	0m0.030s
+user	0m0.018s
+sys	0m0.012s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./beer_song.cpp ./beer_song_test.cpp ./beer_song.h
-error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
-error: invalid argument '-std=c++17' not allowed with 'C'
-In file included from /home/vpayno/git_vpayno/exercism-workspace/cpp/beer-song/beer_song.h:4:
-/usr/include/boost/format.hpp:17:10: fatal error: 'vector' file not found
-#include <vector>
-         ^~~~~~~~
-1 error generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/beer-song/beer_song.h.
+clang-check-16 --analyze ./beer_song.cpp ./beer_song_test.cpp ./beer_song.hpp
 
-real	0m2.631s
-user	0m2.532s
-sys	0m0.098s
+real	0m3.214s
+user	0m3.099s
+sys	0m0.115s
 
 
-real	0m2.633s
-user	0m2.533s
-sys	0m0.099s
+real	0m3.216s
+user	0m3.101s
+sys	0m0.115s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 39022 warnings generated.
 86722 warnings generated.
-95992 warnings and 3 errors generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/beer-song/beer_song.h.
-Suppressed 95996 warnings (95991 in non-user code, 5 NOLINT).
+125277 warnings generated.
+Suppressed 125281 warnings (125276 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-Found compiler error(s).
 
-real	0m14.568s
-user	0m14.442s
-sys	0m0.125s
-Running: clang-tidy-16 ./beer_song.cpp ./beer_song_test.cpp ./beer_song.h
-error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
-error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
+real	0m19.876s
+user	0m19.705s
+sys	0m0.169s
+Running: clang-tidy-16 ./beer_song.cpp ./beer_song_test.cpp ./beer_song.hpp
 /home/vpayno/git_vpayno/exercism-workspace/cpp/beer-song/beer_song_test.cpp:11:5: warning: variable 'expected' of type 'string' (aka 'basic_string<char>') can be declared 'const' [misc-const-correctness]
     string expected =
     ^
            const 
-/usr/include/boost/format.hpp:17:10: error: 'vector' file not found [clang-diagnostic-error]
-#include <vector>
-         ^~~~~~~~
 
 
-real	0m14.570s
-user	0m14.445s
-sys	0m0.125s
+real	0m19.878s
+user	0m19.708s
+sys	0m0.169s
 
 ===============================================================================
 

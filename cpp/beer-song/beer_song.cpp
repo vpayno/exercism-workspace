@@ -1,4 +1,4 @@
-#include "beer_song.h"
+#include "beer_song.hpp"
 
 namespace beer_song {
 

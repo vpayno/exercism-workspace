@@ -1,5 +1,5 @@
-#if !defined(BEER_SONG_H)
-#define BEER_SONG_H
+#if !defined(BEER_SONG_HPP)
+#define BEER_SONG_HPP
 
 #include <boost/format.hpp> // using this instead of std::format because we aren't using c++20
 #include <sstream> // need this to save the output of boost::format
@@ -12,4 +12,4 @@ std::string verse(int beer_count);
 
 } // namespace beer_song
 
-#endif // BEER_SONG_H
+#endif // BEER_SONG_HPP

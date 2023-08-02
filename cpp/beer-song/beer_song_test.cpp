@@ -1,4 +1,4 @@
-#include "beer_song.h"
+#include "beer_song.hpp"
 #ifdef EXERCISM_TEST_SUITE
 #include <catch2/catch.hpp>
 #else
