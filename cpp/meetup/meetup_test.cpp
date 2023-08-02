@@ -1,4 +1,4 @@
-#include "meetup.h"
+#include "meetup.hpp"
 #include <boost/date_time/gregorian/gregorian.hpp>
 #ifdef EXERCISM_TEST_SUITE
 #include <catch2/catch.hpp>

@@ -1,5 +1,5 @@
-#if !defined(MEETUP_H)
-#define MEETUP_H
+#if !defined(MEETUP_HPP)
+#define MEETUP_HPP
 
 #include <boost/date_time/gregorian/gregorian.hpp>
 
@@ -82,4 +82,4 @@ struct scheduler final {
 
 } // namespace meetup
 
-#endif // MEETUP_H
+#endif // MEETUP_HPP

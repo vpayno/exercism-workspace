@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.026s
-user	0m0.002s
-sys	0m0.025s
+real	0m0.031s
+user	0m0.005s
+sys	0m0.026s
 
 ===============================================================================
 
@@ -79,9 +79,9 @@ TOTAL                                        620     608    98%
 lines: 98.1% (608 out of 620)
 branches: 41.9% (920 out of 2198)
 
-real	0m12.654s
-user	0m11.455s
-sys	0m1.202s
+real	0m13.866s
+user	0m12.697s
+sys	0m1.160s
 
 ===============================================================================
 
@@ -89,9 +89,9 @@ cmake-format --in-place CMakeLists.txt
 WARNING config_util.py:307: The following configuration options were ignored:
   max_subargs_per_line
 
-real	0m0.380s
-user	0m0.286s
-sys	0m0.096s
+real	0m0.153s
+user	0m0.115s
+sys	0m0.039s
 
 ===============================================================================
 
@@ -113,66 +113,50 @@ found lint:
   Convention: 5
 
 
-real	0m0.194s
-user	0m0.143s
-sys	0m0.053s
+real	0m0.304s
+user	0m0.245s
+sys	0m0.061s
 
 ===============================================================================
 
-Running: clang-format-16 -style=file -i ./meetup.cpp ./meetup_test.cpp ./meetup.h
+Running: clang-format-16 -style=file -i ./meetup.cpp ./meetup_test.cpp ./meetup.hpp
 
-real	0m0.041s
-user	0m0.028s
-sys	0m0.013s
+real	0m0.040s
+user	0m0.027s
+sys	0m0.012s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./meetup.cpp ./meetup_test.cpp ./meetup.h
-error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
-error: invalid argument '-std=c++17' not allowed with 'C'
-In file included from /home/vpayno/git_vpayno/exercism-workspace/cpp/meetup/meetup.h:4:
-In file included from /usr/include/boost/date_time/gregorian/gregorian.hpp:19:
-/usr/include/boost/date_time/compiler_config.hpp:11:10: fatal error: 'cstdlib' file not found
-#include <cstdlib>
-         ^~~~~~~~~
-1 error generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/meetup/meetup.h.
+clang-check-16 --analyze ./meetup.cpp ./meetup_test.cpp ./meetup.hpp
 
-real	0m6.204s
-user	0m6.001s
-sys	0m0.201s
+real	0m7.171s
+user	0m6.973s
+sys	0m0.197s
 
 
-real	0m6.206s
-user	0m6.003s
-sys	0m0.202s
+real	0m7.175s
+user	0m6.974s
+sys	0m0.199s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 49837 warnings generated.
 107222 warnings generated.
-122148 warnings and 3 errors generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/meetup/meetup.h.
-Suppressed 122153 warnings (122148 in non-user code, 5 NOLINT).
+157007 warnings generated.
+Suppressed 157012 warnings (157007 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-Found compiler error(s).
 
-real	0m23.937s
-user	0m23.655s
-sys	0m0.281s
-Running: clang-tidy-16 ./meetup.cpp ./meetup_test.cpp ./meetup.h
-error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
-error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
-/usr/include/boost/date_time/compiler_config.hpp:11:10: error: 'cstdlib' file not found [clang-diagnostic-error]
-#include <cstdlib>
-         ^~~~~~~~~
+real	0m30.020s
+user	0m29.768s
+sys	0m0.250s
+Running: clang-tidy-16 ./meetup.cpp ./meetup_test.cpp ./meetup.hpp
 
 
-real	0m23.938s
-user	0m23.656s
-sys	0m0.282s
+real	0m30.022s
+user	0m29.770s
+sys	0m0.251s
 
 ===============================================================================
 

@@ -1,4 +1,4 @@
-#include "meetup.h"
+#include "meetup.hpp"
 
 // this would be a perfect exercise to practice with Rust macros
 
