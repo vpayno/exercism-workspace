@@ -1,5 +1,5 @@
-#if !defined(BINARY_SEARCH_H)
-#define BINARY_SEARCH_H
+#if !defined(BINARY_SEARCH_HPP)
+#define BINARY_SEARCH_HPP
 
 #include <cstddef>
 #include <stdexcept>
@@ -14,4 +14,4 @@ size_t find(data_t data, number_t key);
 
 } // namespace binary_search
 
-#endif // BINARY_SEARCH_H
+#endif // BINARY_SEARCH_HPP

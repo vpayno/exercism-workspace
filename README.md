@@ -11,12 +11,12 @@ Exercism Workspace
 
 -  January:    Introduction     ->  ✓
 -  February:   Functional       ->  Haskell      (5/5)
--  March:      Mechanical       ->  C            (2/5),  C++   (1/5),  Go       (3/5),  Rust  (0/5)
+-  March:      Mechanical       ->  C            (2/5)  |  C++   (2/5)  |  Go       (3/5)  |  Rust  (0/5)
 -  April:      Analytical       ->  Python       (5/5)
--  May:        Mindshifting     ->  Rust         (0/5),  Tcl   (1/5)
+-  May:        Mindshifting     ->  Rust         (0/5)  |  Tcl   (1/5)
 -  June:       Summer-of-Sexps  ->  Common-Lisp  (5/5)
--  July:       Jurassic         ->  C            (5/5),  C++   (5/5),  Fortran  (0/5)
--  August:     Apps             ->  Dart         (5/5),  Java  (0/5),  Kotlin   (0/5)
+-  July:       Jurassic         ->  C            (5/5)  |  C++   (5/5)  |  Fortran  (0/5)
+-  August:     Apps             ->  Dart         (5/5)  |  Java  (0/5)  |  Kotlin   (0/5)
 -  September:  Slimline         ->
 -  October:    Object-Oriented  ->
 -  November:   Nibbly           ->

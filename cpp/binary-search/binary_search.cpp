@@ -1,4 +1,4 @@
-#include "binary_search.h"
+#include "binary_search.hpp"
 
 namespace binary_search {
 

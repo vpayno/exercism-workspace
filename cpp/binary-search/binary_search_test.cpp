@@ -1,4 +1,4 @@
-#include "binary_search.h"
+#include "binary_search.hpp"
 #ifdef EXERCISM_TEST_SUITE
 #include <catch2/catch.hpp>
 #else

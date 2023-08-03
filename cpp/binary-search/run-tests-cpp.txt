@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.007s
-user	0m0.001s
-sys	0m0.006s
+real	0m0.011s
+user	0m0.002s
+sys	0m0.009s
 
 ===============================================================================
 
@@ -82,9 +82,9 @@ TOTAL                                        106     101    95%
 lines: 95.3% (101 out of 106)
 branches: 40.2% (111 out of 276)
 
-real	0m11.694s
-user	0m10.393s
-sys	0m1.204s
+real	0m9.863s
+user	0m8.907s
+sys	0m0.953s
 
 ===============================================================================
 
@@ -92,9 +92,9 @@ cmake-format --in-place CMakeLists.txt
 WARNING config_util.py:307: The following configuration options were ignored:
   max_subargs_per_line
 
-real	0m0.211s
-user	0m0.138s
-sys	0m0.069s
+real	0m0.166s
+user	0m0.119s
+sys	0m0.049s
 
 ===============================================================================
 
@@ -114,64 +114,50 @@ found lint:
   Convention: 3
 
 
-real	0m0.187s
-user	0m0.137s
-sys	0m0.051s
+real	0m0.174s
+user	0m0.126s
+sys	0m0.049s
 
 ===============================================================================
 
-Running: clang-format-16 -style=file -i ./binary_search.cpp ./binary_search_test.cpp ./binary_search.h
+Running: clang-format-16 -style=file -i ./binary_search.cpp ./binary_search_test.cpp ./binary_search.hpp
 
-real	0m0.025s
-user	0m0.012s
-sys	0m0.012s
+real	0m0.022s
+user	0m0.011s
+sys	0m0.010s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./binary_search.cpp ./binary_search_test.cpp ./binary_search.h
-error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
-error: invalid argument '-std=c++17' not allowed with 'C'
-/home/vpayno/git_vpayno/exercism-workspace/cpp/binary-search/binary_search.h:4:10: fatal error: 'cstddef' file not found
-#include <cstddef>
-         ^~~~~~~~~
-1 error generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/binary-search/binary_search.h.
+clang-check-16 --analyze ./binary_search.cpp ./binary_search_test.cpp ./binary_search.hpp
 
-real	0m0.544s
-user	0m0.508s
-sys	0m0.036s
+real	0m0.634s
+user	0m0.597s
+sys	0m0.037s
 
 
-real	0m0.546s
-user	0m0.510s
-sys	0m0.036s
+real	0m0.636s
+user	0m0.599s
+sys	0m0.037s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 12928 warnings generated.
 48320 warnings generated.
-48320 warnings and 3 errors generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/binary-search/binary_search.h.
-Suppressed 48325 warnings (48320 in non-user code, 5 NOLINT).
+61218 warnings generated.
+Suppressed 61223 warnings (61218 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-Found compiler error(s).
 
-real	0m8.204s
-user	0m8.122s
-sys	0m0.081s
-Running: clang-tidy-16 ./binary_search.cpp ./binary_search_test.cpp ./binary_search.h
-error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
-error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
-/home/vpayno/git_vpayno/exercism-workspace/cpp/binary-search/binary_search.h:4:10: error: 'cstddef' file not found [clang-diagnostic-error]
-#include <cstddef>
-         ^~~~~~~~~
+real	0m7.529s
+user	0m7.450s
+sys	0m0.078s
+Running: clang-tidy-16 ./binary_search.cpp ./binary_search_test.cpp ./binary_search.hpp
 
 
-real	0m8.206s
-user	0m8.123s
-sys	0m0.083s
+real	0m7.531s
+user	0m7.453s
+sys	0m0.079s
 
 ===============================================================================
 
