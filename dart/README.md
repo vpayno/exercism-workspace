@@ -20,3 +20,4 @@
 - [leap](./leap/README.md)
 - [scrabble-score](./scrabble-score/README.md)
 - [anagram](./anagram/README.md)
+- [rna-transcription](./rna-transcription/README.md)
