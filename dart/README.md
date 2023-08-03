@@ -22,3 +22,4 @@
 - [anagram](./anagram/README.md)
 - [rna-transcription](./rna-transcription/README.md)
 - [triangle](./triangle/README.md)
+- [phone-number](./phone-number/README.md)

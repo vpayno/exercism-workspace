@@ -1,0 +1,437 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+dart pub global activate dart_style
+Package dart_style is currently active at version 2.2.5.
+Resolving dependencies...
+The package dart_style is already activated at newest available version.
+To recompile executables, first run `dart pub global deactivate dart_style`.
+Installed executables dartfmt and dartformat.
+Activated dart_style 2.2.5.
+
+real	0m0.903s
+user	0m0.897s
+sys	0m0.230s
+
+===============================================================================
+
+Running: dart analyze ./lib
+Analyzing lib...
+No issues found!
+
+real	0m0.636s
+user	0m0.766s
+sys	0m0.195s
+
+===============================================================================
+
+Running: dart analyze ./test
+Analyzing test...
+No issues found!
+
+real	0m0.695s
+user	0m0.865s
+sys	0m0.199s
+
+===============================================================================
+
+rm -rf ./coverage
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.001s
+
+===============================================================================
+
+Running: dart test --run-skipped --no-color .
+00:00 +0: loading ./test/phone_number_test.dart                                                                                                                                                        00:00 +0: ./test/phone_number_test.dart: PhoneNumber cleans the number                                                                                                                                 00:00 +1: ./test/phone_number_test.dart: PhoneNumber cleans the number                                                                                                                                 00:00 +1: ./test/phone_number_test.dart: PhoneNumber cleans numbers with dots                                                                                                                          00:00 +2: ./test/phone_number_test.dart: PhoneNumber cleans numbers with dots                                                                                                                          00:00 +2: ./test/phone_number_test.dart: PhoneNumber cleans numbers with multiple spaces                                                                                                               00:00 +3: ./test/phone_number_test.dart: PhoneNumber cleans numbers with multiple spaces                                                                                                               00:00 +3: ./test/phone_number_test.dart: PhoneNumber invalid when 9 digits                                                                                                                             00:00 +4: ./test/phone_number_test.dart: PhoneNumber invalid when 9 digits                                                                                                                             00:00 +4: ./test/phone_number_test.dart: PhoneNumber invalid when 11 digits does not start with a 1                                                                                                    00:00 +5: ./test/phone_number_test.dart: PhoneNumber invalid when 11 digits does not start with a 1                                                                                                    00:00 +5: ./test/phone_number_test.dart: PhoneNumber valid when 11 digits and starting with 1                                                                                                          00:00 +6: ./test/phone_number_test.dart: PhoneNumber valid when 11 digits and starting with 1                                                                                                          00:00 +6: ./test/phone_number_test.dart: PhoneNumber valid when 11 digits and starting with 1 even with punctuation                                                                                    00:00 +7: ./test/phone_number_test.dart: PhoneNumber valid when 11 digits and starting with 1 even with punctuation                                                                                    00:00 +7: ./test/phone_number_test.dart: PhoneNumber invalid when more than 11 digits                                                                                                                  00:00 +8: ./test/phone_number_test.dart: PhoneNumber invalid when more than 11 digits                                                                                                                  00:00 +8: ./test/phone_number_test.dart: PhoneNumber invalid with letters                                                                                                                              00:00 +9: ./test/phone_number_test.dart: PhoneNumber invalid with letters                                                                                                                              00:00 +9: ./test/phone_number_test.dart: PhoneNumber invalid with punctuations                                                                                                                         00:00 +9 -1: ./test/phone_number_test.dart: PhoneNumber invalid with punctuations [E]                                                                                                                  
+  Expected: throws <Instance of 'FormatException'> with `message`: 'punctuations not permitted'
+    Actual: <Closure: () => String>
+     Which: threw FormatException:<FormatException: incorrect number of digits>
+            stack package:phone_number/phone_number.dart 18:7  PhoneNumber.clean
+                  test/phone_number_test.dart 87:27            main.<fn>.<fn>.<fn>
+                  package:matcher                              expect
+                  test/phone_number_test.dart 86:7             main.<fn>.<fn>
+                  
+            which has `message` with value 'incorrect number of digits' which is different.
+                  Expected: punctuatio ...
+                    Actual: incorrect  ...
+                            ^
+                   Differ at offset 0
+  
+  package:matcher                   expect
+  test/phone_number_test.dart 86:7  main.<fn>.<fn>
+  
+
+To run this test again: /home/vpayno/git_remote/flutter/bin/cache/dart-sdk/bin/dart test ./test/phone_number_test.dart -p vm --plain-name 'PhoneNumber invalid with punctuations'
+00:00 +9 -1: ./test/phone_number_test.dart: PhoneNumber invalid if area code starts with 0                                                                                                             00:00 +9 -2: ./test/phone_number_test.dart: PhoneNumber invalid if area code starts with 0 [E]                                                                                                         
+  Expected: throws <Instance of 'FormatException'> with `message`: 'area code cannot start with zero'
+    Actual: <Closure: () => String>
+     Which: returned '0234567890'
+  
+  package:matcher                   expect
+  test/phone_number_test.dart 99:7  main.<fn>.<fn>
+  
+
+To run this test again: /home/vpayno/git_remote/flutter/bin/cache/dart-sdk/bin/dart test ./test/phone_number_test.dart -p vm --plain-name 'PhoneNumber invalid if area code starts with 0'
+00:00 +9 -2: ./test/phone_number_test.dart: PhoneNumber invalid if area code starts with 1                                                                                                             00:00 +9 -3: ./test/phone_number_test.dart: PhoneNumber invalid if area code starts with 1 [E]                                                                                                         
+  Expected: throws <Instance of 'FormatException'> with `message`: 'area code cannot start with one'
+    Actual: <Closure: () => String>
+     Which: returned '1234567890'
+  
+  package:matcher                    expect
+  test/phone_number_test.dart 112:7  main.<fn>.<fn>
+  
+
+To run this test again: /home/vpayno/git_remote/flutter/bin/cache/dart-sdk/bin/dart test ./test/phone_number_test.dart -p vm --plain-name 'PhoneNumber invalid if area code starts with 1'
+00:00 +9 -3: ./test/phone_number_test.dart: PhoneNumber invalid if exchange code starts with 0                                                                                                         00:00 +9 -4: ./test/phone_number_test.dart: PhoneNumber invalid if exchange code starts with 0 [E]                                                                                                     
+  Expected: throws <Instance of 'FormatException'> with `message`: 'exchange code cannot start with zero'
+    Actual: <Closure: () => String>
+     Which: threw FormatException:<FormatException: exchange code cannot start with 0>
+            stack package:phone_number/phone_number.dart 42:7  PhoneNumber.clean
+                  test/phone_number_test.dart 126:27           main.<fn>.<fn>.<fn>
+                  package:matcher                              expect
+                  test/phone_number_test.dart 125:7            main.<fn>.<fn>
+                  
+            which has `message` with value 'exchange code cannot start with 0' which is different.
+                  Expected: ... tart with zero
+                    Actual: ... tart with 0
+                                          ^
+                   Differ at offset 32
+  
+  package:matcher                    expect
+  test/phone_number_test.dart 125:7  main.<fn>.<fn>
+  
+
+To run this test again: /home/vpayno/git_remote/flutter/bin/cache/dart-sdk/bin/dart test ./test/phone_number_test.dart -p vm --plain-name 'PhoneNumber invalid if exchange code starts with 0'
+00:00 +9 -4: ./test/phone_number_test.dart: PhoneNumber invalid if exchange code starts with 1                                                                                                         00:00 +9 -5: ./test/phone_number_test.dart: PhoneNumber invalid if exchange code starts with 1 [E]                                                                                                     
+  Expected: throws <Instance of 'FormatException'> with `message`: 'exchange code cannot start with one'
+    Actual: <Closure: () => String>
+     Which: threw FormatException:<FormatException: exchange code cannot start with 1>
+            stack package:phone_number/phone_number.dart 46:7  PhoneNumber.clean
+                  test/phone_number_test.dart 139:27           main.<fn>.<fn>.<fn>
+                  package:matcher                              expect
+                  test/phone_number_test.dart 138:7            main.<fn>.<fn>
+                  
+            which has `message` with value 'exchange code cannot start with 1' which is different.
+                  Expected: ... tart with one
+                    Actual: ... tart with 1
+                                          ^
+                   Differ at offset 32
+  
+  package:matcher                    expect
+  test/phone_number_test.dart 138:7  main.<fn>.<fn>
+  
+
+To run this test again: /home/vpayno/git_remote/flutter/bin/cache/dart-sdk/bin/dart test ./test/phone_number_test.dart -p vm --plain-name 'PhoneNumber invalid if exchange code starts with 1'
+00:00 +9 -5: ./test/phone_number_test.dart: PhoneNumber invalid if area code starts with 0 on valid 11-digit number                                                                                    00:00 +9 -6: ./test/phone_number_test.dart: PhoneNumber invalid if area code starts with 0 on valid 11-digit number [E]                                                                                
+  Expected: throws <Instance of 'FormatException'> with `message`: 'area code cannot start with zero'
+    Actual: <Closure: () => String>
+     Which: returned '0234567890'
+  
+  package:matcher                    expect
+  test/phone_number_test.dart 151:7  main.<fn>.<fn>
+  
+
+To run this test again: /home/vpayno/git_remote/flutter/bin/cache/dart-sdk/bin/dart test ./test/phone_number_test.dart -p vm --plain-name 'PhoneNumber invalid if area code starts with 0 on valid 11-digit number'
+00:00 +9 -6: ./test/phone_number_test.dart: PhoneNumber invalid if area code starts with 1 on valid 11-digit number                                                                                    00:00 +9 -7: ./test/phone_number_test.dart: PhoneNumber invalid if area code starts with 1 on valid 11-digit number [E]                                                                                
+  Expected: throws <Instance of 'FormatException'> with `message`: 'area code cannot start with one'
+    Actual: <Closure: () => String>
+     Which: returned '1234567890'
+  
+  package:matcher                    expect
+  test/phone_number_test.dart 164:7  main.<fn>.<fn>
+  
+
+To run this test again: /home/vpayno/git_remote/flutter/bin/cache/dart-sdk/bin/dart test ./test/phone_number_test.dart -p vm --plain-name 'PhoneNumber invalid if area code starts with 1 on valid 11-digit number'
+00:00 +9 -7: ./test/phone_number_test.dart: PhoneNumber invalid if exchange code starts with 0 on valid 11-digit number                                                                                00:00 +9 -8: ./test/phone_number_test.dart: PhoneNumber invalid if exchange code starts with 0 on valid 11-digit number [E]                                                                            
+  Expected: throws <Instance of 'FormatException'> with `message`: 'exchange code cannot start with zero'
+    Actual: <Closure: () => String>
+     Which: threw FormatException:<FormatException: exchange code cannot start with 0>
+            stack package:phone_number/phone_number.dart 42:7  PhoneNumber.clean
+                  test/phone_number_test.dart 178:27           main.<fn>.<fn>.<fn>
+                  package:matcher                              expect
+                  test/phone_number_test.dart 177:7            main.<fn>.<fn>
+                  
+            which has `message` with value 'exchange code cannot start with 0' which is different.
+                  Expected: ... tart with zero
+                    Actual: ... tart with 0
+                                          ^
+                   Differ at offset 32
+  
+  package:matcher                    expect
+  test/phone_number_test.dart 177:7  main.<fn>.<fn>
+  
+
+To run this test again: /home/vpayno/git_remote/flutter/bin/cache/dart-sdk/bin/dart test ./test/phone_number_test.dart -p vm --plain-name 'PhoneNumber invalid if exchange code starts with 0 on valid 11-digit number'
+00:00 +9 -8: ./test/phone_number_test.dart: PhoneNumber invalid if exchange code starts with 1 on valid 11-digit number                                                                                00:00 +9 -9: ./test/phone_number_test.dart: PhoneNumber invalid if exchange code starts with 1 on valid 11-digit number [E]                                                                            
+  Expected: throws <Instance of 'FormatException'> with `message`: 'exchange code cannot start with one'
+    Actual: <Closure: () => String>
+     Which: threw FormatException:<FormatException: exchange code cannot start with 1>
+            stack package:phone_number/phone_number.dart 46:7  PhoneNumber.clean
+                  test/phone_number_test.dart 191:27           main.<fn>.<fn>.<fn>
+                  package:matcher                              expect
+                  test/phone_number_test.dart 190:7            main.<fn>.<fn>
+                  
+            which has `message` with value 'exchange code cannot start with 1' which is different.
+                  Expected: ... tart with one
+                    Actual: ... tart with 1
+                                          ^
+                   Differ at offset 32
+  
+  package:matcher                    expect
+  test/phone_number_test.dart 190:7  main.<fn>.<fn>
+  
+
+To run this test again: /home/vpayno/git_remote/flutter/bin/cache/dart-sdk/bin/dart test ./test/phone_number_test.dart -p vm --plain-name 'PhoneNumber invalid if exchange code starts with 1 on valid 11-digit number'
+00:00 +9 -9: Some tests failed.                                                                                                                                                                        
+
+Consider enabling the flag chain-stack-traces to receive more detailed exceptions.
+For example, 'dart test --chain-stack-traces'.
+
+real	0m1.001s
+user	0m1.179s
+sys	0m0.297s
+
+===============================================================================
+
+dart pub global activate coverage
+Package coverage is currently active at version 1.6.3.
+Resolving dependencies...
+The package coverage is already activated at newest available version.
+To recompile executables, first run `dart pub global deactivate coverage`.
+Installed executables collect_coverage, format_coverage and test_with_coverage.
+Activated coverage 1.6.3.
+
+real	0m0.668s
+user	0m0.680s
+sys	0m0.190s
+
+===============================================================================
+
+Running: dart pub global run coverage:test_with_coverage
+The Dart VM service is listening on http://127.0.0.1:8181/
+The Dart DevTools debugger and profiler is available at: http://127.0.0.1:8181/devtools/#/?uri=ws%3A%2F%2F127.0.0.1%3A8181%2Fws
+00:00 [32m+0[0m: [1m[90mloading test/phone_number_test.dart[0m[0m                                                                                                                                                          00:00 [32m+0[0m: test/phone_number_test.dart: PhoneNumber cleans the number[0m                                                                                                                                   00:00 [32m+1[0m: test/phone_number_test.dart: PhoneNumber cleans the number[0m                                                                                                                                   00:00 [32m+1[0m: test/phone_number_test.dart: PhoneNumber cleans numbers with dots[0m                                                                                                                            00:00 [32m+1[0m[33m ~1[0m: test/phone_number_test.dart: PhoneNumber cleans numbers with dots[0m                                                                                                                         00:00 [32m+1[0m[33m ~1[0m: test/phone_number_test.dart: PhoneNumber cleans numbers with multiple spaces[0m                                                                                                              00:00 [32m+1[0m[33m ~2[0m: test/phone_number_test.dart: PhoneNumber cleans numbers with multiple spaces[0m                                                                                                              00:00 [32m+1[0m[33m ~2[0m: test/phone_number_test.dart: PhoneNumber invalid when 9 digits[0m                                                                                                                            00:00 [32m+1[0m[33m ~3[0m: test/phone_number_test.dart: PhoneNumber invalid when 9 digits[0m                                                                                                                            00:00 [32m+1[0m[33m ~3[0m: test/phone_number_test.dart: PhoneNumber invalid when 11 digits does not start with a 1[0m                                                                                                   00:00 [32m+1[0m[33m ~4[0m: test/phone_number_test.dart: PhoneNumber invalid when 11 digits does not start with a 1[0m                                                                                                   00:00 [32m+1[0m[33m ~4[0m: test/phone_number_test.dart: PhoneNumber valid when 11 digits and starting with 1[0m                                                                                                         00:00 [32m+1[0m[33m ~5[0m: test/phone_number_test.dart: PhoneNumber valid when 11 digits and starting with 1[0m                                                                                                         00:00 [32m+1[0m[33m ~5[0m: test/phone_number_test.dart: PhoneNumber valid when 11 digits and starting with 1 even with punctuation[0m                                                                                   00:00 [32m+1[0m[33m ~6[0m: test/phone_number_test.dart: PhoneNumber valid when 11 digits and starting with 1 even with punctuation[0m                                                                                   00:00 [32m+1[0m[33m ~6[0m: test/phone_number_test.dart: PhoneNumber invalid when more than 11 digits[0m                                                                                                                 00:00 [32m+1[0m[33m ~7[0m: test/phone_number_test.dart: PhoneNumber invalid when more than 11 digits[0m                                                                                                                 00:00 [32m+1[0m[33m ~7[0m: test/phone_number_test.dart: PhoneNumber invalid with letters[0m                                                                                                                             00:00 [32m+1[0m[33m ~8[0m: test/phone_number_test.dart: PhoneNumber invalid with letters[0m                                                                                                                             00:00 [32m+1[0m[33m ~8[0m: test/phone_number_test.dart: PhoneNumber invalid with punctuations[0m                                                                                                                        00:00 [32m+1[0m[33m ~9[0m: test/phone_number_test.dart: PhoneNumber invalid with punctuations[0m                                                                                                                        00:00 [32m+1[0m[33m ~9[0m: test/phone_number_test.dart: PhoneNumber invalid if area code starts with 0[0m                                                                                                               00:00 [32m+1[0m[33m ~10[0m: test/phone_number_test.dart: PhoneNumber invalid if area code starts with 0[0m                                                                                                              00:00 [32m+1[0m[33m ~10[0m: test/phone_number_test.dart: PhoneNumber invalid if area code starts with 1[0m                                                                                                              00:00 [32m+1[0m[33m ~11[0m: test/phone_number_test.dart: PhoneNumber invalid if area code starts with 1[0m                                                                                                              00:00 [32m+1[0m[33m ~11[0m: test/phone_number_test.dart: PhoneNumber invalid if exchange code starts with 0[0m                                                                                                          00:00 [32m+1[0m[33m ~12[0m: test/phone_number_test.dart: PhoneNumber invalid if exchange code starts with 0[0m                                                                                                          00:00 [32m+1[0m[33m ~12[0m: test/phone_number_test.dart: PhoneNumber invalid if exchange code starts with 1[0m                                                                                                          00:00 [32m+1[0m[33m ~13[0m: test/phone_number_test.dart: PhoneNumber invalid if exchange code starts with 1[0m                                                                                                          00:00 [32m+1[0m[33m ~13[0m: test/phone_number_test.dart: PhoneNumber invalid if area code starts with 0 on valid 11-digit number[0m                                                                                     00:00 [32m+1[0m[33m ~14[0m: test/phone_number_test.dart: PhoneNumber invalid if area code starts with 0 on valid 11-digit number[0m                                                                                     00:00 [32m+1[0m[33m ~14[0m: test/phone_number_test.dart: PhoneNumber invalid if area code starts with 1 on valid 11-digit number[0m                                                                                     00:00 [32m+1[0m[33m ~15[0m: test/phone_number_test.dart: PhoneNumber invalid if area code starts with 1 on valid 11-digit number[0m                                                                                     00:00 [32m+1[0m[33m ~15[0m: test/phone_number_test.dart: PhoneNumber invalid if exchange code starts with 0 on valid 11-digit number[0m                                                                                 00:00 [32m+1[0m[33m ~16[0m: test/phone_number_test.dart: PhoneNumber invalid if exchange code starts with 0 on valid 11-digit number[0m                                                                                 00:00 [32m+1[0m[33m ~16[0m: test/phone_number_test.dart: PhoneNumber invalid if exchange code starts with 1 on valid 11-digit number[0m                                                                                 00:00 [32m+1[0m[33m ~17[0m: test/phone_number_test.dart: PhoneNumber invalid if exchange code starts with 1 on valid 11-digit number[0m                                                                                 00:00 [32m+1[0m[33m ~17[0m: All tests passed![0m                                                                                                                                                                        
+
+real	0m2.983s
+user	0m2.141s
+sys	0m0.488s
+
+===============================================================================
+
+dart run test --run-skipped --no-color --coverage=./coverage
+00:00 +0: loading test/phone_number_test.dart                                                                                                                                                          00:00 +0: test/phone_number_test.dart: PhoneNumber cleans the number                                                                                                                                   00:00 +1: test/phone_number_test.dart: PhoneNumber cleans the number                                                                                                                                   00:00 +1: test/phone_number_test.dart: PhoneNumber cleans numbers with dots                                                                                                                            00:00 +2: test/phone_number_test.dart: PhoneNumber cleans numbers with dots                                                                                                                            00:00 +2: test/phone_number_test.dart: PhoneNumber cleans numbers with multiple spaces                                                                                                                 00:00 +3: test/phone_number_test.dart: PhoneNumber cleans numbers with multiple spaces                                                                                                                 00:00 +3: test/phone_number_test.dart: PhoneNumber invalid when 9 digits                                                                                                                               00:00 +4: test/phone_number_test.dart: PhoneNumber invalid when 9 digits                                                                                                                               00:00 +4: test/phone_number_test.dart: PhoneNumber invalid when 11 digits does not start with a 1                                                                                                      00:00 +5: test/phone_number_test.dart: PhoneNumber invalid when 11 digits does not start with a 1                                                                                                      00:00 +5: test/phone_number_test.dart: PhoneNumber valid when 11 digits and starting with 1                                                                                                            00:00 +6: test/phone_number_test.dart: PhoneNumber valid when 11 digits and starting with 1                                                                                                            00:00 +6: test/phone_number_test.dart: PhoneNumber valid when 11 digits and starting with 1 even with punctuation                                                                                      00:00 +7: test/phone_number_test.dart: PhoneNumber valid when 11 digits and starting with 1 even with punctuation                                                                                      00:00 +7: test/phone_number_test.dart: PhoneNumber invalid when more than 11 digits                                                                                                                    00:00 +8: test/phone_number_test.dart: PhoneNumber invalid when more than 11 digits                                                                                                                    00:00 +8: test/phone_number_test.dart: PhoneNumber invalid with letters                                                                                                                                00:00 +9: test/phone_number_test.dart: PhoneNumber invalid with letters                                                                                                                                00:00 +9: test/phone_number_test.dart: PhoneNumber invalid with punctuations                                                                                                                           00:00 +9 -1: test/phone_number_test.dart: PhoneNumber invalid with punctuations [E]                                                                                                                    
+  Expected: throws <Instance of 'FormatException'> with `message`: 'punctuations not permitted'
+    Actual: <Closure: () => String>
+     Which: threw FormatException:<FormatException: incorrect number of digits>
+            stack package:phone_number/phone_number.dart 18:7  PhoneNumber.clean
+                  test/phone_number_test.dart 87:27            main.<fn>.<fn>.<fn>
+                  package:matcher                              expect
+                  test/phone_number_test.dart 86:7             main.<fn>.<fn>
+                  
+            which has `message` with value 'incorrect number of digits' which is different.
+                  Expected: punctuatio ...
+                    Actual: incorrect  ...
+                            ^
+                   Differ at offset 0
+  
+  package:matcher                   expect
+  test/phone_number_test.dart 86:7  main.<fn>.<fn>
+  
+
+To run this test again: /home/vpayno/git_remote/flutter/bin/cache/dart-sdk/bin/dart test test/phone_number_test.dart -p vm --plain-name 'PhoneNumber invalid with punctuations'
+00:00 +9 -1: test/phone_number_test.dart: PhoneNumber invalid if area code starts with 0                                                                                                               00:00 +9 -2: test/phone_number_test.dart: PhoneNumber invalid if area code starts with 0 [E]                                                                                                           
+  Expected: throws <Instance of 'FormatException'> with `message`: 'area code cannot start with zero'
+    Actual: <Closure: () => String>
+     Which: returned '0234567890'
+  
+  package:matcher                   expect
+  test/phone_number_test.dart 99:7  main.<fn>.<fn>
+  
+
+To run this test again: /home/vpayno/git_remote/flutter/bin/cache/dart-sdk/bin/dart test test/phone_number_test.dart -p vm --plain-name 'PhoneNumber invalid if area code starts with 0'
+00:00 +9 -2: test/phone_number_test.dart: PhoneNumber invalid if area code starts with 1                                                                                                               00:00 +9 -3: test/phone_number_test.dart: PhoneNumber invalid if area code starts with 1 [E]                                                                                                           
+  Expected: throws <Instance of 'FormatException'> with `message`: 'area code cannot start with one'
+    Actual: <Closure: () => String>
+     Which: returned '1234567890'
+  
+  package:matcher                    expect
+  test/phone_number_test.dart 112:7  main.<fn>.<fn>
+  
+
+To run this test again: /home/vpayno/git_remote/flutter/bin/cache/dart-sdk/bin/dart test test/phone_number_test.dart -p vm --plain-name 'PhoneNumber invalid if area code starts with 1'
+00:00 +9 -3: test/phone_number_test.dart: PhoneNumber invalid if exchange code starts with 0                                                                                                           00:00 +9 -4: test/phone_number_test.dart: PhoneNumber invalid if exchange code starts with 0 [E]                                                                                                       
+  Expected: throws <Instance of 'FormatException'> with `message`: 'exchange code cannot start with zero'
+    Actual: <Closure: () => String>
+     Which: threw FormatException:<FormatException: exchange code cannot start with 0>
+            stack package:phone_number/phone_number.dart 42:7  PhoneNumber.clean
+                  test/phone_number_test.dart 126:27           main.<fn>.<fn>.<fn>
+                  package:matcher                              expect
+                  test/phone_number_test.dart 125:7            main.<fn>.<fn>
+                  
+            which has `message` with value 'exchange code cannot start with 0' which is different.
+                  Expected: ... tart with zero
+                    Actual: ... tart with 0
+                                          ^
+                   Differ at offset 32
+  
+  package:matcher                    expect
+  test/phone_number_test.dart 125:7  main.<fn>.<fn>
+  
+
+To run this test again: /home/vpayno/git_remote/flutter/bin/cache/dart-sdk/bin/dart test test/phone_number_test.dart -p vm --plain-name 'PhoneNumber invalid if exchange code starts with 0'
+00:00 +9 -4: test/phone_number_test.dart: PhoneNumber invalid if exchange code starts with 1                                                                                                           00:00 +9 -5: test/phone_number_test.dart: PhoneNumber invalid if exchange code starts with 1 [E]                                                                                                       
+  Expected: throws <Instance of 'FormatException'> with `message`: 'exchange code cannot start with one'
+    Actual: <Closure: () => String>
+     Which: threw FormatException:<FormatException: exchange code cannot start with 1>
+            stack package:phone_number/phone_number.dart 46:7  PhoneNumber.clean
+                  test/phone_number_test.dart 139:27           main.<fn>.<fn>.<fn>
+                  package:matcher                              expect
+                  test/phone_number_test.dart 138:7            main.<fn>.<fn>
+                  
+            which has `message` with value 'exchange code cannot start with 1' which is different.
+                  Expected: ... tart with one
+                    Actual: ... tart with 1
+                                          ^
+                   Differ at offset 32
+  
+  package:matcher                    expect
+  test/phone_number_test.dart 138:7  main.<fn>.<fn>
+  
+
+To run this test again: /home/vpayno/git_remote/flutter/bin/cache/dart-sdk/bin/dart test test/phone_number_test.dart -p vm --plain-name 'PhoneNumber invalid if exchange code starts with 1'
+00:00 +9 -5: test/phone_number_test.dart: PhoneNumber invalid if area code starts with 0 on valid 11-digit number                                                                                      00:00 +9 -6: test/phone_number_test.dart: PhoneNumber invalid if area code starts with 0 on valid 11-digit number [E]                                                                                  
+  Expected: throws <Instance of 'FormatException'> with `message`: 'area code cannot start with zero'
+    Actual: <Closure: () => String>
+     Which: returned '0234567890'
+  
+  package:matcher                    expect
+  test/phone_number_test.dart 151:7  main.<fn>.<fn>
+  
+
+To run this test again: /home/vpayno/git_remote/flutter/bin/cache/dart-sdk/bin/dart test test/phone_number_test.dart -p vm --plain-name 'PhoneNumber invalid if area code starts with 0 on valid 11-digit number'
+00:00 +9 -6: test/phone_number_test.dart: PhoneNumber invalid if area code starts with 1 on valid 11-digit number                                                                                      00:00 +9 -7: test/phone_number_test.dart: PhoneNumber invalid if area code starts with 1 on valid 11-digit number [E]                                                                                  
+  Expected: throws <Instance of 'FormatException'> with `message`: 'area code cannot start with one'
+    Actual: <Closure: () => String>
+     Which: returned '1234567890'
+  
+  package:matcher                    expect
+  test/phone_number_test.dart 164:7  main.<fn>.<fn>
+  
+
+To run this test again: /home/vpayno/git_remote/flutter/bin/cache/dart-sdk/bin/dart test test/phone_number_test.dart -p vm --plain-name 'PhoneNumber invalid if area code starts with 1 on valid 11-digit number'
+00:00 +9 -7: test/phone_number_test.dart: PhoneNumber invalid if exchange code starts with 0 on valid 11-digit number                                                                                  00:00 +9 -8: test/phone_number_test.dart: PhoneNumber invalid if exchange code starts with 0 on valid 11-digit number [E]                                                                              
+  Expected: throws <Instance of 'FormatException'> with `message`: 'exchange code cannot start with zero'
+    Actual: <Closure: () => String>
+     Which: threw FormatException:<FormatException: exchange code cannot start with 0>
+            stack package:phone_number/phone_number.dart 42:7  PhoneNumber.clean
+                  test/phone_number_test.dart 178:27           main.<fn>.<fn>.<fn>
+                  package:matcher                              expect
+                  test/phone_number_test.dart 177:7            main.<fn>.<fn>
+                  
+            which has `message` with value 'exchange code cannot start with 0' which is different.
+                  Expected: ... tart with zero
+                    Actual: ... tart with 0
+                                          ^
+                   Differ at offset 32
+  
+  package:matcher                    expect
+  test/phone_number_test.dart 177:7  main.<fn>.<fn>
+  
+
+To run this test again: /home/vpayno/git_remote/flutter/bin/cache/dart-sdk/bin/dart test test/phone_number_test.dart -p vm --plain-name 'PhoneNumber invalid if exchange code starts with 0 on valid 11-digit number'
+00:00 +9 -8: test/phone_number_test.dart: PhoneNumber invalid if exchange code starts with 1 on valid 11-digit number                                                                                  00:00 +9 -9: test/phone_number_test.dart: PhoneNumber invalid if exchange code starts with 1 on valid 11-digit number [E]                                                                              
+  Expected: throws <Instance of 'FormatException'> with `message`: 'exchange code cannot start with one'
+    Actual: <Closure: () => String>
+     Which: threw FormatException:<FormatException: exchange code cannot start with 1>
+            stack package:phone_number/phone_number.dart 46:7  PhoneNumber.clean
+                  test/phone_number_test.dart 191:27           main.<fn>.<fn>.<fn>
+                  package:matcher                              expect
+                  test/phone_number_test.dart 190:7            main.<fn>.<fn>
+                  
+            which has `message` with value 'exchange code cannot start with 1' which is different.
+                  Expected: ... tart with one
+                    Actual: ... tart with 1
+                                          ^
+                   Differ at offset 32
+  
+  package:matcher                    expect
+  test/phone_number_test.dart 190:7  main.<fn>.<fn>
+  
+
+To run this test again: /home/vpayno/git_remote/flutter/bin/cache/dart-sdk/bin/dart test test/phone_number_test.dart -p vm --plain-name 'PhoneNumber invalid if exchange code starts with 1 on valid 11-digit number'
+00:01 +9 -9: Some tests failed.                                                                                                                                                                        
+
+Consider enabling the flag chain-stack-traces to receive more detailed exceptions.
+For example, 'dart test --chain-stack-traces'.
+
+real	0m1.952s
+user	0m2.228s
+sys	0m0.457s
+
+===============================================================================
+
+dart pub global run coverage:format_coverage --packages=.dart_tool/package_config.json --report-on=lib --lcov -o ./coverage/lcov.info -i ./coverage
+
+real	0m0.343s
+user	0m0.408s
+sys	0m0.122s
+
+===============================================================================
+
+Running: lcov --summary ./coverage/lcov.info
+Reading tracefile ./coverage/lcov.info
+Summary coverage rate:
+  lines......: 87.0% (20 of 23 lines)
+  functions..: no data found
+  branches...: no data found
+
+real	0m0.038s
+user	0m0.032s
+sys	0m0.006s
+
+===============================================================================
+
+genhtml -o ./coverage/report ./coverage/lcov.info
+Reading data file ./coverage/lcov.info
+Found 1 entries.
+Found common filename prefix "/home/vpayno/git_vpayno/exercism-workspace/dart/phone-number"
+Writing .css and .png files.
+Generating output.
+Processing file lib/phone_number.dart
+Writing directory view page.
+Overall coverage rate:
+  lines......: 87.0% (20 of 23 lines)
+  functions..: no data found
+
+real	0m0.042s
+user	0m0.028s
+sys	0m0.014s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.064s
+user	0m0.178s
+sys	0m0.020s
+
+===============================================================================
+
+Running: dart doc .
+Documenting phone_number...
+Initialized dartdoc with 40 libraries
+Generating docs for library phone_number from package:phone_number/phone_number.dart...
+no issues found
+Documented 1 public library in 12.0 seconds
+Success! Docs generated into /home/vpayno/git_vpayno/exercism-workspace/dart/phone-number/doc/api
+
+real	0m12.167s
+user	0m17.724s
+sys	0m1.541s
+
+===============================================================================
+
