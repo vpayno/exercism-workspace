@@ -16,7 +16,7 @@ Exercism Workspace
 - May: Mindshifting -> Rust, Tcl
 - June: Summer of Sexps -> Common Lisp
 - July: Jurassic -> C, C++
-- August: Apps ->
+- August: Apps -> Dart
 - September: Slimline ->
 - October: Object Oriented ->
 - November: Nibbly ->
