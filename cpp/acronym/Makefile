@@ -14,10 +14,10 @@ test: clean
 .PHONY: coverage
 coverage: test
 	@printf "\n"
-	find . -regextype posix-egrep -regex '^.*(tests-main|CompilerId).*[.](gcda|gcno)10741' -print -delete
+	find . -regextype posix-egrep -regex '^.*(tests-main|CompilerId).*[.](gcda|gcno)$$' -print -delete
 
 	@printf "\n"
-	find . -regextype posix-egrep -regex '^.*[.](gcda|gcno)10741'
+	find . -regextype posix-egrep -regex '^.*[.](gcda|gcno)$$'
 
 	@printf "\n"
 	gcovr --print-summary
