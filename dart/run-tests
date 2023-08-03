@@ -12,10 +12,22 @@ main() {
 
 	print_ruler
 
+	# https://github.com/dart-lang/dart_style
+
+	echo dart pub global activate dart_style
+	time dart pub global activate dart_style
+
+	print_ruler
+
 	# https://github.com/dart-lang/linter
 
-	echo Running: dart analyze .
-	time dart analyze .
+	echo Running: dart analyze ./lib
+	time dart analyze ./lib
+
+	print_ruler
+
+	echo Running: dart analyze ./test
+	time dart analyze ./test
 
 	print_ruler
 
