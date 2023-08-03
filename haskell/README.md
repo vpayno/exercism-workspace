@@ -19,3 +19,4 @@
 - [space-age](./space-age/README.md)
 - [bob](./bob/README.md)
 - [triangle](./triangle/README.md)
+- [collatz-conjecture](./collatz-conjecture/README.md)
