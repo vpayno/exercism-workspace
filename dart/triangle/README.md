@@ -47,3 +47,8 @@ See [Triangle Inequality][triangle-inequality]
 ### Based on
 
 The Ruby Koans triangle project, parts 1 & 2 - https://web.archive.org/web/20220831105330/http://rubykoans.com
+
+### My Solution
+
+- [my solution](./lib/triangle.dart)
+- [run-tests](./run-tests-dart.txt)
