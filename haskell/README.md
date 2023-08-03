@@ -22,3 +22,4 @@
 - [collatz-conjecture](./collatz-conjecture/README.md)
 - [hamming](./hamming/README.md)
 - [protein-translation](./protein-translation/README.md)
+- [robot-simulator](./robot-simulator/README.md)

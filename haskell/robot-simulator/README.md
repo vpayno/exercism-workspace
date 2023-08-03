@@ -67,3 +67,8 @@ newtype or type synonym.
 ### Based on
 
 Inspired by an interview question at a famous company.
+
+### My Solution
+
+- [my solution](./src/Robot.hs)
+- [run-tests](./run-tests-haskell.txt)
