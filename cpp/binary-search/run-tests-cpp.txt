@@ -1,0 +1,177 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: make clean
+rm -rf ./build
+
+real	0m0.007s
+user	0m0.001s
+sys	0m0.006s
+
+===============================================================================
+
+export LDFLAGS="-lgcov --coverage" CXXFLAGS="--coverage"
+
+===============================================================================
+
+Running: make coverage | ansifilter
+rm -rf ./build
+mkdir -pv ./build
+mkdir: created directory './build'
+
+cd ./build; export LDFLAGS="-lgcov --coverage" CXXFLAGS="--coverage"; cmake -DEXERCISM_RUN_ALL_TESTS=1 -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -G 'Unix Makefiles' ../; if make; then printf "\n=== All Tests Passed ===\n"; else printf "\n=== Test Failure ===\n"; false; fi
+-- The CXX compiler identification is GNU 10.2.1
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/vpayno/git_vpayno/exercism-workspace/cpp/binary-search/build
+make[1]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/binary-search/build'
+make[2]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/binary-search/build'
+make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/binary-search/build'
+make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/binary-search/build'
+make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/binary-search/build'
+[ 25%] Building CXX object CMakeFiles/binary-search.dir/binary_search_test.cpp.o
+[ 50%] Building CXX object CMakeFiles/binary-search.dir/binary_search.cpp.o
+[ 75%] Building CXX object CMakeFiles/binary-search.dir/test/tests-main.cpp.o
+[100%] Linking CXX executable binary-search
+make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/binary-search/build'
+[100%] Built target binary-search
+make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/binary-search/build'
+make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/binary-search/build'
+make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/binary-search/build'
+===============================================================================
+All tests passed (11 assertions in 11 test cases)
+
+make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/binary-search/build'
+[100%] Built target test_binary-search
+make[2]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/binary-search/build'
+make[1]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/binary-search/build'
+
+=== All Tests Passed ===
+
+find . -regextype posix-egrep -regex '^.*(tests-main|CompilerId).*[.](gcda|gcno)$' -print -delete
+./build/CMakeFiles/3.22.2/CompilerIdCXX/CMakeCXXCompilerId.gcno
+./build/CMakeFiles/binary-search.dir/test/tests-main.cpp.gcno
+./build/CMakeFiles/binary-search.dir/test/tests-main.cpp.gcda
+
+find . -regextype posix-egrep -regex '^.*[.](gcda|gcno)$'
+./build/CMakeFiles/binary-search.dir/binary_search_test.cpp.gcno
+./build/CMakeFiles/binary-search.dir/binary_search.cpp.gcno
+./build/CMakeFiles/binary-search.dir/binary_search.cpp.gcda
+./build/CMakeFiles/binary-search.dir/binary_search_test.cpp.gcda
+
+gcovr --print-summary
+------------------------------------------------------------------------------
+                           GCC Code Coverage Report
+Directory: .
+------------------------------------------------------------------------------
+File                                       Lines    Exec  Cover   Missing
+------------------------------------------------------------------------------
+binary_search.cpp                             18      18   100%   
+binary_search_test.cpp                        56      56   100%   
+test/catch.hpp                                32      27    84%   1642-1643,2227,2229,2560
+------------------------------------------------------------------------------
+TOTAL                                        106     101    95%
+------------------------------------------------------------------------------
+lines: 95.3% (101 out of 106)
+branches: 40.2% (111 out of 276)
+
+real	0m11.694s
+user	0m10.393s
+sys	0m1.204s
+
+===============================================================================
+
+cmake-format --in-place CMakeLists.txt
+WARNING config_util.py:307: The following configuration options were ignored:
+  max_subargs_per_line
+
+real	0m0.211s
+user	0m0.138s
+sys	0m0.069s
+
+===============================================================================
+
+cmake-lint CMakeLists.txt
+WARNING The following configuration options were ignored:
+  max_subargs_per_line
+CMakeLists.txt
+==============
+CMakeLists.txt:15,06: [C0103] Invalid directory variable name "exercise_cpp" doesn't match `[A-Z][0-9A-Z_]+|_[0-9a-z_]+`
+CMakeLists.txt:17,06: [C0103] Invalid directory variable name "exercise_cpp" doesn't match `[A-Z][0-9A-Z_]+|_[0-9a-z_]+`
+CMakeLists.txt:61,02: [C0113] Missing COMMENT in statement which allows it
+
+Summary
+=======
+files scanned: 1
+found lint:
+  Convention: 3
+
+
+real	0m0.187s
+user	0m0.137s
+sys	0m0.051s
+
+===============================================================================
+
+Running: clang-format-16 -style=file -i ./binary_search.cpp ./binary_search_test.cpp ./binary_search.h
+
+real	0m0.025s
+user	0m0.012s
+sys	0m0.012s
+
+===============================================================================
+
+Running: ../../.github/citools/cpp/clang-check
+clang-check-16 --analyze ./binary_search.cpp ./binary_search_test.cpp ./binary_search.h
+error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
+error: invalid argument '-std=c++17' not allowed with 'C'
+/home/vpayno/git_vpayno/exercism-workspace/cpp/binary-search/binary_search.h:4:10: fatal error: 'cstddef' file not found
+#include <cstddef>
+         ^~~~~~~~~
+1 error generated.
+Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/binary-search/binary_search.h.
+
+real	0m0.544s
+user	0m0.508s
+sys	0m0.036s
+
+
+real	0m0.546s
+user	0m0.510s
+sys	0m0.036s
+
+===============================================================================
+
+Running: ../../.github/citools/cpp/clang-tidy | head -n 100
+12928 warnings generated.
+48320 warnings generated.
+48320 warnings and 3 errors generated.
+Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/binary-search/binary_search.h.
+Suppressed 48325 warnings (48320 in non-user code, 5 NOLINT).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+Found compiler error(s).
+
+real	0m8.204s
+user	0m8.122s
+sys	0m0.081s
+Running: clang-tidy-16 ./binary_search.cpp ./binary_search_test.cpp ./binary_search.h
+error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
+error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
+/home/vpayno/git_vpayno/exercism-workspace/cpp/binary-search/binary_search.h:4:10: error: 'cstddef' file not found [clang-diagnostic-error]
+#include <cstddef>
+         ^~~~~~~~~
+
+
+real	0m8.206s
+user	0m8.123s
+sys	0m0.083s
+
+===============================================================================
+

@@ -62,3 +62,8 @@ Let's say we're looking for the number 23 in the following sorted list: `[4, 8, 
 ### Based on
 
 Wikipedia - http://en.wikipedia.org/wiki/Binary_search_algorithm
+
+### My Solution
+
+- [my solution]()
+- [run-tests](./run-tests-cpp.txt)

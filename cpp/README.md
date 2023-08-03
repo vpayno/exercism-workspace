@@ -74,3 +74,4 @@
 - [robot-simulator](./robot-simulator/README.md)
 - [pascals-triangle](./pascals-triangle/README.md)
 - [beer-song](./beer-song/README.md)
+- [binary-search](./binary-search/README.md)
