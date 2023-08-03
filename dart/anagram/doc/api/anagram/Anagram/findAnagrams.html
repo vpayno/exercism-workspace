@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the findAnagrams method from the Anagram class, for the Dart programming language.">
+  <title>findAnagrams method - Anagram class - anagram library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../../static-assets/styles.css?v1">
+  <link rel="icon" href="../../static-assets/favicon.png?v1">
+
+  
+</head>
+
+
+<body data-base-href="../../" data-using-base-href="false">
+
+<div id="overlay-under-drawer"></div>
+
+<header id="title">
+  <button id="sidenav-left-toggle" type="button">&nbsp;</button>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../../index.html">anagram</a></li>
+    <li><a href="../../anagram/anagram-library.html">anagram</a></li>
+    <li><a href="../../anagram/Anagram-class.html">Anagram</a></li>
+    <li class="self-crumb">findAnagrams method</li>
+  </ol>
+  <div class="self-name">findAnagrams</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<main>
+
+
+  <div id="dartdoc-main-content" class="main-content">
+      <div>
+<h1><span class="kind-method">findAnagrams</span> method 
+    <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
+</h1></div>
+
+    <section class="multi-line-signature">
+      
+
+<span class="returntype"><a href="../../anagram/matches_t.html">matches_t</a></span>
+<span class="name ">findAnagrams</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="findAnagrams-param-search_word"><span class="type-annotation"><a href="../../anagram/word_t.html">word_t</a></span> <span class="parameter-name">search_word</span>, </span></li>
+<li><span class="parameter" id="findAnagrams-param-candidates"><span class="type-annotation"><a href="../../anagram/candidates_t.html">candidates_t</a></span> <span class="parameter-name">candidates</span></span></li>
+</ol>)
+
+      
+
+    </section>
+    
+
+
+    
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">matches_t findAnagrams(word_t search_word, candidates_t candidates) {
+  matches_t matches = &lt;String&gt;[];
+  letters_t search_letters = search_word.split(&#39;&#39;);
+  search_letters.sort();
+  word_t search_term = search_letters.join(&#39;&#39;);
+  search_term.toLowerCase();
+
+  var iter = candidates.iterator;
+
+  while (iter.moveNext()) {
+    letters_t letters = iter.toString().split(&#39;&#39;);
+    letters.sort();
+    word_t candidate = letters.join(&#39;&#39;);
+
+    if (search_term == candidate) {
+      matches.add(candidate);
+    }
+  }
+
+  matches.sort();
+
+  return matches;
+}</code></pre>
+</section>
+
+
+  </div> <!-- /.main-content -->
+
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+  <li><a href="../../index.html">anagram</a></li>
+  <li><a href="../../anagram/anagram-library.html">anagram</a></li>
+  <li><a href="../../anagram/Anagram-class.html">Anagram</a></li>
+  <li class="self-crumb">findAnagrams method</li>
+</ol>
+
+
+    <h5>Anagram class</h5>
+    <ol>
+
+        <li class="section-title"><a href="../../anagram/Anagram-class.html#constructors">Constructors</a></li>
+          <li><a href="../../anagram/Anagram/Anagram.html">Anagram</a></li>
+
+
+    <li class="section-title inherited">
+      <a href="../../anagram/Anagram-class.html#instance-properties">Properties</a>
+    </li>
+    <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
+    <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
+
+    <li class="section-title"><a href="../../anagram/Anagram-class.html#instance-methods">Methods</a></li>
+    <li><a href="../../anagram/Anagram/findAnagrams.html">findAnagrams</a></li>
+    <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
+    <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></li>
+
+    <li class="section-title inherited"><a href="../../anagram/Anagram-class.html#operators">Operators</a></li>
+    <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/operator_equals.html">operator ==</a></li>
+
+
+
+
+</ol>
+
+  </div><!--/.sidebar-offcanvas-->
+
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div><!--/.sidebar-offcanvas-->
+
+</main>
+
+<footer>
+  <span class="no-break">
+    anagram
+      0.0.0-unknown
+  </span>
+
+  
+</footer>
+
+
+
+<script src="../../static-assets/highlight.pack.js?v1"></script>
+<script src="../../static-assets/docs.dart.js"></script>
+
+
+
+</body>
+
+</html>
+

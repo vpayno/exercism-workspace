@@ -6,12 +6,14 @@ final anagram = Anagram();
 void main() {
   group('Anagram', () {
     test('no matches', () {
-      final result = anagram.findAnagrams('diaper', <String>['hello', 'world', 'zombies', 'pants']);
+      final result = anagram.findAnagrams(
+          'diaper', <String>['hello', 'world', 'zombies', 'pants']);
       expect(result, equals(<String>[]));
     }, skip: false);
 
     test('detects two anagrams', () {
-      final result = anagram.findAnagrams('solemn', <String>['lemons', 'cherry', 'melons']);
+      final result = anagram
+          .findAnagrams('solemn', <String>['lemons', 'cherry', 'melons']);
       expect(result, equals(<String>['lemons', 'melons']));
     }, skip: true);
 
@@ -21,13 +23,20 @@ void main() {
     }, skip: true);
 
     test('detects anagram', () {
-      final result = anagram.findAnagrams('listen', <String>['enlists', 'google', 'inlets', 'banana']);
+      final result = anagram.findAnagrams(
+          'listen', <String>['enlists', 'google', 'inlets', 'banana']);
       expect(result, equals(<String>['inlets']));
     }, skip: true);
 
     test('detects three anagrams', () {
-      final result =
-          anagram.findAnagrams('allergy', <String>['gallery', 'ballerina', 'regally', 'clergy', 'largely', 'leading']);
+      final result = anagram.findAnagrams('allergy', <String>[
+        'gallery',
+        'ballerina',
+        'regally',
+        'clergy',
+        'largely',
+        'leading'
+      ]);
       expect(result, equals(<String>['gallery', 'regally', 'largely']));
     }, skip: true);
 
@@ -42,17 +51,20 @@ void main() {
     }, skip: true);
 
     test('detects anagrams case-insensitively', () {
-      final result = anagram.findAnagrams('Orchestra', <String>['cashregister', 'Carthorse', 'radishes']);
+      final result = anagram.findAnagrams(
+          'Orchestra', <String>['cashregister', 'Carthorse', 'radishes']);
       expect(result, equals(<String>['Carthorse']));
     }, skip: true);
 
     test('detects anagrams using case-insensitive subject', () {
-      final result = anagram.findAnagrams('Orchestra', <String>['cashregister', 'carthorse', 'radishes']);
+      final result = anagram.findAnagrams(
+          'Orchestra', <String>['cashregister', 'carthorse', 'radishes']);
       expect(result, equals(<String>['carthorse']));
     }, skip: true);
 
     test('detects anagrams using case-insensitive possible matches', () {
-      final result = anagram.findAnagrams('orchestra', <String>['cashregister', 'Carthorse', 'radishes']);
+      final result = anagram.findAnagrams(
+          'orchestra', <String>['cashregister', 'Carthorse', 'radishes']);
       expect(result, equals(<String>['Carthorse']));
     }, skip: true);
 
@@ -71,18 +83,23 @@ void main() {
       expect(result, equals(<String>[]));
     }, skip: true);
 
-    test('words are not anagrams of themselves even if letter case is partially different', () {
+    test(
+        'words are not anagrams of themselves even if letter case is partially different',
+        () {
       final result = anagram.findAnagrams('BANANA', <String>['Banana']);
       expect(result, equals(<String>[]));
     }, skip: true);
 
-    test('words are not anagrams of themselves even if letter case is completely different', () {
+    test(
+        'words are not anagrams of themselves even if letter case is completely different',
+        () {
       final result = anagram.findAnagrams('BANANA', <String>['banana']);
       expect(result, equals(<String>[]));
     }, skip: true);
 
     test('words other than themselves can be anagrams', () {
-      final result = anagram.findAnagrams('LISTEN', <String>['LISTEN', 'Silent']);
+      final result =
+          anagram.findAnagrams('LISTEN', <String>['LISTEN', 'Silent']);
       expect(result, equals(<String>['Silent']));
     }, skip: true);
   });
