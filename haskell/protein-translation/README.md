@@ -63,3 +63,8 @@ Learn more about [protein translation on Wikipedia](https://en.wikipedia.org/wik
 ### Based on
 
 Tyler Long
+
+### My Solution
+
+- [my solution](./src/ProteinTranslation.hs)
+- [run-tests](./run-tests-haskell.txt)

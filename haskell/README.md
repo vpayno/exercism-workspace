@@ -21,3 +21,4 @@
 - [triangle](./triangle/README.md)
 - [collatz-conjecture](./collatz-conjecture/README.md)
 - [hamming](./hamming/README.md)
+- [protein-translation](./protein-translation/README.md)
