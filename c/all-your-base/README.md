@@ -51,3 +51,8 @@ I think you got the idea!
 - @patricksjackson
 - @QLaille
 - @ryanplusplus
+
+### My Solution
+
+- [my solution](./all_your_base.c)
+- [run-tests](./run-tests-c.txt)

@@ -47,3 +47,4 @@
 - [sieve](./sieve/README.md)
 - [nth-prime](./nth-prime/README.md)
 - [grains](./grains/README.md)
+- [all-your-base](./all-your-base/README.md)
