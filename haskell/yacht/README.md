@@ -56,3 +56,8 @@ inclusively. You should not assume that the dice are ordered.
 ### Based on
 
 James Kilfiger, using wikipedia - https://en.wikipedia.org/wiki/Yacht_(dice_game)
+
+### My Solution
+
+- [my solution](./src/Yacht.hs)
+- [run-tests](./run-tests-haskell.txt)
