@@ -47,3 +47,8 @@ exception vs returning a special value) may differ between languages.
 ### Based on
 
 The Calculating Point Mutations problem at Rosalind - https://rosalind.info/problems/hamm/
+
+### My Solution
+
+- [my solution](./src/Hamming.hs)
+- [run-tests](./run-tests-haskell.txt)

@@ -20,3 +20,4 @@
 - [bob](./bob/README.md)
 - [triangle](./triangle/README.md)
 - [collatz-conjecture](./collatz-conjecture/README.md)
+- [hamming](./hamming/README.md)

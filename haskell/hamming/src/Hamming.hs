@@ -1,4 +1,9 @@
-module Hamming (distance) where
+module Hamming
+  ( distance
+  ) where
 
 distance :: String -> String -> Maybe Int
-distance xs ys = error "You need to implement this function."
+distance lhs rhs
+  | length lhs /= length rhs = Nothing
+  | otherwise = Just
+    (length [ nucleotide | nucleotide <- zip lhs rhs, uncurry (/=) nucleotide ])
