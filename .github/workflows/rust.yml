@@ -1,10 +1,11 @@
+---
 #
 # .github/workflows/rust.yml
 #
----
 name: Rust Workflow
 on:  # yamllint disable-line rule:truthy
   pull_request:
+
 jobs:
   stage1:
     name: Change Check
@@ -31,7 +32,7 @@ jobs:
           # Check if the files are present in the changed file list (added, modified, deleted) then output to stdout.
           HAS_DIFF=false
           printf "=== Which Rust files changed? ===\n"
-          if printf "%s\n" "${GIT_DIFF}" | grep -E '^(.*[.]rs|.*/Cargo[.]toml|.github/workflows/rust.yml)$'; then
+          if printf "%s\n" "${GIT_DIFF}" | grep -E '^(rust/.*[.]rs|rust/.*/Cargo[.]toml|.github/workflows/rust.yml)$'; then
             HAS_DIFF=true
           fi
           printf "\n"
@@ -89,17 +90,13 @@ jobs:
           deb http://apt.llvm.org/jammy/ llvm-toolchain-jammy-15 main
           deb-src http://apt.llvm.org/jammy/ llvm-toolchain-jammy-15 main
           EOF
-
           wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
           sudo apt update
-
           sudo apt install -y clang-14 lldb-14 lld-14
           # sudo apt install -y libllvm-14-ocaml-dev libllvm14 llvm-14 llvm-14-dev llvm-14-doc llvm-14-examples llvm-14-runtime
-
           sudo apt install -y libssl-dev
           sudo apt install -y lcov
           sudo apt install -y make
-
           rustup component add clippy
           cargo install grcov
           cargo install cargo-kcov
@@ -145,7 +142,6 @@ jobs:
 
           # ./for_each cargo test --release
           ./for_each cargo test
-
           printf "#!/bin/bash\n\n" > ./llvm-cov-14-merge
           echo 'llvm-profdata-14 merge -sparse default_*.profraw -o json5format.profdata' >> ./llvm-cov-14-merge
           chmod -v a+x ./llvm-cov-14-merge
@@ -157,11 +153,10 @@ jobs:
           echo 'llvm-cov-14 report $(for file in $(cargo test --tests --no-run --message-format=json | jq -r "select(.profile.test == true) | .filenames[]" | grep -v dSYM - ); do printf "%s %s " -object "${file}"; done) --instr-profile=json5format.profdata --summary-only' >> ./llvm-cov-14-report
           chmod -v a+x ./llvm-cov-14-report
           ./for_each ../llvm-cov-14-report
-
           unset RUSTFLAGS
           unset RUSTDOCFLAGS
       - name: Testing with cargo audit
         id: cargo-audit
-        run: |
+        run: |-
           cd ./rust
           ./for_each cargo audit
