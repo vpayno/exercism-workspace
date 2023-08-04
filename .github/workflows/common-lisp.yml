@@ -32,7 +32,7 @@ jobs:
           # Check if the files are present in the changed file list (added, modified, deleted) then output to stdout.
           HAS_DIFF=false
           printf "=== Which Lisp files changed? ===\n"
-          if printf "%s\n" "${GIT_DIFF}" | grep -E '^(.*[.]lisp|.github/workflows/common-lisp.yml)'; then
+          if printf "%s\n" "${GIT_DIFF}" | grep -E '^(common-lisp/.*[.]lisp|.github/workflows/common-lisp.yml)'; then
             HAS_DIFF=true
           fi
           printf "\n"
