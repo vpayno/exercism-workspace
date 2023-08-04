@@ -1,7 +1,7 @@
+---
 #
 # .github/workflows/awk.yml
 #
----
 name: Awk Workflow
 on:  # yamllint disable-line rule:truthy
   pull_request:
@@ -31,7 +31,7 @@ jobs:
           # Check if the files are present in the changed file list (added, modified, deleted) then output to stdout.
           HAS_DIFF=false
           printf "=== Which Awk files changed? ===\n"
-          if printf "%s\n" "${GIT_DIFF}" | grep -E '^(.*[.]awk|.github/workflows/awk.yml)$'; then
+          if printf "%s\n" "${GIT_DIFF}" | grep -E '^(awk/.*[.]awk|.github/workflows/awk.yml)$'; then
             HAS_DIFF=true
           fi
           printf "\n"
@@ -112,7 +112,7 @@ jobs:
           ./for_each ../../.github/citools/awk/awk-bats
       - name: Testing with AwkUnit
         id: awk-test-run
-        run: |
+        run: |-
           cd ./awk
           # still trying to figure out why this is broken in CI
           ./for_each ../../.github/citools/awk/awk-test || true
