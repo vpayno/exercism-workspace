@@ -1,10 +1,11 @@
+---
 #
 # .github/workflows/vimscript.yml
 #
----
 name: Vimscript Workflow
 on:  # yamllint disable-line rule:truthy
   pull_request:
+
 jobs:
   stage1:
     name: Change Check
@@ -31,7 +32,7 @@ jobs:
           # Check if the files are present in the changed file list (added, modified, deleted) then output to stdout.
           HAS_DIFF=false
           printf "=== Which Vim files changed? ===\n"
-          if printf "%s\n" "${GIT_DIFF}" | grep -E '^(.*[.](vim|vader|vimspec)|.github/workflows/vimscript.yml)$'; then
+          if printf "%s\n" "${GIT_DIFF}" | grep -E '^(vimscript/.*[.](vim|vader|vimspec)|.github/workflows/vimscript.yml)$'; then
             HAS_DIFF=true
           fi
           printf "\n"
@@ -160,7 +161,7 @@ jobs:
       - name: Coverage Report
         if: false  # disable - themis step isn't generating profile.txt
         id: vimscript-coverage-report
-        run: |
+        run: |-
           cd ./vimscript
           ./for_each covimerage write_coverage profile.txt
           ./for_each coverage report
