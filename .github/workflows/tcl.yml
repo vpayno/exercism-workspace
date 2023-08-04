@@ -1,10 +1,11 @@
+---
 #
 # .github/workflows/tcl.yml
 #
----
 name: Tcl Workflow
 on:  # yamllint disable-line rule:truthy
   pull_request:
+
 jobs:
   stage1:
     name: Change Check
@@ -31,7 +32,7 @@ jobs:
           # Check if the files are present in the changed file list (added, modified, deleted) then output to stdout.
           HAS_DIFF=false
           printf "=== Which Tcl files changed? ===\n"
-          if printf "%s\n" "${GIT_DIFF}" | grep -E '^(.*[.]tcl|.github/workflows/tcl.yml)$'; then
+          if printf "%s\n" "${GIT_DIFF}" | grep -E '^(tcl/.*[.]tcl|.github/workflows/tcl.yml)$'; then
             HAS_DIFF=true
           fi
           printf "\n"
@@ -84,6 +85,6 @@ jobs:
           ./for_each ../../.github/citools/tcl/tcl-check
       - name: Testing with Tcl test
         id: tcl-test-run
-        run: |
+        run: |-
           cd ./tcl
           ./for_each ../../.github/citools/tcl/tcl-test
