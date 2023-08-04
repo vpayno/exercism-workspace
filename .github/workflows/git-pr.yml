@@ -1,9 +1,10 @@
+---
 #
 # .github/workflows/git-pr.yml
 #
----
 name: Git PR Checks
 on: [pull_request]  # yamllint disable-line rule:truthy
+
 jobs:
   block-fixup:
     runs-on: ubuntu-latest
@@ -26,5 +27,5 @@ jobs:
           git diff --name-only HEAD^..
       - name: Get Log Diff
         id: git-log-diff
-        run: |
+        run: |-
           git log --color=auto --graph --pretty=format:'%Cred%<(8)%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an> [%ce] %Creset%C(cyan)[gpg: %G?]%Creset' --abbrev-commit --decorate HEAD^..
