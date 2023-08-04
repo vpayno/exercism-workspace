@@ -1,10 +1,11 @@
+---
 #
 # .github/workflows/jq.yml
 #
----
 name: jq Workflow
 on:  # yamllint disable-line rule:truthy
   pull_request:
+
 jobs:
   stage1:
     name: Change Check
@@ -31,7 +32,7 @@ jobs:
           # Check if the files are present in the changed file list (added, modified, deleted) then output to stdout.
           HAS_DIFF=false
           printf "=== Which jq files changed? ===\n"
-          if printf "%s\n" "${GIT_DIFF}" | grep -E '^(.*[.]jq|.github/workflows/jq.yml)$'; then
+          if printf "%s\n" "${GIT_DIFF}" | grep -E '^(jq/.*[.]jq|.github/workflows/jq.yml)$'; then
             HAS_DIFF=true
           fi
           printf "\n"
@@ -84,6 +85,6 @@ jobs:
           ls
       - name: Testing with Bats tests
         id: jq-bats-run
-        run: |
+        run: |-
           cd ./jq
           ./for_each ../../.github/citools/jq/jq-bats
