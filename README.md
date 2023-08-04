@@ -24,6 +24,44 @@ Exercism Workspace
 |   November    |  Nibbly            |  |
 |   December    |  Diversions        |  |
 
+### 12in23 Featured Languages and Challenge Exercises
+
+#### Functional February
+
+- Languages: Clojure, Elixir, Erlang, F#, Haskell, OCaml, Scala, SML, Gleam
+- Exercises: Hamming, Collatz Conjecture, Robot Simulator, Yacht, Protein Translation
+
+#### Mechanical March
+
+- Languages: C, C++, D, Nim, Go, Rust, V, Zig
+- Exercises: Linked List (or Simple Linked List), Secret Handshake, Sieve, Binary Search, Pangram
+
+#### Analytical April
+
+- Languages: Julia, Python, R
+- Exercises: ETL, Largest Series Product, Saddle Points, Sum Of Multiples, Word Count
+
+#### Mindshifting May
+
+- Languages: Ballerina, Pharo, Prolog, Red, Rust, Tcl, Unison
+- Exercises: Acronym, Isogram, Roman Numerals, Raindrops, Space Age
+
+#### Summer of Sexps
+
+- Languages: Common Lisp, Clojure, LFE, Emacs Lisp, Racket, Scheme
+- Exercises: Difference of Squares, Leap, Matching Brackets, Robot Name, Two-Fer
+
+#### Jurassic July
+
+- Languages: C, C++, Cobol, Fortran, Visual Basic
+- Exercises: Bob, Allergies, Reverse String, High Scores, Armstrong Numbers
+
+#### Appy August
+
+- Languages: ABAP, CoffeeScript, Dart, Delphi, Elm, Java, JavaScript, Kotlin, Objective-C, PHP, PureScript, ReasonML, Swift and TypeScript
+- Exercises: Anagram, Phone Number, Triangle, RNA Transcription, Scrabble Score
+
+
 ### 12in23 Badges
 
 [My Exercism Badges](https://exercism.org/profiles/vpayno/badges)
