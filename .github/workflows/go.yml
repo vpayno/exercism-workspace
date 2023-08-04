@@ -1,10 +1,11 @@
+---
 #
 # .github/workflows/go.yml
 #
----
 name: Go Workflow
 on:  # yamllint disable-line rule:truthy
   pull_request:
+
 jobs:
   stage1:
     name: Change Check
@@ -31,7 +32,7 @@ jobs:
           # Check if the files are present in the changed file list (added, modified, deleted) then output to stdout.
           HAS_DIFF=false
           printf "=== Which Golang files changed? ===\n"
-          if printf "%s\n" "${GIT_DIFF}" | grep -E '^(.*[.]go|.*/go[.](sum|mod)|.github/workflows/go.yml)'; then
+          if printf "%s\n" "${GIT_DIFF}" | grep -E '^(go/.*[.]go|go/.*/go[.](sum|mod)|.github/workflows/go.yml)'; then
             HAS_DIFF=true
           fi
           printf "\n"
@@ -108,6 +109,6 @@ jobs:
           git restore ./*/coverage.out
       - name: Testing with gosec
         id: go-test-security
-        run: |
+        run: |-
           cd ./go
           gosec ./...
