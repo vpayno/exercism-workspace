@@ -1,4 +1,4 @@
-#include "simple_linked_list.h"
+#include "simple_linked_list.hpp"
 
 namespace simple_linked_list {
 

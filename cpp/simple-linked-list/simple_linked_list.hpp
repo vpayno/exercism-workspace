@@ -1,5 +1,5 @@
-#if !defined(SIMPLE_LINKED_LIST_H)
-#define SIMPLE_LINKED_LIST_H
+#if !defined(SIMPLE_LINKED_LIST_HPP)
+#define SIMPLE_LINKED_LIST_HPP
 
 #include <stdexcept>
 

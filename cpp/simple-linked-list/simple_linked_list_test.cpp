@@ -1,5 +1,5 @@
 // Include the header file with the definitions of the functions you create.
-#include "simple_linked_list.h"
+#include "simple_linked_list.hpp"
 
 // Include the test framework.
 #ifdef EXERCISM_TEST_SUITE
