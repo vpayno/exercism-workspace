@@ -1,0 +1,206 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: make clean
+rm -rf ./build
+
+real	0m0.011s
+user	0m0.003s
+sys	0m0.008s
+
+===============================================================================
+
+export LDFLAGS="-lgcov --coverage" CXXFLAGS="--coverage"
+
+===============================================================================
+
+Running: make coverage | ansifilter
+rm -rf ./build
+mkdir -pv ./build
+mkdir: created directory './build'
+
+cd ./build; export LDFLAGS="-lgcov --coverage" CXXFLAGS="--coverage"; cmake -DEXERCISM_RUN_ALL_TESTS=1 -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -G 'Unix Makefiles' ../; if make; then printf "\n=== All Tests Passed ===\n"; else printf "\n=== Test Failure ===\n"; false; fi
+-- The CXX compiler identification is GNU 10.2.1
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/vpayno/git_vpayno/exercism-workspace/cpp/simple-linked-list/build
+make[1]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/simple-linked-list/build'
+make[2]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/simple-linked-list/build'
+make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/simple-linked-list/build'
+make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/simple-linked-list/build'
+make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/simple-linked-list/build'
+[ 25%] Building CXX object CMakeFiles/simple-linked-list.dir/simple_linked_list_test.cpp.o
+[ 50%] Building CXX object CMakeFiles/simple-linked-list.dir/simple_linked_list.cpp.o
+[ 75%] Building CXX object CMakeFiles/simple-linked-list.dir/test/tests-main.cpp.o
+[100%] Linking CXX executable simple-linked-list
+make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/simple-linked-list/build'
+[100%] Built target simple-linked-list
+make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/simple-linked-list/build'
+make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/simple-linked-list/build'
+make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/simple-linked-list/build'
+===============================================================================
+All tests passed (20 assertions in 10 test cases)
+
+make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/simple-linked-list/build'
+[100%] Built target test_simple-linked-list
+make[2]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/simple-linked-list/build'
+make[1]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/simple-linked-list/build'
+
+=== All Tests Passed ===
+
+find . -regextype posix-egrep -regex '^.*(tests-main|CompilerId).*[.](gcda|gcno)$' -print -delete
+./build/CMakeFiles/3.22.2/CompilerIdCXX/CMakeCXXCompilerId.gcno
+./build/CMakeFiles/simple-linked-list.dir/test/tests-main.cpp.gcno
+./build/CMakeFiles/simple-linked-list.dir/test/tests-main.cpp.gcda
+
+find . -regextype posix-egrep -regex '^.*[.](gcda|gcno)$'
+./build/CMakeFiles/simple-linked-list.dir/simple_linked_list_test.cpp.gcno
+./build/CMakeFiles/simple-linked-list.dir/simple_linked_list.cpp.gcno
+./build/CMakeFiles/simple-linked-list.dir/simple_linked_list.cpp.gcda
+./build/CMakeFiles/simple-linked-list.dir/simple_linked_list_test.cpp.gcda
+
+gcovr --print-summary
+------------------------------------------------------------------------------
+                           GCC Code Coverage Report
+Directory: .
+------------------------------------------------------------------------------
+File                                       Lines    Exec  Cover   Missing
+------------------------------------------------------------------------------
+simple_linked_list.cpp                        36      35    97%   29
+simple_linked_list.h                           1       1   100%   
+simple_linked_list_test.cpp                   86      86   100%   
+test/catch.hpp                                32      27    84%   1642-1643,2227,2229,2560
+------------------------------------------------------------------------------
+TOTAL                                        155     149    96%
+------------------------------------------------------------------------------
+lines: 96.1% (149 out of 155)
+branches: 41.3% (138 out of 334)
+
+real	0m9.749s
+user	0m8.758s
+sys	0m0.985s
+
+===============================================================================
+
+cmake-format --in-place CMakeLists.txt
+WARNING config_util.py:307: The following configuration options were ignored:
+  max_subargs_per_line
+
+real	0m0.153s
+user	0m0.108s
+sys	0m0.043s
+
+===============================================================================
+
+cmake-lint CMakeLists.txt
+WARNING The following configuration options were ignored:
+  max_subargs_per_line
+CMakeLists.txt
+==============
+CMakeLists.txt:15,06: [C0103] Invalid directory variable name "exercise_cpp" doesn't match `[A-Z][0-9A-Z_]+|_[0-9a-z_]+`
+CMakeLists.txt:17,06: [C0103] Invalid directory variable name "exercise_cpp" doesn't match `[A-Z][0-9A-Z_]+|_[0-9a-z_]+`
+CMakeLists.txt:61,02: [C0113] Missing COMMENT in statement which allows it
+
+Summary
+=======
+files scanned: 1
+found lint:
+  Convention: 3
+
+
+real	0m0.170s
+user	0m0.117s
+sys	0m0.055s
+
+===============================================================================
+
+Running: clang-format-16 -style=file -i ./simple_linked_list.cpp ./simple_linked_list_test.cpp ./simple_linked_list.h
+
+real	0m0.021s
+user	0m0.009s
+sys	0m0.011s
+
+===============================================================================
+
+Running: ../../.github/citools/cpp/clang-check
+clang-check-16 --analyze ./simple_linked_list.cpp ./simple_linked_list_test.cpp ./simple_linked_list.h
+error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
+error: invalid argument '-std=c++17' not allowed with 'C'
+/home/vpayno/git_vpayno/exercism-workspace/cpp/simple-linked-list/simple_linked_list.h:4:10: fatal error: 'stdexcept' file not found
+#include <stdexcept>
+         ^~~~~~~~~~~
+1 error generated.
+Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/simple-linked-list/simple_linked_list.h.
+
+real	0m0.528s
+user	0m0.488s
+sys	0m0.040s
+
+
+real	0m0.530s
+user	0m0.489s
+sys	0m0.041s
+
+===============================================================================
+
+Running: ../../.github/citools/cpp/clang-tidy | head -n 100
+11422 warnings generated.
+46809 warnings generated.
+46811 warnings and 3 errors generated.
+Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/simple-linked-list/simple_linked_list.h.
+Suppressed 46809 warnings (46804 in non-user code, 5 NOLINT).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+Found compiler error(s).
+
+real	0m6.523s
+user	0m6.453s
+sys	0m0.069s
+Running: clang-tidy-16 ./simple_linked_list.cpp ./simple_linked_list_test.cpp ./simple_linked_list.h
+error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
+error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
+/home/vpayno/git_vpayno/exercism-workspace/cpp/simple-linked-list/simple_linked_list.cpp:14:9: warning: assigning newly created 'gsl::owner<>' to non-owner 'Element *' [cppcoreguidelines-owning-memory]
+        _head = new Element(entry);
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/cpp/simple-linked-list/simple_linked_list.cpp:16:9: warning: initializing non-owner 'Element *' with a newly created 'gsl::owner<>' [cppcoreguidelines-owning-memory]
+        auto *new_head = new Element(entry);
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/cpp/simple-linked-list/simple_linked_list.cpp:36:5: warning: deleting a pointer through a type that is not marked 'gsl::owner<>'; consider using a smart pointer instead [cppcoreguidelines-owning-memory]
+    delete old_head;
+    ^      ~~~~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/cpp/simple-linked-list/simple_linked_list.cpp:33:5: note: variable declared here
+    Element *old_head = _head;
+    ^~~~~~~~~~~~~~~~~~~~~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/cpp/simple-linked-list/simple_linked_list.cpp:64:9: warning: deleting a pointer through a type that is not marked 'gsl::owner<>'; consider using a smart pointer instead [cppcoreguidelines-owning-memory]
+        delete current;
+        ^      ~~~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/cpp/simple-linked-list/simple_linked_list.cpp:61:5: note: variable declared here
+    Element *current = _head;
+    ^~~~~~~~~~~~~~~~~~~~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/cpp/simple-linked-list/simple_linked_list.h:4:10: error: 'stdexcept' file not found [clang-diagnostic-error]
+#include <stdexcept>
+         ^~~~~~~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/cpp/simple-linked-list/simple_linked_list.h:30:18: warning: member variable 'next' has public visibility [misc-non-private-member-variables-in-classes]
+        Element *next{nullptr};
+                 ^
+/home/vpayno/git_vpayno/exercism-workspace/cpp/simple-linked-list/simple_linked_list.h:31:13: warning: member variable 'data' has public visibility [misc-non-private-member-variables-in-classes]
+        int data{};
+            ^
+/home/vpayno/git_vpayno/exercism-workspace/cpp/simple-linked-list/simple_linked_list_test.cpp:13:5: warning: variable 'empty' of type 'simple_linked_list::List' can be declared 'const' [misc-const-correctness]
+    simple_linked_list::List empty{};
+    ^
+                             const 
+
+
+real	0m6.525s
+user	0m6.454s
+sys	0m0.072s
+
+===============================================================================
+

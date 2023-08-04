@@ -75,3 +75,4 @@
 - [pascals-triangle](./pascals-triangle/README.md)
 - [beer-song](./beer-song/README.md)
 - [binary-search](./binary-search/README.md)
+- [simple-linked-list](./simple-linked-list/README.md)
