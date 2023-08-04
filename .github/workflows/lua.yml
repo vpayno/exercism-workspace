@@ -1,10 +1,11 @@
+---
 #
 # .github/workflows/lua.yml
 #
----
 name: Lua Workflow
 on:  # yamllint disable-line rule:truthy
   pull_request:
+
 jobs:
   stage1:
     name: Change Check
@@ -31,7 +32,7 @@ jobs:
           # Check if the files are present in the changed file list (added, modified, deleted) then output to stdout.
           HAS_DIFF=false
           printf "=== Which Lua files changed? ===\n"
-          if printf "%s\n" "${GIT_DIFF}" | grep -E '^(.*[.]lua|.github/workflows/lua.yml)$'; then
+          if printf "%s\n" "${GIT_DIFF}" | grep -E '^(lua/.*[.]lua|.github/workflows/lua.yml)$'; then
             HAS_DIFF=true
           fi
           printf "\n"
@@ -111,7 +112,7 @@ jobs:
           ./for_each busted --coverage --lpath="" --cpath="" --output=gtest -Xoutput --color
       - name: Coverage Report
         id: lua-coverage-report
-        run: |
+        run: |-
           cd ./lua
           ./for_each luacov .
           ./for_each luacov-console .
