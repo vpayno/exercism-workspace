@@ -1,8 +1,8 @@
+---
 #
 # .github/woorkflows/gh-actions.yml
 #
 # https://github.com/reviewdog/action-actionlint
----
 name: GitHub Action Workflow
 on:  # yamllint disable-line rule:truthy
   push:
@@ -10,11 +10,14 @@ on:  # yamllint disable-line rule:truthy
       - main
       - develop
   pull_request:
+
 env:
   REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 defaults:
   run:
     shell: bash
+
 jobs:
   stage1:
     name: Change Check
@@ -95,7 +98,7 @@ jobs:
           actionlint --version
       - name: Analyzing the code with actionlint
         id: actionlint
-        run: |
+        run: |-
           echo "::add-matcher::.github/actionlint-matcher.json"
           for f in ./.github/workflows/*yml; do
             printf "Running: actionlint %s\n" "${f}"
