@@ -29,3 +29,8 @@ Two clocks that represent the same time should be equal to each other.
 ### Based on
 
 Pairing session with Erin Drummond - https://twitter.com/ebdrummond
+
+### My Solution
+
+- [my solution]()
+- [run-tests](./run-tests-cpp.txt)
