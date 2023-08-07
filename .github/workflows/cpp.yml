@@ -39,7 +39,7 @@ jobs:
           # Get changed exercise list.
           if [[ ${GITHUB_EVENT_NAME} == pull_request ]]; then
             printf "Generating changed exercise list.\n"
-            cat /tmp/changed_files.txt | grep -E '^cpp/\w+./.*$' | cut -f1,2 -d/ | sort -Vu | tee /tmp/exercises.txt
+            cat /tmp/changed_files.txt | grep -E '^cpp/[-a-z0-9]+./.*$' | cut -f1,2 -d/ | sort -Vu | tee /tmp/exercises.txt
           else
             printf "Generating complete exercise list.\n"
             find ./cpp/ -type d -print | grep -v '[.]/cpp/[.]' | sed -r -e 's:[.]/(cpp/[-a-z0-9]+)/?.*$:\1:g' | sort -Vu | tee /tmp/exercises.txt
