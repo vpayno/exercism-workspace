@@ -1,5 +1,5 @@
-#if !defined(FOOD_CHAIN_H)
-#define FOOD_CHAIN_H
+#if !defined(FOOD_CHAIN_HPP)
+#define FOOD_CHAIN_HPP
 
 #include <sstream>
 #include <string>
@@ -24,8 +24,7 @@ const std::vector<std::string> k_animal_line2 = {
     "What a hog, to swallow a dog!\n",
     "Just opened her throat and swallowed a goat!\n",
     "I don't know how she swallowed a cow!\n",
-    "She's dead, of course!\n"
-};
+    "She's dead, of course!\n"};
 
 const std::vector<std::string> k_animal_line3 = {
     "I don't know why she swallowed the fly. Perhaps she'll die.\n",
@@ -34,8 +33,7 @@ const std::vector<std::string> k_animal_line3 = {
     ".\n",
     ".\n",
     ".\n",
-    ".\n"
-};
+    ".\n"};
 
 std::string verse(unsigned int verse_number);
 std::string verses(unsigned int verse_start, unsigned int verse_end);
@@ -43,4 +41,4 @@ std::string sing();
 
 } // namespace food_chain
 
-#endif // FOOD_CHAIN_H
+#endif // FOOD_CHAIN_HPP

@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.007s
+real	0m0.008s
 user	0m0.000s
-sys	0m0.006s
+sys	0m0.008s
 
 ===============================================================================
 
@@ -82,9 +82,9 @@ TOTAL                                         92      86    93%
 lines: 93.5% (86 out of 92)
 branches: 41.9% (104 out of 248)
 
-real	0m10.616s
-user	0m9.725s
-sys	0m0.823s
+real	0m10.240s
+user	0m9.457s
+sys	0m0.775s
 
 ===============================================================================
 
@@ -92,9 +92,9 @@ cmake-format --in-place CMakeLists.txt
 WARNING config_util.py:307: The following configuration options were ignored:
   max_subargs_per_line
 
-real	0m0.165s
-user	0m0.113s
-sys	0m0.053s
+real	0m0.156s
+user	0m0.106s
+sys	0m0.051s
 
 ===============================================================================
 
@@ -114,68 +114,54 @@ found lint:
   Convention: 3
 
 
-real	0m0.174s
+real	0m0.163s
 user	0m0.123s
-sys	0m0.052s
+sys	0m0.041s
 
 ===============================================================================
 
-Running: clang-format-16 -style=file -i ./food_chain.cpp ./food_chain_test.cpp ./food_chain.h
+Running: clang-format-16 -style=file -i ./food_chain.cpp ./food_chain_test.cpp ./food_chain.hpp
 
-real	0m0.028s
-user	0m0.016s
-sys	0m0.012s
+real	0m0.023s
+user	0m0.013s
+sys	0m0.010s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./food_chain.cpp ./food_chain_test.cpp ./food_chain.h
-error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
-error: invalid argument '-std=c++17' not allowed with 'C'
-/home/vpayno/git_vpayno/exercism-workspace/cpp/food-chain/food_chain.h:4:10: fatal error: 'sstream' file not found
-#include <sstream>
-         ^~~~~~~~~
-1 error generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/food-chain/food_chain.h.
+clang-check-16 --analyze ./food_chain.cpp ./food_chain_test.cpp ./food_chain.hpp
 
-real	0m1.988s
-user	0m1.914s
-sys	0m0.073s
+real	0m2.154s
+user	0m2.074s
+sys	0m0.079s
 
 
-real	0m1.989s
-user	0m1.915s
-sys	0m0.074s
+real	0m2.156s
+user	0m2.075s
+sys	0m0.080s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 16666 warnings generated.
 52905 warnings generated.
-52905 warnings and 3 errors generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/food-chain/food_chain.h.
-Suppressed 52910 warnings (52904 in non-user code, 6 NOLINT).
+69551 warnings generated.
+Suppressed 69556 warnings (69550 in non-user code, 6 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-Found compiler error(s).
 
-real	0m9.492s
-user	0m9.375s
-sys	0m0.115s
-Running: clang-tidy-16 ./food_chain.cpp ./food_chain_test.cpp ./food_chain.h
-error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
-error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
-/home/vpayno/git_vpayno/exercism-workspace/cpp/food-chain/food_chain.h:4:10: error: 'sstream' file not found [clang-diagnostic-error]
-#include <sstream>
-         ^~~~~~~~~
+real	0m11.504s
+user	0m11.390s
+sys	0m0.112s
+Running: clang-tidy-16 ./food_chain.cpp ./food_chain_test.cpp ./food_chain.hpp
 /home/vpayno/git_vpayno/exercism-workspace/cpp/food-chain/food_chain_test.cpp:11:5: warning: variable 'expected' of type 'string' (aka 'basic_string<char>') can be declared 'const' [misc-const-correctness]
     string expected =
     ^
            const 
 
 
-real	0m9.494s
-user	0m9.375s
-sys	0m0.118s
+real	0m11.506s
+user	0m11.391s
+sys	0m0.114s
 
 ===============================================================================
 

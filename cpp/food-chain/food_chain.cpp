@@ -1,4 +1,4 @@
-#include "food_chain.h"
+#include "food_chain.hpp"
 
 namespace food_chain {
 

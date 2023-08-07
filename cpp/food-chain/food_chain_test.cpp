@@ -1,4 +1,4 @@
-#include "food_chain.h"
+#include "food_chain.hpp"
 #ifdef EXERCISM_TEST_SUITE
 #include <catch2/catch.hpp>
 #else
