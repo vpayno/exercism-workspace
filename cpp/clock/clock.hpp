@@ -1,5 +1,5 @@
-#if !defined(CLOCK_H)
-#define CLOCK_H
+#if !defined(CLOCK_HPP)
+#define CLOCK_HPP
 
 #include <boost/format.hpp>
 
@@ -30,4 +30,4 @@ struct clock {
 
 } // namespace date_independent
 
-#endif // CLOCK_H
+#endif // CLOCK_HPP

@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.007s
-user	0m0.000s
-sys	0m0.007s
+real	0m0.009s
+user	0m0.001s
+sys	0m0.008s
 
 ===============================================================================
 
@@ -73,18 +73,18 @@ Directory: .
 ------------------------------------------------------------------------------
 File                                       Lines    Exec  Cover   Missing
 ------------------------------------------------------------------------------
-clock.cpp                                     28      28   100%   
+clock.cpp                                     26      26   100%   
 clock_test.cpp                                26      26   100%   
 test/catch.hpp                                45      36    80%   1580-1581,1628,1630,1642-1643,2227,2229,2560
 ------------------------------------------------------------------------------
-TOTAL                                         99      90    90%
+TOTAL                                         97      88    90%
 ------------------------------------------------------------------------------
-lines: 90.9% (90 out of 99)
+lines: 90.7% (88 out of 97)
 branches: 48.3% (87 out of 180)
 
-real	0m12.109s
-user	0m10.896s
-sys	0m1.205s
+real	0m11.351s
+user	0m10.290s
+sys	0m1.049s
 
 ===============================================================================
 
@@ -92,9 +92,9 @@ cmake-format --in-place CMakeLists.txt
 WARNING config_util.py:307: The following configuration options were ignored:
   max_subargs_per_line
 
-real	0m0.205s
-user	0m0.123s
-sys	0m0.061s
+real	0m0.155s
+user	0m0.109s
+sys	0m0.047s
 
 ===============================================================================
 
@@ -114,57 +114,45 @@ found lint:
   Convention: 3
 
 
-real	0m0.422s
-user	0m0.310s
-sys	0m0.100s
+real	0m0.322s
+user	0m0.264s
+sys	0m0.058s
 
 ===============================================================================
 
-Running: clang-format-16 -style=file -i ./clock.cpp ./clock_test.cpp ./clock.h
+Running: clang-format-16 -style=file -i ./clock.cpp ./clock_test.cpp ./clock.hpp
 
-real	0m0.074s
-user	0m0.021s
-sys	0m0.030s
+real	0m0.058s
+user	0m0.034s
+sys	0m0.024s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./clock.cpp ./clock_test.cpp ./clock.h
-error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
-error: invalid argument '-std=c++17' not allowed with 'C'
-In file included from /home/vpayno/git_vpayno/exercism-workspace/cpp/clock/clock.h:4:
-/usr/include/boost/format.hpp:17:10: fatal error: 'vector' file not found
-#include <vector>
-         ^~~~~~~~
-1 error generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/clock/clock.h.
-
-real	0m2.735s
-user	0m2.582s
-sys	0m0.153s
-
+clang-check-16 --analyze ./clock.cpp ./clock_test.cpp ./clock.hpp
 
 real	0m2.737s
-user	0m2.583s
-sys	0m0.154s
+user	0m2.641s
+sys	0m0.096s
+
+
+real	0m2.741s
+user	0m2.642s
+sys	0m0.098s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 38145 warnings generated.
 85965 warnings generated.
-95235 warnings and 3 errors generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/clock/clock.h.
-Suppressed 95235 warnings (95230 in non-user code, 5 NOLINT).
+123669 warnings generated.
+Suppressed 123669 warnings (123664 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-Found compiler error(s).
 
-real	0m15.756s
-user	0m15.619s
-sys	0m0.135s
-Running: clang-tidy-16 ./clock.cpp ./clock_test.cpp ./clock.h
-error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
-error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
+real	0m18.404s
+user	0m18.270s
+sys	0m0.130s
+Running: clang-tidy-16 ./clock.cpp ./clock_test.cpp ./clock.hpp
 /home/vpayno/git_vpayno/exercism-workspace/cpp/clock/clock_test.cpp:18:18: warning: variable 'timeCases' is non-const and globally accessible, consider making it const [cppcoreguidelines-avoid-non-const-global-variables]
 vector<timeTest> timeCases = {
                  ^
@@ -181,14 +169,11 @@ vector<equalTest> equalCases = {
 /home/vpayno/git_vpayno/exercism-workspace/cpp/clock/clock_test.cpp:181:19: warning: variable name 't' is too short, expected at least 3 characters [readability-identifier-length]
     for (timeTest t : timeCases) {
                   ^
-/usr/include/boost/format.hpp:17:10: error: 'vector' file not found [clang-diagnostic-error]
-#include <vector>
-         ^~~~~~~~
 
 
-real	0m15.757s
-user	0m15.621s
-sys	0m0.137s
+real	0m18.406s
+user	0m18.272s
+sys	0m0.132s
 
 ===============================================================================
 
