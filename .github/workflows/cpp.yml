@@ -2,7 +2,7 @@
 #
 # .github/workflows/cpp.yml
 #
-name: C++ Workflow
+name: C++ Workflow 2.0
 on:  # yamllint disable-line rule:truthy
   pull_request:
 
@@ -27,6 +27,14 @@ jobs:
       - name: Get Change List
         id: check_file_changed
         run: |
+          {
+            printf "Workflow: %s\n\n" "${GITHUB_WORKFLOW}"
+            printf "Runner: name[%s] arch[%s]\n" "${RUNNER_NAME}" "${RUNNER_ARCH}"
+            printf "Repo: %s\n" "${GITHUB_REPOSITORY}"
+            printf "User: %s\n" "${GITHUB_TRIGGERING_ACTOR}"
+            printf "\n"
+          } | tee -a "${GITHUB_STEP_SUMMARY}"
+
           # Diff HEAD with the previous commit then output to stdout.
           GIT_DIFF="$(git diff --name-only HEAD^ HEAD | tee /tmp/changed_files.txt)"
           {
