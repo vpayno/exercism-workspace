@@ -86,3 +86,8 @@ She's dead, of course!
 ### Based on
 
 Wikipedia - http://en.wikipedia.org/wiki/There_Was_an_Old_Lady_Who_Swallowed_a_Fly
+
+### My Solution
+
+- [my solution]()
+- [run-tests](./run-tests-cpp.txt)

@@ -77,3 +77,4 @@
 - [binary-search](./binary-search/README.md)
 - [simple-linked-list](./simple-linked-list/README.md)
 - [clock](./clock/README.md)
+- [food-chain](./food-chain/README.md)
