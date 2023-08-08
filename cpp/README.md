@@ -79,3 +79,4 @@
 - [clock](./clock/README.md)
 - [food-chain](./food-chain/README.md)
 - [circular-buffer](./circular-buffer/README.md)
+- [crypto-square](./crypto-square/README.md)

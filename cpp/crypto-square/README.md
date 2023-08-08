@@ -96,3 +96,8 @@ ciphertext back in to the original message:
 ### Based on
 
 J Dalbey's Programming Practice problems - http://users.csc.calpoly.edu/~jdalbey/103/Projects/ProgrammingPractice.html
+
+### My Solution
+
+- [my solution]()
+- [run-tests](./run-tests-cpp.txt)
