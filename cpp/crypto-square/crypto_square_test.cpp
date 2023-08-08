@@ -1,4 +1,4 @@
-#include "crypto_square.h"
+#include "crypto_square.hpp"
 #ifdef EXERCISM_TEST_SUITE
 #include <catch2/catch.hpp>
 #else

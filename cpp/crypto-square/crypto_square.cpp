@@ -1,4 +1,4 @@
-#include "crypto_square.h"
+#include "crypto_square.hpp"
 
 namespace crypto_square {
 

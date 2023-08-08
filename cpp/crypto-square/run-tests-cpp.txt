@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.006s
-user	0m0.002s
-sys	0m0.004s
+real	0m0.017s
+user	0m0.001s
+sys	0m0.016s
 
 ===============================================================================
 
@@ -73,18 +73,18 @@ Directory: .
 ------------------------------------------------------------------------------
 File                                       Lines    Exec  Cover   Missing
 ------------------------------------------------------------------------------
-crypto_square.cpp                             64      63    98%   11
-crypto_square_test.cpp                        44      44   100%   
+crypto_square.cpp                             65      63    96%   11,66
+crypto_square_test.cpp                        46      46   100%   
 test/catch.hpp                                50      27    54%   1448-1450,1642-1643,1710-1711,1827-1833,1835-1836,2016-2017,2039-2040,2227,2229,2560
 ------------------------------------------------------------------------------
-TOTAL                                        158     134    84%
+TOTAL                                        161     136    84%
 ------------------------------------------------------------------------------
-lines: 84.8% (134 out of 158)
+lines: 84.5% (136 out of 161)
 branches: 43.6% (177 out of 406)
 
-real	0m12.156s
-user	0m11.037s
-sys	0m1.115s
+real	0m13.994s
+user	0m12.707s
+sys	0m1.217s
 
 ===============================================================================
 
@@ -92,9 +92,9 @@ cmake-format --in-place CMakeLists.txt
 WARNING config_util.py:307: The following configuration options were ignored:
   max_subargs_per_line
 
-real	0m0.157s
-user	0m0.113s
-sys	0m0.045s
+real	0m0.185s
+user	0m0.127s
+sys	0m0.061s
 
 ===============================================================================
 
@@ -114,64 +114,50 @@ found lint:
   Convention: 3
 
 
-real	0m0.171s
-user	0m0.127s
+real	0m0.181s
+user	0m0.135s
 sys	0m0.046s
 
 ===============================================================================
 
-Running: clang-format-16 -style=file -i ./crypto_square.cpp ./crypto_square_test.cpp ./crypto_square.h
+Running: clang-format-16 -style=file -i ./crypto_square.cpp ./crypto_square_test.cpp ./crypto_square.hpp
 
-real	0m0.035s
-user	0m0.016s
-sys	0m0.019s
+real	0m0.028s
+user	0m0.011s
+sys	0m0.017s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./crypto_square.cpp ./crypto_square_test.cpp ./crypto_square.h
-error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
-error: invalid argument '-std=c++17' not allowed with 'C'
-/home/vpayno/git_vpayno/exercism-workspace/cpp/crypto-square/crypto_square.h:4:10: fatal error: 'algorithm' file not found
-#include <algorithm>
-         ^~~~~~~~~~~
-1 error generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/crypto-square/crypto_square.h.
+clang-check-16 --analyze ./crypto_square.cpp ./crypto_square_test.cpp ./crypto_square.hpp
 
-real	0m3.266s
-user	0m3.141s
-sys	0m0.125s
+real	0m3.689s
+user	0m3.579s
+sys	0m0.110s
 
 
-real	0m3.270s
-user	0m3.142s
-sys	0m0.128s
+real	0m3.692s
+user	0m3.579s
+sys	0m0.113s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 36235 warnings generated.
 80441 warnings generated.
-80441 warnings and 3 errors generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/crypto-square/crypto_square.h.
-Suppressed 80448 warnings (80441 in non-user code, 7 NOLINT).
+115454 warnings generated.
+Suppressed 115461 warnings (115454 in non-user code, 7 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-Found compiler error(s).
 
-real	0m18.081s
-user	0m17.911s
-sys	0m0.165s
-Running: clang-tidy-16 ./crypto_square.cpp ./crypto_square_test.cpp ./crypto_square.h
-error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
-error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
-/home/vpayno/git_vpayno/exercism-workspace/cpp/crypto-square/crypto_square.h:4:10: error: 'algorithm' file not found [clang-diagnostic-error]
-#include <algorithm>
-         ^~~~~~~~~~~
+real	0m22.257s
+user	0m22.108s
+sys	0m0.146s
+Running: clang-tidy-16 ./crypto_square.cpp ./crypto_square_test.cpp ./crypto_square.hpp
 
 
-real	0m18.083s
-user	0m17.912s
-sys	0m0.167s
+real	0m22.260s
+user	0m22.109s
+sys	0m0.148s
 
 ===============================================================================
 

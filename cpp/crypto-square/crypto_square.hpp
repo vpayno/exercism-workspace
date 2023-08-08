@@ -1,5 +1,5 @@
-#if !defined(CRYPTO_SQUARE_H)
-#define CRYPTO_SQUARE_H
+#if !defined(CRYPTO_SQUARE_HPP)
+#define CRYPTO_SQUARE_HPP
 
 #include <algorithm>
 #include <regex>
@@ -32,4 +32,4 @@ struct cipher {
 
 } // namespace crypto_square
 
-#endif // CRYPTO_SQUARE_H
+#endif // CRYPTO_SQUARE_HPP
