@@ -73,9 +73,10 @@ jobs:
 
           # Generate exercise job matrix from changed files list.
           printf "=== Generating matrix exercise list. ===\n"
-          declare -i last=$(wc -l /tmp/exercises.txt | cut -f1 -d\ )
-          ((last -= 1)) || true
+          declare -i last=0
           declare -i count=0
+          last=$(wc -l /tmp/exercises.txt | cut -f1 -d\ )
+          ((last -= 1)) || true
           jq --sort-keys . >/tmp/exercises.json <<EOF
             [
               $(while read -r line; do if [[ ! ${count} -lt ${last} ]]; then  comma=""; else comma=","; fi; printf "\"%s\"%s\n" "${line}" "${comma}"; ((count += 1)); done < <(sort -V /tmp/exercises.txt))
