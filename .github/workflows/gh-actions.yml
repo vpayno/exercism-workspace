@@ -95,13 +95,20 @@ jobs:
       - name: Actionlint Version Checks
         id: version-check-actionlint
         run: |
-          actionlint --version
+          {
+            printf "Actionlint Version:\n"
+            actionlint --version
+            printf "\n"
+          } | tee -a "${GITHUB_STEP_SUMMARY}"
       - name: Analyzing the code with actionlint
         id: actionlint
         run: |-
           echo "::add-matcher::.github/actionlint-matcher.json"
           for f in ./.github/workflows/*yml; do
-            printf "Running: actionlint %s\n" "${f}"
-            tee /tmp/actionlint.out < <(actionlint -oneline "${f}")
+            {
+                printf "Running: actionlint %s\n" "${f}"
+                tee /tmp/actionlint.out < <(actionlint -oneline "${f}")
+                printf "\n"
+            } | tee -a "${GITHUB_STEP_SUMMARY}"
             reviewdog -efm="%f:%l:%c: %m" -name="actionlint" -reporter=github-pr-check < /tmp/actionlint.out
           done
