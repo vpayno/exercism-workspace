@@ -1,4 +1,4 @@
-#include "circular_buffer.h"
+#include "circular_buffer.hpp"
 
 template struct circular_buffer::circular_buffer<circular_buffer::number_t>;
 template struct circular_buffer::circular_buffer<circular_buffer::text_t>;

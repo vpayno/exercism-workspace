@@ -1,7 +1,5 @@
-#if !defined(CIRCULAR_BUFFER_H)
-#define CIRCULAR_BUFFER_H
-
-// please use c+ header files (*.hpp) instead of c header files (*.h)
+#if !defined(CIRCULAR_BUFFER_HPP)
+#define CIRCULAR_BUFFER_HPP
 
 #include <iostream>
 #include <sstream>
@@ -49,4 +47,4 @@ template <typename T> text_t vector_to_string(buffer_t<T> buffer);
 
 } // namespace circular_buffer
 
-#endif // CIRCULAR_BUFFER_H
+#endif // CIRCULAR_BUFFER_HPP
