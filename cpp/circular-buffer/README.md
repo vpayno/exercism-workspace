@@ -71,3 +71,8 @@ the buffer is once again full.
 ### Based on
 
 Wikipedia - http://en.wikipedia.org/wiki/Circular_buffer
+
+### My Solution
+
+- [my solution]()
+- [run-tests](./run-tests-cpp.txt)

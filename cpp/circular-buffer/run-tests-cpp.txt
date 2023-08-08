@@ -1,0 +1,265 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: make clean
+rm -rf ./build
+
+real	0m0.008s
+user	0m0.001s
+sys	0m0.007s
+
+===============================================================================
+
+export LDFLAGS="-lgcov --coverage" CXXFLAGS="--coverage"
+
+===============================================================================
+
+Running: make coverage | ansifilter
+rm -rf ./build
+mkdir -pv ./build
+mkdir: created directory './build'
+
+cd ./build; export LDFLAGS="-lgcov --coverage" CXXFLAGS="--coverage"; cmake -DEXERCISM_RUN_ALL_TESTS=1 -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -G 'Unix Makefiles' ../; if make; then printf "\n=== All Tests Passed ===\n"; else printf "\n=== Test Failure ===\n"; false; fi
+-- The CXX compiler identification is GNU 10.2.1
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/vpayno/git_vpayno/exercism-workspace/cpp/circular-buffer/build
+make[1]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/circular-buffer/build'
+make[2]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/circular-buffer/build'
+make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/circular-buffer/build'
+make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/circular-buffer/build'
+make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/circular-buffer/build'
+[ 25%] Building CXX object CMakeFiles/circular-buffer.dir/circular_buffer_test.cpp.o
+[ 50%] Building CXX object CMakeFiles/circular-buffer.dir/circular_buffer.cpp.o
+[ 75%] Building CXX object CMakeFiles/circular-buffer.dir/test/tests-main.cpp.o
+[100%] Linking CXX executable circular-buffer
+make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/circular-buffer/build'
+[100%] Built target circular-buffer
+make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/circular-buffer/build'
+make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/circular-buffer/build'
+make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/circular-buffer/build'
+writing: [1]
+buffer: [ 1 ]
+reading: [0]
+writing: [1]
+buffer: [ 1 ]
+reading: [0]
+writing: [1]
+writing: [2]
+buffer: [ 1, 2 ]
+reading: [1]
+buffer: [ 1, 2 ]
+reading: [0]
+writing: [1]
+writing: [1]
+buffer: [ 1 ]
+reading: [0]
+writing: [2]
+buffer: [ 2 ]
+reading: [0]
+writing: [1]
+writing: [2]
+buffer: [ 12, 0 ]
+reading: [1]
+writing: [3]
+buffer: [ 12, 3 ]
+reading: [2]
+buffer: [ 12, 3 ]
+reading: [0]
+writing: [1]
+writing: [1]
+writing: [2]
+buffer: [ 2 ]
+reading: [0]
+writing: [1]
+buffer: [ 1 ]
+reading: [0]
+writing: [1]
+overwriting: old[1] with [2]
+writing: [2]
+buffer: [ 1, 2 ]
+reading: [1]
+buffer: [ 1, 2 ]
+reading: [0]
+writing: [1]
+writing: [2]
+overwriting: old[1] with [3]
+buffer: [ 3, 2 ]
+reading: [0]
+buffer: [ 3, 2 ]
+reading: [1]
+writing: [1]
+writing: [2]
+writing: [3]
+buffer: [ 12, 3 ]
+reading: [1]
+writing: [4]
+overwriting: old[2] with [5]
+buffer: [ 45, 3 ]
+reading: [0]
+buffer: [ 45, 3 ]
+reading: [1]
+buffer: [ 45, 3 ]
+reading: [2]
+writing: [1]
+overwriting: old[1] with [2]
+buffer: [ 2 ]
+reading: [0]
+writing: [hello]
+writing: [world]
+writing: [zombies]
+buffer: [ helloworld, zombies ]
+reading: [1]
+writing: [pants]
+overwriting: old[world] with [banana]
+buffer: [ pantsbanana, zombies ]
+reading: [0]
+buffer: [ pantsbanana, zombies ]
+reading: [1]
+buffer: [ pantsbanana, zombies ]
+reading: [2]
+writing: [1]
+writing: [2]
+overwriting: old[1] with [3]
+overwriting: old[2] with [4]
+buffer: [ 3, 4 ]
+reading: [1]
+buffer: [ 3, 4 ]
+reading: [0]
+===============================================================================
+All tests passed (60 assertions in 16 test cases)
+
+make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/circular-buffer/build'
+[100%] Built target test_circular-buffer
+make[2]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/circular-buffer/build'
+make[1]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/circular-buffer/build'
+
+=== All Tests Passed ===
+
+find . -regextype posix-egrep -regex '^.*(tests-main|CompilerId).*[.](gcda|gcno)$' -print -delete
+./build/CMakeFiles/3.22.2/CompilerIdCXX/CMakeCXXCompilerId.gcno
+./build/CMakeFiles/circular-buffer.dir/test/tests-main.cpp.gcno
+./build/CMakeFiles/circular-buffer.dir/test/tests-main.cpp.gcda
+
+find . -regextype posix-egrep -regex '^.*[.](gcda|gcno)$'
+./build/CMakeFiles/circular-buffer.dir/circular_buffer_test.cpp.gcno
+./build/CMakeFiles/circular-buffer.dir/circular_buffer.cpp.gcno
+./build/CMakeFiles/circular-buffer.dir/circular_buffer.cpp.gcda
+./build/CMakeFiles/circular-buffer.dir/circular_buffer_test.cpp.gcda
+
+gcovr --print-summary
+------------------------------------------------------------------------------
+                           GCC Code Coverage Report
+Directory: .
+------------------------------------------------------------------------------
+File                                       Lines    Exec  Cover   Missing
+------------------------------------------------------------------------------
+circular_buffer.cpp                           55      55   100%   
+circular_buffer_test.cpp                     145     145   100%   
+test/catch.hpp                                32      27    84%   1642-1643,2227,2229,2560
+------------------------------------------------------------------------------
+TOTAL                                        232     227    97%
+------------------------------------------------------------------------------
+lines: 97.8% (227 out of 232)
+branches: 37.0% (370 out of 1001)
+
+real	0m10.325s
+user	0m9.356s
+sys	0m0.963s
+
+===============================================================================
+
+cmake-format --in-place CMakeLists.txt
+WARNING config_util.py:307: The following configuration options were ignored:
+  max_subargs_per_line
+
+real	0m0.306s
+user	0m0.224s
+sys	0m0.080s
+
+===============================================================================
+
+cmake-lint CMakeLists.txt
+WARNING The following configuration options were ignored:
+  max_subargs_per_line
+CMakeLists.txt
+==============
+CMakeLists.txt:15,06: [C0103] Invalid directory variable name "exercise_cpp" doesn't match `[A-Z][0-9A-Z_]+|_[0-9a-z_]+`
+CMakeLists.txt:17,06: [C0103] Invalid directory variable name "exercise_cpp" doesn't match `[A-Z][0-9A-Z_]+|_[0-9a-z_]+`
+CMakeLists.txt:61,02: [C0113] Missing COMMENT in statement which allows it
+
+Summary
+=======
+files scanned: 1
+found lint:
+  Convention: 3
+
+
+real	0m0.162s
+user	0m0.120s
+sys	0m0.043s
+
+===============================================================================
+
+Running: clang-format-16 -style=file -i ./circular_buffer.cpp ./circular_buffer_test.cpp ./circular_buffer.h
+
+real	0m0.026s
+user	0m0.013s
+sys	0m0.013s
+
+===============================================================================
+
+Running: ../../.github/citools/cpp/clang-check
+clang-check-16 --analyze ./circular_buffer.cpp ./circular_buffer_test.cpp ./circular_buffer.h
+error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
+error: invalid argument '-std=c++17' not allowed with 'C'
+/home/vpayno/git_vpayno/exercism-workspace/cpp/circular-buffer/circular_buffer.h:6:10: fatal error: 'iostream' file not found
+#include <iostream>
+         ^~~~~~~~~~
+1 error generated.
+Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/circular-buffer/circular_buffer.h.
+
+real	0m0.585s
+user	0m0.543s
+sys	0m0.042s
+
+
+real	0m0.587s
+user	0m0.544s
+sys	0m0.043s
+
+===============================================================================
+
+Running: ../../.github/citools/cpp/clang-tidy | head -n 100
+16677 warnings generated.
+52916 warnings generated.
+52916 warnings and 3 errors generated.
+Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/circular-buffer/circular_buffer.h.
+Suppressed 52921 warnings (52916 in non-user code, 5 NOLINT).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+Found compiler error(s).
+
+real	0m7.565s
+user	0m7.513s
+sys	0m0.052s
+Running: clang-tidy-16 ./circular_buffer.cpp ./circular_buffer_test.cpp ./circular_buffer.h
+error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
+error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
+/home/vpayno/git_vpayno/exercism-workspace/cpp/circular-buffer/circular_buffer.h:6:10: error: 'iostream' file not found [clang-diagnostic-error]
+#include <iostream>
+         ^~~~~~~~~~
+
+
+real	0m7.568s
+user	0m7.515s
+sys	0m0.054s
+
+===============================================================================
+
