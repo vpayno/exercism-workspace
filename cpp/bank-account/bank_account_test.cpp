@@ -1,4 +1,4 @@
-#include "bank_account.h"
+#include "bank_account.hpp"
 #ifdef EXERCISM_TEST_SUITE
 #include <catch2/catch.hpp>
 #else

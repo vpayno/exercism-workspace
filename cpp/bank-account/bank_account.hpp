@@ -1,7 +1,5 @@
-#if !defined(BANK_ACCOUNT_H)
-#define BANK_ACCOUNT_H
-
-// use *.hpp for C++ header files
+#if !defined(BANK_ACCOUNT_HPP)
+#define BANK_ACCOUNT_HPP
 
 #include <mutex>
 #include <stdexcept>
@@ -34,4 +32,4 @@ void check_runtime_error(bool condition, message_t message);
 
 } // namespace Bankaccount
 
-#endif // BANK_ACCOUNT_H
+#endif // BANK_ACCOUNT_HPP

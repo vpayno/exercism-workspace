@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.009s
+real	0m0.012s
 user	0m0.002s
-sys	0m0.007s
+sys	0m0.010s
 
 ===============================================================================
 
@@ -91,9 +91,9 @@ TOTAL                                        174     169    97%
 lines: 97.1% (169 out of 174)
 branches: 40.2% (185 out of 460)
 
-real	0m10.683s
-user	0m9.527s
-sys	0m1.155s
+real	0m9.967s
+user	0m9.133s
+sys	0m0.844s
 
 ===============================================================================
 
@@ -101,9 +101,9 @@ cmake-format --in-place CMakeLists.txt
 WARNING config_util.py:307: The following configuration options were ignored:
   max_subargs_per_line
 
-real	0m0.278s
-user	0m0.228s
-sys	0m0.050s
+real	0m0.162s
+user	0m0.119s
+sys	0m0.045s
 
 ===============================================================================
 
@@ -123,64 +123,50 @@ found lint:
   Convention: 3
 
 
-real	0m0.293s
-user	0m0.194s
-sys	0m0.099s
+real	0m0.173s
+user	0m0.119s
+sys	0m0.056s
 
 ===============================================================================
 
-Running: clang-format-16 -style=file -i ./bank_account.cpp ./bank_account_test.cpp ./bank_account.h
+Running: clang-format-16 -style=file -i ./bank_account.cpp ./bank_account_test.cpp ./bank_account.hpp
 
-real	0m0.024s
-user	0m0.010s
-sys	0m0.014s
+real	0m0.028s
+user	0m0.016s
+sys	0m0.011s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./bank_account.cpp ./bank_account_test.cpp ./bank_account.h
-error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
-error: invalid argument '-std=c++17' not allowed with 'C'
-/home/vpayno/git_vpayno/exercism-workspace/cpp/bank-account/bank_account.h:6:10: fatal error: 'mutex' file not found
-#include <mutex>
-         ^~~~~~~
-1 error generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/bank-account/bank_account.h.
+clang-check-16 --analyze ./bank_account.cpp ./bank_account_test.cpp ./bank_account.hpp
 
-real	0m0.555s
-user	0m0.515s
-sys	0m0.040s
+real	0m0.697s
+user	0m0.652s
+sys	0m0.045s
 
 
-real	0m0.557s
-user	0m0.515s
-sys	0m0.042s
+real	0m0.699s
+user	0m0.653s
+sys	0m0.046s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 13843 warnings generated.
 49591 warnings generated.
-49591 warnings and 3 errors generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/bank-account/bank_account.h.
-Suppressed 49596 warnings (49591 in non-user code, 5 NOLINT).
+63431 warnings generated.
+Suppressed 63436 warnings (63431 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-Found compiler error(s).
 
-real	0m6.876s
-user	0m6.804s
-sys	0m0.071s
-Running: clang-tidy-16 ./bank_account.cpp ./bank_account_test.cpp ./bank_account.h
-error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
-error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
-/home/vpayno/git_vpayno/exercism-workspace/cpp/bank-account/bank_account.h:6:10: error: 'mutex' file not found [clang-diagnostic-error]
-#include <mutex>
-         ^~~~~~~
+real	0m8.421s
+user	0m8.347s
+sys	0m0.072s
+Running: clang-tidy-16 ./bank_account.cpp ./bank_account_test.cpp ./bank_account.hpp
 
 
-real	0m6.878s
-user	0m6.806s
-sys	0m0.073s
+real	0m8.423s
+user	0m8.349s
+sys	0m0.074s
 
 ===============================================================================
 
