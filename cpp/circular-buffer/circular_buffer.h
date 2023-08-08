@@ -11,6 +11,9 @@
 
 namespace circular_buffer {
 
+// set to true to enable debug output during tests
+const bool k_debug_flag{false};
+
 using number_t = int;
 using text_t = std::string;
 
