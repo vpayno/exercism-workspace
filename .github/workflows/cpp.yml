@@ -69,24 +69,39 @@ jobs:
           printf "%s\n" "${HAS_DIFF}"
           printf "\n"
 
-          # Set the output named "docs_changed"
-          printf "%s=%s\n" "docs_changed" "${HAS_DIFF}" >> "${GITHUB_OUTPUT}"
-
           # Generate exercise job matrix from changed files list.
           printf "=== Generating matrix exercise list. ===\n"
           declare -i last=0
           declare -i count=0
           last=$(wc -l /tmp/exercises.txt | cut -f1 -d\ )
           ((last -= 1)) || true
+          entries=""
+          while read -r line; do
+            if [[ ! ${count} -lt ${last} ]]; then
+              comma=""
+            else
+              comma=","
+            fi
+            printf -v entry "\"%s\"%s\n" "${line}" "${comma}"
+            ((count += 1))
+            entries+="${entry}"
+          done < <(sort -V /tmp/exercises.txt)
           jq --sort-keys . >/tmp/exercises.json <<EOF
-            [
-              $(while read -r line; do if [[ ! ${count} -lt ${last} ]]; then  comma=""; else comma=","; fi; printf "\"%s\"%s\n" "${line}" "${comma}"; ((count += 1)); done < <(sort -V /tmp/exercises.txt))
-            ]
+            [ ${entries} ]
           EOF
           matrix_exercise="$(jq --compact-output --sort-keys . /tmp/exercises.json)"
           printf "%s=%s\n" "matrix_exercise" "${matrix_exercise}" | tee -a "${GITHUB_OUTPUT}"
           printf "\n"
           cat "${GITHUB_OUTPUT}"
+
+          # Don't run stage 2 if PR mode doesn't have testable changes.
+          if [[ ${GITHUB_EVENT_NAME} == pull_request ]] && [[ -z ${entries} ]]; then
+            printf "In PR mode with no testable changes, disabling stage 2.\n"
+            HAS_DIFF=false
+          fi
+
+          # Set the output named "docs_changed"
+          printf "%s=%s\n" "docs_changed" "${HAS_DIFF}" >> "${GITHUB_OUTPUT}"
   check-matrix:
     runs-on: ubuntu-latest
     needs: stage1
