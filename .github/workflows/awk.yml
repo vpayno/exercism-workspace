@@ -2,16 +2,22 @@
 #
 # .github/workflows/awk.yml
 #
-name: Awk Workflow
+name: Awk Workflow 2.0
 on:  # yamllint disable-line rule:truthy
   pull_request:
+  workflow_dispatch:
+
 jobs:
   stage1:
     name: Change Check
     runs-on: 'ubuntu-latest'
     outputs:
       docs_changed: ${{ steps.check_file_changed.outputs.docs_changed }}
+      matrix_exercise: ${{ steps.check_file_changed.outputs.matrix_exercise }}
     steps:
+      - name: Check GitHub Vars
+        id: github-vars
+        run: set | grep -e ^CI -e ^GITHUB_ -e ^RUNNER_
       - name: Checkout Repo
         id: checkout-repo
         uses: actions/checkout@v3
@@ -22,14 +28,36 @@ jobs:
       - name: Get Change List
         id: check_file_changed
         run: |
+          {
+            printf "Workflow: %s\n\n" "${GITHUB_WORKFLOW}"
+            printf "Runner: name[%s] arch[%s]\n" "${RUNNER_NAME}" "${RUNNER_ARCH}"
+            printf "Repo: %s\n" "${GITHUB_REPOSITORY}"
+            printf "User: %s\n" "${GITHUB_TRIGGERING_ACTOR}"
+            printf "\n"
+          } | tee -a "${GITHUB_STEP_SUMMARY}"
+
           # Diff HEAD with the previous commit then output to stdout.
-          printf "=== Which files changed? ===\n"
-          GIT_DIFF="$(git diff --name-only HEAD^ HEAD)"
-          printf "%s\n" "${GIT_DIFF}"
+          GIT_DIFF="$(git diff --name-only HEAD^ HEAD | tee /tmp/changed_files.txt)"
+          {
+            printf "=== Which files changed? ===\n"
+            printf "\`\`\`text\n"
+            printf "%s\n" "${GIT_DIFF}"
+            printf "\`\`\`\n"
+          } | tee -a "${GITHUB_STEP_SUMMARY}"
+
+          # Get changed exercise list.
+          if [[ ${GITHUB_EVENT_NAME} == pull_request ]]; then
+            printf "Generating changed exercise list.\n"
+            grep -E '^awk/[-a-z0-9]+./.*$' /tmp/changed_files.txt | cut -f1,2 -d/ | sort -Vu | tee /tmp/exercises.txt
+          else
+            printf "Generating complete exercise list.\n"
+            find ./awk/ -type d -print | grep -v -E '^[.]/awk/(|[.].*)$' | sed -r -e 's:[.]/(awk/[-a-z0-9]+)/?.*$:\1:g' | sort -Vu | tee /tmp/exercises.txt
+            HAS_DIFF=true
+          fi
           printf "\n"
 
           # Check if the files are present in the changed file list (added, modified, deleted) then output to stdout.
-          HAS_DIFF=false
+          HAS_DIFF="${HAS_DIFF:-false}"
           printf "=== Which Awk files changed? ===\n"
           if printf "%s\n" "${GIT_DIFF}" | grep -E '^(awk/.*[.]awk|.github/workflows/awk.yml)$'; then
             HAS_DIFF=true
@@ -37,50 +65,93 @@ jobs:
           printf "\n"
 
           # Did Golang files change?
-          printf "=== Did Golang files change? ===\n"
+          printf "=== Did Awk files change? ===\n"
           printf "%s\n" "${HAS_DIFF}"
           printf "\n"
 
+          # Generate exercise job matrix from changed files list.
+          printf "=== Generating matrix exercise list. ===\n"
+          declare -i last=0
+          declare -i count=0
+          last=$(wc -l /tmp/exercises.txt | cut -f1 -d\ )
+          ((last -= 1)) || true
+          entries=""
+          while read -r line; do if [[ ! ${count} -lt ${last} ]]; then  comma=""; else comma=","; fi; printf -v entry "\"%s\"%s\n" "${line}" "${comma}"; ((count += 1)); entries+="${entry}"; done < <(sort -V /tmp/exercises.txt)
+          jq --sort-keys . >/tmp/exercises.json <<EOF
+            [
+              "${entries}"
+            ]
+          EOF
+          matrix_exercise="$(jq --compact-output --sort-keys . /tmp/exercises.json)"
+          printf "%s=%s\n" "matrix_exercise" "${matrix_exercise}" | tee -a "${GITHUB_OUTPUT}"
+          printf "\n"
+          cat "${GITHUB_OUTPUT}"
+          if [[ ${GITHUB_EVENT_NAME} == pull_request ]] && [[ -z ${entries} ]]; then
+            printf "In PR mode with no testable changes, disabling stage 2.\n"
+            HAS_DIFF=false
+          fi
+
           # Set the output named "docs_changed"
           printf "%s=%s\n" "docs_changed" "${HAS_DIFF}" >> "${GITHUB_OUTPUT}"
+  check-matrix:
+    runs-on: ubuntu-latest
+    needs: stage1
+    steps:
+      - name: Install json2yaml
+        run: sudo npm install -g json2yaml
+      - name: Check matrix::exercises
+        run: |
+          matrix_exercise='${{ needs.stage1.outputs.matrix_exercise }}'
+          printf "matrix_exercise=%s\n" "${matrix_exercise}"
+          printf "json:\n"
+          printf "%s" "${matrix_exercise}" | jq .
+          {
+            printf "\`\`\`text\n"
+            printf "{ \"matrix\": { \"exercise\": %s } }" "${matrix_exercise}" | json2yaml
+            printf "\`\`\`\n"
+          } | tee -a "${GITHUB_STEP_SUMMARY}"
   stage2:
     name: Awk Checks
     strategy:
       matrix:
-        os: ["ubuntu-latest"]
+        os: ["ubuntu-latest", "windows-latest", "macos-latest"]
+        exclude:
+          - os: "macos-latest"
+          - os: "windows-latest"
+        exercise: ${{fromJson(needs.stage1.outputs.matrix_exercise)}}
     runs-on: "${{ matrix.os }}"
     needs: [stage1]
     if: needs.stage1.outputs.docs_changed == 'True'
     steps:
-      - name: Checkout Repo
+      - name: Checkout Repo [${{ matrix.exercise }}]
         id: checkout-repo
         uses: actions/checkout@v3
-      - name: Set up Awk
+      - name: Set up Awk [${{ matrix.exercise }}]
         id: setup-awk
         run: |
           sudo apt install -y gawk
-      - name: Show Awk version
+      - name: Show Awk version [${{ matrix.exercise }}]
         id: awk-version
         run: |
           awk --version
-      - name: Checkout bats-core
+      - name: Checkout bats-core [${{ matrix.exercise }}]
         id: checkout-bats-core
         uses: actions/checkout@v3
         with:
           repository: bats-core/bats-core
           path: bats-core
-      - name: Install Bats
+      - name: Install Bats [${{ matrix.exercise }}]
         id: install-bats-core
         run: |
           cd bats-core
           sudo ./install.sh /usr/local
-      - name: Checkout awkunit
+      - name: Checkout awkunit [${{ matrix.exercise }}]
         id: checkout-awkunit
         uses: actions/checkout@v3
         with:
           repository: soimort/awkunit
           path: awkunit
-      - name: Install Awk Tools
+      - name: Install Awk Tools [${{ matrix.exercise }}]
         id: install-awk-tools
         run: |
           ls
@@ -92,7 +163,7 @@ jobs:
           AWKSRCPATH=../gawk make
           mkdir -pv ../.lib
           cp -v awkunit.so ../.lib
-      - name: CD to Awk Dir
+      - name: CD to Awk Dir [${{ matrix.exercise }}]
         id: cd-to-awk-dir
         run: |
           pwd
@@ -100,19 +171,43 @@ jobs:
           cd ./awk
           pwd
           ls
-      - name: Lint Checking with Awk
+      - name: Lint Checking with Awk [${{ matrix.exercise }}]
         id: awk-lint-run
         run: |
-          cd ./awk
-          ./for_each ../../.github/citools/awk/awk-lint
-      - name: Testing with Bats tests
+          pwd
+          cd "./${{ matrix.exercise }}"
+          pwd
+          ls
+          {
+            printf "clang-check output\n\n"
+            printf "\`\`\`text\n"
+            ../../.github/citools/cpp/clang-check
+            printf "\`\`\`\n"
+          } | tee -a "${GITHUB_STEP_SUMMARY}"
+      - name: Testing with Bats tests [${{ matrix.exercise }}]
         id: awk-bats-run
         run: |
-          cd ./awk
-          ./for_each ../../.github/citools/awk/awk-bats
-      - name: Testing with AwkUnit
+          pwd
+          cd "./${{ matrix.exercise }}"
+          pwd
+          ls
+          {
+            printf "clang-tidy output\n\n"
+            printf "\`\`\`text\n"
+            ../../.github/citools/cpp/clang-tidy
+            printf "\`\`\`\n"
+          } | tee -a "${GITHUB_STEP_SUMMARY}"
+      - name: Testing with AwkUnit [${{ matrix.exercise }}]
         id: awk-test-run
         run: |-
-          cd ./awk
-          # still trying to figure out why this is broken in CI
-          ./for_each ../../.github/citools/awk/awk-test || true
+          pwd
+          cd "./${{ matrix.exercise }}"
+          pwd
+          ls
+          {
+            printf "Testing with unit tests\n"
+            printf "\`\`\`text\n"
+            # still trying to figure out why this is broken in CI
+            ../../.github/citools/awk/awk-test || true
+            printf "\`\`\`\n"
+          } | tee -a "${GITHUB_STEP_SUMMARY}"
