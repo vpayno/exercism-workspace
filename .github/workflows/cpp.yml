@@ -52,11 +52,12 @@ jobs:
           else
             printf "Generating complete exercise list.\n"
             find ./cpp/ -type d -print | grep -v -E '^[.]/cpp/(|[.].*)$' | sed -r -e 's:[.]/(cpp/[-a-z0-9]+)/?.*$:\1:g' | sort -Vu | tee /tmp/exercises.txt
+            HAS_DIFF=true
           fi
           printf "\n"
 
           # Check if the files are present in the changed file list (added, modified, deleted) then output to stdout.
-          HAS_DIFF=false
+          HAS_DIFF="${HAS_DIFF:-false}"
           printf "=== Which C++ files changed? ===\n"
           if printf "%s\n" "${GIT_DIFF}" | grep -E '^(cpp/.*[.](cpp|h|hpp)|cpp/.*/[Ma]akefile|cpp/.*/CMakeLists.txt|.github/workflows/cpp.yml)$'; then
             HAS_DIFF=true
