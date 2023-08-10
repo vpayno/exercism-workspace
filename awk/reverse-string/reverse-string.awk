@@ -1,28 +1,28 @@
 #!/usr/bin/awk --lint --file
 
 function reverseString(forward) {
-	reversed = ""
+    reversed = ""
 
-	split(forward, chars, "")
+    split(forward, chars, "")
 
-	for (i = 1; i <= length(chars); i++) {
-		reversed = chars[i] reversed
-	}
+    for (i = 1; i <= length(chars); i++) {
+        reversed = chars[i] reversed
+    }
 
-	return reversed
+    return reversed
 }
 
 BEGIN {
-	input = ""
+    input = ""
 }
 
 {
-	if (length($0) > 0) {
-		input = $0
-	}
+    if (length($0) > 0) {
+        input = $0
+    }
 
-	print reverseString(input)
+    print reverseString(input)
 
-	# add exit here to keep it from looping
-	exit 0
+    # add exit here to keep it from looping
+    exit 0
 }

@@ -3,18 +3,28 @@ Running automated test file(s):
 
 ===============================================================================
 
+awk --lint --file=./awkunit.awk < /dev/null > /dev/null
+awk: ./awkunit.awk:2: warning: `load' is a gawk extension
+awk: warning: function `assertEquals' defined but never called directly
+awk: warning: function `assert' defined but never called directly
+awk: ./awkunit.awk:25: warning: reference to uninitialized variable `_assert_exit'
+
+real	0m0.004s
+user	0m0.003s
+sys	0m0.002s
+
 awk --lint --file=./reverse-string.awk < /dev/null > /dev/null
 
-real	0m0.010s
+real	0m0.004s
 user	0m0.000s
-sys	0m0.010s
+sys	0m0.004s
 
 awk --lint --file=./test-cases.awk < /dev/null > /dev/null
 awk: ./test-cases.awk:7: warning: subscript of array `cases' is null string
 
-real	0m0.008s
-user	0m0.009s
-sys	0m0.005s
+real	0m0.005s
+user	0m0.004s
+sys	0m0.001s
 
 
 ===============================================================================
@@ -22,18 +32,23 @@ sys	0m0.005s
 Running: bats ./test-reverse-string.bats
 1..6
 ok 1 an empty string
-ok 2 a word
-ok 3 a capitalised word
-ok 4 a sentence with punctuation
-ok 5 a palindrome
-ok 6 an even-sized word
+ok 2 a word # skip
+ok 3 a capitalised word # skip
+ok 4 a sentence with punctuation # skip
+ok 5 a palindrome # skip
+ok 6 an even-sized word # skip
 
-real	0m0.856s
-user	0m0.704s
-sys	0m0.439s
+real	0m0.162s
+user	0m0.092s
+sys	0m0.084s
 
 
 ===============================================================================
+
+AWKLIBPATH=../.lib
+
+awkunit.awk
+awkunit.so
 
 Running: gawk --file ./reverse-string_test.awk && printf \n%s\n Tests Passed! || printf \n%s\n Tests Failed!
 
@@ -89,9 +104,9 @@ Test 9:
 
 9 out of 9 tests passed!
 
-real	0m0.026s
-user	0m0.012s
-sys	0m0.013s
+real	0m0.005s
+user	0m0.003s
+sys	0m0.002s
 
 Tests Passed!
 
@@ -99,9 +114,9 @@ Tests Passed!
 
 Running: misspell .
 
-real	0m0.176s
-user	0m0.156s
-sys	0m0.064s
+real	0m0.024s
+user	0m0.022s
+sys	0m0.014s
 
 ===============================================================================
 

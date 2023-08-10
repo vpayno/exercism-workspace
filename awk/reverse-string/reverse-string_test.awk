@@ -8,86 +8,86 @@ passed = 0
 testCount = 0
 
 function _debugTestPre() {
-	printf "Test %s:\n", (passed + 1)
-	printf "     input -> [%s]\n", input
+    printf "Test %s:\n", (passed + 1)
+    printf "     input -> [%s]\n", input
 }
 
 function _debugTestPost() {
-	passed = passed + 1
-	printf "    output -> [%s]\n", got
-	printf "    result -> passed\n\n"
+    passed = passed + 1
+    printf "    output -> [%s]\n", got
+    printf "    result -> passed\n\n"
 }
 
 function testReverseString_zero() {
-	input = ""
+    input = ""
     want = ""
 
-	_debugTestPre()
+    _debugTestPre()
     got = reverseString(input)
 
     assertEquals(want, got)
-	_debugTestPost()
+    _debugTestPost()
 }
 
 function testReverseString_one() {
-	input = "12345"
+    input = "12345"
     want = "54321"
 
-	_debugTestPre()
+    _debugTestPre()
     got = reverseString(input)
 
     assertEquals(want, got)
-	_debugTestPost()
+    _debugTestPost()
 }
 
 function testReverseString_two() {
-	input = "01234 56789"
+    input = "01234 56789"
     want = "98765 43210"
 
-	_debugTestPre()
+    _debugTestPre()
     got = reverseString(input)
 
     assertEquals(want, got)
-	_debugTestPost()
+    _debugTestPost()
 }
 
 function casesReverseString() {
-	printf "Running %d test cases\n\n", length(cases)
-	caseNum = 0
+    printf "Running %d test cases\n\n", length(cases)
+    caseNum = 0
 
-	# Associative arrays don't preserve insert order.
-	for (key in cases) {
-		input = key
-		want = cases[key]
+    # Associative arrays don't preserve insert order.
+    for (key in cases) {
+        input = key
+        want = cases[key]
 
-		_debugTestPre()
-		got = reverseString(input)
+        _debugTestPre()
+        got = reverseString(input)
 
-		assertEquals(want, got)
-		_debugTestPost()
-	}
+        assertEquals(want, got)
+        _debugTestPost()
+    }
 }
 
 BEGIN {
-	exit 0
+    exit 0
 }
 
 END {
-	cmd = "grep --no-filename --count ^function\\ test *_test.awk"
-	cmd | getline testCount
+    cmd = "grep --no-filename --count ^function\\ test *_test.awk"
+    cmd | getline testCount
 
-	printf "\nRunning %d tests...\n\n", testCount
+    printf "\nRunning %d tests...\n\n", testCount
 
-	testCount = testCount + length(cases)
+    testCount = testCount + length(cases)
 
     testReverseString_zero()
     testReverseString_one()
     testReverseString_two()
 
-	casesReverseString()
+    casesReverseString()
 
-	print "\n" passed " out of " testCount " tests passed!"
+    print "\n" passed " out of " testCount " tests passed!"
 
-	# add exit here to keep it from looping
+    # add exit here to keep it from looping
     exit 0
 }
