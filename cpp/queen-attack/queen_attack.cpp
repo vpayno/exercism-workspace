@@ -39,14 +39,14 @@ result_t chess_board::_is_valid_position(position_t position) {
 
     if (position.first < k_row_min or position.first > k_row_max) {
         result.set_ok(false);
-        result.set_error("position column value not in range (1-8)");
+        result.set_error("position row value not in range (1-8)");
 
         return result;
     }
 
     if (position.second < k_col_min or position.second > k_col_max) {
         result.set_ok(false);
-        result.set_error("position row value not in range (1-8)");
+        result.set_error("position column value not in range (1-8)");
 
         return result;
     }
