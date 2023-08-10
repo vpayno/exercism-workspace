@@ -1,21 +1,21 @@
 #!/usr/bin/env awk --lint
 
 function twoFer(name) {
-	if (length(name) == 0) {
-		name = "you"
-	}
+    if (length(name) == 0) {
+        name = "you"
+    }
 
-	return "One for " name ", one for me."
+    return "One for " name ", one for me."
 }
 
 BEGIN {
-	input = ""
+    input = ""
 }
 
 END {
-	if (length($0) > 0) {
-		input = $0
-	}
+    if (length($0) > 0) {
+        input = $0
+    }
 
-	print twoFer(input)
+    print twoFer(input)
 }
