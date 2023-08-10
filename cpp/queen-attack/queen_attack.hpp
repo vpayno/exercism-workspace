@@ -1,5 +1,5 @@
-#if !defined(QUEEN_ATTACK_H)
-#define QUEEN_ATTACK_H
+#if !defined(QUEEN_ATTACK_HPP)
+#define QUEEN_ATTACK_HPP
 
 #include <cmath>
 #include <csignal>
@@ -61,4 +61,4 @@ struct chess_board {
 
 } // namespace queen_attack
 
-#endif // QUEEN_ATTACK_H
+#endif // QUEEN_ATTACK_HPP

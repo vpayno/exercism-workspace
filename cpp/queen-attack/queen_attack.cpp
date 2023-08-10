@@ -1,4 +1,4 @@
-#include "queen_attack.h"
+#include "queen_attack.hpp"
 
 namespace queen_attack {
 

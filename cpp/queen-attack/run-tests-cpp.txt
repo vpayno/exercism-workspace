@@ -6,8 +6,8 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.010s
-user	0m0.002s
+real	0m0.009s
+user	0m0.001s
 sys	0m0.008s
 
 ===============================================================================
@@ -81,19 +81,19 @@ Directory: .
 ------------------------------------------------------------------------------
 File                                       Lines    Exec  Cover   Missing
 ------------------------------------------------------------------------------
-queen_attack.cpp                              48      41    85%   20,22-25,43-44
-queen_attack.h                                 5       5   100%   
+queen_attack.cpp                              52      45    86%   20,22-25,43-44
+queen_attack.hpp                               5       5   100%   
 queen_attack_test.cpp                         71      63    88%   58,65,72,79,86,93,100,108
 test/catch.hpp                                48      37    77%   1580-1581,1628,1630,1642-1643,2227,2229,2301-2302,2560
 ------------------------------------------------------------------------------
-TOTAL                                        172     146    84%
+TOTAL                                        176     150    85%
 ------------------------------------------------------------------------------
-lines: 84.9% (146 out of 172)
+lines: 85.2% (150 out of 176)
 branches: 39.3% (161 out of 410)
 
-real	0m11.107s
-user	0m10.037s
-sys	0m1.052s
+real	0m10.229s
+user	0m9.524s
+sys	0m0.695s
 
 ===============================================================================
 
@@ -101,9 +101,9 @@ cmake-format --in-place CMakeLists.txt
 WARNING config_util.py:307: The following configuration options were ignored:
   max_subargs_per_line
 
-real	0m0.206s
-user	0m0.126s
-sys	0m0.080s
+real	0m0.165s
+user	0m0.110s
+sys	0m0.055s
 
 ===============================================================================
 
@@ -123,64 +123,50 @@ found lint:
   Convention: 3
 
 
-real	0m0.166s
-user	0m0.121s
-sys	0m0.045s
+real	0m0.174s
+user	0m0.115s
+sys	0m0.060s
 
 ===============================================================================
 
-Running: clang-format-16 -style=file -i ./queen_attack.cpp ./queen_attack_test.cpp ./queen_attack.h
+Running: clang-format-16 -style=file -i ./queen_attack.cpp ./queen_attack_test.cpp ./queen_attack.hpp
 
-real	0m0.043s
-user	0m0.023s
-sys	0m0.020s
+real	0m0.023s
+user	0m0.010s
+sys	0m0.013s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./queen_attack.cpp ./queen_attack_test.cpp ./queen_attack.h
-error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
-error: invalid argument '-std=c++17' not allowed with 'C'
-/home/vpayno/git_vpayno/exercism-workspace/cpp/queen-attack/queen_attack.h:4:10: fatal error: 'cmath' file not found
-#include <cmath>
-         ^~~~~~~
-1 error generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/queen-attack/queen_attack.h.
+clang-check-16 --analyze ./queen_attack.cpp ./queen_attack_test.cpp ./queen_attack.hpp
 
-real	0m0.732s
-user	0m0.697s
-sys	0m0.035s
+real	0m0.904s
+user	0m0.852s
+sys	0m0.051s
 
 
-real	0m0.734s
-user	0m0.697s
-sys	0m0.037s
+real	0m0.906s
+user	0m0.854s
+sys	0m0.052s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 18793 warnings generated.
 54983 warnings generated.
-54983 warnings and 3 errors generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/queen-attack/queen_attack.h.
-Suppressed 54988 warnings (54983 in non-user code, 5 NOLINT).
+73773 warnings generated.
+Suppressed 73778 warnings (73773 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-Found compiler error(s).
 
-real	0m9.454s
-user	0m9.363s
-sys	0m0.090s
-Running: clang-tidy-16 ./queen_attack.cpp ./queen_attack_test.cpp ./queen_attack.h
-error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
-error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
-/home/vpayno/git_vpayno/exercism-workspace/cpp/queen-attack/queen_attack.h:4:10: error: 'cmath' file not found [clang-diagnostic-error]
-#include <cmath>
-         ^~~~~~~
+real	0m11.810s
+user	0m11.711s
+sys	0m0.096s
+Running: clang-tidy-16 ./queen_attack.cpp ./queen_attack_test.cpp ./queen_attack.hpp
 
 
-real	0m9.456s
-user	0m9.364s
-sys	0m0.093s
+real	0m11.813s
+user	0m11.711s
+sys	0m0.100s
 
 ===============================================================================
 

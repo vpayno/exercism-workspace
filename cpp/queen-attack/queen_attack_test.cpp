@@ -1,4 +1,4 @@
-#include "queen_attack.h"
+#include "queen_attack.hpp"
 #ifdef EXERCISM_TEST_SUITE
 #include <catch2/catch.hpp>
 #else
