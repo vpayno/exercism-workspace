@@ -2,11 +2,19 @@
 
 declare -i retval=0
 
-if [[ -f ${HOME}/.local/gawk/lib/awkunit.so ]]; then
-	export AWKLIBPATH="${HOME}/.local/gawk/lib/"
-else
-	export AWKLIBPATH="${GITHUB_WORKSPACE}/.lib/"
-fi
+# git clone http://git.savannah.gnu.org/r/gawk.git
+# cd gawk
+# git checkout $(awk --version | awk '/^GNU Awk/ { print $3 }' | tr -d ',')
+# cd ..
+# git clone https://github.com/soimort/awkunit
+# cd awkunit
+# AWKSRCPATH=../gawk make
+# cp -v awkunit.so ~/.local/gawk/lib/awkunit.so
+
+# awkunit.so file needs to be in the lib directory
+# awkunit.awk file needs to be in the current directory
+
+export AWKLIBPATH="../.lib"
 
 printf "AWKLIBPATH=%s\n\n" "${AWKLIBPATH}"
 ls "${AWKLIBPATH}"/
