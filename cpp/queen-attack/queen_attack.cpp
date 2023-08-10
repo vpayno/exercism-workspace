@@ -10,24 +10,41 @@ chess_board::chess_board(position_t white, position_t black)
 }
 
 bool chess_board::can_attack() const {
-    // vertical attack? (divide by zero for slope()
-    if (_white.first == _black.first) {
-        return true;
+    slope_t slope{};
+
+    // running std::cout from a catch usually is a very bad idea
+    try {
+        std::cout << "_slope() -> [";
+        slope = _slope();
+        std::cout << slope << "]" << std::endl;
+    } catch (std::domain_error &exception) {
+        // never thrown for `queens_can_attack_on_same_row`
+        std::cout << "exception: [" << exception.what() << "]" << std::endl;
+        const std::string dbz{"divide_by_zero"};
+        std::cout << "want: [" << dbz << "]" << std::endl;
+        return exception.what() != dbz;
     }
 
-    // this is tested second since both pieces on the same row has an
-    // indeterminate slope (divide by zero error). diagonal or horizontal attack
-    const slope_t slope{_slope()};
-
-    return slope == 0.0 or slope == 1.0;
+    // the signal handler that doesn't run blocks the floating point error
+    // and allows us to test for inf value.
+    // horizontal or diagonal or vertical attack?
+    return slope == 0.0 or slope == 1.0 or std::isinf(slope);
 }
 
 position_t chess_board::black() const { return _black; }
 
 position_t chess_board::white() const { return _white; }
 
-// this function takes care of horizontal or diagonal attacks
+// this function
+// - returns 0 or 1 for a horizontal (col) or diagonal attack
+// - throws divide_by_zero for vertical (row) attack
 slope_t chess_board::_slope() const {
+    // can't figure out why this never runs for `queens_can_attack_on_same_row`
+    auto throw_divide_by_zero = [](int) {
+        throw std::domain_error{"divide_by_zero"};
+    };
+
+    std::signal(SIGFPE, throw_divide_by_zero);
     const slope_t slope{double(_black.second - _white.second) /
                         double(_black.first - _white.first)};
 

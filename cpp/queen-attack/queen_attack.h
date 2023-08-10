@@ -1,6 +1,9 @@
 #if !defined(QUEEN_ATTACK_H)
 #define QUEEN_ATTACK_H
 
+#include <cmath>
+#include <csignal>
+#include <iostream>
 #include <stdexcept>
 #include <string>
 
@@ -8,7 +11,7 @@ namespace queen_attack {
 
 using row_t = int;
 using col_t = int;
-using position_t = std::pair<col_t, row_t>;
+using position_t = std::pair<row_t, col_t>;
 using message_t = std::string;
 using slope_t = double;
 
@@ -17,6 +20,7 @@ const row_t k_row_max{7};
 const col_t k_col_min{0};
 const col_t k_col_max{7};
 
+// I wanted a Rust/Go like way of handling errors.
 struct result_t {
   public:
     result_t() = default;

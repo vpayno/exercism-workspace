@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.013s
-user	0m0.001s
-sys	0m0.012s
+real	0m0.010s
+user	0m0.004s
+sys	0m0.006s
 
 ===============================================================================
 
@@ -45,6 +45,14 @@ make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/queen
 make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/queen-attack/build'
 make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/queen-attack/build'
 make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/queen-attack/build'
+_slope() -> [0.5]
+_slope() -> [inf]
+_slope() -> [0]
+_slope() -> [1]
+_slope() -> [1]
+_slope() -> [1]
+_slope() -> [1]
+_slope() -> [2]
 ===============================================================================
 All tests passed (15 assertions in 14 test cases)
 
@@ -73,19 +81,19 @@ Directory: .
 ------------------------------------------------------------------------------
 File                                       Lines    Exec  Cover   Missing
 ------------------------------------------------------------------------------
-queen_attack.cpp                              39      39   100%   
+queen_attack.cpp                              48      41    85%   20,22-25,43-44
 queen_attack.h                                 5       5   100%   
 queen_attack_test.cpp                         71      63    88%   58,65,72,79,86,93,100,108
 test/catch.hpp                                48      37    77%   1580-1581,1628,1630,1642-1643,2227,2229,2301-2302,2560
 ------------------------------------------------------------------------------
-TOTAL                                        163     144    88%
+TOTAL                                        172     146    84%
 ------------------------------------------------------------------------------
-lines: 88.3% (144 out of 163)
-branches: 41.1% (147 out of 358)
+lines: 84.9% (146 out of 172)
+branches: 38.7% (151 out of 390)
 
-real	0m9.773s
-user	0m8.901s
-sys	0m0.837s
+real	0m11.521s
+user	0m10.680s
+sys	0m0.796s
 
 ===============================================================================
 
@@ -93,9 +101,9 @@ cmake-format --in-place CMakeLists.txt
 WARNING config_util.py:307: The following configuration options were ignored:
   max_subargs_per_line
 
-real	0m0.163s
-user	0m0.111s
-sys	0m0.054s
+real	0m0.222s
+user	0m0.174s
+sys	0m0.050s
 
 ===============================================================================
 
@@ -115,17 +123,17 @@ found lint:
   Convention: 3
 
 
-real	0m0.168s
-user	0m0.126s
-sys	0m0.044s
+real	0m0.263s
+user	0m0.173s
+sys	0m0.089s
 
 ===============================================================================
 
 Running: clang-format-16 -style=file -i ./queen_attack.cpp ./queen_attack_test.cpp ./queen_attack.h
 
-real	0m0.025s
-user	0m0.012s
-sys	0m0.013s
+real	0m0.029s
+user	0m0.015s
+sys	0m0.014s
 
 ===============================================================================
 
@@ -133,46 +141,46 @@ Running: ../../.github/citools/cpp/clang-check
 clang-check-16 --analyze ./queen_attack.cpp ./queen_attack_test.cpp ./queen_attack.h
 error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
 error: invalid argument '-std=c++17' not allowed with 'C'
-/home/vpayno/git_vpayno/exercism-workspace/cpp/queen-attack/queen_attack.h:4:10: fatal error: 'stdexcept' file not found
-#include <stdexcept>
-         ^~~~~~~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/cpp/queen-attack/queen_attack.h:4:10: fatal error: 'cmath' file not found
+#include <cmath>
+         ^~~~~~~
 1 error generated.
 Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/queen-attack/queen_attack.h.
 
-real	0m0.728s
-user	0m0.687s
-sys	0m0.041s
+real	0m0.785s
+user	0m0.718s
+sys	0m0.055s
 
 
-real	0m0.730s
-user	0m0.687s
-sys	0m0.043s
+real	0m0.787s
+user	0m0.718s
+sys	0m0.057s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
-11431 warnings generated.
-46828 warnings generated.
-46828 warnings and 3 errors generated.
+18793 warnings generated.
+54983 warnings generated.
+54983 warnings and 3 errors generated.
 Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/queen-attack/queen_attack.h.
-Suppressed 46833 warnings (46828 in non-user code, 5 NOLINT).
+Suppressed 54988 warnings (54983 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 Found compiler error(s).
 
-real	0m6.957s
-user	0m6.885s
-sys	0m0.071s
+real	0m10.215s
+user	0m10.128s
+sys	0m0.087s
 Running: clang-tidy-16 ./queen_attack.cpp ./queen_attack_test.cpp ./queen_attack.h
 error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
 error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
-/home/vpayno/git_vpayno/exercism-workspace/cpp/queen-attack/queen_attack.h:4:10: error: 'stdexcept' file not found [clang-diagnostic-error]
-#include <stdexcept>
-         ^~~~~~~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/cpp/queen-attack/queen_attack.h:4:10: error: 'cmath' file not found [clang-diagnostic-error]
+#include <cmath>
+         ^~~~~~~
 
 
-real	0m6.959s
-user	0m6.887s
-sys	0m0.073s
+real	0m10.219s
+user	0m10.130s
+sys	0m0.090s
 
 ===============================================================================
 
