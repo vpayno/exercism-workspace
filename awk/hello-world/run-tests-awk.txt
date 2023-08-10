@@ -3,11 +3,28 @@ Running automated test file(s):
 
 ===============================================================================
 
+awk --lint --file=./awkunit.awk < /dev/null > /dev/null
+awk: ./awkunit.awk:2: warning: `load' is a gawk extension
+awk: warning: function `assertEquals' defined but never called directly
+awk: warning: function `assert' defined but never called directly
+awk: ./awkunit.awk:25: warning: reference to uninitialized variable `_assert_exit'
+
+real	0m0.005s
+user	0m0.001s
+sys	0m0.004s
+
 awk --lint --file=./hello-world.awk < /dev/null > /dev/null
 
-real	0m0.025s
-user	0m0.009s
-sys	0m0.016s
+real	0m0.004s
+user	0m0.001s
+sys	0m0.003s
+
+awk --lint --file=./test-cases.awk < /dev/null > /dev/null
+awk: ./test-cases.awk:9: warning: subscript of array `cases' is null string
+
+real	0m0.002s
+user	0m0.002s
+sys	0m0.000s
 
 
 ===============================================================================
@@ -16,19 +33,35 @@ Running: bats ./test-hello-world.bats
 1..1
 ok 1 Say Hi!
 
-real	0m0.405s
-user	0m0.241s
-sys	0m0.269s
+real	0m0.072s
+user	0m0.035s
+sys	0m0.050s
 
 
 ===============================================================================
 
-Running: gawk --file ./hello-world_test.awk && printf \n%s\n Tests Passed! || printf \n%s\n Tests Failed!
-Hello, World!
+AWKLIBPATH=../.lib
 
-real	0m0.008s
-user	0m0.002s
-sys	0m0.009s
+awkunit.awk
+awkunit.so
+
+Running: gawk --file ./hello-world_test.awk && printf \n%s\n Tests Passed! || printf \n%s\n Tests Failed!
+
+Running 1 tests...
+
+Running 1 test cases
+
+Test 1:
+     input -> []
+    output -> [Hello, World!]
+    result -> passed
+
+
+1 out of 2 tests passed!
+
+real	0m0.005s
+user	0m0.001s
+sys	0m0.004s
 
 Tests Passed!
 
@@ -36,9 +69,9 @@ Tests Passed!
 
 Running: misspell .
 
-real	0m0.119s
-user	0m0.114s
-sys	0m0.091s
+real	0m0.028s
+user	0m0.036s
+sys	0m0.012s
 
 ===============================================================================
 

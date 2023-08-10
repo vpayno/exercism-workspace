@@ -29,9 +29,9 @@ If everything goes well, you will be ready to fetch your first real exercise.
 
 This is an exercise to introduce users to using Exercism - http://en.wikipedia.org/wiki/%22Hello,_world!%22_program
 
-
 ### My Solution
 
 - [my solution](./hello-world.awk)
 - [awkunit tests](./hello-world_test.awk)
+- [test cases](./test-cases[.]awk)
 - [run-tests](./run-tests-awk.txt)
