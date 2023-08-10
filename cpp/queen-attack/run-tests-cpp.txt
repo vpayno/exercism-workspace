@@ -1,0 +1,178 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: make clean
+rm -rf ./build
+
+real	0m0.007s
+user	0m0.001s
+sys	0m0.006s
+
+===============================================================================
+
+export LDFLAGS="-lgcov --coverage" CXXFLAGS="--coverage"
+
+===============================================================================
+
+Running: make coverage | ansifilter
+rm -rf ./build
+mkdir -pv ./build
+mkdir: created directory './build'
+
+cd ./build; export LDFLAGS="-lgcov --coverage" CXXFLAGS="--coverage"; cmake -DEXERCISM_RUN_ALL_TESTS=1 -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -G 'Unix Makefiles' ../; if make; then printf "\n=== All Tests Passed ===\n"; else printf "\n=== Test Failure ===\n"; false; fi
+-- The CXX compiler identification is GNU 10.2.1
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/vpayno/git_vpayno/exercism-workspace/cpp/queen-attack/build
+make[1]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/queen-attack/build'
+make[2]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/queen-attack/build'
+make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/queen-attack/build'
+make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/queen-attack/build'
+make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/queen-attack/build'
+[ 25%] Building CXX object CMakeFiles/queen-attack.dir/queen_attack_test.cpp.o
+[ 50%] Building CXX object CMakeFiles/queen-attack.dir/queen_attack.cpp.o
+[ 75%] Building CXX object CMakeFiles/queen-attack.dir/test/tests-main.cpp.o
+[100%] Linking CXX executable queen-attack
+make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/queen-attack/build'
+[100%] Built target queen-attack
+make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/queen-attack/build'
+make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/queen-attack/build'
+make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/queen-attack/build'
+===============================================================================
+All tests passed (15 assertions in 14 test cases)
+
+make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/queen-attack/build'
+[100%] Built target test_queen-attack
+make[2]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/queen-attack/build'
+make[1]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/queen-attack/build'
+
+=== All Tests Passed ===
+
+find . -regextype posix-egrep -regex '^.*(tests-main|CompilerId).*[.](gcda|gcno)$' -print -delete
+./build/CMakeFiles/3.22.2/CompilerIdCXX/CMakeCXXCompilerId.gcno
+./build/CMakeFiles/queen-attack.dir/test/tests-main.cpp.gcno
+./build/CMakeFiles/queen-attack.dir/test/tests-main.cpp.gcda
+
+find . -regextype posix-egrep -regex '^.*[.](gcda|gcno)$'
+./build/CMakeFiles/queen-attack.dir/queen_attack_test.cpp.gcno
+./build/CMakeFiles/queen-attack.dir/queen_attack.cpp.gcno
+./build/CMakeFiles/queen-attack.dir/queen_attack.cpp.gcda
+./build/CMakeFiles/queen-attack.dir/queen_attack_test.cpp.gcda
+
+gcovr --print-summary
+------------------------------------------------------------------------------
+                           GCC Code Coverage Report
+Directory: .
+------------------------------------------------------------------------------
+File                                       Lines    Exec  Cover   Missing
+------------------------------------------------------------------------------
+queen_attack.cpp                              40      40   100%   
+queen_attack.h                                 5       5   100%   
+queen_attack_test.cpp                         63      63   100%   
+test/catch.hpp                                48      37    77%   1580-1581,1628,1630,1642-1643,2227,2229,2301-2302,2560
+------------------------------------------------------------------------------
+TOTAL                                        156     145    92%
+------------------------------------------------------------------------------
+lines: 92.9% (145 out of 156)
+branches: 41.1% (147 out of 358)
+
+real	0m10.113s
+user	0m9.120s
+sys	0m0.964s
+
+===============================================================================
+
+cmake-format --in-place CMakeLists.txt
+WARNING config_util.py:307: The following configuration options were ignored:
+  max_subargs_per_line
+
+real	0m0.181s
+user	0m0.115s
+sys	0m0.046s
+
+===============================================================================
+
+cmake-lint CMakeLists.txt
+WARNING The following configuration options were ignored:
+  max_subargs_per_line
+CMakeLists.txt
+==============
+CMakeLists.txt:15,06: [C0103] Invalid directory variable name "exercise_cpp" doesn't match `[A-Z][0-9A-Z_]+|_[0-9a-z_]+`
+CMakeLists.txt:17,06: [C0103] Invalid directory variable name "exercise_cpp" doesn't match `[A-Z][0-9A-Z_]+|_[0-9a-z_]+`
+CMakeLists.txt:61,02: [C0113] Missing COMMENT in statement which allows it
+
+Summary
+=======
+files scanned: 1
+found lint:
+  Convention: 3
+
+
+real	0m0.186s
+user	0m0.126s
+sys	0m0.050s
+
+===============================================================================
+
+Running: clang-format-16 -style=file -i ./queen_attack.cpp ./queen_attack_test.cpp ./queen_attack.h
+
+real	0m0.025s
+user	0m0.010s
+sys	0m0.013s
+
+===============================================================================
+
+Running: ../../.github/citools/cpp/clang-check
+clang-check-16 --analyze ./queen_attack.cpp ./queen_attack_test.cpp ./queen_attack.h
+error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
+error: invalid argument '-std=c++17' not allowed with 'C'
+/home/vpayno/git_vpayno/exercism-workspace/cpp/queen-attack/queen_attack.h:4:10: fatal error: 'stdexcept' file not found
+#include <stdexcept>
+         ^~~~~~~~~~~
+1 error generated.
+Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/queen-attack/queen_attack.h.
+
+real	0m0.565s
+user	0m0.533s
+sys	0m0.032s
+
+
+real	0m0.567s
+user	0m0.534s
+sys	0m0.033s
+
+===============================================================================
+
+Running: ../../.github/citools/cpp/clang-tidy | head -n 100
+11431 warnings generated.
+46828 warnings generated.
+46828 warnings and 3 errors generated.
+Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/queen-attack/queen_attack.h.
+Suppressed 46833 warnings (46828 in non-user code, 5 NOLINT).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+Found compiler error(s).
+
+real	0m6.651s
+user	0m6.573s
+sys	0m0.077s
+Running: clang-tidy-16 ./queen_attack.cpp ./queen_attack_test.cpp ./queen_attack.h
+error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
+error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
+/home/vpayno/git_vpayno/exercism-workspace/cpp/queen-attack/queen_attack.h:4:10: error: 'stdexcept' file not found [clang-diagnostic-error]
+#include <stdexcept>
+         ^~~~~~~~~~~
+
+
+real	0m6.654s
+user	0m6.574s
+sys	0m0.080s
+
+===============================================================================
+

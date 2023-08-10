@@ -49,3 +49,8 @@ In this case, that answer would be yes, they can, because both pieces share a di
 ### Based on
 
 J Dalbey's Programming Practice problems - https://users.csc.calpoly.edu/~jdalbey/103/Projects/ProgrammingPractice.html
+
+### My Solution
+
+- [my solution]()
+- [run-tests](./run-tests-cpp.txt)

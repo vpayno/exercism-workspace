@@ -81,3 +81,4 @@
 - [circular-buffer](./circular-buffer/README.md)
 - [crypto-square](./crypto-square/README.md)
 - [bank-account](./bank-account/README.md)
+- [queen-attack](./queen-attack/README.md)
