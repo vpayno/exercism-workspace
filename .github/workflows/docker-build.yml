@@ -20,6 +20,9 @@ on:  # yamllint disable-line rule:truthy
   workflow_dispatch:
   pull_request:
 
+env:
+  IMAGE_NAME: ci-generic-debian
+
 jobs:
   stage1:
     name: Change Check
@@ -88,6 +91,10 @@ jobs:
     needs: [stage1]
     if: needs.stage1.outputs.docs_changed == 'True'
     steps:
+      - name: Setup Env [${{ matrix.os }}]
+      - run: |
+          TAG_DATE="$(date +%Y%m%d)"
+          printf "%s=%s\n" "TAG_DATE" "${TAG_DATE}" >> "${GITHUB_OUTPUT}"
       - name: Docker Build Checkout [${{ matrix.os }}]
         uses: actions/checkout@v3
       - name: Login to Docker Hub [${{ matrix.os }}]
@@ -103,4 +110,5 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/ci-generic-alpine:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:latest,${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ TAG_DATE }}
+          description: ci base image
