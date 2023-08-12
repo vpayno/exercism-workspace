@@ -43,7 +43,7 @@ jobs:
           submodules: recursive
       - name: Get Change List
         id: check_file_changed
-        run: |
+        run: |-
           {
             printf "Workflow: %s\n\n" "${GITHUB_WORKFLOW}"
             printf "Runner: name[%s] arch[%s]\n" "${RUNNER_NAME}" "${RUNNER_ARCH}"
@@ -92,7 +92,7 @@ jobs:
     if: needs.stage1.outputs.docs_changed == 'True'
     steps:
       - name: Setup Env [${{ matrix.os }}]
-      - run: |
+      - run: |-
           TAG_DATE="$(date +%Y%m%d)"
           printf "%s=%s\n" "TAG_DATE" "${TAG_DATE}" >> "${GITHUB_OUTPUT}"
       - name: Docker Build Checkout [${{ matrix.os }}]
@@ -112,3 +112,25 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:latest,${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ TAG_DATE }}
           description: ci base image
+  stage3:
+    name: Docker Test
+    strategy:
+      matrix:
+        os:
+          - ${{ env.IMAGE_NAME }}:latest
+          - ${{ env.IMAGE_NAME }}:${{ TAG_DATE }}
+    runs-on: "${{ matrix.os }}"
+    container: ${{ secrets.DOCKERHUB_USERNAME }}/${{ matrix.os }}
+    needs: [stage2]
+    steps:
+      - name: Test New Container [${{ matrix.os }}]
+        run: |-
+          printf "%s\n" "Hello World!"
+      - name: Docker Build Summary [${{ matrix.os }}]
+        run: |-
+          ORG_IMAGE="${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}"
+          TOKEN="$(curl "https://auth.docker.io/token?service=registry.docker.io&scope=repository:vpayno/${ORG_IMAGE}:pull" | jq -r .access_token)"
+          {
+            printf "Docker Hub Image Info\n"
+            curl -sS --header "Authorization: Bearer ${TOKEN}" https://index.docker.io/v2/${ORG_IMAGE}/tags/list | jq .
+          } | tee -a "${GITHUB_STEP_SUMMARY}"
