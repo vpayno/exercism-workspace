@@ -4,7 +4,7 @@
 # https://github.com/docker/build-push-action
 # https://docs.github.com/en/actions/creating-actions/creating-a-docker-container-action
 #
-name: ci
+name: Docker Build Workflow
 on:  # yamllint disable-line rule:truthy
   schedule:
     #         ┌───────────── minute (0 - 59)
@@ -18,21 +18,86 @@ on:  # yamllint disable-line rule:truthy
     #         * * * * *
     - cron: '15 8 1 * *'
   workflow_dispatch:
+  pull_request:
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  stage1:
+    name: Change Check
+    runs-on: 'ubuntu-latest'
+    outputs:
+      docs_changed: ${{ steps.check_file_changed.outputs.docs_changed }}
+      matrix_exercise: ${{ steps.check_file_changed.outputs.matrix_exercise }}
     steps:
-      - name: Checkout
+      - name: Check GitHub Vars
+        id: github-vars
+        run: set | grep -e ^CI -e ^GITHUB_ -e ^RUNNER_
+      - name: Checkout Repo
+        id: checkout-repo
         uses: actions/checkout@v3
-      - name: Login to Docker Hub
+        with:
+          fetch-depth: 0
+          ref: ${{ github.ref }}
+          submodules: recursive
+      - name: Get Change List
+        id: check_file_changed
+        run: |
+          {
+            printf "Workflow: %s\n\n" "${GITHUB_WORKFLOW}"
+            printf "Runner: name[%s] arch[%s]\n" "${RUNNER_NAME}" "${RUNNER_ARCH}"
+            printf "Repo: %s\n" "${GITHUB_REPOSITORY}"
+            printf "User: %s\n" "${GITHUB_TRIGGERING_ACTOR}"
+            printf "\n"
+          } | tee -a "${GITHUB_STEP_SUMMARY}"
+
+          # Diff HEAD with the previous commit then output to stdout.
+          GIT_DIFF="$(git diff --name-only HEAD^ HEAD | tee /tmp/changed_files.txt)"
+          {
+            printf "=== Which files changed? ===\n"
+            printf "\`\`\`text\n"
+            printf "%s\n" "${GIT_DIFF}"
+            printf "\`\`\`\n"
+          } | tee -a "${GITHUB_STEP_SUMMARY}"
+
+          # Get changed exercise list.
+          if [[ ${GITHUB_EVENT_NAME} == pull_request ]]; then
+            HAS_DIFF=true
+          fi
+          printf "\n"
+
+          # Check if the files are present in the changed file list (added, modified, deleted) then output to stdout.
+          HAS_DIFF="${HAS_DIFF:-false}"
+          printf "=== Which Docker files changed? ===\n"
+          if printf "%s\n" "${GIT_DIFF}" | grep -E '^(Dockerfile.*|.github/docker/.*|.github/workflows/docker-build.yml)$'; then
+            HAS_DIFF=true
+          fi
+          printf "\n"
+
+          # Did Docker files change?
+          printf "=== Did Docker files change? ===\n"
+          printf "%s\n" "${HAS_DIFF}"
+          printf "\n"
+
+          # Set the output named "docs_changed"
+          printf "%s=%s\n" "docs_changed" "${HAS_DIFF}" >> "${GITHUB_OUTPUT}"
+  stage2:
+    name: Docker Build
+    strategy:
+      matrix:
+        os: ["ubuntu-latest"]
+    runs-on: "${{ matrix.os }}"
+    needs: [stage1]
+    if: needs.stage1.outputs.docs_changed == 'True'
+    steps:
+      - name: Docker Build Checkout [${{ matrix.os }}]
+        uses: actions/checkout@v3
+      - name: Login to Docker Hub [${{ matrix.os }}]
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - name: Set up Docker Buildx
+      - name: Set up Docker Buildx [${{ matrix.os }}]
         uses: docker/setup-buildx-action@v2
-      - name: Build and push
+      - name: Build and push [${{ matrix.os }}]
         uses: docker/build-push-action@v4
         with:
           context: .
