@@ -122,10 +122,10 @@ jobs:
     strategy:
       matrix:
         os:
-          - ci-generic-debian:latest
-          - ci-generic-debian:${{ needs.stage2.outputs.tag_date }}
-    runs-on: "${{ matrix.os }}"
-    container: ${{ vars.ORG }}/${{ matrix.os }}
+          - vpayno/ci-generic-debian:latest
+          - vpayno/ci-generic-debian:${{ needs.stage2.outputs.tag_date }}
+    runs-on: ubuntu-latest
+    container: ${{ matrix.os }}
     needs: [stage2]
     steps:
       - name: Test New Container [${{ matrix.os }}]
