@@ -90,11 +90,14 @@ jobs:
     runs-on: "${{ matrix.os }}"
     needs: [stage1]
     if: needs.stage1.outputs.docs_changed == 'True'
+    outputs:
+      tag_date: ${{ steps.setup_image_info.outputs.tag_date }}
     steps:
       - name: Setup Env [${{ matrix.os }}]
-      - run: |-
-          TAG_DATE="$(date +%Y%m%d)"
-          printf "%s=%s\n" "TAG_DATE" "${TAG_DATE}" >> "${GITHUB_OUTPUT}"
+        id: setup_image_info
+        run: |-
+          tag_date="$(date +%Y%m%d)"
+          printf "%s=%s\n" "tag_date" "${tag_date}" >> "${GITHUB_OUTPUT}"
       - name: Docker Build Checkout [${{ matrix.os }}]
         uses: actions/checkout@v3
       - name: Login to Docker Hub [${{ matrix.os }}]
@@ -110,17 +113,19 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:latest,${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ TAG_DATE }}
-          description: ci base image
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:latest,${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ steps.setup_image_info.outputs.tag_date }}
   stage3:
     name: Docker Test
+    env:
+      ORG: ${{ secrets.DOCKERHUB_USERNAME }}
+      IMAGE_NAME: ci-generic-debian
     strategy:
       matrix:
         os:
-          - ${{ env.IMAGE_NAME }}:latest
-          - ${{ env.IMAGE_NAME }}:${{ TAG_DATE }}
+          - ci-generic-debian:latest
+          - ci-generic-debian:${{ needs.stage2.outputs.tag_date }}
     runs-on: "${{ matrix.os }}"
-    container: ${{ secrets.DOCKERHUB_USERNAME }}/${{ matrix.os }}
+    container: ${{ vars.ORG }}/${{ matrix.os }}
     needs: [stage2]
     steps:
       - name: Test New Container [${{ matrix.os }}]
@@ -128,9 +133,9 @@ jobs:
           printf "%s\n" "Hello World!"
       - name: Docker Build Summary [${{ matrix.os }}]
         run: |-
-          ORG_IMAGE="${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}"
+          ORG_IMAGE="${{ secrets.DOCKERHUB_USERNAME }}/${IMAGE_NAME}"
           TOKEN="$(curl "https://auth.docker.io/token?service=registry.docker.io&scope=repository:vpayno/${ORG_IMAGE}:pull" | jq -r .access_token)"
           {
             printf "Docker Hub Image Info\n"
-            curl -sS --header "Authorization: Bearer ${TOKEN}" https://index.docker.io/v2/${ORG_IMAGE}/tags/list | jq .
+            curl -sS --header "Authorization: Bearer ${TOKEN}" "https://index.docker.io/v2/${ORG_IMAGE}/tags/list" | jq .
           } | tee -a "${GITHUB_STEP_SUMMARY}"
