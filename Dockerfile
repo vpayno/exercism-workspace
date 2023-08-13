@@ -8,6 +8,8 @@ COPY .github/docker /.github/docker
 
 RUN .github/docker/layer-00.00-base-dependencies.sh ci-generic-debian
 
+RUN .github/docker/layer-00.10-base-daggerio.sh ci-generic-debian
+
 # Copies your code file from your action repository to the filesystem path `/` of the container
 COPY .github/docker/entrypoint.sh /entrypoint.sh
 
