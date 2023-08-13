@@ -62,7 +62,8 @@ jobs:
           } | tee -a "${GITHUB_STEP_SUMMARY}"
 
           # Get changed exercise list.
-          if [[ ${GITHUB_EVENT_NAME} == pull_request ]]; then
+          if [[ ${GITHUB_EVENT_NAME} != pull_request ]]; then
+            printf "Manual run, pretending we have a diff.\n"
             HAS_DIFF=true
           fi
           printf "\n"
