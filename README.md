@@ -90,6 +90,7 @@ Exercism Workspace
 [![woke (pr)](https://github.com/vpayno/exercism-workspace/actions/workflows/woke-pr.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/woke-pr.yml)
 [![Woke (push)](https://github.com/vpayno/exercism-workspace/actions/workflows/woke-push.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/woke-push.yml)
 [![CodeQL](https://github.com/vpayno/exercism-workspace/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/codeql-analysis.yml)
+[![Docker Build](https://github.com/vpayno/exercism-workspace/actions/workflows/docker-build.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/docker-build.yml)
 
 ### Yaml Configs
 
