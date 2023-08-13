@@ -1,0 +1,184 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: make clean
+rm -rf ./build
+
+real	0m0.011s
+user	0m0.003s
+sys	0m0.008s
+
+===============================================================================
+
+export LDFLAGS="-lgcov --coverage" CXXFLAGS="--coverage"
+
+===============================================================================
+
+Running: make coverage | ansifilter
+rm -rf ./build
+mkdir -pv ./build
+mkdir: created directory './build'
+
+cd ./build; export LDFLAGS="-lgcov --coverage" CXXFLAGS="--coverage"; cmake -DEXERCISM_RUN_ALL_TESTS=1 -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -G 'Unix Makefiles' ../; if make; then printf "\n=== All Tests Passed ===\n"; else printf "\n=== Test Failure ===\n"; false; fi
+-- The CXX compiler identification is GNU 10.2.1
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/vpayno/git_vpayno/exercism-workspace/cpp/complex-numbers/build
+make[1]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/complex-numbers/build'
+make[2]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/complex-numbers/build'
+make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/complex-numbers/build'
+make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/complex-numbers/build'
+make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/complex-numbers/build'
+[ 25%] Building CXX object CMakeFiles/complex-numbers.dir/complex_numbers_test.cpp.o
+[ 50%] Building CXX object CMakeFiles/complex-numbers.dir/complex_numbers.cpp.o
+[ 75%] Building CXX object CMakeFiles/complex-numbers.dir/test/tests-main.cpp.o
+[100%] Linking CXX executable complex-numbers
+make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/complex-numbers/build'
+[100%] Built target complex-numbers
+make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/complex-numbers/build'
+make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/complex-numbers/build'
+make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/complex-numbers/build'
+===============================================================================
+All tests passed (51 assertions in 31 test cases)
+
+make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/complex-numbers/build'
+[100%] Built target test_complex-numbers
+make[2]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/complex-numbers/build'
+make[1]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/complex-numbers/build'
+
+=== All Tests Passed ===
+
+find . -regextype posix-egrep -regex '^.*(tests-main|CompilerId).*[.](gcda|gcno)$' -print -delete
+./build/CMakeFiles/3.22.2/CompilerIdCXX/CMakeCXXCompilerId.gcno
+./build/CMakeFiles/complex-numbers.dir/test/tests-main.cpp.gcno
+./build/CMakeFiles/complex-numbers.dir/test/tests-main.cpp.gcda
+
+find . -regextype posix-egrep -regex '^.*[.](gcda|gcno)$'
+./build/CMakeFiles/complex-numbers.dir/complex_numbers_test.cpp.gcno
+./build/CMakeFiles/complex-numbers.dir/complex_numbers.cpp.gcno
+./build/CMakeFiles/complex-numbers.dir/complex_numbers.cpp.gcda
+./build/CMakeFiles/complex-numbers.dir/complex_numbers_test.cpp.gcda
+
+gcovr --print-summary
+------------------------------------------------------------------------------
+                           GCC Code Coverage Report
+Directory: .
+------------------------------------------------------------------------------
+File                                       Lines    Exec  Cover   Missing
+------------------------------------------------------------------------------
+complex_numbers.cpp                           40      40   100%   
+complex_numbers_test.cpp                     141     141   100%   
+test/catch.hpp                                41      36    87%   1642-1643,2227,2229,2560
+------------------------------------------------------------------------------
+TOTAL                                        222     217    97%
+------------------------------------------------------------------------------
+lines: 97.7% (217 out of 222)
+branches: 43.9% (202 out of 460)
+
+real	0m9.993s
+user	0m9.027s
+sys	0m0.961s
+
+===============================================================================
+
+cmake-format --in-place CMakeLists.txt
+WARNING config_util.py:307: The following configuration options were ignored:
+  max_subargs_per_line
+
+real	0m0.178s
+user	0m0.120s
+sys	0m0.047s
+
+===============================================================================
+
+cmake-lint CMakeLists.txt
+WARNING The following configuration options were ignored:
+  max_subargs_per_line
+CMakeLists.txt
+==============
+CMakeLists.txt:15,06: [C0103] Invalid directory variable name "exercise_cpp" doesn't match `[A-Z][0-9A-Z_]+|_[0-9a-z_]+`
+CMakeLists.txt:17,06: [C0103] Invalid directory variable name "exercise_cpp" doesn't match `[A-Z][0-9A-Z_]+|_[0-9a-z_]+`
+CMakeLists.txt:61,02: [C0113] Missing COMMENT in statement which allows it
+
+Summary
+=======
+files scanned: 1
+found lint:
+  Convention: 3
+
+
+real	0m0.176s
+user	0m0.117s
+sys	0m0.049s
+
+===============================================================================
+
+Running: clang-format-16 -style=file -i ./complex_numbers.cpp ./complex_numbers_test.cpp ./complex_numbers.h
+
+real	0m0.025s
+user	0m0.013s
+sys	0m0.010s
+
+===============================================================================
+
+Running: ../../.github/citools/cpp/clang-check
+clang-check-16 --analyze ./complex_numbers.cpp ./complex_numbers_test.cpp ./complex_numbers.h
+error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
+error: invalid argument '-std=c++17' not allowed with 'C'
+/home/vpayno/git_vpayno/exercism-workspace/cpp/complex-numbers/complex_numbers.h:4:10: fatal error: 'cmath' file not found
+#include <cmath>
+         ^~~~~~~
+1 error generated.
+Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/complex-numbers/complex_numbers.h.
+
+real	0m0.463s
+user	0m0.428s
+sys	0m0.034s
+
+
+real	0m0.465s
+user	0m0.429s
+sys	0m0.036s
+
+===============================================================================
+
+Running: ../../.github/citools/cpp/clang-tidy | head -n 100
+8739 warnings generated.
+44100 warnings generated.
+44100 warnings and 3 errors generated.
+Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/complex-numbers/complex_numbers.h.
+Suppressed 44103 warnings (44097 in non-user code, 6 NOLINT).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+Found compiler error(s).
+
+real	0m6.734s
+user	0m6.665s
+sys	0m0.068s
+Running: clang-tidy-16 ./complex_numbers.cpp ./complex_numbers_test.cpp ./complex_numbers.h
+error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
+error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
+/home/vpayno/git_vpayno/exercism-workspace/cpp/complex-numbers/complex_numbers.h:4:10: error: 'cmath' file not found [clang-diagnostic-error]
+#include <cmath>
+         ^~~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/cpp/complex-numbers/complex_numbers_test.cpp:28:13: warning: unused function 'require_approx_equal' [clang-diagnostic-unused-function]
+static void require_approx_equal(const Complex &lhs, const Complex &rhs) {
+            ^
+/home/vpayno/git_vpayno/exercism-workspace/cpp/complex-numbers/complex_numbers_test.cpp:28:13: warning: function 'require_approx_equal' declared 'static', move to anonymous namespace instead [misc-use-anonymous-namespace]
+/home/vpayno/git_vpayno/exercism-workspace/cpp/complex-numbers/complex_numbers_test.cpp:34:19: warning: variable name 'c' is too short, expected at least 3 characters [readability-identifier-length]
+    const Complex c{1.0, 0.0};
+                  ^
+
+
+real	0m6.736s
+user	0m6.667s
+sys	0m0.069s
+
+===============================================================================
+

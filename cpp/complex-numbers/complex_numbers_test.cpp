@@ -25,7 +25,7 @@ using complex_numbers::Complex;
 static const double eps = 0.005;
 
 // Helper function for comparing Complex numbers with approximate float values.
-static void require_approx_equal(const Complex& lhs, const Complex& rhs) {
+static void require_approx_equal(const Complex &lhs, const Complex &rhs) {
     REQUIRE(Approx(lhs.real()).margin(eps) == rhs.real());
     REQUIRE(Approx(lhs.imag()).margin(eps) == rhs.imag());
 }
@@ -170,17 +170,15 @@ TEST_CASE("Absolute value of a negative purely real number") {
     REQUIRE(Approx(5.0) == c.abs());
 }
 
-TEST_CASE(
-    "Absolute value of a purely imaginary number with positive imaginary "
-    "part") {
+TEST_CASE("Absolute value of a purely imaginary number with positive imaginary "
+          "part") {
     const Complex c{0.0, 5.0};
 
     REQUIRE(Approx(5.0) == c.abs());
 }
 
-TEST_CASE(
-    "Absolute value of a purely imaginary number with negative imaginary "
-    "part") {
+TEST_CASE("Absolute value of a purely imaginary number with negative imaginary "
+          "part") {
     const Complex c{0.0, -5.0};
 
     REQUIRE(Approx(5.0) == c.abs());
