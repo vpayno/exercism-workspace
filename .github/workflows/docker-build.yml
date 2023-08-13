@@ -30,6 +30,8 @@ jobs:
     outputs:
       docs_changed: ${{ steps.check_file_changed.outputs.docs_changed }}
       matrix_exercise: ${{ steps.check_file_changed.outputs.matrix_exercise }}
+    env:
+      re_change: '^(Dockerfile.*|.github/docker/.*|.github/workflows/docker-build.yml)$'
     steps:
       - name: Check GitHub Vars
         id: github-vars
@@ -53,12 +55,15 @@ jobs:
           } | tee -a "${GITHUB_STEP_SUMMARY}"
 
           # Diff HEAD with the previous commit then output to stdout.
-          GIT_DIFF="$(git diff --name-only HEAD^ HEAD | tee /tmp/changed_files.txt)"
+          declare -a GIT_DIFF
+          mapfile -t GIT_DIFF < <(git diff --name-only HEAD^ HEAD | tee /tmp/changed_files.txt)
           {
             printf "=== Which files changed? ===\n"
+            printf "\n"
             printf "\`\`\`text\n"
-            printf "%s\n" "${GIT_DIFF}"
+            printf "%s\n" "${GIT_DIFF[@]}"
             printf "\`\`\`\n"
+            printf "\n"
           } | tee -a "${GITHUB_STEP_SUMMARY}"
 
           # Get changed exercise list.
@@ -71,15 +76,21 @@ jobs:
           # Check if the files are present in the changed file list (added, modified, deleted) then output to stdout.
           HAS_DIFF="${HAS_DIFF:-false}"
           printf "=== Which Docker files changed? ===\n"
-          if printf "%s\n" "${GIT_DIFF}" | grep -E '^(Dockerfile.*|.github/docker/.*|.github/workflows/docker-build.yml)$'; then
+          if printf "%s\n" "${GIT_DIFF[@]}" | grep -E "${{ env.re_change }}"; then
             HAS_DIFF=true
           fi
           printf "\n"
 
           # Did Docker files change?
-          printf "=== Did Docker files change? ===\n"
-          printf "%s\n" "${HAS_DIFF}"
-          printf "\n"
+          {
+            printf "=== Did Docker files change? ===\n"
+            printf "Changes Detected: %s\n" "${HAS_DIFF}"
+            printf "\n"
+            printf "\`\`\`text\n"
+            printf "%s\n" "${GIT_DIFF[@]}" | grep -E "${{ env.re_change }}"
+            printf "\`\`\`\n"
+            printf "\n"
+          } | tee -a "${GITHUB_STEP_SUMMARY}"
 
           # Set the output named "docs_changed"
           printf "%s=%s\n" "docs_changed" "${HAS_DIFF}" >> "${GITHUB_OUTPUT}"
