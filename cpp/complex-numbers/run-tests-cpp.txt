@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.011s
-user	0m0.003s
-sys	0m0.008s
+real	0m0.009s
+user	0m0.001s
+sys	0m0.004s
 
 ===============================================================================
 
@@ -73,18 +73,18 @@ Directory: .
 ------------------------------------------------------------------------------
 File                                       Lines    Exec  Cover   Missing
 ------------------------------------------------------------------------------
-complex_numbers.cpp                           40      40   100%   
+complex_numbers.cpp                           35      35   100%   
 complex_numbers_test.cpp                     141     141   100%   
 test/catch.hpp                                41      36    87%   1642-1643,2227,2229,2560
 ------------------------------------------------------------------------------
-TOTAL                                        222     217    97%
+TOTAL                                        217     212    97%
 ------------------------------------------------------------------------------
-lines: 97.7% (217 out of 222)
+lines: 97.7% (212 out of 217)
 branches: 43.9% (202 out of 460)
 
-real	0m9.993s
-user	0m9.027s
-sys	0m0.961s
+real	0m9.284s
+user	0m8.630s
+sys	0m0.646s
 
 ===============================================================================
 
@@ -92,9 +92,9 @@ cmake-format --in-place CMakeLists.txt
 WARNING config_util.py:307: The following configuration options were ignored:
   max_subargs_per_line
 
-real	0m0.178s
-user	0m0.120s
-sys	0m0.047s
+real	0m0.154s
+user	0m0.116s
+sys	0m0.040s
 
 ===============================================================================
 
@@ -114,59 +114,45 @@ found lint:
   Convention: 3
 
 
-real	0m0.176s
-user	0m0.117s
-sys	0m0.049s
+real	0m0.167s
+user	0m0.126s
+sys	0m0.044s
 
 ===============================================================================
 
-Running: clang-format-16 -style=file -i ./complex_numbers.cpp ./complex_numbers_test.cpp ./complex_numbers.h
+Running: clang-format-16 -style=file -i ./complex_numbers.cpp ./complex_numbers_test.cpp ./complex_numbers.hpp
 
-real	0m0.025s
-user	0m0.013s
-sys	0m0.010s
+real	0m0.021s
+user	0m0.009s
+sys	0m0.011s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./complex_numbers.cpp ./complex_numbers_test.cpp ./complex_numbers.h
-error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
-error: invalid argument '-std=c++17' not allowed with 'C'
-/home/vpayno/git_vpayno/exercism-workspace/cpp/complex-numbers/complex_numbers.h:4:10: fatal error: 'cmath' file not found
-#include <cmath>
-         ^~~~~~~
-1 error generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/complex-numbers/complex_numbers.h.
+clang-check-16 --analyze ./complex_numbers.cpp ./complex_numbers_test.cpp ./complex_numbers.hpp
 
-real	0m0.463s
-user	0m0.428s
-sys	0m0.034s
+real	0m0.530s
+user	0m0.492s
+sys	0m0.038s
 
 
-real	0m0.465s
-user	0m0.429s
-sys	0m0.036s
+real	0m0.532s
+user	0m0.494s
+sys	0m0.038s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 8739 warnings generated.
 44100 warnings generated.
-44100 warnings and 3 errors generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/complex-numbers/complex_numbers.h.
-Suppressed 44103 warnings (44097 in non-user code, 6 NOLINT).
+52839 warnings generated.
+Suppressed 52842 warnings (52836 in non-user code, 6 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-Found compiler error(s).
 
-real	0m6.734s
-user	0m6.665s
-sys	0m0.068s
-Running: clang-tidy-16 ./complex_numbers.cpp ./complex_numbers_test.cpp ./complex_numbers.h
-error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
-error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
-/home/vpayno/git_vpayno/exercism-workspace/cpp/complex-numbers/complex_numbers.h:4:10: error: 'cmath' file not found [clang-diagnostic-error]
-#include <cmath>
-         ^~~~~~~
+real	0m8.420s
+user	0m8.345s
+sys	0m0.070s
+Running: clang-tidy-16 ./complex_numbers.cpp ./complex_numbers_test.cpp ./complex_numbers.hpp
 /home/vpayno/git_vpayno/exercism-workspace/cpp/complex-numbers/complex_numbers_test.cpp:28:13: warning: unused function 'require_approx_equal' [clang-diagnostic-unused-function]
 static void require_approx_equal(const Complex &lhs, const Complex &rhs) {
             ^
@@ -176,9 +162,9 @@ static void require_approx_equal(const Complex &lhs, const Complex &rhs) {
                   ^
 
 
-real	0m6.736s
-user	0m6.667s
-sys	0m0.069s
+real	0m8.422s
+user	0m8.345s
+sys	0m0.072s
 
 ===============================================================================
 

@@ -1,4 +1,4 @@
-#include "complex_numbers.h"
+#include "complex_numbers.hpp"
 
 #include <cmath>
 

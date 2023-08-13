@@ -1,5 +1,5 @@
-#if !defined(COMPLEX_NUMBERS_H)
-#define COMPLEX_NUMBERS_H
+#if !defined(COMPLEX_NUMBERS_HPP)
+#define COMPLEX_NUMBERS_HPP
 
 #include <cmath>
 
@@ -29,4 +29,4 @@ struct Complex {
 
 } // namespace complex_numbers
 
-#endif // COMPLEX_NUMBERS_H
+#endif // COMPLEX_NUMBERS_HPP
