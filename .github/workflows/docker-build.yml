@@ -133,8 +133,8 @@ jobs:
           printf "%s\n" "Hello World!"
       - name: Docker Build Summary [${{ matrix.os }}]
         run: |-
-          ORG_IMAGE="${{ secrets.DOCKERHUB_USERNAME }}/${IMAGE_NAME}"
-          TOKEN="$(curl "https://auth.docker.io/token?service=registry.docker.io&scope=repository:vpayno/${ORG_IMAGE}:pull" | jq -r .access_token)"
+          ORG_IMAGE="${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}"
+          TOKEN="$(curl "https://auth.docker.io/token?service=registry.docker.io&scope=repository:${ORG_IMAGE}:pull" | jq -r .access_token)"
           {
             printf "Docker Hub Image Info\n"
             curl -sS --header "Authorization: Bearer ${TOKEN}" "https://index.docker.io/v2/${ORG_IMAGE}/tags/list" | jq .
