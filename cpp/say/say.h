@@ -12,8 +12,8 @@ namespace say {
 
 using message_t = std::string;
 
-// Using 128-bit numbers (supported on x86_64) because most of the tests use ULL
-// and some use signed int
+// Using signed 128-bit numbers because most of the tests use unsigned long long
+// (64-bit) and some use signed int (32/64-bit).
 using int128_t = boost::multiprecision::int128_t;
 using parts_t = std::map<uint64_t, std::string>;
 

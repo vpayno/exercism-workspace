@@ -12,7 +12,7 @@ std::string in_english(int128_t number) {
     check_runtime_error(number < 0, "input number is negative");
     check_runtime_error(number >= k_trillion, "input number is negative");
 
-    // to make life a little easer
+    // to make life a little easier
     uint64_t pos_num{number};
 
     std::string spoken{};
@@ -134,7 +134,6 @@ std::string say_rest(uint64_t &number, parts_t parts) {
         spoken += say_tens(quantity, parts);
 
         const uint64_t label{step};
-
         const std::string part{parts.at(label)};
 
         spoken += " " + part;
