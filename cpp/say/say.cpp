@@ -58,9 +58,7 @@ std::string in_english(int128_t number) {
         return parts.at(pos_num);
     }
 
-    spoken += say_billion(pos_num, parts);
-    spoken += say_million(pos_num, parts);
-    spoken += say_thousands(pos_num, parts);
+    spoken += say_rest(pos_num, parts);
     spoken += say_hundreds(pos_num, parts);
     spoken += say_tens(pos_num, parts);
 
@@ -115,85 +113,42 @@ std::string say_hundreds(uint64_t &number, parts_t parts) {
     return "";
 }
 
-std::string say_thousands(uint64_t &number, parts_t parts) {
-    if (number >= k_thousand and number < k_million) {
-        std::string spoken{};
+std::string say_rest(uint64_t &number, parts_t parts) {
+    uint64_t step{};
 
-        uint64_t quantity{number / 1'000};
+    if (number >= k_billion) {
+        step = k_billion;
+    } else if (number >= k_million) {
+        step = k_million;
+    } else if (number >= k_thousand) {
+        step = k_thousand;
+    } else if (number >= k_hundred) {
+        step = k_hundred;
+    }
+
+    std::string spoken{};
+
+    while (number >= k_thousand and step > 0) {
+        uint64_t quantity{number / step};
         spoken += say_hundreds(quantity, parts);
         spoken += say_tens(quantity, parts);
 
-        const uint64_t label{1'000};
+        const uint64_t label{step};
 
-        const std::string part1{};
-        const std::string part2{parts.at(label)};
+        const std::string part{parts.at(label)};
 
-        spoken += part1 + " " + part2;
+        spoken += " " + part;
 
-        number %= 1'000;
+        number %= step;
 
         if (number > 0) {
             spoken += " ";
         }
 
-        return spoken;
+        step /= k_thousand;
     }
 
-    return "";
-}
-
-std::string say_million(uint64_t &number, parts_t parts) {
-    if (number >= k_million and number < k_billion) {
-        std::string spoken{};
-
-        uint64_t quantity{number / k_million};
-        spoken += say_hundreds(quantity, parts);
-        spoken += say_tens(quantity, parts);
-
-        const uint64_t label{k_million};
-
-        const std::string part1{};
-        const std::string part2{parts.at(label)};
-
-        spoken += part1 + " " + part2;
-
-        number %= k_million;
-
-        if (number > 0) {
-            spoken += " ";
-        }
-
-        return spoken;
-    }
-
-    return "";
-}
-
-std::string say_billion(uint64_t &number, parts_t parts) {
-    if (number >= k_billion and number < k_trillion) {
-        std::string spoken{};
-
-        uint64_t quantity{number / k_billion};
-        spoken += say_hundreds(quantity, parts);
-        spoken += say_tens(quantity, parts);
-
-        const uint64_t label{k_billion};
-
-        const std::string part1{};
-        const std::string part2{parts.at(label)};
-
-        spoken += part1 + " " + part2;
-
-        number %= k_billion;
-
-        if (number > 0) {
-            spoken += " ";
-        }
-
-        return spoken;
-    }
-
-    return "";
+    return spoken;
 }
 
 } // namespace say
