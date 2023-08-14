@@ -129,6 +129,8 @@ jobs:
           - os: "windows-latest"
         exercise: ${{fromJson(needs.stage1.outputs.matrix_exercise)}}
     runs-on: "${{ matrix.os }}"
+    container:
+      image: vpayno/ci-generic-debian:latest
     needs: [stage1]
     if: needs.stage1.outputs.docs_changed == 'True'
     steps:
