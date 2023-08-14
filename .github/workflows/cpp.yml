@@ -140,7 +140,8 @@ jobs:
       - name: Install C++ Tools [${{ matrix.exercise }}]
         id: install-c-tools
         run: |
-          sudo tee -a /etc/apt/sources.list <<EOF
+          if ! grep -q llvm.org /etc/apt/sources.list; then
+            sudo tee -a /etc/apt/sources.list <<EOF
           # deb http://apt.llvm.org/jammy/ llvm-toolchain-jammy main
           # deb-src http://apt.llvm.org/jammy/ llvm-toolchain-jammy main
           # deb http://apt.llvm.org/jammy/ llvm-toolchain-jammy-14 main
@@ -150,7 +151,8 @@ jobs:
           deb http://apt.llvm.org/jammy/ llvm-toolchain-jammy-16 main
           deb-src http://apt.llvm.org/jammy/ llvm-toolchain-jammy-16 main
           EOF
-          wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
+            wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
+          fi
           sudo apt update
           # sudo apt install -y clang-16 lldb-16 lld-16
           # sudo apt install -y libllvm-14-ocaml-dev libllvm14 llvm-14 llvm-14-dev llvm-14-doc llvm-14-examples llvm-14-runtime
