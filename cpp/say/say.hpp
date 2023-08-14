@@ -1,5 +1,5 @@
-#if !defined(SAY_H)
-#define SAY_H
+#if !defined(SAY_HPP)
+#define SAY_HPP
 
 #include <map>
 #include <numeric>
@@ -33,4 +33,4 @@ void check_runtime_error(bool condition, message_t message);
 
 } // namespace say
 
-#endif // SAY_H
+#endif // SAY_HPP
