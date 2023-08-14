@@ -85,3 +85,8 @@ Use _and_ (correctly) when spelling out the number in English:
 ### Based on
 
 A variation on JavaRanch CattleDrive, exercise 4a - http://www.javaranch.com/say.jsp
+
+### My Solution
+
+- [my solution]()
+- [run-tests](./run-tests-cpp.txt)
