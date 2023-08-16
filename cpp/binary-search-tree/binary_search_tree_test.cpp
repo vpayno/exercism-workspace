@@ -12,7 +12,7 @@ template<typename T>
 using tree_ptr = typename std::unique_ptr<binary_search_tree::binary_tree<T>>;
 
 template<typename T>
-static void test_leaf(const tree_ptr<T> &tree, 
+static void test_leaf(const tree_ptr<T> &tree,
                       const T& data, bool has_left, bool has_right)
 {
     REQUIRE(data == tree->data());
@@ -25,7 +25,7 @@ static tree_ptr<T> make_tree(const std::vector<T> &data)
 {
     if (data.empty())
         return tree_ptr<T>(nullptr);
-    
+
     auto data_iter = data.begin();
     auto tree = tree_ptr<T>(new binary_search_tree::binary_tree<T>(*data_iter));
     ++data_iter;
@@ -65,7 +65,7 @@ TEST_CASE("same_number_at_left_node")
 TEST_CASE("greater_number_at_right_node")
 {
     auto tested = make_tree<uint32_t>({4, 5});
-    
+
     test_leaf<uint32_t>(tested, 4, false, true);
     test_leaf<uint32_t>(tested->right(), 5, false, false);
 }

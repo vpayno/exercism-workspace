@@ -84,3 +84,4 @@
 - [queen-attack](./queen-attack/README.md)
 - [complex-numbers](./complex-numbers/README.md)
 - [say](./say/README.md)
+- [binary-search-tree](./binary-search-tree/README.md)
