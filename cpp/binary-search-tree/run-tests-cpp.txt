@@ -1,0 +1,188 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: make clean
+rm -rf ./build
+
+real	0m0.007s
+user	0m0.001s
+sys	0m0.006s
+
+===============================================================================
+
+export LDFLAGS="-lgcov --coverage" CXXFLAGS="--coverage"
+
+===============================================================================
+
+Running: make coverage | ansifilter
+rm -rf ./build
+mkdir -pv ./build
+mkdir: created directory './build'
+
+cd ./build; export LDFLAGS="-lgcov --coverage" CXXFLAGS="--coverage"; cmake -DEXERCISM_RUN_ALL_TESTS=1 -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -G 'Unix Makefiles' ../; if make; then printf "\n=== All Tests Passed ===\n"; else printf "\n=== Test Failure ===\n"; false; fi
+-- The CXX compiler identification is GNU 10.2.1
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/vpayno/git_vpayno/exercism-workspace/cpp/binary-search-tree/build
+make[1]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/binary-search-tree/build'
+make[2]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/binary-search-tree/build'
+make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/binary-search-tree/build'
+make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/binary-search-tree/build'
+make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/binary-search-tree/build'
+[ 25%] Building CXX object CMakeFiles/binary-search-tree.dir/binary_search_tree_test.cpp.o
+[ 50%] Building CXX object CMakeFiles/binary-search-tree.dir/binary_search_tree.cpp.o
+[ 75%] Building CXX object CMakeFiles/binary-search-tree.dir/test/tests-main.cpp.o
+[100%] Linking CXX executable binary-search-tree
+make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/binary-search-tree/build'
+[100%] Built target binary-search-tree
+make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/binary-search-tree/build'
+make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/binary-search-tree/build'
+make[3]: Entering directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/binary-search-tree/build'
+===============================================================================
+All tests passed (69 assertions in 12 test cases)
+
+make[3]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/binary-search-tree/build'
+[100%] Built target test_binary-search-tree
+make[2]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/binary-search-tree/build'
+make[1]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/binary-search-tree/build'
+
+=== All Tests Passed ===
+
+find . -regextype posix-egrep -regex '^.*(tests-main|CompilerId).*[.](gcda|gcno)$' -print -delete
+./build/CMakeFiles/3.22.2/CompilerIdCXX/CMakeCXXCompilerId.gcno
+./build/CMakeFiles/binary-search-tree.dir/test/tests-main.cpp.gcno
+./build/CMakeFiles/binary-search-tree.dir/test/tests-main.cpp.gcda
+
+find . -regextype posix-egrep -regex '^.*[.](gcda|gcno)$'
+./build/CMakeFiles/binary-search-tree.dir/binary_search_tree_test.cpp.gcno
+./build/CMakeFiles/binary-search-tree.dir/binary_search_tree.cpp.gcno
+./build/CMakeFiles/binary-search-tree.dir/binary_search_tree_test.cpp.gcda
+
+gcovr --print-summary
+------------------------------------------------------------------------------
+                           GCC Code Coverage Report
+Directory: .
+------------------------------------------------------------------------------
+File                                       Lines    Exec  Cover   Missing
+------------------------------------------------------------------------------
+binary_search_tree.h                          37      37   100%   
+binary_search_tree_test.cpp                   80      79    98%   24
+test/catch.hpp                                52      31    59%   1448-1450,1642-1643,1827-1833,1835-1836,2016-2017,2039-2040,2227,2229,2560
+------------------------------------------------------------------------------
+TOTAL                                        169     147    87%
+------------------------------------------------------------------------------
+lines: 87.0% (147 out of 169)
+branches: 46.9% (150 out of 320)
+
+real	0m9.821s
+user	0m8.914s
+sys	0m0.904s
+
+===============================================================================
+
+cmake-format --in-place CMakeLists.txt
+WARNING config_util.py:307: The following configuration options were ignored:
+  max_subargs_per_line
+
+real	0m0.178s
+user	0m0.133s
+sys	0m0.047s
+
+===============================================================================
+
+cmake-lint CMakeLists.txt
+WARNING The following configuration options were ignored:
+  max_subargs_per_line
+CMakeLists.txt
+==============
+CMakeLists.txt:15,06: [C0103] Invalid directory variable name "exercise_cpp" doesn't match `[A-Z][0-9A-Z_]+|_[0-9a-z_]+`
+CMakeLists.txt:17,06: [C0103] Invalid directory variable name "exercise_cpp" doesn't match `[A-Z][0-9A-Z_]+|_[0-9a-z_]+`
+CMakeLists.txt:61,02: [C0113] Missing COMMENT in statement which allows it
+
+Summary
+=======
+files scanned: 1
+found lint:
+  Convention: 3
+
+
+real	0m0.236s
+user	0m0.164s
+sys	0m0.075s
+
+===============================================================================
+
+Running: clang-format-16 -style=file -i ./binary_search_tree.cpp ./binary_search_tree_test.cpp ./binary_search_tree.h
+
+real	0m0.034s
+user	0m0.018s
+sys	0m0.016s
+
+===============================================================================
+
+Running: ../../.github/citools/cpp/clang-check
+clang-check-16 --analyze ./binary_search_tree.cpp ./binary_search_tree_test.cpp ./binary_search_tree.h
+error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
+error: invalid argument '-std=c++17' not allowed with 'C'
+/home/vpayno/git_vpayno/exercism-workspace/cpp/binary-search-tree/binary_search_tree.h:3:10: fatal error: 'memory' file not found
+#include <memory>
+         ^~~~~~~~
+1 error generated.
+Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/binary-search-tree/binary_search_tree.h.
+
+real	0m0.592s
+user	0m0.553s
+sys	0m0.039s
+
+
+real	0m0.594s
+user	0m0.554s
+sys	0m0.040s
+
+===============================================================================
+
+Running: ../../.github/citools/cpp/clang-tidy | head -n 100
+15220 warnings generated.
+50648 warnings generated.
+50648 warnings and 3 errors generated.
+Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/binary-search-tree/binary_search_tree.h.
+Suppressed 50654 warnings (50643 in non-user code, 11 NOLINT).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+Found compiler error(s).
+
+real	0m6.889s
+user	0m6.834s
+sys	0m0.053s
+Running: clang-tidy-16 ./binary_search_tree.cpp ./binary_search_tree_test.cpp ./binary_search_tree.h
+error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
+error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
+/home/vpayno/git_vpayno/exercism-workspace/cpp/binary-search-tree/binary_search_tree.h:3:10: error: 'memory' file not found [clang-diagnostic-error]
+#include <memory>
+         ^~~~~~~~
+/home/vpayno/git_vpayno/exercism-workspace/cpp/binary-search-tree/binary_search_tree_test.cpp:15:13: warning: function 'test_leaf' declared 'static', move to anonymous namespace instead [misc-use-anonymous-namespace]
+static void test_leaf(const tree_ptr<T> &tree, const T &data, bool has_left,
+            ^
+/home/vpayno/git_vpayno/exercism-workspace/cpp/binary-search-tree/binary_search_tree_test.cpp:15:13: warning: function 'test_leaf<unsigned int>' declared 'static', move to anonymous namespace instead [misc-use-anonymous-namespace]
+/home/vpayno/git_vpayno/exercism-workspace/cpp/binary-search-tree/binary_search_tree_test.cpp:22:42: warning: function 'make_tree' declared 'static', move to anonymous namespace instead [misc-use-anonymous-namespace]
+template <typename T> static tree_ptr<T> make_tree(const std::vector<T> &data) {
+                                         ^
+/home/vpayno/git_vpayno/exercism-workspace/cpp/binary-search-tree/binary_search_tree_test.cpp:22:42: warning: function 'make_tree<unsigned int>' declared 'static', move to anonymous namespace instead [misc-use-anonymous-namespace]
+/home/vpayno/git_vpayno/exercism-workspace/cpp/binary-search-tree/binary_search_tree_test.cpp:23:22: warning: statement should be inside braces [readability-braces-around-statements]
+    if (data.empty())
+                     ^
+                      {
+
+
+real	0m6.891s
+user	0m6.835s
+sys	0m0.056s
+
+===============================================================================
+
