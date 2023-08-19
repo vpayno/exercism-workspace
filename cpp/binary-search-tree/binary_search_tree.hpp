@@ -1,5 +1,5 @@
-#if !defined(BINARY_SEARCH_TREE_H)
-#define BINARY_SEARCH_TREE_H
+#if !defined(BINARY_SEARCH_TREE_HPP)
+#define BINARY_SEARCH_TREE_HPP
 #include <memory>
 #include <string>
 
@@ -230,4 +230,4 @@ template <typename T> auto binary_tree<T>::end() -> binary_tree<T>::iterator {
 
 } // namespace binary_search_tree
 
-#endif // BINARY_SEARCH_TREE_H
+#endif // BINARY_SEARCH_TREE_HPP

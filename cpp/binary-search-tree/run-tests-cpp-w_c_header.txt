@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.012s
-user	0m0.000s
-sys	0m0.012s
+real	0m0.007s
+user	0m0.001s
+sys	0m0.006s
 
 ===============================================================================
 
@@ -72,7 +72,7 @@ Directory: .
 ------------------------------------------------------------------------------
 File                                       Lines    Exec  Cover   Missing
 ------------------------------------------------------------------------------
-binary_search_tree.hpp                        37      37   100%   
+binary_search_tree.h                          37      37   100%   
 binary_search_tree_test.cpp                   80      79    98%   24
 test/catch.hpp                                52      31    59%   1448-1450,1642-1643,1827-1833,1835-1836,2016-2017,2039-2040,2227,2229,2560
 ------------------------------------------------------------------------------
@@ -81,9 +81,9 @@ TOTAL                                        169     147    87%
 lines: 87.0% (147 out of 169)
 branches: 46.9% (150 out of 320)
 
-real	0m9.197s
-user	0m8.464s
-sys	0m0.728s
+real	0m9.821s
+user	0m8.914s
+sys	0m0.904s
 
 ===============================================================================
 
@@ -91,9 +91,9 @@ cmake-format --in-place CMakeLists.txt
 WARNING config_util.py:307: The following configuration options were ignored:
   max_subargs_per_line
 
-real	0m0.158s
-user	0m0.118s
-sys	0m0.042s
+real	0m0.178s
+user	0m0.133s
+sys	0m0.047s
 
 ===============================================================================
 
@@ -113,45 +113,59 @@ found lint:
   Convention: 3
 
 
-real	0m0.160s
-user	0m0.117s
-sys	0m0.043s
+real	0m0.236s
+user	0m0.164s
+sys	0m0.075s
 
 ===============================================================================
 
-Running: clang-format-16 -style=file -i ./binary_search_tree.cpp ./binary_search_tree_test.cpp ./binary_search_tree.hpp
+Running: clang-format-16 -style=file -i ./binary_search_tree.cpp ./binary_search_tree_test.cpp ./binary_search_tree.h
 
-real	0m0.024s
-user	0m0.016s
-sys	0m0.008s
+real	0m0.034s
+user	0m0.018s
+sys	0m0.016s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./binary_search_tree.cpp ./binary_search_tree_test.cpp ./binary_search_tree.hpp
+clang-check-16 --analyze ./binary_search_tree.cpp ./binary_search_tree_test.cpp ./binary_search_tree.h
+error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
+error: invalid argument '-std=c++17' not allowed with 'C'
+/home/vpayno/git_vpayno/exercism-workspace/cpp/binary-search-tree/binary_search_tree.h:3:10: fatal error: 'memory' file not found
+#include <memory>
+         ^~~~~~~~
+1 error generated.
+Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/binary-search-tree/binary_search_tree.h.
 
-real	0m0.684s
-user	0m0.642s
-sys	0m0.042s
+real	0m0.592s
+user	0m0.553s
+sys	0m0.039s
 
 
-real	0m0.686s
-user	0m0.642s
-sys	0m0.044s
+real	0m0.594s
+user	0m0.554s
+sys	0m0.040s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 15220 warnings generated.
 50648 warnings generated.
-65868 warnings generated.
-Suppressed 65871 warnings (65863 in non-user code, 8 NOLINT).
+50648 warnings and 3 errors generated.
+Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/binary-search-tree/binary_search_tree.h.
+Suppressed 50654 warnings (50643 in non-user code, 11 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+Found compiler error(s).
 
-real	0m8.457s
-user	0m8.388s
-sys	0m0.067s
-Running: clang-tidy-16 ./binary_search_tree.cpp ./binary_search_tree_test.cpp ./binary_search_tree.hpp
+real	0m6.889s
+user	0m6.834s
+sys	0m0.053s
+Running: clang-tidy-16 ./binary_search_tree.cpp ./binary_search_tree_test.cpp ./binary_search_tree.h
+error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
+error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
+/home/vpayno/git_vpayno/exercism-workspace/cpp/binary-search-tree/binary_search_tree.h:3:10: error: 'memory' file not found [clang-diagnostic-error]
+#include <memory>
+         ^~~~~~~~
 /home/vpayno/git_vpayno/exercism-workspace/cpp/binary-search-tree/binary_search_tree_test.cpp:15:13: warning: function 'test_leaf' declared 'static', move to anonymous namespace instead [misc-use-anonymous-namespace]
 static void test_leaf(const tree_ptr<T> &tree, const T &data, bool has_left,
             ^
@@ -166,9 +180,9 @@ template <typename T> static tree_ptr<T> make_tree(const std::vector<T> &data) {
                       {
 
 
-real	0m8.459s
-user	0m8.389s
-sys	0m0.069s
+real	0m6.891s
+user	0m6.835s
+sys	0m0.056s
 
 ===============================================================================
 

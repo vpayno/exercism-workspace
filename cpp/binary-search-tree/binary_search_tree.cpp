@@ -1,4 +1,4 @@
-#include "binary_search_tree.h"
+#include "binary_search_tree.hpp"
 
 /*
  * Long story short: I guess I did make things harder on my self by insisting
