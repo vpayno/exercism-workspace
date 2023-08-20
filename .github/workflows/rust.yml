@@ -214,7 +214,10 @@ jobs:
       - name: Analysing the code with cargo clippy
         id: cargo-clippy
         run: |
-          cd ./rust
+          pwd
+          cd "./${{ matrix.exercise }}"
+          pwd
+          ls
           cargo clippy --release
       - name: Testing with cargo tarpaulin
         id: cargo-tarpaulin
