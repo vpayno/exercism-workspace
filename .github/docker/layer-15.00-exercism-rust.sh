@@ -98,4 +98,9 @@ echo cargo install --list
 cargo install --list
 printf "\n"
 
+printf "Show Rust Configuration:\n"
+echo rustup show
+rustup show
+printf "\n"
+
 layer_end "$@"
