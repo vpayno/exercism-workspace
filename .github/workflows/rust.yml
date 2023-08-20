@@ -253,11 +253,14 @@ jobs:
           cargo clippy --release
       - name: Testing with cargo tarpaulin
         id: cargo-tarpaulin
+        if: false
         run: |
           pwd
           cd "./${{ matrix.exercise }}"
           pwd
           ls
+          # disabling, using my container I get: Failed to run tests: ASLR disable failed: EPERM: Operation not permitted
+          # https://github.com/xd009642/tarpaulin/issues/146
           ../../.github/citools/rust/rust-test-with-tarpaulin
       - name: Testing with cargo test coverage
         id: cargo-test-coverage
