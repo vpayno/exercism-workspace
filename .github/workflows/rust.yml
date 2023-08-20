@@ -246,7 +246,7 @@ jobs:
           cd "./${{ matrix.exercise }}"
           pwd
           ls
-          ../../.github/citools/rust/rust-lint-check --release
+          ../../.github/citools/rust/rust-lint-check --release | tee -a "${GITHUB_STEP_SUMMARY}"
       - name: Analysing the code with cargo clippy
         id: cargo-clippy
         run: |
@@ -254,7 +254,7 @@ jobs:
           cd "./${{ matrix.exercise }}"
           pwd
           ls
-          ../../.github/citools/rust/rust-lint-clippy --release
+          ../../.github/citools/rust/rust-lint-clippy --release | tee -a "${GITHUB_STEP_SUMMARY}"
       - name: Testing with cargo tarpaulin
         id: cargo-tarpaulin
         if: ${{ env.ENABLE_TARPAULIN == 'true' }}
@@ -265,7 +265,7 @@ jobs:
           ls
           # disabling, using my container I get: Failed to run tests: ASLR disable failed: EPERM: Operation not permitted
           # https://github.com/xd009642/tarpaulin/issues/146
-          ../../.github/citools/rust/rust-test-with-tarpaulin
+          ../../.github/citools/rust/rust-test-with-tarpaulin | tee -a "${GITHUB_STEP_SUMMARY}"
       - name: Testing with cargo test coverage
         id: cargo-test-coverage
         run: |
@@ -273,7 +273,7 @@ jobs:
           cd "./${{ matrix.exercise }}"
           pwd
           ls
-          ../../.github/citools/rust/rust-test-with-llvm-coverage
+          ../../.github/citools/rust/rust-test-with-llvm-coverage | tee -a "${GITHUB_STEP_SUMMARY}"
       - name: Testing with cargo audit
         id: cargo-audit
         run: |-
@@ -281,4 +281,4 @@ jobs:
           cd "./${{ matrix.exercise }}"
           pwd
           ls
-          ../../.github/citools/rust/rust-lint-audit
+          ../../.github/citools/rust/rust-lint-audit | tee -a "${GITHUB_STEP_SUMMARY}"
