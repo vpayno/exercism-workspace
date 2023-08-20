@@ -60,6 +60,10 @@ printf "\n"
 printf "source %s\n" "${HOME}/.cargo/env" | tee -a "${HOME}/.bashrc"
 source "${HOME}/.bashrc"
 
+echo rustup default stable
+time rustup default stable || exit
+printf "\n"
+
 echo rustc --version
 rustc --version || exit
 printf "\n"
