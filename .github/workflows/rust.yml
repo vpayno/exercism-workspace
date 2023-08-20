@@ -166,8 +166,10 @@ jobs:
     env:
       CARGO_REGISTRIES_CRATES_IO_PROTOCOL: sparse
       RUSTC_WRAPPER: sccache
+      ENABLE_TARPAULIN: false
+      SETUP_RUST: false
     needs: [stage1]
-    if: needs.stage1.outputs.docs_changed == 'True'
+    if: needs.stage1.outputs.docs_changed == 'true'
     steps:
       - name: Checkout Repo [${{ matrix.exercise }}]
         id: checkout-repo
@@ -191,8 +193,8 @@ jobs:
           printf "\n"
           printf "%s=%s\n" "CARGO_REGISTRIES_CRATES_IO_PROTOCOL" "${CARGO_REGISTRIES_CRATES_IO_PROTOCOL}" "RUSTC_WRAPPER" "${RUSTC_WRAPPER}"
           printf "\n"
-          rustup default stable
-          printf "\n"
+          # rustup default stable
+          # printf "\n"
           rustc --version
           printf "\n"
           cargo version
@@ -203,6 +205,7 @@ jobs:
           printf "\n"
       - name: Install Rust Tools
         id: install-rust-tools
+        if: ${{ env.SETUP_RUST == 'true' }}
         run: |
           if ! grep -q llvm.org /etc/apt/sources.list; then
             sudo tee -a /etc/apt/sources.list <<EOF
@@ -220,13 +223,14 @@ jobs:
           sudo apt update
           # sudo apt install -y clang-16 lldb-16 lld-16
           # sudo apt install -y libllvm-16-ocaml-dev libllvm16 llvm-16 llvm-16-dev llvm-16-doc llvm-16-examples llvm-16-runtime
-          sudo apt install -y libssl-dev
-          sudo apt install -y lcov
-          sudo apt install -y make
+          sudo apt install -y libssl-dev lcov make
           rustup component add clippy
-          cargo install grcov
-          cargo install cargo-kcov
-          cargo install cargo-tarpaulin
+      - name: Install Rust Tools - Tarpaulin
+        id: install-rust-tools-tarpaulin
+        if: ${{ env.ENABLE_TARPAULIN == 'true' }}
+        run: |
+          printf "env.ENABLE_TARPAULIN: [%s]\n" "${{ env.ENABLE_TARPAULIN }}"
+          cargo install grcov cargo-kcov cargo-tarpaulin
       - name: CD to Rust Dir
         id: cd-to-rust-dir
         run: |
@@ -253,7 +257,7 @@ jobs:
           cargo clippy --release
       - name: Testing with cargo tarpaulin
         id: cargo-tarpaulin
-        if: false
+        if: ${{ env.ENABLE_TARPAULIN == 'true' }}
         run: |
           pwd
           cd "./${{ matrix.exercise }}"
