@@ -180,7 +180,7 @@ jobs:
           printf "Running as: "
           id
           printf "\n"
-          # printf "%s\n" "/root/.rustup/toolchains/stable-$(arch)-unknown-linux-gnu/bin" | tee -a "${GITHUB_PATH}"
+          printf "%s\n" "/root/.rustup/toolchains/stable-$(arch)-unknown-linux-gnu/bin" | tee -a "${GITHUB_PATH}"
           printf "%s\n" "/root/.cargo/bin" | tee -a "${GITHUB_PATH}"
           printf "\n"
           find /root -type f -name rustc
@@ -193,8 +193,12 @@ jobs:
           printf "\n"
           printf "%s=%s\n" "CARGO_REGISTRIES_CRATES_IO_PROTOCOL" "${CARGO_REGISTRIES_CRATES_IO_PROTOCOL}" "RUSTC_WRAPPER" "${RUSTC_WRAPPER}"
           printf "\n"
-          # rustup default stable
-          # printf "\n"
+          rustup show
+          printf "\n"
+          rustup default stable
+          printf "\n"
+          rustup show
+          printf "\n"
           rustc --version
           printf "\n"
           cargo version
