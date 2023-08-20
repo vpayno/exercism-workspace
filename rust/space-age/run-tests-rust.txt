@@ -1,0 +1,358 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: cargo check --release
+    Checking space-age v1.2.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/space-age)
+    Finished release [optimized] target(s) in 0.08s
+
+real	0m0.090s
+user	0m0.026s
+sys	0m0.029s
+
+===============================================================================
+
+Running: cargo clippy --release
+    Checking space-age v1.2.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/space-age)
+    Finished release [optimized] target(s) in 0.07s
+
+real	0m0.097s
+user	0m0.052s
+sys	0m0.046s
+
+===============================================================================
+
+Running: cargo audit
+[0m[0m[1m[32m    Fetching[0m advisory database from `https://github.com/RustSec/advisory-db.git`
+[0m[0m[1m[32m      Loaded[0m 559 security advisories (from /home/vpayno/.cargo/advisory-db)
+[0m[0m[1m[32m    Updating[0m crates.io index
+[0m[0m[1m[32m    Scanning[0m Cargo.lock for vulnerabilities (1 crate dependencies)
+
+real	0m1.697s
+user	0m0.516s
+sys	0m0.438s
+
+===============================================================================
+
+rm -fv ./*.profraw ./*.profdata
+
+===============================================================================
+
+Running: ../../.github/citools/rust/rust-test-with-tarpaulin
+
+Running Rust Tests With Tarpaulin
+
+Running: cargo clean
+
+real	0m0.023s
+user	0m0.012s
+sys	0m0.011s
+
+===============================================================================
+
+Running: cargo test
+   Compiling space-age v1.2.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/space-age)
+    Finished test [unoptimized + debuginfo] target(s) in 0.26s
+     Running unittests src/lib.rs (target/debug/deps/space_age-63215e0cc183491b)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/space-age.rs (target/debug/deps/space_age-30694871a8637b5e)
+
+running 8 tests
+test earth_age ... FAILED
+test jupiter_age ... FAILED
+test mercury_age ... FAILED
+test mars_age ... FAILED
+test neptune_age ... FAILED
+test saturn_age ... FAILED
+test uranus_age ... FAILED
+test venus_age ... FAILED
+
+failures:
+
+---- earth_age stdout ----
+thread 'earth_age' panicked at 'not implemented: s, measured in seconds: 1000000000', src/lib.rs:9:9
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- jupiter_age stdout ----
+thread 'jupiter_age' panicked at 'not implemented: s, measured in seconds: 901876382', src/lib.rs:9:9
+
+---- mercury_age stdout ----
+thread 'mercury_age' panicked at 'not implemented: s, measured in seconds: 2134835688', src/lib.rs:9:9
+
+---- mars_age stdout ----
+thread 'mars_age' panicked at 'not implemented: s, measured in seconds: 2129871239', src/lib.rs:9:9
+
+---- neptune_age stdout ----
+thread 'neptune_age' panicked at 'not implemented: s, measured in seconds: 1821023456', src/lib.rs:9:9
+
+---- saturn_age stdout ----
+thread 'saturn_age' panicked at 'not implemented: s, measured in seconds: 2000000000', src/lib.rs:9:9
+
+---- uranus_age stdout ----
+thread 'uranus_age' panicked at 'not implemented: s, measured in seconds: 1210123456', src/lib.rs:9:9
+
+---- venus_age stdout ----
+thread 'venus_age' panicked at 'not implemented: s, measured in seconds: 189839836', src/lib.rs:9:9
+
+
+failures:
+    earth_age
+    jupiter_age
+    mars_age
+    mercury_age
+    neptune_age
+    saturn_age
+    uranus_age
+    venus_age
+
+test result: FAILED. 0 passed; 8 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `--test space-age`
+
+real	0m0.279s
+user	0m0.306s
+sys	0m0.189s
+
+===============================================================================
+
+Running: cargo tarpaulin --release --timeout=300
+[2mAug 19 23:50:11.220[0m [32m INFO[0m cargo_tarpaulin::config: Creating config
+[2mAug 19 23:50:11.227[0m [32m INFO[0m cargo_tarpaulin: Running Tarpaulin
+[2mAug 19 23:50:11.227[0m [32m INFO[0m cargo_tarpaulin: Building project
+[2mAug 19 23:50:11.228[0m [32m INFO[0m cargo_tarpaulin::cargo: Cleaning project
+   Compiling space-age v1.2.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/space-age)
+    Finished release [optimized] target(s) in 0.31s
+[2mAug 19 23:50:11.584[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
+[2mAug 19 23:50:11.584[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/space-age/target/release/deps/space_age-7a6131b8d3cbbd17
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+[2mAug 19 23:50:12.096[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
+[2mAug 19 23:50:12.096[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/space-age/target/release/deps/space_age-3313e3926924209d
+
+running 8 tests
+test venus_age ... FAILED
+test neptune_age ... FAILED
+test mercury_age ... FAILED
+test mars_age ... FAILED
+test jupiter_age ... FAILED
+test uranus_age ... FAILED
+test saturn_age ... FAILED
+test earth_age ... FAILED
+
+failures:
+
+---- venus_age stdout ----
+thread 'venus_age' panicked at 'not implemented: s, measured in seconds: 189839836', src/lib.rs:9:9
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- neptune_age stdout ----
+thread 'neptune_age' panicked at 'not implemented: s, measured in seconds: 1821023456', src/lib.rs:9:9
+
+---- mercury_age stdout ----
+thread 'mercury_age' panicked at 'not implemented: s, measured in seconds: 2134835688', src/lib.rs:9:9
+
+---- mars_age stdout ----
+thread 'mars_age' panicked at 'not implemented: s, measured in seconds: 2129871239', src/lib.rs:9:9
+
+---- jupiter_age stdout ----
+thread 'jupiter_age' panicked at 'not implemented: s, measured in seconds: 901876382', src/lib.rs:9:9
+
+---- uranus_age stdout ----
+thread 'uranus_age' panicked at 'not implemented: s, measured in seconds: 1210123456', src/lib.rs:9:9
+
+---- saturn_age stdout ----
+thread 'saturn_age' panicked at 'not implemented: s, measured in seconds: 2000000000', src/lib.rs:9:9
+
+---- earth_age stdout ----
+thread 'earth_age' panicked at 'not implemented: s, measured in seconds: 1000000000', src/lib.rs:9:9
+
+
+failures:
+    earth_age
+    jupiter_age
+    mars_age
+    mercury_age
+    neptune_age
+    saturn_age
+    uranus_age
+    venus_age
+
+test result: FAILED. 0 passed; 8 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+Error: "Test failed during run"
+
+real	0m1.418s
+user	0m0.657s
+sys	0m1.102s
+
+===============================================================================
+
+
+real	0m1.721s
+user	0m0.974s
+sys	0m1.304s
+
+===============================================================================
+
+Running: ../../.github/citools/rust/rust-test-with-llvm-coverage
+
+Running Rust Tests With LLVM Coverage
+
+Running: cargo clean
+
+real	0m0.014s
+user	0m0.006s
+sys	0m0.008s
+
+===============================================================================
+
+rm -fv ./*.profraw ./*.profdata
+
+===============================================================================
+
+RUSTFLAGS="-C instrument-coverage"
+RUSTDOCFLAGS="-C instrument-coverage"
+
+===============================================================================
+
+Running: cargo test
+   Compiling space-age v1.2.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/space-age)
+    Finished test [unoptimized + debuginfo] target(s) in 0.30s
+     Running unittests src/lib.rs (target/debug/deps/space_age-63215e0cc183491b)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/space-age.rs (target/debug/deps/space_age-30694871a8637b5e)
+
+running 8 tests
+test earth_age ... FAILED
+test jupiter_age ... FAILED
+test mercury_age ... FAILED
+test saturn_age ... FAILED
+test uranus_age ... FAILED
+test neptune_age ... FAILED
+test mars_age ... FAILED
+test venus_age ... FAILED
+
+failures:
+
+---- earth_age stdout ----
+thread 'earth_age' panicked at 'not implemented: s, measured in seconds: 1000000000', src/lib.rs:9:9
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- jupiter_age stdout ----
+thread 'jupiter_age' panicked at 'not implemented: s, measured in seconds: 901876382', src/lib.rs:9:9
+
+---- mercury_age stdout ----
+thread 'mercury_age' panicked at 'not implemented: s, measured in seconds: 2134835688', src/lib.rs:9:9
+
+---- saturn_age stdout ----
+thread 'saturn_age' panicked at 'not implemented: s, measured in seconds: 2000000000', src/lib.rs:9:9
+
+---- uranus_age stdout ----
+thread 'uranus_age' panicked at 'not implemented: s, measured in seconds: 1210123456', src/lib.rs:9:9
+
+---- neptune_age stdout ----
+thread 'neptune_age' panicked at 'not implemented: s, measured in seconds: 1821023456', src/lib.rs:9:9
+
+---- mars_age stdout ----
+thread 'mars_age' panicked at 'not implemented: s, measured in seconds: 2129871239', src/lib.rs:9:9
+
+---- venus_age stdout ----
+thread 'venus_age' panicked at 'not implemented: s, measured in seconds: 189839836', src/lib.rs:9:9
+
+
+failures:
+    earth_age
+    jupiter_age
+    mars_age
+    mercury_age
+    neptune_age
+    saturn_age
+    uranus_age
+    venus_age
+
+test result: FAILED. 0 passed; 8 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `--test space-age`
+
+real	0m0.319s
+user	0m0.432s
+sys	0m0.206s
+
+===============================================================================
+
+Running: llvm-profdata-16 merge -sparse default_10067930780563175393_0_17387.profraw default_16126107551729510762_0_17388.profraw -o json5format.profdata
+
+real	0m0.014s
+user	0m0.004s
+sys	0m0.010s
+
+===============================================================================
+
+llvm-cov-16 report     Finished test [unoptimized + debuginfo] target(s) in 0.00s
+-object /home/vpayno/git_vpayno/exercism-workspace/rust/space-age/target/debug/deps/space_age-30694871a8637b5e -object /home/vpayno/git_vpayno/exercism-workspace/rust/space-age/target/debug/deps/space_age-63215e0cc183491b  --instr-profile=json5format.profdata --summary-only
+    Finished test [unoptimized + debuginfo] target(s) in 0.00s
+Filename                      Regions    Missed Regions     Cover   Functions  Missed Functions  Executed       Lines      Missed Lines     Cover    Branches   Missed Branches     Cover
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+src/lib.rs                          3                 2    33.33%           3                 2    33.33%           7                 5    28.57%           0                 0         -
+tests/space-age.rs                 19                 3    84.21%          17                 1    94.12%          47                 7    85.11%           0                 0         -
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+TOTAL                              22                 5    77.27%          20                 3    85.00%          54                12    77.78%           0                 0         -
+
+real	0m0.038s
+user	0m0.038s
+sys	0m0.010s
+
+===============================================================================
+
+rm -fv ./default_10067930780563175393_0_17387.profraw ./default_16126107551729510762_0_17388.profraw ./json5format.profdata
+removed './default_10067930780563175393_0_17387.profraw'
+removed './default_16126107551729510762_0_17388.profraw'
+removed './json5format.profdata'
+
+===============================================================================
+
+
+real	0m0.409s
+user	0m0.508s
+sys	0m0.240s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.023s
+user	0m0.027s
+sys	0m0.010s
+
+===============================================================================
+
+Running: cargo doc
+ Documenting space-age v1.2.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/space-age)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.20s
+
+real	0m0.206s
+user	0m0.161s
+sys	0m0.048s
+
+===============================================================================
+
+Running: cargo clean
+
+real	0m0.013s
+user	0m0.005s
+sys	0m0.008s
+
+===============================================================================
+
