@@ -1,0 +1,22 @@
+#!/bin/bash
+
+print_ruler() {
+	printf "\n"
+	printf "=%.0s" {1..79}
+	printf "\n"
+	printf "\n"
+} # print_ruler()
+
+printf "\nRunning Rust Cargo Check"
+
+echo Running: cargo clean
+time cargo clean
+
+print_ruler
+
+# https://doc.rust-lang.org/cargo/commands/cargo-check.html
+
+echo Running: cargo check "${@}"
+time cargo check "${@}"
+
+print_ruler

@@ -14,22 +14,22 @@ main() {
 
 	# https://doc.rust-lang.org/cargo/commands/cargo-check.html
 
-	echo Running: cargo check --release
-	time cargo check --release
+	echo Running: ../../.github/citools/rust/rust-lint-check --release
+	time ../../.github/citools/rust/rust-lint-check --release
 
 	print_ruler
 
 	# https://github.com/rust-lang/rust-clippy
 
-	echo Running: cargo clippy --release
-	time cargo clippy --release
+	echo Running: ../../.github/citools/rust/rust-lint-clippy --release
+	time ../../.github/citools/rust/rust-lint-clippy --release
 
 	print_ruler
 
 	# https://github.com/RustSec/rustsec/tree/main/cargo-audit
 
-	echo Running: cargo audit
-	time cargo audit
+	echo Running: ../../.github/citools/rust/rust-lint-audit
+	time ../../.github/citools/rust/rust-lint-audit
 
 	print_ruler
 

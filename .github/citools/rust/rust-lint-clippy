@@ -1,0 +1,22 @@
+#!/bin/bash
+
+print_ruler() {
+	printf "\n"
+	printf "=%.0s" {1..79}
+	printf "\n"
+	printf "\n"
+} # print_ruler()
+
+printf "\nRunning Rust Cargo Clippy"
+
+echo Running: cargo clean
+time cargo clean
+
+print_ruler
+
+# https://github.com/rust-lang/rust-clippy
+
+echo Running: cargo clippy "${@}"
+time cargo clippy "${@}"
+
+print_ruler

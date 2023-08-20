@@ -246,7 +246,7 @@ jobs:
           cd "./${{ matrix.exercise }}"
           pwd
           ls
-          cargo check --release
+          ../../.github/citools/rust/rust-lint-check --release
       - name: Analysing the code with cargo clippy
         id: cargo-clippy
         run: |
@@ -254,7 +254,7 @@ jobs:
           cd "./${{ matrix.exercise }}"
           pwd
           ls
-          cargo clippy --release
+          ../../.github/citools/rust/rust-lint-clippy --release
       - name: Testing with cargo tarpaulin
         id: cargo-tarpaulin
         if: ${{ env.ENABLE_TARPAULIN == 'true' }}
@@ -281,4 +281,4 @@ jobs:
           cd "./${{ matrix.exercise }}"
           pwd
           ls
-          cargo audit
+          ../../.github/citools/rust/rust-lint-audit
