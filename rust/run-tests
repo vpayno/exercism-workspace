@@ -38,86 +38,13 @@ main() {
 
 	print_ruler
 
-	# https://github.com/xd009642/tarpaulin
-
-	# don't use --verbose, it exposes environment variables
-	# echo Running: cargo tarpaulin --release --timeout=300 --bins --verbose
-	# time cargo tarpaulin --release --timeout=300 --bins --verbose
-	echo Running: cargo tarpaulin --release --timeout=300
-	time cargo tarpaulin --release --timeout=300
+	echo Running: ../../.github/citools/rust/rust-test-with-tarpaulin
+	time ../../.github/citools/rust/rust-test-with-tarpaulin
 
 	print_ruler
 
-	echo RUSTFLAGS="\"-C instrument-coverage\""
-	export RUSTFLAGS="-C instrument-coverage"
-
-	print_ruler
-
-	# echo RUSTDOCFLAGS="-C instrument-coverage -Z unstable-options --persist-doctests target/debug/doctestbins"
-	# export RUSTDOCFLAGS="-C instrument-coverage -Z unstable-options --persist-doctests target/debug/doctestbins"
-	echo RUSTDOCFLAGS="\"-C instrument-coverage\""
-	export RUSTDOCFLAGS="-C instrument-coverage"
-
-	print_ruler
-
-	# https://doc.rust-lang.org/cargo/commands/cargo-test.html
-
-	echo Running: cargo test
-	time cargo test
-
-	print_ruler
-
-	# https://doc.rust-lang.org/rustc/instrument-coverage.html
-
-	echo Running: llvm-profdata-14 merge -sparse default_*.profraw -o json5format.profdata
-	time llvm-profdata-14 merge -sparse default_*.profraw -o json5format.profdata
-
-	print_ruler
-
-	# shellcheck disable=SC2046
-	echo llvm-cov-14 report \
-		$(
-			for file in \
-				$(
-					RUSTFLAGS="-C instrument-coverage" \
-						RUSTDOCFLAGS="-C instrument-coverage -Z unstable-options --persist-doctests target/debug/doctestbins" \
-						cargo test --no-run --message-format=json |
-						jq -r "select(.profile.test == true) | .filenames[]" |
-						grep -v dSYM -
-				) \
-				target/debug/doctestbins/*/rust_out; do
-				[[ -x $file ]] && printf "%s %s " -object "${file}"
-			done
-		) \
-		--instr-profile=json5format.profdata --summary-only
-
-	# shellcheck disable=SC2046,SC2086
-	time llvm-cov-14 report \
-		$(
-			for file in \
-				$(
-					RUSTFLAGS="-C instrument-coverage" \
-						RUSTDOCFLAGS="-C instrument-coverage -Z unstable-options --persist-doctests target/debug/doctestbins" \
-						cargo test --no-run --message-format=json |
-						jq -r "select(.profile.test == true) | .filenames[]" |
-						grep -v dSYM -
-				) \
-				target/debug/doctestbins/*/rust_out; do
-				[[ -x $file ]] && printf "%s %s " -object "${file}"
-			done
-		) \
-		--instr-profile=json5format.profdata --summary-only
-
-	print_ruler
-
-	echo unset RUSTFLAGS
-	unset RUSTFLAGS
-
-	print_ruler
-
-	echo unset RUSTDOCFLAGS
-	unset RUSTDOCFLAGS
-
+	echo Running: ../../.github/citools/rust/rust-test-with-llvm-coverage
+	time ../../.github/citools/rust/rust-test-with-llvm-coverage
 	print_ruler
 
 	# go install github.com/client9/misspell/cmd/misspell@latest

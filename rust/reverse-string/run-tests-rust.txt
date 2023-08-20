@@ -6,33 +6,33 @@ Running automated test file(s):
 Running: cargo check --release
     Checking unicode-segmentation v1.10.1
     Checking reverse_string v1.2.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/reverse-string)
-    Finished release [optimized] target(s) in 0.20s
+    Finished release [optimized] target(s) in 0.14s
 
-real	0m0.218s
-user	0m0.164s
-sys	0m0.053s
+real	0m0.151s
+user	0m0.026s
+sys	0m0.033s
 
 ===============================================================================
 
 Running: cargo clippy --release
     Checking reverse_string v1.2.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/reverse-string)
-    Finished release [optimized] target(s) in 0.06s
+    Finished release [optimized] target(s) in 0.07s
 
-real	0m0.080s
-user	0m0.045s
-sys	0m0.034s
+real	0m0.102s
+user	0m0.043s
+sys	0m0.060s
 
 ===============================================================================
 
 Running: cargo audit
 [0m[0m[1m[32m    Fetching[0m advisory database from `https://github.com/RustSec/advisory-db.git`
-[0m[0m[1m[32m      Loaded[0m 537 security advisories (from /home/vpayno/.cargo/advisory-db)
+[0m[0m[1m[32m      Loaded[0m 559 security advisories (from /home/vpayno/.cargo/advisory-db)
 [0m[0m[1m[32m    Updating[0m crates.io index
 [0m[0m[1m[32m    Scanning[0m Cargo.lock for vulnerabilities (2 crate dependencies)
 
-real	1m21.721s
-user	1m7.681s
-sys	0m6.380s
+real	0m1.700s
+user	0m0.522s
+sys	0m0.462s
 
 ===============================================================================
 
@@ -40,74 +40,35 @@ rm -fv ./*.profraw ./*.profdata
 
 ===============================================================================
 
-Running: cargo tarpaulin --release --timeout=300
-[2mMar 30 23:06:51.273[0m [32m INFO[0m cargo_tarpaulin::config: Creating config
-[2mMar 30 23:06:51.310[0m [32m INFO[0m cargo_tarpaulin: Running Tarpaulin
-[2mMar 30 23:06:51.310[0m [32m INFO[0m cargo_tarpaulin: Building project
-[2mMar 30 23:06:51.310[0m [32m INFO[0m cargo_tarpaulin::cargo: Cleaning project
-   Compiling unicode-segmentation v1.10.1
-   Compiling reverse_string v1.2.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/reverse-string)
-    Finished release [optimized] target(s) in 0.78s
-[2mMar 30 23:06:52.132[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
-[2mMar 30 23:06:52.132[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/reverse-string/target/release/deps/reverse_string-702e9c3d5dbc2561
+Running: ../../.github/citools/rust/rust-test-with-tarpaulin
 
-running 0 tests
+Running Rust Tests With Tarpaulin
 
-test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+Running: cargo clean
 
-[2mMar 30 23:06:52.644[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
-[2mMar 30 23:06:52.644[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/reverse-string/target/release/deps/reverse_string-3e26356be57bea35
-
-running 8 tests
-test test_wide_characters ... ok
-test test_an_empty_string ... ok
-test test_a_word ... ok
-test test_a_sentence_with_punctuation ... ok
-test test_a_palindrome ... ok
-test test_grapheme_clusters ... ok
-test test_an_even_sized_word ... ok
-test test_a_capitalized_word ... ok
-
-test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
-
-[2mMar 30 23:06:53.214[0m [32m INFO[0m cargo_tarpaulin::report: Coverage Results:
-|| Uncovered Lines:
-|| Tested/Total Lines:
-|| src/lib.rs: 1/1
-|| 
-100.00% coverage, 1/1 lines covered
-
-real	0m1.966s
-user	0m2.370s
-sys	0m1.404s
-
-===============================================================================
-
-RUSTFLAGS="-C instrument-coverage"
-
-===============================================================================
-
-RUSTDOCFLAGS="-C instrument-coverage"
+real	0m0.022s
+user	0m0.013s
+sys	0m0.008s
 
 ===============================================================================
 
 Running: cargo test
    Compiling unicode-segmentation v1.10.1
    Compiling reverse_string v1.2.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/reverse-string)
-    Finished test [unoptimized + debuginfo] target(s) in 0.52s
-     Running unittests src/lib.rs (target/debug/deps/reverse_string-16f057c06472051f)
+    Finished test [unoptimized + debuginfo] target(s) in 0.40s
+     Running unittests src/lib.rs (target/debug/deps/reverse_string-fed23cbea342359c)
 
 running 0 tests
 
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
-     Running tests/reverse-string.rs (target/debug/deps/reverse_string-3730119106ec11e2)
+     Running tests/reverse-string.rs (target/debug/deps/reverse_string-d2e2833de6c87028)
 
 running 8 tests
-test test_a_capitalized_word ... ok
 test test_a_palindrome ... ok
-test test_an_empty_string ... ok
+test test_a_capitalized_word ... ok
 test test_a_word ... ok
+test test_an_empty_string ... ok
 test test_a_sentence_with_punctuation ... ok
 test test_an_even_sized_word ... ok
 test test_grapheme_clusters ... ok
@@ -122,22 +83,130 @@ running 0 tests
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
 
-real	0m0.552s
-user	0m0.812s
-sys	0m0.266s
+real	0m0.431s
+user	0m0.516s
+sys	0m0.261s
 
 ===============================================================================
 
-Running: llvm-profdata-14 merge -sparse default_18219906901601599725_0_18317.profraw default_5651679599584562318_0_18318.profraw -o json5format.profdata
+Running: cargo tarpaulin --release --timeout=300
+[2mAug 19 23:49:39.933[0m [32m INFO[0m cargo_tarpaulin::config: Creating config
+[2mAug 19 23:49:39.941[0m [32m INFO[0m cargo_tarpaulin: Running Tarpaulin
+[2mAug 19 23:49:39.941[0m [32m INFO[0m cargo_tarpaulin: Building project
+[2mAug 19 23:49:39.941[0m [32m INFO[0m cargo_tarpaulin::cargo: Cleaning project
+   Compiling unicode-segmentation v1.10.1
+   Compiling reverse_string v1.2.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/reverse-string)
+    Finished release [optimized] target(s) in 0.38s
+[2mAug 19 23:49:40.363[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
+[2mAug 19 23:49:40.363[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/reverse-string/target/release/deps/reverse_string-baad38974703ba22
 
-real	0m0.194s
-user	0m0.008s
-sys	0m0.026s
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+[2mAug 19 23:49:40.886[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
+[2mAug 19 23:49:40.886[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/reverse-string/target/release/deps/reverse_string-2200f1d7a986971b
+
+running 8 tests
+test test_wide_characters ... ok
+test test_an_empty_string ... ok
+test test_a_word ... ok
+test test_a_sentence_with_punctuation ... ok
+test test_a_palindrome ... ok
+test test_grapheme_clusters ... ok
+test test_an_even_sized_word ... ok
+test test_a_capitalized_word ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+[2mAug 19 23:49:41.399[0m [32m INFO[0m cargo_tarpaulin::report: Coverage Results:
+|| Uncovered Lines:
+|| Tested/Total Lines:
+|| src/lib.rs: 1/1
+|| 
+100.00% coverage, 1/1 lines covered
+
+real	0m1.481s
+user	0m0.754s
+sys	0m1.149s
 
 ===============================================================================
 
-    Finished test [unoptimized + debuginfo] target(s) in 0.00s
-llvm-cov-14 report -object /home/vpayno/git_vpayno/exercism-workspace/rust/reverse-string/target/debug/deps/reverse_string-3730119106ec11e2 -object /home/vpayno/git_vpayno/exercism-workspace/rust/reverse-string/target/debug/deps/reverse_string-16f057c06472051f --instr-profile=json5format.profdata --summary-only
+
+real	0m1.935s
+user	0m1.285s
+sys	0m1.418s
+
+===============================================================================
+
+Running: ../../.github/citools/rust/rust-test-with-llvm-coverage
+
+Running Rust Tests With LLVM Coverage
+
+Running: cargo clean
+
+real	0m0.018s
+user	0m0.007s
+sys	0m0.010s
+
+===============================================================================
+
+rm -fv ./*.profraw ./*.profdata
+
+===============================================================================
+
+RUSTFLAGS="-C instrument-coverage"
+RUSTDOCFLAGS="-C instrument-coverage"
+
+===============================================================================
+
+Running: cargo test
+   Compiling unicode-segmentation v1.10.1
+   Compiling reverse_string v1.2.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/reverse-string)
+    Finished test [unoptimized + debuginfo] target(s) in 0.44s
+     Running unittests src/lib.rs (target/debug/deps/reverse_string-fed23cbea342359c)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/reverse-string.rs (target/debug/deps/reverse_string-d2e2833de6c87028)
+
+running 8 tests
+test test_a_capitalized_word ... ok
+test test_a_sentence_with_punctuation ... ok
+test test_a_palindrome ... ok
+test test_a_word ... ok
+test test_an_even_sized_word ... ok
+test test_an_empty_string ... ok
+test test_grapheme_clusters ... ok
+test test_wide_characters ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests reverse_string
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+real	0m0.480s
+user	0m0.558s
+sys	0m0.262s
+
+===============================================================================
+
+Running: llvm-profdata-16 merge -sparse default_17887226713058026716_0_13233.profraw default_3101133711743962677_0_13232.profraw -o json5format.profdata
+
+real	0m0.017s
+user	0m0.007s
+sys	0m0.009s
+
+===============================================================================
+
+llvm-cov-16 report     Finished test [unoptimized + debuginfo] target(s) in 0.00s
+-object /home/vpayno/git_vpayno/exercism-workspace/rust/reverse-string/target/debug/deps/reverse_string-d2e2833de6c87028 -object /home/vpayno/git_vpayno/exercism-workspace/rust/reverse-string/target/debug/deps/reverse_string-fed23cbea342359c  --instr-profile=json5format.profdata --summary-only
     Finished test [unoptimized + debuginfo] target(s) in 0.00s
 Filename                                                                                             Regions    Missed Regions     Cover   Functions  Missed Functions  Executed       Lines      Missed Lines     Cover    Branches   Missed Branches     Cover
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -145,43 +214,57 @@ Filename                                                                        
 .cargo/registry/src/index.crates.io-6f17d22bba15001f/unicode-segmentation-1.10.1/src/lib.rs                9                 8    11.11%           9                 8    11.11%          27                24    11.11%           0                 0         -
 .cargo/registry/src/index.crates.io-6f17d22bba15001f/unicode-segmentation-1.10.1/src/sentence.rs          91                91     0.00%          21                21     0.00%         109               109     0.00%           0                 0         -
 .cargo/registry/src/index.crates.io-6f17d22bba15001f/unicode-segmentation-1.10.1/src/tables.rs           127               109    14.17%          39                34    12.82%         196               157    19.90%           0                 0         -
-.cargo/registry/src/index.crates.io-6f17d22bba15001f/unicode-segmentation-1.10.1/src/word.rs             297               297     0.00%          38                38     0.00%         433               433     0.00%           0                 0         -
-git_vpayno/exercism-workspace/rust/reverse-string/src/lib.rs                                               2                 0   100.00%           2                 0   100.00%           6                 0   100.00%           0                 0         -
-git_vpayno/exercism-workspace/rust/reverse-string/tests/reverse-string.rs                                 19                 0   100.00%          18                 0   100.00%          36                 0   100.00%           0                 0         -
+.cargo/registry/src/index.crates.io-6f17d22bba15001f/unicode-segmentation-1.10.1/src/word.rs             290               290     0.00%          34                34     0.00%         426               426     0.00%           0                 0         -
+git_vpayno/exercism-workspace/rust/reverse-string/src/lib.rs                                               1                 0   100.00%           1                 0   100.00%           5                 0   100.00%           0                 0         -
+git_vpayno/exercism-workspace/rust/reverse-string/tests/reverse-string.rs                                 18                 0   100.00%          17                 0   100.00%          35                 0   100.00%           0                 0         -
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-TOTAL                                                                                                    784               678    13.52%         165               128    22.42%        1167               958    17.91%           0                 0         -
+TOTAL                                                                                                    775               671    13.42%         159               124    22.01%        1158               951    17.88%           0                 0         -
 
-real	0m0.040s
-user	0m0.034s
+real	0m0.041s
+user	0m0.038s
 sys	0m0.014s
 
 ===============================================================================
 
-unset RUSTFLAGS
+rm -fv ./default_17887226713058026716_0_13233.profraw ./default_3101133711743962677_0_13232.profraw ./json5format.profdata
+removed './default_17887226713058026716_0_13233.profraw'
+removed './default_3101133711743962677_0_13232.profraw'
+removed './json5format.profdata'
 
 ===============================================================================
 
-unset RUSTDOCFLAGS
+
+real	0m0.580s
+user	0m0.638s
+sys	0m0.304s
 
 ===============================================================================
 
 Running: misspell .
 
-real	0m0.036s
-user	0m0.021s
-sys	0m0.024s
+real	0m0.022s
+user	0m0.026s
+sys	0m0.011s
 
 ===============================================================================
 
 Running: cargo doc
- Documenting unicode-segmentation v1.10.1
     Checking unicode-segmentation v1.10.1
+ Documenting unicode-segmentation v1.10.1
  Documenting reverse_string v1.2.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/reverse-string)
-    Finished dev [unoptimized + debuginfo] target(s) in 0.47s
+    Finished dev [unoptimized + debuginfo] target(s) in 0.41s
 
-real	0m0.475s
-user	0m0.553s
-sys	0m0.107s
+real	0m0.415s
+user	0m0.333s
+sys	0m0.094s
+
+===============================================================================
+
+Running: cargo clean
+
+real	0m0.015s
+user	0m0.004s
+sys	0m0.011s
 
 ===============================================================================
 

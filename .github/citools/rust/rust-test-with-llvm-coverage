@@ -1,0 +1,80 @@
+#!/bin/bash
+
+print_ruler() {
+	printf "\n"
+	printf "=%.0s" {1..79}
+	printf "\n"
+	printf "\n"
+} # print_ruler()
+
+printf "\nRunning Rust Tests With LLVM Coverage\n\n"
+
+echo Running: cargo clean
+time cargo clean
+
+print_ruler
+
+echo rm -fv ./*.profraw ./*.profdata
+rm -fv ./*.profraw ./*.profdata
+
+print_ruler
+
+echo RUSTFLAGS="\"-C instrument-coverage\""
+export RUSTFLAGS="-C instrument-coverage"
+
+echo RUSTDOCFLAGS="\"-C instrument-coverage\""
+export RUSTDOCFLAGS="-C instrument-coverage"
+
+print_ruler
+
+# https://doc.rust-lang.org/cargo/commands/cargo-test.html
+
+echo Running: cargo test
+time cargo test
+
+print_ruler
+
+# https://doc.rust-lang.org/rustc/instrument-coverage.html
+
+echo Running: llvm-profdata-16 merge -sparse default_*.profraw -o json5format.profdata
+time llvm-profdata-16 merge -sparse default_*.profraw -o json5format.profdata
+
+print_ruler
+
+printf "llvm-cov-16 report "
+for file in \
+	$(
+		RUSTFLAGS="-C instrument-coverage" \
+			RUSTDOCFLAGS="-C instrument-coverage -Z unstable-options --persist-doctests target/debug/doctestbins" \
+			cargo test --no-run --message-format=json |
+			jq -r "select(.profile.test == true) | .filenames[]" |
+			grep -v dSYM -
+	) \
+	target/debug/doctestbins/*/rust_out; do
+	[[ -x $file ]] && printf "%s %s " -object "${file}"
+done
+printf " --instr-profile=json5format.profdata --summary-only\n"
+
+# shellcheck disable=SC2046,SC2086
+time llvm-cov-17 report \
+	$(
+		for file in \
+			$(
+				RUSTFLAGS="-C instrument-coverage" \
+					RUSTDOCFLAGS="-C instrument-coverage -Z unstable-options --persist-doctests target/debug/doctestbins" \
+					cargo test --no-run --message-format=json |
+					jq -r "select(.profile.test == true) | .filenames[]" |
+					grep -v dSYM -
+			) \
+			target/debug/doctestbins/*/rust_out; do
+			[[ -x $file ]] && printf "%s %s " -object "${file}"
+		done
+	) \
+	--instr-profile=json5format.profdata --summary-only
+
+print_ruler
+
+echo rm -fv ./*.profraw ./*.profdata
+rm -fv ./*.profraw ./*.profdata
+
+print_ruler

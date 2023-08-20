@@ -1,0 +1,32 @@
+#!/bin/bash
+
+print_ruler() {
+	printf "\n"
+	printf "=%.0s" {1..79}
+	printf "\n"
+	printf "\n"
+} # print_ruler()
+
+printf "\nRunning Rust Tests With Tarpaulin\n\n"
+
+echo Running: cargo clean
+time cargo clean
+
+print_ruler
+
+# https://doc.rust-lang.org/cargo/commands/cargo-test.html
+
+echo Running: cargo test
+time cargo test
+
+print_ruler
+
+# https://github.com/xd009642/tarpaulin
+
+# don't use --verbose, it exposes environment variables
+# echo Running: cargo tarpaulin --release --timeout=300 --bins --verbose
+# time cargo tarpaulin --release --timeout=300 --bins --verbose
+echo Running: cargo tarpaulin --release --timeout=300
+time cargo tarpaulin --release --timeout=300
+
+print_ruler
