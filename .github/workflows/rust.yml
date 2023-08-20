@@ -53,6 +53,7 @@ jobs:
           if printf "%s\n" "${GIT_DIFF}" | grep -E '^(rust/.*[.]rs|rust/.*/Cargo[.]toml)$'; then
             HAS_EX_DIFF=true
           fi
+          printf "\n"
           printf "=== Did WF/CI change without exercise changes? ===\n"
           CI_FORCE_FULL=false
           if ${HAS_WF_DIFF} && ! ${HAS_EX_DIFF}; then
@@ -162,29 +163,44 @@ jobs:
     runs-on: "${{ matrix.os }}"
     container:
       image: vpayno/ci-generic-debian:latest
+    env:
+      CARGO_REGISTRIES_CRATES_IO_PROTOCOL: sparse
+      RUSTC_WRAPPER: sccache
     needs: [stage1]
     if: needs.stage1.outputs.docs_changed == 'True'
     steps:
       - name: Checkout Repo [${{ matrix.exercise }}]
         id: checkout-repo
         uses: actions/checkout@v3
-      - name: Set up Rust Toolchain ${{ matrix.rust-version }} [${{ matrix.exercise }}]
-        id: setup-rust-toolchain
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: ${{ matrix.rust-version }}
-      - name: Set up Rust Cargo ${{ matrix.rust-version }}
-        id: setup-rust-cargo
-        uses: actions-rs/cargo@v1
-        with:
-          command: version
-          args: --verbose
+      - name: Set Rust Paths
+        id: rust-path-setup
+        run: |
+          printf "Running as: "
+          id
+          printf "\n"
+          # printf "%s\n" "/root/.rustup/toolchains/stable-$(arch)-unknown-linux-gnu/bin" | tee -a "${GITHUB_PATH}"
+          printf "%s\n" "/root/.cargo/bin" | tee -a "${GITHUB_PATH}"
+          printf "\n"
+          find /root -type f -name rustc
+          find /root -type f -name cargo
+          find /root -type f -name rustup
       - name: Show Rust version
         id: rust-version
         run: |
+          printf "%s=%s\n" "PATH" "${PATH}"
+          printf "\n"
+          printf "%s=%s\n" "CARGO_REGISTRIES_CRATES_IO_PROTOCOL" "${CARGO_REGISTRIES_CRATES_IO_PROTOCOL}" "RUSTC_WRAPPER" "${RUSTC_WRAPPER}"
+          printf "\n"
+          rustup default stable
+          printf "\n"
           rustc --version
           printf "\n"
           cargo version
+          printf "\n"
+          rustup component list
+          printf "\n"
+          cargo install --list
+          printf "\n"
       - name: Install Rust Tools
         id: install-rust-tools
         run: |
