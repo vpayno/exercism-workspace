@@ -90,7 +90,7 @@ jobs:
           jq --sort-keys . >/tmp/exercises.json <<EOF
             [ ${entries} ]
           EOF
-          exercise_count="$(jq '.[] | length' /tmp/exercises.json)"
+          exercise_count="$(jq '. | length' /tmp/exercises.json)"
           printf "%s=%s\n" "exercise_count" "${exercise_count}" | tee -a "${GITHUB_OUTPUT}"
           matrix_exercise="$(jq --compact-output --sort-keys . /tmp/exercises.json)"
           printf "%s=%s\n" "matrix_exercise" "${matrix_exercise}" | tee -a "${GITHUB_OUTPUT}"
