@@ -45,9 +45,24 @@ jobs:
             printf "%s\n" "${GIT_DIFF}"
             printf "\`\`\`\n"
           } | tee -a "${GITHUB_STEP_SUMMARY}"
+          HAS_WF_DIFF=false
+          HAS_EX_DIFF=false
+          if printf "%s\n" "${GIT_DIFF}" | grep -E '^(.github/workflows/rust.yml|.github/citools/rust/)$'; then
+            HAS_WF_DIFF=true
+          fi
+          if printf "%s\n" "${GIT_DIFF}" | grep -E '^(rust/.*[.]rs|rust/.*/Cargo[.]toml)$'; then
+            HAS_EX_DIFF=true
+          fi
+          printf "=== Did WF/CI change without exercise changes? ===\n"
+          CI_FORCE_FULL=false
+          if ${HAS_WF_DIFF} && ! ${HAS_EX_DIFF}; then
+            CI_FORCE_FULL=true
+            printf "%s\n" "${CI_FORCE_FULL}"
+          fi
+          printf "\n"
 
           # Get changed exercise list.
-          if [[ ${GITHUB_EVENT_NAME} == pull_request ]]; then
+          if [[ ${GITHUB_EVENT_NAME} == pull_request && ! ${CI_FORCE_FULL} ]]; then
             printf "Generating pull request changed exercise list.\n"
             grep -E '^rust/[-a-z0-9]+./.*$' /tmp/changed_files.txt | cut -f1,2 -d/ | sort -Vu | tee /tmp/exercises.txt
           else
@@ -62,6 +77,7 @@ jobs:
           printf "=== Which Rust files changed? ===\n"
           if printf "%s\n" "${GIT_DIFF}" | grep -E '^(rust/.*[.]rs|rust/.*/Cargo[.]toml|.github/workflows/rust.yml|.github/citools/rust/)$'; then
             HAS_DIFF=true
+            printf "%s\n" "${HAS_DIFF}"
           fi
           printf "\n"
 
