@@ -123,38 +123,12 @@ jobs:
         id: cargo-tarpaulin
         run: |
           cd ./rust
-          # don't use --verbose, it exposes environment variables
-          # ./for_each cargo tarpaulin --release --timeout=300 --bins
-          ./for_each cargo tarpaulin --release --timeout=300
-      - name: Clean up before test run with llvm coverage
-        id: cargo-test-clean-up
-        run: |
-          cd ./rust
-          ./for_each cargo clean
-          find . -type f -name '*.profraw' -delete -print
-          find . -type f -name '*.profdata' -delete -print
+          ./for_each ../../.github/citools/rust/rust-test-with-tarpaulin
       - name: Testing with cargo test coverage
         id: cargo-test-coverage
         run: |
           cd ./rust
-          export RUSTFLAGS="-C instrument-coverage"
-          export RUSTDOCFLAGS="-C instrument-coverage"
-
-          # ./for_each cargo test --release
-          ./for_each cargo test
-          printf "#!/bin/bash\n\n" > ./llvm-cov-14-merge
-          echo 'llvm-profdata-14 merge -sparse default_*.profraw -o json5format.profdata' >> ./llvm-cov-14-merge
-          chmod -v a+x ./llvm-cov-14-merge
-          ./for_each ../llvm-cov-14-merge
-
-          # shellcheck disable=SC2046
-          printf "#!/bin/bash\n\n" > ./llvm-cov-14-report
-          # shellcheck disable=SC2016
-          echo 'llvm-cov-14 report $(for file in $(cargo test --tests --no-run --message-format=json | jq -r "select(.profile.test == true) | .filenames[]" | grep -v dSYM - ); do printf "%s %s " -object "${file}"; done) --instr-profile=json5format.profdata --summary-only' >> ./llvm-cov-14-report
-          chmod -v a+x ./llvm-cov-14-report
-          ./for_each ../llvm-cov-14-report
-          unset RUSTFLAGS
-          unset RUSTDOCFLAGS
+          ./for_each ../../.github/citools/rust/rust-test-with-llvm-coverage
       - name: Testing with cargo audit
         id: cargo-audit
         run: |-
