@@ -174,7 +174,7 @@ jobs:
       - name: Checkout Repo [${{ matrix.exercise }}]
         id: checkout-repo
         uses: actions/checkout@v3
-      - name: Set Rust Paths
+      - name: Set Rust Paths [${{ matrix.exercise }}]
         id: rust-path-setup
         run: |
           printf "Running as: "
@@ -186,7 +186,7 @@ jobs:
           find /root -type f -name rustc
           find /root -type f -name cargo
           find /root -type f -name rustup
-      - name: Show Rust version
+      - name: Show Rust version [${{ matrix.exercise }}]
         id: rust-version
         run: |
           printf "%s=%s\n" "PATH" "${PATH}"
@@ -203,7 +203,7 @@ jobs:
           printf "\n"
           cargo install --list
           printf "\n"
-      - name: Install Rust Tools
+      - name: Install Rust Tools [${{ matrix.exercise }}]
         id: install-rust-tools
         if: ${{ env.SETUP_RUST == 'true' }}
         run: |
@@ -225,13 +225,13 @@ jobs:
           # sudo apt install -y libllvm-16-ocaml-dev libllvm16 llvm-16 llvm-16-dev llvm-16-doc llvm-16-examples llvm-16-runtime
           sudo apt install -y libssl-dev lcov make
           rustup component add clippy
-      - name: Install Rust Tools - Tarpaulin
+      - name: Install Rust Tools - Tarpaulin [${{ matrix.exercise }}]
         id: install-rust-tools-tarpaulin
         if: ${{ env.ENABLE_TARPAULIN == 'true' }}
         run: |
           printf "env.ENABLE_TARPAULIN: [%s]\n" "${{ env.ENABLE_TARPAULIN }}"
           cargo install grcov cargo-kcov cargo-tarpaulin
-      - name: CD to Rust Dir
+      - name: CD to Rust Dir [${{ matrix.exercise }}]
         id: cd-to-rust-dir
         run: |
           pwd
@@ -239,7 +239,7 @@ jobs:
           cd "./${{ matrix.exercise }}"
           pwd
           ls
-      - name: Analysing the code with cargo check
+      - name: Analysing the code with cargo check [${{ matrix.exercise }}]
         id: cargo-check
         run: |
           pwd
@@ -247,7 +247,7 @@ jobs:
           pwd
           ls
           ../../.github/citools/rust/rust-lint-check --release | tee -a "${GITHUB_STEP_SUMMARY}"
-      - name: Analysing the code with cargo clippy
+      - name: Analysing the code with cargo clippy [${{ matrix.exercise }}]
         id: cargo-clippy
         run: |
           pwd
@@ -255,7 +255,7 @@ jobs:
           pwd
           ls
           ../../.github/citools/rust/rust-lint-clippy --release | tee -a "${GITHUB_STEP_SUMMARY}"
-      - name: Testing with cargo tarpaulin
+      - name: Testing with cargo tarpaulin [${{ matrix.exercise }}]
         id: cargo-tarpaulin
         if: ${{ env.ENABLE_TARPAULIN == 'true' }}
         run: |
@@ -266,7 +266,7 @@ jobs:
           # disabling, using my container I get: Failed to run tests: ASLR disable failed: EPERM: Operation not permitted
           # https://github.com/xd009642/tarpaulin/issues/146
           ../../.github/citools/rust/rust-test-with-tarpaulin | tee -a "${GITHUB_STEP_SUMMARY}"
-      - name: Testing with cargo test coverage
+      - name: Testing with cargo test coverage [${{ matrix.exercise }}]
         id: cargo-test-coverage
         run: |
           pwd
@@ -274,7 +274,7 @@ jobs:
           pwd
           ls
           ../../.github/citools/rust/rust-test-with-llvm-coverage | tee -a "${GITHUB_STEP_SUMMARY}"
-      - name: Testing with cargo audit
+      - name: Testing with cargo audit [${{ matrix.exercise }}]
         id: cargo-audit
         run: |-
           pwd
