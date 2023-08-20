@@ -12,14 +12,20 @@ PACKAGES=(
 	npm
 )
 
+declare -a MODULES
+MODULES=(
+	json2yaml
+	yarn
+)
+
 apt update
 
 echo apt install -y "${PACKAGES[@]}"
 apt install -y "${PACKAGES[@]}" || exit
 printf "\n"
 
-echo npm install --global yarn
-npm install --global yarn || exit
+echo npm install --global "${MODULES[@]}"
+npm install --global "${MODULES[@]}" || exit
 printf "\n"
 
 layer_end "$@"
