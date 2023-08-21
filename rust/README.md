@@ -4,35 +4,22 @@
 
 [My Profile](https://exercism.org/profiles/vpayno)
 
-
 ## Tools
 
 - [for_each](./for_each)
 - [run-tests](./run-tests)
 - [update_readmes](./update_readmes)
 
+## [Concepts](https://exercism.org/tracks/rust/concepts)
+
+- [lucians-luscious-lasagna](./lucians-luscious-lasagna/README.md)
+- [assembly-line](./assembly-line/README.md)
+- [semi-structured-logs](./semi-structured-logs/README.md)
+- [short-fibonacci](./short-fibonacci/README.md)
+- [health-statistics](./health-statistics/README.md)
 
 ## [Exercises](https://exercism.org/tracks/rust/exercises)
 
 - [hello-world](./hello-world/README.md)
-
-## [Concepts](https://exercism.org/tracks/rust/concepts)
-
-### [Functions](https://exercism.org/tracks/rust/concepts/functions)
-
-- [lucians-luscious-lasagna](./lucians-luscious-lasagna/README.md)
-
-### [Floating Point Numbers](https://exercism.org/tracks/rust/concepts/floating-point-numbers)
-
-- [assembly-line](./assembly-line/README.md)
-
-### [Enum Basics](https://exercism.org/tracks/rust/concepts/enums)
-
-- [semi-structured-logs](./semi-structured-logs/README.md)
-
-### [vec! macro](https://exercism.org/tracks/rust/concepts/vec-macro)
-
-- [short-fibonacci](./short-fibonacci/README.md)
-- [health-statistics](./health-statistics/README.md)
 - [reverse-string](./reverse-string/README.md)
 - [space-age](./space-age/README.md)
