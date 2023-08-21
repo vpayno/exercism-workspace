@@ -67,3 +67,14 @@ Some Rust topics you may want to read about while solving this problem:
 ### Based on
 
 Partially inspired by Chapter 1 in Chris Pine's online Learn to Program tutorial. - http://pine.fm/LearnToProgram/?Chapter=01
+
+### My Solution
+
+- [my solution](./src/lib.rs)
+- [run-tests](./run-tests-rust.txt)
+
+
+### My Solution
+
+- [my solution](./src/lib.rs)
+- [run-tests](./run-tests-rust.txt)
