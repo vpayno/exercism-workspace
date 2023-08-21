@@ -10,11 +10,11 @@ fi
 declare package_name
 declare project_dir
 
-get_dart_package_name() {
-	awk '/^package / { print $NF }' ./*.dart | head -n 1
-} # get_dart_package_name()
+get_rust_package_name() {
+	toml get Cargo.toml package | jq -r .name
+} # get_rust_package_name()
 
-package_name="$(get_dart_package_name)"
+package_name="$(get_rust_package_name)"
 project_dir="$(basename "${PWD}")"
 
 if ! grep -q ./"${project_dir}"/README.md ../README.md; then
@@ -48,6 +48,6 @@ git diff --cached ../README.md ./README.md
 printf "\n"
 
 sed -r -i -e '/#\[ignore\]/d' ./tests/*.rs
-git add !$
+git add ./tests/*.rs
 git diff --cached ./tests/*.rs
 printf "\n"
