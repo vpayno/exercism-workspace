@@ -7,6 +7,13 @@ print_ruler() {
 	printf "\n"
 } # print_ruler()
 
+get_rust_package_name() {
+	toml get Cargo.toml package | jq -r .name
+} # get_rust_package_name()
+
+declare PACKAGE_NAME
+PACKAGE_NAME="$(get_rust_package_name)"
+
 printf "\nRunning Rust Tests With LLVM Coverage\n\n"
 
 echo Running: cargo clean
@@ -36,8 +43,8 @@ print_ruler
 
 # https://doc.rust-lang.org/rustc/instrument-coverage.html
 
-echo Running: llvm-profdata-16 merge -sparse default_*.profraw -o json5format.profdata
-time llvm-profdata-16 merge -sparse default_*.profraw -o json5format.profdata
+echo Running: llvm-profdata-16 merge -sparse default_*.profraw -o "${PACKAGE_NAME}.profdata"
+time llvm-profdata-16 merge -sparse default_*.profraw -o "${PACKAGE_NAME}.profdata"
 
 print_ruler
 
@@ -53,7 +60,7 @@ for file in \
 	target/debug/doctestbins/*/rust_out; do
 	[[ -x $file ]] && printf "%s %s " -object "${file}"
 done
-printf " --instr-profile=json5format.profdata --summary-only\n"
+printf " --instr-profile=%s.profdata --summary-only\n" "${PACKAGE_NAME}"
 
 # shellcheck disable=SC2046,SC2086
 time llvm-cov-16 report \
@@ -70,7 +77,7 @@ time llvm-cov-16 report \
 			[[ -x $file ]] && printf "%s %s " -object "${file}"
 		done
 	) \
-	--instr-profile=json5format.profdata --summary-only
+	--instr-profile="${PACKAGE_NAME}".profdata --summary-only
 
 print_ruler
 
