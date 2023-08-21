@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.007s
-user	0m0.003s
-sys	0m0.005s
+real	0m0.010s
+user	0m0.004s
+sys	0m0.006s
 
 ===============================================================================
 
@@ -55,12 +55,16 @@ make[1]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/space
 
 === All Tests Passed ===
 
-find . -regextype posix-egrep -regex "^.*(tests-main|CompilerId).*[.](gcda|gcno)$" -print -delete
+find . -regextype posix-egrep -regex '^.*(tests-main|CompilerId).*[.](gcda|gcno)$' -print -delete
 ./build/CMakeFiles/3.22.2/CompilerIdCXX/CMakeCXXCompilerId.gcno
 ./build/CMakeFiles/space-age.dir/test/tests-main.cpp.gcno
 ./build/CMakeFiles/space-age.dir/test/tests-main.cpp.gcda
 
-find . -regextype posix-egrep -regex "^.*[.](gcda|gcno)30179"
+find . -regextype posix-egrep -regex '^.*[.](gcda|gcno)$'
+./build/CMakeFiles/space-age.dir/space_age_test.cpp.gcno
+./build/CMakeFiles/space-age.dir/space_age.cpp.gcno
+./build/CMakeFiles/space-age.dir/space_age.cpp.gcda
+./build/CMakeFiles/space-age.dir/space_age_test.cpp.gcda
 
 gcovr --print-summary
 ------------------------------------------------------------------------------
@@ -79,9 +83,9 @@ TOTAL                                         98      93    94%
 lines: 94.9% (93 out of 98)
 branches: 41.0% (155 out of 378)
 
-real	0m9.759s
-user	0m9.044s
-sys	0m0.710s
+real	0m9.950s
+user	0m9.045s
+sys	0m0.857s
 
 ===============================================================================
 
@@ -89,9 +93,9 @@ cmake-format --in-place CMakeLists.txt
 WARNING config_util.py:307: The following configuration options were ignored:
   max_subargs_per_line
 
-real	0m0.164s
-user	0m0.120s
-sys	0m0.046s
+real	0m0.183s
+user	0m0.116s
+sys	0m0.058s
 
 ===============================================================================
 
@@ -111,50 +115,50 @@ found lint:
   Convention: 3
 
 
-real	0m0.166s
-user	0m0.117s
-sys	0m0.051s
+real	0m0.198s
+user	0m0.147s
+sys	0m0.052s
 
 ===============================================================================
 
 Running: clang-format-16 -style=file -i ./space_age.cpp ./space_age_test.cpp ./space_age.hpp
 
-real	0m0.019s
-user	0m0.008s
+real	0m0.027s
+user	0m0.016s
 sys	0m0.011s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./space_age.cpp ./space_age_test.cpp ./space_age.hpp
+Running: clang-check-16 --analyze ./space_age.cpp ./space_age_test.cpp ./space_age.hpp
 
-real	0m0.673s
-user	0m0.637s
-sys	0m0.036s
+real	0m0.703s
+user	0m0.662s
+sys	0m0.041s
 
 
-real	0m0.675s
-user	0m0.637s
-sys	0m0.038s
+real	0m0.706s
+user	0m0.663s
+sys	0m0.042s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
-14912 warnings generated.
-51952 warnings generated.
-66826 warnings generated.
-Suppressed 66831 warnings (66826 in non-user code, 5 NOLINT).
+14911 warnings generated.
+51950 warnings generated.
+66823 warnings generated.
+Suppressed 66828 warnings (66823 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 
-real	0m8.504s
-user	0m8.440s
-sys	0m0.063s
+real	0m8.994s
+user	0m8.907s
+sys	0m0.085s
 Running: clang-tidy-16 ./space_age.cpp ./space_age_test.cpp ./space_age.hpp
 
 
-real	0m8.506s
-user	0m8.442s
-sys	0m0.064s
+real	0m8.996s
+user	0m8.909s
+sys	0m0.086s
 
 ===============================================================================
 
