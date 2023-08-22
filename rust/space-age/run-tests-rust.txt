@@ -7,26 +7,26 @@ Running: ../../.github/citools/rust/rust-lint-check --release
 
 Running Rust Cargo CheckRunning: cargo clean
 
-real	0m0.011s
-user	0m0.007s
-sys	0m0.004s
+real	0m0.016s
+user	0m0.004s
+sys	0m0.012s
 
 ===============================================================================
 
 Running: cargo check --release
     Checking space-age v1.2.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/space-age)
-    Finished release [optimized] target(s) in 0.14s
+    Finished release [optimized] target(s) in 0.13s
 
-real	0m0.145s
-user	0m0.031s
-sys	0m0.042s
+real	0m0.142s
+user	0m0.021s
+sys	0m0.036s
 
 ===============================================================================
 
 
-real	0m0.157s
-user	0m0.038s
-sys	0m0.047s
+real	0m0.161s
+user	0m0.026s
+sys	0m0.049s
 
 ===============================================================================
 
@@ -35,25 +35,25 @@ Running: ../../.github/citools/rust/rust-lint-clippy --release
 Running Rust Cargo ClippyRunning: cargo clean
 
 real	0m0.009s
-user	0m0.005s
-sys	0m0.004s
+user	0m0.006s
+sys	0m0.003s
 
 ===============================================================================
 
 Running: cargo clippy --release
     Checking space-age v1.2.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/space-age)
-    Finished release [optimized] target(s) in 0.09s
+    Finished release [optimized] target(s) in 0.20s
 
-real	0m0.116s
+real	0m0.225s
 user	0m0.054s
-sys	0m0.061s
+sys	0m0.050s
 
 ===============================================================================
 
 
-real	0m0.127s
-user	0m0.059s
-sys	0m0.067s
+real	0m0.236s
+user	0m0.061s
+sys	0m0.054s
 
 ===============================================================================
 
@@ -61,9 +61,9 @@ Running: ../../.github/citools/rust/rust-lint-audit
 
 Running Rust Cargo AuditRunning: cargo clean
 
-real	0m0.025s
+real	0m0.021s
 user	0m0.008s
-sys	0m0.017s
+sys	0m0.013s
 
 ===============================================================================
 
@@ -73,22 +73,22 @@ Running: cargo audit
 [0m[0m[1m[32m    Updating[0m crates.io index
 [0m[0m[1m[32m    Scanning[0m Cargo.lock for vulnerabilities (1 crate dependencies)
 
-real	0m2.392s
-user	0m0.547s
-sys	0m0.443s
+real	0m5.842s
+user	0m2.360s
+sys	0m0.642s
 
 ===============================================================================
 
 
-real	0m2.419s
-user	0m0.555s
-sys	0m0.462s
+real	0m5.864s
+user	0m2.368s
+sys	0m0.656s
 
 ===============================================================================
 
-rm -fv ./default_10068033043742881761_0_25639.profraw ./default_16126169139420391786_0_25640.profraw ./space-age.profdata
-removed './default_10068033043742881761_0_25639.profraw'
-removed './default_16126169139420391786_0_25640.profraw'
+rm -fv ./default_10068033043742881761_0_31592.profraw ./default_16126169139420391786_0_31593.profraw ./space-age.profdata
+removed './default_10068033043742881761_0_31592.profraw'
+removed './default_16126169139420391786_0_31593.profraw'
 removed './space-age.profdata'
 
 ===============================================================================
@@ -99,9 +99,117 @@ Running Rust Tests With Tarpaulin
 
 Running: cargo clean
 
-real	0m0.021s
-user	0m0.013s
+real	0m0.020s
+user	0m0.012s
 sys	0m0.008s
+
+===============================================================================
+
+Running: cargo test
+   Compiling space-age v1.2.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/space-age)
+    Finished test [unoptimized + debuginfo] target(s) in 0.30s
+     Running unittests src/lib.rs (target/debug/deps/space_age-63215e0cc183491b)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/space-age.rs (target/debug/deps/space_age-30694871a8637b5e)
+
+running 8 tests
+test earth_age ... ok
+test jupiter_age ... ok
+test mars_age ... ok
+test mercury_age ... ok
+test saturn_age ... ok
+test uranus_age ... ok
+test venus_age ... ok
+test neptune_age ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests space-age
+
+running 1 test
+test src/lib.rs - generate_planet (line 41) ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.11s
+
+
+real	0m0.446s
+user	0m0.495s
+sys	0m0.241s
+
+===============================================================================
+
+Running: cargo tarpaulin --release --timeout=300
+[2mAug 21 20:51:23.855[0m [32m INFO[0m cargo_tarpaulin::config: Creating config
+[2mAug 21 20:51:23.863[0m [32m INFO[0m cargo_tarpaulin: Running Tarpaulin
+[2mAug 21 20:51:23.863[0m [32m INFO[0m cargo_tarpaulin: Building project
+[2mAug 21 20:51:23.863[0m [32m INFO[0m cargo_tarpaulin::cargo: Cleaning project
+   Compiling space-age v1.2.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/space-age)
+    Finished release [optimized] target(s) in 0.37s
+[2mAug 21 20:51:24.271[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
+[2mAug 21 20:51:24.271[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/space-age/target/release/deps/space_age-7a6131b8d3cbbd17
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+[2mAug 21 20:51:24.739[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
+[2mAug 21 20:51:24.739[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/space-age/target/release/deps/space_age-3313e3926924209d
+
+running 8 tests
+test venus_age ... ok
+test uranus_age ... ok
+test saturn_age ... ok
+test neptune_age ... ok
+test mercury_age ... ok
+test mars_age ... ok
+test jupiter_age ... ok
+test earth_age ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+[2mAug 21 20:51:25.227[0m [32m INFO[0m cargo_tarpaulin::report: Coverage Results:
+|| Uncovered Lines:
+|| src/lib.rs: 13, 15, 24
+|| Tested/Total Lines:
+|| src/lib.rs: 2/5
+|| 
+40.00% coverage, 2/5 lines covered
+
+real	0m1.390s
+user	0m0.708s
+sys	0m1.053s
+
+===============================================================================
+
+
+real	0m1.859s
+user	0m1.216s
+sys	0m1.302s
+
+===============================================================================
+
+Running: ../../.github/citools/rust/rust-test-with-llvm-coverage
+
+Running Rust Tests With LLVM Coverage
+
+Running: cargo clean
+
+real	0m0.014s
+user	0m0.009s
+sys	0m0.005s
+
+===============================================================================
+
+rm -fv ./*.profraw ./*.profdata
+
+===============================================================================
+
+RUSTFLAGS="-C instrument-coverage"
+RUSTDOCFLAGS="-C instrument-coverage"
 
 ===============================================================================
 
@@ -118,141 +226,35 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 
 running 8 tests
 test earth_age ... ok
-test jupiter_age ... ok
 test mercury_age ... ok
+test neptune_age ... ok
+test jupiter_age ... ok
 test mars_age ... ok
 test uranus_age ... ok
-test saturn_age ... ok
 test venus_age ... ok
-test neptune_age ... ok
+test saturn_age ... ok
 
 test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
    Doc-tests space-age
 
-running 0 tests
+running 1 test
+test src/lib.rs - generate_planet (line 41) ... ok
 
-test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.12s
 
 
-real	0m0.323s
-user	0m0.333s
-sys	0m0.212s
-
-===============================================================================
-
-Running: cargo tarpaulin --release --timeout=300
-[2mAug 20 21:16:08.236[0m [32m INFO[0m cargo_tarpaulin::config: Creating config
-[2mAug 20 21:16:08.246[0m [32m INFO[0m cargo_tarpaulin: Running Tarpaulin
-[2mAug 20 21:16:08.246[0m [32m INFO[0m cargo_tarpaulin: Building project
-[2mAug 20 21:16:08.246[0m [32m INFO[0m cargo_tarpaulin::cargo: Cleaning project
-   Compiling space-age v1.2.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/space-age)
-    Finished release [optimized] target(s) in 0.36s
-[2mAug 20 21:16:08.646[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
-[2mAug 20 21:16:08.646[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/space-age/target/release/deps/space_age-7a6131b8d3cbbd17
-
-running 0 tests
-
-test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
-
-[2mAug 20 21:16:09.123[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
-[2mAug 20 21:16:09.123[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/space-age/target/release/deps/space_age-3313e3926924209d
-
-running 8 tests
-test venus_age ... ok
-test uranus_age ... ok
-test saturn_age ... ok
-test neptune_age ... ok
-test mercury_age ... ok
-test mars_age ... ok
-test jupiter_age ... ok
-test earth_age ... ok
-
-test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
-
-[2mAug 20 21:16:09.624[0m [32m INFO[0m cargo_tarpaulin::report: Coverage Results:
-|| Uncovered Lines:
-|| src/lib.rs: 9, 11, 19
-|| Tested/Total Lines:
-|| src/lib.rs: 9/12
-|| 
-75.00% coverage, 9/12 lines covered
-
-real	0m1.403s
-user	0m0.687s
-sys	0m1.069s
+real	0m0.446s
+user	0m0.473s
+sys	0m0.244s
 
 ===============================================================================
 
+Running: llvm-profdata-16 merge -sparse default_12469164432149180506_0_1493.profraw default_14590066546306755960_0_1447.profraw default_16126165840885508458_0_1448.profraw -o space-age.profdata
 
-real	0m1.748s
-user	0m1.034s
-sys	0m1.291s
-
-===============================================================================
-
-Running: ../../.github/citools/rust/rust-test-with-llvm-coverage
-
-Running Rust Tests With LLVM Coverage
-
-Running: cargo clean
-
-real	0m0.012s
-user	0m0.005s
-sys	0m0.007s
-
-===============================================================================
-
-rm -fv ./*.profraw ./*.profdata
-
-===============================================================================
-
-RUSTFLAGS="-C instrument-coverage"
-RUSTDOCFLAGS="-C instrument-coverage"
-
-===============================================================================
-
-Running: cargo test
-   Compiling space-age v1.2.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/space-age)
-    Finished test [unoptimized + debuginfo] target(s) in 0.40s
-     Running unittests src/lib.rs (target/debug/deps/space_age-63215e0cc183491b)
-
-running 0 tests
-
-test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
-
-     Running tests/space-age.rs (target/debug/deps/space_age-30694871a8637b5e)
-
-running 8 tests
-test earth_age ... ok
-test jupiter_age ... ok
-test mercury_age ... ok
-test neptune_age ... ok
-test mars_age ... ok
-test uranus_age ... ok
-test saturn_age ... ok
-test venus_age ... ok
-
-test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
-
-   Doc-tests space-age
-
-running 0 tests
-
-test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
-
-
-real	0m0.436s
-user	0m0.568s
-sys	0m0.286s
-
-===============================================================================
-
-Running: llvm-profdata-16 merge -sparse default_10068033043742881761_0_31592.profraw default_16126169139420391786_0_31593.profraw -o space-age.profdata
-
-real	0m0.012s
-user	0m0.005s
-sys	0m0.007s
+real	0m0.020s
+user	0m0.010s
+sys	0m0.010s
 
 ===============================================================================
 
@@ -261,49 +263,54 @@ llvm-cov-16 report     Finished test [unoptimized + debuginfo] target(s) in 0.00
     Finished test [unoptimized + debuginfo] target(s) in 0.00s
 Filename                      Regions    Missed Regions     Cover   Functions  Missed Functions  Executed       Lines      Missed Lines     Cover    Branches   Missed Branches     Cover
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-src/lib.rs                         11                 1    90.91%          11                 1    90.91%          33                 1    96.97%           0                 0         -
+src/lib.rs                          4                 1    75.00%           4                 1    75.00%          12                 1    91.67%           0                 0         -
 tests/space-age.rs                 19                 1    94.74%          17                 0   100.00%          47                 1    97.87%           0                 0         -
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-TOTAL                              30                 2    93.33%          28                 1    96.43%          80                 2    97.50%           0                 0         -
+TOTAL                              23                 2    91.30%          21                 1    95.24%          59                 2    96.61%           0                 0         -
 
-real	0m0.042s
-user	0m0.041s
-sys	0m0.014s
+real	0m0.041s
+user	0m0.035s
+sys	0m0.016s
+
+===============================================================================
+
+rm -fv ./default_12469164432149180506_0_1493.profraw ./default_14590066546306755960_0_1447.profraw ./default_16126165840885508458_0_1448.profraw ./space-age.profdata
+removed './default_12469164432149180506_0_1493.profraw'
+removed './default_14590066546306755960_0_1447.profraw'
+removed './default_16126165840885508458_0_1448.profraw'
+removed './space-age.profdata'
 
 ===============================================================================
 
 
-===============================================================================
-
-
-real	0m0.544s
-user	0m0.663s
-sys	0m0.325s
+real	0m0.560s
+user	0m0.568s
+sys	0m0.284s
 
 ===============================================================================
 
 Running: misspell .
 
-real	0m0.034s
-user	0m0.044s
-sys	0m0.018s
+real	0m0.025s
+user	0m0.029s
+sys	0m0.013s
 
 ===============================================================================
 
 Running: cargo doc
  Documenting space-age v1.2.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/space-age)
-    Finished dev [unoptimized + debuginfo] target(s) in 0.22s
+    Finished dev [unoptimized + debuginfo] target(s) in 0.21s
 
-real	0m0.226s
-user	0m0.170s
-sys	0m0.058s
+real	0m0.217s
+user	0m0.166s
+sys	0m0.055s
 
 ===============================================================================
 
 Running: cargo clean
 
-real	0m0.017s
-user	0m0.009s
+real	0m0.012s
+user	0m0.004s
 sys	0m0.008s
 
 ===============================================================================
