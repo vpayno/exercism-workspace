@@ -46,8 +46,25 @@ jobs:
             printf "\`\`\`\n"
           } | tee -a "${GITHUB_STEP_SUMMARY}"
 
+          HAS_WF_DIFF=false
+          HAS_EX_DIFF=false
+          if printf "%s\n" "${GIT_DIFF}" | grep -E '^(.github/workflows/cpp.yml|.github/citools/cpp/)$'; then
+            HAS_WF_DIFF=true
+          fi
+          if printf "%s\n" "${GIT_DIFF}" | grep -E '^(cpp/.*[.](cpp|h|hpp)|cpp/.*/[Ma]akefile|cpp/.*/CMakeLists.txt)$'; then
+            HAS_EX_DIFF=true
+          fi
+          printf "\n"
+          printf "=== Did WF/CI change without exercise changes? ===\n"
+          CI_FORCE_FULL=false
+          if ${HAS_WF_DIFF} && ! ${HAS_EX_DIFF}; then
+            CI_FORCE_FULL=true
+            printf "%s\n" "${CI_FORCE_FULL}"
+          fi
+          printf "\n"
+
           # Get changed exercise list.
-          if [[ ${GITHUB_EVENT_NAME} == pull_request ]]; then
+          if [[ ${GITHUB_EVENT_NAME} == pull_request ]] && ! ${CI_FORCE_FULL}; then
             printf "Generating pull request changed exercise list.\n"
             grep -E '^cpp/[-a-z0-9]+./.*$' /tmp/changed_files.txt | cut -f1,2 -d/ | sort -Vu | tee /tmp/exercises.txt
           else
@@ -62,10 +79,11 @@ jobs:
           printf "=== Which C++ files changed? ===\n"
           if printf "%s\n" "${GIT_DIFF}" | grep -E '^(cpp/.*[.](cpp|h|hpp)|cpp/.*/[Ma]akefile|cpp/.*/CMakeLists.txt|.github/workflows/cpp.yml|.github/citools/cpp/.*)$'; then
             HAS_DIFF=true
+            printf "%s\n" "${HAS_DIFF}"
           fi
           printf "\n"
 
-          # Did Golang files change?
+          # Did C++ files change?
           printf "=== Did C++ files change? ===\n"
           printf "%s\n" "${HAS_DIFF}"
           printf "\n"
