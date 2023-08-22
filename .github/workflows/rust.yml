@@ -45,6 +45,7 @@ jobs:
             printf "%s\n" "${GIT_DIFF}"
             printf "\`\`\`\n"
           } | tee -a "${GITHUB_STEP_SUMMARY}"
+
           HAS_WF_DIFF=false
           HAS_EX_DIFF=false
           if printf "%s\n" "${GIT_DIFF}" | grep -E '^(.github/workflows/rust.yml|.github/citools/rust/)$'; then
