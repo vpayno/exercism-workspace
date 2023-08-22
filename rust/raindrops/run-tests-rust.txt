@@ -1,0 +1,344 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: ../../.github/citools/rust/rust-lint-check --release
+
+Running Rust Cargo CheckRunning: cargo clean
+
+real	0m0.013s
+user	0m0.006s
+sys	0m0.007s
+
+===============================================================================
+
+Running: cargo check --release
+    Checking raindrops v1.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/raindrops)
+    Finished release [optimized] target(s) in 0.13s
+
+real	0m0.138s
+user	0m0.031s
+sys	0m0.034s
+
+===============================================================================
+
+
+real	0m0.156s
+user	0m0.038s
+sys	0m0.043s
+
+===============================================================================
+
+Running: ../../.github/citools/rust/rust-lint-clippy --release
+
+Running Rust Cargo ClippyRunning: cargo clean
+
+real	0m0.009s
+user	0m0.006s
+sys	0m0.003s
+
+===============================================================================
+
+Running: cargo clippy --release
+    Checking raindrops v1.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/raindrops)
+    Finished release [optimized] target(s) in 0.08s
+
+real	0m0.104s
+user	0m0.049s
+sys	0m0.055s
+
+===============================================================================
+
+
+real	0m0.115s
+user	0m0.055s
+sys	0m0.060s
+
+===============================================================================
+
+Running: ../../.github/citools/rust/rust-lint-audit
+
+Running Rust Cargo AuditRunning: cargo clean
+
+real	0m0.020s
+user	0m0.011s
+sys	0m0.008s
+
+===============================================================================
+
+Running: cargo audit
+[0m[0m[1m[32m    Fetching[0m advisory database from `https://github.com/RustSec/advisory-db.git`
+[0m[0m[1m[32m      Loaded[0m 559 security advisories (from /home/vpayno/.cargo/advisory-db)
+[0m[0m[1m[32m    Updating[0m crates.io index
+[0m[0m[1m[32m    Scanning[0m Cargo.lock for vulnerabilities (1 crate dependencies)
+
+real	0m2.458s
+user	0m0.582s
+sys	0m0.450s
+
+===============================================================================
+
+
+real	0m2.480s
+user	0m0.595s
+sys	0m0.459s
+
+===============================================================================
+
+rm -fv ./*.profraw ./*.profdata
+
+===============================================================================
+
+Running: ../../.github/citools/rust/rust-test-with-tarpaulin
+
+Running Rust Tests With Tarpaulin
+
+Running: cargo clean
+
+real	0m0.018s
+user	0m0.012s
+sys	0m0.007s
+
+===============================================================================
+
+Running: cargo test
+   Compiling raindrops v1.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/raindrops)
+    Finished test [unoptimized + debuginfo] target(s) in 0.41s
+     Running unittests src/lib.rs (target/debug/deps/raindrops-9c3d14a7fa9e24d2)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/raindrops.rs (target/debug/deps/raindrops-ea0912e01bb7e2c8)
+
+running 19 tests
+test test_1 ... ok
+test test_10 ... ok
+test test_105 ... ok
+test test_12121 ... ok
+test test_14 ... ok
+test test_21 ... ok
+test test_15 ... ok
+test test_25 ... ok
+test test_3125 ... ok
+test test_27 ... ok
+test test_35 ... ok
+test test_49 ... ok
+test test_5 ... ok
+test test_3 ... ok
+test test_52 ... ok
+test test_6 ... ok
+test test_7 ... ok
+test test_8 ... ok
+test test_9 ... ok
+
+test result: ok. 19 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests raindrops
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+real	0m0.446s
+user	0m0.608s
+sys	0m0.251s
+
+===============================================================================
+
+Running: cargo tarpaulin --release --timeout=300
+[2mAug 21 21:32:51.214[0m [32m INFO[0m cargo_tarpaulin::config: Creating config
+[2mAug 21 21:32:51.222[0m [32m INFO[0m cargo_tarpaulin: Running Tarpaulin
+[2mAug 21 21:32:51.222[0m [32m INFO[0m cargo_tarpaulin: Building project
+[2mAug 21 21:32:51.222[0m [32m INFO[0m cargo_tarpaulin::cargo: Cleaning project
+   Compiling raindrops v1.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/raindrops)
+    Finished release [optimized] target(s) in 0.56s
+[2mAug 21 21:32:51.828[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
+[2mAug 21 21:32:51.828[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/raindrops/target/release/deps/raindrops-4016563dee47798a
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+[2mAug 21 21:32:52.348[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
+[2mAug 21 21:32:52.348[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/raindrops/target/release/deps/raindrops-da55f1cc32bf0a58
+
+running 19 tests
+test test_25 ... ok
+test test_12121 ... ok
+test test_105 ... ok
+test test_10 ... ok
+test test_21 ... ok
+test test_15 ... ok
+test test_14 ... ok
+test test_1 ... ok
+test test_3 ... ok
+test test_52 ... ok
+test test_5 ... ok
+test test_27 ... ok
+test test_49 ... ok
+test test_35 ... ok
+test test_3125 ... ok
+test test_6 ... ok
+test test_8 ... ok
+test test_9 ... ok
+test test_7 ... ok
+
+test result: ok. 19 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+[2mAug 21 21:32:52.875[0m [32m INFO[0m cargo_tarpaulin::report: Coverage Results:
+|| Uncovered Lines:
+|| src/lib.rs: 20
+|| Tested/Total Lines:
+|| src/lib.rs: 6/7
+|| 
+85.71% coverage, 6/7 lines covered
+
+real	0m1.676s
+user	0m0.986s
+sys	0m1.182s
+
+===============================================================================
+
+
+real	0m2.142s
+user	0m1.607s
+sys	0m1.441s
+
+===============================================================================
+
+Running: ../../.github/citools/rust/rust-test-with-llvm-coverage
+
+Running Rust Tests With LLVM Coverage
+
+Running: cargo clean
+
+real	0m0.012s
+user	0m0.006s
+sys	0m0.005s
+
+===============================================================================
+
+rm -fv ./*.profraw ./*.profdata
+
+===============================================================================
+
+RUSTFLAGS="-C instrument-coverage"
+RUSTDOCFLAGS="-C instrument-coverage"
+
+===============================================================================
+
+Running: cargo test
+   Compiling raindrops v1.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/raindrops)
+    Finished test [unoptimized + debuginfo] target(s) in 0.33s
+     Running unittests src/lib.rs (target/debug/deps/raindrops-9c3d14a7fa9e24d2)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/raindrops.rs (target/debug/deps/raindrops-ea0912e01bb7e2c8)
+
+running 19 tests
+test test_105 ... ok
+test test_10 ... ok
+test test_1 ... ok
+test test_14 ... ok
+test test_12121 ... ok
+test test_15 ... ok
+test test_21 ... ok
+test test_27 ... ok
+test test_3 ... ok
+test test_3125 ... ok
+test test_49 ... ok
+test test_35 ... ok
+test test_5 ... ok
+test test_52 ... ok
+test test_6 ... ok
+test test_7 ... ok
+test test_8 ... ok
+test test_9 ... ok
+test test_25 ... ok
+
+test result: ok. 19 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests raindrops
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+real	0m0.364s
+user	0m0.503s
+sys	0m0.210s
+
+===============================================================================
+
+Running: llvm-profdata-16 merge -sparse default_1547089426396436679_0_17965.profraw default_7085345615676350244_0_17966.profraw -o raindrops.profdata
+
+real	0m0.012s
+user	0m0.005s
+sys	0m0.007s
+
+===============================================================================
+
+llvm-cov-16 report     Finished test [unoptimized + debuginfo] target(s) in 0.00s
+-object /home/vpayno/git_vpayno/exercism-workspace/rust/raindrops/target/debug/deps/raindrops-ea0912e01bb7e2c8 -object /home/vpayno/git_vpayno/exercism-workspace/rust/raindrops/target/debug/deps/raindrops-9c3d14a7fa9e24d2  --instr-profile=raindrops.profdata --summary-only
+    Finished test [unoptimized + debuginfo] target(s) in 0.01s
+Filename                      Regions    Missed Regions     Cover   Functions  Missed Functions  Executed       Lines      Missed Lines     Cover    Branches   Missed Branches     Cover
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+src/lib.rs                         13                 0   100.00%           1                 0   100.00%          17                 0   100.00%           0                 0         -
+tests/raindrops.rs                 57                 0   100.00%          38                 0   100.00%          76                 0   100.00%           0                 0         -
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+TOTAL                              70                 0   100.00%          39                 0   100.00%          93                 0   100.00%           0                 0         -
+
+real	0m0.053s
+user	0m0.052s
+sys	0m0.022s
+
+===============================================================================
+
+rm -fv ./default_1547089426396436679_0_17965.profraw ./default_7085345615676350244_0_17966.profraw ./raindrops.profdata
+removed './default_1547089426396436679_0_17965.profraw'
+removed './default_7085345615676350244_0_17966.profraw'
+removed './raindrops.profdata'
+
+===============================================================================
+
+
+real	0m0.491s
+user	0m0.620s
+sys	0m0.254s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.027s
+user	0m0.025s
+sys	0m0.011s
+
+===============================================================================
+
+Running: cargo doc
+ Documenting raindrops v1.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/raindrops)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.20s
+
+real	0m0.207s
+user	0m0.159s
+sys	0m0.050s
+
+===============================================================================
+
+Running: cargo clean
+
+real	0m0.011s
+user	0m0.006s
+sys	0m0.005s
+
+===============================================================================
+
