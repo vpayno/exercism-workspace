@@ -14,6 +14,7 @@ jobs:
     outputs:
       docs_changed: ${{ steps.check_file_changed.outputs.docs_changed }}
       matrix_exercise: ${{ steps.check_file_changed.outputs.matrix_exercise }}
+      exercise_count: ${{ steps.check_file_changed.outputs.exercise_count }}
     steps:
       - name: Check GitHub Vars
         id: github-vars
@@ -45,8 +46,25 @@ jobs:
             printf "\`\`\`\n"
           } | tee -a "${GITHUB_STEP_SUMMARY}"
 
+          HAS_WF_DIFF=false
+          HAS_EX_DIFF=false
+          if printf "%s\n" "${GIT_DIFF}" | grep -E '^(.github/workflows/awk.yml|.github/citools/awk/)$'; then
+            HAS_WF_DIFF=true
+          fi
+          if printf "%s\n" "${GIT_DIFF}" | grep -E '^awk/.*[.]awk$'; then
+            HAS_EX_DIFF=true
+          fi
+          printf "\n"
+          printf "=== Did WF/CI change without exercise changes? ===\n"
+          CI_FORCE_FULL=false
+          if ${HAS_WF_DIFF} && ! ${HAS_EX_DIFF}; then
+            CI_FORCE_FULL=true
+            printf "%s\n" "${CI_FORCE_FULL}"
+          fi
+          printf "\n"
+
           # Get changed exercise list.
-          if [[ ${GITHUB_EVENT_NAME} == pull_request ]]; then
+          if [[ ${GITHUB_EVENT_NAME} == pull_request ]] && ! ${CI_FORCE_FULL}; then
             printf "Generating pull request changed exercise list.\n"
             grep -E '^awk/[-a-z0-9]+./.*$' /tmp/changed_files.txt | cut -f1,2 -d/ | sort -Vu | tee /tmp/exercises.txt
           else
@@ -61,10 +79,11 @@ jobs:
           printf "=== Which Awk files changed? ===\n"
           if printf "%s\n" "${GIT_DIFF}" | grep -E '^(awk/.*[.]awk|.github/workflows/awk.yml)$'; then
             HAS_DIFF=true
+            printf "%s\n" "${HAS_DIFF}"
           fi
           printf "\n"
 
-          # Did Golang files change?
+          # Did Awk files change?
           printf "=== Did Awk files change? ===\n"
           printf "%s\n" "${HAS_DIFF}"
           printf "\n"
@@ -89,6 +108,8 @@ jobs:
           jq --sort-keys . >/tmp/exercises.json <<EOF
             [ ${entries} ]
           EOF
+          exercise_count="$(jq '. | length' /tmp/exercises.json)"
+          printf "%s=%s\n" "exercise_count" "${exercise_count}" | tee -a "${GITHUB_OUTPUT}"
           matrix_exercise="$(jq --compact-output --sort-keys . /tmp/exercises.json)"
           printf "%s=%s\n" "matrix_exercise" "${matrix_exercise}" | tee -a "${GITHUB_OUTPUT}"
           printf "\n"
@@ -110,11 +131,20 @@ jobs:
         run: sudo npm install -g json2yaml
       - name: Check matrix::exercises
         run: |
+          exercise_count='${{ needs.stage1.outputs.exercise_count }}'
           matrix_exercise='${{ needs.stage1.outputs.matrix_exercise }}'
-          printf "matrix_exercise=%s\n" "${matrix_exercise}"
-          printf "json:\n"
-          printf "%s" "${matrix_exercise}" | jq .
           {
+            printf "\`\`\`text\n"
+            printf "exercise_count=%s\n" "${exercise_count}"
+            printf "matrix_exercise=%s\n" "${matrix_exercise}"
+            printf "\`\`\`\n"
+            printf "json:\n"
+            printf "\`\`\`text\n"
+            printf "%s" "${matrix_exercise}" | jq .
+            printf "\`\`\`\n"
+          } | tee -a "${GITHUB_STEP_SUMMARY}"
+          {
+            printf "yaml:\n"
             printf "\`\`\`text\n"
             printf "{ \"matrix\": { \"exercise\": %s } }" "${matrix_exercise}" | json2yaml
             printf "\`\`\`\n"
