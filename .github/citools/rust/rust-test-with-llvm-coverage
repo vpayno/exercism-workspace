@@ -21,6 +21,11 @@ time cargo clean
 
 print_ruler
 
+echo cargo llvm-cov clean --workspace
+cargo llvm-cov clean --workspace
+
+print_ruler
+
 echo rm -fv ./*.profraw ./*.profdata
 rm -fv ./*.profraw ./*.profdata
 
@@ -48,40 +53,30 @@ time llvm-profdata-16 merge -sparse default_*.profraw -o "${PACKAGE_NAME}.profda
 
 print_ruler
 
-printf "llvm-cov-16 report "
-for file in \
-	$(
-		RUSTFLAGS="-C instrument-coverage" \
-			RUSTDOCFLAGS="-C instrument-coverage -Z unstable-options --persist-doctests target/debug/doctestbins" \
-			cargo test --no-run --message-format=json |
-			jq -r "select(.profile.test == true) | .filenames[]" |
-			grep -v dSYM -
-	) \
-	target/debug/doctestbins/*/rust_out; do
-	[[ -x $file ]] && printf "%s %s " -object "${file}"
-done
-printf " --instr-profile=%s.profdata --summary-only\n" "${PACKAGE_NAME}"
+echo cargo llvm-cov
+cargo llvm-cov
 
-# shellcheck disable=SC2046,SC2086
-time llvm-cov-16 report \
-	$(
-		for file in \
-			$(
-				RUSTFLAGS="-C instrument-coverage" \
-					RUSTDOCFLAGS="-C instrument-coverage -Z unstable-options --persist-doctests target/debug/doctestbins" \
-					cargo test --no-run --message-format=json |
-					jq -r "select(.profile.test == true) | .filenames[]" |
-					grep -v dSYM -
-			) \
-			target/debug/doctestbins/*/rust_out; do
-			[[ -x $file ]] && printf "%s %s " -object "${file}"
-		done
-	) \
-	--instr-profile="${PACKAGE_NAME}".profdata --summary-only
+print_ruler
+
+echo cargo llvm-cov --text
+cargo llvm-cov --text
+
+print_ruler
+
+echo cargo llvm-cov --all-features --workspace --lcov --output-path report.lcov
+cargo llvm-cov --all-features --workspace --lcov --output-path report.lcov
+printf "\n"
+echo lcov --summary report.lcov
+lcov --summary report.lcov
 
 print_ruler
 
 echo rm -fv ./*.profraw ./*.profdata
 rm -fv ./*.profraw ./*.profdata
+
+print_ruler
+
+echo cargo llvm-cov clean --workspace
+cargo llvm-cov clean --workspace
 
 print_ruler
