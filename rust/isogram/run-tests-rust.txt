@@ -7,26 +7,26 @@ Running: ../../.github/citools/rust/rust-lint-check --release
 
 Running Rust Cargo CheckRunning: cargo clean
 
-real	0m0.019s
-user	0m0.007s
-sys	0m0.012s
+real	0m0.012s
+user	0m0.008s
+sys	0m0.005s
 
 ===============================================================================
 
 Running: cargo check --release
     Checking isogram v1.3.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/isogram)
-    Finished release [optimized] target(s) in 0.12s
+    Finished release [optimized] target(s) in 0.20s
 
-real	0m0.128s
-user	0m0.028s
-sys	0m0.025s
+real	0m0.206s
+user	0m0.041s
+sys	0m0.063s
 
 ===============================================================================
 
 
-real	0m0.150s
-user	0m0.038s
-sys	0m0.037s
+real	0m0.221s
+user	0m0.049s
+sys	0m0.070s
 
 ===============================================================================
 
@@ -35,45 +35,25 @@ Running: ../../.github/citools/rust/rust-lint-clippy --release
 Running Rust Cargo ClippyRunning: cargo clean
 
 real	0m0.009s
-user	0m0.005s
-sys	0m0.003s
+user	0m0.007s
+sys	0m0.002s
 
 ===============================================================================
 
 Running: cargo clippy --release
     Checking isogram v1.3.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/isogram)
-warning: this `if` statement can be collapsed
-  --> src/lib.rs:24:9
-   |
-24 | /         if letter.is_alphabetic() {
-25 | |             if !chars.insert(letter) {
-26 | |                 return false;
-27 | |             }
-28 | |         }
-   | |_________^
-   |
-   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#collapsible_if
-   = note: `#[warn(clippy::collapsible_if)]` on by default
-help: collapse nested if block
-   |
-24 ~         if letter.is_alphabetic() && !chars.insert(letter) {
-25 +             return false;
-26 +         }
-   |
+    Finished release [optimized] target(s) in 0.08s
 
-warning: `isogram` (lib) generated 1 warning (run `cargo clippy --fix --lib -p isogram` to apply 1 suggestion)
-    Finished release [optimized] target(s) in 0.20s
-
-real	0m0.232s
-user	0m0.045s
-sys	0m0.058s
+real	0m0.116s
+user	0m0.052s
+sys	0m0.064s
 
 ===============================================================================
 
 
-real	0m0.243s
-user	0m0.050s
-sys	0m0.064s
+real	0m0.127s
+user	0m0.059s
+sys	0m0.069s
 
 ===============================================================================
 
@@ -81,9 +61,9 @@ Running: ../../.github/citools/rust/rust-lint-audit
 
 Running Rust Cargo AuditRunning: cargo clean
 
-real	0m0.019s
-user	0m0.010s
-sys	0m0.009s
+real	0m0.021s
+user	0m0.007s
+sys	0m0.014s
 
 ===============================================================================
 
@@ -93,16 +73,16 @@ Running: cargo audit
 [0m[0m[1m[32m    Updating[0m crates.io index
 [0m[0m[1m[32m    Scanning[0m Cargo.lock for vulnerabilities (1 crate dependencies)
 
-real	0m3.869s
-user	0m0.846s
-sys	0m0.530s
+real	0m2.229s
+user	0m0.586s
+sys	0m0.457s
 
 ===============================================================================
 
 
-real	0m3.890s
-user	0m0.858s
-sys	0m0.540s
+real	0m2.253s
+user	0m0.595s
+sys	0m0.472s
 
 ===============================================================================
 
@@ -116,9 +96,9 @@ Running Rust Tests With Tarpaulin
 
 Running: cargo clean
 
-real	0m0.023s
-user	0m0.013s
-sys	0m0.009s
+real	0m0.018s
+user	0m0.007s
+sys	0m0.012s
 
 ===============================================================================
 
@@ -136,13 +116,13 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 running 9 tests
 test empty_string ... ok
 test duplicated_character_in_the_middle ... ok
-test hypothetical_isogramic_word_with_hyphen ... ok
 test isogram_with_duplicated_hyphen ... ok
-test made_up_name_that_is_an_isogram ... ok
 test longest_reported_english_isogram ... ok
+test hypothetical_isogramic_word_with_hyphen ... ok
+test made_up_name_that_is_an_isogram ... ok
+test one_duplicated_character ... ok
 test one_duplicated_character_mixed_case ... ok
 test only_lower_case_characters ... ok
-test one_duplicated_character ... ok
 
 test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
@@ -153,43 +133,43 @@ running 0 tests
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
 
-real	0m0.433s
-user	0m0.704s
-sys	0m0.265s
+real	0m0.430s
+user	0m0.599s
+sys	0m0.250s
 
 ===============================================================================
 
 Running: cargo tarpaulin --release --timeout=300
-[2mAug 23 08:56:06.240[0m [32m INFO[0m cargo_tarpaulin::config: Creating config
-[2mAug 23 08:56:06.247[0m [32m INFO[0m cargo_tarpaulin: Running Tarpaulin
-[2mAug 23 08:56:06.247[0m [32m INFO[0m cargo_tarpaulin: Building project
-[2mAug 23 08:56:06.247[0m [32m INFO[0m cargo_tarpaulin::cargo: Cleaning project
+[2mAug 23 08:59:17.367[0m [32m INFO[0m cargo_tarpaulin::config: Creating config
+[2mAug 23 08:59:17.374[0m [32m INFO[0m cargo_tarpaulin: Running Tarpaulin
+[2mAug 23 08:59:17.374[0m [32m INFO[0m cargo_tarpaulin: Building project
+[2mAug 23 08:59:17.374[0m [32m INFO[0m cargo_tarpaulin::cargo: Cleaning project
    Compiling isogram v1.3.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/isogram)
-    Finished release [optimized] target(s) in 0.56s
-[2mAug 23 08:56:06.848[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
-[2mAug 23 08:56:06.848[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/isogram/target/release/deps/isogram-8d1eaa5b2a54a1f7
+    Finished release [optimized] target(s) in 0.57s
+[2mAug 23 08:59:17.984[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
+[2mAug 23 08:59:17.984[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/isogram/target/release/deps/isogram-8d1eaa5b2a54a1f7
 
 running 0 tests
 
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
-[2mAug 23 08:56:07.328[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
-[2mAug 23 08:56:07.328[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/isogram/target/release/deps/isogram-23b2b50c0cd413cd
+[2mAug 23 08:59:18.538[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
+[2mAug 23 08:59:18.551[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/isogram/target/release/deps/isogram-23b2b50c0cd413cd
 
 running 9 tests
 test one_duplicated_character_mixed_case ... ok
 test isogram_with_duplicated_hyphen ... ok
 test hypothetical_isogramic_word_with_hyphen ... ok
+test duplicated_character_in_the_middle ... ok
 test empty_string ... ok
 test one_duplicated_character ... ok
 test made_up_name_that_is_an_isogram ... ok
 test longest_reported_english_isogram ... ok
-test duplicated_character_in_the_middle ... ok
 test only_lower_case_characters ... ok
 
 test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
 
-[2mAug 23 08:56:07.837[0m [32m INFO[0m cargo_tarpaulin::report: Coverage Results:
+[2mAug 23 08:59:19.039[0m [32m INFO[0m cargo_tarpaulin::report: Coverage Results:
 || Uncovered Lines:
 || src/lib.rs: 24
 || Tested/Total Lines:
@@ -197,16 +177,16 @@ test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 || 
 75.00% coverage, 3/4 lines covered
 
-real	0m1.612s
-user	0m0.875s
-sys	0m1.102s
+real	0m1.690s
+user	0m0.949s
+sys	0m1.140s
 
 ===============================================================================
 
 
-real	0m2.070s
-user	0m1.593s
-sys	0m1.377s
+real	0m2.141s
+user	0m1.554s
+sys	0m1.404s
 
 ===============================================================================
 
@@ -216,9 +196,9 @@ Running Rust Tests With LLVM Coverage
 
 Running: cargo clean
 
-real	0m0.012s
-user	0m0.004s
-sys	0m0.008s
+real	0m0.016s
+user	0m0.008s
+sys	0m0.009s
 
 ===============================================================================
 
@@ -237,7 +217,7 @@ RUSTDOCFLAGS="-C instrument-coverage"
 
 Running: cargo test
    Compiling isogram v1.3.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/isogram)
-    Finished test [unoptimized + debuginfo] target(s) in 0.41s
+    Finished test [unoptimized + debuginfo] target(s) in 0.44s
      Running unittests src/lib.rs (target/debug/deps/isogram-acafe6d05563666d)
 
 running 0 tests
@@ -252,8 +232,8 @@ test empty_string ... ok
 test hypothetical_isogramic_word_with_hyphen ... ok
 test isogram_with_duplicated_hyphen ... ok
 test longest_reported_english_isogram ... ok
-test one_duplicated_character ... ok
 test made_up_name_that_is_an_isogram ... ok
+test one_duplicated_character ... ok
 test one_duplicated_character_mixed_case ... ok
 test only_lower_case_characters ... ok
 
@@ -266,17 +246,17 @@ running 0 tests
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
 
-real	0m0.441s
-user	0m0.722s
-sys	0m0.269s
+real	0m0.470s
+user	0m0.767s
+sys	0m0.318s
 
 ===============================================================================
 
-Running: llvm-profdata-16 merge -sparse default_9087547346464445793_0_29729.profraw default_9573749661570027192_0_29731.profraw -o isogram.profdata
+Running: llvm-profdata-16 merge -sparse default_9087547346464445793_0_5607.profraw default_9573749662643769016_0_5608.profraw -o isogram.profdata
 
-real	0m0.019s
-user	0m0.013s
-sys	0m0.006s
+real	0m0.014s
+user	0m0.006s
+sys	0m0.008s
 
 ===============================================================================
 
@@ -306,15 +286,15 @@ test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 
 Filename                                                               Regions    Missed Regions     Cover   Functions  Missed Functions  Executed       Lines      Missed Lines     Cover    Branches   Missed Branches     Cover
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-/home/vpayno/git_vpayno/exercism-workspace/rust/isogram/src/lib.rs          12                 0   100.00%           1                 0   100.00%          27                 0   100.00%           0                 0         -
+/home/vpayno/git_vpayno/exercism-workspace/rust/isogram/src/lib.rs          11                 0   100.00%           1                 0   100.00%          25                 0   100.00%           0                 0         -
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-TOTAL                                                                       12                 0   100.00%           1                 0   100.00%          27                 0   100.00%           0                 0         -
+TOTAL                                                                       11                 0   100.00%           1                 0   100.00%          25                 0   100.00%           0                 0         -
 
 ===============================================================================
 
 cargo llvm-cov --text
    Compiling isogram v1.3.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/isogram)
-    Finished test [unoptimized + debuginfo] target(s) in 0.25s
+    Finished test [unoptimized + debuginfo] target(s) in 0.27s
      Running unittests src/lib.rs (target/llvm-cov-target/debug/deps/isogram-6b9383da726047fb)
 
 running 0 tests
@@ -360,15 +340,14 @@ test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
    22|       |
    23|     89|    for letter in candidate.to_lowercase().chars() {
                                 ^8
-   24|     89|        if letter.is_alphabetic() {
-   25|     84|            if !chars.insert(letter) {
-   26|      3|                return false;
-   27|     81|            }
-   28|      5|        }
-   29|       |    }
-   30|       |
-   31|      5|    true
-   32|      9|}
+   24|     89|        if letter.is_alphabetic() && !chars.insert(letter) {
+                                                   ^84
+   25|      3|            return false;
+   26|     86|        }
+   27|       |    }
+   28|       |
+   29|      5|    true
+   30|      9|}
   ------------------
   | isogram::check:
   |    3|      9|pub fn check(candidate: &str) -> bool {
@@ -393,15 +372,14 @@ test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
   |   22|       |
   |   23|     89|    for letter in candidate.to_lowercase().chars() {
   |                                ^8
-  |   24|     89|        if letter.is_alphabetic() {
-  |   25|     84|            if !chars.insert(letter) {
-  |   26|      3|                return false;
-  |   27|     81|            }
-  |   28|      5|        }
-  |   29|       |    }
-  |   30|       |
-  |   31|      5|    true
-  |   32|      9|}
+  |   24|     89|        if letter.is_alphabetic() && !chars.insert(letter) {
+  |                                                   ^84
+  |   25|      3|            return false;
+  |   26|     86|        }
+  |   27|       |    }
+  |   28|       |
+  |   29|      5|    true
+  |   30|      9|}
   ------------------
   | Unexecuted instantiation: isogram::check
   ------------------
@@ -439,15 +417,15 @@ test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 lcov --summary report.lcov
 Reading tracefile report.lcov
 Summary coverage rate:
-  lines......: 100.0% (27 of 27 lines)
+  lines......: 100.0% (25 of 25 lines)
   functions..: 50.0% (1 of 2 functions)
   branches...: no data found
 
 ===============================================================================
 
-rm -fv ./default_9087547346464445793_0_29729.profraw ./default_9573749661570027192_0_29731.profraw ./isogram.profdata
-removed './default_9087547346464445793_0_29729.profraw'
-removed './default_9573749661570027192_0_29731.profraw'
+rm -fv ./default_9087547346464445793_0_5607.profraw ./default_9573749662643769016_0_5608.profraw ./isogram.profdata
+removed './default_9087547346464445793_0_5607.profraw'
+removed './default_9573749662643769016_0_5608.profraw'
 removed './isogram.profdata'
 
 ===============================================================================
@@ -457,35 +435,35 @@ cargo llvm-cov clean --workspace
 ===============================================================================
 
 
-real	0m2.124s
-user	0m2.087s
-sys	0m1.073s
+real	0m2.176s
+user	0m2.198s
+sys	0m1.158s
 
 ===============================================================================
 
 Running: misspell .
 
-real	0m0.023s
-user	0m0.025s
-sys	0m0.012s
+real	0m0.022s
+user	0m0.027s
+sys	0m0.009s
 
 ===============================================================================
 
 Running: cargo doc
  Documenting isogram v1.3.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/isogram)
-    Finished dev [unoptimized + debuginfo] target(s) in 0.19s
+    Finished dev [unoptimized + debuginfo] target(s) in 0.20s
 
-real	0m0.202s
-user	0m0.159s
-sys	0m0.046s
+real	0m0.210s
+user	0m0.151s
+sys	0m0.061s
 
 ===============================================================================
 
 Running: cargo clean
 
-real	0m0.013s
-user	0m0.008s
-sys	0m0.005s
+real	0m0.012s
+user	0m0.004s
+sys	0m0.007s
 
 ===============================================================================
 

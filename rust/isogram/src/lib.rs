@@ -21,10 +21,8 @@ pub fn check(candidate: &str) -> bool {
     let mut chars: HashSet<char> = HashSet::new();
 
     for letter in candidate.to_lowercase().chars() {
-        if letter.is_alphabetic() {
-            if !chars.insert(letter) {
-                return false;
-            }
+        if letter.is_alphabetic() && !chars.insert(letter) {
+            return false;
         }
     }
 
