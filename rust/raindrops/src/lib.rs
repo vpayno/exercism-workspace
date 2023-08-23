@@ -28,7 +28,7 @@
 /// got = raindrops(11);
 /// want = "11".to_string();
 /// assert_eq!(got, want);
-///
+/// ```
 pub fn raindrops(number: u32) -> String {
     let mut sounds = String::new();
 
