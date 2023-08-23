@@ -42,3 +42,8 @@ like Portable Network Graphics to its acronym (PNG).
 ### Based on
 
 Julien Vanier - https://github.com/monkbroc
+
+### My Solution
+
+- [my solution](./src/lib.rs)
+- [run-tests](./run-tests-rust.txt)
