@@ -1,5 +1,7 @@
 //! Exercise Url: <https://exercism.org/tracks/rust/exercises/acronym>
 
+use regex::Regex;
+
 /// abbreviate function returns the acronym from a string.
 ///
 /// # Examples
@@ -12,7 +14,13 @@
 /// assert_eq!(got, want);
 /// ```
 pub fn abbreviate(phrase: &str) -> String {
-    let tmp_str = phrase.replace(&['-', '_'][..], " ");
+    // I refuse to get in the bad habit of using .unwrap()!
+    let re = match Regex::new(r"[-_]") {
+        Ok(re) => re,
+        Err(error) => panic!("Bad regex string: {:?}", error),
+    };
+
+    let tmp_str = re.replace_all(phrase, " ");
 
     let mut acronym = String::new();
 
