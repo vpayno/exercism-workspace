@@ -7,10 +7,6 @@ bool is_isogram(std::string input) {
         return true;
     }
 
-    if (1 == input.size()) {
-        return true;
-    }
-
     bool result{true};
 
     std::string text{};

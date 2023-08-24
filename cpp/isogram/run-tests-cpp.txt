@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.008s
-user	0m0.001s
-sys	0m0.006s
+real	0m0.011s
+user	0m0.003s
+sys	0m0.008s
 
 ===============================================================================
 
@@ -55,12 +55,16 @@ make[1]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/isogr
 
 === All Tests Passed ===
 
-find . -regextype posix-egrep -regex "^.*(tests-main|CompilerId).*[.](gcda|gcno)$" -print -delete
+find . -regextype posix-egrep -regex '^.*(tests-main|CompilerId).*[.](gcda|gcno)$' -print -delete
 ./build/CMakeFiles/3.22.2/CompilerIdCXX/CMakeCXXCompilerId.gcno
 ./build/CMakeFiles/isogram.dir/test/tests-main.cpp.gcno
 ./build/CMakeFiles/isogram.dir/test/tests-main.cpp.gcda
 
-find . -regextype posix-egrep -regex "^.*[.](gcda|gcno)13103"
+find . -regextype posix-egrep -regex '^.*[.](gcda|gcno)$'
+./build/CMakeFiles/isogram.dir/isogram_test.cpp.gcno
+./build/CMakeFiles/isogram.dir/isogram.cpp.gcno
+./build/CMakeFiles/isogram.dir/isogram.cpp.gcda
+./build/CMakeFiles/isogram.dir/isogram_test.cpp.gcda
 
 gcovr --print-summary
 ------------------------------------------------------------------------------
@@ -69,18 +73,18 @@ Directory: .
 ------------------------------------------------------------------------------
 File                                       Lines    Exec  Cover   Missing
 ------------------------------------------------------------------------------
-isogram.cpp                                   17      16    94%   11
+isogram.cpp                                   15      15   100%   
 isogram_test.cpp                              65      65   100%   
 test/catch.hpp                                31      26    83%   1642-1643,2227,2229,2560
 ------------------------------------------------------------------------------
-TOTAL                                        113     107    94%
+TOTAL                                        111     106    95%
 ------------------------------------------------------------------------------
-lines: 94.7% (107 out of 113)
-branches: 40.7% (105 out of 258)
+lines: 95.5% (106 out of 111)
+branches: 40.6% (104 out of 256)
 
-real	0m9.662s
-user	0m9.022s
-sys	0m0.636s
+real	0m10.184s
+user	0m9.025s
+sys	0m1.148s
 
 ===============================================================================
 
@@ -88,9 +92,9 @@ cmake-format --in-place CMakeLists.txt
 WARNING config_util.py:307: The following configuration options were ignored:
   max_subargs_per_line
 
-real	0m0.165s
-user	0m0.117s
-sys	0m0.051s
+real	0m0.192s
+user	0m0.129s
+sys	0m0.054s
 
 ===============================================================================
 
@@ -110,31 +114,31 @@ found lint:
   Convention: 3
 
 
-real	0m0.166s
-user	0m0.121s
-sys	0m0.048s
+real	0m0.161s
+user	0m0.129s
+sys	0m0.034s
 
 ===============================================================================
 
 Running: clang-format-16 -style=file -i ./isogram.cpp ./isogram_test.cpp ./isogram.hpp
 
-real	0m0.020s
-user	0m0.009s
+real	0m0.027s
+user	0m0.015s
 sys	0m0.011s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./isogram.cpp ./isogram_test.cpp ./isogram.hpp
+Running: clang-check-16 --analyze ./isogram.cpp ./isogram_test.cpp ./isogram.hpp
 
-real	0m0.860s
-user	0m0.825s
-sys	0m0.035s
+real	0m0.807s
+user	0m0.763s
+sys	0m0.043s
 
 
-real	0m0.862s
-user	0m0.827s
-sys	0m0.036s
+real	0m0.809s
+user	0m0.763s
+sys	0m0.045s
 
 ===============================================================================
 
@@ -145,15 +149,15 @@ Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 Suppressed 82689 warnings (82684 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 
-real	0m10.519s
-user	0m10.462s
-sys	0m0.056s
+real	0m10.674s
+user	0m10.592s
+sys	0m0.080s
 Running: clang-tidy-16 ./isogram.cpp ./isogram_test.cpp ./isogram.hpp
 
 
-real	0m10.521s
-user	0m10.464s
-sys	0m0.057s
+real	0m10.675s
+user	0m10.592s
+sys	0m0.083s
 
 ===============================================================================
 
