@@ -11,9 +11,6 @@ get_rust_package_name() {
 	toml get Cargo.toml package | jq -r .name
 } # get_rust_package_name()
 
-declare PACKAGE_NAME
-PACKAGE_NAME="$(get_rust_package_name)"
-
 printf "\nRunning Rust Tests With LLVM Coverage\n\n"
 
 echo Running: cargo clean
@@ -26,19 +23,6 @@ cargo llvm-cov clean --workspace
 
 print_ruler
 
-echo rm -fv ./*.profraw ./*.profdata
-rm -fv ./*.profraw ./*.profdata
-
-print_ruler
-
-echo RUSTFLAGS="\"-C instrument-coverage\""
-export RUSTFLAGS="-C instrument-coverage"
-
-echo RUSTDOCFLAGS="\"-C instrument-coverage\""
-export RUSTDOCFLAGS="-C instrument-coverage"
-
-print_ruler
-
 # https://doc.rust-lang.org/cargo/commands/cargo-test.html
 
 echo Running: cargo test
@@ -47,34 +31,27 @@ time cargo test
 print_ruler
 
 # https://doc.rust-lang.org/rustc/instrument-coverage.html
+# https://github.com/taiki-e/cargo-llvm-cov
 
-echo Running: llvm-profdata-16 merge -sparse default_*.profraw -o "${PACKAGE_NAME}.profdata"
-time llvm-profdata-16 merge -sparse default_*.profraw -o "${PACKAGE_NAME}.profdata"
-
-print_ruler
-
-echo cargo llvm-cov
-cargo llvm-cov
+# --no-clean let's us generate real reports later on
+echo cargo llvm-cov --no-clean --all-features --workspace
+cargo llvm-cov --no-clean --all-features --workspace
 
 print_ruler
 
-echo cargo llvm-cov --text
-cargo llvm-cov --text
-
-print_ruler
-
-echo cargo llvm-cov --all-features --workspace --lcov --output-path report.lcov
-cargo llvm-cov --all-features --workspace --lcov --output-path report.lcov
+echo cargo llvm-cov report --lcov --output-path report.lcov
+cargo llvm-cov report --lcov --output-path report.lcov
 printf "\n"
 echo lcov --summary report.lcov
 lcov --summary report.lcov
 
 print_ruler
 
-echo rm -fv ./*.profraw ./*.profdata
-rm -fv ./*.profraw ./*.profdata
+# show missing coverage with source - seems to only work for bin projects
+# echo cargo llvm-cov --no-clean --text --all-features --workspace
+# cargo llvm-cov --no-clean --text --all-features --workspace
 
-print_ruler
+# print_ruler
 
 echo cargo llvm-cov clean --workspace
 cargo llvm-cov clean --workspace
