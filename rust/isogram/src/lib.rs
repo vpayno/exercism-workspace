@@ -35,7 +35,6 @@ pub fn check(candidate: &str) -> bool {
         .all(|rune| chars.insert(rune))
 }
 
-/*
 #[test]
 fn test_empty() {
     assert!(check(""), "Empty word is an isogram.")
@@ -64,4 +63,3 @@ fn test_numbers() {
         "Word with numbers and without duplicate letters isn't an isogram."
     )
 }
-*/
