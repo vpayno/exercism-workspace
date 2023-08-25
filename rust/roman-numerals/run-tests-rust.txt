@@ -1,0 +1,454 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: ../../.github/citools/rust/rust-lint-check --release
+
+Running Rust Cargo CheckRunning: cargo clean
+
+real	0m0.013s
+user	0m0.004s
+sys	0m0.009s
+
+===============================================================================
+
+Running: cargo check --release
+    Checking sorted-list v0.2.0
+    Checking roman-numerals v1.0.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/roman-numerals)
+    Finished release [optimized] target(s) in 0.14s
+
+real	0m0.150s
+user	0m0.032s
+sys	0m0.037s
+
+===============================================================================
+
+
+real	0m0.165s
+user	0m0.036s
+sys	0m0.048s
+
+===============================================================================
+
+Running: ../../.github/citools/rust/rust-lint-clippy --release
+
+Running Rust Cargo ClippyRunning: cargo clean
+
+real	0m0.011s
+user	0m0.007s
+sys	0m0.004s
+
+===============================================================================
+
+Running: cargo clippy --release
+    Checking sorted-list v0.2.0
+    Checking roman-numerals v1.0.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/roman-numerals)
+    Finished release [optimized] target(s) in 0.17s
+
+real	0m0.193s
+user	0m0.082s
+sys	0m0.070s
+
+===============================================================================
+
+
+real	0m0.206s
+user	0m0.089s
+sys	0m0.075s
+
+===============================================================================
+
+Running: ../../.github/citools/rust/rust-lint-audit
+
+Running Rust Cargo AuditRunning: cargo clean
+
+real	0m0.033s
+user	0m0.020s
+sys	0m0.013s
+
+===============================================================================
+
+Running: cargo audit
+[0m[0m[1m[32m    Fetching[0m advisory database from `https://github.com/RustSec/advisory-db.git`
+[0m[0m[1m[32m      Loaded[0m 562 security advisories (from /home/vpayno/.cargo/advisory-db)
+[0m[0m[1m[32m    Updating[0m crates.io index
+[0m[0m[1m[32m    Scanning[0m Cargo.lock for vulnerabilities (2 crate dependencies)
+
+real	0m2.004s
+user	0m0.707s
+sys	0m0.559s
+
+===============================================================================
+
+
+real	0m2.042s
+user	0m0.730s
+sys	0m0.574s
+
+===============================================================================
+
+rm -fv ./*.profraw ./*.profdata
+
+===============================================================================
+
+Running: ../../.github/citools/rust/rust-test-with-tarpaulin
+
+Running Rust Tests With Tarpaulin
+
+Running: cargo clean
+
+real	0m0.022s
+user	0m0.010s
+sys	0m0.012s
+
+===============================================================================
+
+Running: cargo test
+   Compiling sorted-list v0.2.0
+   Compiling roman-numerals v1.0.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/roman-numerals)
+    Finished test [unoptimized + debuginfo] target(s) in 0.53s
+     Running unittests src/lib.rs (target/debug/deps/roman_numerals-13224effeecdc234)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/roman-numerals.rs (target/debug/deps/roman_numerals-bdc92c8338652d5a)
+
+running 18 tests
+test test_1024 ... ok
+test test_141 ... ok
+test test_3000 ... ok
+test test_163 ... ok
+test test_402 ... ok
+test test_575 ... ok
+test test_911 ... ok
+test test_five ... ok
+test test_forty_eight ... ok
+test test_four ... ok
+test test_nine ... ok
+test test_ninety_three ... ok
+test test_one ... ok
+test test_six ... ok
+test test_three ... ok
+test test_twenty_seven ... ok
+test test_two ... ok
+test test_fifty_nine ... ok
+
+test result: ok. 18 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests roman-numerals
+
+running 1 test
+test src/lib.rs - Roman (line 8) ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.15s
+
+
+real	0m0.710s
+user	0m0.783s
+sys	0m0.354s
+
+===============================================================================
+
+Running: cargo tarpaulin --release --timeout=300
+[2mAug 24 19:23:36.100[0m [32m INFO[0m cargo_tarpaulin::config: Creating config
+[2mAug 24 19:23:36.110[0m [32m INFO[0m cargo_tarpaulin: Running Tarpaulin
+[2mAug 24 19:23:36.110[0m [32m INFO[0m cargo_tarpaulin: Building project
+[2mAug 24 19:23:36.110[0m [32m INFO[0m cargo_tarpaulin::cargo: Cleaning project
+   Compiling sorted-list v0.2.0
+   Compiling roman-numerals v1.0.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/roman-numerals)
+    Finished release [optimized] target(s) in 0.53s
+[2mAug 24 19:23:36.684[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
+[2mAug 24 19:23:36.684[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/roman-numerals/target/release/deps/roman_numerals-8f96de64307eb3de
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+[2mAug 24 19:23:37.190[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
+[2mAug 24 19:23:37.190[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/roman-numerals/target/release/deps/roman_numerals-b04962cb183fd965
+
+running 18 tests
+test test_3000 ... ok
+test test_fifty_nine ... ok
+test test_1024 ... ok
+test test_911 ... ok
+test test_575 ... ok
+test test_402 ... ok
+test test_163 ... ok
+test test_141 ... ok
+test test_four ... ok
+test test_forty_eight ... ok
+test test_five ... ok
+test test_one ... ok
+test test_six ... ok
+test test_three ... ok
+test test_ninety_three ... ok
+test test_nine ... ok
+test test_two ... ok
+test test_twenty_seven ... ok
+
+test result: ok. 18 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+
+[2mAug 24 19:23:37.729[0m [32m INFO[0m cargo_tarpaulin::report: Coverage Results:
+|| Uncovered Lines:
+|| src/lib.rs: 47
+|| Tested/Total Lines:
+|| src/lib.rs: 18/19
+|| 
+94.74% coverage, 18/19 lines covered
+
+real	0m1.647s
+user	0m1.161s
+sys	0m1.226s
+
+===============================================================================
+
+
+real	0m2.381s
+user	0m1.954s
+sys	0m1.594s
+
+===============================================================================
+
+Running: ../../.github/citools/rust/rust-test-with-llvm-coverage
+
+Running Rust Tests With LLVM Coverage
+
+Running: cargo clean
+
+real	0m0.019s
+user	0m0.009s
+sys	0m0.010s
+
+===============================================================================
+
+cargo llvm-cov clean --workspace
+
+===============================================================================
+
+Running: cargo test
+   Compiling sorted-list v0.2.0
+   Compiling roman-numerals v1.0.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/roman-numerals)
+    Finished test [unoptimized + debuginfo] target(s) in 0.43s
+     Running unittests src/lib.rs (target/debug/deps/roman_numerals-13224effeecdc234)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/roman-numerals.rs (target/debug/deps/roman_numerals-bdc92c8338652d5a)
+
+running 18 tests
+test test_1024 ... ok
+test test_141 ... ok
+test test_3000 ... ok
+test test_163 ... ok
+test test_402 ... ok
+test test_575 ... ok
+test test_fifty_nine ... ok
+test test_911 ... ok
+test test_five ... ok
+test test_ninety_three ... ok
+test test_four ... ok
+test test_nine ... ok
+test test_twenty_seven ... ok
+test test_one ... ok
+test test_six ... ok
+test test_forty_eight ... ok
+test test_three ... ok
+test test_two ... ok
+
+test result: ok. 18 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests roman-numerals
+
+running 1 test
+test src/lib.rs - Roman (line 8) ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.15s
+
+
+real	0m0.612s
+user	0m0.711s
+sys	0m0.289s
+
+===============================================================================
+
+cargo llvm-cov --no-clean --all-features --workspace
+   Compiling sorted-list v0.2.0
+   Compiling roman-numerals v1.0.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/roman-numerals)
+    Finished test [unoptimized + debuginfo] target(s) in 0.44s
+     Running unittests src/lib.rs (target/llvm-cov-target/debug/deps/roman_numerals-b7b51b5eaf2fe379)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/roman-numerals.rs (target/llvm-cov-target/debug/deps/roman_numerals-8d74dcecb6140f72)
+
+running 18 tests
+test test_1024 ... ok
+test test_141 ... ok
+test test_163 ... ok
+test test_3000 ... ok
+test test_402 ... ok
+test test_575 ... ok
+test test_911 ... ok
+test test_fifty_nine ... ok
+test test_five ... ok
+test test_forty_eight ... ok
+test test_four ... ok
+test test_nine ... ok
+test test_ninety_three ... ok
+test test_one ... ok
+test test_six ... ok
+test test_three ... ok
+test test_twenty_seven ... ok
+test test_two ... ok
+
+test result: ok. 18 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+Filename                                                                      Regions    Missed Regions     Cover   Functions  Missed Functions  Executed       Lines      Missed Lines     Cover    Branches   Missed Branches     Cover
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+/home/vpayno/git_vpayno/exercism-workspace/rust/roman-numerals/src/lib.rs          11                 1    90.91%           2                 0   100.00%          30                 1    96.67%           0                 0         -
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+TOTAL                                                                              11                 1    90.91%           2                 0   100.00%          30                 1    96.67%           0                 0         -
+
+===============================================================================
+
+cargo llvm-cov report --lcov --output-path report.lcov
+
+    Finished report saved to report.lcov
+
+    Finished test [unoptimized + debuginfo] target(s) in 0.00s
+     Running unittests src/lib.rs (target/llvm-cov-target/debug/deps/roman_numerals-b7b51b5eaf2fe379)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/roman-numerals.rs (target/llvm-cov-target/debug/deps/roman_numerals-8d74dcecb6140f72)
+
+running 18 tests
+test test_1024 ... ok
+test test_141 ... ok
+test test_163 ... ok
+test test_3000 ... ok
+test test_402 ... ok
+test test_575 ... ok
+test test_911 ... ok
+test test_fifty_nine ... ok
+test test_five ... ok
+test test_forty_eight ... ok
+test test_four ... ok
+test test_nine ... ok
+test test_ninety_three ... ok
+test test_one ... ok
+test test_six ... ok
+test test_three ... ok
+test test_twenty_seven ... ok
+test test_two ... ok
+
+test result: ok. 18 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+===============================================================================
+
+cargo llvm-cov --no-clean --all-features --workspace --text --output-path=coverage-annotations.txt
+    Finished test [unoptimized + debuginfo] target(s) in 0.00s
+     Running unittests src/lib.rs (target/llvm-cov-target/debug/deps/roman_numerals-b7b51b5eaf2fe379)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/roman-numerals.rs (target/llvm-cov-target/debug/deps/roman_numerals-8d74dcecb6140f72)
+
+running 18 tests
+test test_1024 ... ok
+test test_141 ... ok
+test test_163 ... ok
+test test_3000 ... ok
+test test_402 ... ok
+test test_575 ... ok
+test test_911 ... ok
+test test_fifty_nine ... ok
+test test_five ... ok
+test test_forty_eight ... ok
+test test_four ... ok
+test test_nine ... ok
+test test_ninety_three ... ok
+test test_one ... ok
+test test_six ... ok
+test test_three ... ok
+test test_twenty_seven ... ok
+test test_two ... ok
+
+test result: ok. 18 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+    Finished report saved to coverage-annotations.txt
+
+===============================================================================
+
+cargo llvm-cov clean --workspace
+
+===============================================================================
+
+lcov --list report.lcov
+Reading tracefile report.lcov
+            |Lines       |Functions  |Branches    
+Filename    |Rate     Num|Rate    Num|Rate     Num
+==================================================
+[/home/vpayno/git_vpayno/exercism-workspace/rust/roman-numerals/src/]
+lib.rs      |96.7%     30|50.0%     4|    -      0
+==================================================
+      Total:|96.7%     30|50.0%     4|    -      0
+
+lcov --summary report.lcov
+Reading tracefile report.lcov
+Summary coverage rate:
+  lines......: 96.7% (29 of 30 lines)
+  functions..: 50.0% (2 of 4 functions)
+  branches...: no data found
+
+===============================================================================
+
+
+real	0m1.983s
+user	0m1.798s
+sys	0m0.910s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.023s
+user	0m0.027s
+sys	0m0.012s
+
+===============================================================================
+
+Running: cargo doc
+    Checking sorted-list v0.2.0
+ Documenting sorted-list v0.2.0
+ Documenting roman-numerals v1.0.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/roman-numerals)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.38s
+
+real	0m0.391s
+user	0m0.332s
+sys	0m0.068s
+
+===============================================================================
+
+Running: cargo clean
+
+real	0m0.019s
+user	0m0.009s
+sys	0m0.009s
+
+===============================================================================
+

@@ -1,0 +1,116 @@
+    1|       |//! Exercism Url: <https://exercism.org/tracks/rust/exercises/roman-numerals>
+    2|       |
+    3|       |use sorted_list::SortedList;
+    4|       |use std::fmt::{Display, Formatter, Result};
+    5|       |
+    6|       |/// Example
+    7|       |///
+    8|       |/// ```rust
+    9|       |/// use roman_numerals::Roman;
+   10|       |///
+   11|       |/// let want ="MCCXXXIV";
+   12|       |/// let got = Roman::from(1234).to_string();
+   13|       |///
+   14|       |/// assert_eq!(got, want);
+   15|       |/// ```
+   16|       |pub struct Roman(u32);
+   17|       |
+   18|       |impl Display for Roman {
+   19|     54|    fn fmt(&self, f: &mut Formatter<'_>) -> Result {
+   20|     54|        let mut number = self.0;
+   21|     54|
+   22|     54|        // can't declare this as a global const
+   23|     54|        let mut decimal_to_roman: SortedList<u32, String> = SortedList::new();
+   24|     54|        decimal_to_roman.insert(1, "I".to_owned());
+   25|     54|        decimal_to_roman.insert(4, "IV".to_owned());
+   26|     54|        decimal_to_roman.insert(5, "V".to_owned());
+   27|     54|        decimal_to_roman.insert(9, "IX".to_owned());
+   28|     54|        decimal_to_roman.insert(10, "X".to_owned());
+   29|     54|        decimal_to_roman.insert(40, "XL".to_owned());
+   30|     54|        decimal_to_roman.insert(50, "L".to_owned());
+   31|     54|        decimal_to_roman.insert(90, "XC".to_owned());
+   32|     54|        decimal_to_roman.insert(100, "C".to_owned());
+   33|     54|        decimal_to_roman.insert(400, "CD".to_owned());
+   34|     54|        decimal_to_roman.insert(500, "D".to_owned());
+   35|     54|        decimal_to_roman.insert(900, "CM".to_owned());
+   36|     54|        decimal_to_roman.insert(1_000, "M".to_owned());
+   37|       |
+   38|       |        // iterate over vector backwards
+   39|    702|        for pair in decimal_to_roman.iter().rev() {
+                                  ^54
+   40|    702|            let (key, value) = pair;
+   41|       |
+   42|       |            // keep using the roman numeral until it doesn't "fit"
+   43|    864|            while number >= *key {
+   44|       |                // start writing roman numberals to formatter
+   45|    162|                match f.write_str(value.as_str()) {
+   46|    162|                    Ok(ok) => ok,
+   47|      0|                    Err(e) => panic!("failed to write: {:?}", e),
+   48|       |                };
+   49|       |
+   50|       |                // decrement decimal number
+   51|    162|                number -= key;
+   52|       |            }
+   53|       |        }
+   54|       |
+   55|     54|        Ok(())
+   56|     54|    }
+  ------------------
+  | <roman_numerals::Roman as core::fmt::Display>::fmt:
+  |   19|     54|    fn fmt(&self, f: &mut Formatter<'_>) -> Result {
+  |   20|     54|        let mut number = self.0;
+  |   21|     54|
+  |   22|     54|        // can't declare this as a global const
+  |   23|     54|        let mut decimal_to_roman: SortedList<u32, String> = SortedList::new();
+  |   24|     54|        decimal_to_roman.insert(1, "I".to_owned());
+  |   25|     54|        decimal_to_roman.insert(4, "IV".to_owned());
+  |   26|     54|        decimal_to_roman.insert(5, "V".to_owned());
+  |   27|     54|        decimal_to_roman.insert(9, "IX".to_owned());
+  |   28|     54|        decimal_to_roman.insert(10, "X".to_owned());
+  |   29|     54|        decimal_to_roman.insert(40, "XL".to_owned());
+  |   30|     54|        decimal_to_roman.insert(50, "L".to_owned());
+  |   31|     54|        decimal_to_roman.insert(90, "XC".to_owned());
+  |   32|     54|        decimal_to_roman.insert(100, "C".to_owned());
+  |   33|     54|        decimal_to_roman.insert(400, "CD".to_owned());
+  |   34|     54|        decimal_to_roman.insert(500, "D".to_owned());
+  |   35|     54|        decimal_to_roman.insert(900, "CM".to_owned());
+  |   36|     54|        decimal_to_roman.insert(1_000, "M".to_owned());
+  |   37|       |
+  |   38|       |        // iterate over vector backwards
+  |   39|    702|        for pair in decimal_to_roman.iter().rev() {
+  |                                  ^54
+  |   40|    702|            let (key, value) = pair;
+  |   41|       |
+  |   42|       |            // keep using the roman numeral until it doesn't "fit"
+  |   43|    864|            while number >= *key {
+  |   44|       |                // start writing roman numberals to formatter
+  |   45|    162|                match f.write_str(value.as_str()) {
+  |   46|    162|                    Ok(ok) => ok,
+  |   47|      0|                    Err(e) => panic!("failed to write: {:?}", e),
+  |   48|       |                };
+  |   49|       |
+  |   50|       |                // decrement decimal number
+  |   51|    162|                number -= key;
+  |   52|       |            }
+  |   53|       |        }
+  |   54|       |
+  |   55|     54|        Ok(())
+  |   56|     54|    }
+  ------------------
+  | Unexecuted instantiation: <roman_numerals::Roman as core::fmt::Display>::fmt
+  ------------------
+   57|       |}
+   58|       |
+   59|       |impl From<u32> for Roman {
+   60|     54|    fn from(num: u32) -> Self {
+   61|     54|        Self(num)
+   62|     54|    }
+  ------------------
+  | <roman_numerals::Roman as core::convert::From<u32>>::from:
+  |   60|     54|    fn from(num: u32) -> Self {
+  |   61|     54|        Self(num)
+  |   62|     54|    }
+  ------------------
+  | Unexecuted instantiation: <roman_numerals::Roman as core::convert::From<u32>>::from
+  ------------------
+   63|       |}

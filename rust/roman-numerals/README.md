@@ -75,3 +75,8 @@ See also: http://www.novaroma.org/via_romana/numbers.html
 ### Based on
 
 The Roman Numeral Kata - http://codingdojo.org/cgi-bin/index.pl?KataRomanNumerals
+
+### My Solution
+
+- [my solution](./src/lib.rs)
+- [run-tests](./run-tests-rust.txt)
