@@ -1,6 +1,6 @@
 //! Exercism Url: <https://exercism.org/tracks/rust/exercises/roman-numerals>
 
-use sorted_list::SortedList;
+use std::collections::BTreeMap;
 use std::fmt::{Display, Formatter, Result};
 
 /// Example
@@ -20,7 +20,7 @@ impl Display for Roman {
         let mut number = self.0;
 
         // can't declare this as a global const
-        let mut decimal_to_roman: SortedList<u32, String> = SortedList::new();
+        let mut decimal_to_roman: BTreeMap<u32, String> = BTreeMap::new();
         decimal_to_roman.insert(1, "I".to_owned());
         decimal_to_roman.insert(4, "IV".to_owned());
         decimal_to_roman.insert(5, "V".to_owned());
