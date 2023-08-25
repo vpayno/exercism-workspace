@@ -1,0 +1,57 @@
+    1|       |/// Create an empty vector
+    2|      3|pub fn create_empty() -> Vec<u8> {
+    3|      3|    Vec::new()
+    4|      3|}
+  ------------------
+  | short_fibonacci::create_empty:
+  |    2|      3|pub fn create_empty() -> Vec<u8> {
+  |    3|      3|    Vec::new()
+  |    4|      3|}
+  ------------------
+  | Unexecuted instantiation: short_fibonacci::create_empty
+  ------------------
+    5|       |
+    6|       |/// Create a buffer of `count` zeroes.
+    7|       |///
+    8|       |/// Applications often use buffers when serializing data to send over the network.
+    9|     30|pub fn create_buffer(count: usize) -> Vec<u8> {
+   10|     30|    let buffer: Vec<u8> = vec![0; count];
+   11|     30|
+   12|     30|    buffer
+   13|     30|}
+  ------------------
+  | short_fibonacci::create_buffer:
+  |    9|     30|pub fn create_buffer(count: usize) -> Vec<u8> {
+  |   10|     30|    let buffer: Vec<u8> = vec![0; count];
+  |   11|     30|
+  |   12|     30|    buffer
+  |   13|     30|}
+  ------------------
+  | Unexecuted instantiation: short_fibonacci::create_buffer
+  ------------------
+   14|       |
+   15|       |/// Create a vector containing the first five elements of the Fibonacci sequence.
+   16|       |///
+   17|       |/// Fibonacci's sequence is the list of numbers where the next number is a sum of the previous two.
+   18|       |/// Its first five elements are `1, 1, 2, 3, 5`.
+   19|      3|pub fn fibonacci() -> Vec<u8> {
+   20|      3|    // Didn't get the impression we actually needed to bother calculating the numbers.
+   21|      3|    // Using create_buffer() and .push() resulted in larger buffers and it would fail the test.
+   22|      3|    let buffer: Vec<u8> = vec![1, 1, 2, 3, 5];
+   23|      3|
+   24|      3|    // Return buffer.
+   25|      3|    buffer
+   26|      3|}
+  ------------------
+  | short_fibonacci::fibonacci:
+  |   19|      3|pub fn fibonacci() -> Vec<u8> {
+  |   20|      3|    // Didn't get the impression we actually needed to bother calculating the numbers.
+  |   21|      3|    // Using create_buffer() and .push() resulted in larger buffers and it would fail the test.
+  |   22|      3|    let buffer: Vec<u8> = vec![1, 1, 2, 3, 5];
+  |   23|      3|
+  |   24|      3|    // Return buffer.
+  |   25|      3|    buffer
+  |   26|      3|}
+  ------------------
+  | Unexecuted instantiation: short_fibonacci::fibonacci
+  ------------------

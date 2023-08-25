@@ -1,0 +1,78 @@
+    1|       |//! Exercise Url: <https://exercism.org/tracks/rust/exercises/raindrops>
+    2|       |
+    3|       |/// raindrops generates rain sounds from a number.
+    4|       |///
+    5|       |/// # Examples
+    6|       |/// ```rust
+    7|       |/// use raindrops::raindrops;
+    8|       |///
+    9|       |/// let mut got : String;
+   10|       |/// let mut want : String;
+   11|       |///
+   12|       |/// got = raindrops(3);
+   13|       |/// want = "Pling".to_string();
+   14|       |/// assert_eq!(got, want);
+   15|       |///
+   16|       |/// got = raindrops(5);
+   17|       |/// want = "Plang".to_string();
+   18|       |/// assert_eq!(got, want);
+   19|       |///
+   20|       |/// got = raindrops(7);
+   21|       |/// want = "Plong".to_string();
+   22|       |/// assert_eq!(got, want);
+   23|       |///
+   24|       |/// got = raindrops(105);
+   25|       |/// want = "PlingPlangPlong".to_string();
+   26|       |/// assert_eq!(got, want);
+   27|       |///
+   28|       |/// got = raindrops(11);
+   29|       |/// want = "11".to_string();
+   30|       |/// assert_eq!(got, want);
+   31|       |/// ```
+   32|     57|pub fn raindrops(number: u32) -> String {
+   33|     57|    let mut sounds = String::new();
+   34|     57|
+   35|     57|    if number % 3 == 0 {
+   36|     21|        sounds.push_str("Pling");
+   37|     36|    }
+   38|       |
+   39|     57|    if number % 5 == 0 {
+   40|     21|        sounds.push_str("Plang");
+   41|     36|    }
+   42|       |
+   43|     57|    if number % 7 == 0 {
+   44|     18|        sounds.push_str("Plong");
+   45|     39|    }
+   46|       |
+   47|     57|    if sounds.is_empty() {
+   48|     12|        sounds.push_str(number.to_string().as_str());
+   49|     45|    }
+   50|       |
+   51|     57|    sounds
+   52|     57|}
+  ------------------
+  | raindrops::raindrops:
+  |   32|     57|pub fn raindrops(number: u32) -> String {
+  |   33|     57|    let mut sounds = String::new();
+  |   34|     57|
+  |   35|     57|    if number % 3 == 0 {
+  |   36|     21|        sounds.push_str("Pling");
+  |   37|     36|    }
+  |   38|       |
+  |   39|     57|    if number % 5 == 0 {
+  |   40|     21|        sounds.push_str("Plang");
+  |   41|     36|    }
+  |   42|       |
+  |   43|     57|    if number % 7 == 0 {
+  |   44|     18|        sounds.push_str("Plong");
+  |   45|     39|    }
+  |   46|       |
+  |   47|     57|    if sounds.is_empty() {
+  |   48|     12|        sounds.push_str(number.to_string().as_str());
+  |   49|     45|    }
+  |   50|       |
+  |   51|     57|    sounds
+  |   52|     57|}
+  ------------------
+  | Unexecuted instantiation: raindrops::raindrops
+  ------------------

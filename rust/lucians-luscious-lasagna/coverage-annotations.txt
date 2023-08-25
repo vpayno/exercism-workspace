@@ -1,0 +1,99 @@
+    1|       |// This stub file contains items that aren't used yet; feel free to remove this module attribute
+    2|       |// to enable stricter warnings.
+    3|       |#![allow(unused)]
+    4|       |
+    5|      6|pub fn expected_minutes_in_oven() -> i32 {
+    6|      6|    // Lasagnas always take 40 minutes regardless of the number of layers?
+    7|      6|    let minutes: i32 = 40;
+    8|      6|
+    9|      6|    // clippy will complain if we make the return explicit so just use
+   10|      6|    // a variable without a traling semicolon.
+   11|      6|    minutes
+   12|      6|}
+  ------------------
+  | lucians_luscious_lasagna::expected_minutes_in_oven:
+  |    5|      6|pub fn expected_minutes_in_oven() -> i32 {
+  |    6|      6|    // Lasagnas always take 40 minutes regardless of the number of layers?
+  |    7|      6|    let minutes: i32 = 40;
+  |    8|      6|
+  |    9|      6|    // clippy will complain if we make the return explicit so just use
+  |   10|      6|    // a variable without a traling semicolon.
+  |   11|      6|    minutes
+  |   12|      6|}
+  ------------------
+  | Unexecuted instantiation: lucians_luscious_lasagna::expected_minutes_in_oven
+  ------------------
+   13|       |
+   14|      3|pub fn remaining_minutes_in_oven(actual_minutes_in_oven: i32) -> i32 {
+   15|      3|    // Remaining time in the oven.
+   16|      3|    let remaining_time: i32 = expected_minutes_in_oven() - actual_minutes_in_oven;
+   17|      3|
+   18|      3|    // clippy will complain if we make the return explicit so just use
+   19|      3|    // a variable without a traling semicolon.
+   20|      3|    remaining_time
+   21|      3|}
+  ------------------
+  | lucians_luscious_lasagna::remaining_minutes_in_oven:
+  |   14|      3|pub fn remaining_minutes_in_oven(actual_minutes_in_oven: i32) -> i32 {
+  |   15|      3|    // Remaining time in the oven.
+  |   16|      3|    let remaining_time: i32 = expected_minutes_in_oven() - actual_minutes_in_oven;
+  |   17|      3|
+  |   18|      3|    // clippy will complain if we make the return explicit so just use
+  |   19|      3|    // a variable without a traling semicolon.
+  |   20|      3|    remaining_time
+  |   21|      3|}
+  ------------------
+  | Unexecuted instantiation: lucians_luscious_lasagna::remaining_minutes_in_oven
+  ------------------
+   22|       |
+   23|     12|pub fn preparation_time_in_minutes(number_of_layers: i32) -> i32 {
+   24|     12|    let minutes_per_layer: i32 = 2;
+   25|     12|
+   26|     12|    // Preparation time is dependent on the number of layers.
+   27|     12|    let preparation_time: i32 = number_of_layers * minutes_per_layer;
+   28|     12|
+   29|     12|    // clippy will complain if we make the return explicit so just use
+   30|     12|    // a variable without a traling semicolon.
+   31|     12|    preparation_time
+   32|     12|}
+  ------------------
+  | lucians_luscious_lasagna::preparation_time_in_minutes:
+  |   23|     12|pub fn preparation_time_in_minutes(number_of_layers: i32) -> i32 {
+  |   24|     12|    let minutes_per_layer: i32 = 2;
+  |   25|     12|
+  |   26|     12|    // Preparation time is dependent on the number of layers.
+  |   27|     12|    let preparation_time: i32 = number_of_layers * minutes_per_layer;
+  |   28|     12|
+  |   29|     12|    // clippy will complain if we make the return explicit so just use
+  |   30|     12|    // a variable without a traling semicolon.
+  |   31|     12|    preparation_time
+  |   32|     12|}
+  ------------------
+  | Unexecuted instantiation: lucians_luscious_lasagna::preparation_time_in_minutes
+  ------------------
+   33|       |
+   34|      6|pub fn elapsed_time_in_minutes(number_of_layers: i32, actual_minutes_in_oven: i32) -> i32 {
+   35|      6|    // Time spent preparing and cooking in the oven.
+   36|      6|    let mut time_elapsed: i32 = 0;
+   37|      6|    time_elapsed += preparation_time_in_minutes(number_of_layers);
+   38|      6|    time_elapsed += actual_minutes_in_oven;
+   39|      6|
+   40|      6|    // clippy will complain if we make the return explicit so just use
+   41|      6|    // a variable without a traling semicolon.
+   42|      6|    time_elapsed
+   43|      6|}
+  ------------------
+  | lucians_luscious_lasagna::elapsed_time_in_minutes:
+  |   34|      6|pub fn elapsed_time_in_minutes(number_of_layers: i32, actual_minutes_in_oven: i32) -> i32 {
+  |   35|      6|    // Time spent preparing and cooking in the oven.
+  |   36|      6|    let mut time_elapsed: i32 = 0;
+  |   37|      6|    time_elapsed += preparation_time_in_minutes(number_of_layers);
+  |   38|      6|    time_elapsed += actual_minutes_in_oven;
+  |   39|      6|
+  |   40|      6|    // clippy will complain if we make the return explicit so just use
+  |   41|      6|    // a variable without a traling semicolon.
+  |   42|      6|    time_elapsed
+  |   43|      6|}
+  ------------------
+  | Unexecuted instantiation: lucians_luscious_lasagna::elapsed_time_in_minutes
+  ------------------

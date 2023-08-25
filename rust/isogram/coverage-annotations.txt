@@ -1,0 +1,137 @@
+    1|       |//! Project Url: <https://exercism.org/tracks/rust/exercises/isogram/dig_deeper>
+    2|       |
+    3|       |use std::collections::HashSet;
+    4|       |
+    5|       |/// Example
+    6|       |///
+    7|       |/// ```rust
+    8|       |/// use isogram::check;
+    9|       |///
+   10|       |/// let word = "eleven";
+   11|       |/// let got = check(word);
+   12|       |///
+   13|       |/// println!("Is {} an isogram? {}", word, got);
+   14|       |/// ```
+   15|     39|pub fn check(candidate: &str) -> bool {
+   16|     39|    if candidate.is_empty() {
+   17|      6|        return true;
+   18|     33|    }
+   19|     33|
+   20|     33|    // using u8 instead of char allows support of utf-8 charcaters, not tested by tests :(
+   21|     33|    let mut chars: HashSet<u8> = HashSet::new();
+   22|     33|
+   23|     33|    // The panics are handled by using the result of this chain.
+   24|     33|    // insert() returns false when a duplicate is detected
+   25|     33|    // all() returns false if one of the iterations was false
+   26|     33|    // inspect() let's us run an arbitrary command on each item
+   27|     33|    // filter() filters non a-z characters
+   28|     33|    // chars() returns an iterator to the characters in the string
+   29|     33|    // to_lowercase() converts the string to lowercase (could also use .map() to convert each individual character)
+   30|     33|    candidate
+   31|     33|        .to_lowercase()
+   32|     33|        .bytes()
+   33|    318|        .filter(|rune| rune.is_ascii_alphabetic())
+  ------------------
+  | isogram::check::{closure#0}:
+  |   33|    267|        .filter(|rune| rune.is_ascii_alphabetic())
+  ------------------
+  | isogram::check::{closure#0}:
+  |   33|     51|        .filter(|rune| rune.is_ascii_alphabetic())
+  ------------------
+   34|    276|        .inspect(|rune| println!("rune: {}", rune))
+  ------------------
+  | isogram::check::{closure#1}:
+  |   34|    252|        .inspect(|rune| println!("rune: {}", rune))
+  ------------------
+  | isogram::check::{closure#1}:
+  |   34|     24|        .inspect(|rune| println!("rune: {}", rune))
+  ------------------
+   35|    276|        .all(|rune| chars.insert(rune))
+                                                    ^33
+  ------------------
+  | isogram::check::{closure#2}:
+  |   35|    252|        .all(|rune| chars.insert(rune))
+  ------------------
+  | isogram::check::{closure#2}:
+  |   35|     24|        .all(|rune| chars.insert(rune))
+  ------------------
+   36|     39|}
+  ------------------
+  | isogram::check:
+  |   15|     27|pub fn check(candidate: &str) -> bool {
+  |   16|     27|    if candidate.is_empty() {
+  |   17|      3|        return true;
+  |   18|     24|    }
+  |   19|     24|
+  |   20|     24|    // using u8 instead of char allows support of utf-8 charcaters, not tested by tests :(
+  |   21|     24|    let mut chars: HashSet<u8> = HashSet::new();
+  |   22|     24|
+  |   23|     24|    // The panics are handled by using the result of this chain.
+  |   24|     24|    // insert() returns false when a duplicate is detected
+  |   25|     24|    // all() returns false if one of the iterations was false
+  |   26|     24|    // inspect() let's us run an arbitrary command on each item
+  |   27|     24|    // filter() filters non a-z characters
+  |   28|     24|    // chars() returns an iterator to the characters in the string
+  |   29|     24|    // to_lowercase() converts the string to lowercase (could also use .map() to convert each individual character)
+  |   30|     24|    candidate
+  |   31|     24|        .to_lowercase()
+  |   32|     24|        .bytes()
+  |   33|     24|        .filter(|rune| rune.is_ascii_alphabetic())
+  |   34|     24|        .inspect(|rune| println!("rune: {}", rune))
+  |   35|     24|        .all(|rune| chars.insert(rune))
+  |   36|     27|}
+  ------------------
+  | isogram::check:
+  |   15|     12|pub fn check(candidate: &str) -> bool {
+  |   16|     12|    if candidate.is_empty() {
+  |   17|      3|        return true;
+  |   18|      9|    }
+  |   19|      9|
+  |   20|      9|    // using u8 instead of char allows support of utf-8 charcaters, not tested by tests :(
+  |   21|      9|    let mut chars: HashSet<u8> = HashSet::new();
+  |   22|      9|
+  |   23|      9|    // The panics are handled by using the result of this chain.
+  |   24|      9|    // insert() returns false when a duplicate is detected
+  |   25|      9|    // all() returns false if one of the iterations was false
+  |   26|      9|    // inspect() let's us run an arbitrary command on each item
+  |   27|      9|    // filter() filters non a-z characters
+  |   28|      9|    // chars() returns an iterator to the characters in the string
+  |   29|      9|    // to_lowercase() converts the string to lowercase (could also use .map() to convert each individual character)
+  |   30|      9|    candidate
+  |   31|      9|        .to_lowercase()
+  |   32|      9|        .bytes()
+  |   33|      9|        .filter(|rune| rune.is_ascii_alphabetic())
+  |   34|      9|        .inspect(|rune| println!("rune: {}", rune))
+  |   35|      9|        .all(|rune| chars.insert(rune))
+  |   36|     12|}
+  ------------------
+   37|       |
+   38|      3|#[test]
+   39|      3|fn test_empty() {
+   40|      3|    assert!(check(""), "Empty word is an isogram.")
+                                     ^0
+   41|      3|}
+   42|       |
+   43|      3|#[test]
+   44|      3|fn test_one() {
+   45|      3|    assert!(
+   46|      3|        check("one"),
+   47|      0|        "Word without duplicate letters is an isogram."
+   48|       |    )
+   49|      3|}
+   50|       |
+   51|      3|#[test]
+   52|      3|fn test_eleven() {
+   53|      3|    assert!(
+   54|      3|        !check("eleven"),
+   55|      0|        "Word with duplicate letters isn't an isogram."
+   56|       |    )
+   57|      3|}
+   58|       |
+   59|      3|#[test]
+   60|      3|fn test_numbers() {
+   61|      3|    assert!(
+   62|      3|        check("123a456b789"),
+   63|      0|        "Word with numbers and without duplicate letters isn't an isogram."
+   64|       |    )
+   65|      3|}

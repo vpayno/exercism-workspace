@@ -7,9 +7,9 @@ Running: ../../.github/citools/rust/rust-lint-check --release
 
 Running Rust Cargo CheckRunning: cargo clean
 
-real	0m0.016s
-user	0m0.009s
-sys	0m0.007s
+real	0m0.009s
+user	0m0.005s
+sys	0m0.004s
 
 ===============================================================================
 
@@ -17,16 +17,16 @@ Running: cargo check --release
     Checking isogram v1.3.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/isogram)
     Finished release [optimized] target(s) in 0.09s
 
-real	0m0.101s
-user	0m0.022s
-sys	0m0.039s
+real	0m0.095s
+user	0m0.026s
+sys	0m0.029s
 
 ===============================================================================
 
 
-real	0m0.119s
+real	0m0.106s
 user	0m0.031s
-sys	0m0.049s
+sys	0m0.035s
 
 ===============================================================================
 
@@ -34,26 +34,26 @@ Running: ../../.github/citools/rust/rust-lint-clippy --release
 
 Running Rust Cargo ClippyRunning: cargo clean
 
-real	0m0.008s
-user	0m0.005s
-sys	0m0.004s
+real	0m0.007s
+user	0m0.004s
+sys	0m0.003s
 
 ===============================================================================
 
 Running: cargo clippy --release
     Checking isogram v1.3.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/isogram)
-    Finished release [optimized] target(s) in 0.07s
+    Finished release [optimized] target(s) in 0.08s
 
-real	0m0.100s
-user	0m0.055s
-sys	0m0.044s
+real	0m0.104s
+user	0m0.050s
+sys	0m0.055s
 
 ===============================================================================
 
 
-real	0m0.111s
-user	0m0.060s
-sys	0m0.050s
+real	0m0.113s
+user	0m0.054s
+sys	0m0.061s
 
 ===============================================================================
 
@@ -61,28 +61,28 @@ Running: ../../.github/citools/rust/rust-lint-audit
 
 Running Rust Cargo AuditRunning: cargo clean
 
-real	0m0.018s
-user	0m0.008s
+real	0m0.022s
+user	0m0.011s
 sys	0m0.010s
 
 ===============================================================================
 
 Running: cargo audit
 [0m[0m[1m[32m    Fetching[0m advisory database from `https://github.com/RustSec/advisory-db.git`
-[0m[0m[1m[32m      Loaded[0m 561 security advisories (from /home/vpayno/.cargo/advisory-db)
+[0m[0m[1m[32m      Loaded[0m 562 security advisories (from /home/vpayno/.cargo/advisory-db)
 [0m[0m[1m[32m    Updating[0m crates.io index
 [0m[0m[1m[32m    Scanning[0m Cargo.lock for vulnerabilities (1 crate dependencies)
 
-real	0m1.769s
-user	0m0.543s
-sys	0m0.437s
+real	0m1.884s
+user	0m0.604s
+sys	0m0.432s
 
 ===============================================================================
 
 
-real	0m1.789s
-user	0m0.552s
-sys	0m0.448s
+real	0m1.908s
+user	0m0.616s
+sys	0m0.444s
 
 ===============================================================================
 
@@ -96,21 +96,21 @@ Running Rust Tests With Tarpaulin
 
 Running: cargo clean
 
-real	0m0.019s
-user	0m0.012s
-sys	0m0.007s
+real	0m0.020s
+user	0m0.008s
+sys	0m0.011s
 
 ===============================================================================
 
 Running: cargo test
    Compiling isogram v1.3.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/isogram)
-    Finished test [unoptimized + debuginfo] target(s) in 0.48s
+    Finished test [unoptimized + debuginfo] target(s) in 0.46s
      Running unittests src/lib.rs (target/debug/deps/isogram-acafe6d05563666d)
 
 running 4 tests
 test test_eleven ... ok
-test test_numbers ... ok
 test test_empty ... ok
+test test_numbers ... ok
 test test_one ... ok
 
 test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
@@ -118,15 +118,15 @@ test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
      Running tests/isogram.rs (target/debug/deps/isogram-f98ce7e333071b33)
 
 running 9 tests
-test duplicated_character_in_the_middle ... ok
 test empty_string ... ok
+test duplicated_character_in_the_middle ... ok
 test isogram_with_duplicated_hyphen ... ok
-test longest_reported_english_isogram ... ok
 test hypothetical_isogramic_word_with_hyphen ... ok
+test longest_reported_english_isogram ... ok
 test made_up_name_that_is_an_isogram ... ok
 test one_duplicated_character_mixed_case ... ok
-test only_lower_case_characters ... ok
 test one_duplicated_character ... ok
+test only_lower_case_characters ... ok
 
 test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
@@ -138,37 +138,37 @@ test src/lib.rs - check (line 7) ... ok
 test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.12s
 
 
-real	0m0.631s
-user	0m1.283s
-sys	0m0.458s
+real	0m0.620s
+user	0m1.144s
+sys	0m0.413s
 
 ===============================================================================
 
 Running: cargo tarpaulin --release --timeout=300
-[2mAug 23 21:51:59.675[0m [32m INFO[0m cargo_tarpaulin::config: Creating config
-[2mAug 23 21:51:59.683[0m [32m INFO[0m cargo_tarpaulin: Running Tarpaulin
-[2mAug 23 21:51:59.683[0m [32m INFO[0m cargo_tarpaulin: Building project
-[2mAug 23 21:51:59.683[0m [32m INFO[0m cargo_tarpaulin::cargo: Cleaning project
+[2mAug 24 20:27:03.111[0m [32m INFO[0m cargo_tarpaulin::config: Creating config
+[2mAug 24 20:27:03.120[0m [32m INFO[0m cargo_tarpaulin: Running Tarpaulin
+[2mAug 24 20:27:03.120[0m [32m INFO[0m cargo_tarpaulin: Building project
+[2mAug 24 20:27:03.120[0m [32m INFO[0m cargo_tarpaulin::cargo: Cleaning project
    Compiling isogram v1.3.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/isogram)
-    Finished release [optimized] target(s) in 0.45s
-[2mAug 23 21:52:00.174[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
-[2mAug 23 21:52:00.174[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/isogram/target/release/deps/isogram-23b2b50c0cd413cd
+    Finished release [optimized] target(s) in 0.42s
+[2mAug 24 20:27:03.583[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
+[2mAug 24 20:27:03.583[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/isogram/target/release/deps/isogram-23b2b50c0cd413cd
 
 running 9 tests
 test empty_string ... ok
 test one_duplicated_character_mixed_case ... ok
-test isogram_with_duplicated_hyphen ... ok
-test hypothetical_isogramic_word_with_hyphen ... ok
 test one_duplicated_character ... ok
 test made_up_name_that_is_an_isogram ... ok
 test longest_reported_english_isogram ... ok
+test isogram_with_duplicated_hyphen ... ok
+test hypothetical_isogramic_word_with_hyphen ... ok
 test duplicated_character_in_the_middle ... ok
 test only_lower_case_characters ... ok
 
-test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
 
-[2mAug 23 21:52:00.688[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
-[2mAug 23 21:52:00.688[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/isogram/target/release/deps/isogram-8d1eaa5b2a54a1f7
+[2mAug 24 20:27:04.102[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
+[2mAug 24 20:27:04.102[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/isogram/target/release/deps/isogram-8d1eaa5b2a54a1f7
 
 running 4 tests
 test test_empty ... ok
@@ -178,7 +178,7 @@ test test_eleven ... ok
 
 test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
 
-[2mAug 23 21:52:01.190[0m [32m INFO[0m cargo_tarpaulin::report: Coverage Results:
+[2mAug 24 20:27:04.617[0m [32m INFO[0m cargo_tarpaulin::report: Coverage Results:
 || Uncovered Lines:
 || src/lib.rs: 33
 || Tested/Total Lines:
@@ -186,16 +186,16 @@ test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 || 
 83.33% coverage, 5/6 lines covered
 
-real	0m1.529s
-user	0m1.610s
-sys	0m1.144s
+real	0m1.521s
+user	0m1.397s
+sys	0m1.147s
 
 ===============================================================================
 
 
-real	0m2.181s
-user	0m2.907s
-sys	0m1.610s
+real	0m2.162s
+user	0m2.549s
+sys	0m1.572s
 
 ===============================================================================
 
@@ -205,8 +205,8 @@ Running Rust Tests With LLVM Coverage
 
 Running: cargo clean
 
-real	0m0.014s
-user	0m0.004s
+real	0m0.018s
+user	0m0.008s
 sys	0m0.010s
 
 ===============================================================================
@@ -217,7 +217,7 @@ cargo llvm-cov clean --workspace
 
 Running: cargo test
    Compiling isogram v1.3.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/isogram)
-    Finished test [unoptimized + debuginfo] target(s) in 0.52s
+    Finished test [unoptimized + debuginfo] target(s) in 0.44s
      Running unittests src/lib.rs (target/debug/deps/isogram-acafe6d05563666d)
 
 running 4 tests
@@ -231,11 +231,11 @@ test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
      Running tests/isogram.rs (target/debug/deps/isogram-f98ce7e333071b33)
 
 running 9 tests
-test duplicated_character_in_the_middle ... ok
 test empty_string ... ok
 test hypothetical_isogramic_word_with_hyphen ... ok
-test longest_reported_english_isogram ... ok
+test duplicated_character_in_the_middle ... ok
 test isogram_with_duplicated_hyphen ... ok
+test longest_reported_english_isogram ... ok
 test made_up_name_that_is_an_isogram ... ok
 test one_duplicated_character ... ok
 test one_duplicated_character_mixed_case ... ok
@@ -251,15 +251,53 @@ test src/lib.rs - check (line 7) ... ok
 test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.12s
 
 
-real	0m0.690s
-user	0m1.563s
-sys	0m0.473s
+real	0m0.594s
+user	0m1.051s
+sys	0m0.370s
 
 ===============================================================================
 
 cargo llvm-cov --no-clean --all-features --workspace
    Compiling isogram v1.3.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/isogram)
-    Finished test [unoptimized + debuginfo] target(s) in 0.33s
+    Finished test [unoptimized + debuginfo] target(s) in 0.27s
+     Running unittests src/lib.rs (target/llvm-cov-target/debug/deps/isogram-6b9383da726047fb)
+
+running 4 tests
+test test_eleven ... ok
+test test_empty ... ok
+test test_numbers ... ok
+test test_one ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/isogram.rs (target/llvm-cov-target/debug/deps/isogram-5d4ca36d55b1cf95)
+
+running 9 tests
+test duplicated_character_in_the_middle ... ok
+test empty_string ... ok
+test hypothetical_isogramic_word_with_hyphen ... ok
+test isogram_with_duplicated_hyphen ... ok
+test longest_reported_english_isogram ... ok
+test made_up_name_that_is_an_isogram ... ok
+test one_duplicated_character ... ok
+test one_duplicated_character_mixed_case ... ok
+test only_lower_case_characters ... ok
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+Filename                                                               Regions    Missed Regions     Cover   Functions  Missed Functions  Executed       Lines      Missed Lines     Cover    Branches   Missed Branches     Cover
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+/home/vpayno/git_vpayno/exercism-workspace/rust/isogram/src/lib.rs          26                 4    84.62%          12                 0   100.00%          47                 3    93.62%           0                 0         -
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+TOTAL                                                                       26                 4    84.62%          12                 0   100.00%          47                 3    93.62%           0                 0         -
+
+===============================================================================
+
+cargo llvm-cov report --lcov --output-path report.lcov
+
+    Finished report saved to report.lcov
+
+    Finished test [unoptimized + debuginfo] target(s) in 0.00s
      Running unittests src/lib.rs (target/llvm-cov-target/debug/deps/isogram-6b9383da726047fb)
 
 running 4 tests
@@ -285,17 +323,54 @@ test only_lower_case_characters ... ok
 
 test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
-Filename                                                               Regions    Missed Regions     Cover   Functions  Missed Functions  Executed       Lines      Missed Lines     Cover    Branches   Missed Branches     Cover
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-/home/vpayno/git_vpayno/exercism-workspace/rust/isogram/src/lib.rs          26                 4    84.62%          12                 0   100.00%          47                 3    93.62%           0                 0         -
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-TOTAL                                                                       26                 4    84.62%          12                 0   100.00%          47                 3    93.62%           0                 0         -
 
 ===============================================================================
 
-cargo llvm-cov report --lcov --output-path report.lcov
+cargo llvm-cov --no-clean --all-features --workspace --text --output-path=coverage-annotations.txt
+    Finished test [unoptimized + debuginfo] target(s) in 0.00s
+     Running unittests src/lib.rs (target/llvm-cov-target/debug/deps/isogram-6b9383da726047fb)
 
-    Finished report saved to report.lcov
+running 4 tests
+test test_eleven ... ok
+test test_empty ... ok
+test test_numbers ... ok
+test test_one ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/isogram.rs (target/llvm-cov-target/debug/deps/isogram-5d4ca36d55b1cf95)
+
+running 9 tests
+test duplicated_character_in_the_middle ... ok
+test empty_string ... ok
+test hypothetical_isogramic_word_with_hyphen ... ok
+test isogram_with_duplicated_hyphen ... ok
+test longest_reported_english_isogram ... ok
+test made_up_name_that_is_an_isogram ... ok
+test one_duplicated_character ... ok
+test one_duplicated_character_mixed_case ... ok
+test only_lower_case_characters ... ok
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+    Finished report saved to coverage-annotations.txt
+
+===============================================================================
+
+cargo llvm-cov clean --workspace
+
+===============================================================================
+
+lcov --list report.lcov
+Reading tracefile report.lcov
+            |Lines       |Functions  |Branches    
+Filename    |Rate     Num|Rate    Num|Rate     Num
+==================================================
+[/home/vpayno/git_vpayno/exercism-workspace/rust/isogram/src/]
+lib.rs      |93.2%     44| 100%    16|    -      0
+==================================================
+      Total:|93.2%     44| 100%    16|    -      0
 
 lcov --summary report.lcov
 Reading tracefile report.lcov
@@ -306,40 +381,36 @@ Summary coverage rate:
 
 ===============================================================================
 
-cargo llvm-cov clean --workspace
 
-===============================================================================
-
-
-real	0m1.626s
-user	0m2.558s
-sys	0m0.947s
+real	0m1.807s
+user	0m2.042s
+sys	0m0.966s
 
 ===============================================================================
 
 Running: misspell .
 
 real	0m0.024s
-user	0m0.026s
-sys	0m0.017s
+user	0m0.025s
+sys	0m0.012s
 
 ===============================================================================
 
 Running: cargo doc
  Documenting isogram v1.3.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/isogram)
-    Finished dev [unoptimized + debuginfo] target(s) in 0.17s
+    Finished dev [unoptimized + debuginfo] target(s) in 0.18s
 
-real	0m0.183s
-user	0m0.141s
-sys	0m0.043s
+real	0m0.192s
+user	0m0.151s
+sys	0m0.042s
 
 ===============================================================================
 
 Running: cargo clean
 
-real	0m0.012s
-user	0m0.005s
-sys	0m0.007s
+real	0m0.014s
+user	0m0.004s
+sys	0m0.011s
 
 ===============================================================================
 

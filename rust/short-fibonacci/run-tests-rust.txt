@@ -3,13 +3,40 @@ Running automated test file(s):
 
 ===============================================================================
 
+Running: ../../.github/citools/rust/rust-lint-check --release
+
+Running Rust Cargo CheckRunning: cargo clean
+
+real	0m0.020s
+user	0m0.011s
+sys	0m0.009s
+
+===============================================================================
+
 Running: cargo check --release
     Checking short_fibonacci v0.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/short-fibonacci)
-    Finished release [optimized] target(s) in 0.09s
+    Finished release [optimized] target(s) in 0.08s
 
-real	0m0.099s
-user	0m0.028s
-sys	0m0.027s
+real	0m0.092s
+user	0m0.024s
+sys	0m0.031s
+
+===============================================================================
+
+
+real	0m0.114s
+user	0m0.037s
+sys	0m0.040s
+
+===============================================================================
+
+Running: ../../.github/citools/rust/rust-lint-clippy --release
+
+Running Rust Cargo ClippyRunning: cargo clean
+
+real	0m0.007s
+user	0m0.005s
+sys	0m0.002s
 
 ===============================================================================
 
@@ -17,21 +44,45 @@ Running: cargo clippy --release
     Checking short_fibonacci v0.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/short-fibonacci)
     Finished release [optimized] target(s) in 0.07s
 
-real	0m0.094s
-user	0m0.042s
-sys	0m0.052s
+real	0m0.102s
+user	0m0.049s
+sys	0m0.053s
+
+===============================================================================
+
+
+real	0m0.112s
+user	0m0.056s
+sys	0m0.056s
+
+===============================================================================
+
+Running: ../../.github/citools/rust/rust-lint-audit
+
+Running Rust Cargo AuditRunning: cargo clean
+
+real	0m0.020s
+user	0m0.011s
+sys	0m0.009s
 
 ===============================================================================
 
 Running: cargo audit
 [0m[0m[1m[32m    Fetching[0m advisory database from `https://github.com/RustSec/advisory-db.git`
-[0m[0m[1m[32m      Loaded[0m 559 security advisories (from /home/vpayno/.cargo/advisory-db)
+[0m[0m[1m[32m      Loaded[0m 562 security advisories (from /home/vpayno/.cargo/advisory-db)
 [0m[0m[1m[32m    Updating[0m crates.io index
 [0m[0m[1m[32m    Scanning[0m Cargo.lock for vulnerabilities (1 crate dependencies)
 
-real	0m1.815s
-user	0m0.596s
-sys	0m0.480s
+real	0m1.819s
+user	0m0.594s
+sys	0m0.444s
+
+===============================================================================
+
+
+real	0m1.842s
+user	0m0.608s
+sys	0m0.453s
 
 ===============================================================================
 
@@ -45,105 +96,9 @@ Running Rust Tests With Tarpaulin
 
 Running: cargo clean
 
-real	0m0.025s
-user	0m0.011s
-sys	0m0.014s
-
-===============================================================================
-
-Running: cargo test
-   Compiling short_fibonacci v0.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/short-fibonacci)
-    Finished test [unoptimized + debuginfo] target(s) in 0.30s
-     Running unittests src/lib.rs (target/debug/deps/short_fibonacci-6a22163e512598b9)
-
-running 0 tests
-
-test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
-
-     Running tests/short-fibonacci.rs (target/debug/deps/short_fibonacci-0199ada08513a8cf)
-
-running 3 tests
-test test_empty ... ok
-test test_buffer ... ok
-test test_fibonacci ... ok
-
-test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
-
-   Doc-tests short_fibonacci
-
-running 0 tests
-
-test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
-
-
-real	0m0.336s
-user	0m0.417s
-sys	0m0.193s
-
-===============================================================================
-
-Running: cargo tarpaulin --release --timeout=300
-[2mAug 19 23:49:58.167[0m [32m INFO[0m cargo_tarpaulin::config: Creating config
-[2mAug 19 23:49:58.175[0m [32m INFO[0m cargo_tarpaulin: Running Tarpaulin
-[2mAug 19 23:49:58.175[0m [32m INFO[0m cargo_tarpaulin: Building project
-[2mAug 19 23:49:58.175[0m [32m INFO[0m cargo_tarpaulin::cargo: Cleaning project
-   Compiling short_fibonacci v0.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/short-fibonacci)
-    Finished release [optimized] target(s) in 0.38s
-[2mAug 19 23:49:58.594[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
-[2mAug 19 23:49:58.594[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/short-fibonacci/target/release/deps/short_fibonacci-47471a2e224736e4
-
-running 0 tests
-
-test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
-
-[2mAug 19 23:49:59.122[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
-[2mAug 19 23:49:59.122[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/short-fibonacci/target/release/deps/short_fibonacci-810cc0a7d68ebffa
-
-running 3 tests
-test test_empty ... ok
-test test_fibonacci ... ok
-test test_buffer ... ok
-
-test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
-
-[2mAug 19 23:49:59.691[0m [32m INFO[0m cargo_tarpaulin::report: Coverage Results:
-|| Uncovered Lines:
-|| Tested/Total Lines:
-|| src/lib.rs: 6/6
-|| 
-100.00% coverage, 6/6 lines covered
-
-real	0m1.539s
-user	0m0.877s
-sys	0m1.186s
-
-===============================================================================
-
-
-real	0m1.902s
-user	0m1.305s
-sys	0m1.394s
-
-===============================================================================
-
-Running: ../../.github/citools/rust/rust-test-with-llvm-coverage
-
-Running Rust Tests With LLVM Coverage
-
-Running: cargo clean
-
-real	0m0.013s
-user	0m0.005s
-sys	0m0.008s
-
-===============================================================================
-
-rm -fv ./*.profraw ./*.profdata
-
-===============================================================================
-
-RUSTFLAGS="-C instrument-coverage"
-RUSTDOCFLAGS="-C instrument-coverage"
+real	0m0.019s
+user	0m0.010s
+sys	0m0.009s
 
 ===============================================================================
 
@@ -159,8 +114,8 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
      Running tests/short-fibonacci.rs (target/debug/deps/short_fibonacci-0199ada08513a8cf)
 
 running 3 tests
-test test_empty ... ok
 test test_buffer ... ok
+test test_empty ... ok
 test test_fibonacci ... ok
 
 test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
@@ -172,73 +127,227 @@ running 0 tests
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
 
-real	0m0.357s
-user	0m0.452s
-sys	0m0.218s
+real	0m0.347s
+user	0m0.466s
+sys	0m0.220s
 
 ===============================================================================
 
-Running: llvm-profdata-16 merge -sparse default_10413062222227337740_0_15669.profraw default_10856610992582784343_0_15668.profraw -o json5format.profdata
+Running: cargo tarpaulin --release --timeout=300
+[2mAug 24 20:27:51.776[0m [32m INFO[0m cargo_tarpaulin::config: Creating config
+[2mAug 24 20:27:51.785[0m [32m INFO[0m cargo_tarpaulin: Running Tarpaulin
+[2mAug 24 20:27:51.785[0m [32m INFO[0m cargo_tarpaulin: Building project
+[2mAug 24 20:27:51.785[0m [32m INFO[0m cargo_tarpaulin::cargo: Cleaning project
+   Compiling short_fibonacci v0.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/short-fibonacci)
+    Finished release [optimized] target(s) in 0.33s
+[2mAug 24 20:27:52.160[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
+[2mAug 24 20:27:52.160[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/short-fibonacci/target/release/deps/short_fibonacci-47471a2e224736e4
 
-real	0m0.014s
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+[2mAug 24 20:27:52.672[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
+[2mAug 24 20:27:52.672[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/short-fibonacci/target/release/deps/short_fibonacci-810cc0a7d68ebffa
+
+running 3 tests
+test test_empty ... ok
+test test_fibonacci ... ok
+test test_buffer ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+[2mAug 24 20:27:53.207[0m [32m INFO[0m cargo_tarpaulin::report: Coverage Results:
+|| Uncovered Lines:
+|| Tested/Total Lines:
+|| src/lib.rs: 6/6
+|| 
+100.00% coverage, 6/6 lines covered
+
+real	0m1.447s
+user	0m0.772s
+sys	0m1.134s
+
+===============================================================================
+
+
+real	0m1.815s
+user	0m1.250s
+sys	0m1.364s
+
+===============================================================================
+
+Running: ../../.github/citools/rust/rust-test-with-llvm-coverage
+
+Running Rust Tests With LLVM Coverage
+
+Running: cargo clean
+
+real	0m0.013s
 user	0m0.006s
-sys	0m0.008s
+sys	0m0.007s
 
 ===============================================================================
 
-llvm-cov-16 report     Finished test [unoptimized + debuginfo] target(s) in 0.00s
--object /home/vpayno/git_vpayno/exercism-workspace/rust/short-fibonacci/target/debug/deps/short_fibonacci-0199ada08513a8cf -object /home/vpayno/git_vpayno/exercism-workspace/rust/short-fibonacci/target/debug/deps/short_fibonacci-6a22163e512598b9  --instr-profile=json5format.profdata --summary-only
+cargo llvm-cov clean --workspace
+
+===============================================================================
+
+Running: cargo test
+   Compiling short_fibonacci v0.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/short-fibonacci)
+    Finished test [unoptimized + debuginfo] target(s) in 0.35s
+     Running unittests src/lib.rs (target/debug/deps/short_fibonacci-6a22163e512598b9)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/short-fibonacci.rs (target/debug/deps/short_fibonacci-0199ada08513a8cf)
+
+running 3 tests
+test test_buffer ... ok
+test test_fibonacci ... ok
+test test_empty ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests short_fibonacci
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+real	0m0.379s
+user	0m0.490s
+sys	0m0.253s
+
+===============================================================================
+
+cargo llvm-cov --no-clean --all-features --workspace
+   Compiling short_fibonacci v0.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/short-fibonacci)
+    Finished test [unoptimized + debuginfo] target(s) in 0.32s
+     Running unittests src/lib.rs (target/llvm-cov-target/debug/deps/short_fibonacci-bd8428a493179c5c)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/short-fibonacci.rs (target/llvm-cov-target/debug/deps/short_fibonacci-9eef93d97d9f7909)
+
+running 3 tests
+test test_buffer ... ok
+test test_empty ... ok
+test test_fibonacci ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+Filename                                                                       Regions    Missed Regions     Cover   Functions  Missed Functions  Executed       Lines      Missed Lines     Cover    Branches   Missed Branches     Cover
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+/home/vpayno/git_vpayno/exercism-workspace/rust/short-fibonacci/src/lib.rs           3                 0   100.00%           3                 0   100.00%          16                 0   100.00%           0                 0         -
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+TOTAL                                                                                3                 0   100.00%           3                 0   100.00%          16                 0   100.00%           0                 0         -
+
+===============================================================================
+
+cargo llvm-cov report --lcov --output-path report.lcov
+
+    Finished report saved to report.lcov
+
     Finished test [unoptimized + debuginfo] target(s) in 0.00s
-Filename                      Regions    Missed Regions     Cover   Functions  Missed Functions  Executed       Lines      Missed Lines     Cover    Branches   Missed Branches     Cover
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-src/lib.rs                          3                 0   100.00%           3                 0   100.00%          16                 0   100.00%           0                 0         -
-tests/short-fibonacci.rs           20                 0   100.00%           7                 0   100.00%          21                 0   100.00%           0                 0         -
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-TOTAL                              23                 0   100.00%          10                 0   100.00%          37                 0   100.00%           0                 0         -
+     Running unittests src/lib.rs (target/llvm-cov-target/debug/deps/short_fibonacci-bd8428a493179c5c)
 
-real	0m0.038s
-user	0m0.042s
-sys	0m0.010s
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/short-fibonacci.rs (target/llvm-cov-target/debug/deps/short_fibonacci-9eef93d97d9f7909)
+
+running 3 tests
+test test_buffer ... ok
+test test_empty ... ok
+test test_fibonacci ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
 
 ===============================================================================
 
-rm -fv ./default_10413062222227337740_0_15669.profraw ./default_10856610992582784343_0_15668.profraw ./json5format.profdata
-removed './default_10413062222227337740_0_15669.profraw'
-removed './default_10856610992582784343_0_15668.profraw'
-removed './json5format.profdata'
+cargo llvm-cov --no-clean --all-features --workspace --text --output-path=coverage-annotations.txt
+    Finished test [unoptimized + debuginfo] target(s) in 0.00s
+     Running unittests src/lib.rs (target/llvm-cov-target/debug/deps/short_fibonacci-bd8428a493179c5c)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/short-fibonacci.rs (target/llvm-cov-target/debug/deps/short_fibonacci-9eef93d97d9f7909)
+
+running 3 tests
+test test_buffer ... ok
+test test_empty ... ok
+test test_fibonacci ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+    Finished report saved to coverage-annotations.txt
+
+===============================================================================
+
+cargo llvm-cov clean --workspace
+
+===============================================================================
+
+lcov --list report.lcov
+Reading tracefile report.lcov
+            |Lines       |Functions  |Branches    
+Filename    |Rate     Num|Rate    Num|Rate     Num
+==================================================
+[/home/vpayno/git_vpayno/exercism-workspace/rust/short-fibonacci/src/]
+lib.rs      | 100%     16|50.0%     6|    -      0
+==================================================
+      Total:| 100%     16|50.0%     6|    -      0
+
+lcov --summary report.lcov
+Reading tracefile report.lcov
+Summary coverage rate:
+  lines......: 100.0% (16 of 16 lines)
+  functions..: 50.0% (3 of 6 functions)
+  branches...: no data found
 
 ===============================================================================
 
 
-real	0m0.444s
-user	0m0.534s
-sys	0m0.250s
+real	0m1.605s
+user	0m1.320s
+sys	0m0.844s
 
 ===============================================================================
 
 Running: misspell .
 
-real	0m0.024s
-user	0m0.021s
-sys	0m0.015s
+real	0m0.023s
+user	0m0.026s
+sys	0m0.011s
 
 ===============================================================================
 
 Running: cargo doc
  Documenting short_fibonacci v0.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/short-fibonacci)
-    Finished dev [unoptimized + debuginfo] target(s) in 0.19s
+    Finished dev [unoptimized + debuginfo] target(s) in 0.18s
 
-real	0m0.204s
-user	0m0.157s
-sys	0m0.049s
+real	0m0.191s
+user	0m0.150s
+sys	0m0.043s
 
 ===============================================================================
 
 Running: cargo clean
 
-real	0m0.016s
-user	0m0.008s
-sys	0m0.008s
+real	0m0.013s
+user	0m0.007s
+sys	0m0.006s
 
 ===============================================================================
 
