@@ -42,18 +42,28 @@ print_ruler
 echo cargo llvm-cov report --lcov --output-path report.lcov
 cargo llvm-cov report --lcov --output-path report.lcov
 printf "\n"
-echo lcov --summary report.lcov
-lcov --summary report.lcov
+
+# show missing coverage with source - seems to only work for bin projects
+echo cargo llvm-cov --no-clean --all-features --workspace --show-missing-lines >coverage-missing-lines.txt
+cargo llvm-cov --no-clean --all-features --workspace --show-missing-lines >coverage-missing-lines.txt
 
 print_ruler
 
 # show missing coverage with source - seems to only work for bin projects
-# echo cargo llvm-cov --no-clean --text --all-features --workspace
-# cargo llvm-cov --no-clean --text --all-features --workspace
+echo cargo llvm-cov --no-clean --all-features --workspace --text --output-path=coverage-annotations.txt
+cargo llvm-cov --no-clean --all-features --workspace --text --output-path=coverage-annotations.txt
 
-# print_ruler
+print_ruler
 
 echo cargo llvm-cov clean --workspace
 cargo llvm-cov clean --workspace
+
+print_ruler
+
+echo lcov --list report.lcov
+lcov --list report.lcov
+printf "\n"
+echo lcov --summary report.lcov
+lcov --summary report.lcov
 
 print_ruler
