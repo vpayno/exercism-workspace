@@ -200,7 +200,11 @@ jobs:
           printf "\n"
           rustup show
           printf "\n"
-          rustc --version
+          {
+            printf "\`\`\`text\n"
+            rustc --version
+            printf "\`\`\`\n"
+          } | tee -a "${GITHUB_STEP_SUMMARY}"
           printf "\n"
           cargo version
           printf "\n"
