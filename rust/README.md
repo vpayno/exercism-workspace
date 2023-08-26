@@ -10,18 +10,15 @@
 - [run-tests](./run-tests)
 - [update_readmes](./update_readmes)
 
-## [Concepts](https://exercism.org/tracks/rust/concepts)
+## [Exercises](https://exercism.org/tracks/rust/exercises)
 
+- [hello-world](./hello-world/README.md)
+- [reverse-string](./reverse-string/README.md)
 - [lucians-luscious-lasagna](./lucians-luscious-lasagna/README.md)
 - [assembly-line](./assembly-line/README.md)
 - [semi-structured-logs](./semi-structured-logs/README.md)
 - [short-fibonacci](./short-fibonacci/README.md)
 - [health-statistics](./health-statistics/README.md)
-
-## [Exercises](https://exercism.org/tracks/rust/exercises)
-
-- [hello-world](./hello-world/README.md)
-- [reverse-string](./reverse-string/README.md)
 - [space-age](./space-age/README.md)
 - [raindrops](./raindrops/README.md)
 - [acronym](./acronym/README.md)
