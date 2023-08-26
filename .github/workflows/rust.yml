@@ -71,6 +71,7 @@ jobs:
           if [[ ${GITHUB_EVENT_NAME} == pull_request ]] && ! ${CI_FORCE_FULL}; then
             printf "Generating pull request changed exercise list.\n"
             grep -E '^rust/[-a-z0-9]+./.*$' /tmp/changed_files.txt | cut -f1,2 -d/ | sort -Vu | tee /tmp/exercises.txt
+            echo $?
           else
             printf "Generating complete exercise list.\n"
             find ./rust/ -type d -print | grep -v -E '^[.]/rust/(|[.].*)$' | sed -r -e 's:[.]/(rust/[-a-z0-9]+)/?.*$:\1:g' | sort -Vu | tee /tmp/exercises.txt
