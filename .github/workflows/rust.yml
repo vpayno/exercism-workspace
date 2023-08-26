@@ -310,8 +310,14 @@ jobs:
           cd "./${{ matrix.exercise }}"
           pwd
           ls
-          {
-            printf "\`\`\`text\n"
-            ../../.github/citools/rust/rust-lint-audit
-            printf "\`\`\`\n"
-          } | tee -a "${GITHUB_STEP_SUMMARY}"
+          deps=$(cargo tree | wc -l)
+          (( deps-- ))
+          if [[ ${deps} -gt 0 ]]; then
+            {
+              printf "\`\`\`text\n"
+              ../../.github/citools/rust/rust-lint-audit
+              printf "\`\`\`\n"
+            } | tee -a "${GITHUB_STEP_SUMMARY}"
+          else
+            printf "No deps found, skipping cargo audit.\n"
+          fi
