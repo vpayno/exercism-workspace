@@ -27,3 +27,4 @@
 - [acronym](./acronym/README.md)
 - [isogram](./isogram/README.md)
 - [roman-numerals](./roman-numerals/README.md)
+- [pangram](./pangram/README.md)

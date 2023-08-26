@@ -57,3 +57,8 @@ For this exercise we only use the basic letters used in the English alphabet: `a
 ### Based on
 
 Wikipedia - https://en.wikipedia.org/wiki/Pangram
+
+### My Solution
+
+- [my solution](./src/lib.rs)
+- [run-tests](./run-tests-rust.txt)

@@ -1,0 +1,79 @@
+    1|       |//! Exercise Url: <https://exercism.org/tracks/rust/exercises/pangram>
+    2|       |
+    3|       |/// Determine whether a sentence is a pangram.
+    4|       |///
+    5|       |/// Example
+    6|       |///
+    7|       |/// ```rust
+    8|       |/// use pangram::is_pangram;
+    9|       |///
+   10|       |/// let mut want : bool;
+   11|       |/// let mut got : bool;
+   12|       |///
+   13|       |/// want = true;
+   14|       |/// got = is_pangram("abcdefghikjlmnopqrstuvwxyz");
+   15|       |/// assert_eq!(got, want);
+   16|       |///
+   17|       |/// want = false;
+   18|       |/// got = is_pangram("hello");
+   19|       |/// assert_eq!(got, want);
+   20|       |/// ```
+   21|     30|pub fn is_pangram(sentence: &str) -> bool {
+   22|     30|    // handle corner cases first
+   23|     30|    if sentence.is_empty() {
+   24|      3|        return false;
+   25|     27|    }
+   26|     27|
+   27|     27|    if sentence.len() < 26 {
+   28|      0|        return false;
+   29|     27|    }
+   30|     27|
+   31|     27|    // dump chars into set
+   32|     27|    let letters: std::collections::HashSet<char> = std::collections::HashSet::from_iter(
+   33|     27|        sentence
+   34|     27|            .to_lowercase()
+   35|     27|            .chars()
+   36|  1.27k|            .filter(|rune| rune.is_ascii_alphabetic()),
+  ------------------
+  | pangram::is_pangram::{closure#0}:
+  |   36|  1.27k|            .filter(|rune| rune.is_ascii_alphabetic()),
+  ------------------
+  | Unexecuted instantiation: pangram::is_pangram::{closure#0}
+  ------------------
+   37|     27|    );
+   38|     27|
+   39|     27|    println!("sentence: [{:?}]", sentence);
+   40|     27|    println!(" letters: [{:?}]", letters);
+   41|     27|
+   42|     27|    // does set have 26 letters
+   43|     27|    letters.len() >= 26
+   44|     30|}
+  ------------------
+  | pangram::is_pangram:
+  |   21|     30|pub fn is_pangram(sentence: &str) -> bool {
+  |   22|     30|    // handle corner cases first
+  |   23|     30|    if sentence.is_empty() {
+  |   24|      3|        return false;
+  |   25|     27|    }
+  |   26|     27|
+  |   27|     27|    if sentence.len() < 26 {
+  |   28|      0|        return false;
+  |   29|     27|    }
+  |   30|     27|
+  |   31|     27|    // dump chars into set
+  |   32|     27|    let letters: std::collections::HashSet<char> = std::collections::HashSet::from_iter(
+  |   33|     27|        sentence
+  |   34|     27|            .to_lowercase()
+  |   35|     27|            .chars()
+  |   36|     27|            .filter(|rune| rune.is_ascii_alphabetic()),
+  |   37|     27|    );
+  |   38|     27|
+  |   39|     27|    println!("sentence: [{:?}]", sentence);
+  |   40|     27|    println!(" letters: [{:?}]", letters);
+  |   41|     27|
+  |   42|     27|    // does set have 26 letters
+  |   43|     27|    letters.len() >= 26
+  |   44|     30|}
+  ------------------
+  | Unexecuted instantiation: pangram::is_pangram
+  ------------------
