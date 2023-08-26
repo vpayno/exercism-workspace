@@ -25,8 +25,10 @@ echo Running: gawk --file ./*_test.awk "&&" printf "\n%s\n" "Tests Passed!" "||"
 if time gawk --file ./*_test.awk; then
 	printf "\n%s\n" "Tests Passed!"
 else
-	(( retval++ ))
+	((retval++))
 	printf "\n%s\n" "Tests Failed!"
 fi
+printf "\n"
 
+echo exit "${retval}"
 exit "${retval}"

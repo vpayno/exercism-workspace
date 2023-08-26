@@ -2,14 +2,21 @@
 
 declare -i retval=0
 
+export AWKLIBPATH="../.lib"
+
+printf "AWKLIBPATH=%s\n\n" "${AWKLIBPATH}"
+ls "${AWKLIBPATH}"/
+printf "\n"
+
 for tf in ./*.awk; do
 	if [[ ${tf} =~ _test.awk ]]; then
 		continue
 	fi
 
-	echo awk --lint --file="${tf}" "<" /dev/null ">" /dev/null
-	time awk --lint --file="${tf}" < /dev/null > /dev/null || (( retval++ ))
+	echo gawk --lint --file="${tf}" "<" /dev/null ">" /dev/null
+	time gawk --lint --file="${tf}" </dev/null >/dev/null || ((retval++))
 	printf "\n"
 done
 
+echo exit "${retval}"
 exit "${retval}"
