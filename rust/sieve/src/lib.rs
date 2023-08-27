@@ -31,6 +31,8 @@ pub fn primes_up_to(upper_bound: u64) -> Vec<u64> {
     numbers[0] = false;
     numbers[1] = false;
 
+    // this one is fun to fix because we're iterating and mutating the same vector
+    #[allow(clippy::needless_range_loop)]
     for number in 3..numbers.len() {
         if number % 2 == 0 {
             numbers[number] = false;
@@ -49,14 +51,11 @@ pub fn primes_up_to(upper_bound: u64) -> Vec<u64> {
         }
     }
 
-    let mut number = 0;
-    for is_prime in numbers {
+    for (number, is_prime) in numbers.into_iter().enumerate() {
         if is_prime {
-            result.push(number);
+            result.push(number as u64);
         }
-
-        number += 1;
     }
 
-    return result;
+    result
 }

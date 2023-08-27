@@ -31,38 +31,37 @@
    31|      9|    numbers[0] = false;
    32|      9|    numbers[1] = false;
    33|       |
-   34|  3.05k|    for number in 3..numbers.len() {
+   34|       |    // this one is fun to fix because we're iterating and mutating the same vector
+   35|       |    #[allow(clippy::needless_range_loop)]
+   36|  3.05k|    for number in 3..numbers.len() {
                                    ^9
-   35|  3.05k|        if number % 2 == 0 {
-   36|  1.52k|            numbers[number] = false;
-   37|  1.52k|        }
-   38|       |    }
-   39|       |
-   40|  3.06k|    for number in 2..numbers.len() {
+   37|  3.05k|        if number % 2 == 0 {
+   38|  1.52k|            numbers[number] = false;
+   39|  1.52k|        }
+   40|       |    }
+   41|       |
+   42|  3.06k|    for number in 2..numbers.len() {
                                    ^9
-   41|  3.06k|        if numbers[number] {
-   42|    534|            let mut j: usize = 2;
-   43|       |
-   44|  6.45k|            while number * j <= upper_bound as usize {
-   45|  5.92k|                let i: usize = number * j;
-   46|  5.92k|                numbers[i] = false;
-   47|  5.92k|                j += 1;
-   48|  5.92k|            }
-   49|  2.52k|        }
-   50|       |    }
-   51|       |
-   52|      9|    let mut number = 0;
-   53|  3.08k|    for is_prime in numbers {
-                      ^3.07k
-   54|  3.07k|        if is_prime {
-   55|    534|            result.push(number);
-   56|  2.54k|        }
-   57|       |
-   58|  3.07k|        number += 1;
-   59|       |    }
-   60|       |
-   61|      9|    return result;
-   62|     15|}
+   43|  3.06k|        if numbers[number] {
+   44|    534|            let mut j: usize = 2;
+   45|       |
+   46|  6.45k|            while number * j <= upper_bound as usize {
+   47|  5.92k|                let i: usize = number * j;
+   48|  5.92k|                numbers[i] = false;
+   49|  5.92k|                j += 1;
+   50|  5.92k|            }
+   51|  2.52k|        }
+   52|       |    }
+   53|       |
+   54|  3.07k|    for (number, is_prime) in numbers.into_iter().enumerate() {
+                                            ^9
+   55|  3.07k|        if is_prime {
+   56|    534|            result.push(number as u64);
+   57|  2.54k|        }
+   58|       |    }
+   59|       |
+   60|      9|    result
+   61|     15|}
   ------------------
   | Unexecuted instantiation: sieve::primes_up_to
   ------------------
@@ -86,36 +85,35 @@
   |   31|      9|    numbers[0] = false;
   |   32|      9|    numbers[1] = false;
   |   33|       |
-  |   34|  3.05k|    for number in 3..numbers.len() {
+  |   34|       |    // this one is fun to fix because we're iterating and mutating the same vector
+  |   35|       |    #[allow(clippy::needless_range_loop)]
+  |   36|  3.05k|    for number in 3..numbers.len() {
   |                                   ^9
-  |   35|  3.05k|        if number % 2 == 0 {
-  |   36|  1.52k|            numbers[number] = false;
-  |   37|  1.52k|        }
-  |   38|       |    }
-  |   39|       |
-  |   40|  3.06k|    for number in 2..numbers.len() {
+  |   37|  3.05k|        if number % 2 == 0 {
+  |   38|  1.52k|            numbers[number] = false;
+  |   39|  1.52k|        }
+  |   40|       |    }
+  |   41|       |
+  |   42|  3.06k|    for number in 2..numbers.len() {
   |                                   ^9
-  |   41|  3.06k|        if numbers[number] {
-  |   42|    534|            let mut j: usize = 2;
-  |   43|       |
-  |   44|  6.45k|            while number * j <= upper_bound as usize {
-  |   45|  5.92k|                let i: usize = number * j;
-  |   46|  5.92k|                numbers[i] = false;
-  |   47|  5.92k|                j += 1;
-  |   48|  5.92k|            }
-  |   49|  2.52k|        }
-  |   50|       |    }
-  |   51|       |
-  |   52|      9|    let mut number = 0;
-  |   53|  3.08k|    for is_prime in numbers {
-  |                      ^3.07k
-  |   54|  3.07k|        if is_prime {
-  |   55|    534|            result.push(number);
-  |   56|  2.54k|        }
-  |   57|       |
-  |   58|  3.07k|        number += 1;
-  |   59|       |    }
-  |   60|       |
-  |   61|      9|    return result;
-  |   62|     15|}
+  |   43|  3.06k|        if numbers[number] {
+  |   44|    534|            let mut j: usize = 2;
+  |   45|       |
+  |   46|  6.45k|            while number * j <= upper_bound as usize {
+  |   47|  5.92k|                let i: usize = number * j;
+  |   48|  5.92k|                numbers[i] = false;
+  |   49|  5.92k|                j += 1;
+  |   50|  5.92k|            }
+  |   51|  2.52k|        }
+  |   52|       |    }
+  |   53|       |
+  |   54|  3.07k|    for (number, is_prime) in numbers.into_iter().enumerate() {
+  |                                            ^9
+  |   55|  3.07k|        if is_prime {
+  |   56|    534|            result.push(number as u64);
+  |   57|  2.54k|        }
+  |   58|       |    }
+  |   59|       |
+  |   60|      9|    result
+  |   61|     15|}
   ------------------
