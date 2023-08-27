@@ -11,6 +11,8 @@ get_rust_package_name() {
 	toml get Cargo.toml package | jq -r .name
 } # get_rust_package_name()
 
+declare -i retval=0
+
 printf "\nRunning Rust Tests With LLVM Coverage\n\n"
 
 printf "Running "
@@ -31,7 +33,7 @@ print_ruler
 # https://doc.rust-lang.org/cargo/commands/cargo-test.html
 
 echo Running: cargo test
-time cargo test
+time cargo test || ((retval++))
 
 print_ruler
 
@@ -72,3 +74,6 @@ echo lcov --summary report.lcov
 lcov --summary report.lcov
 
 print_ruler
+
+echo exit "${retval}"
+exit "${retval}"

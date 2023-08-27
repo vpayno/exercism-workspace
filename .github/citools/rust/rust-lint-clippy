@@ -7,6 +7,8 @@ print_ruler() {
 	printf "\n"
 } # print_ruler()
 
+declare -i retval=0
+
 printf "\nRunning Rust Cargo Clippy\n\n"
 
 printf "Running "
@@ -22,6 +24,10 @@ print_ruler
 # https://github.com/rust-lang/rust-clippy
 
 echo Running: cargo clippy "${@}"
-time cargo clippy "${@}"
+printf "\n"
+time cargo clippy "${@}" || ((retval++))
 
 print_ruler
+
+echo exit "${retval}"
+exit "${retval}"

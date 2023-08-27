@@ -7,6 +7,8 @@ print_ruler() {
 	printf "\n"
 } # print_ruler()
 
+declare -i retval=0
+
 printf "\nRunning Rust Cargo Check\n\n"
 
 printf "Running "
@@ -22,6 +24,10 @@ print_ruler
 # https://doc.rust-lang.org/cargo/commands/cargo-check.html
 
 echo Running: cargo check "${@}"
-time cargo check "${@}"
+printf "\n"
+time cargo check "${@}" || ((retval++))
 
 print_ruler
+
+echo exit "${retval}"
+exit "${retval}"

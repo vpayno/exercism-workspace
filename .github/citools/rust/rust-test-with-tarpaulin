@@ -7,6 +7,8 @@ print_ruler() {
 	printf "\n"
 } # print_ruler()
 
+declare -i retval=0
+
 printf "\nRunning Rust Tests With Tarpaulin\n\n"
 
 printf "Running "
@@ -22,7 +24,7 @@ print_ruler
 # https://doc.rust-lang.org/cargo/commands/cargo-test.html
 
 echo Running: cargo test
-time cargo test
+time cargo test || ((retval++))
 
 print_ruler
 
@@ -35,3 +37,6 @@ echo Running: cargo tarpaulin --release --timeout=300
 time cargo tarpaulin --release --timeout=300
 
 print_ruler
+
+echo exit "${retval}"
+exit "${retval}"
