@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.017s
-user	0m0.002s
-sys	0m0.015s
+real	0m0.007s
+user	0m0.001s
+sys	0m0.006s
 
 ===============================================================================
 
@@ -55,12 +55,16 @@ make[1]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/sieve
 
 === All Tests Passed ===
 
-find . -regextype posix-egrep -regex "^.*(tests-main|CompilerId).*[.](gcda|gcno)$" -print -delete
+find . -regextype posix-egrep -regex '^.*(tests-main|CompilerId).*[.](gcda|gcno)$' -print -delete
 ./build/CMakeFiles/3.22.2/CompilerIdCXX/CMakeCXXCompilerId.gcno
 ./build/CMakeFiles/sieve.dir/test/tests-main.cpp.gcno
 ./build/CMakeFiles/sieve.dir/test/tests-main.cpp.gcda
 
-find . -regextype posix-egrep -regex "^.*[.](gcda|gcno)29916"
+find . -regextype posix-egrep -regex '^.*[.](gcda|gcno)$'
+./build/CMakeFiles/sieve.dir/sieve_test.cpp.gcno
+./build/CMakeFiles/sieve.dir/sieve.cpp.gcno
+./build/CMakeFiles/sieve.dir/sieve.cpp.gcda
+./build/CMakeFiles/sieve.dir/sieve_test.cpp.gcda
 
 gcovr --print-summary
 ------------------------------------------------------------------------------
@@ -69,72 +73,72 @@ Directory: .
 ------------------------------------------------------------------------------
 File                                       Lines    Exec  Cover   Missing
 ------------------------------------------------------------------------------
-sieve.cpp                                     30      30   100%   
+sieve.cpp                                     28      28   100%   
 sieve_test.cpp                                25      25   100%   
 test/catch.hpp                                48      27    56%   1448-1450,1642-1643,1827-1833,1835-1836,2016-2017,2039-2040,2227,2229,2560
 ------------------------------------------------------------------------------
-TOTAL                                        103      82    79%
+TOTAL                                        101      80    79%
 ------------------------------------------------------------------------------
-lines: 79.6% (82 out of 103)
-branches: 41.3% (64 out of 155)
+lines: 79.2% (80 out of 101)
+branches: 40.4% (61 out of 151)
 
-real	0m10.821s
-user	0m9.811s
-sys	0m1.008s
+real	0m9.822s
+user	0m9.145s
+sys	0m0.675s
 
 ===============================================================================
 
 cmake-format --in-place CMakeLists.txt
+WARNING config_util.py:307: The following configuration options were ignored:
+  max_subargs_per_line
 
-real	0m0.218s
-user	0m0.137s
-sys	0m0.084s
+real	0m0.201s
+user	0m0.120s
+sys	0m0.056s
 
 ===============================================================================
 
 cmake-lint CMakeLists.txt
+WARNING The following configuration options were ignored:
+  max_subargs_per_line
 CMakeLists.txt
 ==============
 CMakeLists.txt:15,06: [C0103] Invalid directory variable name "exercise_cpp" doesn't match `[A-Z][0-9A-Z_]+|_[0-9a-z_]+`
 CMakeLists.txt:17,06: [C0103] Invalid directory variable name "exercise_cpp" doesn't match `[A-Z][0-9A-Z_]+|_[0-9a-z_]+`
-CMakeLists.txt:61,70: [C0307] Bad indentation:
-                                               )
-  ^----BodyNode: 1:0->IfBlockNode: 59:0->BodyNode: 59:11->StatementNode: 60:2->TreeNode: 61:70
-
-CMakeLists.txt:66,02: [C0113] Missing COMMENT in statement which allows it
+CMakeLists.txt:61,02: [C0113] Missing COMMENT in statement which allows it
 
 Summary
 =======
 files scanned: 1
 found lint:
-  Convention: 4
+  Convention: 3
 
 
-real	0m0.238s
-user	0m0.177s
-sys	0m0.062s
+real	0m0.171s
+user	0m0.123s
+sys	0m0.037s
 
 ===============================================================================
 
 Running: clang-format-16 -style=file -i ./sieve.cpp ./sieve_test.cpp ./sieve.hpp
 
-real	0m0.028s
-user	0m0.015s
-sys	0m0.013s
+real	0m0.026s
+user	0m0.013s
+sys	0m0.012s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./sieve.cpp ./sieve_test.cpp ./sieve.hpp
+Running: clang-check-16 --analyze ./sieve.cpp ./sieve_test.cpp ./sieve.hpp
 
-real	0m1.608s
-user	0m1.529s
-sys	0m0.078s
+real	0m1.496s
+user	0m1.437s
+sys	0m0.058s
 
 
-real	0m1.611s
-user	0m1.531s
-sys	0m0.080s
+real	0m1.498s
+user	0m1.437s
+sys	0m0.060s
 
 ===============================================================================
 
@@ -145,15 +149,15 @@ Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 Suppressed 48049 warnings (48044 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 
-real	0m9.008s
-user	0m8.862s
-sys	0m0.143s
+real	0m7.877s
+user	0m7.782s
+sys	0m0.093s
 Running: clang-tidy-16 ./sieve.cpp ./sieve_test.cpp ./sieve.hpp
 
 
-real	0m9.014s
-user	0m8.867s
-sys	0m0.149s
+real	0m7.879s
+user	0m7.784s
+sys	0m0.093s
 
 ===============================================================================
 

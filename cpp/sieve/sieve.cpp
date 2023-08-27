@@ -21,9 +21,7 @@ std::vector<int> primes(int limit) {
     int index = 0;
     for (auto iter = numbers.begin(); iter < numbers.end(); iter++) {
         // if even -> (except for 2) can't be prime
-        if (index == 2) {
-            numbers.at(2) = true;
-        } else if (index % 2 == 0) {
+        if (index % 2 == 0) {
             numbers.at(index) = false;
         }
 
