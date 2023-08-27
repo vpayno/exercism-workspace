@@ -67,3 +67,8 @@ A good first test is to check that you do not use division or remainder operatio
 ### Based on
 
 Sieve of Eratosthenes at Wikipedia - http://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
+
+### My Solution
+
+- [my solution](./src/lib.rs)
+- [run-tests](./run-tests-rust.txt)
