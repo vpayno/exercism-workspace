@@ -43,11 +43,11 @@ pub fn actions(commands: u8) -> Vec<String> {
     let mut steps: Vec<String> = Vec::new();
 
     if commands == 0 {
-        // return steps.clone();
+        return steps.clone();
     }
 
     if commands >= Command::Limit as u8 {
-        // return steps.clone();
+        return steps.clone();
     }
 
     if commands & Command::Wink as u8 == Command::Wink as u8 {
