@@ -70,10 +70,10 @@ jobs:
           # Get changed exercise list.
           if [[ ${GITHUB_EVENT_NAME} == pull_request ]] && ! ${CI_FORCE_FULL}; then
             printf "Generating pull request changed exercise list.\n"
-            grep -E '^cpp/[-a-z0-9]+./.*$' /tmp/changed_files.txt | cut -f1,2 -d/ | sort -Vu | tee /tmp/exercises.txt
+            grep -E '^cpp/[-a-z0-9]+./.*$' /tmp/changed_files.txt | cut -f1,2 -d/ | sort -Vu | tee /tmp/exercises.txt || true
           else
             printf "Generating complete exercise list.\n"
-            find ./cpp/ -type d -print | grep -v -E '^[.]/cpp/(|[.].*)$' | sed -r -e 's:[.]/(cpp/[-a-z0-9]+)/?.*$:\1:g' | sort -Vu | tee /tmp/exercises.txt
+            find ./cpp/ -type d -print | grep -v -E '^[.]/cpp/(|[.].*)$' | sed -r -e 's:[.]/(cpp/[-a-z0-9]+)/?.*$:\1:g' | sort -Vu | tee /tmp/exercises.txt || true
             HAS_DIFF=true
           fi
           printf "\n"
