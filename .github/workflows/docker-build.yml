@@ -91,7 +91,7 @@ jobs:
             printf "Changes Detected: %s\n" "${HAS_DIFF}"
             printf "\n"
             printf "\`\`\`text\n"
-            printf "%s\n" "${GIT_DIFF[@]}" | grep -E "${{ env.re_change }}"
+            printf "%s\n" "${GIT_DIFF[@]}" | grep -E "${{ env.re_change }}" || true
             printf "\`\`\`\n"
             printf "\n"
           } | tee -a "${GITHUB_STEP_SUMMARY}"
