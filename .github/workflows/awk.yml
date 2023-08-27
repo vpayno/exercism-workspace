@@ -70,7 +70,7 @@ jobs:
           # Get changed exercise list.
           if [[ ${GITHUB_EVENT_NAME} == pull_request ]] && ! ${CI_FORCE_FULL}; then
             printf "Generating pull request changed exercise list.\n"
-            grep -E '^awk/[-a-z0-9]+./.*$' /tmp/changed_files.txt | cut -f1,2 -d/ | sort -Vu | tee /tmp/exercises.txt
+            grep -E '^awk/[-a-z0-9]+./.*$' /tmp/changed_files.txt | cut -f1,2 -d/ | sort -Vu | tee /tmp/exercises.txt || true
           else
             printf "Generating complete exercise list.\n"
             find ./awk/ -type d -print | grep -v -E '^[.]/awk/(|[.].*)$' | sed -r -e 's:[.]/(awk/[-a-z0-9]+)/?.*$:\1:g' | sort -Vu | tee /tmp/exercises.txt
