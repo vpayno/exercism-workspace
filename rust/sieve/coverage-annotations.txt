@@ -40,26 +40,28 @@
    39|       |
    40|  3.06k|    for number in 2..numbers.len() {
                                    ^9
-   41|  3.06k|        if numbers[number] {
-   42|    534|            let mut j: usize = 2;
-   43|       |
-   44|  6.45k|            while number * j <= upper_bound as usize {
-   45|  5.92k|                let i: usize = number * j;
-   46|  5.92k|                numbers[i] = false;
-   47|  5.92k|                j += 1;
-   48|  5.92k|            }
-   49|  2.52k|        }
-   50|       |    }
-   51|       |
-   52|  3.07k|    for (number, is_prime) in numbers.into_iter().enumerate() {
+   41|  3.06k|        let is_prime = numbers[number];
+   42|  3.06k|
+   43|  3.06k|        if is_prime {
+   44|    534|            let mut j: usize = 2;
+   45|       |
+   46|  6.45k|            while number * j <= upper_bound as usize {
+   47|  5.92k|                let i: usize = number * j;
+   48|  5.92k|                numbers[i] = false;
+   49|  5.92k|                j += 1;
+   50|  5.92k|            }
+   51|  2.52k|        }
+   52|       |    }
+   53|       |
+   54|  3.07k|    for (number, is_prime) in numbers.into_iter().enumerate() {
                                             ^9
-   53|  3.07k|        if is_prime {
-   54|    534|            result.push(number as u64);
-   55|  2.54k|        }
-   56|       |    }
-   57|       |
-   58|      9|    result
-   59|     15|}
+   55|  3.07k|        if is_prime {
+   56|    534|            result.push(number as u64);
+   57|  2.54k|        }
+   58|       |    }
+   59|       |
+   60|      9|    result
+   61|     15|}
   ------------------
   | sieve::primes_up_to:
   |   15|     15|pub fn primes_up_to(upper_bound: u64) -> Vec<u64> {
@@ -90,26 +92,28 @@
   |   39|       |
   |   40|  3.06k|    for number in 2..numbers.len() {
   |                                   ^9
-  |   41|  3.06k|        if numbers[number] {
-  |   42|    534|            let mut j: usize = 2;
-  |   43|       |
-  |   44|  6.45k|            while number * j <= upper_bound as usize {
-  |   45|  5.92k|                let i: usize = number * j;
-  |   46|  5.92k|                numbers[i] = false;
-  |   47|  5.92k|                j += 1;
-  |   48|  5.92k|            }
-  |   49|  2.52k|        }
-  |   50|       |    }
-  |   51|       |
-  |   52|  3.07k|    for (number, is_prime) in numbers.into_iter().enumerate() {
+  |   41|  3.06k|        let is_prime = numbers[number];
+  |   42|  3.06k|
+  |   43|  3.06k|        if is_prime {
+  |   44|    534|            let mut j: usize = 2;
+  |   45|       |
+  |   46|  6.45k|            while number * j <= upper_bound as usize {
+  |   47|  5.92k|                let i: usize = number * j;
+  |   48|  5.92k|                numbers[i] = false;
+  |   49|  5.92k|                j += 1;
+  |   50|  5.92k|            }
+  |   51|  2.52k|        }
+  |   52|       |    }
+  |   53|       |
+  |   54|  3.07k|    for (number, is_prime) in numbers.into_iter().enumerate() {
   |                                            ^9
-  |   53|  3.07k|        if is_prime {
-  |   54|    534|            result.push(number as u64);
-  |   55|  2.54k|        }
-  |   56|       |    }
-  |   57|       |
-  |   58|      9|    result
-  |   59|     15|}
+  |   55|  3.07k|        if is_prime {
+  |   56|    534|            result.push(number as u64);
+  |   57|  2.54k|        }
+  |   58|       |    }
+  |   59|       |
+  |   60|      9|    result
+  |   61|     15|}
   ------------------
   | Unexecuted instantiation: sieve::primes_up_to
   ------------------

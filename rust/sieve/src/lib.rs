@@ -38,7 +38,9 @@ pub fn primes_up_to(upper_bound: u64) -> Vec<u64> {
     }
 
     for number in 2..numbers.len() {
-        if numbers[number] {
+        let is_prime = numbers[number];
+
+        if is_prime {
             let mut j: usize = 2;
 
             while number * j <= upper_bound as usize {
