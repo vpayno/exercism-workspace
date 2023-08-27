@@ -13,26 +13,28 @@ Running rustc 1.72.0 (5680fa18f 2023-08-23)
 
 Running: cargo clean
 
-real	0m0.013s
-user	0m0.006s
-sys	0m0.007s
+real	0m0.017s
+user	0m0.008s
+sys	0m0.009s
 
 ===============================================================================
 
 Running: cargo check --release
-    Checking simple_linked_list v0.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/simple-linked-list)
-    Finished release [optimized] target(s) in 0.14s
 
-real	0m0.146s
-user	0m0.037s
-sys	0m0.030s
+    Checking simple_linked_list v0.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/simple-linked-list)
+    Finished release [optimized] target(s) in 0.09s
+
+real	0m0.095s
+user	0m0.023s
+sys	0m0.029s
 
 ===============================================================================
 
+exit 0
 
-real	0m0.176s
-user	0m0.049s
-sys	0m0.047s
+real	0m0.131s
+user	0m0.037s
+sys	0m0.050s
 
 ===============================================================================
 
@@ -46,13 +48,14 @@ Running rustc 1.72.0 (5680fa18f 2023-08-23)
 
 Running: cargo clean
 
-real	0m0.008s
+real	0m0.010s
 user	0m0.005s
-sys	0m0.003s
+sys	0m0.005s
 
 ===============================================================================
 
 Running: cargo clippy --release
+
     Checking simple_linked_list v0.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/simple-linked-list)
 warning: you should consider adding a `Default` implementation for `SimpleLinkedList<T>`
   --> src/lib.rs:16:5
@@ -77,18 +80,19 @@ help: try adding this
    |
 
 warning: `simple_linked_list` (lib) generated 1 warning
-    Finished release [optimized] target(s) in 0.21s
+    Finished release [optimized] target(s) in 0.10s
 
-real	0m0.239s
-user	0m0.053s
-sys	0m0.052s
+real	0m0.130s
+user	0m0.070s
+sys	0m0.061s
 
 ===============================================================================
 
+exit 0
 
-real	0m0.261s
-user	0m0.062s
-sys	0m0.064s
+real	0m0.161s
+user	0m0.086s
+sys	0m0.076s
 
 ===============================================================================
 
@@ -103,37 +107,40 @@ Running rustc 1.72.0 (5680fa18f 2023-08-23)
 Running: cargo clean
 
 real	0m0.019s
-user	0m0.011s
-sys	0m0.008s
+user	0m0.008s
+sys	0m0.012s
 
 ===============================================================================
 
-cargo tree
+Runnin: cargo tree
+
 simple_linked_list v0.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/simple-linked-list)
 
-real	0m0.035s
-user	0m0.020s
-sys	0m0.015s
+real	0m0.038s
+user	0m0.016s
+sys	0m0.023s
 
 
 ===============================================================================
 
 Running: cargo audit
+
 [0m[0m[1m[32m    Fetching[0m advisory database from `https://github.com/RustSec/advisory-db.git`
 [0m[0m[1m[32m      Loaded[0m 562 security advisories (from /home/vpayno/.cargo/advisory-db)
 [0m[0m[1m[32m    Updating[0m crates.io index
 [0m[0m[1m[32m    Scanning[0m Cargo.lock for vulnerabilities (1 crate dependencies)
 
-real	0m7.713s
-user	0m4.570s
-sys	0m0.178s
+real	0m1.498s
+user	0m0.698s
+sys	0m0.037s
 
 ===============================================================================
 
+exit 0
 
-real	0m7.783s
-user	0m4.607s
-sys	0m0.211s
+real	0m1.567s
+user	0m0.728s
+sys	0m0.077s
 
 ===============================================================================
 
@@ -151,15 +158,15 @@ Running rustc 1.72.0 (5680fa18f 2023-08-23)
 
 Running: cargo clean
 
-real	0m0.018s
-user	0m0.009s
-sys	0m0.010s
+real	0m0.017s
+user	0m0.012s
+sys	0m0.005s
 
 ===============================================================================
 
 Running: cargo test
    Compiling simple_linked_list v0.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/simple-linked-list)
-    Finished test [unoptimized + debuginfo] target(s) in 0.33s
+    Finished test [unoptimized + debuginfo] target(s) in 0.34s
      Running unittests src/lib.rs (target/debug/deps/simple_linked_list-bbec4c1f1cee90a5)
 
 running 0 tests
@@ -169,10 +176,10 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
      Running tests/simple-linked-list.rs (target/debug/deps/simple_linked_list-defa97a8e3a35583)
 
 running 9 tests
-test test_into_vector ... ok
 test test_from_slice ... ok
-test test_new_list_is_empty ... ok
+test test_into_vector ... ok
 test test_peek_returns_reference_to_head_element_but_does_not_remove_it ... ok
+test test_new_list_is_empty ... ok
 test test_pop_decrements_length ... ok
 test test_pop_returns_head_element_and_removes_it ... ok
 test test_push_increments_length ... ok
@@ -188,28 +195,28 @@ running 0 tests
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
 
-real	0m0.369s
-user	0m0.483s
-sys	0m0.206s
+real	0m0.365s
+user	0m0.534s
+sys	0m0.192s
 
 ===============================================================================
 
 Running: cargo tarpaulin --release --timeout=300
-[2mAug 27 11:58:19.841[0m [32m INFO[0m cargo_tarpaulin::config: Creating config
-[2mAug 27 11:58:19.852[0m [32m INFO[0m cargo_tarpaulin: Running Tarpaulin
-[2mAug 27 11:58:19.852[0m [32m INFO[0m cargo_tarpaulin: Building project
-[2mAug 27 11:58:19.852[0m [32m INFO[0m cargo_tarpaulin::cargo: Cleaning project
+[2mAug 27 12:24:54.875[0m [32m INFO[0m cargo_tarpaulin::config: Creating config
+[2mAug 27 12:24:54.884[0m [32m INFO[0m cargo_tarpaulin: Running Tarpaulin
+[2mAug 27 12:24:54.884[0m [32m INFO[0m cargo_tarpaulin: Building project
+[2mAug 27 12:24:54.884[0m [32m INFO[0m cargo_tarpaulin::cargo: Cleaning project
    Compiling simple_linked_list v0.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/simple-linked-list)
-    Finished release [optimized] target(s) in 0.45s
-[2mAug 27 11:58:20.361[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
-[2mAug 27 11:58:20.361[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/simple-linked-list/target/release/deps/simple_linked_list-9236e4ed92de1226
+    Finished release [optimized] target(s) in 0.41s
+[2mAug 27 12:24:55.342[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
+[2mAug 27 12:24:55.342[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/simple-linked-list/target/release/deps/simple_linked_list-9236e4ed92de1226
 
 running 0 tests
 
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
-[2mAug 27 11:58:20.808[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
-[2mAug 27 11:58:20.808[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/simple-linked-list/target/release/deps/simple_linked_list-d4660edd5d24986a
+[2mAug 27 12:24:55.814[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
+[2mAug 27 12:24:55.814[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/simple-linked-list/target/release/deps/simple_linked_list-d4660edd5d24986a
 
 running 9 tests
 test test_new_list_is_empty ... ok
@@ -219,12 +226,12 @@ test test_pop_returns_head_element_and_removes_it ... ok
 test test_peek_returns_reference_to_head_element_but_does_not_remove_it ... ok
 test test_is_empty ... ok
 test test_into_vector ... ok
-test test_reverse ... ok
 test test_from_slice ... ok
+test test_reverse ... ok
 
-test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
 
-[2mAug 27 11:58:21.278[0m [32m INFO[0m cargo_tarpaulin::report: Coverage Results:
+[2mAug 27 12:24:56.310[0m [32m INFO[0m cargo_tarpaulin::report: Coverage Results:
 || Uncovered Lines:
 || src/lib.rs: 16, 28, 32-33, 36, 38-39, 45, 53-54, 59-60, 67, 73, 76, 79, 92, 98-99
 || Tested/Total Lines:
@@ -232,16 +239,17 @@ test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 || 
 51.28% coverage, 20/39 lines covered
 
-real	0m1.460s
-user	0m0.711s
-sys	0m0.979s
+real	0m1.455s
+user	0m0.729s
+sys	0m0.997s
 
 ===============================================================================
 
+exit 0
 
-real	0m1.860s
-user	0m1.211s
-sys	0m1.199s
+real	0m1.849s
+user	0m1.281s
+sys	0m1.202s
 
 ===============================================================================
 
@@ -255,9 +263,9 @@ Running rustc 1.72.0 (5680fa18f 2023-08-23)
 
 Running: cargo clean
 
-real	0m0.012s
-user	0m0.007s
-sys	0m0.005s
+real	0m0.013s
+user	0m0.004s
+sys	0m0.008s
 
 ===============================================================================
 
@@ -267,7 +275,7 @@ cargo llvm-cov clean --workspace
 
 Running: cargo test
    Compiling simple_linked_list v0.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/simple-linked-list)
-    Finished test [unoptimized + debuginfo] target(s) in 0.35s
+    Finished test [unoptimized + debuginfo] target(s) in 0.34s
      Running unittests src/lib.rs (target/debug/deps/simple_linked_list-bbec4c1f1cee90a5)
 
 running 0 tests
@@ -283,8 +291,8 @@ test test_new_list_is_empty ... ok
 test test_peek_returns_reference_to_head_element_but_does_not_remove_it ... ok
 test test_pop_returns_head_element_and_removes_it ... ok
 test test_pop_decrements_length ... ok
-test test_reverse ... ok
 test test_push_increments_length ... ok
+test test_reverse ... ok
 test test_is_empty ... ok
 
 test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
@@ -296,15 +304,15 @@ running 0 tests
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
 
-real	0m0.387s
-user	0m0.551s
-sys	0m0.211s
+real	0m0.374s
+user	0m0.506s
+sys	0m0.218s
 
 ===============================================================================
 
 cargo llvm-cov --no-clean --all-features --workspace
    Compiling simple_linked_list v0.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/simple-linked-list)
-    Finished test [unoptimized + debuginfo] target(s) in 0.32s
+    Finished test [unoptimized + debuginfo] target(s) in 0.30s
      Running unittests src/lib.rs (target/llvm-cov-target/debug/deps/simple_linked_list-e9ddf35c7e447a76)
 
 running 0 tests
@@ -414,36 +422,37 @@ Summary coverage rate:
 
 ===============================================================================
 
+exit 0
 
-real	0m1.701s
-user	0m1.469s
-sys	0m0.748s
+real	0m1.746s
+user	0m1.486s
+sys	0m0.804s
 
 ===============================================================================
 
 Running: misspell .
 
 real	0m0.023s
-user	0m0.022s
-sys	0m0.012s
+user	0m0.028s
+sys	0m0.009s
 
 ===============================================================================
 
 Running: cargo doc
  Documenting simple_linked_list v0.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/simple-linked-list)
-    Finished dev [unoptimized + debuginfo] target(s) in 0.19s
+    Finished dev [unoptimized + debuginfo] target(s) in 0.18s
 
-real	0m0.196s
-user	0m0.148s
-sys	0m0.050s
+real	0m0.195s
+user	0m0.161s
+sys	0m0.036s
 
 ===============================================================================
 
 Running: cargo clean
 
-real	0m0.011s
-user	0m0.007s
-sys	0m0.005s
+real	0m0.014s
+user	0m0.008s
+sys	0m0.006s
 
 ===============================================================================
 
