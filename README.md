@@ -13,7 +13,7 @@ Exercism Workspace
 |   :---        |  :---              |  :---                |
 |   January     |  Introduction      |  ✓                   |
 |   February    |  Functional        |  Haskell      (5/5)  |
-|   March       |  Mechanical        |  C            (2/5),  C++   (5/5),  Go       (3/5),  Rust  (2/5)  |
+|   March       |  Mechanical        |  C            (2/5),  C++   (5/5),  Go       (3/5),  Rust  (3/5)  |
 |   April       |  Analytical        |  Python       (5/5)  |
 |   May         |  Mindshifting      |  Rust         (5/5),  Tcl   (1/5)  |
 |   June        |  Summer-of-Sexps   |  Common-Lisp  (5/5)  |

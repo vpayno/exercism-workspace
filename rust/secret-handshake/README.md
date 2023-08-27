@@ -68,3 +68,8 @@ If you aren't sure what binary is or how it works, check out [this binary tutori
 ### Based on
 
 Bert, in Mary Poppins - https://www.imdb.com/title/tt0058331/quotes/qt0437047
+
+### My Solution
+
+- [my solution](./src/lib.rs)
+- [run-tests](./run-tests-rust.txt)

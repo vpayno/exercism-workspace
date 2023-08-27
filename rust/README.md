@@ -26,3 +26,4 @@
 - [roman-numerals](./roman-numerals/README.md)
 - [pangram](./pangram/README.md)
 - [sieve](./sieve/README.md)
+- [secret-handshake](./secret-handshake/README.md)

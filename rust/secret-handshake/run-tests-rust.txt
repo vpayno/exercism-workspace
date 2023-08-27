@@ -1,0 +1,439 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: ../../.github/citools/rust/rust-lint-check --release
+
+Running Rust Cargo Check
+
+Running rustc 1.72.0 (5680fa18f 2023-08-23)
+
+===============================================================================
+
+Running: cargo clean
+
+real	0m0.018s
+user	0m0.009s
+sys	0m0.008s
+
+===============================================================================
+
+Running: cargo check --release
+    Checking secret-handshake v1.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/secret-handshake)
+    Finished release [optimized] target(s) in 0.12s
+
+real	0m0.132s
+user	0m0.019s
+sys	0m0.032s
+
+===============================================================================
+
+
+real	0m0.172s
+user	0m0.037s
+sys	0m0.053s
+
+===============================================================================
+
+Running: ../../.github/citools/rust/rust-lint-clippy --release
+
+Running Rust Cargo Clippy
+
+Running rustc 1.72.0 (5680fa18f 2023-08-23)
+
+===============================================================================
+
+Running: cargo clean
+
+real	0m0.009s
+user	0m0.006s
+sys	0m0.003s
+
+===============================================================================
+
+Running: cargo clippy --release
+    Checking secret-handshake v1.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/secret-handshake)
+    Finished release [optimized] target(s) in 0.09s
+
+real	0m0.112s
+user	0m0.063s
+sys	0m0.047s
+
+===============================================================================
+
+
+real	0m0.134s
+user	0m0.074s
+sys	0m0.058s
+
+===============================================================================
+
+Running: ../../.github/citools/rust/rust-lint-audit
+
+Running Rust Cargo Audit
+
+Running rustc 1.72.0 (5680fa18f 2023-08-23)
+
+===============================================================================
+
+Running: cargo clean
+
+real	0m0.016s
+user	0m0.007s
+sys	0m0.009s
+
+===============================================================================
+
+cargo tree
+secret-handshake v1.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/secret-handshake)
+
+real	0m0.034s
+user	0m0.018s
+sys	0m0.017s
+
+
+===============================================================================
+
+Running: cargo audit
+[0m[0m[1m[32m    Fetching[0m advisory database from `https://github.com/RustSec/advisory-db.git`
+[0m[0m[1m[32m      Loaded[0m 562 security advisories (from /home/vpayno/.cargo/advisory-db)
+[0m[0m[1m[32m    Updating[0m crates.io index
+[0m[0m[1m[32m    Scanning[0m Cargo.lock for vulnerabilities (1 crate dependencies)
+
+real	0m1.706s
+user	0m0.707s
+sys	0m0.029s
+
+===============================================================================
+
+
+real	0m1.768s
+user	0m0.738s
+sys	0m0.061s
+
+===============================================================================
+
+rm -fv ./*.profraw ./*.profdata
+
+===============================================================================
+
+Running: ../../.github/citools/rust/rust-test-with-tarpaulin
+
+Running Rust Tests With Tarpaulin
+
+Running rustc 1.72.0 (5680fa18f 2023-08-23)
+
+===============================================================================
+
+Running: cargo clean
+
+real	0m0.019s
+user	0m0.012s
+sys	0m0.007s
+
+===============================================================================
+
+Running: cargo test
+   Compiling secret-handshake v1.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/secret-handshake)
+    Finished test [unoptimized + debuginfo] target(s) in 0.41s
+     Running unittests src/lib.rs (target/debug/deps/secret_handshake-e32397ea6091cac0)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/secret-handshake.rs (target/debug/deps/secret_handshake-601e728ab8a84f07)
+
+running 11 tests
+test all_possible_actions ... ok
+test close_your_eyes_for_100 ... ok
+test combine_two_actions ... ok
+test do_nothing_for_zero ... ok
+test double_blink_for_10 ... ok
+test jump_for_1000 ... ok
+test reverse_all_possible_actions ... ok
+test reverse_two_actions ... ok
+test wink_for_1 ... ok
+test reversing_one_action_gives_the_same_action ... ok
+test reversing_no_actions_still_gives_no_actions ... ok
+
+test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests secret-handshake
+
+running 1 test
+test src/lib.rs - actions (line 34) ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.12s
+
+
+real	0m0.564s
+user	0m0.716s
+sys	0m0.302s
+
+===============================================================================
+
+Running: cargo tarpaulin --release --timeout=300
+[2mAug 26 21:34:21.322[0m [32m INFO[0m cargo_tarpaulin::config: Creating config
+[2mAug 26 21:34:21.330[0m [32m INFO[0m cargo_tarpaulin: Running Tarpaulin
+[2mAug 26 21:34:21.330[0m [32m INFO[0m cargo_tarpaulin: Building project
+[2mAug 26 21:34:21.330[0m [32m INFO[0m cargo_tarpaulin::cargo: Cleaning project
+   Compiling secret-handshake v1.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/secret-handshake)
+    Finished release [optimized] target(s) in 0.52s
+[2mAug 26 21:34:21.891[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
+[2mAug 26 21:34:21.891[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/secret-handshake/target/release/deps/secret_handshake-e22246e7d00faa88
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+[2mAug 26 21:34:22.386[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
+[2mAug 26 21:34:22.386[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/secret-handshake/target/release/deps/secret_handshake-9026fade6171cc71
+
+running 11 tests
+test reverse_two_actions ... ok
+test reverse_all_possible_actions ... ok
+test jump_for_1000 ... ok
+test double_blink_for_10 ... ok
+test do_nothing_for_zero ... ok
+test combine_two_actions ... ok
+test close_your_eyes_for_100 ... ok
+test all_possible_actions ... ok
+test wink_for_1 ... ok
+test reversing_one_action_gives_the_same_action ... ok
+test reversing_no_actions_still_gives_no_actions ... ok
+
+test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+[2mAug 26 21:34:22.928[0m [32m INFO[0m cargo_tarpaulin::report: Coverage Results:
+|| Uncovered Lines:
+|| Tested/Total Lines:
+|| src/lib.rs: 8/8
+|| 
+100.00% coverage, 8/8 lines covered
+
+real	0m1.620s
+user	0m0.636s
+sys	0m1.063s
+
+===============================================================================
+
+
+real	0m2.215s
+user	0m1.369s
+sys	0m1.378s
+
+===============================================================================
+
+Running: ../../.github/citools/rust/rust-test-with-llvm-coverage
+
+Running Rust Tests With LLVM Coverage
+
+Running rustc 1.72.0 (5680fa18f 2023-08-23)
+
+===============================================================================
+
+Running: cargo clean
+
+real	0m0.014s
+user	0m0.006s
+sys	0m0.008s
+
+===============================================================================
+
+cargo llvm-cov clean --workspace
+
+===============================================================================
+
+Running: cargo test
+   Compiling secret-handshake v1.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/secret-handshake)
+    Finished test [unoptimized + debuginfo] target(s) in 0.41s
+     Running unittests src/lib.rs (target/debug/deps/secret_handshake-e32397ea6091cac0)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/secret-handshake.rs (target/debug/deps/secret_handshake-601e728ab8a84f07)
+
+running 11 tests
+test all_possible_actions ... ok
+test close_your_eyes_for_100 ... ok
+test double_blink_for_10 ... ok
+test combine_two_actions ... ok
+test reverse_all_possible_actions ... ok
+test reversing_no_actions_still_gives_no_actions ... ok
+test do_nothing_for_zero ... ok
+test wink_for_1 ... ok
+test jump_for_1000 ... ok
+test reversing_one_action_gives_the_same_action ... ok
+test reverse_two_actions ... ok
+
+test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests secret-handshake
+
+running 1 test
+test src/lib.rs - actions (line 34) ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.13s
+
+
+real	0m0.566s
+user	0m0.830s
+sys	0m0.313s
+
+===============================================================================
+
+cargo llvm-cov --no-clean --all-features --workspace
+   Compiling secret-handshake v1.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/secret-handshake)
+    Finished test [unoptimized + debuginfo] target(s) in 0.36s
+     Running unittests src/lib.rs (target/llvm-cov-target/debug/deps/secret_handshake-e1ede9727eada89e)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/secret-handshake.rs (target/llvm-cov-target/debug/deps/secret_handshake-ffc8e781a84ad2cd)
+
+running 11 tests
+test all_possible_actions ... ok
+test close_your_eyes_for_100 ... ok
+test combine_two_actions ... ok
+test do_nothing_for_zero ... ok
+test double_blink_for_10 ... ok
+test jump_for_1000 ... ok
+test reverse_all_possible_actions ... ok
+test reverse_two_actions ... ok
+test reversing_no_actions_still_gives_no_actions ... ok
+test reversing_one_action_gives_the_same_action ... ok
+test wink_for_1 ... ok
+
+test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+Filename                                                                        Regions    Missed Regions     Cover   Functions  Missed Functions  Executed       Lines      Missed Lines     Cover    Branches   Missed Branches     Cover
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+/home/vpayno/git_vpayno/exercism-workspace/rust/secret-handshake/src/lib.rs          33                 6    81.82%           4                 2    50.00%          37                 5    86.49%           0                 0         -
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+TOTAL                                                                                33                 6    81.82%           4                 2    50.00%          37                 5    86.49%           0                 0         -
+
+===============================================================================
+
+cargo llvm-cov report --lcov --output-path report.lcov
+
+    Finished report saved to report.lcov
+
+    Finished test [unoptimized + debuginfo] target(s) in 0.00s
+     Running unittests src/lib.rs (target/llvm-cov-target/debug/deps/secret_handshake-e1ede9727eada89e)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/secret-handshake.rs (target/llvm-cov-target/debug/deps/secret_handshake-ffc8e781a84ad2cd)
+
+running 11 tests
+test all_possible_actions ... ok
+test close_your_eyes_for_100 ... ok
+test combine_two_actions ... ok
+test do_nothing_for_zero ... ok
+test double_blink_for_10 ... ok
+test jump_for_1000 ... ok
+test reverse_all_possible_actions ... ok
+test reverse_two_actions ... ok
+test reversing_no_actions_still_gives_no_actions ... ok
+test reversing_one_action_gives_the_same_action ... ok
+test wink_for_1 ... ok
+
+test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+===============================================================================
+
+cargo llvm-cov --no-clean --all-features --workspace --text --output-path=coverage-annotations.txt
+    Finished test [unoptimized + debuginfo] target(s) in 0.00s
+     Running unittests src/lib.rs (target/llvm-cov-target/debug/deps/secret_handshake-e1ede9727eada89e)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/secret-handshake.rs (target/llvm-cov-target/debug/deps/secret_handshake-ffc8e781a84ad2cd)
+
+running 11 tests
+test all_possible_actions ... ok
+test close_your_eyes_for_100 ... ok
+test combine_two_actions ... ok
+test do_nothing_for_zero ... ok
+test double_blink_for_10 ... ok
+test jump_for_1000 ... ok
+test reverse_all_possible_actions ... ok
+test reverse_two_actions ... ok
+test reversing_no_actions_still_gives_no_actions ... ok
+test reversing_one_action_gives_the_same_action ... ok
+test wink_for_1 ... ok
+
+test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+    Finished report saved to coverage-annotations.txt
+
+===============================================================================
+
+cargo llvm-cov clean --workspace
+
+===============================================================================
+
+lcov --list report.lcov
+Reading tracefile report.lcov
+            |Lines       |Functions  |Branches    
+Filename    |Rate     Num|Rate    Num|Rate     Num
+==================================================
+[/home/vpayno/git_vpayno/exercism-workspace/rust/secret-handshake/src/]
+lib.rs      |88.9%     36|25.0%     8|    -      0
+==================================================
+      Total:|88.9%     36|25.0%     8|    -      0
+
+lcov --summary report.lcov
+Reading tracefile report.lcov
+Summary coverage rate:
+  lines......: 88.9% (32 of 36 lines)
+  functions..: 25.0% (2 of 8 functions)
+  branches...: no data found
+
+===============================================================================
+
+
+real	0m1.795s
+user	0m1.654s
+sys	0m0.773s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.028s
+user	0m0.021s
+sys	0m0.014s
+
+===============================================================================
+
+Running: cargo doc
+ Documenting secret-handshake v1.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/secret-handshake)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.21s
+
+real	0m0.218s
+user	0m0.183s
+sys	0m0.036s
+
+===============================================================================
+
+Running: cargo clean
+
+real	0m0.013s
+user	0m0.005s
+sys	0m0.008s
+
+===============================================================================
+
