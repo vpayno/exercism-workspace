@@ -1,0 +1,295 @@
+    1|       |//! Exercise Url: <https://exercism.org/tracks/rust/exercises/simple-linked-list>
+    2|       |
+    3|       |use std::iter::FromIterator;
+    4|       |
+    5|       |pub struct SimpleLinkedList<T> {
+    6|       |    length: usize,
+    7|       |    head: Option<Box<Node<T>>>,
+    8|       |}
+    9|       |
+   10|       |struct Node<T> {
+   11|       |    data: T,
+   12|       |    next: Option<Box<Node<T>>>,
+   13|       |}
+   14|       |
+   15|       |impl<T> SimpleLinkedList<T> {
+   16|     30|    pub fn new() -> Self {
+   17|     30|        Self {
+   18|     30|            length: 0,
+   19|     30|            head: None,
+   20|     30|        }
+   21|     30|    }
+  ------------------
+  | <simple_linked_list::SimpleLinkedList<&str>>::new:
+  |   16|      3|    pub fn new() -> Self {
+  |   17|      3|        Self {
+  |   18|      3|            length: 0,
+  |   19|      3|            head: None,
+  |   20|      3|        }
+  |   21|      3|    }
+  ------------------
+  | <simple_linked_list::SimpleLinkedList<i32>>::new:
+  |   16|      3|    pub fn new() -> Self {
+  |   17|      3|        Self {
+  |   18|      3|            length: 0,
+  |   19|      3|            head: None,
+  |   20|      3|        }
+  |   21|      3|    }
+  ------------------
+  | <simple_linked_list::SimpleLinkedList<u32>>::new:
+  |   16|     24|    pub fn new() -> Self {
+  |   17|     24|        Self {
+  |   18|     24|            length: 0,
+  |   19|     24|            head: None,
+  |   20|     24|        }
+  |   21|     24|    }
+  ------------------
+  | Unexecuted instantiation: <simple_linked_list::SimpleLinkedList<_>>::new
+  ------------------
+   22|       |
+   23|       |    // You may be wondering why it's necessary to have is_empty()
+   24|       |    // when it can easily be determined from len().
+   25|       |    // It's good custom to have both because len() can be expensive for some types,
+   26|       |    // whereas is_empty() is almost always cheap.
+   27|       |    // (Also ask yourself whether len() is expensive for SimpleLinkedList)
+   28|  30.0k|    pub fn is_empty(&self) -> bool {
+   29|  30.0k|        self.len() == 0
+   30|  30.0k|    }
+  ------------------
+  | <simple_linked_list::SimpleLinkedList<u32>>::is_empty:
+  |   28|  30.0k|    pub fn is_empty(&self) -> bool {
+  |   29|  30.0k|        self.len() == 0
+  |   30|  30.0k|    }
+  ------------------
+  | Unexecuted instantiation: <simple_linked_list::SimpleLinkedList<_>>::is_empty
+  ------------------
+   31|       |
+   32|  30.0k|    pub fn len(&self) -> usize {
+   33|  30.0k|        self.length
+   34|  30.0k|    }
+  ------------------
+  | <simple_linked_list::SimpleLinkedList<u32>>::len:
+  |   32|  30.0k|    pub fn len(&self) -> usize {
+  |   33|  30.0k|        self.length
+  |   34|  30.0k|    }
+  ------------------
+  | Unexecuted instantiation: <simple_linked_list::SimpleLinkedList<_>>::len
+  ------------------
+   35|       |
+   36|  14.9k|    pub fn push(&mut self, element: T) {
+   37|  14.9k|        let new_head = Box::new(Node {
+   38|  14.9k|            data: element,
+   39|  14.9k|            next: self.head.take(),
+   40|  14.9k|        });
+   41|  14.9k|        self.head = Some(new_head);
+   42|  14.9k|        self.length += 1;
+   43|  14.9k|    }
+  ------------------
+  | <simple_linked_list::SimpleLinkedList<&str>>::push:
+  |   36|     12|    pub fn push(&mut self, element: T) {
+  |   37|     12|        let new_head = Box::new(Node {
+  |   38|     12|            data: element,
+  |   39|     12|            next: self.head.take(),
+  |   40|     12|        });
+  |   41|     12|        self.head = Some(new_head);
+  |   42|     12|        self.length += 1;
+  |   43|     12|    }
+  ------------------
+  | <simple_linked_list::SimpleLinkedList<i32>>::push:
+  |   36|      9|    pub fn push(&mut self, element: T) {
+  |   37|      9|        let new_head = Box::new(Node {
+  |   38|      9|            data: element,
+  |   39|      9|            next: self.head.take(),
+  |   40|      9|        });
+  |   41|      9|        self.head = Some(new_head);
+  |   42|      9|        self.length += 1;
+  |   43|      9|    }
+  ------------------
+  | <simple_linked_list::SimpleLinkedList<u32>>::push:
+  |   36|  14.8k|    pub fn push(&mut self, element: T) {
+  |   37|  14.8k|        let new_head = Box::new(Node {
+  |   38|  14.8k|            data: element,
+  |   39|  14.8k|            next: self.head.take(),
+  |   40|  14.8k|        });
+  |   41|  14.8k|        self.head = Some(new_head);
+  |   42|  14.8k|        self.length += 1;
+  |   43|  14.8k|    }
+  ------------------
+  | Unexecuted instantiation: <simple_linked_list::SimpleLinkedList<_>>::push
+  ------------------
+   44|       |
+   45|  14.8k|    pub fn pop(&mut self) -> Option<T> {
+   46|  14.8k|        self.head.take().map(|node| {
+   47|  14.8k|            self.head = node.next;
+   48|  14.8k|            self.length -= 1;
+   49|  14.8k|            node.data
+   50|  14.8k|        })
+  ------------------
+  | <simple_linked_list::SimpleLinkedList<&str>>::pop::{closure#0}:
+  |   46|     12|        self.head.take().map(|node| {
+  |   47|     12|            self.head = node.next;
+  |   48|     12|            self.length -= 1;
+  |   49|     12|            node.data
+  |   50|     12|        })
+  ------------------
+  | <simple_linked_list::SimpleLinkedList<u32>>::pop::{closure#0}:
+  |   46|  14.8k|        self.head.take().map(|node| {
+  |   47|  14.8k|            self.head = node.next;
+  |   48|  14.8k|            self.length -= 1;
+  |   49|  14.8k|            node.data
+  |   50|  14.8k|        })
+  ------------------
+  | Unexecuted instantiation: <simple_linked_list::SimpleLinkedList<_>>::pop::{closure#0}
+  ------------------
+   51|  14.8k|    }
+  ------------------
+  | <simple_linked_list::SimpleLinkedList<u32>>::pop:
+  |   45|  14.8k|    pub fn pop(&mut self) -> Option<T> {
+  |   46|  14.8k|        self.head.take().map(|node| {
+  |   47|       |            self.head = node.next;
+  |   48|       |            self.length -= 1;
+  |   49|       |            node.data
+  |   50|  14.8k|        })
+  |   51|  14.8k|    }
+  ------------------
+  | <simple_linked_list::SimpleLinkedList<&str>>::pop:
+  |   45|     12|    pub fn pop(&mut self) -> Option<T> {
+  |   46|     12|        self.head.take().map(|node| {
+  |   47|       |            self.head = node.next;
+  |   48|       |            self.length -= 1;
+  |   49|       |            node.data
+  |   50|     12|        })
+  |   51|     12|    }
+  ------------------
+  | Unexecuted instantiation: <simple_linked_list::SimpleLinkedList<_>>::pop
+  ------------------
+   52|       |
+   53|     18|    pub fn peek(&self) -> Option<&T> {
+   54|     18|        self.head.as_ref().map(|node| &node.data)
+                                                    ^12
+  ------------------
+  | <simple_linked_list::SimpleLinkedList<u32>>::peek::{closure#0}:
+  |   54|     12|        self.head.as_ref().map(|node| &node.data)
+  ------------------
+  | Unexecuted instantiation: <simple_linked_list::SimpleLinkedList<_>>::peek::{closure#0}
+  ------------------
+   55|     18|    }
+  ------------------
+  | <simple_linked_list::SimpleLinkedList<u32>>::peek:
+  |   53|     18|    pub fn peek(&self) -> Option<&T> {
+  |   54|     18|        self.head.as_ref().map(|node| &node.data)
+  |   55|     18|    }
+  ------------------
+  | Unexecuted instantiation: <simple_linked_list::SimpleLinkedList<_>>::peek
+  ------------------
+   56|       |
+   57|       |    #[must_use]
+   58|      3|    pub fn rev(self) -> SimpleLinkedList<T> {
+   59|      3|        let mut rev_list = SimpleLinkedList::new();
+   60|      3|        let mut next = self.head;
+   61|       |
+   62|     12|        while let Some(node) = next {
+                                     ^9
+   63|      9|            rev_list.push(node.data);
+   64|      9|            next = node.next;
+   65|      9|        }
+   66|       |
+   67|      3|        rev_list
+   68|      3|    }
+  ------------------
+  | <simple_linked_list::SimpleLinkedList<u32>>::rev:
+  |   58|      3|    pub fn rev(self) -> SimpleLinkedList<T> {
+  |   59|      3|        let mut rev_list = SimpleLinkedList::new();
+  |   60|      3|        let mut next = self.head;
+  |   61|       |
+  |   62|     12|        while let Some(node) = next {
+  |                                     ^9
+  |   63|      9|            rev_list.push(node.data);
+  |   64|      9|            next = node.next;
+  |   65|      9|        }
+  |   66|       |
+  |   67|      3|        rev_list
+  |   68|      3|    }
+  ------------------
+  | Unexecuted instantiation: <simple_linked_list::SimpleLinkedList<_>>::rev
+  ------------------
+   69|       |}
+   70|       |
+   71|       |impl<T> FromIterator<T> for SimpleLinkedList<T> {
+   72|      3|    fn from_iter<I: IntoIterator<Item = T>>(iter: I) -> Self {
+   73|      3|        let mut new_list = SimpleLinkedList::new();
+   74|       |
+   75|     15|        for element in iter {
+                          ^12
+   76|     12|            new_list.push(element);
+   77|     12|        }
+   78|       |
+   79|      3|        new_list
+   80|      3|    }
+  ------------------
+  | <simple_linked_list::SimpleLinkedList<&str> as core::iter::traits::collect::FromIterator<&str>>::from_iter::<alloc::vec::drain::Drain<&str>>:
+  |   72|      3|    fn from_iter<I: IntoIterator<Item = T>>(iter: I) -> Self {
+  |   73|      3|        let mut new_list = SimpleLinkedList::new();
+  |   74|       |
+  |   75|     15|        for element in iter {
+  |                          ^12
+  |   76|     12|            new_list.push(element);
+  |   77|     12|        }
+  |   78|       |
+  |   79|      3|        new_list
+  |   80|      3|    }
+  ------------------
+  | Unexecuted instantiation: <simple_linked_list::SimpleLinkedList<_> as core::iter::traits::collect::FromIterator<_>>::from_iter::<_>
+  ------------------
+   81|       |}
+   82|       |
+   83|       |// In general, it would be preferable to implement IntoIterator for SimpleLinkedList<T>
+   84|       |// instead of implementing an explicit conversion to a vector. This is because, together,
+   85|       |// FromIterator and IntoIterator enable conversion between arbitrary collections.
+   86|       |// Given that implementation, converting to a vector is trivial:
+   87|       |//
+   88|       |// let vec: Vec<_> = simple_linked_list.into_iter().collect();
+   89|       |//
+   90|       |// The reason this exercise's API includes an explicit conversion to Vec<T> instead
+   91|       |// of IntoIterator is that implementing that interface is fairly complicated, and
+   92|       |// demands more of the student than we expect at this point in the track.
+   93|       |
+   94|       |// I'm not sure why we're supposed to destroy the linked list when converting it,
+   95|       |// changed linked_list into immutable and not using pop().
+   96|       |impl<T> From<SimpleLinkedList<T>> for Vec<T> {
+   97|      3|    fn from(linked_list: SimpleLinkedList<T>) -> Vec<T> {
+   98|      3|        let mut new_vector: Vec<T> = Vec::new();
+   99|      3|        let mut next = linked_list.head;
+  100|       |
+  101|     12|        while let Some(node) = next {
+                                     ^9
+  102|      9|            new_vector.push(node.data);
+  103|      9|            next = node.next;
+  104|      9|        }
+  105|       |
+  106|       |        // unreverse the vector
+  107|      3|        new_vector.reverse();
+  108|      3|
+  109|      3|        new_vector
+  110|      3|    }
+  ------------------
+  | <alloc::vec::Vec<i32> as core::convert::From<simple_linked_list::SimpleLinkedList<i32>>>::from:
+  |   97|      3|    fn from(linked_list: SimpleLinkedList<T>) -> Vec<T> {
+  |   98|      3|        let mut new_vector: Vec<T> = Vec::new();
+  |   99|      3|        let mut next = linked_list.head;
+  |  100|       |
+  |  101|     12|        while let Some(node) = next {
+  |                                     ^9
+  |  102|      9|            new_vector.push(node.data);
+  |  103|      9|            next = node.next;
+  |  104|      9|        }
+  |  105|       |
+  |  106|       |        // unreverse the vector
+  |  107|      3|        new_vector.reverse();
+  |  108|      3|
+  |  109|      3|        new_vector
+  |  110|      3|    }
+  ------------------
+  | Unexecuted instantiation: <alloc::vec::Vec<_> as core::convert::From<simple_linked_list::SimpleLinkedList<_>>>::from
+  ------------------
+  111|       |}

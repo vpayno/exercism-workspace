@@ -1,14 +1,23 @@
+//! Exercise Url: <https://exercism.org/tracks/rust/exercises/simple-linked-list>
+
 use std::iter::FromIterator;
 
 pub struct SimpleLinkedList<T> {
-    // Delete this field
-    // dummy is needed to avoid unused parameter error during compilation
-    dummy: ::std::marker::PhantomData<T>,
+    length: usize,
+    head: Option<Box<Node<T>>>,
+}
+
+struct Node<T> {
+    data: T,
+    next: Option<Box<Node<T>>>,
 }
 
 impl<T> SimpleLinkedList<T> {
     pub fn new() -> Self {
-        unimplemented!()
+        Self {
+            length: 0,
+            head: None,
+        }
     }
 
     // You may be wondering why it's necessary to have is_empty()
@@ -17,34 +26,57 @@ impl<T> SimpleLinkedList<T> {
     // whereas is_empty() is almost always cheap.
     // (Also ask yourself whether len() is expensive for SimpleLinkedList)
     pub fn is_empty(&self) -> bool {
-        unimplemented!()
+        self.len() == 0
     }
 
     pub fn len(&self) -> usize {
-        unimplemented!()
+        self.length
     }
 
-    pub fn push(&mut self, _element: T) {
-        unimplemented!()
+    pub fn push(&mut self, element: T) {
+        let new_head = Box::new(Node {
+            data: element,
+            next: self.head.take(),
+        });
+        self.head = Some(new_head);
+        self.length += 1;
     }
 
     pub fn pop(&mut self) -> Option<T> {
-        unimplemented!()
+        self.head.take().map(|node| {
+            self.head = node.next;
+            self.length -= 1;
+            node.data
+        })
     }
 
     pub fn peek(&self) -> Option<&T> {
-        unimplemented!()
+        self.head.as_ref().map(|node| &node.data)
     }
 
     #[must_use]
     pub fn rev(self) -> SimpleLinkedList<T> {
-        unimplemented!()
+        let mut rev_list = SimpleLinkedList::new();
+        let mut next = self.head;
+
+        while let Some(node) = next {
+            rev_list.push(node.data);
+            next = node.next;
+        }
+
+        rev_list
     }
 }
 
 impl<T> FromIterator<T> for SimpleLinkedList<T> {
-    fn from_iter<I: IntoIterator<Item = T>>(_iter: I) -> Self {
-        unimplemented!()
+    fn from_iter<I: IntoIterator<Item = T>>(iter: I) -> Self {
+        let mut new_list = SimpleLinkedList::new();
+
+        for element in iter {
+            new_list.push(element);
+        }
+
+        new_list
     }
 }
 
@@ -59,8 +91,21 @@ impl<T> FromIterator<T> for SimpleLinkedList<T> {
 // of IntoIterator is that implementing that interface is fairly complicated, and
 // demands more of the student than we expect at this point in the track.
 
+// I'm not sure why we're supposed to destroy the linked list when converting it,
+// changed linked_list into immutable and not using pop().
 impl<T> From<SimpleLinkedList<T>> for Vec<T> {
-    fn from(mut _linked_list: SimpleLinkedList<T>) -> Vec<T> {
-        unimplemented!()
+    fn from(linked_list: SimpleLinkedList<T>) -> Vec<T> {
+        let mut new_vector: Vec<T> = Vec::new();
+        let mut next = linked_list.head;
+
+        while let Some(node) = next {
+            new_vector.push(node.data);
+            next = node.next;
+        }
+
+        // unreverse the vector
+        new_vector.reverse();
+
+        new_vector
     }
 }
