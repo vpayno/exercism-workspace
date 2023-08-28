@@ -22,7 +22,7 @@ size_t find(data_t data, number_t key) {
             low = mid + 1;
         }
 
-        if (low > high || high < low) {
+        if (low > high) {
             throw std::domain_error("key not found in data");
         }
 
