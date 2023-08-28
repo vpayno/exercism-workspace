@@ -1,0 +1,576 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: ../../.github/citools/rust/rust-lint-check --release
+
+Running Rust Cargo Check
+
+Running rustc 1.72.0 (5680fa18f 2023-08-23)
+
+===============================================================================
+
+Running: cargo clean
+
+real	0m0.030s
+user	0m0.014s
+sys	0m0.016s
+
+===============================================================================
+
+Running: cargo check --release
+
+    Checking binary-search v1.3.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/binary-search)
+    Finished release [optimized] target(s) in 0.09s
+
+real	0m0.101s
+user	0m0.033s
+sys	0m0.032s
+
+===============================================================================
+
+exit 0
+
+real	0m0.151s
+user	0m0.059s
+sys	0m0.055s
+
+===============================================================================
+
+Running: ../../.github/citools/rust/rust-lint-clippy --release
+
+Running Rust Cargo Clippy
+
+Running rustc 1.72.0 (5680fa18f 2023-08-23)
+
+===============================================================================
+
+Running: cargo clean
+
+real	0m0.008s
+user	0m0.005s
+sys	0m0.002s
+
+===============================================================================
+
+Running: cargo clippy --release
+
+    Checking binary-search v1.3.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/binary-search)
+    Finished release [optimized] target(s) in 0.07s
+
+real	0m0.092s
+user	0m0.052s
+sys	0m0.040s
+
+===============================================================================
+
+exit 0
+
+real	0m0.113s
+user	0m0.062s
+sys	0m0.050s
+
+===============================================================================
+
+Running: ../../.github/citools/rust/rust-lint-audit
+
+Running Rust Cargo Audit
+
+Running rustc 1.72.0 (5680fa18f 2023-08-23)
+
+===============================================================================
+
+Running: cargo clean
+
+real	0m0.022s
+user	0m0.009s
+sys	0m0.013s
+
+===============================================================================
+
+Runnin: cargo tree
+
+binary-search v1.3.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/binary-search)
+
+real	0m0.047s
+user	0m0.020s
+sys	0m0.027s
+
+
+===============================================================================
+
+Running: cargo audit
+
+[0m[0m[1m[32m    Fetching[0m advisory database from `https://github.com/RustSec/advisory-db.git`
+[0m[0m[1m[32m      Loaded[0m 562 security advisories (from /home/vpayno/.cargo/advisory-db)
+[0m[0m[1m[32m    Updating[0m crates.io index
+[0m[0m[1m[32m    Scanning[0m Cargo.lock for vulnerabilities (1 crate dependencies)
+
+real	0m1.451s
+user	0m0.693s
+sys	0m0.038s
+
+===============================================================================
+
+exit 0
+
+real	0m1.535s
+user	0m0.725s
+sys	0m0.090s
+
+===============================================================================
+
+rm -fv ./*.profraw ./*.profdata
+
+===============================================================================
+
+Running: ../../.github/citools/rust/rust-test-with-tarpaulin
+
+Running Rust Tests With Tarpaulin
+
+Running rustc 1.72.0 (5680fa18f 2023-08-23)
+
+===============================================================================
+
+Running: cargo clean
+
+real	0m0.018s
+user	0m0.008s
+sys	0m0.010s
+
+===============================================================================
+
+Running: cargo test
+   Compiling binary-search v1.3.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/binary-search)
+    Finished test [unoptimized + debuginfo] target(s) in 0.27s
+     Running unittests src/lib.rs (target/debug/deps/binary_search-f2f7dbf0d9a7a9b7)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/binary-search.rs (target/debug/deps/binary_search-3ff6c6761fb6313d)
+
+running 13 tests
+test a_value_larger_than_the_arrays_largest_value_is_not_included ... ok
+test finds_a_value_in_an_array_of_odd_length ... ok
+test finds_a_value_at_the_beginning_of_an_array ... ok
+test finds_a_value_at_the_end_of_an_array ... ok
+test finds_a_value_in_an_array_of_even_length ... ok
+test finds_a_value_in_the_middle_of_an_array ... ok
+test a_value_smaller_than_the_arrays_smallest_value_is_not_included ... ok
+test finds_first_value_in_an_array_with_two_element ... ok
+test finds_second_value_in_an_array_with_two_element ... ok
+test identifies_that_a_value_is_not_included_in_the_array ... ok
+test nothing_is_found_when_the_left_and_right_bounds_cross ... ok
+test nothing_is_included_in_an_empty_array ... ok
+test finds_a_value_in_an_array_with_one_element ... ok
+
+test result: ok. 13 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests binary-search
+
+running 1 test
+test src/lib.rs - find (line 7) ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.11s
+
+
+real	0m0.405s
+user	0m0.400s
+sys	0m0.219s
+
+===============================================================================
+
+Running: cargo tarpaulin --release --timeout=300
+[2mAug 27 21:11:36.837[0m [32m INFO[0m cargo_tarpaulin::config: Creating config
+[2mAug 27 21:11:36.844[0m [32m INFO[0m cargo_tarpaulin: Running Tarpaulin
+[2mAug 27 21:11:36.844[0m [32m INFO[0m cargo_tarpaulin: Building project
+[2mAug 27 21:11:36.844[0m [32m INFO[0m cargo_tarpaulin::cargo: Cleaning project
+   Compiling binary-search v1.3.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/binary-search)
+    Finished release [optimized] target(s) in 0.30s
+[2mAug 27 21:11:37.186[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
+[2mAug 27 21:11:37.186[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/binary-search/target/release/deps/binary_search-04c381b6abdd2c44
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+[2mAug 27 21:11:37.668[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
+[2mAug 27 21:11:37.668[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/binary-search/target/release/deps/binary_search-c6a23318b7d72cdc
+
+running 13 tests
+test a_value_smaller_than_the_arrays_smallest_value_is_not_included ... ok
+test finds_a_value_in_the_middle_of_an_array ... ok
+test finds_a_value_in_an_array_with_one_element ... ok
+test finds_a_value_in_an_array_of_odd_length ... ok
+test finds_a_value_in_an_array_of_even_length ... ok
+test finds_a_value_at_the_end_of_an_array ... ok
+test finds_a_value_at_the_beginning_of_an_array ... ok
+test a_value_larger_than_the_arrays_largest_value_is_not_included ... ok
+test nothing_is_found_when_the_left_and_right_bounds_cross ... ok
+test nothing_is_included_in_an_empty_array ... ok
+test identifies_that_a_value_is_not_included_in_the_array ... ok
+test finds_second_value_in_an_array_with_two_element ... ok
+test finds_first_value_in_an_array_with_two_element ... ok
+
+test result: ok. 13 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+[2mAug 27 21:11:38.174[0m [32m INFO[0m cargo_tarpaulin::report: Coverage Results:
+|| Uncovered Lines:
+|| Tested/Total Lines:
+|| src/lib.rs: 10/10
+|| 
+100.00% coverage, 10/10 lines covered
+
+real	0m1.351s
+user	0m0.489s
+sys	0m1.005s
+
+===============================================================================
+
+exit 0
+
+real	0m1.786s
+user	0m0.903s
+sys	0m1.240s
+
+===============================================================================
+
+Running: ../../.github/citools/rust/rust-test-with-llvm-coverage
+
+Running Rust Tests With LLVM Coverage
+
+Running rustc 1.72.0 (5680fa18f 2023-08-23)
+
+===============================================================================
+
+Running: cargo clean
+
+real	0m0.013s
+user	0m0.006s
+sys	0m0.007s
+
+===============================================================================
+
+cargo llvm-cov clean --workspace
+
+===============================================================================
+
+Running: cargo test
+   Compiling binary-search v1.3.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/binary-search)
+    Finished test [unoptimized + debuginfo] target(s) in 0.29s
+     Running unittests src/lib.rs (target/debug/deps/binary_search-f2f7dbf0d9a7a9b7)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/binary-search.rs (target/debug/deps/binary_search-3ff6c6761fb6313d)
+
+running 13 tests
+test a_value_larger_than_the_arrays_largest_value_is_not_included ... ok
+test finds_a_value_in_an_array_of_even_length ... ok
+test finds_a_value_in_an_array_with_one_element ... ok
+test a_value_smaller_than_the_arrays_smallest_value_is_not_included ... ok
+test finds_a_value_in_an_array_of_odd_length ... ok
+test finds_a_value_at_the_end_of_an_array ... ok
+test finds_a_value_in_the_middle_of_an_array ... ok
+test finds_a_value_at_the_beginning_of_an_array ... ok
+test finds_first_value_in_an_array_with_two_element ... ok
+test finds_second_value_in_an_array_with_two_element ... ok
+test nothing_is_found_when_the_left_and_right_bounds_cross ... ok
+test nothing_is_included_in_an_empty_array ... ok
+test identifies_that_a_value_is_not_included_in_the_array ... ok
+
+test result: ok. 13 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests binary-search
+
+running 1 test
+test src/lib.rs - find (line 7) ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.12s
+
+
+real	0m0.441s
+user	0m0.461s
+sys	0m0.254s
+
+===============================================================================
+
+cargo llvm-cov --no-clean --all-features --workspace
+   Compiling binary-search v1.3.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/binary-search)
+error[E0308]: mismatched types
+  --> tests/binary-search.rs:84:21
+   |
+84 |     assert_eq!(find([6], 6), Some(0));
+   |                ---- ^^^ expected `&[i32]`, found `[{integer}; 1]`
+   |                |
+   |                arguments to this function are incorrect
+   |
+note: function defined here
+  --> /home/vpayno/git_vpayno/exercism-workspace/rust/binary-search/src/lib.rs:21:8
+   |
+21 | pub fn find(array: &[i32], key: i32) -> Option<usize> {
+   |        ^^^^
+help: consider borrowing here
+   |
+84 |     assert_eq!(find(&[6], 6), Some(0));
+   |                     +
+
+error[E0308]: mismatched types
+  --> tests/binary-search.rs:92:21
+   |
+92 |     assert_eq!(find(vector, 6), Some(0));
+   |                ---- ^^^^^^ expected `&[i32]`, found `Vec<i32>`
+   |                |
+   |                arguments to this function are incorrect
+   |
+   = note: expected reference `&[i32]`
+                 found struct `Vec<i32>`
+note: function defined here
+  --> /home/vpayno/git_vpayno/exercism-workspace/rust/binary-search/src/lib.rs:21:8
+   |
+21 | pub fn find(array: &[i32], key: i32) -> Option<usize> {
+   |        ^^^^
+help: consider borrowing here
+   |
+92 |     assert_eq!(find(&vector, 6), Some(0));
+   |                     +
+
+error[E0308]: arguments to this function are incorrect
+  --> tests/binary-search.rs:98:16
+   |
+98 |     assert_eq!(find(["a"], "a"), Some(0));
+   |                ^^^^ -----  --- expected `i32`, found `&str`
+   |                     |
+   |                     expected `&[i32]`, found `[&str; 1]`
+   |
+note: function defined here
+  --> /home/vpayno/git_vpayno/exercism-workspace/rust/binary-search/src/lib.rs:21:8
+   |
+21 | pub fn find(array: &[i32], key: i32) -> Option<usize> {
+   |        ^^^^
+
+error[E0308]: arguments to this function are incorrect
+  --> tests/binary-search.rs:99:16
+   |
+99 |     assert_eq!(find(["a", "b"], "b"), Some(1));
+   |                ^^^^ ----------  --- expected `i32`, found `&str`
+   |                     |
+   |                     expected `&[i32]`, found `[&str; 2]`
+   |
+note: function defined here
+  --> /home/vpayno/git_vpayno/exercism-workspace/rust/binary-search/src/lib.rs:21:8
+   |
+21 | pub fn find(array: &[i32], key: i32) -> Option<usize> {
+   |        ^^^^
+
+For more information about this error, try `rustc --explain E0308`.
+error: could not compile `binary-search` (test "binary-search") due to 4 previous errors
+warning: build failed, waiting for other jobs to finish...
+error: process didn't exit successfully: `/home/vpayno/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/cargo test --tests --manifest-path /home/vpayno/git_vpayno/exercism-workspace/rust/binary-search/Cargo.toml --target-dir /home/vpayno/git_vpayno/exercism-workspace/rust/binary-search/target/llvm-cov-target --all-features --workspace` (exit status: 101)
+
+===============================================================================
+
+cargo llvm-cov report --lcov --output-path report.lcov
+error: no input files specified. See llvm-profdata merge -help
+error: failed to merge profile data: process didn't exit successfully: `/home/vpayno/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/bin/llvm-profdata merge -sparse -f /tmp/.tmpeMVws7 -o /home/vpayno/git_vpayno/exercism-workspace/rust/binary-search/target/llvm-cov-target/binary-search.profdata` (exit status: 1)
+
+   Compiling binary-search v1.3.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/binary-search)
+error[E0308]: mismatched types
+  --> tests/binary-search.rs:84:21
+   |
+84 |     assert_eq!(find([6], 6), Some(0));
+   |                ---- ^^^ expected `&[i32]`, found `[{integer}; 1]`
+   |                |
+   |                arguments to this function are incorrect
+   |
+note: function defined here
+  --> /home/vpayno/git_vpayno/exercism-workspace/rust/binary-search/src/lib.rs:21:8
+   |
+21 | pub fn find(array: &[i32], key: i32) -> Option<usize> {
+   |        ^^^^
+help: consider borrowing here
+   |
+84 |     assert_eq!(find(&[6], 6), Some(0));
+   |                     +
+
+error[E0308]: mismatched types
+  --> tests/binary-search.rs:92:21
+   |
+92 |     assert_eq!(find(vector, 6), Some(0));
+   |                ---- ^^^^^^ expected `&[i32]`, found `Vec<i32>`
+   |                |
+   |                arguments to this function are incorrect
+   |
+   = note: expected reference `&[i32]`
+                 found struct `Vec<i32>`
+note: function defined here
+  --> /home/vpayno/git_vpayno/exercism-workspace/rust/binary-search/src/lib.rs:21:8
+   |
+21 | pub fn find(array: &[i32], key: i32) -> Option<usize> {
+   |        ^^^^
+help: consider borrowing here
+   |
+92 |     assert_eq!(find(&vector, 6), Some(0));
+   |                     +
+
+error[E0308]: arguments to this function are incorrect
+  --> tests/binary-search.rs:98:16
+   |
+98 |     assert_eq!(find(["a"], "a"), Some(0));
+   |                ^^^^ -----  --- expected `i32`, found `&str`
+   |                     |
+   |                     expected `&[i32]`, found `[&str; 1]`
+   |
+note: function defined here
+  --> /home/vpayno/git_vpayno/exercism-workspace/rust/binary-search/src/lib.rs:21:8
+   |
+21 | pub fn find(array: &[i32], key: i32) -> Option<usize> {
+   |        ^^^^
+
+error[E0308]: arguments to this function are incorrect
+  --> tests/binary-search.rs:99:16
+   |
+99 |     assert_eq!(find(["a", "b"], "b"), Some(1));
+   |                ^^^^ ----------  --- expected `i32`, found `&str`
+   |                     |
+   |                     expected `&[i32]`, found `[&str; 2]`
+   |
+note: function defined here
+  --> /home/vpayno/git_vpayno/exercism-workspace/rust/binary-search/src/lib.rs:21:8
+   |
+21 | pub fn find(array: &[i32], key: i32) -> Option<usize> {
+   |        ^^^^
+
+For more information about this error, try `rustc --explain E0308`.
+error: could not compile `binary-search` (test "binary-search") due to 4 previous errors
+error: process didn't exit successfully: `/home/vpayno/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/cargo test --tests --manifest-path /home/vpayno/git_vpayno/exercism-workspace/rust/binary-search/Cargo.toml --target-dir /home/vpayno/git_vpayno/exercism-workspace/rust/binary-search/target/llvm-cov-target --all-features --workspace` (exit status: 101)
+
+===============================================================================
+
+cargo llvm-cov --no-clean --all-features --workspace --text --output-path=coverage-annotations.txt
+   Compiling binary-search v1.3.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/binary-search)
+error[E0308]: mismatched types
+  --> tests/binary-search.rs:84:21
+   |
+84 |     assert_eq!(find([6], 6), Some(0));
+   |                ---- ^^^ expected `&[i32]`, found `[{integer}; 1]`
+   |                |
+   |                arguments to this function are incorrect
+   |
+note: function defined here
+  --> /home/vpayno/git_vpayno/exercism-workspace/rust/binary-search/src/lib.rs:21:8
+   |
+21 | pub fn find(array: &[i32], key: i32) -> Option<usize> {
+   |        ^^^^
+help: consider borrowing here
+   |
+84 |     assert_eq!(find(&[6], 6), Some(0));
+   |                     +
+
+error[E0308]: mismatched types
+  --> tests/binary-search.rs:92:21
+   |
+92 |     assert_eq!(find(vector, 6), Some(0));
+   |                ---- ^^^^^^ expected `&[i32]`, found `Vec<i32>`
+   |                |
+   |                arguments to this function are incorrect
+   |
+   = note: expected reference `&[i32]`
+                 found struct `Vec<i32>`
+note: function defined here
+  --> /home/vpayno/git_vpayno/exercism-workspace/rust/binary-search/src/lib.rs:21:8
+   |
+21 | pub fn find(array: &[i32], key: i32) -> Option<usize> {
+   |        ^^^^
+help: consider borrowing here
+   |
+92 |     assert_eq!(find(&vector, 6), Some(0));
+   |                     +
+
+error[E0308]: arguments to this function are incorrect
+  --> tests/binary-search.rs:98:16
+   |
+98 |     assert_eq!(find(["a"], "a"), Some(0));
+   |                ^^^^ -----  --- expected `i32`, found `&str`
+   |                     |
+   |                     expected `&[i32]`, found `[&str; 1]`
+   |
+note: function defined here
+  --> /home/vpayno/git_vpayno/exercism-workspace/rust/binary-search/src/lib.rs:21:8
+   |
+21 | pub fn find(array: &[i32], key: i32) -> Option<usize> {
+   |        ^^^^
+
+error[E0308]: arguments to this function are incorrect
+  --> tests/binary-search.rs:99:16
+   |
+99 |     assert_eq!(find(["a", "b"], "b"), Some(1));
+   |                ^^^^ ----------  --- expected `i32`, found `&str`
+   |                     |
+   |                     expected `&[i32]`, found `[&str; 2]`
+   |
+note: function defined here
+  --> /home/vpayno/git_vpayno/exercism-workspace/rust/binary-search/src/lib.rs:21:8
+   |
+21 | pub fn find(array: &[i32], key: i32) -> Option<usize> {
+   |        ^^^^
+
+For more information about this error, try `rustc --explain E0308`.
+error: could not compile `binary-search` (test "binary-search") due to 4 previous errors
+error: process didn't exit successfully: `/home/vpayno/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/cargo test --tests --manifest-path /home/vpayno/git_vpayno/exercism-workspace/rust/binary-search/Cargo.toml --target-dir /home/vpayno/git_vpayno/exercism-workspace/rust/binary-search/target/llvm-cov-target --all-features --workspace` (exit status: 101)
+
+===============================================================================
+
+cargo llvm-cov clean --workspace
+
+===============================================================================
+
+lcov --list report.lcov
+lcov: ERROR: cannot read file report.lcov!
+Reading tracefile report.lcov
+
+lcov --summary report.lcov
+lcov: ERROR: cannot read file report.lcov!
+Reading tracefile report.lcov
+
+===============================================================================
+
+exit 0
+
+real	0m1.658s
+user	0m1.216s
+sys	0m0.793s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.023s
+user	0m0.032s
+sys	0m0.010s
+
+===============================================================================
+
+Running: cargo doc
+ Documenting binary-search v1.3.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/binary-search)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.17s
+
+real	0m0.183s
+user	0m0.148s
+sys	0m0.038s
+
+===============================================================================
+
+Running: cargo clean
+
+real	0m0.011s
+user	0m0.005s
+sys	0m0.006s
+
+===============================================================================
+

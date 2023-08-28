@@ -28,3 +28,4 @@
 - [sieve](./sieve/README.md)
 - [secret-handshake](./secret-handshake/README.md)
 - [simple-linked-list](./simple-linked-list/README.md)
+- [binary-search](./binary-search/README.md)
