@@ -6,7 +6,7 @@
 
 layer_begin "$@"
 
-PACKAGES="apt-utils bash coreutils curl jq moreutils sudo tmux vim-nox"
+PACKAGES="apt-utils bash coreutils curl jq moreutils sudo tmux util-linux vim-nox"
 
 echo apt install -y "${PACKAGES}"
 # shellcheck disable=SC2086
