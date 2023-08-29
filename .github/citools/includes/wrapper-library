@@ -14,13 +14,13 @@ md_code_tag() {
 } # md_code_tag()
 
 run_command() {
-	md_code_tag text
+	# md_code_tag text
 	echo Running: "${@}"
 	printf "\n"
 	# shellcheck disable=SC2154
 	time "${@}" || ((retval--))
 	printf "\n"
-	md_code_tag
+	# md_code_tag
 } # run_command()
 
 print_ruler() {
@@ -35,8 +35,8 @@ get_rust_package_name() {
 } # get_rust_package_name()
 
 show_tool_versions_rust() {
-	md_code_tag text
+	# md_code_tag text
 	printf "Running "
 	rustc --version
-	md_code_tag
+	# md_code_tag
 } # show_tool_versions_rust()
