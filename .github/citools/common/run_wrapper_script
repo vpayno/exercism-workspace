@@ -36,11 +36,13 @@ printf "\n"
 ls -alh | column -t
 printf "\n"
 
-md_code_tag text
-echo Running: "${@}"
-printf "\n"
-"${@}" |& ${collector_cmd}
-md_code_tag
+{
+	md_code_tag text
+	echo Running: "${@}"
+	printf "\n"
+	"${@}"
+	md_code_tag
+} |& ${collector_cmd}
 printf "\n"
 
 echo exit "${retval}"
