@@ -9,34 +9,38 @@ print_ruler() {
 
 declare -i retval=0
 
-printf "\nRunning Rust Tests With Tarpaulin\n\n"
+main() {
+	printf "\nRunning Rust Tests With Tarpaulin\n\n"
 
-printf "Running "
-rustc --version
+	printf "Running "
+	rustc --version
 
-print_ruler
+	print_ruler
 
-echo Running: cargo clean
-time cargo clean
+	echo Running: cargo clean
+	time cargo clean
 
-print_ruler
+	print_ruler
 
-# https://doc.rust-lang.org/cargo/commands/cargo-test.html
+	# https://doc.rust-lang.org/cargo/commands/cargo-test.html
 
-echo Running: cargo test
-time cargo test || ((retval++))
+	echo Running: cargo test
+	time cargo test || ((retval++))
 
-print_ruler
+	print_ruler
 
-# https://github.com/xd009642/tarpaulin
+	# https://github.com/xd009642/tarpaulin
 
-# don't use --verbose, it exposes environment variables
-# echo Running: cargo tarpaulin --release --timeout=300 --bins --verbose
-# time cargo tarpaulin --release --timeout=300 --bins --verbose
-echo Running: cargo tarpaulin --release --timeout=300
-time cargo tarpaulin --release --timeout=300
+	# don't use --verbose, it exposes environment variables
+	# echo Running: cargo tarpaulin --release --timeout=300 --bins --verbose
+	# time cargo tarpaulin --release --timeout=300 --bins --verbose
+	echo Running: cargo tarpaulin --release --timeout=300
+	time cargo tarpaulin --release --timeout=300
 
-print_ruler
+	print_ruler
 
-echo exit "${retval}"
-exit "${retval}"
+	echo Exit code: "${retval}"
+	return "${retval}"
+}
+
+time main "${@}"

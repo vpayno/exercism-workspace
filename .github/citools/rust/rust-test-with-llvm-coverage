@@ -13,67 +13,71 @@ get_rust_package_name() {
 
 declare -i retval=0
 
-printf "\nRunning Rust Tests With LLVM Coverage\n\n"
+main() {
+	printf "\nRunning Rust Tests With LLVM Coverage\n\n"
 
-printf "Running "
-rustc --version
+	printf "Running "
+	rustc --version
 
-print_ruler
+	print_ruler
 
-echo Running: cargo clean
-time cargo clean
+	echo Running: cargo clean
+	time cargo clean
 
-print_ruler
+	print_ruler
 
-echo cargo llvm-cov clean --workspace
-cargo llvm-cov clean --workspace
+	echo cargo llvm-cov clean --workspace
+	cargo llvm-cov clean --workspace
 
-print_ruler
+	print_ruler
 
-# https://doc.rust-lang.org/cargo/commands/cargo-test.html
+	# https://doc.rust-lang.org/cargo/commands/cargo-test.html
 
-echo Running: cargo test
-time cargo test || ((retval++))
+	echo Running: cargo test
+	time cargo test || ((retval++))
 
-print_ruler
+	print_ruler
 
-# https://doc.rust-lang.org/rustc/instrument-coverage.html
-# https://github.com/taiki-e/cargo-llvm-cov
+	# https://doc.rust-lang.org/rustc/instrument-coverage.html
+	# https://github.com/taiki-e/cargo-llvm-cov
 
-# --no-clean let's us generate real reports later on
-echo cargo llvm-cov --no-clean --all-features --workspace
-cargo llvm-cov --no-clean --all-features --workspace
+	# --no-clean let's us generate real reports later on
+	echo cargo llvm-cov --no-clean --all-features --workspace
+	cargo llvm-cov --no-clean --all-features --workspace
 
-print_ruler
+	print_ruler
 
-echo cargo llvm-cov report --lcov --output-path report.lcov
-cargo llvm-cov report --lcov --output-path report.lcov
-printf "\n"
+	echo cargo llvm-cov report --lcov --output-path report.lcov
+	cargo llvm-cov report --lcov --output-path report.lcov
+	printf "\n"
 
-# show missing coverage with source - seems to only work for bin projects
-echo cargo llvm-cov --no-clean --all-features --workspace --show-missing-lines >coverage-missing-lines.txt
-cargo llvm-cov --no-clean --all-features --workspace --show-missing-lines >coverage-missing-lines.txt
+	# show missing coverage with source - seems to only work for bin projects
+	echo cargo llvm-cov --no-clean --all-features --workspace --show-missing-lines >coverage-missing-lines.txt
+	cargo llvm-cov --no-clean --all-features --workspace --show-missing-lines >coverage-missing-lines.txt
 
-print_ruler
+	print_ruler
 
-# show missing coverage with source - seems to only work for bin projects
-echo cargo llvm-cov --no-clean --all-features --workspace --text --output-path=coverage-annotations.txt
-cargo llvm-cov --no-clean --all-features --workspace --text --output-path=coverage-annotations.txt
+	# show missing coverage with source - seems to only work for bin projects
+	echo cargo llvm-cov --no-clean --all-features --workspace --text --output-path=coverage-annotations.txt
+	cargo llvm-cov --no-clean --all-features --workspace --text --output-path=coverage-annotations.txt
 
-print_ruler
+	print_ruler
 
-echo cargo llvm-cov clean --workspace
-cargo llvm-cov clean --workspace
+	echo cargo llvm-cov clean --workspace
+	cargo llvm-cov clean --workspace
 
-print_ruler
+	print_ruler
 
-echo lcov --list report.lcov
-lcov --list report.lcov
-printf "\n"
-echo lcov --summary report.lcov
-lcov --summary report.lcov
+	echo lcov --list report.lcov
+	lcov --list report.lcov
+	printf "\n"
+	echo lcov --summary report.lcov
+	lcov --summary report.lcov
 
-print_ruler
+	print_ruler
 
-echo exit "${retval}"
-exit "${retval}"
+	echo Exit code: "${retval}"
+	return "${retval}"
+}
+
+time main "${@}"

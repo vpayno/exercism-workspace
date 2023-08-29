@@ -1,0 +1,53 @@
+#!/bin/bash
+
+if [[ $# -lt 2 ]]; then
+	printf "Usage: %s %s\n" "${0}" "work_dir command args"
+	exit 1
+fi
+
+summary_start() {
+	if [[ -n ${GITHUB_STEP_SUMMARY} ]]; then
+		printf "\`\`\`text\n"
+	fi
+}
+
+summary_end() {
+	if [[ -n ${GITHUB_STEP_SUMMARY} ]]; then
+		printf "\`\`\`\n"
+	fi
+}
+
+declare collector_cmd="cat"
+
+if [[ -n ${GITHUB_STEP_SUMMARY} ]]; then
+	collector_cmd="tee -a ${GITHUB_STEP_SUMMARY}"
+fi
+
+declare -i retval=0
+
+declare work_dir="${1}"
+shift
+
+printf "\n"
+printf "Starting directory: "
+pwd
+cd "${work_dir}" || exit 1
+printf " Working directory: "
+pwd
+printf "\n"
+
+printf "Working directory contents:\n"
+printf "\n"
+# shellcheck disable=SC2012
+ls -alh | column -t
+printf "\n"
+
+summary_start
+echo Running: "${@}"
+printf "\n"
+"${@}" |& ${collector_cmd}
+summary_end
+printf "\n"
+
+echo exit "${retval}"
+exit "${retval}"

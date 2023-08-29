@@ -9,25 +9,29 @@ print_ruler() {
 
 declare -i retval=0
 
-printf "\nRunning Rust Cargo Check\n\n"
+main() {
+	printf "\nRunning Rust Cargo Check\n\n"
 
-printf "Running "
-rustc --version
+	printf "Running "
+	rustc --version
 
-print_ruler
+	print_ruler
 
-echo Running: cargo clean
-time cargo clean
+	echo Running: cargo clean
+	time cargo clean
 
-print_ruler
+	print_ruler
 
-# https://doc.rust-lang.org/cargo/commands/cargo-check.html
+	# https://doc.rust-lang.org/cargo/commands/cargo-check.html
 
-echo Running: cargo check "${@}"
-printf "\n"
-time cargo check "${@}" || ((retval++))
+	echo Running: cargo check "${@}"
+	printf "\n"
+	time cargo check "${@}" || ((retval++))
 
-print_ruler
+	print_ruler
 
-echo exit "${retval}"
-exit "${retval}"
+	echo Exit code: "${retval}"
+	return "${retval}"
+}
+
+time main "${@}"
