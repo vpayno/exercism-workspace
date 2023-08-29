@@ -92,6 +92,14 @@ Exercism Workspace
 [![CodeQL](https://github.com/vpayno/exercism-workspace/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/codeql-analysis.yml)
 [![Docker Build](https://github.com/vpayno/exercism-workspace/actions/workflows/docker-build.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/docker-build.yml)
 
+### Workflow Versions
+
+- 1.0 - original versions
+- 2.0 - exercises are tested in parallel
+- 3.0 - start using a custom container
+- 4.0 - lean hard on wrapper script encapsulation
+- 5.0 - use dagger ci to wrap the wrapper scripts which allows for local and ci execution
+
 ### Yaml Configs
 
 - [BASH Workflow](.github/workflows/bash.yml)
