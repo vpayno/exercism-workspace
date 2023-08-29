@@ -1,0 +1,66 @@
+    1|       |//! Exercise Url: <https://exercism.org/tracks/rust/exercises/grains>
+    2|       |
+    3|       |/// the chessboard square id minimum index
+    4|       |const INDEX_MIN: u32 = 1;
+    5|       |/// the chessboard square id maximum index
+    6|       |const INDEX_MAX: u32 = 64;
+    7|       |
+    8|       |/// returns the number of grains on the specified square.
+    9|       |///
+   10|       |/// Example
+   11|       |///
+   12|       |/// ```rust
+   13|       |/// use grains::square;
+   14|       |///
+   15|       |/// let want = 9_223_372_036_854_775_808;
+   16|       |/// let got = square(64);
+   17|       |///
+   18|       |/// assert_eq!(got, want);
+   19|       |/// ```
+   20|     27|pub fn square(index: u32) -> u64 {
+   21|     27|    if !(INDEX_MIN..=INDEX_MAX).contains(&index) {
+   22|       |        // return 0_u64;
+   23|      6|        panic!("Square must be between 1 and 64");
+   24|     21|    }
+   25|     21|
+   26|     21|    (1_u64) << (index - 1)
+   27|     21|}
+  ------------------
+  | grains::square:
+  |   20|     27|pub fn square(index: u32) -> u64 {
+  |   21|     27|    if !(INDEX_MIN..=INDEX_MAX).contains(&index) {
+  |   22|       |        // return 0_u64;
+  |   23|      6|        panic!("Square must be between 1 and 64");
+  |   24|     21|    }
+  |   25|     21|
+  |   26|     21|    (1_u64) << (index - 1)
+  |   27|     21|}
+  ------------------
+  | Unexecuted instantiation: grains::square
+  ------------------
+   28|       |
+   29|       |/// returns all the grains on the chess board.
+   30|       |///
+   31|       |/// Example
+   32|       |///
+   33|       |/// ```rust
+   34|       |/// use grains::total;
+   35|       |///
+   36|       |/// let want = 18_446_744_073_709_551_615;
+   37|       |/// let got = total();
+   38|       |///
+   39|       |/// assert_eq!(got, want);
+   40|       |/// ```
+   41|      3|pub fn total() -> u64 {
+   42|      3|    // (1_u64) << 64 -> overflows so we have to shift 2 smaller numbers and add 1
+   43|      3|    ((((1_u64) << 63) - 1) << 1) + 1
+   44|      3|}
+  ------------------
+  | grains::total:
+  |   41|      3|pub fn total() -> u64 {
+  |   42|      3|    // (1_u64) << 64 -> overflows so we have to shift 2 smaller numbers and add 1
+  |   43|      3|    ((((1_u64) << 63) - 1) << 1) + 1
+  |   44|      3|}
+  ------------------
+  | Unexecuted instantiation: grains::total
+  ------------------
