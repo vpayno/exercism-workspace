@@ -1,32 +1,27 @@
 #!/bin/bash
+#
+# .github/citools/rust/rust-lint-clippy
+#
 
-print_ruler() {
-	printf "\n"
-	printf "=%.0s" {1..79}
-	printf "\n"
-	printf "\n"
-} # print_ruler()
+# shellcheck disable=SC1091
+source ../../.github/citools/includes/wrapper-library || exit
 
 declare -i retval=0
 
 main() {
 	printf "\nRunning Rust Cargo Clippy\n\n"
 
-	printf "Running "
-	rustc --version
+	show_tool_versions_rust
 
 	print_ruler
 
-	echo Running: cargo clean
-	time cargo clean
+	run_command cargo clean
 
 	print_ruler
 
 	# https://github.com/rust-lang/rust-clippy
 
-	echo Running: cargo clippy "${@}"
-	printf "\n"
-	time cargo clippy "${@}" || ((retval++))
+	run_command cargo clippy "${@}"
 
 	print_ruler
 

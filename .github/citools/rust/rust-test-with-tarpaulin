@@ -1,31 +1,27 @@
 #!/bin/bash
+#
+# .github/citools/rust/rust-test-with-tarpaulin
+#
 
-print_ruler() {
-	printf "\n"
-	printf "=%.0s" {1..79}
-	printf "\n"
-	printf "\n"
-} # print_ruler()
+# shellcheck disable=SC1091
+source ../../.github/citools/includes/wrapper-library || exit
 
 declare -i retval=0
 
 main() {
 	printf "\nRunning Rust Tests With Tarpaulin\n\n"
 
-	printf "Running "
-	rustc --version
+	show_tool_versions_rust
 
 	print_ruler
 
-	echo Running: cargo clean
-	time cargo clean
+	run_command cargo clean
 
 	print_ruler
 
 	# https://doc.rust-lang.org/cargo/commands/cargo-test.html
 
-	echo Running: cargo test
-	time cargo test || ((retval++))
+	run_command cargo test
 
 	print_ruler
 
@@ -34,8 +30,8 @@ main() {
 	# don't use --verbose, it exposes environment variables
 	# echo Running: cargo tarpaulin --release --timeout=300 --bins --verbose
 	# time cargo tarpaulin --release --timeout=300 --bins --verbose
-	echo Running: cargo tarpaulin --release --timeout=300
-	time cargo tarpaulin --release --timeout=300
+
+	run_command cargo tarpaulin --release --timeout=300
 
 	print_ruler
 

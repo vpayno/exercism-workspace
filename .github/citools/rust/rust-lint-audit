@@ -1,11 +1,10 @@
 #!/bin/bash
+#
+# .github/citools/rust/rust-lint-audit
+#
 
-print_ruler() {
-	printf "\n"
-	printf "=%.0s" {1..79}
-	printf "\n"
-	printf "\n"
-} # print_ruler()
+# shellcheck disable=SC1091
+source ../../.github/citools/includes/wrapper-library || exit
 
 declare -i retval=0
 
@@ -20,28 +19,21 @@ main() {
 
 	printf "Running Rust Cargo Audit\n\n"
 
-	printf "Running "
-	rustc --version
+	show_tool_versions_rust
 
 	print_ruler
 
-	echo Running: cargo clean
-	time cargo clean
+	run_command cargo clean
 
 	print_ruler
 
-	echo Runnin: cargo tree
-	printf "\n"
-	time cargo tree
-	printf "\n"
+	run_command cargo tree
 
 	print_ruler
 
 	# https://docs.rs/cargo-audit/latest/cargo_audit/
 
-	echo Running: cargo audit "${@}"
-	printf "\n"
-	time cargo audit "${@}" || ((retval++))
+	run_command cargo audit "${@}"
 
 	print_ruler
 

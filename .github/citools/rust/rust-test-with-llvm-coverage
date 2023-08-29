@@ -1,40 +1,31 @@
 #!/bin/bash
+#
+# .github/citools/rust/rust-test-with-llvm-coverage
+#
 
-print_ruler() {
-	printf "\n"
-	printf "=%.0s" {1..79}
-	printf "\n"
-	printf "\n"
-} # print_ruler()
-
-get_rust_package_name() {
-	toml get Cargo.toml package | jq -r .name
-} # get_rust_package_name()
+# shellcheck disable=SC1091
+source ../../.github/citools/includes/wrapper-library || exit
 
 declare -i retval=0
 
 main() {
 	printf "\nRunning Rust Tests With LLVM Coverage\n\n"
 
-	printf "Running "
-	rustc --version
+	show_tool_versions_rust
 
 	print_ruler
 
-	echo Running: cargo clean
-	time cargo clean
+	run_command cargo clean
 
 	print_ruler
 
-	echo cargo llvm-cov clean --workspace
-	cargo llvm-cov clean --workspace
+	run_command cargo llvm-cov clean --workspace
 
 	print_ruler
 
 	# https://doc.rust-lang.org/cargo/commands/cargo-test.html
 
-	echo Running: cargo test
-	time cargo test || ((retval++))
+	run_command cargo test
 
 	print_ruler
 
@@ -42,37 +33,29 @@ main() {
 	# https://github.com/taiki-e/cargo-llvm-cov
 
 	# --no-clean let's us generate real reports later on
-	echo cargo llvm-cov --no-clean --all-features --workspace
-	cargo llvm-cov --no-clean --all-features --workspace
+	run_command cargo llvm-cov --no-clean --all-features --workspace
 
 	print_ruler
 
-	echo cargo llvm-cov report --lcov --output-path report.lcov
-	cargo llvm-cov report --lcov --output-path report.lcov
-	printf "\n"
+	run_command cargo llvm-cov report --lcov --output-path report.lcov
 
 	# show missing coverage with source - seems to only work for bin projects
-	echo cargo llvm-cov --no-clean --all-features --workspace --show-missing-lines >coverage-missing-lines.txt
-	cargo llvm-cov --no-clean --all-features --workspace --show-missing-lines >coverage-missing-lines.txt
+	run_command cargo llvm-cov --no-clean --all-features --workspace --show-missing-lines >coverage-missing-lines.txt
 
 	print_ruler
 
 	# show missing coverage with source - seems to only work for bin projects
-	echo cargo llvm-cov --no-clean --all-features --workspace --text --output-path=coverage-annotations.txt
-	cargo llvm-cov --no-clean --all-features --workspace --text --output-path=coverage-annotations.txt
+	run_command cargo llvm-cov --no-clean --all-features --workspace --text --output-path=coverage-annotations.txt
 
 	print_ruler
 
-	echo cargo llvm-cov clean --workspace
-	cargo llvm-cov clean --workspace
+	run_command cargo llvm-cov clean --workspace
 
 	print_ruler
 
-	echo lcov --list report.lcov
-	lcov --list report.lcov
+	run_command lcov --list report.lcov
 	printf "\n"
-	echo lcov --summary report.lcov
-	lcov --summary report.lcov
+	run_command lcov --summary report.lcov
 
 	print_ruler
 

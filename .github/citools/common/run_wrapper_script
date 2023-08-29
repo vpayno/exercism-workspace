@@ -1,21 +1,15 @@
 #!/bin/bash
+#
+# .github/citools/common/run_wrapper_script
+#
+
+# shellcheck disable=SC1091
+source .github/citools/includes/wrapper-library || exit
 
 if [[ $# -lt 2 ]]; then
 	printf "Usage: %s %s\n" "${0}" "work_dir command args"
 	exit 1
 fi
-
-summary_start() {
-	if [[ -n ${GITHUB_STEP_SUMMARY} ]]; then
-		printf "\`\`\`text\n"
-	fi
-}
-
-summary_end() {
-	if [[ -n ${GITHUB_STEP_SUMMARY} ]]; then
-		printf "\`\`\`\n"
-	fi
-}
 
 declare collector_cmd="cat"
 
@@ -42,11 +36,11 @@ printf "\n"
 ls -alh | column -t
 printf "\n"
 
-summary_start
+md_code_tag text
 echo Running: "${@}"
 printf "\n"
 "${@}" |& ${collector_cmd}
-summary_end
+md_code_tag
 printf "\n"
 
 echo exit "${retval}"
