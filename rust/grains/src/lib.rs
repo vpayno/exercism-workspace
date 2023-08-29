@@ -43,6 +43,7 @@ pub fn total() -> u64 {
     // ((1_u128 << 64) - 1) as u64
     // u64::MAX
     // u64::max_value()
+    // (1..=64).fold(0u64, |total, x| total + square(x as u32))
 
-    (1..65).fold(0u64, |total, x| total + square(x as u32))
+    (1..=INDEX_MAX).map(square).sum()
 }

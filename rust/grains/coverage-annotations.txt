@@ -56,15 +56,10 @@
    43|      3|    // ((1_u128 << 64) - 1) as u64
    44|      3|    // u64::MAX
    45|      3|    // u64::max_value()
-   46|      3|
-   47|    192|    (1..65).fold(0u64, |total, x| total + square(x as u32))
-  ------------------
-  | grains::total::{closure#0}:
-  |   47|    192|    (1..65).fold(0u64, |total, x| total + square(x as u32))
-  ------------------
-  | Unexecuted instantiation: grains::total::{closure#0}
-  ------------------
-   48|      3|}
+   46|      3|    // (1..=64).fold(0u64, |total, x| total + square(x as u32))
+   47|      3|
+   48|      3|    (1..=INDEX_MAX).map(square).sum()
+   49|      3|}
   ------------------
   | grains::total:
   |   41|      3|pub fn total() -> u64 {
@@ -72,9 +67,10 @@
   |   43|      3|    // ((1_u128 << 64) - 1) as u64
   |   44|      3|    // u64::MAX
   |   45|      3|    // u64::max_value()
-  |   46|      3|
-  |   47|      3|    (1..65).fold(0u64, |total, x| total + square(x as u32))
-  |   48|      3|}
+  |   46|      3|    // (1..=64).fold(0u64, |total, x| total + square(x as u32))
+  |   47|      3|
+  |   48|      3|    (1..=INDEX_MAX).map(square).sum()
+  |   49|      3|}
   ------------------
   | Unexecuted instantiation: grains::total
   ------------------
