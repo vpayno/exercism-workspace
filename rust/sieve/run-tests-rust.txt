@@ -13,26 +13,35 @@ Running rustc 1.72.0 (5680fa18f 2023-08-23)
 
 Running: cargo clean
 
-real	0m0.008s
-user	0m0.004s
-sys	0m0.004s
+
+real	0m0.028s
+user	0m0.016s
+sys	0m0.012s
+
 
 ===============================================================================
 
 Running: cargo check --release
-    Checking sieve v1.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/sieve)
-    Finished release [optimized] target(s) in 0.10s
 
-real	0m0.106s
-user	0m0.021s
-sys	0m0.029s
+    Checking sieve v1.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/sieve)
+    Finished release [optimized] target(s) in 0.11s
+
+real	0m0.120s
+user	0m0.027s
+sys	0m0.035s
+
 
 ===============================================================================
 
+Exit code: 0
 
-real	0m0.128s
-user	0m0.030s
-sys	0m0.043s
+real	0m0.162s
+user	0m0.049s
+sys	0m0.056s
+
+real	0m0.164s
+user	0m0.049s
+sys	0m0.058s
 
 ===============================================================================
 
@@ -46,71 +55,48 @@ Running rustc 1.72.0 (5680fa18f 2023-08-23)
 
 Running: cargo clean
 
-real	0m0.011s
-user	0m0.009s
+
+real	0m0.010s
+user	0m0.008s
 sys	0m0.002s
+
 
 ===============================================================================
 
 Running: cargo clippy --release
+
     Checking sieve v1.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/sieve)
     Finished release [optimized] target(s) in 0.07s
 
-real	0m0.095s
-user	0m0.043s
-sys	0m0.051s
+real	0m0.099s
+user	0m0.057s
+sys	0m0.042s
+
 
 ===============================================================================
 
+Exit code: 0
 
-real	0m0.118s
-user	0m0.057s
-sys	0m0.059s
+real	0m0.124s
+user	0m0.072s
+sys	0m0.053s
+
+real	0m0.127s
+user	0m0.073s
+sys	0m0.054s
 
 ===============================================================================
 
 Running: ../../.github/citools/rust/rust-lint-audit
+No deps found, skipping cargo audit.
 
-Running Rust Cargo Audit
+real	0m0.036s
+user	0m0.015s
+sys	0m0.021s
 
-Running rustc 1.72.0 (5680fa18f 2023-08-23)
-
-===============================================================================
-
-Running: cargo clean
-
-real	0m0.018s
-user	0m0.010s
-sys	0m0.008s
-
-===============================================================================
-
-cargo tree
-sieve v1.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/sieve)
-
-real	0m0.035s
-user	0m0.019s
-sys	0m0.016s
-
-
-===============================================================================
-
-Running: cargo audit
-[0m[0m[1m[32m    Fetching[0m advisory database from `https://github.com/RustSec/advisory-db.git`
-[0m[0m[1m[32m      Loaded[0m 562 security advisories (from /home/vpayno/.cargo/advisory-db)
-[0m[0m[1m[32m    Updating[0m crates.io index
-[0m[0m[1m[32m    Scanning[0m Cargo.lock for vulnerabilities (1 crate dependencies)
-
-real	0m6.403s
-user	0m3.743s
-sys	0m0.151s
-
-===============================================================================
-
-
-real	0m6.469s
-user	0m3.776s
-sys	0m0.183s
+real	0m0.037s
+user	0m0.017s
+sys	0m0.021s
 
 ===============================================================================
 
@@ -128,15 +114,18 @@ Running rustc 1.72.0 (5680fa18f 2023-08-23)
 
 Running: cargo clean
 
-real	0m0.022s
-user	0m0.012s
-sys	0m0.010s
+
+real	0m0.008s
+user	0m0.006s
+sys	0m0.002s
+
 
 ===============================================================================
 
 Running: cargo test
+
    Compiling sieve v1.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/sieve)
-    Finished test [unoptimized + debuginfo] target(s) in 0.35s
+    Finished test [unoptimized + debuginfo] target(s) in 0.39s
      Running unittests src/lib.rs (target/debug/deps/sieve-1ceefa23d1843da5)
 
 running 0 tests
@@ -148,8 +137,8 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 running 5 tests
 test limit_is_prime ... ok
 test limit_is_the_first_prime ... ok
-test limit_lower_than_the_first_prime ... ok
 test primes_up_to_10 ... ok
+test limit_lower_than_the_first_prime ... ok
 test limit_of_1000 ... ok
 
 test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
@@ -159,58 +148,66 @@ test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 running 1 test
 test src/lib.rs - primes_up_to (line 7) ... ok
 
-test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.12s
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.11s
 
 
-real	0m0.501s
-user	0m0.647s
-sys	0m0.266s
+real	0m0.532s
+user	0m0.684s
+sys	0m0.291s
+
 
 ===============================================================================
 
 Running: cargo tarpaulin --release --timeout=300
-[2mAug 26 18:50:09.773[0m [32m INFO[0m cargo_tarpaulin::config: Creating config
-[2mAug 26 18:50:09.781[0m [32m INFO[0m cargo_tarpaulin: Running Tarpaulin
-[2mAug 26 18:50:09.781[0m [32m INFO[0m cargo_tarpaulin: Building project
-[2mAug 26 18:50:09.781[0m [32m INFO[0m cargo_tarpaulin::cargo: Cleaning project
+
+[2mAug 28 23:18:37.843[0m [32m INFO[0m cargo_tarpaulin::config: Creating config
+[2mAug 28 23:18:37.851[0m [32m INFO[0m cargo_tarpaulin: Running Tarpaulin
+[2mAug 28 23:18:37.851[0m [32m INFO[0m cargo_tarpaulin: Building project
+[2mAug 28 23:18:37.851[0m [32m INFO[0m cargo_tarpaulin::cargo: Cleaning project
    Compiling sieve v1.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/sieve)
-    Finished release [optimized] target(s) in 0.44s
-[2mAug 26 18:50:10.269[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
-[2mAug 26 18:50:10.269[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/sieve/target/release/deps/sieve-5b8fb32038779b40
+    Finished release [optimized] target(s) in 0.35s
+[2mAug 28 23:18:38.240[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
+[2mAug 28 23:18:38.240[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/sieve/target/release/deps/sieve-5b8fb32038779b40
 
 running 0 tests
 
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
-[2mAug 26 18:50:10.769[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
-[2mAug 26 18:50:10.769[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/sieve/target/release/deps/sieve-d21a7c171d2a852d
+[2mAug 28 23:18:38.763[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
+[2mAug 28 23:18:38.763[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/sieve/target/release/deps/sieve-d21a7c171d2a852d
 
 running 5 tests
 test limit_lower_than_the_first_prime ... ok
 test limit_is_the_first_prime ... ok
 test primes_up_to_10 ... ok
-test limit_of_1000 ... ok
 test limit_is_prime ... ok
+test limit_of_1000 ... ok
 
 test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
 
-[2mAug 26 18:50:11.287[0m [32m INFO[0m cargo_tarpaulin::report: Coverage Results:
+[2mAug 28 23:18:39.305[0m [32m INFO[0m cargo_tarpaulin::report: Coverage Results:
 || Uncovered Lines:
 || Tested/Total Lines:
 || src/lib.rs: 14/14
 || 
 100.00% coverage, 14/14 lines covered
 
-real	0m1.530s
-user	0m0.618s
-sys	0m1.036s
+real	0m1.476s
+user	0m0.569s
+sys	0m1.109s
+
 
 ===============================================================================
 
+Exit code: 0
 
-real	0m2.065s
-user	0m1.282s
-sys	0m1.318s
+real	0m2.027s
+user	0m1.266s
+sys	0m1.406s
+
+real	0m2.029s
+user	0m1.266s
+sys	0m1.408s
 
 ===============================================================================
 
@@ -224,19 +221,28 @@ Running rustc 1.72.0 (5680fa18f 2023-08-23)
 
 Running: cargo clean
 
-real	0m0.013s
+
+real	0m0.014s
 user	0m0.005s
-sys	0m0.008s
+sys	0m0.009s
+
 
 ===============================================================================
 
-cargo llvm-cov clean --workspace
+Running: cargo llvm-cov clean --workspace
+
+
+real	0m0.203s
+user	0m0.096s
+sys	0m0.108s
+
 
 ===============================================================================
 
 Running: cargo test
+
    Compiling sieve v1.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/sieve)
-    Finished test [unoptimized + debuginfo] target(s) in 0.34s
+    Finished test [unoptimized + debuginfo] target(s) in 0.36s
      Running unittests src/lib.rs (target/debug/deps/sieve-1ceefa23d1843da5)
 
 running 0 tests
@@ -246,9 +252,9 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
      Running tests/sieve.rs (target/debug/deps/sieve-c3c20ec95d129ba9)
 
 running 5 tests
+test limit_lower_than_the_first_prime ... ok
 test limit_is_prime ... ok
 test limit_is_the_first_prime ... ok
-test limit_lower_than_the_first_prime ... ok
 test primes_up_to_10 ... ok
 test limit_of_1000 ... ok
 
@@ -262,15 +268,17 @@ test src/lib.rs - primes_up_to (line 7) ... ok
 test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.12s
 
 
-real	0m0.484s
-user	0m0.583s
-sys	0m0.251s
+real	0m0.506s
+user	0m0.633s
+sys	0m0.274s
+
 
 ===============================================================================
 
-cargo llvm-cov --no-clean --all-features --workspace
+Running: cargo llvm-cov --no-clean --all-features --workspace
+
    Compiling sieve v1.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/sieve)
-    Finished test [unoptimized + debuginfo] target(s) in 0.32s
+    Finished test [unoptimized + debuginfo] target(s) in 0.28s
      Running unittests src/lib.rs (target/llvm-cov-target/debug/deps/sieve-457eb5d7e8a03c53)
 
 running 0 tests
@@ -294,11 +302,21 @@ Filename                                                             Regions    
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 TOTAL                                                                     24                 0   100.00%           1                 0   100.00%          39                 0   100.00%           0                 0         -
 
+real	0m0.424s
+user	0m0.359s
+sys	0m0.189s
+
+
 ===============================================================================
 
-cargo llvm-cov report --lcov --output-path report.lcov
+Running: cargo llvm-cov report --lcov --output-path report.lcov
+
 
     Finished report saved to report.lcov
+
+real	0m0.147s
+user	0m0.081s
+sys	0m0.067s
 
     Finished test [unoptimized + debuginfo] target(s) in 0.00s
      Running unittests src/lib.rs (target/llvm-cov-target/debug/deps/sieve-457eb5d7e8a03c53)
@@ -319,9 +337,14 @@ test primes_up_to_10 ... ok
 test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
 
+real	0m0.152s
+user	0m0.080s
+sys	0m0.073s
+
 ===============================================================================
 
-cargo llvm-cov --no-clean --all-features --workspace --text --output-path=coverage-annotations.txt
+Running: cargo llvm-cov --no-clean --all-features --workspace --text --output-path=coverage-annotations.txt
+
     Finished test [unoptimized + debuginfo] target(s) in 0.00s
      Running unittests src/lib.rs (target/llvm-cov-target/debug/deps/sieve-457eb5d7e8a03c53)
 
@@ -343,13 +366,25 @@ test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 
     Finished report saved to coverage-annotations.txt
 
+real	0m0.144s
+user	0m0.078s
+sys	0m0.069s
+
+
 ===============================================================================
 
-cargo llvm-cov clean --workspace
+Running: cargo llvm-cov clean --workspace
+
+
+real	0m0.149s
+user	0m0.105s
+sys	0m0.047s
+
 
 ===============================================================================
 
-lcov --list report.lcov
+Running: lcov --list report.lcov
+
 Reading tracefile report.lcov
             |Lines       |Functions  |Branches    
 Filename    |Rate     Num|Rate    Num|Rate     Num
@@ -359,45 +394,61 @@ lib.rs      | 100%     39|50.0%     2|    -      0
 ==================================================
       Total:| 100%     39|50.0%     2|    -      0
 
-lcov --summary report.lcov
+real	0m0.034s
+user	0m0.029s
+sys	0m0.005s
+
+
+Running: lcov --summary report.lcov
+
 Reading tracefile report.lcov
 Summary coverage rate:
   lines......: 100.0% (39 of 39 lines)
   functions..: 50.0% (1 of 2 functions)
   branches...: no data found
 
+real	0m0.033s
+user	0m0.025s
+sys	0m0.008s
+
+
 ===============================================================================
 
+Exit code: 0
 
-real	0m1.688s
-user	0m1.316s
-sys	0m0.790s
+real	0m1.820s
+user	0m1.495s
+sys	0m0.856s
+
+real	0m1.821s
+user	0m1.497s
+sys	0m0.856s
 
 ===============================================================================
 
 Running: misspell .
 
-real	0m0.024s
-user	0m0.023s
+real	0m0.032s
+user	0m0.021s
 sys	0m0.013s
 
 ===============================================================================
 
 Running: cargo doc
  Documenting sieve v1.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/sieve)
-    Finished dev [unoptimized + debuginfo] target(s) in 0.17s
+    Finished dev [unoptimized + debuginfo] target(s) in 0.19s
 
-real	0m0.183s
-user	0m0.147s
-sys	0m0.038s
+real	0m0.206s
+user	0m0.165s
+sys	0m0.043s
 
 ===============================================================================
 
 Running: cargo clean
 
-real	0m0.015s
-user	0m0.005s
-sys	0m0.009s
+real	0m0.012s
+user	0m0.004s
+sys	0m0.007s
 
 ===============================================================================
 

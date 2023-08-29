@@ -5,86 +5,142 @@ Running automated test file(s):
 
 Running: ../../.github/citools/rust/rust-lint-check --release
 
-Running Rust Cargo CheckRunning: cargo clean
+Running Rust Cargo Check
 
-real	0m0.018s
-user	0m0.015s
-sys	0m0.003s
+Running rustc 1.72.0 (5680fa18f 2023-08-23)
+
+===============================================================================
+
+Running: cargo clean
+
+
+real	0m0.021s
+user	0m0.010s
+sys	0m0.011s
+
 
 ===============================================================================
 
 Running: cargo check --release
+
     Checking unicode-segmentation v1.10.1
     Checking reverse_string v1.2.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/reverse-string)
-    Finished release [optimized] target(s) in 0.16s
+    Finished release [optimized] target(s) in 0.40s
 
-real	0m0.175s
-user	0m0.025s
-sys	0m0.040s
+real	0m0.412s
+user	0m0.029s
+sys	0m0.042s
+
 
 ===============================================================================
 
+Exit code: 0
 
-real	0m0.195s
-user	0m0.042s
-sys	0m0.043s
+real	0m0.445s
+user	0m0.045s
+sys	0m0.059s
+
+real	0m0.447s
+user	0m0.047s
+sys	0m0.059s
 
 ===============================================================================
 
 Running: ../../.github/citools/rust/rust-lint-clippy --release
 
-Running Rust Cargo ClippyRunning: cargo clean
+Running Rust Cargo Clippy
 
-real	0m0.008s
-user	0m0.006s
+Running rustc 1.72.0 (5680fa18f 2023-08-23)
+
+===============================================================================
+
+Running: cargo clean
+
+
+real	0m0.010s
+user	0m0.007s
 sys	0m0.002s
+
 
 ===============================================================================
 
 Running: cargo clippy --release
+
     Checking unicode-segmentation v1.10.1
     Checking reverse_string v1.2.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/reverse-string)
-    Finished release [optimized] target(s) in 0.14s
+    Finished release [optimized] target(s) in 0.15s
 
-real	0m0.166s
-user	0m0.051s
-sys	0m0.056s
+real	0m0.180s
+user	0m0.063s
+sys	0m0.054s
+
 
 ===============================================================================
 
+Exit code: 0
 
-real	0m0.176s
-user	0m0.059s
-sys	0m0.058s
+real	0m0.207s
+user	0m0.079s
+sys	0m0.066s
+
+real	0m0.209s
+user	0m0.079s
+sys	0m0.068s
 
 ===============================================================================
 
 Running: ../../.github/citools/rust/rust-lint-audit
+Running Rust Cargo Audit
 
-Running Rust Cargo AuditRunning: cargo clean
+Running rustc 1.72.0 (5680fa18f 2023-08-23)
 
-real	0m0.024s
-user	0m0.010s
-sys	0m0.013s
+===============================================================================
+
+Running: cargo clean
+
+
+real	0m0.009s
+user	0m0.006s
+sys	0m0.003s
+
+
+===============================================================================
+
+Running: cargo tree
+
+reverse_string v1.2.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/reverse-string)
+└── unicode-segmentation v1.10.1
+
+real	0m0.045s
+user	0m0.018s
+sys	0m0.027s
+
 
 ===============================================================================
 
 Running: cargo audit
+
 [0m[0m[1m[32m    Fetching[0m advisory database from `https://github.com/RustSec/advisory-db.git`
 [0m[0m[1m[32m      Loaded[0m 562 security advisories (from /home/vpayno/.cargo/advisory-db)
 [0m[0m[1m[32m    Updating[0m crates.io index
 [0m[0m[1m[32m    Scanning[0m Cargo.lock for vulnerabilities (2 crate dependencies)
 
-real	0m2.057s
-user	0m0.652s
-sys	0m0.474s
+real	0m12.118s
+user	0m8.171s
+sys	0m0.437s
+
 
 ===============================================================================
 
+Exit code: 0
 
-real	0m2.082s
-user	0m0.662s
-sys	0m0.489s
+real	0m12.221s
+user	0m8.219s
+sys	0m0.493s
+
+real	0m12.223s
+user	0m8.220s
+sys	0m0.493s
 
 ===============================================================================
 
@@ -96,35 +152,42 @@ Running: ../../.github/citools/rust/rust-test-with-tarpaulin
 
 Running Rust Tests With Tarpaulin
 
+Running rustc 1.72.0 (5680fa18f 2023-08-23)
+
+===============================================================================
+
 Running: cargo clean
 
-real	0m0.032s
-user	0m0.020s
-sys	0m0.012s
+
+real	0m0.020s
+user	0m0.011s
+sys	0m0.009s
+
 
 ===============================================================================
 
 Running: cargo test
+
    Compiling unicode-segmentation v1.10.1
    Compiling reverse_string v1.2.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/reverse-string)
-    Finished test [unoptimized + debuginfo] target(s) in 0.43s
-     Running unittests src/lib.rs (target/debug/deps/reverse_string-fed23cbea342359c)
+    Finished test [unoptimized + debuginfo] target(s) in 0.63s
+     Running unittests src/lib.rs (target/debug/deps/reverse_string-2aa5004b9cef40d1)
 
 running 0 tests
 
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
-     Running tests/reverse-string.rs (target/debug/deps/reverse_string-d2e2833de6c87028)
+     Running tests/reverse-string.rs (target/debug/deps/reverse_string-d070a61052f8b334)
 
 running 8 tests
-test test_a_sentence_with_punctuation ... ok
 test test_a_palindrome ... ok
-test test_a_word ... ok
-test test_an_empty_string ... ok
 test test_a_capitalized_word ... ok
+test test_a_sentence_with_punctuation ... ok
+test test_a_word ... ok
+test test_an_even_sized_word ... ok
 test test_grapheme_clusters ... ok
 test test_wide_characters ... ok
-test test_an_even_sized_word ... ok
+test test_an_empty_string ... ok
 
 test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
@@ -135,59 +198,67 @@ running 0 tests
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
 
-real	0m0.463s
-user	0m0.485s
-sys	0m0.252s
+real	0m0.665s
+user	0m0.462s
+sys	0m0.220s
+
 
 ===============================================================================
 
 Running: cargo tarpaulin --release --timeout=300
-[2mAug 24 20:27:27.193[0m [32m INFO[0m cargo_tarpaulin::config: Creating config
-[2mAug 24 20:27:27.202[0m [32m INFO[0m cargo_tarpaulin: Running Tarpaulin
-[2mAug 24 20:27:27.202[0m [32m INFO[0m cargo_tarpaulin: Building project
-[2mAug 24 20:27:27.202[0m [32m INFO[0m cargo_tarpaulin::cargo: Cleaning project
+
+[2mAug 28 23:18:14.681[0m [32m INFO[0m cargo_tarpaulin::config: Creating config
+[2mAug 28 23:18:14.691[0m [32m INFO[0m cargo_tarpaulin: Running Tarpaulin
+[2mAug 28 23:18:14.691[0m [32m INFO[0m cargo_tarpaulin: Building project
+[2mAug 28 23:18:14.691[0m [32m INFO[0m cargo_tarpaulin::cargo: Cleaning project
    Compiling unicode-segmentation v1.10.1
    Compiling reverse_string v1.2.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/reverse-string)
-    Finished release [optimized] target(s) in 0.42s
-[2mAug 24 20:27:27.669[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
-[2mAug 24 20:27:27.669[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/reverse-string/target/release/deps/reverse_string-baad38974703ba22
+    Finished release [optimized] target(s) in 0.95s
+[2mAug 28 23:18:15.687[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
+[2mAug 28 23:18:15.700[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/reverse-string/target/release/deps/reverse_string-011c2ad2394ba34c
 
 running 0 tests
 
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
-[2mAug 24 20:27:28.189[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
-[2mAug 24 20:27:28.189[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/reverse-string/target/release/deps/reverse_string-2200f1d7a986971b
+[2mAug 28 23:18:16.206[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
+[2mAug 28 23:18:16.206[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/reverse-string/target/release/deps/reverse_string-5e2b8a22b62f198f
 
 running 8 tests
 test test_wide_characters ... ok
-test test_an_empty_string ... ok
 test test_a_word ... ok
 test test_a_sentence_with_punctuation ... ok
+test test_a_capitalized_word ... ok
 test test_a_palindrome ... ok
 test test_grapheme_clusters ... ok
 test test_an_even_sized_word ... ok
-test test_a_capitalized_word ... ok
+test test_an_empty_string ... ok
 
-test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
 
-[2mAug 24 20:27:28.731[0m [32m INFO[0m cargo_tarpaulin::report: Coverage Results:
+[2mAug 28 23:18:16.745[0m [32m INFO[0m cargo_tarpaulin::report: Coverage Results:
 || Uncovered Lines:
 || Tested/Total Lines:
 || src/lib.rs: 1/1
 || 
 100.00% coverage, 1/1 lines covered
 
-real	0m1.552s
-user	0m0.820s
-sys	0m1.185s
+real	0m2.078s
+user	0m0.527s
+sys	0m1.103s
+
 
 ===============================================================================
 
+Exit code: 0
 
-real	0m2.048s
-user	0m1.326s
-sys	0m1.449s
+real	0m2.774s
+user	0m1.006s
+sys	0m1.338s
+
+real	0m2.776s
+user	0m1.007s
+sys	0m1.338s
 
 ===============================================================================
 
@@ -195,38 +266,51 @@ Running: ../../.github/citools/rust/rust-test-with-llvm-coverage
 
 Running Rust Tests With LLVM Coverage
 
-Running: cargo clean
-
-real	0m0.014s
-user	0m0.006s
-sys	0m0.008s
+Running rustc 1.72.0 (5680fa18f 2023-08-23)
 
 ===============================================================================
 
-cargo llvm-cov clean --workspace
+Running: cargo clean
+
+
+real	0m0.014s
+user	0m0.006s
+sys	0m0.007s
+
+
+===============================================================================
+
+Running: cargo llvm-cov clean --workspace
+
+
+real	0m0.163s
+user	0m0.091s
+sys	0m0.074s
+
 
 ===============================================================================
 
 Running: cargo test
+
    Compiling unicode-segmentation v1.10.1
    Compiling reverse_string v1.2.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/reverse-string)
-    Finished test [unoptimized + debuginfo] target(s) in 0.40s
-     Running unittests src/lib.rs (target/debug/deps/reverse_string-fed23cbea342359c)
+    Finished test [unoptimized + debuginfo] target(s) in 0.37s
+     Running unittests src/lib.rs (target/debug/deps/reverse_string-2aa5004b9cef40d1)
 
 running 0 tests
 
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
-     Running tests/reverse-string.rs (target/debug/deps/reverse_string-d2e2833de6c87028)
+     Running tests/reverse-string.rs (target/debug/deps/reverse_string-d070a61052f8b334)
 
 running 8 tests
+test test_an_empty_string ... ok
+test test_a_capitalized_word ... ok
 test test_a_sentence_with_punctuation ... ok
-test test_a_palindrome ... ok
 test test_an_even_sized_word ... ok
 test test_a_word ... ok
-test test_an_empty_string ... ok
+test test_a_palindrome ... ok
 test test_grapheme_clusters ... ok
-test test_a_capitalized_word ... ok
 test test_wide_characters ... ok
 
 test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
@@ -238,23 +322,25 @@ running 0 tests
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
 
-real	0m0.433s
-user	0m0.469s
-sys	0m0.221s
+real	0m0.397s
+user	0m0.413s
+sys	0m0.200s
+
 
 ===============================================================================
 
-cargo llvm-cov --no-clean --all-features --workspace
+Running: cargo llvm-cov --no-clean --all-features --workspace
+
    Compiling unicode-segmentation v1.10.1
    Compiling reverse_string v1.2.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/reverse-string)
-    Finished test [unoptimized + debuginfo] target(s) in 0.70s
-     Running unittests src/lib.rs (target/llvm-cov-target/debug/deps/reverse_string-d1fa868cce905813)
+    Finished test [unoptimized + debuginfo] target(s) in 0.61s
+     Running unittests src/lib.rs (target/llvm-cov-target/debug/deps/reverse_string-c248fa0a2bdb6855)
 
 running 0 tests
 
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
-     Running tests/reverse-string.rs (target/llvm-cov-target/debug/deps/reverse_string-0578eac40eae873c)
+     Running tests/reverse-string.rs (target/llvm-cov-target/debug/deps/reverse_string-950f8cf9c5c23d1d)
 
 running 8 tests
 test test_a_capitalized_word ... ok
@@ -274,20 +360,30 @@ Filename                                                                      Re
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 TOTAL                                                                               1                 0   100.00%           1                 0   100.00%           5                 0   100.00%           0                 0         -
 
+real	0m0.733s
+user	0m0.335s
+sys	0m0.168s
+
+
 ===============================================================================
 
-cargo llvm-cov report --lcov --output-path report.lcov
+Running: cargo llvm-cov report --lcov --output-path report.lcov
+
 
     Finished report saved to report.lcov
 
+real	0m0.128s
+user	0m0.065s
+sys	0m0.064s
+
     Finished test [unoptimized + debuginfo] target(s) in 0.00s
-     Running unittests src/lib.rs (target/llvm-cov-target/debug/deps/reverse_string-d1fa868cce905813)
+     Running unittests src/lib.rs (target/llvm-cov-target/debug/deps/reverse_string-c248fa0a2bdb6855)
 
 running 0 tests
 
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
-     Running tests/reverse-string.rs (target/llvm-cov-target/debug/deps/reverse_string-0578eac40eae873c)
+     Running tests/reverse-string.rs (target/llvm-cov-target/debug/deps/reverse_string-950f8cf9c5c23d1d)
 
 running 8 tests
 test test_a_capitalized_word ... ok
@@ -302,17 +398,22 @@ test test_wide_characters ... ok
 test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
 
+real	0m0.176s
+user	0m0.088s
+sys	0m0.086s
+
 ===============================================================================
 
-cargo llvm-cov --no-clean --all-features --workspace --text --output-path=coverage-annotations.txt
+Running: cargo llvm-cov --no-clean --all-features --workspace --text --output-path=coverage-annotations.txt
+
     Finished test [unoptimized + debuginfo] target(s) in 0.00s
-     Running unittests src/lib.rs (target/llvm-cov-target/debug/deps/reverse_string-d1fa868cce905813)
+     Running unittests src/lib.rs (target/llvm-cov-target/debug/deps/reverse_string-c248fa0a2bdb6855)
 
 running 0 tests
 
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
-     Running tests/reverse-string.rs (target/llvm-cov-target/debug/deps/reverse_string-0578eac40eae873c)
+     Running tests/reverse-string.rs (target/llvm-cov-target/debug/deps/reverse_string-950f8cf9c5c23d1d)
 
 running 8 tests
 test test_a_capitalized_word ... ok
@@ -329,13 +430,25 @@ test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 
     Finished report saved to coverage-annotations.txt
 
+real	0m0.149s
+user	0m0.077s
+sys	0m0.077s
+
+
 ===============================================================================
 
-cargo llvm-cov clean --workspace
+Running: cargo llvm-cov clean --workspace
+
+
+real	0m0.148s
+user	0m0.076s
+sys	0m0.075s
+
 
 ===============================================================================
 
-lcov --list report.lcov
+Running: lcov --list report.lcov
+
 Reading tracefile report.lcov
             |Lines       |Functions  |Branches    
 Filename    |Rate     Num|Rate    Num|Rate     Num
@@ -345,27 +458,43 @@ lib.rs      | 100%      5|50.0%     2|    -      0
 ==================================================
       Total:| 100%      5|50.0%     2|    -      0
 
-lcov --summary report.lcov
+real	0m0.041s
+user	0m0.030s
+sys	0m0.011s
+
+
+Running: lcov --summary report.lcov
+
 Reading tracefile report.lcov
 Summary coverage rate:
   lines......: 100.0% (5 of 5 lines)
   functions..: 50.0% (1 of 2 functions)
   branches...: no data found
 
+real	0m0.032s
+user	0m0.027s
+sys	0m0.005s
+
+
 ===============================================================================
 
+Exit code: 0
 
-real	0m2.065s
-user	0m1.404s
-sys	0m0.832s
+real	0m1.993s
+user	0m1.215s
+sys	0m0.774s
+
+real	0m1.995s
+user	0m1.216s
+sys	0m0.775s
 
 ===============================================================================
 
 Running: misspell .
 
-real	0m0.026s
-user	0m0.034s
-sys	0m0.014s
+real	0m0.032s
+user	0m0.023s
+sys	0m0.013s
 
 ===============================================================================
 
@@ -373,19 +502,19 @@ Running: cargo doc
     Checking unicode-segmentation v1.10.1
  Documenting unicode-segmentation v1.10.1
  Documenting reverse_string v1.2.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/reverse-string)
-    Finished dev [unoptimized + debuginfo] target(s) in 0.41s
+    Finished dev [unoptimized + debuginfo] target(s) in 0.40s
 
-real	0m0.422s
-user	0m0.346s
-sys	0m0.087s
+real	0m0.411s
+user	0m0.332s
+sys	0m0.076s
 
 ===============================================================================
 
 Running: cargo clean
 
 real	0m0.015s
-user	0m0.005s
-sys	0m0.010s
+user	0m0.007s
+sys	0m0.008s
 
 ===============================================================================
 

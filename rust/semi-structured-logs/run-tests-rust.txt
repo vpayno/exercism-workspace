@@ -5,84 +5,98 @@ Running automated test file(s):
 
 Running: ../../.github/citools/rust/rust-lint-check --release
 
-Running Rust Cargo CheckRunning: cargo clean
+Running Rust Cargo Check
 
-real	0m0.020s
-user	0m0.008s
-sys	0m0.012s
+Running rustc 1.72.0 (5680fa18f 2023-08-23)
+
+===============================================================================
+
+Running: cargo clean
+
+
+real	0m0.025s
+user	0m0.014s
+sys	0m0.011s
+
 
 ===============================================================================
 
 Running: cargo check --release
-    Checking semi_structured_logs v0.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/semi-structured-logs)
-    Finished release [optimized] target(s) in 0.09s
 
-real	0m0.095s
-user	0m0.023s
-sys	0m0.029s
+    Checking semi_structured_logs v0.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/semi-structured-logs)
+    Finished release [optimized] target(s) in 0.12s
+
+real	0m0.133s
+user	0m0.037s
+sys	0m0.028s
+
 
 ===============================================================================
 
+Exit code: 0
 
-real	0m0.117s
-user	0m0.031s
+real	0m0.167s
+user	0m0.056s
 sys	0m0.043s
+
+real	0m0.169s
+user	0m0.057s
+sys	0m0.044s
 
 ===============================================================================
 
 Running: ../../.github/citools/rust/rust-lint-clippy --release
 
-Running Rust Cargo ClippyRunning: cargo clean
+Running Rust Cargo Clippy
 
-real	0m0.009s
-user	0m0.006s
+Running rustc 1.72.0 (5680fa18f 2023-08-23)
+
+===============================================================================
+
+Running: cargo clean
+
+
+real	0m0.008s
+user	0m0.005s
 sys	0m0.003s
+
 
 ===============================================================================
 
 Running: cargo clippy --release
+
     Checking semi_structured_logs v0.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/semi-structured-logs)
     Finished release [optimized] target(s) in 0.08s
 
-real	0m0.102s
-user	0m0.051s
-sys	0m0.050s
+real	0m0.116s
+user	0m0.069s
+sys	0m0.048s
+
 
 ===============================================================================
 
+Exit code: 0
 
-real	0m0.112s
-user	0m0.057s
-sys	0m0.055s
+real	0m0.133s
+user	0m0.074s
+sys	0m0.060s
+
+real	0m0.135s
+user	0m0.074s
+sys	0m0.061s
 
 ===============================================================================
 
 Running: ../../.github/citools/rust/rust-lint-audit
+No deps found, skipping cargo audit.
 
-Running Rust Cargo AuditRunning: cargo clean
+real	0m0.039s
+user	0m0.020s
+sys	0m0.019s
 
-real	0m0.023s
-user	0m0.011s
-sys	0m0.012s
-
-===============================================================================
-
-Running: cargo audit
-[0m[0m[1m[32m    Fetching[0m advisory database from `https://github.com/RustSec/advisory-db.git`
-[0m[0m[1m[32m      Loaded[0m 562 security advisories (from /home/vpayno/.cargo/advisory-db)
-[0m[0m[1m[32m    Updating[0m crates.io index
-[0m[0m[1m[32m    Scanning[0m Cargo.lock for vulnerabilities (1 crate dependencies)
-
-real	0m1.855s
-user	0m0.588s
-sys	0m0.472s
-
-===============================================================================
-
-
-real	0m1.881s
-user	0m0.600s
-sys	0m0.485s
+real	0m0.040s
+user	0m0.021s
+sys	0m0.021s
 
 ===============================================================================
 
@@ -94,29 +108,36 @@ Running: ../../.github/citools/rust/rust-test-with-tarpaulin
 
 Running Rust Tests With Tarpaulin
 
+Running rustc 1.72.0 (5680fa18f 2023-08-23)
+
+===============================================================================
+
 Running: cargo clean
 
-real	0m0.024s
-user	0m0.013s
-sys	0m0.011s
+
+real	0m0.009s
+user	0m0.004s
+sys	0m0.005s
+
 
 ===============================================================================
 
 Running: cargo test
+
    Compiling semi_structured_logs v0.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/semi-structured-logs)
-    Finished test [unoptimized + debuginfo] target(s) in 0.33s
-     Running unittests src/lib.rs (target/debug/deps/semi_structured_logs-b176bab43bc1d8c8)
+    Finished test [unoptimized + debuginfo] target(s) in 0.32s
+     Running unittests src/lib.rs (target/debug/deps/semi_structured_logs-be8d33af57e41072)
 
 running 0 tests
 
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
-     Running tests/semi-structured-logs.rs (target/debug/deps/semi_structured_logs-13c9629d45db3ec2)
+     Running tests/semi-structured-logs.rs (target/debug/deps/semi_structured_logs-1afecad563c8a12b)
 
 running 6 tests
+test emits_warning ... ok
 test emits_error ... ok
 test emits_info ... ok
-test emits_warning ... ok
 test log_emits_error ... ok
 test log_emits_info ... ok
 test log_emits_warning ... ok
@@ -130,28 +151,30 @@ running 0 tests
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
 
-real	0m0.361s
-user	0m0.484s
-sys	0m0.225s
+real	0m0.356s
+user	0m0.455s
+sys	0m0.220s
+
 
 ===============================================================================
 
 Running: cargo tarpaulin --release --timeout=300
-[2mAug 24 20:27:46.186[0m [32m INFO[0m cargo_tarpaulin::config: Creating config
-[2mAug 24 20:27:46.196[0m [32m INFO[0m cargo_tarpaulin: Running Tarpaulin
-[2mAug 24 20:27:46.196[0m [32m INFO[0m cargo_tarpaulin: Building project
-[2mAug 24 20:27:46.196[0m [32m INFO[0m cargo_tarpaulin::cargo: Cleaning project
+
+[2mAug 28 23:18:29.590[0m [32m INFO[0m cargo_tarpaulin::config: Creating config
+[2mAug 28 23:18:29.598[0m [32m INFO[0m cargo_tarpaulin: Running Tarpaulin
+[2mAug 28 23:18:29.598[0m [32m INFO[0m cargo_tarpaulin: Building project
+[2mAug 28 23:18:29.598[0m [32m INFO[0m cargo_tarpaulin::cargo: Cleaning project
    Compiling semi_structured_logs v0.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/semi-structured-logs)
-    Finished release [optimized] target(s) in 0.36s
-[2mAug 24 20:27:46.602[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
-[2mAug 24 20:27:46.602[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/semi-structured-logs/target/release/deps/semi_structured_logs-4623b8952751a325
+    Finished release [optimized] target(s) in 0.35s
+[2mAug 28 23:18:29.985[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
+[2mAug 28 23:18:29.985[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/semi-structured-logs/target/release/deps/semi_structured_logs-4ea4adcf1478fb48
 
 running 0 tests
 
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
-[2mAug 24 20:27:47.115[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
-[2mAug 24 20:27:47.115[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/semi-structured-logs/target/release/deps/semi_structured_logs-adfb8414adbbce12
+[2mAug 28 23:18:30.508[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
+[2mAug 28 23:18:30.508[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/semi-structured-logs/target/release/deps/semi_structured_logs-1b967ddd449a8c23
 
 running 6 tests
 test log_emits_warning ... ok
@@ -163,23 +186,29 @@ test log_emits_error ... ok
 
 test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
 
-[2mAug 24 20:27:47.629[0m [32m INFO[0m cargo_tarpaulin::report: Coverage Results:
+[2mAug 28 23:18:31.042[0m [32m INFO[0m cargo_tarpaulin::report: Coverage Results:
 || Uncovered Lines:
 || Tested/Total Lines:
 || src/lib.rs: 9/9
 || 
 100.00% coverage, 9/9 lines covered
 
-real	0m1.460s
-user	0m0.801s
-sys	0m1.165s
+real	0m1.465s
+user	0m0.475s
+sys	0m1.093s
+
 
 ===============================================================================
 
+Exit code: 0
 
-real	0m1.847s
-user	0m1.298s
-sys	0m1.403s
+real	0m1.841s
+user	0m0.938s
+sys	0m1.325s
+
+real	0m1.842s
+user	0m0.939s
+sys	0m1.326s
 
 ===============================================================================
 
@@ -187,36 +216,49 @@ Running: ../../.github/citools/rust/rust-test-with-llvm-coverage
 
 Running Rust Tests With LLVM Coverage
 
-Running: cargo clean
-
-real	0m0.013s
-user	0m0.007s
-sys	0m0.005s
+Running rustc 1.72.0 (5680fa18f 2023-08-23)
 
 ===============================================================================
 
-cargo llvm-cov clean --workspace
+Running: cargo clean
+
+
+real	0m0.017s
+user	0m0.008s
+sys	0m0.009s
+
+
+===============================================================================
+
+Running: cargo llvm-cov clean --workspace
+
+
+real	0m0.206s
+user	0m0.111s
+sys	0m0.097s
+
 
 ===============================================================================
 
 Running: cargo test
+
    Compiling semi_structured_logs v0.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/semi-structured-logs)
-    Finished test [unoptimized + debuginfo] target(s) in 0.29s
-     Running unittests src/lib.rs (target/debug/deps/semi_structured_logs-b176bab43bc1d8c8)
+    Finished test [unoptimized + debuginfo] target(s) in 0.30s
+     Running unittests src/lib.rs (target/debug/deps/semi_structured_logs-be8d33af57e41072)
 
 running 0 tests
 
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
-     Running tests/semi-structured-logs.rs (target/debug/deps/semi_structured_logs-13c9629d45db3ec2)
+     Running tests/semi-structured-logs.rs (target/debug/deps/semi_structured_logs-1afecad563c8a12b)
 
 running 6 tests
-test emits_error ... ok
-test emits_info ... ok
 test emits_warning ... ok
+test emits_error ... ok
 test log_emits_info ... ok
 test log_emits_error ... ok
 test log_emits_warning ... ok
+test emits_info ... ok
 
 test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
@@ -227,13 +269,15 @@ running 0 tests
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
 
-real	0m0.318s
-user	0m0.351s
-sys	0m0.208s
+real	0m0.329s
+user	0m0.439s
+sys	0m0.182s
+
 
 ===============================================================================
 
-cargo llvm-cov --no-clean --all-features --workspace
+Running: cargo llvm-cov --no-clean --all-features --workspace
+
    Compiling semi_structured_logs v0.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/semi-structured-logs)
 error[E0599]: no variant or associated item named `Debug` found for enum `LogLevel` in the current scope
   --> tests/semi-structured-logs.rs:44:23
@@ -246,11 +290,21 @@ error: could not compile `semi_structured_logs` (test "semi-structured-logs") du
 warning: build failed, waiting for other jobs to finish...
 error: process didn't exit successfully: `/home/vpayno/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/cargo test --tests --manifest-path /home/vpayno/git_vpayno/exercism-workspace/rust/semi-structured-logs/Cargo.toml --target-dir /home/vpayno/git_vpayno/exercism-workspace/rust/semi-structured-logs/target/llvm-cov-target --all-features --workspace` (exit status: 101)
 
+real	0m0.324s
+user	0m0.218s
+sys	0m0.148s
+
+
 ===============================================================================
 
-cargo llvm-cov report --lcov --output-path report.lcov
+Running: cargo llvm-cov report --lcov --output-path report.lcov
+
 error: no input files specified. See llvm-profdata merge -help
-error: failed to merge profile data: process didn't exit successfully: `/home/vpayno/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/bin/llvm-profdata merge -sparse -f /tmp/.tmpwu8ShJ -o /home/vpayno/git_vpayno/exercism-workspace/rust/semi-structured-logs/target/llvm-cov-target/semi-structured-logs.profdata` (exit status: 1)
+error: failed to merge profile data: process didn't exit successfully: `/home/vpayno/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/bin/llvm-profdata merge -sparse -f /tmp/.tmpTBNmwm -o /home/vpayno/git_vpayno/exercism-workspace/rust/semi-structured-logs/target/llvm-cov-target/semi-structured-logs.profdata` (exit status: 1)
+
+real	0m0.102s
+user	0m0.056s
+sys	0m0.048s
 
    Compiling semi_structured_logs v0.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/semi-structured-logs)
 error[E0599]: no variant or associated item named `Debug` found for enum `LogLevel` in the current scope
@@ -263,9 +317,14 @@ For more information about this error, try `rustc --explain E0599`.
 error: could not compile `semi_structured_logs` (test "semi-structured-logs") due to previous error
 error: process didn't exit successfully: `/home/vpayno/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/cargo test --tests --manifest-path /home/vpayno/git_vpayno/exercism-workspace/rust/semi-structured-logs/Cargo.toml --target-dir /home/vpayno/git_vpayno/exercism-workspace/rust/semi-structured-logs/target/llvm-cov-target --all-features --workspace` (exit status: 101)
 
+real	0m0.167s
+user	0m0.099s
+sys	0m0.071s
+
 ===============================================================================
 
-cargo llvm-cov --no-clean --all-features --workspace --text --output-path=coverage-annotations.txt
+Running: cargo llvm-cov --no-clean --all-features --workspace --text --output-path=coverage-annotations.txt
+
    Compiling semi_structured_logs v0.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/semi-structured-logs)
 error[E0599]: no variant or associated item named `Debug` found for enum `LogLevel` in the current scope
   --> tests/semi-structured-logs.rs:44:23
@@ -277,52 +336,80 @@ For more information about this error, try `rustc --explain E0599`.
 error: could not compile `semi_structured_logs` (test "semi-structured-logs") due to previous error
 error: process didn't exit successfully: `/home/vpayno/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/cargo test --tests --manifest-path /home/vpayno/git_vpayno/exercism-workspace/rust/semi-structured-logs/Cargo.toml --target-dir /home/vpayno/git_vpayno/exercism-workspace/rust/semi-structured-logs/target/llvm-cov-target --all-features --workspace` (exit status: 101)
 
+real	0m0.155s
+user	0m0.087s
+sys	0m0.070s
+
+
 ===============================================================================
 
-cargo llvm-cov clean --workspace
+Running: cargo llvm-cov clean --workspace
+
+
+real	0m0.131s
+user	0m0.078s
+sys	0m0.055s
+
 
 ===============================================================================
 
-lcov --list report.lcov
+Running: lcov --list report.lcov
+
 lcov: ERROR: cannot read file report.lcov!
 Reading tracefile report.lcov
 
-lcov --summary report.lcov
+real	0m0.043s
+user	0m0.039s
+sys	0m0.004s
+
+
+Running: lcov --summary report.lcov
+
 lcov: ERROR: cannot read file report.lcov!
 Reading tracefile report.lcov
 
+real	0m0.032s
+user	0m0.027s
+sys	0m0.006s
+
+
 ===============================================================================
 
+Exit code: -6
 
-real	0m1.457s
-user	0m1.048s
-sys	0m0.718s
+real	0m1.521s
+user	0m1.169s
+sys	0m0.696s
+
+real	0m1.523s
+user	0m1.170s
+sys	0m0.697s
 
 ===============================================================================
 
 Running: misspell .
 
-real	0m0.024s
-user	0m0.026s
-sys	0m0.009s
+real	0m0.034s
+user	0m0.025s
+sys	0m0.012s
 
 ===============================================================================
 
 Running: cargo doc
  Documenting semi_structured_logs v0.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/semi-structured-logs)
-    Finished dev [unoptimized + debuginfo] target(s) in 0.19s
+    Finished dev [unoptimized + debuginfo] target(s) in 0.20s
 
-real	0m0.194s
-user	0m0.156s
-sys	0m0.040s
+real	0m0.218s
+user	0m0.167s
+sys	0m0.052s
 
 ===============================================================================
 
 Running: cargo clean
 
-real	0m0.014s
-user	0m0.006s
-sys	0m0.008s
+real	0m0.012s
+user	0m0.005s
+sys	0m0.007s
 
 ===============================================================================
 

@@ -13,26 +13,35 @@ Running rustc 1.72.0 (5680fa18f 2023-08-23)
 
 Running: cargo clean
 
-real	0m0.011s
-user	0m0.006s
-sys	0m0.005s
+
+real	0m0.029s
+user	0m0.019s
+sys	0m0.010s
+
 
 ===============================================================================
 
 Running: cargo check --release
-    Checking secret-handshake v1.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/secret-handshake)
-    Finished release [optimized] target(s) in 0.13s
 
-real	0m0.136s
-user	0m0.034s
-sys	0m0.025s
+    Checking secret-handshake v1.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/secret-handshake)
+    Finished release [optimized] target(s) in 0.08s
+
+real	0m0.095s
+user	0m0.028s
+sys	0m0.027s
+
 
 ===============================================================================
 
+Exit code: 0
 
-real	0m0.170s
-user	0m0.051s
+real	0m0.136s
+user	0m0.053s
 sys	0m0.042s
+
+real	0m0.138s
+user	0m0.054s
+sys	0m0.043s
 
 ===============================================================================
 
@@ -46,71 +55,48 @@ Running rustc 1.72.0 (5680fa18f 2023-08-23)
 
 Running: cargo clean
 
-real	0m0.015s
-user	0m0.010s
-sys	0m0.005s
+
+real	0m0.007s
+user	0m0.004s
+sys	0m0.003s
+
 
 ===============================================================================
 
 Running: cargo clippy --release
-    Checking secret-handshake v1.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/secret-handshake)
-    Finished release [optimized] target(s) in 0.08s
 
-real	0m0.104s
-user	0m0.051s
-sys	0m0.052s
+    Checking secret-handshake v1.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/secret-handshake)
+    Finished release [optimized] target(s) in 0.09s
+
+real	0m0.120s
+user	0m0.061s
+sys	0m0.058s
+
 
 ===============================================================================
 
+Exit code: 0
 
-real	0m0.135s
-user	0m0.071s
-sys	0m0.064s
+real	0m0.137s
+user	0m0.067s
+sys	0m0.069s
+
+real	0m0.139s
+user	0m0.068s
+sys	0m0.071s
 
 ===============================================================================
 
 Running: ../../.github/citools/rust/rust-lint-audit
+No deps found, skipping cargo audit.
 
-Running Rust Cargo Audit
+real	0m0.042s
+user	0m0.024s
+sys	0m0.020s
 
-Running rustc 1.72.0 (5680fa18f 2023-08-23)
-
-===============================================================================
-
-Running: cargo clean
-
-real	0m0.020s
-user	0m0.012s
-sys	0m0.008s
-
-===============================================================================
-
-cargo tree
-secret-handshake v1.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/secret-handshake)
-
-real	0m0.033s
-user	0m0.012s
-sys	0m0.022s
-
-
-===============================================================================
-
-Running: cargo audit
-[0m[0m[1m[32m    Fetching[0m advisory database from `https://github.com/RustSec/advisory-db.git`
-[0m[0m[1m[32m      Loaded[0m 562 security advisories (from /home/vpayno/.cargo/advisory-db)
-[0m[0m[1m[32m    Updating[0m crates.io index
-[0m[0m[1m[32m    Scanning[0m Cargo.lock for vulnerabilities (1 crate dependencies)
-
-real	0m6.954s
-user	0m3.892s
-sys	0m0.144s
-
-===============================================================================
-
-
-real	0m7.019s
-user	0m3.920s
-sys	0m0.182s
+real	0m0.044s
+user	0m0.025s
+sys	0m0.021s
 
 ===============================================================================
 
@@ -128,15 +114,18 @@ Running rustc 1.72.0 (5680fa18f 2023-08-23)
 
 Running: cargo clean
 
-real	0m0.020s
-user	0m0.011s
-sys	0m0.009s
+
+real	0m0.009s
+user	0m0.004s
+sys	0m0.004s
+
 
 ===============================================================================
 
 Running: cargo test
+
    Compiling secret-handshake v1.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/secret-handshake)
-    Finished test [unoptimized + debuginfo] target(s) in 0.39s
+    Finished test [unoptimized + debuginfo] target(s) in 0.35s
      Running unittests src/lib.rs (target/debug/deps/secret_handshake-e32397ea6091cac0)
 
 running 0 tests
@@ -146,13 +135,13 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
      Running tests/secret-handshake.rs (target/debug/deps/secret_handshake-601e728ab8a84f07)
 
 running 11 tests
-test close_your_eyes_for_100 ... ok
-test all_possible_actions ... ok
 test combine_two_actions ... ok
 test do_nothing_for_zero ... ok
+test close_your_eyes_for_100 ... ok
+test all_possible_actions ... ok
+test double_blink_for_10 ... ok
 test jump_for_1000 ... ok
 test reverse_all_possible_actions ... ok
-test double_blink_for_10 ... ok
 test reverse_two_actions ... ok
 test reversing_no_actions_still_gives_no_actions ... ok
 test reversing_one_action_gives_the_same_action ... ok
@@ -165,64 +154,72 @@ test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fin
 running 1 test
 test src/lib.rs - actions (line 34) ... ok
 
-test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.14s
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.12s
 
 
-real	0m0.554s
-user	0m0.855s
-sys	0m0.312s
+real	0m0.508s
+user	0m0.648s
+sys	0m0.258s
+
 
 ===============================================================================
 
 Running: cargo tarpaulin --release --timeout=300
-[2mAug 26 21:37:16.596[0m [32m INFO[0m cargo_tarpaulin::config: Creating config
-[2mAug 26 21:37:16.604[0m [32m INFO[0m cargo_tarpaulin: Running Tarpaulin
-[2mAug 26 21:37:16.605[0m [32m INFO[0m cargo_tarpaulin: Building project
-[2mAug 26 21:37:16.605[0m [32m INFO[0m cargo_tarpaulin::cargo: Cleaning project
+
+[2mAug 28 23:18:25.196[0m [32m INFO[0m cargo_tarpaulin::config: Creating config
+[2mAug 28 23:18:25.207[0m [32m INFO[0m cargo_tarpaulin: Running Tarpaulin
+[2mAug 28 23:18:25.207[0m [32m INFO[0m cargo_tarpaulin: Building project
+[2mAug 28 23:18:25.207[0m [32m INFO[0m cargo_tarpaulin::cargo: Cleaning project
    Compiling secret-handshake v1.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/secret-handshake)
-    Finished release [optimized] target(s) in 0.55s
-[2mAug 26 21:37:17.194[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
-[2mAug 26 21:37:17.194[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/secret-handshake/target/release/deps/secret_handshake-e22246e7d00faa88
+    Finished release [optimized] target(s) in 0.43s
+[2mAug 28 23:18:25.681[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
+[2mAug 28 23:18:25.681[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/secret-handshake/target/release/deps/secret_handshake-e22246e7d00faa88
 
 running 0 tests
 
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
-[2mAug 26 21:37:17.690[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
-[2mAug 26 21:37:17.690[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/secret-handshake/target/release/deps/secret_handshake-9026fade6171cc71
+[2mAug 28 23:18:26.217[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
+[2mAug 28 23:18:26.217[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/secret-handshake/target/release/deps/secret_handshake-9026fade6171cc71
 
 running 11 tests
 test do_nothing_for_zero ... ok
 test reverse_two_actions ... ok
-test reverse_all_possible_actions ... ok
 test double_blink_for_10 ... ok
+test reverse_all_possible_actions ... ok
+test jump_for_1000 ... ok
 test combine_two_actions ... ok
 test close_your_eyes_for_100 ... ok
-test jump_for_1000 ... ok
 test all_possible_actions ... ok
 test reversing_one_action_gives_the_same_action ... ok
 test wink_for_1 ... ok
 test reversing_no_actions_still_gives_no_actions ... ok
 
-test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
 
-[2mAug 26 21:37:18.218[0m [32m INFO[0m cargo_tarpaulin::report: Coverage Results:
+[2mAug 28 23:18:26.774[0m [32m INFO[0m cargo_tarpaulin::report: Coverage Results:
 || Uncovered Lines:
 || Tested/Total Lines:
 || src/lib.rs: 9/9
 || 
 100.00% coverage, 9/9 lines covered
 
-real	0m1.636s
-user	0m0.664s
-sys	0m1.074s
+real	0m1.592s
+user	0m0.712s
+sys	0m1.112s
+
 
 ===============================================================================
 
+Exit code: 0
 
-real	0m2.222s
-user	0m1.535s
-sys	0m1.401s
+real	0m2.124s
+user	0m1.369s
+sys	0m1.386s
+
+real	0m2.126s
+user	0m1.370s
+sys	0m1.387s
 
 ===============================================================================
 
@@ -236,19 +233,28 @@ Running rustc 1.72.0 (5680fa18f 2023-08-23)
 
 Running: cargo clean
 
-real	0m0.012s
-user	0m0.004s
+
+real	0m0.013s
+user	0m0.005s
 sys	0m0.008s
+
 
 ===============================================================================
 
-cargo llvm-cov clean --workspace
+Running: cargo llvm-cov clean --workspace
+
+
+real	0m0.208s
+user	0m0.118s
+sys	0m0.091s
+
 
 ===============================================================================
 
 Running: cargo test
+
    Compiling secret-handshake v1.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/secret-handshake)
-    Finished test [unoptimized + debuginfo] target(s) in 0.38s
+    Finished test [unoptimized + debuginfo] target(s) in 0.39s
      Running unittests src/lib.rs (target/debug/deps/secret_handshake-e32397ea6091cac0)
 
 running 0 tests
@@ -258,17 +264,17 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
      Running tests/secret-handshake.rs (target/debug/deps/secret_handshake-601e728ab8a84f07)
 
 running 11 tests
-test all_possible_actions ... ok
-test do_nothing_for_zero ... ok
-test combine_two_actions ... ok
 test close_your_eyes_for_100 ... ok
+test combine_two_actions ... ok
+test double_blink_for_10 ... ok
+test do_nothing_for_zero ... ok
 test jump_for_1000 ... ok
 test reverse_all_possible_actions ... ok
 test reverse_two_actions ... ok
 test reversing_no_actions_still_gives_no_actions ... ok
-test double_blink_for_10 ... ok
 test reversing_one_action_gives_the_same_action ... ok
 test wink_for_1 ... ok
+test all_possible_actions ... ok
 
 test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
@@ -280,15 +286,17 @@ test src/lib.rs - actions (line 34) ... ok
 test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.13s
 
 
-real	0m0.537s
-user	0m0.682s
-sys	0m0.267s
+real	0m0.550s
+user	0m0.753s
+sys	0m0.311s
+
 
 ===============================================================================
 
-cargo llvm-cov --no-clean --all-features --workspace
+Running: cargo llvm-cov --no-clean --all-features --workspace
+
    Compiling secret-handshake v1.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/secret-handshake)
-    Finished test [unoptimized + debuginfo] target(s) in 0.34s
+    Finished test [unoptimized + debuginfo] target(s) in 0.28s
      Running unittests src/lib.rs (target/llvm-cov-target/debug/deps/secret_handshake-e1ede9727eada89e)
 
 running 0 tests
@@ -318,11 +326,21 @@ Filename                                                                        
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 TOTAL                                                                                32                 6    81.25%           4                 2    50.00%          39                 5    87.18%           0                 0         -
 
+real	0m0.411s
+user	0m0.360s
+sys	0m0.186s
+
+
 ===============================================================================
 
-cargo llvm-cov report --lcov --output-path report.lcov
+Running: cargo llvm-cov report --lcov --output-path report.lcov
+
 
     Finished report saved to report.lcov
+
+real	0m0.160s
+user	0m0.079s
+sys	0m0.083s
 
     Finished test [unoptimized + debuginfo] target(s) in 0.00s
      Running unittests src/lib.rs (target/llvm-cov-target/debug/deps/secret_handshake-e1ede9727eada89e)
@@ -349,9 +367,14 @@ test wink_for_1 ... ok
 test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
 
+real	0m0.153s
+user	0m0.081s
+sys	0m0.071s
+
 ===============================================================================
 
-cargo llvm-cov --no-clean --all-features --workspace --text --output-path=coverage-annotations.txt
+Running: cargo llvm-cov --no-clean --all-features --workspace --text --output-path=coverage-annotations.txt
+
     Finished test [unoptimized + debuginfo] target(s) in 0.00s
      Running unittests src/lib.rs (target/llvm-cov-target/debug/deps/secret_handshake-e1ede9727eada89e)
 
@@ -379,13 +402,25 @@ test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fin
 
     Finished report saved to coverage-annotations.txt
 
+real	0m0.151s
+user	0m0.086s
+sys	0m0.065s
+
+
 ===============================================================================
 
-cargo llvm-cov clean --workspace
+Running: cargo llvm-cov clean --workspace
+
+
+real	0m0.115s
+user	0m0.063s
+sys	0m0.054s
+
 
 ===============================================================================
 
-lcov --list report.lcov
+Running: lcov --list report.lcov
+
 Reading tracefile report.lcov
             |Lines       |Functions  |Branches    
 Filename    |Rate     Num|Rate    Num|Rate     Num
@@ -395,27 +430,43 @@ lib.rs      |89.5%     38|25.0%     8|    -      0
 ==================================================
       Total:|89.5%     38|25.0%     8|    -      0
 
-lcov --summary report.lcov
+real	0m0.042s
+user	0m0.036s
+sys	0m0.005s
+
+
+Running: lcov --summary report.lcov
+
 Reading tracefile report.lcov
 Summary coverage rate:
   lines......: 89.5% (34 of 38 lines)
   functions..: 25.0% (2 of 8 functions)
   branches...: no data found
 
+real	0m0.033s
+user	0m0.029s
+sys	0m0.004s
+
+
 ===============================================================================
 
+Exit code: 0
 
-real	0m1.850s
-user	0m1.500s
-sys	0m0.816s
+real	0m1.846s
+user	0m1.617s
+sys	0m0.884s
+
+real	0m1.847s
+user	0m1.617s
+sys	0m0.885s
 
 ===============================================================================
 
 Running: misspell .
 
 real	0m0.024s
-user	0m0.028s
-sys	0m0.011s
+user	0m0.023s
+sys	0m0.017s
 
 ===============================================================================
 
@@ -424,16 +475,16 @@ Running: cargo doc
     Finished dev [unoptimized + debuginfo] target(s) in 0.18s
 
 real	0m0.193s
-user	0m0.160s
-sys	0m0.034s
+user	0m0.158s
+sys	0m0.037s
 
 ===============================================================================
 
 Running: cargo clean
 
 real	0m0.012s
-user	0m0.006s
-sys	0m0.006s
+user	0m0.005s
+sys	0m0.007s
 
 ===============================================================================
 

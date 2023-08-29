@@ -5,94 +5,158 @@ Running automated test file(s):
 
 Running: ../../.github/citools/rust/rust-lint-check --release
 
-Running Rust Cargo CheckRunning: cargo clean
+Running Rust Cargo Check
 
-real	0m0.018s
-user	0m0.009s
-sys	0m0.009s
+Running rustc 1.72.0 (5680fa18f 2023-08-23)
+
+===============================================================================
+
+Running: cargo clean
+
+
+real	0m0.025s
+user	0m0.014s
+sys	0m0.011s
+
 
 ===============================================================================
 
 Running: cargo check --release
+
    Compiling memchr v2.5.0
     Checking regex-syntax v0.7.4
     Checking aho-corasick v1.0.4
     Checking regex-automata v0.3.6
     Checking regex v1.9.3
     Checking acronym v1.7.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/acronym)
-    Finished release [optimized] target(s) in 0.89s
+    Finished release [optimized] target(s) in 2.89s
 
-real	0m0.897s
-user	0m0.215s
-sys	0m0.142s
+real	0m2.901s
+user	0m0.216s
+sys	0m0.118s
+
 
 ===============================================================================
 
+Exit code: 0
 
-real	0m0.919s
-user	0m0.224s
-sys	0m0.155s
+real	0m2.943s
+user	0m0.238s
+sys	0m0.138s
+
+real	0m2.948s
+user	0m0.239s
+sys	0m0.141s
 
 ===============================================================================
 
 Running: ../../.github/citools/rust/rust-lint-clippy --release
 
-Running Rust Cargo ClippyRunning: cargo clean
+Running Rust Cargo Clippy
+
+Running rustc 1.72.0 (5680fa18f 2023-08-23)
+
+===============================================================================
+
+Running: cargo clean
+
 
 real	0m0.011s
-user	0m0.006s
-sys	0m0.005s
+user	0m0.002s
+sys	0m0.009s
+
 
 ===============================================================================
 
 Running: cargo clippy --release
+
    Compiling memchr v2.5.0
     Checking regex-syntax v0.7.4
     Checking aho-corasick v1.0.4
     Checking regex-automata v0.3.6
     Checking regex v1.9.3
     Checking acronym v1.7.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/acronym)
-    Finished release [optimized] target(s) in 0.75s
+    Finished release [optimized] target(s) in 0.73s
 
-real	0m0.777s
-user	0m0.273s
-sys	0m0.139s
+real	0m0.750s
+user	0m0.184s
+sys	0m0.106s
+
 
 ===============================================================================
 
+Exit code: 0
 
-real	0m0.791s
-user	0m0.281s
-sys	0m0.144s
+real	0m0.770s
+user	0m0.189s
+sys	0m0.122s
+
+real	0m0.772s
+user	0m0.189s
+sys	0m0.123s
 
 ===============================================================================
 
 Running: ../../.github/citools/rust/rust-lint-audit
+Running Rust Cargo Audit
 
-Running Rust Cargo AuditRunning: cargo clean
+Running rustc 1.72.0 (5680fa18f 2023-08-23)
 
-real	0m0.022s
-user	0m0.011s
-sys	0m0.011s
+===============================================================================
+
+Running: cargo clean
+
+
+real	0m0.014s
+user	0m0.004s
+sys	0m0.010s
+
+
+===============================================================================
+
+Running: cargo tree
+
+acronym v1.7.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/acronym)
+└── regex v1.9.3
+    ├── aho-corasick v1.0.4
+    │   └── memchr v2.5.0
+    ├── memchr v2.5.0
+    ├── regex-automata v0.3.6
+    │   ├── aho-corasick v1.0.4 (*)
+    │   ├── memchr v2.5.0
+    │   └── regex-syntax v0.7.4
+    └── regex-syntax v0.7.4
+
+real	0m0.040s
+user	0m0.025s
+sys	0m0.016s
+
 
 ===============================================================================
 
 Running: cargo audit
+
 [0m[0m[1m[32m    Fetching[0m advisory database from `https://github.com/RustSec/advisory-db.git`
 [0m[0m[1m[32m      Loaded[0m 562 security advisories (from /home/vpayno/.cargo/advisory-db)
 [0m[0m[1m[32m    Updating[0m crates.io index
 [0m[0m[1m[32m    Scanning[0m Cargo.lock for vulnerabilities (6 crate dependencies)
 
-real	0m2.137s
-user	0m0.575s
-sys	0m0.431s
+real	0m10.840s
+user	0m7.945s
+sys	0m0.435s
+
 
 ===============================================================================
 
+Exit code: 0
 
-real	0m2.161s
-user	0m0.587s
-sys	0m0.443s
+real	0m10.957s
+user	0m8.006s
+sys	0m0.493s
+
+real	0m10.959s
+user	0m8.007s
+sys	0m0.493s
 
 ===============================================================================
 
@@ -104,42 +168,49 @@ Running: ../../.github/citools/rust/rust-test-with-tarpaulin
 
 Running Rust Tests With Tarpaulin
 
+Running rustc 1.72.0 (5680fa18f 2023-08-23)
+
+===============================================================================
+
 Running: cargo clean
 
-real	0m0.022s
+
+real	0m0.017s
 user	0m0.010s
-sys	0m0.011s
+sys	0m0.007s
+
 
 ===============================================================================
 
 Running: cargo test
+
    Compiling memchr v2.5.0
    Compiling regex-syntax v0.7.4
    Compiling aho-corasick v1.0.4
    Compiling regex-automata v0.3.6
    Compiling regex v1.9.3
    Compiling acronym v1.7.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/acronym)
-    Finished test [unoptimized + debuginfo] target(s) in 1.34s
-     Running unittests src/lib.rs (target/debug/deps/acronym-1fa5fe6a19e4ddfd)
+    Finished test [unoptimized + debuginfo] target(s) in 5.10s
+     Running unittests src/lib.rs (target/debug/deps/acronym-3a0af2b04f6ee704)
 
 running 0 tests
 
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
-     Running tests/acronym.rs (target/debug/deps/acronym-adce97eb1581b6e5)
+     Running tests/acronym.rs (target/debug/deps/acronym-f6ea376ab46e543b)
 
 running 12 tests
-test camelcase ... ok
 test all_caps_word ... ok
 test basic ... ok
-test all_caps_word_with_punctuation ... ok
 test apostrophes ... ok
+test all_caps_word_with_punctuation ... ok
 test consecutive_delimiters ... ok
+test camelcase ... ok
 test punctuation ... ok
 test empty ... ok
-test very_long_abbreviation ... ok
 test lowercase_words ... ok
 test underscore_emphasis ... ok
+test very_long_abbreviation ... ok
 test punctuation_without_whitespace ... ok
 
 test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
@@ -152,43 +223,45 @@ test src/lib.rs - abbreviate (line 8) ... ok
 test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.41s
 
 
-real	0m1.792s
-user	0m1.351s
-sys	0m0.525s
+real	0m5.542s
+user	0m1.365s
+sys	0m0.481s
+
 
 ===============================================================================
 
 Running: cargo tarpaulin --release --timeout=300
-[2mAug 24 20:26:23.221[0m [32m INFO[0m cargo_tarpaulin::config: Creating config
-[2mAug 24 20:26:23.232[0m [32m INFO[0m cargo_tarpaulin: Running Tarpaulin
-[2mAug 24 20:26:23.232[0m [32m INFO[0m cargo_tarpaulin: Building project
-[2mAug 24 20:26:23.232[0m [32m INFO[0m cargo_tarpaulin::cargo: Cleaning project
+
+[2mAug 28 23:16:55.111[0m [32m INFO[0m cargo_tarpaulin::config: Creating config
+[2mAug 28 23:16:55.120[0m [32m INFO[0m cargo_tarpaulin: Running Tarpaulin
+[2mAug 28 23:16:55.120[0m [32m INFO[0m cargo_tarpaulin: Building project
+[2mAug 28 23:16:55.120[0m [32m INFO[0m cargo_tarpaulin::cargo: Cleaning project
    Compiling memchr v2.5.0
    Compiling regex-syntax v0.7.4
    Compiling aho-corasick v1.0.4
    Compiling regex-automata v0.3.6
    Compiling regex v1.9.3
    Compiling acronym v1.7.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/acronym)
-    Finished release [optimized] target(s) in 1.43s
-[2mAug 24 20:26:24.707[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
-[2mAug 24 20:26:24.707[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/acronym/target/release/deps/acronym-5a9f3990fcebc83f
+    Finished release [optimized] target(s) in 13.37s
+[2mAug 28 23:17:08.528[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
+[2mAug 28 23:17:08.528[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/acronym/target/release/deps/acronym-8617b5b1f2d50a64
 
 running 0 tests
 
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
-[2mAug 24 20:26:25.187[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
-[2mAug 24 20:26:25.187[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/acronym/target/release/deps/acronym-065f95d3a980a68a
+[2mAug 28 23:17:09.119[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
+[2mAug 28 23:17:09.119[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/acronym/target/release/deps/acronym-954ae5aa85c66f8c
 
 running 12 tests
 test empty ... ok
 test lowercase_words ... ok
-test consecutive_delimiters ... ok
-test all_caps_word ... ok
-test camelcase ... ok
 test basic ... ok
 test apostrophes ... ok
 test all_caps_word_with_punctuation ... ok
+test consecutive_delimiters ... ok
+test camelcase ... ok
+test all_caps_word ... ok
 test very_long_abbreviation ... ok
 test underscore_emphasis ... ok
 test punctuation_without_whitespace ... ok
@@ -196,7 +269,7 @@ test punctuation ... ok
 
 test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
 
-[2mAug 24 20:26:26.140[0m [32m INFO[0m cargo_tarpaulin::report: Coverage Results:
+[2mAug 28 23:17:10.255[0m [32m INFO[0m cargo_tarpaulin::report: Coverage Results:
 || Uncovered Lines:
 || src/lib.rs: 20, 31, 37-38, 43
 || Tested/Total Lines:
@@ -204,16 +277,22 @@ test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fin
 || 
 54.55% coverage, 6/11 lines covered
 
-real	0m2.934s
-user	0m1.840s
-sys	0m1.616s
+real	0m15.157s
+user	0m1.559s
+sys	0m1.848s
+
 
 ===============================================================================
 
+Exit code: 0
 
-real	0m4.750s
-user	0m3.203s
-sys	0m2.154s
+real	0m20.728s
+user	0m2.942s
+sys	0m2.341s
+
+real	0m20.730s
+user	0m2.943s
+sys	0m2.341s
 
 ===============================================================================
 
@@ -221,47 +300,60 @@ Running: ../../.github/citools/rust/rust-test-with-llvm-coverage
 
 Running Rust Tests With LLVM Coverage
 
-Running: cargo clean
-
-real	0m0.031s
-user	0m0.007s
-sys	0m0.024s
+Running rustc 1.72.0 (5680fa18f 2023-08-23)
 
 ===============================================================================
 
-cargo llvm-cov clean --workspace
+Running: cargo clean
+
+
+real	0m0.031s
+user	0m0.004s
+sys	0m0.027s
+
+
+===============================================================================
+
+Running: cargo llvm-cov clean --workspace
+
+
+real	0m0.191s
+user	0m0.094s
+sys	0m0.095s
+
 
 ===============================================================================
 
 Running: cargo test
+
    Compiling memchr v2.5.0
    Compiling regex-syntax v0.7.4
    Compiling aho-corasick v1.0.4
    Compiling regex-automata v0.3.6
    Compiling regex v1.9.3
    Compiling acronym v1.7.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/acronym)
-    Finished test [unoptimized + debuginfo] target(s) in 1.30s
-     Running unittests src/lib.rs (target/debug/deps/acronym-1fa5fe6a19e4ddfd)
+    Finished test [unoptimized + debuginfo] target(s) in 1.34s
+     Running unittests src/lib.rs (target/debug/deps/acronym-3a0af2b04f6ee704)
 
 running 0 tests
 
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
-     Running tests/acronym.rs (target/debug/deps/acronym-adce97eb1581b6e5)
+     Running tests/acronym.rs (target/debug/deps/acronym-f6ea376ab46e543b)
 
 running 12 tests
-test all_caps_word ... ok
-test camelcase ... ok
 test all_caps_word_with_punctuation ... ok
-test apostrophes ... ok
+test lowercase_words ... ok
+test all_caps_word ... ok
 test basic ... ok
+test apostrophes ... ok
+test camelcase ... ok
 test consecutive_delimiters ... ok
 test punctuation ... ok
-test very_long_abbreviation ... ok
-test empty ... ok
 test underscore_emphasis ... ok
-test lowercase_words ... ok
 test punctuation_without_whitespace ... ok
+test empty ... ok
+test very_long_abbreviation ... ok
 
 test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
@@ -270,30 +362,32 @@ test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fin
 running 1 test
 test src/lib.rs - abbreviate (line 8) ... ok
 
-test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.42s
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.41s
 
 
-real	0m1.752s
-user	0m1.340s
-sys	0m0.532s
+real	0m1.791s
+user	0m1.398s
+sys	0m0.527s
+
 
 ===============================================================================
 
-cargo llvm-cov --no-clean --all-features --workspace
+Running: cargo llvm-cov --no-clean --all-features --workspace
+
    Compiling memchr v2.5.0
    Compiling regex-syntax v0.7.4
    Compiling aho-corasick v1.0.4
    Compiling regex-automata v0.3.6
    Compiling regex v1.9.3
    Compiling acronym v1.7.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/acronym)
-    Finished test [unoptimized + debuginfo] target(s) in 5.67s
-     Running unittests src/lib.rs (target/llvm-cov-target/debug/deps/acronym-d93a30a199a1590a)
+    Finished test [unoptimized + debuginfo] target(s) in 5.84s
+     Running unittests src/lib.rs (target/llvm-cov-target/debug/deps/acronym-4c705dcdd53f3420)
 
 running 0 tests
 
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
-     Running tests/acronym.rs (target/llvm-cov-target/debug/deps/acronym-870477081495f800)
+     Running tests/acronym.rs (target/llvm-cov-target/debug/deps/acronym-258af90678f31bb6)
 
 running 12 tests
 test all_caps_word ... ok
@@ -317,20 +411,30 @@ Filename                                                               Regions  
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 TOTAL                                                                       21                 2    90.48%           1                 0   100.00%          24                 2    91.67%           0                 0         -
 
+real	0m6.015s
+user	0m0.914s
+sys	0m0.389s
+
+
 ===============================================================================
 
-cargo llvm-cov report --lcov --output-path report.lcov
+Running: cargo llvm-cov report --lcov --output-path report.lcov
+
 
     Finished report saved to report.lcov
 
-    Finished test [unoptimized + debuginfo] target(s) in 0.00s
-     Running unittests src/lib.rs (target/llvm-cov-target/debug/deps/acronym-d93a30a199a1590a)
+real	0m0.140s
+user	0m0.083s
+sys	0m0.059s
+
+    Finished test [unoptimized + debuginfo] target(s) in 0.01s
+     Running unittests src/lib.rs (target/llvm-cov-target/debug/deps/acronym-4c705dcdd53f3420)
 
 running 0 tests
 
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
-     Running tests/acronym.rs (target/llvm-cov-target/debug/deps/acronym-870477081495f800)
+     Running tests/acronym.rs (target/llvm-cov-target/debug/deps/acronym-258af90678f31bb6)
 
 running 12 tests
 test all_caps_word ... ok
@@ -346,20 +450,25 @@ test punctuation_without_whitespace ... ok
 test underscore_emphasis ... ok
 test very_long_abbreviation ... ok
 
-test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
+
+real	0m0.295s
+user	0m0.197s
+sys	0m0.107s
 
 ===============================================================================
 
-cargo llvm-cov --no-clean --all-features --workspace --text --output-path=coverage-annotations.txt
-    Finished test [unoptimized + debuginfo] target(s) in 0.00s
-     Running unittests src/lib.rs (target/llvm-cov-target/debug/deps/acronym-d93a30a199a1590a)
+Running: cargo llvm-cov --no-clean --all-features --workspace --text --output-path=coverage-annotations.txt
+
+    Finished test [unoptimized + debuginfo] target(s) in 0.01s
+     Running unittests src/lib.rs (target/llvm-cov-target/debug/deps/acronym-4c705dcdd53f3420)
 
 running 0 tests
 
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
-     Running tests/acronym.rs (target/llvm-cov-target/debug/deps/acronym-870477081495f800)
+     Running tests/acronym.rs (target/llvm-cov-target/debug/deps/acronym-258af90678f31bb6)
 
 running 12 tests
 test all_caps_word ... ok
@@ -375,18 +484,30 @@ test punctuation_without_whitespace ... ok
 test underscore_emphasis ... ok
 test very_long_abbreviation ... ok
 
-test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
 
     Finished report saved to coverage-annotations.txt
 
+real	0m0.209s
+user	0m0.136s
+sys	0m0.079s
+
+
 ===============================================================================
 
-cargo llvm-cov clean --workspace
+Running: cargo llvm-cov clean --workspace
+
+
+real	0m0.127s
+user	0m0.075s
+sys	0m0.054s
+
 
 ===============================================================================
 
-lcov --list report.lcov
+Running: lcov --list report.lcov
+
 Reading tracefile report.lcov
             |Lines       |Functions  |Branches    
 Filename    |Rate     Num|Rate    Num|Rate     Num
@@ -396,27 +517,43 @@ lib.rs      |91.7%     24|50.0%     2|    -      0
 ==================================================
       Total:|91.7%     24|50.0%     2|    -      0
 
-lcov --summary report.lcov
+real	0m0.033s
+user	0m0.027s
+sys	0m0.006s
+
+
+Running: lcov --summary report.lcov
+
 Reading tracefile report.lcov
 Summary coverage rate:
   lines......: 91.7% (22 of 24 lines)
   functions..: 50.0% (1 of 2 functions)
   branches...: no data found
 
+real	0m0.034s
+user	0m0.029s
+sys	0m0.005s
+
+
 ===============================================================================
 
+Exit code: 0
 
-real	0m8.576s
-user	0m2.926s
-sys	0m1.354s
+real	0m8.877s
+user	0m2.962s
+sys	0m1.355s
+
+real	0m8.879s
+user	0m2.963s
+sys	0m1.356s
 
 ===============================================================================
 
 Running: misspell .
 
-real	0m0.034s
-user	0m0.060s
-sys	0m0.022s
+real	0m0.038s
+user	0m0.066s
+sys	0m0.027s
 
 ===============================================================================
 
@@ -426,25 +563,25 @@ Running: cargo doc
  Documenting memchr v2.5.0
  Documenting regex-syntax v0.7.4
     Checking aho-corasick v1.0.4
-    Checking regex-automata v0.3.6
  Documenting aho-corasick v1.0.4
-    Checking regex v1.9.3
+    Checking regex-automata v0.3.6
  Documenting regex-automata v0.3.6
+    Checking regex v1.9.3
  Documenting regex v1.9.3
  Documenting acronym v1.7.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/acronym)
-    Finished dev [unoptimized + debuginfo] target(s) in 2.18s
+    Finished dev [unoptimized + debuginfo] target(s) in 3.18s
 
-real	0m2.188s
-user	0m2.673s
-sys	0m0.417s
+real	0m3.190s
+user	0m2.832s
+sys	0m0.426s
 
 ===============================================================================
 
 Running: cargo clean
 
-real	0m0.048s
-user	0m0.003s
-sys	0m0.045s
+real	0m0.047s
+user	0m0.006s
+sys	0m0.041s
 
 ===============================================================================
 

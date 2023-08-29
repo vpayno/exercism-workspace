@@ -5,84 +5,98 @@ Running automated test file(s):
 
 Running: ../../.github/citools/rust/rust-lint-check --release
 
-Running Rust Cargo CheckRunning: cargo clean
+Running Rust Cargo Check
 
-real	0m0.011s
-user	0m0.005s
-sys	0m0.006s
+Running rustc 1.72.0 (5680fa18f 2023-08-23)
+
+===============================================================================
+
+Running: cargo clean
+
+
+real	0m0.023s
+user	0m0.010s
+sys	0m0.013s
+
 
 ===============================================================================
 
 Running: cargo check --release
-    Checking raindrops v1.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/raindrops)
-    Finished release [optimized] target(s) in 0.11s
 
-real	0m0.117s
-user	0m0.022s
-sys	0m0.029s
+    Checking raindrops v1.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/raindrops)
+    Finished release [optimized] target(s) in 0.12s
+
+real	0m0.126s
+user	0m0.027s
+sys	0m0.030s
+
 
 ===============================================================================
 
+Exit code: 0
 
-real	0m0.130s
-user	0m0.028s
-sys	0m0.036s
+real	0m0.158s
+user	0m0.040s
+sys	0m0.049s
+
+real	0m0.160s
+user	0m0.040s
+sys	0m0.050s
 
 ===============================================================================
 
 Running: ../../.github/citools/rust/rust-lint-clippy --release
 
-Running Rust Cargo ClippyRunning: cargo clean
+Running Rust Cargo Clippy
 
-real	0m0.009s
-user	0m0.005s
+Running rustc 1.72.0 (5680fa18f 2023-08-23)
+
+===============================================================================
+
+Running: cargo clean
+
+
+real	0m0.007s
+user	0m0.004s
 sys	0m0.003s
+
 
 ===============================================================================
 
 Running: cargo clippy --release
-    Checking raindrops v1.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/raindrops)
-    Finished release [optimized] target(s) in 0.07s
 
-real	0m0.094s
-user	0m0.043s
-sys	0m0.051s
+    Checking raindrops v1.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/raindrops)
+    Finished release [optimized] target(s) in 0.10s
+
+real	0m0.128s
+user	0m0.057s
+sys	0m0.071s
+
 
 ===============================================================================
 
+Exit code: 0
 
-real	0m0.104s
-user	0m0.050s
-sys	0m0.054s
+real	0m0.146s
+user	0m0.065s
+sys	0m0.080s
+
+real	0m0.147s
+user	0m0.065s
+sys	0m0.082s
 
 ===============================================================================
 
 Running: ../../.github/citools/rust/rust-lint-audit
+No deps found, skipping cargo audit.
 
-Running Rust Cargo AuditRunning: cargo clean
+real	0m0.044s
+user	0m0.019s
+sys	0m0.026s
 
-real	0m0.022s
-user	0m0.010s
-sys	0m0.011s
-
-===============================================================================
-
-Running: cargo audit
-[0m[0m[1m[32m    Fetching[0m advisory database from `https://github.com/RustSec/advisory-db.git`
-[0m[0m[1m[32m      Loaded[0m 562 security advisories (from /home/vpayno/.cargo/advisory-db)
-[0m[0m[1m[32m    Updating[0m crates.io index
-[0m[0m[1m[32m    Scanning[0m Cargo.lock for vulnerabilities (1 crate dependencies)
-
-real	0m1.843s
-user	0m0.593s
-sys	0m0.448s
-
-===============================================================================
-
-
-real	0m1.867s
-user	0m0.604s
-sys	0m0.462s
+real	0m0.046s
+user	0m0.020s
+sys	0m0.027s
 
 ===============================================================================
 
@@ -94,45 +108,52 @@ Running: ../../.github/citools/rust/rust-test-with-tarpaulin
 
 Running Rust Tests With Tarpaulin
 
+Running rustc 1.72.0 (5680fa18f 2023-08-23)
+
+===============================================================================
+
 Running: cargo clean
 
-real	0m0.020s
-user	0m0.009s
-sys	0m0.010s
+
+real	0m0.015s
+user	0m0.011s
+sys	0m0.004s
+
 
 ===============================================================================
 
 Running: cargo test
+
    Compiling raindrops v1.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/raindrops)
-    Finished test [unoptimized + debuginfo] target(s) in 0.34s
-     Running unittests src/lib.rs (target/debug/deps/raindrops-9c3d14a7fa9e24d2)
+    Finished test [unoptimized + debuginfo] target(s) in 0.32s
+     Running unittests src/lib.rs (target/debug/deps/raindrops-04ac1fca1b6f66ec)
 
 running 0 tests
 
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
-     Running tests/raindrops.rs (target/debug/deps/raindrops-ea0912e01bb7e2c8)
+     Running tests/raindrops.rs (target/debug/deps/raindrops-ca9ba98585cb93ed)
 
 running 19 tests
 test test_10 ... ok
+test test_105 ... ok
 test test_1 ... ok
 test test_12121 ... ok
-test test_105 ... ok
-test test_14 ... ok
-test test_15 ... ok
-test test_21 ... ok
 test test_25 ... ok
 test test_27 ... ok
 test test_3 ... ok
-test test_35 ... ok
-test test_49 ... ok
 test test_3125 ... ok
+test test_14 ... ok
+test test_21 ... ok
+test test_15 ... ok
+test test_35 ... ok
 test test_5 ... ok
+test test_49 ... ok
 test test_52 ... ok
 test test_6 ... ok
+test test_9 ... ok
 test test_7 ... ok
 test test_8 ... ok
-test test_9 ... ok
 
 test result: ok. 19 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
@@ -141,56 +162,58 @@ test result: ok. 19 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fin
 running 1 test
 test src/lib.rs - raindrops (line 6) ... ok
 
-test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.13s
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.14s
 
 
-real	0m0.511s
-user	0m0.581s
-sys	0m0.277s
+real	0m0.499s
+user	0m0.573s
+sys	0m0.230s
+
 
 ===============================================================================
 
 Running: cargo tarpaulin --release --timeout=300
-[2mAug 24 20:27:20.567[0m [32m INFO[0m cargo_tarpaulin::config: Creating config
-[2mAug 24 20:27:20.575[0m [32m INFO[0m cargo_tarpaulin: Running Tarpaulin
-[2mAug 24 20:27:20.575[0m [32m INFO[0m cargo_tarpaulin: Building project
-[2mAug 24 20:27:20.575[0m [32m INFO[0m cargo_tarpaulin::cargo: Cleaning project
+
+[2mAug 28 23:17:57.438[0m [32m INFO[0m cargo_tarpaulin::config: Creating config
+[2mAug 28 23:17:57.445[0m [32m INFO[0m cargo_tarpaulin: Running Tarpaulin
+[2mAug 28 23:17:57.445[0m [32m INFO[0m cargo_tarpaulin: Building project
+[2mAug 28 23:17:57.445[0m [32m INFO[0m cargo_tarpaulin::cargo: Cleaning project
    Compiling raindrops v1.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/raindrops)
-    Finished release [optimized] target(s) in 0.51s
-[2mAug 24 20:27:21.125[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
-[2mAug 24 20:27:21.125[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/raindrops/target/release/deps/raindrops-4016563dee47798a
+    Finished release [optimized] target(s) in 0.43s
+[2mAug 28 23:17:57.920[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
+[2mAug 28 23:17:57.920[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/raindrops/target/release/deps/raindrops-06d79dceed6a27ad
 
 running 0 tests
 
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
-[2mAug 24 20:27:21.643[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
-[2mAug 24 20:27:21.643[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/raindrops/target/release/deps/raindrops-da55f1cc32bf0a58
+[2mAug 28 23:17:58.426[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
+[2mAug 28 23:17:58.426[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/raindrops/target/release/deps/raindrops-b187fe8be1917358
 
 running 19 tests
-test test_25 ... ok
-test test_105 ... ok
 test test_1 ... ok
-test test_10 ... ok
+test test_12121 ... ok
+test test_25 ... ok
 test test_21 ... ok
 test test_15 ... ok
 test test_14 ... ok
-test test_12121 ... ok
-test test_3 ... ok
-test test_49 ... ok
+test test_105 ... ok
+test test_10 ... ok
+test test_27 ... ok
 test test_5 ... ok
 test test_52 ... ok
 test test_6 ... ok
+test test_49 ... ok
 test test_35 ... ok
 test test_3125 ... ok
-test test_27 ... ok
+test test_3 ... ok
 test test_7 ... ok
 test test_9 ... ok
 test test_8 ... ok
 
-test result: ok. 19 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+test result: ok. 19 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.04s
 
-[2mAug 24 20:27:22.198[0m [32m INFO[0m cargo_tarpaulin::report: Coverage Results:
+[2mAug 28 23:17:58.973[0m [32m INFO[0m cargo_tarpaulin::report: Coverage Results:
 || Uncovered Lines:
 || src/lib.rs: 48
 || Tested/Total Lines:
@@ -198,16 +221,22 @@ test result: ok. 19 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fin
 || 
 85.71% coverage, 6/7 lines covered
 
-real	0m1.649s
-user	0m0.884s
-sys	0m1.173s
+real	0m1.548s
+user	0m0.569s
+sys	0m1.068s
+
 
 ===============================================================================
 
+Exit code: 0
 
-real	0m2.182s
-user	0m1.475s
-sys	0m1.462s
+real	0m2.078s
+user	0m1.162s
+sys	0m1.308s
+
+real	0m2.080s
+user	0m1.163s
+sys	0m1.309s
 
 ===============================================================================
 
@@ -215,48 +244,61 @@ Running: ../../.github/citools/rust/rust-test-with-llvm-coverage
 
 Running Rust Tests With LLVM Coverage
 
-Running: cargo clean
-
-real	0m0.017s
-user	0m0.008s
-sys	0m0.009s
+Running rustc 1.72.0 (5680fa18f 2023-08-23)
 
 ===============================================================================
 
-cargo llvm-cov clean --workspace
+Running: cargo clean
+
+
+real	0m0.013s
+user	0m0.003s
+sys	0m0.010s
+
+
+===============================================================================
+
+Running: cargo llvm-cov clean --workspace
+
+
+real	0m0.234s
+user	0m0.136s
+sys	0m0.100s
+
 
 ===============================================================================
 
 Running: cargo test
+
    Compiling raindrops v1.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/raindrops)
-    Finished test [unoptimized + debuginfo] target(s) in 0.35s
-     Running unittests src/lib.rs (target/debug/deps/raindrops-9c3d14a7fa9e24d2)
+    Finished test [unoptimized + debuginfo] target(s) in 0.34s
+     Running unittests src/lib.rs (target/debug/deps/raindrops-04ac1fca1b6f66ec)
 
 running 0 tests
 
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
-     Running tests/raindrops.rs (target/debug/deps/raindrops-ea0912e01bb7e2c8)
+     Running tests/raindrops.rs (target/debug/deps/raindrops-ca9ba98585cb93ed)
 
 running 19 tests
 test test_1 ... ok
 test test_10 ... ok
 test test_105 ... ok
-test test_12121 ... ok
 test test_14 ... ok
+test test_12121 ... ok
 test test_15 ... ok
+test test_21 ... ok
 test test_27 ... ok
-test test_35 ... ok
+test test_25 ... ok
 test test_3 ... ok
 test test_3125 ... ok
-test test_25 ... ok
+test test_35 ... ok
 test test_49 ... ok
 test test_5 ... ok
-test test_7 ... ok
 test test_52 ... ok
 test test_6 ... ok
+test test_7 ... ok
 test test_8 ... ok
-test test_21 ... ok
 test test_9 ... ok
 
 test result: ok. 19 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
@@ -269,22 +311,24 @@ test src/lib.rs - raindrops (line 6) ... ok
 test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.12s
 
 
-real	0m0.512s
-user	0m0.574s
-sys	0m0.304s
+real	0m0.491s
+user	0m0.554s
+sys	0m0.254s
+
 
 ===============================================================================
 
-cargo llvm-cov --no-clean --all-features --workspace
+Running: cargo llvm-cov --no-clean --all-features --workspace
+
    Compiling raindrops v1.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/raindrops)
-    Finished test [unoptimized + debuginfo] target(s) in 0.35s
-     Running unittests src/lib.rs (target/llvm-cov-target/debug/deps/raindrops-6041da86533af09e)
+    Finished test [unoptimized + debuginfo] target(s) in 0.33s
+     Running unittests src/lib.rs (target/llvm-cov-target/debug/deps/raindrops-90c990c7c586610c)
 
 running 0 tests
 
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
-     Running tests/raindrops.rs (target/llvm-cov-target/debug/deps/raindrops-2620f66d8d0ea4e1)
+     Running tests/raindrops.rs (target/llvm-cov-target/debug/deps/raindrops-e7b4efb3031b107b)
 
 running 19 tests
 test test_1 ... ok
@@ -307,7 +351,7 @@ test test_7 ... ok
 test test_8 ... ok
 test test_9 ... ok
 
-test result: ok. 19 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+test result: ok. 19 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
 Filename                                                                 Regions    Missed Regions     Cover   Functions  Missed Functions  Executed       Lines      Missed Lines     Cover    Branches   Missed Branches     Cover
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -315,20 +359,30 @@ Filename                                                                 Regions
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 TOTAL                                                                         13                 0   100.00%           1                 0   100.00%          17                 0   100.00%           0                 0         -
 
+real	0m0.474s
+user	0m0.353s
+sys	0m0.190s
+
+
 ===============================================================================
 
-cargo llvm-cov report --lcov --output-path report.lcov
+Running: cargo llvm-cov report --lcov --output-path report.lcov
+
 
     Finished report saved to report.lcov
 
+real	0m0.153s
+user	0m0.084s
+sys	0m0.071s
+
     Finished test [unoptimized + debuginfo] target(s) in 0.00s
-     Running unittests src/lib.rs (target/llvm-cov-target/debug/deps/raindrops-6041da86533af09e)
+     Running unittests src/lib.rs (target/llvm-cov-target/debug/deps/raindrops-90c990c7c586610c)
 
 running 0 tests
 
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
-     Running tests/raindrops.rs (target/llvm-cov-target/debug/deps/raindrops-2620f66d8d0ea4e1)
+     Running tests/raindrops.rs (target/llvm-cov-target/debug/deps/raindrops-e7b4efb3031b107b)
 
 running 19 tests
 test test_1 ... ok
@@ -354,17 +408,22 @@ test test_9 ... ok
 test result: ok. 19 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
 
+real	0m0.139s
+user	0m0.065s
+sys	0m0.066s
+
 ===============================================================================
 
-cargo llvm-cov --no-clean --all-features --workspace --text --output-path=coverage-annotations.txt
+Running: cargo llvm-cov --no-clean --all-features --workspace --text --output-path=coverage-annotations.txt
+
     Finished test [unoptimized + debuginfo] target(s) in 0.00s
-     Running unittests src/lib.rs (target/llvm-cov-target/debug/deps/raindrops-6041da86533af09e)
+     Running unittests src/lib.rs (target/llvm-cov-target/debug/deps/raindrops-90c990c7c586610c)
 
 running 0 tests
 
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
-     Running tests/raindrops.rs (target/llvm-cov-target/debug/deps/raindrops-2620f66d8d0ea4e1)
+     Running tests/raindrops.rs (target/llvm-cov-target/debug/deps/raindrops-e7b4efb3031b107b)
 
 running 19 tests
 test test_1 ... ok
@@ -392,13 +451,25 @@ test result: ok. 19 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fin
 
     Finished report saved to coverage-annotations.txt
 
+real	0m0.147s
+user	0m0.064s
+sys	0m0.082s
+
+
 ===============================================================================
 
-cargo llvm-cov clean --workspace
+Running: cargo llvm-cov clean --workspace
+
+
+real	0m0.135s
+user	0m0.076s
+sys	0m0.061s
+
 
 ===============================================================================
 
-lcov --list report.lcov
+Running: lcov --list report.lcov
+
 Reading tracefile report.lcov
             |Lines       |Functions  |Branches    
 Filename    |Rate     Num|Rate    Num|Rate     Num
@@ -408,45 +479,61 @@ lib.rs      | 100%     17|50.0%     2|    -      0
 ==================================================
       Total:| 100%     17|50.0%     2|    -      0
 
-lcov --summary report.lcov
+real	0m0.032s
+user	0m0.025s
+sys	0m0.007s
+
+
+Running: lcov --summary report.lcov
+
 Reading tracefile report.lcov
 Summary coverage rate:
   lines......: 100.0% (17 of 17 lines)
   functions..: 50.0% (1 of 2 functions)
   branches...: no data found
 
+real	0m0.034s
+user	0m0.029s
+sys	0m0.005s
+
+
 ===============================================================================
 
+Exit code: 0
 
-real	0m1.788s
-user	0m1.429s
-sys	0m0.873s
+real	0m1.865s
+user	0m1.394s
+sys	0m0.855s
+
+real	0m1.867s
+user	0m1.395s
+sys	0m0.855s
 
 ===============================================================================
 
 Running: misspell .
 
-real	0m0.023s
+real	0m0.037s
 user	0m0.030s
-sys	0m0.011s
+sys	0m0.014s
 
 ===============================================================================
 
 Running: cargo doc
  Documenting raindrops v1.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/raindrops)
-    Finished dev [unoptimized + debuginfo] target(s) in 0.19s
+    Finished dev [unoptimized + debuginfo] target(s) in 0.18s
 
-real	0m0.197s
-user	0m0.155s
-sys	0m0.044s
+real	0m0.196s
+user	0m0.148s
+sys	0m0.050s
 
 ===============================================================================
 
 Running: cargo clean
 
-real	0m0.017s
-user	0m0.007s
-sys	0m0.010s
+real	0m0.012s
+user	0m0.005s
+sys	0m0.007s
 
 ===============================================================================
 

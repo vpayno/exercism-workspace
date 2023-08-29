@@ -21,14 +21,14 @@
    16|     24|        }
    17|     24|    }
   ------------------
+  | Unexecuted instantiation: <space_age::Duration as core::convert::From<u64>>::from
+  ------------------
   | <space_age::Duration as core::convert::From<u64>>::from:
   |   13|     24|    fn from(seconds: u64) -> Self {
   |   14|     24|        Duration {
   |   15|     24|            age_in_seconds: (seconds as f64) / (SECONDS_IN_EARTH_YEAR),
   |   16|     24|        }
   |   17|     24|    }
-  ------------------
-  | Unexecuted instantiation: <space_age::Duration as core::convert::From<u64>>::from
   ------------------
    18|       |}
    19|       |
@@ -40,15 +40,7 @@
    25|     24|        duration.age_in_seconds / Self::orbital_period()
    26|     24|    }
   ------------------
-  | <space_age::Venus as space_age::Planet>::years_during:
-  |   24|      3|    fn years_during(duration: &Duration) -> f64 {
-  |   25|      3|        duration.age_in_seconds / Self::orbital_period()
-  |   26|      3|    }
-  ------------------
-  | <space_age::Mars as space_age::Planet>::years_during:
-  |   24|      3|    fn years_during(duration: &Duration) -> f64 {
-  |   25|      3|        duration.age_in_seconds / Self::orbital_period()
-  |   26|      3|    }
+  | Unexecuted instantiation: <_ as space_age::Planet>::years_during
   ------------------
   | <space_age::Saturn as space_age::Planet>::years_during:
   |   24|      3|    fn years_during(duration: &Duration) -> f64 {
@@ -80,7 +72,15 @@
   |   25|      3|        duration.age_in_seconds / Self::orbital_period()
   |   26|      3|    }
   ------------------
-  | Unexecuted instantiation: <_ as space_age::Planet>::years_during
+  | <space_age::Venus as space_age::Planet>::years_during:
+  |   24|      3|    fn years_during(duration: &Duration) -> f64 {
+  |   25|      3|        duration.age_in_seconds / Self::orbital_period()
+  |   26|      3|    }
+  ------------------
+  | <space_age::Mars as space_age::Planet>::years_during:
+  |   24|      3|    fn years_during(duration: &Duration) -> f64 {
+  |   25|      3|        duration.age_in_seconds / Self::orbital_period()
+  |   26|      3|    }
   ------------------
   | Unexecuted instantiation: <_ as space_age::Planet>::years_during
   ------------------
@@ -126,6 +126,22 @@
    66|     24|                $period
    67|     24|            }
   ------------------
+  | Unexecuted instantiation: <space_age::Jupiter as space_age::Planet>::orbital_period
+  ------------------
+  | Unexecuted instantiation: <space_age::Mercury as space_age::Planet>::orbital_period
+  ------------------
+  | Unexecuted instantiation: <space_age::Neptune as space_age::Planet>::orbital_period
+  ------------------
+  | Unexecuted instantiation: <space_age::Mars as space_age::Planet>::orbital_period
+  ------------------
+  | Unexecuted instantiation: <space_age::Earth as space_age::Planet>::orbital_period
+  ------------------
+  | Unexecuted instantiation: <space_age::Uranus as space_age::Planet>::orbital_period
+  ------------------
+  | Unexecuted instantiation: <space_age::Saturn as space_age::Planet>::orbital_period
+  ------------------
+  | Unexecuted instantiation: <space_age::Venus as space_age::Planet>::orbital_period
+  ------------------
   | <space_age::Jupiter as space_age::Planet>::orbital_period:
   |   65|      3|            fn orbital_period() -> f64 {
   |   66|      3|                $period
@@ -165,22 +181,6 @@
   |   65|      3|            fn orbital_period() -> f64 {
   |   66|      3|                $period
   |   67|      3|            }
-  ------------------
-  | Unexecuted instantiation: <space_age::Jupiter as space_age::Planet>::orbital_period
-  ------------------
-  | Unexecuted instantiation: <space_age::Mercury as space_age::Planet>::orbital_period
-  ------------------
-  | Unexecuted instantiation: <space_age::Neptune as space_age::Planet>::orbital_period
-  ------------------
-  | Unexecuted instantiation: <space_age::Mars as space_age::Planet>::orbital_period
-  ------------------
-  | Unexecuted instantiation: <space_age::Uranus as space_age::Planet>::orbital_period
-  ------------------
-  | Unexecuted instantiation: <space_age::Earth as space_age::Planet>::orbital_period
-  ------------------
-  | Unexecuted instantiation: <space_age::Saturn as space_age::Planet>::orbital_period
-  ------------------
-  | Unexecuted instantiation: <space_age::Venus as space_age::Planet>::orbital_period
   ------------------
    68|       |        }
    69|       |    };

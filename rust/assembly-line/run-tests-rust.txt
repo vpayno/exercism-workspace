@@ -5,84 +5,98 @@ Running automated test file(s):
 
 Running: ../../.github/citools/rust/rust-lint-check --release
 
-Running Rust Cargo CheckRunning: cargo clean
+Running Rust Cargo Check
 
-real	0m0.019s
-user	0m0.011s
-sys	0m0.008s
+Running rustc 1.72.0 (5680fa18f 2023-08-23)
+
+===============================================================================
+
+Running: cargo clean
+
+
+real	0m0.017s
+user	0m0.010s
+sys	0m0.007s
+
 
 ===============================================================================
 
 Running: cargo check --release
-    Checking assembly-line v0.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/assembly-line)
-    Finished release [optimized] target(s) in 0.09s
 
-real	0m0.096s
-user	0m0.027s
-sys	0m0.030s
+    Checking assembly-line v0.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/assembly-line)
+    Finished release [optimized] target(s) in 0.13s
+
+real	0m0.143s
+user	0m0.035s
+sys	0m0.032s
+
 
 ===============================================================================
 
+Exit code: 0
 
-real	0m0.116s
-user	0m0.040s
-sys	0m0.038s
+real	0m0.173s
+user	0m0.051s
+sys	0m0.047s
+
+real	0m0.175s
+user	0m0.052s
+sys	0m0.048s
 
 ===============================================================================
 
 Running: ../../.github/citools/rust/rust-lint-clippy --release
 
-Running Rust Cargo ClippyRunning: cargo clean
+Running Rust Cargo Clippy
 
-real	0m0.010s
+Running rustc 1.72.0 (5680fa18f 2023-08-23)
+
+===============================================================================
+
+Running: cargo clean
+
+
+real	0m0.007s
 user	0m0.007s
-sys	0m0.003s
+sys	0m0.000s
+
 
 ===============================================================================
 
 Running: cargo clippy --release
-    Checking assembly-line v0.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/assembly-line)
-    Finished release [optimized] target(s) in 0.07s
 
-real	0m0.092s
-user	0m0.040s
-sys	0m0.051s
+    Checking assembly-line v0.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/assembly-line)
+    Finished release [optimized] target(s) in 0.08s
+
+real	0m0.101s
+user	0m0.048s
+sys	0m0.053s
+
 
 ===============================================================================
 
+Exit code: 0
 
-real	0m0.104s
-user	0m0.048s
-sys	0m0.056s
+real	0m0.121s
+user	0m0.059s
+sys	0m0.062s
+
+real	0m0.123s
+user	0m0.060s
+sys	0m0.063s
 
 ===============================================================================
 
 Running: ../../.github/citools/rust/rust-lint-audit
+No deps found, skipping cargo audit.
 
-Running Rust Cargo AuditRunning: cargo clean
+real	0m0.037s
+user	0m0.017s
+sys	0m0.022s
 
-real	0m0.020s
-user	0m0.010s
-sys	0m0.010s
-
-===============================================================================
-
-Running: cargo audit
-[0m[0m[1m[32m    Fetching[0m advisory database from `https://github.com/RustSec/advisory-db.git`
-[0m[0m[1m[32m      Loaded[0m 562 security advisories (from /home/vpayno/.cargo/advisory-db)
-[0m[0m[1m[32m    Updating[0m crates.io index
-[0m[0m[1m[32m    Scanning[0m Cargo.lock for vulnerabilities (1 crate dependencies)
-
-real	0m2.045s
-user	0m0.618s
-sys	0m0.474s
-
-===============================================================================
-
-
-real	0m2.067s
-user	0m0.629s
-sys	0m0.484s
+real	0m0.039s
+user	0m0.017s
+sys	0m0.023s
 
 ===============================================================================
 
@@ -94,29 +108,165 @@ Running: ../../.github/citools/rust/rust-test-with-tarpaulin
 
 Running Rust Tests With Tarpaulin
 
+Running rustc 1.72.0 (5680fa18f 2023-08-23)
+
+===============================================================================
+
 Running: cargo clean
 
-real	0m0.030s
-user	0m0.015s
-sys	0m0.015s
+
+real	0m0.012s
+user	0m0.007s
+sys	0m0.005s
+
 
 ===============================================================================
 
 Running: cargo test
+
    Compiling assembly-line v0.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/assembly-line)
-    Finished test [unoptimized + debuginfo] target(s) in 0.43s
-     Running unittests src/lib.rs (target/debug/deps/assembly_line-e8a196c10eb82ff0)
+    Finished test [unoptimized + debuginfo] target(s) in 0.29s
+     Running unittests src/lib.rs (target/debug/deps/assembly_line-730993a28f26925f)
 
 running 1 test
 test tests::test_get_success_rate ... ok
 
 test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
-     Running tests/assembly-line.rs (target/debug/deps/assembly_line-2c2ef16d907dd412)
+     Running tests/assembly-line.rs (target/debug/deps/assembly_line-e35270780e1944af)
 
 running 10 tests
 test production_rate_per_hour_at_speed_four ... ok
 test production_rate_per_hour_at_speed_nine ... ok
+test production_rate_per_hour_at_speed_one ... ok
+test production_rate_per_minute_at_speed_eight ... ok
+test production_rate_per_hour_at_speed_zero ... ok
+test production_rate_per_minute_at_speed_five ... ok
+test production_rate_per_hour_at_speed_seven ... ok
+test production_rate_per_minute_at_speed_one ... ok
+test production_rate_per_minute_at_speed_ten ... ok
+test production_rate_per_minute_at_speed_zero ... ok
+
+test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests assembly-line
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+real	0m0.320s
+user	0m0.436s
+sys	0m0.226s
+
+
+===============================================================================
+
+Running: cargo tarpaulin --release --timeout=300
+
+[2mAug 28 23:17:23.109[0m [32m INFO[0m cargo_tarpaulin::config: Creating config
+[2mAug 28 23:17:23.118[0m [32m INFO[0m cargo_tarpaulin: Running Tarpaulin
+[2mAug 28 23:17:23.118[0m [32m INFO[0m cargo_tarpaulin: Building project
+[2mAug 28 23:17:23.118[0m [32m INFO[0m cargo_tarpaulin::cargo: Cleaning project
+   Compiling assembly-line v0.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/assembly-line)
+    Finished release [optimized] target(s) in 0.34s
+[2mAug 28 23:17:23.500[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
+[2mAug 28 23:17:23.500[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/assembly-line/target/release/deps/assembly_line-39817c3a2a876ad0
+
+running 1 test
+test tests::test_get_success_rate ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+[2mAug 28 23:17:24.056[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
+[2mAug 28 23:17:24.056[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/assembly-line/target/release/deps/assembly_line-05ad80a1d74cadd6
+
+running 10 tests
+test production_rate_per_minute_at_speed_one ... ok
+test production_rate_per_minute_at_speed_five ... ok
+test production_rate_per_minute_at_speed_eight ... ok
+test production_rate_per_hour_at_speed_seven ... ok
+test production_rate_per_hour_at_speed_one ... ok
+test production_rate_per_hour_at_speed_zero ... ok
+test production_rate_per_hour_at_speed_nine ... ok
+test production_rate_per_hour_at_speed_four ... ok
+test production_rate_per_minute_at_speed_zero ... ok
+test production_rate_per_minute_at_speed_ten ... ok
+
+test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+[2mAug 28 23:17:24.620[0m [32m INFO[0m cargo_tarpaulin::report: Coverage Results:
+|| Uncovered Lines:
+|| src/lib.rs: 16, 23
+|| Tested/Total Lines:
+|| src/lib.rs: 6/8
+|| 
+75.00% coverage, 6/8 lines covered
+
+real	0m1.525s
+user	0m0.553s
+sys	0m1.142s
+
+
+===============================================================================
+
+Exit code: 0
+
+real	0m1.867s
+user	0m1.003s
+sys	0m1.377s
+
+real	0m1.869s
+user	0m1.004s
+sys	0m1.377s
+
+===============================================================================
+
+Running: ../../.github/citools/rust/rust-test-with-llvm-coverage
+
+Running Rust Tests With LLVM Coverage
+
+Running rustc 1.72.0 (5680fa18f 2023-08-23)
+
+===============================================================================
+
+Running: cargo clean
+
+
+real	0m0.014s
+user	0m0.006s
+sys	0m0.007s
+
+
+===============================================================================
+
+Running: cargo llvm-cov clean --workspace
+
+
+real	0m0.183s
+user	0m0.089s
+sys	0m0.096s
+
+
+===============================================================================
+
+Running: cargo test
+
+   Compiling assembly-line v0.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/assembly-line)
+    Finished test [unoptimized + debuginfo] target(s) in 0.27s
+     Running unittests src/lib.rs (target/debug/deps/assembly_line-730993a28f26925f)
+
+running 1 test
+test tests::test_get_success_rate ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/assembly-line.rs (target/debug/deps/assembly_line-e35270780e1944af)
+
+running 10 tests
+test production_rate_per_hour_at_speed_nine ... ok
+test production_rate_per_hour_at_speed_four ... ok
 test production_rate_per_hour_at_speed_one ... ok
 test production_rate_per_hour_at_speed_seven ... ok
 test production_rate_per_hour_at_speed_zero ... ok
@@ -135,131 +285,25 @@ running 0 tests
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
 
-real	0m0.473s
-user	0m0.674s
-sys	0m0.349s
+real	0m0.306s
+user	0m0.421s
+sys	0m0.232s
+
 
 ===============================================================================
 
-Running: cargo tarpaulin --release --timeout=300
-[2mAug 24 20:26:39.805[0m [32m INFO[0m cargo_tarpaulin::config: Creating config
-[2mAug 24 20:26:39.815[0m [32m INFO[0m cargo_tarpaulin: Running Tarpaulin
-[2mAug 24 20:26:39.815[0m [32m INFO[0m cargo_tarpaulin: Building project
-[2mAug 24 20:26:39.815[0m [32m INFO[0m cargo_tarpaulin::cargo: Cleaning project
+Running: cargo llvm-cov --no-clean --all-features --workspace
+
    Compiling assembly-line v0.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/assembly-line)
-    Finished release [optimized] target(s) in 0.36s
-[2mAug 24 20:26:40.218[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
-[2mAug 24 20:26:40.218[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/assembly-line/target/release/deps/assembly_line-468b01302da4d9b9
-
-running 1 test
-test tests::test_get_success_rate ... ok
-
-test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
-
-[2mAug 24 20:26:40.752[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
-[2mAug 24 20:26:40.752[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/assembly-line/target/release/deps/assembly_line-0b44b9a202535d5a
-
-running 10 tests
-test production_rate_per_minute_at_speed_one ... ok
-test production_rate_per_minute_at_speed_five ... ok
-test production_rate_per_minute_at_speed_eight ... ok
-test production_rate_per_hour_at_speed_zero ... ok
-test production_rate_per_hour_at_speed_seven ... ok
-test production_rate_per_hour_at_speed_one ... ok
-test production_rate_per_hour_at_speed_four ... ok
-test production_rate_per_hour_at_speed_nine ... ok
-test production_rate_per_minute_at_speed_zero ... ok
-test production_rate_per_minute_at_speed_ten ... ok
-
-test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
-
-[2mAug 24 20:26:41.287[0m [32m INFO[0m cargo_tarpaulin::report: Coverage Results:
-|| Uncovered Lines:
-|| src/lib.rs: 16, 23
-|| Tested/Total Lines:
-|| src/lib.rs: 6/8
-|| 
-75.00% coverage, 6/8 lines covered
-
-real	0m1.500s
-user	0m0.915s
-sys	0m1.222s
-
-===============================================================================
-
-
-real	0m2.007s
-user	0m1.606s
-sys	0m1.588s
-
-===============================================================================
-
-Running: ../../.github/citools/rust/rust-test-with-llvm-coverage
-
-Running Rust Tests With LLVM Coverage
-
-Running: cargo clean
-
-real	0m0.013s
-user	0m0.007s
-sys	0m0.006s
-
-===============================================================================
-
-cargo llvm-cov clean --workspace
-
-===============================================================================
-
-Running: cargo test
-   Compiling assembly-line v0.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/assembly-line)
-    Finished test [unoptimized + debuginfo] target(s) in 0.31s
-     Running unittests src/lib.rs (target/debug/deps/assembly_line-e8a196c10eb82ff0)
+    Finished test [unoptimized + debuginfo] target(s) in 0.29s
+     Running unittests src/lib.rs (target/llvm-cov-target/debug/deps/assembly_line-a7fd6f2efeb1bc16)
 
 running 1 test
 test tests::test_get_success_rate ... ok
 
 test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
-     Running tests/assembly-line.rs (target/debug/deps/assembly_line-2c2ef16d907dd412)
-
-running 10 tests
-test production_rate_per_hour_at_speed_four ... ok
-test production_rate_per_hour_at_speed_nine ... ok
-test production_rate_per_hour_at_speed_one ... ok
-test production_rate_per_hour_at_speed_zero ... ok
-test production_rate_per_hour_at_speed_seven ... ok
-test production_rate_per_minute_at_speed_five ... ok
-test production_rate_per_minute_at_speed_eight ... ok
-test production_rate_per_minute_at_speed_ten ... ok
-test production_rate_per_minute_at_speed_zero ... ok
-test production_rate_per_minute_at_speed_one ... ok
-
-test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
-
-   Doc-tests assembly-line
-
-running 0 tests
-
-test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
-
-
-real	0m0.354s
-user	0m0.516s
-sys	0m0.227s
-
-===============================================================================
-
-cargo llvm-cov --no-clean --all-features --workspace
-   Compiling assembly-line v0.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/assembly-line)
-    Finished test [unoptimized + debuginfo] target(s) in 0.35s
-     Running unittests src/lib.rs (target/llvm-cov-target/debug/deps/assembly_line-0acb09551abf03cc)
-
-running 1 test
-test tests::test_get_success_rate ... ok
-
-test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
-
-     Running tests/assembly-line.rs (target/llvm-cov-target/debug/deps/assembly_line-f71252d9f6c06c3f)
+     Running tests/assembly-line.rs (target/llvm-cov-target/debug/deps/assembly_line-59ac425cbf673e86)
 
 running 10 tests
 test production_rate_per_hour_at_speed_four ... ok
@@ -281,21 +325,31 @@ Filename                                                                     Reg
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 TOTAL                                                                             19                 0   100.00%           5                 0   100.00%          28                 0   100.00%           0                 0         -
 
+real	0m0.432s
+user	0m0.384s
+sys	0m0.182s
+
+
 ===============================================================================
 
-cargo llvm-cov report --lcov --output-path report.lcov
+Running: cargo llvm-cov report --lcov --output-path report.lcov
+
 
     Finished report saved to report.lcov
 
+real	0m0.130s
+user	0m0.080s
+sys	0m0.051s
+
     Finished test [unoptimized + debuginfo] target(s) in 0.00s
-     Running unittests src/lib.rs (target/llvm-cov-target/debug/deps/assembly_line-0acb09551abf03cc)
+     Running unittests src/lib.rs (target/llvm-cov-target/debug/deps/assembly_line-a7fd6f2efeb1bc16)
 
 running 1 test
 test tests::test_get_success_rate ... ok
 
 test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
-     Running tests/assembly-line.rs (target/llvm-cov-target/debug/deps/assembly_line-f71252d9f6c06c3f)
+     Running tests/assembly-line.rs (target/llvm-cov-target/debug/deps/assembly_line-59ac425cbf673e86)
 
 running 10 tests
 test production_rate_per_hour_at_speed_four ... ok
@@ -312,18 +366,23 @@ test production_rate_per_minute_at_speed_zero ... ok
 test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
 
+real	0m0.181s
+user	0m0.084s
+sys	0m0.094s
+
 ===============================================================================
 
-cargo llvm-cov --no-clean --all-features --workspace --text --output-path=coverage-annotations.txt
+Running: cargo llvm-cov --no-clean --all-features --workspace --text --output-path=coverage-annotations.txt
+
     Finished test [unoptimized + debuginfo] target(s) in 0.00s
-     Running unittests src/lib.rs (target/llvm-cov-target/debug/deps/assembly_line-0acb09551abf03cc)
+     Running unittests src/lib.rs (target/llvm-cov-target/debug/deps/assembly_line-a7fd6f2efeb1bc16)
 
 running 1 test
 test tests::test_get_success_rate ... ok
 
 test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
-     Running tests/assembly-line.rs (target/llvm-cov-target/debug/deps/assembly_line-f71252d9f6c06c3f)
+     Running tests/assembly-line.rs (target/llvm-cov-target/debug/deps/assembly_line-59ac425cbf673e86)
 
 running 10 tests
 test production_rate_per_hour_at_speed_four ... ok
@@ -342,13 +401,25 @@ test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fin
 
     Finished report saved to coverage-annotations.txt
 
+real	0m0.148s
+user	0m0.081s
+sys	0m0.068s
+
+
 ===============================================================================
 
-cargo llvm-cov clean --workspace
+Running: cargo llvm-cov clean --workspace
+
+
+real	0m0.148s
+user	0m0.093s
+sys	0m0.058s
+
 
 ===============================================================================
 
-lcov --list report.lcov
+Running: lcov --list report.lcov
+
 Reading tracefile report.lcov
             |Lines       |Functions  |Branches    
 Filename    |Rate     Num|Rate    Num|Rate     Num
@@ -358,27 +429,43 @@ lib.rs      | 100%     28|75.0%     8|    -      0
 ==================================================
       Total:| 100%     28|75.0%     8|    -      0
 
-lcov --summary report.lcov
+real	0m0.034s
+user	0m0.023s
+sys	0m0.011s
+
+
+Running: lcov --summary report.lcov
+
 Reading tracefile report.lcov
 Summary coverage rate:
   lines......: 100.0% (28 of 28 lines)
   functions..: 75.0% (6 of 8 functions)
   branches...: no data found
 
+real	0m0.036s
+user	0m0.029s
+sys	0m0.008s
+
+
 ===============================================================================
 
+Exit code: 0
 
-real	0m1.643s
-user	0m1.513s
-sys	0m0.868s
+real	0m1.624s
+user	0m1.295s
+sys	0m0.814s
+
+real	0m1.625s
+user	0m1.295s
+sys	0m0.815s
 
 ===============================================================================
 
 Running: misspell .
 
 real	0m0.035s
-user	0m0.026s
-sys	0m0.020s
+user	0m0.021s
+sys	0m0.015s
 
 ===============================================================================
 
@@ -386,17 +473,17 @@ Running: cargo doc
  Documenting assembly-line v0.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/assembly-line)
     Finished dev [unoptimized + debuginfo] target(s) in 0.18s
 
-real	0m0.194s
-user	0m0.142s
-sys	0m0.052s
+real	0m0.191s
+user	0m0.155s
+sys	0m0.038s
 
 ===============================================================================
 
 Running: cargo clean
 
-real	0m0.012s
-user	0m0.006s
-sys	0m0.005s
+real	0m0.011s
+user	0m0.003s
+sys	0m0.008s
 
 ===============================================================================
 

@@ -5,84 +5,98 @@ Running automated test file(s):
 
 Running: ../../.github/citools/rust/rust-lint-check --release
 
-Running Rust Cargo CheckRunning: cargo clean
+Running Rust Cargo Check
 
-real	0m0.015s
-user	0m0.007s
+Running rustc 1.72.0 (5680fa18f 2023-08-23)
+
+===============================================================================
+
+Running: cargo clean
+
+
+real	0m0.020s
+user	0m0.012s
 sys	0m0.008s
+
 
 ===============================================================================
 
 Running: cargo check --release
-    Checking pangram v0.0.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/pangram)
-    Finished release [optimized] target(s) in 0.29s
 
-real	0m0.303s
-user	0m0.021s
-sys	0m0.027s
+    Checking pangram v1.0.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/pangram)
+    Finished release [optimized] target(s) in 0.13s
+
+real	0m0.142s
+user	0m0.032s
+sys	0m0.037s
+
 
 ===============================================================================
 
+Exit code: 0
 
-real	0m0.322s
-user	0m0.030s
-sys	0m0.036s
+real	0m0.172s
+user	0m0.047s
+sys	0m0.052s
+
+real	0m0.174s
+user	0m0.047s
+sys	0m0.053s
 
 ===============================================================================
 
 Running: ../../.github/citools/rust/rust-lint-clippy --release
 
-Running Rust Cargo ClippyRunning: cargo clean
+Running Rust Cargo Clippy
 
-real	0m0.011s
+Running rustc 1.72.0 (5680fa18f 2023-08-23)
+
+===============================================================================
+
+Running: cargo clean
+
+
+real	0m0.008s
 user	0m0.006s
-sys	0m0.006s
+sys	0m0.002s
+
 
 ===============================================================================
 
 Running: cargo clippy --release
-    Checking pangram v0.0.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/pangram)
-    Finished release [optimized] target(s) in 0.19s
 
-real	0m0.223s
-user	0m0.053s
-sys	0m0.048s
+    Checking pangram v1.0.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/pangram)
+    Finished release [optimized] target(s) in 0.08s
+
+real	0m0.101s
+user	0m0.046s
+sys	0m0.054s
+
 
 ===============================================================================
 
+Exit code: 0
 
-real	0m0.236s
-user	0m0.059s
-sys	0m0.056s
+real	0m0.120s
+user	0m0.058s
+sys	0m0.061s
+
+real	0m0.122s
+user	0m0.058s
+sys	0m0.063s
 
 ===============================================================================
 
 Running: ../../.github/citools/rust/rust-lint-audit
+No deps found, skipping cargo audit.
 
-Running Rust Cargo AuditRunning: cargo clean
+real	0m0.035s
+user	0m0.022s
+sys	0m0.014s
 
-real	0m0.018s
-user	0m0.008s
-sys	0m0.010s
-
-===============================================================================
-
-Running: cargo audit
-[0m[0m[1m[32m    Fetching[0m advisory database from `https://github.com/RustSec/advisory-db.git`
-[0m[0m[1m[32m      Loaded[0m 562 security advisories (from /home/vpayno/.cargo/advisory-db)
-[0m[0m[1m[32m    Updating[0m crates.io index
-[0m[0m[1m[32m    Scanning[0m Cargo.lock for vulnerabilities (1 crate dependencies)
-
-real	0m7.037s
-user	0m3.697s
-sys	0m0.265s
-
-===============================================================================
-
-
-real	0m7.056s
-user	0m3.706s
-sys	0m0.276s
+real	0m0.036s
+user	0m0.022s
+sys	0m0.015s
 
 ===============================================================================
 
@@ -94,36 +108,43 @@ Running: ../../.github/citools/rust/rust-test-with-tarpaulin
 
 Running Rust Tests With Tarpaulin
 
+Running rustc 1.72.0 (5680fa18f 2023-08-23)
+
+===============================================================================
+
 Running: cargo clean
 
-real	0m0.016s
-user	0m0.008s
-sys	0m0.008s
+
+real	0m0.010s
+user	0m0.006s
+sys	0m0.004s
+
 
 ===============================================================================
 
 Running: cargo test
-   Compiling pangram v0.0.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/pangram)
-    Finished test [unoptimized + debuginfo] target(s) in 0.38s
-     Running unittests src/lib.rs (target/debug/deps/pangram-251dad1012148452)
+
+   Compiling pangram v1.0.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/pangram)
+    Finished test [unoptimized + debuginfo] target(s) in 0.41s
+     Running unittests src/lib.rs (target/debug/deps/pangram-2c1ccda0a81c80b6)
 
 running 0 tests
 
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
-     Running tests/pangram.rs (target/debug/deps/pangram-e5730caf74bedc23)
+     Running tests/pangram.rs (target/debug/deps/pangram-ddbd30d9274317ba)
 
 running 10 tests
 test capitals_and_punctuation_can_be_in_pangrams ... ok
-test empty_strings_are_not_pangrams ... ok
 test classic_pangram_is_a_pangram ... ok
-test numbers_do_not_affect_pangrams ... ok
-test numbers_can_not_replace_letters ... ok
+test empty_strings_are_not_pangrams ... ok
 test non_ascii_characters_can_be_in_pangrams ... ok
+test numbers_can_not_replace_letters ... ok
 test pangrams_must_have_all_letters ... ok
+test numbers_do_not_affect_pangrams ... ok
 test pangrams_must_include_z ... ok
-test underscores_do_not_affect_pangrams ... ok
 test pangrams_must_have_all_letters_two ... ok
+test underscores_do_not_affect_pangrams ... ok
 
 test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
@@ -132,47 +153,49 @@ test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fin
 running 1 test
 test src/lib.rs - is_pangram (line 7) ... ok
 
-test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.11s
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.12s
 
 
-real	0m0.517s
-user	0m0.664s
-sys	0m0.260s
+real	0m0.558s
+user	0m0.715s
+sys	0m0.295s
+
 
 ===============================================================================
 
 Running: cargo tarpaulin --release --timeout=300
-[2mAug 25 23:47:43.146[0m [32m INFO[0m cargo_tarpaulin::config: Creating config
-[2mAug 25 23:47:43.156[0m [32m INFO[0m cargo_tarpaulin: Running Tarpaulin
-[2mAug 25 23:47:43.156[0m [32m INFO[0m cargo_tarpaulin: Building project
-[2mAug 25 23:47:43.156[0m [32m INFO[0m cargo_tarpaulin::cargo: Cleaning project
-   Compiling pangram v0.0.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/pangram)
-    Finished release [optimized] target(s) in 0.53s
-[2mAug 25 23:47:43.731[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
-[2mAug 25 23:47:43.731[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/pangram/target/release/deps/pangram-75dfae0d4f90795c
+
+[2mAug 28 23:17:52.633[0m [32m INFO[0m cargo_tarpaulin::config: Creating config
+[2mAug 28 23:17:52.641[0m [32m INFO[0m cargo_tarpaulin: Running Tarpaulin
+[2mAug 28 23:17:52.641[0m [32m INFO[0m cargo_tarpaulin: Building project
+[2mAug 28 23:17:52.641[0m [32m INFO[0m cargo_tarpaulin::cargo: Cleaning project
+   Compiling pangram v1.0.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/pangram)
+    Finished release [optimized] target(s) in 0.52s
+[2mAug 28 23:17:53.208[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
+[2mAug 28 23:17:53.208[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/pangram/target/release/deps/pangram-5711146d10bbc219
 
 running 0 tests
 
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
-[2mAug 25 23:47:44.195[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
-[2mAug 25 23:47:44.195[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/pangram/target/release/deps/pangram-95ae19549885cb3f
+[2mAug 28 23:17:53.735[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
+[2mAug 28 23:17:53.735[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/pangram/target/release/deps/pangram-407a88383bfde541
 
 running 10 tests
 test empty_strings_are_not_pangrams ... ok
-test classic_pangram_is_a_pangram ... ok
-test capitals_and_punctuation_can_be_in_pangrams ... ok
 test pangrams_must_have_all_letters_two ... ok
 test pangrams_must_have_all_letters ... ok
 test numbers_do_not_affect_pangrams ... ok
 test numbers_can_not_replace_letters ... ok
 test non_ascii_characters_can_be_in_pangrams ... ok
+test classic_pangram_is_a_pangram ... ok
+test capitals_and_punctuation_can_be_in_pangrams ... ok
 test underscores_do_not_affect_pangrams ... ok
 test pangrams_must_include_z ... ok
 
 test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
 
-[2mAug 25 23:47:44.683[0m [32m INFO[0m cargo_tarpaulin::report: Coverage Results:
+[2mAug 28 23:17:54.283[0m [32m INFO[0m cargo_tarpaulin::report: Coverage Results:
 || Uncovered Lines:
 || src/lib.rs: 36
 || Tested/Total Lines:
@@ -180,16 +203,22 @@ test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fin
 || 
 85.71% coverage, 6/7 lines covered
 
-real	0m1.572s
-user	0m0.845s
-sys	0m1.035s
+real	0m1.666s
+user	0m0.666s
+sys	0m1.127s
+
 
 ===============================================================================
 
+Exit code: 0
 
-real	0m2.108s
-user	0m1.518s
-sys	0m1.306s
+real	0m2.246s
+user	0m1.394s
+sys	0m1.430s
+
+real	0m2.248s
+user	0m1.395s
+sys	0m1.431s
 
 ===============================================================================
 
@@ -197,40 +226,53 @@ Running: ../../.github/citools/rust/rust-test-with-llvm-coverage
 
 Running Rust Tests With LLVM Coverage
 
-Running: cargo clean
-
-real	0m0.012s
-user	0m0.004s
-sys	0m0.007s
+Running rustc 1.72.0 (5680fa18f 2023-08-23)
 
 ===============================================================================
 
-cargo llvm-cov clean --workspace
+Running: cargo clean
+
+
+real	0m0.023s
+user	0m0.008s
+sys	0m0.015s
+
+
+===============================================================================
+
+Running: cargo llvm-cov clean --workspace
+
+
+real	0m0.184s
+user	0m0.095s
+sys	0m0.091s
+
 
 ===============================================================================
 
 Running: cargo test
-   Compiling pangram v0.0.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/pangram)
-    Finished test [unoptimized + debuginfo] target(s) in 0.40s
-     Running unittests src/lib.rs (target/debug/deps/pangram-251dad1012148452)
+
+   Compiling pangram v1.0.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/pangram)
+    Finished test [unoptimized + debuginfo] target(s) in 0.43s
+     Running unittests src/lib.rs (target/debug/deps/pangram-2c1ccda0a81c80b6)
 
 running 0 tests
 
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
-     Running tests/pangram.rs (target/debug/deps/pangram-e5730caf74bedc23)
+     Running tests/pangram.rs (target/debug/deps/pangram-ddbd30d9274317ba)
 
 running 10 tests
+test capitals_and_punctuation_can_be_in_pangrams ... ok
 test empty_strings_are_not_pangrams ... ok
 test classic_pangram_is_a_pangram ... ok
-test capitals_and_punctuation_can_be_in_pangrams ... ok
-test non_ascii_characters_can_be_in_pangrams ... ok
 test numbers_do_not_affect_pangrams ... ok
-test pangrams_must_have_all_letters_two ... ok
-test pangrams_must_include_z ... ok
-test underscores_do_not_affect_pangrams ... ok
+test non_ascii_characters_can_be_in_pangrams ... ok
 test numbers_can_not_replace_letters ... ok
+test underscores_do_not_affect_pangrams ... ok
+test pangrams_must_include_z ... ok
 test pangrams_must_have_all_letters ... ok
+test pangrams_must_have_all_letters_two ... ok
 
 test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
@@ -239,25 +281,27 @@ test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fin
 running 1 test
 test src/lib.rs - is_pangram (line 7) ... ok
 
-test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.11s
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.12s
 
 
-real	0m0.549s
-user	0m0.802s
-sys	0m0.272s
+real	0m0.585s
+user	0m0.835s
+sys	0m0.336s
+
 
 ===============================================================================
 
-cargo llvm-cov --no-clean --all-features --workspace
-   Compiling pangram v0.0.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/pangram)
-    Finished test [unoptimized + debuginfo] target(s) in 0.33s
-     Running unittests src/lib.rs (target/llvm-cov-target/debug/deps/pangram-2ce385a9419cc6df)
+Running: cargo llvm-cov --no-clean --all-features --workspace
+
+   Compiling pangram v1.0.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/pangram)
+    Finished test [unoptimized + debuginfo] target(s) in 0.39s
+     Running unittests src/lib.rs (target/llvm-cov-target/debug/deps/pangram-3d13f0fcbd56c788)
 
 running 0 tests
 
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
-     Running tests/pangram.rs (target/llvm-cov-target/debug/deps/pangram-056c68dad3241b41)
+     Running tests/pangram.rs (target/llvm-cov-target/debug/deps/pangram-44cff160ae9a8765)
 
 running 10 tests
 test capitals_and_punctuation_can_be_in_pangrams ... ok
@@ -279,20 +323,30 @@ Filename                                                               Regions  
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 TOTAL                                                                        8                 1    87.50%           2                 0   100.00%          25                 1    96.00%           0                 0         -
 
+real	0m0.520s
+user	0m0.368s
+sys	0m0.194s
+
+
 ===============================================================================
 
-cargo llvm-cov report --lcov --output-path report.lcov
+Running: cargo llvm-cov report --lcov --output-path report.lcov
+
 
     Finished report saved to report.lcov
 
+real	0m0.128s
+user	0m0.069s
+sys	0m0.061s
+
     Finished test [unoptimized + debuginfo] target(s) in 0.00s
-     Running unittests src/lib.rs (target/llvm-cov-target/debug/deps/pangram-2ce385a9419cc6df)
+     Running unittests src/lib.rs (target/llvm-cov-target/debug/deps/pangram-3d13f0fcbd56c788)
 
 running 0 tests
 
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
-     Running tests/pangram.rs (target/llvm-cov-target/debug/deps/pangram-056c68dad3241b41)
+     Running tests/pangram.rs (target/llvm-cov-target/debug/deps/pangram-44cff160ae9a8765)
 
 running 10 tests
 test capitals_and_punctuation_can_be_in_pangrams ... ok
@@ -309,17 +363,22 @@ test underscores_do_not_affect_pangrams ... ok
 test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
 
+real	0m0.177s
+user	0m0.086s
+sys	0m0.088s
+
 ===============================================================================
 
-cargo llvm-cov --no-clean --all-features --workspace --text --output-path=coverage-annotations.txt
+Running: cargo llvm-cov --no-clean --all-features --workspace --text --output-path=coverage-annotations.txt
+
     Finished test [unoptimized + debuginfo] target(s) in 0.00s
-     Running unittests src/lib.rs (target/llvm-cov-target/debug/deps/pangram-2ce385a9419cc6df)
+     Running unittests src/lib.rs (target/llvm-cov-target/debug/deps/pangram-3d13f0fcbd56c788)
 
 running 0 tests
 
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
-     Running tests/pangram.rs (target/llvm-cov-target/debug/deps/pangram-056c68dad3241b41)
+     Running tests/pangram.rs (target/llvm-cov-target/debug/deps/pangram-44cff160ae9a8765)
 
 running 10 tests
 test capitals_and_punctuation_can_be_in_pangrams ... ok
@@ -338,13 +397,25 @@ test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fin
 
     Finished report saved to coverage-annotations.txt
 
+real	0m0.155s
+user	0m0.087s
+sys	0m0.070s
+
+
 ===============================================================================
 
-cargo llvm-cov clean --workspace
+Running: cargo llvm-cov clean --workspace
+
+
+real	0m0.126s
+user	0m0.072s
+sys	0m0.057s
+
 
 ===============================================================================
 
-lcov --list report.lcov
+Running: lcov --list report.lcov
+
 Reading tracefile report.lcov
             |Lines       |Functions  |Branches    
 Filename    |Rate     Num|Rate    Num|Rate     Num
@@ -354,37 +425,53 @@ lib.rs      |95.8%     24|50.0%     4|    -      0
 ==================================================
       Total:|95.8%     24|50.0%     4|    -      0
 
-lcov --summary report.lcov
+real	0m0.048s
+user	0m0.041s
+sys	0m0.007s
+
+
+Running: lcov --summary report.lcov
+
 Reading tracefile report.lcov
 Summary coverage rate:
   lines......: 95.8% (23 of 24 lines)
   functions..: 50.0% (2 of 4 functions)
   branches...: no data found
 
+real	0m0.031s
+user	0m0.027s
+sys	0m0.004s
+
+
 ===============================================================================
 
+Exit code: 0
 
-real	0m1.924s
-user	0m1.579s
-sys	0m0.786s
+real	0m2.000s
+user	0m1.697s
+sys	0m0.936s
+
+real	0m2.002s
+user	0m1.698s
+sys	0m0.938s
 
 ===============================================================================
 
 Running: misspell .
 
-real	0m0.033s
+real	0m0.029s
 user	0m0.025s
-sys	0m0.011s
+sys	0m0.010s
 
 ===============================================================================
 
 Running: cargo doc
- Documenting pangram v0.0.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/pangram)
-    Finished dev [unoptimized + debuginfo] target(s) in 0.18s
+ Documenting pangram v1.0.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/pangram)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.19s
 
-real	0m0.185s
+real	0m0.202s
 user	0m0.154s
-sys	0m0.032s
+sys	0m0.050s
 
 ===============================================================================
 
