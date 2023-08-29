@@ -20,7 +20,7 @@ const INDEX_MAX: u32 = 64;
 pub fn square(index: u32) -> u64 {
     if !(INDEX_MIN..=INDEX_MAX).contains(&index) {
         // return 0_u64;
-        panic!("Square must be between 1 and 64");
+        panic!("Square must be between {} and {}", INDEX_MIN, INDEX_MAX);
     }
 
     (1_u64) << (index - 1)
@@ -39,6 +39,10 @@ pub fn square(index: u32) -> u64 {
 /// assert_eq!(got, want);
 /// ```
 pub fn total() -> u64 {
-    // (1_u64) << 64 -> overflows so we have to shift 2 smaller numbers and add 1
-    ((((1_u64) << 63) - 1) << 1) + 1
+    // ((((1_u64) << 63) - 1) << 1) + 1
+    // ((1_u128 << 64) - 1) as u64
+    // u64::MAX
+    // u64::max_value()
+
+    (1..65).fold(0u64, |total, x| total + square(x as u32))
 }

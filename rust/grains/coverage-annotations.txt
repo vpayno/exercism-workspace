@@ -17,24 +17,24 @@
    17|       |///
    18|       |/// assert_eq!(got, want);
    19|       |/// ```
-   20|     27|pub fn square(index: u32) -> u64 {
-   21|     27|    if !(INDEX_MIN..=INDEX_MAX).contains(&index) {
+   20|    219|pub fn square(index: u32) -> u64 {
+   21|    219|    if !(INDEX_MIN..=INDEX_MAX).contains(&index) {
    22|       |        // return 0_u64;
-   23|      6|        panic!("Square must be between 1 and 64");
-   24|     21|    }
-   25|     21|
-   26|     21|    (1_u64) << (index - 1)
-   27|     21|}
+   23|      6|        panic!("Square must be between {} and {}", INDEX_MIN, INDEX_MAX);
+   24|    213|    }
+   25|    213|
+   26|    213|    (1_u64) << (index - 1)
+   27|    213|}
   ------------------
   | grains::square:
-  |   20|     27|pub fn square(index: u32) -> u64 {
-  |   21|     27|    if !(INDEX_MIN..=INDEX_MAX).contains(&index) {
+  |   20|    219|pub fn square(index: u32) -> u64 {
+  |   21|    219|    if !(INDEX_MIN..=INDEX_MAX).contains(&index) {
   |   22|       |        // return 0_u64;
-  |   23|      6|        panic!("Square must be between 1 and 64");
-  |   24|     21|    }
-  |   25|     21|
-  |   26|     21|    (1_u64) << (index - 1)
-  |   27|     21|}
+  |   23|      6|        panic!("Square must be between {} and {}", INDEX_MIN, INDEX_MAX);
+  |   24|    213|    }
+  |   25|    213|
+  |   26|    213|    (1_u64) << (index - 1)
+  |   27|    213|}
   ------------------
   | Unexecuted instantiation: grains::square
   ------------------
@@ -52,15 +52,29 @@
    39|       |/// assert_eq!(got, want);
    40|       |/// ```
    41|      3|pub fn total() -> u64 {
-   42|      3|    // (1_u64) << 64 -> overflows so we have to shift 2 smaller numbers and add 1
-   43|      3|    ((((1_u64) << 63) - 1) << 1) + 1
-   44|      3|}
+   42|      3|    // ((((1_u64) << 63) - 1) << 1) + 1
+   43|      3|    // ((1_u128 << 64) - 1) as u64
+   44|      3|    // u64::MAX
+   45|      3|    // u64::max_value()
+   46|      3|
+   47|    192|    (1..65).fold(0u64, |total, x| total + square(x as u32))
+  ------------------
+  | grains::total::{closure#0}:
+  |   47|    192|    (1..65).fold(0u64, |total, x| total + square(x as u32))
+  ------------------
+  | Unexecuted instantiation: grains::total::{closure#0}
+  ------------------
+   48|      3|}
   ------------------
   | grains::total:
   |   41|      3|pub fn total() -> u64 {
-  |   42|      3|    // (1_u64) << 64 -> overflows so we have to shift 2 smaller numbers and add 1
-  |   43|      3|    ((((1_u64) << 63) - 1) << 1) + 1
-  |   44|      3|}
+  |   42|      3|    // ((((1_u64) << 63) - 1) << 1) + 1
+  |   43|      3|    // ((1_u128 << 64) - 1) as u64
+  |   44|      3|    // u64::MAX
+  |   45|      3|    // u64::max_value()
+  |   46|      3|
+  |   47|      3|    (1..65).fold(0u64, |total, x| total + square(x as u32))
+  |   48|      3|}
   ------------------
   | Unexecuted instantiation: grains::total
   ------------------
