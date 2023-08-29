@@ -2,7 +2,7 @@
 #
 # .github/workflows/rust.yml
 #
-name: Rust Workflow 3.0
+name: Rust Workflow 4.0
 on:  # yamllint disable-line rule:truthy
   pull_request:
   workflow_dispatch:
@@ -49,7 +49,6 @@ jobs:
             printf "%s\n" "${GIT_DIFF}"
             printf "\`\`\`\n"
           } | tee -a "${GITHUB_STEP_SUMMARY}"
-
           HAS_WF_DIFF=false
           HAS_EX_DIFF=false
           if printf "%s\n" "${GIT_DIFF}" | grep -E '^(.github/workflows/rust.yml|.github/citools/rust/)$'; then
@@ -244,80 +243,26 @@ jobs:
         run: |-
           printf "env.ENABLE_TARPAULIN: [%s]\n" "${{ env.ENABLE_TARPAULIN }}"
           cargo install grcov cargo-kcov cargo-tarpaulin
-      - name: CD to Rust Dir [${{ matrix.exercise }}]
-        id: cd-to-rust-dir
-        run: |-
-          pwd
-          ls
-          cd "./${{ matrix.exercise }}"
-          pwd
-          ls
       - name: Analysing the code with cargo check [${{ matrix.exercise }}]
         id: cargo-check
         run: |-
-          pwd
-          cd "./${{ matrix.exercise }}"
-          pwd
-          ls
-          {
-            printf "\`\`\`text\n"
-            ../../.github/citools/rust/rust-lint-check --release
-            printf "\`\`\`\n"
-          } |& tee -a "${GITHUB_STEP_SUMMARY}"
+          ./.github/citools/common/run_wrapper_script "./${{ matrix.exercise }}" ../../.github/citools/rust/rust-lint-check --release
       - name: Analysing the code with cargo clippy [${{ matrix.exercise }}]
         id: cargo-clippy
         run: |-
-          pwd
-          cd "./${{ matrix.exercise }}"
-          pwd
-          ls
-          {
-            printf "\`\`\`text\n"
-            ../../.github/citools/rust/rust-lint-clippy --release
-            printf "\`\`\`\n"
-          } |& tee -a "${GITHUB_STEP_SUMMARY}"
+          ./.github/citools/common/run_wrapper_script "./${{ matrix.exercise }}" ../../.github/citools/rust/rust-lint-clippy --release
       - name: Testing with cargo tarpaulin [${{ matrix.exercise }}]
         id: cargo-tarpaulin
         if: ${{ env.ENABLE_TARPAULIN == 'true' }}
         run: |-
-          pwd
-          cd "./${{ matrix.exercise }}"
-          pwd
-          ls
           # disabling, using my container I get: Failed to run tests: ASLR disable failed: EPERM: Operation not permitted
           # https://github.com/xd009642/tarpaulin/issues/146
-          {
-            printf "\`\`\`text\n"
-            ../../.github/citools/rust/rust-test-with-tarpaulin
-            printf "\`\`\`\n"
-          } |& tee -a "${GITHUB_STEP_SUMMARY}"
+          ./.github/citools/common/run_wrapper_script "./${{ matrix.exercise }}" ../../.github/citools/rust/rust-test-with-tarpaulin
       - name: Testing with cargo test coverage [${{ matrix.exercise }}]
         id: cargo-test-coverage
         run: |-
-          pwd
-          cd "./${{ matrix.exercise }}"
-          pwd
-          ls
-          {
-            printf "\`\`\`text\n"
-            ../../.github/citools/rust/rust-test-with-llvm-coverage
-            printf "\`\`\`\n"
-          } |& tee -a "${GITHUB_STEP_SUMMARY}"
+          ./.github/citools/common/run_wrapper_script "./${{ matrix.exercise }}" ../../.github/citools/rust/rust-test-with-llvm-coverage
       - name: Testing with cargo audit [${{ matrix.exercise }}]
         id: cargo-audit
         run: |-
-          pwd
-          cd "./${{ matrix.exercise }}"
-          pwd
-          ls
-          deps=$(cargo tree | wc -l)
-          (( deps-- ))
-          if [[ ${deps} -gt 0 ]]; then
-            {
-              printf "\`\`\`text\n"
-              ../../.github/citools/rust/rust-lint-audit
-              printf "\`\`\`\n"
-            } |& tee -a "${GITHUB_STEP_SUMMARY}"
-          else
-            printf "No deps found, skipping cargo audit.\n"
-          fi
+          ./.github/citools/common/run_wrapper_script "./${{ matrix.exercise }}" ../../.github/citools/rust/rust-lint-audit
