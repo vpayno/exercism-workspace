@@ -48,30 +48,30 @@ COMPONENTS=(
 	rustfmt
 )
 
-echo apt install -y "${PACKAGES[@]}"
-apt install -y "${PACKAGES[@]}" || exit
+echo Running: apt install -y "${PACKAGES[@]}"
+time apt install -y "${PACKAGES[@]}" || exit
 printf "\n"
 
-echo curl https://sh.rustup.rs -sSf \| bash -s -- -y
-curl https://sh.rustup.rs -sSf | bash -s -- -y || exit
+echo Running: curl https://sh.rustup.rs -sSf \| bash -s -- -y
+time curl https://sh.rustup.rs -sSf | bash -s -- -y || exit
 printf "\n"
 
 # ENV PATH="/root/.cargo/bin:${PATH}"
 printf "source %s\n" "${HOME}/.cargo/env" | tee -a "${HOME}/.bashrc"
 source "${HOME}/.bashrc"
 
-echo rustup default stable
+echo Running: rustup default stable
 time rustup default stable || exit
 printf "\n"
 
-echo rustc --version
+echo Running: rustc --version
 rustc --version || exit
 printf "\n"
 
 export CARGO_REGISTRIES_CRATES_IO_PROTOCOL="sparse"
 
-echo cargo install sccache
-cargo install sccache || exit
+echo Running: cargo install sccache
+time cargo install sccache || exit
 printf "\n"
 
 export RUSTC_WRAPPER="sccache"
@@ -83,28 +83,28 @@ time sccache --start-server
 printf "\n"
 
 for component in "${COMPONENTS[@]}"; do
-	echo rustup component add "${component}"
+	echo Running: rustup component add "${component}"
 	time rustup component add "${component}" || exit
 	printf "\n"
 done
 
-echo cargo install "${CRATES[@]}"
-cargo install "${CRATES[@]}" || exit
+echo Running: cargo install "${CRATES[@]}"
+time cargo install "${CRATES[@]}" || exit
 printf "\n"
 
 printf "Installed Rust components:\n"
-echo rustup component list
+echo Running: rustup component list
 time rustup component list
 printf "\n"
 
 printf "Installed Crates:\n"
-echo cargo install --list
-cargo install --list
+echo Running: cargo install --list
+time cargo install --list
 printf "\n"
 
 printf "Show Rust Configuration:\n"
-echo rustup show
-rustup show
+echo Running: rustup show
+time rustup show
 printf "\n"
 
 printf "Show Rust sccache Info:\n"
