@@ -1,0 +1,90 @@
+    1|       |/// various log levels
+    2|       |// #[derive(Clone, PartialEq, Eq, Debug)]
+    3|     24|#[derive(Debug)]
+  ------------------
+  | <semi_structured_logs::LogLevel as core::fmt::Debug>::fmt:
+  |    3|     24|#[derive(Debug)]
+  ------------------
+  | Unexecuted instantiation: <semi_structured_logs::LogLevel as core::fmt::Debug>::fmt
+  ------------------
+    4|       |pub enum LogLevel {
+    5|       |    Info,
+    6|       |    Warning,
+    7|       |    Error,
+    8|       |    Debug,
+    9|       |}
+   10|       |
+   11|       |/// primary function for emitting logs
+   12|     24|pub fn log(level: LogLevel, message: &str) -> String {
+   13|     24|    // Use the Debug trait to convert the enum to string.
+   14|     24|    let level_str: String = format!("{level:?}").to_uppercase();
+   15|     24|
+   16|     24|    // Put the log line together.
+   17|     24|    let log_line: String = format!("[{level_str}]: {message}");
+   18|     24|
+   19|     24|    // Return the log line.
+   20|     24|    log_line
+   21|     24|}
+  ------------------
+  | semi_structured_logs::log:
+  |   12|     24|pub fn log(level: LogLevel, message: &str) -> String {
+  |   13|     24|    // Use the Debug trait to convert the enum to string.
+  |   14|     24|    let level_str: String = format!("{level:?}").to_uppercase();
+  |   15|     24|
+  |   16|     24|    // Put the log line together.
+  |   17|     24|    let log_line: String = format!("[{level_str}]: {message}");
+  |   18|     24|
+  |   19|     24|    // Return the log line.
+  |   20|     24|    log_line
+  |   21|     24|}
+  ------------------
+  | Unexecuted instantiation: semi_structured_logs::log
+  ------------------
+   22|       |
+   23|      3|pub fn info(message: &str) -> String {
+   24|      3|    log(LogLevel::Info, message)
+   25|      3|}
+  ------------------
+  | semi_structured_logs::info:
+  |   23|      3|pub fn info(message: &str) -> String {
+  |   24|      3|    log(LogLevel::Info, message)
+  |   25|      3|}
+  ------------------
+  | Unexecuted instantiation: semi_structured_logs::info
+  ------------------
+   26|       |
+   27|      3|pub fn warn(message: &str) -> String {
+   28|      3|    log(LogLevel::Warning, message)
+   29|      3|}
+  ------------------
+  | semi_structured_logs::warn:
+  |   27|      3|pub fn warn(message: &str) -> String {
+  |   28|      3|    log(LogLevel::Warning, message)
+  |   29|      3|}
+  ------------------
+  | Unexecuted instantiation: semi_structured_logs::warn
+  ------------------
+   30|       |
+   31|      3|pub fn error(message: &str) -> String {
+   32|      3|    log(LogLevel::Error, message)
+   33|      3|}
+  ------------------
+  | semi_structured_logs::error:
+  |   31|      3|pub fn error(message: &str) -> String {
+  |   32|      3|    log(LogLevel::Error, message)
+  |   33|      3|}
+  ------------------
+  | Unexecuted instantiation: semi_structured_logs::error
+  ------------------
+   34|       |
+   35|      3|pub fn debug(message: &str) -> String {
+   36|      3|    log(LogLevel::Debug, message)
+   37|      3|}
+  ------------------
+  | semi_structured_logs::debug:
+  |   35|      3|pub fn debug(message: &str) -> String {
+  |   36|      3|    log(LogLevel::Debug, message)
+  |   37|      3|}
+  ------------------
+  | Unexecuted instantiation: semi_structured_logs::debug
+  ------------------

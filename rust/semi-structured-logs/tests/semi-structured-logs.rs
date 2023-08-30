@@ -1,4 +1,4 @@
-use semi_structured_logs::{error, info, log, warn, LogLevel};
+use semi_structured_logs::{debug, error, info, log, warn, LogLevel};
 
 #[test]
 fn emits_info() {
@@ -37,11 +37,16 @@ fn log_emits_error() {
 }
 
 #[test]
-#[cfg(feature = "add-a-variant")]
+// #[cfg(feature = "add-a-variant")]
 fn add_a_variant() {
     // this test won't even compile until the enum is complete, which is why it is feature-gated.
     assert_eq!(
         log(LogLevel::Debug, "reached line 123"),
         "[DEBUG]: reached line 123",
     );
+}
+
+#[test]
+fn emits_debug() {
+    assert_eq!(debug("Disk full"), "[DEBUG]: Disk full");
 }
