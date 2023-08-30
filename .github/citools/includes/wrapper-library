@@ -41,27 +41,31 @@ show_tool_versions_rust() {
 	printf "Rust version:\n"
 	printf "\n"
 	rustc --version | paste /dev/null -
-	printf "\n"
 	# md_code_tag
+	printf "\n"
+
+	if [[ -z ${GITHUB_ACTIONS} ]]; then
+		return
+	fi
 
 	# md_code_tag text
 	printf "Installed cargo crates:\n"
 	printf "\n"
 	cargo install --list | paste /dev/null -
-	printf "\n"
 	# md_code_tag
+	printf "\n"
 
 	# md_code_tag text
 	rustup --version
-	printf "\n"
 	# md_code_tag
+	printf "\n"
 
 	# md_code_tag text
 	printf "Installed rustup components:\n"
 	printf "\n"
 	rustup component list | grep '(installed)' | paste /dev/null -
-	printf "\n"
 	# md_code_tag
+	printf "\n"
 
 	# md_code_tag text
 	printf "Environment variables:\n"
@@ -69,6 +73,6 @@ show_tool_versions_rust() {
 	printf "%s=%s\n" "PATH" "${PATH}"
 	printf "\n"
 	printf "%s=%s\n" "CARGO_REGISTRIES_CRATES_IO_PROTOCOL" "${CARGO_REGISTRIES_CRATES_IO_PROTOCOL}" "RUSTC_WRAPPER" "${RUSTC_WRAPPER}"
-	printf "\n"
 	# md_code_tag
+	printf "\n"
 } # show_tool_versions_rust()
