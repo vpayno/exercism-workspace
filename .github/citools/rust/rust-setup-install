@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# .github/citools/rust/rust-setup-config
+# .github/citools/rust/rust-setup-install
 #
 
 # shellcheck disable=SC1091
@@ -9,11 +9,12 @@ source ../../.github/citools/includes/wrapper-library || exit
 declare -i retval=0
 
 main() {
-	printf "Setup Rust Environment\n\n"
+	printf "Rust Installation\n\n"
 
 	print_ruler
 
-	printf "%s\n" "/root/.rustup/toolchains/stable-$(arch)-unknown-linux-gnu/bin" "/root/.cargo/bin" | tee -a "${GITHUB_PATH}"
+	echo Running: rustup default stable
+	time rustup default stable || ((retval++))
 
 	print_ruler
 

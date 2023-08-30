@@ -188,10 +188,14 @@ jobs:
       - name: Checkout Repo [${{ matrix.exercise }}]
         id: checkout-repo
         uses: actions/checkout@v3
+      - name: Config Rust Tools [${{ matrix.exercise }}]
+        id: config-rust-tools
+        run: |-
+          ./.github/citools/common/run_wrapper_script "./${{ matrix.exercise }}" ../../.github/citools/rust/rust-setup-config
       - name: Install Rust Tools [${{ matrix.exercise }}]
         id: install-rust-tools
         run: |-
-          ./.github/citools/common/run_wrapper_script "./${{ matrix.exercise }}" ../../.github/citools/rust/rust-setup-config
+          ./.github/citools/common/run_wrapper_script "./${{ matrix.exercise }}" ../../.github/citools/rust/rust-setup-install
       - name: Show Rust version [${{ matrix.exercise }}]
         id: rust-version
         run: |-
