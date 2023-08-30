@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -o pipefail
+
 # https://apt.llvm.org/
 
 # this path from for the container
@@ -47,11 +49,12 @@ PACKAGES=(
 	python3-clang-16
 )
 
-# wget -q https://apt.llvm.org/llvm.sh
-# chmod -v +x llvm.sh
-# ./llvm.sh 16 all
+main() {
+	# wget -q https://apt.llvm.org/llvm.sh
+	# chmod -v +x llvm.sh
+	# ./llvm.sh 16 all
 
-tee -a /etc/apt/sources.list <<EOF
+	tee -a /etc/apt/sources.list <<EOF
 # deb http://apt.llvm.org/bullseye/ llvm-toolchain-bullseye main
 # deb-src http://apt.llvm.org/bullseye/ llvm-toolchain-bullseye main
 # deb http://apt.llvm.org/bullseye/ llvm-toolchain-bullseye-14 main
@@ -64,13 +67,16 @@ deb-src http://apt.llvm.org/bullseye/ llvm-toolchain-bullseye-16 main
  #deb-src http://apt.llvm.org/bullseye/ llvm-toolchain-bullseye-17 main
 EOF
 
-#wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
-curl -sS https://apt.llvm.org/llvm-snapshot.gpg.key | tee /etc/apt/trusted.gpg.d/apt.llvm.org.asc
+	#wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
+	curl -sS https://apt.llvm.org/llvm-snapshot.gpg.key | tee /etc/apt/trusted.gpg.d/apt.llvm.org.asc
 
-apt update
+	apt update
 
-echo apt install -y "${PACKAGES[@]}"
-apt install -y "${PACKAGES[@]}" || exit
-printf "\n"
+	echo apt install -y "${PACKAGES[@]}"
+	apt install -y "${PACKAGES[@]}" || exit
+	printf "\n"
 
-layer_end "$@"
+	layer_end "$@"
+}
+
+main "${@}" |& tee /root/layer-10.00-exercism-gcc_clang_llvm.log

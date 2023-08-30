@@ -1,13 +1,19 @@
-#!/bin/sh
+#!/bin/bash
+
+set -o pipefail
 
 # this path from for the container
 # shellcheck disable=SC1091
 . /.github/docker/include
 
-layer_begin "$@"
+main() {
+	layer_begin "$@"
 
-echo curl -sSfL https://releases.dagger.io/dagger/install.sh \| sh
-curl -sSfL https://releases.dagger.io/dagger/install.sh | sh || exit
-printf "\n"
+	echo curl -sSfL https://releases.dagger.io/dagger/install.sh \| sh
+	curl -sSfL https://releases.dagger.io/dagger/install.sh | sh || exit
+	printf "\n"
 
-layer_end "$@"
+	layer_end "$@"
+}
+
+main "${@}" |& tee /root/layer-00.10-base-daggerio.log
