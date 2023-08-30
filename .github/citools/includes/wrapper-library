@@ -36,7 +36,37 @@ get_rust_package_name() {
 
 show_tool_versions_rust() {
 	# md_code_tag text
-	printf "Running "
-	rustc --version
+	printf "Rust version:\n"
+	printf "\n"
+	rustc --version | paste /dev/null -
+	printf "\n"
+	# md_code_tag
+
+	# md_code_tag text
+	printf "Installed cargo crates:\n"
+	printf "\n"
+	cargo install --list | paste /dev/null -
+	printf "\n"
+	# md_code_tag
+
+	# md_code_tag text
+	rustup --version
+	printf "\n"
+	# md_code_tag
+
+	# md_code_tag text
+	printf "Installed rustup components:\n"
+	printf "\n"
+	rustup component list | grep '(installed)' | paste /dev/null -
+	printf "\n"
+	# md_code_tag
+
+	# md_code_tag text
+	printf "Environment variables:\n"
+	printf "\n"
+	printf "%s=%s\n" "PATH" "${PATH}"
+	printf "\n"
+	printf "%s=%s\n" "CARGO_REGISTRIES_CRATES_IO_PROTOCOL" "${CARGO_REGISTRIES_CRATES_IO_PROTOCOL}" "RUSTC_WRAPPER" "${RUSTC_WRAPPER}"
+	printf "\n"
 	# md_code_tag
 } # show_tool_versions_rust()
