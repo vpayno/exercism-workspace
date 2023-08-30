@@ -1,0 +1,95 @@
+    1|       |//! Exercise Url: <https://exercism.org/tracks/rust/exercises/binary-search>
+    2|       |
+    3|       |/// finds the key in a sorted array
+    4|       |///
+    5|       |/// Example
+    6|       |///
+    7|       |/// ```rust
+    8|       |/// use binary_search::find;
+    9|       |///
+   10|       |/// let mut want: Option<usize> = None;
+   11|       |/// let mut got: Option<usize> = None;
+   12|       |///
+   13|       |/// want = Some(3);
+   14|       |/// got = find(&[0,2,4,6,8,10], 6);
+   15|       |/// assert_eq!(got, want);
+   16|       |///
+   17|       |/// want = None;
+   18|       |/// got = find(&[0,2,4,6,8,10], 5);
+   19|       |/// assert_eq!(got, want);
+   20|       |/// ```
+   21|     48|pub fn find(array: &[i32], key: i32) -> Option<usize> {
+   22|     48|    let not_found = None;
+   23|     48|
+   24|     48|    if array.is_empty() {
+   25|      3|        return not_found;
+   26|     45|    }
+   27|     45|
+   28|     45|    let mut low: usize = 0;
+   29|     45|    let mut high: usize = array.len() - 1;
+   30|     45|
+   31|     45|    if array[low] > key || array[high] < key {
+                                         ^39
+   32|      9|        return not_found;
+   33|     36|    }
+   34|     36|
+   35|     36|    let mut mid: usize = (high + low) / 2;
+   36|     36|    let mut mid_value: i32 = array[mid];
+   37|       |
+   38|     60|    while mid_value != key {
+   39|     27|        if mid_value > key {
+   40|     12|            high = mid - 1;
+   41|     15|        } else {
+   42|     15|            low = mid + 1;
+   43|     15|        }
+   44|       |
+   45|     27|        if low > high {
+   46|      3|            return not_found;
+   47|     24|        }
+   48|     24|
+   49|     24|        mid = (high + low) / 2;
+   50|     24|        mid_value = array[mid];
+   51|       |    }
+   52|       |
+   53|     33|    Some(mid)
+   54|     48|}
+  ------------------
+  | binary_search::find:
+  |   21|     48|pub fn find(array: &[i32], key: i32) -> Option<usize> {
+  |   22|     48|    let not_found = None;
+  |   23|     48|
+  |   24|     48|    if array.is_empty() {
+  |   25|      3|        return not_found;
+  |   26|     45|    }
+  |   27|     45|
+  |   28|     45|    let mut low: usize = 0;
+  |   29|     45|    let mut high: usize = array.len() - 1;
+  |   30|     45|
+  |   31|     45|    if array[low] > key || array[high] < key {
+  |                                         ^39
+  |   32|      9|        return not_found;
+  |   33|     36|    }
+  |   34|     36|
+  |   35|     36|    let mut mid: usize = (high + low) / 2;
+  |   36|     36|    let mut mid_value: i32 = array[mid];
+  |   37|       |
+  |   38|     60|    while mid_value != key {
+  |   39|     27|        if mid_value > key {
+  |   40|     12|            high = mid - 1;
+  |   41|     15|        } else {
+  |   42|     15|            low = mid + 1;
+  |   43|     15|        }
+  |   44|       |
+  |   45|     27|        if low > high {
+  |   46|      3|            return not_found;
+  |   47|     24|        }
+  |   48|     24|
+  |   49|     24|        mid = (high + low) / 2;
+  |   50|     24|        mid_value = array[mid];
+  |   51|       |    }
+  |   52|       |
+  |   53|     33|    Some(mid)
+  |   54|     48|}
+  ------------------
+  | Unexecuted instantiation: binary_search::find
+  ------------------
