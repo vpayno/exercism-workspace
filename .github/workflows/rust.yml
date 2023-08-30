@@ -41,6 +41,17 @@ jobs:
             printf "\n"
           } | tee -a "${GITHUB_STEP_SUMMARY}"
 
+          # get user info for default gh container
+          {
+            printf "\`\`\`text\n"
+            printf "Container user info:\n"
+            who
+            printf "\n"
+            id
+            printf "\`\`\`\n"
+          } | tee -a "${GITHUB_STEP_SUMMARY}"
+          printf "\n"
+
           # Diff HEAD with the previous commit then output to stdout.
           GIT_DIFF="$(git diff --name-only HEAD^ HEAD | tee /tmp/changed_files.txt)"
           {
