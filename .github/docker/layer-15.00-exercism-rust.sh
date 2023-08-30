@@ -78,6 +78,10 @@ export RUSTC_WRAPPER="sccache"
 echo RUSTC_WRAPPER="sccache" | tee -a "${HOME}/.bashrc"
 printf "\n"
 
+echo Running: sccache --start-server
+time sccache --start-server
+printf "\n"
+
 for component in "${COMPONENTS[@]}"; do
 	echo rustup component add "${component}"
 	time rustup component add "${component}" || exit
@@ -101,6 +105,16 @@ printf "\n"
 printf "Show Rust Configuration:\n"
 echo rustup show
 rustup show
+printf "\n"
+
+printf "Show Rust sccache Info:\n"
+echo Running: sccache --show-stats
+sccache --show-stats
+printf "\n"
+
+printf "Show Rust Cache Info:\n"
+echo Running: cargo cache --info
+cargo cache --info
 printf "\n"
 
 layer_end "$@"
