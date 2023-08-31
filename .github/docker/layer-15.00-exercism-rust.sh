@@ -37,6 +37,7 @@ main() {
 	declare -a CRATES
 	CRATES=(
 		cargo-audit
+		cargo-cache
 		cargo-edit
 		cargo-fix
 		cargo-fuzz
