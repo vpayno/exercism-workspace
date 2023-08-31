@@ -12,7 +12,7 @@ set -o pipefail
 . /.github/docker/include
 
 main() {
-	layer_begin "$@"
+	layer_begin "${0}" "$@"
 
 	declare -a PACKAGES
 	PACKAGES=(
@@ -123,7 +123,7 @@ main() {
 	cargo cache --info
 	printf "\n"
 
-	layer_end "$@"
+	layer_end "${0}" "$@"
 }
 
 main "${@}" |& tee /root/layer-15.00-exercism-rust.log

@@ -10,7 +10,7 @@ set -o pipefail
 . /.github/docker/include
 
 main() {
-	layer_begin "$@"
+	layer_begin "${0}" "$@"
 
 	printf "OS Info:\n"
 	tail -n 1000 /etc/os-release /etc/debian_version | paste /dev/null -
@@ -45,7 +45,7 @@ main() {
 	npm list --global | paste /dev/null -
 	printf "\n"
 
-	layer_end "$@"
+	layer_end "${0}" "$@"
 }
 
 main "${@}" |& tee /root/layer-15.00-exercism-rust.log

@@ -8,7 +8,7 @@
 . /.github/docker/include
 
 main() {
-	layer_begin "$@"
+	layer_begin "${0}" "$@"
 
 	PACKAGES="apt-utils bash coreutils curl jq moreutils sudo tmux util-linux vim-nox"
 
@@ -22,7 +22,7 @@ main() {
 	apt install -y ${PACKAGES} || exit
 	printf "\n"
 
-	layer_end "$@"
+	layer_end "${0}" "$@"
 }
 
 main "${@}" 2>&1 | tee /root/layer-00.00-base-dependencies.log

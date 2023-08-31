@@ -10,13 +10,13 @@ set -o pipefail
 . /.github/docker/include
 
 main() {
-	layer_begin "$@"
+	layer_begin "${0}" "$@"
 
 	echo curl -sSfL https://releases.dagger.io/dagger/install.sh \| sh
 	curl -sSfL https://releases.dagger.io/dagger/install.sh | sh || exit
 	printf "\n"
 
-	layer_end "$@"
+	layer_end "${0}" "$@"
 }
 
 main "${@}" |& tee /root/layer-00.10-base-daggerio.log
