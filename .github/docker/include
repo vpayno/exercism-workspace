@@ -14,15 +14,15 @@ layer_begin() {
 	cat /etc/ci-image-info
 	printf "\n"
 
-	echo apt update
+	echo Running: apt update
 	apt update || exit
 	printf "\n"
 
-	echo apt list --upgradable
+	echo Running: apt list --upgradable
 	apt list --upgradable || exit
 	printf "\n"
 
-	echo apt upgrade -y
+	echo Running: apt upgrade -y
 	apt upgrade -y || exit
 	printf "\n"
 
@@ -32,11 +32,19 @@ layer_begin() {
 layer_end() {
 	printf "=== %s:%s start ===\n\n" "${0}" "layer_end()"
 
-	echo apt-get clean
-	apt-get clean || exit
+	echo Running: apt autoremove -y
+	apt autoremove -y || exit
 	printf "\n"
 
-	echo rm -rf /var/lib/apt/lists/*
+	echo Running: apt autoclean -y
+	apt autoclean -y || exit
+	printf "\n"
+
+	echo Running: apt-get clean -y
+	apt-get clean -y || exit
+	printf "\n"
+
+	echo Running: rm -rf /var/lib/apt/lists/*
 	rm -rf /var/lib/apt/lists/* || exit
 	printf "\n"
 
