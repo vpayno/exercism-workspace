@@ -30,3 +30,4 @@
 - [simple-linked-list](./simple-linked-list/README.md)
 - [binary-search](./binary-search/README.md)
 - [grains](./grains/README.md)
+- [gigasecond](./gigasecond/README.md)

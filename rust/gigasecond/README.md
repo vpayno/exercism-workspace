@@ -74,3 +74,8 @@ If you're unsure what operations you can perform on `PrimitiveDateTime` take a l
 ### Based on
 
 Chapter 9 in Chris Pine's online Learn to Program tutorial. - http://pine.fm/LearnToProgram/?Chapter=09
+
+### My Solution
+
+- [my solution](./src/lib.rs)
+- [run-tests](./run-tests-rust.txt)

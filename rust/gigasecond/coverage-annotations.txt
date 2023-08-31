@@ -1,0 +1,35 @@
+    1|       |//! Exercise Url: <https://exercism.org/tracks/rust/exercises/gigasecond>
+    2|       |
+    3|       |use time::Duration;
+    4|       |
+    5|       |use time::PrimitiveDateTime as DateTime;
+    6|       |
+    7|       |const GIGASECOND: i64 = 1_000_000_000;
+    8|       |
+    9|       |/// Returns a DateTime one billion seconds after start.
+   10|       |///
+   11|       |/// Example
+   12|       |///
+   13|       |/// ```rust
+   14|       |/// use gigasecond::after;
+   15|       |/// use time::PrimitiveDateTime as DateTime;
+   16|       |/// use time::{Date,Time};
+   17|       |///
+   18|       |/// let want = DateTime::new(Date::from_calendar_date(2055, 5.try_into().unwrap(), 8).unwrap(), Time::from_hms(22, 43, 40).unwrap());
+   19|       |///
+   20|       |/// let dt = DateTime::new(Date::from_calendar_date(2023, 8.try_into().unwrap(), 30).unwrap(), Time::from_hms(20, 57, 00).unwrap());
+   21|       |/// let got = after(dt);
+   22|       |///
+   23|       |/// assert_eq!(got, want);
+   24|       |/// ```
+   25|     15|pub fn after(start: DateTime) -> DateTime {
+   26|     15|    start + Duration::seconds(GIGASECOND)
+   27|     15|}
+  ------------------
+  | gigasecond::after:
+  |   25|     15|pub fn after(start: DateTime) -> DateTime {
+  |   26|     15|    start + Duration::seconds(GIGASECOND)
+  |   27|     15|}
+  ------------------
+  | Unexecuted instantiation: gigasecond::after
+  ------------------
