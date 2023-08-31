@@ -1,4 +1,7 @@
 #!/bin/bash
+#
+# .github/docker/layer-15.00-exercism-rust.sh
+#
 
 set -o pipefail
 
@@ -8,49 +11,49 @@ set -o pipefail
 # shellcheck disable=SC1091
 . /.github/docker/include
 
-layer_begin "$@"
-
-declare -a PACKAGES
-PACKAGES=(
-	clang-16
-	clang-tidy-16
-	clang-tools-16
-	cmake
-	g++
-	gcovr
-	lcov
-	libllvm-16-ocaml-dev
-	libllvm16
-	libssl-dev
-	lld-16
-	llvm-16
-	llvm-16-dev
-	llvm-16-doc
-	llvm-16-examples
-	llvm-16-runtime
-)
-
-declare -a CRATES
-CRATES=(
-	cargo-audit
-	cargo-edit
-	cargo-fix
-	cargo-fuzz
-	cargo-kcov
-	cargo-llvm-cov
-	cargo-tarpaulin
-	grcov
-	zellij
-)
-
-declare -a COMPONENTS
-COMPONENTS=(
-	clippy
-	llvm-tools-x86_64-unknown-linux-gnu
-	rustfmt
-)
-
 main() {
+	layer_begin "$@"
+
+	declare -a PACKAGES
+	PACKAGES=(
+		clang-16
+		clang-tidy-16
+		clang-tools-16
+		cmake
+		g++
+		gcovr
+		lcov
+		libllvm-16-ocaml-dev
+		libllvm16
+		libssl-dev
+		lld-16
+		llvm-16
+		llvm-16-dev
+		llvm-16-doc
+		llvm-16-examples
+		llvm-16-runtime
+	)
+
+	declare -a CRATES
+	CRATES=(
+		cargo-audit
+		cargo-edit
+		cargo-fix
+		cargo-fuzz
+		cargo-kcov
+		cargo-llvm-cov
+		cargo-tarpaulin
+		grcov
+		zellij
+	)
+
+	declare -a COMPONENTS
+	COMPONENTS=(
+		clippy
+		llvm-tools-x86_64-unknown-linux-gnu
+		rustfmt
+	)
+
 	echo Running: apt install -y "${PACKAGES[@]}"
 	time apt install -y "${PACKAGES[@]}" || exit
 	printf "\n"

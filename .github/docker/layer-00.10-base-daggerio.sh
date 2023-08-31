@@ -1,4 +1,7 @@
 #!/bin/bash
+#
+# .github/docker/layer-00.10-base-daggerio.sh
+#
 
 set -o pipefail
 

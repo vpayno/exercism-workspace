@@ -1,4 +1,7 @@
 #!/bin/bash
+#
+# .github/docker/layer-02.20-exercism-nodejs.sh
+#
 
 set -o pipefail
 
@@ -6,21 +9,21 @@ set -o pipefail
 # shellcheck disable=SC1091
 . /.github/docker/include
 
-layer_begin "$@"
-
-declare -a PACKAGES
-PACKAGES=(
-	nodejs
-	npm
-)
-
-declare -a MODULES
-MODULES=(
-	json2yaml
-	yarn
-)
-
 main() {
+	layer_begin "$@"
+
+	declare -a PACKAGES
+	PACKAGES=(
+		nodejs
+		npm
+	)
+
+	declare -a MODULES
+	MODULES=(
+		json2yaml
+		yarn
+	)
+
 	apt update
 
 	echo apt install -y "${PACKAGES[@]}"
