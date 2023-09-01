@@ -34,5 +34,5 @@ This is an exercise to introduce users to using Exercism - http://en.wikipedia.o
 
 - [my solution](./hello-world.awk)
 - [awkunit tests](./hello-world_test.awk)
-- [test cases](./test-cases[.]awk)
+- [test cases](./test-cases.awk)
 - [run-tests](./run-tests-awk.txt)

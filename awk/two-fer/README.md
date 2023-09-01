@@ -45,4 +45,5 @@ https://github.com/exercism/problem-specifications/issues/757
 
 - [my solution](./two-fer.awk)
 - [awkunit tests](./two-fer_test.awk)
+- [test cases](./test-cases.awk)
 - [run-tests](./run-tests-awk.txt)
