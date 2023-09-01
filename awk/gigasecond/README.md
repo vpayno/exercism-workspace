@@ -54,3 +54,10 @@ For the datetime parsing and formatting functions, be sure to set the UTC flag.
 ### Based on
 
 Chapter 9 in Chris Pine's online Learn to Program tutorial. - https://pine.fm/LearnToProgram/?Chapter=09
+
+### My Solution
+
+- [my solution](./gigasecond.awk)
+- [awkunit tests](./gigasecond_test.awk)
+- [test cases](./test-cases.awk)
+- [run-tests](./run-tests-awk.txt)

@@ -1,0 +1,121 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+AWKLIBPATH=../.lib
+
+awkunit.awk
+awkunit.so
+
+gawk --lint --file=./awkunit.awk < /dev/null > /dev/null
+gawk: ./awkunit.awk:3: warning: `load' is a gawk extension
+gawk: warning: function `assertEquals' defined but never called directly
+gawk: warning: function `assert' defined but never called directly
+gawk: ./awkunit.awk:26: warning: reference to uninitialized variable `_assert_exit'
+
+real	0m0.003s
+user	0m0.002s
+sys	0m0.001s
+
+gawk --lint --file=./gigasecond.awk < /dev/null > /dev/null
+gawk: ./gigasecond.awk:21: warning: `mktime' is a gawk extension
+gawk: ./gigasecond.awk:25: warning: `strftime' is a gawk extension
+
+real	0m0.004s
+user	0m0.001s
+sys	0m0.003s
+
+gawk --lint --file=./test-cases.awk < /dev/null > /dev/null
+
+real	0m0.003s
+user	0m0.003s
+sys	0m0.000s
+
+exit 0
+
+===============================================================================
+
+Running: bats ./test-gigasecond.bats
+1..5
+ok 1 date only specificaion of time
+ok 2 second test for date only specification of time # skip
+ok 3 third test for date only specification of time # skip
+ok 4 full time specified # skip
+ok 5 full time with day roll-over # skip
+
+real	0m0.226s
+user	0m0.136s
+sys	0m0.108s
+
+exit 0
+
+===============================================================================
+
+AWKLIBPATH=../.lib
+
+awkunit.awk
+awkunit.so
+
+Running: gawk --file ./gigasecond_test.awk && printf \n%s\n Tests Passed! || printf \n%s\n Tests Failed!
+
+Running 2 tests...
+
+Test 1:
+     input -> [2011-04-25]
+    output -> [2043-01-01T01:46:40]
+    result -> passed
+
+Test 2:
+     input -> [2015-01-24T22:00:00]
+    output -> [2046-10-02T23:46:40]
+    result -> passed
+
+Running 5 test cases
+
+Test 3:
+     input -> [2011-04-25]
+    output -> [2043-01-01T01:46:40]
+    result -> passed
+
+Test 4:
+     input -> [2015-01-24T23:59:59]
+    output -> [2046-10-03T01:46:39]
+    result -> passed
+
+Test 5:
+     input -> [1977-06-13]
+    output -> [2009-02-19T01:46:40]
+    result -> passed
+
+Test 6:
+     input -> [2015-01-24T22:00:00]
+    output -> [2046-10-02T23:46:40]
+    result -> passed
+
+Test 7:
+     input -> [1959-07-19]
+    output -> [1991-03-27T01:46:40]
+    result -> passed
+
+
+7 out of 7 tests passed!
+
+real	0m0.003s
+user	0m0.002s
+sys	0m0.002s
+
+Tests Passed!
+
+exit 0
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.025s
+user	0m0.030s
+sys	0m0.010s
+
+===============================================================================
+
