@@ -5,15 +5,35 @@ if [[ ! -d .exercism ]]; then
 	exit 1
 fi
 
-declare package_name
+declare package_name_kebab
+declare package_name_snake
+declare package_name_camel
+declare package_name_pascal
 declare project_dir
 
 get_awk_package_name() {
-	awk '/^package / { print $NF }' ./*.awk | head -n 1
+	# these are kebab-case
+	basename "${PWD}"
 } # get_awk_package_name()
 
-package_name="$(get_awk_package_name)"
-project_dir="$(basename "${PWD}")"
+kebab_case_to_pascal_case() {
+	printf "%s" "${@}" | sed -r -e 's/(^|[-])(\w)/\U\2/g'
+} # kebab_case_to_pascal_case()
+
+kebab_case_to_camel_case() {
+	printf "%s" "${@}" | sed -r -e 's/([-])(\w)/\U\2/g'
+} # kebab_case_to_camel_case()
+
+kebab_case_to_snake_case() {
+	printf "%s" "${@}" | sed -r -e 's/(\w)([-])(\w)/\1_\3/g'
+} # kebab_case_to_snake_case()
+
+package_name_kebab="$(get_awk_package_name)"
+package_name_snake="$(kebab_case_to_snake_case "${package_name_kebab}")"
+package_name_camel="$(kebab_case_to_camel_case "${package_name_kebab}")"
+package_name_pascal="$(kebab_case_to_pascal_case "${package_name_kebab}")"
+
+project_dir="${package_name_kebab}"
 
 if ! grep -q ./"${project_dir}"/README.md ../README.md; then
 
@@ -23,7 +43,23 @@ EOF
 
 fi
 
-if ! grep -q ./"${package_name}"-doc.md ./README.md; then
+if [[ ! -f ${package_name_kebab}_test.awk ]]; then
+	cp -v ../.package-name_test.awk "${package_name_kebab}_test.awk" || exit
+	sed -r -i -e "s/package-name/${package_name_kebab}/g" "${package_name_kebab}_test.awk"
+	sed -r -i -e "s/package_name/${package_name_snake}/g" "${package_name_kebab}_test.awk"
+	sed -r -i -e "s/PackageName/${package_name_pascal}/g" "${package_name_kebab}_test.awk"
+	sed -r -i -e "s/packageName/${package_name_camel}/g" "${package_name_kebab}_test.awk"
+	git add "${package_name_kebab}_test.awk"
+	printf "\n"
+fi
+
+if [[ ! -f test-cases.awk ]]; then
+	cp -v ../.test-cases.awk test-cases.awk || exit
+	git add test-cases.awk
+	printf "\n"
+fi
+
+if ! grep -q ./"${package_name_kebab}".awk ./README.md; then
 
 	# Two empty spaces because the file is missing a trailing new line.
 	cat >>./README.md <<EOF
@@ -31,7 +67,7 @@ if ! grep -q ./"${package_name}"-doc.md ./README.md; then
 
 ### My Solution
 
-- [my solution]($(printf "%s\n" ./*[.]awk | grep -v -e "test-cases" -e "_test[.]awk"))
+- [my solution]($(printf "%s\n" ./*[.]awk | grep -v -e "test-cases" -e "_test[.]awk" -e awkunit.awk))
 - [awkunit tests]($(printf "%s\n" ./*_test[.]awk))
 - [test cases]($(printf "%s\n" ./test-cases[.]awk))
 EOF
@@ -43,7 +79,8 @@ EOF
 fi
 
 ln -svf ../.lib/awkunit.awk ./awkunit.awk
-
+git add ./awkunit.awk
 printf "\n"
+
 git add ../README.md ./README.md
 git diff --cached ../README.md ./README.md
