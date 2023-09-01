@@ -1,0 +1,182 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+AWKLIBPATH=../.lib
+
+awkunit.awk
+awkunit.so
+
+gawk --lint --file=./awkunit.awk < /dev/null > /dev/null
+gawk: ./awkunit.awk:3: warning: `load' is a gawk extension
+gawk: warning: function `assertEquals' defined but never called directly
+gawk: warning: function `assert' defined but never called directly
+gawk: ./awkunit.awk:26: warning: reference to uninitialized variable `_assert_exit'
+
+real	0m0.003s
+user	0m0.003s
+sys	0m0.000s
+
+gawk --lint --file=./darts.awk < /dev/null > /dev/null
+
+real	0m0.003s
+user	0m0.002s
+sys	0m0.001s
+
+gawk --lint --file=./test-cases.awk < /dev/null > /dev/null
+
+real	0m0.004s
+user	0m0.001s
+sys	0m0.003s
+
+exit 0
+
+===============================================================================
+
+Running: bats ./test-darts.bats
+1..13
+ok 1 Missed target
+ok 2 On the outer circle # skip
+ok 3 On the middle circle # skip
+ok 4 On the inner circle # skip
+ok 5 Exactly on centre # skip
+ok 6 Near the centre # skip
+ok 7 Just within the inner circle # skip
+ok 8 Just outside the inner circle # skip
+ok 9 Just within the middle circle # skip
+ok 10 Just outside the middle circle # skip
+ok 11 Just within the outer circle # skip
+ok 12 Just outside the outer circle # skip
+ok 13 Asymmetric position between the inner and middle circles # skip
+
+real	0m0.448s
+user	0m0.270s
+sys	0m0.202s
+
+exit 0
+
+===============================================================================
+
+AWKLIBPATH=../.lib
+
+awkunit.awk
+awkunit.so
+
+Running: gawk --file ./darts_test.awk && printf \n%s\n Tests Passed! || printf \n%s\n Tests Failed!
+
+Running 5 tests...
+
+Test 1:
+     input -> [0 0]
+    output -> [10]
+    result -> passed
+
+Test 2:
+     input -> [2.5 2.5]
+    output -> [5]
+    result -> passed
+
+Test 3:
+     input -> [6.5 6.5]
+    output -> [1]
+    result -> passed
+
+Test 4:
+     input -> [9 9]
+    output -> [0]
+    result -> passed
+
+Test 5:
+     input -> [9 9]
+    output -> [6.04152]
+    result -> passed
+
+Running 13 test cases
+
+Test 6:
+     input -> [-3.5 3.5]
+    output -> [5]
+    result -> passed
+
+Test 7:
+     input -> [-9 9]
+    output -> [0]
+    result -> passed
+
+Test 8:
+     input -> [0.8 -0.8]
+    output -> [5]
+    result -> passed
+
+Test 9:
+     input -> [-3.6 -3.6]
+    output -> [1]
+    result -> passed
+
+Test 10:
+     input -> [0 -1]
+    output -> [10]
+    result -> passed
+
+Test 11:
+     input -> [7.1 -7.1]
+    output -> [0]
+    result -> passed
+
+Test 12:
+     input -> [0 0]
+    output -> [10]
+    result -> passed
+
+Test 13:
+     input -> [0 10]
+    output -> [1]
+    result -> passed
+
+Test 14:
+     input -> [0.7 0.7]
+    output -> [10]
+    result -> passed
+
+Test 15:
+     input -> [0.5 -4]
+    output -> [5]
+    result -> passed
+
+Test 16:
+     input -> [-0.1 -0.1]
+    output -> [10]
+    result -> passed
+
+Test 17:
+     input -> [-5 0]
+    output -> [5]
+    result -> passed
+
+Test 18:
+     input -> [-7.0 7.0]
+    output -> [1]
+    result -> passed
+
+
+18 out of 18 tests passed!
+
+real	0m0.008s
+user	0m0.002s
+sys	0m0.006s
+
+Tests Passed!
+
+exit 0
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.039s
+user	0m0.045s
+sys	0m0.014s
+
+===============================================================================
+

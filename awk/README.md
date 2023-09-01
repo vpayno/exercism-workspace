@@ -18,3 +18,4 @@
 - [two-fer](./two-fer/README.md)
 - [reverse-string](./reverse-string/README.md)
 - [gigasecond](./gigasecond/README.md)
+- [darts](./darts/README.md)

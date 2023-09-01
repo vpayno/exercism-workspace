@@ -62,28 +62,28 @@ load bats-extra
     run gawk -f darts.awk <<< '-3.5 3.5'
     assert_success
     assert_output "5"
-}   
+}
 
 @test "Just outside the middle circle" {
     [[ $BATS_RUN_SKIPPED == "true" ]] || skip
     run gawk -f darts.awk <<< '-3.6 -3.6'
     assert_success
     assert_output "1"
-}     
+}
 
 @test "Just within the outer circle" {
     [[ $BATS_RUN_SKIPPED == "true" ]] || skip
     run gawk -f darts.awk <<< '-7.0 7.0'
     assert_success
     assert_output "1"
-}     
+}
 
 @test "Just outside the outer circle" {
     [[ $BATS_RUN_SKIPPED == "true" ]] || skip
     run gawk -f darts.awk <<< '7.1 -7.1'
     assert_success
     assert_output "0"
-}    
+}
 
 @test "Asymmetric position between the inner and middle circles" {
     [[ $BATS_RUN_SKIPPED == "true" ]] || skip

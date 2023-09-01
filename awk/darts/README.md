@@ -36,3 +36,10 @@ Write a function that given a point in the target (defined by its [Cartesian coo
 ### Based on
 
 Inspired by an exercise created by a professor Della Paolera in Argentina
+
+### My Solution
+
+- [my solution](./darts.awk)
+- [awkunit tests](./darts_test.awk)
+- [test cases](./test-cases.awk)
+- [run-tests](./run-tests-awk.txt)
