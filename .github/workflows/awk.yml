@@ -236,7 +236,7 @@ jobs:
             printf "\`\`\`text\n"
             ../../.github/citools/awk/awk-lint
             printf "\`\`\`\n"
-          } | tee -a "${GITHUB_STEP_SUMMARY}"
+          } |& tee -a "${GITHUB_STEP_SUMMARY}"
       - name: Testing with Bats tests [${{ matrix.exercise }}]
         id: awk-bats-run
         run: |-
@@ -249,7 +249,7 @@ jobs:
             printf "\`\`\`text\n"
             ../../.github/citools/awk/awk-bats
             printf "\`\`\`\n"
-          } | tee -a "${GITHUB_STEP_SUMMARY}"
+          } |& tee -a "${GITHUB_STEP_SUMMARY}"
       - name: Testing with AwkUnit [${{ matrix.exercise }}]
         id: awk-test-run
         run: |-
@@ -262,4 +262,4 @@ jobs:
             printf "\`\`\`text\n"
             ../../.github/citools/awk/awk-test
             printf "\`\`\`\n"
-          } | tee -a "${GITHUB_STEP_SUMMARY}"
+          } |& tee -a "${GITHUB_STEP_SUMMARY}"
