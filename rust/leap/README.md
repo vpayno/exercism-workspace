@@ -70,3 +70,8 @@ You may use the [`arithmetic remainder` operator](https://doc.rust-lang.org/book
 ### Based on
 
 JavaRanch Cattle Drive, exercise 3 - http://www.javaranch.com/leap.jsp
+
+### My Solution
+
+- [my solution](./src/lib.rs)
+- [run-tests](./run-tests-rust.txt)

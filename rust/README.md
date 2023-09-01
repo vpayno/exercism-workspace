@@ -31,3 +31,4 @@
 - [binary-search](./binary-search/README.md)
 - [grains](./grains/README.md)
 - [gigasecond](./gigasecond/README.md)
+- [leap](./leap/README.md)
