@@ -1,4 +1,5 @@
-#!/usr/bin/awk -f
+#!/usr/bin/gawk -f
+
 @load "awkunit"
 
 function assert(condition, string)

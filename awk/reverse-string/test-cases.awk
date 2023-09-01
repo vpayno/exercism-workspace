@@ -1,3 +1,4 @@
+#!/usr/bin/gawk --lint --file
 # test-cases.awk
 
 #   key: input

@@ -1,4 +1,4 @@
-#!/usr/bin/awk --lint --file
+#!/usr/bin/gawk --lint --file
 
 @include "awkunit"
 @include "test-cases"

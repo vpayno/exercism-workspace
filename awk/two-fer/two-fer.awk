@@ -1,4 +1,4 @@
-#!/usr/bin/env awk --lint
+#!/usr/bin/env gawk --lint --file
 
 function twoFer(name) {
     if (length(name) == 0) {

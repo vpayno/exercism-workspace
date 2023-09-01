@@ -1,9 +1,9 @@
-#!/usr/bin/awk --lint --file
+#!/usr/bin/gawk --lint --file
 
 function helloWorld() {
-	return "Hello, World!"
+    return "Hello, World!"
 }
 
 BEGIN {
-	print helloWorld()
+    print helloWorld()
 }
