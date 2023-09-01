@@ -9,28 +9,28 @@ awkunit.awk
 awkunit.so
 
 gawk --lint --file=./awkunit.awk < /dev/null > /dev/null
-gawk: ./awkunit.awk:2: warning: `load' is a gawk extension
+gawk: ./awkunit.awk:3: warning: `load' is a gawk extension
 gawk: warning: function `assertEquals' defined but never called directly
 gawk: warning: function `assert' defined but never called directly
-gawk: ./awkunit.awk:25: warning: reference to uninitialized variable `_assert_exit'
-
-real	0m0.003s
-user	0m0.000s
-sys	0m0.003s
-
-gawk --lint --file=./test-cases.awk < /dev/null > /dev/null
-gawk: ./test-cases.awk:7: warning: subscript of array `cases' is null string
+gawk: ./awkunit.awk:26: warning: reference to uninitialized variable `_assert_exit'
 
 real	0m0.003s
 user	0m0.001s
-sys	0m0.002s
+sys	0m0.001s
+
+gawk --lint --file=./test-cases.awk < /dev/null > /dev/null
+gawk: ./test-cases.awk:8: warning: subscript of array `cases' is null string
+
+real	0m0.002s
+user	0m0.001s
+sys	0m0.001s
 
 gawk --lint --file=./two-fer.awk < /dev/null > /dev/null
 gawk: ./two-fer.awk:16: warning: reference to uninitialized field `$0'
 
-real	0m0.003s
-user	0m0.000s
-sys	0m0.003s
+real	0m0.001s
+user	0m0.001s
+sys	0m0.000s
 
 exit 0
 
@@ -43,9 +43,9 @@ ok 2 empty file given # skip
 ok 3 a name given # skip
 ok 4 name with a space # skip
 
-real	0m0.169s
-user	0m0.108s
-sys	0m0.079s
+real	0m0.200s
+user	0m0.111s
+sys	0m0.104s
 
 exit 0
 
@@ -82,8 +82,8 @@ Test 6:
 
 
 real	0m0.008s
-user	0m0.003s
-sys	0m0.005s
+user	0m0.001s
+sys	0m0.008s
 
 Tests Passed!
 
@@ -93,9 +93,9 @@ exit 0
 
 Running: misspell .
 
-real	0m0.051s
-user	0m0.038s
-sys	0m0.021s
+real	0m0.037s
+user	0m0.042s
+sys	0m0.019s
 
 ===============================================================================
 
