@@ -19,10 +19,12 @@ Exercism Workspace
 |   June        |  Summer-of-Sexps   |  Common-Lisp  (5/5)  |
 |   July        |  Jurassic          |  C            (5/5),  C++   (5/5),  Fortran  (0/5)  |
 |   August      |  Apps              |  Dart         (5/5),  Java  (0/5),  Kotlin   (0/5)  |
-|   September   |  Slimline          |  |
+|   September   |  Slimline          |  Awk          (0/5),  Bash\*  (5/5),  jq       (0/5),  Perl  (0/5)  |
 |   October     |  Object-Oriented   |  |
 |   November    |  Nibbly            |  |
 |   December    |  Diversions        |  |
+
+\* not completed in 2023
 
 ### 12in23 Featured Languages and Challenge Exercises
 
@@ -60,6 +62,11 @@ Exercism Workspace
 
 - Languages: ABAP, CoffeeScript, Dart, Delphi, Elm, Java, JavaScript, Kotlin, Objective-C, PHP, PureScript, ReasonML, Swift and TypeScript
 - Exercises: Anagram, Phone Number, Triangle, RNA Transcription, Scrabble Score
+
+#### Slimline September
+
+- Languages: 8th, Awk, Bash, jq, Perl, Raku
+- Exercises: Atbash Cipher, Darts, Gigasecond, Luhn, Series
 
 
 ### 12in23 Badges
