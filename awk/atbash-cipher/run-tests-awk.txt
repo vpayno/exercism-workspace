@@ -25,13 +25,10 @@ awkunit.so
 
 gawk --lint --file=./atbash-cipher.awk < /dev/null > /dev/null
 gawk: ./atbash-cipher.awk:3: warning: `load' is a gawk extension
-gawk: ./atbash-cipher.awk:105: warning: indirect function calls are a gawk extension
-gawk: warning: function `decode' defined but never called directly
-gawk: warning: function `encode' defined but never called directly
 
 real	0m0.005s
 user	0m0.002s
-sys	0m0.002s
+sys	0m0.003s
 
 gawk --lint --file=./awkunit.awk < /dev/null > /dev/null
 gawk: ./awkunit.awk:3: warning: `load' is a gawk extension
@@ -39,17 +36,17 @@ gawk: warning: function `assertEquals' defined but never called directly
 gawk: warning: function `assert' defined but never called directly
 gawk: ./awkunit.awk:26: warning: reference to uninitialized variable `_assert_exit'
 
-real	0m0.004s
-user	0m0.000s
-sys	0m0.003s
+real	0m0.006s
+user	0m0.003s
+sys	0m0.002s
 
 gawk --lint --file=./test-cases.awk < /dev/null > /dev/null
 gawk: ./test-cases.awk:8: warning: subscript of array `encode_cases' is null string
 gawk: ./test-cases.awk:22: warning: subscript of array `decode_cases' is null string
 
 real	0m0.004s
-user	0m0.003s
-sys	0m0.000s
+user	0m0.002s
+sys	0m0.002s
 
 exit 0
 
@@ -72,9 +69,9 @@ ok 12 decode all the letters
 ok 13 decode with too many spaces
 ok 14 decode with no spaces
 
-real	0m0.526s
-user	0m0.350s
-sys	0m0.191s
+real	0m0.479s
+user	0m0.319s
+sys	0m0.187s
 
 exit 0
 
@@ -241,9 +238,9 @@ Test 26:
 
 26 out of 26 tests passed!
 
-real	0m0.006s
-user	0m0.002s
-sys	0m0.004s
+real	0m0.009s
+user	0m0.003s
+sys	0m0.006s
 
 Tests Passed!
 
@@ -253,9 +250,9 @@ exit 0
 
 Running: misspell .
 
-real	0m0.029s
-user	0m0.025s
-sys	0m0.021s
+real	0m0.033s
+user	0m0.041s
+sys	0m0.009s
 
 ===============================================================================
 

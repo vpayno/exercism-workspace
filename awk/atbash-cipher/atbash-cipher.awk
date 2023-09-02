@@ -17,7 +17,7 @@ function shift_letter(original) {
     return shifted
 }
 
-function encode(input) {
+function atbash_cipher(input) {
     cipher_text = ""
 
     if (length(input) == 0) {
@@ -42,10 +42,12 @@ function encode(input) {
         shifted_letter = shift_letter(letter)
         #print "shifted letter: [" shifted_letter "]"
 
-        if ((i - 1) % 5 == 0) {
-            spacer = " "
-        } else {
-            spacer = ""
+        if (direction == "encode") {
+            if ((i - 1) % 5 == 0) {
+                spacer = " "
+            } else {
+                spacer = ""
+            }
         }
 
         if (length(cipher_text) == 0) {
@@ -58,38 +60,6 @@ function encode(input) {
     return cipher_text
 }
 
-function decode(input) {
-    plain_text = ""
-
-    if (length(input) == 0) {
-        return plain_text
-    }
-
-    filtered = input
-    _ = gsub(/[^a-zA-Z0-9]/, "", filtered)
-
-    letter_count = split(filtered, letters, "")
-
-    if (letter_count == 0) {
-        # treating this as a different issue from just getting an empty string
-        return "error: cipher-text can't be empty"
-    }
-
-    for (i = 1; i <= length(filtered); i++) {
-        letter = tolower(letters[i])
-        #print "plain   letter: [" letter "]"
-        shifted_letter = shift_letter(letter)
-        #print "shifted letter: [" shifted_letter "]"
-
-        if (length(plain_text) == 0) {
-            plain_text = shifted_letter
-        } else {
-            plain_text = plain_text shifted_letter
-        }
-    }
-    return plain_text
-}
-
 BEGIN {
 }
 
@@ -100,9 +70,7 @@ BEGIN {
         exit 1
     }
 
-    # https://www.gnu.org/software/gawk/manual/gawk.html#Indirect-Calls
-    # @var() -> indirect function call
-    print @direction($0)
+    print atbash_cipher($0)
 }
 
 END {

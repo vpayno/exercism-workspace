@@ -46,8 +46,10 @@ function testAtbashCipher_encode() {
 
     # _ = split(input, a, " ")
 
+    direction = "encode"
+
     _debugTestPre()
-    got = encode(input)
+    got = atbash_cipher(input)
 
     assertEquals(got, want)
     _debugTestPost()
@@ -59,8 +61,10 @@ function testAtbashCipher_decode() {
 
     # _ = split(input, a, " ")
 
+    direction = "decode"
+
     _debugTestPre()
-    got = decode(input)
+    got = atbash_cipher(input)
 
     assertEquals(got, want)
     _debugTestPost()
@@ -70,6 +74,8 @@ function casesAtbashCipher_encode() {
     printf "Running %d test cases\n\n", length(encode_cases)
     caseNum = 0
 
+    direction = "encode"
+
     # Associative arrays don't preserve insert order.
     for (key in encode_cases) {
         input = key
@@ -78,7 +84,7 @@ function casesAtbashCipher_encode() {
         # _ = split(input, a, " ")
 
         _debugTestPre()
-        got = encode(input)
+        got = atbash_cipher(input)
 
         assertEquals(got, want)
         _debugTestPost()
@@ -89,6 +95,8 @@ function casesAtbashCipher_decode() {
     printf "Running %d test cases\n\n", length(decode_cases)
     caseNum = 0
 
+    direction = "decode"
+
     # Associative arrays don't preserve insert order.
     for (key in decode_cases) {
         input = key
@@ -97,7 +105,7 @@ function casesAtbashCipher_decode() {
         # _ = split(input, a, " ")
 
         _debugTestPre()
-        got = decode(input)
+        got = atbash_cipher(input)
 
         assertEquals(got, want)
         _debugTestPost()
