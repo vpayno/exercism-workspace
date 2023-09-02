@@ -34,26 +34,20 @@ function atbash_cipher(input) {
         return "error: plain-text can't be empty"
     }
 
-    spacer = "" # is this needed here?
-
     for (i = 1; i <= length(filtered); i++) {
         letter = tolower(letters[i])
         #print "plain   letter: [" letter "]"
         shifted_letter = shift_letter(letter)
         #print "shifted letter: [" shifted_letter "]"
 
-        if (direction == "encode") {
-            if ((i - 1) % 5 == 0) {
-                spacer = " "
-            } else {
-                spacer = ""
-            }
-        }
-
         if (length(cipher_text) == 0) {
             cipher_text = shifted_letter
         } else {
-            cipher_text = cipher_text spacer shifted_letter
+            cipher_text = cipher_text shifted_letter
+        }
+
+        if (direction == "encode") {
+            cipher_text = gensub(/[a-z0-9]{5}\B/, "& ", "g", cipher_text)
         }
     }
 
