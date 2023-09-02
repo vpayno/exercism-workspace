@@ -15,20 +15,20 @@ gawk: warning: function `assert' defined but never called directly
 gawk: ./awkunit.awk:26: warning: reference to uninitialized variable `_assert_exit'
 
 real	0m0.003s
-user	0m0.000s
-sys	0m0.003s
+user	0m0.003s
+sys	0m0.000s
 
 gawk --lint --file=./luhn.awk < /dev/null > /dev/null
 
-real	0m0.004s
-user	0m0.002s
+real	0m0.002s
+user	0m0.000s
 sys	0m0.002s
 
 gawk --lint --file=./test-cases.awk < /dev/null > /dev/null
 
-real	0m0.003s
-user	0m0.002s
-sys	0m0.001s
+real	0m0.002s
+user	0m0.000s
+sys	0m0.002s
 
 exit 0
 
@@ -59,9 +59,9 @@ ok 20 using ascii value for non-doubled non-digit isn't allowed
 ok 21 using ascii value for doubled non-digit isn't allowed
 ok 22 non-numeric, non-space char in the middle with a sum that's divisible by 10 isn't allowed
 
-real	0m0.808s
-user	0m0.540s
-sys	0m0.297s
+real	0m0.810s
+user	0m0.563s
+sys	0m0.273s
 
 exit 0
 
@@ -101,7 +101,7 @@ Test 5:
     output -> [false]
     result -> passed
 
-Running 22 test cases
+Running 23 test cases
 
 Test 6:
      input -> [1 2345 6789 1234 5678 9012]
@@ -144,81 +144,86 @@ Test 13:
     result -> passed
 
 Test 14:
-     input -> [055 444 286]
-    output -> [false]
-    result -> passed
-
-Test 15:
-     input -> [091]
-    output -> [true]
-    result -> passed
-
-Test 16:
-     input -> [234 567 891 234]
-    output -> [true]
-    result -> passed
-
-Test 17:
-     input -> [055-444-285]
-    output -> [false]
-    result -> passed
-
-Test 18:
-     input -> [:9]
-    output -> [false]
-    result -> passed
-
-Test 19:
-     input -> [055b 444 285]
-    output -> [false]
-    result -> passed
-
-Test 20:
-     input -> [8273 1232 7352 0569]
-    output -> [false]
-    result -> passed
-
-Test 21:
-     input -> [9999999999 9999999999 9999999999 9999999999]
-    output -> [true]
-    result -> passed
-
-Test 22:
-     input -> [059]
-    output -> [true]
-    result -> passed
-
-Test 23:
-     input -> [055a 444 285]
-    output -> [false]
-    result -> passed
-
-Test 24:
-     input -> [0]
-    output -> [false]
-    result -> passed
-
-Test 25:
-     input -> [1]
-    output -> [false]
-    result -> passed
-
-Test 26:
      input -> [59]
     output -> [true]
     result -> passed
 
-Test 27:
+Test 15:
+     input -> [055 444 286]
+    output -> [false]
+    result -> passed
+
+Test 16:
+     input -> [4539 3195 0343 6467]
+    output -> [true]
+    result -> passed
+
+Test 17:
+     input -> [091]
+    output -> [true]
+    result -> passed
+
+Test 18:
+     input -> [234 567 891 234]
+    output -> [true]
+    result -> passed
+
+Test 19:
+     input -> [0]
+    output -> [false]
+    result -> passed
+
+Test 20:
+     input -> [055-444-285]
+    output -> [false]
+    result -> passed
+
+Test 21:
+     input -> [1]
+    output -> [false]
+    result -> passed
+
+Test 22:
+     input -> [:9]
+    output -> [false]
+    result -> passed
+
+Test 23:
+     input -> [055b 444 285]
+    output -> [false]
+    result -> passed
+
+Test 24:
+     input -> [8273 1232 7352 0569]
+    output -> [false]
+    result -> passed
+
+Test 25:
      input -> [109]
     output -> [true]
     result -> passed
 
+Test 26:
+     input -> [9999999999 9999999999 9999999999 9999999999]
+    output -> [true]
+    result -> passed
 
-27 out of 27 tests passed!
+Test 27:
+     input -> [059]
+    output -> [true]
+    result -> passed
 
-real	0m0.006s
-user	0m0.003s
-sys	0m0.004s
+Test 28:
+     input -> [055a 444 285]
+    output -> [false]
+    result -> passed
+
+
+28 out of 28 tests passed!
+
+real	0m0.004s
+user	0m0.002s
+sys	0m0.003s
 
 Tests Passed!
 
