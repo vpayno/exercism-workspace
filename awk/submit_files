@@ -1,0 +1,19 @@
+#!/bin/bash
+
+if [[ ! -d .exercism ]]; then
+	printf "ERROR: Run from inside a project directory.\n\n"
+	exit 1
+fi
+
+declare package_name_kebab
+
+get_awk_package_name() {
+	# these are kebab-case
+	basename "${PWD}"
+} # get_awk_package_name()
+
+package_name_kebab="$(get_awk_package_name)"
+
+echo Running: exercism submit "${package_name_kebab}.awk" "${package_name_kebab}_test.awk" test-cases.awk run-tests-awk.txt
+time exercism submit "${package_name_kebab}.awk" "${package_name_kebab}_test.awk" test-cases.awk run-tests-awk.txt
+printf "\n"
