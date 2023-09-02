@@ -6,6 +6,9 @@
 
 BEGIN {
     # [span_len : number_sequence] = span_sequence
+    cases["3:49142"]="491 914 142"
+    cases["4:49142"]="4914 9142"
+
     cases["1:1"]="1"
     cases["1:12"]="1 2"
     cases["2:35"]="35"

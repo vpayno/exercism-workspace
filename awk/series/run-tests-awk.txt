@@ -14,15 +14,15 @@ gawk: warning: function `assertEquals' defined but never called directly
 gawk: warning: function `assert' defined but never called directly
 gawk: ./awkunit.awk:26: warning: reference to uninitialized variable `_assert_exit'
 
-real	0m0.005s
-user	0m0.003s
-sys	0m0.002s
+real	0m0.004s
+user	0m0.000s
+sys	0m0.004s
 
 gawk --lint --file=./series.awk < /dev/null > /dev/null
 
-real	0m0.005s
+real	0m0.004s
 user	0m0.001s
-sys	0m0.004s
+sys	0m0.003s
 
 gawk --lint --file=./test-cases.awk < /dev/null > /dev/null
 
@@ -48,9 +48,9 @@ ok 9 slice length cannot be zero
 ok 10 slice length cannot be negative
 ok 11 empty series is invalid
 
-real	0m0.478s
-user	0m0.313s
-sys	0m0.192s
+real	0m0.463s
+user	0m0.310s
+sys	0m0.172s
 
 exit 0
 
@@ -70,7 +70,7 @@ Test 1:
     output -> [12 23 34 45]
     result -> passed
 
-Running 11 test cases
+Running 13 test cases
 
 Test 2:
      input -> [1:1]
@@ -108,31 +108,41 @@ Test 8:
     result -> passed
 
 Test 9:
+     input -> [3:49142]
+    output -> [491 914 142]
+    result -> passed
+
+Test 10:
+     input -> [4:49142]
+    output -> [4914 9142]
+    result -> passed
+
+Test 11:
      input -> [42:12345]
     output -> [error: invalid length]
     result -> passed
 
-Test 10:
+Test 12:
      input -> [2:9142]
     output -> [91 14 42]
     result -> passed
 
-Test 11:
+Test 13:
      input -> [2:35]
     output -> [35]
     result -> passed
 
-Test 12:
+Test 14:
      input -> [6:12345]
     output -> [error: invalid length]
     result -> passed
 
 
-12 out of 12 tests passed!
+14 out of 14 tests passed!
 
-real	0m0.004s
-user	0m0.000s
-sys	0m0.005s
+real	0m0.008s
+user	0m0.003s
+sys	0m0.006s
 
 Tests Passed!
 
@@ -142,9 +152,9 @@ exit 0
 
 Running: misspell .
 
-real	0m0.025s
-user	0m0.029s
-sys	0m0.013s
+real	0m0.031s
+user	0m0.027s
+sys	0m0.019s
 
 ===============================================================================
 
