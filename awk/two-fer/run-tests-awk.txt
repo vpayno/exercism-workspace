@@ -14,9 +14,9 @@ gawk: warning: function `assertEquals' defined but never called directly
 gawk: warning: function `assert' defined but never called directly
 gawk: ./awkunit.awk:26: warning: reference to uninitialized variable `_assert_exit'
 
-real	0m0.003s
-user	0m0.001s
-sys	0m0.001s
+real	0m0.002s
+user	0m0.002s
+sys	0m0.000s
 
 gawk --lint --file=./test-cases.awk < /dev/null > /dev/null
 gawk: ./test-cases.awk:8: warning: subscript of array `cases' is null string
@@ -28,8 +28,8 @@ sys	0m0.001s
 gawk --lint --file=./two-fer.awk < /dev/null > /dev/null
 gawk: ./two-fer.awk:16: warning: reference to uninitialized field `$0'
 
-real	0m0.001s
-user	0m0.001s
+real	0m0.002s
+user	0m0.002s
 sys	0m0.000s
 
 exit 0
@@ -39,13 +39,13 @@ exit 0
 Running: bats ./test-two-fer.bats
 1..4
 ok 1 no file given
-ok 2 empty file given # skip
-ok 3 a name given # skip
-ok 4 name with a space # skip
+ok 2 empty file given
+ok 3 a name given
+ok 4 name with a space
 
-real	0m0.200s
-user	0m0.111s
-sys	0m0.104s
+real	0m0.209s
+user	0m0.129s
+sys	0m0.102s
 
 exit 0
 
@@ -81,9 +81,9 @@ Test 6:
     result -> passed
 
 
-real	0m0.008s
-user	0m0.001s
-sys	0m0.008s
+real	0m0.006s
+user	0m0.004s
+sys	0m0.002s
 
 Tests Passed!
 
@@ -93,8 +93,8 @@ exit 0
 
 Running: misspell .
 
-real	0m0.037s
-user	0m0.042s
+real	0m0.031s
+user	0m0.024s
 sys	0m0.019s
 
 ===============================================================================
