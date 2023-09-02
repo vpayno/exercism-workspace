@@ -77,3 +77,10 @@ Sum the digits
 ### Based on
 
 The Luhn Algorithm on Wikipedia - https://en.wikipedia.org/wiki/Luhn_algorithm
+
+### My Solution
+
+- [my solution](./luhn.awk)
+- [awkunit tests](./luhn_test.awk)
+- [test cases](./test-cases.awk)
+- [run-tests](./run-tests-awk.txt)
