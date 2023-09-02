@@ -14,9 +14,9 @@ gawk: warning: function `assertEquals' defined but never called directly
 gawk: warning: function `assert' defined but never called directly
 gawk: ./awkunit.awk:26: warning: reference to uninitialized variable `_assert_exit'
 
-real	0m0.004s
+real	0m0.003s
 user	0m0.001s
-sys	0m0.003s
+sys	0m0.002s
 
 gawk --lint --file=./reverse-string.awk < /dev/null > /dev/null
 
@@ -27,8 +27,8 @@ sys	0m0.002s
 gawk --lint --file=./test-cases.awk < /dev/null > /dev/null
 gawk: ./test-cases.awk:8: warning: subscript of array `cases' is null string
 
-real	0m0.003s
-user	0m0.001s
+real	0m0.002s
+user	0m0.002s
 sys	0m0.001s
 
 exit 0
@@ -44,9 +44,9 @@ ok 4 a sentence with punctuation
 ok 5 a palindrome
 ok 6 an even-sized word
 
-real	0m0.269s
-user	0m0.177s
-sys	0m0.112s
+real	0m0.223s
+user	0m0.146s
+sys	0m0.091s
 
 exit 0
 
@@ -76,44 +76,69 @@ Test 3:
     output -> [98765 43210]
     result -> passed
 
-Running 6 test cases
+Running 11 test cases
 
 Test 4:
+     input -> [abcdefghijklmnopqrstuvwxyz]
+    output -> [zyxwvutsrqponmlkjihgfedcba]
+    result -> passed
+
+Test 5:
      input -> []
     output -> []
     result -> passed
 
-Test 5:
+Test 6:
+     input -> [9876543210]
+    output -> [0123456789]
+    result -> passed
+
+Test 7:
      input -> [robot]
     output -> [tobor]
     result -> passed
 
-Test 6:
+Test 8:
+     input -> [0123456789]
+    output -> [9876543210]
+    result -> passed
+
+Test 9:
+     input -> [cool]
+    output -> [looc]
+    result -> passed
+
+Test 10:
      input -> [I'm hungry!]
     output -> [!yrgnuh m'I]
     result -> passed
 
-Test 7:
+Test 11:
      input -> [racecar]
     output -> [racecar]
     result -> passed
 
-Test 8:
+Test 12:
      input -> [drawer]
     output -> [reward]
     result -> passed
 
-Test 9:
+Test 13:
+     input -> [zyxwvutsrqponmlkjihgfedcba]
+    output -> [abcdefghijklmnopqrstuvwxyz]
+    result -> passed
+
+Test 14:
      input -> [Ramen]
     output -> [nemaR]
     result -> passed
 
 
-9 out of 9 tests passed!
+14 out of 14 tests passed!
 
-real	0m0.004s
-user	0m0.004s
-sys	0m0.001s
+real	0m0.005s
+user	0m0.002s
+sys	0m0.003s
 
 Tests Passed!
 
@@ -123,9 +148,9 @@ exit 0
 
 Running: misspell .
 
-real	0m0.029s
-user	0m0.033s
-sys	0m0.011s
+real	0m0.030s
+user	0m0.036s
+sys	0m0.012s
 
 ===============================================================================
 
