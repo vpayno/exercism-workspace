@@ -2,11 +2,15 @@
 
 declare -i retval=0
 
-export AWKLIBPATH="../.lib"
+AWKLIBPATH="$(gawk 'BEGIN {print ENVIRON["AWKLIBPATH"]}'):../.lib"
+export AWKLIBPATH
 
 printf "AWKLIBPATH=%s\n\n" "${AWKLIBPATH}"
-ls "${AWKLIBPATH}"/
-printf "\n"
+for d in ${AWKLIBPATH//:/ }; do
+	printf "%s\n" "${d}"
+	ls "${d}"
+	printf "\n"
+done
 
 for tf in ./*.awk; do
 	if [[ ${tf} =~ _test.awk ]]; then

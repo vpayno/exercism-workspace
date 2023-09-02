@@ -14,11 +14,15 @@ declare -i retval=0
 # awkunit.so file needs to be in the lib directory
 # awkunit.awk file needs to be in the current directory
 
-export AWKLIBPATH="../.lib"
+AWKLIBPATH="$(gawk 'BEGIN {print ENVIRON["AWKLIBPATH"]}'):../.lib"
+export AWKLIBPATH
 
 printf "AWKLIBPATH=%s\n\n" "${AWKLIBPATH}"
-ls "${AWKLIBPATH}"/
-printf "\n"
+for d in ${AWKLIBPATH//:/ }; do
+	printf "%s\n" "${d}"
+	ls "${d}"
+	printf "\n"
+done
 
 # shellcheck disable=SC2028
 echo Running: gawk --file ./*_test.awk "&&" printf "\n%s\n" "Tests Passed!" "||" printf "\n%s\n" "Tests Failed!"
