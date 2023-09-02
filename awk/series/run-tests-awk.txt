@@ -1,0 +1,150 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+AWKLIBPATH=../.lib
+
+awkunit.awk
+awkunit.so
+
+gawk --lint --file=./awkunit.awk < /dev/null > /dev/null
+gawk: ./awkunit.awk:3: warning: `load' is a gawk extension
+gawk: warning: function `assertEquals' defined but never called directly
+gawk: warning: function `assert' defined but never called directly
+gawk: ./awkunit.awk:26: warning: reference to uninitialized variable `_assert_exit'
+
+real	0m0.005s
+user	0m0.003s
+sys	0m0.002s
+
+gawk --lint --file=./series.awk < /dev/null > /dev/null
+
+real	0m0.005s
+user	0m0.001s
+sys	0m0.004s
+
+gawk --lint --file=./test-cases.awk < /dev/null > /dev/null
+
+real	0m0.004s
+user	0m0.001s
+sys	0m0.003s
+
+exit 0
+
+===============================================================================
+
+Running: bats ./test-series.bats
+1..11
+ok 1 slices of one from one
+ok 2 slices of one from two
+ok 3 slices of two
+ok 4 slices of two overlap
+ok 5 slices can include duplicates
+ok 6 slices of a long series
+ok 7 slice length is too large
+ok 8 slice length is way too large
+ok 9 slice length cannot be zero
+ok 10 slice length cannot be negative
+ok 11 empty series is invalid
+
+real	0m0.478s
+user	0m0.313s
+sys	0m0.192s
+
+exit 0
+
+===============================================================================
+
+AWKLIBPATH=../.lib
+
+awkunit.awk
+awkunit.so
+
+Running: gawk --file ./series_test.awk && printf \n%s\n Tests Passed! || printf \n%s\n Tests Failed!
+
+Running 1 tests...
+
+Test 1:
+     input -> [2:12345]
+    output -> [12 23 34 45]
+    result -> passed
+
+Running 11 test cases
+
+Test 2:
+     input -> [1:1]
+    output -> [1]
+    result -> passed
+
+Test 3:
+     input -> [1:]
+    output -> [error: series cannot be empty]
+    result -> passed
+
+Test 4:
+     input -> [5:918493904243]
+    output -> [91849 18493 84939 49390 93904 39042 90424 04243]
+    result -> passed
+
+Test 5:
+     input -> [3:777777]
+    output -> [777 777 777 777]
+    result -> passed
+
+Test 6:
+     input -> [1:12]
+    output -> [1 2]
+    result -> passed
+
+Test 7:
+     input -> [0:12345]
+    output -> [error: invalid length]
+    result -> passed
+
+Test 8:
+     input -> [-1:123]
+    output -> [error: invalid length]
+    result -> passed
+
+Test 9:
+     input -> [42:12345]
+    output -> [error: invalid length]
+    result -> passed
+
+Test 10:
+     input -> [2:9142]
+    output -> [91 14 42]
+    result -> passed
+
+Test 11:
+     input -> [2:35]
+    output -> [35]
+    result -> passed
+
+Test 12:
+     input -> [6:12345]
+    output -> [error: invalid length]
+    result -> passed
+
+
+12 out of 12 tests passed!
+
+real	0m0.004s
+user	0m0.000s
+sys	0m0.005s
+
+Tests Passed!
+
+exit 0
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.025s
+user	0m0.029s
+sys	0m0.013s
+
+===============================================================================
+

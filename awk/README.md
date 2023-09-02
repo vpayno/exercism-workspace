@@ -20,3 +20,4 @@
 - [gigasecond](./gigasecond/README.md)
 - [darts](./darts/README.md)
 - [luhn](./luhn/README.md)
+- [series](./series/README.md)

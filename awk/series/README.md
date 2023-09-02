@@ -32,3 +32,10 @@ the digits need not be *numerically consecutive*.
 ### Based on
 
 A subset of the Problem 8 at Project Euler - https://projecteuler.net/problem=8
+
+### My Solution
+
+- [my solution](./series.awk)
+- [awkunit tests](./series_test.awk)
+- [test cases](./test-cases.awk)
+- [run-tests](./run-tests-awk.txt)

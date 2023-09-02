@@ -19,7 +19,7 @@ Exercism Workspace
 |   June        |  Summer-of-Sexps   |  Common-Lisp  (5/5)  |
 |   July        |  Jurassic          |  C            (5/5),  C++   (5/5),  Fortran  (0/5)  |
 |   August      |  Apps              |  Dart         (5/5),  Java  (0/5),  Kotlin   (0/5)  |
-|   September   |  Slimline          |  Awk          (3/5),  Bash\*  (5/5),  jq       (0/5),  Perl  (0/5)  |
+|   September   |  Slimline          |  Awk          (4/5),  Bash\*  (5/5),  jq       (0/5),  Perl  (0/5)  |
 |   October     |  Object-Oriented   |  |
 |   November    |  Nibbly            |  |
 |   December    |  Diversions        |  |
