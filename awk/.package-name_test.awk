@@ -22,10 +22,12 @@ function testPackageName_zero() {
     input = ""
     want = ""
 
+    # _ = split(input, a, " ")
+
     _debugTestPre()
     got = packageName(input)
 
-    assertEquals(want, got)
+    assertEquals(got, want)
     _debugTestPost()
 }
 
@@ -38,10 +40,12 @@ function casesPackageName() {
         input = key
         want = cases[key]
 
+        # _ = split(input, a, " ")
+
         _debugTestPre()
         got = packageName(input)
 
-        assertEquals(want, got)
+        assertEquals(got, want)
         _debugTestPost()
     }
 }
