@@ -14,21 +14,21 @@ gawk: warning: function `assertEquals' defined but never called directly
 gawk: warning: function `assert' defined but never called directly
 gawk: ./awkunit.awk:26: warning: reference to uninitialized variable `_assert_exit'
 
-real	0m0.005s
-user	0m0.004s
-sys	0m0.001s
+real	0m0.003s
+user	0m0.000s
+sys	0m0.003s
 
 gawk --lint --file=./luhn.awk < /dev/null > /dev/null
 
 real	0m0.004s
-user	0m0.001s
-sys	0m0.003s
+user	0m0.002s
+sys	0m0.002s
 
 gawk --lint --file=./test-cases.awk < /dev/null > /dev/null
 
 real	0m0.003s
-user	0m0.001s
-sys	0m0.002s
+user	0m0.002s
+sys	0m0.001s
 
 exit 0
 
@@ -37,31 +37,31 @@ exit 0
 Running: bats ./test-luhn.bats
 1..22
 ok 1 single digit strings can not be valid
-ok 2 a single zero is invalid # skip
-ok 3 a simple valid SIN that remains valid if reversed # skip
-ok 4 a simple valid SIN that becomes invalid if reversed # skip
-ok 5 a valid Canadian SIN # skip
-ok 6 invalid Canadian SIN # skip
-ok 7 invalid credit card # skip
-ok 8 invalid long number with an even remainder # skip
-ok 9 invalid long number with a remainder divisible by 5 # skip
-ok 10 valid number with an even number of digits # skip
-ok 11 valid number with an odd number of spaces # skip
-ok 12 valid strings with a non-digit included become invalid # skip
-ok 13 valid strings with punctuation included become invalid # skip
-ok 14 valid strings with symbols included become invalid # skip
-ok 15 single zero with space is invalid # skip
-ok 16 more than a single zero is valid # skip
-ok 17 input digit 9 is correctly converted to output digit 9 # skip
-ok 18 very long input is valid # skip
-ok 19 valid luhn with an odd number of digits and non zero first digit # skip
-ok 20 using ascii value for non-doubled non-digit isn't allowed # skip
-ok 21 using ascii value for doubled non-digit isn't allowed # skip
-ok 22 non-numeric, non-space char in the middle with a sum that's divisible by 10 isn't allowed # skip
+ok 2 a single zero is invalid
+ok 3 a simple valid SIN that remains valid if reversed
+ok 4 a simple valid SIN that becomes invalid if reversed
+ok 5 a valid Canadian SIN
+ok 6 invalid Canadian SIN
+ok 7 invalid credit card
+ok 8 invalid long number with an even remainder
+ok 9 invalid long number with a remainder divisible by 5
+ok 10 valid number with an even number of digits
+ok 11 valid number with an odd number of spaces
+ok 12 valid strings with a non-digit included become invalid
+ok 13 valid strings with punctuation included become invalid
+ok 14 valid strings with symbols included become invalid
+ok 15 single zero with space is invalid
+ok 16 more than a single zero is valid
+ok 17 input digit 9 is correctly converted to output digit 9
+ok 18 very long input is valid
+ok 19 valid luhn with an odd number of digits and non zero first digit
+ok 20 using ascii value for non-doubled non-digit isn't allowed
+ok 21 using ascii value for doubled non-digit isn't allowed
+ok 22 non-numeric, non-space char in the middle with a sum that's divisible by 10 isn't allowed
 
-real	0m0.709s
-user	0m0.431s
-sys	0m0.303s
+real	0m0.808s
+user	0m0.540s
+sys	0m0.297s
 
 exit 0
 
@@ -216,8 +216,8 @@ Test 27:
 
 27 out of 27 tests passed!
 
-real	0m0.009s
-user	0m0.005s
+real	0m0.006s
+user	0m0.003s
 sys	0m0.004s
 
 Tests Passed!
@@ -228,9 +228,9 @@ exit 0
 
 Running: misspell .
 
-real	0m0.034s
-user	0m0.034s
-sys	0m0.016s
+real	0m0.028s
+user	0m0.032s
+sys	0m0.013s
 
 ===============================================================================
 

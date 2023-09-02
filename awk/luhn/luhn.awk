@@ -37,10 +37,12 @@ function luhn(input) {
 
     _ = split(reverse_string(input), numbers, "")
 
+    sum = 0
     for (i = 1; i <= length(input); i++) {
         digit = numbers[i]
 
         if(i % 2 != 0) {
+            sum += digit
             continue
         }
 
@@ -51,12 +53,7 @@ function luhn(input) {
         }
 
         numbers[i] = new_digit
-    }
-
-    sum = 0
-    for (i = 1; i <= length(input); i++) {
-        digit = numbers[i]
-        sum += digit
+        sum += new_digit
     }
 
     if (sum % 10 == 0) {
