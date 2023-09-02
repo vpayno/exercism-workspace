@@ -21,3 +21,4 @@
 - [darts](./darts/README.md)
 - [luhn](./luhn/README.md)
 - [series](./series/README.md)
+- [atbash-cipher](./atbash-cipher/README.md)

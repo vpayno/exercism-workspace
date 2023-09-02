@@ -1,0 +1,261 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+AWKLIBPATH=/usr/lib/x86_64-linux-gnu/gawk:../.lib
+
+/usr/lib/x86_64-linux-gnu/gawk
+filefuncs.so
+fnmatch.so
+fork.so
+inplace.so
+intdiv.so
+ordchr.so
+readdir.so
+readfile.so
+revoutput.so
+revtwoway.so
+rwarray.so
+time.so
+
+../.lib
+awkunit.awk
+awkunit.so
+
+gawk --lint --file=./atbash-cipher.awk < /dev/null > /dev/null
+gawk: ./atbash-cipher.awk:3: warning: `load' is a gawk extension
+gawk: ./atbash-cipher.awk:105: warning: indirect function calls are a gawk extension
+gawk: warning: function `decode' defined but never called directly
+gawk: warning: function `encode' defined but never called directly
+
+real	0m0.005s
+user	0m0.002s
+sys	0m0.002s
+
+gawk --lint --file=./awkunit.awk < /dev/null > /dev/null
+gawk: ./awkunit.awk:3: warning: `load' is a gawk extension
+gawk: warning: function `assertEquals' defined but never called directly
+gawk: warning: function `assert' defined but never called directly
+gawk: ./awkunit.awk:26: warning: reference to uninitialized variable `_assert_exit'
+
+real	0m0.004s
+user	0m0.000s
+sys	0m0.003s
+
+gawk --lint --file=./test-cases.awk < /dev/null > /dev/null
+gawk: ./test-cases.awk:8: warning: subscript of array `encode_cases' is null string
+gawk: ./test-cases.awk:22: warning: subscript of array `decode_cases' is null string
+
+real	0m0.004s
+user	0m0.003s
+sys	0m0.000s
+
+exit 0
+
+===============================================================================
+
+Running: bats ./test-atbash-cipher.bats
+1..14
+ok 1 encode yes
+ok 2 encode no
+ok 3 encode OMG
+ok 4 encode spaces
+ok 5 encode mindblowingly
+ok 6 encode numbers
+ok 7 encode deep thought
+ok 8 encode all the letters
+ok 9 decode exercism
+ok 10 decode a sentence
+ok 11 decode numbers
+ok 12 decode all the letters
+ok 13 decode with too many spaces
+ok 14 decode with no spaces
+
+real	0m0.526s
+user	0m0.350s
+sys	0m0.191s
+
+exit 0
+
+===============================================================================
+
+AWKLIBPATH=/usr/lib/x86_64-linux-gnu/gawk:../.lib
+
+/usr/lib/x86_64-linux-gnu/gawk
+filefuncs.so
+fnmatch.so
+fork.so
+inplace.so
+intdiv.so
+ordchr.so
+readdir.so
+readfile.so
+revoutput.so
+revtwoway.so
+rwarray.so
+time.so
+
+../.lib
+awkunit.awk
+awkunit.so
+
+Running: gawk --file ./atbash-cipher_test.awk && printf \n%s\n Tests Passed! || printf \n%s\n Tests Failed!
+
+Running 4 tests...
+
+Test 1:
+     input -> [a]
+    output -> [z]
+    result -> passed
+
+Test 2:
+     input -> [z]
+    output -> [a]
+    result -> passed
+
+Test 3:
+     input -> [abcdefghijklmnopqrstuvwxyz]
+    output -> [zyxwv utsrq ponml kjihg fedcb a]
+    result -> passed
+
+Test 4:
+     input -> [zyxwvutsrqponmlkjihgfedcba]
+    output -> [abcdefghijklmnopqrstuvwxyz]
+    result -> passed
+
+Running 12 test cases
+
+Test 5:
+     input -> [Truth is fiction.]
+    output -> [gifgs rhurx grlm]
+    result -> passed
+
+Test 6:
+     input -> [no]
+    output -> [ml]
+    result -> passed
+
+Test 7:
+     input -> [abcdefghijklmnopqrstuvwxyz]
+    output -> [zyxwv utsrq ponml kjihg fedcb a]
+    result -> passed
+
+Test 8:
+     input -> []
+    output -> []
+    result -> passed
+
+Test 9:
+     input -> [yes]
+    output -> [bvh]
+    result -> passed
+
+Test 10:
+     input -> [Testing,1 2 3, testing.]
+    output -> [gvhgr mt123 gvhgr mt]
+    result -> passed
+
+Test 11:
+     input -> [mindblowingly]
+    output -> [nrmwy oldrm tob]
+    result -> passed
+
+Test 12:
+     input -> [The quick brown fox jumps over the lazy dog]
+    output -> [gsvjf rxpyi ldmul cqfnk hlevi gsvoz abwlt]
+    result -> passed
+
+Test 13:
+     input -> [OMG]
+    output -> [lnt]
+    result -> passed
+
+Test 14:
+     input -> [x123 yes]
+    output -> [c123b vh]
+    result -> passed
+
+Test 15:
+     input -> [O M G]
+    output -> [lnt]
+    result -> passed
+
+Test 16:
+     input -> [test]
+    output -> [gvhg]
+    result -> passed
+
+Running 10 test cases
+
+Test 17:
+     input -> []
+    output -> []
+    result -> passed
+
+Test 18:
+     input -> [c123b vh]
+    output -> [x123yes]
+    result -> passed
+
+Test 19:
+     input -> [gsvjf rxpyi ldmul cqfnk hlevi gsvoz abwlt]
+    output -> [thequickbrownfoxjumpsoverthelazydog]
+    result -> passed
+
+Test 20:
+     input -> [gvhgr mt123 gvhgr mt]
+    output -> [testing123testing]
+    result -> passed
+
+Test 21:
+     input -> [zmlyhgzxovrhlugvmzhgvkkrmthglmv]
+    output -> [anobstacleisoftenasteppingstone]
+    result -> passed
+
+Test 22:
+     input -> [vc vix    r hn]
+    output -> [exercism]
+    result -> passed
+
+Test 23:
+     input -> [vcvix rhn]
+    output -> [exercism]
+    result -> passed
+
+Test 24:
+     input -> [gvhg]
+    output -> [test]
+    result -> passed
+
+Test 25:
+     input -> [zmlyh gzxov rhlug vmzhg vkkrm thglm v]
+    output -> [anobstacleisoftenasteppingstone]
+    result -> passed
+
+Test 26:
+     input -> [zyxwvutsrqponmlkjihgfedcba]
+    output -> [abcdefghijklmnopqrstuvwxyz]
+    result -> passed
+
+
+26 out of 26 tests passed!
+
+real	0m0.006s
+user	0m0.002s
+sys	0m0.004s
+
+Tests Passed!
+
+exit 0
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.029s
+user	0m0.025s
+sys	0m0.021s
+
+===============================================================================
+

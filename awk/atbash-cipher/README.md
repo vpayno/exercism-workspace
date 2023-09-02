@@ -40,3 +40,10 @@ All text will be encoded as lowercase letters.
 ### Based on
 
 Wikipedia - https://en.wikipedia.org/wiki/Atbash
+
+### My Solution
+
+- [my solution](./atbash-cipher.awk)
+- [awkunit tests](./atbash-cipher_test.awk)
+- [test cases](./test-cases.awk)
+- [run-tests](./run-tests-awk.txt)
