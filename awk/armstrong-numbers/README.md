@@ -27,3 +27,10 @@ Write some code to determine whether a number is an Armstrong number.
 ### Based on
 
 Wikipedia - https://en.wikipedia.org/wiki/Narcissistic_number
+
+### My Solution
+
+- [my solution](./armstrong-numbers.awk)
+- [awkunit tests](./armstrong-numbers_test.awk)
+- [test cases](./test-cases.awk)
+- [run-tests](./run-tests-awk.txt)

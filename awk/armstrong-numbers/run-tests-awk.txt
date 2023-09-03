@@ -1,0 +1,195 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+AWKLIBPATH=/usr/lib/x86_64-linux-gnu/gawk:../.lib
+
+/usr/lib/x86_64-linux-gnu/gawk
+filefuncs.so
+fnmatch.so
+fork.so
+inplace.so
+intdiv.so
+ordchr.so
+readdir.so
+readfile.so
+revoutput.so
+revtwoway.so
+rwarray.so
+time.so
+
+../.lib
+awkunit.awk
+awkunit.so
+
+gawk -v num=0 -M --lint --file=./armstrong-numbers.awk < /dev/null > /dev/null
+
+real	0m0.004s
+user	0m0.001s
+sys	0m0.003s
+
+gawk -v num=0 -M --lint --file=./awkunit.awk < /dev/null > /dev/null
+gawk: ./awkunit.awk:3: warning: `load' is a gawk extension
+gawk: warning: function `assertEquals' defined but never called directly
+gawk: warning: function `assert' defined but never called directly
+gawk: ./awkunit.awk:26: warning: reference to uninitialized variable `_assert_exit'
+
+real	0m0.005s
+user	0m0.002s
+sys	0m0.003s
+
+gawk -v num=0 -M --lint --file=./test-cases.awk < /dev/null > /dev/null
+
+real	0m0.005s
+user	0m0.001s
+sys	0m0.004s
+
+exit 0
+
+===============================================================================
+
+Running: bats ./test-armstrong-numbers.bats
+1..11
+ok 1 Zero is Armstrong numbers
+ok 2 Single digits are Armstrong numbers
+ok 3 There are no two digit Armstrong numbers
+ok 4 A three digit number that is an Armstrong number
+ok 5 A three digit number that is not an Armstrong number
+ok 6 A four digit number that is an Armstrong number
+ok 7 A four digit number that is not an Armstrong number
+ok 8 A seven digit number that is an Armstrong number
+ok 9 A seven digit number that is not an Armstrong number
+ok 10 Armstrong number containing seven zeroes
+ok 11 The largest and last Armstrong number
+
+real	0m0.421s
+user	0m0.280s
+sys	0m0.165s
+
+exit 0
+
+===============================================================================
+
+AWKLIBPATH=/usr/lib/x86_64-linux-gnu/gawk:../.lib
+
+/usr/lib/x86_64-linux-gnu/gawk
+filefuncs.so
+fnmatch.so
+fork.so
+inplace.so
+intdiv.so
+ordchr.so
+readdir.so
+readfile.so
+revoutput.so
+revtwoway.so
+rwarray.so
+time.so
+
+../.lib
+awkunit.awk
+awkunit.so
+
+Running: gawk -v num=0 -M --file ./armstrong-numbers_test.awk && printf \n%s\n Tests Passed! || printf \n%s\n Tests Failed!
+
+Running 3 tests...
+
+Test 1:
+     input -> [12345]
+    output -> [4]
+    result -> passed
+
+Test 2:
+     input -> [153]
+    output -> [true]
+    result -> passed
+
+Test 3:
+     input -> [154]
+    output -> [false]
+    result -> passed
+
+Running 12 test cases
+
+Test 4:
+     input -> [115132219018763992565095597973971522401]
+    output -> [true]
+    result -> passed
+
+Test 5:
+     input -> [9474]
+    output -> [true]
+    result -> passed
+
+Test 6:
+     input -> [5]
+    output -> [true]
+    result -> passed
+
+Test 7:
+     input -> [100]
+    output -> [false]
+    result -> passed
+
+Test 8:
+     input -> [9926314]
+    output -> [false]
+    result -> passed
+
+Test 9:
+     input -> [9926315]
+    output -> [true]
+    result -> passed
+
+Test 10:
+     input -> [9]
+    output -> [true]
+    result -> passed
+
+Test 11:
+     input -> [10]
+    output -> [false]
+    result -> passed
+
+Test 12:
+     input -> [186709961001538790100634132976990]
+    output -> [true]
+    result -> passed
+
+Test 13:
+     input -> [0]
+    output -> [true]
+    result -> passed
+
+Test 14:
+     input -> [153]
+    output -> [true]
+    result -> passed
+
+Test 15:
+     input -> [154]
+    output -> [false]
+    result -> passed
+
+
+15 out of 15 tests passed!
+
+real	0m0.009s
+user	0m0.002s
+sys	0m0.007s
+
+Tests Passed!
+
+exit 0
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.043s
+user	0m0.055s
+sys	0m0.018s
+
+===============================================================================
+

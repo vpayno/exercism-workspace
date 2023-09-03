@@ -24,3 +24,4 @@
 - [atbash-cipher](./atbash-cipher/README.md)
 - [raindrops](./raindrops/README.md)
 - [leap](./leap/README.md)
+- [armstrong-numbers](./armstrong-numbers/README.md)
