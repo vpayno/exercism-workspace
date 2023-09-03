@@ -26,3 +26,4 @@
 - [leap](./leap/README.md)
 - [armstrong-numbers](./armstrong-numbers/README.md)
 - [grains](./grains/README.md)
+- [triangle](./triangle/README.md)

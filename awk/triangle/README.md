@@ -42,3 +42,10 @@ See [Triangle Inequality][triangle-inequality]
 ### Based on
 
 The Ruby Koans triangle project, parts 1 & 2 - https://web.archive.org/web/20220831105330/http://rubykoans.com
+
+### My Solution
+
+- [my solution](./triangle.awk)
+- [awkunit tests](./triangle_test.awk)
+- [test cases](./test-cases.awk)
+- [run-tests](./run-tests-awk.txt)

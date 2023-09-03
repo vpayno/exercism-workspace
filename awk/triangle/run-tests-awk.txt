@@ -1,0 +1,287 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+AWKLIBPATH=/usr/lib/x86_64-linux-gnu/gawk:../.lib
+
+/usr/lib/x86_64-linux-gnu/gawk
+filefuncs.so
+fnmatch.so
+fork.so
+inplace.so
+intdiv.so
+ordchr.so
+readdir.so
+readfile.so
+revoutput.so
+revtwoway.so
+rwarray.so
+time.so
+
+../.lib
+awkunit.awk
+awkunit.so
+
+gawk -v type=equilateral --lint --file=./awkunit.awk < /dev/null > /dev/null
+gawk: ./awkunit.awk:3: warning: `load' is a gawk extension
+gawk: warning: function `assertEquals' defined but never called directly
+gawk: warning: function `assert' defined but never called directly
+gawk: ./awkunit.awk:26: warning: reference to uninitialized variable `_assert_exit'
+
+real	0m0.004s
+user	0m0.001s
+sys	0m0.003s
+
+gawk -v type=equilateral --lint --file=./test-cases.awk < /dev/null > /dev/null
+
+real	0m0.003s
+user	0m0.002s
+sys	0m0.001s
+
+gawk -v type=equilateral --lint --file=./triangle.awk < /dev/null > /dev/null
+gawk: ./triangle.awk:3: warning: `load' is a gawk extension
+gawk: ./triangle.awk:70: warning: `switch' is a gawk extension
+gawk: ./triangle.awk:71: warning: `case' is a gawk extension
+
+real	0m0.005s
+user	0m0.004s
+sys	0m0.001s
+
+exit 0
+
+===============================================================================
+
+Running: bats ./test-triangle.bats
+1..21
+ok 1 all sides are equal, equilateral
+ok 2 any side is unequal
+ok 3 no sides are equal, equilateral
+ok 4 all zero sides is not a triangle
+ok 5 sides may be floats, equilateral
+ok 6 last two sides are equal
+ok 7 first two sides are equal
+ok 8 first and last sides are equal
+ok 9 equilateral triangles are also isosceles
+ok 10 no sides are equal, isosceles
+ok 11 first triangle inequality violation
+ok 12 second triangle inequality violation
+ok 13 third triangle inequality violation
+ok 14 sides may be floats, isosceles
+ok 15 no sides are equal, scalene
+ok 16 all sides are equal, scalene
+ok 17 first and second sides are equal
+ok 18 first and third sides are equal
+ok 19 second and third sides are equal
+ok 20 may not violate triangle inequality
+ok 21 sides may be floats, scalene
+
+real	0m0.894s
+user	0m0.603s
+sys	0m0.318s
+
+exit 0
+
+===============================================================================
+
+AWKLIBPATH=/usr/lib/x86_64-linux-gnu/gawk:../.lib
+
+/usr/lib/x86_64-linux-gnu/gawk
+filefuncs.so
+fnmatch.so
+fork.so
+inplace.so
+intdiv.so
+ordchr.so
+readdir.so
+readfile.so
+revoutput.so
+revtwoway.so
+rwarray.so
+time.so
+
+../.lib
+awkunit.awk
+awkunit.so
+
+Running: gawk -v type=equilateral --file ./triangle_test.awk && printf \n%s\n Tests Passed! || printf \n%s\n Tests Failed!
+
+Running 8 tests...
+
+Test 1:
+     input -> [1]
+    output -> [true]
+    result -> passed
+
+Test 2:
+     input -> [0]
+    output -> [false]
+    result -> passed
+
+Test 3:
+     input -> [1 1 1]
+    output -> [true]
+    result -> passed
+
+Test 4:
+     input -> [1 2 1]
+    output -> [false]
+    result -> passed
+
+Test 5:
+     input -> [4 3 4]
+    output -> [true]
+    result -> passed
+
+Test 6:
+     input -> [1 3 1]
+    output -> [false]
+    result -> passed
+
+Test 7:
+     input -> [5 4 6]
+    output -> [true]
+    result -> passed
+
+Test 8:
+     input -> [4 3 3]
+    output -> [false]
+    result -> passed
+
+Running 5 test cases
+
+Test 9:
+     input -> [0.5 0.5 0.5]
+    output -> [true]
+    result -> passed
+
+Test 10:
+     input -> [0 0 0]
+    output -> [false]
+    result -> passed
+
+Test 11:
+     input -> [2 2 2]
+    output -> [true]
+    result -> passed
+
+Test 12:
+     input -> [2 3 2]
+    output -> [false]
+    result -> passed
+
+Test 13:
+     input -> [5 4 6]
+    output -> [false]
+    result -> passed
+
+Running 10 test cases
+
+Test 14:
+     input -> [1.5 2.5 1.0]
+    output -> [false]
+    result -> passed
+
+Test 15:
+     input -> [4 4 3]
+    output -> [true]
+    result -> passed
+
+Test 16:
+     input -> [4 4 4]
+    output -> [true]
+    result -> passed
+
+Test 17:
+     input -> [1 1 3]
+    output -> [false]
+    result -> passed
+
+Test 18:
+     input -> [3 1 1]
+    output -> [false]
+    result -> passed
+
+Test 19:
+     input -> [0.5 0.4 0.5]
+    output -> [true]
+    result -> passed
+
+Test 20:
+     input -> [3 4 4]
+    output -> [true]
+    result -> passed
+
+Test 21:
+     input -> [4 3 4]
+    output -> [true]
+    result -> passed
+
+Test 22:
+     input -> [1 3 1]
+    output -> [false]
+    result -> passed
+
+Test 23:
+     input -> [2 3 4]
+    output -> [false]
+    result -> passed
+
+Running 7 test cases
+
+Test 24:
+     input -> [4 4 3]
+    output -> [false]
+    result -> passed
+
+Test 25:
+     input -> [4 4 4]
+    output -> [false]
+    result -> passed
+
+Test 26:
+     input -> [7 3 2]
+    output -> [false]
+    result -> passed
+
+Test 27:
+     input -> [3 4 3]
+    output -> [false]
+    result -> passed
+
+Test 28:
+     input -> [0.5 0.4 0.6]
+    output -> [true]
+    result -> passed
+
+Test 29:
+     input -> [4 3 3]
+    output -> [false]
+    result -> passed
+
+Test 30:
+     input -> [5 4 6]
+    output -> [true]
+    result -> passed
+
+
+30 out of 30 tests passed!
+
+real	0m0.009s
+user	0m0.004s
+sys	0m0.005s
+
+Tests Passed!
+
+exit 0
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.036s
+user	0m0.042s
+sys	0m0.019s
+
+===============================================================================
+
