@@ -25,3 +25,4 @@
 - [raindrops](./raindrops/README.md)
 - [leap](./leap/README.md)
 - [armstrong-numbers](./armstrong-numbers/README.md)
+- [grains](./grains/README.md)

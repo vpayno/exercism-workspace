@@ -86,3 +86,10 @@ Further reading: [Arbitrary Precision Arithmetic][arbitrary]
 ### Based on
 
 The CodeRanch Cattle Drive, Assignment 6 - https://coderanch.com/wiki/718824/Grains
+
+### My Solution
+
+- [my solution](./grains.awk)
+- [awkunit tests](./grains_test.awk)
+- [test cases](./test-cases.awk)
+- [run-tests](./run-tests-awk.txt)

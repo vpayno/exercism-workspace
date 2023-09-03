@@ -1,0 +1,191 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+AWKLIBPATH=/usr/lib/x86_64-linux-gnu/gawk:../.lib
+
+/usr/lib/x86_64-linux-gnu/gawk
+filefuncs.so
+fnmatch.so
+fork.so
+inplace.so
+intdiv.so
+ordchr.so
+readdir.so
+readfile.so
+revoutput.so
+revtwoway.so
+rwarray.so
+time.so
+
+../.lib
+awkunit.awk
+awkunit.so
+
+gawk -M --lint --file=./awkunit.awk < /dev/null > /dev/null
+gawk: ./awkunit.awk:3: warning: `load' is a gawk extension
+gawk: warning: function `assertEquals' defined but never called directly
+gawk: warning: function `assert' defined but never called directly
+gawk: ./awkunit.awk:26: warning: reference to uninitialized variable `_assert_exit'
+
+real	0m0.002s
+user	0m0.002s
+sys	0m0.000s
+
+gawk -M --lint --file=./grains.awk < /dev/null > /dev/null
+gawk: ./grains.awk:16: warning: `lshift' is a gawk extension
+
+real	0m0.002s
+user	0m0.001s
+sys	0m0.001s
+
+gawk -M --lint --file=./test-cases.awk < /dev/null > /dev/null
+
+real	0m0.002s
+user	0m0.002s
+sys	0m0.000s
+
+exit 0
+
+===============================================================================
+
+Running: bats ./test-grains.bats
+1..11
+ok 1 1
+ok 2 2
+ok 3 3
+ok 4 4
+ok 5 16
+ok 6 32
+ok 7 64
+ok 8 square 0 raises an exception
+ok 9 negative square raises an exception
+ok 10 square greater than 64 raises an exception
+ok 11 returns the total number of grains on the board
+
+real	0m0.372s
+user	0m0.227s
+sys	0m0.166s
+
+exit 0
+
+===============================================================================
+
+AWKLIBPATH=/usr/lib/x86_64-linux-gnu/gawk:../.lib
+
+/usr/lib/x86_64-linux-gnu/gawk
+filefuncs.so
+fnmatch.so
+fork.so
+inplace.so
+intdiv.so
+ordchr.so
+readdir.so
+readfile.so
+revoutput.so
+revtwoway.so
+rwarray.so
+time.so
+
+../.lib
+awkunit.awk
+awkunit.so
+
+Running: gawk -M --file ./grains_test.awk && printf \n%s\n Tests Passed! || printf \n%s\n Tests Failed!
+
+Running 4 tests...
+
+Test 1:
+     input -> [0]
+    output -> [error:square must be between 1 and 64]
+    result -> passed
+
+Test 2:
+     input -> [1]
+    output -> [1]
+    result -> passed
+
+Test 3:
+     input -> [64]
+    output -> [9223372036854775808]
+    result -> passed
+
+Test 4:
+     input -> []
+    output -> [18446744073709551615]
+    result -> passed
+
+Running 10 test cases
+
+Test 5:
+     input -> [4]
+    output -> [8]
+    result -> passed
+
+Test 6:
+     input -> [64]
+    output -> [9223372036854775808]
+    result -> passed
+
+Test 7:
+     input -> [65]
+    output -> [error:square must be between 1 and 64]
+    result -> passed
+
+Test 8:
+     input -> [total]
+    output -> [18446744073709551615]
+    result -> passed
+
+Test 9:
+     input -> [0]
+    output -> [error:square must be between 1 and 64]
+    result -> passed
+
+Test 10:
+     input -> [32]
+    output -> [2147483648]
+    result -> passed
+
+Test 11:
+     input -> [1]
+    output -> [1]
+    result -> passed
+
+Test 12:
+     input -> [2]
+    output -> [2]
+    result -> passed
+
+Test 13:
+     input -> [16]
+    output -> [32768]
+    result -> passed
+
+Test 14:
+     input -> [3]
+    output -> [4]
+    result -> passed
+
+
+14 out of 14 tests passed!
+
+real	0m0.007s
+user	0m0.004s
+sys	0m0.004s
+
+Tests Passed!
+
+exit 0
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.026s
+user	0m0.034s
+sys	0m0.010s
+
+===============================================================================
+
