@@ -23,30 +23,30 @@ time.so
 awkunit.awk
 awkunit.so
 
-gawk --lint --file=./atbash-cipher.awk < /dev/null > /dev/null
+gawk -v direction=null --lint --file=./atbash-cipher.awk < /dev/null > /dev/null
 gawk: ./atbash-cipher.awk:3: warning: `load' is a gawk extension
 gawk: ./atbash-cipher.awk:50: warning: `gensub' is a gawk extension
 
-real	0m0.005s
-user	0m0.002s
-sys	0m0.003s
+real	0m0.006s
+user	0m0.000s
+sys	0m0.006s
 
-gawk --lint --file=./awkunit.awk < /dev/null > /dev/null
+gawk -v direction=null --lint --file=./awkunit.awk < /dev/null > /dev/null
 gawk: ./awkunit.awk:3: warning: `load' is a gawk extension
 gawk: warning: function `assertEquals' defined but never called directly
 gawk: warning: function `assert' defined but never called directly
 gawk: ./awkunit.awk:26: warning: reference to uninitialized variable `_assert_exit'
 
-real	0m0.006s
-user	0m0.002s
-sys	0m0.004s
+real	0m0.005s
+user	0m0.004s
+sys	0m0.001s
 
-gawk --lint --file=./test-cases.awk < /dev/null > /dev/null
+gawk -v direction=null --lint --file=./test-cases.awk < /dev/null > /dev/null
 gawk: ./test-cases.awk:8: warning: subscript of array `encode_cases' is null string
 gawk: ./test-cases.awk:22: warning: subscript of array `decode_cases' is null string
 
 real	0m0.005s
-user	0m0.001s
+user	0m0.002s
 sys	0m0.003s
 
 exit 0
@@ -70,9 +70,9 @@ ok 12 decode all the letters
 ok 13 decode with too many spaces
 ok 14 decode with no spaces
 
-real	0m0.597s
-user	0m0.394s
-sys	0m0.231s
+real	0m0.550s
+user	0m0.361s
+sys	0m0.212s
 
 exit 0
 
@@ -239,8 +239,8 @@ Test 26:
 
 26 out of 26 tests passed!
 
-real	0m0.008s
-user	0m0.003s
+real	0m0.009s
+user	0m0.004s
 sys	0m0.005s
 
 Tests Passed!
@@ -251,9 +251,9 @@ exit 0
 
 Running: misspell .
 
-real	0m0.042s
-user	0m0.041s
-sys	0m0.022s
+real	0m0.044s
+user	0m0.049s
+sys	0m0.024s
 
 ===============================================================================
 

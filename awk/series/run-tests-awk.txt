@@ -3,32 +3,47 @@ Running automated test file(s):
 
 ===============================================================================
 
-AWKLIBPATH=../.lib
+AWKLIBPATH=/usr/lib/x86_64-linux-gnu/gawk:../.lib
 
+/usr/lib/x86_64-linux-gnu/gawk
+filefuncs.so
+fnmatch.so
+fork.so
+inplace.so
+intdiv.so
+ordchr.so
+readdir.so
+readfile.so
+revoutput.so
+revtwoway.so
+rwarray.so
+time.so
+
+../.lib
 awkunit.awk
 awkunit.so
 
-gawk --lint --file=./awkunit.awk < /dev/null > /dev/null
+gawk -v len=0 --lint --file=./awkunit.awk < /dev/null > /dev/null
 gawk: ./awkunit.awk:3: warning: `load' is a gawk extension
 gawk: warning: function `assertEquals' defined but never called directly
 gawk: warning: function `assert' defined but never called directly
 gawk: ./awkunit.awk:26: warning: reference to uninitialized variable `_assert_exit'
 
-real	0m0.004s
-user	0m0.000s
-sys	0m0.004s
-
-gawk --lint --file=./series.awk < /dev/null > /dev/null
-
-real	0m0.004s
+real	0m0.003s
 user	0m0.001s
-sys	0m0.003s
+sys	0m0.002s
 
-gawk --lint --file=./test-cases.awk < /dev/null > /dev/null
+gawk -v len=0 --lint --file=./series.awk < /dev/null > /dev/null
+
+real	0m0.005s
+user	0m0.003s
+sys	0m0.002s
+
+gawk -v len=0 --lint --file=./test-cases.awk < /dev/null > /dev/null
 
 real	0m0.004s
-user	0m0.001s
-sys	0m0.003s
+user	0m0.002s
+sys	0m0.002s
 
 exit 0
 
@@ -48,16 +63,31 @@ ok 9 slice length cannot be zero
 ok 10 slice length cannot be negative
 ok 11 empty series is invalid
 
-real	0m0.463s
-user	0m0.310s
-sys	0m0.172s
+real	0m0.414s
+user	0m0.272s
+sys	0m0.164s
 
 exit 0
 
 ===============================================================================
 
-AWKLIBPATH=../.lib
+AWKLIBPATH=/usr/lib/x86_64-linux-gnu/gawk:../.lib
 
+/usr/lib/x86_64-linux-gnu/gawk
+filefuncs.so
+fnmatch.so
+fork.so
+inplace.so
+intdiv.so
+ordchr.so
+readdir.so
+readfile.so
+revoutput.so
+revtwoway.so
+rwarray.so
+time.so
+
+../.lib
 awkunit.awk
 awkunit.so
 
@@ -140,9 +170,9 @@ Test 14:
 
 14 out of 14 tests passed!
 
-real	0m0.008s
+real	0m0.004s
 user	0m0.003s
-sys	0m0.006s
+sys	0m0.001s
 
 Tests Passed!
 
@@ -152,9 +182,9 @@ exit 0
 
 Running: misspell .
 
-real	0m0.031s
-user	0m0.027s
-sys	0m0.019s
+real	0m0.030s
+user	0m0.036s
+sys	0m0.013s
 
 ===============================================================================
 

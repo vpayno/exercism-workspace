@@ -12,13 +12,19 @@ for d in ${AWKLIBPATH//:/ }; do
 	printf "\n"
 done
 
+declare lint_default_vars
+if [[ -f .lint_default_vars ]]; then
+	read -r lint_default_vars <.lint_default_vars
+fi
+
 for tf in ./*.awk; do
 	if [[ ${tf} =~ _test.awk ]]; then
 		continue
 	fi
 
-	echo gawk --lint --file="${tf}" "<" /dev/null ">" /dev/null
-	time gawk --lint --file="${tf}" </dev/null >/dev/null || ((retval++))
+	echo gawk "${lint_default_vars}" --lint --file="${tf}" "<" /dev/null ">" /dev/null
+	# shellcheck disable=SC2086
+	time gawk ${lint_default_vars} --lint --file="${tf}" </dev/null >/dev/null || ((retval++))
 	printf "\n"
 done
 

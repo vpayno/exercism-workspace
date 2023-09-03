@@ -23,32 +23,31 @@ time.so
 awkunit.awk
 awkunit.so
 
-gawk --lint --file=./awkunit.awk < /dev/null > /dev/null
+gawk -v num=0 --lint --file=./awkunit.awk < /dev/null > /dev/null
 gawk: ./awkunit.awk:3: warning: `load' is a gawk extension
 gawk: warning: function `assertEquals' defined but never called directly
 gawk: warning: function `assert' defined but never called directly
 gawk: ./awkunit.awk:26: warning: reference to uninitialized variable `_assert_exit'
 
-real	0m0.004s
-user	0m0.002s
+real	0m0.003s
+user	0m0.000s
+sys	0m0.003s
+
+gawk -v num=0 --lint --file=./raindrops.awk < /dev/null > /dev/null
+gawk: ./raindrops.awk:3: warning: `load' is a gawk extension
+gawk: ./raindrops.awk:11: warning: length: received non-string argument
+
+real	0m0.003s
+user	0m0.000s
+sys	0m0.003s
+
+gawk -v num=0 --lint --file=./test-cases.awk < /dev/null > /dev/null
+
+real	0m0.002s
+user	0m0.000s
 sys	0m0.002s
 
-gawk --lint --file=./raindrops.awk < /dev/null > /dev/null
-gawk: ./raindrops.awk:3: warning: `load' is a gawk extension
-gawk: ./raindrops.awk:40: warning: reference to uninitialized variable `num'
-gawk: ./raindrops.awk:41: warning: reference to uninitialized variable `num'
-
-real	0m0.002s
-user	0m0.001s
-sys	0m0.001s
-
-gawk --lint --file=./test-cases.awk < /dev/null > /dev/null
-
-real	0m0.002s
-user	0m0.001s
-sys	0m0.001s
-
-exit 1
+exit 0
 
 ===============================================================================
 
@@ -73,9 +72,9 @@ ok 16 the sound for 52 is 52
 ok 17 the sound for 105 is PlingPlangPlong as it has factors 3, 5 and 7
 ok 18 the sound for 3125 is Plang as it has a factor 5
 
-real	0m0.645s
-user	0m0.430s
-sys	0m0.237s
+real	0m0.653s
+user	0m0.440s
+sys	0m0.236s
 
 exit 0
 
@@ -255,9 +254,9 @@ Test 29:
 
 29 out of 29 tests passed!
 
-real	0m0.009s
+real	0m0.008s
 user	0m0.002s
-sys	0m0.007s
+sys	0m0.006s
 
 Tests Passed!
 
@@ -267,9 +266,9 @@ exit 0
 
 Running: misspell .
 
-real	0m0.026s
-user	0m0.028s
-sys	0m0.012s
+real	0m0.031s
+user	0m0.039s
+sys	0m0.017s
 
 ===============================================================================
 
