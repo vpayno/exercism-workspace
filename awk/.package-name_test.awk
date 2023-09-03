@@ -1,4 +1,4 @@
-#!/usr/bin/gawk --lint --file
+#!/usr/bin/gawk --bignum --lint --file
 
 @include "awkunit"
 @include "test-cases"
