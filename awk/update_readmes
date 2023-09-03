@@ -78,9 +78,17 @@ EOF
 
 fi
 
+if git grep -q -- '-v '; then
+	git grep -- '-v ' *.bats | head -n 1 | sed -r -e 's/.*(-v [a-z]+[=].+) -f.*/\1/g' >.lint_default_vars
+	git add .lint_default_vars
+fi
+
 ln -svf ../.lib/awkunit.awk ./awkunit.awk
 git add ./awkunit.awk
 printf "\n"
 
 git add ../README.md ./README.md
 git diff --cached ../README.md ./README.md
+printf "\n"
+
+git status ..
