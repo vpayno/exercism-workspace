@@ -35,3 +35,10 @@ For a delightful, four minute explanation of the whole leap year phenomenon, go 
 ### Based on
 
 CodeRanch Cattle Drive, Assignment 3 - https://coderanch.com/t/718816/Leap
+
+### My Solution
+
+- [my solution](./leap.awk)
+- [awkunit tests](./leap_test.awk)
+- [test cases](./test-cases.awk)
+- [run-tests](./run-tests-awk.txt)

@@ -1,0 +1,210 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+AWKLIBPATH=/usr/lib/x86_64-linux-gnu/gawk:../.lib
+
+/usr/lib/x86_64-linux-gnu/gawk
+filefuncs.so
+fnmatch.so
+fork.so
+inplace.so
+intdiv.so
+ordchr.so
+readdir.so
+readfile.so
+revoutput.so
+revtwoway.so
+rwarray.so
+time.so
+
+../.lib
+awkunit.awk
+awkunit.so
+
+gawk  --lint --file=./awkunit.awk < /dev/null > /dev/null
+gawk: ./awkunit.awk:3: warning: `load' is a gawk extension
+gawk: warning: function `assertEquals' defined but never called directly
+gawk: warning: function `assert' defined but never called directly
+gawk: ./awkunit.awk:26: warning: reference to uninitialized variable `_assert_exit'
+
+real	0m0.003s
+user	0m0.003s
+sys	0m0.000s
+
+gawk  --lint --file=./leap.awk < /dev/null > /dev/null
+gawk: ./leap.awk:3: warning: function `leap': parameter `year' shadows global variable
+
+real	0m0.005s
+user	0m0.001s
+sys	0m0.004s
+
+gawk  --lint --file=./test-cases.awk < /dev/null > /dev/null
+gawk: ./test-cases.awk:8: warning: subscript of array `cases' is null string
+
+real	0m0.005s
+user	0m0.002s
+sys	0m0.003s
+
+exit 0
+
+===============================================================================
+
+Running: bats ./test-leap.bats
+1..9
+ok 1 year not divisible by 4: common year
+ok 2 year divisible by 2, not divisible by 4 in common year
+ok 3 year divisible by 4, not divisible by 100: leap year
+ok 4 year divisible by 4 and 5 is still a leap year
+ok 5 year divisible by 100, not divisible by 400: common year
+ok 6 year divisible by 100 but not by 3 is still not a leap year
+ok 7 year divisible by 400: leap year
+ok 8 year divisible by 400 but not by 125 is still a leap year
+ok 9 year divisible by 200, not divisible by 400 in common year
+
+real	0m0.363s
+user	0m0.229s
+sys	0m0.154s
+
+exit 0
+
+===============================================================================
+
+AWKLIBPATH=/usr/lib/x86_64-linux-gnu/gawk:../.lib
+
+/usr/lib/x86_64-linux-gnu/gawk
+filefuncs.so
+fnmatch.so
+fork.so
+inplace.so
+intdiv.so
+ordchr.so
+readdir.so
+readfile.so
+revoutput.so
+revtwoway.so
+rwarray.so
+time.so
+
+../.lib
+awkunit.awk
+awkunit.so
+
+Running: gawk --file ./leap_test.awk && printf \n%s\n Tests Passed! || printf \n%s\n Tests Failed!
+
+Running 5 tests...
+
+Test 1:
+     input -> []
+    output -> [error: you forgot to tell me the year]
+    result -> passed
+
+Test 2:
+     input -> [-1]
+    output -> [error: do BC years have leap years?]
+    result -> passed
+
+Test 3:
+     input -> [0]
+    output -> [error: there's no year zero]
+    result -> passed
+
+Test 4:
+     input -> [1996]
+    output -> [true]
+    result -> passed
+
+Test 5:
+     input -> [1997]
+    output -> [false]
+    result -> passed
+
+Running 13 test cases
+
+Test 6:
+     input -> []
+    output -> [error: you forgot to tell me the year]
+    result -> passed
+
+Test 7:
+     input -> [1960]
+    output -> [true]
+    result -> passed
+
+Test 8:
+     input -> [1970]
+    output -> [false]
+    result -> passed
+
+Test 9:
+     input -> [1800]
+    output -> [false]
+    result -> passed
+
+Test 10:
+     input -> [-1]
+    output -> [error: do BC years have leap years?]
+    result -> passed
+
+Test 11:
+     input -> [2000]
+    output -> [true]
+    result -> passed
+
+Test 12:
+     input -> [1900]
+    output -> [false]
+    result -> passed
+
+Test 13:
+     input -> [2100]
+    output -> [false]
+    result -> passed
+
+Test 14:
+     input -> [0]
+    output -> [error: there's no year zero]
+    result -> passed
+
+Test 15:
+     input -> [1996]
+    output -> [true]
+    result -> passed
+
+Test 16:
+     input -> [2015]
+    output -> [false]
+    result -> passed
+
+Test 17:
+     input -> [2400]
+    output -> [true]
+    result -> passed
+
+Test 18:
+     input -> [1997]
+    output -> [false]
+    result -> passed
+
+
+18 out of 18 tests passed!
+
+real	0m0.008s
+user	0m0.003s
+sys	0m0.005s
+
+Tests Passed!
+
+exit 0
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.032s
+user	0m0.028s
+sys	0m0.020s
+
+===============================================================================
+
