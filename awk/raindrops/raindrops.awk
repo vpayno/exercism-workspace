@@ -1,7 +1,5 @@
 #!/usr/bin/gawk --lint --file
 
-@load "ordchr"
-
 # These variables are initialized on the command line (using '-v'):
 # - num -> ^([0-9]+$
 
@@ -36,7 +34,7 @@ function raindrops(number) {
 }
 
 BEGIN {
-    # let's make sure direction isn't being used to inject code
+    # let's make sure num isn't being used to inject code
     if (! match(num, /^[0-9]+$/)) {
         print "error: invalid number [" num "], the only supported numbers are ^[0-9]+$"
         exit 1
