@@ -1,0 +1,275 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+AWKLIBPATH=/usr/lib/x86_64-linux-gnu/gawk:../.lib
+
+/usr/lib/x86_64-linux-gnu/gawk
+filefuncs.so
+fnmatch.so
+fork.so
+inplace.so
+intdiv.so
+ordchr.so
+readdir.so
+readfile.so
+revoutput.so
+revtwoway.so
+rwarray.so
+time.so
+
+../.lib
+awkunit.awk
+awkunit.so
+
+gawk --lint --file=./awkunit.awk < /dev/null > /dev/null
+gawk: ./awkunit.awk:3: warning: `load' is a gawk extension
+gawk: warning: function `assertEquals' defined but never called directly
+gawk: warning: function `assert' defined but never called directly
+gawk: ./awkunit.awk:26: warning: reference to uninitialized variable `_assert_exit'
+
+real	0m0.004s
+user	0m0.002s
+sys	0m0.002s
+
+gawk --lint --file=./raindrops.awk < /dev/null > /dev/null
+gawk: ./raindrops.awk:3: warning: `load' is a gawk extension
+gawk: ./raindrops.awk:40: warning: reference to uninitialized variable `num'
+gawk: ./raindrops.awk:41: warning: reference to uninitialized variable `num'
+
+real	0m0.002s
+user	0m0.001s
+sys	0m0.001s
+
+gawk --lint --file=./test-cases.awk < /dev/null > /dev/null
+
+real	0m0.002s
+user	0m0.001s
+sys	0m0.001s
+
+exit 1
+
+===============================================================================
+
+Running: bats ./test-raindrops.bats
+1..18
+ok 1 the sound for 1 is 1
+ok 2 the sound for 3 is Pling
+ok 3 the sound for 5 is Plang
+ok 4 the sound for 7 is Plong
+ok 5 the sound for 6 is Pling as it has a factor 3
+ok 6 2 to the power 3 does not make a raindrop sound as 3 is the exponent not the base
+ok 7 the sound for 9 is Pling as it has a factor 3
+ok 8 the sound for 10 is Plang as it has a factor 5
+ok 9 the sound for 14 is Plong as it has a factor of 7
+ok 10 the sound for 15 is PlingPlang as it has factors 3 and 5
+ok 11 the sound for 21 is PlingPlong as it has factors 3 and 7
+ok 12 the sound for 25 is Plang as it has a factor 5
+ok 13 the sound for 27 is Pling as it has a factor 3
+ok 14 the sound for 35 is PlangPlong as it has factors 5 and 7
+ok 15 the sound for 49 is Plong as it has a factor 7
+ok 16 the sound for 52 is 52
+ok 17 the sound for 105 is PlingPlangPlong as it has factors 3, 5 and 7
+ok 18 the sound for 3125 is Plang as it has a factor 5
+
+real	0m0.645s
+user	0m0.430s
+sys	0m0.237s
+
+exit 0
+
+===============================================================================
+
+AWKLIBPATH=/usr/lib/x86_64-linux-gnu/gawk:../.lib
+
+/usr/lib/x86_64-linux-gnu/gawk
+filefuncs.so
+fnmatch.so
+fork.so
+inplace.so
+intdiv.so
+ordchr.so
+readdir.so
+readfile.so
+revoutput.so
+revtwoway.so
+rwarray.so
+time.so
+
+../.lib
+awkunit.awk
+awkunit.so
+
+Running: gawk --file ./raindrops_test.awk && printf \n%s\n Tests Passed! || printf \n%s\n Tests Failed!
+
+Running 1 tests...
+
+Test 1:
+     input -> []
+    output -> [error: nothing has no sound]
+    result -> passed
+
+Running 28 test cases
+
+Test 2:
+     input -> [-1]
+    output -> [-1]
+    result -> passed
+
+Test 3:
+     input -> [-3]
+    output -> [Pling]
+    result -> passed
+
+Test 4:
+     input -> [-7]
+    output -> [Plong]
+    result -> passed
+
+Test 5:
+     input -> [-5]
+    output -> [Plang]
+    result -> passed
+
+Test 6:
+     input -> [0]
+    output -> [0]
+    result -> passed
+
+Test 7:
+     input -> [1]
+    output -> [1]
+    result -> passed
+
+Test 8:
+     input -> [3]
+    output -> [Pling]
+    result -> passed
+
+Test 9:
+     input -> [5]
+    output -> [Plang]
+    result -> passed
+
+Test 10:
+     input -> [6]
+    output -> [Pling]
+    result -> passed
+
+Test 11:
+     input -> [7]
+    output -> [Plong]
+    result -> passed
+
+Test 12:
+     input -> [8]
+    output -> [8]
+    result -> passed
+
+Test 13:
+     input -> [9]
+    output -> [Pling]
+    result -> passed
+
+Test 14:
+     input -> [10]
+    output -> [Plang]
+    result -> passed
+
+Test 15:
+     input -> [11]
+    output -> [11]
+    result -> passed
+
+Test 16:
+     input -> [12]
+    output -> [Pling]
+    result -> passed
+
+Test 17:
+     input -> [14]
+    output -> [Plong]
+    result -> passed
+
+Test 18:
+     input -> [15]
+    output -> [PlingPlang]
+    result -> passed
+
+Test 19:
+     input -> [21]
+    output -> [PlingPlong]
+    result -> passed
+
+Test 20:
+     input -> [25]
+    output -> [Plang]
+    result -> passed
+
+Test 21:
+     input -> [28]
+    output -> [Plong]
+    result -> passed
+
+Test 22:
+     input -> [35]
+    output -> [PlangPlong]
+    result -> passed
+
+Test 23:
+     input -> [49]
+    output -> [Plong]
+    result -> passed
+
+Test 24:
+     input -> [52]
+    output -> [52]
+    result -> passed
+
+Test 25:
+     input -> [70]
+    output -> [PlangPlong]
+    result -> passed
+
+Test 26:
+     input -> [105]
+    output -> [PlingPlangPlong]
+    result -> passed
+
+Test 27:
+     input -> [210]
+    output -> [PlingPlangPlong]
+    result -> passed
+
+Test 28:
+     input -> [945]
+    output -> [PlingPlangPlong]
+    result -> passed
+
+Test 29:
+     input -> [3125]
+    output -> [Plang]
+    result -> passed
+
+
+29 out of 29 tests passed!
+
+real	0m0.009s
+user	0m0.002s
+sys	0m0.007s
+
+Tests Passed!
+
+exit 0
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.026s
+user	0m0.028s
+sys	0m0.012s
+
+===============================================================================
+

@@ -38,3 +38,10 @@ You'll need to implement the logic inside the `BEGIN` block.
 ### Based on
 
 A variation on FizzBuzz, a famous technical interview question that is intended to weed out potential candidates. That question is itself derived from Fizz Buzz, a popular children's game for teaching division. - https://en.wikipedia.org/wiki/Fizz_buzz
+
+### My Solution
+
+- [my solution](./raindrops.awk)
+- [awkunit tests](./raindrops_test.awk)
+- [test cases](./test-cases.awk)
+- [run-tests](./run-tests-awk.txt)
