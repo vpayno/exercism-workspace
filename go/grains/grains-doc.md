@@ -6,7 +6,7 @@
 import "grains"
 ```
 
-Package grains calculates the number of grains of wheat on a given chessboard square or on the whole chessboard given that the number on each square doubles\.
+Package grains calculates the number of grains of wheat on a given chessboard square or on the whole chessboard given that the number on each square doubles.
 
 ## Index
 
@@ -20,7 +20,7 @@ Package grains calculates the number of grains of wheat on a given chessboard sq
 func Square(number int) (uint64, error)
 ```
 
-Square returns the number of grains for the given square on a chessboard\.
+Square returns the number of grains for the given square on a chessboard.
 
 <details><summary>Example</summary>
 <p>
@@ -53,7 +53,7 @@ Square returns the number of grains for the given square on a chessboard\.
 func Total() uint64
 ```
 
-Total returns the number of grans for a while chessboard\. https://en.wikipedia.org/wiki/Wheat_and_chessboard_problem#:~:text=The%20number%20of%20grains%20of,of%20one%20grain%20of%20wheat\)\.
+Total returns the number of grans for a while chessboard. https://en.wikipedia.org/wiki/Wheat_and_chessboard_problem#:~:text=The%20number%20of%20grains%20of,of%20one%20grain%20of%20wheat\).
 
 <details><summary>Example</summary>
 <p>

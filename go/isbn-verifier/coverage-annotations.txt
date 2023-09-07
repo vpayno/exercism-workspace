@@ -1,0 +1,55 @@
+
+11     	func IsValidISBN(isbn string) bool {
+12     		var sum int
+13     	
+14     		reStr := `^[0-9][0-9-]+([0-9]|X)$`
+15     	
+16     		match, error := regexp.MatchString(reStr, isbn)
+17     	
+18     		if error != nil {
+19 MISS			panic(error)
+20     		}
+21     	
+22     		if !match {
+23     			return false
+24     		}
+25     	
+26     		isbn = strings.ReplaceAll(isbn, "-", "")
+27     	
+28     		if len(isbn) == 0 || len(isbn) < 10 {
+29     			return false
+30     		}
+31     	
+32     		for i, r := range isbn {
+33     			if r == '-' {
+34 MISS				continue
+35     			}
+36     	
+37     			var n int
+38     	
+39     			if r == 'X' {
+40     				n = 10
+41     			} else {
+42     				n, error = strconv.Atoi(string(r))
+43     	
+44     				if error != nil {
+45 MISS					panic(error)
+46     				}
+47     			}
+48     	
+49     			d := 10 - i
+50     	
+51     			if d < 1 {
+52     				return false
+53     			}
+54     	
+55     			sum += n * d
+56     		}
+57     	
+58     		if sum%11 == 0 {
+59     			return true
+60     		}
+61     	
+62     		return false
+63     	}
+

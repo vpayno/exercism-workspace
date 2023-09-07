@@ -5,15 +5,629 @@ Go packages: expenses
 
 ===============================================================================
 
-golint expenses
+Running: ../../.github/citools/go/go-lint-golangci-lint
 
-real	0m0.185s
-user	0m0.117s
-sys	0m0.133s
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.028s
+user	0m0.014s
+sys	0m0.023s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+expenses_test.go:211: Function 'TestCategoryExpenses' is too long (64 > 60) (funlen)
+func TestCategoryExpenses(t *testing.T) {
+expenses.go:32:73: Comment should end in a period (godot)
+// the day of the record is inside the period of day and false otherwise
+                                                                        ^
+expenses.go:43:23: Comment should end in a period (godot)
+// and false otherwise
+                      ^
+expenses.go:53:23: Comment should end in a period (godot)
+// inside the period p
+                      ^
+expenses.go:20:10: var-declaration: should omit type []Record from declaration of var out; it will be inferred from the right-hand side (revive)
+	var out []Record = []Record{}
+	        ^
+expenses.go:73:22: var-declaration: should drop = 0 from declaration of var total; it is the zero value (revive)
+	var total float64 = 0
+	                    ^
+expenses.go:74:18: var-declaration: should drop = nil from declaration of var err; it is the zero value (revive)
+	var err error = nil
+	                ^
+expenses_test.go:98:52: Using the variable on range scope `tC` in function literal (scopelint)
+			got := Filter(testExpensesRecords, ByDaysPeriod(tC.p))
+			                                                ^
+expenses_test.go:99:23: Using the variable on range scope `tC` in function literal (scopelint)
+			if len(got) != len(tC.expected) {
+			                   ^
+expenses_test.go:100:72: Using the variable on range scope `tC` in function literal (scopelint)
+				t.Fatalf("Filter by period got %d records, want %d", len(got), len(tC.expected))
+				                                                                   ^
+expenses_examples_test.go:37:2: ranges should only be cuddled with assignments used in the iteration (wsl)
+	for _, result := range results {
+	^
+expenses_examples_test.go:40:2: expressions should not be cuddled with blocks (wsl)
+	fmt.Println("]")
+	^
+expenses_examples_test.go:61:2: ranges should only be cuddled with assignments used in the iteration (wsl)
+	for _, result := range results {
+	^
+expenses_examples_test.go:64:2: expressions should not be cuddled with blocks (wsl)
+	fmt.Println("]")
+	^
+expenses_test.go:5:5: testExpensesRecords is a global variable (gochecknoglobals)
+var testExpensesRecords = []Record{
+    ^
+expenses.go:77:19: err113: do not define dynamic errors, use wrapped static errors instead: "errors.New(\"unknown category\")" (goerr113)
+		total, err = 0, errors.New("unknown category")
+		                ^
+expenses_test.go:53:1: Function TestFilterByDaysPeriod missing the call to method parallel (paralleltest)
+func TestFilterByDaysPeriod(t *testing.T) {
+^
+expenses_test.go:96:2: Range statement for test TestFilterByDaysPeriod missing the call to method parallel in test Run (paralleltest)
+	for _, tC := range testCases {
+	^
+expenses_test.go:112:1: Function TestFilterByCategory missing the call to method parallel (paralleltest)
+func TestFilterByCategory(t *testing.T) {
+^
+expenses_test.go:154:2: Range statement for test TestFilterByCategory missing the call to method parallel in test Run (paralleltest)
+	for _, tC := range testCases {
+	^
+expenses_test.go:170:1: Function TestTotalByPeriod missing the call to method parallel (paralleltest)
+func TestTotalByPeriod(t *testing.T) {
+^
+expenses_test.go:201:2: Range statement for test TestTotalByPeriod missing the call to method parallel in test Run (paralleltest)
+	for _, tC := range testCases {
+	^
+expenses_test.go:250:2: Range statement for test TestCategoryExpenses missing the call to method parallel in test Run (paralleltest)
+	for _, tC := range testCases {
+	^
+expenses_examples_test.go:1:9: package should be `expenses_test` instead of `expenses` (testpackage)
+package expenses
+        ^
+expenses_test.go:1:9: package should be `expenses_test` instead of `expenses` (testpackage)
+package expenses
+        ^
+expenses_examples_test.go:99:2: variable name 'p2' is too short for the scope of its usage (varnamelen)
+	p2 := DaysPeriod{From: 31, To: 60}
+	^
+
+real	0m0.481s
+user	0m0.749s
+sys	0m0.425s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.530s
+user	0m0.772s
+sys	0m0.468s
+
+real	0m0.532s
+user	0m0.774s
+sys	0m0.470s
 
 ===============================================================================
 
-go test -v -covermode=count -coverprofile coverage.out expenses
+Running: ../../.github/citools/go/go-lint-revive
+
+Running Go Lint Revive
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.020s
+user	0m0.011s
+sys	0m0.017s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
+expenses.go
+  (20, 10)  https://revive.run/r#var-declaration   should omit type []Record from declaration of var out; it will be inferred from the right-hand side  
+  (73, 22)  https://revive.run/r#var-declaration   should drop = 0 from declaration of var total; it is the zero value                                  
+  (74, 18)  https://revive.run/r#var-declaration   should drop = nil from declaration of var err; it is the zero value                                  
+  (1, 1)    https://revive.run/r#package-comments  should have a package comment                                                                        
+
+
+ ✖ 4 problems (0 errors) (4 warnings)
+
+real	0m0.054s
+user	0m0.033s
+sys	0m0.037s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.087s
+user	0m0.050s
+sys	0m0.065s
+
+real	0m0.089s
+user	0m0.052s
+sys	0m0.065s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.001s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.023s
+user	0m0.015s
+sys	0m0.015s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
+	info: check "./."
+internal error: package "errors" without types was imported from "expenses"
+
+real	0m0.088s
+user	0m0.087s
+sys	0m0.099s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.121s
+user	0m0.106s
+sys	0m0.124s
+
+real	0m0.123s
+user	0m0.106s
+sys	0m0.126s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-staticcheck
+
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.016s
+user	0m0.009s
+sys	0m0.012s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+expenses.go:1:1: at least one file in a package should have a package comment (ST1000)
+expenses.go:20:10: should omit type []Record from declaration; it will be inferred from the right-hand side (ST1023)
+
+real	0m0.209s
+user	0m0.264s
+sys	0m0.138s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.236s
+user	0m0.276s
+sys	0m0.163s
+
+real	0m0.238s
+user	0m0.278s
+sys	0m0.163s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocritic
+
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.018s
+user	0m0.007s
+sys	0m0.016s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+
+real	0m0.853s
+user	0m2.083s
+sys	0m0.306s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.883s
+user	0m2.096s
+sys	0m0.333s
+
+real	0m0.885s
+user	0m2.097s
+sys	0m0.333s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go_vet
+
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.019s
+user	0m0.014s
+sys	0m0.012s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.080s
+user	0m0.160s
+sys	0m0.108s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.110s
+user	0m0.179s
+sys	0m0.130s
+
+real	0m0.113s
+user	0m0.180s
+sys	0m0.131s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-fixer-go_fix
+
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.016s
+user	0m0.014s
+sys	0m0.009s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.019s
+user	0m0.004s
+sys	0m0.022s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.047s
+user	0m0.021s
+sys	0m0.044s
+
+real	0m0.049s
+user	0m0.022s
+sys	0m0.044s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-errcheck
+
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.024s
+user	0m0.015s
+sys	0m0.017s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+
+real	0m0.422s
+user	0m1.210s
+sys	0m0.249s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.457s
+user	0m1.231s
+sys	0m0.275s
+
+real	0m0.458s
+user	0m1.233s
+sys	0m0.275s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.019s
+user	0m0.010s
+sys	0m0.013s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
+8 expenses TestCategoryExpenses expenses_test.go:211:1
+5 expenses TestFilterByCategory expenses_test.go:112:1
+5 expenses TestFilterByDaysPeriod expenses_test.go:53:1
+3 expenses TestTotalByPeriod expenses_test.go:170:1
+3 expenses Filter expenses.go:19:1
+2 expenses ExampleByCategory expenses_examples_test.go:49:1
+2 expenses ExampleByDaysPeriod expenses_examples_test.go:23:1
+2 expenses CategoryExpenses expenses.go:70:1
+2 expenses TotalByPeriod expenses.go:54:1
+2 expenses ByDaysPeriod expenses.go:33:1
+1 expenses ExampleCategoryExpenses expenses_examples_test.go:89:1
+1 expenses ExampleTotalByPeriod expenses_examples_test.go:72:1
+1 expenses ExampleFilter expenses_examples_test.go:5:1
+1 expenses ByCategory expenses.go:44:1
+
+real	0m0.003s
+user	0m0.000s
+sys	0m0.003s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.033s
+user	0m0.016s
+sys	0m0.025s
+
+real	0m0.035s
+user	0m0.018s
+sys	0m0.025s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-misspell
+
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+
+real	0m0.040s
+user	0m0.043s
+sys	0m0.019s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.057s
+user	0m0.053s
+sys	0m0.030s
+
+real	0m0.059s
+user	0m0.054s
+sys	0m0.031s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gosec
+
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.036s
+user	0m0.014s
+sys	0m0.033s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:23:11 Including rules: default
+[gosec] 2023/09/07 00:23:11 Excluding rules: default
+[gosec] 2023/09/07 00:23:11 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/expenses
+[gosec] 2023/09/07 00:23:11 Checking package: expenses
+[gosec] 2023/09/07 00:23:11 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/expenses/expenses.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 83
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.118s
+user	0m0.132s
+sys	0m0.100s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.175s
+user	0m0.154s
+sys	0m0.153s
+
+real	0m0.178s
+user	0m0.157s
+sys	0m0.154s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.023s
+user	0m0.013s
+sys	0m0.018s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
 === RUN   TestFilterByDaysPeriod
 === RUN   TestFilterByDaysPeriod/returns_expenses_records_from_1st_to_15th_day
 === RUN   TestFilterByDaysPeriod/returns_empty_list_when_no_expenses_found_in_the_days_period
@@ -54,15 +668,17 @@ go test -v -covermode=count -coverprofile coverage.out expenses
 --- PASS: ExampleCategoryExpenses (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	expenses	0.018s	coverage: 100.0% of statements
+ok  	expenses	0.002s	coverage: 100.0% of statements
 
-real	0m0.618s
-user	0m0.687s
-sys	0m0.565s
+real	0m0.177s
+user	0m0.229s
+sys	0m0.149s
 
-===============================================================================
 
-go tool cover -func=coverage.out
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
 expenses/expenses.go:19:	Filter			100.0%
 expenses/expenses.go:33:	ByDaysPeriod		100.0%
 expenses/expenses.go:44:	ByCategory		100.0%
@@ -70,13 +686,40 @@ expenses/expenses.go:54:	TotalByPeriod		100.0%
 expenses/expenses.go:70:	CategoryExpenses	100.0%
 total:				(statements)		100.0%
 
-real	0m0.205s
-user	0m0.171s
-sys	0m0.164s
+real	0m0.045s
+user	0m0.059s
+sys	0m0.085s
 
-===============================================================================
 
-go test -v -race -covermode=atomic expenses
+ ==============================================================================
+
+Running: go tool cover -html coverage.out -o coverage.html
+
+
+real	0m0.048s
+user	0m0.036s
+sys	0m0.036s
+
+
+ ==============================================================================
+
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+real	0m0.016s
+user	0m0.006s
+sys	0m0.015s
+
+real	0m0.016s
+user	0m0.006s
+sys	0m0.015s
+
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
 === RUN   TestFilterByDaysPeriod
 === RUN   TestFilterByDaysPeriod/returns_expenses_records_from_1st_to_15th_day
 === RUN   TestFilterByDaysPeriod/returns_empty_list_when_no_expenses_found_in_the_days_period
@@ -117,67 +760,94 @@ go test -v -race -covermode=atomic expenses
 --- PASS: ExampleCategoryExpenses (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	expenses	0.030s	coverage: 100.0% of statements
+ok  	expenses	1.015s	coverage: 100.0% of statements
 
-real	0m0.736s
-user	0m0.813s
-sys	0m0.491s
+real	0m1.259s
+user	0m0.271s
+sys	0m0.176s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.588s
+user	0m0.626s
+sys	0m0.494s
+
+real	0m1.592s
+user	0m0.627s
+sys	0m0.498s
 
 ===============================================================================
 
-go test --bench . --benchmem
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 PASS
-ok  	expenses	0.025s
+ok  	expenses	0.002s
 
-real	0m0.502s
-user	0m0.615s
-sys	0m0.384s
+real	0m0.143s
+user	0m0.207s
+sys	0m0.125s
 
 ===============================================================================
 
-go test -tags bonus
+gotest -v -tags bonus
+=== RUN   TestFilterByDaysPeriod
+=== RUN   TestFilterByDaysPeriod/returns_expenses_records_from_1st_to_15th_day
+=== RUN   TestFilterByDaysPeriod/returns_empty_list_when_no_expenses_found_in_the_days_period
+--- PASS: TestFilterByDaysPeriod (0.00s)
+    --- PASS: TestFilterByDaysPeriod/returns_expenses_records_from_1st_to_15th_day (0.00s)
+    --- PASS: TestFilterByDaysPeriod/returns_empty_list_when_no_expenses_found_in_the_days_period (0.00s)
+=== RUN   TestFilterByCategory
+=== RUN   TestFilterByCategory/returns_expenses_in_groceries_category
+=== RUN   TestFilterByCategory/returns_empty_list_for_unknown_category
+--- PASS: TestFilterByCategory (0.00s)
+    --- PASS: TestFilterByCategory/returns_expenses_in_groceries_category (0.00s)
+    --- PASS: TestFilterByCategory/returns_empty_list_for_unknown_category (0.00s)
+=== RUN   TestTotalByPeriod
+=== RUN   TestTotalByPeriod/total_expenses_is_0_when_no_records_found_in_the_provided_days_period
+=== RUN   TestTotalByPeriod/total_expenses_for_days_period_from_25th_to_26th_day
+=== RUN   TestTotalByPeriod/total_expenses_for_the_full_days_period
+--- PASS: TestTotalByPeriod (0.00s)
+    --- PASS: TestTotalByPeriod/total_expenses_is_0_when_no_records_found_in_the_provided_days_period (0.00s)
+    --- PASS: TestTotalByPeriod/total_expenses_for_days_period_from_25th_to_26th_day (0.00s)
+    --- PASS: TestTotalByPeriod/total_expenses_for_the_full_days_period (0.00s)
+=== RUN   TestCategoryExpenses
+=== RUN   TestCategoryExpenses/returns_error_when_no_records_with_category_found_in_any_days_period
+=== RUN   TestCategoryExpenses/returns_total_category_expenses_in_the_provided_days_period
+=== RUN   TestCategoryExpenses/returns_0_when_no_category_expenses_found_in_the_provided_days_period
+--- PASS: TestCategoryExpenses (0.00s)
+    --- PASS: TestCategoryExpenses/returns_error_when_no_records_with_category_found_in_any_days_period (0.00s)
+    --- PASS: TestCategoryExpenses/returns_total_category_expenses_in_the_provided_days_period (0.00s)
+    --- PASS: TestCategoryExpenses/returns_0_when_no_category_expenses_found_in_the_provided_days_period (0.00s)
+=== RUN   ExampleFilter
+--- PASS: ExampleFilter (0.00s)
+=== RUN   ExampleByDaysPeriod
+--- PASS: ExampleByDaysPeriod (0.00s)
+=== RUN   ExampleByCategory
+--- PASS: ExampleByCategory (0.00s)
+=== RUN   ExampleTotalByPeriod
+--- PASS: ExampleTotalByPeriod (0.00s)
+=== RUN   ExampleCategoryExpenses
+--- PASS: ExampleCategoryExpenses (0.00s)
 PASS
-ok  	expenses	0.028s
+ok  	expenses	0.001s
 
-real	0m0.609s
-user	0m0.687s
-sys	0m0.552s
-
-===============================================================================
-
-go vet expenses
-
-real	0m0.413s
-user	0m0.446s
-sys	0m0.331s
+real	0m0.116s
+user	0m0.143s
+sys	0m0.110s
 
 ===============================================================================
 
-go fix expenses
-
-real	0m0.131s
-user	0m0.096s
-sys	0m0.096s
-
-===============================================================================
-
-gosec ./expenses
-[gosec] 2022/06/20 00:59:03 Including rules: default
-[gosec] 2022/06/20 00:59:03 Excluding rules: default
-[gosec] 2022/06/20 00:59:03 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/expenses
-2022/06/20 00:59:03 internal error: package "errors" without types was imported from "command-line-arguments"
-
-real	0m0.377s
-user	0m0.384s
-sys	0m0.342s
+No old benchmarks to run benchstat against.
 
 ===============================================================================
 
 gomarkdoc --output expenses-doc.md
 
-real	0m0.044s
-user	0m0.024s
-sys	0m0.012s
+real	0m0.014s
+user	0m0.006s
+sys	0m0.007s
 
 ===============================================================================
 
@@ -225,9 +895,9 @@ func Filter(in []Record, predicate func(Record) bool) []Record
     Filter returns the records for which the predicate function returns true.
 
 
-real	0m0.180s
-user	0m0.114s
-sys	0m0.134s
+real	0m0.031s
+user	0m0.018s
+sys	0m0.023s
 
 
 ===============================================================================

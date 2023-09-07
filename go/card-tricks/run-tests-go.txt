@@ -5,15 +5,636 @@ Go packages: cards
 
 ===============================================================================
 
-golint cards
+Running: ../../.github/citools/go/go-lint-golangci-lint
 
-real	0m0.210s
-user	0m0.189s
-sys	0m0.173s
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.012s
+user	0m0.003s
+sys	0m0.012s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+card_tricks_test.go:77: Function 'TestSetItem' is too long (74 > 60) (funlen)
+func TestSetItem(t *testing.T) {
+card_tricks.go:40:14: appendAssign: append result not assigned to the same slice (gocritic)
+		newSlice = append(value, slice...)
+		           ^
+card_tricks.go:51:14: appendAssign: append result not assigned to the same slice (gocritic)
+		newSlice = append(slice[:index], slice[index+1:]...)
+		           ^
+card_tricks_test.go:296: File is not `gofumpt`-ed (gofumpt)
+	var slice = make([]int, len(s))
+card_tricks.go:36:15: var-declaration: should omit type []int from declaration of var newSlice; it will be inferred from the right-hand side (revive)
+	var newSlice []int = []int{}
+	             ^
+card_tricks.go:48:15: var-declaration: should omit type []int from declaration of var newSlice; it will be inferred from the right-hand side (revive)
+	var newSlice []int = []int{}
+	             ^
+card_tricks_test.go:69:19: Using the variable on range scope `tt` in function literal (scopelint)
+			got := GetItem(tt.args.slice, tt.args.index)
+			               ^
+card_tricks_test.go:70:14: Using the variable on range scope `tt` in function literal (scopelint)
+			if got != tt.want {
+			          ^
+card_tricks_test.go:71:63: Using the variable on range scope `tt` in function literal (scopelint)
+				t.Errorf("GetItem(slice:%v, index:%v) got = %v, want %v", tt.args.slice, tt.args.index, got, tt.want)
+				                                                          ^
+card_tricks_test.go:11:2: only one cuddle assignment allowed before if statement (wsl)
+	if !slicesEqual(got, want) {
+	^
+card_tricks_test.go:21:2: assignments should only be cuddled with other assignments (wsl)
+	tests := []struct {
+	^
+card_tricks_test.go:67:2: only one cuddle assignment allowed before range statement (wsl)
+	for _, tt := range tests {
+	^
+card_tricks_test.go:83:2: assignments should only be cuddled with other assignments (wsl)
+	tests := []struct {
+	^
+card_tricks_test.go:134:2: only one cuddle assignment allowed before range statement (wsl)
+	for _, tt := range tests {
+	^
+card_tricks_test.go:159:2: assignments should only be cuddled with other assignments (wsl)
+	tests := []struct {
+	^
+card_tricks_test.go:205:2: only one cuddle assignment allowed before range statement (wsl)
+	for _, tt := range tests {
+	^
+card_tricks_test.go:297:2: expressions should not be cuddled with declarations or returns (wsl)
+	copy(slice, s)
+	^
+card_tricks_test.go:298:2: return statements should not be cuddled if block has more than two lines (wsl)
+	return slice
+	^
+card_tricks_test.go:9:2: variable 'got' is only used in the if-statement (card_tricks_test.go:11:2); consider using short syntax (ifshort)
+	got := FavoriteCards()
+	^
+card_tricks_test.go:10:2: variable 'want' is only used in the if-statement (card_tricks_test.go:11:2); consider using short syntax (ifshort)
+	want := []int{2, 6, 9}
+	^
+card_tricks_test.go:8:1: Function TestFavoriteCards missing the call to method parallel (paralleltest)
+func TestFavoriteCards(t *testing.T) {
+^
+card_tricks_test.go:16:1: Function TestGetItem missing the call to method parallel (paralleltest)
+func TestGetItem(t *testing.T) {
+^
+card_tricks_test.go:154:1: Function TestPrependItems missing the call to method parallel (paralleltest)
+func TestPrependItems(t *testing.T) {
+^
+card_tricks_test.go:216:1: Function TestRemoveItem missing the call to method parallel (paralleltest)
+func TestRemoveItem(t *testing.T) {
+^
+card_tricks_examples_test.go:1:9: package should be `cards_test` instead of `cards` (testpackage)
+package cards
+        ^
+card_tricks_test.go:1:9: package should be `cards_test` instead of `cards` (testpackage)
+package cards
+        ^
+card_tricks_test.go:276:18: parameter name 'b' is too short for the scope of its usage (varnamelen)
+func slicesEqual(a, b []int) bool {
+                 ^
+
+real	0m0.512s
+user	0m0.784s
+sys	0m0.448s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.536s
+user	0m0.794s
+sys	0m0.470s
+
+real	0m0.538s
+user	0m0.795s
+sys	0m0.472s
 
 ===============================================================================
 
-go test -v -covermode=count -coverprofile coverage.out cards
+Running: ../../.github/citools/go/go-lint-revive
+
+Running Go Lint Revive
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.011s
+user	0m0.005s
+sys	0m0.008s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
+card_tricks.go
+  (1, 1)    https://revive.run/r#package-comments  should have a package comment                                                                          
+  (36, 15)  https://revive.run/r#var-declaration   should omit type []int from declaration of var newSlice; it will be inferred from the right-hand side  
+  (48, 15)  https://revive.run/r#var-declaration   should omit type []int from declaration of var newSlice; it will be inferred from the right-hand side  
+
+
+ ✖ 3 problems (0 errors) (3 warnings)
+
+real	0m0.040s
+user	0m0.017s
+sys	0m0.033s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.063s
+user	0m0.029s
+sys	0m0.052s
+
+real	0m0.065s
+user	0m0.030s
+sys	0m0.053s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
+
+real	0m0.000s
+user	0m0.001s
+sys	0m0.000s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.014s
+user	0m0.005s
+sys	0m0.012s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
+	info: check "./."
+internal error: package "fmt" without types was imported from "cards [cards.test]"
+
+real	0m0.103s
+user	0m0.127s
+sys	0m0.116s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.128s
+user	0m0.135s
+sys	0m0.139s
+
+real	0m0.129s
+user	0m0.136s
+sys	0m0.140s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-staticcheck
+
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.010s
+user	0m0.004s
+sys	0m0.008s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+card_tricks.go:1:1: at least one file in a package should have a package comment (ST1000)
+card_tricks.go:36:15: should omit type []int from declaration; it will be inferred from the right-hand side (ST1023)
+card_tricks.go:48:15: should omit type []int from declaration; it will be inferred from the right-hand side (ST1023)
+
+real	0m0.186s
+user	0m0.234s
+sys	0m0.149s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.207s
+user	0m0.245s
+sys	0m0.166s
+
+real	0m0.209s
+user	0m0.247s
+sys	0m0.166s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocritic
+
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.012s
+user	0m0.006s
+sys	0m0.009s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+./card_tricks.go:40:14: appendAssign: append result not assigned to the same slice
+./card_tricks.go:51:14: appendAssign: append result not assigned to the same slice
+
+real	0m0.831s
+user	0m2.051s
+sys	0m0.273s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.854s
+user	0m2.061s
+sys	0m0.293s
+
+real	0m0.855s
+user	0m2.063s
+sys	0m0.293s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go_vet
+
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.012s
+user	0m0.006s
+sys	0m0.010s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.083s
+user	0m0.114s
+sys	0m0.112s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.108s
+user	0m0.126s
+sys	0m0.132s
+
+real	0m0.110s
+user	0m0.128s
+sys	0m0.132s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-fixer-go_fix
+
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.013s
+user	0m0.006s
+sys	0m0.010s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.018s
+user	0m0.007s
+sys	0m0.015s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.043s
+user	0m0.019s
+sys	0m0.032s
+
+real	0m0.045s
+user	0m0.019s
+sys	0m0.034s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-errcheck
+
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.012s
+user	0m0.008s
+sys	0m0.008s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+
+real	0m0.460s
+user	0m1.279s
+sys	0m0.233s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.484s
+user	0m1.291s
+sys	0m0.253s
+
+real	0m0.486s
+user	0m1.293s
+sys	0m0.253s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.013s
+user	0m0.007s
+sys	0m0.010s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
+6 cards TestSetItem card_tricks_test.go:77:1
+5 cards slicesEqual card_tricks_test.go:276:1
+3 cards TestRemoveItem card_tricks_test.go:216:1
+3 cards TestPrependItems card_tricks_test.go:154:1
+3 cards TestGetItem card_tricks_test.go:16:1
+3 cards RemoveItem card_tricks.go:47:1
+3 cards SetItem card_tricks.go:24:1
+3 cards GetItem card_tricks.go:10:1
+2 cards TestFavoriteCards card_tricks_test.go:8:1
+2 cards PrependItems card_tricks.go:35:1
+1 cards copySlice card_tricks_test.go:295:1
+1 cards ExampleRemoveItem card_tricks_examples_test.go:62:1
+1 cards ExamplePrependItems card_tricks_examples_test.go:51:1
+1 cards ExampleSetItem card_tricks_examples_test.go:23:1
+1 cards ExampleGetItem card_tricks_examples_test.go:12:1
+1 cards ExampleFavoriteCards card_tricks_examples_test.go:7:1
+1 cards FavoriteCards card_tricks.go:4:1
+
+real	0m0.002s
+user	0m0.001s
+sys	0m0.001s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.035s
+user	0m0.015s
+sys	0m0.030s
+
+real	0m0.037s
+user	0m0.015s
+sys	0m0.031s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-misspell
+
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+
+real	0m0.030s
+user	0m0.028s
+sys	0m0.016s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.044s
+user	0m0.037s
+sys	0m0.024s
+
+real	0m0.047s
+user	0m0.038s
+sys	0m0.027s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gosec
+
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.015s
+user	0m0.006s
+sys	0m0.013s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:21:23 Including rules: default
+[gosec] 2023/09/07 00:21:23 Excluding rules: default
+[gosec] 2023/09/07 00:21:23 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/card-tricks
+[gosec] 2023/09/07 00:21:23 Checking package: cards
+[gosec] 2023/09/07 00:21:23 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/card-tricks/card_tricks.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 57
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.087s
+user	0m0.066s
+sys	0m0.061s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.112s
+user	0m0.078s
+sys	0m0.082s
+
+real	0m0.114s
+user	0m0.080s
+sys	0m0.082s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.023s
+user	0m0.014s
+sys	0m0.028s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
 === RUN   TestFavoriteCards
 --- PASS: TestFavoriteCards (0.00s)
 === RUN   TestGetItem
@@ -76,15 +697,17 @@ go test -v -covermode=count -coverprofile coverage.out cards
 --- PASS: ExampleRemoveItem (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	cards	0.020s	coverage: 100.0% of statements
+ok  	cards	0.003s	coverage: 100.0% of statements
 
-real	0m0.663s
-user	0m0.732s
-sys	0m0.502s
+real	0m0.194s
+user	0m0.245s
+sys	0m0.163s
 
-===============================================================================
 
-go tool cover -func=coverage.out
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
 cards/card_tricks.go:4:		FavoriteCards	100.0%
 cards/card_tricks.go:10:	GetItem		100.0%
 cards/card_tricks.go:24:	SetItem		100.0%
@@ -92,13 +715,40 @@ cards/card_tricks.go:35:	PrependItems	100.0%
 cards/card_tricks.go:47:	RemoveItem	100.0%
 total:				(statements)	100.0%
 
-real	0m0.095s
-user	0m0.044s
-sys	0m0.108s
+real	0m0.032s
+user	0m0.015s
+sys	0m0.035s
 
-===============================================================================
 
-go test -v -race -covermode=atomic cards
+ ==============================================================================
+
+Running: go tool cover -html coverage.out -o coverage.html
+
+
+real	0m0.022s
+user	0m0.009s
+sys	0m0.017s
+
+
+ ==============================================================================
+
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+real	0m0.009s
+user	0m0.004s
+sys	0m0.012s
+
+real	0m0.009s
+user	0m0.004s
+sys	0m0.012s
+
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
 === RUN   TestFavoriteCards
 --- PASS: TestFavoriteCards (0.00s)
 === RUN   TestGetItem
@@ -107,7 +757,7 @@ go test -v -race -covermode=atomic cards
 === RUN   TestGetItem/Get_last_item_from_slice
 === RUN   TestGetItem/Index_out_of_bounds
 === RUN   TestGetItem/Negative_index
---- PASS: TestGetItem (0.02s)
+--- PASS: TestGetItem (0.00s)
     --- PASS: TestGetItem/Retrieve_item_from_slice_by_index (0.00s)
     --- PASS: TestGetItem/Get_first_item_from_slice (0.00s)
     --- PASS: TestGetItem/Get_last_item_from_slice (0.00s)
@@ -131,7 +781,7 @@ go test -v -race -covermode=atomic cards
 === RUN   TestPrependItems/prepend_nil
 === RUN   TestPrependItems/prepend_zero_items
 === RUN   TestPrependItems/Prepend_slice_to_itself
---- PASS: TestPrependItems (0.01s)
+--- PASS: TestPrependItems (0.00s)
     --- PASS: TestPrependItems/Prepend_one_item (0.00s)
     --- PASS: TestPrependItems/Prepend_two_items (0.00s)
     --- PASS: TestPrependItems/prepend_nil (0.00s)
@@ -161,78 +811,116 @@ go test -v -race -covermode=atomic cards
 --- PASS: ExampleRemoveItem (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	cards	0.077s	coverage: 100.0% of statements
+ok  	cards	1.020s	coverage: 100.0% of statements
 
-real	0m0.804s
-user	0m0.852s
-sys	0m0.519s
+real	0m1.294s
+user	0m0.312s
+sys	0m0.173s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.587s
+user	0m0.606s
+sys	0m0.440s
+
+real	0m1.590s
+user	0m0.608s
+sys	0m0.441s
 
 ===============================================================================
 
-go test --bench . --benchmem
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 PASS
-ok  	cards	0.014s
+ok  	cards	0.002s
 
-real	0m0.794s
-user	0m0.979s
-sys	0m0.616s
+real	0m0.154s
+user	0m0.228s
+sys	0m0.165s
 
 ===============================================================================
 
-go test -tags bonus
+gotest -v -tags bonus
+=== RUN   TestFavoriteCards
+--- PASS: TestFavoriteCards (0.00s)
+=== RUN   TestGetItem
+=== RUN   TestGetItem/Retrieve_item_from_slice_by_index
+=== RUN   TestGetItem/Get_first_item_from_slice
+=== RUN   TestGetItem/Get_last_item_from_slice
+=== RUN   TestGetItem/Index_out_of_bounds
+=== RUN   TestGetItem/Negative_index
+--- PASS: TestGetItem (0.00s)
+    --- PASS: TestGetItem/Retrieve_item_from_slice_by_index (0.00s)
+    --- PASS: TestGetItem/Get_first_item_from_slice (0.00s)
+    --- PASS: TestGetItem/Get_last_item_from_slice (0.00s)
+    --- PASS: TestGetItem/Index_out_of_bounds (0.00s)
+    --- PASS: TestGetItem/Negative_index (0.00s)
+=== RUN   TestSetItem
+=== RUN   TestSetItem/Overwrite_an_existing_item
+=== RUN   TestSetItem/Overwrite_first_item
+=== RUN   TestSetItem/Overwrite_last_item
+=== RUN   TestSetItem/Index_out_of_bounds
+=== RUN   TestSetItem/Negative_index
+--- PASS: TestSetItem (0.00s)
+    --- PASS: TestSetItem/Overwrite_an_existing_item (0.00s)
+    --- PASS: TestSetItem/Overwrite_first_item (0.00s)
+    --- PASS: TestSetItem/Overwrite_last_item (0.00s)
+    --- PASS: TestSetItem/Index_out_of_bounds (0.00s)
+    --- PASS: TestSetItem/Negative_index (0.00s)
+=== RUN   TestPrependItems
+=== RUN   TestPrependItems/Prepend_one_item
+=== RUN   TestPrependItems/Prepend_two_items
+=== RUN   TestPrependItems/prepend_nil
+=== RUN   TestPrependItems/prepend_zero_items
+=== RUN   TestPrependItems/Prepend_slice_to_itself
+--- PASS: TestPrependItems (0.00s)
+    --- PASS: TestPrependItems/Prepend_one_item (0.00s)
+    --- PASS: TestPrependItems/Prepend_two_items (0.00s)
+    --- PASS: TestPrependItems/prepend_nil (0.00s)
+    --- PASS: TestPrependItems/prepend_zero_items (0.00s)
+    --- PASS: TestPrependItems/Prepend_slice_to_itself (0.00s)
+=== RUN   TestRemoveItem
+=== RUN   TestRemoveItem/Remove_an_item
+=== RUN   TestRemoveItem/Remove_the_first_item
+=== RUN   TestRemoveItem/Remove_the_last_item
+=== RUN   TestRemoveItem/Remove_out_of_bounds_index
+=== RUN   TestRemoveItem/Remove_negative_index
+--- PASS: TestRemoveItem (0.00s)
+    --- PASS: TestRemoveItem/Remove_an_item (0.00s)
+    --- PASS: TestRemoveItem/Remove_the_first_item (0.00s)
+    --- PASS: TestRemoveItem/Remove_the_last_item (0.00s)
+    --- PASS: TestRemoveItem/Remove_out_of_bounds_index (0.00s)
+    --- PASS: TestRemoveItem/Remove_negative_index (0.00s)
+=== RUN   ExampleFavoriteCards
+--- PASS: ExampleFavoriteCards (0.00s)
+=== RUN   ExampleGetItem
+--- PASS: ExampleGetItem (0.00s)
+=== RUN   ExampleSetItem
+--- PASS: ExampleSetItem (0.00s)
+=== RUN   ExamplePrependItems
+--- PASS: ExamplePrependItems (0.00s)
+=== RUN   ExampleRemoveItem
+--- PASS: ExampleRemoveItem (0.00s)
 PASS
-ok  	cards	0.008s
+ok  	cards	0.002s
 
-real	0m0.626s
-user	0m0.746s
-sys	0m0.535s
-
-===============================================================================
-
-go vet cards
-
-real	0m0.367s
-user	0m0.479s
-sys	0m0.385s
+real	0m0.130s
+user	0m0.163s
+sys	0m0.128s
 
 ===============================================================================
 
-go fix cards
-
-real	0m0.045s
-user	0m0.026s
-sys	0m0.033s
-
-===============================================================================
-
-gosec ./card-tricks
-[gosec] 2022/06/20 23:44:56 Including rules: default
-[gosec] 2022/06/20 23:44:56 Excluding rules: default
-[gosec] 2022/06/20 23:44:56 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/card-tricks
-[gosec] 2022/06/20 23:44:57 Checking package: cards
-[gosec] 2022/06/20 23:44:57 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/card-tricks/card_tricks.go
-Results:
-
-
-[1;36mSummary:[0m
-  Gosec  : dev
-  Files  : 1
-  Lines  : 57
-  Nosec  : 0
-  Issues : [1;32m0[0m
-
-
-real	0m0.265s
-user	0m0.257s
-sys	0m0.182s
+No old benchmarks to run benchstat against.
 
 ===============================================================================
 
 gomarkdoc --output cards-doc.md
 
-real	0m0.017s
-user	0m0.010s
-sys	0m0.022s
+real	0m0.012s
+user	0m0.006s
+sys	0m0.006s
 
 ===============================================================================
 
@@ -260,9 +948,9 @@ func SetItem(slice []int, index, value int) []int
     value. If the index is out of range the value needs to be appended.
 
 
-real	0m0.132s
-user	0m0.074s
-sys	0m0.125s
+real	0m0.026s
+user	0m0.010s
+sys	0m0.021s
 
 
 ===============================================================================

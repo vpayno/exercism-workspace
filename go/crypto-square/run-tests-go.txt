@@ -5,56 +5,615 @@ Go packages: cryptosquare
 
 ===============================================================================
 
-golint ./...
+Running: ../../.github/citools/go/go-lint-golangci-lint
+
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.025s
+user	0m0.022s
+sys	0m0.028s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+crypto_square.go:20:3: use of `fmt.Printf` forbidden by pattern `^(fmt\.Print(|f|ln)|print|println)$` (forbidigo)
+		fmt.Printf("plain: %q\n", plain)
+		^
+crypto_square.go:26:3: use of `fmt.Printf` forbidden by pattern `^(fmt\.Print(|f|ln)|print|println)$` (forbidigo)
+		fmt.Printf("plain: %q\n", normalizedText)
+		^
+crypto_square.go:32:3: use of `fmt.Printf` forbidden by pattern `^(fmt\.Print(|f|ln)|print|println)$` (forbidigo)
+		fmt.Printf("plainTokens: %#v\n", plainTokens)
+		^
+crypto_square_examples_test.go:61: File is not `gofmt`-ed with `-s` (gofmt)
+		[]string{"ifmanwas", "meanttos", "tayonthe", "groundgo", "dwouldha", "vegivenu", "sroots  "},
+		[]string{"12", "34"},
+crypto_square_test.go:90:21: Using the variable on range scope `test` in function literal (scopelint)
+			if got := Encode(test.input); got != test.expected {
+			                 ^
+crypto_square_test.go:91:47: Using the variable on range scope `test` in function literal (scopelint)
+				t.Errorf("Encode(%q):\n got:%q\nwant:%q", test.input, got, test.expected)
+				                                          ^
+crypto_square.go:58:2: only one cuddle assignment allowed before if statement (wsl)
+	if err != nil {
+	^
+crypto_square.go:104:2: declarations should never be cuddled (wsl)
+	var token strings.Builder
+	^
+crypto_square.go:105:2: declarations should never be cuddled (wsl)
+	var count int
+	^
+crypto_square.go:109:3: only cuddled expressions if assigning variable or using from line above (wsl)
+		token.WriteString(string(char))
+		^
+crypto_square.go:115:4: assignments should only be cuddled with other assignments (wsl)
+			count = 0
+			^
+crypto_square.go:140:2: assignments should only be cuddled with other assignments (wsl)
+	cipher := []string{}
+	^
+crypto_square.go:155:3: expressions should not be cuddled with blocks (wsl)
+		sb.Reset()
+		^
+crypto_square_test.go:101:2: for statements should only be cuddled with assignments used in the iteration (wsl)
+	for i := 0; i < b.N; i++ {
+	^
+crypto_square.go:11:5: debugMode is a global variable (gochecknoglobals)
+var debugMode = false
+    ^
+crypto_square_test.go:5:5: tests is a global variable (gochecknoglobals)
+var tests = []struct {
+    ^
+crypto_square.go:80:3: return with no blank line before (nlreturn)
+		return
+		^
+crypto_square.go:87:5: return with no blank line before (nlreturn)
+				return
+				^
+crypto_square.go:71:1: named return "row" with type "int" found (nonamedreturns)
+func GetSquareDimmensions(text string) (row, col int) {
+^
+crypto_square_test.go:87:1: Function TestEncode missing the call to method parallel (paralleltest)
+func TestEncode(t *testing.T) {
+^
+crypto_square_test.go:88:2: Range statement for test TestEncode missing the call to method parallel in test Run (paralleltest)
+	for _, test := range tests {
+	^
+crypto_square_examples_test.go:1:9: package should be `cryptosquare_test` instead of `cryptosquare` (testpackage)
+package cryptosquare
+        ^
+crypto_square_test.go:1:9: package should be `cryptosquare_test` instead of `cryptosquare` (testpackage)
+package cryptosquare
+        ^
+crypto_square.go:57:2: variable name 're' is too short for the scope of its usage (varnamelen)
+	re, err := regexp.Compile(reStr)
+	^
+crypto_square.go:139:6: variable name 'sb' is too short for the scope of its usage (varnamelen)
+	var sb strings.Builder
+	    ^
+
+real	0m0.567s
+user	0m0.831s
+sys	0m0.527s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.608s
+user	0m0.864s
+sys	0m0.568s
+
+real	0m0.613s
+user	0m0.867s
+sys	0m0.570s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-revive
+
+Running Go Lint Revive
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.023s
+user	0m0.022s
+sys	0m0.028s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
+
+real	0m0.093s
+user	0m0.046s
+sys	0m0.081s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.128s
+user	0m0.075s
+sys	0m0.118s
+
+real	0m0.130s
+user	0m0.076s
+sys	0m0.119s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
+
+real	0m0.004s
+user	0m0.000s
+sys	0m0.003s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.025s
+user	0m0.023s
+sys	0m0.025s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
+	info: check "./."
+internal error: package "fmt" without types was imported from "cryptosquare"
+
+real	0m0.099s
+user	0m0.123s
+sys	0m0.137s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.137s
+user	0m0.150s
+sys	0m0.175s
+
+real	0m0.145s
+user	0m0.152s
+sys	0m0.181s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-staticcheck
+
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.024s
+user	0m0.018s
+sys	0m0.030s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+
+real	0m0.164s
+user	0m0.214s
+sys	0m0.127s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.200s
+user	0m0.238s
+sys	0m0.168s
+
+real	0m0.203s
+user	0m0.240s
+sys	0m0.169s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocritic
+
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.023s
+user	0m0.026s
+sys	0m0.026s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+
+real	0m1.000s
+user	0m2.334s
+sys	0m0.336s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.034s
+user	0m2.366s
+sys	0m0.369s
+
+real	0m1.035s
+user	0m2.367s
+sys	0m0.369s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go_vet
+
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.028s
+user	0m0.018s
+sys	0m0.028s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.145s
+user	0m0.176s
+sys	0m0.194s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.189s
+user	0m0.198s
+sys	0m0.240s
+
+real	0m0.191s
+user	0m0.199s
+sys	0m0.241s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-fixer-go_fix
+
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.035s
+user	0m0.039s
+sys	0m0.059s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.028s
+user	0m0.025s
+sys	0m0.024s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.076s
+user	0m0.072s
+sys	0m0.092s
+
+real	0m0.079s
+user	0m0.074s
+sys	0m0.094s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-errcheck
+
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.035s
+user	0m0.023s
+sys	0m0.039s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+
+real	0m0.474s
+user	0m1.241s
+sys	0m0.263s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.521s
+user	0m1.268s
+sys	0m0.315s
+
+real	0m0.523s
+user	0m1.270s
+sys	0m0.315s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.023s
+user	0m0.019s
+sys	0m0.031s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
+8 cryptosquare GetSquareDimmensions crypto_square.go:71:1
+7 cryptosquare GetTokens crypto_square.go:96:1
+6 cryptosquare EncodeTokens crypto_square.go:134:1
+6 cryptosquare Encode crypto_square.go:14:1
+4 cryptosquare BenchmarkEncode crypto_square_test.go:97:1
+3 cryptosquare TestEncode crypto_square_test.go:87:1
+3 cryptosquare NormalizeText crypto_square.go:49:1
+2 cryptosquare ExampleEncodeTokens crypto_square_examples_test.go:59:1
+2 cryptosquare ExampleGetTokens crypto_square_examples_test.go:41:1
+2 cryptosquare ExampleGetSquareDimmensions crypto_square_examples_test.go:22:1
+2 cryptosquare ExampleNormalizeText crypto_square_examples_test.go:5:1
+1 cryptosquare ExampleEncode crypto_square_examples_test.go:78:1
+
+real	0m0.002s
+user	0m0.001s
+sys	0m0.001s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.038s
+user	0m0.028s
+sys	0m0.040s
+
+real	0m0.040s
+user	0m0.028s
+sys	0m0.041s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-misspell
+
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+
+real	0m0.035s
+user	0m0.028s
+sys	0m0.017s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.047s
+user	0m0.035s
+sys	0m0.025s
+
+real	0m0.048s
+user	0m0.035s
+sys	0m0.027s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gosec
+
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.025s
+user	0m0.024s
+sys	0m0.023s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:21:57 Including rules: default
+[gosec] 2023/09/07 00:21:57 Excluding rules: default
+[gosec] 2023/09/07 00:21:57 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/crypto-square
+[gosec] 2023/09/07 00:21:57 Checking package: cryptosquare
+[gosec] 2023/09/07 00:21:57 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/crypto-square/crypto_square.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 159
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
 
 real	0m0.129s
-user	0m0.164s
-sys	0m0.121s
+user	0m0.149s
+sys	0m0.110s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.166s
+user	0m0.180s
+sys	0m0.142s
+
+real	0m0.168s
+user	0m0.180s
+sys	0m0.143s
 
 ===============================================================================
 
-revive ./...
+Running: ../../.github/citools/go/go-test-cover-report
 
-real	0m0.052s
-user	0m0.044s
-sys	0m0.052s
+Running Go Test, Coverage & Reports
 
-===============================================================================
+Go version:
 
-ineffassign ./...
+	go version go1.21.0 linux/amd64
 
-real	0m0.589s
-user	0m0.656s
-sys	0m0.489s
 
-===============================================================================
+ ==============================================================================
 
-go-consistent -v ./...
-	info: check "./."
+Running: go clean ./...
 
-real	0m1.645s
-user	0m2.635s
-sys	0m1.102s
 
-===============================================================================
+real	0m0.034s
+user	0m0.030s
+sys	0m0.038s
 
-staticcheck ./...
 
-real	0m1.018s
-user	0m1.217s
-sys	0m0.952s
+ ==============================================================================
 
-===============================================================================
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
 
-gocritic check -enableAll ./...
-
-real	0m6.601s
-user	0m10.393s
-sys	0m2.822s
-
-===============================================================================
-
-gotest -v -covermode=count -coverprofile coverage.out ./...
 === RUN   TestEncode
 === RUN   TestEncode/s#$%^&plunk
 === RUN   TestEncode/1,_2,_3_GO!
@@ -107,15 +666,17 @@ gotest -v -covermode=count -coverprofile coverage.out ./...
 --- PASS: ExampleEncode (0.00s)
 PASS
 coverage: 85.1% of statements
-ok  	cryptosquare	0.014s	coverage: 85.1% of statements
+ok  	cryptosquare	0.002s	coverage: 85.1% of statements
 
-real	0m1.301s
-user	0m1.599s
-sys	0m0.896s
+real	0m0.206s
+user	0m0.293s
+sys	0m0.169s
 
-===============================================================================
 
-go tool cover -func=coverage.out
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
 cryptosquare/crypto_square.go:14:	Encode			73.3%
 cryptosquare/crypto_square.go:49:	NormalizeText		80.0%
 cryptosquare/crypto_square.go:71:	GetSquareDimmensions	83.3%
@@ -123,175 +684,186 @@ cryptosquare/crypto_square.go:96:	GetTokens		94.4%
 cryptosquare/crypto_square.go:134:	EncodeTokens		91.7%
 total:					(statements)		85.1%
 
-real	0m0.519s
-user	0m0.330s
-sys	0m0.586s
-
-===============================================================================
-
-go tool cover -html coverage.out -o coverage.html
-
-real	0m0.354s
-user	0m0.396s
-sys	0m0.338s
-
-===============================================================================
-
-gocov convert coverage.out | gocov annotate -ceiling=100 -color - | tee coverage-annotations.txt
-
-[0m14 	func Encode(plain string) string {[0m
-[0m15 		if plain == "" {[0m
-[0m16 			return ""[0m
-[0m17 		}[0m
-[0m18 	[0m
-[0m19 		if debugMode {[0m
-[31;1m20 			fmt.Printf("plain: %q\n", plain)[0m
-[0m21 		}[0m
-[0m22 	[0m
-[0m23 		normalizedText := NormalizeText(plain)[0m
-[0m24 	[0m
-[0m25 		if debugMode {[0m
-[31;1m26 			fmt.Printf("plain: %q\n", normalizedText)[0m
-[0m27 		}[0m
-[0m28 	[0m
-[0m29 		plainTokens := GetTokens(normalizedText)[0m
-[0m30 	[0m
-[0m31 		if debugMode {[0m
-[31;1m32 			fmt.Printf("plainTokens: %#v\n", plainTokens)[0m
-[0m33 		}[0m
-[0m34 	[0m
-[0m35 		encodedTokens := EncodeTokens(plainTokens)[0m
-[0m36 	[0m
-[0m37 		if debugMode {[0m
-[31;1m38 			fmt.Printf("encodedTokens: %#v\n", encodedTokens)[0m
-[0m39 		}[0m
-[0m40 	[0m
-[0m41 		cipher := strings.Join(encodedTokens, " ")[0m
-[0m42 	[0m
-[0m43 		return cipher[0m
-[0m44 	}[0m
+real	0m0.065s
+user	0m0.083s
+sys	0m0.088s
 
 
-[0m134 	func EncodeTokens(tokens []string) []string {[0m
-[0m135 		if len(tokens) == 0 {[0m
-[31;1m136 			return []string{}[0m
-[0m137 		}[0m
-[0m138 	[0m
-[0m139 		var sb strings.Builder[0m
-[0m140 		cipher := []string{}[0m
-[0m141 	[0m
-[0m142 		// col <= len because we need to capture incomplete tokens.[0m
-[0m143 		for col := 0; col <= len(tokens); col++ {[0m
-[0m144 			for _, row := range tokens {[0m
-[0m145 				if col < len(row) {[0m
-[0m146 					sb.WriteString(string(row[col]))[0m
-[0m147 				}[0m
-[0m148 			}[0m
-[0m149 	[0m
-[0m150 			// To prevent from ending with an empty token.[0m
-[0m151 			// Write a token to the slice.[0m
-[0m152 			if len(sb.String()) > 0 {[0m
-[0m153 				cipher = append(cipher, sb.String())[0m
-[0m154 			}[0m
-[0m155 			sb.Reset()[0m
-[0m156 		}[0m
-[0m157 	[0m
-[0m158 		return cipher[0m
-[0m159 	}[0m
+ ==============================================================================
+
+Running: go tool cover -html coverage.out -o coverage.html
 
 
-[0m71 	func GetSquareDimmensions(text string) (row, col int) {[0m
-[0m72 		size := len(text)[0m
-[0m73 	[0m
-[0m74 		if size == 0 {[0m
-[31;1m75 			return[0m
-[0m76 		}[0m
-[0m77 	[0m
-[0m78 		if size == 1 {[0m
-[0m79 			row, col = 1, 1[0m
-[0m80 			return[0m
-[0m81 		}[0m
-[0m82 	[0m
-[0m83 		for c := 1; c <= size; c++ {[0m
-[0m84 			for r := 1; r < size; r++ {[0m
-[0m85 				if r*c >= size && c >= r && c-r <= 1 {[0m
-[0m86 					row, col = r, c[0m
-[0m87 					return[0m
-[0m88 				}[0m
-[0m89 			}[0m
-[0m90 		}[0m
-[0m91 	[0m
-[31;1m92 		return[0m
-[0m93 	}[0m
+real	0m0.049s
+user	0m0.073s
+sys	0m0.063s
 
 
-[0m 96 	func GetTokens(text string) []string {[0m
-[0m 97 		if text == "" {[0m
-[31;1m 98 			return []string{}[0m
-[0m 99 		}[0m
-[0m100 	[0m
-[0m101 		row, col := GetSquareDimmensions(NormalizeText(text))[0m
-[0m102 	[0m
-[0m103 		tokens := []string{}[0m
-[0m104 		var token strings.Builder[0m
-[0m105 		var count int[0m
-[0m106 	[0m
-[0m107 		for _, char := range text {[0m
-[0m108 			count++[0m
-[0m109 			token.WriteString(string(char))[0m
-[0m110 	[0m
-[0m111 			// Write a token to the slice.[0m
-[0m112 			if count == col {[0m
-[0m113 				tokens = append(tokens, token.String())[0m
-[0m114 				token.Reset()[0m
-[0m115 				count = 0[0m
-[0m116 			}[0m
-[0m117 		}[0m
-[0m118 	[0m
-[0m119 		// Prevent empty tokens from being captured.[0m
-[0m120 		if len(token.String()) > 0 {[0m
-[0m121 			tokens = append(tokens, token.String())[0m
-[0m122 		}[0m
-[0m123 	[0m
-[0m124 		// Count can be zero or larger than col.[0m
-[0m125 		// Catch incomplete tokens and add whitespace padd them.[0m
-[0m126 		if count > 0 && count < col {[0m
-[0m127 			tokens[row-1] += strings.Repeat(" ", col-count)[0m
-[0m128 		}[0m
-[0m129 	[0m
-[0m130 		return tokens[0m
-[0m131 	}[0m
+ ==============================================================================
+
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+14     	func Encode(plain string) string {
+15     		if plain == "" {
+16     			return ""
+17     		}
+18     	
+19     		if debugMode {
+20 MISS			fmt.Printf("plain: %q\n", plain)
+21     		}
+22     	
+23     		normalizedText := NormalizeText(plain)
+24     	
+25     		if debugMode {
+26 MISS			fmt.Printf("plain: %q\n", normalizedText)
+27     		}
+28     	
+29     		plainTokens := GetTokens(normalizedText)
+30     	
+31     		if debugMode {
+32 MISS			fmt.Printf("plainTokens: %#v\n", plainTokens)
+33     		}
+34     	
+35     		encodedTokens := EncodeTokens(plainTokens)
+36     	
+37     		if debugMode {
+38 MISS			fmt.Printf("encodedTokens: %#v\n", encodedTokens)
+39     		}
+40     	
+41     		cipher := strings.Join(encodedTokens, " ")
+42     	
+43     		return cipher
+44     	}
 
 
-[0m49 	func NormalizeText(text string) string {[0m
-[0m50 		if text == "" {[0m
-[31;1m51 			return ""[0m
-[0m52 		}[0m
-[0m53 	[0m
-[0m54 		var output string[0m
-[0m55 	[0m
-[0m56 		reStr := `[[:^alnum:]]+`[0m
-[0m57 		re, err := regexp.Compile(reStr)[0m
-[0m58 		if err != nil {[0m
-[31;1m59 			panic(err)[0m
-[0m60 		}[0m
-[0m61 	[0m
-[0m62 		// If it's not A-Z, a-z or 0-9, replace it with an empty string.[0m
-[0m63 		output = re.ReplaceAllString(text, "")[0m
-[0m64 	[0m
-[0m65 		output = strings.ToLower(output)[0m
-[0m66 	[0m
-[0m67 		return output[0m
-[0m68 	}[0m
+134     	func EncodeTokens(tokens []string) []string {
+135     		if len(tokens) == 0 {
+136 MISS			return []string{}
+137     		}
+138     	
+139     		var sb strings.Builder
+140     		cipher := []string{}
+141     	
+142     		// col <= len because we need to capture incomplete tokens.
+143     		for col := 0; col <= len(tokens); col++ {
+144     			for _, row := range tokens {
+145     				if col < len(row) {
+146     					sb.WriteString(string(row[col]))
+147     				}
+148     			}
+149     	
+150     			// To prevent from ending with an empty token.
+151     			// Write a token to the slice.
+152     			if len(sb.String()) > 0 {
+153     				cipher = append(cipher, sb.String())
+154     			}
+155     			sb.Reset()
+156     		}
+157     	
+158     		return cipher
+159     	}
 
 
-real	0m0.106s
-user	0m0.076s
-sys	0m0.123s
+71     	func GetSquareDimmensions(text string) (row, col int) {
+72     		size := len(text)
+73     	
+74     		if size == 0 {
+75 MISS			return
+76     		}
+77     	
+78     		if size == 1 {
+79     			row, col = 1, 1
+80     			return
+81     		}
+82     	
+83     		for c := 1; c <= size; c++ {
+84     			for r := 1; r < size; r++ {
+85     				if r*c >= size && c >= r && c-r <= 1 {
+86     					row, col = r, c
+87     					return
+88     				}
+89     			}
+90     		}
+91     	
+92 MISS		return
+93     	}
 
-===============================================================================
 
-gotest -v -race -covermode=atomic cryptosquare
+ 96     	func GetTokens(text string) []string {
+ 97     		if text == "" {
+ 98 MISS			return []string{}
+ 99     		}
+100     	
+101     		row, col := GetSquareDimmensions(NormalizeText(text))
+102     	
+103     		tokens := []string{}
+104     		var token strings.Builder
+105     		var count int
+106     	
+107     		for _, char := range text {
+108     			count++
+109     			token.WriteString(string(char))
+110     	
+111     			// Write a token to the slice.
+112     			if count == col {
+113     				tokens = append(tokens, token.String())
+114     				token.Reset()
+115     				count = 0
+116     			}
+117     		}
+118     	
+119     		// Prevent empty tokens from being captured.
+120     		if len(token.String()) > 0 {
+121     			tokens = append(tokens, token.String())
+122     		}
+123     	
+124     		// Count can be zero or larger than col.
+125     		// Catch incomplete tokens and add whitespace padd them.
+126     		if count > 0 && count < col {
+127     			tokens[row-1] += strings.Repeat(" ", col-count)
+128     		}
+129     	
+130     		return tokens
+131     	}
+
+
+49     	func NormalizeText(text string) string {
+50     		if text == "" {
+51 MISS			return ""
+52     		}
+53     	
+54     		var output string
+55     	
+56     		reStr := `[[:^alnum:]]+`
+57     		re, err := regexp.Compile(reStr)
+58     		if err != nil {
+59 MISS			panic(err)
+60     		}
+61     	
+62     		// If it's not A-Z, a-z or 0-9, replace it with an empty string.
+63     		output = re.ReplaceAllString(text, "")
+64     	
+65     		output = strings.ToLower(output)
+66     	
+67     		return output
+68     	}
+
+
+real	0m0.020s
+user	0m0.024s
+sys	0m0.023s
+
+real	0m0.020s
+user	0m0.024s
+sys	0m0.023s
+
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
 === RUN   TestEncode
 === RUN   TestEncode/s#$%^&plunk
 === RUN   TestEncode/1,_2,_3_GO!
@@ -312,7 +884,7 @@ gotest -v -race -covermode=atomic cryptosquare
 === RUN   TestEncode/123456789a
 === RUN   TestEncode/If_man_was_meant_to_stay_on_the_ground_god_would_have_given_us_roots
 === RUN   TestEncode/Have_a_nice_day._Feed_the_dog_&_chill_out!
---- PASS: TestEncode (0.02s)
+--- PASS: TestEncode (0.00s)
     --- PASS: TestEncode/s#$%^&plunk (0.00s)
     --- PASS: TestEncode/1,_2,_3_GO! (0.00s)
     --- PASS: TestEncode/1234 (0.00s)
@@ -344,104 +916,154 @@ gotest -v -race -covermode=atomic cryptosquare
 --- PASS: ExampleEncode (0.00s)
 PASS
 coverage: 85.1% of statements
-ok  	cryptosquare	0.127s	coverage: 85.1% of statements
+ok  	cryptosquare	1.019s	coverage: 85.1% of statements
 
-real	0m1.584s
-user	0m1.658s
-sys	0m0.972s
+real	0m1.258s
+user	0m0.289s
+sys	0m0.176s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.645s
+user	0m0.800s
+sys	0m0.565s
+
+real	0m1.647s
+user	0m0.800s
+sys	0m0.567s
 
 ===============================================================================
 
-go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+mv -v benchstat-new.txt benchstat-old.txt
+renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
+
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 goos: linux
 goarch: amd64
 pkg: cryptosquare
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+BenchmarkEncode
+BenchmarkEncode-8   	   18175	     65310 ns/op	   42655 B/op	     840 allocs/op
+PASS
+ok  	cryptosquare	1.862s
+
+real	0m2.013s
+user	0m2.099s
+sys	0m0.203s
+
+===============================================================================
+
+gotest -v -tags bonus
+=== RUN   TestEncode
+=== RUN   TestEncode/s#$%^&plunk
+=== RUN   TestEncode/1,_2,_3_GO!
+=== RUN   TestEncode/1234
+=== RUN   TestEncode/123456789
+=== RUN   TestEncode/123456789abc
+=== RUN   TestEncode/Never_vex_thine_heart_with_idle_woes
+=== RUN   TestEncode/ZOMG!_ZOMBIES!!!
+=== RUN   TestEncode/Time_is_an_illusion._Lunchtime_doubly_so.
+=== RUN   TestEncode/We_all_know_interspecies_romance_is_weird.
+=== RUN   TestEncode/Madness,_and_then_illumination.
+=== RUN   TestEncode/Vampires_are_people_too!
+=== RUN   TestEncode/#00
+=== RUN   TestEncode/1
+=== RUN   TestEncode/12
+=== RUN   TestEncode/12_3
+=== RUN   TestEncode/12345678
+=== RUN   TestEncode/123456789a
+=== RUN   TestEncode/If_man_was_meant_to_stay_on_the_ground_god_would_have_given_us_roots
+=== RUN   TestEncode/Have_a_nice_day._Feed_the_dog_&_chill_out!
+--- PASS: TestEncode (0.00s)
+    --- PASS: TestEncode/s#$%^&plunk (0.00s)
+    --- PASS: TestEncode/1,_2,_3_GO! (0.00s)
+    --- PASS: TestEncode/1234 (0.00s)
+    --- PASS: TestEncode/123456789 (0.00s)
+    --- PASS: TestEncode/123456789abc (0.00s)
+    --- PASS: TestEncode/Never_vex_thine_heart_with_idle_woes (0.00s)
+    --- PASS: TestEncode/ZOMG!_ZOMBIES!!! (0.00s)
+    --- PASS: TestEncode/Time_is_an_illusion._Lunchtime_doubly_so. (0.00s)
+    --- PASS: TestEncode/We_all_know_interspecies_romance_is_weird. (0.00s)
+    --- PASS: TestEncode/Madness,_and_then_illumination. (0.00s)
+    --- PASS: TestEncode/Vampires_are_people_too! (0.00s)
+    --- PASS: TestEncode/#00 (0.00s)
+    --- PASS: TestEncode/1 (0.00s)
+    --- PASS: TestEncode/12 (0.00s)
+    --- PASS: TestEncode/12_3 (0.00s)
+    --- PASS: TestEncode/12345678 (0.00s)
+    --- PASS: TestEncode/123456789a (0.00s)
+    --- PASS: TestEncode/If_man_was_meant_to_stay_on_the_ground_god_would_have_given_us_roots (0.00s)
+    --- PASS: TestEncode/Have_a_nice_day._Feed_the_dog_&_chill_out! (0.00s)
+=== RUN   ExampleNormalizeText
+--- PASS: ExampleNormalizeText (0.00s)
+=== RUN   ExampleGetSquareDimmensions
+--- PASS: ExampleGetSquareDimmensions (0.00s)
+=== RUN   ExampleGetTokens
+--- PASS: ExampleGetTokens (0.00s)
+=== RUN   ExampleEncodeTokens
+--- PASS: ExampleEncodeTokens (0.00s)
+=== RUN   ExampleEncode
+--- PASS: ExampleEncode (0.00s)
+PASS
+ok  	cryptosquare	0.004s
+
+real	0m0.147s
+user	0m0.212s
+sys	0m0.156s
+
+===============================================================================
+
+benchstat benchstat-old.txt benchstat-new.txt
+benchstat-new.txt:5: missing iteration count
+goos: linux
+goarch: amd64
+pkg: cryptosquare
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+         │ benchstat-new.txt │
+         │      sec/op       │
+Encode-8        65.31µ ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
+
+         │ benchstat-new.txt │
+         │       B/op        │
+Encode-8       41.66Ki ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
+
+         │ benchstat-new.txt │
+         │     allocs/op     │
+Encode-8         840.0 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
+
 cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
-BenchmarkEncode-4   	    2530	    402031 ns/op	   42270 B/op	     845 allocs/op
-PASS
-ok  	cryptosquare	1.144s
+         │ benchstat-old.txt │
+         │      sec/op       │
+Encode-4        402.0µ ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-real	0m2.109s
-user	0m2.981s
-sys	0m0.930s
+         │ benchstat-old.txt │
+         │       B/op        │
+Encode-4       41.28Ki ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-===============================================================================
+         │ benchstat-old.txt │
+         │     allocs/op     │
+Encode-4         845.0 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-go test -tags bonus
-PASS
-ok  	cryptosquare	0.043s
-
-real	0m0.775s
-user	0m0.875s
-sys	0m0.528s
-
-===============================================================================
-
-No old benchmarks to run benchstat against.
-
-===============================================================================
-
-go vet ./...
-
-real	0m0.515s
-user	0m0.614s
-sys	0m0.521s
-
-===============================================================================
-
-go fix ./...
-
-real	0m0.189s
-user	0m0.108s
-sys	0m0.207s
-
-===============================================================================
-
-gocyclo .
-8 cryptosquare GetSquareDimmensions crypto_square.go:71:1
-7 cryptosquare GetTokens crypto_square.go:96:1
-6 cryptosquare EncodeTokens crypto_square.go:134:1
-6 cryptosquare Encode crypto_square.go:14:1
-4 cryptosquare BenchmarkEncode crypto_square_test.go:97:1
-3 cryptosquare TestEncode crypto_square_test.go:87:1
-3 cryptosquare NormalizeText crypto_square.go:49:1
-2 cryptosquare ExampleEncodeTokens crypto_square_examples_test.go:59:1
-2 cryptosquare ExampleGetTokens crypto_square_examples_test.go:41:1
-2 cryptosquare ExampleGetSquareDimmensions crypto_square_examples_test.go:22:1
-2 cryptosquare ExampleNormalizeText crypto_square_examples_test.go:5:1
-1 cryptosquare ExampleEncode crypto_square_examples_test.go:78:1
-
-real	0m0.021s
-user	0m0.013s
-sys	0m0.009s
-
-===============================================================================
-
-misspell .
-
-real	0m0.203s
-user	0m0.229s
-sys	0m0.068s
-
-===============================================================================
-
-gosec ./...
-[gosec] 2022/08/19 22:21:56 Including rules: default
-[gosec] 2022/08/19 22:21:56 Excluding rules: default
-[gosec] 2022/08/19 22:21:56 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/crypto-square
-2022/08/19 22:21:57 internal error: package "fmt" without types was imported from "command-line-arguments"
-
-real	0m0.797s
-user	0m0.835s
-sys	0m0.585s
+real	0m0.002s
+user	0m0.001s
+sys	0m0.001s
 
 ===============================================================================
 
 gomarkdoc --output cryptosquare-doc.md
 
-real	0m0.044s
-user	0m0.042s
-sys	0m0.022s
+real	0m0.010s
+user	0m0.004s
+sys	0m0.006s
 
 ===============================================================================
 
@@ -470,9 +1092,9 @@ func NormalizeText(text string) string
     removed from the English text. - The message is down-cased.
 
 
-real	0m0.274s
-user	0m0.170s
-sys	0m0.252s
+real	0m0.038s
+user	0m0.025s
+sys	0m0.039s
 
 
 ===============================================================================

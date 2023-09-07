@@ -5,15 +5,594 @@ Go packages: series
 
 ===============================================================================
 
-golint series
+Running: ../../.github/citools/go/go-lint-golangci-lint
 
-real	0m0.241s
-user	0m0.261s
-sys	0m0.244s
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.023s
+user	0m0.019s
+sys	0m0.022s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+series_test.go:13: File is not `gofumpt`-ed (gofumpt)
+	{1, "01234",
+		[]string{"0", "1", "2", "3", "4"}},
+	{1, "92834",
+		[]string{"9", "2", "8", "3", "4"}},
+	{2, "01234",
+		[]string{"01", "12", "23", "34"}},
+	{2, "98273463",
+		[]string{"98", "82", "27", "73", "34", "46", "63"}},
+	{2, "37103",
+		[]string{"37", "71", "10", "03"}},
+	{3, "01234",
+		[]string{"012", "123", "234"}},
+	{3, "31001",
+		[]string{"310", "100", "001"}},
+	{3, "982347",
+		[]string{"982", "823", "234", "347"}},
+	{4, "01234",
+		[]string{"0123", "1234"}},
+	{4, "91274",
+		[]string{"9127", "1274"}},
+	{5, "01234",
+		[]string{"01234"}},
+	{5, "81228",
+		[]string{"81228"}},
+series.go:12:2: assignments should only be cuddled with other assignments (wsl)
+	segments := []string{}
+	^
+series.go:16:2: only one cuddle assignment allowed before if statement (wsl)
+	if e != nil {
+	^
+series_test.go:60:3: if statements should only be cuddled with assignments (wsl)
+		if res := UnsafeFirst(test.n, test.s); res != test.out[0] {
+		^
+series_test.go:8:5: allTests is a global variable (gochecknoglobals)
+var allTests = []struct {
+    ^
+series_test.go:41:5: cx is a global variable (gochecknoglobals)
+var cx = "01032987583"
+    ^
+series.go:44:2: variable 'segments' is only used in the if-statement (series.go:46:2); consider using short syntax (ifshort)
+	segments := All(size, input)
+	^
+series_test.go:43:1: Function TestAll missing the call to method parallel (paralleltest)
+func TestAll(t *testing.T) {
+^
+series_test.go:55:1: Function TestUnsafeFirst missing the call to method parallel (paralleltest)
+func TestUnsafeFirst(t *testing.T) {
+^
+series_examples_test.go:1:9: package should be `series_test` instead of `series` (testpackage)
+package series
+        ^
+series_test.go:1:9: package should be `series_test` instead of `series` (testpackage)
+package series
+        ^
+series.go:15:2: variable name 're' is too short for the scope of its usage (varnamelen)
+	re, e := regexp.Compile(reStr)
+	^
+
+real	0m0.542s
+user	0m0.782s
+sys	0m0.539s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.576s
+user	0m0.809s
+sys	0m0.568s
+
+real	0m0.579s
+user	0m0.810s
+sys	0m0.570s
 
 ===============================================================================
 
-go test -v -covermode=count -coverprofile coverage.out series
+Running: ../../.github/citools/go/go-lint-revive
+
+Running Go Lint Revive
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.024s
+user	0m0.022s
+sys	0m0.026s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
+
+real	0m0.043s
+user	0m0.023s
+sys	0m0.033s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.078s
+user	0m0.046s
+sys	0m0.071s
+
+real	0m0.080s
+user	0m0.046s
+sys	0m0.073s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
+
+real	0m0.001s
+user	0m0.001s
+sys	0m0.000s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.022s
+user	0m0.022s
+sys	0m0.024s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
+	info: check "./."
+internal error: package "fmt" without types was imported from "series"
+
+real	0m0.086s
+user	0m0.099s
+sys	0m0.110s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.118s
+user	0m0.127s
+sys	0m0.140s
+
+real	0m0.120s
+user	0m0.129s
+sys	0m0.140s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-staticcheck
+
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.028s
+user	0m0.021s
+sys	0m0.031s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+
+real	0m0.180s
+user	0m0.223s
+sys	0m0.127s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.217s
+user	0m0.250s
+sys	0m0.164s
+
+real	0m0.219s
+user	0m0.250s
+sys	0m0.165s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocritic
+
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.023s
+user	0m0.018s
+sys	0m0.026s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+
+real	0m0.841s
+user	0m1.995s
+sys	0m0.304s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.875s
+user	0m2.019s
+sys	0m0.339s
+
+real	0m0.877s
+user	0m2.021s
+sys	0m0.339s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go_vet
+
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.024s
+user	0m0.022s
+sys	0m0.024s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.092s
+user	0m0.148s
+sys	0m0.113s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.127s
+user	0m0.175s
+sys	0m0.146s
+
+real	0m0.128s
+user	0m0.176s
+sys	0m0.146s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-fixer-go_fix
+
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.029s
+user	0m0.022s
+sys	0m0.031s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.022s
+user	0m0.018s
+sys	0m0.019s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.073s
+user	0m0.053s
+sys	0m0.078s
+
+real	0m0.075s
+user	0m0.054s
+sys	0m0.079s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-errcheck
+
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.027s
+user	0m0.019s
+sys	0m0.032s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+
+real	0m0.508s
+user	0m1.620s
+sys	0m0.276s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.545s
+user	0m1.645s
+sys	0m0.316s
+
+real	0m0.546s
+user	0m1.646s
+sys	0m0.317s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.024s
+user	0m0.029s
+sys	0m0.026s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
+6 series TestFirst first_test.go:8:1
+6 series TestAskTooMuch asktoomuch_test.go:8:1
+5 series TestAll series_test.go:43:1
+5 series All series.go:10:1
+4 series TestUnsafeFirst series_test.go:55:1
+3 series UnsafeFirst series.go:39:1
+1 series ExampleUnsafeFirst series_examples_test.go:13:1
+1 series ExampleAll series_examples_test.go:7:1
+
+real	0m0.003s
+user	0m0.000s
+sys	0m0.003s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.038s
+user	0m0.036s
+sys	0m0.037s
+
+real	0m0.040s
+user	0m0.038s
+sys	0m0.037s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-misspell
+
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+
+real	0m0.028s
+user	0m0.034s
+sys	0m0.018s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.041s
+user	0m0.043s
+sys	0m0.027s
+
+real	0m0.043s
+user	0m0.044s
+sys	0m0.027s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gosec
+
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.031s
+user	0m0.024s
+sys	0m0.030s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:30:24 Including rules: default
+[gosec] 2023/09/07 00:30:24 Excluding rules: default
+[gosec] 2023/09/07 00:30:24 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/series
+[gosec] 2023/09/07 00:30:24 Checking package: series
+[gosec] 2023/09/07 00:30:24 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/series/series.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 51
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.121s
+user	0m0.146s
+sys	0m0.099s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.168s
+user	0m0.183s
+sys	0m0.140s
+
+real	0m0.171s
+user	0m0.184s
+sys	0m0.141s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.033s
+user	0m0.029s
+sys	0m0.030s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
 === RUN   TestAll
 --- PASS: TestAll (0.00s)
 === RUN   TestUnsafeFirst
@@ -24,34 +603,99 @@ go test -v -covermode=count -coverprofile coverage.out series
 --- PASS: ExampleUnsafeFirst (0.00s)
 PASS
 coverage: 81.0% of statements
-ok  	series	0.016s	coverage: 81.0% of statements
+ok  	series	0.003s	coverage: 81.0% of statements
 
-real	0m0.630s
-user	0m0.695s
-sys	0m0.484s
+real	0m0.183s
+user	0m0.234s
+sys	0m0.161s
 
-===============================================================================
 
-go tool cover -func=coverage.out
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
 series/series.go:10:	All		86.7%
 series/series.go:39:	UnsafeFirst	66.7%
 total:			(statements)	81.0%
 
-real	0m0.249s
-user	0m0.239s
-sys	0m0.254s
+real	0m0.055s
+user	0m0.090s
+sys	0m0.079s
 
-===============================================================================
 
-go tool cover -html coverage.out -o coverage.html
+ ==============================================================================
 
-real	0m0.222s
-user	0m0.232s
-sys	0m0.210s
+Running: go tool cover -html coverage.out -o coverage.html
 
-===============================================================================
 
-go test -v -race -covermode=atomic series
+real	0m0.071s
+user	0m0.081s
+sys	0m0.110s
+
+
+ ==============================================================================
+
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+10     	func All(size int, input string) []string {
+11     		var offset int
+12     		segments := []string{}
+13     	
+14     		reStr := `[[:digit:]]{` + fmt.Sprint(size) + `}`
+15     		re, e := regexp.Compile(reStr)
+16     		if e != nil {
+17 MISS			panic(e)
+18     		}
+19     	
+20     		for {
+21     			// It was easier to not use FindAllString().
+22     			segment := re.FindString(input[offset:])
+23     			if segment == "" {
+24     				break
+25     			}
+26     	
+27     			segments = append(segments, segment)
+28     	
+29     			offset++
+30     			if offset > len(input)-(size-1) {
+31 MISS				break
+32     			}
+33     		}
+34     	
+35     		return segments
+36     	}
+
+
+39     	func UnsafeFirst(size int, input string) string {
+40     		if size > len(input) {
+41 MISS			return ""
+42     		}
+43     	
+44     		segments := All(size, input)
+45     	
+46     		if len(segments) > 0 {
+47     			return segments[0]
+48     		}
+49     	
+50 MISS		return ""
+51     	}
+
+
+real	0m0.018s
+user	0m0.026s
+sys	0m0.014s
+
+real	0m0.019s
+user	0m0.026s
+sys	0m0.014s
+
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
 === RUN   TestAll
 --- PASS: TestAll (0.00s)
 === RUN   TestUnsafeFirst
@@ -62,71 +706,71 @@ go test -v -race -covermode=atomic series
 --- PASS: ExampleUnsafeFirst (0.00s)
 PASS
 coverage: 81.0% of statements
-ok  	series	0.061s	coverage: 81.0% of statements
+ok  	series	1.014s	coverage: 81.0% of statements
 
-real	0m0.768s
-user	0m0.756s
-sys	0m0.578s
+real	0m1.260s
+user	0m0.309s
+sys	0m0.184s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.638s
+user	0m0.774s
+sys	0m0.596s
+
+real	0m1.642s
+user	0m0.775s
+sys	0m0.599s
 
 ===============================================================================
 
-go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+mv -v benchstat-new.txt benchstat-old.txt
+renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
+
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 PASS
-ok  	series	0.005s
+ok  	series	0.002s
 
-real	0m0.613s
-user	0m0.697s
-sys	0m0.450s
+real	0m0.154s
+user	0m0.203s
+sys	0m0.138s
 
 ===============================================================================
 
-go test -tags bonus
+gotest -v -tags bonus
+=== RUN   TestAll
+--- PASS: TestAll (0.00s)
+=== RUN   TestUnsafeFirst
+--- PASS: TestUnsafeFirst (0.00s)
+=== RUN   ExampleAll
+--- PASS: ExampleAll (0.00s)
+=== RUN   ExampleUnsafeFirst
+--- PASS: ExampleUnsafeFirst (0.00s)
 PASS
-ok  	series	0.010s
+ok  	series	0.001s
 
-real	0m0.590s
-user	0m0.671s
-sys	0m0.513s
-
-===============================================================================
-
-No old benchmarks to run benchstat against.
+real	0m0.138s
+user	0m0.187s
+sys	0m0.128s
 
 ===============================================================================
 
-go vet series
+benchstat benchstat-old.txt benchstat-new.txt
 
-real	0m0.398s
-user	0m0.469s
-sys	0m0.327s
-
-===============================================================================
-
-go fix series
-
-real	0m0.164s
-user	0m0.149s
-sys	0m0.170s
-
-===============================================================================
-
-gosec ./series
-[gosec] 2022/07/03 18:19:38 Including rules: default
-[gosec] 2022/07/03 18:19:38 Excluding rules: default
-[gosec] 2022/07/03 18:19:38 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/series
-2022/07/03 18:19:39 internal error: package "fmt" without types was imported from "command-line-arguments"
-
-real	0m0.730s
-user	0m0.800s
-sys	0m0.484s
+real	0m0.002s
+user	0m0.001s
+sys	0m0.001s
 
 ===============================================================================
 
 gomarkdoc --output series-doc.md
 
-real	0m0.045s
-user	0m0.054s
-sys	0m0.038s
+real	0m0.020s
+user	0m0.016s
+sys	0m0.005s
 
 ===============================================================================
 
@@ -146,9 +790,9 @@ func UnsafeFirst(size int, input string) string
     string.
 
 
-real	0m0.405s
-user	0m0.410s
-sys	0m0.320s
+real	0m0.043s
+user	0m0.031s
+sys	0m0.037s
 
 
 ===============================================================================

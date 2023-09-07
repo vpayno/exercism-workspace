@@ -6,7 +6,7 @@
 import "armstrong"
 ```
 
-Package armstrong checks that a number is an Armstrong number\.
+Package armstrong checks that a number is an Armstrong number.
 
 ## Index
 
@@ -19,7 +19,7 @@ Package armstrong checks that a number is an Armstrong number\.
 func IsNumber(number int) bool
 ```
 
-IsNumber returns true if the passed number equals the sum of it's digits to the power of the number of digits\.
+IsNumber returns true if the passed number equals the sum of it's digits to the power of the number of digits.
 
 <details><summary>Example</summary>
 <p>

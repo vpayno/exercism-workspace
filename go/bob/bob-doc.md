@@ -6,7 +6,7 @@
 import "bob"
 ```
 
-Package bob is a lackadaisical teenage AI\.
+Package bob is a lackadaisical teenage AI.
 
 ## Index
 
@@ -19,7 +19,7 @@ Package bob is a lackadaisical teenage AI\.
 func Hey(remark string) string
 ```
 
-Hey returns a response from the simulated teenager\.
+Hey returns a response from the simulated teenager.
 
 <details><summary>Example</summary>
 <p>

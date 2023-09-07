@@ -5,15 +5,651 @@ Go packages: phonenumber
 
 ===============================================================================
 
-golint phonenumber
+Running: ../../.github/citools/go/go-lint-golangci-lint
 
-real	0m0.154s
-user	0m0.184s
-sys	0m0.165s
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.025s
+user	0m0.015s
+sys	0m0.028s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+phone_number_test.go:17:10: Error return value is not checked (errcheck)
+			Number(test.input)
+			      ^
+phone_number_test.go:32:12: Error return value is not checked (errcheck)
+			AreaCode(test.input)
+			        ^
+phone_number_test.go:47:10: Error return value is not checked (errcheck)
+			Format(test.input)
+			      ^
+phone_number.go:37: Function 'ValidateInput' has too many statements (42 > 40) (funlen)
+func ValidateInput(phoneNumber string) error {
+phone_number.go:67:15: `lenght` is a misspelling of `length` (misspell)
+	// Check the lenght of the remaining string.
+	             ^
+phone_number_test.go:60:27: Using the variable on range scope `tc` in function literal (scopelint)
+			actual, actualErr := f(tc.input)
+			                       ^
+phone_number_test.go:62:9: Using the variable on range scope `tc` in function literal (scopelint)
+			case tc.expectErr:
+			     ^
+phone_number_test.go:64:59: Using the variable on range scope `tc` in function literal (scopelint)
+					t.Fatalf("%s(%q) expected error, got: %q", funcName, tc.input, actual)
+					                                                     ^
+phone_number.go:42:2: only one cuddle assignment allowed before if statement (wsl)
+	if e != nil {
+	^
+phone_number.go:45:2: if statements should only be cuddled with assignments (wsl)
+	if match {
+	^
+phone_number.go:52:2: only one cuddle assignment allowed before if statement (wsl)
+	if e != nil {
+	^
+phone_number.go:55:2: if statements should only be cuddled with assignments (wsl)
+	if match {
+	^
+phone_number.go:62:2: only one cuddle assignment allowed before if statement (wsl)
+	if e != nil {
+	^
+phone_number.go:65:2: assignments should only be cuddled with other assignments (wsl)
+	digits := re.ReplaceAllString(phoneNumber, ``)
+	^
+phone_number.go:71:2: if statements should only be cuddled with assignments (wsl)
+	if len(digits) > 11 {
+	^
+phone_number.go:86:2: assignments should only be cuddled with other assignments (wsl)
+	digit := re.ReplaceAllString(digits, `$1`)
+	^
+phone_number.go:100:2: assignments should only be cuddled with other assignments (wsl)
+	digit = re.ReplaceAllString(digits, `$1`)
+	^
+phone_number_test.go:15:2: for statements should only be cuddled with assignments used in the iteration (wsl)
+	for i := 0; i < b.N; i++ {
+	^
+phone_number_test.go:30:2: for statements should only be cuddled with assignments used in the iteration (wsl)
+	for i := 0; i < b.N; i++ {
+	^
+phone_number_test.go:45:2: for statements should only be cuddled with assignments used in the iteration (wsl)
+	for i := 0; i < b.N; i++ {
+	^
+cases_test.go:15:5: testCases is a global variable (gochecknoglobals)
+var testCases = []testCase{
+    ^
+phone_number.go:68:19: mnd: Magic number: 10, in <condition> detected (gomnd)
+	if len(digits) < 10 {
+	                 ^
+phone_number.go:129:20: mnd: Magic number: 11, in <condition> detected (gomnd)
+	if len(digits) == 11 {
+	                  ^
+phone_number_test.go:7:1: Function TestNumber missing the call to method parallel (paralleltest)
+func TestNumber(t *testing.T) {
+^
+phone_number_test.go:22:1: Function TestAreaCode missing the call to method parallel (paralleltest)
+func TestAreaCode(t *testing.T) {
+^
+phone_number_test.go:37:1: Function TestFormat missing the call to method parallel (paralleltest)
+func TestFormat(t *testing.T) {
+^
+cases_test.go:1:9: package should be `phonenumber_test` instead of `phonenumber` (testpackage)
+package phonenumber
+        ^
+phone_number_examples_test.go:1:9: package should be `phonenumber_test` instead of `phonenumber` (testpackage)
+package phonenumber
+        ^
+phone_number_test.go:1:9: package should be `phonenumber_test` instead of `phonenumber` (testpackage)
+package phonenumber
+        ^
+phone_number_test.go:52:6: parameter *testing.T should be the first or after context.Context (thelper)
+func runTests(
+     ^
+phone_number_test.go:58:6: variable name 'tc' is too short for the scope of its usage (varnamelen)
+	for _, tc := range testCases {
+	    ^
+phone_number.go:41:2: variable name 'e' is too short for the scope of its usage (varnamelen)
+	match, e := regexp.MatchString(reStrPunct, phoneNumber)
+	^
+phone_number.go:61:2: variable name 're' is too short for the scope of its usage (varnamelen)
+	re, e := regexp.Compile(reStr)
+	^
+phone_number_test.go:54:2: parameter name 'f' is too short for the scope of its usage (varnamelen)
+	f func(s string) (string, error),
+	^
+
+real	0m0.528s
+user	0m0.826s
+sys	0m0.507s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.567s
+user	0m0.847s
+sys	0m0.549s
+
+real	0m0.571s
+user	0m0.851s
+sys	0m0.549s
 
 ===============================================================================
 
-go test -v -covermode=count -coverprofile coverage.out phonenumber
+Running: ../../.github/citools/go/go-lint-revive
+
+Running Go Lint Revive
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.024s
+user	0m0.021s
+sys	0m0.023s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
+
+real	0m0.060s
+user	0m0.038s
+sys	0m0.038s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.097s
+user	0m0.066s
+sys	0m0.071s
+
+real	0m0.099s
+user	0m0.067s
+sys	0m0.072s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.001s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.023s
+user	0m0.019s
+sys	0m0.021s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
+	info: check "./."
+internal error: package "errors" without types was imported from "phonenumber"
+
+real	0m0.097s
+user	0m0.122s
+sys	0m0.143s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.131s
+user	0m0.146s
+sys	0m0.175s
+
+real	0m0.133s
+user	0m0.147s
+sys	0m0.176s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-staticcheck
+
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.022s
+user	0m0.016s
+sys	0m0.023s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+
+real	0m0.190s
+user	0m0.278s
+sys	0m0.126s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.223s
+user	0m0.300s
+sys	0m0.157s
+
+real	0m0.225s
+user	0m0.300s
+sys	0m0.159s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocritic
+
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.025s
+user	0m0.017s
+sys	0m0.027s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+
+real	0m0.845s
+user	0m2.070s
+sys	0m0.312s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.887s
+user	0m2.093s
+sys	0m0.356s
+
+real	0m0.890s
+user	0m2.095s
+sys	0m0.357s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go_vet
+
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.025s
+user	0m0.023s
+sys	0m0.021s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.085s
+user	0m0.123s
+sys	0m0.100s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.123s
+user	0m0.154s
+sys	0m0.131s
+
+real	0m0.124s
+user	0m0.155s
+sys	0m0.132s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-fixer-go_fix
+
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.020s
+user	0m0.011s
+sys	0m0.023s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.022s
+user	0m0.017s
+sys	0m0.016s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.054s
+user	0m0.035s
+sys	0m0.048s
+
+real	0m0.057s
+user	0m0.036s
+sys	0m0.049s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-errcheck
+
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.021s
+user	0m0.013s
+sys	0m0.017s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+phone_number_test.go:17:10:	Number(test.input)
+phone_number_test.go:32:12:	AreaCode(test.input)
+phone_number_test.go:47:10:	Format(test.input)
+
+real	0m0.462s
+user	0m1.485s
+sys	0m0.283s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.495s
+user	0m1.503s
+sys	0m0.311s
+
+real	0m0.497s
+user	0m1.503s
+sys	0m0.312s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.018s
+user	0m0.017s
+sys	0m0.012s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
+16 phonenumber ValidateInput phone_number.go:37:1
+6 phonenumber runTests phone_number_test.go:52:1
+4 phonenumber BenchmarkFormat phone_number_test.go:41:1
+4 phonenumber BenchmarkAreaCode phone_number_test.go:26:1
+4 phonenumber BenchmarkNumber phone_number_test.go:11:1
+4 phonenumber Number phone_number.go:113:1
+3 phonenumber Format phone_number.go:158:1
+3 phonenumber AreaCode phone_number.go:138:1
+1 phonenumber TestFormat phone_number_test.go:37:1
+1 phonenumber TestAreaCode phone_number_test.go:22:1
+1 phonenumber TestNumber phone_number_test.go:7:1
+1 phonenumber ExampleFormat phone_number_examples_test.go:31:1
+1 phonenumber ExampleAreaCode phone_number_examples_test.go:19:1
+1 phonenumber ExampleNumber phone_number_examples_test.go:7:1
+
+real	0m0.002s
+user	0m0.001s
+sys	0m0.001s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.032s
+user	0m0.026s
+sys	0m0.021s
+
+real	0m0.034s
+user	0m0.027s
+sys	0m0.021s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-misspell
+
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+phone_number.go:67:14: "lenght" is a misspelling of "length"
+run-tests-go.txt:52:24: "lenght" is a misspelling of "length"
+run-tests-go.txt:53:14: "lenght" is a misspelling of "length"
+run-tests-go.txt:547:24: "lenght" is a misspelling of "length"
+coverage.html:147:21: "lenght" is a misspelling of "length"
+
+real	0m0.026s
+user	0m0.031s
+sys	0m0.013s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.036s
+user	0m0.038s
+sys	0m0.019s
+
+real	0m0.038s
+user	0m0.039s
+sys	0m0.021s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gosec
+
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.020s
+user	0m0.011s
+sys	0m0.020s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:26:25 Including rules: default
+[gosec] 2023/09/07 00:26:25 Excluding rules: default
+[gosec] 2023/09/07 00:26:25 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/phone-number
+[gosec] 2023/09/07 00:26:25 Checking package: phonenumber
+[gosec] 2023/09/07 00:26:25 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/phone-number/phone_number.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 175
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.118s
+user	0m0.128s
+sys	0m0.095s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.148s
+user	0m0.142s
+sys	0m0.125s
+
+real	0m0.150s
+user	0m0.144s
+sys	0m0.126s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.027s
+user	0m0.024s
+sys	0m0.019s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
 === RUN   TestNumber
 === RUN   TestNumber/cleans_the_number
 === RUN   TestNumber/cleans_numbers_with_dots
@@ -33,7 +669,7 @@ go test -v -covermode=count -coverprofile coverage.out phonenumber
 === RUN   TestNumber/invalid_if_area_code_starts_with_1_on_valid_11-digit_number
 === RUN   TestNumber/invalid_if_exchange_code_starts_with_0_on_valid_11-digit_number
 === RUN   TestNumber/invalid_if_exchange_code_starts_with_1_on_valid_11-digit_number
---- PASS: TestNumber (0.01s)
+--- PASS: TestNumber (0.00s)
     --- PASS: TestNumber/cleans_the_number (0.00s)
     --- PASS: TestNumber/cleans_numbers_with_dots (0.00s)
     --- PASS: TestNumber/cleans_numbers_with_multiple_spaces (0.00s)
@@ -71,9 +707,9 @@ go test -v -covermode=count -coverprofile coverage.out phonenumber
 === RUN   TestAreaCode/invalid_if_area_code_starts_with_1_on_valid_11-digit_number
 === RUN   TestAreaCode/invalid_if_exchange_code_starts_with_0_on_valid_11-digit_number
 === RUN   TestAreaCode/invalid_if_exchange_code_starts_with_1_on_valid_11-digit_number
---- PASS: TestAreaCode (0.01s)
+--- PASS: TestAreaCode (0.00s)
     --- PASS: TestAreaCode/cleans_the_number (0.00s)
-    --- PASS: TestAreaCode/cleans_numbers_with_dots (0.01s)
+    --- PASS: TestAreaCode/cleans_numbers_with_dots (0.00s)
     --- PASS: TestAreaCode/cleans_numbers_with_multiple_spaces (0.00s)
     --- PASS: TestAreaCode/invalid_when_9_digits (0.00s)
     --- PASS: TestAreaCode/invalid_when_11_digits_does_not_start_with_a_1 (0.00s)
@@ -136,36 +772,198 @@ go test -v -covermode=count -coverprofile coverage.out phonenumber
 --- PASS: ExampleFormat (0.00s)
 PASS
 coverage: 88.7% of statements
-ok  	phonenumber	0.034s	coverage: 88.7% of statements
+ok  	phonenumber	0.006s	coverage: 88.7% of statements
 
-real	0m0.728s
-user	0m0.792s
-sys	0m0.612s
+real	0m0.183s
+user	0m0.238s
+sys	0m0.157s
 
-===============================================================================
 
-go tool cover -func=coverage.out
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
 phonenumber/phone_number.go:37:		ValidateInput	88.1%
 phonenumber/phone_number.go:113:	Number		90.9%
 phonenumber/phone_number.go:138:	AreaCode	88.9%
 phonenumber/phone_number.go:158:	Format		88.9%
 total:					(statements)	88.7%
 
-real	0m0.189s
-user	0m0.169s
-sys	0m0.204s
+real	0m0.048s
+user	0m0.062s
+sys	0m0.068s
 
-===============================================================================
 
-go tool cover -html coverage.out -o coverage.html
+ ==============================================================================
 
-real	0m0.216s
-user	0m0.206s
-sys	0m0.216s
+Running: go tool cover -html coverage.out -o coverage.html
 
-===============================================================================
 
-go test -v -race -covermode=atomic phonenumber
+real	0m0.038s
+user	0m0.048s
+sys	0m0.047s
+
+
+ ==============================================================================
+
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+138     	func AreaCode(phoneNumber string) (string, error) {
+139     		// Get the digits from the input and input validation.
+140     		digits, eNum := Number(phoneNumber)
+141     		if eNum != nil {
+142     			return "", eNum
+143     		}
+144     	
+145     		// Get the first digit from the area code.
+146     		reStr := `^([[:digit:]]?)([[:digit:]]{3})([[:digit:]]{7})$`
+147     		re, e := regexp.Compile(reStr)
+148     		if e != nil {
+149 MISS			panic(e)
+150     		}
+151     		areaCode := re.ReplaceAllString(digits, `$2`)
+152     	
+153     		// Return the area code without an error.
+154     		return areaCode, nil
+155     	}
+
+
+158     	func Format(phoneNumber string) (string, error) {
+159     		// Get the digits from the input and input validation.
+160     		digits, eNum := Number(phoneNumber)
+161     		if eNum != nil {
+162     			return "", eNum
+163     		}
+164     	
+165     		// Get the phone number groups and format the number.
+166     		reStr := `^([[:digit:]]?)([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{4})$`
+167     		re, e := regexp.Compile(reStr)
+168     		if e != nil {
+169 MISS			panic(e)
+170     		}
+171     		fmtStr := re.ReplaceAllString(digits, `(${2}) ${3}-${4}`)
+172     	
+173     		// Return the formatted string without an error code.
+174     		return fmtStr, nil
+175     	}
+
+
+113     	func Number(phoneNumber string) (string, error) {
+114     		// Validate the input.
+115     		eVal := ValidateInput(phoneNumber)
+116     		if eVal != nil {
+117     			return "", eVal
+118     		}
+119     	
+120     		// Extract all the digits from the number.
+121     		reStr := `([[:space:]]|[[:punct:]]|[[:alpha:]]|[[:cntrl:]])`
+122     		re, e := regexp.Compile(reStr)
+123     		if e != nil {
+124 MISS			panic(e)
+125     		}
+126     		digits := re.ReplaceAllString(phoneNumber, ``)
+127     	
+128     		// Return the 10-dgit number (minus the contry code).
+129     		if len(digits) == 11 {
+130     			return digits[1:], nil
+131     		}
+132     	
+133     		// Return the 10-dgit number.
+134     		return digits, nil
+135     	}
+
+
+ 37     	func ValidateInput(phoneNumber string) error {
+ 38     		// Check the string for invalid characters.
+ 39     		// Pointless since we can easily just remove them.
+ 40     		reStrPunct := `[\]\[\|:;><,?/\\"'!@#$%&*^]`
+ 41     		match, e := regexp.MatchString(reStrPunct, phoneNumber)
+ 42     		if e != nil {
+ 43 MISS			panic(e)
+ 44     		}
+ 45     		if match {
+ 46     			return ErrContainsPunctuations
+ 47     		}
+ 48     	
+ 49     		// Check to see if the phone number has letters in it.
+ 50     		reStrLetters := `[[:alpha:]]`
+ 51     		match, e = regexp.MatchString(reStrLetters, phoneNumber)
+ 52     		if e != nil {
+ 53 MISS			panic(e)
+ 54     		}
+ 55     		if match {
+ 56     			return ErrContainsLetters
+ 57     		}
+ 58     	
+ 59     		// Clean up the string.
+ 60     		reStr := `([[:space:]]|[[:punct:]]|[[:alpha:]]|[[:cntrl:]])`
+ 61     		re, e := regexp.Compile(reStr)
+ 62     		if e != nil {
+ 63 MISS			panic(e)
+ 64     		}
+ 65     		digits := re.ReplaceAllString(phoneNumber, ``)
+ 66     	
+ 67     		// Check the lenght of the remaining string.
+ 68     		if len(digits) < 10 {
+ 69     			return ErrNumOfDigits
+ 70     		}
+ 71     		if len(digits) > 11 {
+ 72     			return ErrTooManyNumbers
+ 73     		}
+ 74     	
+ 75     		// If it's an eleven digit number, make sure it starts with 1.
+ 76     		if len(digits) == 11 && string(digits[0]) != "1" {
+ 77     			return ErrElevenNotStartWithOne
+ 78     		}
+ 79     	
+ 80     		// Check the starting digit of the area code.
+ 81     		reStr = `^[[:digit:]]?([[:digit:]])[[:digit:]]{9}$`
+ 82     		re, e = regexp.Compile(reStr)
+ 83     		if e != nil {
+ 84 MISS			panic(e)
+ 85     		}
+ 86     		digit := re.ReplaceAllString(digits, `$1`)
+ 87     		if digit == "0" {
+ 88     			return ErrAreaCodeStartsWithZero
+ 89     		}
+ 90     		if digit == "1" {
+ 91     			return ErrAreaCodeStartsWithOne
+ 92     		}
+ 93     	
+ 94     		// Check the starting digit of the exchange code.
+ 95     		reStr = `^[[:digit:]]?[[:digit:]]{3}([[:digit:]])[[:digit:]]{6}$`
+ 96     		re, e = regexp.Compile(reStr)
+ 97     		if e != nil {
+ 98 MISS			panic(e)
+ 99     		}
+100     		digit = re.ReplaceAllString(digits, `$1`)
+101     		if digit == "0" {
+102     			return ErrExchangeCodeStartsWithZero
+103     		}
+104     		if digit == "1" {
+105     			return ErrExchangeCodeStartsWithOne
+106     		}
+107     	
+108     		// No errors found.
+109     		return nil
+110     	}
+
+
+real	0m0.018s
+user	0m0.013s
+sys	0m0.017s
+
+real	0m0.018s
+user	0m0.013s
+sys	0m0.017s
+
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
 === RUN   TestNumber
 === RUN   TestNumber/cleans_the_number
 === RUN   TestNumber/cleans_numbers_with_dots
@@ -185,13 +983,13 @@ go test -v -race -covermode=atomic phonenumber
 === RUN   TestNumber/invalid_if_area_code_starts_with_1_on_valid_11-digit_number
 === RUN   TestNumber/invalid_if_exchange_code_starts_with_0_on_valid_11-digit_number
 === RUN   TestNumber/invalid_if_exchange_code_starts_with_1_on_valid_11-digit_number
---- PASS: TestNumber (0.05s)
+--- PASS: TestNumber (0.01s)
     --- PASS: TestNumber/cleans_the_number (0.00s)
     --- PASS: TestNumber/cleans_numbers_with_dots (0.00s)
-    --- PASS: TestNumber/cleans_numbers_with_multiple_spaces (0.01s)
+    --- PASS: TestNumber/cleans_numbers_with_multiple_spaces (0.00s)
     --- PASS: TestNumber/invalid_when_9_digits (0.00s)
     --- PASS: TestNumber/invalid_when_11_digits_does_not_start_with_a_1 (0.00s)
-    --- PASS: TestNumber/valid_when_11_digits_and_starting_with_1 (0.01s)
+    --- PASS: TestNumber/valid_when_11_digits_and_starting_with_1 (0.00s)
     --- PASS: TestNumber/valid_when_11_digits_and_starting_with_1_even_with_punctuation (0.00s)
     --- PASS: TestNumber/invalid_when_more_than_11_digits (0.00s)
     --- PASS: TestNumber/invalid_with_letters (0.00s)
@@ -223,7 +1021,7 @@ go test -v -race -covermode=atomic phonenumber
 === RUN   TestAreaCode/invalid_if_area_code_starts_with_1_on_valid_11-digit_number
 === RUN   TestAreaCode/invalid_if_exchange_code_starts_with_0_on_valid_11-digit_number
 === RUN   TestAreaCode/invalid_if_exchange_code_starts_with_1_on_valid_11-digit_number
---- PASS: TestAreaCode (0.03s)
+--- PASS: TestAreaCode (0.01s)
     --- PASS: TestAreaCode/cleans_the_number (0.00s)
     --- PASS: TestAreaCode/cleans_numbers_with_dots (0.00s)
     --- PASS: TestAreaCode/cleans_numbers_with_multiple_spaces (0.00s)
@@ -241,7 +1039,7 @@ go test -v -race -covermode=atomic phonenumber
     --- PASS: TestAreaCode/invalid_if_area_code_starts_with_0_on_valid_11-digit_number (0.00s)
     --- PASS: TestAreaCode/invalid_if_area_code_starts_with_1_on_valid_11-digit_number (0.00s)
     --- PASS: TestAreaCode/invalid_if_exchange_code_starts_with_0_on_valid_11-digit_number (0.00s)
-    --- PASS: TestAreaCode/invalid_if_exchange_code_starts_with_1_on_valid_11-digit_number (0.01s)
+    --- PASS: TestAreaCode/invalid_if_exchange_code_starts_with_1_on_valid_11-digit_number (0.00s)
 === RUN   TestFormat
 === RUN   TestFormat/cleans_the_number
 === RUN   TestFormat/cleans_numbers_with_dots
@@ -261,9 +1059,9 @@ go test -v -race -covermode=atomic phonenumber
 === RUN   TestFormat/invalid_if_area_code_starts_with_1_on_valid_11-digit_number
 === RUN   TestFormat/invalid_if_exchange_code_starts_with_0_on_valid_11-digit_number
 === RUN   TestFormat/invalid_if_exchange_code_starts_with_1_on_valid_11-digit_number
---- PASS: TestFormat (0.04s)
-    --- PASS: TestFormat/cleans_the_number (0.01s)
-    --- PASS: TestFormat/cleans_numbers_with_dots (0.01s)
+--- PASS: TestFormat (0.01s)
+    --- PASS: TestFormat/cleans_the_number (0.00s)
+    --- PASS: TestFormat/cleans_numbers_with_dots (0.00s)
     --- PASS: TestFormat/cleans_numbers_with_multiple_spaces (0.00s)
     --- PASS: TestFormat/invalid_when_9_digits (0.00s)
     --- PASS: TestFormat/invalid_when_11_digits_does_not_start_with_a_1 (0.00s)
@@ -272,7 +1070,7 @@ go test -v -race -covermode=atomic phonenumber
     --- PASS: TestFormat/invalid_when_more_than_11_digits (0.00s)
     --- PASS: TestFormat/invalid_with_letters (0.00s)
     --- PASS: TestFormat/invalid_with_punctuations (0.00s)
-    --- PASS: TestFormat/invalid_if_area_code_starts_with_0 (0.01s)
+    --- PASS: TestFormat/invalid_if_area_code_starts_with_0 (0.00s)
     --- PASS: TestFormat/invalid_if_area_code_starts_with_1 (0.00s)
     --- PASS: TestFormat/invalid_if_exchange_code_starts_with_0 (0.00s)
     --- PASS: TestFormat/invalid_if_exchange_code_starts_with_1 (0.00s)
@@ -283,118 +1081,261 @@ go test -v -race -covermode=atomic phonenumber
 === RUN   ExampleNumber
 --- PASS: ExampleNumber (0.00s)
 === RUN   ExampleAreaCode
---- PASS: ExampleAreaCode (0.01s)
+--- PASS: ExampleAreaCode (0.00s)
 === RUN   ExampleFormat
---- PASS: ExampleFormat (0.01s)
+--- PASS: ExampleFormat (0.00s)
 PASS
 coverage: 88.7% of statements
-ok  	phonenumber	0.166s	coverage: 88.7% of statements
+ok  	phonenumber	1.039s	coverage: 88.7% of statements
 
-real	0m0.915s
-user	0m0.971s
-sys	0m0.657s
+real	0m1.288s
+user	0m0.324s
+sys	0m0.172s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.615s
+user	0m0.715s
+sys	0m0.493s
+
+real	0m1.618s
+user	0m0.717s
+sys	0m0.493s
 
 ===============================================================================
 
 mv -v benchstat-new.txt benchstat-old.txt
 renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
 
-go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 goos: linux
 goarch: amd64
 pkg: phonenumber
-cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
-BenchmarkNumber-4     	    3166	    767350 ns/op	  219515 B/op	    2160 allocs/op
-BenchmarkAreaCode-4   	    1323	   1006236 ns/op	  259573 B/op	    2490 allocs/op
-BenchmarkFormat-4     	    1959	   1054660 ns/op	  263149 B/op	    2525 allocs/op
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+BenchmarkNumber
+BenchmarkNumber-8     	    6061	    197555 ns/op	  220289 B/op	    2160 allocs/op
+BenchmarkAreaCode
+BenchmarkAreaCode-8   	    4852	    239559 ns/op	  260421 B/op	    2490 allocs/op
+BenchmarkFormat
+BenchmarkFormat-8     	    4678	    221805 ns/op	  263819 B/op	    2525 allocs/op
 PASS
-ok  	phonenumber	7.047s
+ok  	phonenumber	5.329s
 
-real	0m7.570s
-user	0m12.020s
-sys	0m1.688s
+real	0m5.475s
+user	0m5.823s
+sys	0m0.365s
 
 ===============================================================================
 
-go test -tags bonus
+gotest -v -tags bonus
+=== RUN   TestNumber
+=== RUN   TestNumber/cleans_the_number
+=== RUN   TestNumber/cleans_numbers_with_dots
+=== RUN   TestNumber/cleans_numbers_with_multiple_spaces
+=== RUN   TestNumber/invalid_when_9_digits
+=== RUN   TestNumber/invalid_when_11_digits_does_not_start_with_a_1
+=== RUN   TestNumber/valid_when_11_digits_and_starting_with_1
+=== RUN   TestNumber/valid_when_11_digits_and_starting_with_1_even_with_punctuation
+=== RUN   TestNumber/invalid_when_more_than_11_digits
+=== RUN   TestNumber/invalid_with_letters
+=== RUN   TestNumber/invalid_with_punctuations
+=== RUN   TestNumber/invalid_if_area_code_starts_with_0
+=== RUN   TestNumber/invalid_if_area_code_starts_with_1
+=== RUN   TestNumber/invalid_if_exchange_code_starts_with_0
+=== RUN   TestNumber/invalid_if_exchange_code_starts_with_1
+=== RUN   TestNumber/invalid_if_area_code_starts_with_0_on_valid_11-digit_number
+=== RUN   TestNumber/invalid_if_area_code_starts_with_1_on_valid_11-digit_number
+=== RUN   TestNumber/invalid_if_exchange_code_starts_with_0_on_valid_11-digit_number
+=== RUN   TestNumber/invalid_if_exchange_code_starts_with_1_on_valid_11-digit_number
+--- PASS: TestNumber (0.00s)
+    --- PASS: TestNumber/cleans_the_number (0.00s)
+    --- PASS: TestNumber/cleans_numbers_with_dots (0.00s)
+    --- PASS: TestNumber/cleans_numbers_with_multiple_spaces (0.00s)
+    --- PASS: TestNumber/invalid_when_9_digits (0.00s)
+    --- PASS: TestNumber/invalid_when_11_digits_does_not_start_with_a_1 (0.00s)
+    --- PASS: TestNumber/valid_when_11_digits_and_starting_with_1 (0.00s)
+    --- PASS: TestNumber/valid_when_11_digits_and_starting_with_1_even_with_punctuation (0.00s)
+    --- PASS: TestNumber/invalid_when_more_than_11_digits (0.00s)
+    --- PASS: TestNumber/invalid_with_letters (0.00s)
+    --- PASS: TestNumber/invalid_with_punctuations (0.00s)
+    --- PASS: TestNumber/invalid_if_area_code_starts_with_0 (0.00s)
+    --- PASS: TestNumber/invalid_if_area_code_starts_with_1 (0.00s)
+    --- PASS: TestNumber/invalid_if_exchange_code_starts_with_0 (0.00s)
+    --- PASS: TestNumber/invalid_if_exchange_code_starts_with_1 (0.00s)
+    --- PASS: TestNumber/invalid_if_area_code_starts_with_0_on_valid_11-digit_number (0.00s)
+    --- PASS: TestNumber/invalid_if_area_code_starts_with_1_on_valid_11-digit_number (0.00s)
+    --- PASS: TestNumber/invalid_if_exchange_code_starts_with_0_on_valid_11-digit_number (0.00s)
+    --- PASS: TestNumber/invalid_if_exchange_code_starts_with_1_on_valid_11-digit_number (0.00s)
+=== RUN   TestAreaCode
+=== RUN   TestAreaCode/cleans_the_number
+=== RUN   TestAreaCode/cleans_numbers_with_dots
+=== RUN   TestAreaCode/cleans_numbers_with_multiple_spaces
+=== RUN   TestAreaCode/invalid_when_9_digits
+=== RUN   TestAreaCode/invalid_when_11_digits_does_not_start_with_a_1
+=== RUN   TestAreaCode/valid_when_11_digits_and_starting_with_1
+=== RUN   TestAreaCode/valid_when_11_digits_and_starting_with_1_even_with_punctuation
+=== RUN   TestAreaCode/invalid_when_more_than_11_digits
+=== RUN   TestAreaCode/invalid_with_letters
+=== RUN   TestAreaCode/invalid_with_punctuations
+=== RUN   TestAreaCode/invalid_if_area_code_starts_with_0
+=== RUN   TestAreaCode/invalid_if_area_code_starts_with_1
+=== RUN   TestAreaCode/invalid_if_exchange_code_starts_with_0
+=== RUN   TestAreaCode/invalid_if_exchange_code_starts_with_1
+=== RUN   TestAreaCode/invalid_if_area_code_starts_with_0_on_valid_11-digit_number
+=== RUN   TestAreaCode/invalid_if_area_code_starts_with_1_on_valid_11-digit_number
+=== RUN   TestAreaCode/invalid_if_exchange_code_starts_with_0_on_valid_11-digit_number
+=== RUN   TestAreaCode/invalid_if_exchange_code_starts_with_1_on_valid_11-digit_number
+--- PASS: TestAreaCode (0.00s)
+    --- PASS: TestAreaCode/cleans_the_number (0.00s)
+    --- PASS: TestAreaCode/cleans_numbers_with_dots (0.00s)
+    --- PASS: TestAreaCode/cleans_numbers_with_multiple_spaces (0.00s)
+    --- PASS: TestAreaCode/invalid_when_9_digits (0.00s)
+    --- PASS: TestAreaCode/invalid_when_11_digits_does_not_start_with_a_1 (0.00s)
+    --- PASS: TestAreaCode/valid_when_11_digits_and_starting_with_1 (0.00s)
+    --- PASS: TestAreaCode/valid_when_11_digits_and_starting_with_1_even_with_punctuation (0.00s)
+    --- PASS: TestAreaCode/invalid_when_more_than_11_digits (0.00s)
+    --- PASS: TestAreaCode/invalid_with_letters (0.00s)
+    --- PASS: TestAreaCode/invalid_with_punctuations (0.00s)
+    --- PASS: TestAreaCode/invalid_if_area_code_starts_with_0 (0.00s)
+    --- PASS: TestAreaCode/invalid_if_area_code_starts_with_1 (0.00s)
+    --- PASS: TestAreaCode/invalid_if_exchange_code_starts_with_0 (0.00s)
+    --- PASS: TestAreaCode/invalid_if_exchange_code_starts_with_1 (0.00s)
+    --- PASS: TestAreaCode/invalid_if_area_code_starts_with_0_on_valid_11-digit_number (0.00s)
+    --- PASS: TestAreaCode/invalid_if_area_code_starts_with_1_on_valid_11-digit_number (0.00s)
+    --- PASS: TestAreaCode/invalid_if_exchange_code_starts_with_0_on_valid_11-digit_number (0.00s)
+    --- PASS: TestAreaCode/invalid_if_exchange_code_starts_with_1_on_valid_11-digit_number (0.00s)
+=== RUN   TestFormat
+=== RUN   TestFormat/cleans_the_number
+=== RUN   TestFormat/cleans_numbers_with_dots
+=== RUN   TestFormat/cleans_numbers_with_multiple_spaces
+=== RUN   TestFormat/invalid_when_9_digits
+=== RUN   TestFormat/invalid_when_11_digits_does_not_start_with_a_1
+=== RUN   TestFormat/valid_when_11_digits_and_starting_with_1
+=== RUN   TestFormat/valid_when_11_digits_and_starting_with_1_even_with_punctuation
+=== RUN   TestFormat/invalid_when_more_than_11_digits
+=== RUN   TestFormat/invalid_with_letters
+=== RUN   TestFormat/invalid_with_punctuations
+=== RUN   TestFormat/invalid_if_area_code_starts_with_0
+=== RUN   TestFormat/invalid_if_area_code_starts_with_1
+=== RUN   TestFormat/invalid_if_exchange_code_starts_with_0
+=== RUN   TestFormat/invalid_if_exchange_code_starts_with_1
+=== RUN   TestFormat/invalid_if_area_code_starts_with_0_on_valid_11-digit_number
+=== RUN   TestFormat/invalid_if_area_code_starts_with_1_on_valid_11-digit_number
+=== RUN   TestFormat/invalid_if_exchange_code_starts_with_0_on_valid_11-digit_number
+=== RUN   TestFormat/invalid_if_exchange_code_starts_with_1_on_valid_11-digit_number
+--- PASS: TestFormat (0.00s)
+    --- PASS: TestFormat/cleans_the_number (0.00s)
+    --- PASS: TestFormat/cleans_numbers_with_dots (0.00s)
+    --- PASS: TestFormat/cleans_numbers_with_multiple_spaces (0.00s)
+    --- PASS: TestFormat/invalid_when_9_digits (0.00s)
+    --- PASS: TestFormat/invalid_when_11_digits_does_not_start_with_a_1 (0.00s)
+    --- PASS: TestFormat/valid_when_11_digits_and_starting_with_1 (0.00s)
+    --- PASS: TestFormat/valid_when_11_digits_and_starting_with_1_even_with_punctuation (0.00s)
+    --- PASS: TestFormat/invalid_when_more_than_11_digits (0.00s)
+    --- PASS: TestFormat/invalid_with_letters (0.00s)
+    --- PASS: TestFormat/invalid_with_punctuations (0.00s)
+    --- PASS: TestFormat/invalid_if_area_code_starts_with_0 (0.00s)
+    --- PASS: TestFormat/invalid_if_area_code_starts_with_1 (0.00s)
+    --- PASS: TestFormat/invalid_if_exchange_code_starts_with_0 (0.00s)
+    --- PASS: TestFormat/invalid_if_exchange_code_starts_with_1 (0.00s)
+    --- PASS: TestFormat/invalid_if_area_code_starts_with_0_on_valid_11-digit_number (0.00s)
+    --- PASS: TestFormat/invalid_if_area_code_starts_with_1_on_valid_11-digit_number (0.00s)
+    --- PASS: TestFormat/invalid_if_exchange_code_starts_with_0_on_valid_11-digit_number (0.00s)
+    --- PASS: TestFormat/invalid_if_exchange_code_starts_with_1_on_valid_11-digit_number (0.00s)
+=== RUN   ExampleNumber
+--- PASS: ExampleNumber (0.00s)
+=== RUN   ExampleAreaCode
+--- PASS: ExampleAreaCode (0.00s)
+=== RUN   ExampleFormat
+--- PASS: ExampleFormat (0.00s)
 PASS
-ok  	phonenumber	0.018s
+ok  	phonenumber	0.010s
 
-real	0m0.599s
-user	0m0.678s
-sys	0m0.458s
+real	0m0.140s
+user	0m0.186s
+sys	0m0.127s
 
 ===============================================================================
-
-go install golang.org/x/perf/cmd/benchstat@latest
-
-real	0m0.853s
-user	0m0.942s
-sys	0m0.362s
 
 benchstat benchstat-old.txt benchstat-new.txt
-name        old time/op    new time/op    delta
-Number-4       755µs ± 0%     767µs ± 0%   ~     (p=1.000 n=1+1)
-AreaCode-4     920µs ± 0%    1006µs ± 0%   ~     (p=1.000 n=1+1)
-Format-4       862µs ± 0%    1055µs ± 0%   ~     (p=1.000 n=1+1)
+benchstat-new.txt:5: missing iteration count
+benchstat-new.txt:7: missing iteration count
+benchstat-new.txt:9: missing iteration count
+goos: linux
+goarch: amd64
+pkg: phonenumber
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+           │ benchstat-new.txt │
+           │      sec/op       │
+Number-8          197.6µ ± ∞ ¹
+AreaCode-8        239.6µ ± ∞ ¹
+Format-8          221.8µ ± ∞ ¹
+geomean           219.0µ
+¹ need >= 6 samples for confidence interval at level 0.95
 
-name        old alloc/op   new alloc/op   delta
-Number-4       220kB ± 0%     220kB ± 0%   ~     (p=1.000 n=1+1)
-AreaCode-4     260kB ± 0%     260kB ± 0%   ~     (p=1.000 n=1+1)
-Format-4       263kB ± 0%     263kB ± 0%   ~     (p=1.000 n=1+1)
+           │ benchstat-new.txt │
+           │       B/op        │
+Number-8         215.1Ki ± ∞ ¹
+AreaCode-8       254.3Ki ± ∞ ¹
+Format-8         257.6Ki ± ∞ ¹
+geomean          241.6Ki
+¹ need >= 6 samples for confidence interval at level 0.95
 
-name        old allocs/op  new allocs/op  delta
-Number-4       2.16k ± 0%     2.16k ± 0%   ~     (all equal)
-AreaCode-4     2.49k ± 0%     2.49k ± 0%   ~     (all equal)
-Format-4       2.52k ± 0%     2.52k ± 0%   ~     (all equal)
+           │ benchstat-new.txt │
+           │     allocs/op     │
+Number-8          2.160k ± ∞ ¹
+AreaCode-8        2.490k ± ∞ ¹
+Format-8          2.525k ± ∞ ¹
+geomean           2.386k
+¹ need >= 6 samples for confidence interval at level 0.95
 
-real	0m0.040s
-user	0m0.009s
-sys	0m0.015s
+cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+           │ benchstat-old.txt │
+           │      sec/op       │
+Number-4          767.4µ ± ∞ ¹
+AreaCode-4        1.006m ± ∞ ¹
+Format-4          1.055m ± ∞ ¹
+geomean           933.8µ
+¹ need >= 6 samples for confidence interval at level 0.95
 
-===============================================================================
+           │ benchstat-old.txt │
+           │       B/op        │
+Number-4         214.4Ki ± ∞ ¹
+AreaCode-4       253.5Ki ± ∞ ¹
+Format-4         257.0Ki ± ∞ ¹
+geomean          240.8Ki
+¹ need >= 6 samples for confidence interval at level 0.95
 
-go vet phonenumber
+           │ benchstat-old.txt │
+           │     allocs/op     │
+Number-4          2.160k ± ∞ ¹
+AreaCode-4        2.490k ± ∞ ¹
+Format-4          2.525k ± ∞ ¹
+geomean           2.386k
+¹ need >= 6 samples for confidence interval at level 0.95
 
-real	0m0.504s
-user	0m0.595s
-sys	0m0.419s
-
-===============================================================================
-
-go fix phonenumber
-
-real	0m0.157s
-user	0m0.143s
-sys	0m0.166s
-
-===============================================================================
-
-gosec ./phone-number
-[gosec] 2022/07/25 08:23:32 Including rules: default
-[gosec] 2022/07/25 08:23:32 Excluding rules: default
-[gosec] 2022/07/25 08:23:32 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/phone-number
-2022/07/25 08:23:33 internal error: package "errors" without types was imported from "command-line-arguments"
-
-real	0m0.471s
-user	0m0.566s
-sys	0m0.332s
+real	0m0.002s
+user	0m0.000s
+sys	0m0.003s
 
 ===============================================================================
 
 gomarkdoc --output phonenumber-doc.md
 
-real	0m0.026s
-user	0m0.021s
-sys	0m0.007s
+real	0m0.014s
+user	0m0.009s
+sys	0m0.005s
 
 ===============================================================================
 
 go doc -all phonenumber
 package phonenumber // import "phonenumber"
 
-Package phonenumber used to clean up NANP (North American Numbering Plan)
-phone numbers.
+Package phonenumber used to clean up NANP (North American Numbering Plan) phone
+numbers.
 
 VARIABLES
 
@@ -447,9 +1388,9 @@ func ValidateInput(phoneNumber string) error
     ValidateInput returns an error if the phone number has invalid data in it.
 
 
-real	0m0.219s
-user	0m0.134s
-sys	0m0.271s
+real	0m0.031s
+user	0m0.014s
+sys	0m0.030s
 
 
 ===============================================================================

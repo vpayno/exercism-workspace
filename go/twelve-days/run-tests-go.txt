@@ -5,56 +5,635 @@ Go packages: twelve
 
 ===============================================================================
 
-golint ./...
+Running: ../../.github/citools/go/go-lint-golangci-lint
+
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.027s
+user	0m0.037s
+sys	0m0.024s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+twelve_days_test.go:29:70: Comment should end in a period (godot)
+// diff compares two multi-line strings and returns a helpful comment
+                                                                     ^
+twelve_days_test.go:67: File is not `gofumpt`-ed (gofumpt)
+	var expected = strings.Join(verses, "\n")
+twelve_days_examples_test.go:10: line is 323 characters (lll)
+	// On the twelfth day of Christmas my true love gave to me: twelve Drummers Drumming, eleven Pipers Piping, ten Lords-a-Leaping, nine Ladies Dancing, eight Maids-a-Milking, seven Swans-a-Swimming, six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree.
+twelve_days_examples_test.go:19: line is 127 characters (lll)
+	// On the third day of Christmas my true love gave to me: three French Hens, two Turtle Doves, and a Partridge in a Pear Tree.
+twelve_days_examples_test.go:20: line is 148 characters (lll)
+	// On the fourth day of Christmas my true love gave to me: four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree.
+twelve_days_examples_test.go:21: line is 164 characters (lll)
+	// On the fifth day of Christmas my true love gave to me: five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree.
+twelve_days_examples_test.go:22: line is 184 characters (lll)
+	// On the sixth day of Christmas my true love gave to me: six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree.
+twelve_days_examples_test.go:23: line is 210 characters (lll)
+	// On the seventh day of Christmas my true love gave to me: seven Swans-a-Swimming, six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree.
+twelve_days_examples_test.go:24: line is 232 characters (lll)
+	// On the eighth day of Christmas my true love gave to me: eight Maids-a-Milking, seven Swans-a-Swimming, six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree.
+twelve_days_examples_test.go:25: line is 252 characters (lll)
+	// On the ninth day of Christmas my true love gave to me: nine Ladies Dancing, eight Maids-a-Milking, seven Swans-a-Swimming, six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree.
+twelve_days_examples_test.go:26: line is 273 characters (lll)
+	// On the tenth day of Christmas my true love gave to me: ten Lords-a-Leaping, nine Ladies Dancing, eight Maids-a-Milking, seven Swans-a-Swimming, six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree.
+twelve_days_examples_test.go:27: line is 298 characters (lll)
+	// On the eleventh day of Christmas my true love gave to me: eleven Pipers Piping, ten Lords-a-Leaping, nine Ladies Dancing, eight Maids-a-Milking, seven Swans-a-Swimming, six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree.
+twelve_days_examples_test.go:28: line is 323 characters (lll)
+	// On the twelfth day of Christmas my true love gave to me: twelve Drummers Drumming, eleven Pipers Piping, ten Lords-a-Leaping, nine Ladies Dancing, eight Maids-a-Milking, seven Swans-a-Swimming, six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree.
+twelve_days_test.go:17: line is 132 characters (lll)
+	{3, "On the third day of Christmas my true love gave to me: three French Hens, two Turtle Doves, and a Partridge in a Pear Tree."},
+twelve_days_test.go:18: line is 153 characters (lll)
+	{4, "On the fourth day of Christmas my true love gave to me: four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree."},
+twelve_days_test.go:19: line is 169 characters (lll)
+	{5, "On the fifth day of Christmas my true love gave to me: five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree."},
+twelve_days_test.go:20: line is 189 characters (lll)
+	{6, "On the sixth day of Christmas my true love gave to me: six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree."},
+twelve_days_test.go:21: line is 215 characters (lll)
+	{7, "On the seventh day of Christmas my true love gave to me: seven Swans-a-Swimming, six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree."},
+twelve_days_test.go:22: line is 237 characters (lll)
+	{8, "On the eighth day of Christmas my true love gave to me: eight Maids-a-Milking, seven Swans-a-Swimming, six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree."},
+twelve_days_test.go:23: line is 257 characters (lll)
+	{9, "On the ninth day of Christmas my true love gave to me: nine Ladies Dancing, eight Maids-a-Milking, seven Swans-a-Swimming, six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree."},
+twelve_days_test.go:24: line is 279 characters (lll)
+	{10, "On the tenth day of Christmas my true love gave to me: ten Lords-a-Leaping, nine Ladies Dancing, eight Maids-a-Milking, seven Swans-a-Swimming, six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree."},
+twelve_days_test.go:25: line is 304 characters (lll)
+	{11, "On the eleventh day of Christmas my true love gave to me: eleven Pipers Piping, ten Lords-a-Leaping, nine Ladies Dancing, eight Maids-a-Milking, seven Swans-a-Swimming, six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree."},
+twelve_days_test.go:26: line is 329 characters (lll)
+	{12, "On the twelfth day of Christmas my true love gave to me: twelve Drummers Drumming, eleven Pipers Piping, ten Lords-a-Leaping, nine Ladies Dancing, eight Maids-a-Milking, seven Swans-a-Swimming, six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree."},
+twelve_days_test.go:63:2: Consider pre-allocating `verses` (prealloc)
+	var verses []string
+	^
+twelve_days.go:49:2: assignments should only be cuddled with other assignments (wsl)
+	i := verseNum
+	^
+twelve_days.go:72:3: if statements should only be cuddled with assignments (wsl)
+		if i > 0 && i < 12 {
+		^
+twelve_days_test.go:39:4: return statements should not be cuddled if block has more than two lines (wsl)
+			return fmt.Sprintf("-- first difference in line %d:\n"+
+			^
+twelve_days_test.go:33:2: for statement without condition should never be cuddled (wsl)
+	for i := 0; ; i++ {
+	^
+twelve_days_test.go:68:2: assignments should only be cuddled with other assignments (wsl)
+	actual := Song()
+	^
+twelve_days_test.go:69:2: only one cuddle assignment allowed before if statement (wsl)
+	if expected != actual {
+	^
+twelve_days_test.go:78:2: for statements should only be cuddled with assignments used in the iteration (wsl)
+	for i := 0; i < b.N; i++ {
+	^
+twelve_days_test.go:89:2: for statements should only be cuddled with assignments used in the iteration (wsl)
+	for i := 0; i < b.N; i++ {
+	^
+twelve_days_test.go:14:5: testCases is a global variable (gochecknoglobals)
+var testCases = []testCase{
+    ^
+twelve_days_test.go:53:1: Function TestVerse missing the call to method parallel (paralleltest)
+func TestVerse(t *testing.T) {
+^
+twelve_days_test.go:62:1: Function TestSong missing the call to method parallel (paralleltest)
+func TestSong(t *testing.T) {
+^
+twelve_days_examples_test.go:1:9: package should be `twelve_test` instead of `twelve` (testpackage)
+package twelve
+        ^
+twelve_days_test.go:1:9: package should be `twelve_test` instead of `twelve` (testpackage)
+package twelve
+        ^
+twelve_days.go:50:2: variable name 'j' is too short for the scope of its usage (varnamelen)
+	j := 0
+	^
+twelve_days_test.go:31:2: variable name 'g' is too short for the scope of its usage (varnamelen)
+	g := strings.Split(got, "\n")
+	^
+twelve_days_test.go:32:2: variable name 'w' is too short for the scope of its usage (varnamelen)
+	w := strings.Split(want, "\n")
+	^
+
+real	0m0.517s
+user	0m0.826s
+sys	0m0.431s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.555s
+user	0m0.868s
+sys	0m0.466s
+
+real	0m0.557s
+user	0m0.869s
+sys	0m0.466s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-revive
+
+Running Go Lint Revive
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.020s
+user	0m0.018s
+sys	0m0.021s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
+
+real	0m0.041s
+user	0m0.019s
+sys	0m0.032s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.072s
+user	0m0.043s
+sys	0m0.062s
+
+real	0m0.074s
+user	0m0.043s
+sys	0m0.065s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
+
+real	0m0.001s
+user	0m0.001s
+sys	0m0.000s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.023s
+user	0m0.019s
+sys	0m0.025s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
+	info: check "./."
+internal error: package "fmt" without types was imported from "twelve"
+
+real	0m0.104s
+user	0m0.130s
+sys	0m0.164s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.141s
+user	0m0.159s
+sys	0m0.200s
+
+real	0m0.143s
+user	0m0.160s
+sys	0m0.201s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-staticcheck
+
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.023s
+user	0m0.014s
+sys	0m0.020s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+
+real	0m0.186s
+user	0m0.240s
+sys	0m0.136s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.219s
+user	0m0.258s
+sys	0m0.167s
+
+real	0m0.221s
+user	0m0.258s
+sys	0m0.168s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocritic
+
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.032s
+user	0m0.024s
+sys	0m0.031s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+
+real	0m0.807s
+user	0m1.938s
+sys	0m0.310s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.858s
+user	0m1.974s
+sys	0m0.356s
+
+real	0m0.862s
+user	0m1.976s
+sys	0m0.358s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go_vet
+
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.019s
+user	0m0.022s
+sys	0m0.022s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
 
 real	0m0.077s
-user	0m0.078s
-sys	0m0.069s
+user	0m0.112s
+sys	0m0.117s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.106s
+user	0m0.140s
+sys	0m0.144s
+
+real	0m0.107s
+user	0m0.141s
+sys	0m0.145s
 
 ===============================================================================
 
-revive ./...
+Running: ../../.github/citools/go/go-fixer-go_fix
 
-real	0m0.030s
-user	0m0.020s
-sys	0m0.011s
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.028s
+user	0m0.024s
+sys	0m0.024s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.029s
+user	0m0.021s
+sys	0m0.036s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.071s
+user	0m0.051s
+sys	0m0.071s
+
+real	0m0.072s
+user	0m0.052s
+sys	0m0.072s
 
 ===============================================================================
 
-ineffassign ./...
+Running: ../../.github/citools/go/go-lint-errcheck
 
-real	0m0.321s
-user	0m0.375s
-sys	0m0.312s
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.036s
+user	0m0.031s
+sys	0m0.033s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+
+real	0m0.485s
+user	0m1.364s
+sys	0m0.279s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.535s
+user	0m1.405s
+sys	0m0.321s
+
+real	0m0.538s
+user	0m1.406s
+sys	0m0.322s
 
 ===============================================================================
 
-go-consistent -v ./...
-	info: check "./."
+Running: ../../.github/citools/go/go-lint-gocyclo
 
-real	0m0.348s
-user	0m0.409s
-sys	0m0.355s
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.022s
+user	0m0.023s
+sys	0m0.021s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
+7 twelve diff twelve_days_test.go:30:1
+5 twelve Verse twelve_days.go:10:1
+4 twelve BenchmarkVerse twelve_days_test.go:74:1
+4 twelve Song twelve_days.go:67:1
+3 twelve BenchmarkSong twelve_days_test.go:85:1
+3 twelve TestSong twelve_days_test.go:62:1
+3 twelve TestVerse twelve_days_test.go:53:1
+1 twelve ExampleSong twelve_days_examples_test.go:13:1
+1 twelve ExampleVerse twelve_days_examples_test.go:5:1
+
+real	0m0.003s
+user	0m0.000s
+sys	0m0.003s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.037s
+user	0m0.030s
+sys	0m0.032s
+
+real	0m0.038s
+user	0m0.030s
+sys	0m0.033s
 
 ===============================================================================
 
-staticcheck ./...
+Running: ../../.github/citools/go/go-lint-misspell
 
-real	0m0.531s
-user	0m0.540s
-sys	0m0.517s
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+
+real	0m0.027s
+user	0m0.027s
+sys	0m0.017s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.037s
+user	0m0.030s
+sys	0m0.028s
+
+real	0m0.039s
+user	0m0.031s
+sys	0m0.028s
 
 ===============================================================================
 
-gocritic check -enableAll ./...
+Running: ../../.github/citools/go/go-lint-gosec
 
-real	0m2.217s
-user	0m3.797s
-sys	0m1.007s
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.037s
+user	0m0.034s
+sys	0m0.028s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:31:55 Including rules: default
+[gosec] 2023/09/07 00:31:55 Excluding rules: default
+[gosec] 2023/09/07 00:31:55 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/twelve-days
+[gosec] 2023/09/07 00:31:55 Checking package: twelve
+[gosec] 2023/09/07 00:31:55 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/twelve-days/twelve_days.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 78
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.159s
+user	0m0.164s
+sys	0m0.145s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.211s
+user	0m0.206s
+sys	0m0.187s
+
+real	0m0.214s
+user	0m0.207s
+sys	0m0.188s
 
 ===============================================================================
 
-gotest -v -covermode=count -coverprofile coverage.out ./...
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.027s
+user	0m0.015s
+sys	0m0.025s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
 === RUN   TestVerse
 --- PASS: TestVerse (0.00s)
 === RUN   TestSong
@@ -65,34 +644,41 @@ gotest -v -covermode=count -coverprofile coverage.out ./...
 --- PASS: ExampleSong (0.00s)
 PASS
 coverage: 95.5% of statements
-ok  	twelve	0.017s	coverage: 95.5% of statements
+ok  	twelve	0.002s	coverage: 95.5% of statements
 
-real	0m0.429s
-user	0m0.521s
-sys	0m0.322s
+real	0m0.182s
+user	0m0.246s
+sys	0m0.140s
 
-===============================================================================
 
-go tool cover -func=coverage.out
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
 twelve/twelve_days.go:10:	Verse		93.8%
 twelve/twelve_days.go:67:	Song		100.0%
 total:				(statements)	95.5%
 
-real	0m0.275s
-user	0m0.262s
-sys	0m0.269s
+real	0m0.060s
+user	0m0.076s
+sys	0m0.078s
 
-===============================================================================
 
-go tool cover -html coverage.out -o coverage.html
+ ==============================================================================
 
-real	0m0.184s
-user	0m0.165s
-sys	0m0.215s
+Running: go tool cover -html coverage.out -o coverage.html
 
-===============================================================================
 
-gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+real	0m0.049s
+user	0m0.050s
+sys	0m0.067s
+
+
+ ==============================================================================
+
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
 
 10     	func Verse(verseNum int) string {
 11     		verseNum--
@@ -151,13 +737,19 @@ gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annota
 64     	}
 
 
-real	0m0.070s
-user	0m0.071s
-sys	0m0.075s
+real	0m0.016s
+user	0m0.017s
+sys	0m0.022s
 
-===============================================================================
+real	0m0.016s
+user	0m0.017s
+sys	0m0.022s
 
-gotest -v -race -covermode=atomic ./...
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
 === RUN   TestVerse
 --- PASS: TestVerse (0.00s)
 === RUN   TestSong
@@ -168,29 +760,45 @@ gotest -v -race -covermode=atomic ./...
 --- PASS: ExampleSong (0.00s)
 PASS
 coverage: 95.5% of statements
-ok  	twelve	(cached)	coverage: 95.5% of statements
+ok  	twelve	1.018s	coverage: 95.5% of statements
 
-real	0m0.332s
-user	0m0.363s
-sys	0m0.344s
+real	0m1.243s
+user	0m0.254s
+sys	0m0.185s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.598s
+user	0m0.668s
+sys	0m0.533s
+
+real	0m1.601s
+user	0m0.669s
+sys	0m0.534s
 
 ===============================================================================
+
+mv -v benchstat-new.txt benchstat-old.txt
+renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
 
 gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 goos: linux
 goarch: amd64
 pkg: twelve
-cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
 BenchmarkVerse
-BenchmarkVerse-4   	   54613	     26142 ns/op	   11475 B/op	     113 allocs/op
+BenchmarkVerse-8   	  178758	      6561 ns/op	   11476 B/op	     113 allocs/op
 BenchmarkSong
-BenchmarkSong-4    	   37423	     39293 ns/op	   18485 B/op	     120 allocs/op
+BenchmarkSong-8    	  125301	      8618 ns/op	   18487 B/op	     120 allocs/op
 PASS
-ok  	twelve	5.607s
+ok  	twelve	3.353s
 
-real	0m6.178s
-user	0m9.212s
-sys	0m2.094s
+real	0m3.511s
+user	0m3.853s
+sys	0m0.406s
 
 ===============================================================================
 
@@ -204,76 +812,77 @@ gotest -v -tags bonus
 === RUN   ExampleSong
 --- PASS: ExampleSong (0.00s)
 PASS
-ok  	twelve	0.015s
+ok  	twelve	0.001s
 
-real	0m0.523s
-user	0m0.543s
-sys	0m0.401s
-
-===============================================================================
-
-No old benchmarks to run benchstat against.
+real	0m0.129s
+user	0m0.172s
+sys	0m0.138s
 
 ===============================================================================
 
-go vet ./...
+benchstat benchstat-old.txt benchstat-new.txt
+benchstat-old.txt:5: missing iteration count
+benchstat-old.txt:7: missing iteration count
+benchstat-new.txt:5: missing iteration count
+benchstat-new.txt:7: missing iteration count
+goos: linux
+goarch: amd64
+pkg: twelve
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+        │ benchstat-new.txt │
+        │      sec/op       │
+Verse-8        6.561µ ± ∞ ¹
+Song-8         8.618µ ± ∞ ¹
+geomean        7.519µ
+¹ need >= 6 samples for confidence interval at level 0.95
 
-real	0m0.248s
-user	0m0.262s
-sys	0m0.316s
+        │ benchstat-new.txt │
+        │       B/op        │
+Verse-8       11.21Ki ± ∞ ¹
+Song-8        18.05Ki ± ∞ ¹
+geomean       14.22Ki
+¹ need >= 6 samples for confidence interval at level 0.95
 
-===============================================================================
+        │ benchstat-new.txt │
+        │     allocs/op     │
+Verse-8         113.0 ± ∞ ¹
+Song-8          120.0 ± ∞ ¹
+geomean         116.4
+¹ need >= 6 samples for confidence interval at level 0.95
 
-go fix ./...
+cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+        │ benchstat-old.txt │
+        │      sec/op       │
+Verse-4        26.14µ ± ∞ ¹
+Song-4         39.29µ ± ∞ ¹
+geomean        32.05µ
+¹ need >= 6 samples for confidence interval at level 0.95
 
-real	0m0.122s
-user	0m0.093s
-sys	0m0.148s
+        │ benchstat-old.txt │
+        │       B/op        │
+Verse-4       11.21Ki ± ∞ ¹
+Song-4        18.05Ki ± ∞ ¹
+geomean       14.22Ki
+¹ need >= 6 samples for confidence interval at level 0.95
 
-===============================================================================
+        │ benchstat-old.txt │
+        │     allocs/op     │
+Verse-4         113.0 ± ∞ ¹
+Song-4          120.0 ± ∞ ¹
+geomean         116.4
+¹ need >= 6 samples for confidence interval at level 0.95
 
-gocyclo .
-7 twelve diff twelve_days_test.go:30:1
-5 twelve Verse twelve_days.go:10:1
-4 twelve BenchmarkVerse twelve_days_test.go:74:1
-4 twelve Song twelve_days.go:67:1
-3 twelve BenchmarkSong twelve_days_test.go:85:1
-3 twelve TestSong twelve_days_test.go:62:1
-3 twelve TestVerse twelve_days_test.go:53:1
-1 twelve ExampleSong twelve_days_examples_test.go:13:1
-1 twelve ExampleVerse twelve_days_examples_test.go:5:1
-
-real	0m0.017s
-user	0m0.003s
-sys	0m0.009s
-
-===============================================================================
-
-misspell .
-
-real	0m0.101s
-user	0m0.091s
-sys	0m0.068s
-
-===============================================================================
-
-gosec ./...
-[gosec] 2022/08/23 22:05:44 Including rules: default
-[gosec] 2022/08/23 22:05:44 Excluding rules: default
-[gosec] 2022/08/23 22:05:44 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/twelve-days
-2022/08/23 22:05:44 internal error: package "fmt" without types was imported from "command-line-arguments"
-
-real	0m0.431s
-user	0m0.442s
-sys	0m0.344s
+real	0m0.003s
+user	0m0.001s
+sys	0m0.002s
 
 ===============================================================================
 
 gomarkdoc --output twelve-doc.md
 
-real	0m0.044s
-user	0m0.029s
-sys	0m0.023s
+real	0m0.009s
+user	0m0.004s
+sys	0m0.005s
 
 ===============================================================================
 
@@ -291,9 +900,9 @@ func Verse(verseNum int) string
     Verse returns the specific verse/line from the song.
 
 
-real	0m0.139s
-user	0m0.101s
-sys	0m0.147s
+real	0m0.036s
+user	0m0.030s
+sys	0m0.030s
 
 
 ===============================================================================

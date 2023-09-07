@@ -5,186 +5,819 @@ Go packages: atbash
 
 ===============================================================================
 
-golint atbash
+Running: ../../.github/citools/go/go-lint-golangci-lint
 
-real	0m0.122s
-user	0m0.097s
-sys	0m0.105s
+Running GoLangCi-Lint
 
-===============================================================================
+Go version:
 
-go test -v -covermode=count -coverprofile coverage.out atbash
-=== RUN   TestAtbash
-=== RUN   TestAtbash/encode_yes
-=== RUN   TestAtbash/encode_no
-=== RUN   TestAtbash/encode_OMG
-=== RUN   TestAtbash/encode_spaces
-=== RUN   TestAtbash/encode_mindblowingly
-=== RUN   TestAtbash/encode_numbers
-=== RUN   TestAtbash/encode_deep_thought
-=== RUN   TestAtbash/encode_all_the_letters
---- PASS: TestAtbash (0.00s)
-    --- PASS: TestAtbash/encode_yes (0.00s)
-    --- PASS: TestAtbash/encode_no (0.00s)
-    --- PASS: TestAtbash/encode_OMG (0.00s)
-    --- PASS: TestAtbash/encode_spaces (0.00s)
-    --- PASS: TestAtbash/encode_mindblowingly (0.00s)
-    --- PASS: TestAtbash/encode_numbers (0.00s)
-    --- PASS: TestAtbash/encode_deep_thought (0.00s)
-    --- PASS: TestAtbash/encode_all_the_letters (0.00s)
-=== RUN   ExampleAtbash
---- PASS: ExampleAtbash (0.00s)
-PASS
-coverage: 95.2% of statements
-ok  	atbash	0.007s	coverage: 95.2% of statements
+	go version go1.21.0 linux/amd64
 
-real	0m0.544s
-user	0m0.665s
-sys	0m0.419s
 
-===============================================================================
+ ==============================================================================
 
-go tool cover -func=coverage.out
-atbash/atbash_cipher.go:15:	Atbash		92.3%
-atbash/atbash_cipher.go:43:	shiftChar	100.0%
-total:				(statements)	95.2%
+Running: go clean ./...
 
-real	0m0.238s
-user	0m0.211s
-sys	0m0.217s
 
-===============================================================================
+real	0m0.025s
+user	0m0.032s
+sys	0m0.016s
 
-go tool cover -html coverage.out -o coverage.html
 
-real	0m0.209s
-user	0m0.189s
-sys	0m0.181s
+ ==============================================================================
 
-===============================================================================
+Running: golangci-lint run --enable-all ./...
 
-go test -v -race -covermode=atomic atbash
-=== RUN   TestAtbash
-=== RUN   TestAtbash/encode_yes
-=== RUN   TestAtbash/encode_no
-=== RUN   TestAtbash/encode_OMG
-=== RUN   TestAtbash/encode_spaces
-=== RUN   TestAtbash/encode_mindblowingly
-=== RUN   TestAtbash/encode_numbers
-=== RUN   TestAtbash/encode_deep_thought
-=== RUN   TestAtbash/encode_all_the_letters
---- PASS: TestAtbash (0.00s)
-    --- PASS: TestAtbash/encode_yes (0.00s)
-    --- PASS: TestAtbash/encode_no (0.00s)
-    --- PASS: TestAtbash/encode_OMG (0.00s)
-    --- PASS: TestAtbash/encode_spaces (0.00s)
-    --- PASS: TestAtbash/encode_mindblowingly (0.00s)
-    --- PASS: TestAtbash/encode_numbers (0.00s)
-    --- PASS: TestAtbash/encode_deep_thought (0.00s)
-    --- PASS: TestAtbash/encode_all_the_letters (0.00s)
-=== RUN   ExampleAtbash
---- PASS: ExampleAtbash (0.00s)
-PASS
-coverage: 95.2% of statements
-ok  	atbash	0.053s	coverage: 95.2% of statements
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+atbash_cipher_test.go:8:21: Using the variable on range scope `tc` in function literal (scopelint)
+			actual := Atbash(tc.phrase)
+			                 ^
+atbash_cipher_test.go:9:17: Using the variable on range scope `tc` in function literal (scopelint)
+			if actual != tc.expected {
+			             ^
+atbash_cipher_test.go:10:58: Using the variable on range scope `tc` in function literal (scopelint)
+				t.Errorf("Atbash('%s'): expected '%s', actual '%s'", tc.phrase, tc.expected, actual)
+				                                                     ^
+atbash_cipher.go:21:2: declarations should never be cuddled (wsl)
+	var count int
+	^
+atbash_cipher_test.go:20:2: for statements should only be cuddled with assignments used in the iteration (wsl)
+	for i := 0; i < b.N; i++ {
+	^
+cases_test.go:8:5: testCases is a global variable (gochecknoglobals)
+var testCases = []struct {
+    ^
+atbash_cipher.go:58:17: err113: do not define dynamic errors, use wrapped static errors instead: "fmt.Errorf(\"char, %q, is not encodable\", char)" (goerr113)
+	return '\x00', fmt.Errorf("char, %q, is not encodable", char)
+	               ^
+atbash_cipher.go:48:12: mnd: Magic number: 97, in <operation> detected (gomnd)
+	offset := 97 - 1
+	          ^
+atbash_cipher.go:55:26: mnd: Magic number: 26, in <operation> detected (gomnd)
+		return rune(((offset + 26) - (int(char) - 1)) + offset), nil
+		                       ^
+atbash_cipher_test.go:5:1: Function TestAtbash missing the call to method parallel (paralleltest)
+func TestAtbash(t *testing.T) {
+^
+atbash_cipher_test.go:6:2: Range statement for test TestAtbash missing the call to method parallel in test Run (paralleltest)
+	for _, tc := range testCases {
+	^
+atbash_cipher_examples_test.go:1:9: package should be `atbash_test` instead of `atbash` (testpackage)
+package atbash
+        ^
+atbash_cipher_test.go:1:9: package should be `atbash_test` instead of `atbash` (testpackage)
+package atbash
+        ^
+cases_test.go:1:9: package should be `atbash_test` instead of `atbash` (testpackage)
+package atbash
+        ^
+atbash_cipher.go:24:3: variable name 'c' is too short for the scope of its usage (varnamelen)
+		c, e := shiftChar(char)
+		^
 
-real	0m0.854s
-user	0m0.665s
-sys	0m0.498s
+real	0m0.526s
+user	0m0.746s
+sys	0m0.513s
 
-===============================================================================
 
-go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
-goos: linux
-goarch: amd64
-pkg: atbash
-cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
-BenchmarkAtbash-4   	  126147	      8726 ns/op	    1216 B/op	      55 allocs/op
-PASS
-ok  	atbash	1.241s
+ ==============================================================================
 
-real	0m1.609s
-user	0m2.009s
-sys	0m0.380s
+Exit code: -1
+
+real	0m0.565s
+user	0m0.786s
+sys	0m0.541s
+
+real	0m0.568s
+user	0m0.788s
+sys	0m0.542s
 
 ===============================================================================
 
-go test -tags bonus
-PASS
-ok  	atbash	0.007s
+Running: ../../.github/citools/go/go-lint-revive
 
-real	0m0.552s
-user	0m0.600s
-sys	0m0.439s
+Running Go Lint Revive
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.026s
+user	0m0.016s
+sys	0m0.028s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
+
+real	0m0.065s
+user	0m0.033s
+sys	0m0.051s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.112s
+user	0m0.063s
+sys	0m0.096s
+
+real	0m0.115s
+user	0m0.063s
+sys	0m0.099s
 
 ===============================================================================
 
-No old benchmarks to run benchstat against.
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.001s
 
 ===============================================================================
 
-go vet atbash
+Running: ../../.github/citools/go/go-lint-go-consistent
 
-real	0m0.266s
-user	0m0.277s
-sys	0m0.359s
+Running Go go-consistent
 
-===============================================================================
+Go version:
 
-go fix atbash
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.031s
+user	0m0.027s
+sys	0m0.034s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
+	info: check "./."
+internal error: package "fmt" without types was imported from "atbash"
 
 real	0m0.118s
-user	0m0.078s
-sys	0m0.134s
+user	0m0.154s
+sys	0m0.162s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.169s
+user	0m0.186s
+sys	0m0.216s
+
+real	0m0.171s
+user	0m0.187s
+sys	0m0.218s
 
 ===============================================================================
 
-ineffassign ./...
+Running: ../../.github/citools/go/go-lint-staticcheck
 
-real	0m0.358s
-user	0m0.337s
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.022s
+user	0m0.022s
+sys	0m0.023s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+
+real	0m0.173s
+user	0m0.207s
+sys	0m0.123s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.207s
+user	0m0.237s
+sys	0m0.155s
+
+real	0m0.210s
+user	0m0.239s
+sys	0m0.156s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocritic
+
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.020s
+user	0m0.015s
+sys	0m0.018s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+./atbash_cipher.go:16:5: emptyStringTest: replace `len(plain) == 0` with `plain == ""`
+
+real	0m0.769s
+user	0m1.916s
+sys	0m0.290s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.799s
+user	0m1.938s
+sys	0m0.316s
+
+real	0m0.801s
+user	0m1.939s
+sys	0m0.317s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go_vet
+
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.028s
+user	0m0.033s
+sys	0m0.025s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.088s
+user	0m0.139s
+sys	0m0.123s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.128s
+user	0m0.176s
+sys	0m0.159s
+
+real	0m0.130s
+user	0m0.177s
+sys	0m0.160s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-fixer-go_fix
+
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.022s
+user	0m0.023s
+sys	0m0.018s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.032s
+user	0m0.024s
+sys	0m0.035s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.064s
+user	0m0.052s
+sys	0m0.063s
+
+real	0m0.066s
+user	0m0.053s
+sys	0m0.063s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-errcheck
+
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.029s
+user	0m0.028s
+sys	0m0.031s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+
+real	0m0.467s
+user	0m1.446s
+sys	0m0.308s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.514s
+user	0m1.481s
 sys	0m0.355s
 
+real	0m0.518s
+user	0m1.483s
+sys	0m0.356s
+
 ===============================================================================
 
-gocyclo .
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.022s
+user	0m0.018s
+sys	0m0.020s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
 6 atbash Atbash atbash_cipher.go:15:1
 4 atbash BenchmarkAtbash atbash_cipher_test.go:16:1
 4 atbash shiftChar atbash_cipher.go:43:1
 3 atbash TestAtbash atbash_cipher_test.go:5:1
 1 atbash ExampleAtbash atbash_cipher_examples_test.go:7:1
 
-real	0m0.028s
-user	0m0.010s
+real	0m0.003s
+user	0m0.000s
+sys	0m0.003s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.037s
+user	0m0.024s
+sys	0m0.033s
+
+real	0m0.039s
+user	0m0.026s
+sys	0m0.033s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-misspell
+
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+
+real	0m0.025s
+user	0m0.035s
+sys	0m0.011s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.035s
+user	0m0.040s
 sys	0m0.020s
 
-===============================================================================
-
-misspell .
-
-real	0m0.079s
-user	0m0.074s
-sys	0m0.057s
+real	0m0.037s
+user	0m0.041s
+sys	0m0.021s
 
 ===============================================================================
 
-gosec ./atbash-cipher
-[gosec] 2022/08/18 07:53:23 Including rules: default
-[gosec] 2022/08/18 07:53:23 Excluding rules: default
-[gosec] 2022/08/18 07:53:23 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/atbash-cipher
-2022/08/18 07:53:24 internal error: package "fmt" without types was imported from "command-line-arguments"
+Running: ../../.github/citools/go/go-lint-gosec
 
-real	0m0.501s
-user	0m0.463s
-sys	0m0.419s
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.041s
+user	0m0.035s
+sys	0m0.045s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:20:41 Including rules: default
+[gosec] 2023/09/07 00:20:41 Excluding rules: default
+[gosec] 2023/09/07 00:20:41 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/atbash-cipher
+[gosec] 2023/09/07 00:20:41 Checking package: atbash
+[gosec] 2023/09/07 00:20:41 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/atbash-cipher/atbash_cipher.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 59
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.134s
+user	0m0.164s
+sys	0m0.098s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.195s
+user	0m0.209s
+sys	0m0.160s
+
+real	0m0.198s
+user	0m0.210s
+sys	0m0.162s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.020s
+user	0m0.016s
+sys	0m0.020s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
+=== RUN   TestAtbash
+=== RUN   TestAtbash/encode_yes
+=== RUN   TestAtbash/encode_no
+=== RUN   TestAtbash/encode_OMG
+=== RUN   TestAtbash/encode_spaces
+=== RUN   TestAtbash/encode_mindblowingly
+=== RUN   TestAtbash/encode_numbers
+=== RUN   TestAtbash/encode_deep_thought
+=== RUN   TestAtbash/encode_all_the_letters
+--- PASS: TestAtbash (0.00s)
+    --- PASS: TestAtbash/encode_yes (0.00s)
+    --- PASS: TestAtbash/encode_no (0.00s)
+    --- PASS: TestAtbash/encode_OMG (0.00s)
+    --- PASS: TestAtbash/encode_spaces (0.00s)
+    --- PASS: TestAtbash/encode_mindblowingly (0.00s)
+    --- PASS: TestAtbash/encode_numbers (0.00s)
+    --- PASS: TestAtbash/encode_deep_thought (0.00s)
+    --- PASS: TestAtbash/encode_all_the_letters (0.00s)
+=== RUN   ExampleAtbash
+--- PASS: ExampleAtbash (0.00s)
+PASS
+coverage: 95.2% of statements
+ok  	atbash	0.003s	coverage: 95.2% of statements
+
+real	0m0.188s
+user	0m0.252s
+sys	0m0.190s
+
+
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
+atbash/atbash_cipher.go:15:	Atbash		92.3%
+atbash/atbash_cipher.go:43:	shiftChar	100.0%
+total:				(statements)	95.2%
+
+real	0m0.061s
+user	0m0.060s
+sys	0m0.100s
+
+
+ ==============================================================================
+
+Running: go tool cover -html coverage.out -o coverage.html
+
+
+real	0m0.056s
+user	0m0.076s
+sys	0m0.079s
+
+
+ ==============================================================================
+
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+15     	func Atbash(plain string) string {
+16     		if len(plain) == 0 {
+17 MISS			return ""
+18     		}
+19     	
+20     		var cipher strings.Builder
+21     		var count int
+22     	
+23     		for _, char := range plain {
+24     			c, e := shiftChar(char)
+25     	
+26     			// ok to ignore the errors since we're dropping non-encodable characters
+27     			if e != nil {
+28     				continue
+29     			}
+30     	
+31     			if count%5 == 0 && count != 0 {
+32     				cipher.WriteString(" ")
+33     			}
+34     	
+35     			count++
+36     	
+37     			cipher.WriteString(string(c))
+38     		}
+39     	
+40     		return cipher.String()
+41     	}
+
+
+real	0m0.019s
+user	0m0.019s
+sys	0m0.026s
+
+real	0m0.019s
+user	0m0.019s
+sys	0m0.026s
+
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
+=== RUN   TestAtbash
+=== RUN   TestAtbash/encode_yes
+=== RUN   TestAtbash/encode_no
+=== RUN   TestAtbash/encode_OMG
+=== RUN   TestAtbash/encode_spaces
+=== RUN   TestAtbash/encode_mindblowingly
+=== RUN   TestAtbash/encode_numbers
+=== RUN   TestAtbash/encode_deep_thought
+=== RUN   TestAtbash/encode_all_the_letters
+--- PASS: TestAtbash (0.00s)
+    --- PASS: TestAtbash/encode_yes (0.00s)
+    --- PASS: TestAtbash/encode_no (0.00s)
+    --- PASS: TestAtbash/encode_OMG (0.00s)
+    --- PASS: TestAtbash/encode_spaces (0.00s)
+    --- PASS: TestAtbash/encode_mindblowingly (0.00s)
+    --- PASS: TestAtbash/encode_numbers (0.00s)
+    --- PASS: TestAtbash/encode_deep_thought (0.00s)
+    --- PASS: TestAtbash/encode_all_the_letters (0.00s)
+=== RUN   ExampleAtbash
+--- PASS: ExampleAtbash (0.00s)
+PASS
+coverage: 95.2% of statements
+ok  	atbash	1.016s	coverage: 95.2% of statements
+
+real	0m1.222s
+user	0m0.242s
+sys	0m0.145s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.574s
+user	0m0.672s
+sys	0m0.564s
+
+real	0m1.577s
+user	0m0.675s
+sys	0m0.564s
+
+===============================================================================
+
+mv -v benchstat-new.txt benchstat-old.txt
+renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
+
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+goos: linux
+goarch: amd64
+pkg: atbash
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+BenchmarkAtbash
+BenchmarkAtbash-8   	  335793	      3605 ns/op	    1216 B/op	      55 allocs/op
+PASS
+ok  	atbash	2.112s
+
+real	0m2.337s
+user	0m2.402s
+sys	0m0.201s
+
+===============================================================================
+
+gotest -v -tags bonus
+=== RUN   TestAtbash
+=== RUN   TestAtbash/encode_yes
+=== RUN   TestAtbash/encode_no
+=== RUN   TestAtbash/encode_OMG
+=== RUN   TestAtbash/encode_spaces
+=== RUN   TestAtbash/encode_mindblowingly
+=== RUN   TestAtbash/encode_numbers
+=== RUN   TestAtbash/encode_deep_thought
+=== RUN   TestAtbash/encode_all_the_letters
+--- PASS: TestAtbash (0.00s)
+    --- PASS: TestAtbash/encode_yes (0.00s)
+    --- PASS: TestAtbash/encode_no (0.00s)
+    --- PASS: TestAtbash/encode_OMG (0.00s)
+    --- PASS: TestAtbash/encode_spaces (0.00s)
+    --- PASS: TestAtbash/encode_mindblowingly (0.00s)
+    --- PASS: TestAtbash/encode_numbers (0.00s)
+    --- PASS: TestAtbash/encode_deep_thought (0.00s)
+    --- PASS: TestAtbash/encode_all_the_letters (0.00s)
+=== RUN   ExampleAtbash
+--- PASS: ExampleAtbash (0.00s)
+PASS
+ok  	atbash	0.002s
+
+real	0m0.134s
+user	0m0.200s
+sys	0m0.105s
+
+===============================================================================
+
+benchstat benchstat-old.txt benchstat-new.txt
+benchstat-new.txt:5: missing iteration count
+goos: linux
+goarch: amd64
+pkg: atbash
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+         │ benchstat-new.txt │
+         │      sec/op       │
+Atbash-8        3.605µ ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
+
+         │ benchstat-new.txt │
+         │       B/op        │
+Atbash-8       1.188Ki ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
+
+         │ benchstat-new.txt │
+         │     allocs/op     │
+Atbash-8         55.00 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
+
+cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+         │ benchstat-old.txt │
+         │      sec/op       │
+Atbash-4        8.726µ ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
+
+         │ benchstat-old.txt │
+         │       B/op        │
+Atbash-4       1.188Ki ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
+
+         │ benchstat-old.txt │
+         │     allocs/op     │
+Atbash-4         55.00 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
+
+real	0m0.002s
+user	0m0.002s
+sys	0m0.000s
 
 ===============================================================================
 
 gomarkdoc --output atbash-doc.md
 
-real	0m0.098s
-user	0m0.035s
-sys	0m0.032s
+real	0m0.013s
+user	0m0.006s
+sys	0m0.007s
 
 ===============================================================================
 
@@ -203,9 +836,9 @@ func Atbash(plain string) string
     lowercase letters.
 
 
-real	0m0.160s
-user	0m0.091s
-sys	0m0.197s
+real	0m0.041s
+user	0m0.017s
+sys	0m0.040s
 
 
 ===============================================================================

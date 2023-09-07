@@ -5,64 +5,601 @@ Go packages: lasagna
 
 ===============================================================================
 
-golint lasagna
+Running: ../../.github/citools/go/go-lint-golangci-lint
 
-real	0m0.092s
-user	0m0.057s
-sys	0m0.074s
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.019s
+user	0m0.012s
+sys	0m0.014s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+lasagna_test.go:43: File is not `gofumpt`-ed (gofumpt)
+	}
+lasagna_test.go:45: File is not `gofumpt`-ed (gofumpt)
+}
+lasagna_test.go:67: File is not `gofumpt`-ed (gofumpt)
+
+lasagna_test.go:21:31: Using the variable on range scope `tt` in function literal (scopelint)
+			if got := OvenTime; got != tt.expected {
+			                           ^
+lasagna_test.go:22:45: Using the variable on range scope `tt` in function literal (scopelint)
+				t.Errorf("OvenTime(%d)  = %d; want %d", tt.expected, got, tt.expected)
+				                                        ^
+lasagna_test.go:39:32: Using the variable on range scope `tt` in function literal (scopelint)
+			if got := RemainingOvenTime(tt.time); got != tt.expected {
+			                            ^
+lasagna_test.go:44: unnecessary trailing newline (whitespace)
+
+}
+lasagna_test.go:68:2: block should not end with a whitespace (or comment) (wsl)
+	}
+	^
+lasagna_test.go:93:2: block should not end with a whitespace (or comment) (wsl)
+	}
+	^
+lasagna.go:13:9: mnd: Magic number: 2, in <return> detected (gomnd)
+	return 2 * numberOfLayers
+	       ^
+lasagna_test.go:10:1: Function TestOvenTime missing the call to method parallel (paralleltest)
+func TestOvenTime(t *testing.T) {
+^
+lasagna_test.go:19:2: Range statement for test TestOvenTime missing the call to method parallel in test Run (paralleltest)
+	for _, tt := range tests {
+	^
+lasagna_test.go:28:1: Function TestRemainingOvenTime missing the call to method parallel (paralleltest)
+func TestRemainingOvenTime(t *testing.T) {
+^
+lasagna_test.go:37:2: Range statement for test TestRemainingOvenTime missing the call to method parallel in test Run (paralleltest)
+	for _, tt := range tests {
+	^
+lasagna_test.go:46:1: Function TestPreparationTime missing the call to method parallel (paralleltest)
+func TestPreparationTime(t *testing.T) {
+^
+lasagna_test.go:61:2: Range statement for test TestPreparationTime missing the call to method parallel in test Run (paralleltest)
+	for _, tt := range tests {
+	^
+lasagna_test.go:71:1: Function TestElapsedTime missing the call to method parallel (paralleltest)
+func TestElapsedTime(t *testing.T) {
+^
+lasagna_test.go:86:2: Range statement for test TestElapsedTime missing the call to method parallel in test Run (paralleltest)
+	for _, tt := range tests {
+	^
+lasagna_examples_test.go:1:9: package should be `lasagna_test` instead of `lasagna` (testpackage)
+package lasagna
+        ^
+lasagna_test.go:1:9: package should be `lasagna_test` instead of `lasagna` (testpackage)
+package lasagna
+        ^
+
+real	0m0.449s
+user	0m0.627s
+sys	0m0.442s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.489s
+user	0m0.648s
+sys	0m0.471s
+
+real	0m0.492s
+user	0m0.650s
+sys	0m0.473s
 
 ===============================================================================
 
-go test -v -covermode=count -coverprofile coverage.out lasagna
-=== RUN   TestOvenTime
-=== RUN   TestOvenTime/Calculates_how_many_minutes_the_lasagna_should_be_in_the_oven
---- PASS: TestOvenTime (0.00s)
-    --- PASS: TestOvenTime/Calculates_how_many_minutes_the_lasagna_should_be_in_the_oven (0.00s)
-=== RUN   TestRemainingOvenTime
-=== RUN   TestRemainingOvenTime/Remaining_minutes_in_oven
---- PASS: TestRemainingOvenTime (0.00s)
-    --- PASS: TestRemainingOvenTime/Remaining_minutes_in_oven (0.00s)
-=== RUN   TestPreparationTime
-=== RUN   TestPreparationTime/Preparation_time_in_minutes_for_one_layer
-=== RUN   TestPreparationTime/Preparation_time_in_minutes_for_multiple_layers
---- PASS: TestPreparationTime (0.01s)
-    --- PASS: TestPreparationTime/Preparation_time_in_minutes_for_one_layer (0.00s)
-    --- PASS: TestPreparationTime/Preparation_time_in_minutes_for_multiple_layers (0.00s)
-=== RUN   TestElapsedTime
-=== RUN   TestElapsedTime/Total_time_in_minutes_for_one_layer
-=== RUN   TestElapsedTime/Total_time_in_minutes_for_multiple_layers
---- PASS: TestElapsedTime (0.00s)
-    --- PASS: TestElapsedTime/Total_time_in_minutes_for_one_layer (0.00s)
-    --- PASS: TestElapsedTime/Total_time_in_minutes_for_multiple_layers (0.00s)
-=== RUN   ExampleRemainingOvenTime
---- PASS: ExampleRemainingOvenTime (0.00s)
-=== RUN   ExamplePreparationTime
---- PASS: ExamplePreparationTime (0.00s)
-=== RUN   ExampleElapsedTime
---- PASS: ExampleElapsedTime (0.00s)
-PASS
-coverage: 100.0% of statements
-ok  	lasagna	0.017s	coverage: 100.0% of statements
+Running: ../../.github/citools/go/go-lint-revive
 
-real	0m0.590s
-user	0m0.624s
-sys	0m0.458s
+Running Go Lint Revive
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.011s
+user	0m0.004s
+sys	0m0.010s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
+lasagna.go
+  (1, 1)  https://revive.run/r#package-comments  should have a package comment  
+
+
+ ✖ 1 problem (0 errors) (1 warnings)
+
+real	0m0.038s
+user	0m0.018s
+sys	0m0.029s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.060s
+user	0m0.026s
+sys	0m0.051s
+
+real	0m0.062s
+user	0m0.027s
+sys	0m0.052s
 
 ===============================================================================
 
-go tool cover -func=coverage.out
-lasagna/lasagna.go:7:	RemainingOvenTime	100.0%
-lasagna/lasagna.go:12:	PreparationTime		100.0%
-lasagna/lasagna.go:17:	ElapsedTime		100.0%
-total:			(statements)		100.0%
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
 
-real	0m0.082s
-user	0m0.035s
-sys	0m0.091s
+real	0m0.000s
+user	0m0.000s
+sys	0m0.000s
 
 ===============================================================================
 
-go test -v -race -covermode=atomic lasagna
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.012s
+user	0m0.007s
+sys	0m0.008s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
+	info: check "./."
+internal error: package "fmt" without types was imported from "lasagna [lasagna.test]"
+
+real	0m0.102s
+user	0m0.120s
+sys	0m0.121s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.124s
+user	0m0.130s
+sys	0m0.140s
+
+real	0m0.126s
+user	0m0.130s
+sys	0m0.141s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-staticcheck
+
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.015s
+user	0m0.006s
+sys	0m0.012s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+lasagna.go:1:1: at least one file in a package should have a package comment (ST1000)
+
+real	0m0.164s
+user	0m0.180s
+sys	0m0.114s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.190s
+user	0m0.192s
+sys	0m0.135s
+
+real	0m0.192s
+user	0m0.192s
+sys	0m0.137s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocritic
+
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.010s
+user	0m0.003s
+sys	0m0.009s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+
+real	0m0.834s
+user	0m2.051s
+sys	0m0.275s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.856s
+user	0m2.061s
+sys	0m0.297s
+
+real	0m0.858s
+user	0m2.062s
+sys	0m0.298s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go_vet
+
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.012s
+user	0m0.006s
+sys	0m0.009s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.075s
+user	0m0.115s
+sys	0m0.098s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.099s
+user	0m0.124s
+sys	0m0.120s
+
+real	0m0.101s
+user	0m0.126s
+sys	0m0.120s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-fixer-go_fix
+
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.017s
+user	0m0.007s
+sys	0m0.016s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.027s
+user	0m0.011s
+sys	0m0.013s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.056s
+user	0m0.023s
+sys	0m0.040s
+
+real	0m0.058s
+user	0m0.023s
+sys	0m0.042s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-errcheck
+
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.015s
+user	0m0.005s
+sys	0m0.014s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+
+real	0m0.514s
+user	0m1.738s
+sys	0m0.297s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.543s
+user	0m1.749s
+sys	0m0.325s
+
+real	0m0.545s
+user	0m1.749s
+sys	0m0.326s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.009s
+user	0m0.005s
+sys	0m0.007s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
+3 lasagna TestElapsedTime lasagna_test.go:71:1
+3 lasagna TestPreparationTime lasagna_test.go:46:1
+3 lasagna TestRemainingOvenTime lasagna_test.go:28:1
+3 lasagna TestOvenTime lasagna_test.go:10:1
+1 lasagna ExampleElapsedTime lasagna_examples_test.go:19:1
+1 lasagna ExamplePreparationTime lasagna_examples_test.go:13:1
+1 lasagna ExampleRemainingOvenTime lasagna_examples_test.go:7:1
+1 lasagna ElapsedTime lasagna.go:17:1
+1 lasagna PreparationTime lasagna.go:12:1
+1 lasagna RemainingOvenTime lasagna.go:7:1
+
+real	0m0.002s
+user	0m0.001s
+sys	0m0.001s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.023s
+user	0m0.015s
+sys	0m0.015s
+
+real	0m0.025s
+user	0m0.015s
+sys	0m0.017s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-misspell
+
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+
+real	0m0.027s
+user	0m0.032s
+sys	0m0.015s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.039s
+user	0m0.041s
+sys	0m0.022s
+
+real	0m0.041s
+user	0m0.043s
+sys	0m0.022s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gosec
+
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.016s
+user	0m0.003s
+sys	0m0.017s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:24:22 Including rules: default
+[gosec] 2023/09/07 00:24:22 Excluding rules: default
+[gosec] 2023/09/07 00:24:22 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/lasagna
+[gosec] 2023/09/07 00:24:22 Checking package: lasagna
+[gosec] 2023/09/07 00:24:22 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/lasagna/lasagna.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 19
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.097s
+user	0m0.077s
+sys	0m0.057s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.127s
+user	0m0.085s
+sys	0m0.087s
+
+real	0m0.129s
+user	0m0.087s
+sys	0m0.087s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.013s
+user	0m0.005s
+sys	0m0.011s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
 === RUN   TestOvenTime
 === RUN   TestOvenTime/Calculates_how_many_minutes_the_lasagna_should_be_in_the_oven
 --- PASS: TestOvenTime (0.00s)
@@ -91,78 +628,160 @@ go test -v -race -covermode=atomic lasagna
 --- PASS: ExampleElapsedTime (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	lasagna	0.048s	coverage: 100.0% of statements
+ok  	lasagna	0.002s	coverage: 100.0% of statements
 
-real	0m0.661s
-user	0m0.820s
-sys	0m0.372s
+real	0m0.164s
+user	0m0.212s
+sys	0m0.130s
 
-===============================================================================
 
-go test --bench . --benchmem
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
+lasagna/lasagna.go:7:	RemainingOvenTime	100.0%
+lasagna/lasagna.go:12:	PreparationTime		100.0%
+lasagna/lasagna.go:17:	ElapsedTime		100.0%
+total:			(statements)		100.0%
+
+real	0m0.025s
+user	0m0.015s
+sys	0m0.018s
+
+
+ ==============================================================================
+
+Running: go tool cover -html coverage.out -o coverage.html
+
+
+real	0m0.026s
+user	0m0.011s
+sys	0m0.022s
+
+
+ ==============================================================================
+
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+real	0m0.010s
+user	0m0.002s
+sys	0m0.013s
+
+real	0m0.010s
+user	0m0.002s
+sys	0m0.013s
+
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
+=== RUN   TestOvenTime
+=== RUN   TestOvenTime/Calculates_how_many_minutes_the_lasagna_should_be_in_the_oven
+--- PASS: TestOvenTime (0.00s)
+    --- PASS: TestOvenTime/Calculates_how_many_minutes_the_lasagna_should_be_in_the_oven (0.00s)
+=== RUN   TestRemainingOvenTime
+=== RUN   TestRemainingOvenTime/Remaining_minutes_in_oven
+--- PASS: TestRemainingOvenTime (0.00s)
+    --- PASS: TestRemainingOvenTime/Remaining_minutes_in_oven (0.00s)
+=== RUN   TestPreparationTime
+=== RUN   TestPreparationTime/Preparation_time_in_minutes_for_one_layer
+=== RUN   TestPreparationTime/Preparation_time_in_minutes_for_multiple_layers
+--- PASS: TestPreparationTime (0.00s)
+    --- PASS: TestPreparationTime/Preparation_time_in_minutes_for_one_layer (0.00s)
+    --- PASS: TestPreparationTime/Preparation_time_in_minutes_for_multiple_layers (0.00s)
+=== RUN   TestElapsedTime
+=== RUN   TestElapsedTime/Total_time_in_minutes_for_one_layer
+=== RUN   TestElapsedTime/Total_time_in_minutes_for_multiple_layers
+--- PASS: TestElapsedTime (0.00s)
+    --- PASS: TestElapsedTime/Total_time_in_minutes_for_one_layer (0.00s)
+    --- PASS: TestElapsedTime/Total_time_in_minutes_for_multiple_layers (0.00s)
+=== RUN   ExampleRemainingOvenTime
+--- PASS: ExampleRemainingOvenTime (0.00s)
+=== RUN   ExamplePreparationTime
+--- PASS: ExamplePreparationTime (0.00s)
+=== RUN   ExampleElapsedTime
+--- PASS: ExampleElapsedTime (0.00s)
 PASS
-ok  	lasagna	0.010s
+coverage: 100.0% of statements
+ok  	lasagna	1.015s	coverage: 100.0% of statements
 
-real	0m0.622s
-user	0m0.656s
-sys	0m0.477s
+real	0m1.220s
+user	0m0.238s
+sys	0m0.132s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.469s
+user	0m0.487s
+sys	0m0.338s
+
+real	0m1.471s
+user	0m0.489s
+sys	0m0.338s
 
 ===============================================================================
 
-go test -tags bonus
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 PASS
-ok  	lasagna	0.003s
+ok  	lasagna	0.002s
 
-real	0m0.509s
-user	0m0.594s
-sys	0m0.403s
-
-===============================================================================
-
-go vet lasagna
-
-real	0m0.339s
-user	0m0.448s
-sys	0m0.317s
+real	0m0.178s
+user	0m0.210s
+sys	0m0.151s
 
 ===============================================================================
 
-go fix lasagna
+gotest -v -tags bonus
+=== RUN   TestOvenTime
+=== RUN   TestOvenTime/Calculates_how_many_minutes_the_lasagna_should_be_in_the_oven
+--- PASS: TestOvenTime (0.00s)
+    --- PASS: TestOvenTime/Calculates_how_many_minutes_the_lasagna_should_be_in_the_oven (0.00s)
+=== RUN   TestRemainingOvenTime
+=== RUN   TestRemainingOvenTime/Remaining_minutes_in_oven
+--- PASS: TestRemainingOvenTime (0.00s)
+    --- PASS: TestRemainingOvenTime/Remaining_minutes_in_oven (0.00s)
+=== RUN   TestPreparationTime
+=== RUN   TestPreparationTime/Preparation_time_in_minutes_for_one_layer
+=== RUN   TestPreparationTime/Preparation_time_in_minutes_for_multiple_layers
+--- PASS: TestPreparationTime (0.00s)
+    --- PASS: TestPreparationTime/Preparation_time_in_minutes_for_one_layer (0.00s)
+    --- PASS: TestPreparationTime/Preparation_time_in_minutes_for_multiple_layers (0.00s)
+=== RUN   TestElapsedTime
+=== RUN   TestElapsedTime/Total_time_in_minutes_for_one_layer
+=== RUN   TestElapsedTime/Total_time_in_minutes_for_multiple_layers
+--- PASS: TestElapsedTime (0.00s)
+    --- PASS: TestElapsedTime/Total_time_in_minutes_for_one_layer (0.00s)
+    --- PASS: TestElapsedTime/Total_time_in_minutes_for_multiple_layers (0.00s)
+=== RUN   ExampleRemainingOvenTime
+--- PASS: ExampleRemainingOvenTime (0.00s)
+=== RUN   ExamplePreparationTime
+--- PASS: ExamplePreparationTime (0.00s)
+=== RUN   ExampleElapsedTime
+--- PASS: ExampleElapsedTime (0.00s)
+PASS
+ok  	lasagna	0.002s
 
-real	0m0.065s
-user	0m0.031s
-sys	0m0.039s
+real	0m0.159s
+user	0m0.180s
+sys	0m0.119s
 
 ===============================================================================
 
-gosec ./lasagna
-[gosec] 2022/06/20 22:11:35 Including rules: default
-[gosec] 2022/06/20 22:11:35 Excluding rules: default
-[gosec] 2022/06/20 22:11:35 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/lasagna
-[gosec] 2022/06/20 22:11:35 Checking package: lasagna
-[gosec] 2022/06/20 22:11:35 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/lasagna/lasagna.go
-Results:
-
-
-[1;36mSummary:[0m
-  Gosec  : dev
-  Files  : 1
-  Lines  : 19
-  Nosec  : 0
-  Issues : [1;32m0[0m
-
-
-real	0m0.253s
-user	0m0.231s
-sys	0m0.184s
+No old benchmarks to run benchstat against.
 
 ===============================================================================
 
 gomarkdoc --output lasagna-doc.md
 
-real	0m0.054s
-user	0m0.035s
-sys	0m0.021s
+real	0m0.023s
+user	0m0.017s
+sys	0m0.007s
 
 ===============================================================================
 
@@ -190,9 +809,9 @@ func RemainingOvenTime(actualMinutesInOven int) int
     minutes already in the oven.
 
 
-real	0m0.103s
-user	0m0.038s
-sys	0m0.095s
+real	0m0.048s
+user	0m0.018s
+sys	0m0.039s
 
 
 ===============================================================================

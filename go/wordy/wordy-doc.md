@@ -6,7 +6,7 @@
 import "wordy"
 ```
 
-Package wordy parses and evaluates simple math problems\.
+Package wordy parses and evaluates simple math problems.
 
 ## Index
 
@@ -19,7 +19,7 @@ Package wordy parses and evaluates simple math problems\.
 func Answer(question string) (int, bool)
 ```
 
-Answer returns a result and error after parsing and evaluating a simple math problem\.
+Answer returns a result and error after parsing and evaluating a simple math problem.
 
 <details><summary>Example</summary>
 <p>

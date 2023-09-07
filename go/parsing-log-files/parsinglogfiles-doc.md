@@ -21,7 +21,7 @@ import "parsinglogfiles"
 func CountQuotedPasswords(lines []string) int
 ```
 
-CountQuotedPasswords returns the count of quoted passwords from the array of log lines\.
+CountQuotedPasswords returns the count of quoted passwords from the array of log lines.
 
 <details><summary>Example</summary>
 <p>
@@ -55,7 +55,7 @@ CountQuotedPasswords returns the count of quoted passwords from the array of log
 func IsValidLine(text string) bool
 ```
 
-IsValidLine returns true if the text starts with one of \[TRC\]\, \[DBG\]\, \[INF\]\, \[WRN\]\, \[ERR\]\, \[FTL\]\.
+IsValidLine returns true if the text starts with one of \[TRC\], \[DBG\], \[INF\], \[WRN\], \[ERR\], \[FTL\].
 
 <details><summary>Example</summary>
 <p>
@@ -86,7 +86,7 @@ false
 func RemoveEndOfLineText(text string) string
 ```
 
-RemoveEndOfLineText returns a string without \`end\-of\-line\[0\-9\]\+\`\.
+RemoveEndOfLineText returns a string without \`end\-of\-line\[0\-9\]\+\`.
 
 <details><summary>Example</summary>
 <p>
@@ -113,7 +113,7 @@ RemoveEndOfLineText returns a string without \`end\-of\-line\[0\-9\]\+\`\.
 func SplitLogLine(text string) []string
 ```
 
-SplitLogLine returns a string slice of fields from the passed text\.
+SplitLogLine returns a string slice of fields from the passed text.
 
 <details><summary>Example</summary>
 <p>
@@ -140,7 +140,7 @@ SplitLogLine returns a string slice of fields from the passed text\.
 func TagWithUserName(lines []string) []string
 ```
 
-TagWithUserName returns a slice of strings with user mentions\.
+TagWithUserName returns a slice of strings with user mentions.
 
 <details><summary>Example</summary>
 <p>

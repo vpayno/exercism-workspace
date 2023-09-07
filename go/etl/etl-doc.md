@@ -6,7 +6,7 @@
 import "etl"
 ```
 
-Package etl is used to convert scrablle scores from a legacy system to a new one\.
+Package etl is used to convert scrablle scores from a legacy system to a new one.
 
 ## Index
 
@@ -17,7 +17,7 @@ Package etl is used to convert scrablle scores from a legacy system to a new one
 
 ## type [LegacyScore](<https://github.com/vpayno/exercism-workspace/blob/main/go/etl/etl.go#L7>)
 
-LegacyScore is the old data type\.
+LegacyScore is the old data type.
 
 ```go
 type LegacyScore map[int][]string
@@ -25,7 +25,7 @@ type LegacyScore map[int][]string
 
 ## type [ModernScore](<https://github.com/vpayno/exercism-workspace/blob/main/go/etl/etl.go#L10>)
 
-ModernScore is the new data type\.
+ModernScore is the new data type.
 
 ```go
 type ModernScore map[string]int
@@ -37,7 +37,7 @@ type ModernScore map[string]int
 func Transform(legacy LegacyScore) ModernScore
 ```
 
-Transform returns transformed data\.
+Transform returns transformed data.
 
 <details><summary>Example</summary>
 <p>

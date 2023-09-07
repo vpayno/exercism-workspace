@@ -6,7 +6,7 @@
 import "phonenumber"
 ```
 
-Package phonenumber used to clean up NANP \(North American Numbering Plan\) phone numbers\.
+Package phonenumber used to clean up NANP \(North American Numbering Plan\) phone numbers.
 
 ## Index
 
@@ -19,55 +19,55 @@ Package phonenumber used to clean up NANP \(North American Numbering Plan\) phon
 
 ## Variables
 
-ErrAreaCodeStartsWithOne is an error used when area codes start with one\.
+ErrAreaCodeStartsWithOne is an error used when area codes start with one.
 
 ```go
 var ErrAreaCodeStartsWithOne = errors.New("area code cannot start with one")
 ```
 
-ErrAreaCodeStartsWithZero is an error used when area codes start with zero\.
+ErrAreaCodeStartsWithZero is an error used when area codes start with zero.
 
 ```go
 var ErrAreaCodeStartsWithZero = errors.New("area code cannot start with zero")
 ```
 
-ErrContainsLetters is an error used when the phone number has letters in it\.
+ErrContainsLetters is an error used when the phone number has letters in it.
 
 ```go
 var ErrContainsLetters = errors.New("letters not permitted")
 ```
 
-ErrContainsPunctuations is an error used when the phone number has punctuation in it\.
+ErrContainsPunctuations is an error used when the phone number has punctuation in it.
 
 ```go
 var ErrContainsPunctuations = errors.New("punctuations not permitted")
 ```
 
-ErrElevenNotStartWithOne is an error used when the phone number has 11 digits and it doesn't start with one\.
+ErrElevenNotStartWithOne is an error used when the phone number has 11 digits and it doesn't start with one.
 
 ```go
 var ErrElevenNotStartWithOne = errors.New("11 digits must start with 1")
 ```
 
-ErrExchangeCodeStartsWithOne is an error used when exchange codes start with one\.
+ErrExchangeCodeStartsWithOne is an error used when exchange codes start with one.
 
 ```go
 var ErrExchangeCodeStartsWithOne = errors.New("exchange code cannot start with one")
 ```
 
-ErrExchangeCodeStartsWithZero is an error used when exchange codes start with zero\.
+ErrExchangeCodeStartsWithZero is an error used when exchange codes start with zero.
 
 ```go
 var ErrExchangeCodeStartsWithZero = errors.New("exchange code cannot start with zero")
 ```
 
-ErrNumOfDigits is an error used when the phone number has less than 10 digits\.
+ErrNumOfDigits is an error used when the phone number has less than 10 digits.
 
 ```go
 var ErrNumOfDigits = errors.New("incorrect number of digits")
 ```
 
-ErrTooManyNumbers is an error used when the phone number has more than 11 digits\.
+ErrTooManyNumbers is an error used when the phone number has more than 11 digits.
 
 ```go
 var ErrTooManyNumbers = errors.New("more than 11 digits")
@@ -79,7 +79,7 @@ var ErrTooManyNumbers = errors.New("more than 11 digits")
 func AreaCode(phoneNumber string) (string, error)
 ```
 
-AreaCode returns the area code from a phone number\.
+AreaCode returns the area code from a phone number.
 
 <details><summary>Example</summary>
 <p>
@@ -112,7 +112,7 @@ AreaCode returns the area code from a phone number\.
 func Format(phoneNumber string) (string, error)
 ```
 
-Format returns a pretty phone number\.
+Format returns a pretty phone number.
 
 <details><summary>Example</summary>
 <p>
@@ -145,7 +145,7 @@ Format returns a pretty phone number\.
 func Number(phoneNumber string) (string, error)
 ```
 
-Number returns just the digits of the passed phone number\.
+Number returns just the digits of the passed phone number.
 
 <details><summary>Example</summary>
 <p>
@@ -178,7 +178,7 @@ Number returns just the digits of the passed phone number\.
 func ValidateInput(phoneNumber string) error
 ```
 
-ValidateInput returns an error if the phone number has invalid data in it\.
+ValidateInput returns an error if the phone number has invalid data in it.
 
 
 

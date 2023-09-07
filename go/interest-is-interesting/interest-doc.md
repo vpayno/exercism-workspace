@@ -20,7 +20,7 @@ import "interest"
 func AnnualBalanceUpdate(balance float64) float64
 ```
 
-AnnualBalanceUpdate calculates the annual balance update\, taking into account the interest rate\.
+AnnualBalanceUpdate calculates the annual balance update, taking into account the interest rate.
 
 <details><summary>Example</summary>
 <p>
@@ -53,7 +53,7 @@ AnnualBalanceUpdate calculates the annual balance update\, taking into account t
 func Interest(balance float64) float64
 ```
 
-Interest calculates the interest for the provided balance\.
+Interest calculates the interest for the provided balance.
 
 <details><summary>Example</summary>
 <p>
@@ -86,7 +86,7 @@ Interest calculates the interest for the provided balance\.
 func InterestRate(balance float64) float32
 ```
 
-InterestRate returns the interest rate for the provided balance\.
+InterestRate returns the interest rate for the provided balance.
 
 <details><summary>Example</summary>
 <p>

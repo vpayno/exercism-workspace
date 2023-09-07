@@ -19,7 +19,7 @@ Package twofer for https://exercism.org/tracks/go/exercises/two-fer
 func ShareWith(name string) string
 ```
 
-ShareWith returns a string with the sharing instructions\.
+ShareWith returns a string with the sharing instructions.
 
 <details><summary>Example</summary>
 <p>

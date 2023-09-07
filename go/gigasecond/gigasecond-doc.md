@@ -6,7 +6,7 @@
 import "gigasecond"
 ```
 
-Package gigasecond determines the time now plus 1 gigasecond\.
+Package gigasecond determines the time now plus 1 gigasecond.
 
 ## Index
 
@@ -19,7 +19,7 @@ Package gigasecond determines the time now plus 1 gigasecond\.
 func AddGigasecond(t time.Time) time.Time
 ```
 
-AddGigasecond returns the current time plus 1 gigasecond\.
+AddGigasecond returns the current time plus 1 gigasecond.
 
 <details><summary>Example</summary>
 <p>

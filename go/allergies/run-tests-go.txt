@@ -5,17 +5,39 @@ Go packages: allergies
 
 ===============================================================================
 
-golangci-lint run --enable-all ./...
-level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+Running: ../../.github/citools/go/go-lint-golangci-lint
+
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.025s
+user	0m0.012s
+sys	0m0.024s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
 level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
-level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
-level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
-level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
-level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
 level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
 level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
 level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
-level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
 allergies_test.go:51:33: Comment should end in a period (godot)
 // stringSet is a set of strings
                                 ^
@@ -74,88 +96,361 @@ cases_test.go:1:9: package should be `allergies_test` instead of `allergies` (te
 package allergies
         ^
 
-real	0m0.888s
-user	0m1.467s
-sys	0m0.891s
+real	0m0.559s
+user	0m0.753s
+sys	0m0.553s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.595s
+user	0m0.771s
+sys	0m0.588s
+
+real	0m0.598s
+user	0m0.773s
+sys	0m0.588s
 
 ===============================================================================
 
-golint ./...
+Running: ../../.github/citools/go/go-lint-revive
 
-real	0m0.018s
-user	0m0.004s
-sys	0m0.003s
+Running Go Lint Revive
 
-===============================================================================
+Go version:
 
-revive -formatter=stylish ./...
+	go version go1.21.0 linux/amd64
 
-real	0m0.075s
-user	0m0.027s
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.017s
+user	0m0.007s
+sys	0m0.015s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
+
+real	0m0.053s
+user	0m0.024s
 sys	0m0.045s
 
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.079s
+user	0m0.037s
+sys	0m0.065s
+
+real	0m0.081s
+user	0m0.039s
+sys	0m0.066s
+
 ===============================================================================
 
-ineffassign ./...
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
 
-real	0m0.095s
-user	0m0.172s
-sys	0m0.110s
+real	0m0.001s
+user	0m0.001s
+sys	0m0.000s
 
 ===============================================================================
 
-go-consistent -v ./...
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.024s
+user	0m0.013s
+sys	0m0.019s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
 	info: check "./."
 internal error: package "sort" without types was imported from "allergies"
 
-real	0m0.116s
-user	0m0.180s
-sys	0m0.164s
+real	0m0.099s
+user	0m0.127s
+sys	0m0.115s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.139s
+user	0m0.152s
+sys	0m0.144s
+
+real	0m0.140s
+user	0m0.153s
+sys	0m0.144s
 
 ===============================================================================
 
-staticcheck ./...
+Running: ../../.github/citools/go/go-lint-staticcheck
 
-real	0m0.268s
-user	0m0.310s
-sys	0m0.229s
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.019s
+user	0m0.013s
+sys	0m0.014s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+
+real	0m0.175s
+user	0m0.217s
+sys	0m0.121s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.203s
+user	0m0.235s
+sys	0m0.142s
+
+real	0m0.205s
+user	0m0.237s
+sys	0m0.142s
 
 ===============================================================================
 
-gocritic check -enableAll ./...
+Running: ../../.github/citools/go/go-lint-gocritic
+
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.020s
+user	0m0.008s
+sys	0m0.017s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
 ./allergies.go:59:1: paramTypeCombine: func(flags allergy, flag allergy) bool could be replaced with func(flags, flag allergy) bool
 
-real	0m0.823s
-user	0m2.371s
-sys	0m0.480s
+real	0m0.884s
+user	0m2.051s
+sys	0m0.300s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.920s
+user	0m2.064s
+sys	0m0.332s
+
+real	0m0.922s
+user	0m2.065s
+sys	0m0.333s
 
 ===============================================================================
 
-go vet ./...
+Running: ../../.github/citools/go/go-lint-go_vet
 
-real	0m0.129s
-user	0m0.211s
-sys	0m0.156s
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.019s
+user	0m0.012s
+sys	0m0.014s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.083s
+user	0m0.124s
+sys	0m0.100s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.113s
+user	0m0.145s
+sys	0m0.121s
+
+real	0m0.115s
+user	0m0.146s
+sys	0m0.121s
 
 ===============================================================================
 
-go fix ./...
+Running: ../../.github/citools/go/go-fixer-go_fix
 
-real	0m0.028s
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.019s
+user	0m0.007s
+sys	0m0.017s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.032s
+user	0m0.023s
+sys	0m0.018s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.063s
+user	0m0.034s
+sys	0m0.047s
+
+real	0m0.065s
+user	0m0.035s
+sys	0m0.048s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-errcheck
+
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.034s
+user	0m0.020s
+sys	0m0.026s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+
+real	0m0.455s
+user	0m1.383s
+sys	0m0.274s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.509s
+user	0m1.409s
+sys	0m0.320s
+
+real	0m0.512s
+user	0m1.411s
+sys	0m0.321s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.025s
 user	0m0.014s
 sys	0m0.019s
 
-===============================================================================
 
-errcheck ./...
+ ==============================================================================
 
-real	0m0.484s
-user	0m1.596s
-sys	0m0.388s
+Running: gocyclo .
 
-===============================================================================
-
-gocyclo .
 5 allergies Allergies allergies.go:72:1
 4 allergies BenchmarkAllergies allergies_test.go:40:1
 4 allergies BenchmarkAllergicTo allergies_test.go:29:1
@@ -170,26 +465,86 @@ gocyclo .
 2 allergies ExampleAllergicTo allergies_examples_test.go:5:1
 2 allergies (allergy).String allergies.go:32:1
 
-real	0m0.017s
-user	0m0.003s
-sys	0m0.001s
+real	0m0.003s
+user	0m0.002s
+sys	0m0.002s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.041s
+user	0m0.025s
+sys	0m0.029s
+
+real	0m0.043s
+user	0m0.025s
+sys	0m0.031s
 
 ===============================================================================
 
-misspell .
+Running: ../../.github/citools/go/go-lint-misspell
 
-real	0m0.031s
-user	0m0.024s
-sys	0m0.013s
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+
+real	0m0.047s
+user	0m0.053s
+sys	0m0.027s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.067s
+user	0m0.065s
+sys	0m0.040s
+
+real	0m0.070s
+user	0m0.066s
+sys	0m0.042s
 
 ===============================================================================
 
-gosec ./...
-[gosec] 2023/04/03 23:00:50 Including rules: default
-[gosec] 2023/04/03 23:00:50 Excluding rules: default
-[gosec] 2023/04/03 23:00:50 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/allergies
-[gosec] 2023/04/03 23:00:50 Checking package: allergies
-[gosec] 2023/04/03 23:00:50 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/allergies/allergies.go
+Running: ../../.github/citools/go/go-lint-gosec
+
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.028s
+user	0m0.010s
+sys	0m0.028s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:20:07 Including rules: default
+[gosec] 2023/09/07 00:20:07 Excluding rules: default
+[gosec] 2023/09/07 00:20:07 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/allergies
+[gosec] 2023/09/07 00:20:07 Checking package: allergies
+[gosec] 2023/09/07 00:20:07 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/allergies/allergies.go
 Results:
 
 
@@ -201,13 +556,48 @@ Results:
   Issues : [1;32m0[0m
 
 
-real	0m0.124s
-user	0m0.114s
-sys	0m0.113s
+real	0m0.104s
+user	0m0.115s
+sys	0m0.076s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.152s
+user	0m0.137s
+sys	0m0.119s
+
+real	0m0.156s
+user	0m0.138s
+sys	0m0.122s
 
 ===============================================================================
 
-gotest -v -covermode=count -coverprofile coverage.out ./...
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.019s
+user	0m0.006s
+sys	0m0.018s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
 === RUN   TestAllergicTo
 === RUN   TestAllergicTo/not_allergic_to_anything
 === RUN   TestAllergicTo/allergic_only_to_eggs
@@ -317,16 +707,18 @@ gotest -v -covermode=count -coverprofile coverage.out ./...
 === RUN   ExampleAllergies
 --- PASS: ExampleAllergies (0.00s)
 PASS
-	allergies	coverage: 81.5% of statements
+coverage: 81.5% of statements
 ok  	allergies	0.003s	coverage: 81.5% of statements
 
-real	0m0.705s
-user	0m2.226s
-sys	0m0.779s
+real	0m0.178s
+user	0m0.288s
+sys	0m0.157s
 
-===============================================================================
 
-go tool cover -func=coverage.out
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
 allergies/allergies.go:32:	String		75.0%
 allergies/allergies.go:42:	Uint		0.0%
 allergies/allergies.go:50:	Bits		66.7%
@@ -334,21 +726,26 @@ allergies/allergies.go:59:	AllergicTo	100.0%
 allergies/allergies.go:72:	Allergies	100.0%
 total:				(statements)	81.5%
 
-real	0m0.053s
-user	0m0.054s
-sys	0m0.065s
+real	0m0.055s
+user	0m0.027s
+sys	0m0.063s
 
-===============================================================================
 
-go tool cover -html coverage.out -o coverage.html
+ ==============================================================================
 
-real	0m0.057s
-user	0m0.047s
-sys	0m0.052s
+Running: go tool cover -html coverage.out -o coverage.html
 
-===============================================================================
 
-gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+real	0m0.046s
+user	0m0.029s
+sys	0m0.061s
+
+
+ ==============================================================================
+
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
 
 50     	func (a allergy) Bits() allergy {
 51     		if a < 1 || a > 255 {
@@ -379,13 +776,19 @@ gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annota
 48     	}
 
 
-real	0m0.124s
-user	0m0.033s
-sys	0m0.047s
+real	0m0.015s
+user	0m0.007s
+sys	0m0.013s
 
-===============================================================================
+real	0m0.015s
+user	0m0.008s
+sys	0m0.013s
 
-gotest -v -race -covermode=atomic ./...
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
 === RUN   TestAllergicTo
 === RUN   TestAllergicTo/not_allergic_to_anything
 === RUN   TestAllergicTo/allergic_only_to_eggs
@@ -495,12 +898,25 @@ gotest -v -race -covermode=atomic ./...
 === RUN   ExampleAllergies
 --- PASS: ExampleAllergies (0.00s)
 PASS
-	allergies	coverage: 81.5% of statements
-ok  	allergies	0.033s	coverage: 81.5% of statements
+coverage: 81.5% of statements
+ok  	allergies	1.017s	coverage: 81.5% of statements
 
-real	0m5.540s
-user	0m15.027s
-sys	0m2.795s
+real	0m1.239s
+user	0m0.289s
+sys	0m0.153s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.564s
+user	0m0.650s
+sys	0m0.477s
+
+real	0m1.566s
+user	0m0.651s
+sys	0m0.478s
 
 ===============================================================================
 
@@ -513,15 +929,15 @@ goarch: amd64
 pkg: allergies
 cpu: 12th Gen Intel(R) Core(TM) i5-1240P
 BenchmarkAllergicTo
-BenchmarkAllergicTo-16    	44693260	        28.04 ns/op	       0 B/op	       0 allocs/op
+BenchmarkAllergicTo-8   	32961602	        31.14 ns/op	       0 B/op	       0 allocs/op
 BenchmarkAllergies
-BenchmarkAllergies-16     	   68112	     17789 ns/op	    4608 B/op	     130 allocs/op
+BenchmarkAllergies-8    	   63153	     16968 ns/op	    4608 B/op	     130 allocs/op
 PASS
-ok  	allergies	2.678s
+ok  	allergies	2.334s
 
-real	0m2.842s
-user	0m2.936s
-sys	0m0.191s
+real	0m2.494s
+user	0m2.557s
+sys	0m0.145s
 
 ===============================================================================
 
@@ -635,11 +1051,11 @@ gotest -v -tags bonus
 === RUN   ExampleAllergies
 --- PASS: ExampleAllergies (0.00s)
 PASS
-ok  	allergies	0.003s
+ok  	allergies	0.002s
 
-real	0m0.173s
-user	0m0.273s
-sys	0m0.219s
+real	0m0.124s
+user	0m0.177s
+sys	0m0.133s
 
 ===============================================================================
 
@@ -652,64 +1068,52 @@ goos: linux
 goarch: amd64
 pkg: allergies
 cpu: 12th Gen Intel(R) Core(TM) i5-1240P
-              │ benchstat-new.txt │
-              │      sec/op       │
+              │ benchstat-old.txt │  benchstat-new.txt  │
+              │      sec/op       │    sec/op     vs base   │
 AllergicTo-16        28.04n ± ∞ ¹
 Allergies-16         17.79µ ± ∞ ¹
-geomean              706.3n
+AllergicTo-8                        31.14n ± ∞ ¹
+Allergies-8                         16.97µ ± ∞ ¹
+geomean              706.3n         726.9n        ? ² ³
 ¹ need >= 6 samples for confidence interval at level 0.95
+² benchmark set differs from baseline; geomeans may not be comparable
+³ ratios must be >0 to compute geomean
 
-              │ benchstat-new.txt │
-              │       B/op        │
+              │ benchstat-old.txt │   benchstat-new.txt    │
+              │       B/op        │     B/op       vs base │
 AllergicTo-16         0.000 ± ∞ ¹
 Allergies-16        4.500Ki ± ∞ ¹
-geomean                         ²
+AllergicTo-8                          0.000 ± ∞ ¹
+Allergies-8                         4.500Ki ± ∞ ¹
+geomean                         ²                  ? ³ ² ⁴
 ¹ need >= 6 samples for confidence interval at level 0.95
 ² summaries must be >0 to compute geomean
+³ benchmark set differs from baseline; geomeans may not be comparable
+⁴ ratios must be >0 to compute geomean
 
-              │ benchstat-new.txt │
-              │     allocs/op     │
+              │ benchstat-old.txt │  benchstat-new.txt   │
+              │     allocs/op     │  allocs/op   vs base │
 AllergicTo-16         0.000 ± ∞ ¹
 Allergies-16          130.0 ± ∞ ¹
-geomean                         ²
+AllergicTo-8                        0.000 ± ∞ ¹
+Allergies-8                         130.0 ± ∞ ¹
+geomean                         ²                ? ³ ² ⁴
 ¹ need >= 6 samples for confidence interval at level 0.95
 ² summaries must be >0 to compute geomean
+³ benchmark set differs from baseline; geomeans may not be comparable
+⁴ ratios must be >0 to compute geomean
 
-cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
-             │ benchstat-old.txt │
-             │      sec/op       │
-AllergicTo-4        69.40n ± ∞ ¹
-Allergies-4         62.25µ ± ∞ ¹
-geomean             2.079µ
-¹ need >= 6 samples for confidence interval at level 0.95
-
-             │ benchstat-old.txt │
-             │       B/op        │
-AllergicTo-4         0.000 ± ∞ ¹
-Allergies-4        4.500Ki ± ∞ ¹
-geomean                        ²
-¹ need >= 6 samples for confidence interval at level 0.95
-² summaries must be >0 to compute geomean
-
-             │ benchstat-old.txt │
-             │     allocs/op     │
-AllergicTo-4         0.000 ± ∞ ¹
-Allergies-4          130.0 ± ∞ ¹
-geomean                        ²
-¹ need >= 6 samples for confidence interval at level 0.95
-² summaries must be >0 to compute geomean
-
-real	0m0.016s
-user	0m0.001s
-sys	0m0.002s
+real	0m0.003s
+user	0m0.000s
+sys	0m0.003s
 
 ===============================================================================
 
 gomarkdoc --output allergies-doc.md
 
-real	0m0.026s
+real	0m0.009s
 user	0m0.005s
-sys	0m0.008s
+sys	0m0.005s
 
 ===============================================================================
 
@@ -727,8 +1131,8 @@ func Allergies(flags allergy) []string
     Allergies returns a list of allergies the patient is allergic to.
 
 
-real	0m0.042s
-user	0m0.017s
+real	0m0.036s
+user	0m0.016s
 sys	0m0.031s
 
 

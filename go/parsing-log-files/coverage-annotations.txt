@@ -1,0 +1,79 @@
+
+36     	func CountQuotedPasswords(lines []string) int {
+37     		var count int
+38     		var regexpString string = `(?i)".*password.*"`
+39     	
+40     		re, error := regexp.Compile(regexpString)
+41     	
+42     		if error != nil {
+43 MISS			panic(error)
+44     		}
+45     	
+46     		for _, line := range lines {
+47     			count += len(re.FindAllString(line, -1))
+48     		}
+49     	
+50     		return count
+51     	}
+
+
+ 8     	func IsValidLine(text string) bool {
+ 9     		var regexpString string = `^\[(TRC|DBG|INF|WRN|ERR|FTL)\].*$`
+10     	
+11     		isMatch, error := regexp.MatchString(regexpString, text)
+12     	
+13     		if error != nil {
+14 MISS			panic(error)
+15     		}
+16     	
+17     		return isMatch
+18     	}
+
+
+54     	func RemoveEndOfLineText(text string) string {
+55     		var replacement string
+56     		var regexpString string = `(?i)end-of-line[0-9]+`
+57     	
+58     		re, error := regexp.Compile(regexpString)
+59     	
+60     		if error != nil {
+61 MISS			panic(error)
+62     		}
+63     	
+64     		replacement = re.ReplaceAllString(text, "")
+65     	
+66     		return replacement
+67     	}
+
+
+21     	func SplitLogLine(text string) []string {
+22     		var regexpString string = `\b<[-~=*]*>\b`
+23     	
+24     		re, error := regexp.Compile(regexpString)
+25     	
+26     		if error != nil {
+27 MISS			panic(error)
+28     		}
+29     	
+30     		tokens := re.Split(text, -1)
+31     	
+32     		return tokens
+33     	}
+
+
+70     	func TagWithUserName(lines []string) []string {
+71     		var regexpString string = `^(.*User +\b)([A-Za-z][A-Za-z0-9]+)(\b.*)$`
+72     	
+73     		re, error := regexp.Compile(regexpString)
+74     	
+75     		if error != nil {
+76 MISS			panic(error)
+77     		}
+78     	
+79     		for index, line := range lines {
+80     			lines[index] = re.ReplaceAllString(line, `[USR] $2 $1$2$3`)
+81     		}
+82     	
+83     		return lines
+84     	}
+

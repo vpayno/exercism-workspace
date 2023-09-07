@@ -6,7 +6,7 @@
 import "strain"
 ```
 
-Package strain implements collection keep and discard functions\.
+Package strain implements collection keep and discard functions.
 
 ## Index
 
@@ -21,7 +21,7 @@ Package strain implements collection keep and discard functions\.
 
 ## type [Ints](<https://github.com/vpayno/exercism-workspace/blob/main/go/strain/strain.go#L5>)
 
-Ints integer collection\.
+Ints integer collection.
 
 ```go
 type Ints []int
@@ -33,7 +33,7 @@ type Ints []int
 func (i Ints) Discard(filter func(int) bool) Ints
 ```
 
-Discard returns a new collection containing those elements where the predicate is false\.
+Discard returns a new collection containing those elements where the predicate is false.
 
 <details><summary>Example</summary>
 <p>
@@ -63,7 +63,7 @@ Discard returns a new collection containing those elements where the predicate i
 func (i Ints) Keep(filter func(int) bool) Ints
 ```
 
-Keep returns a new collection containing those elements where the predicate is true\.
+Keep returns a new collection containing those elements where the predicate is true.
 
 <details><summary>Example</summary>
 <p>
@@ -89,7 +89,7 @@ Keep returns a new collection containing those elements where the predicate is t
 
 ## type [Lists](<https://github.com/vpayno/exercism-workspace/blob/main/go/strain/strain.go#L8>)
 
-Lists slice integer collection\.
+Lists slice integer collection.
 
 ```go
 type Lists [][]int
@@ -101,7 +101,7 @@ type Lists [][]int
 func (l Lists) Keep(filter func([]int) bool) Lists
 ```
 
-Keep returns a new collection containing those elements where the predicate is true\.
+Keep returns a new collection containing those elements where the predicate is true.
 
 <details><summary>Example</summary>
 <p>
@@ -138,7 +138,7 @@ Keep returns a new collection containing those elements where the predicate is t
 
 ## type [Strings](<https://github.com/vpayno/exercism-workspace/blob/main/go/strain/strain.go#L11>)
 
-Strings string collection\.
+Strings string collection.
 
 ```go
 type Strings []string
@@ -150,7 +150,7 @@ type Strings []string
 func (s Strings) Keep(filter func(string) bool) Strings
 ```
 
-Keep returns a new collection containing those elements where the predicate is true\.
+Keep returns a new collection containing those elements where the predicate is true.
 
 <details><summary>Example</summary>
 <p>

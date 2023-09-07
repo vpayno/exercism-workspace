@@ -6,7 +6,7 @@
 import "atbash"
 ```
 
-Package atbash implements the atbash ciper\.
+Package atbash implements the atbash ciper.
 
 ## Index
 
@@ -19,7 +19,7 @@ Package atbash implements the atbash ciper\.
 func Atbash(plain string) string
 ```
 
-Atbash returns a simple substitution cipher text\. Ciphertext is written out in groups of fixed length\, the traditional group size being 5 letters\, leaving numbers unchanged\, and punctuation is excluded\. This is to make it harder to guess things based on word boundaries\. All text will be encoded as lowercase letters\.
+Atbash returns a simple substitution cipher text. Ciphertext is written out in groups of fixed length, the traditional group size being 5 letters, leaving numbers unchanged, and punctuation is excluded. This is to make it harder to guess things based on word boundaries. All text will be encoded as lowercase letters.
 
 <details><summary>Example</summary>
 <p>

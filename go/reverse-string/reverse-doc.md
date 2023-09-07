@@ -6,7 +6,7 @@
 import "reverse"
 ```
 
-Package reverse has one public method for reversing a string\.
+Package reverse has one public method for reversing a string.
 
 ## Index
 
@@ -19,7 +19,7 @@ Package reverse has one public method for reversing a string\.
 func Reverse(input string) string
 ```
 
-Reverse returns a reversed string\.
+Reverse returns a reversed string.
 
 <details><summary>Example</summary>
 <p>

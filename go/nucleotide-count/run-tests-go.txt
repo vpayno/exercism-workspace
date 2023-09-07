@@ -5,15 +5,594 @@ Go packages: dna
 
 ===============================================================================
 
-golint dna
+Running: ../../.github/citools/go/go-lint-golangci-lint
 
-real	0m0.316s
-user	0m0.316s
-sys	0m0.316s
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.026s
+user	0m0.015s
+sys	0m0.031s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+nucleotide_count.go:64:3: use of `fmt.Printf` forbidden by pattern `^(fmt\.Print(|f|ln)|print|println)$` (forbidigo)
+		fmt.Printf("%s\n", d)
+		^
+nucleotide_count.go:65:3: use of `fmt.Printf` forbidden by pattern `^(fmt\.Print(|f|ln)|print|println)$` (forbidigo)
+		fmt.Printf("historgram: %#v\n", h)
+		^
+nucleotide_count.go:39: File is not `gci`-ed with --skip-generated -s standard,default (gci)
+///
+nucleotide_count.go:10:11: var-declaration: should omit type bool from declaration of var debug; it will be inferred from the right-hand side (revive)
+var debug bool = false
+          ^
+nucleotide_count.go:44:8: var-declaration: should omit type Histogram from declaration of var h; it will be inferred from the right-hand side (revive)
+	var h Histogram = Histogram{
+	      ^
+nucleotide_count_test.go:11:15: Using the variable on range scope `tc` in function literal (scopelint)
+			dna := DNA(tc.strand)
+			           ^
+nucleotide_count_test.go:14:9: Using the variable on range scope `tc` in function literal (scopelint)
+			case tc.errorExpected:
+			     ^
+nucleotide_count_test.go:16:58: Using the variable on range scope `tc` in function literal (scopelint)
+					t.Fatalf("DNA.Counts(%q) expected error, got: %#v", tc.strand, actual)
+					                                                    ^
+cases_test.go:6:5: testCases is a global variable (gochecknoglobals)
+var testCases = []struct {
+    ^
+nucleotide_count.go:25:17: err113: do not define dynamic errors, use wrapped static errors instead: "fmt.Errorf(\"DNA sequence, %q, contains invalid nucleotides\", string(d))" (goerr113)
+		return false, fmt.Errorf("DNA sequence, %q, contains invalid nucleotides", string(d))
+		              ^
+nucleotide_count_examples_test.go:7:1: tests: ExampleDNA_Valid refers to unknown field or method: DNA.Valid (govet)
+func ExampleDNA_Valid() {
+^
+nucleotide_count_examples_test.go:19:1: tests: ExampleDNA_Invalid refers to unknown field or method: DNA.Invalid (govet)
+func ExampleDNA_Invalid() {
+^
+nucleotide_count_test.go:8:1: Function TestCounts missing the call to method parallel (paralleltest)
+func TestCounts(t *testing.T) {
+^
+nucleotide_count_test.go:9:2: Range statement for test TestCounts missing the call to method parallel in test Run (paralleltest)
+	for _, tc := range testCases {
+	^
+cases_test.go:1:9: package should be `dna_test` instead of `dna` (testpackage)
+package dna
+        ^
+nucleotide_count_examples_test.go:1:9: package should be `dna_test` instead of `dna` (testpackage)
+package dna
+        ^
+nucleotide_count_test.go:1:9: package should be `dna_test` instead of `dna` (testpackage)
+package dna
+        ^
+
+real	0m0.546s
+user	0m0.839s
+sys	0m0.571s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.593s
+user	0m0.862s
+sys	0m0.622s
+
+real	0m0.597s
+user	0m0.865s
+sys	0m0.624s
 
 ===============================================================================
 
-go test -v -covermode=count -coverprofile coverage.out dna
+Running: ../../.github/citools/go/go-lint-revive
+
+Running Go Lint Revive
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.031s
+user	0m0.031s
+sys	0m0.031s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
+nucleotide_count.go
+  (10, 11)  https://revive.run/r#var-declaration  should omit type bool from declaration of var debug; it will be inferred from the right-hand side   
+  (44, 8)   https://revive.run/r#var-declaration  should omit type Histogram from declaration of var h; it will be inferred from the right-hand side  
+
+
+ ✖ 2 problems (0 errors) (2 warnings)
+
+real	0m0.061s
+user	0m0.035s
+sys	0m0.046s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.104s
+user	0m0.072s
+sys	0m0.088s
+
+real	0m0.106s
+user	0m0.074s
+sys	0m0.088s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.001s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.037s
+user	0m0.030s
+sys	0m0.037s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
+	info: check "./."
+internal error: package "fmt" without types was imported from "dna"
+
+real	0m0.102s
+user	0m0.148s
+sys	0m0.131s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.161s
+user	0m0.184s
+sys	0m0.189s
+
+real	0m0.165s
+user	0m0.187s
+sys	0m0.190s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-staticcheck
+
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.020s
+user	0m0.013s
+sys	0m0.028s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+nucleotide_count.go:44:8: should omit type Histogram from declaration; it will be inferred from the right-hand side (ST1023)
+
+real	0m0.198s
+user	0m0.241s
+sys	0m0.163s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.229s
+user	0m0.258s
+sys	0m0.202s
+
+real	0m0.231s
+user	0m0.258s
+sys	0m0.204s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocritic
+
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.025s
+user	0m0.028s
+sys	0m0.026s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+
+real	0m0.857s
+user	0m1.976s
+sys	0m0.305s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.893s
+user	0m2.008s
+sys	0m0.342s
+
+real	0m0.895s
+user	0m2.010s
+sys	0m0.342s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go_vet
+
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.026s
+user	0m0.022s
+sys	0m0.032s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+# dna
+./nucleotide_count_examples_test.go:7:1: ExampleDNA_Valid refers to unknown field or method: DNA.Valid
+./nucleotide_count_examples_test.go:19:1: ExampleDNA_Invalid refers to unknown field or method: DNA.Invalid
+
+real	0m0.082s
+user	0m0.130s
+sys	0m0.087s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.119s
+user	0m0.158s
+sys	0m0.129s
+
+real	0m0.121s
+user	0m0.158s
+sys	0m0.130s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-fixer-go_fix
+
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.022s
+user	0m0.020s
+sys	0m0.030s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.024s
+user	0m0.019s
+sys	0m0.024s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.058s
+user	0m0.048s
+sys	0m0.061s
+
+real	0m0.059s
+user	0m0.048s
+sys	0m0.062s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-errcheck
+
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.022s
+user	0m0.024s
+sys	0m0.018s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+
+real	0m0.476s
+user	0m1.411s
+sys	0m0.312s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.509s
+user	0m1.439s
+sys	0m0.339s
+
+real	0m0.511s
+user	0m1.441s
+sys	0m0.339s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.028s
+user	0m0.029s
+sys	0m0.023s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
+6 dna TestCounts nucleotide_count_test.go:8:1
+5 dna (DNA).Counts nucleotide_count.go:43:1
+2 dna (DNA).IsValid nucleotide_count.go:20:1
+1 dna ExampleDNA_Invalid nucleotide_count_examples_test.go:19:1
+1 dna ExampleDNA_Valid nucleotide_count_examples_test.go:7:1
+1 dna (DNA).String nucleotide_count.go:32:1
+
+real	0m0.003s
+user	0m0.000s
+sys	0m0.003s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.042s
+user	0m0.036s
+sys	0m0.035s
+
+real	0m0.044s
+user	0m0.036s
+sys	0m0.036s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-misspell
+
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+
+real	0m0.025s
+user	0m0.024s
+sys	0m0.015s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.044s
+user	0m0.032s
+sys	0m0.033s
+
+real	0m0.046s
+user	0m0.034s
+sys	0m0.033s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gosec
+
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.029s
+user	0m0.022s
+sys	0m0.034s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:25:28 Including rules: default
+[gosec] 2023/09/07 00:25:28 Excluding rules: default
+[gosec] 2023/09/07 00:25:28 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/nucleotide-count
+[gosec] 2023/09/07 00:25:28 Checking package: dna
+[gosec] 2023/09/07 00:25:28 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/nucleotide-count/nucleotide_count.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 69
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.126s
+user	0m0.126s
+sys	0m0.097s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.168s
+user	0m0.154s
+sys	0m0.141s
+
+real	0m0.170s
+user	0m0.155s
+sys	0m0.142s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.022s
+user	0m0.011s
+sys	0m0.028s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
 === RUN   TestCounts
 === RUN   TestCounts/empty_strand
 === RUN   TestCounts/can_count_one_nucleotide_in_single-character_input
@@ -32,42 +611,92 @@ go test -v -covermode=count -coverprofile coverage.out dna
 --- PASS: ExampleDNA_Invalid (0.00s)
 PASS
 coverage: 87.5% of statements
-ok  	dna	0.011s	coverage: 87.5% of statements
+ok  	dna	0.003s	coverage: 87.5% of statements
 
-real	0m0.587s
-user	0m0.633s
-sys	0m0.452s
+real	0m0.173s
+user	0m0.193s
+sys	0m0.130s
 
-===============================================================================
 
-go tool cover -func=coverage.out
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
 dna/nucleotide_count.go:20:	IsValid		100.0%
 dna/nucleotide_count.go:32:	String		100.0%
 dna/nucleotide_count.go:43:	Counts		81.8%
 total:				(statements)	87.5%
 
-real	0m0.269s
-user	0m0.288s
-sys	0m0.208s
+real	0m0.049s
+user	0m0.054s
+sys	0m0.062s
 
-===============================================================================
 
-go tool cover -html coverage.out -o coverage.html
+ ==============================================================================
 
-real	0m0.219s
-user	0m0.240s
-sys	0m0.218s
+Running: go tool cover -html coverage.out -o coverage.html
 
-===============================================================================
 
-go test -v -race -covermode=atomic dna
+real	0m0.054s
+user	0m0.054s
+sys	0m0.093s
+
+
+ ==============================================================================
+
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+43     	func (d DNA) Counts() (Histogram, error) {
+44     		var h Histogram = Histogram{
+45     			'A': 0,
+46     			'C': 0,
+47     			'G': 0,
+48     			'T': 0,
+49     		}
+50     	
+51     		if len(d) == 0 {
+52     			return h, nil
+53     		}
+54     	
+55     		if ok, e := d.IsValid(); !ok {
+56     			return h, e
+57     		}
+58     	
+59     		for _, nucleotide := range d {
+60     			h[nucleotide]++
+61     		}
+62     	
+63     		if debug {
+64 MISS			fmt.Printf("%s\n", d)
+65 MISS			fmt.Printf("historgram: %#v\n", h)
+66     		}
+67     	
+68     		return h, nil
+69     	}
+
+
+real	0m0.021s
+user	0m0.021s
+sys	0m0.021s
+
+real	0m0.021s
+user	0m0.021s
+sys	0m0.021s
+
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
 === RUN   TestCounts
 === RUN   TestCounts/empty_strand
 === RUN   TestCounts/can_count_one_nucleotide_in_single-character_input
 === RUN   TestCounts/strand_with_repeated_nucleotide
 === RUN   TestCounts/strand_with_multiple_nucleotides
 === RUN   TestCounts/strand_with_invalid_nucleotides
---- PASS: TestCounts (0.01s)
+--- PASS: TestCounts (0.00s)
     --- PASS: TestCounts/empty_strand (0.00s)
     --- PASS: TestCounts/can_count_one_nucleotide_in_single-character_input (0.00s)
     --- PASS: TestCounts/strand_with_repeated_nucleotide (0.00s)
@@ -79,87 +708,79 @@ go test -v -race -covermode=atomic dna
 --- PASS: ExampleDNA_Invalid (0.00s)
 PASS
 coverage: 87.5% of statements
-ok  	dna	0.044s	coverage: 87.5% of statements
+ok  	dna	1.018s	coverage: 87.5% of statements
 
-real	0m0.616s
-user	0m0.653s
-sys	0m0.369s
+real	0m1.251s
+user	0m0.274s
+sys	0m0.174s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.584s
+user	0m0.614s
+sys	0m0.518s
+
+real	0m1.586s
+user	0m0.615s
+sys	0m0.520s
 
 ===============================================================================
 
 mv -v benchstat-new.txt benchstat-old.txt
 renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
 
-go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 PASS
-ok  	dna	0.012s
+ok  	dna	0.002s
 
-real	0m0.568s
-user	0m0.583s
-sys	0m0.409s
+real	0m0.148s
+user	0m0.187s
+sys	0m0.130s
 
 ===============================================================================
 
-go test -tags bonus
+gotest -v -tags bonus
+=== RUN   TestCounts
+=== RUN   TestCounts/empty_strand
+=== RUN   TestCounts/can_count_one_nucleotide_in_single-character_input
+=== RUN   TestCounts/strand_with_repeated_nucleotide
+=== RUN   TestCounts/strand_with_multiple_nucleotides
+=== RUN   TestCounts/strand_with_invalid_nucleotides
+--- PASS: TestCounts (0.00s)
+    --- PASS: TestCounts/empty_strand (0.00s)
+    --- PASS: TestCounts/can_count_one_nucleotide_in_single-character_input (0.00s)
+    --- PASS: TestCounts/strand_with_repeated_nucleotide (0.00s)
+    --- PASS: TestCounts/strand_with_multiple_nucleotides (0.00s)
+    --- PASS: TestCounts/strand_with_invalid_nucleotides (0.00s)
+=== RUN   ExampleDNA_Valid
+--- PASS: ExampleDNA_Valid (0.00s)
+=== RUN   ExampleDNA_Invalid
+--- PASS: ExampleDNA_Invalid (0.00s)
 PASS
-ok  	dna	0.006s
+ok  	dna	0.003s
 
-real	0m0.484s
-user	0m0.549s
-sys	0m0.386s
+real	0m0.129s
+user	0m0.165s
+sys	0m0.134s
 
 ===============================================================================
-
-go install golang.org/x/perf/cmd/benchstat@latest
-
-real	0m0.661s
-user	0m0.815s
-sys	0m0.378s
 
 benchstat benchstat-old.txt benchstat-new.txt
 
-real	0m0.011s
-user	0m0.002s
-sys	0m0.005s
-
-===============================================================================
-
-go vet dna
-# dna
-./nucleotide_count_examples_test.go:7:1: ExampleDNA_Valid refers to unknown field or method: DNA.Valid
-./nucleotide_count_examples_test.go:19:1: ExampleDNA_Invalid refers to unknown field or method: DNA.Invalid
-
-real	0m0.344s
-user	0m0.419s
-sys	0m0.330s
-
-===============================================================================
-
-go fix dna
-
-real	0m0.193s
-user	0m0.180s
-sys	0m0.165s
-
-===============================================================================
-
-gosec ./nucleotide-count
-[gosec] 2022/07/26 07:24:08 Including rules: default
-[gosec] 2022/07/26 07:24:08 Excluding rules: default
-[gosec] 2022/07/26 07:24:08 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/nucleotide-count
-2022/07/26 07:24:09 internal error: package "fmt" without types was imported from "command-line-arguments"
-
-real	0m0.506s
-user	0m0.577s
-sys	0m0.412s
+real	0m0.002s
+user	0m0.001s
+sys	0m0.001s
 
 ===============================================================================
 
 gomarkdoc --output dna-doc.md
 
-real	0m0.032s
-user	0m0.027s
-sys	0m0.014s
+real	0m0.012s
+user	0m0.007s
+sys	0m0.005s
 
 ===============================================================================
 
@@ -174,11 +795,11 @@ type DNA string
     DNA is a list of nucleotides.
 
 func (d DNA) Counts() (Histogram, error)
-    Counts generates a histogram of valid nucleotides in the given DNA. Returns
-    an error if d contains an invalid nucleotide. / Counts is a method on the
-    DNA type. A method is a function with a special receiver argument. The
-    receiver appears in its own argument list between the func keyword and the
-    method name. Here, the Counts method has a receiver of type DNA named d.
+    Counts generates a histogram of valid nucleotides in the given DNA.
+    Returns an error if d contains an invalid nucleotide. / Counts is a method
+    on the DNA type. A method is a function with a special receiver argument.
+    The receiver appears in its own argument list between the func keyword and
+    the method name. Here, the Counts method has a receiver of type DNA named d.
 
 func (d DNA) IsValid() (bool, error)
     IsValid returns true if the DNA strand is valid.
@@ -191,9 +812,9 @@ type Histogram map[rune]int
     suitable data type.
 
 
-real	0m0.261s
-user	0m0.199s
-sys	0m0.257s
+real	0m0.036s
+user	0m0.024s
+sys	0m0.036s
 
 
 ===============================================================================

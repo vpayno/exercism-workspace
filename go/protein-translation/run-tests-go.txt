@@ -5,15 +5,623 @@ Go packages: protein
 
 ===============================================================================
 
-golint protein
+Running: ../../.github/citools/go/go-lint-golangci-lint
 
-real	0m0.173s
-user	0m0.144s
-sys	0m0.173s
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.028s
+user	0m0.018s
+sys	0m0.024s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+protein_translation_test.go:192:13: Error return value is not checked (errcheck)
+			FromCodon(test.input)
+			         ^
+protein_translation_test.go:203:11: Error return value is not checked (errcheck)
+			FromRNA(test.input)
+			       ^
+protein_translation.go:18:2: Consider pre-allocating `proteins` (prealloc)
+	var proteins []string = []string{}
+	^
+protein_translation.go:17:13: var-declaration: should omit type []string from declaration of var codons; it will be inferred from the right-hand side (revive)
+	var codons []string = []string{}
+	           ^
+protein_translation_test.go:11:2: if statements should only be cuddled with assignments (wsl)
+	if ErrInvalidBase == nil {
+	^
+protein_translation_test.go:107:3: if statements should only be cuddled with assignments (wsl)
+		if actual != test.expected {
+		^
+protein_translation_test.go:111:3: expressions should not be cuddled with blocks (wsl)
+		t.Logf("PASS: Protein translation test: %s", test.input)
+		^
+protein_translation_test.go:161:3: if statements should only be cuddled with assignments (wsl)
+		if !slicesEqual(actual, test.expected) {
+		^
+protein_translation_test.go:164:3: expressions should not be cuddled with blocks (wsl)
+		t.Logf("PASS: RNA translation test: %s", test.input)
+		^
+protein_translation_test.go:190:2: ranges should only be cuddled with assignments used in the iteration (wsl)
+	for _, test := range codonTestCases {
+	^
+protein_translation_test.go:201:2: ranges should only be cuddled with assignments used in the iteration (wsl)
+	for _, test := range proteinTestCases {
+	^
+protein_translation.go:33:6: comparing with == will fail on wrapped errors. Use errors.Is to check for a specific error (errorlint)
+		if e == ErrStop {
+		   ^
+protein_translation_test.go:99:7: comparing with != will fail on wrapped errors. Use errors.Is to check for a specific error (errorlint)
+			if test.errorExpected != err {
+			   ^
+protein_translation_test.go:153:7: comparing with != will fail on wrapped errors. Use errors.Is to check for a specific error (errorlint)
+			if test.errorExpected != err {
+			   ^
+protein_translation_test.go:22:5: codonTestCases is a global variable (gochecknoglobals)
+var codonTestCases = []codonCase{
+    ^
+protein_translation_test.go:121:5: proteinTestCases is a global variable (gochecknoglobals)
+var proteinTestCases = []rnaCase{
+    ^
+protein_translation_test.go:7:1: Function TestErrorsNotNil missing the call to method parallel (paralleltest)
+func TestErrorsNotNil(t *testing.T) {
+^
+protein_translation_test.go:95:1: Function TestCodon missing the call to method parallel (paralleltest)
+func TestCodon(t *testing.T) {
+^
+protein_translation_test.go:149:1: Function TestProtein missing the call to method parallel (paralleltest)
+func TestProtein(t *testing.T) {
+^
+protein_translation.go:13:22: ST1005: error strings should not be capitalized (stylecheck)
+var ErrInvalidBase = errors.New("Invalid Base")
+                     ^
+protein_translation_examples_test.go:1:9: package should be `protein_test` instead of `protein` (testpackage)
+package protein
+        ^
+protein_translation_test.go:1:9: package should be `protein_test` instead of `protein` (testpackage)
+package protein
+        ^
+protein_translation.go:22:2: variable name 're' is too short for the scope of its usage (varnamelen)
+	re, e := regexp.Compile(reStr)
+	^
+protein_translation_test.go:168:18: parameter name 'b' is too short for the scope of its usage (varnamelen)
+func slicesEqual(a, b []string) bool {
+                 ^
+
+real	0m0.527s
+user	0m0.779s
+sys	0m0.536s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.570s
+user	0m0.802s
+sys	0m0.573s
+
+real	0m0.572s
+user	0m0.803s
+sys	0m0.574s
 
 ===============================================================================
 
-go test -v -covermode=count -coverprofile coverage.out protein
+Running: ../../.github/citools/go/go-lint-revive
+
+Running Go Lint Revive
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.017s
+user	0m0.017s
+sys	0m0.011s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
+protein_translation.go
+  (17, 13)  https://revive.run/r#var-declaration  should omit type []string from declaration of var codons; it will be inferred from the right-hand side    
+  (18, 15)  https://revive.run/r#var-declaration  should omit type []string from declaration of var proteins; it will be inferred from the right-hand side  
+
+
+ ✖ 2 problems (0 errors) (2 warnings)
+
+real	0m0.060s
+user	0m0.030s
+sys	0m0.045s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.089s
+user	0m0.054s
+sys	0m0.065s
+
+real	0m0.091s
+user	0m0.054s
+sys	0m0.067s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.001s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.023s
+user	0m0.017s
+sys	0m0.021s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
+	info: check "./."
+internal error: package "errors" without types was imported from "protein"
+
+real	0m0.082s
+user	0m0.116s
+sys	0m0.102s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.120s
+user	0m0.137s
+sys	0m0.137s
+
+real	0m0.122s
+user	0m0.139s
+sys	0m0.139s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-staticcheck
+
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.019s
+user	0m0.011s
+sys	0m0.020s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+protein_translation.go:13:22: error strings should not be capitalized (ST1005)
+protein_translation.go:17:13: should omit type []string from declaration; it will be inferred from the right-hand side (ST1023)
+protein_translation.go:18:15: should omit type []string from declaration; it will be inferred from the right-hand side (ST1023)
+
+real	0m0.161s
+user	0m0.228s
+sys	0m0.108s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.190s
+user	0m0.245s
+sys	0m0.137s
+
+real	0m0.192s
+user	0m0.245s
+sys	0m0.139s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocritic
+
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.023s
+user	0m0.020s
+sys	0m0.021s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+
+real	0m0.803s
+user	0m1.781s
+sys	0m0.261s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.839s
+user	0m1.809s
+sys	0m0.291s
+
+real	0m0.840s
+user	0m1.809s
+sys	0m0.292s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go_vet
+
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.026s
+user	0m0.019s
+sys	0m0.023s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.077s
+user	0m0.091s
+sys	0m0.108s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.126s
+user	0m0.123s
+sys	0m0.151s
+
+real	0m0.128s
+user	0m0.124s
+sys	0m0.152s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-fixer-go_fix
+
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.021s
+user	0m0.011s
+sys	0m0.022s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.024s
+user	0m0.021s
+sys	0m0.018s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.058s
+user	0m0.040s
+sys	0m0.047s
+
+real	0m0.060s
+user	0m0.040s
+sys	0m0.049s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-errcheck
+
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.020s
+user	0m0.015s
+sys	0m0.019s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+protein_translation_test.go:192:13:	FromCodon(test.input)
+protein_translation_test.go:203:11:	FromRNA(test.input)
+
+real	0m0.430s
+user	0m1.191s
+sys	0m0.248s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.467s
+user	0m1.213s
+sys	0m0.283s
+
+real	0m0.469s
+user	0m1.213s
+sys	0m0.285s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.028s
+user	0m0.016s
+sys	0m0.029s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
+9 protein FromCodon protein_translation.go:46:1
+6 protein TestProtein protein_translation_test.go:149:1
+6 protein TestCodon protein_translation_test.go:95:1
+5 protein slicesEqual protein_translation_test.go:168:1
+5 protein FromRNA protein_translation.go:16:1
+4 protein BenchmarkProtein protein_translation_test.go:197:1
+4 protein BenchmarkCodon protein_translation_test.go:186:1
+4 protein BenchmarkProteinDetailed protein_translation_detailed_test.go:24:1
+4 protein BenchmarkCodonDetailed protein_translation_detailed_test.go:11:1
+3 protein TestErrorsNotNil protein_translation_test.go:7:1
+1 protein ExampleFromCodon protein_translation_examples_test.go:13:1
+1 protein ExampleFromRNA protein_translation_examples_test.go:7:1
+
+real	0m0.006s
+user	0m0.001s
+sys	0m0.004s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.044s
+user	0m0.026s
+sys	0m0.039s
+
+real	0m0.046s
+user	0m0.026s
+sys	0m0.041s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-misspell
+
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+
+real	0m0.029s
+user	0m0.035s
+sys	0m0.011s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.048s
+user	0m0.043s
+sys	0m0.029s
+
+real	0m0.051s
+user	0m0.043s
+sys	0m0.032s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gosec
+
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.027s
+user	0m0.018s
+sys	0m0.028s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:26:41 Including rules: default
+[gosec] 2023/09/07 00:26:41 Excluding rules: default
+[gosec] 2023/09/07 00:26:41 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/protein-translation
+[gosec] 2023/09/07 00:26:41 Checking package: protein
+[gosec] 2023/09/07 00:26:41 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/protein-translation/protein_translation.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 67
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.145s
+user	0m0.148s
+sys	0m0.149s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.185s
+user	0m0.170s
+sys	0m0.191s
+
+real	0m0.187s
+user	0m0.171s
+sys	0m0.193s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.030s
+user	0m0.019s
+sys	0m0.026s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
 === RUN   TestErrorsNotNil
 --- PASS: TestErrorsNotNil (0.00s)
 === RUN   TestCodon
@@ -45,34 +653,85 @@ go test -v -covermode=count -coverprofile coverage.out protein
 --- PASS: ExampleFromCodon (0.00s)
 PASS
 coverage: 96.0% of statements
-ok  	protein	0.043s	coverage: 96.0% of statements
+ok  	protein	0.002s	coverage: 96.0% of statements
 
-real	0m1.053s
-user	0m1.561s
-sys	0m0.634s
+real	0m0.183s
+user	0m0.222s
+sys	0m0.134s
 
-===============================================================================
 
-go tool cover -func=coverage.out
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
 protein/protein_translation.go:16:	FromRNA		93.3%
 protein/protein_translation.go:46:	FromCodon	100.0%
 total:					(statements)	96.0%
 
-real	0m0.317s
-user	0m0.216s
-sys	0m0.294s
+real	0m0.052s
+user	0m0.062s
+sys	0m0.091s
 
-===============================================================================
 
-go tool cover -html coverage.out -o coverage.html
+ ==============================================================================
 
-real	0m0.231s
-user	0m0.229s
-sys	0m0.203s
+Running: go tool cover -html coverage.out -o coverage.html
 
-===============================================================================
 
-go test -v -race -covermode=atomic protein
+real	0m0.044s
+user	0m0.046s
+sys	0m0.069s
+
+
+ ==============================================================================
+
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+16     	func FromRNA(rna string) ([]string, error) {
+17     		var codons []string = []string{}
+18     		var proteins []string = []string{}
+19     	
+20     		reStr := `([[:upper:]]{3})`
+21     	
+22     		re, e := regexp.Compile(reStr)
+23     	
+24     		if e != nil {
+25 MISS			panic(e)
+26     		}
+27     	
+28     		codons = re.FindAllString(rna, -1)
+29     	
+30     		for _, codon := range codons {
+31     			protein, e := FromCodon(codon)
+32     	
+33     			if e == ErrStop {
+34     				break
+35     			} else if e != nil {
+36     				return []string{}, e
+37     			}
+38     	
+39     			proteins = append(proteins, protein)
+40     		}
+41     	
+42     		return proteins, nil
+43     	}
+
+
+real	0m0.016s
+user	0m0.010s
+sys	0m0.020s
+
+real	0m0.016s
+user	0m0.010s
+sys	0m0.020s
+
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
 === RUN   TestErrorsNotNil
 --- PASS: TestErrorsNotNil (0.00s)
 === RUN   TestCodon
@@ -97,84 +756,159 @@ go test -v -race -covermode=atomic protein
     protein_translation_test.go:164: PASS: RNA translation test: AUGUUUUAA
     protein_translation_test.go:164: PASS: RNA translation test: UGGUGUUAUUAAUGGUUU
     protein_translation_test.go:164: PASS: RNA translation test: UGGAGAAUUAAUGGUUU
---- PASS: TestProtein (0.01s)
+--- PASS: TestProtein (0.00s)
 === RUN   ExampleFromRNA
 --- PASS: ExampleFromRNA (0.00s)
 === RUN   ExampleFromCodon
 --- PASS: ExampleFromCodon (0.00s)
 PASS
 coverage: 96.0% of statements
-ok  	protein	0.051s	coverage: 96.0% of statements
+ok  	protein	1.011s	coverage: 96.0% of statements
 
-real	0m0.817s
-user	0m0.930s
-sys	0m0.600s
+real	0m1.266s
+user	0m0.356s
+sys	0m0.264s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.603s
+user	0m0.721s
+sys	0m0.614s
+
+real	0m1.605s
+user	0m0.722s
+sys	0m0.616s
 
 ===============================================================================
 
-go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+mv -v benchstat-new.txt benchstat-old.txt
+renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
+
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 goos: linux
 goarch: amd64
 pkg: protein
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+BenchmarkCodon
+BenchmarkCodon-8     	73281381	        14.08 ns/op	       0 B/op	       0 allocs/op
+BenchmarkProtein
+BenchmarkProtein-8   	  120669	     10863 ns/op	    9983 B/op	     124 allocs/op
+PASS
+ok  	protein	2.474s
+
+real	0m2.601s
+user	0m2.691s
+sys	0m0.179s
+
+===============================================================================
+
+gotest -v -tags bonus
+=== RUN   TestErrorsNotNil
+--- PASS: TestErrorsNotNil (0.00s)
+=== RUN   TestCodon
+    protein_translation_test.go:111: PASS: Protein translation test: AUG
+    protein_translation_test.go:111: PASS: Protein translation test: UUU
+    protein_translation_test.go:111: PASS: Protein translation test: UUC
+    protein_translation_test.go:111: PASS: Protein translation test: UUA
+    protein_translation_test.go:111: PASS: Protein translation test: UUG
+    protein_translation_test.go:111: PASS: Protein translation test: UCG
+    protein_translation_test.go:111: PASS: Protein translation test: UAU
+    protein_translation_test.go:111: PASS: Protein translation test: UAC
+    protein_translation_test.go:111: PASS: Protein translation test: UGU
+    protein_translation_test.go:111: PASS: Protein translation test: UGG
+    protein_translation_test.go:111: PASS: Protein translation test: UAA
+    protein_translation_test.go:111: PASS: Protein translation test: UAG
+    protein_translation_test.go:111: PASS: Protein translation test: UGA
+    protein_translation_test.go:111: PASS: Protein translation test: ABC
+--- PASS: TestCodon (0.00s)
+=== RUN   TestProtein
+    protein_translation_test.go:164: PASS: RNA translation test: AUGUUUUCUUAAAUG
+    protein_translation_test.go:164: PASS: RNA translation test: AUGUUUUGG
+    protein_translation_test.go:164: PASS: RNA translation test: AUGUUUUAA
+    protein_translation_test.go:164: PASS: RNA translation test: UGGUGUUAUUAAUGGUUU
+    protein_translation_test.go:164: PASS: RNA translation test: UGGAGAAUUAAUGGUUU
+--- PASS: TestProtein (0.00s)
+=== RUN   ExampleFromRNA
+--- PASS: ExampleFromRNA (0.00s)
+=== RUN   ExampleFromCodon
+--- PASS: ExampleFromCodon (0.00s)
+PASS
+ok  	protein	0.002s
+
+real	0m0.129s
+user	0m0.196s
+sys	0m0.132s
+
+===============================================================================
+
+benchstat benchstat-old.txt benchstat-new.txt
+benchstat-new.txt:5: missing iteration count
+benchstat-new.txt:7: missing iteration count
+goos: linux
+goarch: amd64
+pkg: protein
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+          │ benchstat-new.txt │
+          │      sec/op       │
+Codon-8          14.08n ± ∞ ¹
+Protein-8        10.86µ ± ∞ ¹
+geomean          391.1n
+¹ need >= 6 samples for confidence interval at level 0.95
+
+          │ benchstat-new.txt │
+          │       B/op        │
+Codon-8           0.000 ± ∞ ¹
+Protein-8       9.749Ki ± ∞ ¹
+geomean                     ²
+¹ need >= 6 samples for confidence interval at level 0.95
+² summaries must be >0 to compute geomean
+
+          │ benchstat-new.txt │
+          │     allocs/op     │
+Codon-8           0.000 ± ∞ ¹
+Protein-8         124.0 ± ∞ ¹
+geomean                     ²
+¹ need >= 6 samples for confidence interval at level 0.95
+² summaries must be >0 to compute geomean
+
 cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
-BenchmarkCodon-4     	 4767339	       262.5 ns/op	       0 B/op	       0 allocs/op
-BenchmarkProtein-4   	   36894	     33786 ns/op	    9913 B/op	     124 allocs/op
-PASS
-ok  	protein	3.170s
+          │ benchstat-old.txt │
+          │      sec/op       │
+Codon-4          262.5n ± ∞ ¹
+Protein-4        33.79µ ± ∞ ¹
+geomean          2.978µ
+¹ need >= 6 samples for confidence interval at level 0.95
 
-real	0m3.927s
-user	0m4.865s
-sys	0m0.844s
+          │ benchstat-old.txt │
+          │       B/op        │
+Codon-4           0.000 ± ∞ ¹
+Protein-4       9.681Ki ± ∞ ¹
+geomean                     ²
+¹ need >= 6 samples for confidence interval at level 0.95
+² summaries must be >0 to compute geomean
 
-===============================================================================
+          │ benchstat-old.txt │
+          │     allocs/op     │
+Codon-4           0.000 ± ∞ ¹
+Protein-4         124.0 ± ∞ ¹
+geomean                     ²
+¹ need >= 6 samples for confidence interval at level 0.95
+² summaries must be >0 to compute geomean
 
-go test -tags bonus
-PASS
-ok  	protein	0.007s
-
-real	0m0.497s
-user	0m0.609s
-sys	0m0.391s
-
-===============================================================================
-
-No old benchmarks to run benchstat against.
-
-===============================================================================
-
-go vet protein
-
-real	0m0.420s
-user	0m0.467s
-sys	0m0.410s
-
-===============================================================================
-
-go fix protein
-
-real	0m0.159s
-user	0m0.138s
-sys	0m0.180s
-
-===============================================================================
-
-gosec ./protein-translation
-[gosec] 2022/07/02 23:03:47 Including rules: default
-[gosec] 2022/07/02 23:03:47 Excluding rules: default
-[gosec] 2022/07/02 23:03:47 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/protein-translation
-2022/07/02 23:03:48 internal error: package "errors" without types was imported from "command-line-arguments"
-
-real	0m0.495s
-user	0m0.510s
-sys	0m0.426s
+real	0m0.002s
+user	0m0.000s
+sys	0m0.002s
 
 ===============================================================================
 
 gomarkdoc --output protein-doc.md
 
-real	0m0.034s
-user	0m0.026s
-sys	0m0.014s
+real	0m0.010s
+user	0m0.007s
+sys	0m0.003s
 
 ===============================================================================
 
@@ -202,9 +936,9 @@ func FromRNA(rna string) ([]string, error)
     FromRNA returns a protein sequence from an RNA sequence.
 
 
-real	0m0.199s
-user	0m0.162s
-sys	0m0.161s
+real	0m0.031s
+user	0m0.017s
+sys	0m0.030s
 
 
 ===============================================================================

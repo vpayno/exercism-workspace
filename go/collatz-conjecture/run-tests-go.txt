@@ -5,15 +5,586 @@ Go packages: collatzconjecture
 
 ===============================================================================
 
-golint collatzconjecture
+Running: ../../.github/citools/go/go-lint-golangci-lint
 
-real	0m0.204s
-user	0m0.183s
-sys	0m0.203s
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.024s
+user	0m0.020s
+sys	0m0.019s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+collatz_conjecture_test.go:32:21: Error return value is not checked (errcheck)
+			CollatzConjecture(testCase.input)
+			                 ^
+collatz_conjecture.go:8: File is not `gofumpt`-ed (gofumpt)
+
+collatz_conjecture_examples_test.go:8:8: var-declaration: should omit type int from declaration of var n; it will be inferred from the right-hand side (revive)
+	var n int = 12
+	      ^
+collatz_conjecture_test.go:10:37: Using the variable on range scope `testCase` in function literal (scopelint)
+			actual, err := CollatzConjecture(testCase.input)
+			                                 ^
+collatz_conjecture_test.go:11:7: Using the variable on range scope `testCase` in function literal (scopelint)
+			if testCase.expectError {
+			   ^
+collatz_conjecture_test.go:13:66: Using the variable on range scope `testCase` in function literal (scopelint)
+					t.Errorf("CollatzConjecture(%v) expected an error, got %v", testCase.input, actual)
+					                                                            ^
+collatz_conjecture.go:7: unnecessary leading newline (whitespace)
+func CollatzConjecture(n int) (int, error) {
+
+collatz_conjecture_test.go:30:2: for statements should only be cuddled with assignments used in the iteration (wsl)
+	for i := 0; i < b.N; i++ {
+	^
+cases_test.go:6:5: testCases is a global variable (gochecknoglobals)
+var testCases = []struct {
+    ^
+collatz_conjecture.go:11:13: err113: do not define dynamic errors, use wrapped static errors instead: "fmt.Errorf(\"n, %d, isn't a positive number\", n)" (goerr113)
+		return 0, fmt.Errorf("n, %d, isn't a positive number", n)
+		          ^
+collatz_conjecture.go:29:10: mnd: Magic number: 3, in <operation> detected (gomnd)
+			n = n*3 + 1
+			      ^
+collatz_conjecture_test.go:7:1: Function TestCollatzConjecture missing the call to method parallel (paralleltest)
+func TestCollatzConjecture(t *testing.T) {
+^
+collatz_conjecture_test.go:8:2: Range statement for test TestCollatzConjecture missing the call to method parallel in test Run (paralleltest)
+	for _, testCase := range testCases {
+	^
+cases_test.go:1:9: package should be `collatzconjecture_test` instead of `collatzconjecture` (testpackage)
+package collatzconjecture
+        ^
+collatz_conjecture_examples_test.go:1:9: package should be `collatzconjecture_test` instead of `collatzconjecture` (testpackage)
+package collatzconjecture
+        ^
+collatz_conjecture_test.go:1:9: package should be `collatzconjecture_test` instead of `collatzconjecture` (testpackage)
+package collatzconjecture
+        ^
+
+real	0m0.452s
+user	0m0.688s
+sys	0m0.422s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.490s
+user	0m0.717s
+sys	0m0.452s
+
+real	0m0.493s
+user	0m0.719s
+sys	0m0.453s
 
 ===============================================================================
 
-go test -v -covermode=count -coverprofile coverage.out collatzconjecture
+Running: ../../.github/citools/go/go-lint-revive
+
+Running Go Lint Revive
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.024s
+user	0m0.018s
+sys	0m0.021s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
+collatz_conjecture_examples_test.go
+  (8, 8)  https://revive.run/r#var-declaration  should omit type int from declaration of var n; it will be inferred from the right-hand side  
+
+
+ ✖ 1 problem (0 errors) (1 warnings)
+
+real	0m0.029s
+user	0m0.012s
+sys	0m0.022s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.064s
+user	0m0.040s
+sys	0m0.048s
+
+real	0m0.066s
+user	0m0.041s
+sys	0m0.049s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
+
+real	0m0.001s
+user	0m0.001s
+sys	0m0.000s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.028s
+user	0m0.021s
+sys	0m0.029s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
+	info: check "./."
+internal error: package "fmt" without types was imported from "collatzconjecture"
+
+real	0m0.098s
+user	0m0.116s
+sys	0m0.135s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.139s
+user	0m0.142s
+sys	0m0.175s
+
+real	0m0.142s
+user	0m0.143s
+sys	0m0.177s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-staticcheck
+
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.021s
+user	0m0.016s
+sys	0m0.019s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+collatz_conjecture_examples_test.go:8:8: should omit type int from declaration; it will be inferred from the right-hand side (ST1023)
+
+real	0m0.159s
+user	0m0.188s
+sys	0m0.116s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.194s
+user	0m0.212s
+sys	0m0.144s
+
+real	0m0.195s
+user	0m0.213s
+sys	0m0.145s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocritic
+
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.022s
+user	0m0.019s
+sys	0m0.023s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+
+real	0m0.833s
+user	0m1.968s
+sys	0m0.291s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.867s
+user	0m1.995s
+sys	0m0.321s
+
+real	0m0.869s
+user	0m1.995s
+sys	0m0.324s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go_vet
+
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.035s
+user	0m0.028s
+sys	0m0.035s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.086s
+user	0m0.097s
+sys	0m0.106s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.134s
+user	0m0.131s
+sys	0m0.153s
+
+real	0m0.136s
+user	0m0.132s
+sys	0m0.153s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-fixer-go_fix
+
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.023s
+user	0m0.021s
+sys	0m0.027s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.025s
+user	0m0.017s
+sys	0m0.026s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.062s
+user	0m0.044s
+sys	0m0.065s
+
+real	0m0.064s
+user	0m0.046s
+sys	0m0.065s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-errcheck
+
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.034s
+user	0m0.028s
+sys	0m0.032s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+collatz_conjecture_test.go:32:21:	CollatzConjecture(testCase.input)
+
+real	0m0.466s
+user	0m1.219s
+sys	0m0.334s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.521s
+user	0m1.256s
+sys	0m0.384s
+
+real	0m0.522s
+user	0m1.257s
+sys	0m0.385s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.033s
+user	0m0.032s
+sys	0m0.029s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
+6 collatzconjecture TestCollatzConjecture collatz_conjecture_test.go:7:1
+5 collatzconjecture CollatzConjecture collatz_conjecture.go:7:1
+4 collatzconjecture BenchmarkCollatzConjecture collatz_conjecture_test.go:26:1
+1 collatzconjecture ExampleCollatzConjecture collatz_conjecture_examples_test.go:7:1
+
+real	0m0.003s
+user	0m0.000s
+sys	0m0.002s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.044s
+user	0m0.036s
+sys	0m0.041s
+
+real	0m0.047s
+user	0m0.037s
+sys	0m0.042s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-misspell
+
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+
+real	0m0.025s
+user	0m0.022s
+sys	0m0.017s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.046s
+user	0m0.032s
+sys	0m0.033s
+
+real	0m0.048s
+user	0m0.034s
+sys	0m0.033s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gosec
+
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.032s
+user	0m0.038s
+sys	0m0.027s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:21:50 Including rules: default
+[gosec] 2023/09/07 00:21:50 Excluding rules: default
+[gosec] 2023/09/07 00:21:50 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/collatz-conjecture
+[gosec] 2023/09/07 00:21:50 Checking package: collatzconjecture
+[gosec] 2023/09/07 00:21:50 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/collatz-conjecture/collatz_conjecture.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 34
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.142s
+user	0m0.174s
+sys	0m0.117s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.184s
+user	0m0.218s
+sys	0m0.152s
+
+real	0m0.186s
+user	0m0.219s
+sys	0m0.152s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.019s
+user	0m0.017s
+sys	0m0.016s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
 === RUN   TestCollatzConjecture
 === RUN   TestCollatzConjecture/zero_steps_for_one
 === RUN   TestCollatzConjecture/divide_if_even
@@ -32,33 +603,54 @@ go test -v -covermode=count -coverprofile coverage.out collatzconjecture
 --- PASS: ExampleCollatzConjecture (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	collatzconjecture	0.008s	coverage: 100.0% of statements
+ok  	collatzconjecture	0.002s	coverage: 100.0% of statements
 
-real	0m0.766s
-user	0m0.817s
-sys	0m0.551s
+real	0m0.222s
+user	0m0.222s
+sys	0m0.157s
 
-===============================================================================
 
-go tool cover -func=coverage.out
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
 collatzconjecture/collatz_conjecture.go:7:	CollatzConjecture	100.0%
 total:						(statements)		100.0%
 
-real	0m0.309s
-user	0m0.265s
-sys	0m0.226s
+real	0m0.053s
+user	0m0.048s
+sys	0m0.087s
 
-===============================================================================
 
-go tool cover -html coverage.out -o coverage.html
+ ==============================================================================
 
-real	0m0.330s
-user	0m0.317s
-sys	0m0.300s
+Running: go tool cover -html coverage.out -o coverage.html
 
-===============================================================================
 
-go test -v -race -covermode=atomic collatzconjecture
+real	0m0.051s
+user	0m0.057s
+sys	0m0.065s
+
+
+ ==============================================================================
+
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+real	0m0.018s
+user	0m0.014s
+sys	0m0.028s
+
+real	0m0.018s
+user	0m0.014s
+sys	0m0.028s
+
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
 === RUN   TestCollatzConjecture
 === RUN   TestCollatzConjecture/zero_steps_for_one
 === RUN   TestCollatzConjecture/divide_if_even
@@ -77,76 +669,120 @@ go test -v -race -covermode=atomic collatzconjecture
 --- PASS: ExampleCollatzConjecture (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	collatzconjecture	0.028s	coverage: 100.0% of statements
+ok  	collatzconjecture	1.013s	coverage: 100.0% of statements
 
-real	0m1.116s
-user	0m0.898s
-sys	0m0.633s
+real	0m1.247s
+user	0m0.263s
+sys	0m0.189s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.620s
+user	0m0.626s
+sys	0m0.550s
+
+real	0m1.622s
+user	0m0.628s
+sys	0m0.550s
 
 ===============================================================================
 
-go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+mv -v benchstat-new.txt benchstat-old.txt
+renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
+
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 goos: linux
 goarch: amd64
 pkg: collatzconjecture
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+BenchmarkCollatzConjecture
+BenchmarkCollatzConjecture-8   	 3042003	       366.8 ns/op	     104 B/op	       5 allocs/op
+PASS
+ok  	collatzconjecture	1.520s
+
+real	0m1.665s
+user	0m1.727s
+sys	0m0.163s
+
+===============================================================================
+
+gotest -v -tags bonus
+=== RUN   TestCollatzConjecture
+=== RUN   TestCollatzConjecture/zero_steps_for_one
+=== RUN   TestCollatzConjecture/divide_if_even
+=== RUN   TestCollatzConjecture/even_and_odd_steps
+=== RUN   TestCollatzConjecture/large_number_of_even_and_odd_steps
+=== RUN   TestCollatzConjecture/zero_is_an_error
+=== RUN   TestCollatzConjecture/negative_value_is_an_error
+--- PASS: TestCollatzConjecture (0.00s)
+    --- PASS: TestCollatzConjecture/zero_steps_for_one (0.00s)
+    --- PASS: TestCollatzConjecture/divide_if_even (0.00s)
+    --- PASS: TestCollatzConjecture/even_and_odd_steps (0.00s)
+    --- PASS: TestCollatzConjecture/large_number_of_even_and_odd_steps (0.00s)
+    --- PASS: TestCollatzConjecture/zero_is_an_error (0.00s)
+    --- PASS: TestCollatzConjecture/negative_value_is_an_error (0.00s)
+=== RUN   ExampleCollatzConjecture
+--- PASS: ExampleCollatzConjecture (0.00s)
+PASS
+ok  	collatzconjecture	0.002s
+
+real	0m0.114s
+user	0m0.154s
+sys	0m0.116s
+
+===============================================================================
+
+benchstat benchstat-old.txt benchstat-new.txt
+benchstat-new.txt:5: missing iteration count
+goos: linux
+goarch: amd64
+pkg: collatzconjecture
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+                    │ benchstat-new.txt │
+                    │      sec/op       │
+CollatzConjecture-8        366.8n ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
+
+                    │ benchstat-new.txt │
+                    │       B/op        │
+CollatzConjecture-8         104.0 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
+
+                    │ benchstat-new.txt │
+                    │     allocs/op     │
+CollatzConjecture-8         5.000 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
+
 cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
-BenchmarkCollatzConjecture-4   	 1437994	       957.2 ns/op	     104 B/op	       5 allocs/op
-PASS
-ok  	collatzconjecture	2.279s
+                    │ benchstat-old.txt │
+                    │      sec/op       │
+CollatzConjecture-4        957.2n ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-real	0m2.979s
-user	0m3.512s
-sys	0m0.577s
+                    │ benchstat-old.txt │
+                    │       B/op        │
+CollatzConjecture-4         104.0 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-===============================================================================
+                    │ benchstat-old.txt │
+                    │     allocs/op     │
+CollatzConjecture-4         5.000 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-go test -tags bonus
-PASS
-ok  	collatzconjecture	0.021s
-
-real	0m0.533s
-user	0m0.620s
-sys	0m0.366s
-
-===============================================================================
-
-No old benchmarks to run benchstat against.
-
-===============================================================================
-
-go vet collatzconjecture
-
-real	0m0.352s
-user	0m0.445s
-sys	0m0.280s
-
-===============================================================================
-
-go fix collatzconjecture
-
-real	0m0.236s
-user	0m0.194s
-sys	0m0.180s
-
-===============================================================================
-
-gosec ./collatz-conjecture
-[gosec] 2022/07/22 13:29:21 Including rules: default
-[gosec] 2022/07/22 13:29:21 Excluding rules: default
-[gosec] 2022/07/22 13:29:21 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/collatz-conjecture
-2022/07/22 13:29:21 internal error: package "fmt" without types was imported from "command-line-arguments"
-
-real	0m0.547s
-user	0m0.652s
-sys	0m0.383s
+real	0m0.002s
+user	0m0.002s
+sys	0m0.000s
 
 ===============================================================================
 
 gomarkdoc --output collatzconjecture-doc.md
 
-real	0m0.030s
-user	0m0.020s
-sys	0m0.016s
+real	0m0.011s
+user	0m0.004s
+sys	0m0.007s
 
 ===============================================================================
 
@@ -163,9 +799,9 @@ func CollatzConjecture(n int) (int, error)
     Collatz Conjecture.
 
 
-real	0m0.233s
-user	0m0.138s
-sys	0m0.197s
+real	0m0.059s
+user	0m0.037s
+sys	0m0.053s
 
 
 ===============================================================================

@@ -6,7 +6,7 @@
 import "strand"
 ```
 
-Package strand is used to convert DNA sequences into RNA sequences\.
+Package strand is used to convert DNA sequences into RNA sequences.
 
 ## Index
 
@@ -25,16 +25,16 @@ Package strand is used to convert DNA sequences into RNA sequences\.
 func ToRNA(s string) string
 ```
 
-ToRNA returns an RNA sequence from a DNA sequence\.
+ToRNA returns an RNA sequence from a DNA sequence.
 
 <details><summary>Example</summary>
 <p>
 
 ```go
 {
-	var validDNA DNA = DNA("GCTA")
+	var validDNA string = "GCTA"
 
-	fmt.Println(ToRNA(validDNA.String()))
+	fmt.Println(ToRNA(validDNA))
 
 }
 ```
@@ -50,7 +50,7 @@ CGAU
 
 ## type [DNA](<https://github.com/vpayno/exercism-workspace/blob/main/go/rna-transcription/rna_transcription.go#L10>)
 
-DNA is a list of nucleotides\.
+DNA is a list of nucleotides.
 
 ```go
 type DNA string
@@ -62,7 +62,7 @@ type DNA string
 func (d DNA) ConvertToRNA() RNA
 ```
 
-ConvertToRNA returns a pretty formated representation of a DNA type\.
+ConvertToRNA returns a pretty formated representation of a DNA type.
 
 ### func \(DNA\) [IsValid](<https://github.com/vpayno/exercism-workspace/blob/main/go/rna-transcription/rna_transcription.go#L13>)
 
@@ -70,7 +70,7 @@ ConvertToRNA returns a pretty formated representation of a DNA type\.
 func (d DNA) IsValid() (bool, error)
 ```
 
-IsValid returns true if the DNA strand is valid\.
+IsValid returns true if the DNA strand is valid.
 
 ### func \(DNA\) [String](<https://github.com/vpayno/exercism-workspace/blob/main/go/rna-transcription/rna_transcription.go#L25>)
 
@@ -78,11 +78,11 @@ IsValid returns true if the DNA strand is valid\.
 func (d DNA) String() string
 ```
 
-String returns a pretty formated representation of a DNA type\.
+String returns a pretty formated representation of a DNA type.
 
 ## type [RNA](<https://github.com/vpayno/exercism-workspace/blob/main/go/rna-transcription/rna_transcription.go#L57>)
 
-RNA is a list of nucleotides\.
+RNA is a list of nucleotides.
 
 ```go
 type RNA string
@@ -94,7 +94,7 @@ type RNA string
 func (d RNA) String() string
 ```
 
-String returns a pretty formated representation of a DNA type\.
+String returns a pretty formated representation of a DNA type.
 
 
 

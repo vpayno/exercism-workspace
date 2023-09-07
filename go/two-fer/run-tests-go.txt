@@ -5,124 +5,716 @@ Go packages: twofer
 
 ===============================================================================
 
-golint twofer
+Running: ../../.github/citools/go/go-lint-golangci-lint
 
-real	0m0.164s
-user	0m0.142s
-sys	0m0.144s
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.031s
+user	0m0.031s
+sys	0m0.052s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+two_fer_test.go:28: File is not `gofumpt`-ed (gofumpt)
+
+two_fer_test.go:32: File is not `gofumpt`-ed (gofumpt)
+
+two_fer_test.go:27: unnecessary leading newline (whitespace)
+	for i := 0; i < b.N; i++ {
+
+two_fer_test.go:33:2: block should not end with a whitespace (or comment) (wsl)
+	}
+	^
+two_fer_test.go:7:5: tests is a global variable (gochecknoglobals)
+var tests = []struct {
+    ^
+two_fer_test.go:15:1: Function TestShareWith missing the call to method parallel (paralleltest)
+func TestShareWith(t *testing.T) {
+^
+two_fer_examples_test.go:1:9: package should be `twofer_test` instead of `twofer` (testpackage)
+package twofer
+        ^
+two_fer_test.go:1:9: package should be `twofer_test` instead of `twofer` (testpackage)
+package twofer
+        ^
+
+real	0m0.442s
+user	0m0.552s
+sys	0m0.384s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.486s
+user	0m0.591s
+sys	0m0.445s
+
+real	0m0.488s
+user	0m0.594s
+sys	0m0.445s
 
 ===============================================================================
 
-go test -v -covermode=count -coverprofile coverage.out twofer
+Running: ../../.github/citools/go/go-lint-revive
+
+Running Go Lint Revive
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.044s
+user	0m0.032s
+sys	0m0.034s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
+
+real	0m0.044s
+user	0m0.022s
+sys	0m0.034s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.119s
+user	0m0.065s
+sys	0m0.100s
+
+real	0m0.123s
+user	0m0.067s
+sys	0m0.101s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.001s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.026s
+user	0m0.024s
+sys	0m0.027s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
+	info: check "./."
+internal error: package "fmt" without types was imported from "twofer"
+
+real	0m0.133s
+user	0m0.164s
+sys	0m0.137s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.186s
+user	0m0.206s
+sys	0m0.194s
+
+real	0m0.188s
+user	0m0.207s
+sys	0m0.195s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-staticcheck
+
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.048s
+user	0m0.054s
+sys	0m0.060s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+
+real	0m0.232s
+user	0m0.288s
+sys	0m0.158s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.298s
+user	0m0.348s
+sys	0m0.236s
+
+real	0m0.301s
+user	0m0.350s
+sys	0m0.237s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocritic
+
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.031s
+user	0m0.028s
+sys	0m0.028s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+
+real	0m0.859s
+user	0m2.146s
+sys	0m0.337s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.905s
+user	0m2.181s
+sys	0m0.379s
+
+real	0m0.907s
+user	0m2.182s
+sys	0m0.380s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go_vet
+
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.029s
+user	0m0.018s
+sys	0m0.028s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.081s
+user	0m0.097s
+sys	0m0.072s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.123s
+user	0m0.118s
+sys	0m0.113s
+
+real	0m0.125s
+user	0m0.119s
+sys	0m0.114s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-fixer-go_fix
+
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.022s
+user	0m0.016s
+sys	0m0.024s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.022s
+user	0m0.025s
+sys	0m0.020s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.056s
+user	0m0.044s
+sys	0m0.055s
+
+real	0m0.058s
+user	0m0.044s
+sys	0m0.057s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-errcheck
+
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.033s
+user	0m0.028s
+sys	0m0.027s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+
+real	0m0.504s
+user	0m1.602s
+sys	0m0.295s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.548s
+user	0m1.636s
+sys	0m0.331s
+
+real	0m0.550s
+user	0m1.637s
+sys	0m0.332s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.025s
+user	0m0.015s
+sys	0m0.028s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
+4 twofer BenchmarkShareWith two_fer_test.go:23:1
+3 twofer TestShareWith two_fer_test.go:15:1
+2 twofer ShareWith two_fer.go:9:1
+1 twofer ExampleShareWith two_fer_examples_test.go:7:1
+
+real	0m0.003s
+user	0m0.000s
+sys	0m0.003s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.040s
+user	0m0.022s
+sys	0m0.039s
+
+real	0m0.041s
+user	0m0.022s
+sys	0m0.040s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-misspell
+
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+
+real	0m0.040s
+user	0m0.034s
+sys	0m0.020s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.054s
+user	0m0.040s
+sys	0m0.033s
+
+real	0m0.056s
+user	0m0.041s
+sys	0m0.035s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gosec
+
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.033s
+user	0m0.016s
+sys	0m0.036s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:32:03 Including rules: default
+[gosec] 2023/09/07 00:32:03 Excluding rules: default
+[gosec] 2023/09/07 00:32:03 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/two-fer
+[gosec] 2023/09/07 00:32:03 Checking package: twofer
+[gosec] 2023/09/07 00:32:03 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/two-fer/two_fer.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 15
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.124s
+user	0m0.126s
+sys	0m0.109s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.171s
+user	0m0.147s
+sys	0m0.157s
+
+real	0m0.174s
+user	0m0.147s
+sys	0m0.160s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.026s
+user	0m0.021s
+sys	0m0.031s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
 === RUN   TestShareWith
 --- PASS: TestShareWith (0.00s)
 === RUN   ExampleShareWith
 --- PASS: ExampleShareWith (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	twofer	0.011s	coverage: 100.0% of statements
+ok  	twofer	0.002s	coverage: 100.0% of statements
 
-real	0m0.570s
-user	0m0.660s
-sys	0m0.360s
+real	0m0.177s
+user	0m0.210s
+sys	0m0.130s
 
-===============================================================================
 
-go tool cover -func=coverage.out
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
 twofer/two_fer.go:9:	ShareWith	100.0%
 total:			(statements)	100.0%
 
-real	0m0.269s
-user	0m0.212s
-sys	0m0.246s
+real	0m0.052s
+user	0m0.058s
+sys	0m0.087s
 
-===============================================================================
 
-go tool cover -html coverage.out -o coverage.html
+ ==============================================================================
 
-real	0m0.228s
-user	0m0.188s
-sys	0m0.216s
+Running: go tool cover -html coverage.out -o coverage.html
 
-===============================================================================
 
-go test -v -race -covermode=atomic twofer
+real	0m0.049s
+user	0m0.068s
+sys	0m0.078s
+
+
+ ==============================================================================
+
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+real	0m0.020s
+user	0m0.020s
+sys	0m0.020s
+
+real	0m0.020s
+user	0m0.020s
+sys	0m0.020s
+
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
 === RUN   TestShareWith
 --- PASS: TestShareWith (0.00s)
 === RUN   ExampleShareWith
 --- PASS: ExampleShareWith (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	twofer	0.034s	coverage: 100.0% of statements
+ok  	twofer	1.014s	coverage: 100.0% of statements
 
-real	0m0.616s
-user	0m0.666s
-sys	0m0.426s
+real	0m1.240s
+user	0m0.260s
+sys	0m0.205s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.577s
+user	0m0.640s
+sys	0m0.565s
+
+real	0m1.579s
+user	0m0.641s
+sys	0m0.566s
 
 ===============================================================================
 
-go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+mv -v benchstat-new.txt benchstat-old.txt
+renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
+
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 goos: linux
 goarch: amd64
 pkg: twofer
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+BenchmarkShareWith
+BenchmarkShareWith-8   	 5915740	       196.3 ns/op	      88 B/op	       4 allocs/op
+PASS
+ok  	twofer	1.372s
+
+real	0m1.513s
+user	0m1.597s
+sys	0m0.159s
+
+===============================================================================
+
+gotest -v -tags bonus
+=== RUN   TestShareWith
+--- PASS: TestShareWith (0.00s)
+=== RUN   ExampleShareWith
+--- PASS: ExampleShareWith (0.00s)
+PASS
+ok  	twofer	0.001s
+
+real	0m0.144s
+user	0m0.185s
+sys	0m0.140s
+
+===============================================================================
+
+benchstat benchstat-old.txt benchstat-new.txt
+benchstat-new.txt:5: missing iteration count
+goos: linux
+goarch: amd64
+pkg: twofer
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+            │ benchstat-new.txt │
+            │      sec/op       │
+ShareWith-8        196.3n ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
+
+            │ benchstat-new.txt │
+            │       B/op        │
+ShareWith-8         88.00 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
+
+            │ benchstat-new.txt │
+            │     allocs/op     │
+ShareWith-8         4.000 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
+
 cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
-BenchmarkShareWith-4   	 2535352	       531.3 ns/op	      88 B/op	       4 allocs/op
-PASS
-ok  	twofer	1.873s
+            │ benchstat-old.txt │
+            │      sec/op       │
+ShareWith-4        531.3n ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-real	0m2.386s
-user	0m2.904s
-sys	0m0.477s
+            │ benchstat-old.txt │
+            │       B/op        │
+ShareWith-4         88.00 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-===============================================================================
+            │ benchstat-old.txt │
+            │     allocs/op     │
+ShareWith-4         4.000 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-go test -tags bonus
-PASS
-ok  	twofer	0.004s
-
-real	0m0.495s
-user	0m0.555s
-sys	0m0.428s
-
-===============================================================================
-
-No old benchmarks to run benchstat against.
-
-===============================================================================
-
-go vet twofer
-
-real	0m0.357s
-user	0m0.342s
-sys	0m0.312s
-
-===============================================================================
-
-go fix twofer
-
-real	0m0.154s
-user	0m0.136s
-sys	0m0.153s
-
-===============================================================================
-
-gosec ./two-fer
-[gosec] 2022/07/24 00:43:51 Including rules: default
-[gosec] 2022/07/24 00:43:51 Excluding rules: default
-[gosec] 2022/07/24 00:43:51 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/two-fer
-2022/07/24 00:43:51 internal error: package "fmt" without types was imported from "command-line-arguments"
-
-real	0m0.474s
-user	0m0.524s
-sys	0m0.369s
+real	0m0.002s
+user	0m0.001s
+sys	0m0.002s
 
 ===============================================================================
 
 gomarkdoc --output twofer-doc.md
 
-real	0m0.047s
-user	0m0.020s
-sys	0m0.020s
+real	0m0.015s
+user	0m0.008s
+sys	0m0.007s
 
 ===============================================================================
 
@@ -137,9 +729,9 @@ func ShareWith(name string) string
     ShareWith returns a string with the sharing instructions.
 
 
-real	0m0.249s
-user	0m0.186s
-sys	0m0.211s
+real	0m0.068s
+user	0m0.047s
+sys	0m0.052s
 
 
 ===============================================================================

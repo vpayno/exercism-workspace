@@ -1,0 +1,96 @@
+
+ 12     	func Answer(question string) (int, bool) {
+ 13     		var result int
+ 14     		var reStr string
+ 15     		var e error
+ 16     	
+ 17     		var reStrings []string = []string{
+ 18     			`^What is (-?[0-9]+)[?]`,
+ 19     			`^What is (-?[0-9]+) ?(plus|minus|multiplied by|divided by) ?(-?[0-9]+)[?]$`,
+ 20     			`^What is (-?[0-9]+) ?(plus|minus|multiplied by|divided by) ?(-?[0-9]+) ?(plus|minus|multiplied by|divided by) ?(-?[0-9]+)[?]$`,
+ 21     			`^What is (-?[0-9]+) ?(raised to the) ?(-?[0-9]+)[a-z][a-z] power[?]$`,
+ 22     		}
+ 23     	
+ 24     		for _, reStr = range reStrings {
+ 25     	
+ 26     			match, me := regexp.MatchString(reStr, question)
+ 27     	
+ 28     			if me != nil {
+ 29 MISS				panic(me)
+ 30     			}
+ 31     	
+ 32     			if match {
+ 33     				break
+ 34     			}
+ 35     		}
+ 36     	
+ 37     		re, e := regexp.Compile(reStr)
+ 38     		if e != nil {
+ 39 MISS			panic(e)
+ 40     		}
+ 41     	
+ 42     		s1 := re.ReplaceAllString(question, "$1")
+ 43     		n1, e1 := strconv.Atoi(s1)
+ 44     		if e1 != nil {
+ 45     			return 0, false
+ 46     		}
+ 47     	
+ 48     		s3 := re.ReplaceAllString(question, "$3")
+ 49     		var n3 int
+ 50     		var e3 error
+ 51     		if s3 != "" {
+ 52     			n3, e3 = strconv.Atoi(s3)
+ 53     			if e3 != nil {
+ 54 MISS				return 0, false
+ 55     			}
+ 56     		}
+ 57     	
+ 58     		s2 := re.ReplaceAllString(question, "$2")
+ 59     		switch s2 {
+ 60     		case "":
+ 61     			result = n1
+ 62     		case "plus":
+ 63     			result = n1 + n3
+ 64     		case "minus":
+ 65     			result = n1 - n3
+ 66     		case "multiplied by":
+ 67     			result = n1 * n3
+ 68     		case "divided by":
+ 69     			result = n1 / n3
+ 70     		case "raised to the":
+ 71     			result = int(math.Pow(float64(n1), float64(n3)))
+ 72     		default:
+ 73 MISS			return 0, false
+ 74     		}
+ 75     	
+ 76     		s5 := re.ReplaceAllString(question, "$5")
+ 77     		var n5 int
+ 78     		var e5 error
+ 79     		if s5 != "" {
+ 80     			n5, e5 = strconv.Atoi(s5)
+ 81     			if e5 != nil {
+ 82 MISS				return 0, false
+ 83     			}
+ 84     		}
+ 85     	
+ 86     		s4 := re.ReplaceAllString(question, "$4")
+ 87     		switch s4 {
+ 88     		case "":
+ 89     			return result, true
+ 90     		case "plus":
+ 91     			result += n5
+ 92     		case "minus":
+ 93     			result -= n5
+ 94     		case "multiplied by":
+ 95     			result *= n5
+ 96     		case "divided by":
+ 97     			result /= n5
+ 98     		case "raised to the":
+ 99 MISS			result = int(math.Pow(float64(result), float64(n5)))
+100     		default:
+101 MISS			return result, true
+102     		}
+103     	
+104     		return result, true
+105     	}
+

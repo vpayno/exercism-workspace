@@ -18,7 +18,7 @@ import "space"
 func Age(seconds float64, planet Planet) float64
 ```
 
-Age returns a person's age on a given planet\.
+Age returns a person's age on a given planet.
 
 <details><summary>Example</summary>
 <p>
@@ -43,7 +43,7 @@ Age returns a person's age on a given planet\.
 
 ## type [Planet](<https://github.com/vpayno/exercism-workspace/blob/main/go/space-age/space_age.go#L4>)
 
-Planet is a string with the name of a Planet\.
+Planet is a string with the name of a Planet.
 
 ```go
 type Planet string

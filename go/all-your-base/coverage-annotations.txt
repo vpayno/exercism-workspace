@@ -1,0 +1,65 @@
+
+108     	func ConvertStrToIntList(inputStr string) []int {
+109     		outputDigits := []int{}
+110     	
+111     		for _, s := range inputStr {
+112     			n, e := strconv.Atoi(string(s))
+113     	
+114     			if e != nil {
+115 MISS				panic(e)
+116     			}
+117     	
+118     			outputDigits = append(outputDigits, n)
+119     		}
+120     	
+121     		return outputDigits
+122     	}
+
+
+12     	func ConvertToBase(inputBase int, inputDigits []int, outputBase int) ([]int, error) {
+13     		var baseTenDigits int
+14     		var outputDigits []int
+15     	
+16     		inputDigits, e := quickChecks(inputBase, outputBase, inputDigits)
+17     	
+18     		// If an error was picked up by quickChecks(), return it with a zero value int list.
+19     		if e != nil {
+20     			return inputDigits, e
+21     		}
+22     	
+23     		// If zero, return zero.
+24     		if len(inputDigits) == 1 && inputDigits[0] == 0 {
+25     			return inputDigits, nil
+26     		}
+27     	
+28     		// 1. Convert number from base x to base 10.
+29     		if inputBase == 10 {
+30     			var tmpStr string
+31     			for _, n := range inputDigits {
+32     				tmpStr += fmt.Sprintf("%d", n)
+33     			}
+34     			i, e := strconv.Atoi(tmpStr)
+35     	
+36     			if e != nil {
+37 MISS				panic(e)
+38     			}
+39     	
+40     			baseTenDigits = i
+41     		} else {
+42     			baseTenDigits = ConvertToBase10(inputBase, inputDigits)
+43     			// fmt.Printf("base: %d\tbaseTenDigits: %#v\n", outputBase, baseTenDigits)
+44     		}
+45     	
+46     		// 2. Convert from base 10 to base y.
+47     		if outputBase == 10 {
+48     			outputDigits = ConvertIntToIntList(baseTenDigits)
+49     			// fmt.Printf("base: %d\toutputDigits: %#v\n", outputBase, outputDigits)
+50     			return outputDigits, nil
+51     		}
+52     	
+53     		outputDigits = ConvertFromBase10(outputBase, baseTenDigits)
+54     		// fmt.Printf("base: %d\toutputDigits: %#v\n", outputBase, outputDigits)
+55     	
+56     		return outputDigits, nil
+57     	}
+

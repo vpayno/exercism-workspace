@@ -5,15 +5,583 @@ Go packages: isbn
 
 ===============================================================================
 
-golint isbn
+Running: ../../.github/citools/go/go-lint-golangci-lint
 
-real	0m0.200s
-user	0m0.175s
-sys	0m0.187s
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.027s
+user	0m0.022s
+sys	0m0.022s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+isbn_verifier_test.go:10:26: Using the variable on range scope `tc` in function literal (scopelint)
+			actual := IsValidISBN(tc.isbn)
+			                      ^
+isbn_verifier_test.go:11:17: Using the variable on range scope `tc` in function literal (scopelint)
+			if actual != tc.expected {
+			             ^
+isbn_verifier_test.go:12:46: Using the variable on range scope `tc` in function literal (scopelint)
+				t.Errorf("IsValidISBN(%q)=%t, want: %t", tc.isbn, actual, tc.expected)
+				                                         ^
+isbn_verifier_test.go:22:2: for statements should only be cuddled with assignments used in the iteration (wsl)
+	for i := 0; i < b.N; i++ {
+	^
+isbn_verifier.go:11:1: calculated cyclomatic complexity for function IsValidISBN is 11, max is 10 (cyclop)
+func IsValidISBN(isbn string) bool {
+^
+cases_test.go:6:5: testCases is a global variable (gochecknoglobals)
+var testCases = []struct {
+    ^
+isbn_verifier.go:49:8: mnd: Magic number: 10, in <operation> detected (gomnd)
+		d := 10 - i
+		     ^
+isbn_verifier.go:58:2: S1008: should use 'return sum%11 == 0' instead of 'if sum%11 == 0 { return true }; return false' (gosimple)
+	if sum%11 == 0 {
+	^
+isbn_verifier_test.go:7:1: Function TestIsValidISBN missing the call to method parallel (paralleltest)
+func TestIsValidISBN(t *testing.T) {
+^
+isbn_verifier_test.go:8:2: Range statement for test TestIsValidISBN missing the call to method parallel in test Run (paralleltest)
+	for _, tc := range testCases {
+	^
+isbn_verifier.go:16:9: variable error has same name as predeclared identifier (predeclared)
+	match, error := regexp.MatchString(reStr, isbn)
+	       ^
+cases_test.go:1:9: package should be `isbn_test` instead of `isbn` (testpackage)
+package isbn
+        ^
+isbn_verifier_examples_test.go:1:9: package should be `isbn_test` instead of `isbn` (testpackage)
+package isbn
+        ^
+isbn_verifier_test.go:1:9: package should be `isbn_test` instead of `isbn` (testpackage)
+package isbn
+        ^
+isbn_verifier.go:37:7: variable name 'n' is too short for the scope of its usage (varnamelen)
+		var n int
+		    ^
+isbn_verifier.go:32:6: variable name 'i' is too short for the scope of its usage (varnamelen)
+	for i, r := range isbn {
+	    ^
+
+real	0m0.584s
+user	0m0.883s
+sys	0m0.557s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.625s
+user	0m0.913s
+sys	0m0.589s
+
+real	0m0.627s
+user	0m0.915s
+sys	0m0.590s
 
 ===============================================================================
 
-go test -v -covermode=count -coverprofile coverage.out isbn
+Running: ../../.github/citools/go/go-lint-revive
+
+Running Go Lint Revive
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.020s
+user	0m0.010s
+sys	0m0.021s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
+
+real	0m0.069s
+user	0m0.034s
+sys	0m0.055s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.101s
+user	0m0.052s
+sys	0m0.083s
+
+real	0m0.103s
+user	0m0.054s
+sys	0m0.084s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.001s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.032s
+user	0m0.022s
+sys	0m0.030s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
+	info: check "./."
+internal error: package "regexp" without types was imported from "isbn"
+
+real	0m0.092s
+user	0m0.126s
+sys	0m0.121s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.146s
+user	0m0.158s
+sys	0m0.172s
+
+real	0m0.150s
+user	0m0.160s
+sys	0m0.174s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-staticcheck
+
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.018s
+user	0m0.013s
+sys	0m0.016s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+isbn_verifier.go:58:2: should use 'return sum%11 == 0' instead of 'if sum%11 == 0 { return true }; return false' (S1008)
+
+real	0m0.191s
+user	0m0.233s
+sys	0m0.159s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.219s
+user	0m0.251s
+sys	0m0.185s
+
+real	0m0.221s
+user	0m0.252s
+sys	0m0.186s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocritic
+
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.023s
+user	0m0.014s
+sys	0m0.019s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+./isbn_verifier.go:16:9: builtinShadow: shadowing of predeclared identifier: error
+./isbn_verifier.go:28:5: emptyStringTest: replace `len(isbn) == 0` with `isbn == ""`
+
+real	0m0.801s
+user	0m1.965s
+sys	0m0.278s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.837s
+user	0m1.985s
+sys	0m0.308s
+
+real	0m0.840s
+user	0m1.985s
+sys	0m0.311s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go_vet
+
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.021s
+user	0m0.014s
+sys	0m0.015s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.072s
+user	0m0.131s
+sys	0m0.109s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.109s
+user	0m0.150s
+sys	0m0.134s
+
+real	0m0.112s
+user	0m0.150s
+sys	0m0.136s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-fixer-go_fix
+
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.020s
+user	0m0.013s
+sys	0m0.020s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.027s
+user	0m0.022s
+sys	0m0.024s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.058s
+user	0m0.041s
+sys	0m0.052s
+
+real	0m0.059s
+user	0m0.042s
+sys	0m0.053s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-errcheck
+
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.032s
+user	0m0.020s
+sys	0m0.028s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+
+real	0m0.454s
+user	0m1.320s
+sys	0m0.287s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.503s
+user	0m1.346s
+sys	0m0.331s
+
+real	0m0.506s
+user	0m1.348s
+sys	0m0.332s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.017s
+user	0m0.010s
+sys	0m0.017s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
+11 isbn IsValidISBN isbn_verifier.go:11:1
+4 isbn BenchmarkIsValidISBN isbn_verifier_test.go:18:1
+3 isbn TestIsValidISBN isbn_verifier_test.go:7:1
+1 isbn ExampleIsValidISBN isbn_verifier_examples_test.go:7:1
+
+real	0m0.003s
+user	0m0.000s
+sys	0m0.003s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.032s
+user	0m0.017s
+sys	0m0.030s
+
+real	0m0.033s
+user	0m0.017s
+sys	0m0.031s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-misspell
+
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+
+real	0m0.029s
+user	0m0.034s
+sys	0m0.010s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.040s
+user	0m0.041s
+sys	0m0.018s
+
+real	0m0.043s
+user	0m0.043s
+sys	0m0.018s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gosec
+
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.030s
+user	0m0.025s
+sys	0m0.025s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:24:03 Including rules: default
+[gosec] 2023/09/07 00:24:03 Excluding rules: default
+[gosec] 2023/09/07 00:24:03 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/isbn-verifier
+[gosec] 2023/09/07 00:24:03 Checking package: isbn
+[gosec] 2023/09/07 00:24:03 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/isbn-verifier/isbn_verifier.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 63
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.125s
+user	0m0.123s
+sys	0m0.127s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.175s
+user	0m0.157s
+sys	0m0.169s
+
+real	0m0.179s
+user	0m0.160s
+sys	0m0.171s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.034s
+user	0m0.021s
+sys	0m0.031s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
 === RUN   TestIsValidISBN
 === RUN   TestIsValidISBN/valid_isbn
 === RUN   TestIsValidISBN/invalid_isbn_check_digit
@@ -58,33 +626,109 @@ go test -v -covermode=count -coverprofile coverage.out isbn
 --- PASS: ExampleIsValidISBN (0.00s)
 PASS
 coverage: 88.5% of statements
-ok  	isbn	0.007s	coverage: 88.5% of statements
+ok  	isbn	0.003s	coverage: 88.5% of statements
 
-real	0m0.534s
-user	0m0.614s
-sys	0m0.414s
+real	0m0.187s
+user	0m0.248s
+sys	0m0.162s
 
-===============================================================================
 
-go tool cover -func=coverage.out
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
 isbn/isbn_verifier.go:11:	IsValidISBN	88.5%
 total:				(statements)	88.5%
 
-real	0m0.202s
-user	0m0.161s
-sys	0m0.190s
+real	0m0.047s
+user	0m0.059s
+sys	0m0.070s
 
-===============================================================================
 
-go tool cover -html coverage.out -o coverage.html
+ ==============================================================================
 
-real	0m0.192s
-user	0m0.165s
-sys	0m0.178s
+Running: go tool cover -html coverage.out -o coverage.html
 
-===============================================================================
 
-go test -v -race -covermode=atomic isbn
+real	0m0.045s
+user	0m0.042s
+sys	0m0.058s
+
+
+ ==============================================================================
+
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+11     	func IsValidISBN(isbn string) bool {
+12     		var sum int
+13     	
+14     		reStr := `^[0-9][0-9-]+([0-9]|X)$`
+15     	
+16     		match, error := regexp.MatchString(reStr, isbn)
+17     	
+18     		if error != nil {
+19 MISS			panic(error)
+20     		}
+21     	
+22     		if !match {
+23     			return false
+24     		}
+25     	
+26     		isbn = strings.ReplaceAll(isbn, "-", "")
+27     	
+28     		if len(isbn) == 0 || len(isbn) < 10 {
+29     			return false
+30     		}
+31     	
+32     		for i, r := range isbn {
+33     			if r == '-' {
+34 MISS				continue
+35     			}
+36     	
+37     			var n int
+38     	
+39     			if r == 'X' {
+40     				n = 10
+41     			} else {
+42     				n, error = strconv.Atoi(string(r))
+43     	
+44     				if error != nil {
+45 MISS					panic(error)
+46     				}
+47     			}
+48     	
+49     			d := 10 - i
+50     	
+51     			if d < 1 {
+52     				return false
+53     			}
+54     	
+55     			sum += n * d
+56     		}
+57     	
+58     		if sum%11 == 0 {
+59     			return true
+60     		}
+61     	
+62     		return false
+63     	}
+
+
+real	0m0.018s
+user	0m0.017s
+sys	0m0.013s
+
+real	0m0.019s
+user	0m0.017s
+sys	0m0.013s
+
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
 === RUN   TestIsValidISBN
 === RUN   TestIsValidISBN/valid_isbn
 === RUN   TestIsValidISBN/invalid_isbn_check_digit
@@ -105,7 +749,7 @@ go test -v -race -covermode=atomic isbn
 === RUN   TestIsValidISBN/invalid_characters_are_not_ignored_after_checking_length
 === RUN   TestIsValidISBN/invalid_characters_are_not_ignored_before_checking_length
 === RUN   TestIsValidISBN/input_is_too_long_but_contains_a_valid_isbn
---- PASS: TestIsValidISBN (0.04s)
+--- PASS: TestIsValidISBN (0.00s)
     --- PASS: TestIsValidISBN/valid_isbn (0.00s)
     --- PASS: TestIsValidISBN/invalid_isbn_check_digit (0.00s)
     --- PASS: TestIsValidISBN/valid_isbn_with_a_check_digit_of_10 (0.00s)
@@ -129,97 +773,146 @@ go test -v -race -covermode=atomic isbn
 --- PASS: ExampleIsValidISBN (0.00s)
 PASS
 coverage: 88.5% of statements
-ok  	isbn	0.080s	coverage: 88.5% of statements
+ok  	isbn	1.017s	coverage: 88.5% of statements
 
-real	0m0.678s
-user	0m0.711s
-sys	0m0.454s
+real	0m1.228s
+user	0m0.279s
+sys	0m0.160s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.580s
+user	0m0.675s
+sys	0m0.512s
+
+real	0m1.583s
+user	0m0.676s
+sys	0m0.514s
 
 ===============================================================================
 
 mv -v benchstat-new.txt benchstat-old.txt
 renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
 
-go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 goos: linux
 goarch: amd64
 pkg: isbn
-cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
-BenchmarkIsValidISBN-4   	    5523	    220961 ns/op	   80090 B/op	     995 allocs/op
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+BenchmarkIsValidISBN
+BenchmarkIsValidISBN-8   	   18230	     62404 ns/op	   79851 B/op	     917 allocs/op
 PASS
-ok  	isbn	2.083s
+ok  	isbn	1.744s
 
-real	0m2.593s
-user	0m3.723s
-sys	0m0.734s
+real	0m1.897s
+user	0m2.043s
+sys	0m0.208s
 
 ===============================================================================
 
-go test -tags bonus
+gotest -v -tags bonus
+=== RUN   TestIsValidISBN
+=== RUN   TestIsValidISBN/valid_isbn
+=== RUN   TestIsValidISBN/invalid_isbn_check_digit
+=== RUN   TestIsValidISBN/valid_isbn_with_a_check_digit_of_10
+=== RUN   TestIsValidISBN/check_digit_is_a_character_other_than_X
+=== RUN   TestIsValidISBN/invalid_check_digit_in_isbn_is_not_treated_as_zero
+=== RUN   TestIsValidISBN/invalid_character_in_isbn_is_not_treated_as_zero
+=== RUN   TestIsValidISBN/X_is_only_valid_as_a_check_digit
+=== RUN   TestIsValidISBN/valid_isbn_without_separating_dashes
+=== RUN   TestIsValidISBN/isbn_without_separating_dashes_and_X_as_check_digit
+=== RUN   TestIsValidISBN/isbn_without_check_digit_and_dashes
+=== RUN   TestIsValidISBN/too_long_isbn_and_no_dashes
+=== RUN   TestIsValidISBN/too_short_isbn
+=== RUN   TestIsValidISBN/isbn_without_check_digit
+=== RUN   TestIsValidISBN/check_digit_of_X_should_not_be_used_for_0
+=== RUN   TestIsValidISBN/empty_isbn
+=== RUN   TestIsValidISBN/input_is_9_characters
+=== RUN   TestIsValidISBN/invalid_characters_are_not_ignored_after_checking_length
+=== RUN   TestIsValidISBN/invalid_characters_are_not_ignored_before_checking_length
+=== RUN   TestIsValidISBN/input_is_too_long_but_contains_a_valid_isbn
+--- PASS: TestIsValidISBN (0.00s)
+    --- PASS: TestIsValidISBN/valid_isbn (0.00s)
+    --- PASS: TestIsValidISBN/invalid_isbn_check_digit (0.00s)
+    --- PASS: TestIsValidISBN/valid_isbn_with_a_check_digit_of_10 (0.00s)
+    --- PASS: TestIsValidISBN/check_digit_is_a_character_other_than_X (0.00s)
+    --- PASS: TestIsValidISBN/invalid_check_digit_in_isbn_is_not_treated_as_zero (0.00s)
+    --- PASS: TestIsValidISBN/invalid_character_in_isbn_is_not_treated_as_zero (0.00s)
+    --- PASS: TestIsValidISBN/X_is_only_valid_as_a_check_digit (0.00s)
+    --- PASS: TestIsValidISBN/valid_isbn_without_separating_dashes (0.00s)
+    --- PASS: TestIsValidISBN/isbn_without_separating_dashes_and_X_as_check_digit (0.00s)
+    --- PASS: TestIsValidISBN/isbn_without_check_digit_and_dashes (0.00s)
+    --- PASS: TestIsValidISBN/too_long_isbn_and_no_dashes (0.00s)
+    --- PASS: TestIsValidISBN/too_short_isbn (0.00s)
+    --- PASS: TestIsValidISBN/isbn_without_check_digit (0.00s)
+    --- PASS: TestIsValidISBN/check_digit_of_X_should_not_be_used_for_0 (0.00s)
+    --- PASS: TestIsValidISBN/empty_isbn (0.00s)
+    --- PASS: TestIsValidISBN/input_is_9_characters (0.00s)
+    --- PASS: TestIsValidISBN/invalid_characters_are_not_ignored_after_checking_length (0.00s)
+    --- PASS: TestIsValidISBN/invalid_characters_are_not_ignored_before_checking_length (0.00s)
+    --- PASS: TestIsValidISBN/input_is_too_long_but_contains_a_valid_isbn (0.00s)
+=== RUN   ExampleIsValidISBN
+--- PASS: ExampleIsValidISBN (0.00s)
 PASS
-ok  	isbn	0.006s
+ok  	isbn	0.002s
 
-real	0m0.520s
-user	0m0.635s
-sys	0m0.372s
+real	0m0.126s
+user	0m0.179s
+sys	0m0.116s
 
 ===============================================================================
-
-go install golang.org/x/perf/cmd/benchstat@latest
-
-real	0m3.801s
-user	0m0.730s
-sys	0m0.340s
 
 benchstat benchstat-old.txt benchstat-new.txt
-name           old time/op    new time/op    delta
-IsValidISBN-4     231µs ± 0%     221µs ± 0%   ~     (p=1.000 n=1+1)
+benchstat-new.txt:5: missing iteration count
+goos: linux
+goarch: amd64
+pkg: isbn
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+              │ benchstat-new.txt │
+              │      sec/op       │
+IsValidISBN-8        62.40µ ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-name           old alloc/op   new alloc/op   delta
-IsValidISBN-4    71.7kB ± 0%    80.1kB ± 0%   ~     (p=1.000 n=1+1)
+              │ benchstat-new.txt │
+              │       B/op        │
+IsValidISBN-8       77.98Ki ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-name           old allocs/op  new allocs/op  delta
-IsValidISBN-4       899 ± 0%       995 ± 0%   ~     (p=1.000 n=1+1)
+              │ benchstat-new.txt │
+              │     allocs/op     │
+IsValidISBN-8         917.0 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-real	0m0.028s
-user	0m0.015s
-sys	0m0.011s
+cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+              │ benchstat-old.txt │
+              │      sec/op       │
+IsValidISBN-4        221.0µ ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-===============================================================================
+              │ benchstat-old.txt │
+              │       B/op        │
+IsValidISBN-4       78.21Ki ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-go vet isbn
+              │ benchstat-old.txt │
+              │     allocs/op     │
+IsValidISBN-4         995.0 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-real	0m0.295s
-user	0m0.365s
-sys	0m0.218s
-
-===============================================================================
-
-go fix isbn
-
-real	0m0.123s
-user	0m0.072s
-sys	0m0.149s
-
-===============================================================================
-
-gosec ./isbn-verifier
-[gosec] 2022/07/24 00:37:28 Including rules: default
-[gosec] 2022/07/24 00:37:28 Excluding rules: default
-[gosec] 2022/07/24 00:37:28 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/isbn-verifier
-2022/07/24 00:37:28 internal error: package "regexp" without types was imported from "command-line-arguments"
-
-real	0m0.361s
-user	0m0.387s
-sys	0m0.294s
+real	0m0.003s
+user	0m0.001s
+sys	0m0.002s
 
 ===============================================================================
 
 gomarkdoc --output isbn-doc.md
 
-real	0m0.030s
-user	0m0.022s
-sys	0m0.011s
+real	0m0.009s
+user	0m0.005s
+sys	0m0.004s
 
 ===============================================================================
 
@@ -234,9 +927,9 @@ func IsValidISBN(isbn string) bool
     IsValidISBN returns true if the book id number is valid.
 
 
-real	0m0.169s
-user	0m0.109s
-sys	0m0.172s
+real	0m0.035s
+user	0m0.021s
+sys	0m0.030s
 
 
 ===============================================================================

@@ -6,7 +6,7 @@
 import "collatzconjecture"
 ```
 
-Package collatzconjecture states that the orbit of every number under f eventually reaches 1\.
+Package collatzconjecture states that the orbit of every number under f eventually reaches 1.
 
 ## Index
 
@@ -19,7 +19,7 @@ Package collatzconjecture states that the orbit of every number under f eventual
 func CollatzConjecture(n int) (int, error)
 ```
 
-CollatzConjecture returns the number of steps needed to reach 1 using The Collatz Conjecture\.
+CollatzConjecture returns the number of steps needed to reach 1 using The Collatz Conjecture.
 
 <details><summary>Example</summary>
 <p>

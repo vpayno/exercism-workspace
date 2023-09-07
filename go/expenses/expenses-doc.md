@@ -114,7 +114,7 @@ ByDaysPeriod returns predicate function that returns true when the day of the re
 func CategoryExpenses(in []Record, period DaysPeriod, category string) (float64, error)
 ```
 
-CategoryExpenses returns total amount of expenses for records in category c that are also inside the period p\. An error must be returned only if there are no records in the list that belong to the given category\, regardless of period of time\.
+CategoryExpenses returns total amount of expenses for records in category c that are also inside the period p. An error must be returned only if there are no records in the list that belong to the given category, regardless of period of time.
 
 <details><summary>Example</summary>
 <p>
@@ -193,7 +193,7 @@ TotalByPeriod returns total amount of expenses for records inside the period p
 
 ## type [DaysPeriod](<https://github.com/vpayno/exercism-workspace/blob/main/go/expenses/expenses.go#L13-L16>)
 
-DaysPeriod represents a period of days for expenses\.
+DaysPeriod represents a period of days for expenses.
 
 ```go
 type DaysPeriod struct {
@@ -204,7 +204,7 @@ type DaysPeriod struct {
 
 ## type [Record](<https://github.com/vpayno/exercism-workspace/blob/main/go/expenses/expenses.go#L6-L10>)
 
-Record represents an expense record\.
+Record represents an expense record.
 
 ```go
 type Record struct {
@@ -220,7 +220,7 @@ type Record struct {
 func Filter(in []Record, predicate func(Record) bool) []Record
 ```
 
-Filter returns the records for which the predicate function returns true\.
+Filter returns the records for which the predicate function returns true.
 
 <details><summary>Example</summary>
 <p>

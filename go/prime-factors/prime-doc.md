@@ -6,7 +6,7 @@
 import "prime"
 ```
 
-Package prime computes the prime factors of a given natural number\.
+Package prime computes the prime factors of a given natural number.
 
 ## Index
 
@@ -19,7 +19,7 @@ Package prime computes the prime factors of a given natural number\.
 func Factors(number int64) []int64
 ```
 
-Factors returns an in64 list of prime factors for the given natural number\.
+Factors returns an in64 list of prime factors for the given natural number.
 
 <details><summary>Example</summary>
 <p>

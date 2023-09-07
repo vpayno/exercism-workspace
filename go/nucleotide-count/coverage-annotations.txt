@@ -1,0 +1,29 @@
+
+43     	func (d DNA) Counts() (Histogram, error) {
+44     		var h Histogram = Histogram{
+45     			'A': 0,
+46     			'C': 0,
+47     			'G': 0,
+48     			'T': 0,
+49     		}
+50     	
+51     		if len(d) == 0 {
+52     			return h, nil
+53     		}
+54     	
+55     		if ok, e := d.IsValid(); !ok {
+56     			return h, e
+57     		}
+58     	
+59     		for _, nucleotide := range d {
+60     			h[nucleotide]++
+61     		}
+62     	
+63     		if debug {
+64 MISS			fmt.Printf("%s\n", d)
+65 MISS			fmt.Printf("historgram: %#v\n", h)
+66     		}
+67     	
+68     		return h, nil
+69     	}
+

@@ -5,56 +5,607 @@ Go packages: house
 
 ===============================================================================
 
-golint ./...
+Running: ../../.github/citools/go/go-lint-golangci-lint
 
-real	0m0.096s
-user	0m0.069s
-sys	0m0.054s
+Running GoLangCi-Lint
 
-===============================================================================
+Go version:
 
-revive ./...
+	go version go1.21.0 linux/amd64
 
-real	0m0.043s
-user	0m0.015s
-sys	0m0.015s
 
-===============================================================================
+ ==============================================================================
 
-ineffassign ./...
+Running: go clean ./...
 
-real	0m0.282s
-user	0m0.302s
-sys	0m0.266s
 
-===============================================================================
+real	0m0.023s
+user	0m0.023s
+sys	0m0.020s
 
-go-consistent -v ./...
-	info: check "./."
 
-real	0m0.473s
-user	0m0.529s
-sys	0m0.491s
+ ==============================================================================
 
-===============================================================================
+Running: golangci-lint run --enable-all ./...
 
-staticcheck ./...
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+house_examples_test.go:26: Function 'ExampleSong' is too long (92 > 60) (funlen)
+func ExampleSong() {
+house_test.go:20:28: Comment should end in a period (godot)
+	// song copied from README
+	                          ^
+house_test.go:117:20: Using the variable on range scope `v` in function literal (scopelint)
+			if got := Verse(v + 1); got != expectedVerses[v] {
+			                ^
+house_test.go:118:48: Using the variable on range scope `v` in function literal (scopelint)
+				t.Fatalf("Verse(%d)\ngot:\n%q\nwant:\n%q", v+1, got, expectedVerses[v])
+				                                           ^
+house_test.go:132:2: only one cuddle assignment allowed before if statement (wsl)
+	if wantStanzas != gotStanzas {
+	^
+house_test.go:135:2: assignments should only be cuddled with other assignments (wsl)
+	got := strings.Split(s, "\n")
+	^
+house_test.go:137:2: declarations should never be cuddled (wsl)
+	var g, w string
+	^
+house_test.go:138:2: declarations should never be cuddled (wsl)
+	var i int
+	^
+house_test.go:144:3: if statements should only be cuddled with assignments (wsl)
+		if g = got[i]; g != w {
+		^
+house_test.go:139:2: only one cuddle assignment allowed before range statement (wsl)
+	for i, w = range want {
+	^
+house_test.go:148:2: expressions should not be cuddled with blocks (wsl)
+	t.Fatalf("Song() line %d =\n[%q]\n want \n[%q]", i+1, g, w)
+	^
+house_test.go:155:2: for statements should only be cuddled with assignments used in the iteration (wsl)
+	for i := 0; i < b.N; i++ {
+	^
+house_test.go:166:2: for statements should only be cuddled with assignments used in the iteration (wsl)
+	for i := 0; i < b.N; i++ {
+	^
+house_test.go:2:1: Duplicate words (using) found (dupword)
+// Try using using programmatic recursion to generate the verses of the song,
+^
+house_test.go:21:2: expectedSong is a global variable (gochecknoglobals)
+	expectedSong = `This is the house that Jack built.
+	^
+house_test.go:111:2: expectedVerses is a global variable (gochecknoglobals)
+	expectedVerses = strings.Split(expectedSong, "\n\n")
+	^
+house.go:77:11: mnd: Magic number: 12, in <condition> detected (gomnd)
+		if i != 12 {
+		        ^
+house_test.go:142:4: break with no blank line before (nlreturn)
+			break
+			^
+house_test.go:114:1: Function TestVerse missing the call to method parallel (paralleltest)
+func TestVerse(t *testing.T) {
+^
+house_test.go:124:1: Function TestSong missing the call to method parallel (paralleltest)
+func TestSong(t *testing.T) {
+^
+house_examples_test.go:1:9: package should be `house_test` instead of `house` (testpackage)
+package house
+        ^
+house_test.go:11:9: package should be `house_test` instead of `house` (testpackage)
+package house
+        ^
+house.go:50:6: variable name 'i' is too short for the scope of its usage (varnamelen)
+	for i, j := 0, level; i <= level; i, j = i+1, j-1 {
+	    ^
+house_test.go:125:2: variable name 's' is too short for the scope of its usage (varnamelen)
+	s := Song()
+	^
 
 real	0m0.468s
-user	0m0.443s
-sys	0m0.375s
+user	0m0.745s
+sys	0m0.419s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.504s
+user	0m0.776s
+sys	0m0.446s
+
+real	0m0.505s
+user	0m0.777s
+sys	0m0.447s
 
 ===============================================================================
 
-gocritic check -enableAll ./...
+Running: ../../.github/citools/go/go-lint-revive
 
-real	0m2.459s
-user	0m4.019s
-sys	0m1.180s
+Running Go Lint Revive
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.025s
+user	0m0.018s
+sys	0m0.028s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
+
+real	0m0.038s
+user	0m0.021s
+sys	0m0.027s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.072s
+user	0m0.041s
+sys	0m0.066s
+
+real	0m0.074s
+user	0m0.042s
+sys	0m0.067s
 
 ===============================================================================
 
-gotest -v -covermode=count -coverprofile coverage.out ./...
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
+
+real	0m0.001s
+user	0m0.001s
+sys	0m0.000s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.026s
+user	0m0.024s
+sys	0m0.027s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
+	info: check "./."
+internal error: package "fmt" without types was imported from "house"
+
+real	0m0.083s
+user	0m0.119s
+sys	0m0.113s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.124s
+user	0m0.151s
+sys	0m0.153s
+
+real	0m0.126s
+user	0m0.152s
+sys	0m0.154s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-staticcheck
+
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.022s
+user	0m0.022s
+sys	0m0.022s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+
+real	0m0.162s
+user	0m0.199s
+sys	0m0.115s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.195s
+user	0m0.225s
+sys	0m0.149s
+
+real	0m0.197s
+user	0m0.225s
+sys	0m0.150s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocritic
+
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.031s
+user	0m0.025s
+sys	0m0.030s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+
+real	0m0.834s
+user	0m2.162s
+sys	0m0.307s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.878s
+user	0m2.193s
+sys	0m0.348s
+
+real	0m0.880s
+user	0m2.194s
+sys	0m0.349s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go_vet
+
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.023s
+user	0m0.019s
+sys	0m0.022s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.082s
+user	0m0.109s
+sys	0m0.077s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.116s
+user	0m0.135s
+sys	0m0.108s
+
+real	0m0.117s
+user	0m0.136s
+sys	0m0.109s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-fixer-go_fix
+
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.023s
+user	0m0.019s
+sys	0m0.023s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.024s
+user	0m0.016s
+sys	0m0.022s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.058s
+user	0m0.042s
+sys	0m0.056s
+
+real	0m0.061s
+user	0m0.042s
+sys	0m0.059s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-errcheck
+
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.034s
+user	0m0.030s
+sys	0m0.036s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+
+real	0m0.444s
+user	0m1.233s
+sys	0m0.263s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.491s
+user	0m1.271s
+sys	0m0.307s
+
+real	0m0.493s
+user	0m1.272s
+sys	0m0.308s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.024s
+user	0m0.018s
+sys	0m0.021s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
+6 house TestSong house_test.go:124:1
+6 house Verse house.go:10:1
+4 house BenchmarkVerse house_test.go:151:1
+3 house BenchmarkSong house_test.go:162:1
+3 house TestVerse house_test.go:114:1
+3 house Song house.go:70:1
+1 house ExampleSong house_examples_test.go:26:1
+1 house ExampleVerse house_examples_test.go:5:1
+
+real	0m0.003s
+user	0m0.001s
+sys	0m0.002s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.041s
+user	0m0.024s
+sys	0m0.036s
+
+real	0m0.043s
+user	0m0.024s
+sys	0m0.038s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-misspell
+
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+
+real	0m0.025s
+user	0m0.031s
+sys	0m0.006s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.038s
+user	0m0.038s
+sys	0m0.016s
+
+real	0m0.040s
+user	0m0.040s
+sys	0m0.016s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gosec
+
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.027s
+user	0m0.027s
+sys	0m0.022s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:23:51 Including rules: default
+[gosec] 2023/09/07 00:23:51 Excluding rules: default
+[gosec] 2023/09/07 00:23:51 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/house
+[gosec] 2023/09/07 00:23:51 Checking package: house
+[gosec] 2023/09/07 00:23:51 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/house/house.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 84
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.129s
+user	0m0.141s
+sys	0m0.100s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.167s
+user	0m0.174s
+sys	0m0.132s
+
+real	0m0.169s
+user	0m0.176s
+sys	0m0.132s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.023s
+user	0m0.021s
+sys	0m0.020s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
 === RUN   TestVerse
 === RUN   TestVerse/verse_1
 === RUN   TestVerse/verse_2
@@ -89,34 +640,41 @@ gotest -v -covermode=count -coverprofile coverage.out ./...
 --- PASS: ExampleSong (0.00s)
 PASS
 coverage: 95.5% of statements
-ok  	house	0.027s	coverage: 95.5% of statements
+ok  	house	0.002s	coverage: 95.5% of statements
 
-real	0m0.712s
-user	0m0.819s
-sys	0m0.569s
+real	0m0.180s
+user	0m0.233s
+sys	0m0.142s
 
-===============================================================================
 
-go tool cover -func=coverage.out
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
 house/house.go:10:	Verse		93.3%
 house/house.go:70:	Song		100.0%
 total:			(statements)	95.5%
 
-real	0m0.262s
-user	0m0.205s
-sys	0m0.374s
+real	0m0.061s
+user	0m0.073s
+sys	0m0.080s
 
-===============================================================================
 
-go tool cover -html coverage.out -o coverage.html
+ ==============================================================================
 
-real	0m0.218s
-user	0m0.154s
-sys	0m0.195s
+Running: go tool cover -html coverage.out -o coverage.html
 
-===============================================================================
 
-gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+real	0m0.047s
+user	0m0.049s
+sys	0m0.072s
+
+
+ ==============================================================================
+
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
 
 10     	func Verse(level int) string {
 11     		level--
@@ -178,13 +736,19 @@ gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annota
 67     	}
 
 
-real	0m0.112s
-user	0m0.066s
-sys	0m0.156s
+real	0m0.019s
+user	0m0.019s
+sys	0m0.020s
 
-===============================================================================
+real	0m0.020s
+user	0m0.019s
+sys	0m0.020s
 
-gotest -v -race -covermode=atomic ./...
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
 === RUN   TestVerse
 === RUN   TestVerse/verse_1
 === RUN   TestVerse/verse_2
@@ -219,11 +783,24 @@ gotest -v -race -covermode=atomic ./...
 --- PASS: ExampleSong (0.00s)
 PASS
 coverage: 95.5% of statements
-ok  	house	0.048s	coverage: 95.5% of statements
+ok  	house	1.012s	coverage: 95.5% of statements
 
-real	0m1.118s
-user	0m0.886s
-sys	0m0.712s
+real	0m1.230s
+user	0m0.265s
+sys	0m0.141s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.571s
+user	0m0.666s
+sys	0m0.485s
+
+real	0m1.574s
+user	0m0.668s
+sys	0m0.486s
 
 ===============================================================================
 
@@ -234,17 +811,17 @@ gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 goos: linux
 goarch: amd64
 pkg: house
-cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
 BenchmarkVerse
-BenchmarkVerse-4   	   10000	    113670 ns/op	   27324 B/op	     382 allocs/op
+BenchmarkVerse-8   	   36183	     31771 ns/op	   33333 B/op	     379 allocs/op
 BenchmarkSong
-BenchmarkSong-4    	   10000	    118872 ns/op	   34377 B/op	     390 allocs/op
+BenchmarkSong-8    	   35149	     31843 ns/op	   40391 B/op	     387 allocs/op
 PASS
-ok  	house	2.435s
+ok  	house	2.956s
 
-real	0m2.847s
-user	0m4.099s
-sys	0m0.884s
+real	0m3.114s
+user	0m3.305s
+sys	0m0.275s
 
 ===============================================================================
 
@@ -282,90 +859,77 @@ gotest -v -tags bonus
 === RUN   ExampleSong
 --- PASS: ExampleSong (0.00s)
 PASS
-ok  	house	0.010s
+ok  	house	0.002s
 
-real	0m0.532s
-user	0m0.588s
-sys	0m0.442s
+real	0m0.131s
+user	0m0.171s
+sys	0m0.110s
 
 ===============================================================================
 
 benchstat benchstat-old.txt benchstat-new.txt
-name     old time/op    new time/op    delta
-Verse-4    98.9µs ± 0%   113.7µs ± 0%   ~     (p=1.000 n=1+1)
-Song-4      127µs ± 0%     119µs ± 0%   ~     (p=1.000 n=1+1)
+benchstat-old.txt:5: missing iteration count
+benchstat-old.txt:7: missing iteration count
+benchstat-new.txt:5: missing iteration count
+benchstat-new.txt:7: missing iteration count
+goos: linux
+goarch: amd64
+pkg: house
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+        │ benchstat-new.txt │
+        │      sec/op       │
+Verse-8        31.77µ ± ∞ ¹
+Song-8         31.84µ ± ∞ ¹
+geomean        31.81µ
+¹ need >= 6 samples for confidence interval at level 0.95
 
-name     old alloc/op   new alloc/op   delta
-Verse-4    27.3kB ± 0%    27.3kB ± 0%   ~     (p=1.000 n=1+1)
-Song-4     34.4kB ± 0%    34.4kB ± 0%   ~     (p=1.000 n=1+1)
+        │ benchstat-new.txt │
+        │       B/op        │
+Verse-8       32.55Ki ± ∞ ¹
+Song-8        39.44Ki ± ∞ ¹
+geomean       35.83Ki
+¹ need >= 6 samples for confidence interval at level 0.95
 
-name     old allocs/op  new allocs/op  delta
-Verse-4       382 ± 0%       382 ± 0%   ~     (all equal)
-Song-4        391 ± 0%       390 ± 0%   ~     (p=1.000 n=1+1)
+        │ benchstat-new.txt │
+        │     allocs/op     │
+Verse-8         379.0 ± ∞ ¹
+Song-8          387.0 ± ∞ ¹
+geomean         383.0
+¹ need >= 6 samples for confidence interval at level 0.95
 
-real	0m0.054s
-user	0m0.021s
-sys	0m0.034s
+cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+        │ benchstat-old.txt │
+        │      sec/op       │
+Verse-4        98.90µ ± ∞ ¹
+Song-4         127.4µ ± ∞ ¹
+geomean        112.3µ
+¹ need >= 6 samples for confidence interval at level 0.95
 
-===============================================================================
+        │ benchstat-old.txt │
+        │       B/op        │
+Verse-4       26.67Ki ± ∞ ¹
+Song-4        33.58Ki ± ∞ ¹
+geomean       29.93Ki
+¹ need >= 6 samples for confidence interval at level 0.95
 
-go vet ./...
+        │ benchstat-old.txt │
+        │     allocs/op     │
+Verse-4         382.0 ± ∞ ¹
+Song-4          391.0 ± ∞ ¹
+geomean         386.5
+¹ need >= 6 samples for confidence interval at level 0.95
 
-real	0m0.334s
-user	0m0.351s
-sys	0m0.271s
-
-===============================================================================
-
-go fix ./...
-
-real	0m0.123s
-user	0m0.063s
-sys	0m0.080s
-
-===============================================================================
-
-gocyclo .
-6 house TestSong house_test.go:124:1
-6 house Verse house.go:10:1
-4 house BenchmarkVerse house_test.go:151:1
-3 house BenchmarkSong house_test.go:162:1
-3 house TestVerse house_test.go:114:1
-3 house Song house.go:70:1
-1 house ExampleSong house_examples_test.go:26:1
-1 house ExampleVerse house_examples_test.go:5:1
-
-real	0m0.063s
-user	0m0.014s
-sys	0m0.022s
-
-===============================================================================
-
-misspell .
-
-real	0m0.122s
-user	0m0.082s
-sys	0m0.105s
-
-===============================================================================
-
-gosec ./...
-[gosec] 2022/08/26 19:46:35 Including rules: default
-[gosec] 2022/08/26 19:46:35 Excluding rules: default
-[gosec] 2022/08/26 19:46:35 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/house
-2022/08/26 19:46:35 internal error: package "fmt" without types was imported from "command-line-arguments"
-
-real	0m0.498s
-user	0m0.502s
-sys	0m0.418s
+real	0m0.002s
+user	0m0.000s
+sys	0m0.002s
 
 ===============================================================================
 
 gomarkdoc --output house-doc.md
 
-real	0m0.071s
-user	0m0.031s
-sys	0m0.030s
+real	0m0.009s
+user	0m0.005s
+sys	0m0.004s
 
 ===============================================================================
 
@@ -383,9 +947,9 @@ func Verse(level int) string
     Verse returns a specific verse from the nursery rhyme.
 
 
-real	0m0.215s
-user	0m0.096s
-sys	0m0.204s
+real	0m0.037s
+user	0m0.025s
+sys	0m0.032s
 
 
 ===============================================================================

@@ -5,15 +5,652 @@ Go packages: electionday
 
 ===============================================================================
 
-golint electionday
+Running: ../../.github/citools/go/go-lint-golangci-lint
 
-real	0m0.293s
-user	0m0.257s
-sys	0m0.272s
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.031s
+user	0m0.022s
+sys	0m0.034s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+election_day.go:30:61: Comment should end in a period (godot)
+// IncrementVoteCount increments the value in a vote counter
+                                                            ^
+election_day.go:39:51: Comment should end in a period (godot)
+// NewElectionResult creates a new election result
+                                                  ^
+election_day.go:49:67: Comment should end in a period (godot)
+// DisplayResult creates a message with the result to be displayed
+                                                                  ^
+election_day_examples_test.go:79: File is not `gofumpt`-ed (gofumpt)
+	var finalResults = map[string]int{
+election_day.go:41:13: var-declaration: should omit type ElectionResult from declaration of var result; it will be inferred from the right-hand side (revive)
+	var result ElectionResult = ElectionResult{
+	           ^
+election_day_test.go:21:26: Using the variable on range scope `tt` in function literal (scopelint)
+			got := NewVoteCounter(tt.votes)
+			                      ^
+election_day_test.go:23:46: Using the variable on range scope `tt` in function literal (scopelint)
+				t.Errorf("NewVoteCounter(%d) = %s, &%d", tt.votes, intPtrRepresentation(got), tt.votes)
+				                                         ^
+election_day_test.go:25:29: Using the variable on range scope `tt` in function literal (scopelint)
+			if got != nil && *got != tt.votes {
+			                         ^
+election_day_examples_test.go:9:2: declarations should never be cuddled (wsl)
+	var counter *int
+	^
+election_day_examples_test.go:37:2: declarations should never be cuddled (wsl)
+	var voteCounter *int
+	^
+election_day_test.go:196:2: return statements should not be cuddled if block has more than two lines (wsl)
+	return "&" + strconv.Itoa(*p)
+	^
+election_day_examples_test.go:48:2: Duplicate words (true) found (dupword)
+	// true
+	^
+election_day_examples_test.go:60:2: Duplicate words (true) found (dupword)
+	// true
+	^
+election_day.go:10:2: S1021: should merge variable declaration with assignment on next line (gosimple)
+	var counter *int
+	^
+election_day.go:51:2: S1021: should merge variable declaration with assignment on next line (gosimple)
+	var message string
+	^
+election_day_examples_test.go:20:2: S1021: should merge variable declaration with assignment on next line (gosimple)
+	var votes int
+	^
+election_day_test.go:8:1: Function TestNewVoteCounter missing the call to method parallel (paralleltest)
+func TestNewVoteCounter(t *testing.T) {
+^
+election_day_test.go:19:2: Range statement for test TestNewVoteCounter missing the call to method parallel in test Run (paralleltest)
+	for _, tt := range tests {
+	^
+election_day_test.go:32:1: Function TestVoteCount missing the call to method parallel (paralleltest)
+func TestVoteCount(t *testing.T) {
+^
+election_day_test.go:52:2: Range statement for test TestVoteCount missing the call to method parallel in test Run (paralleltest)
+	for _, tt := range tests {
+	^
+election_day_test.go:61:1: Function TestIncrementVoteCount missing the call to method parallel (paralleltest)
+func TestIncrementVoteCount(t *testing.T) {
+^
+election_day_test.go:92:2: Range statement for test TestIncrementVoteCount missing the call to method parallel in test Run (paralleltest)
+	for _, tt := range tests {
+	^
+election_day_test.go:109:1: Function TestNewElectionResult missing the call to method parallel (paralleltest)
+func TestNewElectionResult(t *testing.T) {
+^
+election_day_test.go:127:2: Range statement for test TestNewElectionResult missing the call to method parallel in test Run (paralleltest)
+	for _, tt := range tests {
+	^
+election_day_test.go:139:1: Function TestDisplayResult missing the call to method parallel (paralleltest)
+func TestDisplayResult(t *testing.T) {
+^
+election_day_test.go:155:2: Range statement for test TestDisplayResult missing the call to method parallel in test Run (paralleltest)
+	for _, tt := range tests {
+	^
+election_day_test.go:164:1: Function TestDecrementVotesOfCandidate missing the call to method parallel (paralleltest)
+func TestDecrementVotesOfCandidate(t *testing.T) {
+^
+election_day_test.go:181:2: Range statement for test TestDecrementVotesOfCandidate missing the call to method parallel in test Run (paralleltest)
+	for _, tt := range tests {
+	^
+election_day_examples_test.go:1:9: package should be `electionday_test` instead of `electionday` (testpackage)
+package electionday
+        ^
+election_day_test.go:1:9: package should be `electionday_test` instead of `electionday` (testpackage)
+package electionday
+        ^
+
+real	0m0.479s
+user	0m0.693s
+sys	0m0.443s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.535s
+user	0m0.727s
+sys	0m0.491s
+
+real	0m0.538s
+user	0m0.728s
+sys	0m0.493s
 
 ===============================================================================
 
-go test -v -covermode=count -coverprofile coverage.out electionday
+Running: ../../.github/citools/go/go-lint-revive
+
+Running Go Lint Revive
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.022s
+user	0m0.013s
+sys	0m0.030s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
+election_day.go
+  (1, 1)    https://revive.run/r#package-comments  should have a package comment                                                                                 
+  (41, 13)  https://revive.run/r#var-declaration   should omit type ElectionResult from declaration of var result; it will be inferred from the right-hand side  
+
+
+ ✖ 2 problems (0 errors) (2 warnings)
+
+real	0m0.038s
+user	0m0.027s
+sys	0m0.025s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.072s
+user	0m0.047s
+sys	0m0.062s
+
+real	0m0.074s
+user	0m0.049s
+sys	0m0.063s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
+
+real	0m0.001s
+user	0m0.001s
+sys	0m0.000s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.042s
+user	0m0.024s
+sys	0m0.045s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
+	info: check "./."
+internal error: package "fmt" without types was imported from "electionday"
+
+real	0m0.108s
+user	0m0.141s
+sys	0m0.159s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.168s
+user	0m0.171s
+sys	0m0.221s
+
+real	0m0.169s
+user	0m0.172s
+sys	0m0.222s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-staticcheck
+
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.022s
+user	0m0.015s
+sys	0m0.021s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+election_day.go:1:1: at least one file in a package should have a package comment (ST1000)
+election_day.go:10:2: should merge variable declaration with assignment on next line (S1021)
+election_day.go:41:13: should omit type ElectionResult from declaration; it will be inferred from the right-hand side (ST1023)
+election_day.go:51:2: should merge variable declaration with assignment on next line (S1021)
+election_day_examples_test.go:20:2: should merge variable declaration with assignment on next line (S1021)
+election_day_examples_test.go:23:2: should merge variable declaration with assignment on next line (S1021)
+election_day_examples_test.go:52:2: should merge variable declaration with assignment on next line (S1021)
+election_day_examples_test.go:64:2: should merge variable declaration with assignment on next line (S1021)
+election_result.go:1:1: at least one file in a package should have a package comment (ST1000)
+
+real	0m0.176s
+user	0m0.214s
+sys	0m0.138s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.208s
+user	0m0.235s
+sys	0m0.166s
+
+real	0m0.210s
+user	0m0.235s
+sys	0m0.168s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocritic
+
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.023s
+user	0m0.025s
+sys	0m0.020s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+
+real	0m0.776s
+user	0m1.862s
+sys	0m0.326s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.810s
+user	0m1.890s
+sys	0m0.360s
+
+real	0m0.812s
+user	0m1.891s
+sys	0m0.361s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go_vet
+
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.021s
+user	0m0.011s
+sys	0m0.024s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.079s
+user	0m0.098s
+sys	0m0.097s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.110s
+user	0m0.115s
+sys	0m0.128s
+
+real	0m0.112s
+user	0m0.116s
+sys	0m0.129s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-fixer-go_fix
+
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.022s
+user	0m0.016s
+sys	0m0.018s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.025s
+user	0m0.019s
+sys	0m0.023s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.058s
+user	0m0.041s
+sys	0m0.049s
+
+real	0m0.060s
+user	0m0.043s
+sys	0m0.050s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-errcheck
+
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.026s
+user	0m0.022s
+sys	0m0.024s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+
+real	0m0.456s
+user	0m1.351s
+sys	0m0.218s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.494s
+user	0m1.377s
+sys	0m0.255s
+
+real	0m0.497s
+user	0m1.377s
+sys	0m0.257s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.036s
+user	0m0.027s
+sys	0m0.037s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
+5 electionday TestNewElectionResult election_day_test.go:109:1
+5 electionday TestIncrementVoteCount election_day_test.go:61:1
+5 electionday TestNewVoteCounter election_day_test.go:8:1
+4 electionday TestDecrementVotesOfCandidate election_day_test.go:164:1
+4 electionday DecrementVotesOfCandidate election_day.go:59:1
+3 electionday TestDisplayResult election_day_test.go:139:1
+3 electionday TestVoteCount election_day_test.go:32:1
+2 electionday intPtrRepresentation election_day_test.go:192:1
+2 electionday IncrementVoteCount election_day.go:31:1
+2 electionday VoteCount election_day.go:18:1
+1 electionday ExampleDecrementVotesOfCandidate election_day_examples_test.go:78:1
+1 electionday ExampleDisplayResult election_day_examples_test.go:63:1
+1 electionday ExampleNewElectionResult election_day_examples_test.go:51:1
+1 electionday ExampleIncrementVoteCount election_day_examples_test.go:35:1
+1 electionday ExampleVoteCount election_day_examples_test.go:19:1
+1 electionday ExampleNewVoteCounter election_day_examples_test.go:7:1
+1 electionday DisplayResult election_day.go:50:1
+1 electionday NewElectionResult election_day.go:40:1
+1 electionday NewVoteCounter election_day.go:9:1
+
+real	0m0.004s
+user	0m0.002s
+sys	0m0.003s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.055s
+user	0m0.034s
+sys	0m0.053s
+
+real	0m0.058s
+user	0m0.035s
+sys	0m0.055s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-misspell
+
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+
+real	0m0.034s
+user	0m0.032s
+sys	0m0.016s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.054s
+user	0m0.041s
+sys	0m0.034s
+
+real	0m0.057s
+user	0m0.043s
+sys	0m0.035s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gosec
+
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.021s
+user	0m0.015s
+sys	0m0.024s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:22:56 Including rules: default
+[gosec] 2023/09/07 00:22:56 Excluding rules: default
+[gosec] 2023/09/07 00:22:56 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/election-day
+[gosec] 2023/09/07 00:22:56 Checking package: electionday
+[gosec] 2023/09/07 00:22:56 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/election-day/election_day.go
+[gosec] 2023/09/07 00:22:56 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/election-day/election_result.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 2
+  Lines  : 74
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.124s
+user	0m0.146s
+sys	0m0.106s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.157s
+user	0m0.169s
+sys	0m0.137s
+
+real	0m0.159s
+user	0m0.170s
+sys	0m0.137s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.035s
+user	0m0.034s
+sys	0m0.030s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
 === RUN   TestNewVoteCounter
 === RUN   TestNewVoteCounter/Simple_vote_counter_with_2_votes
 --- PASS: TestNewVoteCounter (0.00s)
@@ -58,15 +695,17 @@ go test -v -covermode=count -coverprofile coverage.out electionday
 --- PASS: ExampleDecrementVotesOfCandidate (0.00s)
 PASS
 coverage: 94.7% of statements
-ok  	electionday	0.017s	coverage: 94.7% of statements
+ok  	electionday	0.002s	coverage: 94.7% of statements
 
-real	0m2.018s
-user	0m2.235s
-sys	0m1.467s
+real	0m0.206s
+user	0m0.287s
+sys	0m0.190s
 
-===============================================================================
 
-go tool cover -func=coverage.out
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
 electionday/election_day.go:9:	NewVoteCounter			100.0%
 electionday/election_day.go:18:	VoteCount			100.0%
 electionday/election_day.go:31:	IncrementVoteCount		66.7%
@@ -75,21 +714,49 @@ electionday/election_day.go:50:	DisplayResult			100.0%
 electionday/election_day.go:59:	DecrementVotesOfCandidate	100.0%
 total:				(statements)			94.7%
 
-real	0m0.445s
-user	0m0.370s
-sys	0m0.428s
+real	0m0.050s
+user	0m0.059s
+sys	0m0.064s
 
-===============================================================================
 
-go tool cover -html coverage.out -o coverage.html
+ ==============================================================================
 
-real	0m0.468s
-user	0m0.482s
-sys	0m0.418s
+Running: go tool cover -html coverage.out -o coverage.html
 
-===============================================================================
 
-go test -v -race -covermode=atomic electionday
+real	0m0.048s
+user	0m0.063s
+sys	0m0.083s
+
+
+ ==============================================================================
+
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+31     	func IncrementVoteCount(counter *int, increment int) {
+32     		if counter != nil {
+33     			*counter += increment
+34     		} else {
+35 MISS			*counter = increment
+36     		}
+37     	}
+
+
+real	0m0.022s
+user	0m0.014s
+sys	0m0.028s
+
+real	0m0.022s
+user	0m0.014s
+sys	0m0.028s
+
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
 === RUN   TestNewVoteCounter
 === RUN   TestNewVoteCounter/Simple_vote_counter_with_2_votes
 --- PASS: TestNewVoteCounter (0.00s)
@@ -134,71 +801,105 @@ go test -v -race -covermode=atomic electionday
 --- PASS: ExampleDecrementVotesOfCandidate (0.00s)
 PASS
 coverage: 94.7% of statements
-ok  	electionday	0.080s	coverage: 94.7% of statements
+ok  	electionday	1.015s	coverage: 94.7% of statements
 
-real	0m1.739s
-user	0m1.511s
-sys	0m0.975s
+real	0m1.278s
+user	0m0.314s
+sys	0m0.185s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.658s
+user	0m0.782s
+sys	0m0.594s
+
+real	0m1.661s
+user	0m0.784s
+sys	0m0.595s
 
 ===============================================================================
 
-go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+mv -v benchstat-new.txt benchstat-old.txt
+renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
+
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 PASS
-ok  	electionday	0.028s
+ok  	electionday	0.002s
 
-real	0m1.098s
-user	0m1.389s
-sys	0m0.947s
+real	0m0.144s
+user	0m0.183s
+sys	0m0.161s
 
 ===============================================================================
 
-go test -tags bonus
+gotest -v -tags bonus
+=== RUN   TestNewVoteCounter
+=== RUN   TestNewVoteCounter/Simple_vote_counter_with_2_votes
+--- PASS: TestNewVoteCounter (0.00s)
+    --- PASS: TestNewVoteCounter/Simple_vote_counter_with_2_votes (0.00s)
+=== RUN   TestVoteCount
+=== RUN   TestVoteCount/Call_to_VoteCount_with_a_nil_argument
+=== RUN   TestVoteCount/Call_to_VoteCount_with_a_pointer_to_an_int_with_a_value_of_2
+--- PASS: TestVoteCount (0.00s)
+    --- PASS: TestVoteCount/Call_to_VoteCount_with_a_nil_argument (0.00s)
+    --- PASS: TestVoteCount/Call_to_VoteCount_with_a_pointer_to_an_int_with_a_value_of_2 (0.00s)
+=== RUN   TestIncrementVoteCount
+=== RUN   TestIncrementVoteCount/Call_to_IncrementVoteCount_with_a_pointer_to_an_int_with_a_value_of_0_and_increment_of_1
+=== RUN   TestIncrementVoteCount/Call_to_IncrementVoteCount_with_a_pointer_to_an_int_with_a_value_of_2_and_increment_of_2
+=== RUN   TestIncrementVoteCount/Call_to_IncrementVoteCount_with_a_pointer_to_an_int_with_a_value_of_5_and_increment_of_7
+--- PASS: TestIncrementVoteCount (0.00s)
+    --- PASS: TestIncrementVoteCount/Call_to_IncrementVoteCount_with_a_pointer_to_an_int_with_a_value_of_0_and_increment_of_1 (0.00s)
+    --- PASS: TestIncrementVoteCount/Call_to_IncrementVoteCount_with_a_pointer_to_an_int_with_a_value_of_2_and_increment_of_2 (0.00s)
+    --- PASS: TestIncrementVoteCount/Call_to_IncrementVoteCount_with_a_pointer_to_an_int_with_a_value_of_5_and_increment_of_7 (0.00s)
+=== RUN   TestNewElectionResult
+=== RUN   TestNewElectionResult/Call_to_NewElectionResult_for_Peter_with_2_votes
+--- PASS: TestNewElectionResult (0.00s)
+    --- PASS: TestNewElectionResult/Call_to_NewElectionResult_for_Peter_with_2_votes (0.00s)
+=== RUN   TestDisplayResult
+=== RUN   TestDisplayResult/Call_to_DisplayResult_for_John_with_5_votes
+--- PASS: TestDisplayResult (0.00s)
+    --- PASS: TestDisplayResult/Call_to_DisplayResult_for_John_with_5_votes (0.00s)
+=== RUN   TestDecrementVotesOfCandidate
+=== RUN   TestDecrementVotesOfCandidate/Call_to_DecrementVotesOfCandidate_for_John_with_3_votes
+--- PASS: TestDecrementVotesOfCandidate (0.00s)
+    --- PASS: TestDecrementVotesOfCandidate/Call_to_DecrementVotesOfCandidate_for_John_with_3_votes (0.00s)
+=== RUN   ExampleNewVoteCounter
+--- PASS: ExampleNewVoteCounter (0.00s)
+=== RUN   ExampleVoteCount
+--- PASS: ExampleVoteCount (0.00s)
+=== RUN   ExampleIncrementVoteCount
+--- PASS: ExampleIncrementVoteCount (0.00s)
+=== RUN   ExampleNewElectionResult
+--- PASS: ExampleNewElectionResult (0.00s)
+=== RUN   ExampleDisplayResult
+--- PASS: ExampleDisplayResult (0.00s)
+=== RUN   ExampleDecrementVotesOfCandidate
+--- PASS: ExampleDecrementVotesOfCandidate (0.00s)
 PASS
-ok  	electionday	0.019s
+ok  	electionday	0.002s
 
-real	0m0.882s
-user	0m1.016s
-sys	0m0.592s
-
-===============================================================================
-
-No old benchmarks to run benchstat against.
+real	0m0.129s
+user	0m0.173s
+sys	0m0.134s
 
 ===============================================================================
 
-go vet electionday
+benchstat benchstat-old.txt benchstat-new.txt
 
-real	0m0.736s
-user	0m0.867s
-sys	0m0.670s
-
-===============================================================================
-
-go fix electionday
-
-real	0m0.264s
-user	0m0.306s
-sys	0m0.246s
-
-===============================================================================
-
-gosec ./election-day
-[gosec] 2022/07/28 07:52:51 Including rules: default
-[gosec] 2022/07/28 07:52:51 Excluding rules: default
-[gosec] 2022/07/28 07:52:51 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/election-day
-2022/07/28 07:52:52 internal error: package "fmt" without types was imported from "command-line-arguments"
-
-real	0m0.818s
-user	0m1.030s
-sys	0m0.601s
+real	0m0.002s
+user	0m0.000s
+sys	0m0.002s
 
 ===============================================================================
 
 gomarkdoc --output electionday-doc.md
 
-real	0m0.101s
-user	0m0.059s
-sys	0m0.041s
+real	0m0.010s
+user	0m0.007s
+sys	0m0.003s
 
 ===============================================================================
 
@@ -240,9 +941,9 @@ func NewElectionResult(candidateName string, votes int) *ElectionResult
     NewElectionResult creates a new election result
 
 
-real	0m0.440s
-user	0m0.437s
-sys	0m0.399s
+real	0m0.036s
+user	0m0.022s
+sys	0m0.033s
 
 
 ===============================================================================

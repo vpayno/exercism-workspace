@@ -6,7 +6,7 @@
 import "anagram"
 ```
 
-Package anagram is a rearrangement of letters to form a new word\.
+Package anagram is a rearrangement of letters to form a new word.
 
 ## Index
 
@@ -19,7 +19,7 @@ Package anagram is a rearrangement of letters to form a new word\.
 func Detect(subject string, candidates []string) []string
 ```
 
-Detect returns a string slice anagram of the passed string\.
+Detect returns a string slice anagram of the passed string.
 
 <details><summary>Example</summary>
 <p>

@@ -5,120 +5,800 @@ Go packages: raindrops
 
 ===============================================================================
 
-golint raindrops
+Running: ../../.github/citools/go/go-lint-golangci-lint
 
-real	0m0.177s
-user	0m0.193s
-sys	0m0.185s
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.024s
+user	0m0.019s
+sys	0m0.031s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+raindrops.go:1: line is 126 characters (lll)
+// Package raindrops converts a number into a string that contains raindrop sounds corresponding to certain potential factors.
+raindrops_test.go:8:25: Using the variable on range scope `tc` in function literal (scopelint)
+			if actual := Convert(tc.input); actual != tc.expected {
+			                     ^
+raindrops_test.go:9:44: Using the variable on range scope `tc` in function literal (scopelint)
+				t.Fatalf("Convert(%d) = %q, want: %q", tc.input, actual, tc.expected)
+				                                       ^
+raindrops_test.go:19:2: for statements should only be cuddled with assignments used in the iteration (wsl)
+	for i := 0; i < b.N; i++ {
+	^
+cases_test.go:6:5: testCases is a global variable (gochecknoglobals)
+var testCases = []struct {
+    ^
+raindrops.go:14:14: mnd: Magic number: 15, in <argument> detected (gomnd)
+	sounds.Grow(15)
+	            ^
+raindrops_test.go:5:1: Function TestConvert missing the call to method parallel (paralleltest)
+func TestConvert(t *testing.T) {
+^
+raindrops_test.go:6:2: Range statement for test TestConvert missing the call to method parallel in test Run (paralleltest)
+	for _, tc := range testCases {
+	^
+cases_test.go:1:9: package should be `raindrops_test` instead of `raindrops` (testpackage)
+package raindrops
+        ^
+raindrops_examples_test.go:1:9: package should be `raindrops_test` instead of `raindrops` (testpackage)
+package raindrops
+        ^
+raindrops_test.go:1:9: package should be `raindrops_test` instead of `raindrops` (testpackage)
+package raindrops
+        ^
+
+real	0m0.471s
+user	0m0.721s
+sys	0m0.531s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.505s
+user	0m0.744s
+sys	0m0.570s
+
+real	0m0.506s
+user	0m0.745s
+sys	0m0.572s
 
 ===============================================================================
 
-go test -v -covermode=count -coverprofile coverage.out raindrops
+Running: ../../.github/citools/go/go-lint-revive
+
+Running Go Lint Revive
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.024s
+user	0m0.021s
+sys	0m0.022s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
+
+real	0m0.043s
+user	0m0.019s
+sys	0m0.034s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.077s
+user	0m0.045s
+sys	0m0.065s
+
+real	0m0.079s
+user	0m0.046s
+sys	0m0.067s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
+
+real	0m0.001s
+user	0m0.001s
+sys	0m0.000s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.034s
+user	0m0.027s
+sys	0m0.036s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
+	info: check "./."
+internal error: package "fmt" without types was imported from "raindrops"
+
+real	0m0.095s
+user	0m0.145s
+sys	0m0.122s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.148s
+user	0m0.179s
+sys	0m0.176s
+
+real	0m0.151s
+user	0m0.181s
+sys	0m0.177s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-staticcheck
+
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.022s
+user	0m0.017s
+sys	0m0.022s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+
+real	0m0.170s
+user	0m0.212s
+sys	0m0.120s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.204s
+user	0m0.235s
+sys	0m0.152s
+
+real	0m0.207s
+user	0m0.238s
+sys	0m0.152s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocritic
+
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.022s
+user	0m0.022s
+sys	0m0.018s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+
+real	0m0.879s
+user	0m2.046s
+sys	0m0.346s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.918s
+user	0m2.079s
+sys	0m0.376s
+
+real	0m0.920s
+user	0m2.080s
+sys	0m0.377s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go_vet
+
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.022s
+user	0m0.021s
+sys	0m0.030s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.091s
+user	0m0.161s
+sys	0m0.133s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.125s
+user	0m0.190s
+sys	0m0.172s
+
+real	0m0.127s
+user	0m0.191s
+sys	0m0.173s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-fixer-go_fix
+
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.027s
+user	0m0.035s
+sys	0m0.017s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.023s
+user	0m0.019s
+sys	0m0.024s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.063s
+user	0m0.064s
+sys	0m0.047s
+
+real	0m0.065s
+user	0m0.065s
+sys	0m0.047s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-errcheck
+
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.026s
+user	0m0.020s
+sys	0m0.029s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+
+real	0m0.472s
+user	0m1.310s
+sys	0m0.292s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.510s
+user	0m1.336s
+sys	0m0.331s
+
+real	0m0.512s
+user	0m1.338s
+sys	0m0.331s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.029s
+user	0m0.016s
+sys	0m0.028s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
+5 raindrops Convert raindrops.go:10:1
+4 raindrops BenchmarkConvert raindrops_test.go:15:1
+3 raindrops TestConvert raindrops_test.go:5:1
+2 raindrops ExampleConvert raindrops_examples_test.go:7:1
+
+real	0m0.003s
+user	0m0.000s
+sys	0m0.003s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.043s
+user	0m0.020s
+sys	0m0.043s
+
+real	0m0.045s
+user	0m0.020s
+sys	0m0.044s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-misspell
+
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+
+real	0m0.031s
+user	0m0.030s
+sys	0m0.017s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.049s
+user	0m0.040s
+sys	0m0.034s
+
+real	0m0.054s
+user	0m0.042s
+sys	0m0.036s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gosec
+
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.030s
+user	0m0.015s
+sys	0m0.035s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:29:23 Including rules: default
+[gosec] 2023/09/07 00:29:23 Excluding rules: default
+[gosec] 2023/09/07 00:29:23 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/raindrops
+[gosec] 2023/09/07 00:29:23 Checking package: raindrops
+[gosec] 2023/09/07 00:29:23 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/raindrops/raindrops.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 39
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.127s
+user	0m0.132s
+sys	0m0.111s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.173s
+user	0m0.154s
+sys	0m0.162s
+
+real	0m0.176s
+user	0m0.155s
+sys	0m0.163s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.029s
+user	0m0.027s
+sys	0m0.028s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
 === RUN   TestConvert
+=== RUN   TestConvert/the_sound_for_1_is_1
+=== RUN   TestConvert/the_sound_for_3_is_Pling
+=== RUN   TestConvert/the_sound_for_5_is_Plang
+=== RUN   TestConvert/the_sound_for_7_is_Plong
+=== RUN   TestConvert/the_sound_for_6_is_Pling_as_it_has_a_factor_3
+=== RUN   TestConvert/2_to_the_power_3_does_not_make_a_raindrop_sound_as_3_is_the_exponent_not_the_base
+=== RUN   TestConvert/the_sound_for_9_is_Pling_as_it_has_a_factor_3
+=== RUN   TestConvert/the_sound_for_10_is_Plang_as_it_has_a_factor_5
+=== RUN   TestConvert/the_sound_for_14_is_Plong_as_it_has_a_factor_of_7
+=== RUN   TestConvert/the_sound_for_15_is_PlingPlang_as_it_has_factors_3_and_5
+=== RUN   TestConvert/the_sound_for_21_is_PlingPlong_as_it_has_factors_3_and_7
+=== RUN   TestConvert/the_sound_for_25_is_Plang_as_it_has_a_factor_5
+=== RUN   TestConvert/the_sound_for_27_is_Pling_as_it_has_a_factor_3
+=== RUN   TestConvert/the_sound_for_35_is_PlangPlong_as_it_has_factors_5_and_7
+=== RUN   TestConvert/the_sound_for_49_is_Plong_as_it_has_a_factor_7
+=== RUN   TestConvert/the_sound_for_52_is_52
+=== RUN   TestConvert/the_sound_for_105_is_PlingPlangPlong_as_it_has_factors_3,_5_and_7
+=== RUN   TestConvert/the_sound_for_3125_is_Plang_as_it_has_a_factor_5
 --- PASS: TestConvert (0.00s)
+    --- PASS: TestConvert/the_sound_for_1_is_1 (0.00s)
+    --- PASS: TestConvert/the_sound_for_3_is_Pling (0.00s)
+    --- PASS: TestConvert/the_sound_for_5_is_Plang (0.00s)
+    --- PASS: TestConvert/the_sound_for_7_is_Plong (0.00s)
+    --- PASS: TestConvert/the_sound_for_6_is_Pling_as_it_has_a_factor_3 (0.00s)
+    --- PASS: TestConvert/2_to_the_power_3_does_not_make_a_raindrop_sound_as_3_is_the_exponent_not_the_base (0.00s)
+    --- PASS: TestConvert/the_sound_for_9_is_Pling_as_it_has_a_factor_3 (0.00s)
+    --- PASS: TestConvert/the_sound_for_10_is_Plang_as_it_has_a_factor_5 (0.00s)
+    --- PASS: TestConvert/the_sound_for_14_is_Plong_as_it_has_a_factor_of_7 (0.00s)
+    --- PASS: TestConvert/the_sound_for_15_is_PlingPlang_as_it_has_factors_3_and_5 (0.00s)
+    --- PASS: TestConvert/the_sound_for_21_is_PlingPlong_as_it_has_factors_3_and_7 (0.00s)
+    --- PASS: TestConvert/the_sound_for_25_is_Plang_as_it_has_a_factor_5 (0.00s)
+    --- PASS: TestConvert/the_sound_for_27_is_Pling_as_it_has_a_factor_3 (0.00s)
+    --- PASS: TestConvert/the_sound_for_35_is_PlangPlong_as_it_has_factors_5_and_7 (0.00s)
+    --- PASS: TestConvert/the_sound_for_49_is_Plong_as_it_has_a_factor_7 (0.00s)
+    --- PASS: TestConvert/the_sound_for_52_is_52 (0.00s)
+    --- PASS: TestConvert/the_sound_for_105_is_PlingPlangPlong_as_it_has_factors_3,_5_and_7 (0.00s)
+    --- PASS: TestConvert/the_sound_for_3125_is_Plang_as_it_has_a_factor_5 (0.00s)
 === RUN   ExampleConvert
 --- PASS: ExampleConvert (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	raindrops	0.009s	coverage: 100.0% of statements
+ok  	raindrops	0.002s	coverage: 100.0% of statements
 
-real	0m0.625s
-user	0m0.631s
-sys	0m0.541s
+real	0m0.226s
+user	0m0.286s
+sys	0m0.195s
 
-===============================================================================
 
-go tool cover -func=coverage.out
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
 raindrops/raindrops.go:10:	Convert		100.0%
 total:				(statements)	100.0%
 
-real	0m0.215s
-user	0m0.231s
-sys	0m0.194s
+real	0m0.066s
+user	0m0.081s
+sys	0m0.096s
 
-===============================================================================
 
-go test -v -race -covermode=atomic raindrops
+ ==============================================================================
+
+Running: go tool cover -html coverage.out -o coverage.html
+
+
+real	0m0.052s
+user	0m0.069s
+sys	0m0.069s
+
+
+ ==============================================================================
+
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+real	0m0.023s
+user	0m0.025s
+sys	0m0.027s
+
+real	0m0.023s
+user	0m0.025s
+sys	0m0.027s
+
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
 === RUN   TestConvert
+=== RUN   TestConvert/the_sound_for_1_is_1
+=== RUN   TestConvert/the_sound_for_3_is_Pling
+=== RUN   TestConvert/the_sound_for_5_is_Plang
+=== RUN   TestConvert/the_sound_for_7_is_Plong
+=== RUN   TestConvert/the_sound_for_6_is_Pling_as_it_has_a_factor_3
+=== RUN   TestConvert/2_to_the_power_3_does_not_make_a_raindrop_sound_as_3_is_the_exponent_not_the_base
+=== RUN   TestConvert/the_sound_for_9_is_Pling_as_it_has_a_factor_3
+=== RUN   TestConvert/the_sound_for_10_is_Plang_as_it_has_a_factor_5
+=== RUN   TestConvert/the_sound_for_14_is_Plong_as_it_has_a_factor_of_7
+=== RUN   TestConvert/the_sound_for_15_is_PlingPlang_as_it_has_factors_3_and_5
+=== RUN   TestConvert/the_sound_for_21_is_PlingPlong_as_it_has_factors_3_and_7
+=== RUN   TestConvert/the_sound_for_25_is_Plang_as_it_has_a_factor_5
+=== RUN   TestConvert/the_sound_for_27_is_Pling_as_it_has_a_factor_3
+=== RUN   TestConvert/the_sound_for_35_is_PlangPlong_as_it_has_factors_5_and_7
+=== RUN   TestConvert/the_sound_for_49_is_Plong_as_it_has_a_factor_7
+=== RUN   TestConvert/the_sound_for_52_is_52
+=== RUN   TestConvert/the_sound_for_105_is_PlingPlangPlong_as_it_has_factors_3,_5_and_7
+=== RUN   TestConvert/the_sound_for_3125_is_Plang_as_it_has_a_factor_5
 --- PASS: TestConvert (0.00s)
+    --- PASS: TestConvert/the_sound_for_1_is_1 (0.00s)
+    --- PASS: TestConvert/the_sound_for_3_is_Pling (0.00s)
+    --- PASS: TestConvert/the_sound_for_5_is_Plang (0.00s)
+    --- PASS: TestConvert/the_sound_for_7_is_Plong (0.00s)
+    --- PASS: TestConvert/the_sound_for_6_is_Pling_as_it_has_a_factor_3 (0.00s)
+    --- PASS: TestConvert/2_to_the_power_3_does_not_make_a_raindrop_sound_as_3_is_the_exponent_not_the_base (0.00s)
+    --- PASS: TestConvert/the_sound_for_9_is_Pling_as_it_has_a_factor_3 (0.00s)
+    --- PASS: TestConvert/the_sound_for_10_is_Plang_as_it_has_a_factor_5 (0.00s)
+    --- PASS: TestConvert/the_sound_for_14_is_Plong_as_it_has_a_factor_of_7 (0.00s)
+    --- PASS: TestConvert/the_sound_for_15_is_PlingPlang_as_it_has_factors_3_and_5 (0.00s)
+    --- PASS: TestConvert/the_sound_for_21_is_PlingPlong_as_it_has_factors_3_and_7 (0.00s)
+    --- PASS: TestConvert/the_sound_for_25_is_Plang_as_it_has_a_factor_5 (0.00s)
+    --- PASS: TestConvert/the_sound_for_27_is_Pling_as_it_has_a_factor_3 (0.00s)
+    --- PASS: TestConvert/the_sound_for_35_is_PlangPlong_as_it_has_factors_5_and_7 (0.00s)
+    --- PASS: TestConvert/the_sound_for_49_is_Plong_as_it_has_a_factor_7 (0.00s)
+    --- PASS: TestConvert/the_sound_for_52_is_52 (0.00s)
+    --- PASS: TestConvert/the_sound_for_105_is_PlingPlangPlong_as_it_has_factors_3,_5_and_7 (0.00s)
+    --- PASS: TestConvert/the_sound_for_3125_is_Plang_as_it_has_a_factor_5 (0.00s)
 === RUN   ExampleConvert
 --- PASS: ExampleConvert (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	raindrops	(cached)	coverage: 100.0% of statements
+ok  	raindrops	1.012s	coverage: 100.0% of statements
 
-real	0m0.281s
-user	0m0.292s
-sys	0m0.255s
+real	0m1.225s
+user	0m0.244s
+sys	0m0.153s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.637s
+user	0m0.739s
+sys	0m0.582s
+
+real	0m1.640s
+user	0m0.741s
+sys	0m0.582s
 
 ===============================================================================
 
-go test --bench . --benchmem
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 goos: linux
 goarch: amd64
 pkg: raindrops
-cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
-BenchmarkConvert-4   	  835659	      1322 ns/op	     290 B/op	      19 allocs/op
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+BenchmarkConvert
+BenchmarkConvert-8   	 1866162	       644.3 ns/op	     290 B/op	      19 allocs/op
 PASS
-ok  	raindrops	1.173s
+ok  	raindrops	1.861s
 
-real	0m1.645s
-user	0m2.197s
-sys	0m0.402s
+real	0m2.024s
+user	0m2.112s
+sys	0m0.161s
 
 ===============================================================================
 
-go test -tags bonus
+gotest -v -tags bonus
+=== RUN   TestConvert
+=== RUN   TestConvert/the_sound_for_1_is_1
+=== RUN   TestConvert/the_sound_for_3_is_Pling
+=== RUN   TestConvert/the_sound_for_5_is_Plang
+=== RUN   TestConvert/the_sound_for_7_is_Plong
+=== RUN   TestConvert/the_sound_for_6_is_Pling_as_it_has_a_factor_3
+=== RUN   TestConvert/2_to_the_power_3_does_not_make_a_raindrop_sound_as_3_is_the_exponent_not_the_base
+=== RUN   TestConvert/the_sound_for_9_is_Pling_as_it_has_a_factor_3
+=== RUN   TestConvert/the_sound_for_10_is_Plang_as_it_has_a_factor_5
+=== RUN   TestConvert/the_sound_for_14_is_Plong_as_it_has_a_factor_of_7
+=== RUN   TestConvert/the_sound_for_15_is_PlingPlang_as_it_has_factors_3_and_5
+=== RUN   TestConvert/the_sound_for_21_is_PlingPlong_as_it_has_factors_3_and_7
+=== RUN   TestConvert/the_sound_for_25_is_Plang_as_it_has_a_factor_5
+=== RUN   TestConvert/the_sound_for_27_is_Pling_as_it_has_a_factor_3
+=== RUN   TestConvert/the_sound_for_35_is_PlangPlong_as_it_has_factors_5_and_7
+=== RUN   TestConvert/the_sound_for_49_is_Plong_as_it_has_a_factor_7
+=== RUN   TestConvert/the_sound_for_52_is_52
+=== RUN   TestConvert/the_sound_for_105_is_PlingPlangPlong_as_it_has_factors_3,_5_and_7
+=== RUN   TestConvert/the_sound_for_3125_is_Plang_as_it_has_a_factor_5
+--- PASS: TestConvert (0.00s)
+    --- PASS: TestConvert/the_sound_for_1_is_1 (0.00s)
+    --- PASS: TestConvert/the_sound_for_3_is_Pling (0.00s)
+    --- PASS: TestConvert/the_sound_for_5_is_Plang (0.00s)
+    --- PASS: TestConvert/the_sound_for_7_is_Plong (0.00s)
+    --- PASS: TestConvert/the_sound_for_6_is_Pling_as_it_has_a_factor_3 (0.00s)
+    --- PASS: TestConvert/2_to_the_power_3_does_not_make_a_raindrop_sound_as_3_is_the_exponent_not_the_base (0.00s)
+    --- PASS: TestConvert/the_sound_for_9_is_Pling_as_it_has_a_factor_3 (0.00s)
+    --- PASS: TestConvert/the_sound_for_10_is_Plang_as_it_has_a_factor_5 (0.00s)
+    --- PASS: TestConvert/the_sound_for_14_is_Plong_as_it_has_a_factor_of_7 (0.00s)
+    --- PASS: TestConvert/the_sound_for_15_is_PlingPlang_as_it_has_factors_3_and_5 (0.00s)
+    --- PASS: TestConvert/the_sound_for_21_is_PlingPlong_as_it_has_factors_3_and_7 (0.00s)
+    --- PASS: TestConvert/the_sound_for_25_is_Plang_as_it_has_a_factor_5 (0.00s)
+    --- PASS: TestConvert/the_sound_for_27_is_Pling_as_it_has_a_factor_3 (0.00s)
+    --- PASS: TestConvert/the_sound_for_35_is_PlangPlong_as_it_has_factors_5_and_7 (0.00s)
+    --- PASS: TestConvert/the_sound_for_49_is_Plong_as_it_has_a_factor_7 (0.00s)
+    --- PASS: TestConvert/the_sound_for_52_is_52 (0.00s)
+    --- PASS: TestConvert/the_sound_for_105_is_PlingPlangPlong_as_it_has_factors_3,_5_and_7 (0.00s)
+    --- PASS: TestConvert/the_sound_for_3125_is_Plang_as_it_has_a_factor_5 (0.00s)
+=== RUN   ExampleConvert
+--- PASS: ExampleConvert (0.00s)
 PASS
-ok  	raindrops	0.006s
+ok  	raindrops	0.002s
 
-real	0m0.611s
-user	0m0.744s
-sys	0m0.422s
-
-===============================================================================
-
-go vet raindrops
-
-real	0m0.345s
-user	0m0.453s
-sys	0m0.334s
+real	0m0.144s
+user	0m0.188s
+sys	0m0.153s
 
 ===============================================================================
 
-go fix raindrops
-
-real	0m0.160s
-user	0m0.153s
-sys	0m0.155s
-
-===============================================================================
-
-gosec ./raindrops
-[gosec] 2022/06/22 08:57:18 Including rules: default
-[gosec] 2022/06/22 08:57:18 Excluding rules: default
-[gosec] 2022/06/22 08:57:18 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/raindrops
-2022/06/22 08:57:18 internal error: package "fmt" without types was imported from "command-line-arguments"
-
-real	0m0.491s
-user	0m0.545s
-sys	0m0.369s
+No old benchmarks to run benchstat against.
 
 ===============================================================================
 
 gomarkdoc --output raindrops-doc.md
 
-real	0m0.029s
-user	0m0.024s
-sys	0m0.020s
+real	0m0.011s
+user	0m0.007s
+sys	0m0.004s
 
 ===============================================================================
 
 go doc -all raindrops
 package raindrops // import "raindrops"
 
-Package raindrops converts a number into a string that contains raindrop
-sounds corresponding to certain potential factors.
+Package raindrops converts a number into a string that contains raindrop sounds
+corresponding to certain potential factors.
 
 FUNCTIONS
 
@@ -127,9 +807,9 @@ func Convert(number int) string
     of the number, `int`, given.
 
 
-real	0m0.269s
-user	0m0.227s
-sys	0m0.246s
+real	0m0.049s
+user	0m0.026s
+sys	0m0.047s
 
 
 ===============================================================================

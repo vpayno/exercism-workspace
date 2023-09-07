@@ -5,15 +5,598 @@ Go packages: annalyn
 
 ===============================================================================
 
-golint annalyn
+Running: ../../.github/citools/go/go-lint-golangci-lint
 
-real	0m0.277s
-user	0m0.129s
-sys	0m0.183s
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.019s
+user	0m0.007s
+sys	0m0.018s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+annalyns_infiltration_test.go:36: Function 'TestCanSpy' is too long (65 > 60) (funlen)
+func TestCanSpy(t *testing.T) {
+annalyns_infiltration_test.go:140: Function 'TestCanFreePrisoner' is too long (153 > 60) (funlen)
+func TestCanFreePrisoner(t *testing.T) {
+annalyns_infiltration.go:3:66: Comment should end in a period (godot)
+// CanFastAttack can be executed only when the knight is sleeping
+                                                                 ^
+annalyns_infiltration.go:8:69: Comment should end in a period (godot)
+// CanSpy can be executed if at least one of the characters is awake
+                                                                    ^
+annalyns_infiltration.go:13:89: Comment should end in a period (godot)
+// CanSignalPrisoner can be executed if the prisoner is awake and the archer is sleeping
+                                                                                        ^
+annalyns_infiltration_test.go:98: line is 122 characters (lll)
+				t.Errorf("CanSpy(%v, %v, %v) = %v; want %v", tt.knightIsAwake, tt.archerIsAwake, tt.prisonerIsAwake, got, tt.expected)
+annalyns_infiltration_test.go:289: line is 123 characters (lll)
+			if got := CanFreePrisoner(tt.knightIsAwake, tt.archerIsAwake, tt.prisonerIsAwake, tt.dogIsPresent); got != tt.expected {
+annalyns_infiltration_test.go:290: line is 149 characters (lll)
+				t.Errorf("CanFreePrisoner(%v,%v,%v,%v) = %v; want %v", tt.knightIsAwake, tt.archerIsAwake, tt.prisonerIsAwake, tt.dogIsPresent, got, tt.expected)
+annalyns_infiltration_test.go:29:28: Using the variable on range scope `tt` in function literal (scopelint)
+			if got := CanFastAttack(tt.knightIsAwake); got != tt.expected {
+			                        ^
+annalyns_infiltration_test.go:30:49: Using the variable on range scope `tt` in function literal (scopelint)
+				t.Errorf("CanFastAttack(%v) = %v; want %v", tt.knightIsAwake, tt.knightIsAwake, tt.expected)
+				                                            ^
+annalyns_infiltration_test.go:97:21: Using the variable on range scope `tt` in function literal (scopelint)
+			if got := CanSpy(tt.knightIsAwake, tt.archerIsAwake, tt.prisonerIsAwake); got != tt.expected {
+			                 ^
+annalyns_infiltration_test.go:14:1: Function TestCanFastAttack missing the call to method parallel (paralleltest)
+func TestCanFastAttack(t *testing.T) {
+^
+annalyns_infiltration_test.go:27:2: Range statement for test TestCanFastAttack missing the call to method parallel in test Run (paralleltest)
+	for _, tt := range tests {
+	^
+annalyns_infiltration_test.go:95:2: Range statement for test TestCanSpy missing the call to method parallel in test Run (paralleltest)
+	for _, tt := range tests {
+	^
+annalyns_infiltration_test.go:104:1: Function TestCanSignalPrisoner missing the call to method parallel (paralleltest)
+func TestCanSignalPrisoner(t *testing.T) {
+^
+annalyns_infiltration_test.go:131:2: Range statement for test TestCanSignalPrisoner missing the call to method parallel in test Run (paralleltest)
+	for _, tt := range tests {
+	^
+annalyns_infiltration_test.go:287:2: Range statement for test TestCanFreePrisoner missing the call to method parallel in test Run (paralleltest)
+	for _, tt := range tests {
+	^
+annalyns_infiltration_examples_test.go:1:9: package should be `annalyn_test` instead of `annalyn` (testpackage)
+package annalyn
+        ^
+annalyns_infiltration_test.go:1:9: package should be `annalyn_test` instead of `annalyn` (testpackage)
+package annalyn
+        ^
+
+real	0m0.417s
+user	0m0.631s
+sys	0m0.364s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.457s
+user	0m0.647s
+sys	0m0.401s
+
+real	0m0.460s
+user	0m0.648s
+sys	0m0.403s
 
 ===============================================================================
 
-go test -v -covermode=count -coverprofile coverage.out annalyn
+Running: ../../.github/citools/go/go-lint-revive
+
+Running Go Lint Revive
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.011s
+user	0m0.007s
+sys	0m0.007s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
+annalyns_infiltration.go
+  (1, 1)  https://revive.run/r#package-comments  should have a package comment  
+
+
+ ✖ 1 problem (0 errors) (1 warnings)
+
+real	0m0.026s
+user	0m0.013s
+sys	0m0.019s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.047s
+user	0m0.027s
+sys	0m0.033s
+
+real	0m0.050s
+user	0m0.029s
+sys	0m0.033s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.013s
+user	0m0.005s
+sys	0m0.012s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
+	info: check "./."
+internal error: package "fmt" without types was imported from "annalyn [annalyn.test]"
+
+real	0m0.085s
+user	0m0.115s
+sys	0m0.116s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.110s
+user	0m0.125s
+sys	0m0.140s
+
+real	0m0.113s
+user	0m0.127s
+sys	0m0.141s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-staticcheck
+
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.019s
+user	0m0.006s
+sys	0m0.017s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+annalyns_infiltration.go:1:1: at least one file in a package should have a package comment (ST1000)
+
+real	0m0.180s
+user	0m0.208s
+sys	0m0.110s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.212s
+user	0m0.223s
+sys	0m0.135s
+
+real	0m0.214s
+user	0m0.223s
+sys	0m0.137s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocritic
+
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.016s
+user	0m0.005s
+sys	0m0.015s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+
+real	0m0.788s
+user	0m1.808s
+sys	0m0.255s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.821s
+user	0m1.823s
+sys	0m0.283s
+
+real	0m0.823s
+user	0m1.823s
+sys	0m0.285s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go_vet
+
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.014s
+user	0m0.006s
+sys	0m0.011s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.079s
+user	0m0.114s
+sys	0m0.103s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.103s
+user	0m0.124s
+sys	0m0.123s
+
+real	0m0.104s
+user	0m0.125s
+sys	0m0.123s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-fixer-go_fix
+
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.013s
+user	0m0.006s
+sys	0m0.010s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.015s
+user	0m0.006s
+sys	0m0.013s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.042s
+user	0m0.020s
+sys	0m0.031s
+
+real	0m0.043s
+user	0m0.020s
+sys	0m0.032s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-errcheck
+
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.018s
+user	0m0.008s
+sys	0m0.016s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+
+real	0m0.436s
+user	0m1.185s
+sys	0m0.282s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.466s
+user	0m1.200s
+sys	0m0.306s
+
+real	0m0.468s
+user	0m1.200s
+sys	0m0.308s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.013s
+user	0m0.003s
+sys	0m0.012s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
+5 annalyn CanFreePrisoner annalyns_infiltration.go:20:1
+3 annalyn TestCanFreePrisoner annalyns_infiltration_test.go:140:1
+3 annalyn TestCanSignalPrisoner annalyns_infiltration_test.go:104:1
+3 annalyn TestCanSpy annalyns_infiltration_test.go:36:1
+3 annalyn TestCanFastAttack annalyns_infiltration_test.go:14:1
+3 annalyn CanSpy annalyns_infiltration.go:9:1
+2 annalyn CanSignalPrisoner annalyns_infiltration.go:14:1
+1 annalyn ExampleCanFreePrisoner annalyns_infiltration_examples_test.go:25:1
+1 annalyn ExampleCanSignalPrisoner annalyns_infiltration_examples_test.go:19:1
+1 annalyn ExampleCanSpy annalyns_infiltration_examples_test.go:13:1
+1 annalyn ExampleCanFastAttack annalyns_infiltration_examples_test.go:7:1
+1 annalyn CanFastAttack annalyns_infiltration.go:4:1
+
+real	0m0.002s
+user	0m0.000s
+sys	0m0.002s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.025s
+user	0m0.006s
+sys	0m0.026s
+
+real	0m0.026s
+user	0m0.006s
+sys	0m0.027s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-misspell
+
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+
+real	0m0.023s
+user	0m0.024s
+sys	0m0.012s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.035s
+user	0m0.029s
+sys	0m0.023s
+
+real	0m0.037s
+user	0m0.030s
+sys	0m0.024s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gosec
+
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.013s
+user	0m0.008s
+sys	0m0.008s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:20:30 Including rules: default
+[gosec] 2023/09/07 00:20:30 Excluding rules: default
+[gosec] 2023/09/07 00:20:30 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/annalyns-infiltration
+[gosec] 2023/09/07 00:20:30 Checking package: annalyn
+[gosec] 2023/09/07 00:20:30 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/annalyns-infiltration/annalyns_infiltration.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 30
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.083s
+user	0m0.063s
+sys	0m0.067s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.106s
+user	0m0.077s
+sys	0m0.083s
+
+real	0m0.109s
+user	0m0.077s
+sys	0m0.086s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.014s
+user	0m0.007s
+sys	0m0.012s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
 === RUN   TestCanFastAttack
 === RUN   TestCanFastAttack/Knight_is_awake
 === RUN   TestCanFastAttack/Knight_is_sleeping
@@ -96,36 +679,57 @@ go test -v -covermode=count -coverprofile coverage.out annalyn
 --- PASS: ExampleCanFreePrisoner (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	annalyn	0.027s	coverage: 100.0% of statements
+ok  	annalyn	0.003s	coverage: 100.0% of statements
 
-real	0m1.685s
-user	0m2.116s
-sys	0m1.111s
+real	0m0.172s
+user	0m0.207s
+sys	0m0.150s
 
-===============================================================================
 
-go tool cover -func=coverage.out
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
 annalyn/annalyns_infiltration.go:4:	CanFastAttack		100.0%
 annalyn/annalyns_infiltration.go:9:	CanSpy			100.0%
 annalyn/annalyns_infiltration.go:14:	CanSignalPrisoner	100.0%
 annalyn/annalyns_infiltration.go:20:	CanFreePrisoner		100.0%
 total:					(statements)		100.0%
 
-real	0m0.187s
-user	0m0.113s
-sys	0m0.169s
+real	0m0.025s
+user	0m0.013s
+sys	0m0.018s
 
-===============================================================================
 
-go tool cover -html coverage.out -o coverage.html
+ ==============================================================================
 
-real	0m0.166s
-user	0m0.085s
-sys	0m0.152s
+Running: go tool cover -html coverage.out -o coverage.html
 
-===============================================================================
 
-go test -v -race -covermode=atomic annalyn
+real	0m0.026s
+user	0m0.010s
+sys	0m0.022s
+
+
+ ==============================================================================
+
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+real	0m0.013s
+user	0m0.008s
+sys	0m0.010s
+
+real	0m0.013s
+user	0m0.008s
+sys	0m0.010s
+
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
 === RUN   TestCanFastAttack
 === RUN   TestCanFastAttack/Knight_is_awake
 === RUN   TestCanFastAttack/Knight_is_sleeping
@@ -179,7 +783,7 @@ go test -v -race -covermode=atomic annalyn
 === RUN   TestCanFreePrisoner/Knight_and_archer_are_awake._Prisoner_is_awake._Dog_is_present
 === RUN   TestCanFreePrisoner/Knight_and_archer_are_awake._Prisoner_is_sleeping._Dog_is_not_present#01
 === RUN   TestCanFreePrisoner/Everyone_is_sleeping._Dog_is_not_present
---- PASS: TestCanFreePrisoner (0.02s)
+--- PASS: TestCanFreePrisoner (0.00s)
     --- PASS: TestCanFreePrisoner/All_characters_are_sleeping._Dog_is_not_present. (0.00s)
     --- PASS: TestCanFreePrisoner/All_characters_are_sleeping._Dog_is_present. (0.00s)
     --- PASS: TestCanFreePrisoner/Knight_and_archer_are_sleeping._Prisoner_is_awake._Dog_is_not_present. (0.00s)
@@ -208,81 +812,143 @@ go test -v -race -covermode=atomic annalyn
 --- PASS: ExampleCanFreePrisoner (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	annalyn	0.096s	coverage: 100.0% of statements
+ok  	annalyn	1.024s	coverage: 100.0% of statements
 
-real	0m2.045s
-user	0m2.152s
-sys	0m1.073s
+real	0m1.251s
+user	0m0.304s
+sys	0m0.176s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.518s
+user	0m0.556s
+sys	0m0.405s
+
+real	0m1.520s
+user	0m0.557s
+sys	0m0.406s
 
 ===============================================================================
 
-go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+mv -v benchstat-new.txt benchstat-old.txt
+renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
+
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 PASS
-ok  	annalyn	0.064s
+ok  	annalyn	0.002s
 
-real	0m1.051s
-user	0m1.191s
-sys	0m0.715s
+real	0m0.149s
+user	0m0.204s
+sys	0m0.144s
 
 ===============================================================================
 
-go test -tags bonus
+gotest -v -tags bonus
+=== RUN   TestCanFastAttack
+=== RUN   TestCanFastAttack/Knight_is_awake
+=== RUN   TestCanFastAttack/Knight_is_sleeping
+--- PASS: TestCanFastAttack (0.00s)
+    --- PASS: TestCanFastAttack/Knight_is_awake (0.00s)
+    --- PASS: TestCanFastAttack/Knight_is_sleeping (0.00s)
+=== RUN   TestCanSpy
+=== RUN   TestCanSpy/All_characters_are_sleeping
+=== RUN   TestCanSpy/Knight_is_awake,_archer_and_prisoner_are_sleeping
+=== RUN   TestCanSpy/Knight_and_archer_are_awake,_prisoner_is_sleeping
+=== RUN   TestCanSpy/Knight_and_prisoner_are_awake,_archer_is_sleeping
+=== RUN   TestCanSpy/Archer_is_awake,_knight_and_prisoner_are_sleeping
+=== RUN   TestCanSpy/Archer_and_prisoner_are_awake,_knight_is_sleeping
+=== RUN   TestCanSpy/Prisoner_is_awake,_knight_and_archer_are_sleeping
+=== RUN   TestCanSpy/All_characters_are_awake
+--- PASS: TestCanSpy (0.00s)
+    --- PASS: TestCanSpy/All_characters_are_sleeping (0.00s)
+    --- PASS: TestCanSpy/Knight_is_awake,_archer_and_prisoner_are_sleeping (0.00s)
+    --- PASS: TestCanSpy/Knight_and_archer_are_awake,_prisoner_is_sleeping (0.00s)
+    --- PASS: TestCanSpy/Knight_and_prisoner_are_awake,_archer_is_sleeping (0.00s)
+    --- PASS: TestCanSpy/Archer_is_awake,_knight_and_prisoner_are_sleeping (0.00s)
+    --- PASS: TestCanSpy/Archer_and_prisoner_are_awake,_knight_is_sleeping (0.00s)
+    --- PASS: TestCanSpy/Prisoner_is_awake,_knight_and_archer_are_sleeping (0.00s)
+    --- PASS: TestCanSpy/All_characters_are_awake (0.00s)
+=== RUN   TestCanSignalPrisoner
+=== RUN   TestCanSignalPrisoner/All_characters_are_sleeping
+=== RUN   TestCanSignalPrisoner/Archer_is_sleeping,_prisoner_is_awake
+=== RUN   TestCanSignalPrisoner/Archer_is_awake,_prisoner_is_sleeping
+=== RUN   TestCanSignalPrisoner/All_characters_are_awake
+--- PASS: TestCanSignalPrisoner (0.00s)
+    --- PASS: TestCanSignalPrisoner/All_characters_are_sleeping (0.00s)
+    --- PASS: TestCanSignalPrisoner/Archer_is_sleeping,_prisoner_is_awake (0.00s)
+    --- PASS: TestCanSignalPrisoner/Archer_is_awake,_prisoner_is_sleeping (0.00s)
+    --- PASS: TestCanSignalPrisoner/All_characters_are_awake (0.00s)
+=== RUN   TestCanFreePrisoner
+=== RUN   TestCanFreePrisoner/All_characters_are_sleeping._Dog_is_not_present.
+=== RUN   TestCanFreePrisoner/All_characters_are_sleeping._Dog_is_present.
+=== RUN   TestCanFreePrisoner/Knight_and_archer_are_sleeping._Prisoner_is_awake._Dog_is_not_present.
+=== RUN   TestCanFreePrisoner/Knight_and_archer_are_sleeping._Prisoner_is_awake._Dog_is_present.
+=== RUN   TestCanFreePrisoner/Knight_is_sleeping._Archer_is_awake._Prisoner_is_sleeping._Dog_is_not_present.
+=== RUN   TestCanFreePrisoner/Knight_is_sleeping._Archer_is_awake._Prisoner_is_sleeping._Dog_is_present.
+=== RUN   TestCanFreePrisoner/Knight_is_sleeping._Archer_is_awake._Prisoner_is_awake._Dog_is_not_present.
+=== RUN   TestCanFreePrisoner/Knight_is_sleeping._Archer_is_awake._Prisoner_is_awake._Dog_is_present.
+=== RUN   TestCanFreePrisoner/Knight_is_awake._Archer_is_sleeping._Prisoner_is_sleeping._Dog_is_not_present.
+=== RUN   TestCanFreePrisoner/Knight_is_awake._Archer_is_sleeping._Prisoner_is_sleeping._Dog_is_present.
+=== RUN   TestCanFreePrisoner/Knight_is_awake._Archer_is_sleeping._Prisoner_is_awake._Dog_is_not_present
+=== RUN   TestCanFreePrisoner/Knight_is_awake._Archer_is_sleeping._Prisoner_is_awake._Dog_is_present
+=== RUN   TestCanFreePrisoner/Knight_and_archer_are_awake._Prisoner_is_sleeping._Dog_is_not_present
+=== RUN   TestCanFreePrisoner/Knight_and_archer_are_awake._Prisoner_is_sleeping._Dog_is_present
+=== RUN   TestCanFreePrisoner/Knight_and_archer_are_awake._Prisoner_is_awake._Dog_is_not_present
+=== RUN   TestCanFreePrisoner/Knight_and_archer_are_awake._Prisoner_is_awake._Dog_is_present
+=== RUN   TestCanFreePrisoner/Knight_and_archer_are_awake._Prisoner_is_sleeping._Dog_is_not_present#01
+=== RUN   TestCanFreePrisoner/Everyone_is_sleeping._Dog_is_not_present
+--- PASS: TestCanFreePrisoner (0.00s)
+    --- PASS: TestCanFreePrisoner/All_characters_are_sleeping._Dog_is_not_present. (0.00s)
+    --- PASS: TestCanFreePrisoner/All_characters_are_sleeping._Dog_is_present. (0.00s)
+    --- PASS: TestCanFreePrisoner/Knight_and_archer_are_sleeping._Prisoner_is_awake._Dog_is_not_present. (0.00s)
+    --- PASS: TestCanFreePrisoner/Knight_and_archer_are_sleeping._Prisoner_is_awake._Dog_is_present. (0.00s)
+    --- PASS: TestCanFreePrisoner/Knight_is_sleeping._Archer_is_awake._Prisoner_is_sleeping._Dog_is_not_present. (0.00s)
+    --- PASS: TestCanFreePrisoner/Knight_is_sleeping._Archer_is_awake._Prisoner_is_sleeping._Dog_is_present. (0.00s)
+    --- PASS: TestCanFreePrisoner/Knight_is_sleeping._Archer_is_awake._Prisoner_is_awake._Dog_is_not_present. (0.00s)
+    --- PASS: TestCanFreePrisoner/Knight_is_sleeping._Archer_is_awake._Prisoner_is_awake._Dog_is_present. (0.00s)
+    --- PASS: TestCanFreePrisoner/Knight_is_awake._Archer_is_sleeping._Prisoner_is_sleeping._Dog_is_not_present. (0.00s)
+    --- PASS: TestCanFreePrisoner/Knight_is_awake._Archer_is_sleeping._Prisoner_is_sleeping._Dog_is_present. (0.00s)
+    --- PASS: TestCanFreePrisoner/Knight_is_awake._Archer_is_sleeping._Prisoner_is_awake._Dog_is_not_present (0.00s)
+    --- PASS: TestCanFreePrisoner/Knight_is_awake._Archer_is_sleeping._Prisoner_is_awake._Dog_is_present (0.00s)
+    --- PASS: TestCanFreePrisoner/Knight_and_archer_are_awake._Prisoner_is_sleeping._Dog_is_not_present (0.00s)
+    --- PASS: TestCanFreePrisoner/Knight_and_archer_are_awake._Prisoner_is_sleeping._Dog_is_present (0.00s)
+    --- PASS: TestCanFreePrisoner/Knight_and_archer_are_awake._Prisoner_is_awake._Dog_is_not_present (0.00s)
+    --- PASS: TestCanFreePrisoner/Knight_and_archer_are_awake._Prisoner_is_awake._Dog_is_present (0.00s)
+    --- PASS: TestCanFreePrisoner/Knight_and_archer_are_awake._Prisoner_is_sleeping._Dog_is_not_present#01 (0.00s)
+    --- PASS: TestCanFreePrisoner/Everyone_is_sleeping._Dog_is_not_present (0.00s)
+=== RUN   ExampleCanFastAttack
+--- PASS: ExampleCanFastAttack (0.00s)
+=== RUN   ExampleCanSpy
+--- PASS: ExampleCanSpy (0.00s)
+=== RUN   ExampleCanSignalPrisoner
+--- PASS: ExampleCanSignalPrisoner (0.00s)
+=== RUN   ExampleCanFreePrisoner
+--- PASS: ExampleCanFreePrisoner (0.00s)
 PASS
-ok  	annalyn	0.006s
+ok  	annalyn	0.002s
 
-real	0m1.103s
-user	0m1.449s
-sys	0m0.807s
-
-===============================================================================
-
-No old benchmarks to run benchstat against.
+real	0m0.139s
+user	0m0.177s
+sys	0m0.121s
 
 ===============================================================================
 
-go vet annalyn
+benchstat benchstat-old.txt benchstat-new.txt
 
-real	0m0.683s
-user	0m0.895s
-sys	0m0.614s
-
-===============================================================================
-
-go fix annalyn
-
-real	0m0.089s
-user	0m0.039s
-sys	0m0.068s
-
-===============================================================================
-
-gosec ./annalyns-infiltration
-[gosec] 2022/07/30 13:53:49 Including rules: default
-[gosec] 2022/07/30 13:53:49 Excluding rules: default
-[gosec] 2022/07/30 13:53:49 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/annalyns-infiltration
-[gosec] 2022/07/30 13:53:49 Checking package: annalyn
-[gosec] 2022/07/30 13:53:49 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/annalyns-infiltration/annalyns_infiltration.go
-Results:
-
-
-Summary:
-   Files: 1
-   Lines: 30
-   Nosec: 0
-  Issues: 0
-
-
-real	0m0.537s
-user	0m0.722s
-sys	0m0.314s
+real	0m0.001s
+user	0m0.000s
+sys	0m0.002s
 
 ===============================================================================
 
 gomarkdoc --output annalyn-doc.md
 
-real	0m0.119s
-user	0m0.129s
-sys	0m0.074s
+real	0m0.009s
+user	0m0.005s
+sys	0m0.004s
 
 ===============================================================================
 
@@ -308,9 +974,9 @@ func CanSpy(knightIsAwake, archerIsAwake, prisonerIsAwake bool) bool
     CanSpy can be executed if at least one of the characters is awake
 
 
-real	0m0.412s
-user	0m0.219s
-sys	0m0.443s
+real	0m0.028s
+user	0m0.011s
+sys	0m0.024s
 
 
 ===============================================================================

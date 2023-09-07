@@ -5,124 +5,734 @@ Go packages: etl
 
 ===============================================================================
 
-golint etl
+Running: ../../.github/citools/go/go-lint-golangci-lint
 
-real	0m0.162s
-user	0m0.151s
-sys	0m0.135s
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.025s
+user	0m0.013s
+sys	0m0.022s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+etl.go:18:4: commentFormatting: put a space between `//` and comment text (gocritic)
+			//s := strings.ToLower(string(r))
+			^
+etl_test.go:5: File is not `gofumpt`-ed (gofumpt)
+type given map[int][]string
+type expectation map[string]int
+etl_test.go:84: File is not `gofumpt`-ed (gofumpt)
+
+etl_test.go:88: File is not `gofumpt`-ed (gofumpt)
+
+etl.go:14:13: var-declaration: should omit type ModernScore from declaration of var modern; it will be inferred from the right-hand side (revive)
+	var modern ModernScore = ModernScore{}
+	           ^
+etl_test.go:83: unnecessary leading newline (whitespace)
+	for i := 0; i < b.N; i++ {
+
+etl_test.go:89:2: block should not end with a whitespace (or comment) (wsl)
+	}
+	^
+etl_test.go:8:5: transformTests is a global variable (gochecknoglobals)
+var transformTests = []struct {
+    ^
+etl_test.go:70:1: Function TestTransform missing the call to method parallel (paralleltest)
+func TestTransform(t *testing.T) {
+^
+etl_examples_test.go:1:9: package should be `etl_test` instead of `etl` (testpackage)
+package etl
+        ^
+etl_test.go:1:9: package should be `etl_test` instead of `etl` (testpackage)
+package etl
+        ^
+
+real	0m0.469s
+user	0m0.755s
+sys	0m0.468s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.505s
+user	0m0.774s
+sys	0m0.499s
+
+real	0m0.507s
+user	0m0.776s
+sys	0m0.500s
 
 ===============================================================================
 
-go test -v -covermode=count -coverprofile coverage.out etl
+Running: ../../.github/citools/go/go-lint-revive
+
+Running Go Lint Revive
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.029s
+user	0m0.020s
+sys	0m0.028s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
+etl.go
+  (14, 13)  https://revive.run/r#var-declaration  should omit type ModernScore from declaration of var modern; it will be inferred from the right-hand side  
+
+
+ ✖ 1 problem (0 errors) (1 warnings)
+
+real	0m0.055s
+user	0m0.034s
+sys	0m0.036s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.107s
+user	0m0.071s
+sys	0m0.078s
+
+real	0m0.117s
+user	0m0.076s
+sys	0m0.084s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
+
+real	0m0.001s
+user	0m0.001s
+sys	0m0.000s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.022s
+user	0m0.016s
+sys	0m0.014s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
+	info: check "./."
+internal error: package "strings" without types was imported from "etl"
+
+real	0m0.090s
+user	0m0.137s
+sys	0m0.116s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.124s
+user	0m0.159s
+sys	0m0.139s
+
+real	0m0.126s
+user	0m0.161s
+sys	0m0.139s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-staticcheck
+
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.018s
+user	0m0.012s
+sys	0m0.014s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+etl.go:14:13: should omit type ModernScore from declaration; it will be inferred from the right-hand side (ST1023)
+
+real	0m0.183s
+user	0m0.198s
+sys	0m0.141s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.212s
+user	0m0.213s
+sys	0m0.165s
+
+real	0m0.214s
+user	0m0.214s
+sys	0m0.167s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocritic
+
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.028s
+user	0m0.017s
+sys	0m0.024s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+./etl.go:18:4: commentFormatting: put a space between `//` and comment text
+./etl.go:18:4: commentedOutCode: may want to remove commented-out code
+
+real	0m0.776s
+user	0m1.815s
+sys	0m0.250s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.822s
+user	0m1.845s
+sys	0m0.287s
+
+real	0m0.826s
+user	0m1.847s
+sys	0m0.288s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go_vet
+
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.019s
+user	0m0.008s
+sys	0m0.019s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.077s
+user	0m0.109s
+sys	0m0.121s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.107s
+user	0m0.124s
+sys	0m0.148s
+
+real	0m0.109s
+user	0m0.125s
+sys	0m0.149s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-fixer-go_fix
+
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.022s
+user	0m0.012s
+sys	0m0.018s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.021s
+user	0m0.010s
+sys	0m0.019s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.056s
+user	0m0.029s
+sys	0m0.046s
+
+real	0m0.058s
+user	0m0.029s
+sys	0m0.048s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-errcheck
+
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.019s
+user	0m0.012s
+sys	0m0.015s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+
+real	0m0.420s
+user	0m1.257s
+sys	0m0.269s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.449s
+user	0m1.274s
+sys	0m0.293s
+
+real	0m0.451s
+user	0m1.275s
+sys	0m0.294s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.020s
+user	0m0.012s
+sys	0m0.016s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
+5 etl equal etl_test.go:54:1
+4 etl BenchmarkTransform etl_test.go:79:1
+3 etl TestTransform etl_test.go:70:1
+3 etl Transform etl.go:13:1
+1 etl ExampleTransform etl_examples_test.go:7:1
+
+real	0m0.002s
+user	0m0.001s
+sys	0m0.001s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.032s
+user	0m0.019s
+sys	0m0.025s
+
+real	0m0.034s
+user	0m0.021s
+sys	0m0.025s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-misspell
+
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+
+real	0m0.028s
+user	0m0.030s
+sys	0m0.015s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.040s
+user	0m0.035s
+sys	0m0.025s
+
+real	0m0.042s
+user	0m0.037s
+sys	0m0.025s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gosec
+
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.033s
+user	0m0.018s
+sys	0m0.026s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:23:05 Including rules: default
+[gosec] 2023/09/07 00:23:05 Excluding rules: default
+[gosec] 2023/09/07 00:23:05 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/etl
+[gosec] 2023/09/07 00:23:05 Checking package: etl
+[gosec] 2023/09/07 00:23:05 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/etl/etl.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 25
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.106s
+user	0m0.111s
+sys	0m0.080s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.155s
+user	0m0.142s
+sys	0m0.114s
+
+real	0m0.158s
+user	0m0.143s
+sys	0m0.116s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.023s
+user	0m0.012s
+sys	0m0.020s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
 === RUN   TestTransform
 --- PASS: TestTransform (0.00s)
 === RUN   ExampleTransform
 --- PASS: ExampleTransform (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	etl	0.010s	coverage: 100.0% of statements
+ok  	etl	0.002s	coverage: 100.0% of statements
 
-real	0m0.519s
-user	0m0.630s
-sys	0m0.464s
+real	0m0.164s
+user	0m0.199s
+sys	0m0.142s
 
-===============================================================================
 
-go tool cover -func=coverage.out
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
 etl/etl.go:13:	Transform	100.0%
 total:		(statements)	100.0%
 
-real	0m0.221s
-user	0m0.118s
-sys	0m0.198s
+real	0m0.046s
+user	0m0.053s
+sys	0m0.060s
 
-===============================================================================
 
-go tool cover -html coverage.out -o coverage.html
+ ==============================================================================
 
-real	0m0.207s
-user	0m0.170s
-sys	0m0.186s
+Running: go tool cover -html coverage.out -o coverage.html
 
-===============================================================================
 
-go test -v -race -covermode=atomic etl
+real	0m0.058s
+user	0m0.066s
+sys	0m0.090s
+
+
+ ==============================================================================
+
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+real	0m0.015s
+user	0m0.008s
+sys	0m0.015s
+
+real	0m0.016s
+user	0m0.008s
+sys	0m0.015s
+
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
 === RUN   TestTransform
 --- PASS: TestTransform (0.00s)
 === RUN   ExampleTransform
 --- PASS: ExampleTransform (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	etl	0.048s	coverage: 100.0% of statements
+ok  	etl	1.017s	coverage: 100.0% of statements
 
-real	0m0.795s
-user	0m0.800s
-sys	0m0.567s
+real	0m1.236s
+user	0m0.293s
+sys	0m0.150s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.554s
+user	0m0.641s
+sys	0m0.483s
+
+real	0m1.556s
+user	0m0.641s
+sys	0m0.485s
 
 ===============================================================================
 
-go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+mv -v benchstat-new.txt benchstat-old.txt
+renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
+
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 goos: linux
 goarch: amd64
 pkg: etl
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+BenchmarkTransform
+BenchmarkTransform-8   	  301872	      3753 ns/op	    4300 B/op	      47 allocs/op
+PASS
+ok  	etl	1.178s
+
+real	0m1.332s
+user	0m1.427s
+sys	0m0.196s
+
+===============================================================================
+
+gotest -v -tags bonus
+=== RUN   TestTransform
+--- PASS: TestTransform (0.00s)
+=== RUN   ExampleTransform
+--- PASS: ExampleTransform (0.00s)
+PASS
+ok  	etl	0.001s
+
+real	0m0.135s
+user	0m0.185s
+sys	0m0.119s
+
+===============================================================================
+
+benchstat benchstat-old.txt benchstat-new.txt
+benchstat-new.txt:5: missing iteration count
+goos: linux
+goarch: amd64
+pkg: etl
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+            │ benchstat-new.txt │
+            │      sec/op       │
+Transform-8        3.753µ ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
+
+            │ benchstat-new.txt │
+            │       B/op        │
+Transform-8       4.199Ki ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
+
+            │ benchstat-new.txt │
+            │     allocs/op     │
+Transform-8         47.00 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
+
 cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
-BenchmarkTransform-4   	  147228	      9242 ns/op	    2577 B/op	      46 allocs/op
-PASS
-ok  	etl	1.532s
+            │ benchstat-old.txt │
+            │      sec/op       │
+Transform-4        9.242µ ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-real	0m2.105s
-user	0m3.014s
-sys	0m0.619s
+            │ benchstat-old.txt │
+            │       B/op        │
+Transform-4       2.517Ki ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-===============================================================================
+            │ benchstat-old.txt │
+            │     allocs/op     │
+Transform-4         46.00 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-go test -tags bonus
-PASS
-ok  	etl	0.007s
-
-real	0m0.514s
-user	0m0.582s
-sys	0m0.457s
-
-===============================================================================
-
-No old benchmarks to run benchstat against.
-
-===============================================================================
-
-go vet etl
-
-real	0m0.371s
-user	0m0.432s
-sys	0m0.341s
-
-===============================================================================
-
-go fix etl
-
-real	0m0.115s
-user	0m0.073s
-sys	0m0.117s
-
-===============================================================================
-
-gosec ./etl
-[gosec] 2022/07/02 21:27:12 Including rules: default
-[gosec] 2022/07/02 21:27:12 Excluding rules: default
-[gosec] 2022/07/02 21:27:12 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/etl
-2022/07/02 21:27:13 internal error: package "strings" without types was imported from "command-line-arguments"
-
-real	0m0.421s
-user	0m0.415s
-sys	0m0.332s
+real	0m0.004s
+user	0m0.001s
+sys	0m0.002s
 
 ===============================================================================
 
 gomarkdoc --output etl-doc.md
 
-real	0m0.035s
-user	0m0.024s
-sys	0m0.026s
+real	0m0.012s
+user	0m0.006s
+sys	0m0.006s
 
 ===============================================================================
 
@@ -144,9 +754,9 @@ func Transform(legacy LegacyScore) ModernScore
     Transform returns transformed data.
 
 
-real	0m0.268s
-user	0m0.128s
-sys	0m0.248s
+real	0m0.056s
+user	0m0.025s
+sys	0m0.050s
 
 
 ===============================================================================

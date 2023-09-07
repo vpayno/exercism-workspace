@@ -87,13 +87,13 @@ import (
 )
 
 // ToRomanNumeral returns a roman numeral string and and error code.
-func ToRomanNumeral(input int) (string, error) <span class="cov7" title="44">{
+func ToRomanNumeral(input int) (string, error) <span class="cov7" title="49">{
         if input &lt;= 0 </span><span class="cov2" title="3">{
                 return "", errors.New("Roman numerals can't be less than or equal to 0")
         }</span>
 
         // Only process numbers &lt;=3k.
-        <span class="cov7" title="41">if input &gt; 3_000 </span><span class="cov2" title="2">{
+        <span class="cov7" title="46">if input &gt; 3_000 </span><span class="cov2" title="2">{
                 return "", errors.New("Roman numerals were apparently rarely greater than 3k")
         }</span>
 
@@ -110,7 +110,7 @@ func ToRomanNumeral(input int) (string, error) <span class="cov7" title="44">{
               c. continue with the next number
         */
 
-        <span class="cov6" title="39">var d2r map[int]string = map[int]string{
+        <span class="cov7" title="44">var d2r map[int]string = map[int]string{
                 1:     "I",
                 5:     "V",
                 10:    "X",
@@ -142,22 +142,22 @@ func ToRomanNumeral(input int) (string, error) <span class="cov7" title="44">{
 
         var numbers []int = []int{1_000, 500, 100, 50, 10, 5, 1}
 
-        for _, next := range numbers </span><span class="cov10" title="244">{
+        for _, next := range numbers </span><span class="cov10" title="279">{
 
                 if remainder &lt;= 0 </span><span class="cov5" title="17">{
                         break</span>
                 }
 
-                <span class="cov9" title="227">register = remainder / next
+                <span class="cov9" title="262">register = remainder / next
 
-                if register == 0 </span><span class="cov9" title="172">{
+                if register == 0 </span><span class="cov9" title="182">{
                         subNum, found := subLadder[next]
 
                         if !found </span><span class="cov5" title="19">{
                                 subNum = 1
                         }</span>
 
-                        <span class="cov9" title="172">if remainder &gt;= next-subNum </span><span class="cov5" title="13">{
+                        <span class="cov9" title="182">if remainder &gt;= next-subNum </span><span class="cov5" title="13">{
 
                                 // IV IX XL XC CD CM
                                 value, found := outLadder[next]
@@ -182,9 +182,9 @@ func ToRomanNumeral(input int) (string, error) <span class="cov7" title="44">{
 
                         }
 
-                        <span class="cov9" title="172">continue</span>
+                        <span class="cov9" title="182">continue</span>
 
-                } else<span class="cov7" title="55"> {
+                } else<span class="cov8" title="80"> {
 
                         value, found := d2r[next]
 
@@ -193,7 +193,7 @@ func ToRomanNumeral(input int) (string, error) <span class="cov7" title="44">{
                         }</span>
 
                         // III xxx CCC
-                        <span class="cov7" title="55">output += strings.Repeat(value, register)
+                        <span class="cov8" title="80">output += strings.Repeat(value, register)
 
                         register = remainder % next
 
@@ -203,7 +203,7 @@ func ToRomanNumeral(input int) (string, error) <span class="cov7" title="44">{
                 }
         }
 
-        <span class="cov6" title="39">return output, nil</span>
+        <span class="cov7" title="44">return output, nil</span>
 }
 </pre>
 		

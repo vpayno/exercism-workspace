@@ -19,7 +19,7 @@ import "logs"
 func Application(log string) string
 ```
 
-Application identifies the application emitting the given log\.
+Application identifies the application emitting the given log.
 
 <details><summary>Example</summary>
 <p>
@@ -52,7 +52,7 @@ weather
 func Replace(log string, oldRune, newRune rune) string
 ```
 
-Replace replaces all occurrences of old with new\, returning the modified log to the caller\.
+Replace replaces all occurrences of old with new, returning the modified log to the caller.
 
 <details><summary>Example</summary>
 <p>
@@ -81,7 +81,7 @@ please replace '👍' with '👍'
 func WithinLimit(log string, limit int) bool
 ```
 
-WithinLimit determines whether or not the number of characters in log is within the limit\.
+WithinLimit determines whether or not the number of characters in log is within the limit.
 
 <details><summary>Example</summary>
 <p>

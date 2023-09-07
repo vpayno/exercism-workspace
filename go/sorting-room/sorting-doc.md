@@ -25,7 +25,7 @@ import "sorting"
 func DescribeAnything(i interface{}) string
 ```
 
-DescribeAnything should return a string describing whatever it contains\.
+DescribeAnything should return a string describing whatever it contains.
 
 <details><summary>Example</summary>
 <p>
@@ -54,7 +54,7 @@ This is a fancy box containing the number 12.0
 func DescribeFancyNumberBox(fnb FancyNumberBox) string
 ```
 
-DescribeFancyNumberBox should return a string describing the FancyNumberBox\.
+DescribeFancyNumberBox should return a string describing the FancyNumberBox.
 
 <details><summary>Example</summary>
 <p>
@@ -83,7 +83,7 @@ This is a fancy box containing the number 12.0
 func DescribeNumber(f float64) string
 ```
 
-DescribeNumber should return a string describing the number\.
+DescribeNumber should return a string describing the number.
 
 <details><summary>Example</summary>
 <p>
@@ -110,7 +110,7 @@ This is the number -12.3
 func DescribeNumberBox(nb NumberBox) string
 ```
 
-DescribeNumberBox should return a string describing the NumberBox\.
+DescribeNumberBox should return a string describing the NumberBox.
 
 <details><summary>Example</summary>
 <p>
@@ -139,7 +139,7 @@ This is a box containing the number 12.0
 func ExtractFancyNumber(fnb FancyNumberBox) int
 ```
 
-ExtractFancyNumber should return the integer value for a FancyNumber and 0 if any other FancyNumberBox is supplied\.
+ExtractFancyNumber should return the integer value for a FancyNumber and 0 if any other FancyNumberBox is supplied.
 
 <details><summary>Example</summary>
 <p>
@@ -164,7 +164,7 @@ ExtractFancyNumber should return the integer value for a FancyNumber and 0 if an
 
 ## type [FancyNumber](<https://github.com/vpayno/exercism-workspace/blob/main/go/sorting-room/sorting_room.go#L26-L28>)
 
-FancyNumber struct that holds a string number\.
+FancyNumber struct that holds a string number.
 
 ```go
 type FancyNumber struct {
@@ -178,11 +178,11 @@ type FancyNumber struct {
 func (i FancyNumber) Value() string
 ```
 
-Value is a FancyNumber method\.
+Value is a FancyNumber method.
 
 ## type [FancyNumberBox](<https://github.com/vpayno/exercism-workspace/blob/main/go/sorting-room/sorting_room.go#L36-L38>)
 
-FancyNumberBox struct method set interface\.
+FancyNumberBox struct method set interface.
 
 ```go
 type FancyNumberBox interface {
@@ -192,7 +192,7 @@ type FancyNumberBox interface {
 
 ## type [NumberBox](<https://github.com/vpayno/exercism-workspace/blob/main/go/sorting-room/sorting_room.go#L15-L17>)
 
-NumberBox struct method set interface\.
+NumberBox struct method set interface.
 
 ```go
 type NumberBox interface {

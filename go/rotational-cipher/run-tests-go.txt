@@ -5,197 +5,751 @@ Go packages: rotationalcipher
 
 ===============================================================================
 
-golint rotationalcipher
+Running: ../../.github/citools/go/go-lint-golangci-lint
+
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.024s
+user	0m0.019s
+sys	0m0.020s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+rotational_cipher_test.go:88:3: expressions should not be cuddled with blocks (wsl)
+		t.Logf("PASS: %s", testCase.description)
+		^
+rotational_cipher_test.go:96:2: for statements should only be cuddled with assignments used in the iteration (wsl)
+	for i := 0; i < b.N; i++ {
+	^
+rotational_cipher_test.go:7:5: testCases is a global variable (gochecknoglobals)
+var testCases = []struct {
+    ^
+rotational_cipher.go:39:46: mnd: Magic number: 26, in <operation> detected (gomnd)
+	return rune(((int(char) - offset + shift) % 26) + offset)
+	                                            ^
+rotational_cipher_test.go:81:1: Function TestRotationalCipher missing the call to method parallel (paralleltest)
+func TestRotationalCipher(t *testing.T) {
+^
+rotational_cipher_examples_test.go:1:9: package should be `rotationalcipher_test` instead of `rotationalcipher` (testpackage)
+package rotationalcipher
+        ^
+rotational_cipher_test.go:1:9: package should be `rotationalcipher_test` instead of `rotationalcipher` (testpackage)
+package rotationalcipher
+        ^
+
+real	0m0.513s
+user	0m0.708s
+sys	0m0.469s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.555s
+user	0m0.736s
+sys	0m0.502s
+
+real	0m0.558s
+user	0m0.737s
+sys	0m0.504s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-revive
+
+Running Go Lint Revive
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.026s
+user	0m0.013s
+sys	0m0.022s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
+
+real	0m0.067s
+user	0m0.039s
+sys	0m0.051s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.106s
+user	0m0.062s
+sys	0m0.080s
+
+real	0m0.108s
+user	0m0.062s
+sys	0m0.082s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.001s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.027s
+user	0m0.017s
+sys	0m0.021s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
+	info: check "./."
+internal error: package "strings" without types was imported from "rotationalcipher"
+
+real	0m0.091s
+user	0m0.115s
+sys	0m0.106s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.136s
+user	0m0.141s
+sys	0m0.143s
 
 real	0m0.139s
-user	0m0.075s
-sys	0m0.130s
+user	0m0.142s
+sys	0m0.145s
 
 ===============================================================================
 
-go test -v -covermode=count -coverprofile coverage.out rotationalcipher
-=== RUN   TestRotationalCipher
-    rotational_cipher_test.go:88: PASS: zero len input, rotate by 0
-    rotational_cipher_test.go:88: PASS: zero len input, rotate by 3
-    rotational_cipher_test.go:88: PASS: rotate a by 0, same output as input
-    rotational_cipher_test.go:88: PASS: rotate a by 1
-    rotational_cipher_test.go:88: PASS: rotate a by 26, same output as input
-    rotational_cipher_test.go:88: PASS: rotate n by 13 with wrap around alphabet
-    rotational_cipher_test.go:88: PASS: rotate capital letters
-    rotational_cipher_test.go:88: PASS: rotate spaces
-    rotational_cipher_test.go:88: PASS: rotate numbers
-    rotational_cipher_test.go:88: PASS: rotate punctuation
-    rotational_cipher_test.go:88: PASS: rotate all letters
---- PASS: TestRotationalCipher (0.00s)
-=== RUN   ExampleRotationalCipher
---- PASS: ExampleRotationalCipher (0.00s)
-PASS
-coverage: 100.0% of statements
-ok  	rotationalcipher	0.007s	coverage: 100.0% of statements
+Running: ../../.github/citools/go/go-lint-staticcheck
 
-real	0m0.646s
-user	0m0.662s
-sys	0m0.536s
+Running Go StaticCheck
 
-===============================================================================
+Go version:
 
-go tool cover -func=coverage.out
-rotationalcipher/rotational_cipher.go:10:	RotationalCipher	100.0%
-rotationalcipher/rotational_cipher.go:28:	shiftChar		100.0%
-total:						(statements)		100.0%
+	go version go1.21.0 linux/amd64
 
-real	0m0.153s
-user	0m0.098s
-sys	0m0.152s
 
-===============================================================================
+ ==============================================================================
 
-go tool cover -html coverage.out -o coverage.html
+Running: go clean ./...
 
-real	0m0.203s
-user	0m0.163s
-sys	0m0.206s
 
-===============================================================================
-
-go test -v -race -covermode=atomic rotationalcipher
-=== RUN   TestRotationalCipher
-    rotational_cipher_test.go:88: PASS: zero len input, rotate by 0
-    rotational_cipher_test.go:88: PASS: zero len input, rotate by 3
-    rotational_cipher_test.go:88: PASS: rotate a by 0, same output as input
-    rotational_cipher_test.go:88: PASS: rotate a by 1
-    rotational_cipher_test.go:88: PASS: rotate a by 26, same output as input
-    rotational_cipher_test.go:88: PASS: rotate n by 13 with wrap around alphabet
-    rotational_cipher_test.go:88: PASS: rotate capital letters
-    rotational_cipher_test.go:88: PASS: rotate spaces
-    rotational_cipher_test.go:88: PASS: rotate numbers
-    rotational_cipher_test.go:88: PASS: rotate punctuation
-    rotational_cipher_test.go:88: PASS: rotate all letters
---- PASS: TestRotationalCipher (0.00s)
-=== RUN   ExampleRotationalCipher
---- PASS: ExampleRotationalCipher (0.00s)
-PASS
-coverage: 100.0% of statements
-ok  	rotationalcipher	0.058s	coverage: 100.0% of statements
-
-real	0m0.665s
-user	0m0.608s
-sys	0m0.478s
-
-===============================================================================
-
-mv -v benchstat-new.txt benchstat-old.txt
-renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
-
-go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
-goos: linux
-goarch: amd64
-pkg: rotationalcipher
-cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
-BenchmarkRotationalCipher-4   	  454730	      3611 ns/op	     280 B/op	      16 allocs/op
-PASS
-ok  	rotationalcipher	1.722s
-
-real	0m2.137s
-user	0m2.772s
-sys	0m0.440s
-
-===============================================================================
-
-go test -tags bonus
-PASS
-ok  	rotationalcipher	0.008s
-
-real	0m0.510s
-user	0m0.552s
-sys	0m0.413s
-
-===============================================================================
-
-go install golang.org/x/perf/cmd/benchstat@latest
-
-real	0m0.716s
-user	0m0.651s
-sys	0m0.328s
-
-benchstat benchstat-old.txt benchstat-new.txt
-name                old time/op    new time/op    delta
-RotationalCipher-4    4.01µs ± 0%    3.61µs ± 0%   ~     (p=1.000 n=1+1)
-
-name                old alloc/op   new alloc/op   delta
-RotationalCipher-4      680B ± 0%      280B ± 0%   ~     (p=1.000 n=1+1)
-
-name                old allocs/op  new allocs/op  delta
-RotationalCipher-4      14.0 ± 0%      16.0 ± 0%   ~     (p=1.000 n=1+1)
-
-real	0m0.020s
-user	0m0.002s
+real	0m0.022s
+user	0m0.017s
 sys	0m0.015s
 
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+
+real	0m0.178s
+user	0m0.229s
+sys	0m0.126s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.213s
+user	0m0.254s
+sys	0m0.151s
+
+real	0m0.215s
+user	0m0.255s
+sys	0m0.151s
+
 ===============================================================================
 
-go vet rotationalcipher
+Running: ../../.github/citools/go/go-lint-gocritic
 
-real	0m0.343s
-user	0m0.415s
-sys	0m0.323s
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.028s
+user	0m0.014s
+sys	0m0.024s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+./rotational_cipher.go:11:5: emptyStringTest: replace `len(plain) == 0` with `plain == ""`
+
+real	0m0.854s
+user	0m2.021s
+sys	0m0.298s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.894s
+user	0m2.041s
+sys	0m0.332s
+
+real	0m0.896s
+user	0m2.042s
+sys	0m0.333s
 
 ===============================================================================
 
-go fix rotationalcipher
+Running: ../../.github/citools/go/go-lint-go_vet
 
-real	0m0.080s
-user	0m0.034s
-sys	0m0.074s
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.021s
+user	0m0.012s
+sys	0m0.019s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.072s
+user	0m0.118s
+sys	0m0.091s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.103s
+user	0m0.136s
+sys	0m0.118s
+
+real	0m0.105s
+user	0m0.138s
+sys	0m0.118s
 
 ===============================================================================
 
-ineffassign ./...
+Running: ../../.github/citools/go/go-fixer-go_fix
 
-real	0m0.343s
-user	0m0.337s
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.017s
+user	0m0.012s
+sys	0m0.013s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.021s
+user	0m0.009s
+sys	0m0.022s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.048s
+user	0m0.026s
+sys	0m0.043s
+
+real	0m0.050s
+user	0m0.027s
+sys	0m0.045s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-errcheck
+
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.021s
+user	0m0.013s
+sys	0m0.017s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+
+real	0m0.482s
+user	0m1.566s
 sys	0m0.305s
 
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.513s
+user	0m1.582s
+sys	0m0.334s
+
+real	0m0.516s
+user	0m1.582s
+sys	0m0.336s
+
 ===============================================================================
 
-gocyclo .
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.019s
+user	0m0.009s
+sys	0m0.017s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
 5 rotationalcipher RotationalCipher rotational_cipher.go:10:1
 4 rotationalcipher BenchmarkRotationalCipher rotational_cipher_test.go:92:1
 3 rotationalcipher TestRotationalCipher rotational_cipher_test.go:81:1
 3 rotationalcipher shiftChar rotational_cipher.go:28:1
 1 rotationalcipher ExampleRotationalCipher rotational_cipher_examples_test.go:7:1
 
-real	0m0.021s
-user	0m0.002s
-sys	0m0.006s
+real	0m0.002s
+user	0m0.000s
+sys	0m0.003s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.033s
+user	0m0.016s
+sys	0m0.029s
+
+real	0m0.035s
+user	0m0.017s
+sys	0m0.030s
 
 ===============================================================================
 
-misspell .
+Running: ../../.github/citools/go/go-lint-misspell
 
-real	0m0.117s
-user	0m0.194s
-sys	0m0.068s
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+
+real	0m0.041s
+user	0m0.040s
+sys	0m0.020s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.056s
+user	0m0.050s
+sys	0m0.029s
+
+real	0m0.059s
+user	0m0.050s
+sys	0m0.032s
 
 ===============================================================================
 
-gosec ./rotational-cipher
-[gosec] 2022/08/17 21:04:16 Including rules: default
-[gosec] 2022/08/17 21:04:16 Excluding rules: default
-[gosec] 2022/08/17 21:04:16 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/rotational-cipher
-2022/08/17 21:04:17 internal error: package "strings" without types was imported from "command-line-arguments"
+Running: ../../.github/citools/go/go-lint-gosec
 
-real	0m0.456s
-user	0m0.447s
-sys	0m0.373s
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.031s
+user	0m0.021s
+sys	0m0.030s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:30:11 Including rules: default
+[gosec] 2023/09/07 00:30:11 Excluding rules: default
+[gosec] 2023/09/07 00:30:11 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/rotational-cipher
+[gosec] 2023/09/07 00:30:11 Checking package: rotationalcipher
+[gosec] 2023/09/07 00:30:11 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/rotational-cipher/rotational_cipher.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 65
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.120s
+user	0m0.115s
+sys	0m0.085s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.168s
+user	0m0.141s
+sys	0m0.132s
+
+real	0m0.172s
+user	0m0.143s
+sys	0m0.134s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.022s
+user	0m0.011s
+sys	0m0.020s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
+=== RUN   TestRotationalCipher
+    rotational_cipher_test.go:88: PASS: zero len input, rotate by 0
+    rotational_cipher_test.go:88: PASS: zero len input, rotate by 3
+    rotational_cipher_test.go:88: PASS: rotate a by 0, same output as input
+    rotational_cipher_test.go:88: PASS: rotate a by 1
+    rotational_cipher_test.go:88: PASS: rotate a by 26, same output as input
+    rotational_cipher_test.go:88: PASS: rotate n by 13 with wrap around alphabet
+    rotational_cipher_test.go:88: PASS: rotate capital letters
+    rotational_cipher_test.go:88: PASS: rotate spaces
+    rotational_cipher_test.go:88: PASS: rotate numbers
+    rotational_cipher_test.go:88: PASS: rotate punctuation
+    rotational_cipher_test.go:88: PASS: rotate all letters
+--- PASS: TestRotationalCipher (0.00s)
+=== RUN   ExampleRotationalCipher
+--- PASS: ExampleRotationalCipher (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	rotationalcipher	0.002s	coverage: 100.0% of statements
+
+real	0m0.192s
+user	0m0.298s
+sys	0m0.157s
+
+
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
+rotationalcipher/rotational_cipher.go:10:	RotationalCipher	100.0%
+rotationalcipher/rotational_cipher.go:28:	shiftChar		100.0%
+total:						(statements)		100.0%
+
+real	0m0.045s
+user	0m0.054s
+sys	0m0.064s
+
+
+ ==============================================================================
+
+Running: go tool cover -html coverage.out -o coverage.html
+
+
+real	0m0.041s
+user	0m0.046s
+sys	0m0.061s
+
+
+ ==============================================================================
+
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+real	0m0.016s
+user	0m0.012s
+sys	0m0.015s
+
+real	0m0.016s
+user	0m0.012s
+sys	0m0.015s
+
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
+=== RUN   TestRotationalCipher
+    rotational_cipher_test.go:88: PASS: zero len input, rotate by 0
+    rotational_cipher_test.go:88: PASS: zero len input, rotate by 3
+    rotational_cipher_test.go:88: PASS: rotate a by 0, same output as input
+    rotational_cipher_test.go:88: PASS: rotate a by 1
+    rotational_cipher_test.go:88: PASS: rotate a by 26, same output as input
+    rotational_cipher_test.go:88: PASS: rotate n by 13 with wrap around alphabet
+    rotational_cipher_test.go:88: PASS: rotate capital letters
+    rotational_cipher_test.go:88: PASS: rotate spaces
+    rotational_cipher_test.go:88: PASS: rotate numbers
+    rotational_cipher_test.go:88: PASS: rotate punctuation
+    rotational_cipher_test.go:88: PASS: rotate all letters
+--- PASS: TestRotationalCipher (0.00s)
+=== RUN   ExampleRotationalCipher
+--- PASS: ExampleRotationalCipher (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	rotationalcipher	1.012s	coverage: 100.0% of statements
+
+real	0m1.260s
+user	0m0.306s
+sys	0m0.169s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.587s
+user	0m0.735s
+sys	0m0.494s
+
+real	0m1.590s
+user	0m0.738s
+sys	0m0.494s
+
+===============================================================================
+
+mv -v benchstat-new.txt benchstat-old.txt
+renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
+
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+goos: linux
+goarch: amd64
+pkg: rotationalcipher
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+BenchmarkRotationalCipher
+BenchmarkRotationalCipher-8   	 1147933	      1004 ns/op	     280 B/op	      16 allocs/op
+PASS
+ok  	rotationalcipher	1.996s
+
+real	0m2.159s
+user	0m2.262s
+sys	0m0.184s
+
+===============================================================================
+
+gotest -v -tags bonus
+=== RUN   TestRotationalCipher
+    rotational_cipher_test.go:88: PASS: zero len input, rotate by 0
+    rotational_cipher_test.go:88: PASS: zero len input, rotate by 3
+    rotational_cipher_test.go:88: PASS: rotate a by 0, same output as input
+    rotational_cipher_test.go:88: PASS: rotate a by 1
+    rotational_cipher_test.go:88: PASS: rotate a by 26, same output as input
+    rotational_cipher_test.go:88: PASS: rotate n by 13 with wrap around alphabet
+    rotational_cipher_test.go:88: PASS: rotate capital letters
+    rotational_cipher_test.go:88: PASS: rotate spaces
+    rotational_cipher_test.go:88: PASS: rotate numbers
+    rotational_cipher_test.go:88: PASS: rotate punctuation
+    rotational_cipher_test.go:88: PASS: rotate all letters
+--- PASS: TestRotationalCipher (0.00s)
+=== RUN   ExampleRotationalCipher
+--- PASS: ExampleRotationalCipher (0.00s)
+PASS
+ok  	rotationalcipher	0.002s
+
+real	0m0.125s
+user	0m0.154s
+sys	0m0.114s
+
+===============================================================================
+
+benchstat benchstat-old.txt benchstat-new.txt
+benchstat-new.txt:5: missing iteration count
+goos: linux
+goarch: amd64
+pkg: rotationalcipher
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+                   │ benchstat-new.txt │
+                   │      sec/op       │
+RotationalCipher-8        1.004µ ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
+
+                   │ benchstat-new.txt │
+                   │       B/op        │
+RotationalCipher-8         280.0 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
+
+                   │ benchstat-new.txt │
+                   │     allocs/op     │
+RotationalCipher-8         16.00 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
+
+cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+                   │ benchstat-old.txt │
+                   │      sec/op       │
+RotationalCipher-4        3.611µ ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
+
+                   │ benchstat-old.txt │
+                   │       B/op        │
+RotationalCipher-4         280.0 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
+
+                   │ benchstat-old.txt │
+                   │     allocs/op     │
+RotationalCipher-4         16.00 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
+
+real	0m0.006s
+user	0m0.001s
+sys	0m0.002s
 
 ===============================================================================
 
 gomarkdoc --output rotationalcipher-doc.md
 
-real	0m0.032s
-user	0m0.014s
-sys	0m0.024s
+real	0m0.010s
+user	0m0.006s
+sys	0m0.003s
 
 ===============================================================================
 
@@ -211,9 +765,9 @@ func RotationalCipher(plain string, shiftKey int) string
     a plain text input.
 
 
-real	0m0.204s
-user	0m0.081s
-sys	0m0.174s
+real	0m0.046s
+user	0m0.030s
+sys	0m0.033s
 
 
 ===============================================================================

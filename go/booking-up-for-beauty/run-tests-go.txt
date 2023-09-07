@@ -5,87 +5,469 @@ Go packages: booking
 
 ===============================================================================
 
-golangci-lint run ./...
+Running: ../../.github/citools/go/go-lint-golangci-lint
 
-real	0m0.295s
-user	0m0.528s
-sys	0m0.210s
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.018s
+user	0m0.021s
+sys	0m0.021s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+booking_up_for_beauty.go:9:64: Comment should end in a period (godot)
+// Schedule returns a time.Time from a string containing a date
+                                                               ^
+booking_up_for_beauty.go:33:69: Comment should end in a period (godot)
+// IsAfternoonAppointment returns whether a time is in the afternoon
+                                                                    ^
+booking_up_for_beauty.go:55:66: Comment should end in a period (godot)
+// Description returns a formatted string of the appointment time
+                                                                 ^
+booking_up_for_beauty_test.go:77: File is not `gofumpt`-ed (gofumpt)
+}
+booking_up_for_beauty_test.go:19:23: Using the variable on range scope `tc` in function literal (scopelint)
+			if got := Schedule(tc.in); !got.Equal(tc.want) {
+			                   ^
+booking_up_for_beauty_test.go:20:48: Using the variable on range scope `tc` in function literal (scopelint)
+				t.Errorf("Schedule(%s) = '%v', want '%v'", tc.in, got, tc.want)
+				                                           ^
+booking_up_for_beauty_test.go:37:24: Using the variable on range scope `tc` in function literal (scopelint)
+			if got := HasPassed(tc.in); got != tc.want {
+			                    ^
+booking_up_for_beauty.go:58:2: declarations should never be cuddled (wsl)
+	const outputLayout = "Monday, January 2, 2006, at 15:04:05"
+	^
+booking_up_for_beauty_test.go:8:1: Function TestSchedule missing the call to method parallel (paralleltest)
+func TestSchedule(t *testing.T) {
+^
+booking_up_for_beauty_test.go:17:2: Range statement for test TestSchedule missing the call to method parallel in test Run (paralleltest)
+	for name, tc := range tests {
+	^
+booking_up_for_beauty_test.go:26:1: Function TestHasPassed missing the call to method parallel (paralleltest)
+func TestHasPassed(t *testing.T) {
+^
+booking_up_for_beauty_test.go:35:2: Range statement for test TestHasPassed missing the call to method parallel in test Run (paralleltest)
+	for name, tc := range tests {
+	^
+booking_up_for_beauty_test.go:44:1: Function TestIsAfternoonAppointment missing the call to method parallel (paralleltest)
+func TestIsAfternoonAppointment(t *testing.T) {
+^
+booking_up_for_beauty_test.go:53:2: Range statement for test TestIsAfternoonAppointment missing the call to method parallel in test Run (paralleltest)
+	for name, tc := range tests {
+	^
+booking_up_for_beauty_test.go:62:1: Function TestDescription missing the call to method parallel (paralleltest)
+func TestDescription(t *testing.T) {
+^
+booking_up_for_beauty_test.go:70:2: Range statement for test TestDescription missing the call to method parallel in test Run (paralleltest)
+	for name, tc := range tests {
+	^
+booking_up_for_beauty_test.go:78:1: Function TestAnniversaryDate missing the call to method parallel (paralleltest)
+func TestAnniversaryDate(t *testing.T) {
+^
+booking_up_for_beauty_test.go:85:2: Range statement for test TestAnniversaryDate missing the call to method parallel in test Run (paralleltest)
+	for name, tc := range tests {
+	^
+booking_up_for_beauty_examples_test.go:1:9: package should be `booking_test` instead of `booking` (testpackage)
+package booking
+        ^
+booking_up_for_beauty_test.go:1:9: package should be `booking_test` instead of `booking` (testpackage)
+package booking
+        ^
+booking_up_for_beauty.go:24:2: variable name 't' is too short for the scope of its usage (varnamelen)
+	t, e := time.Parse(layout, date)
+	^
+booking_up_for_beauty.go:60:2: variable name 't' is too short for the scope of its usage (varnamelen)
+	t, e := time.Parse(inputLayout, date)
+	^
+booking_up_for_beauty.go:38:2: variable name 't' is too short for the scope of its usage (varnamelen)
+	t, e := time.Parse(layout, date)
+	^
+
+real	0m0.541s
+user	0m0.848s
+sys	0m0.530s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.570s
+user	0m0.873s
+sys	0m0.561s
+
+real	0m0.573s
+user	0m0.874s
+sys	0m0.562s
 
 ===============================================================================
 
-golint ./...
+Running: ../../.github/citools/go/go-lint-revive
 
-real	0m0.027s
-user	0m0.013s
-sys	0m0.005s
+Running Go Lint Revive
 
-===============================================================================
+Go version:
 
-revive -formatter=stylish ./...
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.030s
+user	0m0.026s
+sys	0m0.028s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
 booking_up_for_beauty.go
   (1, 1)  https://revive.run/r#package-comments  should have a package comment  
 
 
  ✖ 1 problem (0 errors) (1 warnings)
 
-real	0m0.011s
-user	0m0.005s
-sys	0m0.006s
+real	0m0.075s
+user	0m0.039s
+sys	0m0.055s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.118s
+user	0m0.072s
+sys	0m0.093s
+
+real	0m0.120s
+user	0m0.074s
+sys	0m0.093s
 
 ===============================================================================
 
-ineffassign ./...
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
 
-real	0m0.088s
-user	0m0.143s
-sys	0m0.107s
+real	0m0.001s
+user	0m0.001s
+sys	0m0.000s
 
 ===============================================================================
 
-go-consistent -v ./...
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.022s
+user	0m0.019s
+sys	0m0.025s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
 	info: check "./."
 internal error: package "fmt" without types was imported from "booking"
 
-real	0m0.102s
-user	0m0.168s
-sys	0m0.148s
+real	0m0.088s
+user	0m0.099s
+sys	0m0.113s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.123s
+user	0m0.129s
+sys	0m0.147s
+
+real	0m0.126s
+user	0m0.129s
+sys	0m0.149s
 
 ===============================================================================
 
-staticcheck ./...
+Running: ../../.github/citools/go/go-lint-staticcheck
 
-real	0m0.141s
-user	0m0.223s
-sys	0m0.152s
+Running Go StaticCheck
 
-===============================================================================
+Go version:
 
-gocritic check -enableAll ./...
-./booking_up_for_beauty.go:68:27: regexpSimplify: can re-write `(.*[0-9][0-9]:[0-9][0-9]):[0-9][0-9]$` as `(.*\d{2}:\d{2}):\d{2}$`
+	go version go1.21.0 linux/amd64
 
-real	0m0.755s
-user	0m2.626s
-sys	0m0.439s
 
-===============================================================================
+ ==============================================================================
 
-go vet ./...
+Running: go clean ./...
 
-real	0m0.090s
-user	0m0.187s
-sys	0m0.189s
-
-===============================================================================
-
-go fix ./...
 
 real	0m0.023s
-user	0m0.023s
-sys	0m0.030s
+user	0m0.024s
+sys	0m0.028s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+booking_up_for_beauty.go:1:1: at least one file in a package should have a package comment (ST1000)
+
+real	0m0.177s
+user	0m0.227s
+sys	0m0.134s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.211s
+user	0m0.256s
+sys	0m0.172s
+
+real	0m0.213s
+user	0m0.256s
+sys	0m0.173s
 
 ===============================================================================
 
-gocyclo .
+Running: ../../.github/citools/go/go-lint-gocritic
+
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.023s
+user	0m0.019s
+sys	0m0.030s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+./booking_up_for_beauty.go:68:27: regexpSimplify: can re-write `(.*[0-9][0-9]:[0-9][0-9]):[0-9][0-9]$` as `(.*\d{2}:\d{2}):\d{2}$`
+
+real	0m0.806s
+user	0m1.925s
+sys	0m0.315s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.841s
+user	0m1.953s
+sys	0m0.353s
+
+real	0m0.843s
+user	0m1.955s
+sys	0m0.353s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go_vet
+
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.026s
+user	0m0.025s
+sys	0m0.034s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.070s
+user	0m0.100s
+sys	0m0.090s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.108s
+user	0m0.132s
+sys	0m0.134s
+
+real	0m0.110s
+user	0m0.133s
+sys	0m0.136s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-fixer-go_fix
+
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.021s
+user	0m0.020s
+sys	0m0.021s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.027s
+user	0m0.027s
+sys	0m0.027s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.058s
+user	0m0.053s
+sys	0m0.055s
+
+real	0m0.060s
+user	0m0.054s
+sys	0m0.056s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-errcheck
+
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.039s
+user	0m0.039s
+sys	0m0.041s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+
+real	0m0.469s
+user	0m1.418s
+sys	0m0.266s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.527s
+user	0m1.470s
+sys	0m0.319s
+
+real	0m0.529s
+user	0m1.471s
+sys	0m0.319s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.024s
+user	0m0.025s
+sys	0m0.025s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
 4 booking IsAfternoonAppointment booking_up_for_beauty.go:34:1
 3 booking TestAnniversaryDate booking_up_for_beauty_test.go:78:1
 3 booking TestDescription booking_up_for_beauty_test.go:62:1
@@ -102,41 +484,147 @@ gocyclo .
 1 booking ExampleSchedule booking_up_for_beauty_examples_test.go:9:1
 1 booking AnniversaryDate booking_up_for_beauty.go:76:1
 
-real	0m0.002s
+real	0m0.003s
 user	0m0.001s
 sys	0m0.001s
 
-===============================================================================
 
-misspell .
+ ==============================================================================
 
-real	0m0.032s
-user	0m0.025s
-sys	0m0.011s
+Exit code: 0
 
-===============================================================================
+real	0m0.038s
+user	0m0.035s
+sys	0m0.031s
 
-gosec ./...
-[gosec] 2023/03/04 21:52:20 Including rules: default
-[gosec] 2023/03/04 21:52:20 Excluding rules: default
-[gosec] 2023/03/04 21:52:20 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/booking-up-for-beauty
-2023/03/04 21:52:20 internal error: package "fmt" without types was imported from "command-line-arguments"
-
-real	0m0.127s
-user	0m0.196s
-sys	0m0.114s
+real	0m0.040s
+user	0m0.037s
+sys	0m0.032s
 
 ===============================================================================
 
-gotest -v -covermode=count -coverprofile coverage.out ./...
+Running: ../../.github/citools/go/go-lint-misspell
+
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+
+real	0m0.026s
+user	0m0.036s
+sys	0m0.014s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.035s
+user	0m0.043s
+sys	0m0.021s
+
+real	0m0.038s
+user	0m0.044s
+sys	0m0.022s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gosec
+
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.031s
+user	0m0.022s
+sys	0m0.045s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:21:11 Including rules: default
+[gosec] 2023/09/07 00:21:11 Excluding rules: default
+[gosec] 2023/09/07 00:21:11 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/booking-up-for-beauty
+[gosec] 2023/09/07 00:21:11 Checking package: booking
+[gosec] 2023/09/07 00:21:11 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/booking-up-for-beauty/booking_up_for_beauty.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 82
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.131s
+user	0m0.138s
+sys	0m0.106s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.174s
+user	0m0.169s
+sys	0m0.158s
+
+real	0m0.176s
+user	0m0.169s
+sys	0m0.160s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.033s
+user	0m0.031s
+sys	0m0.036s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
 === RUN   TestSchedule
-=== RUN   TestSchedule/Schedule_3
 === RUN   TestSchedule/Schedule_1
 === RUN   TestSchedule/Schedule_2
+=== RUN   TestSchedule/Schedule_3
 --- PASS: TestSchedule (0.00s)
-    --- PASS: TestSchedule/Schedule_3 (0.00s)
     --- PASS: TestSchedule/Schedule_1 (0.00s)
     --- PASS: TestSchedule/Schedule_2 (0.00s)
+    --- PASS: TestSchedule/Schedule_3 (0.00s)
 === RUN   TestHasPassed
 === RUN   TestHasPassed/HasPassed_1
 === RUN   TestHasPassed/HasPassed_2
@@ -146,13 +634,13 @@ gotest -v -covermode=count -coverprofile coverage.out ./...
     --- PASS: TestHasPassed/HasPassed_2 (0.00s)
     --- PASS: TestHasPassed/HasPassed_3 (0.00s)
 === RUN   TestIsAfternoonAppointment
-=== RUN   TestIsAfternoonAppointment/IsAfternoonAppointment_2
 === RUN   TestIsAfternoonAppointment/IsAfternoonAppointment_3
 === RUN   TestIsAfternoonAppointment/IsAfternoonAppointment_1
+=== RUN   TestIsAfternoonAppointment/IsAfternoonAppointment_2
 --- PASS: TestIsAfternoonAppointment (0.00s)
-    --- PASS: TestIsAfternoonAppointment/IsAfternoonAppointment_2 (0.00s)
     --- PASS: TestIsAfternoonAppointment/IsAfternoonAppointment_3 (0.00s)
     --- PASS: TestIsAfternoonAppointment/IsAfternoonAppointment_1 (0.00s)
+    --- PASS: TestIsAfternoonAppointment/IsAfternoonAppointment_2 (0.00s)
 === RUN   TestDescription
 === RUN   TestDescription/Description_1
 === RUN   TestDescription/Description_2
@@ -176,16 +664,18 @@ gotest -v -covermode=count -coverprofile coverage.out ./...
 === RUN   ExampleAnniversaryDate
 --- PASS: ExampleAnniversaryDate (0.00s)
 PASS
-	booking	coverage: 87.5% of statements
+coverage: 87.5% of statements
 ok  	booking	0.002s	coverage: 87.5% of statements
 
-real	0m0.200s
-user	0m0.303s
-sys	0m0.229s
+real	0m0.207s
+user	0m0.272s
+sys	0m0.183s
 
-===============================================================================
 
-go tool cover -func=coverage.out
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
 booking/booking_up_for_beauty.go:10:	Schedule		80.0%
 booking/booking_up_for_beauty.go:22:	HasPassed		80.0%
 booking/booking_up_for_beauty.go:34:	IsAfternoonAppointment	90.0%
@@ -193,21 +683,26 @@ booking/booking_up_for_beauty.go:56:	Description		88.9%
 booking/booking_up_for_beauty.go:76:	AnniversaryDate		100.0%
 total:					(statements)		87.5%
 
-real	0m0.066s
-user	0m0.084s
-sys	0m0.085s
+real	0m0.056s
+user	0m0.062s
+sys	0m0.067s
 
-===============================================================================
 
-go tool cover -html coverage.out -o coverage.html
+ ==============================================================================
 
-real	0m0.068s
-user	0m0.102s
-sys	0m0.094s
+Running: go tool cover -html coverage.out -o coverage.html
 
-===============================================================================
 
-gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+real	0m0.049s
+user	0m0.065s
+sys	0m0.070s
+
+
+ ==============================================================================
+
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
 
 56     	func Description(date string) string {
 57     		const inputLayout = "1/2/2006 15:04:05"
@@ -275,13 +770,19 @@ gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annota
 19     	}
 
 
-real	0m0.027s
-user	0m0.023s
-sys	0m0.030s
+real	0m0.020s
+user	0m0.022s
+sys	0m0.033s
 
-===============================================================================
+real	0m0.020s
+user	0m0.022s
+sys	0m0.033s
 
-gotest -v -race -covermode=atomic ./...
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
 === RUN   TestSchedule
 === RUN   TestSchedule/Schedule_1
 === RUN   TestSchedule/Schedule_2
@@ -291,13 +792,13 @@ gotest -v -race -covermode=atomic ./...
     --- PASS: TestSchedule/Schedule_2 (0.00s)
     --- PASS: TestSchedule/Schedule_3 (0.00s)
 === RUN   TestHasPassed
+=== RUN   TestHasPassed/HasPassed_2
 === RUN   TestHasPassed/HasPassed_3
 === RUN   TestHasPassed/HasPassed_1
-=== RUN   TestHasPassed/HasPassed_2
 --- PASS: TestHasPassed (0.00s)
+    --- PASS: TestHasPassed/HasPassed_2 (0.00s)
     --- PASS: TestHasPassed/HasPassed_3 (0.00s)
     --- PASS: TestHasPassed/HasPassed_1 (0.00s)
-    --- PASS: TestHasPassed/HasPassed_2 (0.00s)
 === RUN   TestIsAfternoonAppointment
 === RUN   TestIsAfternoonAppointment/IsAfternoonAppointment_1
 === RUN   TestIsAfternoonAppointment/IsAfternoonAppointment_2
@@ -329,22 +830,38 @@ gotest -v -race -covermode=atomic ./...
 === RUN   ExampleAnniversaryDate
 --- PASS: ExampleAnniversaryDate (0.00s)
 PASS
-	booking	coverage: 87.5% of statements
-ok  	booking	0.035s	coverage: 87.5% of statements
+coverage: 87.5% of statements
+ok  	booking	1.019s	coverage: 87.5% of statements
 
-real	0m0.292s
-user	0m0.434s
-sys	0m0.247s
+real	0m1.246s
+user	0m0.283s
+sys	0m0.176s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.631s
+user	0m0.748s
+sys	0m0.580s
+
+real	0m1.634s
+user	0m0.749s
+sys	0m0.581s
 
 ===============================================================================
+
+mv -v benchstat-new.txt benchstat-old.txt
+renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
 
 gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 PASS
 ok  	booking	0.002s
 
-real	0m0.144s
-user	0m0.245s
-sys	0m0.152s
+real	0m0.156s
+user	0m0.193s
+sys	0m0.151s
 
 ===============================================================================
 
@@ -398,21 +915,25 @@ gotest -v -tags bonus
 PASS
 ok  	booking	0.002s
 
-real	0m0.156s
-user	0m0.312s
-sys	0m0.250s
+real	0m0.125s
+user	0m0.174s
+sys	0m0.129s
 
 ===============================================================================
 
-No old benchmarks to run benchstat against.
+benchstat benchstat-old.txt benchstat-new.txt
+
+real	0m0.002s
+user	0m0.000s
+sys	0m0.002s
 
 ===============================================================================
 
 gomarkdoc --output booking-doc.md
 
-real	0m0.010s
-user	0m0.004s
-sys	0m0.006s
+real	0m0.011s
+user	0m0.009s
+sys	0m0.002s
 
 ===============================================================================
 
@@ -439,8 +960,8 @@ func Schedule(date string) time.Time
 
 
 real	0m0.037s
-user	0m0.025s
-sys	0m0.045s
+user	0m0.031s
+sys	0m0.029s
 
 
 ===============================================================================

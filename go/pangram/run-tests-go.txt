@@ -5,15 +5,571 @@ Go packages: pangram
 
 ===============================================================================
 
-golint pangram
+Running: ../../.github/citools/go/go-lint-golangci-lint
 
-real	0m0.142s
-user	0m0.113s
-sys	0m0.132s
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.023s
+user	0m0.015s
+sys	0m0.019s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+pangram.go:13: File is not `gofumpt`-ed (gofumpt)
+
+pangram_test.go:10:27: Using the variable on range scope `tc` in function literal (scopelint)
+			if actual := IsPangram(tc.input); actual != tc.expected {
+			                       ^
+pangram_test.go:11:46: Using the variable on range scope `tc` in function literal (scopelint)
+				t.Fatalf("IsPangram(%q) = %t, want: %t", tc.input, actual, tc.expected)
+				                                         ^
+pangram.go:12: unnecessary leading newline (whitespace)
+func IsPangram(input string) bool {
+
+pangram_test.go:21:2: for statements should only be cuddled with assignments used in the iteration (wsl)
+	for i := 0; i < b.N; i++ {
+	^
+cases_test.go:6:5: testCases is a global variable (gochecknoglobals)
+var testCases = []struct {
+    ^
+pangram.go:31:18: mnd: Magic number: 26, in <condition> detected (gomnd)
+	if len(input) < 26 {
+	                ^
+pangram_test.go:7:1: Function TestPangram missing the call to method parallel (paralleltest)
+func TestPangram(t *testing.T) {
+^
+pangram_test.go:8:2: Range statement for test TestPangram missing the call to method parallel in test Run (paralleltest)
+	for _, tc := range testCases {
+	^
+cases_test.go:1:9: package should be `pangram_test` instead of `pangram` (testpackage)
+package pangram
+        ^
+pangram_examples_test.go:1:9: package should be `pangram_test` instead of `pangram` (testpackage)
+package pangram
+        ^
+pangram_test.go:1:9: package should be `pangram_test` instead of `pangram` (testpackage)
+package pangram
+        ^
+pangram.go:21:2: variable name 're' is too short for the scope of its usage (varnamelen)
+	re, e := regexp.Compile(reStr)
+	^
+
+real	0m0.526s
+user	0m0.748s
+sys	0m0.485s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.561s
+user	0m0.770s
+sys	0m0.514s
+
+real	0m0.564s
+user	0m0.771s
+sys	0m0.515s
 
 ===============================================================================
 
-go test -v -covermode=count -coverprofile coverage.out pangram
+Running: ../../.github/citools/go/go-lint-revive
+
+Running Go Lint Revive
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.022s
+user	0m0.014s
+sys	0m0.021s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
+
+real	0m0.054s
+user	0m0.030s
+sys	0m0.040s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.086s
+user	0m0.050s
+sys	0m0.068s
+
+real	0m0.088s
+user	0m0.050s
+sys	0m0.070s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
+
+real	0m0.001s
+user	0m0.001s
+sys	0m0.000s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.027s
+user	0m0.020s
+sys	0m0.026s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
+	info: check "./."
+internal error: package "regexp" without types was imported from "pangram"
+
+real	0m0.086s
+user	0m0.122s
+sys	0m0.098s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.128s
+user	0m0.148s
+sys	0m0.138s
+
+real	0m0.130s
+user	0m0.149s
+sys	0m0.139s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-staticcheck
+
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.028s
+user	0m0.022s
+sys	0m0.023s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+
+real	0m0.166s
+user	0m0.223s
+sys	0m0.121s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.206s
+user	0m0.249s
+sys	0m0.157s
+
+real	0m0.209s
+user	0m0.250s
+sys	0m0.159s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocritic
+
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.028s
+user	0m0.020s
+sys	0m0.025s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+./pangram.go:14:5: emptyStringTest: replace `len(input) == 0` with `input == ""`
+
+real	0m0.810s
+user	0m1.880s
+sys	0m0.309s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.851s
+user	0m1.904s
+sys	0m0.347s
+
+real	0m0.853s
+user	0m1.904s
+sys	0m0.348s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go_vet
+
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.019s
+user	0m0.019s
+sys	0m0.010s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.072s
+user	0m0.111s
+sys	0m0.086s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.114s
+user	0m0.139s
+sys	0m0.116s
+
+real	0m0.116s
+user	0m0.141s
+sys	0m0.117s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-fixer-go_fix
+
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.020s
+user	0m0.014s
+sys	0m0.018s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.024s
+user	0m0.015s
+sys	0m0.022s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.055s
+user	0m0.036s
+sys	0m0.048s
+
+real	0m0.057s
+user	0m0.036s
+sys	0m0.050s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-errcheck
+
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.023s
+user	0m0.012s
+sys	0m0.021s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+
+real	0m0.449s
+user	0m1.263s
+sys	0m0.272s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.490s
+user	0m1.279s
+sys	0m0.313s
+
+real	0m0.491s
+user	0m1.280s
+sys	0m0.313s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.020s
+user	0m0.013s
+sys	0m0.020s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
+6 pangram IsPangram pangram.go:12:1
+4 pangram BenchmarkPangram pangram_test.go:17:1
+3 pangram TestPangram pangram_test.go:7:1
+1 pangram ExampleIsPangram pangram_examples_test.go:7:1
+
+real	0m0.003s
+user	0m0.000s
+sys	0m0.003s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.033s
+user	0m0.021s
+sys	0m0.029s
+
+real	0m0.036s
+user	0m0.022s
+sys	0m0.030s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-misspell
+
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+
+real	0m0.040s
+user	0m0.034s
+sys	0m0.018s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.052s
+user	0m0.042s
+sys	0m0.028s
+
+real	0m0.054s
+user	0m0.043s
+sys	0m0.029s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gosec
+
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.035s
+user	0m0.022s
+sys	0m0.027s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:25:33 Including rules: default
+[gosec] 2023/09/07 00:25:33 Excluding rules: default
+[gosec] 2023/09/07 00:25:33 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/pangram
+[gosec] 2023/09/07 00:25:33 Checking package: pangram
+[gosec] 2023/09/07 00:25:33 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/pangram/pangram.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 46
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.116s
+user	0m0.113s
+sys	0m0.114s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.163s
+user	0m0.140s
+sys	0m0.153s
+
+real	0m0.165s
+user	0m0.140s
+sys	0m0.154s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.022s
+user	0m0.018s
+sys	0m0.017s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
 === RUN   TestPangram
 === RUN   TestPangram/empty_sentence
 === RUN   TestPangram/perfect_lower_case
@@ -25,7 +581,7 @@ go test -v -covermode=count -coverprofile coverage.out pangram
 === RUN   TestPangram/missing_letters_replaced_by_numbers
 === RUN   TestPangram/mixed_case_and_punctuation
 === RUN   TestPangram/a-m_and_A-M_are_26_different_characters_but_not_a_pangram
---- PASS: TestPangram (0.01s)
+--- PASS: TestPangram (0.00s)
     --- PASS: TestPangram/empty_sentence (0.00s)
     --- PASS: TestPangram/perfect_lower_case (0.00s)
     --- PASS: TestPangram/only_lower_case (0.00s)
@@ -40,33 +596,91 @@ go test -v -covermode=count -coverprofile coverage.out pangram
 --- PASS: ExampleIsPangram (0.00s)
 PASS
 coverage: 92.9% of statements
-ok  	pangram	0.012s	coverage: 92.9% of statements
+ok  	pangram	0.003s	coverage: 92.9% of statements
 
-real	0m0.595s
-user	0m0.657s
-sys	0m0.453s
+real	0m0.173s
+user	0m0.232s
+sys	0m0.153s
 
-===============================================================================
 
-go tool cover -func=coverage.out
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
 pangram/pangram.go:12:	IsPangram	92.9%
 total:			(statements)	92.9%
 
-real	0m0.205s
-user	0m0.171s
-sys	0m0.203s
+real	0m0.043s
+user	0m0.060s
+sys	0m0.047s
 
-===============================================================================
 
-go tool cover -html coverage.out -o coverage.html
+ ==============================================================================
 
-real	0m0.172s
-user	0m0.150s
-sys	0m0.225s
+Running: go tool cover -html coverage.out -o coverage.html
 
-===============================================================================
 
-go test -v -race -covermode=atomic pangram
+real	0m0.055s
+user	0m0.058s
+sys	0m0.082s
+
+
+ ==============================================================================
+
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+12     	func IsPangram(input string) bool {
+13     	
+14     		if len(input) == 0 {
+15     			return false
+16     		}
+17     	
+18     		// Get rid of all things not letters.
+19     		reStr := `[[:^alpha:]]` // `([[:cntrl:]]|[[:digit:]]|[[:space:]]|[[:punct:]]|[[:xdigit:]])`
+20     	
+21     		re, e := regexp.Compile(reStr)
+22     		if e != nil {
+23     			// the raw re string is static but you can still make mistakes, better
+24     			// to panic during tests than quietly "working" incorrectly.
+25 MISS			panic(e)
+26     		}
+27     	
+28     		input = re.ReplaceAllString(input, "")
+29     	
+30     		// The string needs at least 26 letters to have the posibility of being a pangram.
+31     		if len(input) < 26 {
+32     			return false
+33     		}
+34     	
+35     		// Make it lowercase to simplify checks.
+36     		input = strings.ToLower(input)
+37     	
+38     		// Check to see if all 26 letters are in the string. Fail when we can't find one of them.
+39     		for _, a := range alpha {
+40     			if !strings.Contains(input, string(a)) {
+41     				return false
+42     			}
+43     		}
+44     	
+45     		return true
+46     	}
+
+
+real	0m0.018s
+user	0m0.015s
+sys	0m0.016s
+
+real	0m0.018s
+user	0m0.015s
+sys	0m0.016s
+
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
 === RUN   TestPangram
 === RUN   TestPangram/empty_sentence
 === RUN   TestPangram/perfect_lower_case
@@ -78,7 +692,7 @@ go test -v -race -covermode=atomic pangram
 === RUN   TestPangram/missing_letters_replaced_by_numbers
 === RUN   TestPangram/mixed_case_and_punctuation
 === RUN   TestPangram/a-m_and_A-M_are_26_different_characters_but_not_a_pangram
---- PASS: TestPangram (0.01s)
+--- PASS: TestPangram (0.00s)
     --- PASS: TestPangram/empty_sentence (0.00s)
     --- PASS: TestPangram/perfect_lower_case (0.00s)
     --- PASS: TestPangram/only_lower_case (0.00s)
@@ -93,97 +707,128 @@ go test -v -race -covermode=atomic pangram
 --- PASS: ExampleIsPangram (0.00s)
 PASS
 coverage: 92.9% of statements
-ok  	pangram	0.048s	coverage: 92.9% of statements
+ok  	pangram	1.015s	coverage: 92.9% of statements
 
-real	0m0.675s
-user	0m0.773s
-sys	0m0.435s
+real	0m1.258s
+user	0m0.300s
+sys	0m0.191s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.580s
+user	0m0.691s
+sys	0m0.514s
+
+real	0m1.582s
+user	0m0.691s
+sys	0m0.516s
 
 ===============================================================================
 
 mv -v benchstat-new.txt benchstat-old.txt
 renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
 
-go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 goos: linux
 goarch: amd64
 pkg: pangram
-cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
-BenchmarkPangram-4   	   26893	     56473 ns/op	    8478 B/op	     147 allocs/op
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+BenchmarkPangram
+BenchmarkPangram-8   	   61730	     19476 ns/op	    8611 B/op	     147 allocs/op
 PASS
-ok  	pangram	2.050s
+ok  	pangram	1.403s
 
-real	0m2.458s
-user	0m2.887s
-sys	0m0.435s
+real	0m1.553s
+user	0m1.639s
+sys	0m0.172s
 
 ===============================================================================
 
-go test -tags bonus
+gotest -v -tags bonus
+=== RUN   TestPangram
+=== RUN   TestPangram/empty_sentence
+=== RUN   TestPangram/perfect_lower_case
+=== RUN   TestPangram/only_lower_case
+=== RUN   TestPangram/missing_the_letter_'x'
+=== RUN   TestPangram/missing_the_letter_'h'
+=== RUN   TestPangram/with_underscores
+=== RUN   TestPangram/with_numbers
+=== RUN   TestPangram/missing_letters_replaced_by_numbers
+=== RUN   TestPangram/mixed_case_and_punctuation
+=== RUN   TestPangram/a-m_and_A-M_are_26_different_characters_but_not_a_pangram
+--- PASS: TestPangram (0.00s)
+    --- PASS: TestPangram/empty_sentence (0.00s)
+    --- PASS: TestPangram/perfect_lower_case (0.00s)
+    --- PASS: TestPangram/only_lower_case (0.00s)
+    --- PASS: TestPangram/missing_the_letter_'x' (0.00s)
+    --- PASS: TestPangram/missing_the_letter_'h' (0.00s)
+    --- PASS: TestPangram/with_underscores (0.00s)
+    --- PASS: TestPangram/with_numbers (0.00s)
+    --- PASS: TestPangram/missing_letters_replaced_by_numbers (0.00s)
+    --- PASS: TestPangram/mixed_case_and_punctuation (0.00s)
+    --- PASS: TestPangram/a-m_and_A-M_are_26_different_characters_but_not_a_pangram (0.00s)
+=== RUN   ExampleIsPangram
+--- PASS: ExampleIsPangram (0.00s)
 PASS
-ok  	pangram	0.003s
+ok  	pangram	0.002s
 
-real	0m0.485s
-user	0m0.552s
-sys	0m0.345s
+real	0m0.135s
+user	0m0.161s
+sys	0m0.133s
 
 ===============================================================================
-
-go install golang.org/x/perf/cmd/benchstat@latest
-
-real	0m0.925s
-user	0m0.615s
-sys	0m0.395s
 
 benchstat benchstat-old.txt benchstat-new.txt
-name       old time/op    new time/op    delta
-Pangram-4    66.1µs ± 0%    56.5µs ± 0%   ~     (p=1.000 n=1+1)
+benchstat-new.txt:5: missing iteration count
+goos: linux
+goarch: amd64
+pkg: pangram
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+          │ benchstat-new.txt │
+          │      sec/op       │
+Pangram-8        19.48µ ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-name       old alloc/op   new alloc/op   delta
-Pangram-4    8.57kB ± 0%    8.48kB ± 0%   ~     (p=1.000 n=1+1)
+          │ benchstat-new.txt │
+          │       B/op        │
+Pangram-8       8.409Ki ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-name       old allocs/op  new allocs/op  delta
-Pangram-4       149 ± 0%       147 ± 0%   ~     (p=1.000 n=1+1)
+          │ benchstat-new.txt │
+          │     allocs/op     │
+Pangram-8         147.0 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-real	0m0.015s
-user	0m0.002s
-sys	0m0.019s
+cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+          │ benchstat-old.txt │
+          │      sec/op       │
+Pangram-4        56.47µ ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-===============================================================================
+          │ benchstat-old.txt │
+          │       B/op        │
+Pangram-4       8.279Ki ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-go vet pangram
+          │ benchstat-old.txt │
+          │     allocs/op     │
+Pangram-4         147.0 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-real	0m0.498s
-user	0m0.560s
-sys	0m0.458s
-
-===============================================================================
-
-go fix pangram
-
-real	0m0.192s
-user	0m0.164s
-sys	0m0.158s
-
-===============================================================================
-
-gosec ./pangram
-[gosec] 2022/07/26 07:23:04 Including rules: default
-[gosec] 2022/07/26 07:23:04 Excluding rules: default
-[gosec] 2022/07/26 07:23:04 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/pangram
-2022/07/26 07:23:04 internal error: package "regexp" without types was imported from "command-line-arguments"
-
-real	0m0.484s
-user	0m0.551s
-sys	0m0.347s
+real	0m0.003s
+user	0m0.001s
+sys	0m0.002s
 
 ===============================================================================
 
 gomarkdoc --output pangram-doc.md
 
-real	0m0.031s
-user	0m0.021s
-sys	0m0.015s
+real	0m0.009s
+user	0m0.002s
+sys	0m0.007s
 
 ===============================================================================
 
@@ -199,9 +844,9 @@ func IsPangram(input string) bool
     z).
 
 
-real	0m0.241s
-user	0m0.177s
-sys	0m0.185s
+real	0m0.037s
+user	0m0.016s
+sys	0m0.037s
 
 
 ===============================================================================

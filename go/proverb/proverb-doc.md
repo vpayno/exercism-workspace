@@ -6,7 +6,7 @@
 import "proverb"
 ```
 
-Package proverb generates proverbial rhymes\.
+Package proverb generates proverbial rhymes.
 
 ## Index
 
@@ -19,7 +19,7 @@ Package proverb generates proverbial rhymes\.
 func Proverb(words []string) []string
 ```
 
-Proverb returns a proverbial rhyme given a slice of words\.
+Proverb returns a proverbial rhyme given a slice of words.
 
 <details><summary>Example</summary>
 <p>

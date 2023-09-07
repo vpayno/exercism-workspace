@@ -5,15 +5,582 @@ Go packages: gigasecond
 
 ===============================================================================
 
-golint gigasecond
+Running: ../../.github/citools/go/go-lint-golangci-lint
 
-real	0m0.276s
-user	0m0.355s
-sys	0m0.252s
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.029s
+user	0m0.018s
+sys	0m0.028s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+gigasecond_test.go:10:34: Comment should end in a period (godot)
+// date formats used in test data
+                                 ^
+gigasecond.go:11: File is not `gofumpt`-ed (gofumpt)
+
+gigasecond_test.go:35: line is 154 characters (lll)
+		t.Fatalf("error in test setup: TestAddGigasecond requires datetime in one of the following formats: \nformat 1:%q\nformat 2:%q\ngot:%q", fmtD, fmtDT, s)
+gigasecond_test.go:19:16: Using the variable on range scope `tc` in function literal (scopelint)
+			in := parse(tc.in, t)
+			            ^
+gigasecond_test.go:20:18: Using the variable on range scope `tc` in function literal (scopelint)
+			want := parse(tc.want, t)
+			              ^
+gigasecond.go:10: unnecessary leading newline (whitespace)
+func AddGigasecond(t time.Time) time.Time {
+
+gigasecond_test.go:34:2: if statements should only be cuddled with assignments (wsl)
+	if err != nil {
+	^
+gigasecond_test.go:37:2: return statements should not be cuddled if block has more than two lines (wsl)
+	return tt
+	^
+gigasecond_test.go:44:2: for statements should only be cuddled with assignments used in the iteration (wsl)
+	for i := 0; i < b.N; i++ {
+	^
+cases_test.go:6:5: addCases is a global variable (gochecknoglobals)
+var addCases = []struct {
+    ^
+gigasecond_test.go:16:1: Function TestAddGigasecond missing the call to method parallel (paralleltest)
+func TestAddGigasecond(t *testing.T) {
+^
+gigasecond_test.go:17:2: Range statement for test TestAddGigasecond missing the call to method parallel in test Run (paralleltest)
+	for _, tc := range addCases {
+	^
+cases_test.go:1:9: package should be `gigasecond_test` instead of `gigasecond` (testpackage)
+package gigasecond
+        ^
+gigasecond_examples_test.go:1:9: package should be `gigasecond_test` instead of `gigasecond` (testpackage)
+package gigasecond
+        ^
+gigasecond_test.go:1:9: package should be `gigasecond_test` instead of `gigasecond` (testpackage)
+package gigasecond
+        ^
+gigasecond_test.go:29:6: parameter *testing.T should be the first or after context.Context (thelper)
+func parse(s string, t *testing.T) time.Time {
+     ^
+gigasecond_test.go:30:2: variable name 'tt' is too short for the scope of its usage (varnamelen)
+	tt, err := time.Parse(fmtDT, s) // try full date time format first
+	^
+
+real	0m0.421s
+user	0m0.604s
+sys	0m0.404s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.465s
+user	0m0.631s
+sys	0m0.443s
+
+real	0m0.466s
+user	0m0.632s
+sys	0m0.443s
 
 ===============================================================================
 
-go test -v -covermode=count -coverprofile coverage.out gigasecond
+Running: ../../.github/citools/go/go-lint-revive
+
+Running Go Lint Revive
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.023s
+user	0m0.016s
+sys	0m0.017s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
+
+real	0m0.044s
+user	0m0.031s
+sys	0m0.024s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.079s
+user	0m0.056s
+sys	0m0.048s
+
+real	0m0.081s
+user	0m0.056s
+sys	0m0.050s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
+
+real	0m0.001s
+user	0m0.001s
+sys	0m0.000s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.029s
+user	0m0.024s
+sys	0m0.020s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
+	info: check "./."
+internal error: package "time" without types was imported from "gigasecond"
+
+real	0m0.088s
+user	0m0.112s
+sys	0m0.129s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.132s
+user	0m0.141s
+sys	0m0.163s
+
+real	0m0.136s
+user	0m0.145s
+sys	0m0.164s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-staticcheck
+
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.020s
+user	0m0.015s
+sys	0m0.015s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+
+real	0m0.178s
+user	0m0.215s
+sys	0m0.140s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.208s
+user	0m0.237s
+sys	0m0.161s
+
+real	0m0.210s
+user	0m0.239s
+sys	0m0.161s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocritic
+
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.022s
+user	0m0.015s
+sys	0m0.020s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+
+real	0m0.829s
+user	0m2.004s
+sys	0m0.278s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.863s
+user	0m2.029s
+sys	0m0.305s
+
+real	0m0.865s
+user	0m2.029s
+sys	0m0.307s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go_vet
+
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.026s
+user	0m0.020s
+sys	0m0.018s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.070s
+user	0m0.101s
+sys	0m0.080s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.108s
+user	0m0.125s
+sys	0m0.109s
+
+real	0m0.110s
+user	0m0.125s
+sys	0m0.111s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-fixer-go_fix
+
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.031s
+user	0m0.022s
+sys	0m0.026s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.026s
+user	0m0.012s
+sys	0m0.024s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.069s
+user	0m0.039s
+sys	0m0.063s
+
+real	0m0.071s
+user	0m0.039s
+sys	0m0.065s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-errcheck
+
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.030s
+user	0m0.015s
+sys	0m0.030s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+
+real	0m0.459s
+user	0m1.401s
+sys	0m0.313s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.504s
+user	0m1.422s
+sys	0m0.357s
+
+real	0m0.506s
+user	0m1.423s
+sys	0m0.358s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.018s
+user	0m0.011s
+sys	0m0.016s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
+3 gigasecond BenchmarkAddGigasecond gigasecond_test.go:40:1
+3 gigasecond parse gigasecond_test.go:29:1
+3 gigasecond TestAddGigasecond gigasecond_test.go:16:1
+1 gigasecond ExampleAddGigasecond gigasecond_examples_test.go:8:1
+1 gigasecond AddGigasecond gigasecond.go:10:1
+
+real	0m0.002s
+user	0m0.001s
+sys	0m0.001s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.030s
+user	0m0.016s
+sys	0m0.026s
+
+real	0m0.031s
+user	0m0.016s
+sys	0m0.028s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-misspell
+
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+
+real	0m0.023s
+user	0m0.024s
+sys	0m0.012s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.036s
+user	0m0.031s
+sys	0m0.020s
+
+real	0m0.038s
+user	0m0.032s
+sys	0m0.021s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gosec
+
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.023s
+user	0m0.019s
+sys	0m0.015s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:23:21 Including rules: default
+[gosec] 2023/09/07 00:23:21 Excluding rules: default
+[gosec] 2023/09/07 00:23:21 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/gigasecond
+[gosec] 2023/09/07 00:23:21 Checking package: gigasecond
+[gosec] 2023/09/07 00:23:21 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/gigasecond/gigasecond.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 15
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.123s
+user	0m0.119s
+sys	0m0.121s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.161s
+user	0m0.147s
+sys	0m0.147s
+
+real	0m0.162s
+user	0m0.147s
+sys	0m0.148s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.022s
+user	0m0.014s
+sys	0m0.021s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
 === RUN   TestAddGigasecond
 === RUN   TestAddGigasecond/date_only_specification_of_time
 === RUN   TestAddGigasecond/second_test_for_date_only_specification_of_time
@@ -30,40 +597,61 @@ go test -v -covermode=count -coverprofile coverage.out gigasecond
 --- PASS: ExampleAddGigasecond (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	gigasecond	0.015s	coverage: 100.0% of statements
+ok  	gigasecond	0.002s	coverage: 100.0% of statements
 
-real	0m1.037s
-user	0m1.353s
-sys	0m0.832s
+real	0m0.191s
+user	0m0.238s
+sys	0m0.151s
 
-===============================================================================
 
-go tool cover -func=coverage.out
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
 gigasecond/gigasecond.go:10:	AddGigasecond	100.0%
 total:				(statements)	100.0%
 
-real	0m0.400s
-user	0m0.325s
-sys	0m0.363s
+real	0m0.052s
+user	0m0.054s
+sys	0m0.072s
 
-===============================================================================
 
-go tool cover -html coverage.out -o coverage.html
+ ==============================================================================
 
-real	0m0.434s
-user	0m0.365s
-sys	0m0.376s
+Running: go tool cover -html coverage.out -o coverage.html
 
-===============================================================================
 
-go test -v -race -covermode=atomic gigasecond
+real	0m0.052s
+user	0m0.056s
+sys	0m0.068s
+
+
+ ==============================================================================
+
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+real	0m0.015s
+user	0m0.005s
+sys	0m0.020s
+
+real	0m0.016s
+user	0m0.005s
+sys	0m0.020s
+
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
 === RUN   TestAddGigasecond
 === RUN   TestAddGigasecond/date_only_specification_of_time
 === RUN   TestAddGigasecond/second_test_for_date_only_specification_of_time
 === RUN   TestAddGigasecond/third_test_for_date_only_specification_of_time
 === RUN   TestAddGigasecond/full_time_specified
 === RUN   TestAddGigasecond/full_time_with_day_roll-over
---- PASS: TestAddGigasecond (0.01s)
+--- PASS: TestAddGigasecond (0.00s)
     --- PASS: TestAddGigasecond/date_only_specification_of_time (0.00s)
     --- PASS: TestAddGigasecond/second_test_for_date_only_specification_of_time (0.00s)
     --- PASS: TestAddGigasecond/third_test_for_date_only_specification_of_time (0.00s)
@@ -73,97 +661,118 @@ go test -v -race -covermode=atomic gigasecond
 --- PASS: ExampleAddGigasecond (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	gigasecond	0.058s	coverage: 100.0% of statements
+ok  	gigasecond	1.012s	coverage: 100.0% of statements
 
-real	0m1.128s
-user	0m1.377s
-sys	0m0.812s
+real	0m1.253s
+user	0m0.270s
+sys	0m0.168s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.597s
+user	0m0.645s
+sys	0m0.508s
+
+real	0m1.599s
+user	0m0.646s
+sys	0m0.509s
 
 ===============================================================================
 
 mv -v benchstat-new.txt benchstat-old.txt
 renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
 
-go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 goos: linux
 goarch: amd64
 pkg: gigasecond
-cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
-BenchmarkAddGigasecond-4   	12006235	        88.64 ns/op	       0 B/op	       0 allocs/op
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+BenchmarkAddGigasecond
+BenchmarkAddGigasecond-8   	50062734	        23.77 ns/op	       0 B/op	       0 allocs/op
 PASS
-ok  	gigasecond	1.248s
+ok  	gigasecond	1.219s
 
-real	0m2.174s
-user	0m2.373s
-sys	0m0.731s
+real	0m1.377s
+user	0m1.431s
+sys	0m0.147s
 
 ===============================================================================
 
-go test -tags bonus
+gotest -v -tags bonus
+=== RUN   TestAddGigasecond
+=== RUN   TestAddGigasecond/date_only_specification_of_time
+=== RUN   TestAddGigasecond/second_test_for_date_only_specification_of_time
+=== RUN   TestAddGigasecond/third_test_for_date_only_specification_of_time
+=== RUN   TestAddGigasecond/full_time_specified
+=== RUN   TestAddGigasecond/full_time_with_day_roll-over
+--- PASS: TestAddGigasecond (0.00s)
+    --- PASS: TestAddGigasecond/date_only_specification_of_time (0.00s)
+    --- PASS: TestAddGigasecond/second_test_for_date_only_specification_of_time (0.00s)
+    --- PASS: TestAddGigasecond/third_test_for_date_only_specification_of_time (0.00s)
+    --- PASS: TestAddGigasecond/full_time_specified (0.00s)
+    --- PASS: TestAddGigasecond/full_time_with_day_roll-over (0.00s)
+=== RUN   ExampleAddGigasecond
+--- PASS: ExampleAddGigasecond (0.00s)
 PASS
-ok  	gigasecond	0.011s
+ok  	gigasecond	0.002s
 
-real	0m0.989s
-user	0m1.159s
-sys	0m0.726s
+real	0m0.123s
+user	0m0.169s
+sys	0m0.110s
 
 ===============================================================================
-
-go install golang.org/x/perf/cmd/benchstat@latest
-
-real	0m1.122s
-user	0m1.280s
-sys	0m0.706s
 
 benchstat benchstat-old.txt benchstat-new.txt
-name             old time/op    new time/op    delta
-AddGigasecond-4    89.4ns ± 0%    88.6ns ± 0%   ~     (p=1.000 n=1+1)
+benchstat-new.txt:5: missing iteration count
+goos: linux
+goarch: amd64
+pkg: gigasecond
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+                │ benchstat-new.txt │
+                │      sec/op       │
+AddGigasecond-8        23.77n ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-name             old alloc/op   new alloc/op   delta
-AddGigasecond-4     0.00B          0.00B        ~     (all equal)
+                │ benchstat-new.txt │
+                │       B/op        │
+AddGigasecond-8         0.000 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-name             old allocs/op  new allocs/op  delta
-AddGigasecond-4      0.00           0.00        ~     (all equal)
+                │ benchstat-new.txt │
+                │     allocs/op     │
+AddGigasecond-8         0.000 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-real	0m0.063s
-user	0m0.030s
-sys	0m0.035s
+cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+                │ benchstat-old.txt │
+                │      sec/op       │
+AddGigasecond-4        88.64n ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-===============================================================================
+                │ benchstat-old.txt │
+                │       B/op        │
+AddGigasecond-4         0.000 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-go vet gigasecond
+                │ benchstat-old.txt │
+                │     allocs/op     │
+AddGigasecond-4         0.000 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-real	0m0.672s
-user	0m0.871s
-sys	0m0.650s
-
-===============================================================================
-
-go fix gigasecond
-
-real	0m0.181s
-user	0m0.227s
-sys	0m0.168s
-
-===============================================================================
-
-gosec ./gigasecond
-[gosec] 2022/07/27 12:39:39 Including rules: default
-[gosec] 2022/07/27 12:39:39 Excluding rules: default
-[gosec] 2022/07/27 12:39:39 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/gigasecond
-2022/07/27 12:39:39 internal error: package "time" without types was imported from "command-line-arguments"
-
-real	0m0.700s
-user	0m0.857s
-sys	0m0.519s
+real	0m0.002s
+user	0m0.000s
+sys	0m0.002s
 
 ===============================================================================
 
 gomarkdoc --output gigasecond-doc.md
 
-real	0m0.074s
-user	0m0.041s
-sys	0m0.046s
+real	0m0.011s
+user	0m0.006s
+sys	0m0.006s
 
 ===============================================================================
 
@@ -178,9 +787,9 @@ func AddGigasecond(t time.Time) time.Time
     AddGigasecond returns the current time plus 1 gigasecond.
 
 
-real	0m0.361s
-user	0m0.251s
-sys	0m0.312s
+real	0m0.041s
+user	0m0.027s
+sys	0m0.029s
 
 
 ===============================================================================

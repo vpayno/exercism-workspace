@@ -5,123 +5,570 @@ Go packages: leap
 
 ===============================================================================
 
-golangci-lint run ./...
+Running: ../../.github/citools/go/go-lint-golangci-lint
 
-real	0m2.588s
-user	0m10.241s
-sys	0m1.535s
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.022s
+user	0m0.007s
+sys	0m0.021s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+leap.go:8:51: Comment should end in a period (godot)
+// unless the year is also evenly divisible by 400
+                                                  ^
+leap.go:19: File is not `gofumpt`-ed (gofumpt)
+
+leap_test.go:8:25: Using the variable on range scope `tc` in function literal (scopelint)
+			actual := IsLeapYear(tc.year)
+			                     ^
+leap_test.go:9:17: Using the variable on range scope `tc` in function literal (scopelint)
+			if actual != tc.expected {
+			             ^
+leap_test.go:10:46: Using the variable on range scope `tc` in function literal (scopelint)
+				t.Fatalf("IsLeapYear(%d) = %t, want %t", tc.year, actual, tc.expected)
+				                                         ^
+leap.go:18: unnecessary leading newline (whitespace)
+	if year%4 == 0 {
+
+leap_test.go:21:2: for statements should only be cuddled with assignments used in the iteration (wsl)
+	for i := 0; i < b.N; i++ {
+	^
+cases_test.go:6:5: testCases is a global variable (gochecknoglobals)
+var testCases = []struct {
+    ^
+leap_test.go:5:1: Function TestLeapYears missing the call to method parallel (paralleltest)
+func TestLeapYears(t *testing.T) {
+^
+leap_test.go:6:2: Range statement for test TestLeapYears missing the call to method parallel in test Run (paralleltest)
+	for _, tc := range testCases {
+	^
+cases_test.go:1:9: package should be `leap_test` instead of `leap` (testpackage)
+package leap
+        ^
+leap_examples_test.go:1:9: package should be `leap_test` instead of `leap` (testpackage)
+package leap
+        ^
+leap_test.go:1:9: package should be `leap_test` instead of `leap` (testpackage)
+package leap
+        ^
+
+real	0m0.457s
+user	0m0.731s
+sys	0m0.397s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.496s
+user	0m0.747s
+sys	0m0.431s
+
+real	0m0.498s
+user	0m0.749s
+sys	0m0.432s
 
 ===============================================================================
 
-golint ./...
+Running: ../../.github/citools/go/go-lint-revive
 
-real	0m0.015s
-user	0m0.010s
-sys	0m0.018s
+Running Go Lint Revive
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.012s
+user	0m0.005s
+sys	0m0.011s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
+
+real	0m0.027s
+user	0m0.015s
+sys	0m0.019s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.050s
+user	0m0.024s
+sys	0m0.041s
+
+real	0m0.053s
+user	0m0.024s
+sys	0m0.043s
 
 ===============================================================================
 
-revive -formatter=stylish ./...
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
 
-real	0m0.007s
-user	0m0.003s
+real	0m0.000s
+user	0m0.000s
+sys	0m0.000s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.011s
+user	0m0.005s
+sys	0m0.009s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
+	info: check "./."
+internal error: package "fmt" without types was imported from "leap [leap.test]"
+
+real	0m0.097s
+user	0m0.102s
+sys	0m0.095s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.120s
+user	0m0.109s
+sys	0m0.117s
+
+real	0m0.121s
+user	0m0.109s
+sys	0m0.119s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-staticcheck
+
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.010s
+user	0m0.006s
 sys	0m0.006s
 
-===============================================================================
 
-ineffassign ./...
+ ==============================================================================
 
-real	0m0.092s
-user	0m0.142s
-sys	0m0.139s
+Running: staticcheck -checks=all ./...
 
-===============================================================================
 
-go-consistent -v ./...
-	info: check "./."
-./leap_examples_test.go:3:1: unit import: omit parenthesis in a single-package import
+real	0m0.167s
+user	0m0.181s
+sys	0m0.126s
 
-real	0m0.119s
-user	0m0.184s
-sys	0m0.151s
 
-===============================================================================
+ ==============================================================================
 
-staticcheck ./...
+Exit code: 0
 
-real	0m0.174s
-user	0m0.246s
-sys	0m0.218s
+real	0m0.187s
+user	0m0.191s
+sys	0m0.145s
+
+real	0m0.189s
+user	0m0.192s
+sys	0m0.146s
 
 ===============================================================================
 
-gocritic check -enableAll ./...
+Running: ../../.github/citools/go/go-lint-gocritic
 
-real	0m0.888s
-user	0m2.930s
-sys	0m0.569s
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.023s
+user	0m0.012s
+sys	0m0.014s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+
+real	0m0.844s
+user	0m1.954s
+sys	0m0.299s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.876s
+user	0m1.973s
+sys	0m0.320s
+
+real	0m0.878s
+user	0m1.974s
+sys	0m0.321s
 
 ===============================================================================
 
-go vet ./...
+Running: ../../.github/citools/go/go-lint-go_vet
 
-real	0m0.102s
-user	0m0.238s
-sys	0m0.217s
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.012s
+user	0m0.005s
+sys	0m0.011s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.080s
+user	0m0.154s
+sys	0m0.121s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.101s
+user	0m0.162s
+sys	0m0.140s
+
+real	0m0.103s
+user	0m0.162s
+sys	0m0.141s
 
 ===============================================================================
 
-go fix ./...
+Running: ../../.github/citools/go/go-fixer-go_fix
 
-real	0m0.016s
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.013s
+user	0m0.005s
+sys	0m0.011s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.017s
+user	0m0.009s
+sys	0m0.012s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.041s
+user	0m0.019s
+sys	0m0.032s
+
+real	0m0.043s
+user	0m0.020s
+sys	0m0.033s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-errcheck
+
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.018s
 user	0m0.007s
 sys	0m0.014s
 
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+
+real	0m0.442s
+user	0m1.271s
+sys	0m0.272s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.474s
+user	0m1.282s
+sys	0m0.302s
+
+real	0m0.476s
+user	0m1.283s
+sys	0m0.303s
+
 ===============================================================================
 
-gocyclo .
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.026s
+user	0m0.012s
+sys	0m0.023s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
 4 leap Benchmark400 leap_test.go:17:1
 4 leap IsLeapYear leap.go:9:1
 3 leap TestLeapYears leap_test.go:5:1
 2 leap ExampleIsLeapYear leap_examples_test.go:7:1
 
-real	0m0.002s
-user	0m0.002s
-sys	0m0.000s
+real	0m0.003s
+user	0m0.001s
+sys	0m0.002s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.044s
+user	0m0.024s
+sys	0m0.033s
+
+real	0m0.046s
+user	0m0.025s
+sys	0m0.034s
 
 ===============================================================================
 
-misspell .
+Running: ../../.github/citools/go/go-lint-misspell
+
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
 
 real	0m0.026s
-user	0m0.032s
-sys	0m0.010s
+user	0m0.028s
+sys	0m0.011s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.036s
+user	0m0.031s
+sys	0m0.022s
+
+real	0m0.038s
+user	0m0.031s
+sys	0m0.024s
 
 ===============================================================================
 
-gosec ./...
-[gosec] 2023/02/07 22:52:34 Including rules: default
-[gosec] 2023/02/07 22:52:34 Excluding rules: default
-[gosec] 2023/02/07 22:52:34 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/leap
-[gosec] 2023/02/07 22:52:34 Checking package: leap
-[gosec] 2023/02/07 22:52:34 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/leap/leap.go
+Running: ../../.github/citools/go/go-lint-gosec
+
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.011s
+user	0m0.003s
+sys	0m0.012s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:24:31 Including rules: default
+[gosec] 2023/09/07 00:24:31 Excluding rules: default
+[gosec] 2023/09/07 00:24:31 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/leap
+[gosec] 2023/09/07 00:24:31 Checking package: leap
+[gosec] 2023/09/07 00:24:31 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/leap/leap.go
 Results:
 
 
-Summary:
-   Files: 1
-   Lines: 24
-   Nosec: 0
-  Issues: 0
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 24
+  Nosec  : 0
+  Issues : [1;32m0[0m
 
 
-real	0m0.070s
-user	0m0.064s
-sys	0m0.057s
+real	0m0.084s
+user	0m0.065s
+sys	0m0.055s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.104s
+user	0m0.072s
+sys	0m0.075s
+
+real	0m0.106s
+user	0m0.074s
+sys	0m0.076s
 
 ===============================================================================
 
-gotest -v -covermode=count -coverprofile coverage.out ./...
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.012s
+user	0m0.007s
+sys	0m0.007s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
 === RUN   TestLeapYears
 === RUN   TestLeapYears/year_not_divisible_by_4_in_common_year
 === RUN   TestLeapYears/year_divisible_by_2,_not_divisible_by_4_in_common_year
@@ -148,39 +595,52 @@ PASS
 coverage: 100.0% of statements
 ok  	leap	0.002s	coverage: 100.0% of statements
 
-real	0m0.191s
-user	0m0.315s
-sys	0m0.253s
+real	0m0.176s
+user	0m0.246s
+sys	0m0.153s
 
-===============================================================================
 
-go tool cover -func=coverage.out
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
 leap/leap.go:9:	IsLeapYear	100.0%
 total:		(statements)	100.0%
 
-real	0m0.037s
-user	0m0.016s
-sys	0m0.045s
+real	0m0.021s
+user	0m0.008s
+sys	0m0.019s
 
-===============================================================================
 
-go tool cover -html coverage.out -o coverage.html
+ ==============================================================================
 
-real	0m0.026s
-user	0m0.013s
-sys	0m0.025s
+Running: go tool cover -html coverage.out -o coverage.html
 
-===============================================================================
 
-gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+real	0m0.021s
+user	0m0.010s
+sys	0m0.016s
+
+
+ ==============================================================================
+
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
 
 real	0m0.011s
-user	0m0.007s
-sys	0m0.009s
+user	0m0.005s
+sys	0m0.011s
 
-===============================================================================
+real	0m0.011s
+user	0m0.005s
+sys	0m0.011s
 
-gotest -v -race -covermode=atomic ./...
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
 === RUN   TestLeapYears
 === RUN   TestLeapYears/year_not_divisible_by_4_in_common_year
 === RUN   TestLeapYears/year_divisible_by_2,_not_divisible_by_4_in_common_year
@@ -205,11 +665,24 @@ gotest -v -race -covermode=atomic ./...
 --- PASS: ExampleIsLeapYear (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	leap	(cached)	coverage: 100.0% of statements
+ok  	leap	1.013s	coverage: 100.0% of statements
 
-real	0m0.131s
-user	0m0.247s
-sys	0m0.248s
+real	0m1.244s
+user	0m0.268s
+sys	0m0.162s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.496s
+user	0m0.550s
+sys	0m0.377s
+
+real	0m1.499s
+user	0m0.552s
+sys	0m0.378s
 
 ===============================================================================
 
@@ -222,13 +695,13 @@ goarch: amd64
 pkg: leap
 cpu: 12th Gen Intel(R) Core(TM) i5-1240P
 Benchmark400
-Benchmark400-16    	14443444	        77.36 ns/op	       0 B/op	       0 allocs/op
+Benchmark400-8   	14738716	       108.9 ns/op	       0 B/op	       0 allocs/op
 PASS
-ok  	leap	1.209s
+ok  	leap	2.647s
 
-real	0m1.373s
-user	0m1.454s
-sys	0m0.228s
+real	0m2.801s
+user	0m2.848s
+sys	0m0.147s
 
 ===============================================================================
 
@@ -258,33 +731,59 @@ gotest -v -tags bonus
 PASS
 ok  	leap	0.002s
 
-real	0m0.163s
-user	0m0.275s
-sys	0m0.266s
+real	0m0.128s
+user	0m0.186s
+sys	0m0.128s
 
 ===============================================================================
 
 benchstat benchstat-old.txt benchstat-new.txt
-name    old time/op    new time/op    delta
-400-16    81.9ns ± 0%    77.4ns ± 0%   ~     (p=1.000 n=1+1)
+benchstat-old.txt:5: missing iteration count
+benchstat-new.txt:5: missing iteration count
+goos: linux
+goarch: amd64
+pkg: leap
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+        │ benchstat-old.txt │  benchstat-new.txt  │
+        │      sec/op       │    sec/op     vs base   │
+400-16         77.36n ± ∞ ¹
+400-8                         108.9n ± ∞ ¹
+geomean        77.36n         108.9n        ? ² ³
+¹ need >= 6 samples for confidence interval at level 0.95
+² benchmark set differs from baseline; geomeans may not be comparable
+³ ratios must be >0 to compute geomean
 
-name    old alloc/op   new alloc/op   delta
-400-16     0.00B          0.00B        ~     (all equal)
+        │ benchstat-old.txt │  benchstat-new.txt   │
+        │       B/op        │    B/op      vs base │
+400-16          0.000 ± ∞ ¹
+400-8                         0.000 ± ∞ ¹
+geomean                   ²                ? ³ ² ⁴
+¹ need >= 6 samples for confidence interval at level 0.95
+² summaries must be >0 to compute geomean
+³ benchmark set differs from baseline; geomeans may not be comparable
+⁴ ratios must be >0 to compute geomean
 
-name    old allocs/op  new allocs/op  delta
-400-16      0.00           0.00        ~     (all equal)
+        │ benchstat-old.txt │  benchstat-new.txt   │
+        │     allocs/op     │  allocs/op   vs base │
+400-16          0.000 ± ∞ ¹
+400-8                         0.000 ± ∞ ¹
+geomean                   ²                ? ³ ² ⁴
+¹ need >= 6 samples for confidence interval at level 0.95
+² summaries must be >0 to compute geomean
+³ benchmark set differs from baseline; geomeans may not be comparable
+⁴ ratios must be >0 to compute geomean
 
-real	0m0.008s
-user	0m0.005s
-sys	0m0.008s
+real	0m0.004s
+user	0m0.002s
+sys	0m0.002s
 
 ===============================================================================
 
 gomarkdoc --output leap-doc.md
 
-real	0m0.011s
-user	0m0.007s
-sys	0m0.006s
+real	0m0.014s
+user	0m0.006s
+sys	0m0.008s
 
 ===============================================================================
 
@@ -303,9 +802,9 @@ func IsLeapYear(year int) bool
     divisible by 100 unless the year is also evenly divisible by 400
 
 
-real	0m0.046s
-user	0m0.021s
-sys	0m0.041s
+real	0m0.030s
+user	0m0.014s
+sys	0m0.024s
 
 
 ===============================================================================

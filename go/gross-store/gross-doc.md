@@ -21,7 +21,7 @@ import "gross"
 func AddItem(bill, units map[string]int, item, unit string) bool
 ```
 
-AddItem adds an item to customer bill\.
+AddItem adds an item to customer bill.
 
 <details><summary>Example</summary>
 <p>
@@ -56,7 +56,7 @@ false
 func GetItem(bill map[string]int, item string) (int, bool)
 ```
 
-GetItem returns the quantity of an item that the customer has in his/her bill\.
+GetItem returns the quantity of an item that the customer has in his/her bill.
 
 <details><summary>Example</summary>
 <p>
@@ -90,7 +90,7 @@ GetItem returns the quantity of an item that the customer has in his/her bill\.
 func NewBill() map[string]int
 ```
 
-NewBill creates a new bill\.
+NewBill creates a new bill.
 
 <details><summary>Example</summary>
 <p>
@@ -118,7 +118,7 @@ map[]
 func RemoveItem(bill, units map[string]int, item, unit string) bool
 ```
 
-RemoveItem removes an item from customer bill\.
+RemoveItem removes an item from customer bill.
 
 <details><summary>Example</summary>
 <p>
@@ -154,7 +154,7 @@ true
 func Units() map[string]int
 ```
 
-Units stores the Gross Store unit measurements\.
+Units stores the Gross Store unit measurements.
 
 <details><summary>Example</summary>
 <p>

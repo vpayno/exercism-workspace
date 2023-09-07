@@ -6,7 +6,7 @@
 import "rotationalcipher"
 ```
 
-Package rotationalcipher is used to encrypt data\.
+Package rotationalcipher is used to encrypt data.
 
 ## Index
 
@@ -19,7 +19,7 @@ Package rotationalcipher is used to encrypt data\.
 func RotationalCipher(plain string, shiftKey int) string
 ```
 
-RotationalCipher returns a cipher text after applying a rotational cipher to a plain text input\.
+RotationalCipher returns a cipher text after applying a rotational cipher to a plain text input.
 
 <details><summary>Example</summary>
 <p>

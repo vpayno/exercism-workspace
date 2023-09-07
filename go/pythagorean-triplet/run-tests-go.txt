@@ -5,80 +5,431 @@ Go packages: pythagorean
 
 ===============================================================================
 
-golangci-lint run ./...
+Running: ../../.github/citools/go/go-lint-golangci-lint
 
-real	0m10.178s
-user	0m19.502s
-sys	0m3.677s
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.016s
+user	0m0.008s
+sys	0m0.011s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+pythagorean_triplet.go:5:40: Comment should end in a period (godot)
+// for a^2 + b^2 = c^2 -> a + b + c = N
+                                       ^
+pythagorean-triplet_examples_test.go:39: File is not `gofmt`-ed with `-s` (gofmt)
+		Triplet{0, 0, 0},
+		Triplet{1, 2, 3},
+		Triplet{3, 4, 5},
+pythagorean_triplet_test.go:48:2: for statements should only be cuddled with assignments used in the iteration (wsl)
+	for i := 0; i < b.N; i++ {
+	^
+pythagorean_triplet_test.go:57:2: for statements should only be cuddled with assignments used in the iteration (wsl)
+	for i := 0; i < b.N; i++ {
+	^
+pythagorean-triplet_examples_test.go:33:2: Duplicate words (false) found (dupword)
+	// false
+	^
+pythagorean_triplet_test.go:8:5: rangeTests is a global variable (gochecknoglobals)
+var rangeTests = []struct {
+    ^
+pythagorean_triplet_test.go:26:5: sumTests is a global variable (gochecknoglobals)
+var sumTests = []struct {
+    ^
+pythagorean_triplet_test.go:16:1: Function TestRange missing the call to method parallel (paralleltest)
+func TestRange(t *testing.T) {
+^
+pythagorean_triplet_test.go:34:1: Function TestSum missing the call to method parallel (paralleltest)
+func TestSum(t *testing.T) {
+^
+pythagorean-triplet_examples_test.go:1:9: package should be `pythagorean_test` instead of `pythagorean` (testpackage)
+package pythagorean
+        ^
+pythagorean_triplet_test.go:1:9: package should be `pythagorean_test` instead of `pythagorean` (testpackage)
+package pythagorean
+        ^
+pythagorean_triplet.go:35:31: parameter name 'a' is too short for the scope of its usage (varnamelen)
+func CheckPythagoreanTriplets(a, b, c int) bool {
+                              ^
+
+real	0m0.481s
+user	0m0.795s
+sys	0m0.431s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.507s
+user	0m0.809s
+sys	0m0.451s
+
+real	0m0.509s
+user	0m0.810s
+sys	0m0.452s
 
 ===============================================================================
 
-golint ./...
+Running: ../../.github/citools/go/go-lint-revive
 
-real	0m0.111s
-user	0m0.103s
-sys	0m0.065s
+Running Go Lint Revive
 
-===============================================================================
+Go version:
 
-revive -formatter=stylish ./...
+	go version go1.21.0 linux/amd64
 
-real	0m0.079s
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.013s
+user	0m0.002s
+sys	0m0.015s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
+
+real	0m0.072s
 user	0m0.038s
-sys	0m0.024s
+sys	0m0.054s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.099s
+user	0m0.051s
+sys	0m0.075s
+
+real	0m0.101s
+user	0m0.052s
+sys	0m0.077s
 
 ===============================================================================
 
-ineffassign ./...
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
 
-real	0m0.516s
-user	0m0.465s
-sys	0m0.504s
+real	0m0.001s
+user	0m0.000s
+sys	0m0.001s
 
 ===============================================================================
 
-go-consistent -v ./...
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.021s
+user	0m0.011s
+sys	0m0.017s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
 	info: check "./."
+internal error: package "fmt" without types was imported from "pythagorean [pythagorean.test]"
 
-real	0m0.534s
-user	0m0.515s
-sys	0m0.525s
+real	0m0.102s
+user	0m0.131s
+sys	0m0.140s
 
-===============================================================================
 
-staticcheck ./...
+ ==============================================================================
 
-real	0m0.593s
-user	0m0.675s
-sys	0m0.591s
+Exit code: -1
 
-===============================================================================
+real	0m0.142s
+user	0m0.156s
+sys	0m0.170s
 
-gocritic check -enableAll ./...
-
-real	0m3.538s
-user	0m6.024s
-sys	0m1.526s
+real	0m0.145s
+user	0m0.157s
+sys	0m0.173s
 
 ===============================================================================
 
-go vet ./...
+Running: ../../.github/citools/go/go-lint-staticcheck
 
-real	0m0.315s
-user	0m0.307s
-sys	0m0.395s
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.018s
+user	0m0.010s
+sys	0m0.014s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+
+real	0m0.188s
+user	0m0.225s
+sys	0m0.131s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.222s
+user	0m0.246s
+sys	0m0.155s
+
+real	0m0.225s
+user	0m0.246s
+sys	0m0.157s
 
 ===============================================================================
 
-go fix ./...
+Running: ../../.github/citools/go/go-lint-gocritic
 
-real	0m0.085s
-user	0m0.021s
-sys	0m0.082s
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.023s
+user	0m0.014s
+sys	0m0.016s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+
+real	0m0.822s
+user	0m2.077s
+sys	0m0.250s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.862s
+user	0m2.101s
+sys	0m0.277s
+
+real	0m0.865s
+user	0m2.103s
+sys	0m0.278s
 
 ===============================================================================
 
-gocyclo .
+Running: ../../.github/citools/go/go-lint-go_vet
+
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.012s
+user	0m0.006s
+sys	0m0.009s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.068s
+user	0m0.105s
+sys	0m0.088s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.091s
+user	0m0.116s
+sys	0m0.104s
+
+real	0m0.093s
+user	0m0.116s
+sys	0m0.106s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-fixer-go_fix
+
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.011s
+user	0m0.004s
+sys	0m0.011s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.014s
+user	0m0.007s
+sys	0m0.011s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.036s
+user	0m0.019s
+sys	0m0.027s
+
+real	0m0.038s
+user	0m0.020s
+sys	0m0.028s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-errcheck
+
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.010s
+user	0m0.005s
+sys	0m0.008s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+
+real	0m0.413s
+user	0m1.275s
+sys	0m0.245s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.434s
+user	0m1.285s
+sys	0m0.261s
+
+real	0m0.436s
+user	0m1.286s
+sys	0m0.262s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.010s
+user	0m0.006s
+sys	0m0.007s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
 8 pythagorean Range pythagorean_triplet.go:9:1
 4 pythagorean Sum pythagorean_triplet.go:62:1
 4 pythagorean CheckPythagoreanTriplets pythagorean_triplet.go:35:1
@@ -94,47 +445,143 @@ gocyclo .
 1 pythagorean ExampleCheckPythagoreanTriplets pythagorean-triplet_examples_test.go:23:1
 1 pythagorean ExampleSquare pythagorean-triplet_examples_test.go:12:1
 
-real	0m0.020s
+real	0m0.002s
 user	0m0.002s
-sys	0m0.009s
+sys	0m0.000s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.022s
+user	0m0.013s
+sys	0m0.015s
+
+real	0m0.024s
+user	0m0.013s
+sys	0m0.016s
 
 ===============================================================================
 
-misspell .
+Running: ../../.github/citools/go/go-lint-misspell
 
-real	0m0.129s
-user	0m0.087s
-sys	0m0.107s
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+
+real	0m0.029s
+user	0m0.030s
+sys	0m0.013s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.041s
+user	0m0.041s
+sys	0m0.018s
+
+real	0m0.043s
+user	0m0.043s
+sys	0m0.018s
 
 ===============================================================================
 
-gosec ./...
-[gosec] 2022/09/12 20:08:28 Including rules: default
-[gosec] 2022/09/12 20:08:28 Excluding rules: default
-[gosec] 2022/09/12 20:08:28 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/pythagorean-triplet
-[gosec] 2022/09/12 20:08:28 Checking package: pythagorean
-[gosec] 2022/09/12 20:08:28 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/pythagorean-triplet/pythagorean_triplet.go
+Running: ../../.github/citools/go/go-lint-gosec
+
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.015s
+user	0m0.009s
+sys	0m0.010s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:26:55 Including rules: default
+[gosec] 2023/09/07 00:26:55 Excluding rules: default
+[gosec] 2023/09/07 00:26:55 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/pythagorean-triplet
+[gosec] 2023/09/07 00:26:55 Checking package: pythagorean
+[gosec] 2023/09/07 00:26:55 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/pythagorean-triplet/pythagorean_triplet.go
 Results:
 
 
-Summary:
-   Files: 1
-   Lines: 76
-   Nosec: 0
-  Issues: 0
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 76
+  Nosec  : 0
+  Issues : [1;32m0[0m
 
 
-real	0m0.327s
-user	0m0.312s
-sys	0m0.260s
+real	0m0.072s
+user	0m0.070s
+sys	0m0.039s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.104s
+user	0m0.083s
+sys	0m0.067s
+
+real	0m0.106s
+user	0m0.085s
+sys	0m0.067s
 
 ===============================================================================
 
-gotest -v -covermode=count -coverprofile coverage.out ./...
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.020s
+user	0m0.007s
+sys	0m0.018s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
 === RUN   TestRange
 --- PASS: TestRange (0.00s)
 === RUN   TestSum
---- PASS: TestSum (1.07s)
+--- PASS: TestSum (0.51s)
 === RUN   ExampleSquare
 --- PASS: ExampleSquare (0.00s)
 === RUN   ExampleCheckPythagoreanTriplets
@@ -144,18 +591,20 @@ gotest -v -covermode=count -coverprofile coverage.out ./...
 === RUN   ExampleRange
 --- PASS: ExampleRange (0.00s)
 === RUN   ExampleSum
---- PASS: ExampleSum (1.17s)
+--- PASS: ExampleSum (0.48s)
 PASS
 coverage: 100.0% of statements
-ok  	pythagorean	2.251s	coverage: 100.0% of statements
+ok  	pythagorean	0.993s	coverage: 100.0% of statements
 
-real	0m3.048s
-user	0m3.147s
-sys	0m0.661s
+real	0m1.169s
+user	0m1.217s
+sys	0m0.157s
 
-===============================================================================
 
-go tool cover -func=coverage.out
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
 pythagorean/pythagorean_triplet.go:9:	Range				100.0%
 pythagorean/pythagorean_triplet.go:30:	Square				100.0%
 pythagorean/pythagorean_triplet.go:35:	CheckPythagoreanTriplets	100.0%
@@ -163,161 +612,40 @@ pythagorean/pythagorean_triplet.go:50:	TripletSum			100.0%
 pythagorean/pythagorean_triplet.go:62:	Sum				100.0%
 total:					(statements)			100.0%
 
-real	0m0.113s
-user	0m0.060s
-sys	0m0.129s
+real	0m0.022s
+user	0m0.010s
+sys	0m0.017s
 
-===============================================================================
 
-go tool cover -html coverage.out -o coverage.html
+ ==============================================================================
 
-real	0m0.096s
-user	0m0.049s
-sys	0m0.113s
+Running: go tool cover -html coverage.out -o coverage.html
 
-===============================================================================
 
-gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+real	0m0.031s
+user	0m0.019s
+sys	0m0.022s
 
-real	0m0.044s
-user	0m0.023s
-sys	0m0.042s
 
-===============================================================================
+ ==============================================================================
 
-gotest -v -race -covermode=atomic ./...
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+real	0m0.010s
+user	0m0.005s
+sys	0m0.010s
+
+real	0m0.010s
+user	0m0.005s
+sys	0m0.010s
+
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
 === RUN   TestRange
 --- PASS: TestRange (0.00s)
 === RUN   TestSum
---- PASS: TestSum (273.20s)
-=== RUN   ExampleSquare
---- PASS: ExampleSquare (0.00s)
-=== RUN   ExampleCheckPythagoreanTriplets
---- PASS: ExampleCheckPythagoreanTriplets (0.00s)
-=== RUN   ExampleTripletSum
---- PASS: ExampleTripletSum (0.00s)
-=== RUN   ExampleRange
---- PASS: ExampleRange (0.00s)
-=== RUN   ExampleSum
---- PASS: ExampleSum (192.92s)
-PASS
-coverage: 100.0% of statements
-ok  	pythagorean	466.173s	coverage: 100.0% of statements
-
-real	7m47.257s
-user	7m1.347s
-sys	0m15.339s
-
-===============================================================================
-
-mv -v benchstat-new.txt benchstat-old.txt
-renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
-
-gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
-goos: linux
-goarch: amd64
-pkg: pythagorean
-cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
-BenchmarkRange
-BenchmarkRange-4   	    3255	    352880 ns/op	    3048 B/op	       7 allocs/op
-BenchmarkSum
-BenchmarkSum-4     	       4	 309411584 ns/op	   77824 B/op	      13 allocs/op
-PASS
-ok  	pythagorean	4.563s
-
-real	0m6.022s
-user	0m5.380s
-sys	0m1.064s
-
-===============================================================================
-
-gotest -v -tags bonus
-=== RUN   TestRange
---- PASS: TestRange (0.00s)
-=== RUN   TestSum
---- PASS: TestSum (0.38s)
-=== RUN   ExampleSquare
---- PASS: ExampleSquare (0.00s)
-=== RUN   ExampleCheckPythagoreanTriplets
---- PASS: ExampleCheckPythagoreanTriplets (0.00s)
-=== RUN   ExampleTripletSum
---- PASS: ExampleTripletSum (0.00s)
-=== RUN   ExampleRange
---- PASS: ExampleRange (0.00s)
-=== RUN   ExampleSum
---- PASS: ExampleSum (0.30s)
-PASS
-ok  	pythagorean	0.697s
-
-real	0m1.265s
-user	0m1.224s
-sys	0m0.643s
-
-===============================================================================
-
-benchstat benchstat-old.txt benchstat-new.txt
-name     old time/op    new time/op    delta
-Range-4     362µs ± 0%     353µs ± 0%   ~     (p=1.000 n=1+1)
-Sum-4       335ms ± 0%     309ms ± 0%   ~     (p=1.000 n=1+1)
-
-name     old alloc/op   new alloc/op   delta
-Range-4    3.05kB ± 0%    3.05kB ± 0%   ~     (all equal)
-Sum-4      77.8kB ± 0%    77.8kB ± 0%   ~     (all equal)
-
-name     old allocs/op  new allocs/op  delta
-Range-4      7.00 ± 0%      7.00 ± 0%   ~     (all equal)
-Sum-4        13.0 ± 0%      13.0 ± 0%   ~     (all equal)
-
-real	0m0.057s
-user	0m0.027s
-sys	0m0.025s
-
-===============================================================================
-
-gomarkdoc --output pythagorean-doc.md
-
-real	0m0.087s
-user	0m0.015s
-sys	0m0.026s
-
-===============================================================================
-
-go doc -all pythagorean
-package pythagorean // import "pythagorean"
-
-Package pythagorean is used to find the triplets that sum to N.
-
-FUNCTIONS
-
-func CheckPythagoreanTriplets(a, b, c int) bool
-    CheckPythagoreanTriplets returns true when the triplets pass the checks.
-
-func Square(n int) int
-    Square returns the passed number to the power of 2.
-
-func TripletSum(t Triplet) int
-    TripletSum returns the sum of the Pythagorean Triplets.
-
-
-TYPES
-
-type Triplet [3]int
-    Triplet represents the Pythagorean Triplet. for a^2 + b^2 = c^2 -> a + b + c
-    = N
-
-func Range(min, max int) []Triplet
-    Range returns a list of all Pythagorean triplets with side lengths in the
-    provided range.
-
-func Sum(perimeter int) []Triplet
-    Sum returns a list of all Pythagorean triplets with a certain perimeter.
-    The instructions are really vague, I'm guessing min=1 and max=perimeter.
-
-
-real	0m0.135s
-user	0m0.065s
-sys	0m0.103s
-
-
-===============================================================================
-

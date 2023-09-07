@@ -15,7 +15,7 @@ import "letter"
 
 ## type [FreqMap](<https://github.com/vpayno/exercism-workspace/blob/main/go/parallel-letter-frequency/parallel_letter_frequency.go#L4>)
 
-FreqMap records the frequency of each rune in a given text\.
+FreqMap records the frequency of each rune in a given text.
 
 ```go
 type FreqMap map[rune]int
@@ -27,7 +27,7 @@ type FreqMap map[rune]int
 func ConcurrentFrequency(lines []string) FreqMap
 ```
 
-ConcurrentFrequency counts the frequency of each rune in the given strings\, by making use of concurrency\.
+ConcurrentFrequency counts the frequency of each rune in the given strings, by making use of concurrency.
 
 ### func [Frequency](<https://github.com/vpayno/exercism-workspace/blob/main/go/parallel-letter-frequency/parallel_letter_frequency.go#L8>)
 
@@ -35,7 +35,7 @@ ConcurrentFrequency counts the frequency of each rune in the given strings\, by 
 func Frequency(s string) FreqMap
 ```
 
-Frequency counts the frequency of each rune in a given text and returns this data as a FreqMap\.
+Frequency counts the frequency of each rune in a given text and returns this data as a FreqMap.
 
 <details><summary>Example</summary>
 <p>

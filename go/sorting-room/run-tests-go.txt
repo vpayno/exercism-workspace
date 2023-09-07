@@ -5,15 +5,622 @@ Go packages: sorting
 
 ===============================================================================
 
-golint sorting
+Running: ../../.github/citools/go/go-lint-golangci-lint
 
-real	0m0.172s
-user	0m0.203s
-sys	0m0.159s
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.033s
+user	0m0.022s
+sys	0m0.037s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+sorting_room.go:45:2: singleCaseSwitch: should rewrite switch statement to if statement (gocritic)
+	switch t := fnb.(type) {
+	^
+sorting_room.go:61:8: var-declaration: should omit type float64 from declaration of var f; it will be inferred from the right-hand side (revive)
+	var f float64 = float64(ExtractFancyNumber(fnb))
+	      ^
+sorting_room_test.go:34:29: Using the variable on range scope `test` in function literal (scopelint)
+			if got := DescribeNumber(test.input); got != test.want {
+			                         ^
+sorting_room_test.go:35:50: Using the variable on range scope `test` in function literal (scopelint)
+				t.Errorf("DescribeNumber(%v) = %v; want %v", test.input, got, test.want)
+				                                             ^
+sorting_room_test.go:68:32: Using the variable on range scope `test` in function literal (scopelint)
+			if got := DescribeNumberBox(test.input); got != test.want {
+			                            ^
+sorting_room.go:11:2: return with no blank line before (nlreturn)
+	return fmt.Sprintf("%s %.1f", str, f)
+	^
+sorting_room.go:22:2: return with no blank line before (nlreturn)
+	return fmt.Sprintf("%s %.1f", str, float64(nb.Number()))
+	^
+sorting_room_test.go:5:1: Function TestDescribeNumber missing the call to method parallel (paralleltest)
+func TestDescribeNumber(t *testing.T) {
+^
+sorting_room_test.go:32:2: Range statement for test TestDescribeNumber missing the call to method parallel in test Run (paralleltest)
+	for _, test := range tests {
+	^
+sorting_room_test.go:49:1: Function TestDescribeNumberBox missing the call to method parallel (paralleltest)
+func TestDescribeNumberBox(t *testing.T) {
+^
+sorting_room_test.go:66:2: Range statement for test TestDescribeNumberBox missing the call to method parallel in test Run (paralleltest)
+	for _, test := range tests {
+	^
+sorting_room_test.go:83:1: Function TestExtractFancyNumber missing the call to method parallel (paralleltest)
+func TestExtractFancyNumber(t *testing.T) {
+^
+sorting_room_test.go:110:2: Range statement for test TestExtractFancyNumber missing the call to method parallel in test Run (paralleltest)
+	for _, test := range tests {
+	^
+sorting_room_test.go:119:1: Function TestDescribeFancyNumberBox missing the call to method parallel (paralleltest)
+func TestDescribeFancyNumberBox(t *testing.T) {
+^
+sorting_room_test.go:146:2: Range statement for test TestDescribeFancyNumberBox missing the call to method parallel in test Run (paralleltest)
+	for _, test := range tests {
+	^
+sorting_room_test.go:155:1: Function TestDescribeAnything missing the call to method parallel (paralleltest)
+func TestDescribeAnything(t *testing.T) {
+^
+sorting_room_test.go:192:2: Range statement for test TestDescribeAnything missing the call to method parallel in test Run (paralleltest)
+	for _, test := range tests {
+	^
+sorting_room_examples_test.go:1:9: package should be `sorting_test` instead of `sorting` (testpackage)
+package sorting
+        ^
+sorting_room_test.go:1:9: package should be `sorting_test` instead of `sorting` (testpackage)
+package sorting
+        ^
+sorting_room.go:50:2: variable name 'i' is too short for the scope of its usage (varnamelen)
+	i, e := strconv.Atoi(s)
+	^
+sorting_room.go:43:6: variable name 's' is too short for the scope of its usage (varnamelen)
+	var s string
+	    ^
+sorting_room.go:68:9: variable name 'v' is too short for the scope of its usage (varnamelen)
+	switch v := i.(type) {
+	       ^
+
+real	0m0.512s
+user	0m0.717s
+sys	0m0.488s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.558s
+user	0m0.748s
+sys	0m0.533s
+
+real	0m0.560s
+user	0m0.748s
+sys	0m0.535s
 
 ===============================================================================
 
-go test -v -covermode=count -coverprofile coverage.out sorting
+Running: ../../.github/citools/go/go-lint-revive
+
+Running Go Lint Revive
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.029s
+user	0m0.020s
+sys	0m0.040s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
+sorting_room.go
+  (61, 8)  https://revive.run/r#var-declaration   should omit type float64 from declaration of var f; it will be inferred from the right-hand side  
+  (1, 1)   https://revive.run/r#package-comments  should have a package comment                                                                     
+
+
+ ✖ 2 problems (0 errors) (2 warnings)
+
+real	0m0.053s
+user	0m0.028s
+sys	0m0.043s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.092s
+user	0m0.050s
+sys	0m0.095s
+
+real	0m0.094s
+user	0m0.053s
+sys	0m0.095s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
+
+real	0m0.001s
+user	0m0.001s
+sys	0m0.000s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.029s
+user	0m0.035s
+sys	0m0.026s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
+	info: check "./."
+internal error: package "fmt" without types was imported from "sorting"
+
+real	0m0.096s
+user	0m0.122s
+sys	0m0.131s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.142s
+user	0m0.167s
+sys	0m0.169s
+
+real	0m0.144s
+user	0m0.168s
+sys	0m0.171s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-staticcheck
+
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.024s
+user	0m0.020s
+sys	0m0.027s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+sorting_room.go:1:1: at least one file in a package should have a package comment (ST1000)
+sorting_room.go:61:8: should omit type float64 from declaration; it will be inferred from the right-hand side (ST1023)
+
+real	0m0.173s
+user	0m0.213s
+sys	0m0.095s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.208s
+user	0m0.239s
+sys	0m0.130s
+
+real	0m0.210s
+user	0m0.241s
+sys	0m0.130s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocritic
+
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.021s
+user	0m0.019s
+sys	0m0.025s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+./sorting_room.go:45:2: singleCaseSwitch: should rewrite switch statement to if statement
+
+real	0m0.869s
+user	0m2.173s
+sys	0m0.278s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.902s
+user	0m2.201s
+sys	0m0.310s
+
+real	0m0.904s
+user	0m2.203s
+sys	0m0.310s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go_vet
+
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.029s
+user	0m0.024s
+sys	0m0.032s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.077s
+user	0m0.109s
+sys	0m0.111s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.118s
+user	0m0.143s
+sys	0m0.151s
+
+real	0m0.121s
+user	0m0.144s
+sys	0m0.153s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-fixer-go_fix
+
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.025s
+user	0m0.019s
+sys	0m0.025s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.025s
+user	0m0.018s
+sys	0m0.027s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.065s
+user	0m0.047s
+sys	0m0.062s
+
+real	0m0.068s
+user	0m0.049s
+sys	0m0.064s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-errcheck
+
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.021s
+user	0m0.018s
+sys	0m0.017s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+
+real	0m0.485s
+user	0m1.541s
+sys	0m0.315s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.518s
+user	0m1.563s
+sys	0m0.344s
+
+real	0m0.520s
+user	0m1.564s
+sys	0m0.344s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.034s
+user	0m0.046s
+sys	0m0.052s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
+5 sorting DescribeAnything sorting_room.go:67:1
+3 sorting TestDescribeAnything sorting_room_test.go:155:1
+3 sorting TestDescribeFancyNumberBox sorting_room_test.go:119:1
+3 sorting TestExtractFancyNumber sorting_room_test.go:83:1
+3 sorting TestDescribeNumberBox sorting_room_test.go:49:1
+3 sorting TestDescribeNumber sorting_room_test.go:5:1
+3 sorting ExtractFancyNumber sorting_room.go:42:1
+1 sorting (differentFancyNumber).Value sorting_room_test.go:79:1
+1 sorting (testNumberBox).Number sorting_room_test.go:45:1
+1 sorting ExampleDescribeAnything sorting_room_examples_test.go:45:1
+1 sorting ExampleDescribeFancyNumberBox sorting_room_examples_test.go:37:1
+1 sorting ExampleExtractFancyNumber sorting_room_examples_test.go:29:1
+1 sorting ExampleDescribeNumberBox sorting_room_examples_test.go:21:1
+1 sorting (exampleNumberBox).Number sorting_room_examples_test.go:17:1
+1 sorting ExampleDescribeNumber sorting_room_examples_test.go:7:1
+1 sorting DescribeFancyNumberBox sorting_room.go:60:1
+1 sorting (FancyNumber).Value sorting_room.go:31:1
+1 sorting DescribeNumberBox sorting_room.go:20:1
+1 sorting DescribeNumber sorting_room.go:9:1
+
+real	0m0.002s
+user	0m0.000s
+sys	0m0.002s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.048s
+user	0m0.053s
+sys	0m0.063s
+
+real	0m0.049s
+user	0m0.054s
+sys	0m0.063s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-misspell
+
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+
+real	0m0.027s
+user	0m0.033s
+sys	0m0.008s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.037s
+user	0m0.038s
+sys	0m0.018s
+
+real	0m0.039s
+user	0m0.039s
+sys	0m0.018s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gosec
+
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.023s
+user	0m0.023s
+sys	0m0.024s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:31:06 Including rules: default
+[gosec] 2023/09/07 00:31:06 Excluding rules: default
+[gosec] 2023/09/07 00:31:06 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/sorting-room
+[gosec] 2023/09/07 00:31:06 Checking package: sorting
+[gosec] 2023/09/07 00:31:06 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/sorting-room/sorting_room.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 80
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.126s
+user	0m0.159s
+sys	0m0.086s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.160s
+user	0m0.190s
+sys	0m0.117s
+
+real	0m0.161s
+user	0m0.190s
+sys	0m0.118s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.021s
+user	0m0.019s
+sys	0m0.021s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
 === RUN   TestDescribeNumber
 === RUN   TestDescribeNumber/Describe_4.1
 === RUN   TestDescribeNumber/Describe_-3.2
@@ -57,7 +664,7 @@ go test -v -covermode=count -coverprofile coverage.out sorting
 === RUN   TestDescribeAnything/Describe_FancyNumber_with_16
 === RUN   TestDescribeAnything/Describe_a_different_FancyNumberBox
 === RUN   TestDescribeAnything/Something_unknown_is_labelled_return_to_sender
---- PASS: TestDescribeAnything (0.01s)
+--- PASS: TestDescribeAnything (0.00s)
     --- PASS: TestDescribeAnything/Describe_7.2 (0.00s)
     --- PASS: TestDescribeAnything/Describe_42 (0.00s)
     --- PASS: TestDescribeAnything/Describe_NumberBox_with_16 (0.00s)
@@ -76,15 +683,17 @@ go test -v -covermode=count -coverprofile coverage.out sorting
 --- PASS: ExampleDescribeAnything (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	sorting	0.027s	coverage: 100.0% of statements
+ok  	sorting	0.003s	coverage: 100.0% of statements
 
-real	0m0.714s
-user	0m0.786s
-sys	0m0.568s
+real	0m0.198s
+user	0m0.277s
+sys	0m0.174s
 
-===============================================================================
 
-go tool cover -func=coverage.out
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
 sorting/sorting_room.go:9:	DescribeNumber		100.0%
 sorting/sorting_room.go:20:	DescribeNumberBox	100.0%
 sorting/sorting_room.go:31:	Value			100.0%
@@ -93,19 +702,46 @@ sorting/sorting_room.go:60:	DescribeFancyNumberBox	100.0%
 sorting/sorting_room.go:67:	DescribeAnything	100.0%
 total:				(statements)		100.0%
 
-real	0m0.279s
-user	0m0.251s
-sys	0m0.310s
+real	0m0.047s
+user	0m0.056s
+sys	0m0.064s
 
-===============================================================================
 
-go test -v -race -covermode=atomic sorting
+ ==============================================================================
+
+Running: go tool cover -html coverage.out -o coverage.html
+
+
+real	0m0.049s
+user	0m0.071s
+sys	0m0.066s
+
+
+ ==============================================================================
+
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+real	0m0.016s
+user	0m0.018s
+sys	0m0.020s
+
+real	0m0.016s
+user	0m0.018s
+sys	0m0.020s
+
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
 === RUN   TestDescribeNumber
 === RUN   TestDescribeNumber/Describe_4.1
 === RUN   TestDescribeNumber/Describe_-3.2
 === RUN   TestDescribeNumber/Pads_to_single_decimal_place
 === RUN   TestDescribeNumber/Truncates_to_single_decimal_place
---- PASS: TestDescribeNumber (0.01s)
+--- PASS: TestDescribeNumber (0.00s)
     --- PASS: TestDescribeNumber/Describe_4.1 (0.00s)
     --- PASS: TestDescribeNumber/Describe_-3.2 (0.00s)
     --- PASS: TestDescribeNumber/Pads_to_single_decimal_place (0.00s)
@@ -131,7 +767,7 @@ go test -v -race -covermode=atomic sorting
 === RUN   TestDescribeFancyNumberBox/Describe_fancy_number_0
 === RUN   TestDescribeFancyNumberBox/Describe_a_different_fancy_number
 === RUN   TestDescribeFancyNumberBox/Describe_a_valid_different_fancy_number
---- PASS: TestDescribeFancyNumberBox (0.01s)
+--- PASS: TestDescribeFancyNumberBox (0.00s)
     --- PASS: TestDescribeFancyNumberBox/Describe_fancy_number_12 (0.00s)
     --- PASS: TestDescribeFancyNumberBox/Describe_fancy_number_0 (0.00s)
     --- PASS: TestDescribeFancyNumberBox/Describe_a_different_fancy_number (0.00s)
@@ -143,7 +779,7 @@ go test -v -race -covermode=atomic sorting
 === RUN   TestDescribeAnything/Describe_FancyNumber_with_16
 === RUN   TestDescribeAnything/Describe_a_different_FancyNumberBox
 === RUN   TestDescribeAnything/Something_unknown_is_labelled_return_to_sender
---- PASS: TestDescribeAnything (0.01s)
+--- PASS: TestDescribeAnything (0.00s)
     --- PASS: TestDescribeAnything/Describe_7.2 (0.00s)
     --- PASS: TestDescribeAnything/Describe_42 (0.00s)
     --- PASS: TestDescribeAnything/Describe_NumberBox_with_16 (0.00s)
@@ -162,67 +798,116 @@ go test -v -race -covermode=atomic sorting
 --- PASS: ExampleDescribeAnything (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	sorting	0.073s	coverage: 100.0% of statements
+ok  	sorting	1.020s	coverage: 100.0% of statements
 
-real	0m0.776s
-user	0m0.858s
-sys	0m0.530s
+real	0m1.258s
+user	0m0.284s
+sys	0m0.181s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.600s
+user	0m0.726s
+sys	0m0.540s
+
+real	0m1.602s
+user	0m0.729s
+sys	0m0.540s
 
 ===============================================================================
 
-go test --bench . --benchmem
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 PASS
-ok  	sorting	0.032s
+ok  	sorting	0.002s
 
-real	0m0.513s
-user	0m0.593s
-sys	0m0.401s
+real	0m0.163s
+user	0m0.174s
+sys	0m0.155s
 
 ===============================================================================
 
-go test -tags bonus
+gotest -v -tags bonus
+=== RUN   TestDescribeNumber
+=== RUN   TestDescribeNumber/Describe_4.1
+=== RUN   TestDescribeNumber/Describe_-3.2
+=== RUN   TestDescribeNumber/Pads_to_single_decimal_place
+=== RUN   TestDescribeNumber/Truncates_to_single_decimal_place
+--- PASS: TestDescribeNumber (0.00s)
+    --- PASS: TestDescribeNumber/Describe_4.1 (0.00s)
+    --- PASS: TestDescribeNumber/Describe_-3.2 (0.00s)
+    --- PASS: TestDescribeNumber/Pads_to_single_decimal_place (0.00s)
+    --- PASS: TestDescribeNumber/Truncates_to_single_decimal_place (0.00s)
+=== RUN   TestDescribeNumberBox
+=== RUN   TestDescribeNumberBox/Describe_NumberBox_with_4
+=== RUN   TestDescribeNumberBox/Describe_NumberBox_with_-3
+--- PASS: TestDescribeNumberBox (0.00s)
+    --- PASS: TestDescribeNumberBox/Describe_NumberBox_with_4 (0.00s)
+    --- PASS: TestDescribeNumberBox/Describe_NumberBox_with_-3 (0.00s)
+=== RUN   TestExtractFancyNumber
+=== RUN   TestExtractFancyNumber/Extract_fancy_number_11
+=== RUN   TestExtractFancyNumber/Extract_fancy_number_0
+=== RUN   TestExtractFancyNumber/Extract_a_differentFancyNumber_returns_0
+=== RUN   TestExtractFancyNumber/Extract_an_invalid_fancy_number_returns_0
+--- PASS: TestExtractFancyNumber (0.00s)
+    --- PASS: TestExtractFancyNumber/Extract_fancy_number_11 (0.00s)
+    --- PASS: TestExtractFancyNumber/Extract_fancy_number_0 (0.00s)
+    --- PASS: TestExtractFancyNumber/Extract_a_differentFancyNumber_returns_0 (0.00s)
+    --- PASS: TestExtractFancyNumber/Extract_an_invalid_fancy_number_returns_0 (0.00s)
+=== RUN   TestDescribeFancyNumberBox
+=== RUN   TestDescribeFancyNumberBox/Describe_fancy_number_12
+=== RUN   TestDescribeFancyNumberBox/Describe_fancy_number_0
+=== RUN   TestDescribeFancyNumberBox/Describe_a_different_fancy_number
+=== RUN   TestDescribeFancyNumberBox/Describe_a_valid_different_fancy_number
+--- PASS: TestDescribeFancyNumberBox (0.00s)
+    --- PASS: TestDescribeFancyNumberBox/Describe_fancy_number_12 (0.00s)
+    --- PASS: TestDescribeFancyNumberBox/Describe_fancy_number_0 (0.00s)
+    --- PASS: TestDescribeFancyNumberBox/Describe_a_different_fancy_number (0.00s)
+    --- PASS: TestDescribeFancyNumberBox/Describe_a_valid_different_fancy_number (0.00s)
+=== RUN   TestDescribeAnything
+=== RUN   TestDescribeAnything/Describe_7.2
+=== RUN   TestDescribeAnything/Describe_42
+=== RUN   TestDescribeAnything/Describe_NumberBox_with_16
+=== RUN   TestDescribeAnything/Describe_FancyNumber_with_16
+=== RUN   TestDescribeAnything/Describe_a_different_FancyNumberBox
+=== RUN   TestDescribeAnything/Something_unknown_is_labelled_return_to_sender
+--- PASS: TestDescribeAnything (0.00s)
+    --- PASS: TestDescribeAnything/Describe_7.2 (0.00s)
+    --- PASS: TestDescribeAnything/Describe_42 (0.00s)
+    --- PASS: TestDescribeAnything/Describe_NumberBox_with_16 (0.00s)
+    --- PASS: TestDescribeAnything/Describe_FancyNumber_with_16 (0.00s)
+    --- PASS: TestDescribeAnything/Describe_a_different_FancyNumberBox (0.00s)
+    --- PASS: TestDescribeAnything/Something_unknown_is_labelled_return_to_sender (0.00s)
+=== RUN   ExampleDescribeNumber
+--- PASS: ExampleDescribeNumber (0.00s)
+=== RUN   ExampleDescribeNumberBox
+--- PASS: ExampleDescribeNumberBox (0.00s)
+=== RUN   ExampleExtractFancyNumber
+--- PASS: ExampleExtractFancyNumber (0.00s)
+=== RUN   ExampleDescribeFancyNumberBox
+--- PASS: ExampleDescribeFancyNumberBox (0.00s)
+=== RUN   ExampleDescribeAnything
+--- PASS: ExampleDescribeAnything (0.00s)
 PASS
-ok  	sorting	0.013s
+ok  	sorting	0.002s
 
-real	0m0.653s
-user	0m0.805s
-sys	0m0.458s
-
-===============================================================================
-
-go vet sorting
-
-real	0m0.437s
-user	0m0.484s
-sys	0m0.409s
+real	0m0.134s
+user	0m0.187s
+sys	0m0.148s
 
 ===============================================================================
 
-go fix sorting
-
-real	0m0.201s
-user	0m0.228s
-sys	0m0.151s
-
-===============================================================================
-
-gosec ./sorting-room
-[gosec] 2022/06/20 16:31:08 Including rules: default
-[gosec] 2022/06/20 16:31:08 Excluding rules: default
-[gosec] 2022/06/20 16:31:08 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/sorting-room
-2022/06/20 16:31:08 internal error: package "fmt" without types was imported from "command-line-arguments"
-
-real	0m0.559s
-user	0m0.606s
-sys	0m0.421s
+No old benchmarks to run benchstat against.
 
 ===============================================================================
 
 gomarkdoc --output sorting-doc.md
 
-real	0m0.034s
-user	0m0.031s
-sys	0m0.008s
+real	0m0.011s
+user	0m0.007s
+sys	0m0.004s
 
 ===============================================================================
 
@@ -270,9 +955,9 @@ type NumberBox interface {
     NumberBox struct method set interface.
 
 
-real	0m0.259s
-user	0m0.261s
-sys	0m0.264s
+real	0m0.046s
+user	0m0.054s
+sys	0m0.063s
 
 
 ===============================================================================

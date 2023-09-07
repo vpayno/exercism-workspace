@@ -1,0 +1,141 @@
+
+138     	func AreaCode(phoneNumber string) (string, error) {
+139     		// Get the digits from the input and input validation.
+140     		digits, eNum := Number(phoneNumber)
+141     		if eNum != nil {
+142     			return "", eNum
+143     		}
+144     	
+145     		// Get the first digit from the area code.
+146     		reStr := `^([[:digit:]]?)([[:digit:]]{3})([[:digit:]]{7})$`
+147     		re, e := regexp.Compile(reStr)
+148     		if e != nil {
+149 MISS			panic(e)
+150     		}
+151     		areaCode := re.ReplaceAllString(digits, `$2`)
+152     	
+153     		// Return the area code without an error.
+154     		return areaCode, nil
+155     	}
+
+
+158     	func Format(phoneNumber string) (string, error) {
+159     		// Get the digits from the input and input validation.
+160     		digits, eNum := Number(phoneNumber)
+161     		if eNum != nil {
+162     			return "", eNum
+163     		}
+164     	
+165     		// Get the phone number groups and format the number.
+166     		reStr := `^([[:digit:]]?)([[:digit:]]{3})([[:digit:]]{3})([[:digit:]]{4})$`
+167     		re, e := regexp.Compile(reStr)
+168     		if e != nil {
+169 MISS			panic(e)
+170     		}
+171     		fmtStr := re.ReplaceAllString(digits, `(${2}) ${3}-${4}`)
+172     	
+173     		// Return the formatted string without an error code.
+174     		return fmtStr, nil
+175     	}
+
+
+113     	func Number(phoneNumber string) (string, error) {
+114     		// Validate the input.
+115     		eVal := ValidateInput(phoneNumber)
+116     		if eVal != nil {
+117     			return "", eVal
+118     		}
+119     	
+120     		// Extract all the digits from the number.
+121     		reStr := `([[:space:]]|[[:punct:]]|[[:alpha:]]|[[:cntrl:]])`
+122     		re, e := regexp.Compile(reStr)
+123     		if e != nil {
+124 MISS			panic(e)
+125     		}
+126     		digits := re.ReplaceAllString(phoneNumber, ``)
+127     	
+128     		// Return the 10-dgit number (minus the contry code).
+129     		if len(digits) == 11 {
+130     			return digits[1:], nil
+131     		}
+132     	
+133     		// Return the 10-dgit number.
+134     		return digits, nil
+135     	}
+
+
+ 37     	func ValidateInput(phoneNumber string) error {
+ 38     		// Check the string for invalid characters.
+ 39     		// Pointless since we can easily just remove them.
+ 40     		reStrPunct := `[\]\[\|:;><,?/\\"'!@#$%&*^]`
+ 41     		match, e := regexp.MatchString(reStrPunct, phoneNumber)
+ 42     		if e != nil {
+ 43 MISS			panic(e)
+ 44     		}
+ 45     		if match {
+ 46     			return ErrContainsPunctuations
+ 47     		}
+ 48     	
+ 49     		// Check to see if the phone number has letters in it.
+ 50     		reStrLetters := `[[:alpha:]]`
+ 51     		match, e = regexp.MatchString(reStrLetters, phoneNumber)
+ 52     		if e != nil {
+ 53 MISS			panic(e)
+ 54     		}
+ 55     		if match {
+ 56     			return ErrContainsLetters
+ 57     		}
+ 58     	
+ 59     		// Clean up the string.
+ 60     		reStr := `([[:space:]]|[[:punct:]]|[[:alpha:]]|[[:cntrl:]])`
+ 61     		re, e := regexp.Compile(reStr)
+ 62     		if e != nil {
+ 63 MISS			panic(e)
+ 64     		}
+ 65     		digits := re.ReplaceAllString(phoneNumber, ``)
+ 66     	
+ 67     		// Check the lenght of the remaining string.
+ 68     		if len(digits) < 10 {
+ 69     			return ErrNumOfDigits
+ 70     		}
+ 71     		if len(digits) > 11 {
+ 72     			return ErrTooManyNumbers
+ 73     		}
+ 74     	
+ 75     		// If it's an eleven digit number, make sure it starts with 1.
+ 76     		if len(digits) == 11 && string(digits[0]) != "1" {
+ 77     			return ErrElevenNotStartWithOne
+ 78     		}
+ 79     	
+ 80     		// Check the starting digit of the area code.
+ 81     		reStr = `^[[:digit:]]?([[:digit:]])[[:digit:]]{9}$`
+ 82     		re, e = regexp.Compile(reStr)
+ 83     		if e != nil {
+ 84 MISS			panic(e)
+ 85     		}
+ 86     		digit := re.ReplaceAllString(digits, `$1`)
+ 87     		if digit == "0" {
+ 88     			return ErrAreaCodeStartsWithZero
+ 89     		}
+ 90     		if digit == "1" {
+ 91     			return ErrAreaCodeStartsWithOne
+ 92     		}
+ 93     	
+ 94     		// Check the starting digit of the exchange code.
+ 95     		reStr = `^[[:digit:]]?[[:digit:]]{3}([[:digit:]])[[:digit:]]{6}$`
+ 96     		re, e = regexp.Compile(reStr)
+ 97     		if e != nil {
+ 98 MISS			panic(e)
+ 99     		}
+100     		digit = re.ReplaceAllString(digits, `$1`)
+101     		if digit == "0" {
+102     			return ErrExchangeCodeStartsWithZero
+103     		}
+104     		if digit == "1" {
+105     			return ErrExchangeCodeStartsWithOne
+106     		}
+107     	
+108     		// No errors found.
+109     		return nil
+110     	}
+

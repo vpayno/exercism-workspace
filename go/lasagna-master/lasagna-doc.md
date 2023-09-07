@@ -20,7 +20,7 @@ import "lasagna"
 func AddSecretIngredient(friendList []string, myList []string)
 ```
 
-AddSecretIngredient passes \`MyList\` by reference\. Accepts two slices of ingredients of type \`\[\]string\`\.
+AddSecretIngredient passes \`MyList\` by reference. Accepts two slices of ingredients of type \`\[\]string\`.
 
 <details><summary>Example</summary>
 <p>
@@ -51,7 +51,7 @@ AddSecretIngredient passes \`MyList\` by reference\. Accepts two slices of ingre
 func PreparationTime(layers []string, avgPrepTime int) int
 ```
 
-PreparationTime returns the estimate for the total preparation time based on the number of layers as an \`int\`\. Accepts a slice of layers as a \`\[\]string\` and the average preparation time per layer in minutes as an \`int\`\.
+PreparationTime returns the estimate for the total preparation time based on the number of layers as an \`int\`. Accepts a slice of layers as a \`\[\]string\` and the average preparation time per layer in minutes as an \`int\`.
 
 <details><summary>Example</summary>
 <p>
@@ -82,7 +82,7 @@ PreparationTime returns the estimate for the total preparation time based on the
 func Quantities(layers []string) (int, float64)
 ```
 
-Quantities returns two values of noodles as an \`int\` and sauce as a \`float64\`\. Accepts a slice of layers as parameter as a \`\[\]string\`\.
+Quantities returns two values of noodles as an \`int\` and sauce as a \`float64\`. Accepts a slice of layers as parameter as a \`\[\]string\`.
 
 <details><summary>Example</summary>
 <p>
@@ -112,7 +112,7 @@ Quantities returns two values of noodles as an \`int\` and sauce as a \`float64\
 func ScaleRecipe(quantities []float64, portions int) []float64
 ```
 
-ScaleRecipe returns a slice of \`float64\` of the amounts needed for the desired number of portions\. Accepts a slice of \`float64\` amounts needed for 2 portions and the number of portions\, \`int\`\, you want to cook\.
+ScaleRecipe returns a slice of \`float64\` of the amounts needed for the desired number of portions. Accepts a slice of \`float64\` amounts needed for 2 portions and the number of portions, \`int\`, you want to cook.
 
 <details><summary>Example</summary>
 <p>

@@ -5,17 +5,39 @@ Go packages: census
 
 ===============================================================================
 
-golangci-lint run --enable-all ./...
-level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
-level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
-level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+Running: ../../.github/citools/go/go-lint-golangci-lint
+
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.011s
+user	0m0.005s
+sys	0m0.010s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
 level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
 level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
-level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
 level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
-level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
-level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
 level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
 census_test.go:43: Function 'TestHasRequiredInfo' is too long (92 > 60) (funlen)
 func TestHasRequiredInfo(t *testing.T) {
 census_test.go:185: Function 'TestCount' is too long (72 > 60) (funlen)
@@ -99,97 +121,367 @@ census_test.go:2:9: package should be `census_test` instead of `census` (testpac
 package census
         ^
 
-real	0m1.544s
-user	0m3.426s
-sys	0m0.560s
+real	0m0.346s
+user	0m0.383s
+sys	0m0.300s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.367s
+user	0m0.394s
+sys	0m0.319s
+
+real	0m0.369s
+user	0m0.396s
+sys	0m0.319s
 
 ===============================================================================
 
-golint ./...
+Running: ../../.github/citools/go/go-lint-revive
 
-real	0m0.027s
-user	0m0.003s
-sys	0m0.006s
+Running Go Lint Revive
 
-===============================================================================
+Go version:
 
-revive -formatter=stylish ./...
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.017s
+user	0m0.008s
+sys	0m0.015s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
 census.go
   (24, 13)  https://revive.run/r#var-declaration  should omit type bool from declaration of var result; it will be inferred from the right-hand side  
 
 
  ✖ 1 problem (0 errors) (1 warnings)
 
+real	0m0.065s
+user	0m0.035s
+sys	0m0.050s
+
+
+ ==============================================================================
+
+Exit code: 0
+
 real	0m0.099s
-user	0m0.037s
-sys	0m0.053s
+user	0m0.050s
+sys	0m0.080s
+
+real	0m0.100s
+user	0m0.050s
+sys	0m0.081s
 
 ===============================================================================
 
-ineffassign ./...
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
 
-real	0m0.109s
-user	0m0.140s
-sys	0m0.104s
+real	0m0.001s
+user	0m0.001s
+sys	0m0.000s
 
 ===============================================================================
 
-go-consistent -v ./...
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.024s
+user	0m0.010s
+sys	0m0.022s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
 	info: check "./."
 internal error: package "fmt" without types was imported from "census [census.test]"
 
-real	0m0.108s
-user	0m0.153s
-sys	0m0.130s
+real	0m0.107s
+user	0m0.184s
+sys	0m0.159s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.151s
+user	0m0.204s
+sys	0m0.198s
+
+real	0m0.154s
+user	0m0.205s
+sys	0m0.200s
 
 ===============================================================================
 
-staticcheck ./...
+Running: ../../.github/citools/go/go-lint-staticcheck
 
-real	0m1.273s
-user	0m3.803s
-sys	0m0.380s
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.014s
+user	0m0.006s
+sys	0m0.011s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+census.go:24:13: should omit type bool from declaration; it will be inferred from the right-hand side (ST1023)
+
+real	0m0.141s
+user	0m0.168s
+sys	0m0.112s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.166s
+user	0m0.181s
+sys	0m0.131s
+
+real	0m0.168s
+user	0m0.181s
+sys	0m0.134s
 
 ===============================================================================
 
-gocritic check -enableAll ./...
-panic: load embedded ruleguard rules: rules/rules.go:13: can't load fmt
+Running: ../../.github/citools/go/go-lint-gocritic
 
-goroutine 1 [running]:
-main.main()
-	/home/vpayno/go/pkg/mod/github.com/go-critic/go-critic@v0.6.7/cmd/gocritic/main.go:13 +0x52
+Running Go gocritic
 
-real	0m0.064s
-user	0m0.017s
-sys	0m0.036s
+Go version:
 
-===============================================================================
+	go version go1.21.0 linux/amd64
 
-go vet ./...
 
-real	0m0.102s
-user	0m0.150s
-sys	0m0.143s
+ ==============================================================================
 
-===============================================================================
+Running: go clean ./...
 
-go fix ./...
 
 real	0m0.015s
 user	0m0.004s
 sys	0m0.014s
 
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+./census.go:26:2: commentedOutCode: may want to remove commented-out code
+
+real	0m0.815s
+user	0m2.004s
+sys	0m0.287s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.843s
+user	0m2.013s
+sys	0m0.312s
+
+real	0m0.845s
+user	0m2.013s
+sys	0m0.314s
+
 ===============================================================================
 
-errcheck ./...
+Running: ../../.github/citools/go/go-lint-go_vet
 
-real	0m0.470s
-user	0m1.235s
-sys	0m0.267s
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.012s
+user	0m0.007s
+sys	0m0.008s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.078s
+user	0m0.109s
+sys	0m0.083s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.103s
+user	0m0.121s
+sys	0m0.102s
+
+real	0m0.105s
+user	0m0.122s
+sys	0m0.103s
 
 ===============================================================================
 
-gocyclo .
+Running: ../../.github/citools/go/go-fixer-go_fix
+
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.014s
+user	0m0.007s
+sys	0m0.011s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.027s
+user	0m0.015s
+sys	0m0.019s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.053s
+user	0m0.025s
+sys	0m0.042s
+
+real	0m0.055s
+user	0m0.026s
+sys	0m0.043s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-errcheck
+
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.024s
+user	0m0.010s
+sys	0m0.020s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+
+real	0m0.460s
+user	0m1.382s
+sys	0m0.310s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.503s
+user	0m1.402s
+sys	0m0.347s
+
+real	0m0.506s
+user	0m1.403s
+sys	0m0.348s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.019s
+user	0m0.008s
+sys	0m0.016s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
 5 census TestDelete census_test.go:139:1
 4 census (*Resident).HasRequiredInfo census.go:23:1
 3 census TestCount census_test.go:185:1
@@ -203,26 +495,86 @@ gocyclo .
 1 census (*Resident).Delete census.go:40:1
 1 census NewResident census.go:12:1
 
-real	0m0.022s
+real	0m0.002s
 user	0m0.001s
-sys	0m0.005s
+sys	0m0.001s
 
-===============================================================================
 
-misspell .
+ ==============================================================================
+
+Exit code: 0
 
 real	0m0.033s
-user	0m0.027s
-sys	0m0.019s
+user	0m0.015s
+sys	0m0.027s
+
+real	0m0.035s
+user	0m0.015s
+sys	0m0.028s
 
 ===============================================================================
 
-gosec ./...
-[gosec] 2023/09/03 17:20:25 Including rules: default
-[gosec] 2023/09/03 17:20:25 Excluding rules: default
-[gosec] 2023/09/03 17:20:25 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/census
-[gosec] 2023/09/03 17:20:25 Checking package: census
-[gosec] 2023/09/03 17:20:25 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/census/census.go
+Running: ../../.github/citools/go/go-lint-misspell
+
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+
+real	0m0.023s
+user	0m0.028s
+sys	0m0.011s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.037s
+user	0m0.031s
+sys	0m0.025s
+
+real	0m0.039s
+user	0m0.031s
+sys	0m0.028s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gosec
+
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.012s
+user	0m0.004s
+sys	0m0.011s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:21:32 Including rules: default
+[gosec] 2023/09/07 00:21:32 Excluding rules: default
+[gosec] 2023/09/07 00:21:32 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/census
+[gosec] 2023/09/07 00:21:32 Checking package: census
+[gosec] 2023/09/07 00:21:32 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/census/census.go
 Results:
 
 
@@ -234,13 +586,48 @@ Results:
   Issues : [1;32m0[0m
 
 
-real	0m0.085s
-user	0m0.066s
-sys	0m0.039s
+real	0m0.070s
+user	0m0.070s
+sys	0m0.035s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.094s
+user	0m0.077s
+sys	0m0.058s
+
+real	0m0.096s
+user	0m0.078s
+sys	0m0.059s
 
 ===============================================================================
 
-gotest -v -covermode=count -coverprofile coverage.out ./...
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.017s
+user	0m0.009s
+sys	0m0.012s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
 === RUN   TestNewResident
 === RUN   TestNewResident/no_data_collected
 === RUN   TestNewResident/all_data_collected
@@ -293,42 +680,55 @@ PASS
 coverage: 100.0% of statements
 ok  	census	0.002s	coverage: 100.0% of statements
 
-real	0m0.276s
-user	0m0.676s
-sys	0m0.279s
+real	0m0.161s
+user	0m0.233s
+sys	0m0.165s
 
-===============================================================================
 
-go tool cover -func=coverage.out
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
 census/census.go:12:	NewResident	100.0%
 census/census.go:23:	HasRequiredInfo	100.0%
 census/census.go:40:	Delete		100.0%
 census/census.go:47:	Count		100.0%
 total:			(statements)	100.0%
 
-real	0m0.019s
-user	0m0.008s
-sys	0m0.016s
+real	0m0.024s
+user	0m0.005s
+sys	0m0.025s
 
-===============================================================================
 
-go tool cover -html coverage.out -o coverage.html
+ ==============================================================================
 
-real	0m0.022s
-user	0m0.012s
-sys	0m0.015s
+Running: go tool cover -html coverage.out -o coverage.html
 
-===============================================================================
 
-gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+real	0m0.024s
+user	0m0.011s
+sys	0m0.019s
 
-real	0m0.069s
-user	0m0.006s
-sys	0m0.023s
 
-===============================================================================
+ ==============================================================================
 
-gotest -v -race -covermode=atomic ./...
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+real	0m0.011s
+user	0m0.005s
+sys	0m0.011s
+
+real	0m0.011s
+user	0m0.005s
+sys	0m0.011s
+
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
 === RUN   TestNewResident
 === RUN   TestNewResident/no_data_collected
 === RUN   TestNewResident/all_data_collected
@@ -379,11 +779,24 @@ gotest -v -race -covermode=atomic ./...
 --- PASS: ExampleCount (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	census	1.015s	coverage: 100.0% of statements
+ok  	census	(cached)	coverage: 100.0% of statements
 
-real	0m6.179s
-user	0m13.133s
-sys	0m1.732s
+real	0m0.089s
+user	0m0.160s
+sys	0m0.113s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.340s
+user	0m0.434s
+sys	0m0.354s
+
+real	0m0.341s
+user	0m0.434s
+sys	0m0.356s
 
 ===============================================================================
 
@@ -394,9 +807,9 @@ gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 PASS
 ok  	census	0.002s
 
-real	0m0.134s
-user	0m0.192s
-sys	0m0.138s
+real	0m0.154s
+user	0m0.215s
+sys	0m0.159s
 
 ===============================================================================
 
@@ -450,17 +863,17 @@ gotest -v -tags bonus
 === RUN   ExampleCount
 --- PASS: ExampleCount (0.00s)
 PASS
-ok  	census	0.002s
+ok  	census	0.003s
 
-real	0m0.113s
-user	0m0.159s
+real	0m0.124s
+user	0m0.184s
 sys	0m0.117s
 
 ===============================================================================
 
 benchstat benchstat-old.txt benchstat-new.txt
 
-real	0m0.018s
+real	0m0.002s
 user	0m0.000s
 sys	0m0.002s
 
@@ -468,8 +881,8 @@ sys	0m0.002s
 
 gomarkdoc --output census-doc.md
 
-real	0m0.042s
-user	0m0.011s
+real	0m0.025s
+user	0m0.017s
 sys	0m0.009s
 
 ===============================================================================
@@ -505,9 +918,9 @@ func (r *Resident) HasRequiredInfo() bool
     information.
 
 
-real	0m0.033s
-user	0m0.018s
-sys	0m0.024s
+real	0m0.037s
+user	0m0.014s
+sys	0m0.032s
 
 
 ===============================================================================

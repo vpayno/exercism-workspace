@@ -22,7 +22,7 @@ import "speed"
 func CanFinish(car Car, track Track) bool
 ```
 
-CanFinish checks if a car is able to finish a certain track\.
+CanFinish checks if a car is able to finish a certain track.
 
 <details><summary>Example</summary>
 <p>
@@ -61,7 +61,7 @@ type Car struct {
 func Drive(car Car) Car
 ```
 
-Drive drives the car one time\. If there is not enough battery to drive on more time\, the car will not move\.
+Drive drives the car one time. If there is not enough battery to drive on more time, the car will not move.
 
 <details><summary>Example</summary>
 <p>
@@ -89,7 +89,7 @@ Drive drives the car one time\. If there is not enough battery to drive on more 
 func NewCar(speed, batteryDrain int) Car
 ```
 
-NewCar creates a new remote controlled car with full battery and given specifications\.
+NewCar creates a new remote controlled car with full battery and given specifications.
 
 <details><summary>Example</summary>
 <p>

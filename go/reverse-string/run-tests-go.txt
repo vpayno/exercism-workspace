@@ -5,152 +5,781 @@ Go packages: reverse
 
 ===============================================================================
 
-golint reverse
+Running: ../../.github/citools/go/go-lint-golangci-lint
 
-real	0m0.089s
-user	0m0.054s
-sys	0m0.082s
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.013s
+user	0m0.006s
+sys	0m0.011s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+reverse_string.go:13: File is not `gofumpt`-ed (gofumpt)
+
+reverse_string_test.go:11:25: Using the variable on range scope `tc` in function literal (scopelint)
+			if actual := Reverse(tc.input); actual != tc.expected {
+			                     ^
+reverse_string_test.go:12:44: Using the variable on range scope `tc` in function literal (scopelint)
+				t.Fatalf("Reverse(%q) = %q, want: %q", tc.input, actual, tc.expected)
+				                                       ^
+reverse_string.go:14:1: block should not end with a whitespace (or comment) (wsl)
+}
+^
+reverse_string_test.go:31:2: for statements should only be cuddled with assignments used in the iteration (wsl)
+	for i := 0; i < b.N; i++ {
+	^
+cases_test.go:12:5: testCases is a global variable (gochecknoglobals)
+var testCases = []reverseTestCase{
+    ^
+reverse_string_test.go:41:5: multiByteCases is a global variable (gochecknoglobals)
+var multiByteCases = []reverseTestCase{
+    ^
+reverse_string_test.go:8:1: Function TestReverse missing the call to method parallel (paralleltest)
+func TestReverse(t *testing.T) {
+^
+reverse_string_test.go:9:2: Range statement for test TestReverse missing the call to method parallel in test Run (paralleltest)
+	for _, tc := range append(testCases, multiByteCases...) {
+	^
+reverse_string_test.go:18:1: Function TestReverseOfReverse missing the call to method parallel (paralleltest)
+func TestReverseOfReverse(t *testing.T) {
+^
+cases_test.go:1:9: package should be `reverse_test` instead of `reverse` (testpackage)
+package reverse
+        ^
+reverse_string_examples_test.go:1:9: package should be `reverse_test` instead of `reverse` (testpackage)
+package reverse
+        ^
+reverse_string_test.go:1:9: package should be `reverse_test` instead of `reverse` (testpackage)
+package reverse
+        ^
+
+real	0m0.511s
+user	0m0.774s
+sys	0m0.484s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.536s
+user	0m0.784s
+sys	0m0.508s
+
+real	0m0.538s
+user	0m0.785s
+sys	0m0.510s
 
 ===============================================================================
 
-go test -v -covermode=count -coverprofile coverage.out reverse
+Running: ../../.github/citools/go/go-lint-revive
+
+Running Go Lint Revive
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.015s
+user	0m0.006s
+sys	0m0.012s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
+
+real	0m0.037s
+user	0m0.021s
+sys	0m0.026s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.063s
+user	0m0.032s
+sys	0m0.048s
+
+real	0m0.064s
+user	0m0.033s
+sys	0m0.050s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.014s
+user	0m0.010s
+sys	0m0.007s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
+	info: check "./."
+internal error: package "fmt" without types was imported from "reverse [reverse.test]"
+
+real	0m0.099s
+user	0m0.115s
+sys	0m0.102s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.126s
+user	0m0.131s
+sys	0m0.119s
+
+real	0m0.128s
+user	0m0.133s
+sys	0m0.120s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-staticcheck
+
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.012s
+user	0m0.006s
+sys	0m0.007s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+
+real	0m0.189s
+user	0m0.247s
+sys	0m0.101s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.212s
+user	0m0.259s
+sys	0m0.119s
+
+real	0m0.214s
+user	0m0.260s
+sys	0m0.119s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocritic
+
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.015s
+user	0m0.009s
+sys	0m0.010s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+
+real	0m0.830s
+user	0m2.106s
+sys	0m0.321s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.858s
+user	0m2.123s
+sys	0m0.341s
+
+real	0m0.860s
+user	0m2.124s
+sys	0m0.342s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go_vet
+
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.017s
+user	0m0.010s
+sys	0m0.012s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.092s
+user	0m0.109s
+sys	0m0.108s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.121s
+user	0m0.122s
+sys	0m0.130s
+
+real	0m0.122s
+user	0m0.124s
+sys	0m0.131s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-fixer-go_fix
+
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.011s
+user	0m0.007s
+sys	0m0.007s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.015s
+user	0m0.010s
+sys	0m0.008s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.037s
+user	0m0.025s
+sys	0m0.021s
+
+real	0m0.038s
+user	0m0.026s
+sys	0m0.022s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-errcheck
+
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.014s
+user	0m0.009s
+sys	0m0.008s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+
+real	0m0.468s
+user	0m1.379s
+sys	0m0.310s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.496s
+user	0m1.394s
+sys	0m0.331s
+
+real	0m0.498s
+user	0m1.394s
+sys	0m0.333s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.012s
+user	0m0.007s
+sys	0m0.009s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
+4 reverse BenchmarkReverse reverse_string_test.go:27:1
+3 reverse TestReverse reverse_string_test.go:8:1
+2 reverse TestReverseOfReverse reverse_string_test.go:18:1
+2 reverse Reverse reverse_string.go:5:1
+1 reverse ExampleReverse reverse_string_examples_test.go:7:1
+
+real	0m0.003s
+user	0m0.003s
+sys	0m0.000s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.028s
+user	0m0.016s
+sys	0m0.020s
+
+real	0m0.030s
+user	0m0.018s
+sys	0m0.020s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-misspell
+
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+
+real	0m0.023s
+user	0m0.028s
+sys	0m0.009s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.035s
+user	0m0.033s
+sys	0m0.019s
+
+real	0m0.038s
+user	0m0.034s
+sys	0m0.020s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gosec
+
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.013s
+user	0m0.003s
+sys	0m0.013s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:29:51 Including rules: default
+[gosec] 2023/09/07 00:29:51 Excluding rules: default
+[gosec] 2023/09/07 00:29:51 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/reverse-string
+[gosec] 2023/09/07 00:29:52 Checking package: reverse
+[gosec] 2023/09/07 00:29:52 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/reverse-string/reverse_string.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 14
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.074s
+user	0m0.066s
+sys	0m0.039s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.098s
+user	0m0.073s
+sys	0m0.062s
+
+real	0m0.100s
+user	0m0.075s
+sys	0m0.062s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.013s
+user	0m0.007s
+sys	0m0.009s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
 === RUN   TestReverse
-    reverse_string_test.go:14: PASS: an empty string
-    reverse_string_test.go:14: PASS: a word
-    reverse_string_test.go:14: PASS: a capitalized word
-    reverse_string_test.go:14: PASS: a sentence with punctuation
-    reverse_string_test.go:14: PASS: a palindrome
-    reverse_string_test.go:14: PASS: an even-sized word
-    reverse_string_test.go:14: PASS: a multi-byte test case
+=== RUN   TestReverse/an_empty_string
+=== RUN   TestReverse/a_word
+=== RUN   TestReverse/a_capitalized_word
+=== RUN   TestReverse/a_sentence_with_punctuation
+=== RUN   TestReverse/a_palindrome
+=== RUN   TestReverse/an_even-sized_word
+=== RUN   TestReverse/a_multi-byte_test_case
 --- PASS: TestReverse (0.00s)
-=== RUN   TestReverseOfReverse
---- PASS: TestReverseOfReverse (0.02s)
-=== RUN   ExampleReverse
---- PASS: ExampleReverse (0.00s)
-PASS
-coverage: 100.0% of statements
-ok  	reverse	0.040s	coverage: 100.0% of statements
-
-real	0m0.640s
-user	0m0.750s
-sys	0m0.558s
-
-===============================================================================
-
-go tool cover -func=coverage.out
-reverse/reverse_string.go:5:	Reverse		100.0%
-total:				(statements)	100.0%
-
-real	0m0.200s
-user	0m0.103s
-sys	0m0.163s
-
-===============================================================================
-
-go tool cover -html coverage.out -o coverage.html
-
-real	0m0.156s
-user	0m0.068s
-sys	0m0.106s
-
-===============================================================================
-
-go test -v -race -covermode=atomic reverse
-=== RUN   TestReverse
-    reverse_string_test.go:14: PASS: an empty string
-    reverse_string_test.go:14: PASS: a word
-    reverse_string_test.go:14: PASS: a capitalized word
-    reverse_string_test.go:14: PASS: a sentence with punctuation
-    reverse_string_test.go:14: PASS: a palindrome
-    reverse_string_test.go:14: PASS: an even-sized word
-    reverse_string_test.go:14: PASS: a multi-byte test case
---- PASS: TestReverse (0.01s)
+    --- PASS: TestReverse/an_empty_string (0.00s)
+    --- PASS: TestReverse/a_word (0.00s)
+    --- PASS: TestReverse/a_capitalized_word (0.00s)
+    --- PASS: TestReverse/a_sentence_with_punctuation (0.00s)
+    --- PASS: TestReverse/a_palindrome (0.00s)
+    --- PASS: TestReverse/an_even-sized_word (0.00s)
+    --- PASS: TestReverse/a_multi-byte_test_case (0.00s)
 === RUN   TestReverseOfReverse
 --- PASS: TestReverseOfReverse (0.00s)
 === RUN   ExampleReverse
 --- PASS: ExampleReverse (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	reverse	0.043s	coverage: 100.0% of statements
+ok  	reverse	0.003s	coverage: 100.0% of statements
 
-real	0m0.755s
-user	0m0.836s
-sys	0m0.616s
+real	0m0.171s
+user	0m0.214s
+sys	0m0.138s
+
+
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
+reverse/reverse_string.go:5:	Reverse		100.0%
+total:				(statements)	100.0%
+
+real	0m0.021s
+user	0m0.007s
+sys	0m0.021s
+
+
+ ==============================================================================
+
+Running: go tool cover -html coverage.out -o coverage.html
+
+
+real	0m0.031s
+user	0m0.016s
+sys	0m0.025s
+
+
+ ==============================================================================
+
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+real	0m0.012s
+user	0m0.005s
+sys	0m0.013s
+
+real	0m0.012s
+user	0m0.005s
+sys	0m0.013s
+
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
+=== RUN   TestReverse
+=== RUN   TestReverse/an_empty_string
+=== RUN   TestReverse/a_word
+=== RUN   TestReverse/a_capitalized_word
+=== RUN   TestReverse/a_sentence_with_punctuation
+=== RUN   TestReverse/a_palindrome
+=== RUN   TestReverse/an_even-sized_word
+=== RUN   TestReverse/a_multi-byte_test_case
+--- PASS: TestReverse (0.00s)
+    --- PASS: TestReverse/an_empty_string (0.00s)
+    --- PASS: TestReverse/a_word (0.00s)
+    --- PASS: TestReverse/a_capitalized_word (0.00s)
+    --- PASS: TestReverse/a_sentence_with_punctuation (0.00s)
+    --- PASS: TestReverse/a_palindrome (0.00s)
+    --- PASS: TestReverse/an_even-sized_word (0.00s)
+    --- PASS: TestReverse/a_multi-byte_test_case (0.00s)
+=== RUN   TestReverseOfReverse
+--- PASS: TestReverseOfReverse (0.00s)
+=== RUN   ExampleReverse
+--- PASS: ExampleReverse (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	reverse	1.020s	coverage: 100.0% of statements
+
+real	0m1.287s
+user	0m0.320s
+sys	0m0.210s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.547s
+user	0m0.572s
+sys	0m0.430s
+
+real	0m1.549s
+user	0m0.573s
+sys	0m0.432s
 
 ===============================================================================
 
-go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+mv -v benchstat-new.txt benchstat-old.txt
+renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
+
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 goos: linux
 goarch: amd64
 pkg: reverse
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+BenchmarkReverse
+BenchmarkReverse-8   	 1559706	       768.0 ns/op	     176 B/op	      34 allocs/op
+PASS
+ok  	reverse	1.946s
+
+real	0m2.112s
+user	0m2.186s
+sys	0m0.153s
+
+===============================================================================
+
+gotest -v -tags bonus
+=== RUN   TestReverse
+=== RUN   TestReverse/an_empty_string
+=== RUN   TestReverse/a_word
+=== RUN   TestReverse/a_capitalized_word
+=== RUN   TestReverse/a_sentence_with_punctuation
+=== RUN   TestReverse/a_palindrome
+=== RUN   TestReverse/an_even-sized_word
+=== RUN   TestReverse/a_multi-byte_test_case
+--- PASS: TestReverse (0.00s)
+    --- PASS: TestReverse/an_empty_string (0.00s)
+    --- PASS: TestReverse/a_word (0.00s)
+    --- PASS: TestReverse/a_capitalized_word (0.00s)
+    --- PASS: TestReverse/a_sentence_with_punctuation (0.00s)
+    --- PASS: TestReverse/a_palindrome (0.00s)
+    --- PASS: TestReverse/an_even-sized_word (0.00s)
+    --- PASS: TestReverse/a_multi-byte_test_case (0.00s)
+=== RUN   TestReverseOfReverse
+--- PASS: TestReverseOfReverse (0.00s)
+=== RUN   ExampleReverse
+--- PASS: ExampleReverse (0.00s)
+PASS
+ok  	reverse	0.004s
+
+real	0m0.141s
+user	0m0.204s
+sys	0m0.136s
+
+===============================================================================
+
+benchstat benchstat-old.txt benchstat-new.txt
+benchstat-new.txt:5: missing iteration count
+goos: linux
+goarch: amd64
+pkg: reverse
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+          │ benchstat-new.txt │
+          │      sec/op       │
+Reverse-8        768.0n ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
+
+          │ benchstat-new.txt │
+          │       B/op        │
+Reverse-8         176.0 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
+
+          │ benchstat-new.txt │
+          │     allocs/op     │
+Reverse-8         34.00 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
+
 cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
-BenchmarkReverse-4   	  461682	      2337 ns/op	     176 B/op	      34 allocs/op
-PASS
-ok  	reverse	1.173s
+          │ benchstat-old.txt │
+          │      sec/op       │
+Reverse-4        2.337µ ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-real	0m1.634s
-user	0m1.831s
-sys	0m0.428s
+          │ benchstat-old.txt │
+          │       B/op        │
+Reverse-4         176.0 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-===============================================================================
+          │ benchstat-old.txt │
+          │     allocs/op     │
+Reverse-4         34.00 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-go test -tags bonus
-PASS
-ok  	reverse	0.009s
-
-real	0m0.625s
-user	0m0.742s
-sys	0m0.483s
-
-===============================================================================
-
-No old benchmarks to run benchstat against.
-
-===============================================================================
-
-go vet reverse
-
-real	0m0.458s
-user	0m0.579s
-sys	0m0.453s
-
-===============================================================================
-
-go fix reverse
-
-real	0m0.071s
-user	0m0.031s
-sys	0m0.087s
-
-===============================================================================
-
-gosec ./reverse-string
-[gosec] 2022/06/28 22:13:36 Including rules: default
-[gosec] 2022/06/28 22:13:36 Excluding rules: default
-[gosec] 2022/06/28 22:13:36 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/reverse-string
-[gosec] 2022/06/28 22:13:37 Checking package: reverse
-[gosec] 2022/06/28 22:13:37 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/reverse-string/reverse_string.go
-Results:
-
-
-Summary:
-   Files: 1
-   Lines: 14
-   Nosec: 0
-  Issues: 0
-
-
-real	0m0.315s
-user	0m0.314s
-sys	0m0.223s
+real	0m0.002s
+user	0m0.000s
+sys	0m0.003s
 
 ===============================================================================
 
 gomarkdoc --output reverse-doc.md
 
-real	0m0.047s
-user	0m0.028s
-sys	0m0.024s
+real	0m0.009s
+user	0m0.004s
+sys	0m0.005s
 
 ===============================================================================
 
@@ -165,9 +794,9 @@ func Reverse(input string) string
     Reverse returns a reversed string.
 
 
-real	0m0.189s
-user	0m0.095s
-sys	0m0.183s
+real	0m0.030s
+user	0m0.007s
+sys	0m0.030s
 
 
 ===============================================================================

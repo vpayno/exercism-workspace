@@ -1,0 +1,37 @@
+
+12     	func IsPangram(input string) bool {
+13     	
+14     		if len(input) == 0 {
+15     			return false
+16     		}
+17     	
+18     		// Get rid of all things not letters.
+19     		reStr := `[[:^alpha:]]` // `([[:cntrl:]]|[[:digit:]]|[[:space:]]|[[:punct:]]|[[:xdigit:]])`
+20     	
+21     		re, e := regexp.Compile(reStr)
+22     		if e != nil {
+23     			// the raw re string is static but you can still make mistakes, better
+24     			// to panic during tests than quietly "working" incorrectly.
+25 MISS			panic(e)
+26     		}
+27     	
+28     		input = re.ReplaceAllString(input, "")
+29     	
+30     		// The string needs at least 26 letters to have the posibility of being a pangram.
+31     		if len(input) < 26 {
+32     			return false
+33     		}
+34     	
+35     		// Make it lowercase to simplify checks.
+36     		input = strings.ToLower(input)
+37     	
+38     		// Check to see if all 26 letters are in the string. Fail when we can't find one of them.
+39     		for _, a := range alpha {
+40     			if !strings.Contains(input, string(a)) {
+41     				return false
+42     			}
+43     		}
+44     	
+45     		return true
+46     	}
+

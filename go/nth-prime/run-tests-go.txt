@@ -5,166 +5,809 @@ Go packages: prime
 
 ===============================================================================
 
-golint prime
+Running: ../../.github/citools/go/go-lint-golangci-lint
 
-real	0m0.166s
-user	0m0.111s
-sys	0m0.142s
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.028s
+user	0m0.014s
+sys	0m0.028s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+nth_prime_test.go:28:6: Error return value is not checked (errcheck)
+		Nth(10001)
+		   ^
+nth_prime.go:35: Function 'findPrimeWithSieve' is too long (61 > 60) (funlen)
+func findPrimeWithSieve(searchTarget int, limit int) []int {
+nth_prime.go:10:140: Comment should end in a period (godot)
+// Nth returns the nth prime number. An error must be returned if the nth prime number can't be calculated ('n' is equal or less than zero)
+                                                                                                                                           ^
+nth_prime.go:38:45: `substract` is a misspelling of `subtract` (misspell)
+	// If limit is greater than 2 and is even, substract 1.
+	                                           ^
+nth_prime.go:21:17: var-declaration: should omit type int from declaration of var searchSize; it will be inferred from the right-hand side (revive)
+	var searchSize int = input * 11
+	               ^
+nth_prime_test.go:8:23: Using the variable on range scope `tc` in function literal (scopelint)
+			actual, err := Nth(tc.input)
+			                   ^
+nth_prime_test.go:10:9: Using the variable on range scope `tc` in function literal (scopelint)
+			case tc.err != "":
+			     ^
+nth_prime_test.go:12:54: Using the variable on range scope `tc` in function literal (scopelint)
+					t.Fatalf("Nth(%d) expected error: %q, got: %d", tc.input, tc.err, actual)
+					                                                ^
+nth_prime.go:71: unnecessary leading newline (whitespace)
+	for outer <= sqrtLimit {
+
+nth_prime.go:17:2: declarations should never be cuddled (wsl)
+	var prime int
+	^
+nth_prime.go:52:2: for statements should only be cuddled with assignments used in the iteration (wsl)
+	for i := 3; i <= limit; i += 2 {
+	^
+nth_prime.go:68:2: declarations should never be cuddled (wsl)
+	var square int
+	^
+nth_prime.go:69:2: declarations should never be cuddled (wsl)
+	var inner int
+	^
+nth_prime_test.go:27:2: for statements should only be cuddled with assignments used in the iteration (wsl)
+	for i := 0; i < b.N; i++ {
+	^
+cases_test.go:6:5: tests is a global variable (gochecknoglobals)
+var tests = []struct {
+    ^
+nth_prime.go:13:13: err113: do not define dynamic errors, use wrapped static errors instead: "errors.New(\"the nth prime has to be equal to or greater than 1\")" (goerr113)
+		return 0, errors.New("the nth prime has to be equal to or greater than 1")
+		          ^
+nth_prime.go:49:14: mnd: Magic number: 2, in <condition> detected (gomnd)
+	if limit >= 2 {
+	            ^
+nth_prime.go:76:38: mnd: Magic number: 2, in <operation> detected (gomnd)
+			inner = square * (outer * (loop - 2))
+			                                  ^
+nth_prime.go:81:39: mnd: Magic number: 2, in <operation> detected (gomnd)
+				inner = square * (outer * (loop - 2))
+				                                  ^
+nth_prime_test.go:5:1: Function TestNth missing the call to method parallel (paralleltest)
+func TestNth(t *testing.T) {
+^
+nth_prime_test.go:6:2: Range statement for test TestNth missing the call to method parallel in test Run (paralleltest)
+	for _, tc := range tests {
+	^
+cases_test.go:1:9: package should be `prime_test` instead of `prime` (testpackage)
+package prime
+        ^
+nth_prime_examples_test.go:1:9: package should be `prime_test` instead of `prime` (testpackage)
+package prime
+        ^
+nth_prime_test.go:1:9: package should be `prime_test` instead of `prime` (testpackage)
+package prime
+        ^
+
+real	0m0.531s
+user	0m0.774s
+sys	0m0.439s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.570s
+user	0m0.795s
+sys	0m0.477s
+
+real	0m0.574s
+user	0m0.796s
+sys	0m0.479s
 
 ===============================================================================
 
-go test -v -covermode=count -coverprofile coverage.out prime
+Running: ../../.github/citools/go/go-lint-revive
+
+Running Go Lint Revive
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.020s
+user	0m0.014s
+sys	0m0.015s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
+nth_prime.go
+  (21, 17)  https://revive.run/r#var-declaration  should omit type int from declaration of var searchSize; it will be inferred from the right-hand side  
+
+
+ ✖ 1 problem (0 errors) (1 warnings)
+
+real	0m0.058s
+user	0m0.023s
+sys	0m0.050s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.088s
+user	0m0.043s
+sys	0m0.073s
+
+real	0m0.090s
+user	0m0.045s
+sys	0m0.074s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
+
+real	0m0.001s
+user	0m0.001s
+sys	0m0.000s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.019s
+user	0m0.012s
+sys	0m0.015s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
+	info: check "./."
+internal error: package "errors" without types was imported from "prime"
+
+real	0m0.091s
+user	0m0.125s
+sys	0m0.094s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.122s
+user	0m0.143s
+sys	0m0.120s
+
+real	0m0.124s
+user	0m0.144s
+sys	0m0.121s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-staticcheck
+
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.035s
+user	0m0.023s
+sys	0m0.019s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+nth_prime.go:21:17: should omit type int from declaration; it will be inferred from the right-hand side (ST1023)
+
+real	0m0.189s
+user	0m0.274s
+sys	0m0.180s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.237s
+user	0m0.303s
+sys	0m0.208s
+
+real	0m0.240s
+user	0m0.305s
+sys	0m0.208s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocritic
+
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.021s
+user	0m0.010s
+sys	0m0.020s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+./nth_prime.go:35:1: paramTypeCombine: func(searchTarget int, limit int) []int could be replaced with func(searchTarget, limit int) []int
+
+real	0m0.818s
+user	0m2.011s
+sys	0m0.321s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.851s
+user	0m2.028s
+sys	0m0.351s
+
+real	0m0.853s
+user	0m2.028s
+sys	0m0.352s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go_vet
+
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.018s
+user	0m0.015s
+sys	0m0.011s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.092s
+user	0m0.153s
+sys	0m0.116s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.120s
+user	0m0.176s
+sys	0m0.133s
+
+real	0m0.122s
+user	0m0.178s
+sys	0m0.133s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-fixer-go_fix
+
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.045s
+user	0m0.021s
+sys	0m0.050s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.025s
+user	0m0.015s
+sys	0m0.020s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.093s
+user	0m0.047s
+sys	0m0.091s
+
+real	0m0.095s
+user	0m0.049s
+sys	0m0.092s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-errcheck
+
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.037s
+user	0m0.022s
+sys	0m0.034s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+nth_prime_test.go:28:6:	Nth(10001)
+
+real	0m0.459s
+user	0m1.364s
+sys	0m0.268s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.521s
+user	0m1.396s
+sys	0m0.324s
+
+real	0m0.523s
+user	0m1.396s
+sys	0m0.326s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.017s
+user	0m0.010s
+sys	0m0.013s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
+13 prime findPrimeWithSieve nth_prime.go:35:1
+6 prime TestNth nth_prime_test.go:5:1
+3 prime BenchmarkNth nth_prime_test.go:23:1
+3 prime Nth nth_prime.go:11:1
+2 prime ExampleNth nth_prime_examples_test.go:7:1
+
+real	0m0.002s
+user	0m0.000s
+sys	0m0.002s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.030s
+user	0m0.016s
+sys	0m0.024s
+
+real	0m0.032s
+user	0m0.018s
+sys	0m0.024s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-misspell
+
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+nth_prime.go:38:44: "substract" is a misspelling of "subtract"
+run-tests-go.txt:49:21: "substract" is a misspelling of "subtract"
+run-tests-go.txt:50:44: "substract" is a misspelling of "subtract"
+coverage.html:118:51: "substract" is a misspelling of "subtract"
+
+real	0m0.025s
+user	0m0.030s
+sys	0m0.011s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.037s
+user	0m0.033s
+sys	0m0.025s
+
+real	0m0.040s
+user	0m0.034s
+sys	0m0.027s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gosec
+
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.023s
+user	0m0.015s
+sys	0m0.019s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:25:22 Including rules: default
+[gosec] 2023/09/07 00:25:22 Excluding rules: default
+[gosec] 2023/09/07 00:25:22 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/nth-prime
+[gosec] 2023/09/07 00:25:22 Checking package: prime
+[gosec] 2023/09/07 00:25:22 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/nth-prime/nth_prime.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 97
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.109s
+user	0m0.108s
+sys	0m0.076s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.144s
+user	0m0.128s
+sys	0m0.106s
+
+real	0m0.146s
+user	0m0.130s
+sys	0m0.106s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.023s
+user	0m0.013s
+sys	0m0.020s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
 === RUN   TestNth
 === RUN   TestNth/first_prime
 === RUN   TestNth/second_prime
 === RUN   TestNth/sixth_prime
 === RUN   TestNth/big_prime
 === RUN   TestNth/there_is_no_zeroth_prime
---- PASS: TestNth (0.07s)
+--- PASS: TestNth (0.03s)
     --- PASS: TestNth/first_prime (0.00s)
     --- PASS: TestNth/second_prime (0.00s)
     --- PASS: TestNth/sixth_prime (0.00s)
-    --- PASS: TestNth/big_prime (0.07s)
+    --- PASS: TestNth/big_prime (0.03s)
     --- PASS: TestNth/there_is_no_zeroth_prime (0.00s)
 === RUN   ExampleNth
 --- PASS: ExampleNth (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	prime	0.087s	coverage: 100.0% of statements
+ok  	prime	0.031s	coverage: 100.0% of statements
 
-real	0m0.662s
-user	0m0.774s
-sys	0m0.445s
+real	0m0.213s
+user	0m0.293s
+sys	0m0.186s
 
-===============================================================================
 
-go tool cover -func=coverage.out
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
 prime/nth_prime.go:11:	Nth			100.0%
 prime/nth_prime.go:35:	findPrimeWithSieve	100.0%
 total:			(statements)		100.0%
 
-real	0m0.197s
-user	0m0.206s
-sys	0m0.150s
+real	0m0.041s
+user	0m0.047s
+sys	0m0.047s
 
-===============================================================================
 
-go tool cover -html coverage.out -o coverage.html
+ ==============================================================================
 
-real	0m0.161s
-user	0m0.135s
-sys	0m0.161s
+Running: go tool cover -html coverage.out -o coverage.html
 
-===============================================================================
 
-go test -v -race -covermode=atomic prime
+real	0m0.038s
+user	0m0.031s
+sys	0m0.060s
+
+
+ ==============================================================================
+
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+real	0m0.015s
+user	0m0.014s
+sys	0m0.010s
+
+real	0m0.015s
+user	0m0.014s
+sys	0m0.010s
+
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
 === RUN   TestNth
 === RUN   TestNth/first_prime
 === RUN   TestNth/second_prime
 === RUN   TestNth/sixth_prime
 === RUN   TestNth/big_prime
 === RUN   TestNth/there_is_no_zeroth_prime
---- PASS: TestNth (0.33s)
+--- PASS: TestNth (0.09s)
     --- PASS: TestNth/first_prime (0.00s)
     --- PASS: TestNth/second_prime (0.00s)
     --- PASS: TestNth/sixth_prime (0.00s)
-    --- PASS: TestNth/big_prime (0.33s)
+    --- PASS: TestNth/big_prime (0.09s)
     --- PASS: TestNth/there_is_no_zeroth_prime (0.00s)
 === RUN   ExampleNth
 --- PASS: ExampleNth (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	prime	0.368s	coverage: 100.0% of statements
+ok  	prime	1.114s	coverage: 100.0% of statements
 
-real	0m1.010s
-user	0m1.061s
-sys	0m0.522s
+real	0m1.338s
+user	0m0.343s
+sys	0m0.171s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.678s
+user	0m0.747s
+sys	0m0.501s
+
+real	0m1.679s
+user	0m0.747s
+sys	0m0.503s
 
 ===============================================================================
 
 mv -v benchstat-new.txt benchstat-old.txt
 renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
 
-go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 goos: linux
 goarch: amd64
 pkg: prime
-cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
-BenchmarkNth-4   	      15	  99131219 ns/op	 7228028 B/op	    4761 allocs/op
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+BenchmarkNth
+BenchmarkNth-8   	      54	  19159865 ns/op	 6984784 B/op	    2936 allocs/op
 PASS
-ok  	prime	1.606s
+ok  	prime	1.060s
 
-real	0m2.119s
-user	0m2.645s
-sys	0m0.576s
+real	0m1.215s
+user	0m1.257s
+sys	0m0.189s
 
 ===============================================================================
 
-go test -tags bonus
+gotest -v -tags bonus
+=== RUN   TestNth
+=== RUN   TestNth/first_prime
+=== RUN   TestNth/second_prime
+=== RUN   TestNth/sixth_prime
+=== RUN   TestNth/big_prime
+=== RUN   TestNth/there_is_no_zeroth_prime
+--- PASS: TestNth (0.03s)
+    --- PASS: TestNth/first_prime (0.00s)
+    --- PASS: TestNth/second_prime (0.00s)
+    --- PASS: TestNth/sixth_prime (0.00s)
+    --- PASS: TestNth/big_prime (0.03s)
+    --- PASS: TestNth/there_is_no_zeroth_prime (0.00s)
+=== RUN   ExampleNth
+--- PASS: ExampleNth (0.00s)
 PASS
-ok  	prime	0.203s
+ok  	prime	0.028s
 
-real	0m1.725s
-user	0m1.885s
-sys	0m1.271s
+real	0m0.173s
+user	0m0.217s
+sys	0m0.172s
 
 ===============================================================================
-
-go install golang.org/x/perf/cmd/benchstat@latest
-
-real	0m1.394s
-user	0m1.416s
-sys	0m0.747s
 
 benchstat benchstat-old.txt benchstat-new.txt
-name   old time/op    new time/op    delta
-Nth-4     101ms ± 0%      99ms ± 0%   ~     (p=1.000 n=1+1)
+benchstat-new.txt:5: missing iteration count
+goos: linux
+goarch: amd64
+pkg: prime
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+      │ benchstat-new.txt │
+      │      sec/op       │
+Nth-8        19.16m ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-name   old alloc/op   new alloc/op   delta
-Nth-4    7.24MB ± 0%    7.23MB ± 0%   ~     (p=1.000 n=1+1)
+      │ benchstat-new.txt │
+      │       B/op        │
+Nth-8       6.661Mi ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-name   old allocs/op  new allocs/op  delta
-Nth-4     4.78k ± 0%     4.76k ± 0%   ~     (p=1.000 n=1+1)
+      │ benchstat-new.txt │
+      │     allocs/op     │
+Nth-8        2.936k ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-real	0m0.023s
-user	0m0.004s
-sys	0m0.018s
+cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+      │ benchstat-old.txt │
+      │      sec/op       │
+Nth-4        99.13m ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-===============================================================================
+      │ benchstat-old.txt │
+      │       B/op        │
+Nth-4       6.893Mi ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-go vet prime
+      │ benchstat-old.txt │
+      │     allocs/op     │
+Nth-4        4.761k ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-real	0m1.045s
-user	0m1.105s
-sys	0m0.768s
-
-===============================================================================
-
-go fix prime
-
-real	0m0.239s
-user	0m0.197s
-sys	0m0.212s
-
-===============================================================================
-
-gosec ./nth-prime
-[gosec] 2022/07/26 07:27:45 Including rules: default
-[gosec] 2022/07/26 07:27:45 Excluding rules: default
-[gosec] 2022/07/26 07:27:45 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/nth-prime
-2022/07/26 07:27:46 internal error: package "errors" without types was imported from "command-line-arguments"
-
-real	0m0.791s
-user	0m0.867s
-sys	0m0.618s
+real	0m0.007s
+user	0m0.001s
+sys	0m0.004s
 
 ===============================================================================
 
 gomarkdoc --output prime-doc.md
 
-real	0m0.138s
-user	0m0.079s
-sys	0m0.050s
+real	0m0.010s
+user	0m0.002s
+sys	0m0.008s
 
 ===============================================================================
 
@@ -180,9 +823,9 @@ func Nth(input int) (int, error)
     number can't be calculated ('n' is equal or less than zero)
 
 
-real	0m0.374s
-user	0m0.282s
-sys	0m0.297s
+real	0m0.048s
+user	0m0.029s
+sys	0m0.035s
 
 
 ===============================================================================

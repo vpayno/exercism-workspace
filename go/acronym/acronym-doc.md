@@ -6,7 +6,7 @@
 import "acronym"
 ```
 
-Package acronym converts a phrase to its acronym\. The 1st iteration is better than the second one\.
+Package acronym converts a phrase to its acronym. The 1st iteration is better than the second one.
 
 ## Index
 
@@ -19,7 +19,7 @@ Package acronym converts a phrase to its acronym\. The 1st iteration is better t
 func Abbreviate(s string) string
 ```
 
-Abbreviate returns an acronym from the supplied string\.
+Abbreviate returns an acronym from the supplied string.
 
 <details><summary>Example</summary>
 <p>

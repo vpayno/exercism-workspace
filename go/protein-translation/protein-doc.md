@@ -6,7 +6,7 @@
 import "protein"
 ```
 
-Package protein is used to translate RNA sequences into proteins\.
+Package protein is used to translate RNA sequences into proteins.
 
 ## Index
 
@@ -17,13 +17,13 @@ Package protein is used to translate RNA sequences into proteins\.
 
 ## Variables
 
-ErrInvalidBase is used to signal FronCodon that an invalid codon has been encountered\.
+ErrInvalidBase is used to signal FronCodon that an invalid codon has been encountered.
 
 ```go
 var ErrInvalidBase = errors.New("Invalid Base")
 ```
 
-ErrStop is used to signal FromCodon to stop processing codons\.
+ErrStop is used to signal FromCodon to stop processing codons.
 
 ```go
 var ErrStop = errors.New("STOP")
@@ -35,7 +35,7 @@ var ErrStop = errors.New("STOP")
 func FromCodon(codon string) (string, error)
 ```
 
-FromCodon returns a single protein from a codon\.
+FromCodon returns a single protein from a codon.
 
 <details><summary>Example</summary>
 <p>
@@ -62,7 +62,7 @@ Methionine <nil>
 func FromRNA(rna string) ([]string, error)
 ```
 
-FromRNA returns a protein sequence from an RNA sequence\.
+FromRNA returns a protein sequence from an RNA sequence.
 
 <details><summary>Example</summary>
 <p>

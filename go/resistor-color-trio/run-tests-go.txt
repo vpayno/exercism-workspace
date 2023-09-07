@@ -5,91 +5,487 @@ Go packages: resistorcolortrio
 
 ===============================================================================
 
-golangci-lint run ./...
+Running: ../../.github/citools/go/go-lint-golangci-lint
+
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.026s
+user	0m0.023s
+sys	0m0.026s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[linters_context] rowserrcheck is disabled because of generics. You can track the evolution of the generics support by following the https://github.com/golangci/golangci-lint/issues/2649."
+level=warning msg="[linters_context] structcheck is disabled because of generics. You can track the evolution of the generics support by following the https://github.com/golangci/golangci-lint/issues/2649."
+level=warning msg="[linters_context] wastedassign is disabled because of generics. You can track the evolution of the generics support by following the https://github.com/golangci/golangci-lint/issues/2649."
+resistor_color_trio.go:211:10: string `-1 ohms` has 3 occurrences, make it a constant (goconst)
+		return "-1 ohms"
+		       ^
+resistor_color_trio.go:81:26: Comment should end in a period (godot)
+// Enum of MetricPrefixes
+                         ^
+resistor_color_trio_test.go:8:20: Using the variable on range scope `tc` in function literal (scopelint)
+			actual := Label(tc.input)
+			                ^
+resistor_color_trio_test.go:10:17: Using the variable on range scope `tc` in function literal (scopelint)
+			if actual != tc.expected {
+			             ^
+resistor_color_trio_test.go:11:52: Using the variable on range scope `tc` in function literal (scopelint)
+				t.Fatalf("Label(%+q): expected %q, actual %q", tc.input, tc.expected, actual)
+				                                               ^
+resistor_color_trio.go:38:5: ColorNames is a global variable (gochecknoglobals)
+var ColorNames = map[Color]string{
+    ^
+resistor_color_trio.go:98:5: MetricPrefixNames is a global variable (gochecknoglobals)
+var MetricPrefixNames = map[MetricPrefix]string{
+    ^
+cases_test.go:14:5: labelTestCases is a global variable (gochecknoglobals)
+var labelTestCases = []labelTestCase{
+    ^
+resistor_color_trio_test.go:18:5: labelBench is a global variable (gochecknoglobals)
+var labelBench string
+    ^
+resistor_color_trio.go:124:30: mnd: Magic number: 10, in <argument> detected (gomnd)
+	return int(math.Pow(float64(10), float64(m.Int())))
+	                            ^
+resistor_color_trio.go:223:32: mnd: Magic number: 10, in <argument> detected (gomnd)
+	value *= int(math.Pow(float64(10), float64(ColorCode(colors[2]))))
+	                              ^
+resistor_color_trio.go:170:19: mnd: Magic number: 2, in <condition> detected (gomnd)
+	if len(colors) < 2 {
+	                 ^
+resistor_color_trio.go:210:19: mnd: Magic number: 3, in <condition> detected (gomnd)
+	if len(colors) < 3 {
+	                 ^
+resistor_color_trio.go:177:34: mnd: Magic number: 10, in <operation> detected (gomnd)
+	value += ColorCode(colors[0]) * 10
+	                                ^
+resistor_color_trio.go:217:34: mnd: Magic number: 10, in <operation> detected (gomnd)
+	value += ColorCode(colors[0]) * 10
+	                                ^
+resistor_color_trio_example_test.go:20:6: ExampleColor_String contains underscore. You should use mixedCap or MixedCap. (nosnakecase)
+func ExampleColor_String() {
+     ^
+resistor_color_trio_example_test.go:45:6: ExampleColor_Int contains underscore. You should use mixedCap or MixedCap. (nosnakecase)
+func ExampleColor_Int() {
+     ^
+resistor_color_trio_example_test.go:70:6: ExampleMetricPrefix_String contains underscore. You should use mixedCap or MixedCap. (nosnakecase)
+func ExampleMetricPrefix_String() {
+     ^
+resistor_color_trio_example_test.go:89:6: ExampleMetricPrefix_Int contains underscore. You should use mixedCap or MixedCap. (nosnakecase)
+func ExampleMetricPrefix_Int() {
+     ^
+resistor_color_trio_example_test.go:108:6: ExampleMetricPrefix_Magnitude contains underscore. You should use mixedCap or MixedCap. (nosnakecase)
+func ExampleMetricPrefix_Magnitude() {
+     ^
+resistor_color_trio_test.go:5:1: Function TestLabel missing the call to method parallel (paralleltest)
+func TestLabel(t *testing.T) {
+^
+resistor_color_trio_test.go:6:2: Range statement for test TestLabel missing the call to method parallel in test Run (paralleltest)
+	for _, tc := range labelTestCases {
+	^
 resistor_color_trio_example_test.go:11:12: SA1019: strings.Title has been deprecated since Go 1.18 and an alternative has been available since Go 1.0: The rule Title uses for word boundaries does not handle Unicode punctuation properly. Use golang.org/x/text/cases instead. (staticcheck)
 	result := strings.Title(text)
 	          ^
+cases_test.go:1:9: package should be `resistorcolortrio_test` instead of `resistorcolortrio` (testpackage)
+package resistorcolortrio
+        ^
+resistor_color_trio_example_test.go:1:9: package should be `resistorcolortrio_test` instead of `resistorcolortrio` (testpackage)
+package resistorcolortrio
+        ^
+resistor_color_trio_test.go:1:9: package should be `resistorcolortrio_test` instead of `resistorcolortrio` (testpackage)
+package resistorcolortrio
+        ^
+resistor_color_trio.go:233:6: variable name 'sb' is too short for the scope of its usage (varnamelen)
+	var sb strings.Builder
+	    ^
+resistor_color_trio.go:235:2: variable name 'e' is too short for the scope of its usage (varnamelen)
+	_, e := sb.WriteString(fmt.Sprintf("%d", value))
+	^
 
-real	0m0.238s
-user	0m0.401s
-sys	0m0.264s
+real	0m0.536s
+user	0m0.840s
+sys	0m0.534s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.577s
+user	0m0.873s
+sys	0m0.572s
+
+real	0m0.580s
+user	0m0.874s
+sys	0m0.573s
 
 ===============================================================================
 
-golint ./...
-resistor_color_trio.go:123:1: exported method MetricPrefix.Magnitude should have comment or be unexported
+Running: ../../.github/citools/go/go-lint-revive
 
-real	0m0.005s
-user	0m0.003s
-sys	0m0.002s
+Running Go Lint Revive
 
-===============================================================================
+Go version:
 
-revive -formatter=stylish ./...
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.030s
+user	0m0.029s
+sys	0m0.025s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
 resistor_color_trio.go
   (123, 1)  https://revive.run/r#exported  exported method MetricPrefix.Magnitude should have comment or be unexported  
 
 
  ✖ 1 problem (0 errors) (1 warnings)
 
-real	0m0.204s
-user	0m0.386s
-sys	0m0.348s
+real	0m0.055s
+user	0m0.032s
+sys	0m0.037s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.099s
+user	0m0.069s
+sys	0m0.071s
+
+real	0m0.101s
+user	0m0.071s
+sys	0m0.071s
 
 ===============================================================================
 
-ineffassign ./...
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
 
-real	0m0.094s
-user	0m0.135s
-sys	0m0.106s
+real	0m0.001s
+user	0m0.000s
+sys	0m0.001s
 
 ===============================================================================
 
-go-consistent -v ./...
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.029s
+user	0m0.021s
+sys	0m0.034s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
 	info: check "./."
 internal error: package "fmt" without types was imported from "resistorcolortrio"
 
-real	0m0.103s
-user	0m0.186s
-sys	0m0.142s
+real	0m0.113s
+user	0m0.142s
+sys	0m0.154s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.159s
+user	0m0.169s
+sys	0m0.205s
+
+real	0m0.161s
+user	0m0.171s
+sys	0m0.206s
 
 ===============================================================================
 
-staticcheck ./...
+Running: ../../.github/citools/go/go-lint-staticcheck
+
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.022s
+user	0m0.022s
+sys	0m0.020s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
 resistor_color_trio_example_test.go:11:12: strings.Title has been deprecated since Go 1.18 and an alternative has been available since Go 1.0: The rule Title uses for word boundaries does not handle Unicode punctuation properly. Use golang.org/x/text/cases instead.  (SA1019)
 
-real	0m0.157s
-user	0m0.245s
-sys	0m0.273s
+real	0m0.174s
+user	0m0.241s
+sys	0m0.116s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.207s
+user	0m0.269s
+sys	0m0.145s
+
+real	0m0.209s
+user	0m0.271s
+sys	0m0.145s
 
 ===============================================================================
 
-gocritic check -enableAll ./...
+Running: ../../.github/citools/go/go-lint-gocritic
 
-real	0m0.752s
-user	0m2.435s
-sys	0m0.441s
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.024s
+user	0m0.015s
+sys	0m0.032s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+
+real	0m0.905s
+user	0m2.213s
+sys	0m0.322s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.941s
+user	0m2.234s
+sys	0m0.366s
+
+real	0m0.944s
+user	0m2.235s
+sys	0m0.367s
 
 ===============================================================================
 
-go vet ./...
+Running: ../../.github/citools/go/go-lint-go_vet
 
-real	0m0.114s
-user	0m0.230s
-sys	0m0.227s
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.023s
+user	0m0.011s
+sys	0m0.025s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.078s
+user	0m0.123s
+sys	0m0.110s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.111s
+user	0m0.144s
+sys	0m0.140s
+
+real	0m0.112s
+user	0m0.144s
+sys	0m0.141s
 
 ===============================================================================
 
-go fix ./...
+Running: ../../.github/citools/go/go-fixer-go_fix
 
-real	0m0.026s
-user	0m0.023s
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.020s
+user	0m0.016s
+sys	0m0.023s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.027s
+user	0m0.024s
+sys	0m0.031s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.057s
+user	0m0.046s
+sys	0m0.062s
+
+real	0m0.059s
+user	0m0.047s
+sys	0m0.062s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-errcheck
+
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.034s
+user	0m0.031s
+sys	0m0.032s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+
+real	0m0.513s
+user	0m1.515s
+sys	0m0.335s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.565s
+user	0m1.555s
+sys	0m0.382s
+
+real	0m0.567s
+user	0m1.556s
+sys	0m0.384s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.027s
+user	0m0.017s
 sys	0m0.030s
 
-===============================================================================
 
-gocyclo .
+ ==============================================================================
+
+Running: gocyclo .
+
 6 resistorcolortrio Label resistor_color_trio.go:209:1
 4 resistorcolortrio Unit resistor_color_trio.go:186:1
 3 resistorcolortrio BenchmarkLabel resistor_color_trio_test.go:20:1
@@ -114,25 +510,85 @@ gocyclo .
 1 resistorcolortrio (MetricPrefix).Magnitude resistor_color_trio.go:123:1
 
 real	0m0.002s
-user	0m0.001s
-sys	0m0.001s
+user	0m0.002s
+sys	0m0.000s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.048s
+user	0m0.026s
+sys	0m0.048s
+
+real	0m0.051s
+user	0m0.028s
+sys	0m0.049s
 
 ===============================================================================
 
-misspell .
+Running: ../../.github/citools/go/go-lint-misspell
 
-real	0m0.026s
-user	0m0.035s
-sys	0m0.010s
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+
+real	0m0.028s
+user	0m0.033s
+sys	0m0.009s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.045s
+user	0m0.040s
+sys	0m0.025s
+
+real	0m0.048s
+user	0m0.041s
+sys	0m0.026s
 
 ===============================================================================
 
-gosec ./...
-[gosec] 2023/03/05 20:42:22 Including rules: default
-[gosec] 2023/03/05 20:42:22 Excluding rules: default
-[gosec] 2023/03/05 20:42:22 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/resistor-color-trio
-[gosec] 2023/03/05 20:42:22 Checking package: resistorcolortrio
-[gosec] 2023/03/05 20:42:22 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/resistor-color-trio/resistor_color_trio.go
+Running: ../../.github/citools/go/go-lint-gosec
+
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.031s
+user	0m0.024s
+sys	0m0.031s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:29:44 Including rules: default
+[gosec] 2023/09/07 00:29:44 Excluding rules: default
+[gosec] 2023/09/07 00:29:44 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/resistor-color-trio
+[gosec] 2023/09/07 00:29:45 Checking package: resistorcolortrio
+[gosec] 2023/09/07 00:29:45 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/resistor-color-trio/resistor_color_trio.go
 Results:
 
 
@@ -144,13 +600,48 @@ Results:
   Issues : [1;32m0[0m
 
 
-real	0m0.138s
-user	0m0.181s
-sys	0m0.117s
+real	0m0.127s
+user	0m0.150s
+sys	0m0.098s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.171s
+user	0m0.178s
+sys	0m0.140s
+
+real	0m0.172s
+user	0m0.178s
+sys	0m0.141s
 
 ===============================================================================
 
-gotest -v -covermode=count -coverprofile coverage.out ./...
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.033s
+user	0m0.031s
+sys	0m0.027s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
 === RUN   TestLabel
 === RUN   TestLabel/Orange_and_orange_and_black
 === RUN   TestLabel/Blue_and_grey_and_brown
@@ -192,16 +683,18 @@ gotest -v -covermode=count -coverprofile coverage.out ./...
 === RUN   ExampleLabel
 --- PASS: ExampleLabel (0.00s)
 PASS
-	resistorcolortrio	coverage: 96.2% of statements
-ok  	resistorcolortrio	0.004s	coverage: 96.2% of statements
+coverage: 96.2% of statements
+ok  	resistorcolortrio	0.003s	coverage: 96.2% of statements
 
-real	0m0.226s
-user	0m0.374s
-sys	0m0.277s
+real	0m0.194s
+user	0m0.246s
+sys	0m0.159s
 
-===============================================================================
 
-go tool cover -func=coverage.out
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
 resistorcolortrio/resistor_color_trio.go:60:	String		100.0%
 resistorcolortrio/resistor_color_trio.go:70:	Int		100.0%
 resistorcolortrio/resistor_color_trio.go:106:	String		100.0%
@@ -214,21 +707,26 @@ resistorcolortrio/resistor_color_trio.go:186:	Unit		100.0%
 resistorcolortrio/resistor_color_trio.go:209:	Label		88.2%
 total:						(statements)	96.2%
 
-real	0m0.061s
-user	0m0.100s
-sys	0m0.098s
+real	0m0.060s
+user	0m0.080s
+sys	0m0.084s
 
-===============================================================================
 
-go tool cover -html coverage.out -o coverage.html
+ ==============================================================================
 
-real	0m0.061s
-user	0m0.099s
-sys	0m0.096s
+Running: go tool cover -html coverage.out -o coverage.html
 
-===============================================================================
 
-gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+real	0m0.049s
+user	0m0.060s
+sys	0m0.075s
+
+
+ ==============================================================================
+
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
 
 209     	func Label(colors []string) string {
 210     		if len(colors) < 3 {
@@ -274,13 +772,19 @@ gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annota
 250     	}
 
 
-real	0m0.018s
-user	0m0.022s
-sys	0m0.023s
+real	0m0.020s
+user	0m0.023s
+sys	0m0.021s
 
-===============================================================================
+real	0m0.020s
+user	0m0.023s
+sys	0m0.021s
 
-gotest -v -race -covermode=atomic ./...
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
 === RUN   TestLabel
 === RUN   TestLabel/Orange_and_orange_and_black
 === RUN   TestLabel/Blue_and_grey_and_brown
@@ -322,12 +826,25 @@ gotest -v -race -covermode=atomic ./...
 === RUN   ExampleLabel
 --- PASS: ExampleLabel (0.00s)
 PASS
-	resistorcolortrio	coverage: 96.2% of statements
-ok  	resistorcolortrio	0.033s	coverage: 96.2% of statements
+coverage: 96.2% of statements
+ok  	resistorcolortrio	1.018s	coverage: 96.2% of statements
 
-real	0m0.317s
-user	0m0.417s
-sys	0m0.244s
+real	0m1.294s
+user	0m0.345s
+sys	0m0.209s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.665s
+user	0m0.788s
+sys	0m0.591s
+
+real	0m1.667s
+user	0m0.789s
+sys	0m0.592s
 
 ===============================================================================
 
@@ -340,13 +857,13 @@ goarch: amd64
 pkg: resistorcolortrio
 cpu: 12th Gen Intel(R) Core(TM) i5-1240P
 BenchmarkLabel
-BenchmarkLabel-16    	  109490	     11654 ns/op	   15192 B/op	     182 allocs/op
+BenchmarkLabel-8   	   99762	     11779 ns/op	   15188 B/op	     182 allocs/op
 PASS
-ok  	resistorcolortrio	1.394s
+ok  	resistorcolortrio	2.268s
 
-real	0m1.563s
-user	0m1.976s
-sys	0m0.339s
+real	0m2.435s
+user	0m2.615s
+sys	0m0.250s
 
 ===============================================================================
 
@@ -394,9 +911,9 @@ gotest -v -tags bonus
 PASS
 ok  	resistorcolortrio	0.003s
 
-real	0m0.152s
-user	0m0.275s
-sys	0m0.236s
+real	0m0.131s
+user	0m0.176s
+sys	0m0.122s
 
 ===============================================================================
 
@@ -407,35 +924,44 @@ goos: linux
 goarch: amd64
 pkg: resistorcolortrio
 cpu: 12th Gen Intel(R) Core(TM) i5-1240P
-         │ benchstat-old.txt │        benchstat-new.txt        │
-         │      sec/op       │    sec/op     vs base           │
-Label-16        11.60µ ± ∞ ¹   11.65µ ± ∞ ¹  ~ (p=1.000 n=1) ²
+         │ benchstat-old.txt │  benchstat-new.txt  │
+         │      sec/op       │    sec/op     vs base   │
+Label-16        11.65µ ± ∞ ¹
+Label-8                        11.78µ ± ∞ ¹
+geomean         11.65µ         11.78µ        ? ² ³
 ¹ need >= 6 samples for confidence interval at level 0.95
-² need >= 4 samples to detect a difference at alpha level 0.05
+² benchmark set differs from baseline; geomeans may not be comparable
+³ ratios must be >0 to compute geomean
 
-         │ benchstat-old.txt │        benchstat-new.txt         │
-         │       B/op        │     B/op       vs base           │
-Label-16       14.84Ki ± ∞ ¹   14.84Ki ± ∞ ¹  ~ (p=1.000 n=1) ²
+         │ benchstat-old.txt │  benchstat-new.txt   │
+         │       B/op        │     B/op       vs base   │
+Label-16       14.84Ki ± ∞ ¹
+Label-8                        14.83Ki ± ∞ ¹
+geomean        14.84Ki         14.83Ki        ? ² ³
 ¹ need >= 6 samples for confidence interval at level 0.95
-² all samples are equal
+² benchmark set differs from baseline; geomeans may not be comparable
+³ ratios must be >0 to compute geomean
 
-         │ benchstat-old.txt │       benchstat-new.txt        │
-         │     allocs/op     │  allocs/op   vs base           │
-Label-16         182.0 ± ∞ ¹   182.0 ± ∞ ¹  ~ (p=1.000 n=1) ²
+         │ benchstat-old.txt │ benchstat-new.txt  │
+         │     allocs/op     │  allocs/op   vs base   │
+Label-16         182.0 ± ∞ ¹
+Label-8                        182.0 ± ∞ ¹
+geomean          182.0         182.0        ? ² ³
 ¹ need >= 6 samples for confidence interval at level 0.95
-² all samples are equal
+² benchmark set differs from baseline; geomeans may not be comparable
+³ ratios must be >0 to compute geomean
 
-real	0m0.003s
-user	0m0.003s
-sys	0m0.000s
+real	0m0.004s
+user	0m0.000s
+sys	0m0.004s
 
 ===============================================================================
 
 gomarkdoc --output resistorcolortrio-doc.md
 
 real	0m0.014s
-user	0m0.009s
-sys	0m0.005s
+user	0m0.012s
+sys	0m0.003s
 
 ===============================================================================
 
@@ -569,8 +1095,8 @@ func (m MetricPrefix) String() string
 
 
 real	0m0.038s
-user	0m0.035s
-sys	0m0.034s
+user	0m0.031s
+sys	0m0.035s
 
 
 ===============================================================================

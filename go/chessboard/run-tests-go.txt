@@ -5,270 +5,454 @@ Go packages: chessboard
 
 ===============================================================================
 
-golint ./...
+Running: ../../.github/citools/go/go-lint-golangci-lint
 
-real	0m0.194s
-user	0m0.225s
-sys	0m0.138s
+Running GoLangCi-Lint
 
-===============================================================================
+Go version:
 
-revive ./...
+	go version go1.21.0 linux/amd64
 
-real	0m0.052s
-user	0m0.014s
-sys	0m0.035s
 
-===============================================================================
+ ==============================================================================
 
-ineffassign ./...
+Running: go clean ./...
 
-real	0m0.310s
-user	0m0.311s
-sys	0m0.328s
 
-===============================================================================
+real	0m0.022s
+user	0m0.009s
+sys	0m0.018s
 
-go-consistent -v ./...
-	info: check "./."
 
-real	0m0.356s
-user	0m0.382s
-sys	0m0.345s
+ ==============================================================================
 
-===============================================================================
+Running: golangci-lint run --enable-all ./...
 
-staticcheck ./...
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+chessboard.go:4:82: Comment should end in a period (godot)
+// File stores if a square is occupied by a piece - this will be a slice of bools
+                                                                                 ^
+chessboard.go:7:80: Comment should end in a period (godot)
+// Chessboard contains a map of eight Files, accessed with keys from "A" to "H"
+                                                                               ^
+chessboard.go:11:25: Comment should end in a period (godot)
+// within the given rank
+                        ^
+chessboard_test.go:52:30: Using the variable on range scope `test` in function literal (scopelint)
+			if got := CountInFile(cb, test.in); got != test.expected {
+			                          ^
+chessboard_test.go:53:60: Using the variable on range scope `test` in function literal (scopelint)
+				t.Errorf("CountInFile(chessboard, %q) = %d, want: %d", test.in, got, test.expected)
+				                                                       ^
+chessboard_test.go:81:30: Using the variable on range scope `test` in function literal (scopelint)
+			if got := CountInRank(cb, test.in); got != test.expected {
+			                          ^
+chessboard_test.go:50:2: only one cuddle assignment allowed before range statement (wsl)
+	for _, test := range testCases {
+	^
+chessboard_test.go:79:2: only one cuddle assignment allowed before range statement (wsl)
+	for _, test := range testCases {
+	^
+chessboard_test.go:91:2: only one cuddle assignment allowed before if statement (wsl)
+	if got := CountAll(cb); got != expected {
+	^
+chessboard_test.go:99:2: only one cuddle assignment allowed before if statement (wsl)
+	if got := CountOccupied(cb); got != expected {
+	^
+chessboard_test.go:90:2: variable 'expected' is only used in the if-statement (chessboard_test.go:91:2); consider using short syntax (ifshort)
+	expected := 64
+	^
+chessboard_test.go:98:2: variable 'expected' is only used in the if-statement (chessboard_test.go:99:2); consider using short syntax (ifshort)
+	expected := 15
+	^
+chessboard_test.go:34:1: Function TestCountInFile missing the call to method parallel (paralleltest)
+func TestCountInFile(t *testing.T) {
+^
+chessboard_test.go:59:1: Function TestCountInRank missing the call to method parallel (paralleltest)
+func TestCountInRank(t *testing.T) {
+^
+chessboard_test.go:88:1: Function TestCountAll missing the call to method parallel (paralleltest)
+func TestCountAll(t *testing.T) {
+^
+chessboard_test.go:96:1: Function TestCountOccupied missing the call to method parallel (paralleltest)
+func TestCountOccupied(t *testing.T) {
+^
+chessboard_examples_test.go:1:9: package should be `chessboard_test` instead of `chessboard` (testpackage)
+package chessboard
+        ^
+chessboard_test.go:1:9: package should be `chessboard_test` instead of `chessboard` (testpackage)
+package chessboard
+        ^
+chessboard_test.go:35:2: variable name 'cb' is too short for the scope of its usage (varnamelen)
+	cb := newChessboard()
+	^
+chessboard_test.go:60:2: variable name 'cb' is too short for the scope of its usage (varnamelen)
+	cb := newChessboard()
+	^
 
-real	0m0.462s
-user	0m0.402s
-sys	0m0.514s
+real	0m0.486s
+user	0m0.845s
+sys	0m0.429s
 
-===============================================================================
 
-gocritic check -enableAll ./...
+ ==============================================================================
 
-real	0m2.643s
-user	0m4.263s
-sys	0m1.302s
+Exit code: -1
 
-===============================================================================
+real	0m0.525s
+user	0m0.863s
+sys	0m0.462s
 
-gotest -v -covermode=count -coverprofile coverage.out ./...
-=== RUN   TestCountInFile
-=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_A
-=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_B
-=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_C
-=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_D
-=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_E
-=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_F
-=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_G
-=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_H
-=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_Z
---- PASS: TestCountInFile (0.00s)
-    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_A (0.00s)
-    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_B (0.00s)
-    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_C (0.00s)
-    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_D (0.00s)
-    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_E (0.00s)
-    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_F (0.00s)
-    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_G (0.00s)
-    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_H (0.00s)
-    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_Z (0.00s)
-=== RUN   TestCountInRank
-=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_1
-=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_2
-=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_3
-=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_4
-=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_5
-=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_6
-=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_7
-=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_8
-=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_100
-=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_0
-=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_-1
-=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_-100
---- PASS: TestCountInRank (0.00s)
-    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_1 (0.00s)
-    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_2 (0.00s)
-    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_3 (0.00s)
-    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_4 (0.00s)
-    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_5 (0.00s)
-    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_6 (0.00s)
-    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_7 (0.00s)
-    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_8 (0.00s)
-    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_100 (0.00s)
-    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_0 (0.00s)
-    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_-1 (0.00s)
-    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_-100 (0.00s)
-=== RUN   TestCountAll
---- PASS: TestCountAll (0.00s)
-=== RUN   TestCountOccupied
---- PASS: TestCountOccupied (0.00s)
-=== RUN   ExampleCountInFile
---- PASS: ExampleCountInFile (0.00s)
-=== RUN   ExampleCountInRank
---- PASS: ExampleCountInRank (0.00s)
-=== RUN   ExampleCountAll
---- PASS: ExampleCountAll (0.00s)
-=== RUN   ExampleCountOccupied
---- PASS: ExampleCountOccupied (0.00s)
-PASS
-coverage: 100.0% of statements
-ok  	chessboard	0.030s	coverage: 100.0% of statements
-
-real	0m0.736s
-user	0m0.754s
-sys	0m0.581s
+real	0m0.529s
+user	0m0.866s
+sys	0m0.464s
 
 ===============================================================================
 
-go tool cover -func=coverage.out
-chessboard/chessboard.go:12:	CountInFile	100.0%
-chessboard/chessboard.go:26:	CountInRank	100.0%
-chessboard/chessboard.go:39:	CountAll	100.0%
-chessboard/chessboard.go:52:	CountOccupied	100.0%
-total:				(statements)	100.0%
+Running: ../../.github/citools/go/go-lint-revive
 
-real	0m0.145s
-user	0m0.071s
-sys	0m0.133s
+Running Go Lint Revive
 
-===============================================================================
+Go version:
 
-go tool cover -html coverage.out -o coverage.html
+	go version go1.21.0 linux/amd64
 
-real	0m0.092s
-user	0m0.042s
-sys	0m0.088s
 
-===============================================================================
+ ==============================================================================
 
-gocov convert coverage.out | gocov annotate -ceiling=100 -color - | tee coverage-annotations.txt
+Running: go clean ./...
 
-real	0m0.038s
-user	0m0.016s
+
+real	0m0.012s
+user	0m0.004s
+sys	0m0.011s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
+
+real	0m0.043s
+user	0m0.031s
+sys	0m0.024s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.075s
+user	0m0.049s
 sys	0m0.048s
 
-===============================================================================
-
-gotest -v -race -covermode=atomic ./...
-=== RUN   TestCountInFile
-=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_A
-=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_B
-=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_C
-=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_D
-=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_E
-=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_F
-=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_G
-=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_H
-=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_Z
---- PASS: TestCountInFile (0.00s)
-    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_A (0.00s)
-    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_B (0.00s)
-    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_C (0.00s)
-    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_D (0.00s)
-    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_E (0.00s)
-    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_F (0.00s)
-    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_G (0.00s)
-    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_H (0.00s)
-    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_Z (0.00s)
-=== RUN   TestCountInRank
-=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_1
-=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_2
-=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_3
-=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_4
-=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_5
-=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_6
-=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_7
-=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_8
-=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_100
-=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_0
-=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_-1
-=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_-100
---- PASS: TestCountInRank (0.00s)
-    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_1 (0.00s)
-    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_2 (0.00s)
-    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_3 (0.00s)
-    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_4 (0.00s)
-    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_5 (0.00s)
-    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_6 (0.00s)
-    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_7 (0.00s)
-    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_8 (0.00s)
-    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_100 (0.00s)
-    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_0 (0.00s)
-    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_-1 (0.00s)
-    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_-100 (0.00s)
-=== RUN   TestCountAll
---- PASS: TestCountAll (0.00s)
-=== RUN   TestCountOccupied
---- PASS: TestCountOccupied (0.00s)
-=== RUN   ExampleCountInFile
---- PASS: ExampleCountInFile (0.00s)
-=== RUN   ExampleCountInRank
---- PASS: ExampleCountInRank (0.00s)
-=== RUN   ExampleCountAll
---- PASS: ExampleCountAll (0.00s)
-=== RUN   ExampleCountOccupied
---- PASS: ExampleCountOccupied (0.00s)
-PASS
-coverage: 100.0% of statements
-ok  	chessboard	0.047s	coverage: 100.0% of statements
-
-real	0m1.001s
-user	0m0.884s
-sys	0m0.595s
+real	0m0.078s
+user	0m0.050s
+sys	0m0.050s
 
 ===============================================================================
 
-mv -v benchstat-new.txt benchstat-old.txt
-renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
 
-go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
-PASS
-ok  	chessboard	0.013s
-
-real	0m0.634s
-user	0m0.740s
-sys	0m0.475s
+real	0m0.001s
+user	0m0.001s
+sys	0m0.000s
 
 ===============================================================================
 
-go test -tags bonus
-PASS
-ok  	chessboard	0.011s
+Running: ../../.github/citools/go/go-lint-go-consistent
 
-real	0m0.495s
-user	0m0.561s
-sys	0m0.410s
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.018s
+user	0m0.010s
+sys	0m0.013s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
+	info: check "./."
+internal error: package "fmt" without types was imported from "chessboard [chessboard.test]"
+
+real	0m0.096s
+user	0m0.148s
+sys	0m0.135s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.128s
+user	0m0.162s
+sys	0m0.163s
+
+real	0m0.130s
+user	0m0.163s
+sys	0m0.164s
 
 ===============================================================================
 
-benchstat benchstat-old.txt benchstat-new.txt
+Running: ../../.github/citools/go/go-lint-staticcheck
+
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.021s
+user	0m0.008s
+sys	0m0.019s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+
+real	0m0.157s
+user	0m0.188s
+sys	0m0.103s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.189s
+user	0m0.202s
+sys	0m0.131s
+
+real	0m0.191s
+user	0m0.204s
+sys	0m0.131s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocritic
+
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
 
 real	0m0.021s
 user	0m0.009s
-sys	0m0.014s
+sys	0m0.017s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+
+real	0m0.856s
+user	0m1.930s
+sys	0m0.323s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.894s
+user	0m1.948s
+sys	0m0.352s
+
+real	0m0.896s
+user	0m1.949s
+sys	0m0.353s
 
 ===============================================================================
 
-go vet ./...
+Running: ../../.github/citools/go/go-lint-go_vet
 
-real	0m0.389s
-user	0m0.366s
-sys	0m0.370s
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.011s
+user	0m0.004s
+sys	0m0.010s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.085s
+user	0m0.138s
+sys	0m0.094s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.108s
+user	0m0.145s
+sys	0m0.117s
+
+real	0m0.110s
+user	0m0.146s
+sys	0m0.118s
 
 ===============================================================================
 
-go fix ./...
+Running: ../../.github/citools/go/go-fixer-go_fix
 
-real	0m0.076s
-user	0m0.038s
-sys	0m0.060s
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.010s
+user	0m0.006s
+sys	0m0.006s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.017s
+user	0m0.007s
+sys	0m0.013s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.038s
+user	0m0.016s
+sys	0m0.032s
+
+real	0m0.039s
+user	0m0.017s
+sys	0m0.032s
 
 ===============================================================================
 
-gocyclo .
+Running: ../../.github/citools/go/go-lint-errcheck
+
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.018s
+user	0m0.013s
+sys	0m0.012s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+
+real	0m0.454s
+user	0m1.301s
+sys	0m0.295s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.487s
+user	0m1.320s
+sys	0m0.321s
+
+real	0m0.489s
+user	0m1.320s
+sys	0m0.323s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.011s
+user	0m0.002s
+sys	0m0.013s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
 5 chessboard CountInRank chessboard.go:26:1
 4 chessboard CountOccupied chessboard.go:52:1
 3 chessboard TestCountInRank chessboard_test.go:59:1
@@ -283,47 +467,425 @@ gocyclo .
 1 chessboard ExampleCountInRank chessboard_examples_test.go:14:1
 1 chessboard ExampleCountInFile chessboard_examples_test.go:7:1
 
-real	0m0.012s
-user	0m0.008s
-sys	0m0.003s
+real	0m0.002s
+user	0m0.002s
+sys	0m0.000s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.036s
+user	0m0.015s
+sys	0m0.031s
+
+real	0m0.038s
+user	0m0.017s
+sys	0m0.031s
 
 ===============================================================================
 
-misspell .
+Running: ../../.github/citools/go/go-lint-misspell
 
-real	0m0.077s
-user	0m0.081s
-sys	0m0.037s
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+
+real	0m0.027s
+user	0m0.035s
+sys	0m0.010s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.036s
+user	0m0.041s
+sys	0m0.018s
+
+real	0m0.038s
+user	0m0.041s
+sys	0m0.019s
 
 ===============================================================================
 
-gosec ./...
-[gosec] 2022/08/24 21:34:05 Including rules: default
-[gosec] 2022/08/24 21:34:05 Excluding rules: default
-[gosec] 2022/08/24 21:34:05 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/chessboard
-[gosec] 2022/08/24 21:34:06 Checking package: chessboard
-[gosec] 2022/08/24 21:34:06 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/chessboard/chessboard.go
+Running: ../../.github/citools/go/go-lint-gosec
+
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.018s
+user	0m0.009s
+sys	0m0.012s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:21:35 Including rules: default
+[gosec] 2023/09/07 00:21:35 Excluding rules: default
+[gosec] 2023/09/07 00:21:35 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/chessboard
+[gosec] 2023/09/07 00:21:35 Checking package: chessboard
+[gosec] 2023/09/07 00:21:35 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/chessboard/chessboard.go
 Results:
 
 
-Summary:
-   Files: 1
-   Lines: 64
-   Nosec: 0
-  Issues: 0
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 64
+  Nosec  : 0
+  Issues : [1;32m0[0m
 
 
-real	0m0.446s
-user	0m0.510s
-sys	0m0.279s
+real	0m0.092s
+user	0m0.079s
+sys	0m0.056s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.121s
+user	0m0.092s
+sys	0m0.080s
+
+real	0m0.123s
+user	0m0.092s
+sys	0m0.082s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.019s
+user	0m0.006s
+sys	0m0.019s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
+=== RUN   TestCountInFile
+=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_A
+=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_B
+=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_C
+=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_D
+=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_E
+=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_F
+=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_G
+=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_H
+=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_Z
+--- PASS: TestCountInFile (0.00s)
+    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_A (0.00s)
+    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_B (0.00s)
+    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_C (0.00s)
+    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_D (0.00s)
+    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_E (0.00s)
+    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_F (0.00s)
+    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_G (0.00s)
+    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_H (0.00s)
+    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_Z (0.00s)
+=== RUN   TestCountInRank
+=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_1
+=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_2
+=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_3
+=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_4
+=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_5
+=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_6
+=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_7
+=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_8
+=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_100
+=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_0
+=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_-1
+=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_-100
+--- PASS: TestCountInRank (0.00s)
+    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_1 (0.00s)
+    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_2 (0.00s)
+    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_3 (0.00s)
+    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_4 (0.00s)
+    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_5 (0.00s)
+    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_6 (0.00s)
+    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_7 (0.00s)
+    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_8 (0.00s)
+    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_100 (0.00s)
+    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_0 (0.00s)
+    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_-1 (0.00s)
+    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_-100 (0.00s)
+=== RUN   TestCountAll
+--- PASS: TestCountAll (0.00s)
+=== RUN   TestCountOccupied
+--- PASS: TestCountOccupied (0.00s)
+=== RUN   ExampleCountInFile
+--- PASS: ExampleCountInFile (0.00s)
+=== RUN   ExampleCountInRank
+--- PASS: ExampleCountInRank (0.00s)
+=== RUN   ExampleCountAll
+--- PASS: ExampleCountAll (0.00s)
+=== RUN   ExampleCountOccupied
+--- PASS: ExampleCountOccupied (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	chessboard	0.003s	coverage: 100.0% of statements
+
+real	0m0.188s
+user	0m0.250s
+sys	0m0.168s
+
+
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
+chessboard/chessboard.go:12:	CountInFile	100.0%
+chessboard/chessboard.go:26:	CountInRank	100.0%
+chessboard/chessboard.go:39:	CountAll	100.0%
+chessboard/chessboard.go:52:	CountOccupied	100.0%
+total:				(statements)	100.0%
+
+real	0m0.024s
+user	0m0.010s
+sys	0m0.021s
+
+
+ ==============================================================================
+
+Running: go tool cover -html coverage.out -o coverage.html
+
+
+real	0m0.040s
+user	0m0.020s
+sys	0m0.031s
+
+
+ ==============================================================================
+
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+real	0m0.016s
+user	0m0.005s
+sys	0m0.016s
+
+real	0m0.016s
+user	0m0.005s
+sys	0m0.016s
+
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
+=== RUN   TestCountInFile
+=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_A
+=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_B
+=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_C
+=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_D
+=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_E
+=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_F
+=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_G
+=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_H
+=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_Z
+--- PASS: TestCountInFile (0.00s)
+    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_A (0.00s)
+    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_B (0.00s)
+    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_C (0.00s)
+    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_D (0.00s)
+    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_E (0.00s)
+    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_F (0.00s)
+    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_G (0.00s)
+    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_H (0.00s)
+    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_Z (0.00s)
+=== RUN   TestCountInRank
+=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_1
+=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_2
+=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_3
+=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_4
+=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_5
+=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_6
+=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_7
+=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_8
+=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_100
+=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_0
+=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_-1
+=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_-100
+--- PASS: TestCountInRank (0.00s)
+    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_1 (0.00s)
+    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_2 (0.00s)
+    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_3 (0.00s)
+    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_4 (0.00s)
+    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_5 (0.00s)
+    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_6 (0.00s)
+    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_7 (0.00s)
+    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_8 (0.00s)
+    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_100 (0.00s)
+    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_0 (0.00s)
+    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_-1 (0.00s)
+    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_-100 (0.00s)
+=== RUN   TestCountAll
+--- PASS: TestCountAll (0.00s)
+=== RUN   TestCountOccupied
+--- PASS: TestCountOccupied (0.00s)
+=== RUN   ExampleCountInFile
+--- PASS: ExampleCountInFile (0.00s)
+=== RUN   ExampleCountInRank
+--- PASS: ExampleCountInRank (0.00s)
+=== RUN   ExampleCountAll
+--- PASS: ExampleCountAll (0.00s)
+=== RUN   ExampleCountOccupied
+--- PASS: ExampleCountOccupied (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	chessboard	1.022s	coverage: 100.0% of statements
+
+real	0m1.254s
+user	0m0.256s
+sys	0m0.196s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.562s
+user	0m0.555s
+sys	0m0.470s
+
+real	0m1.565s
+user	0m0.558s
+sys	0m0.470s
+
+===============================================================================
+
+mv -v benchstat-new.txt benchstat-old.txt
+renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
+
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+PASS
+ok  	chessboard	0.002s
+
+real	0m0.163s
+user	0m0.211s
+sys	0m0.146s
+
+===============================================================================
+
+gotest -v -tags bonus
+=== RUN   TestCountInFile
+=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_A
+=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_B
+=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_C
+=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_D
+=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_E
+=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_F
+=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_G
+=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_H
+=== RUN   TestCountInFile/Count_of_occupied_squares_in_file_Z
+--- PASS: TestCountInFile (0.00s)
+    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_A (0.00s)
+    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_B (0.00s)
+    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_C (0.00s)
+    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_D (0.00s)
+    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_E (0.00s)
+    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_F (0.00s)
+    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_G (0.00s)
+    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_H (0.00s)
+    --- PASS: TestCountInFile/Count_of_occupied_squares_in_file_Z (0.00s)
+=== RUN   TestCountInRank
+=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_1
+=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_2
+=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_3
+=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_4
+=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_5
+=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_6
+=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_7
+=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_8
+=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_100
+=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_0
+=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_-1
+=== RUN   TestCountInRank/Count_of_occupied_squares_in_rank_-100
+--- PASS: TestCountInRank (0.00s)
+    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_1 (0.00s)
+    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_2 (0.00s)
+    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_3 (0.00s)
+    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_4 (0.00s)
+    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_5 (0.00s)
+    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_6 (0.00s)
+    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_7 (0.00s)
+    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_8 (0.00s)
+    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_100 (0.00s)
+    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_0 (0.00s)
+    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_-1 (0.00s)
+    --- PASS: TestCountInRank/Count_of_occupied_squares_in_rank_-100 (0.00s)
+=== RUN   TestCountAll
+--- PASS: TestCountAll (0.00s)
+=== RUN   TestCountOccupied
+--- PASS: TestCountOccupied (0.00s)
+=== RUN   ExampleCountInFile
+--- PASS: ExampleCountInFile (0.00s)
+=== RUN   ExampleCountInRank
+--- PASS: ExampleCountInRank (0.00s)
+=== RUN   ExampleCountAll
+--- PASS: ExampleCountAll (0.00s)
+=== RUN   ExampleCountOccupied
+--- PASS: ExampleCountOccupied (0.00s)
+PASS
+ok  	chessboard	0.003s
+
+real	0m0.167s
+user	0m0.262s
+sys	0m0.189s
+
+===============================================================================
+
+benchstat benchstat-old.txt benchstat-new.txt
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.002s
 
 ===============================================================================
 
 gomarkdoc --output chessboard-doc.md
 
-real	0m0.092s
-user	0m0.052s
-sys	0m0.055s
+real	0m0.014s
+user	0m0.008s
+sys	0m0.006s
 
 ===============================================================================
 
@@ -359,9 +921,9 @@ type File []bool
     bools
 
 
-real	0m0.179s
-user	0m0.090s
-sys	0m0.179s
+real	0m0.043s
+user	0m0.017s
+sys	0m0.038s
 
 
 ===============================================================================

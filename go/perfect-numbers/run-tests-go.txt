@@ -5,85 +5,450 @@ Go packages: perfect
 
 ===============================================================================
 
-golangci-lint run ./...
+Running: ../../.github/citools/go/go-lint-golangci-lint
 
-real	0m8.479s
-user	0m17.131s
-sys	0m3.091s
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.018s
+user	0m0.009s
+sys	0m0.014s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+perfect_numbers.go:1: line is 141 characters (lll)
+// Package perfect is used to determinte the classification scheme of a number using Nicomachus' classification scheme for positive integers.
+perfect_numbers.go:40:21: var-declaration: should omit type error from declaration of var ErrOnlyPositive; it will be inferred from the right-hand side (revive)
+var ErrOnlyPositive error = errors.New("only positive errors")
+                    ^
+perfect_numbers_test.go:16:28: Using the variable on range scope `tc` in function literal (scopelint)
+			actual, err := Classify(tc.input)
+			                        ^
+perfect_numbers_test.go:18:10: Using the variable on range scope `tc` in function literal (scopelint)
+			case !tc.ok:
+			      ^
+perfect_numbers_test.go:21:55: Using the variable on range scope `tc` in function literal (scopelint)
+					t.Errorf("Classify(%d) expected error, got: %q", tc.input, actual)
+					                                                 ^
+perfect_numbers.go:89:2: declarations should never be cuddled (wsl)
+	var factor int64
+	^
+perfect_numbers_test.go:58:2: for statements should only be cuddled with assignments used in the iteration (wsl)
+	for i := 0; i < b.N; i++ {
+	^
+perfect_numbers_test.go:7:29: comparing with != will fail on wrapped errors. Use errors.Is to check for a specific error (errorlint)
+		if _, err := Classify(0); err != ErrOnlyPositive {
+		                          ^
+perfect_numbers.go:27:2: missing cases in switch of type perfect.Classification: perfect.Unknown (exhaustive)
+	switch c {
+	^
+perfect_numbers.go:18:5: ClassificationNames is a global variable (gochecknoglobals)
+var ClassificationNames = map[Classification]string{
+    ^
+cases_test.go:8:5: classificationTestCases is a global variable (gochecknoglobals)
+var classificationTestCases = []struct {
+    ^
+perfect_numbers_test.go:5:1: Function TestZeroGivesPositiveRequiredError missing the call to method parallel (paralleltest)
+func TestZeroGivesPositiveRequiredError(t *testing.T) {
+^
+perfect_numbers_test.go:13:1: Function TestClassifiesCorrectly missing the call to method parallel (paralleltest)
+func TestClassifiesCorrectly(t *testing.T) {
+^
+perfect_numbers_test.go:14:2: Range statement for test TestClassifiesCorrectly missing the call to method parallel in test Run (paralleltest)
+	for _, tc := range classificationTestCases {
+	^
+perfect_numbers_test.go:34:1: Function TestClassificationsNotEqual missing the call to method parallel (paralleltest)
+func TestClassificationsNotEqual(t *testing.T) {
+^
+cases_test.go:1:9: package should be `perfect_test` instead of `perfect` (testpackage)
+package perfect
+        ^
+perfect_numbers_examples_test.go:1:9: package should be `perfect_test` instead of `perfect` (testpackage)
+package perfect
+        ^
+perfect_numbers_test.go:1:9: package should be `perfect_test` instead of `perfect` (testpackage)
+package perfect
+        ^
+perfect_numbers_examples_test.go:6:2: variable name 'c' is too short for the scope of its usage (varnamelen)
+	c, _ := Classify(6)
+	^
+
+real	0m0.488s
+user	0m0.743s
+sys	0m0.488s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.518s
+user	0m0.757s
+sys	0m0.515s
+
+real	0m0.520s
+user	0m0.758s
+sys	0m0.517s
 
 ===============================================================================
 
-golint ./...
+Running: ../../.github/citools/go/go-lint-revive
 
-real	0m0.051s
-user	0m0.042s
-sys	0m0.034s
+Running Go Lint Revive
 
-===============================================================================
+Go version:
 
-revive -formatter=stylish ./...
-perfect_numbers.go
-  (40, 21)  https://revive.run/r#var-declaration  should omit type error from declaration of var ErrOnlyPositive; it will be inferred from the right-hand side  
+	go version go1.21.0 linux/amd64
 
 
- ✖ 1 problem (0 errors) (1 warnings)
+ ==============================================================================
 
-real	0m0.043s
+Running: go clean ./...
+
+
+real	0m0.017s
+user	0m0.008s
+sys	0m0.014s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
+
+real	0m0.046s
 user	0m0.022s
-sys	0m0.023s
+sys	0m0.035s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.075s
+user	0m0.037s
+sys	0m0.058s
+
+real	0m0.077s
+user	0m0.037s
+sys	0m0.060s
 
 ===============================================================================
 
-ineffassign ./...
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
 
-real	0m0.332s
-user	0m0.375s
-sys	0m0.354s
+real	0m0.001s
+user	0m0.001s
+sys	0m0.000s
 
 ===============================================================================
 
-go-consistent -v ./...
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.025s
+user	0m0.018s
+sys	0m0.018s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
 	info: check "./."
+internal error: package "errors" without types was imported from "perfect"
 
-real	0m0.419s
-user	0m0.470s
-sys	0m0.408s
+real	0m0.097s
+user	0m0.134s
+sys	0m0.110s
 
-===============================================================================
 
-staticcheck ./...
+ ==============================================================================
 
-real	0m0.572s
-user	0m0.528s
-sys	0m0.603s
+Exit code: -1
 
-===============================================================================
+real	0m0.139s
+user	0m0.163s
+sys	0m0.140s
 
-gocritic check -enableAll ./...
-
-real	0m2.687s
-user	0m4.634s
-sys	0m1.219s
+real	0m0.142s
+user	0m0.165s
+sys	0m0.141s
 
 ===============================================================================
 
-go vet ./...
+Running: ../../.github/citools/go/go-lint-staticcheck
 
-real	0m0.279s
-user	0m0.321s
-sys	0m0.270s
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.030s
+user	0m0.021s
+sys	0m0.020s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+
+real	0m0.164s
+user	0m0.182s
+sys	0m0.125s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.213s
+user	0m0.209s
+sys	0m0.163s
+
+real	0m0.215s
+user	0m0.209s
+sys	0m0.165s
 
 ===============================================================================
 
-go fix ./...
+Running: ../../.github/citools/go/go-lint-gocritic
 
-real	0m0.101s
-user	0m0.059s
-sys	0m0.126s
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.016s
+user	0m0.008s
+sys	0m0.012s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+
+real	0m0.798s
+user	0m1.980s
+sys	0m0.291s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.826s
+user	0m1.992s
+sys	0m0.316s
+
+real	0m0.827s
+user	0m1.992s
+sys	0m0.317s
 
 ===============================================================================
 
-gocyclo .
+Running: ../../.github/citools/go/go-lint-go_vet
+
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.020s
+user	0m0.007s
+sys	0m0.017s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.076s
+user	0m0.119s
+sys	0m0.114s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.107s
+user	0m0.132s
+sys	0m0.140s
+
+real	0m0.109s
+user	0m0.132s
+sys	0m0.142s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-fixer-go_fix
+
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.021s
+user	0m0.012s
+sys	0m0.014s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.022s
+user	0m0.014s
+sys	0m0.014s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.059s
+user	0m0.034s
+sys	0m0.040s
+
+real	0m0.060s
+user	0m0.036s
+sys	0m0.041s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-errcheck
+
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.019s
+user	0m0.006s
+sys	0m0.021s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+
+real	0m0.471s
+user	0m1.293s
+sys	0m0.336s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.503s
+user	0m1.308s
+sys	0m0.364s
+
+real	0m0.505s
+user	0m1.308s
+sys	0m0.366s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.026s
+user	0m0.015s
+sys	0m0.018s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
 6 perfect TestClassifiesCorrectly perfect_numbers_test.go:13:1
 5 perfect BenchmarkClassify perfect_numbers_test.go:54:1
 5 perfect Classify perfect_numbers.go:43:1
@@ -96,33 +461,139 @@ gocyclo .
 1 perfect ExampleSum perfect_numbers_examples_test.go:29:1
 1 perfect ExampleClassify perfect_numbers_examples_test.go:5:1
 
-real	0m0.023s
-user	0m0.002s
-sys	0m0.005s
+real	0m0.003s
+user	0m0.003s
+sys	0m0.000s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.039s
+user	0m0.024s
+sys	0m0.028s
+
+real	0m0.041s
+user	0m0.025s
+sys	0m0.029s
 
 ===============================================================================
 
-misspell .
+Running: ../../.github/citools/go/go-lint-misspell
 
-real	0m0.096s
-user	0m0.116s
-sys	0m0.049s
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+
+real	0m0.033s
+user	0m0.040s
+sys	0m0.018s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.048s
+user	0m0.048s
+sys	0m0.032s
+
+real	0m0.051s
+user	0m0.050s
+sys	0m0.033s
 
 ===============================================================================
 
-gosec ./...
-[gosec] 2022/08/28 20:10:06 Including rules: default
-[gosec] 2022/08/28 20:10:06 Excluding rules: default
-[gosec] 2022/08/28 20:10:06 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/perfect-numbers
-2022/08/28 20:10:06 internal error: package "errors" without types was imported from "command-line-arguments"
+Running: ../../.github/citools/go/go-lint-gosec
 
-real	0m0.378s
-user	0m0.379s
-sys	0m0.328s
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.036s
+user	0m0.021s
+sys	0m0.028s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:26:14 Including rules: default
+[gosec] 2023/09/07 00:26:14 Excluding rules: default
+[gosec] 2023/09/07 00:26:14 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/perfect-numbers
+[gosec] 2023/09/07 00:26:14 Checking package: perfect
+[gosec] 2023/09/07 00:26:14 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/perfect-numbers/perfect_numbers.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 98
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.127s
+user	0m0.141s
+sys	0m0.076s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.180s
+user	0m0.171s
+sys	0m0.118s
+
+real	0m0.184s
+user	0m0.172s
+sys	0m0.121s
 
 ===============================================================================
 
-gotest -v -covermode=count -coverprofile coverage.out ./...
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.021s
+user	0m0.008s
+sys	0m0.017s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
 === RUN   TestZeroGivesPositiveRequiredError
 === RUN   TestZeroGivesPositiveRequiredError/GivesPositiveRequiredError
 --- PASS: TestZeroGivesPositiveRequiredError (0.00s)
@@ -141,17 +612,17 @@ gotest -v -covermode=count -coverprofile coverage.out ./...
 === RUN   TestClassifiesCorrectly/Edge_case_(no_factors_other_than_itself)_is_classified_correctly
 === RUN   TestClassifiesCorrectly/Zero_is_rejected_(as_it_is_not_a_positive_integer)
 === RUN   TestClassifiesCorrectly/Negative_integer_is_rejected_(as_it_is_not_a_positive_integer)
---- PASS: TestClassifiesCorrectly (1.12s)
+--- PASS: TestClassifiesCorrectly (0.26s)
     --- PASS: TestClassifiesCorrectly/Smallest_perfect_number_is_classified_correctly (0.00s)
     --- PASS: TestClassifiesCorrectly/Medium_perfect_number_is_classified_correctly (0.00s)
-    --- PASS: TestClassifiesCorrectly/Large_perfect_number_is_classified_correctly (0.40s)
+    --- PASS: TestClassifiesCorrectly/Large_perfect_number_is_classified_correctly (0.08s)
     --- PASS: TestClassifiesCorrectly/Smallest_abundant_number_is_classified_correctly (0.00s)
     --- PASS: TestClassifiesCorrectly/Medium_abundant_number_is_classified_correctly (0.00s)
-    --- PASS: TestClassifiesCorrectly/Large_abundant_number_is_classified_correctly (0.34s)
+    --- PASS: TestClassifiesCorrectly/Large_abundant_number_is_classified_correctly (0.09s)
     --- PASS: TestClassifiesCorrectly/Smallest_prime_deficient_number_is_classified_correctly (0.00s)
     --- PASS: TestClassifiesCorrectly/Smallest_non-prime_deficient_number_is_classified_correctly (0.00s)
     --- PASS: TestClassifiesCorrectly/Medium_deficient_number_is_classified_correctly (0.00s)
-    --- PASS: TestClassifiesCorrectly/Large_deficient_number_is_classified_correctly (0.38s)
+    --- PASS: TestClassifiesCorrectly/Large_deficient_number_is_classified_correctly (0.09s)
     --- PASS: TestClassifiesCorrectly/Edge_case_(no_factors_other_than_itself)_is_classified_correctly (0.00s)
     --- PASS: TestClassifiesCorrectly/Zero_is_rejected_(as_it_is_not_a_positive_integer) (0.00s)
     --- PASS: TestClassifiesCorrectly/Negative_integer_is_rejected_(as_it_is_not_a_positive_integer) (0.00s)
@@ -162,39 +633,46 @@ gotest -v -covermode=count -coverprofile coverage.out ./...
 === RUN   ExampleSum
 --- PASS: ExampleSum (0.00s)
 === RUN   ExampleFactors
---- PASS: ExampleFactors (0.01s)
+--- PASS: ExampleFactors (0.00s)
 PASS
 coverage: 89.3% of statements
-ok  	perfect	1.163s	coverage: 89.3% of statements
+ok  	perfect	0.260s	coverage: 89.3% of statements
 
-real	0m1.657s
-user	0m1.731s
-sys	0m0.440s
+real	0m0.433s
+user	0m0.474s
+sys	0m0.164s
 
-===============================================================================
 
-go tool cover -func=coverage.out
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
 perfect/perfect_numbers.go:26:	String		80.0%
 perfect/perfect_numbers.go:43:	Classify	88.9%
 perfect/perfect_numbers.go:67:	Sum		100.0%
 perfect/perfect_numbers.go:83:	Factors		87.5%
 total:				(statements)	89.3%
 
-real	0m0.193s
-user	0m0.092s
-sys	0m0.268s
+real	0m0.039s
+user	0m0.042s
+sys	0m0.063s
 
-===============================================================================
 
-go tool cover -html coverage.out -o coverage.html
+ ==============================================================================
 
-real	0m0.187s
-user	0m0.105s
-sys	0m0.289s
+Running: go tool cover -html coverage.out -o coverage.html
 
-===============================================================================
 
-gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+real	0m0.037s
+user	0m0.042s
+sys	0m0.042s
+
+
+ ==============================================================================
+
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
 
 26     	func (c Classification) String() string {
 27     		switch c {
@@ -252,13 +730,19 @@ gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annota
 98     	}
 
 
-real	0m0.079s
-user	0m0.029s
-sys	0m0.075s
+real	0m0.020s
+user	0m0.012s
+sys	0m0.015s
 
-===============================================================================
+real	0m0.020s
+user	0m0.012s
+sys	0m0.015s
 
-gotest -v -race -covermode=atomic ./...
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
 === RUN   TestZeroGivesPositiveRequiredError
 === RUN   TestZeroGivesPositiveRequiredError/GivesPositiveRequiredError
 --- PASS: TestZeroGivesPositiveRequiredError (0.00s)
@@ -277,17 +761,17 @@ gotest -v -race -covermode=atomic ./...
 === RUN   TestClassifiesCorrectly/Edge_case_(no_factors_other_than_itself)_is_classified_correctly
 === RUN   TestClassifiesCorrectly/Zero_is_rejected_(as_it_is_not_a_positive_integer)
 === RUN   TestClassifiesCorrectly/Negative_integer_is_rejected_(as_it_is_not_a_positive_integer)
---- PASS: TestClassifiesCorrectly (14.65s)
+--- PASS: TestClassifiesCorrectly (6.25s)
     --- PASS: TestClassifiesCorrectly/Smallest_perfect_number_is_classified_correctly (0.00s)
     --- PASS: TestClassifiesCorrectly/Medium_perfect_number_is_classified_correctly (0.00s)
-    --- PASS: TestClassifiesCorrectly/Large_perfect_number_is_classified_correctly (4.77s)
+    --- PASS: TestClassifiesCorrectly/Large_perfect_number_is_classified_correctly (2.08s)
     --- PASS: TestClassifiesCorrectly/Smallest_abundant_number_is_classified_correctly (0.00s)
     --- PASS: TestClassifiesCorrectly/Medium_abundant_number_is_classified_correctly (0.00s)
-    --- PASS: TestClassifiesCorrectly/Large_abundant_number_is_classified_correctly (4.90s)
+    --- PASS: TestClassifiesCorrectly/Large_abundant_number_is_classified_correctly (2.09s)
     --- PASS: TestClassifiesCorrectly/Smallest_prime_deficient_number_is_classified_correctly (0.00s)
     --- PASS: TestClassifiesCorrectly/Smallest_non-prime_deficient_number_is_classified_correctly (0.00s)
     --- PASS: TestClassifiesCorrectly/Medium_deficient_number_is_classified_correctly (0.00s)
-    --- PASS: TestClassifiesCorrectly/Large_deficient_number_is_classified_correctly (4.98s)
+    --- PASS: TestClassifiesCorrectly/Large_deficient_number_is_classified_correctly (2.08s)
     --- PASS: TestClassifiesCorrectly/Edge_case_(no_factors_other_than_itself)_is_classified_correctly (0.00s)
     --- PASS: TestClassifiesCorrectly/Zero_is_rejected_(as_it_is_not_a_positive_integer) (0.00s)
     --- PASS: TestClassifiesCorrectly/Negative_integer_is_rejected_(as_it_is_not_a_positive_integer) (0.00s)
@@ -301,30 +785,46 @@ gotest -v -race -covermode=atomic ./...
 --- PASS: ExampleFactors (0.00s)
 PASS
 coverage: 89.3% of statements
-ok  	perfect	(cached)	coverage: 89.3% of statements
+ok  	perfect	7.267s	coverage: 89.3% of statements
 
-real	0m0.363s
-user	0m0.409s
-sys	0m0.375s
+real	0m7.520s
+user	0m6.591s
+sys	0m0.197s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m8.082s
+user	0m7.176s
+sys	0m0.506s
+
+real	0m8.084s
+user	0m7.177s
+sys	0m0.507s
 
 ===============================================================================
+
+mv -v benchstat-new.txt benchstat-old.txt
+renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
 
 gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 goos: linux
 goarch: amd64
 pkg: perfect
-cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
 BenchmarkClassify
     perfect_numbers_test.go:62: error encountered during benchmark
     perfect_numbers_test.go:62: error encountered during benchmark
 --- FAIL: BenchmarkClassify
 FAIL
 exit status 1
-FAIL	perfect	1.155s
+FAIL	perfect	0.236s
 
-real	0m1.782s
-user	0m1.788s
-sys	0m0.575s
+real	0m0.437s
+user	0m0.525s
+sys	0m0.187s
 
 ===============================================================================
 
@@ -347,17 +847,17 @@ gotest -v -tags bonus
 === RUN   TestClassifiesCorrectly/Edge_case_(no_factors_other_than_itself)_is_classified_correctly
 === RUN   TestClassifiesCorrectly/Zero_is_rejected_(as_it_is_not_a_positive_integer)
 === RUN   TestClassifiesCorrectly/Negative_integer_is_rejected_(as_it_is_not_a_positive_integer)
---- PASS: TestClassifiesCorrectly (1.15s)
+--- PASS: TestClassifiesCorrectly (0.24s)
     --- PASS: TestClassifiesCorrectly/Smallest_perfect_number_is_classified_correctly (0.00s)
     --- PASS: TestClassifiesCorrectly/Medium_perfect_number_is_classified_correctly (0.00s)
-    --- PASS: TestClassifiesCorrectly/Large_perfect_number_is_classified_correctly (0.39s)
+    --- PASS: TestClassifiesCorrectly/Large_perfect_number_is_classified_correctly (0.08s)
     --- PASS: TestClassifiesCorrectly/Smallest_abundant_number_is_classified_correctly (0.00s)
     --- PASS: TestClassifiesCorrectly/Medium_abundant_number_is_classified_correctly (0.00s)
-    --- PASS: TestClassifiesCorrectly/Large_abundant_number_is_classified_correctly (0.38s)
+    --- PASS: TestClassifiesCorrectly/Large_abundant_number_is_classified_correctly (0.08s)
     --- PASS: TestClassifiesCorrectly/Smallest_prime_deficient_number_is_classified_correctly (0.00s)
     --- PASS: TestClassifiesCorrectly/Smallest_non-prime_deficient_number_is_classified_correctly (0.00s)
     --- PASS: TestClassifiesCorrectly/Medium_deficient_number_is_classified_correctly (0.00s)
-    --- PASS: TestClassifiesCorrectly/Large_deficient_number_is_classified_correctly (0.37s)
+    --- PASS: TestClassifiesCorrectly/Large_deficient_number_is_classified_correctly (0.08s)
     --- PASS: TestClassifiesCorrectly/Edge_case_(no_factors_other_than_itself)_is_classified_correctly (0.00s)
     --- PASS: TestClassifiesCorrectly/Zero_is_rejected_(as_it_is_not_a_positive_integer) (0.00s)
     --- PASS: TestClassifiesCorrectly/Negative_integer_is_rejected_(as_it_is_not_a_positive_integer) (0.00s)
@@ -370,23 +870,29 @@ gotest -v -tags bonus
 === RUN   ExampleFactors
 --- PASS: ExampleFactors (0.00s)
 PASS
-ok  	perfect	1.177s
+ok  	perfect	0.239s
 
-real	0m1.713s
-user	0m1.747s
-sys	0m0.529s
+real	0m0.370s
+user	0m0.383s
+sys	0m0.107s
 
 ===============================================================================
 
-No old benchmarks to run benchstat against.
+benchstat benchstat-old.txt benchstat-new.txt
+benchstat-old.txt:5: missing iteration count
+benchstat-new.txt:5: missing iteration count
+
+real	0m0.002s
+user	0m0.002s
+sys	0m0.000s
 
 ===============================================================================
 
 gomarkdoc --output perfect-doc.md
 
-real	0m0.037s
-user	0m0.027s
-sys	0m0.014s
+real	0m0.011s
+user	0m0.006s
+sys	0m0.005s
 
 ===============================================================================
 
@@ -441,9 +947,9 @@ func (c Classification) String() string
     String returns the lowercased classification name.
 
 
-real	0m0.176s
-user	0m0.074s
-sys	0m0.187s
+real	0m0.035s
+user	0m0.022s
+sys	0m0.024s
 
 
 ===============================================================================

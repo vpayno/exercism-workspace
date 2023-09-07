@@ -6,7 +6,7 @@
 import "lsproduct"
 ```
 
-Package lsproduct is used to calculate the largest product from a series of numbers\.
+Package lsproduct is used to calculate the largest product from a series of numbers.
 
 ## Index
 
@@ -19,7 +19,7 @@ Package lsproduct is used to calculate the largest product from a series of numb
 func LargestSeriesProduct(digits string, span int) (int64, error)
 ```
 
-LargestSeriesProduct returns the largest product for a contiguous substring of digits of length n\.
+LargestSeriesProduct returns the largest product for a contiguous substring of digits of length n.
 
 <details><summary>Example</summary>
 <p>

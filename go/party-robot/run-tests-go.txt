@@ -5,15 +5,587 @@ Go packages: partyrobot
 
 ===============================================================================
 
-golint partyrobot
+Running: ../../.github/citools/go/go-lint-golangci-lint
 
-real	0m0.285s
-user	0m0.279s
-sys	0m0.248s
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.033s
+user	0m0.024s
+sys	0m0.033s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+party_robot_test.go:63: Function 'TestAssignTable' is too long (69 > 60) (funlen)
+func TestAssignTable(t *testing.T) {
+party_robot_test.go:80: line is 192 characters (lll)
+			want:        "Welcome to my party, Chihiro!\nYou have been assigned to table 022. Your table is straight ahead, exactly 9.2 meters from here.\nYou will be sitting next to Akachi Chikondi.",
+party_robot_test.go:89: line is 184 characters (lll)
+			want:        "Welcome to my party, Xuân Jing!\nYou have been assigned to table 004. Your table is by the façade, exactly 23.5 meters from here.\nYou will be sitting next to Renée.",
+party_robot_test.go:98: line is 181 characters (lll)
+			want:        "Welcome to my party, Paula!\nYou have been assigned to table 101. Your table is on the right, exactly 100.0 meters from here.\nYou will be sitting next to Chioma.",
+party_robot_test.go:27:22: Using the variable on range scope `tt` in function literal (scopelint)
+			if got := Welcome(tt.name); got != tt.want {
+			                  ^
+party_robot_test.go:28:43: Using the variable on range scope `tt` in function literal (scopelint)
+				t.Errorf("Welcome(%s) = %s, want %s", tt.name, got, tt.want)
+				                                      ^
+party_robot_test.go:56:28: Using the variable on range scope `tt` in function literal (scopelint)
+			if got := HappyBirthday(tt.name, tt.age); got != tt.want {
+			                        ^
+party_robot_test.go:129: unnecessary trailing newline (whitespace)
+
+			}
+party_robot_test.go:8:1: Function TestWelcome missing the call to method parallel (paralleltest)
+func TestWelcome(t *testing.T) {
+^
+party_robot_test.go:25:2: Range statement for test TestWelcome missing the call to method parallel in test Run (paralleltest)
+	for _, tt := range tests {
+	^
+party_robot_test.go:34:1: Function TestHappyBirthday missing the call to method parallel (paralleltest)
+func TestHappyBirthday(t *testing.T) {
+^
+party_robot_test.go:54:2: Range statement for test TestHappyBirthday missing the call to method parallel in test Run (paralleltest)
+	for _, tt := range tests {
+	^
+party_robot_test.go:101:2: Range statement for test TestAssignTable missing the call to method parallel in test Run (paralleltest)
+	for _, tt := range tests {
+	^
+party_robot_examples_test.go:1:9: package should be `partyrobot_test` instead of `partyrobot` (testpackage)
+package partyrobot
+        ^
+party_robot_test.go:1:9: package should be `partyrobot_test` instead of `partyrobot` (testpackage)
+package partyrobot
+        ^
+party_robot.go:19:6: variable name 's' is too short for the scope of its usage (varnamelen)
+	var s string
+	    ^
+
+real	0m0.526s
+user	0m0.699s
+sys	0m0.463s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.569s
+user	0m0.727s
+sys	0m0.506s
+
+real	0m0.572s
+user	0m0.728s
+sys	0m0.507s
 
 ===============================================================================
 
-go test -v -covermode=count -coverprofile coverage.out partyrobot
+Running: ../../.github/citools/go/go-lint-revive
+
+Running Go Lint Revive
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.031s
+user	0m0.028s
+sys	0m0.031s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
+party_robot.go
+  (1, 1)  https://revive.run/r#package-comments  should have a package comment  
+
+
+ ✖ 1 problem (0 errors) (1 warnings)
+
+real	0m0.044s
+user	0m0.025s
+sys	0m0.030s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.087s
+user	0m0.061s
+sys	0m0.070s
+
+real	0m0.090s
+user	0m0.063s
+sys	0m0.071s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
+
+real	0m0.001s
+user	0m0.001s
+sys	0m0.000s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.027s
+user	0m0.019s
+sys	0m0.027s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
+	info: check "./."
+internal error: package "fmt" without types was imported from "partyrobot"
+
+real	0m0.110s
+user	0m0.136s
+sys	0m0.131s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.153s
+user	0m0.163s
+sys	0m0.171s
+
+real	0m0.156s
+user	0m0.165s
+sys	0m0.172s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-staticcheck
+
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.027s
+user	0m0.021s
+sys	0m0.028s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+party_robot.go:1:1: at least one file in a package should have a package comment (ST1000)
+
+real	0m0.200s
+user	0m0.241s
+sys	0m0.129s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.243s
+user	0m0.269s
+sys	0m0.173s
+
+real	0m0.245s
+user	0m0.270s
+sys	0m0.174s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocritic
+
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.021s
+user	0m0.018s
+sys	0m0.021s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+
+real	0m0.865s
+user	0m2.070s
+sys	0m0.324s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.897s
+user	0m2.095s
+sys	0m0.352s
+
+real	0m0.899s
+user	0m2.096s
+sys	0m0.353s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go_vet
+
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.030s
+user	0m0.019s
+sys	0m0.037s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.088s
+user	0m0.135s
+sys	0m0.118s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.129s
+user	0m0.162s
+sys	0m0.160s
+
+real	0m0.131s
+user	0m0.162s
+sys	0m0.162s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-fixer-go_fix
+
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.021s
+user	0m0.021s
+sys	0m0.019s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.027s
+user	0m0.022s
+sys	0m0.022s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.060s
+user	0m0.048s
+sys	0m0.051s
+
+real	0m0.062s
+user	0m0.050s
+sys	0m0.051s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-errcheck
+
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.032s
+user	0m0.024s
+sys	0m0.027s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+
+real	0m0.443s
+user	0m1.277s
+sys	0m0.271s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.491s
+user	0m1.313s
+sys	0m0.310s
+
+real	0m0.494s
+user	0m1.315s
+sys	0m0.311s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.027s
+user	0m0.020s
+sys	0m0.032s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
+6 partyrobot TestAssignTable party_robot_test.go:63:1
+3 partyrobot TestHappyBirthday party_robot_test.go:34:1
+3 partyrobot TestWelcome party_robot_test.go:8:1
+1 partyrobot ExampleAssignTable party_robot_examples_test.go:19:1
+1 partyrobot ExampleHappyBirthday party_robot_examples_test.go:13:1
+1 partyrobot ExampleWelcome party_robot_examples_test.go:7:1
+1 partyrobot AssignTable party_robot.go:18:1
+1 partyrobot HappyBirthday party_robot.go:13:1
+1 partyrobot Welcome party_robot.go:8:1
+
+real	0m0.003s
+user	0m0.001s
+sys	0m0.002s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.043s
+user	0m0.029s
+sys	0m0.043s
+
+real	0m0.046s
+user	0m0.030s
+sys	0m0.045s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-misspell
+
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+
+real	0m0.034s
+user	0m0.035s
+sys	0m0.016s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.052s
+user	0m0.042s
+sys	0m0.031s
+
+real	0m0.054s
+user	0m0.042s
+sys	0m0.033s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gosec
+
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.033s
+user	0m0.030s
+sys	0m0.030s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:26:00 Including rules: default
+[gosec] 2023/09/07 00:26:00 Excluding rules: default
+[gosec] 2023/09/07 00:26:00 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/party-robot
+[gosec] 2023/09/07 00:26:00 Checking package: partyrobot
+[gosec] 2023/09/07 00:26:00 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/party-robot/party_robot.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 28
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.110s
+user	0m0.114s
+sys	0m0.097s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.158s
+user	0m0.153s
+sys	0m0.139s
+
+real	0m0.160s
+user	0m0.155s
+sys	0m0.139s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.027s
+user	0m0.026s
+sys	0m0.028s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
 === RUN   TestWelcome
 === RUN   TestWelcome/Greet_Chihiro_with_a_welcoming_message
 === RUN   TestWelcome/Greet_Xuân_Jing_with_a_welcoming_message
@@ -42,35 +614,56 @@ go test -v -covermode=count -coverprofile coverage.out partyrobot
 --- PASS: ExampleAssignTable (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	partyrobot	0.005s	coverage: 100.0% of statements
+ok  	partyrobot	0.002s	coverage: 100.0% of statements
 
-real	0m0.761s
-user	0m0.851s
-sys	0m0.527s
+real	0m0.175s
+user	0m0.242s
+sys	0m0.149s
 
-===============================================================================
 
-go tool cover -func=coverage.out
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
 partyrobot/party_robot.go:8:	Welcome		100.0%
 partyrobot/party_robot.go:13:	HappyBirthday	100.0%
 partyrobot/party_robot.go:18:	AssignTable	100.0%
 total:				(statements)	100.0%
 
-real	0m0.280s
-user	0m0.250s
-sys	0m0.214s
+real	0m0.068s
+user	0m0.090s
+sys	0m0.088s
 
-===============================================================================
 
-go tool cover -html coverage.out -o coverage.html
+ ==============================================================================
 
-real	0m0.239s
-user	0m0.204s
-sys	0m0.191s
+Running: go tool cover -html coverage.out -o coverage.html
 
-===============================================================================
 
-go test -v -race -covermode=atomic partyrobot
+real	0m0.048s
+user	0m0.063s
+sys	0m0.066s
+
+
+ ==============================================================================
+
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+real	0m0.020s
+user	0m0.016s
+sys	0m0.028s
+
+real	0m0.020s
+user	0m0.016s
+sys	0m0.028s
+
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
 === RUN   TestWelcome
 === RUN   TestWelcome/Greet_Chihiro_with_a_welcoming_message
 === RUN   TestWelcome/Greet_Xuân_Jing_with_a_welcoming_message
@@ -99,71 +692,89 @@ go test -v -race -covermode=atomic partyrobot
 --- PASS: ExampleAssignTable (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	partyrobot	0.049s	coverage: 100.0% of statements
+ok  	partyrobot	1.013s	coverage: 100.0% of statements
 
-real	0m0.895s
-user	0m0.876s
-sys	0m0.561s
+real	0m1.264s
+user	0m0.308s
+sys	0m0.173s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.621s
+user	0m0.750s
+sys	0m0.551s
+
+real	0m1.623s
+user	0m0.753s
+sys	0m0.551s
 
 ===============================================================================
 
-go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+mv -v benchstat-new.txt benchstat-old.txt
+renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
+
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 PASS
-ok  	partyrobot	0.039s
+ok  	partyrobot	0.003s
 
-real	0m0.747s
-user	0m0.829s
-sys	0m0.523s
+real	0m0.166s
+user	0m0.228s
+sys	0m0.160s
 
 ===============================================================================
 
-go test -tags bonus
+gotest -v -tags bonus
+=== RUN   TestWelcome
+=== RUN   TestWelcome/Greet_Chihiro_with_a_welcoming_message
+=== RUN   TestWelcome/Greet_Xuân_Jing_with_a_welcoming_message
+--- PASS: TestWelcome (0.00s)
+    --- PASS: TestWelcome/Greet_Chihiro_with_a_welcoming_message (0.00s)
+    --- PASS: TestWelcome/Greet_Xuân_Jing_with_a_welcoming_message (0.00s)
+=== RUN   TestHappyBirthday
+=== RUN   TestHappyBirthday/Wish_Chihiro_Happy_Birthday_with_name_and_age
+=== RUN   TestHappyBirthday/Wish_Xuân_Jing_Happy_Birthday_with_name_and_age
+--- PASS: TestHappyBirthday (0.00s)
+    --- PASS: TestHappyBirthday/Wish_Chihiro_Happy_Birthday_with_name_and_age (0.00s)
+    --- PASS: TestHappyBirthday/Wish_Xuân_Jing_Happy_Birthday_with_name_and_age (0.00s)
+=== RUN   TestAssignTable
+=== RUN   TestAssignTable/Greet_Chihiro_and_give_them_directions_to_their_seat
+=== RUN   TestAssignTable/Greet_Xuân_Jing_and_give_them_directions_to_their_seat
+=== RUN   TestAssignTable/Greet_Paula_and_give_them_directions_to_their_seat
+--- PASS: TestAssignTable (0.00s)
+    --- PASS: TestAssignTable/Greet_Chihiro_and_give_them_directions_to_their_seat (0.00s)
+    --- PASS: TestAssignTable/Greet_Xuân_Jing_and_give_them_directions_to_their_seat (0.00s)
+    --- PASS: TestAssignTable/Greet_Paula_and_give_them_directions_to_their_seat (0.00s)
+=== RUN   ExampleWelcome
+--- PASS: ExampleWelcome (0.00s)
+=== RUN   ExampleHappyBirthday
+--- PASS: ExampleHappyBirthday (0.00s)
+=== RUN   ExampleAssignTable
+--- PASS: ExampleAssignTable (0.00s)
 PASS
-ok  	partyrobot	0.020s
+ok  	partyrobot	0.002s
 
-real	0m0.783s
-user	0m0.929s
-sys	0m0.532s
-
-===============================================================================
-
-No old benchmarks to run benchstat against.
+real	0m0.149s
+user	0m0.206s
+sys	0m0.153s
 
 ===============================================================================
 
-go vet partyrobot
+benchstat benchstat-old.txt benchstat-new.txt
 
-real	0m0.505s
-user	0m0.661s
-sys	0m0.365s
-
-===============================================================================
-
-go fix partyrobot
-
-real	0m0.338s
-user	0m0.253s
-sys	0m0.191s
-
-===============================================================================
-
-gosec ./party-robot
-[gosec] 2022/07/25 08:27:44 Including rules: default
-[gosec] 2022/07/25 08:27:44 Excluding rules: default
-[gosec] 2022/07/25 08:27:44 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/party-robot
-2022/07/25 08:27:45 internal error: package "fmt" without types was imported from "command-line-arguments"
-
-real	0m0.605s
-user	0m0.630s
-sys	0m0.443s
+real	0m0.002s
+user	0m0.001s
+sys	0m0.001s
 
 ===============================================================================
 
 gomarkdoc --output partyrobot-doc.md
 
-real	0m0.086s
-user	0m0.022s
-sys	0m0.076s
+real	0m0.014s
+user	0m0.007s
+sys	0m0.006s
 
 ===============================================================================
 
@@ -184,9 +795,9 @@ func Welcome(name string) string
     Welcome greets a person by name.
 
 
-real	0m0.337s
-user	0m0.278s
-sys	0m0.320s
+real	0m0.048s
+user	0m0.023s
+sys	0m0.047s
 
 
 ===============================================================================

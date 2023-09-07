@@ -19,7 +19,7 @@ import "birdwatcher"
 func BirdsInWeek(birdsPerDay []int, week int) int
 ```
 
-BirdsInWeek returns the total bird count by summing only the items belonging to the given week\.
+BirdsInWeek returns the total bird count by summing only the items belonging to the given week.
 
 <details><summary>Example</summary>
 <p>
@@ -47,7 +47,7 @@ BirdsInWeek returns the total bird count by summing only the items belonging to 
 func FixBirdCountLog(birdsPerDay []int) []int
 ```
 
-FixBirdCountLog returns the bird counts after correcting the bird counts for alternate days\.
+FixBirdCountLog returns the bird counts after correcting the bird counts for alternate days.
 
 <details><summary>Example</summary>
 <p>
@@ -75,7 +75,7 @@ FixBirdCountLog returns the bird counts after correcting the bird counts for alt
 func TotalBirdCount(birdsPerDay []int) int
 ```
 
-TotalBirdCount return the total bird count by summing the individual day's counts\.
+TotalBirdCount return the total bird count by summing the individual day's counts.
 
 <details><summary>Example</summary>
 <p>

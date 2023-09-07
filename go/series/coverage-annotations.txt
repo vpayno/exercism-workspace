@@ -1,0 +1,44 @@
+
+10     	func All(size int, input string) []string {
+11     		var offset int
+12     		segments := []string{}
+13     	
+14     		reStr := `[[:digit:]]{` + fmt.Sprint(size) + `}`
+15     		re, e := regexp.Compile(reStr)
+16     		if e != nil {
+17 MISS			panic(e)
+18     		}
+19     	
+20     		for {
+21     			// It was easier to not use FindAllString().
+22     			segment := re.FindString(input[offset:])
+23     			if segment == "" {
+24     				break
+25     			}
+26     	
+27     			segments = append(segments, segment)
+28     	
+29     			offset++
+30     			if offset > len(input)-(size-1) {
+31 MISS				break
+32     			}
+33     		}
+34     	
+35     		return segments
+36     	}
+
+
+39     	func UnsafeFirst(size int, input string) string {
+40     		if size > len(input) {
+41 MISS			return ""
+42     		}
+43     	
+44     		segments := All(size, input)
+45     	
+46     		if len(segments) > 0 {
+47     			return segments[0]
+48     		}
+49     	
+50 MISS		return ""
+51     	}
+

@@ -6,7 +6,7 @@
 import "flatten"
 ```
 
-Package flatten is used to flatten lists\.
+Package flatten is used to flatten lists.
 
 ## Index
 
@@ -19,7 +19,7 @@ Package flatten is used to flatten lists\.
 func Flatten(nested interface{}) []interface{}
 ```
 
-Flatten returns a single flattened list with all values except nil\.
+Flatten returns a single flattened list with all values except nil.
 
 <details><summary>Example</summary>
 <p>

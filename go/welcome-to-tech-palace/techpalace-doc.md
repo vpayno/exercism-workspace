@@ -19,7 +19,7 @@ import "techpalace"
 func AddBorder(welcomeMsg string, numStarsPerLine int) string
 ```
 
-AddBorder adds a border to a welcome message\.
+AddBorder adds a border to a welcome message.
 
 <details><summary>Example</summary>
 <p>
@@ -48,7 +48,7 @@ Welcome!
 func CleanupMessage(oldMsg string) string
 ```
 
-CleanupMessage cleans up an old marketing message\.
+CleanupMessage cleans up an old marketing message.
 
 <details><summary>Example</summary>
 <p>
@@ -81,7 +81,7 @@ BUY NOW, SAVE 10%
 func WelcomeMessage(customer string) string
 ```
 
-WelcomeMessage returns a welcome message for the customer\.
+WelcomeMessage returns a welcome message for the customer.
 
 <details><summary>Example</summary>
 <p>

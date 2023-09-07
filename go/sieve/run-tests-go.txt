@@ -5,15 +5,580 @@ Go packages: sieve
 
 ===============================================================================
 
-golint sieve
+Running: ../../.github/citools/go/go-lint-golangci-lint
 
-real	0m0.154s
-user	0m0.091s
-sys	0m0.141s
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.019s
+user	0m0.008s
+sys	0m0.017s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+sieve.go:30: sieve.go:30: Line contains TODO/BUG/FIXME: "TODO: If limit is even, substract 1." (godox)
+	// TODO: If limit is even, substract 1.
+sieve.go:33: sieve.go:33: Line contains TODO/BUG/FIXME: "TODO:" (godox)
+	// TODO:
+sieve.go:67: sieve.go:67: Line contains TODO/BUG/FIXME: "TODO: Write and benchmark a Sieve64(int6..." (godox)
+// TODO: Write and benchmark a Sieve64(int64) []int64 function.
+cases_test.go:34: line is 832 characters (lll)
+		expected:    []int{2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 227, 229, 233, 239, 241, 251, 257, 263, 269, 271, 277, 281, 283, 293, 307, 311, 313, 317, 331, 337, 347, 349, 353, 359, 367, 373, 379, 383, 389, 397, 401, 409, 419, 421, 431, 433, 439, 443, 449, 457, 461, 463, 467, 479, 487, 491, 499, 503, 509, 521, 523, 541, 547, 557, 563, 569, 571, 577, 587, 593, 599, 601, 607, 613, 617, 619, 631, 641, 643, 647, 653, 659, 661, 673, 677, 683, 691, 701, 709, 719, 727, 733, 739, 743, 751, 757, 761, 769, 773, 787, 797, 809, 811, 821, 823, 827, 829, 839, 853, 857, 859, 863, 877, 881, 883, 887, 907, 911, 919, 929, 937, 941, 947, 953, 967, 971, 977, 983, 991, 997},
+sieve_test.go:11:20: Using the variable on range scope `tc` in function literal (scopelint)
+			actual := Sieve(tc.limit)
+			                ^
+sieve_test.go:13:31: Using the variable on range scope `tc` in function literal (scopelint)
+			if len(actual) == 0 || len(tc.expected) == 0 {
+			                           ^
+sieve_test.go:16:34: Using the variable on range scope `tc` in function literal (scopelint)
+			if !reflect.DeepEqual(actual, tc.expected) {
+			                              ^
+sieve.go:44:39: block should not start with a whitespace (wsl)
+	for number, isPrime := range numbers {
+	                                     ^
+sieve_test.go:27:2: for statements should only be cuddled with assignments used in the iteration (wsl)
+	for i := 0; i < b.N; i++ {
+	^
+cases_test.go:6:5: testCases is a global variable (gochecknoglobals)
+var testCases = []struct {
+    ^
+sieve_test.go:8:1: Function TestSieve missing the call to method parallel (paralleltest)
+func TestSieve(t *testing.T) {
+^
+sieve_test.go:9:2: Range statement for test TestSieve missing the call to method parallel in test Run (paralleltest)
+	for _, tc := range testCases {
+	^
+cases_test.go:1:9: package should be `sieve_test` instead of `sieve` (testpackage)
+package sieve
+        ^
+sieve_examples_test.go:1:9: package should be `sieve_test` instead of `sieve` (testpackage)
+package sieve
+        ^
+sieve_test.go:1:9: package should be `sieve_test` instead of `sieve` (testpackage)
+package sieve
+        ^
+
+real	0m0.533s
+user	0m0.824s
+sys	0m0.527s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.562s
+user	0m0.839s
+sys	0m0.550s
+
+real	0m0.563s
+user	0m0.841s
+sys	0m0.550s
 
 ===============================================================================
 
-go test -v -covermode=count -coverprofile coverage.out sieve
+Running: ../../.github/citools/go/go-lint-revive
+
+Running Go Lint Revive
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.021s
+user	0m0.009s
+sys	0m0.017s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
+
+real	0m0.047s
+user	0m0.026s
+sys	0m0.035s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.080s
+user	0m0.039s
+sys	0m0.063s
+
+real	0m0.082s
+user	0m0.041s
+sys	0m0.064s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
+
+real	0m0.000s
+user	0m0.000s
+sys	0m0.000s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.021s
+user	0m0.008s
+sys	0m0.019s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
+	info: check "./."
+internal error: package "sort" without types was imported from "sieve"
+
+real	0m0.080s
+user	0m0.130s
+sys	0m0.099s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.112s
+user	0m0.143s
+sys	0m0.128s
+
+real	0m0.113s
+user	0m0.144s
+sys	0m0.128s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-staticcheck
+
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.022s
+user	0m0.011s
+sys	0m0.017s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+
+real	0m0.168s
+user	0m0.179s
+sys	0m0.124s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.201s
+user	0m0.190s
+sys	0m0.155s
+
+real	0m0.203s
+user	0m0.191s
+sys	0m0.156s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocritic
+
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.024s
+user	0m0.013s
+sys	0m0.018s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+./sieve.go:42:2: commentedOutCode: may want to remove commented-out code
+./sieve.go:45:3: commentedOutCode: may want to remove commented-out code
+./sieve.go:49:5: commentedOutCode: may want to remove commented-out code
+
+real	0m0.863s
+user	0m2.080s
+sys	0m0.283s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.903s
+user	0m2.098s
+sys	0m0.318s
+
+real	0m0.905s
+user	0m2.098s
+sys	0m0.319s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go_vet
+
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.018s
+user	0m0.011s
+sys	0m0.013s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.077s
+user	0m0.103s
+sys	0m0.088s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.106s
+user	0m0.122s
+sys	0m0.108s
+
+real	0m0.108s
+user	0m0.122s
+sys	0m0.110s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-fixer-go_fix
+
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.027s
+user	0m0.019s
+sys	0m0.017s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.024s
+user	0m0.015s
+sys	0m0.017s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.065s
+user	0m0.040s
+sys	0m0.048s
+
+real	0m0.067s
+user	0m0.041s
+sys	0m0.049s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-errcheck
+
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.023s
+user	0m0.008s
+sys	0m0.021s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+
+real	0m0.466s
+user	0m1.240s
+sys	0m0.298s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.502s
+user	0m1.254s
+sys	0m0.332s
+
+real	0m0.504s
+user	0m1.255s
+sys	0m0.332s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.028s
+user	0m0.016s
+sys	0m0.020s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
+7 sieve Sieve sieve.go:27:1
+5 sieve TestSieve sieve_test.go:8:1
+4 sieve BenchmarkSieve sieve_test.go:23:1
+2 sieve ExampleSieve sieve_examples_test.go:7:1
+
+real	0m0.003s
+user	0m0.001s
+sys	0m0.002s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.047s
+user	0m0.026s
+sys	0m0.034s
+
+real	0m0.048s
+user	0m0.028s
+sys	0m0.034s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-misspell
+
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+sieve.go:30:28: "substract" is a misspelling of "subtract"
+coverage.html:110:35: "substract" is a misspelling of "subtract"
+run-tests-go.txt:41:81: "substract" is a misspelling of "subtract"
+run-tests-go.txt:42:28: "substract" is a misspelling of "subtract"
+
+real	0m0.037s
+user	0m0.043s
+sys	0m0.023s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.055s
+user	0m0.050s
+sys	0m0.042s
+
+real	0m0.058s
+user	0m0.051s
+sys	0m0.044s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gosec
+
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.029s
+user	0m0.023s
+sys	0m0.020s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:30:29 Including rules: default
+[gosec] 2023/09/07 00:30:29 Excluding rules: default
+[gosec] 2023/09/07 00:30:29 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/sieve
+[gosec] 2023/09/07 00:30:29 Checking package: sieve
+[gosec] 2023/09/07 00:30:29 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/sieve/sieve.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 67
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.134s
+user	0m0.103s
+sys	0m0.112s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.177s
+user	0m0.136s
+sys	0m0.142s
+
+real	0m0.180s
+user	0m0.137s
+sys	0m0.144s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.032s
+user	0m0.016s
+sys	0m0.027s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
 === RUN   TestSieve
 === RUN   TestSieve/no_primes_under_two
 === RUN   TestSieve/find_first_prime
@@ -30,140 +595,182 @@ go test -v -covermode=count -coverprofile coverage.out sieve
 --- PASS: ExampleSieve (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	sieve	0.009s	coverage: 100.0% of statements
+ok  	sieve	0.002s	coverage: 100.0% of statements
 
-real	0m0.523s
-user	0m0.578s
-sys	0m0.404s
+real	0m0.175s
+user	0m0.218s
+sys	0m0.138s
 
-===============================================================================
 
-go tool cover -func=coverage.out
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
 sieve/sieve.go:27:	Sieve		100.0%
 total:			(statements)	100.0%
 
-real	0m0.180s
-user	0m0.114s
-sys	0m0.184s
+real	0m0.050s
+user	0m0.033s
+sys	0m0.047s
 
-===============================================================================
 
-go tool cover -html coverage.out -o coverage.html
+ ==============================================================================
 
-real	0m0.185s
-user	0m0.138s
-sys	0m0.173s
+Running: go tool cover -html coverage.out -o coverage.html
 
-===============================================================================
 
-go test -v -race -covermode=atomic sieve
+real	0m0.041s
+user	0m0.026s
+sys	0m0.064s
+
+
+ ==============================================================================
+
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+real	0m0.018s
+user	0m0.004s
+sys	0m0.021s
+
+real	0m0.018s
+user	0m0.005s
+sys	0m0.021s
+
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
 === RUN   TestSieve
 === RUN   TestSieve/no_primes_under_two
 === RUN   TestSieve/find_first_prime
 === RUN   TestSieve/find_primes_up_to_10
 === RUN   TestSieve/limit_is_prime
 === RUN   TestSieve/find_primes_up_to_1000
---- PASS: TestSieve (0.01s)
+--- PASS: TestSieve (0.00s)
     --- PASS: TestSieve/no_primes_under_two (0.00s)
     --- PASS: TestSieve/find_first_prime (0.00s)
     --- PASS: TestSieve/find_primes_up_to_10 (0.00s)
     --- PASS: TestSieve/limit_is_prime (0.00s)
-    --- PASS: TestSieve/find_primes_up_to_1000 (0.01s)
+    --- PASS: TestSieve/find_primes_up_to_1000 (0.00s)
 === RUN   ExampleSieve
 --- PASS: ExampleSieve (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	sieve	0.056s	coverage: 100.0% of statements
+ok  	sieve	1.013s	coverage: 100.0% of statements
 
-real	0m0.646s
-user	0m0.706s
-sys	0m0.423s
+real	0m1.252s
+user	0m0.281s
+sys	0m0.161s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.580s
+user	0m0.587s
+sys	0m0.467s
+
+real	0m1.582s
+user	0m0.589s
+sys	0m0.467s
 
 ===============================================================================
 
 mv -v benchstat-new.txt benchstat-old.txt
 renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
 
-go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 goos: linux
 goarch: amd64
 pkg: sieve
-cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
-BenchmarkSieve-4   	    4113	    301091 ns/op	   58221 B/op	     103 allocs/op
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+BenchmarkSieve
+BenchmarkSieve-8   	    7575	    140258 ns/op	   56668 B/op	      86 allocs/op
 PASS
-ok  	sieve	1.312s
+ok  	sieve	1.083s
 
-real	0m1.789s
-user	0m2.164s
-sys	0m0.419s
+real	0m1.224s
+user	0m1.263s
+sys	0m0.202s
 
 ===============================================================================
 
-go test -tags bonus
+gotest -v -tags bonus
+=== RUN   TestSieve
+=== RUN   TestSieve/no_primes_under_two
+=== RUN   TestSieve/find_first_prime
+=== RUN   TestSieve/find_primes_up_to_10
+=== RUN   TestSieve/limit_is_prime
+=== RUN   TestSieve/find_primes_up_to_1000
+--- PASS: TestSieve (0.00s)
+    --- PASS: TestSieve/no_primes_under_two (0.00s)
+    --- PASS: TestSieve/find_first_prime (0.00s)
+    --- PASS: TestSieve/find_primes_up_to_10 (0.00s)
+    --- PASS: TestSieve/limit_is_prime (0.00s)
+    --- PASS: TestSieve/find_primes_up_to_1000 (0.00s)
+=== RUN   ExampleSieve
+--- PASS: ExampleSieve (0.00s)
 PASS
-ok  	sieve	0.016s
+ok  	sieve	0.001s
 
-real	0m0.594s
-user	0m0.666s
-sys	0m0.453s
+real	0m0.130s
+user	0m0.201s
+sys	0m0.115s
 
 ===============================================================================
-
-go install golang.org/x/perf/cmd/benchstat@latest
-
-real	0m0.463s
-user	0m0.656s
-sys	0m0.356s
 
 benchstat benchstat-old.txt benchstat-new.txt
-name     old time/op    new time/op    delta
-Sieve-4     818ms ± 0%       0ms ± 0%   ~     (p=1.000 n=1+1)
+benchstat-new.txt:5: missing iteration count
+goos: linux
+goarch: amd64
+pkg: sieve
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+        │ benchstat-new.txt │
+        │      sec/op       │
+Sieve-8        140.3µ ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-name     old alloc/op   new alloc/op   delta
-Sieve-4    57.9MB ± 0%     0.1MB ± 0%   ~     (p=1.000 n=1+1)
+        │ benchstat-new.txt │
+        │       B/op        │
+Sieve-8       55.34Ki ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-name     old allocs/op  new allocs/op  delta
-Sieve-4     38.6k ± 0%      0.1k ± 0%   ~     (p=1.000 n=1+1)
+        │ benchstat-new.txt │
+        │     allocs/op     │
+Sieve-8         86.00 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-real	0m0.029s
-user	0m0.017s
-sys	0m0.030s
+cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+        │ benchstat-old.txt │
+        │      sec/op       │
+Sieve-4        301.1µ ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-===============================================================================
+        │ benchstat-old.txt │
+        │       B/op        │
+Sieve-4       56.86Ki ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-go vet sieve
+        │ benchstat-old.txt │
+        │     allocs/op     │
+Sieve-4         103.0 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-real	0m0.395s
-user	0m0.431s
-sys	0m0.346s
-
-===============================================================================
-
-go fix sieve
-
-real	0m0.120s
-user	0m0.073s
-sys	0m0.101s
-
-===============================================================================
-
-gosec ./sieve
-[gosec] 2022/07/24 00:39:43 Including rules: default
-[gosec] 2022/07/24 00:39:43 Excluding rules: default
-[gosec] 2022/07/24 00:39:43 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/sieve
-2022/07/24 00:39:43 internal error: package "sort" without types was imported from "command-line-arguments"
-
-real	0m0.358s
-user	0m0.375s
-sys	0m0.264s
+real	0m0.002s
+user	0m0.001s
+sys	0m0.001s
 
 ===============================================================================
 
 gomarkdoc --output sieve-doc.md
 
-real	0m0.040s
-user	0m0.029s
-sys	0m0.015s
+real	0m0.010s
+user	0m0.004s
+sys	0m0.006s
 
 ===============================================================================
 
@@ -195,9 +802,9 @@ func Sieve(limit int) []int
         	return all i such that A[i] is true.
 
 
-real	0m0.202s
-user	0m0.101s
-sys	0m0.178s
+real	0m0.037s
+user	0m0.024s
+sys	0m0.023s
 
 
 ===============================================================================

@@ -16,7 +16,7 @@ import "lasagna"
 
 ## Constants
 
-OvenTime is the amount of time the lasagna should bake for\.
+OvenTime is the amount of time the lasagna should bake for.
 
 ```go
 const OvenTime = 40
@@ -28,7 +28,7 @@ const OvenTime = 40
 func ElapsedTime(numberOfLayers, actualMinutesInOven int) int
 ```
 
-ElapsedTime calculates the total time needed to create and bake a lasagna\.
+ElapsedTime calculates the total time needed to create and bake a lasagna.
 
 <details><summary>Example</summary>
 <p>
@@ -55,7 +55,7 @@ ElapsedTime calculates the total time needed to create and bake a lasagna\.
 func PreparationTime(numberOfLayers int) int
 ```
 
-PreparationTime calculates the time needed to prepare the lasagna based on the amount of layers\.
+PreparationTime calculates the time needed to prepare the lasagna based on the amount of layers.
 
 <details><summary>Example</summary>
 <p>
@@ -82,7 +82,7 @@ PreparationTime calculates the time needed to prepare the lasagna based on the a
 func RemainingOvenTime(actualMinutesInOven int) int
 ```
 
-RemainingOvenTime returns the remaining minutes based on the \`actual\` minutes already in the oven\.
+RemainingOvenTime returns the remaining minutes based on the \`actual\` minutes already in the oven.
 
 <details><summary>Example</summary>
 <p>

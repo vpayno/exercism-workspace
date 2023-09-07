@@ -6,7 +6,7 @@
 import "dna"
 ```
 
-Package dna is a package used to inspect DNA sequences\.
+Package dna is a package used to inspect DNA sequences.
 
 ## Index
 
@@ -19,7 +19,7 @@ Package dna is a package used to inspect DNA sequences\.
 
 ## type [DNA](<https://github.com/vpayno/exercism-workspace/blob/main/go/nucleotide-count/nucleotide_count.go#L17>)
 
-DNA is a list of nucleotides\.
+DNA is a list of nucleotides.
 
 ```go
 type DNA string
@@ -81,7 +81,7 @@ e: <nil>
 func (d DNA) Counts() (Histogram, error)
 ```
 
-Counts generates a histogram of valid nucleotides in the given DNA\. Returns an error if d contains an invalid nucleotide\. / Counts is a method on the DNA type\. A method is a function with a special receiver argument\. The receiver appears in its own argument list between the func keyword and the method name\. Here\, the Counts method has a receiver of type DNA named d\.
+Counts generates a histogram of valid nucleotides in the given DNA. Returns an error if d contains an invalid nucleotide. / Counts is a method on the DNA type. A method is a function with a special receiver argument. The receiver appears in its own argument list between the func keyword and the method name. Here, the Counts method has a receiver of type DNA named d.
 
 ### func \(DNA\) [IsValid](<https://github.com/vpayno/exercism-workspace/blob/main/go/nucleotide-count/nucleotide_count.go#L20>)
 
@@ -89,7 +89,7 @@ Counts generates a histogram of valid nucleotides in the given DNA\. Returns an 
 func (d DNA) IsValid() (bool, error)
 ```
 
-IsValid returns true if the DNA strand is valid\.
+IsValid returns true if the DNA strand is valid.
 
 ### func \(DNA\) [String](<https://github.com/vpayno/exercism-workspace/blob/main/go/nucleotide-count/nucleotide_count.go#L32>)
 
@@ -97,11 +97,11 @@ IsValid returns true if the DNA strand is valid\.
 func (d DNA) String() string
 ```
 
-String returns a pretty formated representation of a DNA type\.
+String returns a pretty formated representation of a DNA type.
 
 ## type [Histogram](<https://github.com/vpayno/exercism-workspace/blob/main/go/nucleotide-count/nucleotide_count.go#L14>)
 
-Histogram is a mapping from nucleotide to its count in given DNA\. Choose a suitable data type\.
+Histogram is a mapping from nucleotide to its count in given DNA. Choose a suitable data type.
 
 ```go
 type Histogram map[rune]int

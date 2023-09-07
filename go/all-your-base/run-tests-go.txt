@@ -5,15 +5,656 @@ Go packages: allyourbase
 
 ===============================================================================
 
-golint allyourbase
+Running: ../../.github/citools/go/go-lint-golangci-lint
 
-real	0m0.568s
-user	0m0.669s
-sys	0m0.445s
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.037s
+user	0m0.029s
+sys	0m0.037s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+all_your_base.go:99: File is not `gofumpt`-ed (gofumpt)
+
+all_your_base_test.go:14: line is 125 characters (lll)
+					t.Errorf("ConvertToBase(%d, %#v, %d) expected error: %q", tc.inputBase, tc.inputDigits, tc.outputBase, tc.expectedError)
+all_your_base_test.go:16: line is 148 characters (lll)
+					t.Errorf("ConvertToBase(%d, %#v, %d)\nexpected error: %q\ngot: %q", tc.inputBase, tc.inputDigits, tc.outputBase, tc.expectedError, err.Error())
+all_your_base_test.go:19: line is 124 characters (lll)
+				t.Errorf("ConvertToBase(%d, %#v, %d) = %#v, want:%#v", tc.inputBase, tc.inputDigits, tc.outputBase, actual, tc.expected)
+all_your_base.go:148:19: var-declaration: should omit type []int from declaration of var outputDigits; it will be inferred from the right-hand side (revive)
+	var outputDigits []int = []int{}
+	                 ^
+all_your_base.go:149:16: var-declaration: should omit type []int from declaration of var tmpDigits; it will be inferred from the right-hand side (revive)
+	var tmpDigits []int = []int{}
+	              ^
+all_your_base.go:150:10: var-declaration: should omit type int from declaration of var num; it will be inferred from the right-hand side (revive)
+	var num int = inputNum
+	        ^
+all_your_base_test.go:11:33: Using the variable on range scope `tc` in function literal (scopelint)
+			actual, err := ConvertToBase(tc.inputBase, tc.inputDigits, tc.outputBase)
+			                             ^
+all_your_base_test.go:12:7: Using the variable on range scope `tc` in function literal (scopelint)
+			if tc.expectedError != "" {
+			   ^
+all_your_base_test.go:15:15: Using the variable on range scope `tc` in function literal (scopelint)
+				} else if tc.expectedError != err.Error() {
+				          ^
+all_your_base.go:94:20: unnecessary conversion (unconvert)
+	return int(float64(math.Pow(float64(n), float64(p))))
+	                  ^
+all_your_base.go:133:10: unnecessary conversion (unconvert)
+		r = int(n * mathPow(inputBase, p))
+		       ^
+all_your_base.go:98: unnecessary leading newline (whitespace)
+func ConvertIntToIntList(num int) []int {
+
+all_your_base.go:14:2: declarations should never be cuddled (wsl)
+	var outputDigits []int
+	^
+all_your_base.go:34:3: assignments should only be cuddled with other assignments (wsl)
+		i, e := strconv.Atoi(tmpStr)
+		^
+all_your_base.go:78:2: if statements should only be cuddled with assignments (wsl)
+	if sum == 0 {
+	^
+cases_test.go:6:5: testCases is a global variable (gochecknoglobals)
+var testCases = []struct {
+    ^
+all_your_base.go:63:19: err113: do not define dynamic errors, use wrapped static errors instead: "errors.New(\"input base must be >= 2\")" (goerr113)
+		return []int{}, errors.New("input base must be >= 2")
+		                ^
+all_your_base.go:67:19: err113: do not define dynamic errors, use wrapped static errors instead: "errors.New(\"output base must be >= 2\")" (goerr113)
+		return []int{}, errors.New("output base must be >= 2")
+		                ^
+all_your_base.go:84:20: err113: do not define dynamic errors, use wrapped static errors instead: "errors.New(\"all digits must satisfy 0 <= d < input base\")" (goerr113)
+			return []int{}, errors.New("all digits must satisfy 0 <= d < input base")
+			                ^
+all_your_base.go:29:18: mnd: Magic number: 10, in <condition> detected (gomnd)
+	if inputBase == 10 {
+	                ^
+all_your_base.go:47:19: mnd: Magic number: 10, in <condition> detected (gomnd)
+	if outputBase == 10 {
+	                 ^
+all_your_base.go:62:17: mnd: Magic number: 2, in <condition> detected (gomnd)
+	if inputBase < 2 {
+	               ^
+all_your_base.go:66:18: mnd: Magic number: 2, in <condition> detected (gomnd)
+	if outputBase < 2 {
+	                ^
+all_your_base_test.go:8:1: Function TestConvertToBase missing the call to method parallel (paralleltest)
+func TestConvertToBase(t *testing.T) {
+^
+all_your_base_test.go:9:2: Range statement for test TestConvertToBase missing the call to method parallel in test Run (paralleltest)
+	for _, tc := range testCases {
+	^
+all_your_base_examples_test.go:1:9: package should be `allyourbase_test` instead of `allyourbase` (testpackage)
+package allyourbase
+        ^
+all_your_base_test.go:1:9: package should be `allyourbase_test` instead of `allyourbase` (testpackage)
+package allyourbase
+        ^
+cases_test.go:1:9: package should be `allyourbase_test` instead of `allyourbase` (testpackage)
+package allyourbase
+        ^
+all_your_base.go:128:2: variable name 'p' is too short for the scope of its usage (varnamelen)
+	p := len(inputDigits) - 1
+	^
+all_your_base.go:152:6: variable name 'q' is too short for the scope of its usage (varnamelen)
+	var q, r int
+	    ^
+all_your_base.go:112:3: variable name 'n' is too short for the scope of its usage (varnamelen)
+		n, e := strconv.Atoi(string(s))
+		^
+all_your_base.go:130:6: variable name 'r' is too short for the scope of its usage (varnamelen)
+	var r int
+	    ^
+
+real	0m0.558s
+user	0m0.806s
+sys	0m0.547s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.610s
+user	0m0.842s
+sys	0m0.599s
+
+real	0m0.614s
+user	0m0.846s
+sys	0m0.604s
 
 ===============================================================================
 
-go test -v -covermode=count -coverprofile coverage.out allyourbase
+Running: ../../.github/citools/go/go-lint-revive
+
+Running Go Lint Revive
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.025s
+user	0m0.024s
+sys	0m0.023s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
+all_your_base.go
+  (148, 19)  https://revive.run/r#var-declaration  should omit type []int from declaration of var outputDigits; it will be inferred from the right-hand side  
+  (149, 16)  https://revive.run/r#var-declaration  should omit type []int from declaration of var tmpDigits; it will be inferred from the right-hand side     
+  (150, 10)  https://revive.run/r#var-declaration  should omit type int from declaration of var num; it will be inferred from the right-hand side             
+
+
+ ✖ 3 problems (0 errors) (3 warnings)
+
+real	0m0.087s
+user	0m0.038s
+sys	0m0.073s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.122s
+user	0m0.066s
+sys	0m0.105s
+
+real	0m0.125s
+user	0m0.068s
+sys	0m0.107s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
+
+real	0m0.000s
+user	0m0.000s
+sys	0m0.000s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.023s
+user	0m0.012s
+sys	0m0.030s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
+	info: check "./."
+internal error: package "errors" without types was imported from "allyourbase"
+
+real	0m0.079s
+user	0m0.124s
+sys	0m0.094s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.113s
+user	0m0.142s
+sys	0m0.133s
+
+real	0m0.114s
+user	0m0.143s
+sys	0m0.134s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-staticcheck
+
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.020s
+user	0m0.021s
+sys	0m0.023s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+all_your_base.go:148:19: should omit type []int from declaration; it will be inferred from the right-hand side (ST1023)
+all_your_base.go:149:16: should omit type []int from declaration; it will be inferred from the right-hand side (ST1023)
+all_your_base.go:150:10: should omit type int from declaration; it will be inferred from the right-hand side (ST1023)
+
+real	0m0.175s
+user	0m0.248s
+sys	0m0.111s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.206s
+user	0m0.272s
+sys	0m0.145s
+
+real	0m0.207s
+user	0m0.273s
+sys	0m0.146s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocritic
+
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.021s
+user	0m0.024s
+sys	0m0.013s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+./all_your_base.go:43:3: commentedOutCode: may want to remove commented-out code
+./all_your_base.go:49:3: commentedOutCode: may want to remove commented-out code
+./all_your_base.go:54:2: commentedOutCode: may want to remove commented-out code
+./all_your_base.go:139:2: commentedOutCode: may want to remove commented-out code
+./all_your_base.go:162:2: commentedOutCode: may want to remove commented-out code
+./all_your_base.go:167:2: commentedOutCode: may want to remove commented-out code
+./all_your_base.go:61:1: paramTypeCombine: func(inputBase int, outputBase int, inputDigits []int) ([]int, error) could be replaced with func(inputBase, outputBase int, inputDigits []int) ([]int, error)
+./all_your_base.go:93:1: paramTypeCombine: func(n int, p int) int could be replaced with func(n, p int) int
+./all_your_base.go:147:1: paramTypeCombine: func(outputBase int, inputNum int) []int could be replaced with func(outputBase, inputNum int) []int
+./all_your_base_examples_test.go:17:2: commentedOutCode: may want to remove commented-out code
+
+real	0m0.808s
+user	0m1.869s
+sys	0m0.303s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.843s
+user	0m1.899s
+sys	0m0.328s
+
+real	0m0.845s
+user	0m1.901s
+sys	0m0.329s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go_vet
+
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.032s
+user	0m0.028s
+sys	0m0.034s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.083s
+user	0m0.121s
+sys	0m0.106s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.128s
+user	0m0.156s
+sys	0m0.152s
+
+real	0m0.131s
+user	0m0.158s
+sys	0m0.152s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-fixer-go_fix
+
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.029s
+user	0m0.027s
+sys	0m0.032s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.027s
+user	0m0.022s
+sys	0m0.023s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.067s
+user	0m0.056s
+sys	0m0.063s
+
+real	0m0.069s
+user	0m0.056s
+sys	0m0.065s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-errcheck
+
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.034s
+user	0m0.035s
+sys	0m0.030s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+
+real	0m0.437s
+user	0m1.346s
+sys	0m0.255s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.487s
+user	0m1.389s
+sys	0m0.298s
+
+real	0m0.489s
+user	0m1.390s
+sys	0m0.298s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.028s
+user	0m0.029s
+sys	0m0.025s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
+9 allyourbase quickChecks all_your_base.go:61:1
+8 allyourbase ConvertToBase all_your_base.go:12:1
+6 allyourbase TestConvertToBase all_your_base_test.go:8:1
+3 allyourbase ConvertFromBase10 all_your_base.go:147:1
+3 allyourbase ConvertStrToIntList all_your_base.go:108:1
+2 allyourbase ConvertToBase10 all_your_base.go:125:1
+1 allyourbase ExampleConvertStrToIntList all_your_base_examples_test.go:43:1
+1 allyourbase ExampleConvertFromBase10 all_your_base_examples_test.go:32:1
+1 allyourbase ExampleConvertToBase10 all_your_base_examples_test.go:21:1
+1 allyourbase ExamplemathPow all_your_base_examples_test.go:15:1
+1 allyourbase ExampleConvertToBase all_your_base_examples_test.go:7:1
+1 allyourbase ConvertIntToIntList all_your_base.go:98:1
+1 allyourbase mathPow all_your_base.go:93:1
+
+real	0m0.002s
+user	0m0.001s
+sys	0m0.001s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.042s
+user	0m0.035s
+sys	0m0.037s
+
+real	0m0.044s
+user	0m0.035s
+sys	0m0.038s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-misspell
+
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+
+real	0m0.025s
+user	0m0.028s
+sys	0m0.011s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.037s
+user	0m0.036s
+sys	0m0.018s
+
+real	0m0.039s
+user	0m0.037s
+sys	0m0.019s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gosec
+
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.028s
+user	0m0.023s
+sys	0m0.035s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:20:14 Including rules: default
+[gosec] 2023/09/07 00:20:14 Excluding rules: default
+[gosec] 2023/09/07 00:20:14 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/all-your-base
+[gosec] 2023/09/07 00:20:14 Checking package: allyourbase
+[gosec] 2023/09/07 00:20:14 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/all-your-base/all_your_base.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 170
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.123s
+user	0m0.126s
+sys	0m0.121s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.164s
+user	0m0.154s
+sys	0m0.166s
+
+real	0m0.166s
+user	0m0.155s
+sys	0m0.168s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.034s
+user	0m0.024s
+sys	0m0.039s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
 === RUN   TestConvertToBase
 === RUN   TestConvertToBase/single_bit_one_to_decimal
 === RUN   TestConvertToBase/binary_to_single_decimal
@@ -68,15 +709,17 @@ go test -v -covermode=count -coverprofile coverage.out allyourbase
 --- PASS: ExampleConvertStrToIntList (0.00s)
 PASS
 coverage: 97.0% of statements
-ok  	allyourbase	0.007s	coverage: 97.0% of statements
+ok  	allyourbase	0.006s	coverage: 97.0% of statements
 
-real	0m1.209s
-user	0m1.536s
-sys	0m0.781s
+real	0m0.171s
+user	0m0.210s
+sys	0m0.145s
 
-===============================================================================
 
-go tool cover -func=coverage.out
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
 allyourbase/all_your_base.go:12:	ConvertToBase		95.2%
 allyourbase/all_your_base.go:61:	quickChecks		100.0%
 allyourbase/all_your_base.go:93:	mathPow			100.0%
@@ -86,21 +729,105 @@ allyourbase/all_your_base.go:125:	ConvertToBase10		100.0%
 allyourbase/all_your_base.go:147:	ConvertFromBase10	100.0%
 total:					(statements)		97.0%
 
-real	0m0.489s
-user	0m0.586s
-sys	0m0.393s
+real	0m0.052s
+user	0m0.070s
+sys	0m0.065s
 
-===============================================================================
 
-go tool cover -html coverage.out -o coverage.html
+ ==============================================================================
 
-real	0m0.415s
-user	0m0.537s
-sys	0m0.353s
+Running: go tool cover -html coverage.out -o coverage.html
 
-===============================================================================
 
-go test -v -race -covermode=atomic allyourbase
+real	0m0.049s
+user	0m0.077s
+sys	0m0.066s
+
+
+ ==============================================================================
+
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+108     	func ConvertStrToIntList(inputStr string) []int {
+109     		outputDigits := []int{}
+110     	
+111     		for _, s := range inputStr {
+112     			n, e := strconv.Atoi(string(s))
+113     	
+114     			if e != nil {
+115 MISS				panic(e)
+116     			}
+117     	
+118     			outputDigits = append(outputDigits, n)
+119     		}
+120     	
+121     		return outputDigits
+122     	}
+
+
+12     	func ConvertToBase(inputBase int, inputDigits []int, outputBase int) ([]int, error) {
+13     		var baseTenDigits int
+14     		var outputDigits []int
+15     	
+16     		inputDigits, e := quickChecks(inputBase, outputBase, inputDigits)
+17     	
+18     		// If an error was picked up by quickChecks(), return it with a zero value int list.
+19     		if e != nil {
+20     			return inputDigits, e
+21     		}
+22     	
+23     		// If zero, return zero.
+24     		if len(inputDigits) == 1 && inputDigits[0] == 0 {
+25     			return inputDigits, nil
+26     		}
+27     	
+28     		// 1. Convert number from base x to base 10.
+29     		if inputBase == 10 {
+30     			var tmpStr string
+31     			for _, n := range inputDigits {
+32     				tmpStr += fmt.Sprintf("%d", n)
+33     			}
+34     			i, e := strconv.Atoi(tmpStr)
+35     	
+36     			if e != nil {
+37 MISS				panic(e)
+38     			}
+39     	
+40     			baseTenDigits = i
+41     		} else {
+42     			baseTenDigits = ConvertToBase10(inputBase, inputDigits)
+43     			// fmt.Printf("base: %d\tbaseTenDigits: %#v\n", outputBase, baseTenDigits)
+44     		}
+45     	
+46     		// 2. Convert from base 10 to base y.
+47     		if outputBase == 10 {
+48     			outputDigits = ConvertIntToIntList(baseTenDigits)
+49     			// fmt.Printf("base: %d\toutputDigits: %#v\n", outputBase, outputDigits)
+50     			return outputDigits, nil
+51     		}
+52     	
+53     		outputDigits = ConvertFromBase10(outputBase, baseTenDigits)
+54     		// fmt.Printf("base: %d\toutputDigits: %#v\n", outputBase, outputDigits)
+55     	
+56     		return outputDigits, nil
+57     	}
+
+
+real	0m0.018s
+user	0m0.019s
+sys	0m0.019s
+
+real	0m0.018s
+user	0m0.019s
+sys	0m0.019s
+
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
 === RUN   TestConvertToBase
 === RUN   TestConvertToBase/single_bit_one_to_decimal
 === RUN   TestConvertToBase/binary_to_single_decimal
@@ -123,7 +850,7 @@ go test -v -race -covermode=atomic allyourbase
 === RUN   TestConvertToBase/output_base_is_zero
 === RUN   TestConvertToBase/output_base_is_negative
 === RUN   TestConvertToBase/both_bases_are_negative
---- PASS: TestConvertToBase (0.01s)
+--- PASS: TestConvertToBase (0.00s)
     --- PASS: TestConvertToBase/single_bit_one_to_decimal (0.00s)
     --- PASS: TestConvertToBase/binary_to_single_decimal (0.00s)
     --- PASS: TestConvertToBase/single_decimal_to_binary (0.00s)
@@ -155,84 +882,115 @@ go test -v -race -covermode=atomic allyourbase
 --- PASS: ExampleConvertStrToIntList (0.00s)
 PASS
 coverage: 97.0% of statements
-ok  	allyourbase	0.056s	coverage: 97.0% of statements
+ok  	allyourbase	1.020s	coverage: 97.0% of statements
 
-real	0m1.478s
-user	0m1.837s
-sys	0m0.748s
+real	0m1.273s
+user	0m0.279s
+sys	0m0.148s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.610s
+user	0m0.686s
+sys	0m0.492s
+
+real	0m1.611s
+user	0m0.687s
+sys	0m0.492s
 
 ===============================================================================
 
 mv -v benchstat-new.txt benchstat-old.txt
 renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
 
-go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 PASS
-ok  	allyourbase	0.019s
+ok  	allyourbase	0.002s
 
-real	0m1.079s
-user	0m1.496s
-sys	0m0.748s
+real	0m0.148s
+user	0m0.212s
+sys	0m0.144s
 
 ===============================================================================
 
-go test -tags bonus
+gotest -v -tags bonus
+=== RUN   TestConvertToBase
+=== RUN   TestConvertToBase/single_bit_one_to_decimal
+=== RUN   TestConvertToBase/binary_to_single_decimal
+=== RUN   TestConvertToBase/single_decimal_to_binary
+=== RUN   TestConvertToBase/binary_to_multiple_decimal
+=== RUN   TestConvertToBase/decimal_to_binary
+=== RUN   TestConvertToBase/trinary_to_hexadecimal
+=== RUN   TestConvertToBase/hexadecimal_to_trinary
+=== RUN   TestConvertToBase/15-bit_integer
+=== RUN   TestConvertToBase/empty_list
+=== RUN   TestConvertToBase/single_zero
+=== RUN   TestConvertToBase/multiple_zeros
+=== RUN   TestConvertToBase/leading_zeros
+=== RUN   TestConvertToBase/input_base_is_one
+=== RUN   TestConvertToBase/input_base_is_zero
+=== RUN   TestConvertToBase/input_base_is_negative
+=== RUN   TestConvertToBase/negative_digit
+=== RUN   TestConvertToBase/invalid_positive_digit
+=== RUN   TestConvertToBase/output_base_is_one
+=== RUN   TestConvertToBase/output_base_is_zero
+=== RUN   TestConvertToBase/output_base_is_negative
+=== RUN   TestConvertToBase/both_bases_are_negative
+--- PASS: TestConvertToBase (0.00s)
+    --- PASS: TestConvertToBase/single_bit_one_to_decimal (0.00s)
+    --- PASS: TestConvertToBase/binary_to_single_decimal (0.00s)
+    --- PASS: TestConvertToBase/single_decimal_to_binary (0.00s)
+    --- PASS: TestConvertToBase/binary_to_multiple_decimal (0.00s)
+    --- PASS: TestConvertToBase/decimal_to_binary (0.00s)
+    --- PASS: TestConvertToBase/trinary_to_hexadecimal (0.00s)
+    --- PASS: TestConvertToBase/hexadecimal_to_trinary (0.00s)
+    --- PASS: TestConvertToBase/15-bit_integer (0.00s)
+    --- PASS: TestConvertToBase/empty_list (0.00s)
+    --- PASS: TestConvertToBase/single_zero (0.00s)
+    --- PASS: TestConvertToBase/multiple_zeros (0.00s)
+    --- PASS: TestConvertToBase/leading_zeros (0.00s)
+    --- PASS: TestConvertToBase/input_base_is_one (0.00s)
+    --- PASS: TestConvertToBase/input_base_is_zero (0.00s)
+    --- PASS: TestConvertToBase/input_base_is_negative (0.00s)
+    --- PASS: TestConvertToBase/negative_digit (0.00s)
+    --- PASS: TestConvertToBase/invalid_positive_digit (0.00s)
+    --- PASS: TestConvertToBase/output_base_is_one (0.00s)
+    --- PASS: TestConvertToBase/output_base_is_zero (0.00s)
+    --- PASS: TestConvertToBase/output_base_is_negative (0.00s)
+    --- PASS: TestConvertToBase/both_bases_are_negative (0.00s)
+=== RUN   ExampleConvertToBase
+--- PASS: ExampleConvertToBase (0.00s)
+=== RUN   ExampleConvertToBase10
+--- PASS: ExampleConvertToBase10 (0.00s)
+=== RUN   ExampleConvertFromBase10
+--- PASS: ExampleConvertFromBase10 (0.00s)
+=== RUN   ExampleConvertStrToIntList
+--- PASS: ExampleConvertStrToIntList (0.00s)
 PASS
-ok  	allyourbase	0.008s
+ok  	allyourbase	0.004s
 
-real	0m0.956s
-user	0m1.235s
-sys	0m0.688s
+real	0m0.139s
+user	0m0.179s
+sys	0m0.145s
 
 ===============================================================================
-
-go install golang.org/x/perf/cmd/benchstat@latest
-
-real	0m1.212s
-user	0m1.382s
-sys	0m0.537s
 
 benchstat benchstat-old.txt benchstat-new.txt
 
-real	0m0.043s
-user	0m0.041s
-sys	0m0.027s
-
-===============================================================================
-
-go vet allyourbase
-
-real	0m0.603s
-user	0m0.833s
-sys	0m0.452s
-
-===============================================================================
-
-go fix allyourbase
-
-real	0m0.301s
-user	0m0.410s
-sys	0m0.301s
-
-===============================================================================
-
-gosec ./all-your-base
-[gosec] 2022/07/30 13:57:02 Including rules: default
-[gosec] 2022/07/30 13:57:02 Excluding rules: default
-[gosec] 2022/07/30 13:57:02 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/all-your-base
-2022/07/30 13:57:02 internal error: package "errors" without types was imported from "command-line-arguments"
-
-real	0m0.864s
-user	0m1.181s
-sys	0m0.511s
+real	0m0.002s
+user	0m0.000s
+sys	0m0.002s
 
 ===============================================================================
 
 gomarkdoc --output allyourbase-doc.md
 
-real	0m0.043s
-user	0m0.034s
-sys	0m0.022s
+real	0m0.010s
+user	0m0.008s
+sys	0m0.002s
 
 ===============================================================================
 
@@ -244,8 +1002,8 @@ Package allyourbase is used to convert from any base to any other base.
 FUNCTIONS
 
 func ConvertFromBase10(outputBase int, inputNum int) []int
-    ConvertFromBase10 returns a base x number. It didn't make sense to pass the
-    functions an int slice so I'm hiding that part of the algorithm in the
+    ConvertFromBase10 returns a base x number. It didn't make sense to pass
+    the functions an int slice so I'm hiding that part of the algorithm in the
     function.
 
 func ConvertIntToIntList(num int) []int
@@ -261,9 +1019,9 @@ func ConvertToBase10(inputBase int, inputDigits []int) int
     ConvertToBase10 returns a base 10 number.
 
 
-real	0m0.385s
-user	0m0.439s
-sys	0m0.349s
+real	0m0.036s
+user	0m0.023s
+sys	0m0.035s
 
 
 ===============================================================================

@@ -1,0 +1,171 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>speed: Go Coverage Report</title>
+		<style>
+			body {
+				background: black;
+				color: rgb(80, 80, 80);
+			}
+			body, pre, #legend span {
+				font-family: Menlo, monospace;
+				font-weight: bold;
+			}
+			#topbar {
+				background: black;
+				position: fixed;
+				top: 0; left: 0; right: 0;
+				height: 42px;
+				border-bottom: 1px solid rgb(80, 80, 80);
+			}
+			#content {
+				margin-top: 50px;
+			}
+			#nav, #legend {
+				float: left;
+				margin-left: 10px;
+			}
+			#legend {
+				margin-top: 12px;
+			}
+			#nav {
+				margin-top: 10px;
+			}
+			#legend span {
+				margin: 0 5px;
+			}
+			.cov0 { color: rgb(192, 0, 0) }
+.cov1 { color: rgb(128, 128, 128) }
+.cov2 { color: rgb(116, 140, 131) }
+.cov3 { color: rgb(104, 152, 134) }
+.cov4 { color: rgb(92, 164, 137) }
+.cov5 { color: rgb(80, 176, 140) }
+.cov6 { color: rgb(68, 188, 143) }
+.cov7 { color: rgb(56, 200, 146) }
+.cov8 { color: rgb(44, 212, 149) }
+.cov9 { color: rgb(32, 224, 152) }
+.cov10 { color: rgb(20, 236, 155) }
+
+		</style>
+	</head>
+	<body>
+		<div id="topbar">
+			<div id="nav">
+				<select id="files">
+				
+				<option value="file0">speed/need_for_speed.go (93.3%)</option>
+				
+				</select>
+			</div>
+			<div id="legend">
+				<span>not tracked</span>
+			
+				<span class="cov0">no coverage</span>
+				<span class="cov1">low coverage</span>
+				<span class="cov2">*</span>
+				<span class="cov3">*</span>
+				<span class="cov4">*</span>
+				<span class="cov5">*</span>
+				<span class="cov6">*</span>
+				<span class="cov7">*</span>
+				<span class="cov8">*</span>
+				<span class="cov9">*</span>
+				<span class="cov10">high coverage</span>
+			
+			</div>
+		</div>
+		<div id="content">
+		
+		<pre class="file" id="file0" style="display: none">package speed
+
+// Car struct
+type Car struct {
+        battery      int
+        batteryDrain int
+        speed        int
+        distance     int
+}
+
+// NewCar creates a new remote controlled car with full battery and given specifications.
+func NewCar(speed, batteryDrain int) Car <span class="cov7" title="4">{
+        var car Car = Car{
+                battery:      100,
+                batteryDrain: batteryDrain,
+                speed:        speed,
+                distance:     0,
+        }
+
+        return car
+}</span>
+
+// Track struct
+type Track struct {
+        distance int
+}
+
+// NewTrack created a new track
+func NewTrack(distance int) Track <span class="cov7" title="4">{
+        return Track{distance: distance}
+}</span>
+
+// Drive drives the car one time. If there is not enough battery to drive on more time,
+// the car will not move.
+func Drive(car Car) Car <span class="cov10" title="6">{
+        if car.battery &gt;= car.batteryDrain </span><span class="cov6" title="3">{
+                car.battery -= car.batteryDrain
+                car.distance += car.speed
+        }</span>
+
+        <span class="cov10" title="6">return car</span>
+}
+
+// CanFinish checks if a car is able to finish a certain track.
+func CanFinish(car Car, track Track) bool <span class="cov10" title="6">{
+        var result bool
+        var steps int
+
+        steps = track.distance / car.speed
+        if track.distance%car.speed &gt; 0 </span><span class="cov0" title="0">{
+                steps++
+        }</span>
+
+        <span class="cov10" title="6">if steps*car.batteryDrain &lt;= car.battery </span><span class="cov7" title="4">{
+                result = true
+        }</span>
+
+        <span class="cov10" title="6">return result</span>
+}
+</pre>
+		
+		</div>
+	</body>
+	<script>
+	(function() {
+		var files = document.getElementById('files');
+		var visible;
+		files.addEventListener('change', onChange, false);
+		function select(part) {
+			if (visible)
+				visible.style.display = 'none';
+			visible = document.getElementById(part);
+			if (!visible)
+				return;
+			files.value = part;
+			visible.style.display = 'block';
+			location.hash = part;
+		}
+		function onChange() {
+			select(files.value);
+			window.scrollTo(0, 0);
+		}
+		if (location.hash != "") {
+			select(location.hash.substr(1));
+		}
+		if (!visible) {
+			select("file0");
+		}
+	})();
+	</script>
+</html>

@@ -1,0 +1,29 @@
+
+15     	func Atbash(plain string) string {
+16     		if len(plain) == 0 {
+17 MISS			return ""
+18     		}
+19     	
+20     		var cipher strings.Builder
+21     		var count int
+22     	
+23     		for _, char := range plain {
+24     			c, e := shiftChar(char)
+25     	
+26     			// ok to ignore the errors since we're dropping non-encodable characters
+27     			if e != nil {
+28     				continue
+29     			}
+30     	
+31     			if count%5 == 0 && count != 0 {
+32     				cipher.WriteString(" ")
+33     			}
+34     	
+35     			count++
+36     	
+37     			cipher.WriteString(string(c))
+38     		}
+39     	
+40     		return cipher.String()
+41     	}
+

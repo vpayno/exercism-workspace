@@ -5,15 +5,582 @@ Go packages: prime
 
 ===============================================================================
 
-golint prime
+Running: ../../.github/citools/go/go-lint-golangci-lint
 
-real	0m0.211s
-user	0m0.077s
-sys	0m0.130s
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.018s
+user	0m0.009s
+sys	0m0.013s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+prime_factors_test.go:11:22: Using the variable on range scope `tc` in function literal (scopelint)
+			actual := Factors(tc.input)
+			                  ^
+prime_factors_test.go:13:15: Using the variable on range scope `tc` in function literal (scopelint)
+			sort.Slice(tc.expected, ascending(tc.expected))
+			           ^
+prime_factors_test.go:14:28: Using the variable on range scope `tc` in function literal (scopelint)
+			if !slicesEqual(actual, tc.expected) {
+			                        ^
+prime_factors.go:7:2: declarations should never be cuddled (wsl)
+	var factor int64
+	^
+prime_factors.go:18:2: only cuddled expressions if assigning variable or using from line above (wsl)
+	_getFactors()
+	^
+prime_factors.go:24:3: assignments should only be cuddled with other assignments (wsl)
+		factor += 2
+		^
+prime_factors_test.go:25:2: for statements should only be cuddled with assignments used in the iteration (wsl)
+	for i := 0; i < b.N; i++ {
+	^
+cases_test.go:6:5: testCases is a global variable (gochecknoglobals)
+var testCases = []struct {
+    ^
+prime_factors.go:9:2: _getFactors contains underscore. You should use mixedCap or MixedCap. (nosnakecase)
+	_getFactors := func() {
+	^
+prime_factors.go:23:3: _getFactors contains underscore. You should use mixedCap or MixedCap. (nosnakecase)
+		_getFactors()
+		^
+prime_factors_test.go:8:1: Function TestPrimeFactors missing the call to method parallel (paralleltest)
+func TestPrimeFactors(t *testing.T) {
+^
+prime_factors_test.go:9:2: Range statement for test TestPrimeFactors missing the call to method parallel in test Run (paralleltest)
+	for _, tc := range testCases {
+	^
+cases_test.go:1:9: package should be `prime_test` instead of `prime` (testpackage)
+package prime
+        ^
+prime_factors_examples_test.go:1:9: package should be `prime_test` instead of `prime` (testpackage)
+package prime
+        ^
+prime_factors_test.go:1:9: package should be `prime_test` instead of `prime` (testpackage)
+package prime
+        ^
+prime_factors_test.go:32:18: parameter name 'a' is too short for the scope of its usage (varnamelen)
+func slicesEqual(a, b []int64) bool {
+                 ^
+
+real	0m0.485s
+user	0m0.733s
+sys	0m0.428s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.519s
+user	0m0.752s
+sys	0m0.453s
+
+real	0m0.522s
+user	0m0.754s
+sys	0m0.454s
 
 ===============================================================================
 
-go test -v -covermode=count -coverprofile coverage.out prime
+Running: ../../.github/citools/go/go-lint-revive
+
+Running Go Lint Revive
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.020s
+user	0m0.012s
+sys	0m0.012s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
+
+real	0m0.044s
+user	0m0.025s
+sys	0m0.030s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.077s
+user	0m0.043s
+sys	0m0.054s
+
+real	0m0.080s
+user	0m0.045s
+sys	0m0.054s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
+
+real	0m0.000s
+user	0m0.000s
+sys	0m0.000s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.014s
+user	0m0.008s
+sys	0m0.009s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
+	info: check "./."
+internal error: package "fmt" without types was imported from "prime [prime.test]"
+
+real	0m0.078s
+user	0m0.093s
+sys	0m0.096s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.101s
+user	0m0.109s
+sys	0m0.110s
+
+real	0m0.103s
+user	0m0.110s
+sys	0m0.111s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-staticcheck
+
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.014s
+user	0m0.004s
+sys	0m0.014s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+
+real	0m0.173s
+user	0m0.211s
+sys	0m0.131s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.201s
+user	0m0.219s
+sys	0m0.159s
+
+real	0m0.203s
+user	0m0.220s
+sys	0m0.161s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocritic
+
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.019s
+user	0m0.006s
+sys	0m0.020s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+
+real	0m0.807s
+user	0m2.063s
+sys	0m0.315s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.845s
+user	0m2.080s
+sys	0m0.350s
+
+real	0m0.848s
+user	0m2.082s
+sys	0m0.351s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go_vet
+
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.012s
+user	0m0.009s
+sys	0m0.005s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.071s
+user	0m0.095s
+sys	0m0.102s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.095s
+user	0m0.109s
+sys	0m0.117s
+
+real	0m0.096s
+user	0m0.111s
+sys	0m0.117s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-fixer-go_fix
+
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.014s
+user	0m0.005s
+sys	0m0.013s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.023s
+user	0m0.010s
+sys	0m0.017s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.048s
+user	0m0.020s
+sys	0m0.039s
+
+real	0m0.050s
+user	0m0.020s
+sys	0m0.040s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-errcheck
+
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.021s
+user	0m0.012s
+sys	0m0.014s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+
+real	0m0.505s
+user	0m1.474s
+sys	0m0.299s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.545s
+user	0m1.494s
+sys	0m0.331s
+
+real	0m0.548s
+user	0m1.494s
+sys	0m0.334s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.011s
+user	0m0.003s
+sys	0m0.011s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
+4 prime slicesEqual prime_factors_test.go:32:1
+4 prime BenchmarkPrimeFactors prime_factors_test.go:21:1
+4 prime Factors prime_factors.go:5:1
+3 prime TestPrimeFactors prime_factors_test.go:8:1
+1 prime ascending prime_factors_test.go:46:1
+1 prime ExampleFactors prime_factors_examples_test.go:7:1
+
+real	0m0.003s
+user	0m0.000s
+sys	0m0.003s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.026s
+user	0m0.010s
+sys	0m0.024s
+
+real	0m0.028s
+user	0m0.010s
+sys	0m0.026s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-misspell
+
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+
+real	0m0.024s
+user	0m0.028s
+sys	0m0.010s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.036s
+user	0m0.033s
+sys	0m0.021s
+
+real	0m0.039s
+user	0m0.035s
+sys	0m0.023s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gosec
+
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.011s
+user	0m0.007s
+sys	0m0.007s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:26:35 Including rules: default
+[gosec] 2023/09/07 00:26:35 Excluding rules: default
+[gosec] 2023/09/07 00:26:35 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/prime-factors
+[gosec] 2023/09/07 00:26:35 Checking package: prime
+[gosec] 2023/09/07 00:26:35 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/prime-factors/prime_factors.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 28
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.105s
+user	0m0.086s
+sys	0m0.071s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.126s
+user	0m0.099s
+sys	0m0.086s
+
+real	0m0.128s
+user	0m0.100s
+sys	0m0.087s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.015s
+user	0m0.005s
+sys	0m0.014s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
 === RUN   TestPrimeFactors
 === RUN   TestPrimeFactors/no_factors
 === RUN   TestPrimeFactors/prime_number
@@ -27,7 +594,7 @@ go test -v -covermode=count -coverprofile coverage.out prime
 === RUN   TestPrimeFactors/product_of_primes_and_non-primes
 === RUN   TestPrimeFactors/product_of_primes
 === RUN   TestPrimeFactors/factors_include_a_large_prime
---- PASS: TestPrimeFactors (0.03s)
+--- PASS: TestPrimeFactors (0.00s)
     --- PASS: TestPrimeFactors/no_factors (0.00s)
     --- PASS: TestPrimeFactors/prime_number (0.00s)
     --- PASS: TestPrimeFactors/another_prime_number (0.00s)
@@ -39,38 +606,59 @@ go test -v -covermode=count -coverprofile coverage.out prime
     --- PASS: TestPrimeFactors/product_of_first_and_second_prime (0.00s)
     --- PASS: TestPrimeFactors/product_of_primes_and_non-primes (0.00s)
     --- PASS: TestPrimeFactors/product_of_primes (0.00s)
-    --- PASS: TestPrimeFactors/factors_include_a_large_prime (0.03s)
+    --- PASS: TestPrimeFactors/factors_include_a_large_prime (0.00s)
 === RUN   ExampleFactors
 --- PASS: ExampleFactors (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	prime	0.053s	coverage: 100.0% of statements
+ok  	prime	0.003s	coverage: 100.0% of statements
 
-real	0m1.876s
-user	0m1.591s
-sys	0m0.749s
+real	0m0.168s
+user	0m0.226s
+sys	0m0.132s
 
-===============================================================================
 
-go tool cover -func=coverage.out
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
 prime/prime_factors.go:5:	Factors		100.0%
 total:				(statements)	100.0%
 
-real	0m0.142s
-user	0m0.029s
-sys	0m0.106s
+real	0m0.025s
+user	0m0.010s
+sys	0m0.021s
 
-===============================================================================
 
-go tool cover -html coverage.out -o coverage.html
+ ==============================================================================
 
-real	0m0.185s
-user	0m0.054s
-sys	0m0.121s
+Running: go tool cover -html coverage.out -o coverage.html
 
-===============================================================================
 
-go test -v -race -covermode=atomic prime
+real	0m0.037s
+user	0m0.022s
+sys	0m0.026s
+
+
+ ==============================================================================
+
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+real	0m0.017s
+user	0m0.007s
+sys	0m0.018s
+
+real	0m0.017s
+user	0m0.007s
+sys	0m0.018s
+
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
 === RUN   TestPrimeFactors
 === RUN   TestPrimeFactors/no_factors
 === RUN   TestPrimeFactors/prime_number
@@ -84,7 +672,7 @@ go test -v -race -covermode=atomic prime
 === RUN   TestPrimeFactors/product_of_primes_and_non-primes
 === RUN   TestPrimeFactors/product_of_primes
 === RUN   TestPrimeFactors/factors_include_a_large_prime
---- PASS: TestPrimeFactors (0.56s)
+--- PASS: TestPrimeFactors (0.06s)
     --- PASS: TestPrimeFactors/no_factors (0.00s)
     --- PASS: TestPrimeFactors/prime_number (0.00s)
     --- PASS: TestPrimeFactors/another_prime_number (0.00s)
@@ -95,92 +683,138 @@ go test -v -race -covermode=atomic prime
     --- PASS: TestPrimeFactors/product_of_third_prime (0.00s)
     --- PASS: TestPrimeFactors/product_of_first_and_second_prime (0.00s)
     --- PASS: TestPrimeFactors/product_of_primes_and_non-primes (0.00s)
-    --- PASS: TestPrimeFactors/product_of_primes (0.01s)
-    --- PASS: TestPrimeFactors/factors_include_a_large_prime (0.53s)
+    --- PASS: TestPrimeFactors/product_of_primes (0.00s)
+    --- PASS: TestPrimeFactors/factors_include_a_large_prime (0.06s)
 === RUN   ExampleFactors
 --- PASS: ExampleFactors (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	prime	0.628s	coverage: 100.0% of statements
+ok  	prime	1.073s	coverage: 100.0% of statements
 
-real	0m7.729s
-user	0m8.594s
-sys	0m3.246s
+real	0m1.326s
+user	0m0.390s
+sys	0m0.182s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.601s
+user	0m0.664s
+sys	0m0.407s
+
+real	0m1.603s
+user	0m0.666s
+sys	0m0.407s
 
 ===============================================================================
 
-go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+mv -v benchstat-new.txt benchstat-old.txt
+renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
+
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 goos: linux
 goarch: amd64
 pkg: prime
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+BenchmarkPrimeFactors
+BenchmarkPrimeFactors-8   	    1116	   1040714 ns/op	     424 B/op	      26 allocs/op
+PASS
+ok  	prime	1.274s
+
+real	0m1.430s
+user	0m1.476s
+sys	0m0.152s
+
+===============================================================================
+
+gotest -v -tags bonus
+=== RUN   TestPrimeFactors
+=== RUN   TestPrimeFactors/no_factors
+=== RUN   TestPrimeFactors/prime_number
+=== RUN   TestPrimeFactors/another_prime_number
+=== RUN   TestPrimeFactors/square_of_a_prime
+=== RUN   TestPrimeFactors/product_of_first_prime
+=== RUN   TestPrimeFactors/cube_of_a_prime
+=== RUN   TestPrimeFactors/product_of_second_prime
+=== RUN   TestPrimeFactors/product_of_third_prime
+=== RUN   TestPrimeFactors/product_of_first_and_second_prime
+=== RUN   TestPrimeFactors/product_of_primes_and_non-primes
+=== RUN   TestPrimeFactors/product_of_primes
+=== RUN   TestPrimeFactors/factors_include_a_large_prime
+--- PASS: TestPrimeFactors (0.00s)
+    --- PASS: TestPrimeFactors/no_factors (0.00s)
+    --- PASS: TestPrimeFactors/prime_number (0.00s)
+    --- PASS: TestPrimeFactors/another_prime_number (0.00s)
+    --- PASS: TestPrimeFactors/square_of_a_prime (0.00s)
+    --- PASS: TestPrimeFactors/product_of_first_prime (0.00s)
+    --- PASS: TestPrimeFactors/cube_of_a_prime (0.00s)
+    --- PASS: TestPrimeFactors/product_of_second_prime (0.00s)
+    --- PASS: TestPrimeFactors/product_of_third_prime (0.00s)
+    --- PASS: TestPrimeFactors/product_of_first_and_second_prime (0.00s)
+    --- PASS: TestPrimeFactors/product_of_primes_and_non-primes (0.00s)
+    --- PASS: TestPrimeFactors/product_of_primes (0.00s)
+    --- PASS: TestPrimeFactors/factors_include_a_large_prime (0.00s)
+=== RUN   ExampleFactors
+--- PASS: ExampleFactors (0.00s)
+PASS
+ok  	prime	0.005s
+
+real	0m0.130s
+user	0m0.172s
+sys	0m0.122s
+
+===============================================================================
+
+benchstat benchstat-old.txt benchstat-new.txt
+benchstat-new.txt:5: missing iteration count
+goos: linux
+goarch: amd64
+pkg: prime
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+               │ benchstat-new.txt │
+               │      sec/op       │
+PrimeFactors-8        1.041m ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
+
+               │ benchstat-new.txt │
+               │       B/op        │
+PrimeFactors-8         424.0 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
+
+               │ benchstat-new.txt │
+               │     allocs/op     │
+PrimeFactors-8         26.00 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
+
 cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
-BenchmarkPrimeFactors-4   	      43	  27929700 ns/op	     424 B/op	      26 allocs/op
-PASS
-ok  	prime	2.281s
+               │ benchstat-old.txt │
+               │      sec/op       │
+PrimeFactors-4        27.93m ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-real	0m3.932s
-user	0m3.514s
-sys	0m0.650s
+               │ benchstat-old.txt │
+               │       B/op        │
+PrimeFactors-4         424.0 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-===============================================================================
+               │ benchstat-old.txt │
+               │     allocs/op     │
+PrimeFactors-4         26.00 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-go test -tags bonus
-PASS
-ok  	prime	0.040s
-
-real	0m1.470s
-user	0m1.360s
-sys	0m0.670s
-
-===============================================================================
-
-No old benchmarks to run benchstat against.
-
-===============================================================================
-
-go vet prime
-
-real	0m4.088s
-user	0m7.410s
-sys	0m2.354s
-
-===============================================================================
-
-go fix prime
-
-real	0m0.134s
-user	0m0.049s
-sys	0m0.091s
-
-===============================================================================
-
-gosec ./prime-factors
-[gosec] 2022/07/17 23:49:09 Including rules: default
-[gosec] 2022/07/17 23:49:09 Excluding rules: default
-[gosec] 2022/07/17 23:49:09 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/prime-factors
-[gosec] 2022/07/17 23:49:09 Checking package: prime
-[gosec] 2022/07/17 23:49:09 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/prime-factors/prime_factors.go
-Results:
-
-
-Summary:
-   Files: 1
-   Lines: 28
-   Nosec: 0
-  Issues: 0
-
-
-real	0m0.346s
-user	0m0.589s
-sys	0m0.178s
+real	0m0.007s
+user	0m0.001s
+sys	0m0.005s
 
 ===============================================================================
 
 gomarkdoc --output prime-doc.md
 
-real	0m0.052s
-user	0m0.034s
-sys	0m0.036s
+real	0m0.019s
+user	0m0.009s
+sys	0m0.011s
 
 ===============================================================================
 
@@ -195,9 +829,9 @@ func Factors(number int64) []int64
     Factors returns an in64 list of prime factors for the given natural number.
 
 
-real	0m0.205s
-user	0m0.099s
-sys	0m0.140s
+real	0m0.029s
+user	0m0.011s
+sys	0m0.024s
 
 
 ===============================================================================

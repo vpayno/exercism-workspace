@@ -5,15 +5,599 @@ Go packages: luhn
 
 ===============================================================================
 
-golint luhn
+Running: ../../.github/citools/go/go-lint-golangci-lint
 
-real	0m0.203s
-user	0m0.239s
-sys	0m0.214s
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.033s
+user	0m0.026s
+sys	0m0.035s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+luhn.go:17:3: use of `fmt.Println` forbidden by pattern `^(fmt\.Print(|f|ln)|print|println)$` (forbidigo)
+		fmt.Println("DEBUG:", s, "=", a)
+		^
+luhn.go:1: line is 165 characters (lll)
+// Package luhn is a simple checksum formula used to validate a variety of identification numbers, such as credit card numbers and Canadian Social Insurance Numbers.
+luhn.go:12:11: var-declaration: should omit type bool from declaration of var debug; it will be inferred from the right-hand side (revive)
+var debug bool = false
+          ^
+luhn_test.go:8:23: Using the variable on range scope `tc` in function literal (scopelint)
+			if actual := Valid(tc.input); actual != tc.expected {
+			                   ^
+luhn_test.go:9:42: Using the variable on range scope `tc` in function literal (scopelint)
+				t.Fatalf("Valid(%q) = %t, want: %t", tc.input, actual, tc.expected)
+				                                     ^
+luhn_test.go:19:2: for statements should only be cuddled with assignments used in the iteration (wsl)
+	for i := 0; i < b.N; i++ {
+	^
+luhn_examples_test.go:16:2: Duplicate words (true) found (dupword)
+	// true
+	^
+cases_test.go:6:5: testCases is a global variable (gochecknoglobals)
+var testCases = []struct {
+    ^
+luhn.go:83:11: mnd: Magic number: 9, in <condition> detected (gomnd)
+			if n > 9 {
+			       ^
+luhn_test.go:5:1: Function TestValid missing the call to method parallel (paralleltest)
+func TestValid(t *testing.T) {
+^
+luhn_test.go:6:2: Range statement for test TestValid missing the call to method parallel in test Run (paralleltest)
+	for _, tc := range testCases {
+	^
+cases_test.go:1:9: package should be `luhn_test` instead of `luhn` (testpackage)
+package luhn
+        ^
+luhn_examples_test.go:1:9: package should be `luhn_test` instead of `luhn` (testpackage)
+package luhn
+        ^
+luhn_test.go:1:9: package should be `luhn_test` instead of `luhn` (testpackage)
+package luhn
+        ^
+luhn.go:38:2: variable name 'm' is too short for the scope of its usage (varnamelen)
+	m, e := regexp.MatchString(`^[0-9]+$`, s)
+	^
+luhn.go:63:2: variable name 'di' is too short for the scope of its usage (varnamelen)
+	di := reverse(id)
+	^
+luhn.go:74:3: variable name 'n' is too short for the scope of its usage (varnamelen)
+		n, e := strconv.Atoi(s)
+		^
+luhn.go:23:6: variable name 'b' is too short for the scope of its usage (varnamelen)
+	var b string
+	    ^
+luhn.go:71:6: variable name 'i' is too short for the scope of its usage (varnamelen)
+	for i, r := range di {
+	    ^
+luhn.go:48:12: parameter name 'id' is too short for the scope of its usage (varnamelen)
+func Valid(id string) bool {
+           ^
+
+real	0m0.532s
+user	0m0.712s
+sys	0m0.494s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.583s
+user	0m0.744s
+sys	0m0.548s
+
+real	0m0.586s
+user	0m0.747s
+sys	0m0.549s
 
 ===============================================================================
 
-go test -v -covermode=count -coverprofile coverage.out luhn
+Running: ../../.github/citools/go/go-lint-revive
+
+Running Go Lint Revive
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.022s
+user	0m0.019s
+sys	0m0.022s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
+luhn.go
+  (12, 11)  https://revive.run/r#var-declaration  should omit type bool from declaration of var debug; it will be inferred from the right-hand side  
+
+
+ ✖ 1 problem (0 errors) (1 warnings)
+
+real	0m0.070s
+user	0m0.036s
+sys	0m0.053s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.107s
+user	0m0.064s
+sys	0m0.085s
+
+real	0m0.109s
+user	0m0.064s
+sys	0m0.088s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.001s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.029s
+user	0m0.022s
+sys	0m0.034s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
+	info: check "./."
+internal error: package "fmt" without types was imported from "luhn"
+
+real	0m0.088s
+user	0m0.128s
+sys	0m0.115s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.131s
+user	0m0.153s
+sys	0m0.164s
+
+real	0m0.133s
+user	0m0.154s
+sys	0m0.165s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-staticcheck
+
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.023s
+user	0m0.015s
+sys	0m0.024s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+
+real	0m0.167s
+user	0m0.229s
+sys	0m0.141s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.201s
+user	0m0.246s
+sys	0m0.178s
+
+real	0m0.203s
+user	0m0.246s
+sys	0m0.180s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocritic
+
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.027s
+user	0m0.019s
+sys	0m0.032s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+
+real	0m0.831s
+user	0m2.049s
+sys	0m0.312s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.872s
+user	0m2.075s
+sys	0m0.355s
+
+real	0m0.875s
+user	0m2.078s
+sys	0m0.355s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go_vet
+
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.022s
+user	0m0.019s
+sys	0m0.018s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.075s
+user	0m0.103s
+sys	0m0.080s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.109s
+user	0m0.128s
+sys	0m0.109s
+
+real	0m0.111s
+user	0m0.129s
+sys	0m0.110s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-fixer-go_fix
+
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.027s
+user	0m0.019s
+sys	0m0.029s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.029s
+user	0m0.024s
+sys	0m0.031s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.068s
+user	0m0.050s
+sys	0m0.069s
+
+real	0m0.070s
+user	0m0.051s
+sys	0m0.069s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-errcheck
+
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.021s
+user	0m0.017s
+sys	0m0.020s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+
+real	0m0.450s
+user	0m1.473s
+sys	0m0.279s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.483s
+user	0m1.498s
+sys	0m0.307s
+
+real	0m0.485s
+user	0m1.499s
+sys	0m0.308s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.020s
+user	0m0.020s
+sys	0m0.019s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
+6 luhn Valid luhn.go:48:1
+4 luhn BenchmarkValid luhn_test.go:15:1
+3 luhn TestValid luhn_test.go:5:1
+3 luhn isValidInput luhn.go:33:1
+2 luhn reverse luhn.go:22:1
+2 luhn dPrint luhn.go:15:1
+1 luhn ExampleValid luhn_examples_test.go:7:1
+
+real	0m0.003s
+user	0m0.000s
+sys	0m0.003s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.033s
+user	0m0.024s
+sys	0m0.031s
+
+real	0m0.036s
+user	0m0.025s
+sys	0m0.033s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-misspell
+
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+
+real	0m0.027s
+user	0m0.029s
+sys	0m0.013s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.039s
+user	0m0.035s
+sys	0m0.022s
+
+real	0m0.041s
+user	0m0.036s
+sys	0m0.023s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gosec
+
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.024s
+user	0m0.015s
+sys	0m0.032s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:24:54 Including rules: default
+[gosec] 2023/09/07 00:24:54 Excluding rules: default
+[gosec] 2023/09/07 00:24:54 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/luhn
+[gosec] 2023/09/07 00:24:54 Checking package: luhn
+[gosec] 2023/09/07 00:24:54 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/luhn/luhn.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 95
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.124s
+user	0m0.118s
+sys	0m0.102s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.160s
+user	0m0.139s
+sys	0m0.144s
+
+real	0m0.162s
+user	0m0.141s
+sys	0m0.144s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.032s
+user	0m0.039s
+sys	0m0.048s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
 === RUN   TestValid
 === RUN   TestValid/single_digit_strings_can_not_be_valid
 === RUN   TestValid/a_single_zero_is_invalid
@@ -37,7 +621,7 @@ go test -v -covermode=count -coverprofile coverage.out luhn
 === RUN   TestValid/using_ascii_value_for_non-doubled_non-digit_isn't_allowed
 === RUN   TestValid/using_ascii_value_for_doubled_non-digit_isn't_allowed
 === RUN   TestValid/non-numeric,_non-space_char_in_the_middle_with_a_sum_that's_divisible_by_10_isn't_allowed
---- PASS: TestValid (0.01s)
+--- PASS: TestValid (0.00s)
     --- PASS: TestValid/single_digit_strings_can_not_be_valid (0.00s)
     --- PASS: TestValid/a_single_zero_is_invalid (0.00s)
     --- PASS: TestValid/a_simple_valid_SIN_that_remains_valid_if_reversed (0.00s)
@@ -64,36 +648,129 @@ go test -v -covermode=count -coverprofile coverage.out luhn
 --- PASS: ExampleValid (0.00s)
 PASS
 coverage: 90.9% of statements
-ok  	luhn	0.018s	coverage: 90.9% of statements
+ok  	luhn	0.003s	coverage: 90.9% of statements
 
-real	0m0.614s
-user	0m0.736s
-sys	0m0.491s
+real	0m0.178s
+user	0m0.221s
+sys	0m0.135s
 
-===============================================================================
 
-go tool cover -func=coverage.out
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
 luhn/luhn.go:15:	dPrint		50.0%
 luhn/luhn.go:22:	reverse		100.0%
 luhn/luhn.go:33:	isValidInput	83.3%
 luhn/luhn.go:48:	Valid		95.2%
 total:			(statements)	90.9%
 
-real	0m0.255s
-user	0m0.267s
-sys	0m0.255s
+real	0m0.076s
+user	0m0.117s
+sys	0m0.099s
 
-===============================================================================
 
-go tool cover -html coverage.out -o coverage.html
+ ==============================================================================
 
-real	0m0.271s
-user	0m0.209s
-sys	0m0.223s
+Running: go tool cover -html coverage.out -o coverage.html
 
-===============================================================================
 
-go test -v -race -covermode=atomic luhn
+real	0m0.069s
+user	0m0.094s
+sys	0m0.099s
+
+
+ ==============================================================================
+
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+48     	func Valid(id string) bool {
+49     		var sum int
+50     	
+51     		dPrint("id", id)
+52     	
+53     		// 0. remove spaces from the string
+54     		id = strings.ReplaceAll(id, " ", "")
+55     	
+56     		// 1. is the string is valid?
+57     		if !isValidInput(id) {
+58     			return false
+59     		}
+60     	
+61     		dPrint("id", id)
+62     	
+63     		di := reverse(id)
+64     	
+65     		dPrint("di", di)
+66     	
+67     		// 2. reverse the string
+68     		// 3. double numbers with index 1, 3, 5, ...
+69     		// 4. if the doubled number is > 9, subtract 9 from it
+70     		// 5. sum the numbers.
+71     		for i, r := range di {
+72     			dPrint("r", string(r))
+73     			s := string(r)
+74     			n, e := strconv.Atoi(s)
+75     	
+76     			if e != nil {
+77 MISS				panic(e)
+78     			}
+79     	
+80     			if i%2 != 0 {
+81     				n *= 2
+82     	
+83     				if n > 9 {
+84     					n -= 9
+85     				}
+86     			}
+87     	
+88     			dPrint("n", n)
+89     	
+90     			sum += n
+91     		}
+92     	
+93     		// 6. if the sum is divisible by 10, it's valid
+94     		return sum%10 == 0
+95     	}
+
+
+15     	func dPrint(s string, a ...interface{}) {
+16     		if debug {
+17 MISS			fmt.Println("DEBUG:", s, "=", a)
+18     		}
+19     	}
+
+
+33     	func isValidInput(s string) bool {
+34     		if len(s) <= 1 {
+35     			return false
+36     		}
+37     	
+38     		m, e := regexp.MatchString(`^[0-9]+$`, s)
+39     	
+40     		if e != nil {
+41 MISS			panic(e)
+42     		}
+43     	
+44     		return m
+45     	}
+
+
+real	0m0.022s
+user	0m0.015s
+sys	0m0.026s
+
+real	0m0.022s
+user	0m0.015s
+sys	0m0.026s
+
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
 === RUN   TestValid
 === RUN   TestValid/single_digit_strings_can_not_be_valid
 === RUN   TestValid/a_single_zero_is_invalid
@@ -117,7 +794,7 @@ go test -v -race -covermode=atomic luhn
 === RUN   TestValid/using_ascii_value_for_non-doubled_non-digit_isn't_allowed
 === RUN   TestValid/using_ascii_value_for_doubled_non-digit_isn't_allowed
 === RUN   TestValid/non-numeric,_non-space_char_in_the_middle_with_a_sum_that's_divisible_by_10_isn't_allowed
---- PASS: TestValid (0.03s)
+--- PASS: TestValid (0.00s)
     --- PASS: TestValid/single_digit_strings_can_not_be_valid (0.00s)
     --- PASS: TestValid/a_single_zero_is_invalid (0.00s)
     --- PASS: TestValid/a_simple_valid_SIN_that_remains_valid_if_reversed (0.00s)
@@ -144,97 +821,152 @@ go test -v -race -covermode=atomic luhn
 --- PASS: ExampleValid (0.00s)
 PASS
 coverage: 90.9% of statements
-ok  	luhn	0.076s	coverage: 90.9% of statements
+ok  	luhn	1.013s	coverage: 90.9% of statements
 
-real	0m0.667s
-user	0m0.659s
-sys	0m0.461s
+real	0m1.242s
+user	0m0.279s
+sys	0m0.179s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.632s
+user	0m0.770s
+sys	0m0.596s
+
+real	0m1.635s
+user	0m0.771s
+sys	0m0.599s
 
 ===============================================================================
 
 mv -v benchstat-new.txt benchstat-old.txt
 renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
 
-go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 goos: linux
 goarch: amd64
 pkg: luhn
-cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
-BenchmarkValid-4   	    8918	    181183 ns/op	   56865 B/op	    1647 allocs/op
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+BenchmarkValid
+BenchmarkValid-8   	   18520	     65309 ns/op	   56568 B/op	    1495 allocs/op
 PASS
-ok  	luhn	2.204s
+ok  	luhn	1.874s
 
-real	0m2.668s
-user	0m3.615s
-sys	0m0.529s
+real	0m2.048s
+user	0m2.164s
+sys	0m0.215s
 
 ===============================================================================
 
-go test -tags bonus
+gotest -v -tags bonus
+=== RUN   TestValid
+=== RUN   TestValid/single_digit_strings_can_not_be_valid
+=== RUN   TestValid/a_single_zero_is_invalid
+=== RUN   TestValid/a_simple_valid_SIN_that_remains_valid_if_reversed
+=== RUN   TestValid/a_simple_valid_SIN_that_becomes_invalid_if_reversed
+=== RUN   TestValid/a_valid_Canadian_SIN
+=== RUN   TestValid/invalid_Canadian_SIN
+=== RUN   TestValid/invalid_credit_card
+=== RUN   TestValid/invalid_long_number_with_an_even_remainder
+=== RUN   TestValid/invalid_long_number_with_a_remainder_divisible_by_5
+=== RUN   TestValid/valid_number_with_an_even_number_of_digits
+=== RUN   TestValid/valid_number_with_an_odd_number_of_spaces
+=== RUN   TestValid/valid_strings_with_a_non-digit_added_at_the_end_become_invalid
+=== RUN   TestValid/valid_strings_with_punctuation_included_become_invalid
+=== RUN   TestValid/valid_strings_with_symbols_included_become_invalid
+=== RUN   TestValid/single_zero_with_space_is_invalid
+=== RUN   TestValid/more_than_a_single_zero_is_valid
+=== RUN   TestValid/input_digit_9_is_correctly_converted_to_output_digit_9
+=== RUN   TestValid/very_long_input_is_valid
+=== RUN   TestValid/valid_luhn_with_an_odd_number_of_digits_and_non_zero_first_digit
+=== RUN   TestValid/using_ascii_value_for_non-doubled_non-digit_isn't_allowed
+=== RUN   TestValid/using_ascii_value_for_doubled_non-digit_isn't_allowed
+=== RUN   TestValid/non-numeric,_non-space_char_in_the_middle_with_a_sum_that's_divisible_by_10_isn't_allowed
+--- PASS: TestValid (0.00s)
+    --- PASS: TestValid/single_digit_strings_can_not_be_valid (0.00s)
+    --- PASS: TestValid/a_single_zero_is_invalid (0.00s)
+    --- PASS: TestValid/a_simple_valid_SIN_that_remains_valid_if_reversed (0.00s)
+    --- PASS: TestValid/a_simple_valid_SIN_that_becomes_invalid_if_reversed (0.00s)
+    --- PASS: TestValid/a_valid_Canadian_SIN (0.00s)
+    --- PASS: TestValid/invalid_Canadian_SIN (0.00s)
+    --- PASS: TestValid/invalid_credit_card (0.00s)
+    --- PASS: TestValid/invalid_long_number_with_an_even_remainder (0.00s)
+    --- PASS: TestValid/invalid_long_number_with_a_remainder_divisible_by_5 (0.00s)
+    --- PASS: TestValid/valid_number_with_an_even_number_of_digits (0.00s)
+    --- PASS: TestValid/valid_number_with_an_odd_number_of_spaces (0.00s)
+    --- PASS: TestValid/valid_strings_with_a_non-digit_added_at_the_end_become_invalid (0.00s)
+    --- PASS: TestValid/valid_strings_with_punctuation_included_become_invalid (0.00s)
+    --- PASS: TestValid/valid_strings_with_symbols_included_become_invalid (0.00s)
+    --- PASS: TestValid/single_zero_with_space_is_invalid (0.00s)
+    --- PASS: TestValid/more_than_a_single_zero_is_valid (0.00s)
+    --- PASS: TestValid/input_digit_9_is_correctly_converted_to_output_digit_9 (0.00s)
+    --- PASS: TestValid/very_long_input_is_valid (0.00s)
+    --- PASS: TestValid/valid_luhn_with_an_odd_number_of_digits_and_non_zero_first_digit (0.00s)
+    --- PASS: TestValid/using_ascii_value_for_non-doubled_non-digit_isn't_allowed (0.00s)
+    --- PASS: TestValid/using_ascii_value_for_doubled_non-digit_isn't_allowed (0.00s)
+    --- PASS: TestValid/non-numeric,_non-space_char_in_the_middle_with_a_sum_that's_divisible_by_10_isn't_allowed (0.00s)
+=== RUN   ExampleValid
+--- PASS: ExampleValid (0.00s)
 PASS
-ok  	luhn	0.024s
+ok  	luhn	0.005s
 
-real	0m0.539s
-user	0m0.600s
-sys	0m0.411s
+real	0m0.138s
+user	0m0.174s
+sys	0m0.119s
 
 ===============================================================================
-
-go install golang.org/x/perf/cmd/benchstat@latest
-
-real	0m0.715s
-user	0m0.735s
-sys	0m0.388s
 
 benchstat benchstat-old.txt benchstat-new.txt
-name     old time/op    new time/op    delta
-Valid-4    14.6µs ± 0%   181.2µs ± 0%   ~     (p=1.000 n=1+1)
+benchstat-new.txt:5: missing iteration count
+goos: linux
+goarch: amd64
+pkg: luhn
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+        │ benchstat-new.txt │
+        │      sec/op       │
+Valid-8        65.31µ ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-name     old alloc/op   new alloc/op   delta
-Valid-4    3.53kB ± 0%   56.87kB ± 0%   ~     (p=1.000 n=1+1)
+        │ benchstat-new.txt │
+        │       B/op        │
+Valid-8       55.24Ki ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-name     old allocs/op  new allocs/op  delta
-Valid-4       136 ± 0%      1647 ± 0%   ~     (p=1.000 n=1+1)
+        │ benchstat-new.txt │
+        │     allocs/op     │
+Valid-8        1.495k ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-real	0m0.029s
-user	0m0.017s
-sys	0m0.025s
+cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+        │ benchstat-old.txt │
+        │      sec/op       │
+Valid-4        181.2µ ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-===============================================================================
+        │ benchstat-old.txt │
+        │       B/op        │
+Valid-4       55.53Ki ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-go vet luhn
+        │ benchstat-old.txt │
+        │     allocs/op     │
+Valid-4        1.647k ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-real	0m0.360s
-user	0m0.429s
-sys	0m0.322s
-
-===============================================================================
-
-go fix luhn
-
-real	0m0.141s
-user	0m0.163s
-sys	0m0.122s
-
-===============================================================================
-
-gosec ./luhn
-[gosec] 2022/07/26 07:39:52 Including rules: default
-[gosec] 2022/07/26 07:39:52 Excluding rules: default
-[gosec] 2022/07/26 07:39:52 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/luhn
-2022/07/26 07:39:53 internal error: package "fmt" without types was imported from "command-line-arguments"
-
-real	0m0.522s
-user	0m0.566s
-sys	0m0.423s
+real	0m0.002s
+user	0m0.001s
+sys	0m0.001s
 
 ===============================================================================
 
 gomarkdoc --output luhn-doc.md
 
-real	0m0.048s
-user	0m0.034s
-sys	0m0.015s
+real	0m0.010s
+user	0m0.007s
+sys	0m0.003s
 
 ===============================================================================
 
@@ -251,9 +983,9 @@ func Valid(id string) bool
     Valid returns true when the passed number (`string`) is a valid luhn number.
 
 
-real	0m0.257s
-user	0m0.230s
-sys	0m0.236s
+real	0m0.038s
+user	0m0.024s
+sys	0m0.041s
 
 
 ===============================================================================

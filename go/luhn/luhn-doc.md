@@ -6,7 +6,7 @@
 import "luhn"
 ```
 
-Package luhn is a simple checksum formula used to validate a variety of identification numbers\, such as credit card numbers and Canadian Social Insurance Numbers\.
+Package luhn is a simple checksum formula used to validate a variety of identification numbers, such as credit card numbers and Canadian Social Insurance Numbers.
 
 ## Index
 
@@ -19,7 +19,7 @@ Package luhn is a simple checksum formula used to validate a variety of identifi
 func Valid(id string) bool
 ```
 
-Valid returns true when the passed number \(\`string\`\) is a valid luhn number\.
+Valid returns true when the passed number \(\`string\`\) is a valid luhn number.
 
 <details><summary>Example</summary>
 <p>

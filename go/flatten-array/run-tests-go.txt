@@ -5,15 +5,577 @@ Go packages: flatten
 
 ===============================================================================
 
-golint flatten
+Running: ../../.github/citools/go/go-lint-golangci-lint
 
-real	0m0.126s
-user	0m0.080s
-sys	0m0.138s
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.020s
+user	0m0.012s
+sys	0m0.014s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+flatten_array.go:6:2: typeSwitchVar: 1 case can benefit from type switch with assignment (gocritic)
+	switch nested.(type) {
+	^
+cases_test.go:33: line is 135 characters (lll)
+		input:       []interface{}{0, 2, []interface{}{[]interface{}{2, 3}, 8, 100, 4, []interface{}{[]interface{}{[]interface{}{50}}}}, -2},
+cases_test.go:38: line is 143 characters (lll)
+		input:       []interface{}{1, []interface{}{2, []interface{}{[]interface{}{3}}, []interface{}{4, []interface{}{[]interface{}{5}}}, 6, 7}, 8},
+cases_test.go:58: line is 179 characters (lll)
+		input:       []interface{}{0, 2, []interface{}{[]interface{}{2, 3}, 8, []interface{}{[]interface{}{100}}, interface{}(nil), []interface{}{[]interface{}{interface{}(nil)}}}, -2},
+cases_test.go:63: line is 248 characters (lll)
+		input:       []interface{}{interface{}(nil), []interface{}{[]interface{}{[]interface{}{interface{}(nil)}}}, interface{}(nil), interface{}(nil), []interface{}{[]interface{}{interface{}(nil), interface{}(nil)}, interface{}(nil)}, interface{}(nil)},
+flatten_array_test.go:11:25: Using the variable on range scope `tc` in function literal (scopelint)
+			if actual := Flatten(tc.input); !reflect.DeepEqual(actual, tc.expected) {
+			                     ^
+flatten_array_test.go:12:44: Using the variable on range scope `tc` in function literal (scopelint)
+				t.Errorf("Flatten(%v) = %v, want: %v", tc.input, actual, tc.expected)
+				                                       ^
+flatten_array_test.go:22:2: for statements should only be cuddled with assignments used in the iteration (wsl)
+	for i := 0; i < b.N; i++ {
+	^
+flatten_array.go:10:24: type assertion must be checked (forcetypeassert)
+		for _, item := range nested.([]interface{}) {
+		                     ^
+cases_test.go:6:5: testCases is a global variable (gochecknoglobals)
+var testCases = []struct {
+    ^
+flatten_array_test.go:8:1: Function TestFlatten missing the call to method parallel (paralleltest)
+func TestFlatten(t *testing.T) {
+^
+flatten_array_test.go:9:2: Range statement for test TestFlatten missing the call to method parallel in test Run (paralleltest)
+	for _, tc := range testCases {
+	^
+cases_test.go:1:9: package should be `flatten_test` instead of `flatten` (testpackage)
+package flatten
+        ^
+flatten_array_examples_test.go:1:9: package should be `flatten_test` instead of `flatten` (testpackage)
+package flatten
+        ^
+flatten_array_test.go:1:9: package should be `flatten_test` instead of `flatten` (testpackage)
+package flatten
+        ^
+
+real	0m0.490s
+user	0m0.748s
+sys	0m0.511s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.527s
+user	0m0.771s
+sys	0m0.536s
+
+real	0m0.529s
+user	0m0.772s
+sys	0m0.538s
 
 ===============================================================================
 
-go test -v -covermode=count -coverprofile coverage.out flatten
+Running: ../../.github/citools/go/go-lint-revive
+
+Running Go Lint Revive
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.010s
+user	0m0.004s
+sys	0m0.010s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
+
+real	0m0.040s
+user	0m0.027s
+sys	0m0.024s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.062s
+user	0m0.036s
+sys	0m0.045s
+
+real	0m0.063s
+user	0m0.037s
+sys	0m0.045s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.001s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.020s
+user	0m0.009s
+sys	0m0.017s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
+	info: check "./."
+internal error: package "fmt" without types was imported from "flatten [flatten.test]"
+
+real	0m0.088s
+user	0m0.123s
+sys	0m0.094s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.124s
+user	0m0.142s
+sys	0m0.123s
+
+real	0m0.126s
+user	0m0.143s
+sys	0m0.124s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-staticcheck
+
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.016s
+user	0m0.011s
+sys	0m0.008s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+flatten_array.go:6:9: assigning the result of this type assertion to a variable (switch nested := nested.(type)) could eliminate type assertions in switch cases (S1034)
+	flatten_array.go:10:24: could eliminate this type assertion
+
+real	0m0.158s
+user	0m0.197s
+sys	0m0.134s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.186s
+user	0m0.214s
+sys	0m0.151s
+
+real	0m0.188s
+user	0m0.215s
+sys	0m0.152s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocritic
+
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.014s
+user	0m0.006s
+sys	0m0.011s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+./flatten_array.go:6:2: typeSwitchVar: 1 case can benefit from type switch with assignment
+
+real	0m0.784s
+user	0m1.837s
+sys	0m0.259s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.808s
+user	0m1.849s
+sys	0m0.278s
+
+real	0m0.810s
+user	0m1.850s
+sys	0m0.279s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go_vet
+
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.011s
+user	0m0.003s
+sys	0m0.011s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.075s
+user	0m0.142s
+sys	0m0.100s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.097s
+user	0m0.150s
+sys	0m0.119s
+
+real	0m0.098s
+user	0m0.150s
+sys	0m0.120s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-fixer-go_fix
+
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.010s
+user	0m0.006s
+sys	0m0.007s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.015s
+user	0m0.007s
+sys	0m0.011s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.039s
+user	0m0.020s
+sys	0m0.029s
+
+real	0m0.040s
+user	0m0.020s
+sys	0m0.030s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-errcheck
+
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.012s
+user	0m0.006s
+sys	0m0.009s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+
+real	0m0.458s
+user	0m1.481s
+sys	0m0.251s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.479s
+user	0m1.493s
+sys	0m0.269s
+
+real	0m0.481s
+user	0m1.494s
+sys	0m0.269s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.015s
+user	0m0.005s
+sys	0m0.014s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
+4 flatten BenchmarkFlatten flatten_array_test.go:18:1
+4 flatten walkInterface flatten_array.go:5:1
+3 flatten TestFlatten flatten_array_test.go:8:1
+1 flatten ExampleFlatten flatten_array_examples_test.go:5:1
+1 flatten Flatten flatten_array.go:17:1
+
+real	0m0.003s
+user	0m0.001s
+sys	0m0.002s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.030s
+user	0m0.013s
+sys	0m0.023s
+
+real	0m0.032s
+user	0m0.015s
+sys	0m0.024s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-misspell
+
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+
+real	0m0.029s
+user	0m0.030s
+sys	0m0.011s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.043s
+user	0m0.036s
+sys	0m0.025s
+
+real	0m0.046s
+user	0m0.037s
+sys	0m0.027s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gosec
+
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.010s
+user	0m0.005s
+sys	0m0.007s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:23:15 Including rules: default
+[gosec] 2023/09/07 00:23:15 Excluding rules: default
+[gosec] 2023/09/07 00:23:15 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/flatten-array
+[gosec] 2023/09/07 00:23:15 Checking package: flatten
+[gosec] 2023/09/07 00:23:15 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/flatten-array/flatten_array.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 23
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.091s
+user	0m0.079s
+sys	0m0.058s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.113s
+user	0m0.091s
+sys	0m0.073s
+
+real	0m0.114s
+user	0m0.093s
+sys	0m0.073s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.018s
+user	0m0.007s
+sys	0m0.014s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
 === RUN   TestFlatten
 === RUN   TestFlatten/empty
 === RUN   TestFlatten/no_nesting
@@ -26,7 +588,7 @@ go test -v -covermode=count -coverprofile coverage.out flatten
 === RUN   TestFlatten/consecutive_null_values_in_the_middle_of_the_list_are_omitted_from_the_final_result
 === RUN   TestFlatten/6_level_nest_list_with_null_values
 === RUN   TestFlatten/all_values_in_nested_list_are_null
---- PASS: TestFlatten (0.01s)
+--- PASS: TestFlatten (0.00s)
     --- PASS: TestFlatten/empty (0.00s)
     --- PASS: TestFlatten/no_nesting (0.00s)
     --- PASS: TestFlatten/flattens_a_nested_array (0.00s)
@@ -42,34 +604,55 @@ go test -v -covermode=count -coverprofile coverage.out flatten
 --- PASS: ExampleFlatten (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	flatten	0.020s	coverage: 100.0% of statements
+ok  	flatten	0.002s	coverage: 100.0% of statements
 
-real	0m0.979s
-user	0m1.017s
-sys	0m0.829s
+real	0m0.174s
+user	0m0.215s
+sys	0m0.159s
 
-===============================================================================
 
-go tool cover -func=coverage.out
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
 flatten/flatten_array.go:5:	walkInterface	100.0%
 flatten/flatten_array.go:17:	Flatten		100.0%
 total:				(statements)	100.0%
 
-real	0m0.125s
-user	0m0.069s
-sys	0m0.098s
+real	0m0.030s
+user	0m0.009s
+sys	0m0.027s
 
-===============================================================================
 
-go tool cover -html coverage.out -o coverage.html
+ ==============================================================================
 
-real	0m0.141s
-user	0m0.071s
-sys	0m0.147s
+Running: go tool cover -html coverage.out -o coverage.html
 
-===============================================================================
 
-go test -v -race -covermode=atomic flatten
+real	0m0.033s
+user	0m0.011s
+sys	0m0.032s
+
+
+ ==============================================================================
+
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+real	0m0.010s
+user	0m0.003s
+sys	0m0.011s
+
+real	0m0.010s
+user	0m0.003s
+sys	0m0.011s
+
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
 === RUN   TestFlatten
 === RUN   TestFlatten/empty
 === RUN   TestFlatten/no_nesting
@@ -82,7 +665,7 @@ go test -v -race -covermode=atomic flatten
 === RUN   TestFlatten/consecutive_null_values_in_the_middle_of_the_list_are_omitted_from_the_final_result
 === RUN   TestFlatten/6_level_nest_list_with_null_values
 === RUN   TestFlatten/all_values_in_nested_list_are_null
---- PASS: TestFlatten (0.03s)
+--- PASS: TestFlatten (0.00s)
     --- PASS: TestFlatten/empty (0.00s)
     --- PASS: TestFlatten/no_nesting (0.00s)
     --- PASS: TestFlatten/flattens_a_nested_array (0.00s)
@@ -98,107 +681,130 @@ go test -v -race -covermode=atomic flatten
 --- PASS: ExampleFlatten (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	flatten	0.104s	coverage: 100.0% of statements
+ok  	flatten	1.012s	coverage: 100.0% of statements
 
-real	0m1.495s
-user	0m1.842s
-sys	0m0.979s
+real	0m1.231s
+user	0m0.300s
+sys	0m0.177s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.509s
+user	0m0.554s
+sys	0m0.429s
+
+real	0m1.511s
+user	0m0.555s
+sys	0m0.430s
 
 ===============================================================================
 
 mv -v benchstat-new.txt benchstat-old.txt
 renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
 
-go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 goos: linux
 goarch: amd64
 pkg: flatten
-cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
-BenchmarkFlatten-4   	  167460	      8110 ns/op	    1440 B/op	      25 allocs/op
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+BenchmarkFlatten
+BenchmarkFlatten-8   	  870082	      1317 ns/op	    1440 B/op	      25 allocs/op
 PASS
-ok  	flatten	1.487s
+ok  	flatten	1.164s
 
-real	0m2.541s
-user	0m3.908s
-sys	0m1.058s
+real	0m1.335s
+user	0m1.441s
+sys	0m0.217s
 
 ===============================================================================
 
-go test -tags bonus
+gotest -v -tags bonus
+=== RUN   TestFlatten
+=== RUN   TestFlatten/empty
+=== RUN   TestFlatten/no_nesting
+=== RUN   TestFlatten/flattens_a_nested_array
+=== RUN   TestFlatten/flattens_array_with_just_integers_present
+=== RUN   TestFlatten/5_level_nesting
+=== RUN   TestFlatten/6_level_nesting
+=== RUN   TestFlatten/null_values_are_omitted_from_the_final_result
+=== RUN   TestFlatten/consecutive_null_values_at_the_front_of_the_list_are_omitted_from_the_final_result
+=== RUN   TestFlatten/consecutive_null_values_in_the_middle_of_the_list_are_omitted_from_the_final_result
+=== RUN   TestFlatten/6_level_nest_list_with_null_values
+=== RUN   TestFlatten/all_values_in_nested_list_are_null
+--- PASS: TestFlatten (0.00s)
+    --- PASS: TestFlatten/empty (0.00s)
+    --- PASS: TestFlatten/no_nesting (0.00s)
+    --- PASS: TestFlatten/flattens_a_nested_array (0.00s)
+    --- PASS: TestFlatten/flattens_array_with_just_integers_present (0.00s)
+    --- PASS: TestFlatten/5_level_nesting (0.00s)
+    --- PASS: TestFlatten/6_level_nesting (0.00s)
+    --- PASS: TestFlatten/null_values_are_omitted_from_the_final_result (0.00s)
+    --- PASS: TestFlatten/consecutive_null_values_at_the_front_of_the_list_are_omitted_from_the_final_result (0.00s)
+    --- PASS: TestFlatten/consecutive_null_values_in_the_middle_of_the_list_are_omitted_from_the_final_result (0.00s)
+    --- PASS: TestFlatten/6_level_nest_list_with_null_values (0.00s)
+    --- PASS: TestFlatten/all_values_in_nested_list_are_null (0.00s)
+=== RUN   ExampleFlatten
+--- PASS: ExampleFlatten (0.00s)
 PASS
-ok  	flatten	0.006s
+ok  	flatten	0.001s
 
-real	0m1.207s
-user	0m1.319s
-sys	0m0.985s
+real	0m0.134s
+user	0m0.211s
+sys	0m0.125s
 
 ===============================================================================
-
-go install golang.org/x/perf/cmd/benchstat@latest
-
-real	0m0.909s
-user	0m1.409s
-sys	0m0.667s
 
 benchstat benchstat-old.txt benchstat-new.txt
-name       old time/op    new time/op    delta
-Flatten-4    4.44µs ± 0%    8.11µs ± 0%   ~     (p=1.000 n=1+1)
+benchstat-new.txt:5: missing iteration count
+goos: linux
+goarch: amd64
+pkg: flatten
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+          │ benchstat-new.txt │
+          │      sec/op       │
+Flatten-8        1.317µ ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-name       old alloc/op   new alloc/op   delta
-Flatten-4    1.33kB ± 0%    1.44kB ± 0%   ~     (p=1.000 n=1+1)
+          │ benchstat-new.txt │
+          │       B/op        │
+Flatten-8       1.406Ki ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-name       old allocs/op  new allocs/op  delta
-Flatten-4      20.0 ± 0%      25.0 ± 0%   ~     (p=1.000 n=1+1)
+          │ benchstat-new.txt │
+          │     allocs/op     │
+Flatten-8         25.00 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-real	0m0.025s
-user	0m0.004s
-sys	0m0.022s
+cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+          │ benchstat-old.txt │
+          │      sec/op       │
+Flatten-4        8.110µ ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-===============================================================================
+          │ benchstat-old.txt │
+          │       B/op        │
+Flatten-4       1.406Ki ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-go vet flatten
+          │ benchstat-old.txt │
+          │     allocs/op     │
+Flatten-4         25.00 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-real	0m0.652s
-user	0m0.905s
-sys	0m0.608s
-
-===============================================================================
-
-go fix flatten
-
-real	0m0.064s
-user	0m0.048s
-sys	0m0.049s
-
-===============================================================================
-
-gosec ./flatten-array
-[gosec] 2022/07/27 12:40:20 Including rules: default
-[gosec] 2022/07/27 12:40:20 Excluding rules: default
-[gosec] 2022/07/27 12:40:20 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/flatten-array
-[gosec] 2022/07/27 12:40:20 Checking package: flatten
-[gosec] 2022/07/27 12:40:20 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/flatten-array/flatten_array.go
-Results:
-
-
-Summary:
-   Files: 1
-   Lines: 23
-   Nosec: 0
-  Issues: 0
-
-
-real	0m0.371s
-user	0m0.503s
-sys	0m0.261s
+real	0m0.002s
+user	0m0.001s
+sys	0m0.001s
 
 ===============================================================================
 
 gomarkdoc --output flatten-doc.md
 
-real	0m0.047s
-user	0m0.039s
-sys	0m0.021s
+real	0m0.014s
+user	0m0.009s
+sys	0m0.004s
 
 ===============================================================================
 
@@ -213,9 +819,9 @@ func Flatten(nested interface{}) []interface{}
     Flatten returns a single flattened list with all values except nil.
 
 
-real	0m0.167s
-user	0m0.107s
-sys	0m0.150s
+real	0m0.027s
+user	0m0.016s
+sys	0m0.018s
 
 
 ===============================================================================

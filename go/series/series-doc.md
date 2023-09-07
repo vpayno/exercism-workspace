@@ -6,7 +6,7 @@
 import "series"
 ```
 
-Package series returns contiguous substrings from a string\.
+Package series returns contiguous substrings from a string.
 
 ## Index
 
@@ -20,7 +20,7 @@ Package series returns contiguous substrings from a string\.
 func All(size int, input string) []string
 ```
 
-All returns all the contiguous substrings of length n in that string in the order that they appear\.
+All returns all the contiguous substrings of length n in that string in the order that they appear.
 
 <details><summary>Example</summary>
 <p>
@@ -47,7 +47,7 @@ All returns all the contiguous substrings of length n in that string in the orde
 func UnsafeFirst(size int, input string) string
 ```
 
-UnsafeFirst return the first contiguous substrings of length n in that string\.
+UnsafeFirst return the first contiguous substrings of length n in that string.
 
 <details><summary>Example</summary>
 <p>

@@ -6,7 +6,7 @@
 import "triangle"
 ```
 
-Package triangle determines if a triangle is equilateral\, isosceles\, or scalene\.
+Package triangle determines if a triangle is equilateral, isosceles, or scalene.
 
 ## Index
 
@@ -17,7 +17,7 @@ Package triangle determines if a triangle is equilateral\, isosceles\, or scalen
 
 ## Constants
 
-Triangle types\.
+Triangle types.
 
 ```go
 const (
@@ -30,7 +30,7 @@ const (
 
 ## type [Kind](<https://github.com/vpayno/exercism-workspace/blob/main/go/triangle/triangle.go#L5>)
 
-Kind is an int used to describe a triangle\.
+Kind is an int used to describe a triangle.
 
 ```go
 type Kind int
@@ -42,7 +42,7 @@ type Kind int
 func KindFromSides(a, b, c float64) Kind
 ```
 
-KindFromSides returns the kind of triangle being tested\.
+KindFromSides returns the kind of triangle being tested.
 
 <details><summary>Example</summary>
 <p>

@@ -19,7 +19,7 @@ import "purchase"
 func CalculateResellPrice(originalPrice, age float64) float64
 ```
 
-CalculateResellPrice calculates how much a vehicle can resell for at a certain age\.
+CalculateResellPrice calculates how much a vehicle can resell for at a certain age.
 
 <details><summary>Example</summary>
 <p>
@@ -50,7 +50,7 @@ CalculateResellPrice calculates how much a vehicle can resell for at a certain a
 func ChooseVehicle(option1, option2 string) string
 ```
 
-ChooseVehicle recommends a vehicle for selection\. It always recommends the vehicle that comes first in lexicographical order\.
+ChooseVehicle recommends a vehicle for selection. It always recommends the vehicle that comes first in lexicographical order.
 
 <details><summary>Example</summary>
 <p>
@@ -79,7 +79,7 @@ Volkswagen Beetle is clearly the better choice.
 func NeedsLicense(kind string) bool
 ```
 
-NeedsLicense determines whether a license is needed to drive a type of vehicle\. Only "car" and "truck" require a license\.
+NeedsLicense determines whether a license is needed to drive a type of vehicle. Only "car" and "truck" require a license.
 
 <details><summary>Example</summary>
 <p>

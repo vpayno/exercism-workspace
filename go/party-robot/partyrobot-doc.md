@@ -19,7 +19,7 @@ import "partyrobot"
 func AssignTable(name string, table int, neighbor, direction string, distance float64) string
 ```
 
-AssignTable assigns a table to each guest\.
+AssignTable assigns a table to each guest.
 
 <details><summary>Example</summary>
 <p>
@@ -48,7 +48,7 @@ You will be sitting next to Frank.
 func HappyBirthday(name string, age int) string
 ```
 
-HappyBirthday wishes happy birthday to the birthday person and exclaims their age\.
+HappyBirthday wishes happy birthday to the birthday person and exclaims their age.
 
 <details><summary>Example</summary>
 <p>
@@ -75,7 +75,7 @@ Happy birthday Frank! You are now 58 years old!
 func Welcome(name string) string
 ```
 
-Welcome greets a person by name\.
+Welcome greets a person by name.
 
 <details><summary>Example</summary>
 <p>

@@ -5,15 +5,588 @@ Go packages: wordcount
 
 ===============================================================================
 
-golint wordcount
+Running: ../../.github/citools/go/go-lint-golangci-lint
 
-real	0m0.219s
-user	0m0.211s
-sys	0m0.172s
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.029s
+user	0m0.017s
+sys	0m0.026s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+word_count.go:14: File is not `gofumpt`-ed (gofumpt)
+
+word_count_test.go:11:24: Using the variable on range scope `tc` in function literal (scopelint)
+			actual := WordCount(tc.input)
+			                    ^
+word_count_test.go:12:34: Using the variable on range scope `tc` in function literal (scopelint)
+			if !reflect.DeepEqual(actual, tc.expected) {
+			                              ^
+word_count_test.go:13:49: Using the variable on range scope `tc` in function literal (scopelint)
+				t.Fatalf("WordCount(%q)\n got:%v\nwant:%v", tc.input, actual, tc.expected)
+				                                            ^
+word_count.go:13: unnecessary leading newline (whitespace)
+func WordCount(phrase string) Frequency {
+
+word_count.go:18:2: only one cuddle assignment allowed before if statement (wsl)
+	if e != nil {
+	^
+word_count.go:21:2: assignments should only be cuddled with other assignments (wsl)
+	phrase = re.ReplaceAllString(phrase, " ")
+	^
+word_count.go:26:2: only one cuddle assignment allowed before if statement (wsl)
+	if e != nil {
+	^
+word_count.go:29:2: assignments should only be cuddled with other assignments (wsl)
+	phrase = re.ReplaceAllString(phrase, `${1}_${2}`)
+	^
+word_count.go:34:2: only one cuddle assignment allowed before if statement (wsl)
+	if e != nil {
+	^
+word_count.go:37:2: assignments should only be cuddled with other assignments (wsl)
+	phrase = re.ReplaceAllString(phrase, " ")
+	^
+word_count_test.go:23:2: for statements should only be cuddled with assignments used in the iteration (wsl)
+	for i := 0; i < b.N; i++ {
+	^
+cases_test.go:6:5: testCases is a global variable (gochecknoglobals)
+var testCases = []struct {
+    ^
+word_count_test.go:8:1: Function TestWordCount missing the call to method parallel (paralleltest)
+func TestWordCount(t *testing.T) {
+^
+word_count_test.go:9:2: Range statement for test TestWordCount missing the call to method parallel in test Run (paralleltest)
+	for _, tc := range testCases {
+	^
+cases_test.go:1:9: package should be `wordcount_test` instead of `wordcount` (testpackage)
+package wordcount
+        ^
+word_count_examples_test.go:1:9: package should be `wordcount_test` instead of `wordcount` (testpackage)
+package wordcount
+        ^
+word_count_test.go:1:9: package should be `wordcount_test` instead of `wordcount` (testpackage)
+package wordcount
+        ^
+word_count.go:17:2: variable name 're' is too short for the scope of its usage (varnamelen)
+	re, e := regexp.Compile(reStr)
+	^
+
+real	0m0.562s
+user	0m0.798s
+sys	0m0.554s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.606s
+user	0m0.827s
+sys	0m0.589s
+
+real	0m0.608s
+user	0m0.828s
+sys	0m0.591s
 
 ===============================================================================
 
-go test -v -covermode=count -coverprofile coverage.out wordcount
+Running: ../../.github/citools/go/go-lint-revive
+
+Running Go Lint Revive
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.020s
+user	0m0.010s
+sys	0m0.021s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
+
+real	0m0.064s
+user	0m0.034s
+sys	0m0.047s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.093s
+user	0m0.049s
+sys	0m0.076s
+
+real	0m0.096s
+user	0m0.052s
+sys	0m0.076s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.001s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.033s
+user	0m0.022s
+sys	0m0.032s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
+	info: check "./."
+internal error: package "regexp" without types was imported from "wordcount"
+
+real	0m0.090s
+user	0m0.107s
+sys	0m0.113s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.140s
+user	0m0.139s
+sys	0m0.160s
+
+real	0m0.142s
+user	0m0.140s
+sys	0m0.161s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-staticcheck
+
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.018s
+user	0m0.016s
+sys	0m0.015s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+
+real	0m0.163s
+user	0m0.203s
+sys	0m0.117s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.192s
+user	0m0.223s
+sys	0m0.145s
+
+real	0m0.195s
+user	0m0.224s
+sys	0m0.146s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocritic
+
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.031s
+user	0m0.022s
+sys	0m0.029s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+
+real	0m0.857s
+user	0m1.975s
+sys	0m0.330s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.902s
+user	0m2.005s
+sys	0m0.370s
+
+real	0m0.904s
+user	0m2.006s
+sys	0m0.370s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go_vet
+
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.022s
+user	0m0.011s
+sys	0m0.024s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.070s
+user	0m0.127s
+sys	0m0.075s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.104s
+user	0m0.143s
+sys	0m0.110s
+
+real	0m0.106s
+user	0m0.145s
+sys	0m0.110s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-fixer-go_fix
+
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.026s
+user	0m0.020s
+sys	0m0.020s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.031s
+user	0m0.020s
+sys	0m0.024s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.070s
+user	0m0.048s
+sys	0m0.053s
+
+real	0m0.072s
+user	0m0.048s
+sys	0m0.055s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-errcheck
+
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.027s
+user	0m0.017s
+sys	0m0.026s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+
+real	0m0.481s
+user	0m1.494s
+sys	0m0.293s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.523s
+user	0m1.517s
+sys	0m0.337s
+
+real	0m0.525s
+user	0m1.517s
+sys	0m0.338s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.030s
+user	0m0.031s
+sys	0m0.020s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
+7 wordcount WordCount word_count.go:13:1
+4 wordcount BenchmarkWordCount word_count_test.go:19:1
+3 wordcount TestWordCount word_count_test.go:8:1
+1 wordcount ExampleWordCount word_count_examples_test.go:7:1
+
+real	0m0.002s
+user	0m0.001s
+sys	0m0.001s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.044s
+user	0m0.038s
+sys	0m0.031s
+
+real	0m0.046s
+user	0m0.039s
+sys	0m0.032s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-misspell
+
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+
+real	0m0.031s
+user	0m0.031s
+sys	0m0.014s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.042s
+user	0m0.037s
+sys	0m0.023s
+
+real	0m0.043s
+user	0m0.037s
+sys	0m0.025s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gosec
+
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.028s
+user	0m0.013s
+sys	0m0.034s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:32:24 Including rules: default
+[gosec] 2023/09/07 00:32:24 Excluding rules: default
+[gosec] 2023/09/07 00:32:24 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/word-count
+[gosec] 2023/09/07 00:32:24 Checking package: wordcount
+[gosec] 2023/09/07 00:32:24 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/word-count/word_count.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 70
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.118s
+user	0m0.122s
+sys	0m0.075s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.160s
+user	0m0.142s
+sys	0m0.121s
+
+real	0m0.163s
+user	0m0.144s
+sys	0m0.121s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.021s
+user	0m0.018s
+sys	0m0.017s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
 === RUN   TestWordCount
 === RUN   TestWordCount/count_one_word
 === RUN   TestWordCount/count_one_of_each_word
@@ -46,33 +619,114 @@ go test -v -covermode=count -coverprofile coverage.out wordcount
 --- PASS: ExampleWordCount (0.00s)
 PASS
 coverage: 84.4% of statements
-ok  	wordcount	0.008s	coverage: 84.4% of statements
+ok  	wordcount	0.004s	coverage: 84.4% of statements
 
-real	0m0.622s
-user	0m0.701s
-sys	0m0.424s
+real	0m0.177s
+user	0m0.250s
+sys	0m0.146s
 
-===============================================================================
 
-go tool cover -func=coverage.out
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
 wordcount/word_count.go:13:	WordCount	84.4%
 total:				(statements)	84.4%
 
-real	0m0.196s
-user	0m0.176s
-sys	0m0.206s
+real	0m0.042s
+user	0m0.056s
+sys	0m0.057s
 
-===============================================================================
 
-go tool cover -html coverage.out -o coverage.html
+ ==============================================================================
 
-real	0m0.210s
-user	0m0.172s
-sys	0m0.205s
+Running: go tool cover -html coverage.out -o coverage.html
 
-===============================================================================
 
-go test -v -race -covermode=atomic wordcount
+real	0m0.045s
+user	0m0.051s
+sys	0m0.058s
+
+
+ ==============================================================================
+
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+13     	func WordCount(phrase string) Frequency {
+14     	
+15     		// remove punctuation - except for '
+16     		reStr := `["_;:.,!@$%^&]`
+17     		re, e := regexp.Compile(reStr)
+18     		if e != nil {
+19 MISS			panic(e)
+20     		}
+21     		phrase = re.ReplaceAllString(phrase, " ")
+22     	
+23     		// change [a-z]['][a-z] to _
+24     		reStr = `([a-z])[']([a-z])`
+25     		re, e = regexp.Compile(reStr)
+26     		if e != nil {
+27 MISS			panic(e)
+28     		}
+29     		phrase = re.ReplaceAllString(phrase, `${1}_${2}`)
+30     	
+31     		// remove extra '
+32     		reStr = `[']`
+33     		re, e = regexp.Compile(reStr)
+34     		if e != nil {
+35 MISS			panic(e)
+36     		}
+37     		phrase = re.ReplaceAllString(phrase, " ")
+38     	
+39     		// change _ to '
+40     		reStr = `_`
+41     		re, e = regexp.Compile(reStr)
+42     		if e != nil {
+43 MISS			panic(e)
+44     		}
+45     		phrase = re.ReplaceAllString(phrase, "'")
+46     	
+47     		// lowercase, trim space
+48     		phrase = strings.ToLower(phrase)
+49     		phrase = strings.TrimSpace(phrase)
+50     	
+51     		// convert all whitespace to single space
+52     		reStr = `[[:space:]]+`
+53     		re, e = regexp.Compile(reStr)
+54     		if e != nil {
+55 MISS			panic(e)
+56     		}
+57     		phrase = re.ReplaceAllString(phrase, " ")
+58     	
+59     		// split on whitespace
+60     		words := strings.Split(phrase, " ")
+61     	
+62     		// walk slice and fill frequency map
+63     		freqMap := Frequency{}
+64     		for _, word := range words {
+65     			freqMap[word]++
+66     		}
+67     	
+68     		// return frequency map
+69     		return freqMap
+70     	}
+
+
+real	0m0.020s
+user	0m0.017s
+sys	0m0.016s
+
+real	0m0.020s
+user	0m0.017s
+sys	0m0.016s
+
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
 === RUN   TestWordCount
 === RUN   TestWordCount/count_one_word
 === RUN   TestWordCount/count_one_of_each_word
@@ -87,7 +741,7 @@ go test -v -race -covermode=atomic wordcount
 === RUN   TestWordCount/substrings_from_the_beginning
 === RUN   TestWordCount/multiple_spaces_not_detected_as_a_word
 === RUN   TestWordCount/alternating_word_separators_not_detected_as_a_word
---- PASS: TestWordCount (0.03s)
+--- PASS: TestWordCount (0.00s)
     --- PASS: TestWordCount/count_one_word (0.00s)
     --- PASS: TestWordCount/count_one_of_each_word (0.00s)
     --- PASS: TestWordCount/multiple_occurrences_of_a_word (0.00s)
@@ -105,97 +759,134 @@ go test -v -race -covermode=atomic wordcount
 --- PASS: ExampleWordCount (0.00s)
 PASS
 coverage: 84.4% of statements
-ok  	wordcount	0.063s	coverage: 84.4% of statements
+ok  	wordcount	1.019s	coverage: 84.4% of statements
 
-real	0m0.755s
-user	0m0.779s
-sys	0m0.456s
+real	0m1.237s
+user	0m0.282s
+sys	0m0.185s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.554s
+user	0m0.680s
+sys	0m0.489s
+
+real	0m1.556s
+user	0m0.681s
+sys	0m0.490s
 
 ===============================================================================
 
 mv -v benchstat-new.txt benchstat-old.txt
 renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
 
-go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 goos: linux
 goarch: amd64
 pkg: wordcount
-cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
-BenchmarkWordCount-4   	    3898	    310332 ns/op	   86139 B/op	    1150 allocs/op
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+BenchmarkWordCount
+BenchmarkWordCount-8   	   10431	    116806 ns/op	   87077 B/op	    1150 allocs/op
 PASS
-ok  	wordcount	1.265s
+ok  	wordcount	2.088s
 
-real	0m1.686s
-user	0m2.156s
-sys	0m0.407s
+real	0m2.248s
+user	0m2.369s
+sys	0m0.232s
 
 ===============================================================================
 
-go test -tags bonus
+gotest -v -tags bonus
+=== RUN   TestWordCount
+=== RUN   TestWordCount/count_one_word
+=== RUN   TestWordCount/count_one_of_each_word
+=== RUN   TestWordCount/multiple_occurrences_of_a_word
+=== RUN   TestWordCount/handles_cramped_lists
+=== RUN   TestWordCount/handles_expanded_lists
+=== RUN   TestWordCount/ignore_punctuation
+=== RUN   TestWordCount/include_numbers
+=== RUN   TestWordCount/normalize_case
+=== RUN   TestWordCount/with_apostrophes
+=== RUN   TestWordCount/with_quotations
+=== RUN   TestWordCount/substrings_from_the_beginning
+=== RUN   TestWordCount/multiple_spaces_not_detected_as_a_word
+=== RUN   TestWordCount/alternating_word_separators_not_detected_as_a_word
+--- PASS: TestWordCount (0.00s)
+    --- PASS: TestWordCount/count_one_word (0.00s)
+    --- PASS: TestWordCount/count_one_of_each_word (0.00s)
+    --- PASS: TestWordCount/multiple_occurrences_of_a_word (0.00s)
+    --- PASS: TestWordCount/handles_cramped_lists (0.00s)
+    --- PASS: TestWordCount/handles_expanded_lists (0.00s)
+    --- PASS: TestWordCount/ignore_punctuation (0.00s)
+    --- PASS: TestWordCount/include_numbers (0.00s)
+    --- PASS: TestWordCount/normalize_case (0.00s)
+    --- PASS: TestWordCount/with_apostrophes (0.00s)
+    --- PASS: TestWordCount/with_quotations (0.00s)
+    --- PASS: TestWordCount/substrings_from_the_beginning (0.00s)
+    --- PASS: TestWordCount/multiple_spaces_not_detected_as_a_word (0.00s)
+    --- PASS: TestWordCount/alternating_word_separators_not_detected_as_a_word (0.00s)
+=== RUN   ExampleWordCount
+--- PASS: ExampleWordCount (0.00s)
 PASS
-ok  	wordcount	0.009s
+ok  	wordcount	0.002s
 
-real	0m0.480s
-user	0m0.622s
-sys	0m0.343s
+real	0m0.132s
+user	0m0.169s
+sys	0m0.125s
 
 ===============================================================================
-
-go install golang.org/x/perf/cmd/benchstat@latest
-
-real	0m0.786s
-user	0m0.703s
-sys	0m0.340s
 
 benchstat benchstat-old.txt benchstat-new.txt
-name         old time/op    new time/op    delta
-WordCount-4     491µs ± 0%     310µs ± 0%   ~     (p=1.000 n=1+1)
+benchstat-new.txt:5: missing iteration count
+goos: linux
+goarch: amd64
+pkg: wordcount
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+            │ benchstat-new.txt │
+            │      sec/op       │
+WordCount-8        116.8µ ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-name         old alloc/op   new alloc/op   delta
-WordCount-4    78.8kB ± 0%    86.1kB ± 0%   ~     (p=1.000 n=1+1)
+            │ benchstat-new.txt │
+            │       B/op        │
+WordCount-8       85.04Ki ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-name         old allocs/op  new allocs/op  delta
-WordCount-4     1.05k ± 0%     1.15k ± 0%   ~     (p=1.000 n=1+1)
+            │ benchstat-new.txt │
+            │     allocs/op     │
+WordCount-8        1.150k ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-real	0m0.023s
-user	0m0.008s
-sys	0m0.015s
+cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+            │ benchstat-old.txt │
+            │      sec/op       │
+WordCount-4        310.3µ ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-===============================================================================
+            │ benchstat-old.txt │
+            │       B/op        │
+WordCount-4       84.12Ki ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-go vet wordcount
+            │ benchstat-old.txt │
+            │     allocs/op     │
+WordCount-4        1.150k ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-real	0m0.301s
-user	0m0.376s
-sys	0m0.281s
-
-===============================================================================
-
-go fix wordcount
-
-real	0m0.151s
-user	0m0.129s
-sys	0m0.160s
-
-===============================================================================
-
-gosec ./word-count
-[gosec] 2022/07/24 00:40:44 Including rules: default
-[gosec] 2022/07/24 00:40:44 Excluding rules: default
-[gosec] 2022/07/24 00:40:44 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/word-count
-2022/07/24 00:40:45 internal error: package "regexp" without types was imported from "command-line-arguments"
-
-real	0m0.480s
-user	0m0.517s
-sys	0m0.397s
+real	0m0.002s
+user	0m0.001s
+sys	0m0.002s
 
 ===============================================================================
 
 gomarkdoc --output wordcount-doc.md
 
-real	0m0.029s
-user	0m0.022s
-sys	0m0.016s
+real	0m0.010s
+user	0m0.006s
+sys	0m0.005s
 
 ===============================================================================
 
@@ -213,9 +904,9 @@ func WordCount(phrase string) Frequency
     WordCount returns a frequency map for the words counts in the string.
 
 
-real	0m0.201s
-user	0m0.142s
-sys	0m0.200s
+real	0m0.049s
+user	0m0.030s
+sys	0m0.039s
 
 
 ===============================================================================

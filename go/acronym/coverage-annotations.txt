@@ -1,0 +1,39 @@
+
+11     	func Abbreviate(s string) string {
+12     		var a string
+13     	
+14     		// Since we can't use cases or language, we have to do some pre-processing.
+15     		reStr := `(["'_;:.]|[[:digit:]])`
+16     	
+17     		re, e := regexp.Compile(reStr)
+18     		if e != nil {
+19     			// the raw re string is static but you can still make mistakes, better
+20     			// to panic during tests than quietly "working" incorrectly.
+21 MISS			panic(e)
+22     		}
+23     	
+24     		a = re.ReplaceAllString(s, "")
+25     	
+26     		// Get the title converted string.
+27     		// Using deprecated function, the test harness doesn't run `go mod tidy` or
+28     		// it also lacks Internet access.
+29     		a = strings.ToLower(a)
+30     		a = strings.Title(a)
+31     	
+32     		// Thought about looping through the string to find uppercase letters,
+33     		// decided on just using regexp to remove everything else instead.
+34     		// I've tried using the strings IsSomething functions befoer and they're a mess.
+35     		reStr = `([[:lower:]]|[[:blank:]]|[[:punct:]])`
+36     	
+37     		re, e = regexp.Compile(reStr)
+38     		if e != nil {
+39     			// the raw re string is static but you can still make mistakes, better
+40     			// to panic during tests than quietly "working" incorrectly.
+41 MISS			panic(e)
+42     		}
+43     	
+44     		a = re.ReplaceAllString(a, "")
+45     	
+46     		return a
+47     	}
+

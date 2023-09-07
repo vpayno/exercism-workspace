@@ -5,16 +5,38 @@ Go packages: beer
 
 ===============================================================================
 
-golangci-lint run --enable-all ./...
-level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
-level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
-level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
-level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+Running: ../../.github/citools/go/go-lint-golangci-lint
+
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.027s
+user	0m0.025s
+sys	0m0.030s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
 level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
 level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
 level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
-level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
-level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
 level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
 beer_song_test.go:119:10: Error return value is not checked (errcheck)
 			Verses(tt.upperBound, tt.lowerBound)
@@ -109,28 +131,55 @@ package beer
 beer_song_test.go:1:9: package should be `beer_test` instead of `beer` (testpackage)
 package beer
         ^
-beer_song_test.go:50:6: variable name 'tt' is too short for the scope of its usage (varnamelen)
-	for _, tt := range verseTestCases {
-	    ^
 beer_song_test.go:89:6: variable name 'tt' is too short for the scope of its usage (varnamelen)
 	for _, tt := range versesTestCases {
 	    ^
+beer_song_test.go:50:6: variable name 'tt' is too short for the scope of its usage (varnamelen)
+	for _, tt := range verseTestCases {
+	    ^
 
-real	0m0.639s
-user	0m0.972s
-sys	0m0.454s
+real	0m0.481s
+user	0m0.699s
+sys	0m0.446s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.520s
+user	0m0.730s
+sys	0m0.485s
+
+real	0m0.521s
+user	0m0.731s
+sys	0m0.486s
 
 ===============================================================================
 
-golint ./...
+Running: ../../.github/citools/go/go-lint-revive
 
-real	0m0.006s
-user	0m0.003s
-sys	0m0.003s
+Running Go Lint Revive
 
-===============================================================================
+Go version:
 
-revive -formatter=stylish ./...
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.022s
+user	0m0.016s
+sys	0m0.029s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
 beer_song.go
   (51, 10)  https://revive.run/r#var-declaration  should omit type string from declaration of var fs1; it will be inferred from the right-hand side        
   (52, 10)  https://revive.run/r#var-declaration  should omit type string from declaration of var fs2; it will be inferred from the right-hand side        
@@ -139,72 +188,321 @@ beer_song.go
 
  ✖ 3 problems (0 errors) (3 warnings)
 
-real	0m0.038s
-user	0m0.019s
-sys	0m0.029s
+real	0m0.058s
+user	0m0.025s
+sys	0m0.047s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.091s
+user	0m0.052s
+sys	0m0.080s
+
+real	0m0.093s
+user	0m0.053s
+sys	0m0.081s
 
 ===============================================================================
 
-ineffassign ./...
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
 
-real	0m0.087s
-user	0m0.151s
-sys	0m0.127s
+real	0m0.001s
+user	0m0.000s
+sys	0m0.001s
 
 ===============================================================================
 
-go-consistent -v ./...
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.050s
+user	0m0.060s
+sys	0m0.035s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
 	info: check "./."
 internal error: package "errors" without types was imported from "beer"
 
-real	0m0.098s
-user	0m0.115s
-sys	0m0.108s
+real	0m0.087s
+user	0m0.118s
+sys	0m0.101s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.148s
+user	0m0.183s
+sys	0m0.145s
+
+real	0m0.149s
+user	0m0.184s
+sys	0m0.145s
 
 ===============================================================================
 
-staticcheck ./...
+Running: ../../.github/citools/go/go-lint-staticcheck
 
-real	0m0.171s
-user	0m0.229s
-sys	0m0.125s
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.030s
+user	0m0.029s
+sys	0m0.022s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+beer_song.go:51:10: should omit type string from declaration; it will be inferred from the right-hand side (ST1023)
+beer_song.go:52:10: should omit type string from declaration; it will be inferred from the right-hand side (ST1023)
+beer_song.go:53:16: should omit type string from declaration; it will be inferred from the right-hand side (ST1023)
+
+real	0m0.160s
+user	0m0.216s
+sys	0m0.126s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.202s
+user	0m0.255s
+sys	0m0.156s
+
+real	0m0.204s
+user	0m0.255s
+sys	0m0.157s
 
 ===============================================================================
 
-gocritic check -enableAll ./...
+Running: ../../.github/citools/go/go-lint-gocritic
 
-real	0m0.851s
-user	0m1.878s
-sys	0m0.381s
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.022s
+user	0m0.024s
+sys	0m0.020s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+
+real	0m0.799s
+user	0m1.917s
+sys	0m0.275s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.831s
+user	0m1.945s
+sys	0m0.305s
+
+real	0m0.832s
+user	0m1.945s
+sys	0m0.307s
 
 ===============================================================================
 
-go vet ./...
+Running: ../../.github/citools/go/go-lint-go_vet
 
-real	0m0.088s
-user	0m0.134s
-sys	0m0.109s
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.021s
+user	0m0.023s
+sys	0m0.016s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.083s
+user	0m0.136s
+sys	0m0.094s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.124s
+user	0m0.167s
+sys	0m0.130s
+
+real	0m0.126s
+user	0m0.168s
+sys	0m0.131s
 
 ===============================================================================
 
-go fix ./...
+Running: ../../.github/citools/go/go-fixer-go_fix
 
-real	0m0.037s
-user	0m0.034s
-sys	0m0.039s
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.031s
+user	0m0.027s
+sys	0m0.036s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.025s
+user	0m0.019s
+sys	0m0.025s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.069s
+user	0m0.051s
+sys	0m0.073s
+
+real	0m0.071s
+user	0m0.053s
+sys	0m0.074s
 
 ===============================================================================
 
-errcheck ./...
+Running: ../../.github/citools/go/go-lint-errcheck
+
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.025s
+user	0m0.022s
+sys	0m0.027s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
 beer_song_test.go:119:10:	Verses(tt.upperBound, tt.lowerBound)
 
-real	0m0.532s
-user	0m1.318s
-sys	0m0.395s
+real	0m0.444s
+user	0m1.309s
+sys	0m0.303s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.482s
+user	0m1.336s
+sys	0m0.341s
+
+real	0m0.484s
+user	0m1.337s
+sys	0m0.342s
 
 ===============================================================================
 
-gocyclo .
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.029s
+user	0m0.045s
+sys	0m0.022s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
 8 beer Verse beer_song.go:50:1
 6 beer TestSeveralVerses beer_song_test.go:87:1
 6 beer TestBottlesVerse beer_song_test.go:49:1
@@ -216,26 +514,86 @@ gocyclo .
 1 beer ExampleVerses beer_song_examples_test.go:27:1
 1 beer ExampleVerse beer_song_examples_test.go:7:1
 
-real	0m0.002s
-user	0m0.000s
+real	0m0.003s
+user	0m0.001s
 sys	0m0.002s
 
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.042s
+user	0m0.053s
+sys	0m0.031s
+
+real	0m0.044s
+user	0m0.054s
+sys	0m0.032s
+
 ===============================================================================
 
-misspell .
+Running: ../../.github/citools/go/go-lint-misspell
 
-real	0m0.025s
-user	0m0.027s
-sys	0m0.007s
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+
+real	0m0.028s
+user	0m0.037s
+sys	0m0.012s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.042s
+user	0m0.042s
+sys	0m0.026s
+
+real	0m0.045s
+user	0m0.044s
+sys	0m0.028s
 
 ===============================================================================
 
-gosec ./...
-[gosec] 2023/08/02 13:11:21 Including rules: default
-[gosec] 2023/08/02 13:11:21 Excluding rules: default
-[gosec] 2023/08/02 13:11:21 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/beer-song
-[gosec] 2023/08/02 13:11:21 Checking package: beer
-[gosec] 2023/08/02 13:11:21 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/beer-song/beer_song.go
+Running: ../../.github/citools/go/go-lint-gosec
+
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.031s
+user	0m0.036s
+sys	0m0.031s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:20:48 Including rules: default
+[gosec] 2023/09/07 00:20:48 Excluding rules: default
+[gosec] 2023/09/07 00:20:48 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/beer-song
+[gosec] 2023/09/07 00:20:48 Checking package: beer
+[gosec] 2023/09/07 00:20:48 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/beer-song/beer_song.go
 Results:
 
 
@@ -247,54 +605,96 @@ Results:
   Issues : [1;32m0[0m
 
 
-real	0m0.138s
-user	0m0.155s
-sys	0m0.126s
+real	0m0.118s
+user	0m0.125s
+sys	0m0.088s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.164s
+user	0m0.168s
+sys	0m0.133s
+
+real	0m0.165s
+user	0m0.170s
+sys	0m0.133s
 
 ===============================================================================
 
-gotest -v -covermode=count -coverprofile coverage.out ./...
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.041s
+user	0m0.044s
+sys	0m0.041s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
 === RUN   TestBottlesVerse
 --- PASS: TestBottlesVerse (0.00s)
 === RUN   TestSeveralVerses
 --- PASS: TestSeveralVerses (0.00s)
 === RUN   TestEntireSong
---- PASS: TestEntireSong (0.01s)
+--- PASS: TestEntireSong (0.00s)
 === RUN   ExampleVerse
 --- PASS: ExampleVerse (0.00s)
 === RUN   ExampleVerses
 --- PASS: ExampleVerses (0.00s)
 PASS
-	beer	coverage: 97.6% of statements
-ok  	beer	0.016s	coverage: 97.6% of statements
+coverage: 97.6% of statements
+ok  	beer	0.003s	coverage: 97.6% of statements
 
-real	0m0.267s
-user	0m0.282s
-sys	0m0.179s
+real	0m0.179s
+user	0m0.242s
+sys	0m0.152s
 
-===============================================================================
 
-go tool cover -func=coverage.out
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
 beer/beer_song.go:10:	Song		75.0%
 beer/beer_song.go:21:	Verses		100.0%
 beer/beer_song.go:50:	Verse		100.0%
 total:			(statements)	97.6%
 
-real	0m0.056s
-user	0m0.059s
-sys	0m0.064s
+real	0m0.055s
+user	0m0.080s
+sys	0m0.088s
 
-===============================================================================
 
-go tool cover -html coverage.out -o coverage.html
+ ==============================================================================
 
-real	0m0.061s
+Running: go tool cover -html coverage.out -o coverage.html
+
+
+real	0m0.063s
 user	0m0.065s
-sys	0m0.073s
+sys	0m0.059s
 
-===============================================================================
 
-gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+ ==============================================================================
+
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
 
 10     	func Song() string {
 11     		lyrics, e := Verses(99, 0)
@@ -307,30 +707,49 @@ gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annota
 18     	}
 
 
-real	0m0.244s
-user	0m0.109s
-sys	0m0.179s
+real	0m0.019s
+user	0m0.019s
+sys	0m0.025s
 
-===============================================================================
+real	0m0.020s
+user	0m0.019s
+sys	0m0.025s
 
-gotest -v -race -covermode=atomic ./...
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
 === RUN   TestBottlesVerse
 --- PASS: TestBottlesVerse (0.00s)
 === RUN   TestSeveralVerses
 --- PASS: TestSeveralVerses (0.00s)
 === RUN   TestEntireSong
---- PASS: TestEntireSong (0.01s)
+--- PASS: TestEntireSong (0.00s)
 === RUN   ExampleVerse
 --- PASS: ExampleVerse (0.00s)
 === RUN   ExampleVerses
 --- PASS: ExampleVerses (0.00s)
 PASS
-	beer	coverage: 97.6% of statements
-ok  	beer	0.044s	coverage: 97.6% of statements
+coverage: 97.6% of statements
+ok  	beer	1.022s	coverage: 97.6% of statements
 
-real	0m0.429s
-user	0m0.432s
-sys	0m0.278s
+real	0m1.236s
+user	0m0.280s
+sys	0m0.141s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.612s
+user	0m0.739s
+sys	0m0.524s
+
+real	0m1.614s
+user	0m0.740s
+sys	0m0.525s
 
 ===============================================================================
 
@@ -343,15 +762,15 @@ goarch: amd64
 pkg: beer
 cpu: 12th Gen Intel(R) Core(TM) i5-1240P
 BenchmarkSeveralVerses
-BenchmarkSeveralVerses-8   	    3228	    323315 ns/op	 1312432 B/op	    1037 allocs/op
+BenchmarkSeveralVerses-8   	    3944	    285156 ns/op	 1312498 B/op	    1038 allocs/op
 BenchmarkEntireSong
-BenchmarkEntireSong-8      	    5156	    195579 ns/op	  665279 B/op	     880 allocs/op
+BenchmarkEntireSong-8      	    6330	    192521 ns/op	  665309 B/op	     880 allocs/op
 PASS
-ok  	beer	2.125s
+ok  	beer	3.079s
 
-real	0m2.294s
-user	0m2.448s
-sys	0m0.602s
+real	0m3.228s
+user	0m3.625s
+sys	0m0.762s
 
 ===============================================================================
 
@@ -369,51 +788,57 @@ gotest -v -tags bonus
 PASS
 ok  	beer	0.004s
 
-real	0m0.161s
-user	0m0.215s
-sys	0m0.141s
+real	0m0.158s
+user	0m0.194s
+sys	0m0.196s
 
 ===============================================================================
 
 benchstat benchstat-old.txt benchstat-new.txt
+benchstat-old.txt:5: missing iteration count
+benchstat-old.txt:7: missing iteration count
 benchstat-new.txt:5: missing iteration count
 benchstat-new.txt:7: missing iteration count
 goos: linux
 goarch: amd64
 pkg: beer
 cpu: 12th Gen Intel(R) Core(TM) i5-1240P
-                │ benchstat-new.txt │
-                │      sec/op       │
-SeveralVerses-8        323.3µ ± ∞ ¹
-EntireSong-8           195.6µ ± ∞ ¹
-geomean                251.5µ
+                │ benchstat-old.txt │          benchstat-new.txt           │
+                │      sec/op       │    sec/op     vs base                │
+SeveralVerses-8        323.3µ ± ∞ ¹   285.2µ ± ∞ ¹       ~ (p=1.000 n=1) ²
+EntireSong-8           195.6µ ± ∞ ¹   192.5µ ± ∞ ¹       ~ (p=1.000 n=1) ²
+geomean                251.5µ         234.3µ        -6.82%
 ¹ need >= 6 samples for confidence interval at level 0.95
+² need >= 4 samples to detect a difference at alpha level 0.05
 
-                │ benchstat-new.txt │
-                │       B/op        │
-SeveralVerses-8       1.252Mi ± ∞ ¹
-EntireSong-8          649.7Ki ± ∞ ¹
-geomean               912.5Ki
+                │ benchstat-old.txt │           benchstat-new.txt           │
+                │       B/op        │     B/op       vs base                │
+SeveralVerses-8       1.252Mi ± ∞ ¹   1.252Mi ± ∞ ¹       ~ (p=1.000 n=1) ²
+EntireSong-8          649.7Ki ± ∞ ¹   649.7Ki ± ∞ ¹       ~ (p=1.000 n=1) ²
+geomean               912.5Ki         912.6Ki        +0.00%
 ¹ need >= 6 samples for confidence interval at level 0.95
+² need >= 4 samples to detect a difference at alpha level 0.05
 
-                │ benchstat-new.txt │
-                │     allocs/op     │
-SeveralVerses-8        1.037k ± ∞ ¹
-EntireSong-8            880.0 ± ∞ ¹
-geomean                 955.3
+                │ benchstat-old.txt │          benchstat-new.txt           │
+                │     allocs/op     │  allocs/op    vs base                │
+SeveralVerses-8        1.037k ± ∞ ¹   1.038k ± ∞ ¹       ~ (p=1.000 n=1) ²
+EntireSong-8            880.0 ± ∞ ¹    880.0 ± ∞ ¹       ~ (p=1.000 n=1) ³
+geomean                 955.3          955.7        +0.05%
 ¹ need >= 6 samples for confidence interval at level 0.95
+² need >= 4 samples to detect a difference at alpha level 0.05
+³ all samples are equal
 
-real	0m0.005s
-user	0m0.000s
-sys	0m0.004s
+real	0m0.002s
+user	0m0.002s
+sys	0m0.001s
 
 ===============================================================================
 
 gomarkdoc --output beer-doc.md
 
-real	0m0.013s
-user	0m0.003s
-sys	0m0.010s
+real	0m0.009s
+user	0m0.004s
+sys	0m0.005s
 
 ===============================================================================
 
@@ -434,9 +859,9 @@ func Verses(start, stop int) (string, error)
     Verses returns select verselyricss 99 Bottles of Beer on the Wall song.
 
 
-real	0m0.041s
-user	0m0.030s
-sys	0m0.039s
+real	0m0.036s
+user	0m0.020s
+sys	0m0.041s
 
 
 ===============================================================================

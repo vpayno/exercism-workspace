@@ -5,15 +5,597 @@ Go packages: meetup
 
 ===============================================================================
 
-golint meetup
+Running: ../../.github/citools/go/go-lint-golangci-lint
 
-real	0m0.220s
-user	0m0.178s
-sys	0m0.184s
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.027s
+user	0m0.019s
+sys	0m0.020s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+meetup_test.go:19: line is 124 characters (lll)
+				t.Errorf("Day(%q, %d, %d, %d) = %d, want: %d", weekName[tc.week], tc.weekday, tc.month, tc.year, actual, tc.expectedDay)
+meetup.go:43:11: var-declaration: should omit type time.Time from declaration of var date; it will be inferred from the right-hand side (revive)
+	var date time.Time = time.Date(t.Year(), t.Month(), 1, 12, 0, 0, 0, time.UTC)
+	         ^
+meetup.go:50:11: var-declaration: should omit type time.Time from declaration of var date; it will be inferred from the right-hand side (revive)
+	var date time.Time = time.Date(year, month, int(wSched), 12, 0, 0, 0, time.UTC)
+	         ^
+meetup.go:52:12: var-declaration: should omit type int from declaration of var start; it will be inferred from the right-hand side (revive)
+	var start int = 1 // starting calendar day for the search
+	          ^
+meetup.go:54:10: var-declaration: should omit type int from declaration of var end; it will be inferred from the right-hand side (revive)
+	var end int = getLastDayOfMonth(date)
+	        ^
+meetup_test.go:17:18: Using the variable on range scope `tc` in function literal (scopelint)
+			actual := Day(tc.week, tc.weekday, tc.month, tc.year)
+			              ^
+meetup_test.go:18:17: Using the variable on range scope `tc` in function literal (scopelint)
+			if actual != tc.expectedDay {
+			             ^
+meetup.go:53:2: declarations should never be cuddled (wsl)
+	var max int       // max number of matches
+	^
+meetup.go:69:2: declarations should never be cuddled (wsl)
+	var day int   // return value
+	^
+meetup_test.go:29:2: for statements should only be cuddled with assignments used in the iteration (wsl)
+	for i := 0; i < b.N; i++ {
+	^
+cases_test.go:8:5: testCases is a global variable (gochecknoglobals)
+var testCases = []struct {
+    ^
+meetup_test.go:5:5: weekName is a global variable (gochecknoglobals)
+var weekName = map[WeekSchedule]string{
+    ^
+meetup_test.go:14:1: Function TestDay missing the call to method parallel (paralleltest)
+func TestDay(t *testing.T) {
+^
+meetup_test.go:15:2: Range statement for test TestDay missing the call to method parallel in test Run (paralleltest)
+	for _, tc := range testCases {
+	^
+meetup.go:31:2: SA9004: only the first constant in this group has an explicit type (staticcheck)
+	First  WeekSchedule = 1  // number of matches
+	^
+cases_test.go:1:9: package should be `meetup_test` instead of `meetup` (testpackage)
+package meetup
+        ^
+meetup_examples_test.go:1:9: package should be `meetup_test` instead of `meetup` (testpackage)
+package meetup
+        ^
+meetup_test.go:1:9: package should be `meetup_test` instead of `meetup` (testpackage)
+package meetup
+        ^
+
+real	0m0.524s
+user	0m0.834s
+sys	0m0.500s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.569s
+user	0m0.858s
+sys	0m0.537s
+
+real	0m0.571s
+user	0m0.859s
+sys	0m0.539s
 
 ===============================================================================
 
-go test -v -covermode=count -coverprofile coverage.out meetup
+Running: ../../.github/citools/go/go-lint-revive
+
+Running Go Lint Revive
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.025s
+user	0m0.016s
+sys	0m0.020s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
+meetup.go
+  (52, 12)  https://revive.run/r#var-declaration  should omit type int from declaration of var start; it will be inferred from the right-hand side  
+  (54, 10)  https://revive.run/r#var-declaration  should omit type int from declaration of var end; it will be inferred from the right-hand side    
+
+
+ ✖ 2 problems (0 errors) (2 warnings)
+
+real	0m0.072s
+user	0m0.034s
+sys	0m0.059s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.110s
+user	0m0.057s
+sys	0m0.089s
+
+real	0m0.112s
+user	0m0.058s
+sys	0m0.090s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.001s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.035s
+user	0m0.017s
+sys	0m0.033s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
+	info: check "./."
+internal error: package "time" without types was imported from "meetup"
+
+real	0m0.099s
+user	0m0.130s
+sys	0m0.133s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.146s
+user	0m0.157s
+sys	0m0.173s
+
+real	0m0.149s
+user	0m0.159s
+sys	0m0.174s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-staticcheck
+
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.028s
+user	0m0.017s
+sys	0m0.020s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+meetup.go:31:2: only the first constant in this group has an explicit type (SA9004)
+meetup.go:43:11: should omit type time.Time from declaration; it will be inferred from the right-hand side (ST1023)
+meetup.go:50:11: should omit type time.Time from declaration; it will be inferred from the right-hand side (ST1023)
+meetup.go:52:12: should omit type int from declaration; it will be inferred from the right-hand side (ST1023)
+meetup.go:54:10: should omit type int from declaration; it will be inferred from the right-hand side (ST1023)
+
+real	0m0.167s
+user	0m0.208s
+sys	0m0.133s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.210s
+user	0m0.235s
+sys	0m0.164s
+
+real	0m0.212s
+user	0m0.237s
+sys	0m0.165s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocritic
+
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.020s
+user	0m0.013s
+sys	0m0.016s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+
+real	0m0.805s
+user	0m2.055s
+sys	0m0.279s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.836s
+user	0m2.073s
+sys	0m0.306s
+
+real	0m0.838s
+user	0m2.073s
+sys	0m0.308s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go_vet
+
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.021s
+user	0m0.017s
+sys	0m0.013s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.083s
+user	0m0.133s
+sys	0m0.106s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.115s
+user	0m0.157s
+sys	0m0.126s
+
+real	0m0.116s
+user	0m0.158s
+sys	0m0.127s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-fixer-go_fix
+
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.022s
+user	0m0.016s
+sys	0m0.016s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.031s
+user	0m0.025s
+sys	0m0.020s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.064s
+user	0m0.048s
+sys	0m0.044s
+
+real	0m0.066s
+user	0m0.049s
+sys	0m0.044s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-errcheck
+
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.025s
+user	0m0.016s
+sys	0m0.023s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+
+real	0m0.482s
+user	0m1.576s
+sys	0m0.320s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.528s
+user	0m1.598s
+sys	0m0.362s
+
+real	0m0.530s
+user	0m1.600s
+sys	0m0.363s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.030s
+user	0m0.017s
+sys	0m0.027s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
+7 meetup Day meetup.go:49:1
+4 meetup BenchmarkDay meetup_test.go:25:1
+3 meetup TestDay meetup_test.go:14:1
+1 meetup ExampleDay meetup_examples_test.go:19:1
+1 meetup getLastDayOfMonth meetup.go:41:1
+
+real	0m0.004s
+user	0m0.003s
+sys	0m0.002s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.047s
+user	0m0.026s
+sys	0m0.040s
+
+real	0m0.049s
+user	0m0.026s
+sys	0m0.042s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-misspell
+
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+
+real	0m0.042s
+user	0m0.046s
+sys	0m0.019s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.060s
+user	0m0.053s
+sys	0m0.040s
+
+real	0m0.064s
+user	0m0.055s
+sys	0m0.041s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gosec
+
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.034s
+user	0m0.025s
+sys	0m0.025s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:25:07 Including rules: default
+[gosec] 2023/09/07 00:25:07 Excluding rules: default
+[gosec] 2023/09/07 00:25:07 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/meetup
+[gosec] 2023/09/07 00:25:07 Checking package: meetup
+[gosec] 2023/09/07 00:25:07 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/meetup/meetup.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 89
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.102s
+user	0m0.102s
+sys	0m0.079s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.153s
+user	0m0.135s
+sys	0m0.118s
+
+real	0m0.156s
+user	0m0.135s
+sys	0m0.121s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.027s
+user	0m0.017s
+sys	0m0.024s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
 === RUN   TestDay
 === RUN   TestDay/when_teenth_Monday_is_the_13th,_the_first_day_of_the_teenth_week
 === RUN   TestDay/when_teenth_Monday_is_the_19th,_the_last_day_of_the_teenth_week
@@ -210,34 +792,55 @@ go test -v -covermode=count -coverprofile coverage.out meetup
 --- PASS: ExampleDay (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	meetup	0.019s	coverage: 100.0% of statements
+ok  	meetup	0.006s	coverage: 100.0% of statements
 
-real	0m0.928s
-user	0m0.920s
-sys	0m0.572s
+real	0m0.175s
+user	0m0.220s
+sys	0m0.137s
 
-===============================================================================
 
-go tool cover -func=coverage.out
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
 meetup/meetup.go:41:	getLastDayOfMonth	100.0%
 meetup/meetup.go:49:	Day			100.0%
 total:			(statements)		100.0%
 
-real	0m0.315s
-user	0m0.235s
-sys	0m0.252s
+real	0m0.059s
+user	0m0.054s
+sys	0m0.090s
 
-===============================================================================
 
-go tool cover -html coverage.out -o coverage.html
+ ==============================================================================
 
-real	0m0.204s
-user	0m0.162s
-sys	0m0.176s
+Running: go tool cover -html coverage.out -o coverage.html
 
-===============================================================================
 
-go test -v -race -covermode=atomic meetup
+real	0m0.047s
+user	0m0.056s
+sys	0m0.063s
+
+
+ ==============================================================================
+
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+real	0m0.019s
+user	0m0.012s
+sys	0m0.017s
+
+real	0m0.019s
+user	0m0.012s
+sys	0m0.017s
+
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
 === RUN   TestDay
 === RUN   TestDay/when_teenth_Monday_is_the_13th,_the_first_day_of_the_teenth_week
 === RUN   TestDay/when_teenth_Monday_is_the_19th,_the_last_day_of_the_teenth_week
@@ -334,7 +937,7 @@ go test -v -race -covermode=atomic meetup
 === RUN   TestDay/last_Wednesday_in_December_that_is_also_the_last_day_of_the_year
 === RUN   TestDay/when_last_Sunday_in_February_in_a_non-leap_year_is_not_the_29th
 === RUN   TestDay/when_first_Friday_is_the_7th,_the_last_day_of_the_first_week
---- PASS: TestDay (0.05s)
+--- PASS: TestDay (0.01s)
     --- PASS: TestDay/when_teenth_Monday_is_the_13th,_the_first_day_of_the_teenth_week (0.00s)
     --- PASS: TestDay/when_teenth_Monday_is_the_19th,_the_last_day_of_the_teenth_week (0.00s)
     --- PASS: TestDay/when_teenth_Monday_is_some_day_in_the_middle_of_the_teenth_week (0.00s)
@@ -434,76 +1037,298 @@ go test -v -race -covermode=atomic meetup
 --- PASS: ExampleDay (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	meetup	0.092s	coverage: 100.0% of statements
+ok  	meetup	1.029s	coverage: 100.0% of statements
 
-real	0m1.437s
-user	0m1.397s
-sys	0m0.718s
+real	0m1.320s
+user	0m0.349s
+sys	0m0.201s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.660s
+user	0m0.714s
+sys	0m0.543s
+
+real	0m1.663s
+user	0m0.714s
+sys	0m0.547s
 
 ===============================================================================
 
-go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+mv -v benchstat-new.txt benchstat-old.txt
+renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
+
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 goos: linux
 goarch: amd64
 pkg: meetup
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+BenchmarkDay
+BenchmarkDay-8   	   56248	     22457 ns/op	       0 B/op	       0 allocs/op
+PASS
+ok  	meetup	1.486s
+
+real	0m1.657s
+user	0m1.731s
+sys	0m0.187s
+
+===============================================================================
+
+gotest -v -tags bonus
+=== RUN   TestDay
+=== RUN   TestDay/when_teenth_Monday_is_the_13th,_the_first_day_of_the_teenth_week
+=== RUN   TestDay/when_teenth_Monday_is_the_19th,_the_last_day_of_the_teenth_week
+=== RUN   TestDay/when_teenth_Monday_is_some_day_in_the_middle_of_the_teenth_week
+=== RUN   TestDay/when_teenth_Tuesday_is_the_19th,_the_last_day_of_the_teenth_week
+=== RUN   TestDay/when_teenth_Tuesday_is_some_day_in_the_middle_of_the_teenth_week
+=== RUN   TestDay/when_teenth_Tuesday_is_the_13th,_the_first_day_of_the_teenth_week
+=== RUN   TestDay/when_teenth_Wednesday_is_some_day_in_the_middle_of_the_teenth_week
+=== RUN   TestDay/when_teenth_Wednesday_is_the_13th,_the_first_day_of_the_teenth_week
+=== RUN   TestDay/when_teenth_Wednesday_is_the_19th,_the_last_day_of_the_teenth_week
+=== RUN   TestDay/when_teenth_Thursday_is_some_day_in_the_middle_of_the_teenth_week
+=== RUN   TestDay/when_teenth_Thursday_is_the_13th,_the_first_day_of_the_teenth_week
+=== RUN   TestDay/when_teenth_Thursday_is_the_19th,_the_last_day_of_the_teenth_week
+=== RUN   TestDay/when_teenth_Friday_is_the_19th,_the_last_day_of_the_teenth_week
+=== RUN   TestDay/when_teenth_Friday_is_some_day_in_the_middle_of_the_teenth_week
+=== RUN   TestDay/when_teenth_Friday_is_the_13th,_the_first_day_of_the_teenth_week
+=== RUN   TestDay/when_teenth_Saturday_is_some_day_in_the_middle_of_the_teenth_week
+=== RUN   TestDay/when_teenth_Saturday_is_the_13th,_the_first_day_of_the_teenth_week
+=== RUN   TestDay/when_teenth_Saturday_is_the_19th,_the_last_day_of_the_teenth_week
+=== RUN   TestDay/when_teenth_Sunday_is_the_19th,_the_last_day_of_the_teenth_week
+=== RUN   TestDay/when_teenth_Sunday_is_some_day_in_the_middle_of_the_teenth_week
+=== RUN   TestDay/when_teenth_Sunday_is_the_13th,_the_first_day_of_the_teenth_week
+=== RUN   TestDay/when_first_Monday_is_some_day_in_the_middle_of_the_first_week
+=== RUN   TestDay/when_first_Monday_is_the_1st,_the_first_day_of_the_first_week
+=== RUN   TestDay/when_first_Tuesday_is_the_7th,_the_last_day_of_the_first_week
+=== RUN   TestDay/when_first_Tuesday_is_some_day_in_the_middle_of_the_first_week
+=== RUN   TestDay/when_first_Wednesday_is_some_day_in_the_middle_of_the_first_week
+=== RUN   TestDay/when_first_Wednesday_is_the_7th,_the_last_day_of_the_first_week
+=== RUN   TestDay/when_first_Thursday_is_some_day_in_the_middle_of_the_first_week
+=== RUN   TestDay/when_first_Thursday_is_another_day_in_the_middle_of_the_first_week
+=== RUN   TestDay/when_first_Friday_is_the_1st,_the_first_day_of_the_first_week
+=== RUN   TestDay/when_first_Friday_is_some_day_in_the_middle_of_the_first_week
+=== RUN   TestDay/when_first_Saturday_is_some_day_in_the_middle_of_the_first_week
+=== RUN   TestDay/when_first_Saturday_is_another_day_in_the_middle_of_the_first_week
+=== RUN   TestDay/when_first_Sunday_is_some_day_in_the_middle_of_the_first_week
+=== RUN   TestDay/when_first_Sunday_is_the_7th,_the_last_day_of_the_first_week
+=== RUN   TestDay/when_second_Monday_is_some_day_in_the_middle_of_the_second_week
+=== RUN   TestDay/when_second_Monday_is_the_8th,_the_first_day_of_the_second_week
+=== RUN   TestDay/when_second_Tuesday_is_the_14th,_the_last_day_of_the_second_week
+=== RUN   TestDay/when_second_Tuesday_is_some_day_in_the_middle_of_the_second_week
+=== RUN   TestDay/when_second_Wednesday_is_some_day_in_the_middle_of_the_second_week
+=== RUN   TestDay/when_second_Wednesday_is_the_14th,_the_last_day_of_the_second_week
+=== RUN   TestDay/when_second_Thursday_is_some_day_in_the_middle_of_the_second_week
+=== RUN   TestDay/when_second_Thursday_is_another_day_in_the_middle_of_the_second_week
+=== RUN   TestDay/when_second_Friday_is_the_8th,_the_first_day_of_the_second_week
+=== RUN   TestDay/when_second_Friday_is_some_day_in_the_middle_of_the_second_week
+=== RUN   TestDay/when_second_Saturday_is_some_day_in_the_middle_of_the_second_week
+=== RUN   TestDay/when_second_Saturday_is_another_day_in_the_middle_of_the_second_week
+=== RUN   TestDay/when_second_Sunday_is_some_day_in_the_middle_of_the_second_week
+=== RUN   TestDay/when_second_Sunday_is_the_14th,_the_last_day_of_the_second_week
+=== RUN   TestDay/when_third_Monday_is_some_day_in_the_middle_of_the_third_week
+=== RUN   TestDay/when_third_Monday_is_the_15th,_the_first_day_of_the_third_week
+=== RUN   TestDay/when_third_Tuesday_is_the_21st,_the_last_day_of_the_third_week
+=== RUN   TestDay/when_third_Tuesday_is_some_day_in_the_middle_of_the_third_week
+=== RUN   TestDay/when_third_Wednesday_is_some_day_in_the_middle_of_the_third_week
+=== RUN   TestDay/when_third_Wednesday_is_the_21st,_the_last_day_of_the_third_week
+=== RUN   TestDay/when_third_Thursday_is_some_day_in_the_middle_of_the_third_week
+=== RUN   TestDay/when_third_Thursday_is_another_day_in_the_middle_of_the_third_week
+=== RUN   TestDay/when_third_Friday_is_the_15th,_the_first_day_of_the_third_week
+=== RUN   TestDay/when_third_Friday_is_some_day_in_the_middle_of_the_third_week
+=== RUN   TestDay/when_third_Saturday_is_some_day_in_the_middle_of_the_third_week
+=== RUN   TestDay/when_third_Saturday_is_another_day_in_the_middle_of_the_third_week
+=== RUN   TestDay/when_third_Sunday_is_some_day_in_the_middle_of_the_third_week
+=== RUN   TestDay/when_third_Sunday_is_the_21st,_the_last_day_of_the_third_week
+=== RUN   TestDay/when_fourth_Monday_is_some_day_in_the_middle_of_the_fourth_week
+=== RUN   TestDay/when_fourth_Monday_is_the_22nd,_the_first_day_of_the_fourth_week
+=== RUN   TestDay/when_fourth_Tuesday_is_the_28th,_the_last_day_of_the_fourth_week
+=== RUN   TestDay/when_fourth_Tuesday_is_some_day_in_the_middle_of_the_fourth_week
+=== RUN   TestDay/when_fourth_Wednesday_is_some_day_in_the_middle_of_the_fourth_week
+=== RUN   TestDay/when_fourth_Wednesday_is_the_28th,_the_last_day_of_the_fourth_week
+=== RUN   TestDay/when_fourth_Thursday_is_some_day_in_the_middle_of_the_fourth_week
+=== RUN   TestDay/when_fourth_Thursday_is_another_day_in_the_middle_of_the_fourth_week
+=== RUN   TestDay/when_fourth_Friday_is_the_22nd,_the_first_day_of_the_fourth_week
+=== RUN   TestDay/when_fourth_Friday_is_some_day_in_the_middle_of_the_fourth_week
+=== RUN   TestDay/when_fourth_Saturday_is_some_day_in_the_middle_of_the_fourth_week
+=== RUN   TestDay/when_fourth_Saturday_is_another_day_in_the_middle_of_the_fourth_week
+=== RUN   TestDay/when_fourth_Sunday_is_some_day_in_the_middle_of_the_fourth_week
+=== RUN   TestDay/when_fourth_Sunday_is_the_28th,_the_last_day_of_the_fourth_week
+=== RUN   TestDay/last_Monday_in_a_month_with_four_Mondays
+=== RUN   TestDay/last_Monday_in_a_month_with_five_Mondays
+=== RUN   TestDay/last_Tuesday_in_a_month_with_four_Tuesdays
+=== RUN   TestDay/last_Tuesday_in_another_month_with_four_Tuesdays
+=== RUN   TestDay/last_Wednesday_in_a_month_with_five_Wednesdays
+=== RUN   TestDay/last_Wednesday_in_a_month_with_four_Wednesdays
+=== RUN   TestDay/last_Thursday_in_a_month_with_four_Thursdays
+=== RUN   TestDay/last_Thursday_in_a_month_with_five_Thursdays
+=== RUN   TestDay/last_Friday_in_a_month_with_five_Fridays
+=== RUN   TestDay/last_Friday_in_a_month_with_four_Fridays
+=== RUN   TestDay/last_Saturday_in_a_month_with_four_Saturdays
+=== RUN   TestDay/last_Saturday_in_another_month_with_four_Saturdays
+=== RUN   TestDay/last_Sunday_in_a_month_with_five_Sundays
+=== RUN   TestDay/last_Sunday_in_a_month_with_four_Sundays
+=== RUN   TestDay/when_last_Wednesday_in_February_in_a_leap_year_is_the_29th
+=== RUN   TestDay/last_Wednesday_in_December_that_is_also_the_last_day_of_the_year
+=== RUN   TestDay/when_last_Sunday_in_February_in_a_non-leap_year_is_not_the_29th
+=== RUN   TestDay/when_first_Friday_is_the_7th,_the_last_day_of_the_first_week
+--- PASS: TestDay (0.00s)
+    --- PASS: TestDay/when_teenth_Monday_is_the_13th,_the_first_day_of_the_teenth_week (0.00s)
+    --- PASS: TestDay/when_teenth_Monday_is_the_19th,_the_last_day_of_the_teenth_week (0.00s)
+    --- PASS: TestDay/when_teenth_Monday_is_some_day_in_the_middle_of_the_teenth_week (0.00s)
+    --- PASS: TestDay/when_teenth_Tuesday_is_the_19th,_the_last_day_of_the_teenth_week (0.00s)
+    --- PASS: TestDay/when_teenth_Tuesday_is_some_day_in_the_middle_of_the_teenth_week (0.00s)
+    --- PASS: TestDay/when_teenth_Tuesday_is_the_13th,_the_first_day_of_the_teenth_week (0.00s)
+    --- PASS: TestDay/when_teenth_Wednesday_is_some_day_in_the_middle_of_the_teenth_week (0.00s)
+    --- PASS: TestDay/when_teenth_Wednesday_is_the_13th,_the_first_day_of_the_teenth_week (0.00s)
+    --- PASS: TestDay/when_teenth_Wednesday_is_the_19th,_the_last_day_of_the_teenth_week (0.00s)
+    --- PASS: TestDay/when_teenth_Thursday_is_some_day_in_the_middle_of_the_teenth_week (0.00s)
+    --- PASS: TestDay/when_teenth_Thursday_is_the_13th,_the_first_day_of_the_teenth_week (0.00s)
+    --- PASS: TestDay/when_teenth_Thursday_is_the_19th,_the_last_day_of_the_teenth_week (0.00s)
+    --- PASS: TestDay/when_teenth_Friday_is_the_19th,_the_last_day_of_the_teenth_week (0.00s)
+    --- PASS: TestDay/when_teenth_Friday_is_some_day_in_the_middle_of_the_teenth_week (0.00s)
+    --- PASS: TestDay/when_teenth_Friday_is_the_13th,_the_first_day_of_the_teenth_week (0.00s)
+    --- PASS: TestDay/when_teenth_Saturday_is_some_day_in_the_middle_of_the_teenth_week (0.00s)
+    --- PASS: TestDay/when_teenth_Saturday_is_the_13th,_the_first_day_of_the_teenth_week (0.00s)
+    --- PASS: TestDay/when_teenth_Saturday_is_the_19th,_the_last_day_of_the_teenth_week (0.00s)
+    --- PASS: TestDay/when_teenth_Sunday_is_the_19th,_the_last_day_of_the_teenth_week (0.00s)
+    --- PASS: TestDay/when_teenth_Sunday_is_some_day_in_the_middle_of_the_teenth_week (0.00s)
+    --- PASS: TestDay/when_teenth_Sunday_is_the_13th,_the_first_day_of_the_teenth_week (0.00s)
+    --- PASS: TestDay/when_first_Monday_is_some_day_in_the_middle_of_the_first_week (0.00s)
+    --- PASS: TestDay/when_first_Monday_is_the_1st,_the_first_day_of_the_first_week (0.00s)
+    --- PASS: TestDay/when_first_Tuesday_is_the_7th,_the_last_day_of_the_first_week (0.00s)
+    --- PASS: TestDay/when_first_Tuesday_is_some_day_in_the_middle_of_the_first_week (0.00s)
+    --- PASS: TestDay/when_first_Wednesday_is_some_day_in_the_middle_of_the_first_week (0.00s)
+    --- PASS: TestDay/when_first_Wednesday_is_the_7th,_the_last_day_of_the_first_week (0.00s)
+    --- PASS: TestDay/when_first_Thursday_is_some_day_in_the_middle_of_the_first_week (0.00s)
+    --- PASS: TestDay/when_first_Thursday_is_another_day_in_the_middle_of_the_first_week (0.00s)
+    --- PASS: TestDay/when_first_Friday_is_the_1st,_the_first_day_of_the_first_week (0.00s)
+    --- PASS: TestDay/when_first_Friday_is_some_day_in_the_middle_of_the_first_week (0.00s)
+    --- PASS: TestDay/when_first_Saturday_is_some_day_in_the_middle_of_the_first_week (0.00s)
+    --- PASS: TestDay/when_first_Saturday_is_another_day_in_the_middle_of_the_first_week (0.00s)
+    --- PASS: TestDay/when_first_Sunday_is_some_day_in_the_middle_of_the_first_week (0.00s)
+    --- PASS: TestDay/when_first_Sunday_is_the_7th,_the_last_day_of_the_first_week (0.00s)
+    --- PASS: TestDay/when_second_Monday_is_some_day_in_the_middle_of_the_second_week (0.00s)
+    --- PASS: TestDay/when_second_Monday_is_the_8th,_the_first_day_of_the_second_week (0.00s)
+    --- PASS: TestDay/when_second_Tuesday_is_the_14th,_the_last_day_of_the_second_week (0.00s)
+    --- PASS: TestDay/when_second_Tuesday_is_some_day_in_the_middle_of_the_second_week (0.00s)
+    --- PASS: TestDay/when_second_Wednesday_is_some_day_in_the_middle_of_the_second_week (0.00s)
+    --- PASS: TestDay/when_second_Wednesday_is_the_14th,_the_last_day_of_the_second_week (0.00s)
+    --- PASS: TestDay/when_second_Thursday_is_some_day_in_the_middle_of_the_second_week (0.00s)
+    --- PASS: TestDay/when_second_Thursday_is_another_day_in_the_middle_of_the_second_week (0.00s)
+    --- PASS: TestDay/when_second_Friday_is_the_8th,_the_first_day_of_the_second_week (0.00s)
+    --- PASS: TestDay/when_second_Friday_is_some_day_in_the_middle_of_the_second_week (0.00s)
+    --- PASS: TestDay/when_second_Saturday_is_some_day_in_the_middle_of_the_second_week (0.00s)
+    --- PASS: TestDay/when_second_Saturday_is_another_day_in_the_middle_of_the_second_week (0.00s)
+    --- PASS: TestDay/when_second_Sunday_is_some_day_in_the_middle_of_the_second_week (0.00s)
+    --- PASS: TestDay/when_second_Sunday_is_the_14th,_the_last_day_of_the_second_week (0.00s)
+    --- PASS: TestDay/when_third_Monday_is_some_day_in_the_middle_of_the_third_week (0.00s)
+    --- PASS: TestDay/when_third_Monday_is_the_15th,_the_first_day_of_the_third_week (0.00s)
+    --- PASS: TestDay/when_third_Tuesday_is_the_21st,_the_last_day_of_the_third_week (0.00s)
+    --- PASS: TestDay/when_third_Tuesday_is_some_day_in_the_middle_of_the_third_week (0.00s)
+    --- PASS: TestDay/when_third_Wednesday_is_some_day_in_the_middle_of_the_third_week (0.00s)
+    --- PASS: TestDay/when_third_Wednesday_is_the_21st,_the_last_day_of_the_third_week (0.00s)
+    --- PASS: TestDay/when_third_Thursday_is_some_day_in_the_middle_of_the_third_week (0.00s)
+    --- PASS: TestDay/when_third_Thursday_is_another_day_in_the_middle_of_the_third_week (0.00s)
+    --- PASS: TestDay/when_third_Friday_is_the_15th,_the_first_day_of_the_third_week (0.00s)
+    --- PASS: TestDay/when_third_Friday_is_some_day_in_the_middle_of_the_third_week (0.00s)
+    --- PASS: TestDay/when_third_Saturday_is_some_day_in_the_middle_of_the_third_week (0.00s)
+    --- PASS: TestDay/when_third_Saturday_is_another_day_in_the_middle_of_the_third_week (0.00s)
+    --- PASS: TestDay/when_third_Sunday_is_some_day_in_the_middle_of_the_third_week (0.00s)
+    --- PASS: TestDay/when_third_Sunday_is_the_21st,_the_last_day_of_the_third_week (0.00s)
+    --- PASS: TestDay/when_fourth_Monday_is_some_day_in_the_middle_of_the_fourth_week (0.00s)
+    --- PASS: TestDay/when_fourth_Monday_is_the_22nd,_the_first_day_of_the_fourth_week (0.00s)
+    --- PASS: TestDay/when_fourth_Tuesday_is_the_28th,_the_last_day_of_the_fourth_week (0.00s)
+    --- PASS: TestDay/when_fourth_Tuesday_is_some_day_in_the_middle_of_the_fourth_week (0.00s)
+    --- PASS: TestDay/when_fourth_Wednesday_is_some_day_in_the_middle_of_the_fourth_week (0.00s)
+    --- PASS: TestDay/when_fourth_Wednesday_is_the_28th,_the_last_day_of_the_fourth_week (0.00s)
+    --- PASS: TestDay/when_fourth_Thursday_is_some_day_in_the_middle_of_the_fourth_week (0.00s)
+    --- PASS: TestDay/when_fourth_Thursday_is_another_day_in_the_middle_of_the_fourth_week (0.00s)
+    --- PASS: TestDay/when_fourth_Friday_is_the_22nd,_the_first_day_of_the_fourth_week (0.00s)
+    --- PASS: TestDay/when_fourth_Friday_is_some_day_in_the_middle_of_the_fourth_week (0.00s)
+    --- PASS: TestDay/when_fourth_Saturday_is_some_day_in_the_middle_of_the_fourth_week (0.00s)
+    --- PASS: TestDay/when_fourth_Saturday_is_another_day_in_the_middle_of_the_fourth_week (0.00s)
+    --- PASS: TestDay/when_fourth_Sunday_is_some_day_in_the_middle_of_the_fourth_week (0.00s)
+    --- PASS: TestDay/when_fourth_Sunday_is_the_28th,_the_last_day_of_the_fourth_week (0.00s)
+    --- PASS: TestDay/last_Monday_in_a_month_with_four_Mondays (0.00s)
+    --- PASS: TestDay/last_Monday_in_a_month_with_five_Mondays (0.00s)
+    --- PASS: TestDay/last_Tuesday_in_a_month_with_four_Tuesdays (0.00s)
+    --- PASS: TestDay/last_Tuesday_in_another_month_with_four_Tuesdays (0.00s)
+    --- PASS: TestDay/last_Wednesday_in_a_month_with_five_Wednesdays (0.00s)
+    --- PASS: TestDay/last_Wednesday_in_a_month_with_four_Wednesdays (0.00s)
+    --- PASS: TestDay/last_Thursday_in_a_month_with_four_Thursdays (0.00s)
+    --- PASS: TestDay/last_Thursday_in_a_month_with_five_Thursdays (0.00s)
+    --- PASS: TestDay/last_Friday_in_a_month_with_five_Fridays (0.00s)
+    --- PASS: TestDay/last_Friday_in_a_month_with_four_Fridays (0.00s)
+    --- PASS: TestDay/last_Saturday_in_a_month_with_four_Saturdays (0.00s)
+    --- PASS: TestDay/last_Saturday_in_another_month_with_four_Saturdays (0.00s)
+    --- PASS: TestDay/last_Sunday_in_a_month_with_five_Sundays (0.00s)
+    --- PASS: TestDay/last_Sunday_in_a_month_with_four_Sundays (0.00s)
+    --- PASS: TestDay/when_last_Wednesday_in_February_in_a_leap_year_is_the_29th (0.00s)
+    --- PASS: TestDay/last_Wednesday_in_December_that_is_also_the_last_day_of_the_year (0.00s)
+    --- PASS: TestDay/when_last_Sunday_in_February_in_a_non-leap_year_is_not_the_29th (0.00s)
+    --- PASS: TestDay/when_first_Friday_is_the_7th,_the_last_day_of_the_first_week (0.00s)
+=== RUN   ExampleDay
+--- PASS: ExampleDay (0.00s)
+PASS
+ok  	meetup	0.003s
+
+real	0m0.162s
+user	0m0.188s
+sys	0m0.148s
+
+===============================================================================
+
+benchstat benchstat-old.txt benchstat-new.txt
+benchstat-new.txt:5: missing iteration count
+goos: linux
+goarch: amd64
+pkg: meetup
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+      │ benchstat-new.txt │
+      │      sec/op       │
+Day-8        22.46µ ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
+
+      │ benchstat-new.txt │
+      │       B/op        │
+Day-8         0.000 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
+
+      │ benchstat-new.txt │
+      │     allocs/op     │
+Day-8         0.000 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
+
 cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
-BenchmarkDay-4   	   21916	     54720 ns/op	       0 B/op	       0 allocs/op
-PASS
-ok  	meetup	1.797s
+      │ benchstat-old.txt │
+      │      sec/op       │
+Day-4        54.72µ ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-real	0m2.590s
-user	0m2.813s
-sys	0m0.624s
+      │ benchstat-old.txt │
+      │       B/op        │
+Day-4         0.000 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-===============================================================================
+      │ benchstat-old.txt │
+      │     allocs/op     │
+Day-4         0.000 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-go test -tags bonus
-PASS
-ok  	meetup	0.007s
-
-real	0m0.512s
-user	0m0.597s
-sys	0m0.396s
-
-===============================================================================
-
-No old benchmarks to run benchstat against.
-
-===============================================================================
-
-go vet meetup
-
-real	0m0.386s
-user	0m0.396s
-sys	0m0.367s
-
-===============================================================================
-
-go fix meetup
-
-real	0m0.158s
-user	0m0.149s
-sys	0m0.094s
-
-===============================================================================
-
-gosec ./meetup
-[gosec] 2022/07/23 22:57:20 Including rules: default
-[gosec] 2022/07/23 22:57:20 Excluding rules: default
-[gosec] 2022/07/23 22:57:20 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/meetup
-2022/07/23 22:57:21 internal error: package "time" without types was imported from "command-line-arguments"
-
-real	0m0.400s
-user	0m0.383s
-sys	0m0.301s
+real	0m0.003s
+user	0m0.000s
+sys	0m0.003s
 
 ===============================================================================
 
 gomarkdoc --output meetup-doc.md
 
-real	0m0.055s
-user	0m0.043s
-sys	0m0.026s
+real	0m0.015s
+user	0m0.007s
+sys	0m0.008s
 
 ===============================================================================
 
@@ -515,12 +1340,12 @@ Package meetup is used to calculate the days a Meetup meets.
 CONSTANTS
 
 const (
-	First  WeekSchedule = 1
-	Second              = 2
-	Third               = 3
-	Fourth              = 4
-	Teenth              = 13
-	Last                = 6
+	First  WeekSchedule = 1  // number of matches
+	Second              = 2  // number of matches
+	Third               = 3  // number of matches
+	Fourth              = 4  // number of matches
+	Teenth              = 13 // start search on this day
+	Last                = 6  // number of matches
 )
     WeekSchedule enum values.
 
@@ -537,9 +1362,9 @@ type WeekSchedule int
     WeekSchedule enum for making requests for the day we're looking for.
 
 
-real	0m0.192s
-user	0m0.101s
-sys	0m0.162s
+real	0m0.039s
+user	0m0.023s
+sys	0m0.030s
 
 
 ===============================================================================

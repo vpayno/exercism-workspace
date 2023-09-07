@@ -6,7 +6,7 @@
 import "allyourbase"
 ```
 
-Package allyourbase is used to convert from any base to any other base\.
+Package allyourbase is used to convert from any base to any other base.
 
 ## Index
 
@@ -23,7 +23,7 @@ Package allyourbase is used to convert from any base to any other base\.
 func ConvertFromBase10(outputBase int, inputNum int) []int
 ```
 
-ConvertFromBase10 returns a base x number\. It didn't make sense to pass the functions an int slice so I'm hiding that part of the algorithm in the function\.
+ConvertFromBase10 returns a base x number. It didn't make sense to pass the functions an int slice so I'm hiding that part of the algorithm in the function.
 
 <details><summary>Example</summary>
 <p>
@@ -55,7 +55,7 @@ number: []int{1, 0, 1}, base: 2
 func ConvertIntToIntList(num int) []int
 ```
 
-ConvertIntToIntList returns a list of intergers for the passed int\.
+ConvertIntToIntList returns a list of intergers for the passed int.
 
 ## func [ConvertStrToIntList](<https://github.com/vpayno/exercism-workspace/blob/main/go/all-your-base/all_your_base.go#L108>)
 
@@ -63,7 +63,7 @@ ConvertIntToIntList returns a list of intergers for the passed int\.
 func ConvertStrToIntList(inputStr string) []int
 ```
 
-ConvertStrToIntList returns a list of intergers for the passed string\.
+ConvertStrToIntList returns a list of intergers for the passed string.
 
 <details><summary>Example</summary>
 <p>
@@ -94,7 +94,7 @@ list: []int{1, 2, 3, 4, 5}
 func ConvertToBase(inputBase int, inputDigits []int, outputBase int) ([]int, error)
 ```
 
-ConvertToBase returns an integer slice of converted numbers\.
+ConvertToBase returns an integer slice of converted numbers.
 
 <details><summary>Example</summary>
 <p>
@@ -123,7 +123,7 @@ base 2 [1 0 1] to base 10 [5]
 func ConvertToBase10(inputBase int, inputDigits []int) int
 ```
 
-ConvertToBase10 returns a base 10 number\.
+ConvertToBase10 returns a base 10 number.
 
 <details><summary>Example</summary>
 <p>

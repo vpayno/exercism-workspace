@@ -5,22 +5,607 @@ Go packages: purchase
 
 ===============================================================================
 
-golint purchase
+Running: ../../.github/citools/go/go-lint-golangci-lint
 
-real	0m0.248s
-user	0m0.220s
-sys	0m0.238s
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.035s
+user	0m0.026s
+sys	0m0.035s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+vehicle_purchase.go:38:2: ifElseChain: rewrite if-else to switch statement (gocritic)
+	if age < 3 {
+	^
+vehicle_purchase.go:7: line is 124 characters (lll)
+// NeedsLicense determines whether a license is needed to drive a type of vehicle. Only "car" and "truck" require a license.
+vehicle_purchase.go:21: line is 128 characters (lll)
+// ChooseVehicle recommends a vehicle for selection. It always recommends the vehicle that comes first in lexicographical order.
+vehicle_purchase_test.go:81:20: `Bergamont` is a misspelling of `Bergamot` (misspell)
+			choice1:  "2018 Bergamont City",
+			                ^
+vehicle_purchase_test.go:83:20: `Bergamont` is a misspelling of `Bergamot` (misspell)
+			expected: "2018 Bergamont City is clearly the better choice.",
+			                ^
+vehicle_purchase_test.go:45:27: Using the variable on range scope `test` in function literal (scopelint)
+			actual := NeedsLicense(test.kind)
+			                       ^
+vehicle_purchase_test.go:46:17: Using the variable on range scope `test` in function literal (scopelint)
+			if actual != test.expected {
+			             ^
+vehicle_purchase_test.go:49:6: Using the variable on range scope `test` in function literal (scopelint)
+					test.kind,
+					^
+vehicle_purchase_test.go:181:2: return statements should not be cuddled if block has more than two lines (wsl)
+	return absoluteDifferenceBelowThreshold || relativeDifferenceBelowThreshold
+	^
+vehicle_purchase_test.go:10:1: Function TestNeedsLicense missing the call to method parallel (paralleltest)
+func TestNeedsLicense(t *testing.T) {
+^
+vehicle_purchase_test.go:43:2: Range statement for test TestNeedsLicense missing the call to method parallel in test Run (paralleltest)
+	for _, test := range tests {
+	^
+vehicle_purchase_test.go:57:1: Function TestChooseVehicle missing the call to method parallel (paralleltest)
+func TestChooseVehicle(t *testing.T) {
+^
+vehicle_purchase_test.go:92:2: Range statement for test TestChooseVehicle missing the call to method parallel in test Run (paralleltest)
+	for _, test := range tests {
+	^
+vehicle_purchase_test.go:118:1: Function TestCalculateResellPrice missing the call to method parallel (paralleltest)
+func TestCalculateResellPrice(t *testing.T) {
+^
+vehicle_purchase_test.go:163:2: Range statement for test TestCalculateResellPrice missing the call to method parallel in test Run (paralleltest)
+	for _, test := range tests {
+	^
+vehicle_purchase_examples_test.go:1:9: package should be `purchase_test` instead of `purchase` (testpackage)
+package purchase
+        ^
+vehicle_purchase_test.go:1:9: package should be `purchase_test` instead of `purchase` (testpackage)
+package purchase
+        ^
+
+real	0m0.473s
+user	0m0.662s
+sys	0m0.428s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.529s
+user	0m0.696s
+sys	0m0.482s
+
+real	0m0.533s
+user	0m0.698s
+sys	0m0.485s
 
 ===============================================================================
 
-go test -v -covermode=count -coverprofile coverage.out purchase
+Running: ../../.github/citools/go/go-lint-revive
+
+Running Go Lint Revive
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.026s
+user	0m0.021s
+sys	0m0.023s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
+vehicle_purchase.go
+  (1, 1)  https://revive.run/r#package-comments  should have a package comment  
+
+
+ ✖ 1 problem (0 errors) (1 warnings)
+
+real	0m0.039s
+user	0m0.022s
+sys	0m0.027s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.087s
+user	0m0.053s
+sys	0m0.067s
+
+real	0m0.089s
+user	0m0.053s
+sys	0m0.069s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
+
+real	0m0.001s
+user	0m0.001s
+sys	0m0.000s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.022s
+user	0m0.024s
+sys	0m0.013s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
+	info: check "./."
+internal error: package "fmt" without types was imported from "purchase"
+
+real	0m0.087s
+user	0m0.117s
+sys	0m0.121s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.120s
+user	0m0.149s
+sys	0m0.141s
+
+real	0m0.122s
+user	0m0.151s
+sys	0m0.141s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-staticcheck
+
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.023s
+user	0m0.020s
+sys	0m0.018s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+vehicle_purchase.go:1:1: at least one file in a package should have a package comment (ST1000)
+
+real	0m0.175s
+user	0m0.206s
+sys	0m0.115s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.208s
+user	0m0.232s
+sys	0m0.143s
+
+real	0m0.211s
+user	0m0.234s
+sys	0m0.144s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocritic
+
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.029s
+user	0m0.020s
+sys	0m0.031s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+./vehicle_purchase.go:38:2: ifElseChain: rewrite if-else to switch statement
+
+real	0m0.818s
+user	0m1.922s
+sys	0m0.316s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.857s
+user	0m1.948s
+sys	0m0.357s
+
+real	0m0.860s
+user	0m1.949s
+sys	0m0.358s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go_vet
+
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.022s
+user	0m0.021s
+sys	0m0.019s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.084s
+user	0m0.136s
+sys	0m0.117s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.118s
+user	0m0.162s
+sys	0m0.146s
+
+real	0m0.121s
+user	0m0.163s
+sys	0m0.148s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-fixer-go_fix
+
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.025s
+user	0m0.020s
+sys	0m0.020s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.028s
+user	0m0.028s
+sys	0m0.017s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.064s
+user	0m0.051s
+sys	0m0.049s
+
+real	0m0.066s
+user	0m0.051s
+sys	0m0.051s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-errcheck
+
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.028s
+user	0m0.015s
+sys	0m0.031s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+
+real	0m0.500s
+user	0m1.441s
+sys	0m0.301s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.543s
+user	0m1.467s
+sys	0m0.343s
+
+real	0m0.545s
+user	0m1.468s
+sys	0m0.344s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.023s
+user	0m0.014s
+sys	0m0.026s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
+4 purchase TestChooseVehicle vehicle_purchase_test.go:57:1
+4 purchase CalculateResellPrice vehicle_purchase.go:35:1
+3 purchase TestCalculateResellPrice vehicle_purchase_test.go:118:1
+3 purchase TestNeedsLicense vehicle_purchase_test.go:10:1
+2 purchase floatingPointEquals vehicle_purchase_test.go:178:1
+2 purchase ChooseVehicle vehicle_purchase.go:22:1
+2 purchase NeedsLicense vehicle_purchase.go:8:1
+1 purchase ExampleCalculateResellPrice vehicle_purchase_examples_test.go:23:1
+1 purchase ExampleChooseVehicle vehicle_purchase_examples_test.go:15:1
+1 purchase ExampleNeedsLicense vehicle_purchase_examples_test.go:7:1
+
+real	0m0.003s
+user	0m0.000s
+sys	0m0.003s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.039s
+user	0m0.023s
+sys	0m0.038s
+
+real	0m0.041s
+user	0m0.023s
+sys	0m0.040s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-misspell
+
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+vehicle_purchase_test.go:81:19: "Bergamont" is a misspelling of "Bergamot"
+vehicle_purchase_test.go:83:19: "Bergamont" is a misspelling of "Bergamot"
+run-tests-go.txt:48:33: "Bergamont" is a misspelling of "Bergamot"
+run-tests-go.txt:49:19: "Bergamont" is a misspelling of "Bergamot"
+run-tests-go.txt:51:33: "Bergamont" is a misspelling of "Bergamot"
+run-tests-go.txt:52:19: "Bergamont" is a misspelling of "Bergamot"
+
+real	0m0.028s
+user	0m0.029s
+sys	0m0.014s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.040s
+user	0m0.031s
+sys	0m0.028s
+
+real	0m0.042s
+user	0m0.032s
+sys	0m0.029s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gosec
+
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.026s
+user	0m0.018s
+sys	0m0.030s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:32:09 Including rules: default
+[gosec] 2023/09/07 00:32:09 Excluding rules: default
+[gosec] 2023/09/07 00:32:09 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/vehicle-purchase
+[gosec] 2023/09/07 00:32:09 Checking package: purchase
+[gosec] 2023/09/07 00:32:09 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/vehicle-purchase/vehicle_purchase.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 47
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.126s
+user	0m0.150s
+sys	0m0.122s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.165s
+user	0m0.171s
+sys	0m0.167s
+
+real	0m0.168s
+user	0m0.173s
+sys	0m0.169s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.033s
+user	0m0.034s
+sys	0m0.027s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
 === RUN   TestNeedsLicense
 === RUN   TestNeedsLicense/need_a_license_for_a_car
 === RUN   TestNeedsLicense/need_a_license_for_a_truck
 === RUN   TestNeedsLicense/does_not_need_a_license_for_a_bike
 === RUN   TestNeedsLicense/does_not_need_a_license_for_a_stroller
 === RUN   TestNeedsLicense/does_not_need_a_license_for_a_e-scooter
---- PASS: TestNeedsLicense (0.02s)
+--- PASS: TestNeedsLicense (0.00s)
     --- PASS: TestNeedsLicense/need_a_license_for_a_car (0.00s)
     --- PASS: TestNeedsLicense/need_a_license_for_a_truck (0.00s)
     --- PASS: TestNeedsLicense/does_not_need_a_license_for_a_bike (0.00s)
@@ -60,42 +645,63 @@ go test -v -covermode=count -coverprofile coverage.out purchase
 --- PASS: ExampleCalculateResellPrice (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	purchase	0.028s	coverage: 100.0% of statements
+ok  	purchase	0.002s	coverage: 100.0% of statements
 
-real	0m0.638s
-user	0m0.702s
-sys	0m0.500s
+real	0m0.187s
+user	0m0.244s
+sys	0m0.159s
 
-===============================================================================
 
-go tool cover -func=coverage.out
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
 purchase/vehicle_purchase.go:8:		NeedsLicense		100.0%
 purchase/vehicle_purchase.go:22:	ChooseVehicle		100.0%
 purchase/vehicle_purchase.go:35:	CalculateResellPrice	100.0%
 total:					(statements)		100.0%
 
-real	0m0.230s
-user	0m0.241s
-sys	0m0.186s
+real	0m0.049s
+user	0m0.052s
+sys	0m0.065s
 
-===============================================================================
 
-go tool cover -html coverage.out -o coverage.html
+ ==============================================================================
 
-real	0m0.239s
-user	0m0.217s
-sys	0m0.213s
+Running: go tool cover -html coverage.out -o coverage.html
 
-===============================================================================
 
-go test -v -race -covermode=atomic purchase
+real	0m0.061s
+user	0m0.074s
+sys	0m0.084s
+
+
+ ==============================================================================
+
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+real	0m0.028s
+user	0m0.021s
+sys	0m0.034s
+
+real	0m0.028s
+user	0m0.021s
+sys	0m0.034s
+
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
 === RUN   TestNeedsLicense
 === RUN   TestNeedsLicense/need_a_license_for_a_car
 === RUN   TestNeedsLicense/need_a_license_for_a_truck
 === RUN   TestNeedsLicense/does_not_need_a_license_for_a_bike
 === RUN   TestNeedsLicense/does_not_need_a_license_for_a_stroller
 === RUN   TestNeedsLicense/does_not_need_a_license_for_a_e-scooter
---- PASS: TestNeedsLicense (0.01s)
+--- PASS: TestNeedsLicense (0.00s)
     --- PASS: TestNeedsLicense/need_a_license_for_a_car (0.00s)
     --- PASS: TestNeedsLicense/need_a_license_for_a_truck (0.00s)
     --- PASS: TestNeedsLicense/does_not_need_a_license_for_a_bike (0.00s)
@@ -135,71 +741,107 @@ go test -v -race -covermode=atomic purchase
 --- PASS: ExampleCalculateResellPrice (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	purchase	0.055s	coverage: 100.0% of statements
+ok  	purchase	1.020s	coverage: 100.0% of statements
 
-real	0m0.685s
-user	0m0.673s
-sys	0m0.456s
+real	0m1.279s
+user	0m0.320s
+sys	0m0.182s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.649s
+user	0m0.757s
+sys	0m0.556s
+
+real	0m1.651s
+user	0m0.757s
+sys	0m0.557s
 
 ===============================================================================
 
-go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+mv -v benchstat-new.txt benchstat-old.txt
+renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
+
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 PASS
-ok  	purchase	0.015s
+ok  	purchase	0.002s
 
-real	0m0.517s
-user	0m0.524s
-sys	0m0.384s
+real	0m0.199s
+user	0m0.250s
+sys	0m0.181s
 
 ===============================================================================
 
-go test -tags bonus
+gotest -v -tags bonus
+=== RUN   TestNeedsLicense
+=== RUN   TestNeedsLicense/need_a_license_for_a_car
+=== RUN   TestNeedsLicense/need_a_license_for_a_truck
+=== RUN   TestNeedsLicense/does_not_need_a_license_for_a_bike
+=== RUN   TestNeedsLicense/does_not_need_a_license_for_a_stroller
+=== RUN   TestNeedsLicense/does_not_need_a_license_for_a_e-scooter
+--- PASS: TestNeedsLicense (0.00s)
+    --- PASS: TestNeedsLicense/need_a_license_for_a_car (0.00s)
+    --- PASS: TestNeedsLicense/need_a_license_for_a_truck (0.00s)
+    --- PASS: TestNeedsLicense/does_not_need_a_license_for_a_bike (0.00s)
+    --- PASS: TestNeedsLicense/does_not_need_a_license_for_a_stroller (0.00s)
+    --- PASS: TestNeedsLicense/does_not_need_a_license_for_a_e-scooter (0.00s)
+=== RUN   TestChooseVehicle
+=== RUN   TestChooseVehicle/chooses_Bugatti_over_Ford
+=== RUN   TestChooseVehicle/chooses_Chery_over_Kia
+=== RUN   TestChooseVehicle/chooses_Ford_Focus_over_Ford_Pinto
+=== RUN   TestChooseVehicle/chooses_2018_over_2020
+=== RUN   TestChooseVehicle/chooses_Bugatti_over_ford
+--- PASS: TestChooseVehicle (0.00s)
+    --- PASS: TestChooseVehicle/chooses_Bugatti_over_Ford (0.00s)
+    --- PASS: TestChooseVehicle/chooses_Chery_over_Kia (0.00s)
+    --- PASS: TestChooseVehicle/chooses_Ford_Focus_over_Ford_Pinto (0.00s)
+    --- PASS: TestChooseVehicle/chooses_2018_over_2020 (0.00s)
+    --- PASS: TestChooseVehicle/chooses_Bugatti_over_ford (0.00s)
+=== RUN   TestCalculateResellPrice
+=== RUN   TestCalculateResellPrice/price_is_reduced_to_80%%_for_age_below_3
+=== RUN   TestCalculateResellPrice/price_is_reduced_to_80%%_for_age_below_3#01
+=== RUN   TestCalculateResellPrice/price_is_reduced_to_70%%_for_age_7
+=== RUN   TestCalculateResellPrice/price_is_reduced_to_50%%_for_age_10
+=== RUN   TestCalculateResellPrice/price_is_reduced_to_50%%_for_age_11
+=== RUN   TestCalculateResellPrice/float_price_is_reduced_to_70%%_for_age_8,
+--- PASS: TestCalculateResellPrice (0.00s)
+    --- PASS: TestCalculateResellPrice/price_is_reduced_to_80%%_for_age_below_3 (0.00s)
+    --- PASS: TestCalculateResellPrice/price_is_reduced_to_80%%_for_age_below_3#01 (0.00s)
+    --- PASS: TestCalculateResellPrice/price_is_reduced_to_70%%_for_age_7 (0.00s)
+    --- PASS: TestCalculateResellPrice/price_is_reduced_to_50%%_for_age_10 (0.00s)
+    --- PASS: TestCalculateResellPrice/price_is_reduced_to_50%%_for_age_11 (0.00s)
+    --- PASS: TestCalculateResellPrice/float_price_is_reduced_to_70%%_for_age_8, (0.00s)
+=== RUN   ExampleNeedsLicense
+--- PASS: ExampleNeedsLicense (0.00s)
+=== RUN   ExampleChooseVehicle
+--- PASS: ExampleChooseVehicle (0.00s)
+=== RUN   ExampleCalculateResellPrice
+--- PASS: ExampleCalculateResellPrice (0.00s)
 PASS
-ok  	purchase	0.006s
+ok  	purchase	0.003s
 
-real	0m0.511s
-user	0m0.553s
-sys	0m0.404s
-
-===============================================================================
-
-No old benchmarks to run benchstat against.
+real	0m0.125s
+user	0m0.154s
+sys	0m0.141s
 
 ===============================================================================
 
-go vet purchase
+benchstat benchstat-old.txt benchstat-new.txt
 
-real	0m0.367s
-user	0m0.388s
-sys	0m0.313s
-
-===============================================================================
-
-go fix purchase
-
-real	0m0.177s
-user	0m0.149s
-sys	0m0.145s
-
-===============================================================================
-
-gosec ./vehicle-purchase
-[gosec] 2022/07/24 00:43:07 Including rules: default
-[gosec] 2022/07/24 00:43:07 Excluding rules: default
-[gosec] 2022/07/24 00:43:07 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/vehicle-purchase
-2022/07/24 00:43:07 internal error: package "fmt" without types was imported from "command-line-arguments"
-
-real	0m0.473s
-user	0m0.490s
-sys	0m0.329s
+real	0m0.002s
+user	0m0.001s
+sys	0m0.002s
 
 ===============================================================================
 
 gomarkdoc --output purchase-doc.md
 
-real	0m0.037s
-user	0m0.026s
-sys	0m0.015s
+real	0m0.010s
+user	0m0.002s
+sys	0m0.008s
 
 ===============================================================================
 
@@ -222,9 +864,9 @@ func NeedsLicense(kind string) bool
     vehicle. Only "car" and "truck" require a license.
 
 
-real	0m0.256s
-user	0m0.179s
-sys	0m0.221s
+real	0m0.035s
+user	0m0.017s
+sys	0m0.036s
 
 
 ===============================================================================

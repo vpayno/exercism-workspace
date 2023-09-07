@@ -5,80 +5,444 @@ Go packages: pascal
 
 ===============================================================================
 
-golangci-lint run ./...
+Running: ../../.github/citools/go/go-lint-golangci-lint
 
-real	0m9.737s
-user	0m19.281s
-sys	0m3.785s
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.023s
+user	0m0.012s
+sys	0m0.019s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+pascals_triangle_examples_test.go:69: line is 121 characters (lll)
+	// 6: [][]int{[]int{1}, []int{1, 1}, []int{1, 2, 1}, []int{1, 3, 3, 1}, []int{1, 4, 6, 4, 1}, []int{1, 5, 10, 10, 5, 1}}
+pascals_triangle_test.go:38:3: only one cuddle assignment allowed before if statement (wsl)
+		if !reflect.DeepEqual(res, want) {
+		^
+pascals_triangle_test.go:50:2: return statements should not be cuddled if block has more than two lines (wsl)
+	return
+	^
+pascals_triangle_test.go:59:2: for statements should only be cuddled with assignments used in the iteration (wsl)
+	for i := 0; i < b.N; i++ {
+	^
+pascals_triangle_test.go:70:2: for statements should only be cuddled with assignments used in the iteration (wsl)
+	for i := 0; i < b.N; i++ {
+	^
+pascals_triangle_test.go:9:5: triangleTestCases is a global variable (gochecknoglobals)
+var triangleTestCases = [][]int{
+    ^
+pascals_triangle_test.go:32:5: testSize is a global variable (gochecknoglobals)
+var testSize = len(triangleTestCases)
+    ^
+pascals_triangle.go:34:13: err113: do not define dynamic errors, use wrapped static errors instead: "errors.New(\"Factorial(n): n must be >= 0\")" (goerr113)
+		return 0, errors.New("Factorial(n): n must be >= 0")
+		          ^
+pascals_triangle.go:50:13: err113: do not define dynamic errors, use wrapped static errors instead: "errors.New(\"NChooseK(n, k): k must be >= 0\")" (goerr113)
+		return 0, errors.New("NChooseK(n, k): k must be >= 0")
+		          ^
+pascals_triangle.go:54:13: err113: do not define dynamic errors, use wrapped static errors instead: "errors.New(\"NChooseK(n, k): n must be >= k\")" (goerr113)
+		return 0, errors.New("NChooseK(n, k): n must be >= k")
+		          ^
+pascals_triangle_test.go:46:1: named return "s" with type "string" found (nonamedreturns)
+func format(t [][]int) (s string) {
+^
+pascals_triangle_test.go:34:1: Function TestTriangle missing the call to method parallel (paralleltest)
+func TestTriangle(t *testing.T) {
+^
+pascals_triangle_examples_test.go:1:9: package should be `pascal_test` instead of `pascal` (testpackage)
+package pascal
+        ^
+pascals_triangle_test.go:1:9: package should be `pascal_test` instead of `pascal` (testpackage)
+package pascal
+        ^
+pascals_triangle.go:37:2: variable name 'f' is too short for the scope of its usage (varnamelen)
+	f := 1
+	^
+pascals_triangle.go:32:16: parameter name 'n' is too short for the scope of its usage (varnamelen)
+func Factorial(n int) (int, error) {
+               ^
+pascals_triangle.go:48:15: parameter name 'n' is too short for the scope of its usage (varnamelen)
+func NChooseK(n, k int) (int, error) {
+              ^
+
+real	0m0.473s
+user	0m0.673s
+sys	0m0.461s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.514s
+user	0m0.693s
+sys	0m0.496s
+
+real	0m0.517s
+user	0m0.695s
+sys	0m0.498s
 
 ===============================================================================
 
-golint ./...
+Running: ../../.github/citools/go/go-lint-revive
 
-real	0m0.077s
-user	0m0.078s
-sys	0m0.072s
+Running Go Lint Revive
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.048s
+user	0m0.024s
+sys	0m0.034s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
+
+real	0m0.074s
+user	0m0.035s
+sys	0m0.058s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.138s
+user	0m0.065s
+sys	0m0.108s
+
+real	0m0.140s
+user	0m0.066s
+sys	0m0.110s
 
 ===============================================================================
 
-revive -formatter=stylish ./...
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
+
+real	0m0.000s
+user	0m0.000s
+sys	0m0.000s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.030s
+user	0m0.011s
+sys	0m0.027s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
+	info: check "./."
+internal error: package "errors" without types was imported from "pascal"
+
+real	0m0.111s
+user	0m0.142s
+sys	0m0.131s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.154s
+user	0m0.159s
+sys	0m0.170s
+
+real	0m0.156s
+user	0m0.159s
+sys	0m0.171s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-staticcheck
+
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
 
 real	0m0.028s
-user	0m0.020s
+user	0m0.015s
+sys	0m0.025s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+
+real	0m0.175s
+user	0m0.222s
+sys	0m0.151s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.219s
+user	0m0.244s
+sys	0m0.190s
+
+real	0m0.220s
+user	0m0.246s
+sys	0m0.190s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocritic
+
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.025s
+user	0m0.011s
 sys	0m0.021s
 
-===============================================================================
 
-ineffassign ./...
+ ==============================================================================
 
-real	0m0.284s
-user	0m0.264s
-sys	0m0.316s
+Running: gocritic check -enableAll ./...
 
-===============================================================================
 
-go-consistent -v ./...
-	info: check "./."
+real	0m0.839s
+user	0m2.054s
+sys	0m0.299s
 
-real	0m0.566s
-user	0m0.533s
-sys	0m0.492s
 
-===============================================================================
+ ==============================================================================
 
-staticcheck ./...
+Exit code: 0
 
-real	0m0.445s
-user	0m0.393s
-sys	0m0.473s
+real	0m0.876s
+user	0m2.070s
+sys	0m0.332s
+
+real	0m0.879s
+user	0m2.072s
+sys	0m0.332s
 
 ===============================================================================
 
-gocritic check -enableAll ./...
+Running: ../../.github/citools/go/go-lint-go_vet
 
-real	0m2.941s
-user	0m4.807s
-sys	0m1.254s
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.028s
+user	0m0.014s
+sys	0m0.026s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.094s
+user	0m0.150s
+sys	0m0.127s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.140s
+user	0m0.174s
+sys	0m0.168s
+
+real	0m0.142s
+user	0m0.174s
+sys	0m0.169s
 
 ===============================================================================
 
-go vet ./...
+Running: ../../.github/citools/go/go-fixer-go_fix
 
-real	0m0.356s
-user	0m0.334s
-sys	0m0.341s
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.020s
+user	0m0.013s
+sys	0m0.012s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.020s
+user	0m0.011s
+sys	0m0.013s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.054s
+user	0m0.032s
+sys	0m0.035s
+
+real	0m0.056s
+user	0m0.032s
+sys	0m0.037s
 
 ===============================================================================
 
-go fix ./...
+Running: ../../.github/citools/go/go-lint-errcheck
 
-real	0m0.073s
-user	0m0.041s
-sys	0m0.065s
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.020s
+user	0m0.009s
+sys	0m0.018s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+
+real	0m0.474s
+user	0m1.405s
+sys	0m0.328s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.508s
+user	0m1.419s
+sys	0m0.360s
+
+real	0m0.509s
+user	0m1.420s
+sys	0m0.360s
 
 ===============================================================================
 
-gocyclo .
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.027s
+user	0m0.011s
+sys	0m0.026s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
 4 pascal BenchmarkPascalsTriangleIncreasing pascals_triangle_test.go:66:1
 4 pascal Triangle pascals_triangle.go:9:1
 3 pascal BenchmarkPascalsTriangleFixed pascals_triangle_test.go:55:1
@@ -90,33 +454,139 @@ gocyclo .
 2 pascal ExampleNChooseK pascals_triangle_examples_test.go:25:1
 2 pascal ExampleFactorial pascals_triangle_examples_test.go:7:1
 
-real	0m0.006s
-user	0m0.002s
-sys	0m0.002s
+real	0m0.004s
+user	0m0.001s
+sys	0m0.003s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.042s
+user	0m0.017s
+sys	0m0.038s
+
+real	0m0.044s
+user	0m0.017s
+sys	0m0.040s
 
 ===============================================================================
 
-misspell .
+Running: ../../.github/citools/go/go-lint-misspell
 
-real	0m0.092s
-user	0m0.099s
-sys	0m0.056s
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+
+real	0m0.031s
+user	0m0.035s
+sys	0m0.014s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.047s
+user	0m0.041s
+sys	0m0.028s
+
+real	0m0.050s
+user	0m0.043s
+sys	0m0.029s
 
 ===============================================================================
 
-gosec ./...
-[gosec] 2022/08/31 21:08:45 Including rules: default
-[gosec] 2022/08/31 21:08:45 Excluding rules: default
-[gosec] 2022/08/31 21:08:45 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/pascals-triangle
-2022/08/31 21:08:46 internal error: package "errors" without types was imported from "command-line-arguments"
+Running: ../../.github/citools/go/go-lint-gosec
 
-real	0m0.397s
-user	0m0.389s
-sys	0m0.358s
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.023s
+user	0m0.010s
+sys	0m0.022s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:26:05 Including rules: default
+[gosec] 2023/09/07 00:26:05 Excluding rules: default
+[gosec] 2023/09/07 00:26:05 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/pascals-triangle
+[gosec] 2023/09/07 00:26:05 Checking package: pascal
+[gosec] 2023/09/07 00:26:05 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/pascals-triangle/pascals_triangle.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 63
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.120s
+user	0m0.107s
+sys	0m0.126s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.161s
+user	0m0.127s
+sys	0m0.163s
+
+real	0m0.164s
+user	0m0.129s
+sys	0m0.164s
 
 ===============================================================================
 
-gotest -v -covermode=count -coverprofile coverage.out ./...
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.031s
+user	0m0.016s
+sys	0m0.026s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
 === RUN   TestTriangle
     pascals_triangle_test.go:43: 
         [1]
@@ -148,43 +618,56 @@ gotest -v -covermode=count -coverprofile coverage.out ./...
 --- PASS: ExampleTriangle (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	pascal	0.027s	coverage: 100.0% of statements
+ok  	pascal	0.003s	coverage: 100.0% of statements
 
-real	0m0.775s
-user	0m0.808s
-sys	0m0.552s
+real	0m0.181s
+user	0m0.230s
+sys	0m0.148s
 
-===============================================================================
 
-go tool cover -func=coverage.out
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
 pascal/pascals_triangle.go:9:	Triangle	100.0%
 pascal/pascals_triangle.go:32:	Factorial	100.0%
 pascal/pascals_triangle.go:48:	NChooseK	100.0%
 total:				(statements)	100.0%
 
-real	0m0.156s
-user	0m0.121s
-sys	0m0.170s
+real	0m0.039s
+user	0m0.047s
+sys	0m0.051s
 
-===============================================================================
 
-go tool cover -html coverage.out -o coverage.html
+ ==============================================================================
 
-real	0m0.150s
-user	0m0.100s
-sys	0m0.175s
+Running: go tool cover -html coverage.out -o coverage.html
 
-===============================================================================
 
-gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+real	0m0.042s
+user	0m0.029s
+sys	0m0.058s
 
-real	0m0.070s
-user	0m0.058s
-sys	0m0.066s
 
-===============================================================================
+ ==============================================================================
 
-gotest -v -race -covermode=atomic ./...
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+real	0m0.014s
+user	0m0.011s
+sys	0m0.009s
+
+real	0m0.014s
+user	0m0.011s
+sys	0m0.009s
+
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
 === RUN   TestTriangle
     pascals_triangle_test.go:43: 
         [1]
@@ -216,29 +699,45 @@ gotest -v -race -covermode=atomic ./...
 --- PASS: ExampleTriangle (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	pascal	0.060s	coverage: 100.0% of statements
+ok  	pascal	1.018s	coverage: 100.0% of statements
 
-real	0m0.955s
-user	0m0.940s
-sys	0m0.561s
+real	0m1.279s
+user	0m0.321s
+sys	0m0.228s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.604s
+user	0m0.661s
+sys	0m0.537s
+
+real	0m1.607s
+user	0m0.662s
+sys	0m0.539s
 
 ===============================================================================
+
+mv -v benchstat-new.txt benchstat-old.txt
+renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
 
 gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 goos: linux
 goarch: amd64
 pkg: pascal
-cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
 BenchmarkPascalsTriangleFixed
-BenchmarkPascalsTriangleFixed-4        	   48778	     24572 ns/op	    6136 B/op	      95 allocs/op
+BenchmarkPascalsTriangleFixed-8        	  250542	      5328 ns/op	    6136 B/op	      95 allocs/op
 BenchmarkPascalsTriangleIncreasing
-BenchmarkPascalsTriangleIncreasing-4   	    5218	    235783 ns/op	   45312 B/op	     884 allocs/op
+BenchmarkPascalsTriangleIncreasing-8   	   26805	     40437 ns/op	   45312 B/op	     884 allocs/op
 PASS
-ok  	pascal	2.774s
+ok  	pascal	3.761s
 
-real	0m3.333s
-user	0m4.716s
-sys	0m0.847s
+real	0m3.950s
+user	0m4.248s
+sys	0m0.346s
 
 ===============================================================================
 
@@ -273,23 +772,77 @@ gotest -v -tags bonus
 === RUN   ExampleTriangle
 --- PASS: ExampleTriangle (0.00s)
 PASS
-ok  	pascal	0.022s
+ok  	pascal	0.002s
 
-real	0m0.521s
-user	0m0.521s
-sys	0m0.492s
+real	0m0.132s
+user	0m0.201s
+sys	0m0.138s
 
 ===============================================================================
 
-No old benchmarks to run benchstat against.
+benchstat benchstat-old.txt benchstat-new.txt
+benchstat-old.txt:5: missing iteration count
+benchstat-old.txt:7: missing iteration count
+benchstat-new.txt:5: missing iteration count
+benchstat-new.txt:7: missing iteration count
+goos: linux
+goarch: amd64
+pkg: pascal
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+                            │ benchstat-new.txt │
+                            │      sec/op       │
+PascalsTriangleFixed-8             5.328µ ± ∞ ¹
+PascalsTriangleIncreasing-8        40.44µ ± ∞ ¹
+geomean                            14.68µ
+¹ need >= 6 samples for confidence interval at level 0.95
+
+                            │ benchstat-new.txt │
+                            │       B/op        │
+PascalsTriangleFixed-8            5.992Ki ± ∞ ¹
+PascalsTriangleIncreasing-8       44.25Ki ± ∞ ¹
+geomean                           16.28Ki
+¹ need >= 6 samples for confidence interval at level 0.95
+
+                            │ benchstat-new.txt │
+                            │     allocs/op     │
+PascalsTriangleFixed-8              95.00 ± ∞ ¹
+PascalsTriangleIncreasing-8         884.0 ± ∞ ¹
+geomean                             289.8
+¹ need >= 6 samples for confidence interval at level 0.95
+
+cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+                            │ benchstat-old.txt │
+                            │      sec/op       │
+PascalsTriangleFixed-4             24.57µ ± ∞ ¹
+PascalsTriangleIncreasing-4        235.8µ ± ∞ ¹
+geomean                            76.12µ
+¹ need >= 6 samples for confidence interval at level 0.95
+
+                            │ benchstat-old.txt │
+                            │       B/op        │
+PascalsTriangleFixed-4            5.992Ki ± ∞ ¹
+PascalsTriangleIncreasing-4       44.25Ki ± ∞ ¹
+geomean                           16.28Ki
+¹ need >= 6 samples for confidence interval at level 0.95
+
+                            │ benchstat-old.txt │
+                            │     allocs/op     │
+PascalsTriangleFixed-4              95.00 ± ∞ ¹
+PascalsTriangleIncreasing-4         884.0 ± ∞ ¹
+geomean                             289.8
+¹ need >= 6 samples for confidence interval at level 0.95
+
+real	0m0.003s
+user	0m0.002s
+sys	0m0.001s
 
 ===============================================================================
 
 gomarkdoc --output pascal-doc.md
 
-real	0m0.045s
-user	0m0.027s
-sys	0m0.019s
+real	0m0.010s
+user	0m0.004s
+sys	0m0.007s
 
 ===============================================================================
 
@@ -312,9 +865,9 @@ func Triangle(limit int) [][]int
     Triangle returns Pascal's Triangle for a given number.
 
 
-real	0m0.147s
-user	0m0.065s
-sys	0m0.139s
+real	0m0.040s
+user	0m0.023s
+sys	0m0.029s
 
 
 ===============================================================================

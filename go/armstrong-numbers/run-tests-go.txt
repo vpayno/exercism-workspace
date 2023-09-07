@@ -5,15 +5,579 @@ Go packages: armstrong
 
 ===============================================================================
 
-golint armstrong
+Running: ../../.github/citools/go/go-lint-golangci-lint
 
-real	0m0.185s
-user	0m0.213s
-sys	0m0.188s
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.034s
+user	0m0.020s
+sys	0m0.039s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+armstrong_numbers.go:13:13: var-declaration: should omit type string from declaration of var digits; it will be inferred from the right-hand side (revive)
+	var digits string = fmt.Sprintf("%d", number)
+	           ^
+armstrong_numbers.go:14:15: var-declaration: should omit type float64 from declaration of var exponent; it will be inferred from the right-hand side (revive)
+	var exponent float64 = float64(len(digits))
+	             ^
+armstrong_numbers_test.go:10:26: Using the variable on range scope `tc` in function literal (scopelint)
+			if actual := IsNumber(tc.input); actual != tc.expected {
+			                      ^
+armstrong_numbers_test.go:11:45: Using the variable on range scope `tc` in function literal (scopelint)
+				t.Fatalf("IsNumber(%d) = %t, want: %t", tc.input, actual, tc.expected)
+				                                        ^
+armstrong_numbers.go:15:2: declarations should never be cuddled (wsl)
+	var sum int
+	^
+armstrong_numbers_test.go:21:2: ranges should only be cuddled with assignments used in the iteration (wsl)
+	for _, tc := range testCases {
+	^
+cases_test.go:6:5: testCases is a global variable (gochecknoglobals)
+var testCases = []struct {
+    ^
+armstrong_numbers.go:27:2: S1008: should use 'return number == sum' instead of 'if number == sum { return true }; return false' (gosimple)
+	if number == sum {
+	^
+armstrong_numbers_test.go:7:1: Function TestArmstrong missing the call to method parallel (paralleltest)
+func TestArmstrong(t *testing.T) {
+^
+armstrong_numbers_test.go:8:2: Range statement for test TestArmstrong missing the call to method parallel in test Run (paralleltest)
+	for _, tc := range testCases {
+	^
+armstrong_numbers_examples_test.go:1:9: package should be `armstrong_test` instead of `armstrong` (testpackage)
+package armstrong
+        ^
+armstrong_numbers_test.go:1:9: package should be `armstrong_test` instead of `armstrong` (testpackage)
+package armstrong
+        ^
+cases_test.go:1:9: package should be `armstrong_test` instead of `armstrong` (testpackage)
+package armstrong
+        ^
+
+real	0m0.475s
+user	0m0.707s
+sys	0m0.440s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.527s
+user	0m0.731s
+sys	0m0.499s
+
+real	0m0.530s
+user	0m0.732s
+sys	0m0.500s
 
 ===============================================================================
 
-go test -v -covermode=count -coverprofile coverage.out armstrong
+Running: ../../.github/citools/go/go-lint-revive
+
+Running Go Lint Revive
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.022s
+user	0m0.013s
+sys	0m0.026s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
+armstrong_numbers.go
+  (14, 15)  https://revive.run/r#var-declaration  should omit type float64 from declaration of var exponent; it will be inferred from the right-hand side  
+
+
+ ✖ 1 problem (0 errors) (1 warnings)
+
+real	0m0.063s
+user	0m0.027s
+sys	0m0.052s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.096s
+user	0m0.044s
+sys	0m0.086s
+
+real	0m0.098s
+user	0m0.045s
+sys	0m0.087s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
+
+real	0m0.000s
+user	0m0.000s
+sys	0m0.000s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.022s
+user	0m0.018s
+sys	0m0.020s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
+	info: check "./."
+internal error: package "fmt" without types was imported from "armstrong"
+
+real	0m0.085s
+user	0m0.109s
+sys	0m0.116s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.119s
+user	0m0.131s
+sys	0m0.148s
+
+real	0m0.120s
+user	0m0.131s
+sys	0m0.149s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-staticcheck
+
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.022s
+user	0m0.016s
+sys	0m0.027s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+armstrong_numbers.go:13:13: should omit type string from declaration; it will be inferred from the right-hand side (ST1023)
+armstrong_numbers.go:14:15: should omit type float64 from declaration; it will be inferred from the right-hand side (ST1023)
+armstrong_numbers.go:27:2: should use 'return number == sum' instead of 'if number == sum { return true }; return false' (S1008)
+
+real	0m0.156s
+user	0m0.218s
+sys	0m0.121s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.189s
+user	0m0.240s
+sys	0m0.159s
+
+real	0m0.191s
+user	0m0.240s
+sys	0m0.161s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocritic
+
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.033s
+user	0m0.038s
+sys	0m0.048s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+
+real	0m0.836s
+user	0m2.065s
+sys	0m0.273s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.880s
+user	0m2.110s
+sys	0m0.329s
+
+real	0m0.881s
+user	0m2.112s
+sys	0m0.329s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go_vet
+
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.022s
+user	0m0.020s
+sys	0m0.024s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.068s
+user	0m0.097s
+sys	0m0.083s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.102s
+user	0m0.121s
+sys	0m0.118s
+
+real	0m0.104s
+user	0m0.122s
+sys	0m0.118s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-fixer-go_fix
+
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.025s
+user	0m0.020s
+sys	0m0.027s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.022s
+user	0m0.022s
+sys	0m0.017s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.057s
+user	0m0.046s
+sys	0m0.053s
+
+real	0m0.059s
+user	0m0.046s
+sys	0m0.055s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-errcheck
+
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.028s
+user	0m0.022s
+sys	0m0.033s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+
+real	0m0.457s
+user	0m1.457s
+sys	0m0.311s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.500s
+user	0m1.483s
+sys	0m0.360s
+
+real	0m0.502s
+user	0m1.484s
+sys	0m0.361s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.023s
+user	0m0.023s
+sys	0m0.020s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
+4 armstrong BenchmarkIsNumber armstrong_numbers_test.go:17:1
+4 armstrong IsNumber armstrong_numbers.go:12:1
+3 armstrong TestArmstrong armstrong_numbers_test.go:7:1
+1 armstrong ExampleIsNumber armstrong_numbers_examples_test.go:7:1
+
+real	0m0.002s
+user	0m0.000s
+sys	0m0.002s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.035s
+user	0m0.030s
+sys	0m0.029s
+
+real	0m0.037s
+user	0m0.032s
+sys	0m0.029s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-misspell
+
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+
+real	0m0.034s
+user	0m0.039s
+sys	0m0.016s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.048s
+user	0m0.045s
+sys	0m0.028s
+
+real	0m0.050s
+user	0m0.046s
+sys	0m0.030s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gosec
+
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.033s
+user	0m0.018s
+sys	0m0.035s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:20:34 Including rules: default
+[gosec] 2023/09/07 00:20:34 Excluding rules: default
+[gosec] 2023/09/07 00:20:34 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/armstrong-numbers
+[gosec] 2023/09/07 00:20:34 Checking package: armstrong
+[gosec] 2023/09/07 00:20:34 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/armstrong-numbers/armstrong_numbers.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 32
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.123s
+user	0m0.125s
+sys	0m0.118s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.172s
+user	0m0.150s
+sys	0m0.168s
+
+real	0m0.173s
+user	0m0.151s
+sys	0m0.169s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.027s
+user	0m0.018s
+sys	0m0.026s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
 === RUN   TestArmstrong
 === RUN   TestArmstrong/Zero_is_an_Armstrong_number
 === RUN   TestArmstrong/Single-digit_numbers_are_Armstrong_numbers
@@ -38,33 +602,77 @@ go test -v -covermode=count -coverprofile coverage.out armstrong
 --- PASS: ExampleIsNumber (0.00s)
 PASS
 coverage: 91.7% of statements
-ok  	armstrong	0.010s	coverage: 91.7% of statements
+ok  	armstrong	0.003s	coverage: 91.7% of statements
 
-real	0m0.534s
-user	0m0.642s
-sys	0m0.394s
+real	0m0.167s
+user	0m0.234s
+sys	0m0.150s
 
-===============================================================================
 
-go tool cover -func=coverage.out
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
 armstrong/armstrong_numbers.go:12:	IsNumber	91.7%
 total:					(statements)	91.7%
 
-real	0m0.225s
-user	0m0.237s
-sys	0m0.216s
+real	0m0.049s
+user	0m0.067s
+sys	0m0.063s
 
-===============================================================================
 
-go tool cover -html coverage.out -o coverage.html
+ ==============================================================================
 
-real	0m0.235s
-user	0m0.209s
-sys	0m0.221s
+Running: go tool cover -html coverage.out -o coverage.html
 
-===============================================================================
 
-go test -v -race -covermode=atomic armstrong
+real	0m0.060s
+user	0m0.071s
+sys	0m0.079s
+
+
+ ==============================================================================
+
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+12     	func IsNumber(number int) bool {
+13     		var digits string = fmt.Sprintf("%d", number)
+14     		var exponent float64 = float64(len(digits))
+15     		var sum int
+16     	
+17     		for _, r := range digits {
+18     			n, e := strconv.Atoi(string(r))
+19     			if e != nil {
+20 MISS				panic(e)
+21     			}
+22     	
+23     			f := float64(n)
+24     			sum += int(math.Pow(f, exponent))
+25     		}
+26     	
+27     		if number == sum {
+28     			return true
+29     		}
+30     	
+31     		return false
+32     	}
+
+
+real	0m0.017s
+user	0m0.021s
+sys	0m0.019s
+
+real	0m0.017s
+user	0m0.021s
+sys	0m0.019s
+
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
 === RUN   TestArmstrong
 === RUN   TestArmstrong/Zero_is_an_Armstrong_number
 === RUN   TestArmstrong/Single-digit_numbers_are_Armstrong_numbers
@@ -75,7 +683,7 @@ go test -v -race -covermode=atomic armstrong
 === RUN   TestArmstrong/Four-digit_number_that_is_not_an_Armstrong_number
 === RUN   TestArmstrong/Seven-digit_number_that_is_an_Armstrong_number
 === RUN   TestArmstrong/Seven-digit_number_that_is_not_an_Armstrong_number
---- PASS: TestArmstrong (0.01s)
+--- PASS: TestArmstrong (0.00s)
     --- PASS: TestArmstrong/Zero_is_an_Armstrong_number (0.00s)
     --- PASS: TestArmstrong/Single-digit_numbers_are_Armstrong_numbers (0.00s)
     --- PASS: TestArmstrong/There_are_no_two-digit_Armstrong_numbers (0.00s)
@@ -89,89 +697,126 @@ go test -v -race -covermode=atomic armstrong
 --- PASS: ExampleIsNumber (0.00s)
 PASS
 coverage: 91.7% of statements
-ok  	armstrong	0.045s	coverage: 91.7% of statements
+ok  	armstrong	1.013s	coverage: 91.7% of statements
 
-real	0m0.730s
-user	0m0.761s
-sys	0m0.550s
+real	0m1.236s
+user	0m0.273s
+sys	0m0.156s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.569s
+user	0m0.689s
+sys	0m0.505s
+
+real	0m1.570s
+user	0m0.690s
+sys	0m0.506s
 
 ===============================================================================
 
 mv -v benchstat-new.txt benchstat-old.txt
 renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
 
-go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 goos: linux
 goarch: amd64
 pkg: armstrong
-cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
-BenchmarkIsNumber-4   	  461610	      3258 ns/op	     212 B/op	      43 allocs/op
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+BenchmarkIsNumber
+BenchmarkIsNumber-8   	 1231435	       959.5 ns/op	      72 B/op	      11 allocs/op
 PASS
-ok  	armstrong	1.593s
+ok  	armstrong	2.154s
 
-real	0m2.053s
-user	0m2.279s
-sys	0m0.392s
+real	0m2.316s
+user	0m2.367s
+sys	0m0.144s
 
 ===============================================================================
 
-go test -tags bonus
+gotest -v -tags bonus
+=== RUN   TestArmstrong
+=== RUN   TestArmstrong/Zero_is_an_Armstrong_number
+=== RUN   TestArmstrong/Single-digit_numbers_are_Armstrong_numbers
+=== RUN   TestArmstrong/There_are_no_two-digit_Armstrong_numbers
+=== RUN   TestArmstrong/Three-digit_number_that_is_an_Armstrong_number
+=== RUN   TestArmstrong/Three-digit_number_that_is_not_an_Armstrong_number
+=== RUN   TestArmstrong/Four-digit_number_that_is_an_Armstrong_number
+=== RUN   TestArmstrong/Four-digit_number_that_is_not_an_Armstrong_number
+=== RUN   TestArmstrong/Seven-digit_number_that_is_an_Armstrong_number
+=== RUN   TestArmstrong/Seven-digit_number_that_is_not_an_Armstrong_number
+--- PASS: TestArmstrong (0.00s)
+    --- PASS: TestArmstrong/Zero_is_an_Armstrong_number (0.00s)
+    --- PASS: TestArmstrong/Single-digit_numbers_are_Armstrong_numbers (0.00s)
+    --- PASS: TestArmstrong/There_are_no_two-digit_Armstrong_numbers (0.00s)
+    --- PASS: TestArmstrong/Three-digit_number_that_is_an_Armstrong_number (0.00s)
+    --- PASS: TestArmstrong/Three-digit_number_that_is_not_an_Armstrong_number (0.00s)
+    --- PASS: TestArmstrong/Four-digit_number_that_is_an_Armstrong_number (0.00s)
+    --- PASS: TestArmstrong/Four-digit_number_that_is_not_an_Armstrong_number (0.00s)
+    --- PASS: TestArmstrong/Seven-digit_number_that_is_an_Armstrong_number (0.00s)
+    --- PASS: TestArmstrong/Seven-digit_number_that_is_not_an_Armstrong_number (0.00s)
+=== RUN   ExampleIsNumber
+--- PASS: ExampleIsNumber (0.00s)
 PASS
-ok  	armstrong	0.009s
+ok  	armstrong	0.002s
 
-real	0m0.534s
-user	0m0.593s
-sys	0m0.414s
+real	0m0.132s
+user	0m0.209s
+sys	0m0.133s
 
 ===============================================================================
-
-go install golang.org/x/perf/cmd/benchstat@latest
-
-real	0m0.754s
-user	0m0.709s
-sys	0m0.411s
 
 benchstat benchstat-old.txt benchstat-new.txt
+benchstat-new.txt:5: missing iteration count
+goos: linux
+goarch: amd64
+pkg: armstrong
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+           │ benchstat-new.txt │
+           │      sec/op       │
+IsNumber-8        959.5n ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-real	0m0.009s
-user	0m0.003s
-sys	0m0.004s
+           │ benchstat-new.txt │
+           │       B/op        │
+IsNumber-8         72.00 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-===============================================================================
+           │ benchstat-new.txt │
+           │     allocs/op     │
+IsNumber-8         11.00 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-go vet armstrong
+cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+           │ benchstat-old.txt │
+           │      sec/op       │
+IsNumber-4        3.258µ ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-real	0m0.353s
-user	0m0.402s
-sys	0m0.337s
+           │ benchstat-old.txt │
+           │       B/op        │
+IsNumber-4         212.0 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-===============================================================================
+           │ benchstat-old.txt │
+           │     allocs/op     │
+IsNumber-4         43.00 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-go fix armstrong
-
-real	0m0.187s
-user	0m0.179s
-sys	0m0.156s
-
-===============================================================================
-
-gosec ./armstrong-numbers
-[gosec] 2022/07/24 00:20:42 Including rules: default
-[gosec] 2022/07/24 00:20:42 Excluding rules: default
-[gosec] 2022/07/24 00:20:42 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/armstrong-numbers
-2022/07/24 00:20:42 internal error: package "fmt" without types was imported from "command-line-arguments"
-
-real	0m0.519s
-user	0m0.640s
-sys	0m0.385s
+real	0m0.003s
+user	0m0.002s
+sys	0m0.001s
 
 ===============================================================================
 
 gomarkdoc --output armstrong-doc.md
 
-real	0m0.033s
-user	0m0.020s
-sys	0m0.018s
+real	0m0.013s
+user	0m0.006s
+sys	0m0.007s
 
 ===============================================================================
 
@@ -187,9 +832,9 @@ func IsNumber(number int) bool
     the power of the number of digits.
 
 
-real	0m0.214s
-user	0m0.219s
-sys	0m0.205s
+real	0m0.037s
+user	0m0.029s
+sys	0m0.034s
 
 
 ===============================================================================

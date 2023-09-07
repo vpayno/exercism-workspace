@@ -1,0 +1,34 @@
+
+48     	func (l Lists) Keep(filter func([]int) bool) Lists {
+49     		if l == nil {
+50 MISS			return Lists(nil)
+51     		}
+52     	
+53     		list := Lists{}
+54     	
+55     		for _, subList := range l {
+56     			if filter(subList) {
+57     				list = append(list, subList)
+58     			}
+59     		}
+60     	
+61     		return list
+62     	}
+
+
+65     	func (s Strings) Keep(filter func(string) bool) Strings {
+66     		if s == nil {
+67 MISS			return Strings(nil)
+68     		}
+69     	
+70     		list := Strings{}
+71     	
+72     		for _, v := range s {
+73     			if filter(v) {
+74     				list = append(list, v)
+75     			}
+76     		}
+77     	
+78     		return list
+79     	}
+

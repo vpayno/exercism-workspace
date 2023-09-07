@@ -1,0 +1,71 @@
+
+13     	func LargestSeriesProduct(digits string, span int) (int64, error) {
+14     		if span < 0 {
+15     			return 0, errors.New("span must not be negative")
+16     		}
+17     	
+18     		if span > len(digits) {
+19     			return 0, errors.New("span must be smaller than string length")
+20     		}
+21     	
+22     		if len(digits) == 0 {
+23     			return 1, nil
+24     		}
+25     	
+26     		if span == 0 && len(digits) > 0 {
+27     			return 1, nil
+28     		}
+29     	
+30     		match, e := regexp.MatchString(`^[[:digit:]]+$`, digits)
+31     		if e != nil {
+32 MISS			return 0, e
+33     		}
+34     		if !match {
+35     			return 0, errors.New("digits input must only contain digits")
+36     		}
+37     	
+38     		match, e = regexp.MatchString(`^0+$`, digits)
+39     		if e != nil {
+40 MISS			return 0, e
+41     		}
+42     		if match {
+43     			return 0, nil
+44     		}
+45     	
+46     		match, e = regexp.MatchString(`^1+$`, digits)
+47     		if e != nil {
+48 MISS			return 0, e
+49     		}
+50     		if match {
+51 MISS			return 1, nil
+52     		}
+53     	
+54     		var result int64
+55     		for len(digits) >= span {
+56     			numbers := []int64{}
+57     	
+58     			for _, digit := range digits[:span] {
+59     				number, e := strconv.Atoi(string(digit))
+60     				if e != nil {
+61 MISS					return 0, e
+62     				}
+63     	
+64     				numbers = append(numbers, int64(number))
+65     			}
+66     	
+67     			digits = digits[1:]
+68     	
+69     			var product int64 = 1
+70     	
+71     			for _, n := range numbers {
+72     				product *= n
+73     			}
+74     	
+75     			if product > result {
+76     				result = product
+77     			}
+78     		}
+79     	
+80     		return result, nil
+81     	}
+

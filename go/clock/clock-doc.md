@@ -6,7 +6,7 @@
 import "clock"
 ```
 
-Package clock that handles times without dates\.
+Package clock that handles times without dates.
 
 ## Index
 
@@ -19,7 +19,7 @@ Package clock that handles times without dates\.
 
 ## type [Clock](<https://github.com/vpayno/exercism-workspace/blob/main/go/clock/clock.go#L7-L10>)
 
-Clock struct that uses hours and minutes to represent time\.
+Clock struct that uses hours and minutes to represent time.
 
 ```go
 type Clock struct {
@@ -33,7 +33,7 @@ type Clock struct {
 func New(h, m int) Clock
 ```
 
-New returns a new clock with the normalized given hours and minutes\.
+New returns a new clock with the normalized given hours and minutes.
 
 ### func \(Clock\) [Add](<https://github.com/vpayno/exercism-workspace/blob/main/go/clock/clock.go#L44>)
 
@@ -41,7 +41,7 @@ New returns a new clock with the normalized given hours and minutes\.
 func (c Clock) Add(m int) Clock
 ```
 
-Add returns a clock with the added minutes\.
+Add returns a clock with the added minutes.
 
 ### func \(Clock\) [String](<https://github.com/vpayno/exercism-workspace/blob/main/go/clock/clock.go#L58>)
 
@@ -49,7 +49,7 @@ Add returns a clock with the added minutes\.
 func (c Clock) String() string
 ```
 
-String retruns a string representation of the clock struct\.
+String retruns a string representation of the clock struct.
 
 ### func \(Clock\) [Subtract](<https://github.com/vpayno/exercism-workspace/blob/main/go/clock/clock.go#L51>)
 
@@ -57,7 +57,7 @@ String retruns a string representation of the clock struct\.
 func (c Clock) Subtract(m int) Clock
 ```
 
-Subtract returns a clock with the subtracted minutes\.
+Subtract returns a clock with the subtracted minutes.
 
 
 

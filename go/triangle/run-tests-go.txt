@@ -5,15 +5,565 @@ Go packages: triangle
 
 ===============================================================================
 
-golint triangle
+Running: ../../.github/citools/go/go-lint-golangci-lint
 
-real	0m0.106s
-user	0m0.062s
-sys	0m0.087s
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.011s
+user	0m0.006s
+sys	0m0.008s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+triangle.go:34:5: badCond: `a == b && a == c` condition is suspicious (gocritic)
+	if a == b && a == c {
+	   ^
+triangle_test.go:12:20: Comment should end in a period (godot)
+// basic test cases
+                   ^
+triangle_test.go:70:2: for statements should only be cuddled with assignments used in the iteration (wsl)
+	for i := 0; i < b.N; i++ {
+	^
+triangle_test.go:13:5: testData is a global variable (gochecknoglobals)
+var testData = []testCase{
+    ^
+triangle_test.go:35:1: Function TestKindsNotEqual missing the call to method parallel (paralleltest)
+func TestKindsNotEqual(t *testing.T) {
+^
+triangle_test.go:56:1: Function TestKind missing the call to method parallel (paralleltest)
+func TestKind(t *testing.T) {
+^
+triangle_examples_test.go:1:9: package should be `triangle_test` instead of `triangle` (testpackage)
+package triangle
+        ^
+triangle_test.go:1:9: package should be `triangle_test` instead of `triangle` (testpackage)
+package triangle
+        ^
+triangle.go:68:20: parameter name 'c' is too short for the scope of its usage (varnamelen)
+func KindFromSides(a, b, c float64) Kind {
+                   ^
+
+real	0m0.501s
+user	0m0.702s
+sys	0m0.467s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.525s
+user	0m0.715s
+sys	0m0.484s
+
+real	0m0.527s
+user	0m0.716s
+sys	0m0.486s
 
 ===============================================================================
 
-go test -v -covermode=count -coverprofile coverage.out triangle
+Running: ../../.github/citools/go/go-lint-revive
+
+Running Go Lint Revive
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.011s
+user	0m0.004s
+sys	0m0.010s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
+
+real	0m0.033s
+user	0m0.021s
+sys	0m0.021s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.056s
+user	0m0.030s
+sys	0m0.042s
+
+real	0m0.058s
+user	0m0.032s
+sys	0m0.042s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
+
+real	0m0.001s
+user	0m0.001s
+sys	0m0.000s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.024s
+user	0m0.008s
+sys	0m0.023s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
+	info: check "./."
+internal error: package "fmt" without types was imported from "triangle [triangle.test]"
+
+real	0m0.089s
+user	0m0.115s
+sys	0m0.111s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.132s
+user	0m0.133s
+sys	0m0.150s
+
+real	0m0.134s
+user	0m0.134s
+sys	0m0.150s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-staticcheck
+
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.012s
+user	0m0.006s
+sys	0m0.009s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+
+real	0m0.176s
+user	0m0.211s
+sys	0m0.128s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.199s
+user	0m0.226s
+sys	0m0.145s
+
+real	0m0.202s
+user	0m0.227s
+sys	0m0.146s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocritic
+
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.012s
+user	0m0.004s
+sys	0m0.010s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+./triangle.go:34:5: badCond: `a == b && a == c` condition is suspicious
+
+real	0m0.847s
+user	0m2.124s
+sys	0m0.284s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.871s
+user	0m2.132s
+sys	0m0.306s
+
+real	0m0.873s
+user	0m2.133s
+sys	0m0.307s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go_vet
+
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.012s
+user	0m0.004s
+sys	0m0.011s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.069s
+user	0m0.116s
+sys	0m0.088s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.091s
+user	0m0.124s
+sys	0m0.108s
+
+real	0m0.094s
+user	0m0.126s
+sys	0m0.108s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-fixer-go_fix
+
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.011s
+user	0m0.006s
+sys	0m0.009s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.017s
+user	0m0.008s
+sys	0m0.012s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.037s
+user	0m0.019s
+sys	0m0.029s
+
+real	0m0.039s
+user	0m0.019s
+sys	0m0.031s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-errcheck
+
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.018s
+user	0m0.006s
+sys	0m0.017s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+
+real	0m0.529s
+user	0m1.667s
+sys	0m0.368s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.563s
+user	0m1.683s
+sys	0m0.397s
+
+real	0m0.566s
+user	0m1.685s
+sys	0m0.398s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.013s
+user	0m0.007s
+sys	0m0.009s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
+8 triangle isIsosceles triangle.go:42:1
+7 triangle isTriangle triangle.go:16:1
+5 triangle isScalene triangle.go:55:1
+4 triangle BenchmarkKind triangle_test.go:66:1
+4 triangle TestKindsNotEqual triangle_test.go:35:1
+4 triangle KindFromSides triangle.go:68:1
+4 triangle isEquilateral triangle.go:29:1
+3 triangle TestKind triangle_test.go:56:1
+1 triangle ExampleKindFromSides triangle_examples_test.go:7:1
+
+real	0m0.003s
+user	0m0.001s
+sys	0m0.002s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.028s
+user	0m0.013s
+sys	0m0.022s
+
+real	0m0.030s
+user	0m0.014s
+sys	0m0.024s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-misspell
+
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+
+real	0m0.025s
+user	0m0.029s
+sys	0m0.007s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.037s
+user	0m0.035s
+sys	0m0.019s
+
+real	0m0.040s
+user	0m0.035s
+sys	0m0.022s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gosec
+
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.019s
+user	0m0.010s
+sys	0m0.015s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:31:49 Including rules: default
+[gosec] 2023/09/07 00:31:49 Excluding rules: default
+[gosec] 2023/09/07 00:31:49 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/triangle
+[gosec] 2023/09/07 00:31:49 Checking package: triangle
+[gosec] 2023/09/07 00:31:49 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/triangle/triangle.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 79
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.086s
+user	0m0.075s
+sys	0m0.045s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.116s
+user	0m0.091s
+sys	0m0.068s
+
+real	0m0.118s
+user	0m0.091s
+sys	0m0.069s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.017s
+user	0m0.012s
+sys	0m0.011s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
 === RUN   TestKindsNotEqual
 --- PASS: TestKindsNotEqual (0.00s)
 === RUN   TestKind
@@ -22,15 +572,17 @@ go test -v -covermode=count -coverprofile coverage.out triangle
 --- PASS: ExampleKindFromSides (0.00s)
 PASS
 coverage: 96.0% of statements
-ok  	triangle	0.010s	coverage: 96.0% of statements
+ok  	triangle	0.004s	coverage: 96.0% of statements
 
-real	0m0.668s
-user	0m0.747s
-sys	0m0.467s
+real	0m0.186s
+user	0m0.223s
+sys	0m0.158s
 
-===============================================================================
 
-go tool cover -func=coverage.out
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
 triangle/triangle.go:16:	isTriangle	100.0%
 triangle/triangle.go:29:	isEquilateral	100.0%
 triangle/triangle.go:42:	isIsosceles	100.0%
@@ -38,21 +590,53 @@ triangle/triangle.go:55:	isScalene	80.0%
 triangle/triangle.go:68:	KindFromSides	100.0%
 total:				(statements)	96.0%
 
-real	0m0.125s
-user	0m0.065s
-sys	0m0.109s
+real	0m0.026s
+user	0m0.012s
+sys	0m0.020s
 
-===============================================================================
 
-go tool cover -html coverage.out -o coverage.html
+ ==============================================================================
 
-real	0m0.067s
-user	0m0.032s
-sys	0m0.067s
+Running: go tool cover -html coverage.out -o coverage.html
 
-===============================================================================
 
-go test -v -race -covermode=atomic triangle
+real	0m0.025s
+user	0m0.009s
+sys	0m0.023s
+
+
+ ==============================================================================
+
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+55     	func isScalene(a, b, c float64) bool {
+56     		if !isTriangle(a, b, c) {
+57     			return false
+58     		}
+59     	
+60     		if a != b && a != c && b != c {
+61     			return true
+62     		}
+63     	
+64 MISS		return false
+65     	}
+
+
+real	0m0.010s
+user	0m0.004s
+sys	0m0.011s
+
+real	0m0.010s
+user	0m0.004s
+sys	0m0.011s
+
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
 === RUN   TestKindsNotEqual
 --- PASS: TestKindsNotEqual (0.00s)
 === RUN   TestKind
@@ -61,115 +645,117 @@ go test -v -race -covermode=atomic triangle
 --- PASS: ExampleKindFromSides (0.00s)
 PASS
 coverage: 96.0% of statements
-ok  	triangle	0.046s	coverage: 96.0% of statements
+ok  	triangle	1.012s	coverage: 96.0% of statements
 
-real	0m0.688s
-user	0m0.759s
-sys	0m0.489s
+real	0m1.247s
+user	0m0.275s
+sys	0m0.179s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.528s
+user	0m0.547s
+sys	0m0.415s
+
+real	0m1.531s
+user	0m0.548s
+sys	0m0.416s
 
 ===============================================================================
 
 mv -v benchstat-new.txt benchstat-old.txt
 renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
 
-go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 goos: linux
 goarch: amd64
 pkg: triangle
-cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
-BenchmarkKind-4   	 6604374	       169.2 ns/op	       0 B/op	       0 allocs/op
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+BenchmarkKind
+BenchmarkKind-8   	11657188	        88.33 ns/op	       0 B/op	       0 allocs/op
 PASS
-ok  	triangle	1.374s
+ok  	triangle	1.138s
 
-real	0m1.898s
-user	0m2.055s
-sys	0m0.436s
+real	0m1.284s
+user	0m1.339s
+sys	0m0.169s
 
 ===============================================================================
 
-go test -tags bonus
+gotest -v -tags bonus
+=== RUN   TestKindsNotEqual
+--- PASS: TestKindsNotEqual (0.00s)
+=== RUN   TestKind
+--- PASS: TestKind (0.00s)
+=== RUN   ExampleKindFromSides
+--- PASS: ExampleKindFromSides (0.00s)
 PASS
-ok  	triangle	0.014s
+ok  	triangle	0.002s
 
-real	0m0.512s
-user	0m0.583s
-sys	0m0.389s
+real	0m0.121s
+user	0m0.154s
+sys	0m0.110s
 
 ===============================================================================
-
-go install golang.org/x/perf/cmd/benchstat@latest
-
-real	0m0.787s
-user	0m0.798s
-sys	0m0.377s
 
 benchstat benchstat-old.txt benchstat-new.txt
-name    old time/op    new time/op    delta
-Kind-4     155ns ± 0%     169ns ± 0%   ~     (p=1.000 n=1+1)
+benchstat-new.txt:5: missing iteration count
+goos: linux
+goarch: amd64
+pkg: triangle
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+       │ benchstat-new.txt │
+       │      sec/op       │
+Kind-8        88.33n ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-name    old alloc/op   new alloc/op   delta
-Kind-4     0.00B          0.00B        ~     (all equal)
+       │ benchstat-new.txt │
+       │       B/op        │
+Kind-8         0.000 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-name    old allocs/op  new allocs/op  delta
-Kind-4      0.00           0.00        ~     (all equal)
+       │ benchstat-new.txt │
+       │     allocs/op     │
+Kind-8         0.000 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-real	0m0.026s
-user	0m0.011s
-sys	0m0.018s
+cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+       │ benchstat-old.txt │
+       │      sec/op       │
+Kind-4        169.2n ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-===============================================================================
+       │ benchstat-old.txt │
+       │       B/op        │
+Kind-4         0.000 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-go vet triangle
+       │ benchstat-old.txt │
+       │     allocs/op     │
+Kind-4         0.000 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-real	0m0.286s
-user	0m0.384s
-sys	0m0.284s
-
-===============================================================================
-
-go fix triangle
-
-real	0m0.054s
-user	0m0.027s
-sys	0m0.049s
-
-===============================================================================
-
-gosec ./triangle
-[gosec] 2022/06/27 19:57:19 Including rules: default
-[gosec] 2022/06/27 19:57:19 Excluding rules: default
-[gosec] 2022/06/27 19:57:19 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/triangle
-[gosec] 2022/06/27 19:57:19 Checking package: triangle
-[gosec] 2022/06/27 19:57:19 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/triangle/triangle.go
-Results:
-
-
-Summary:
-   Files: 1
-   Lines: 79
-   Nosec: 0
-  Issues: 0
-
-
-real	0m0.243s
-user	0m0.253s
-sys	0m0.147s
+real	0m0.004s
+user	0m0.002s
+sys	0m0.001s
 
 ===============================================================================
 
 gomarkdoc --output triangle-doc.md
 
-real	0m0.027s
-user	0m0.014s
-sys	0m0.016s
+real	0m0.011s
+user	0m0.011s
+sys	0m0.001s
 
 ===============================================================================
 
 go doc -all triangle
 package triangle // import "triangle"
 
-Package triangle determines if a triangle is equilateral, isosceles, or
-scalene.
+Package triangle determines if a triangle is equilateral, isosceles, or scalene.
 
 CONSTANTS
 
@@ -191,9 +777,9 @@ func KindFromSides(a, b, c float64) Kind
     KindFromSides returns the kind of triangle being tested.
 
 
-real	0m0.120s
-user	0m0.060s
-sys	0m0.114s
+real	0m0.033s
+user	0m0.014s
+sys	0m0.029s
 
 
 ===============================================================================

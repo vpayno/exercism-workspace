@@ -5,144 +5,820 @@ Go packages: strand
 
 ===============================================================================
 
-golint strand
+Running: ../../.github/citools/go/go-lint-golangci-lint
 
-real	0m0.212s
-user	0m0.182s
-sys	0m0.207s
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.024s
+user	0m0.023s
+sys	0m0.029s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+rna_transcription.go:71:10: var-declaration: should omit type DNA from declaration of var dna; it will be inferred from the right-hand side (revive)
+	var dna DNA = DNA(s)
+	        ^
+rna_transcription_examples_test.go:9:15: var-declaration: should omit type string from declaration of var validDNA; it will be inferred from the right-hand side (revive)
+	var validDNA string = "GCTA"
+	             ^
+rna_transcription_examples_test.go:17:17: var-declaration: should omit type string from declaration of var invalidDNA; it will be inferred from the right-hand side (revive)
+	var invalidDNA string = "GCXTA"
+	               ^
+rna_transcription_test.go:8:23: Using the variable on range scope `tc` in function literal (scopelint)
+			if actual := ToRNA(tc.input); actual != tc.expected {
+			                   ^
+rna_transcription_test.go:9:42: Using the variable on range scope `tc` in function literal (scopelint)
+				t.Fatalf("ToRNA(%q) = %q, want: %q", tc.input, actual, tc.expected)
+				                                     ^
+rna_transcription.go:72:2: declarations should never be cuddled (wsl)
+	var rna RNA
+	^
+rna_transcription_test.go:19:2: for statements should only be cuddled with assignments used in the iteration (wsl)
+	for i := 0; i < b.N; i++ {
+	^
+cases_test.go:6:5: testCases is a global variable (gochecknoglobals)
+var testCases = []struct {
+    ^
+rna_transcription.go:18:17: err113: do not define dynamic errors, use wrapped static errors instead: "fmt.Errorf(\"DNA sequence, %q, contains invalid nucleotides\", string(d))" (goerr113)
+		return false, fmt.Errorf("DNA sequence, %q, contains invalid nucleotides", string(d))
+		              ^
+rna_transcription.go:27:9: S1025: the argument is already a string, there's no need to use fmt.Sprintf (gosimple)
+	return fmt.Sprintf("%s", string(d))
+	       ^
+rna_transcription.go:62:9: S1025: the argument is already a string, there's no need to use fmt.Sprintf (gosimple)
+	return fmt.Sprintf("%s", string(d))
+	       ^
+rna_transcription_examples_test.go:16:1: Function TestPanic missing the call to method parallel (paralleltest)
+func TestPanic(t *testing.T) {
+^
+rna_transcription_test.go:5:1: Function TestRNATranscription missing the call to method parallel (paralleltest)
+func TestRNATranscription(t *testing.T) {
+^
+rna_transcription_test.go:6:2: Range statement for test TestRNATranscription missing the call to method parallel in test Run (paralleltest)
+	for _, tc := range testCases {
+	^
+cases_test.go:1:9: package should be `strand_test` instead of `strand` (testpackage)
+package strand
+        ^
+rna_transcription_examples_test.go:1:9: package should be `strand_test` instead of `strand` (testpackage)
+package strand
+        ^
+rna_transcription_test.go:1:9: package should be `strand_test` instead of `strand` (testpackage)
+package strand
+        ^
+
+real	0m0.492s
+user	0m0.680s
+sys	0m0.464s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.530s
+user	0m0.713s
+sys	0m0.503s
+
+real	0m0.532s
+user	0m0.715s
+sys	0m0.504s
 
 ===============================================================================
 
-go test -v -covermode=count -coverprofile coverage.out strand
+Running: ../../.github/citools/go/go-lint-revive
+
+Running Go Lint Revive
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.024s
+user	0m0.025s
+sys	0m0.025s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
+rna_transcription_examples_test.go
+  (9, 15)   https://revive.run/r#var-declaration  should omit type string from declaration of var validDNA; it will be inferred from the right-hand side    
+  (17, 17)  https://revive.run/r#var-declaration  should omit type string from declaration of var invalidDNA; it will be inferred from the right-hand side  
+
+rna_transcription.go
+  (71, 10)  https://revive.run/r#var-declaration  should omit type DNA from declaration of var dna; it will be inferred from the right-hand side  
+
+
+ ✖ 3 problems (0 errors) (3 warnings)
+
+real	0m0.049s
+user	0m0.026s
+sys	0m0.037s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.083s
+user	0m0.055s
+sys	0m0.073s
+
+real	0m0.086s
+user	0m0.056s
+sys	0m0.074s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.001s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.036s
+user	0m0.033s
+sys	0m0.037s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
+	info: check "./."
+internal error: package "fmt" without types was imported from "strand"
+
+real	0m0.094s
+user	0m0.090s
+sys	0m0.117s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.147s
+user	0m0.129s
+sys	0m0.169s
+
+real	0m0.149s
+user	0m0.129s
+sys	0m0.171s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-staticcheck
+
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.023s
+user	0m0.026s
+sys	0m0.022s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+rna_transcription.go:27:9: the argument is already a string, there's no need to use fmt.Sprintf (S1025)
+rna_transcription.go:62:9: the argument is already a string, there's no need to use fmt.Sprintf (S1025)
+rna_transcription.go:71:10: should omit type DNA from declaration; it will be inferred from the right-hand side (ST1023)
+rna_transcription.go:72:2: should merge variable declaration with assignment on next line (S1021)
+rna_transcription_examples_test.go:9:15: should omit type string from declaration; it will be inferred from the right-hand side (ST1023)
+rna_transcription_examples_test.go:17:17: should omit type string from declaration; it will be inferred from the right-hand side (ST1023)
+
+real	0m0.155s
+user	0m0.191s
+sys	0m0.124s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.190s
+user	0m0.221s
+sys	0m0.158s
+
+real	0m0.192s
+user	0m0.221s
+sys	0m0.160s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocritic
+
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.021s
+user	0m0.022s
+sys	0m0.020s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+./rna_transcription.go:67:5: emptyStringTest: replace `len(s) == 0` with `s == ""`
+./rna_transcription.go:27:9: redundantSprint: string(d) is already string
+./rna_transcription.go:62:9: redundantSprint: string(d) is already string
+
+real	0m0.862s
+user	0m2.039s
+sys	0m0.292s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.896s
+user	0m2.071s
+sys	0m0.320s
+
+real	0m0.899s
+user	0m2.071s
+sys	0m0.323s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go_vet
+
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.026s
+user	0m0.024s
+sys	0m0.030s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.085s
+user	0m0.145s
+sys	0m0.105s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.124s
+user	0m0.177s
+sys	0m0.143s
+
+real	0m0.127s
+user	0m0.178s
+sys	0m0.144s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-fixer-go_fix
+
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.023s
+user	0m0.022s
+sys	0m0.024s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.026s
+user	0m0.027s
+sys	0m0.030s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.060s
+user	0m0.054s
+sys	0m0.063s
+
+real	0m0.062s
+user	0m0.056s
+sys	0m0.063s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-errcheck
+
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.031s
+user	0m0.024s
+sys	0m0.033s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+
+real	0m0.439s
+user	0m1.259s
+sys	0m0.276s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.485s
+user	0m1.286s
+sys	0m0.326s
+
+real	0m0.487s
+user	0m1.286s
+sys	0m0.327s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.022s
+user	0m0.020s
+sys	0m0.021s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
+4 strand BenchmarkRNATranscription rna_transcription_test.go:15:1
+4 strand (DNA).ConvertToRNA rna_transcription.go:31:1
+3 strand TestRNATranscription rna_transcription_test.go:5:1
+2 strand TestPanic rna_transcription_examples_test.go:16:1
+2 strand ToRNA rna_transcription.go:66:1
+2 strand (DNA).IsValid rna_transcription.go:13:1
+1 strand ExampleToRNA rna_transcription_examples_test.go:8:1
+1 strand (RNA).String rna_transcription.go:60:1
+1 strand (DNA).String rna_transcription.go:25:1
+
+real	0m0.003s
+user	0m0.001s
+sys	0m0.002s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.035s
+user	0m0.024s
+sys	0m0.035s
+
+real	0m0.038s
+user	0m0.026s
+sys	0m0.035s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-misspell
+
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+
+real	0m0.024s
+user	0m0.023s
+sys	0m0.013s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.035s
+user	0m0.029s
+sys	0m0.023s
+
+real	0m0.037s
+user	0m0.029s
+sys	0m0.025s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gosec
+
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.026s
+user	0m0.018s
+sys	0m0.032s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:29:58 Including rules: default
+[gosec] 2023/09/07 00:29:58 Excluding rules: default
+[gosec] 2023/09/07 00:29:58 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/rna-transcription
+[gosec] 2023/09/07 00:29:58 Checking package: strand
+[gosec] 2023/09/07 00:29:58 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/rna-transcription/rna_transcription.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 77
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.126s
+user	0m0.149s
+sys	0m0.118s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.164s
+user	0m0.171s
+sys	0m0.160s
+
+real	0m0.166s
+user	0m0.173s
+sys	0m0.160s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.024s
+user	0m0.022s
+sys	0m0.028s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
 === RUN   TestPanic
 --- PASS: TestPanic (0.00s)
 === RUN   TestRNATranscription
-    rna_transcription_test.go:11: PASS: Empty RNA sequence
-    rna_transcription_test.go:11: PASS: RNA complement of cytosine is guanine
-    rna_transcription_test.go:11: PASS: RNA complement of guanine is cytosine
-    rna_transcription_test.go:11: PASS: RNA complement of thymine is adenine
-    rna_transcription_test.go:11: PASS: RNA complement of adenine is uracil
-    rna_transcription_test.go:11: PASS: RNA complement
+=== RUN   TestRNATranscription/Empty_RNA_sequence
+=== RUN   TestRNATranscription/RNA_complement_of_cytosine_is_guanine
+=== RUN   TestRNATranscription/RNA_complement_of_guanine_is_cytosine
+=== RUN   TestRNATranscription/RNA_complement_of_thymine_is_adenine
+=== RUN   TestRNATranscription/RNA_complement_of_adenine_is_uracil
+=== RUN   TestRNATranscription/RNA_complement
 --- PASS: TestRNATranscription (0.00s)
+    --- PASS: TestRNATranscription/Empty_RNA_sequence (0.00s)
+    --- PASS: TestRNATranscription/RNA_complement_of_cytosine_is_guanine (0.00s)
+    --- PASS: TestRNATranscription/RNA_complement_of_guanine_is_cytosine (0.00s)
+    --- PASS: TestRNATranscription/RNA_complement_of_thymine_is_adenine (0.00s)
+    --- PASS: TestRNATranscription/RNA_complement_of_adenine_is_uracil (0.00s)
+    --- PASS: TestRNATranscription/RNA_complement (0.00s)
 === RUN   ExampleToRNA
 --- PASS: ExampleToRNA (0.00s)
 PASS
-coverage: 100.0% of statements
-ok  	strand	0.005s	coverage: 100.0% of statements
+coverage: 95.2% of statements
+ok  	strand	0.004s	coverage: 95.2% of statements
 
-real	0m0.574s
-user	0m0.676s
-sys	0m0.463s
+real	0m0.172s
+user	0m0.199s
+sys	0m0.137s
 
-===============================================================================
 
-go tool cover -func=coverage.out
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
 strand/rna_transcription.go:13:	IsValid		100.0%
-strand/rna_transcription.go:25:	String		100.0%
+strand/rna_transcription.go:25:	String		0.0%
 strand/rna_transcription.go:31:	ConvertToRNA	100.0%
 strand/rna_transcription.go:60:	String		100.0%
 strand/rna_transcription.go:66:	ToRNA		100.0%
-total:				(statements)	100.0%
+total:				(statements)	95.2%
 
-real	0m0.244s
-user	0m0.240s
-sys	0m0.281s
+real	0m0.048s
+user	0m0.065s
+sys	0m0.062s
 
-===============================================================================
 
-go tool cover -html coverage.out -o coverage.html
+ ==============================================================================
 
-real	0m0.288s
-user	0m0.286s
-sys	0m0.239s
+Running: go tool cover -html coverage.out -o coverage.html
 
-===============================================================================
 
-go test -v -race -covermode=atomic strand
+real	0m0.053s
+user	0m0.057s
+sys	0m0.078s
+
+
+ ==============================================================================
+
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+25     	func (d DNA) String() string {
+26     		// we need string(d) here to prevent recursion
+27 MISS		return fmt.Sprintf("%s", string(d))
+28     	}
+
+
+real	0m0.018s
+user	0m0.018s
+sys	0m0.022s
+
+real	0m0.018s
+user	0m0.018s
+sys	0m0.022s
+
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
 === RUN   TestPanic
 --- PASS: TestPanic (0.00s)
 === RUN   TestRNATranscription
-    rna_transcription_test.go:11: PASS: Empty RNA sequence
-    rna_transcription_test.go:11: PASS: RNA complement of cytosine is guanine
-    rna_transcription_test.go:11: PASS: RNA complement of guanine is cytosine
-    rna_transcription_test.go:11: PASS: RNA complement of thymine is adenine
-    rna_transcription_test.go:11: PASS: RNA complement of adenine is uracil
-    rna_transcription_test.go:11: PASS: RNA complement
+=== RUN   TestRNATranscription/Empty_RNA_sequence
+=== RUN   TestRNATranscription/RNA_complement_of_cytosine_is_guanine
+=== RUN   TestRNATranscription/RNA_complement_of_guanine_is_cytosine
+=== RUN   TestRNATranscription/RNA_complement_of_thymine_is_adenine
+=== RUN   TestRNATranscription/RNA_complement_of_adenine_is_uracil
+=== RUN   TestRNATranscription/RNA_complement
 --- PASS: TestRNATranscription (0.00s)
+    --- PASS: TestRNATranscription/Empty_RNA_sequence (0.00s)
+    --- PASS: TestRNATranscription/RNA_complement_of_cytosine_is_guanine (0.00s)
+    --- PASS: TestRNATranscription/RNA_complement_of_guanine_is_cytosine (0.00s)
+    --- PASS: TestRNATranscription/RNA_complement_of_thymine_is_adenine (0.00s)
+    --- PASS: TestRNATranscription/RNA_complement_of_adenine_is_uracil (0.00s)
+    --- PASS: TestRNATranscription/RNA_complement (0.00s)
 === RUN   ExampleToRNA
 --- PASS: ExampleToRNA (0.00s)
 PASS
-coverage: 100.0% of statements
-ok  	strand	0.030s	coverage: 100.0% of statements
+coverage: 95.2% of statements
+ok  	strand	1.014s	coverage: 95.2% of statements
 
-real	0m0.607s
-user	0m0.694s
-sys	0m0.403s
+real	0m1.241s
+user	0m0.281s
+sys	0m0.166s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.568s
+user	0m0.652s
+sys	0m0.500s
+
+real	0m1.571s
+user	0m0.653s
+sys	0m0.501s
 
 ===============================================================================
 
-go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+mv -v benchstat-new.txt benchstat-old.txt
+renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
+
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 goos: linux
 goarch: amd64
 pkg: strand
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+BenchmarkRNATranscription
+BenchmarkRNATranscription-8   	   97970	     13015 ns/op	   13023 B/op	     223 allocs/op
+PASS
+ok  	strand	2.379s
+
+real	0m2.529s
+user	0m2.712s
+sys	0m0.231s
+
+===============================================================================
+
+gotest -v -tags bonus
+=== RUN   TestPanic
+--- PASS: TestPanic (0.00s)
+=== RUN   TestRNATranscription
+=== RUN   TestRNATranscription/Empty_RNA_sequence
+=== RUN   TestRNATranscription/RNA_complement_of_cytosine_is_guanine
+=== RUN   TestRNATranscription/RNA_complement_of_guanine_is_cytosine
+=== RUN   TestRNATranscription/RNA_complement_of_thymine_is_adenine
+=== RUN   TestRNATranscription/RNA_complement_of_adenine_is_uracil
+=== RUN   TestRNATranscription/RNA_complement
+--- PASS: TestRNATranscription (0.00s)
+    --- PASS: TestRNATranscription/Empty_RNA_sequence (0.00s)
+    --- PASS: TestRNATranscription/RNA_complement_of_cytosine_is_guanine (0.00s)
+    --- PASS: TestRNATranscription/RNA_complement_of_guanine_is_cytosine (0.00s)
+    --- PASS: TestRNATranscription/RNA_complement_of_thymine_is_adenine (0.00s)
+    --- PASS: TestRNATranscription/RNA_complement_of_adenine_is_uracil (0.00s)
+    --- PASS: TestRNATranscription/RNA_complement (0.00s)
+=== RUN   ExampleToRNA
+--- PASS: ExampleToRNA (0.00s)
+PASS
+ok  	strand	0.002s
+
+real	0m0.127s
+user	0m0.169s
+sys	0m0.137s
+
+===============================================================================
+
+benchstat benchstat-old.txt benchstat-new.txt
+benchstat-new.txt:5: missing iteration count
+goos: linux
+goarch: amd64
+pkg: strand
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+                   │ benchstat-new.txt │
+                   │      sec/op       │
+RNATranscription-8        13.02µ ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
+
+                   │ benchstat-new.txt │
+                   │       B/op        │
+RNATranscription-8       12.72Ki ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
+
+                   │ benchstat-new.txt │
+                   │     allocs/op     │
+RNATranscription-8         223.0 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
+
 cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
-BenchmarkRNATranscription-4   	   31231	     37861 ns/op	   12940 B/op	     223 allocs/op
-PASS
-ok  	strand	1.561s
+                   │ benchstat-old.txt │
+                   │      sec/op       │
+RNATranscription-4        37.86µ ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-real	0m2.051s
-user	0m2.882s
-sys	0m0.517s
+                   │ benchstat-old.txt │
+                   │       B/op        │
+RNATranscription-4       12.64Ki ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-===============================================================================
+                   │ benchstat-old.txt │
+                   │     allocs/op     │
+RNATranscription-4         223.0 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-go test -tags bonus
-PASS
-ok  	strand	0.009s
-
-real	0m0.545s
-user	0m0.581s
-sys	0m0.453s
-
-===============================================================================
-
-No old benchmarks to run benchstat against.
-
-===============================================================================
-
-go vet strand
-
-real	0m0.358s
-user	0m0.426s
-sys	0m0.352s
-
-===============================================================================
-
-go fix strand
-
-real	0m0.143s
-user	0m0.147s
-sys	0m0.116s
-
-===============================================================================
-
-gosec ./rna-transcription
-[gosec] 2022/06/27 21:56:14 Including rules: default
-[gosec] 2022/06/27 21:56:14 Excluding rules: default
-[gosec] 2022/06/27 21:56:14 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/rna-transcription
-2022/06/27 21:56:15 internal error: package "fmt" without types was imported from "command-line-arguments"
-
-real	0m0.441s
-user	0m0.458s
-sys	0m0.329s
+real	0m0.003s
+user	0m0.001s
+sys	0m0.002s
 
 ===============================================================================
 
 gomarkdoc --output strand-doc.md
 
-real	0m0.030s
-user	0m0.020s
-sys	0m0.014s
+real	0m0.010s
+user	0m0.005s
+sys	0m0.005s
 
 ===============================================================================
 
@@ -178,9 +854,9 @@ func (d RNA) String() string
     String returns a pretty formated representation of a DNA type.
 
 
-real	0m0.243s
-user	0m0.222s
-sys	0m0.240s
+real	0m0.044s
+user	0m0.026s
+sys	0m0.040s
 
 
 ===============================================================================

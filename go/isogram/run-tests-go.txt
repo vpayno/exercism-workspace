@@ -5,15 +5,568 @@ Go packages: isogram
 
 ===============================================================================
 
-golint isogram
+Running: ../../.github/citools/go/go-lint-golangci-lint
 
-real	0m0.314s
-user	0m0.353s
-sys	0m0.358s
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.030s
+user	0m0.020s
+sys	0m0.031s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+isogram.go:12:10: regexpMust: for const patterns like `[^a-z]`, use regexp.MustCompile (gocritic)
+	r, e := regexp.Compile(`[^a-z]`)
+	        ^
+isogram.go:10: line is 163 characters (lll)
+// An isogram (also known as a "non-pattern word") is a word or phrase without a repeating letter, however spaces and hyphens are allowed to appear multiple times.
+isogram_test.go:8:27: Using the variable on range scope `tc` in function literal (scopelint)
+			if actual := IsIsogram(tc.input); actual != tc.expected {
+			                       ^
+isogram_test.go:9:46: Using the variable on range scope `tc` in function literal (scopelint)
+				t.Fatalf("IsIsogram(%q) = %t, want: %t", tc.input, actual, tc.expected)
+				                                         ^
+isogram_test.go:19:2: for statements should only be cuddled with assignments used in the iteration (wsl)
+	for i := 0; i < b.N; i++ {
+	^
+cases_test.go:6:5: testCases is a global variable (gochecknoglobals)
+var testCases = []struct {
+    ^
+isogram_test.go:5:1: Function TestIsIsogram missing the call to method parallel (paralleltest)
+func TestIsIsogram(t *testing.T) {
+^
+isogram_test.go:6:2: Range statement for test TestIsIsogram missing the call to method parallel in test Run (paralleltest)
+	for _, tc := range testCases {
+	^
+cases_test.go:1:9: package should be `isogram_test` instead of `isogram` (testpackage)
+package isogram
+        ^
+isogram_examples_test.go:1:9: package should be `isogram_test` instead of `isogram` (testpackage)
+package isogram
+        ^
+isogram_test.go:1:9: package should be `isogram_test` instead of `isogram` (testpackage)
+package isogram
+        ^
+isogram.go:28:6: variable name 'l1' is too short for the scope of its usage (varnamelen)
+	for i1, l1 := range word {
+	    ^
+
+real	0m0.511s
+user	0m0.787s
+sys	0m0.457s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.554s
+user	0m0.813s
+sys	0m0.498s
+
+real	0m0.555s
+user	0m0.813s
+sys	0m0.500s
 
 ===============================================================================
 
-go test -v -covermode=count -coverprofile coverage.out isogram
+Running: ../../.github/citools/go/go-lint-revive
+
+Running Go Lint Revive
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.018s
+user	0m0.014s
+sys	0m0.015s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
+
+real	0m0.043s
+user	0m0.016s
+sys	0m0.039s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.071s
+user	0m0.035s
+sys	0m0.064s
+
+real	0m0.073s
+user	0m0.036s
+sys	0m0.066s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
+
+real	0m0.001s
+user	0m0.001s
+sys	0m0.000s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.020s
+user	0m0.015s
+sys	0m0.017s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
+	info: check "./."
+internal error: package "regexp" without types was imported from "isogram"
+
+real	0m0.082s
+user	0m0.108s
+sys	0m0.091s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.115s
+user	0m0.131s
+sys	0m0.116s
+
+real	0m0.116s
+user	0m0.131s
+sys	0m0.117s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-staticcheck
+
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.022s
+user	0m0.012s
+sys	0m0.021s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+
+real	0m0.171s
+user	0m0.208s
+sys	0m0.162s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.205s
+user	0m0.224s
+sys	0m0.196s
+
+real	0m0.207s
+user	0m0.225s
+sys	0m0.197s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocritic
+
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.027s
+user	0m0.018s
+sys	0m0.025s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+./isogram.go:12:10: regexpMust: for const patterns like `[^a-z]`, use regexp.MustCompile
+
+real	0m0.837s
+user	0m2.005s
+sys	0m0.293s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.876s
+user	0m2.028s
+sys	0m0.329s
+
+real	0m0.878s
+user	0m2.029s
+sys	0m0.329s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go_vet
+
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.020s
+user	0m0.014s
+sys	0m0.015s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.076s
+user	0m0.110s
+sys	0m0.118s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.106s
+user	0m0.132s
+sys	0m0.140s
+
+real	0m0.108s
+user	0m0.132s
+sys	0m0.142s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-fixer-go_fix
+
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.020s
+user	0m0.023s
+sys	0m0.013s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.021s
+user	0m0.020s
+sys	0m0.013s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.052s
+user	0m0.048s
+sys	0m0.037s
+
+real	0m0.054s
+user	0m0.048s
+sys	0m0.038s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-errcheck
+
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.022s
+user	0m0.013s
+sys	0m0.020s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+
+real	0m0.469s
+user	0m1.515s
+sys	0m0.292s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.500s
+user	0m1.534s
+sys	0m0.319s
+
+real	0m0.503s
+user	0m1.536s
+sys	0m0.320s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.020s
+user	0m0.007s
+sys	0m0.025s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
+8 isogram IsIsogram isogram.go:11:1
+4 isogram BenchmarkIsIsogram isogram_test.go:15:1
+3 isogram TestIsIsogram isogram_test.go:5:1
+2 isogram ExampleIsIsogram isogram_examples_test.go:7:1
+
+real	0m0.002s
+user	0m0.000s
+sys	0m0.002s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.034s
+user	0m0.016s
+sys	0m0.034s
+
+real	0m0.036s
+user	0m0.017s
+sys	0m0.034s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-misspell
+
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+
+real	0m0.026s
+user	0m0.025s
+sys	0m0.012s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.037s
+user	0m0.027s
+sys	0m0.024s
+
+real	0m0.039s
+user	0m0.028s
+sys	0m0.024s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gosec
+
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.021s
+user	0m0.012s
+sys	0m0.021s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:24:09 Including rules: default
+[gosec] 2023/09/07 00:24:09 Excluding rules: default
+[gosec] 2023/09/07 00:24:09 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/isogram
+[gosec] 2023/09/07 00:24:10 Checking package: isogram
+[gosec] 2023/09/07 00:24:10 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/isogram/isogram.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 41
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.114s
+user	0m0.113s
+sys	0m0.123s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.149s
+user	0m0.132s
+sys	0m0.155s
+
+real	0m0.150s
+user	0m0.132s
+sys	0m0.156s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.039s
+user	0m0.032s
+sys	0m0.031s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
 === RUN   TestIsIsogram
 === RUN   TestIsIsogram/empty_string
 === RUN   TestIsIsogram/isogram_with_only_lower_case_characters
@@ -48,33 +601,87 @@ go test -v -covermode=count -coverprofile coverage.out isogram
 --- PASS: ExampleIsIsogram (0.00s)
 PASS
 coverage: 93.3% of statements
-ok  	isogram	0.010s	coverage: 93.3% of statements
+ok  	isogram	0.002s	coverage: 93.3% of statements
 
-real	0m1.120s
-user	0m1.309s
-sys	0m0.897s
+real	0m0.165s
+user	0m0.197s
+sys	0m0.137s
 
-===============================================================================
 
-go tool cover -func=coverage.out
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
 isogram/isogram.go:11:	IsIsogram	93.3%
 total:			(statements)	93.3%
 
-real	0m0.348s
-user	0m0.436s
-sys	0m0.314s
+real	0m0.045s
+user	0m0.057s
+sys	0m0.067s
 
-===============================================================================
 
-go tool cover -html coverage.out -o coverage.html
+ ==============================================================================
 
-real	0m0.499s
-user	0m0.509s
-sys	0m0.395s
+Running: go tool cover -html coverage.out -o coverage.html
 
-===============================================================================
 
-go test -v -race -covermode=atomic isogram
+real	0m0.051s
+user	0m0.053s
+sys	0m0.068s
+
+
+ ==============================================================================
+
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+11     	func IsIsogram(word string) bool {
+12     		r, e := regexp.Compile(`[^a-z]`)
+13     	
+14     		if e != nil {
+15 MISS			panic(e)
+16     		}
+17     	
+18     		repl := func(match string) string {
+19     			if match == "-" || match == " " {
+20     				return ""
+21     			}
+22     	
+23     			return strings.ToLower(match)
+24     		}
+25     	
+26     		word = r.ReplaceAllStringFunc(word, repl)
+27     	
+28     		for i1, l1 := range word {
+29     			for i2, l2 := range word {
+30     				if i1 == i2 {
+31     					continue
+32     				}
+33     	
+34     				if l1 == l2 {
+35     					return false
+36     				}
+37     			}
+38     		}
+39     	
+40     		return true
+41     	}
+
+
+real	0m0.023s
+user	0m0.020s
+sys	0m0.019s
+
+real	0m0.023s
+user	0m0.020s
+sys	0m0.019s
+
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
 === RUN   TestIsIsogram
 === RUN   TestIsIsogram/empty_string
 === RUN   TestIsIsogram/isogram_with_only_lower_case_characters
@@ -90,7 +697,7 @@ go test -v -race -covermode=atomic isogram
 === RUN   TestIsIsogram/duplicated_character_in_the_middle
 === RUN   TestIsIsogram/same_first_and_last_characters
 === RUN   TestIsIsogram/word_with_duplicated_character_and_with_two_hyphens
---- PASS: TestIsIsogram (0.03s)
+--- PASS: TestIsIsogram (0.00s)
     --- PASS: TestIsIsogram/empty_string (0.00s)
     --- PASS: TestIsIsogram/isogram_with_only_lower_case_characters (0.00s)
     --- PASS: TestIsIsogram/word_with_one_duplicated_character (0.00s)
@@ -106,79 +713,139 @@ go test -v -race -covermode=atomic isogram
     --- PASS: TestIsIsogram/same_first_and_last_characters (0.00s)
     --- PASS: TestIsIsogram/word_with_duplicated_character_and_with_two_hyphens (0.00s)
 === RUN   ExampleIsIsogram
---- PASS: ExampleIsIsogram (0.01s)
+--- PASS: ExampleIsIsogram (0.00s)
 PASS
 coverage: 93.3% of statements
-ok  	isogram	0.094s	coverage: 93.3% of statements
+ok  	isogram	1.016s	coverage: 93.3% of statements
 
-real	0m1.551s
-user	0m1.476s
-sys	0m1.019s
+real	0m1.236s
+user	0m0.257s
+sys	0m0.170s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.583s
+user	0m0.626s
+sys	0m0.514s
+
+real	0m1.585s
+user	0m0.626s
+sys	0m0.516s
 
 ===============================================================================
 
-go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+mv -v benchstat-new.txt benchstat-old.txt
+renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
+
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 goos: linux
 goarch: amd64
 pkg: isogram
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+BenchmarkIsIsogram
+BenchmarkIsIsogram-8   	   68550	     15683 ns/op	   11596 B/op	     190 allocs/op
+PASS
+ok  	isogram	1.266s
+
+real	0m1.424s
+user	0m1.521s
+sys	0m0.167s
+
+===============================================================================
+
+gotest -v -tags bonus
+=== RUN   TestIsIsogram
+=== RUN   TestIsIsogram/empty_string
+=== RUN   TestIsIsogram/isogram_with_only_lower_case_characters
+=== RUN   TestIsIsogram/word_with_one_duplicated_character
+=== RUN   TestIsIsogram/word_with_one_duplicated_character_from_the_end_of_the_alphabet
+=== RUN   TestIsIsogram/longest_reported_english_isogram
+=== RUN   TestIsIsogram/word_with_duplicated_character_in_mixed_case
+=== RUN   TestIsIsogram/word_with_duplicated_character_in_mixed_case,_lowercase_first
+=== RUN   TestIsIsogram/hypothetical_isogrammic_word_with_hyphen
+=== RUN   TestIsIsogram/hypothetical_word_with_duplicated_character_following_hyphen
+=== RUN   TestIsIsogram/isogram_with_duplicated_hyphen
+=== RUN   TestIsIsogram/made-up_name_that_is_an_isogram
+=== RUN   TestIsIsogram/duplicated_character_in_the_middle
+=== RUN   TestIsIsogram/same_first_and_last_characters
+=== RUN   TestIsIsogram/word_with_duplicated_character_and_with_two_hyphens
+--- PASS: TestIsIsogram (0.00s)
+    --- PASS: TestIsIsogram/empty_string (0.00s)
+    --- PASS: TestIsIsogram/isogram_with_only_lower_case_characters (0.00s)
+    --- PASS: TestIsIsogram/word_with_one_duplicated_character (0.00s)
+    --- PASS: TestIsIsogram/word_with_one_duplicated_character_from_the_end_of_the_alphabet (0.00s)
+    --- PASS: TestIsIsogram/longest_reported_english_isogram (0.00s)
+    --- PASS: TestIsIsogram/word_with_duplicated_character_in_mixed_case (0.00s)
+    --- PASS: TestIsIsogram/word_with_duplicated_character_in_mixed_case,_lowercase_first (0.00s)
+    --- PASS: TestIsIsogram/hypothetical_isogrammic_word_with_hyphen (0.00s)
+    --- PASS: TestIsIsogram/hypothetical_word_with_duplicated_character_following_hyphen (0.00s)
+    --- PASS: TestIsIsogram/isogram_with_duplicated_hyphen (0.00s)
+    --- PASS: TestIsIsogram/made-up_name_that_is_an_isogram (0.00s)
+    --- PASS: TestIsIsogram/duplicated_character_in_the_middle (0.00s)
+    --- PASS: TestIsIsogram/same_first_and_last_characters (0.00s)
+    --- PASS: TestIsIsogram/word_with_duplicated_character_and_with_two_hyphens (0.00s)
+=== RUN   ExampleIsIsogram
+--- PASS: ExampleIsIsogram (0.00s)
+PASS
+ok  	isogram	0.002s
+
+real	0m0.133s
+user	0m0.181s
+sys	0m0.123s
+
+===============================================================================
+
+benchstat benchstat-old.txt benchstat-new.txt
+benchstat-new.txt:5: missing iteration count
+goos: linux
+goarch: amd64
+pkg: isogram
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+            │ benchstat-new.txt │
+            │      sec/op       │
+IsIsogram-8        15.68µ ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
+
+            │ benchstat-new.txt │
+            │       B/op        │
+IsIsogram-8       11.32Ki ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
+
+            │ benchstat-new.txt │
+            │     allocs/op     │
+IsIsogram-8         190.0 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
+
 cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
-BenchmarkIsIsogram-4   	   13100	     76355 ns/op	   11375 B/op	     190 allocs/op
-PASS
-ok  	isogram	1.984s
+            │ benchstat-old.txt │
+            │      sec/op       │
+IsIsogram-4        76.36µ ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-real	0m2.859s
-user	0m3.916s
-sys	0m0.990s
+            │ benchstat-old.txt │
+            │       B/op        │
+IsIsogram-4       11.11Ki ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-===============================================================================
+            │ benchstat-old.txt │
+            │     allocs/op     │
+IsIsogram-4         190.0 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-go test -tags bonus
-PASS
-ok  	isogram	0.005s
-
-real	0m1.191s
-user	0m1.161s
-sys	0m0.626s
-
-===============================================================================
-
-No old benchmarks to run benchstat against.
-
-===============================================================================
-
-go vet isogram
-
-real	0m0.596s
-user	0m0.754s
-sys	0m0.570s
-
-===============================================================================
-
-go fix isogram
-
-real	0m0.217s
-user	0m0.238s
-sys	0m0.193s
-
-===============================================================================
-
-gosec ./isogram
-[gosec] 2022/07/27 12:27:07 Including rules: default
-[gosec] 2022/07/27 12:27:07 Excluding rules: default
-[gosec] 2022/07/27 12:27:07 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/isogram
-2022/07/27 12:27:08 internal error: package "regexp" without types was imported from "command-line-arguments"
-
-real	0m0.595s
-user	0m0.630s
-sys	0m0.427s
+real	0m0.003s
+user	0m0.000s
+sys	0m0.003s
 
 ===============================================================================
 
 gomarkdoc --output isogram-doc.md
 
-real	0m0.045s
-user	0m0.032s
-sys	0m0.024s
+real	0m0.009s
+user	0m0.003s
+sys	0m0.006s
 
 ===============================================================================
 
@@ -190,14 +857,14 @@ Package isogram Determines if a word or phrase is an isogram.
 FUNCTIONS
 
 func IsIsogram(word string) bool
-    IsIsogram returns true when a word is an isogram. An isogram (also known as
-    a "non-pattern word") is a word or phrase without a repeating letter,
+    IsIsogram returns true when a word is an isogram. An isogram (also known
+    as a "non-pattern word") is a word or phrase without a repeating letter,
     however spaces and hyphens are allowed to appear multiple times.
 
 
-real	0m0.421s
-user	0m0.287s
-sys	0m0.313s
+real	0m0.037s
+user	0m0.026s
+sys	0m0.028s
 
 
 ===============================================================================

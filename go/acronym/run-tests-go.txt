@@ -5,15 +5,578 @@ Go packages: acronym
 
 ===============================================================================
 
-golint acronym
+Running: ../../.github/citools/go/go-lint-golangci-lint
 
-real	0m0.382s
-user	0m0.388s
-sys	0m0.343s
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.022s
+user	0m0.016s
+sys	0m0.018s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+acronym.go:34:56: `befoer` is a misspelling of `before` (misspell)
+	// I've tried using the strings IsSomething functions befoer and they're a mess.
+	                                                      ^
+acronym_test.go:10:25: Using the variable on range scope `tc` in function literal (scopelint)
+			actual := Abbreviate(tc.input)
+			                     ^
+acronym_test.go:11:17: Using the variable on range scope `tc` in function literal (scopelint)
+			if actual != tc.expected {
+			             ^
+acronym_test.go:12:47: Using the variable on range scope `tc` in function literal (scopelint)
+				t.Errorf("Abbreviate(%q) = %q, want: %q", tc.input, actual, tc.expected)
+				                                          ^
+acronym_test.go:22:2: for statements should only be cuddled with assignments used in the iteration (wsl)
+	for i := 0; i < b.N; i++ {
+	^
+cases_test.go:12:5: testCases is a global variable (gochecknoglobals)
+var testCases = []acronymTest{
+    ^
+acronym_test.go:7:1: Function TestAcronym missing the call to method parallel (paralleltest)
+func TestAcronym(t *testing.T) {
+^
+acronym_test.go:8:2: Range statement for test TestAcronym missing the call to method parallel in test Run (paralleltest)
+	for _, tc := range testCases {
+	^
+acronym_examples_test.go:1:9: package should be `acronym_test` instead of `acronym` (testpackage)
+package acronym
+        ^
+acronym_test.go:1:9: package should be `acronym_test` instead of `acronym` (testpackage)
+package acronym
+        ^
+cases_test.go:1:9: package should be `acronym_test` instead of `acronym` (testpackage)
+package acronym
+        ^
+acronym.go:17:2: variable name 're' is too short for the scope of its usage (varnamelen)
+	re, e := regexp.Compile(reStr)
+	^
+acronym.go:12:6: variable name 'a' is too short for the scope of its usage (varnamelen)
+	var a string
+	    ^
+acronym.go:11:17: parameter name 's' is too short for the scope of its usage (varnamelen)
+func Abbreviate(s string) string {
+                ^
+
+real	0m0.641s
+user	0m0.979s
+sys	0m0.554s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.675s
+user	0m1.000s
+sys	0m0.585s
+
+real	0m0.677s
+user	0m1.000s
+sys	0m0.586s
 
 ===============================================================================
 
-go test -v -covermode=count -coverprofile coverage.out acronym
+Running: ../../.github/citools/go/go-lint-revive
+
+Running Go Lint Revive
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.020s
+user	0m0.017s
+sys	0m0.015s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
+
+real	0m0.052s
+user	0m0.031s
+sys	0m0.033s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.082s
+user	0m0.051s
+sys	0m0.058s
+
+real	0m0.084s
+user	0m0.052s
+sys	0m0.059s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
+
+real	0m0.000s
+user	0m0.000s
+sys	0m0.000s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.025s
+user	0m0.017s
+sys	0m0.025s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
+	info: check "./."
+internal error: package "regexp" without types was imported from "acronym"
+
+real	0m0.091s
+user	0m0.123s
+sys	0m0.130s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.130s
+user	0m0.148s
+sys	0m0.166s
+
+real	0m0.132s
+user	0m0.149s
+sys	0m0.166s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-staticcheck
+
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.019s
+user	0m0.010s
+sys	0m0.018s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+
+real	0m0.168s
+user	0m0.250s
+sys	0m0.119s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.197s
+user	0m0.264s
+sys	0m0.148s
+
+real	0m0.199s
+user	0m0.264s
+sys	0m0.150s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocritic
+
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.018s
+user	0m0.014s
+sys	0m0.014s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+
+real	0m0.788s
+user	0m1.823s
+sys	0m0.252s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.817s
+user	0m1.841s
+sys	0m0.276s
+
+real	0m0.818s
+user	0m1.842s
+sys	0m0.276s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go_vet
+
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.024s
+user	0m0.018s
+sys	0m0.022s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.112s
+user	0m0.174s
+sys	0m0.129s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.147s
+user	0m0.195s
+sys	0m0.161s
+
+real	0m0.149s
+user	0m0.196s
+sys	0m0.164s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-fixer-go_fix
+
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.025s
+user	0m0.015s
+sys	0m0.021s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.023s
+user	0m0.016s
+sys	0m0.022s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.059s
+user	0m0.037s
+sys	0m0.052s
+
+real	0m0.060s
+user	0m0.038s
+sys	0m0.053s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-errcheck
+
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.020s
+user	0m0.013s
+sys	0m0.020s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+
+real	0m0.432s
+user	0m1.323s
+sys	0m0.253s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.468s
+user	0m1.347s
+sys	0m0.286s
+
+real	0m0.470s
+user	0m1.348s
+sys	0m0.287s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.019s
+user	0m0.010s
+sys	0m0.021s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
+4 acronym BenchmarkAcronym acronym_test.go:18:1
+3 acronym TestAcronym acronym_test.go:7:1
+3 acronym Abbreviate acronym.go:11:1
+1 acronym ExampleAbbreviate acronym_examples_test.go:7:1
+
+real	0m0.002s
+user	0m0.000s
+sys	0m0.002s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.031s
+user	0m0.019s
+sys	0m0.027s
+
+real	0m0.032s
+user	0m0.020s
+sys	0m0.028s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-misspell
+
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+acronym.go:34:55: "befoer" is a misspelling of "before"
+run-tests-go.txt:41:19: "befoer" is a misspelling of "before"
+run-tests-go.txt:42:55: "befoer" is a misspelling of "before"
+coverage.html:114:62: "befoer" is a misspelling of "before"
+
+real	0m0.025s
+user	0m0.025s
+sys	0m0.016s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.035s
+user	0m0.030s
+sys	0m0.026s
+
+real	0m0.038s
+user	0m0.031s
+sys	0m0.027s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gosec
+
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.027s
+user	0m0.021s
+sys	0m0.021s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:19:56 Including rules: default
+[gosec] 2023/09/07 00:19:56 Excluding rules: default
+[gosec] 2023/09/07 00:19:56 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/acronym
+[gosec] 2023/09/07 00:19:56 Checking package: acronym
+[gosec] 2023/09/07 00:19:56 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/acronym/acronym.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 47
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.107s
+user	0m0.122s
+sys	0m0.082s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.149s
+user	0m0.151s
+sys	0m0.115s
+
+real	0m0.151s
+user	0m0.152s
+sys	0m0.117s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.023s
+user	0m0.018s
+sys	0m0.018s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
 === RUN   TestAcronym
 === RUN   TestAcronym/basic
 === RUN   TestAcronym/lowercase_words
@@ -38,33 +601,93 @@ go test -v -covermode=count -coverprofile coverage.out acronym
 --- PASS: ExampleAbbreviate (0.00s)
 PASS
 coverage: 85.7% of statements
-ok  	acronym	0.013s	coverage: 85.7% of statements
+ok  	acronym	0.005s	coverage: 85.7% of statements
 
-real	0m1.055s
-user	0m1.253s
-sys	0m0.742s
+real	0m0.185s
+user	0m0.274s
+sys	0m0.176s
 
-===============================================================================
 
-go tool cover -func=coverage.out
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
 acronym/acronym.go:11:	Abbreviate	85.7%
 total:			(statements)	85.7%
 
-real	0m0.413s
-user	0m0.373s
-sys	0m0.324s
+real	0m0.073s
+user	0m0.090s
+sys	0m0.079s
 
-===============================================================================
 
-go tool cover -html coverage.out -o coverage.html
+ ==============================================================================
 
-real	0m0.420s
-user	0m0.389s
-sys	0m0.409s
+Running: go tool cover -html coverage.out -o coverage.html
 
-===============================================================================
 
-go test -v -race -covermode=atomic acronym
+real	0m0.043s
+user	0m0.048s
+sys	0m0.064s
+
+
+ ==============================================================================
+
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+11     	func Abbreviate(s string) string {
+12     		var a string
+13     	
+14     		// Since we can't use cases or language, we have to do some pre-processing.
+15     		reStr := `(["'_;:.]|[[:digit:]])`
+16     	
+17     		re, e := regexp.Compile(reStr)
+18     		if e != nil {
+19     			// the raw re string is static but you can still make mistakes, better
+20     			// to panic during tests than quietly "working" incorrectly.
+21 MISS			panic(e)
+22     		}
+23     	
+24     		a = re.ReplaceAllString(s, "")
+25     	
+26     		// Get the title converted string.
+27     		// Using deprecated function, the test harness doesn't run `go mod tidy` or
+28     		// it also lacks Internet access.
+29     		a = strings.ToLower(a)
+30     		a = strings.Title(a)
+31     	
+32     		// Thought about looping through the string to find uppercase letters,
+33     		// decided on just using regexp to remove everything else instead.
+34     		// I've tried using the strings IsSomething functions befoer and they're a mess.
+35     		reStr = `([[:lower:]]|[[:blank:]]|[[:punct:]])`
+36     	
+37     		re, e = regexp.Compile(reStr)
+38     		if e != nil {
+39     			// the raw re string is static but you can still make mistakes, better
+40     			// to panic during tests than quietly "working" incorrectly.
+41 MISS			panic(e)
+42     		}
+43     	
+44     		a = re.ReplaceAllString(a, "")
+45     	
+46     		return a
+47     	}
+
+
+real	0m0.075s
+user	0m0.046s
+sys	0m0.036s
+
+real	0m0.075s
+user	0m0.046s
+sys	0m0.036s
+
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
 === RUN   TestAcronym
 === RUN   TestAcronym/basic
 === RUN   TestAcronym/lowercase_words
@@ -75,119 +698,148 @@ go test -v -race -covermode=atomic acronym
 === RUN   TestAcronym/consecutive_delimiters
 === RUN   TestAcronym/apostrophes
 === RUN   TestAcronym/underscore_emphasis
---- PASS: TestAcronym (0.09s)
+--- PASS: TestAcronym (0.00s)
     --- PASS: TestAcronym/basic (0.00s)
     --- PASS: TestAcronym/lowercase_words (0.00s)
-    --- PASS: TestAcronym/punctuation (0.01s)
-    --- PASS: TestAcronym/all_caps_word (0.01s)
-    --- PASS: TestAcronym/punctuation_without_whitespace (0.02s)
+    --- PASS: TestAcronym/punctuation (0.00s)
+    --- PASS: TestAcronym/all_caps_word (0.00s)
+    --- PASS: TestAcronym/punctuation_without_whitespace (0.00s)
     --- PASS: TestAcronym/very_long_abbreviation (0.00s)
-    --- PASS: TestAcronym/consecutive_delimiters (0.02s)
+    --- PASS: TestAcronym/consecutive_delimiters (0.00s)
     --- PASS: TestAcronym/apostrophes (0.00s)
-    --- PASS: TestAcronym/underscore_emphasis (0.02s)
+    --- PASS: TestAcronym/underscore_emphasis (0.00s)
 === RUN   ExampleAbbreviate
 --- PASS: ExampleAbbreviate (0.00s)
 PASS
 coverage: 85.7% of statements
-ok  	acronym	0.175s	coverage: 85.7% of statements
+ok  	acronym	1.021s	coverage: 85.7% of statements
 
-real	0m1.510s
-user	0m1.833s
-sys	0m0.944s
+real	0m1.345s
+user	0m0.357s
+sys	0m0.198s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.760s
+user	0m0.841s
+sys	0m0.582s
+
+real	0m1.762s
+user	0m0.842s
+sys	0m0.583s
 
 ===============================================================================
 
 mv -v benchstat-new.txt benchstat-old.txt
 renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
 
-go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 goos: linux
 goarch: amd64
 pkg: acronym
-cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
-BenchmarkAcronym-4   	    5791	    305661 ns/op	   30838 B/op	     426 allocs/op
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+BenchmarkAcronym
+BenchmarkAcronym-8   	   20481	     57491 ns/op	   31138 B/op	     426 allocs/op
 PASS
-ok  	acronym	1.839s
+ok  	acronym	1.718s
 
-real	0m2.645s
-user	0m3.681s
-sys	0m0.713s
+real	0m1.872s
+user	0m1.948s
+sys	0m0.170s
 
 ===============================================================================
 
-go test -tags bonus
+gotest -v -tags bonus
+=== RUN   TestAcronym
+=== RUN   TestAcronym/basic
+=== RUN   TestAcronym/lowercase_words
+=== RUN   TestAcronym/punctuation
+=== RUN   TestAcronym/all_caps_word
+=== RUN   TestAcronym/punctuation_without_whitespace
+=== RUN   TestAcronym/very_long_abbreviation
+=== RUN   TestAcronym/consecutive_delimiters
+=== RUN   TestAcronym/apostrophes
+=== RUN   TestAcronym/underscore_emphasis
+--- PASS: TestAcronym (0.00s)
+    --- PASS: TestAcronym/basic (0.00s)
+    --- PASS: TestAcronym/lowercase_words (0.00s)
+    --- PASS: TestAcronym/punctuation (0.00s)
+    --- PASS: TestAcronym/all_caps_word (0.00s)
+    --- PASS: TestAcronym/punctuation_without_whitespace (0.00s)
+    --- PASS: TestAcronym/very_long_abbreviation (0.00s)
+    --- PASS: TestAcronym/consecutive_delimiters (0.00s)
+    --- PASS: TestAcronym/apostrophes (0.00s)
+    --- PASS: TestAcronym/underscore_emphasis (0.00s)
+=== RUN   ExampleAbbreviate
+--- PASS: ExampleAbbreviate (0.00s)
 PASS
-ok  	acronym	0.027s
+ok  	acronym	0.001s
 
-real	0m0.826s
-user	0m0.975s
-sys	0m0.639s
+real	0m0.127s
+user	0m0.196s
+sys	0m0.145s
 
 ===============================================================================
-
-go install golang.org/x/perf/cmd/benchstat@latest
-
-real	0m1.144s
-user	0m1.412s
-sys	0m0.612s
 
 benchstat benchstat-old.txt benchstat-new.txt
-name       old time/op    new time/op    delta
-Acronym-4     174µs ± 0%     306µs ± 0%   ~     (p=1.000 n=1+1)
+benchstat-new.txt:5: missing iteration count
+goos: linux
+goarch: amd64
+pkg: acronym
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+          │ benchstat-new.txt │
+          │      sec/op       │
+Acronym-8        57.49µ ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-name       old alloc/op   new alloc/op   delta
-Acronym-4    30.9kB ± 0%    30.8kB ± 0%   ~     (p=1.000 n=1+1)
+          │ benchstat-new.txt │
+          │       B/op        │
+Acronym-8       30.41Ki ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-name       old allocs/op  new allocs/op  delta
-Acronym-4       426 ± 0%       426 ± 0%   ~     (all equal)
+          │ benchstat-new.txt │
+          │     allocs/op     │
+Acronym-8         426.0 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-real	0m0.070s
-user	0m0.097s
-sys	0m0.046s
+cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+          │ benchstat-old.txt │
+          │      sec/op       │
+Acronym-4        305.7µ ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-===============================================================================
+          │ benchstat-old.txt │
+          │       B/op        │
+Acronym-4       30.12Ki ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-go vet acronym
+          │ benchstat-old.txt │
+          │     allocs/op     │
+Acronym-4         426.0 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-real	0m0.570s
-user	0m0.654s
-sys	0m0.461s
-
-===============================================================================
-
-go fix acronym
-
-real	0m0.192s
-user	0m0.215s
-sys	0m0.137s
-
-===============================================================================
-
-gosec ./acronym
-[gosec] 2022/07/30 14:00:21 Including rules: default
-[gosec] 2022/07/30 14:00:21 Excluding rules: default
-[gosec] 2022/07/30 14:00:21 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/acronym
-2022/07/30 14:00:21 internal error: package "regexp" without types was imported from "command-line-arguments"
-
-real	0m0.778s
-user	0m0.775s
-sys	0m0.526s
+real	0m0.004s
+user	0m0.002s
+sys	0m0.002s
 
 ===============================================================================
 
 gomarkdoc --output acronym-doc.md
 
-real	0m0.049s
-user	0m0.024s
-sys	0m0.042s
+real	0m0.009s
+user	0m0.003s
+sys	0m0.005s
 
 ===============================================================================
 
 go doc -all acronym
 package acronym // import "acronym"
 
-Package acronym converts a phrase to its acronym. The 1st iteration is
-better than the second one.
+Package acronym converts a phrase to its acronym. The 1st iteration is better
+than the second one.
 
 FUNCTIONS
 
@@ -195,9 +847,9 @@ func Abbreviate(s string) string
     Abbreviate returns an acronym from the supplied string.
 
 
-real	0m0.338s
-user	0m0.262s
-sys	0m0.350s
+real	0m0.042s
+user	0m0.019s
+sys	0m0.041s
 
 
 ===============================================================================

@@ -1,0 +1,60 @@
+
+13     	func WordCount(phrase string) Frequency {
+14     	
+15     		// remove punctuation - except for '
+16     		reStr := `["_;:.,!@$%^&]`
+17     		re, e := regexp.Compile(reStr)
+18     		if e != nil {
+19 MISS			panic(e)
+20     		}
+21     		phrase = re.ReplaceAllString(phrase, " ")
+22     	
+23     		// change [a-z]['][a-z] to _
+24     		reStr = `([a-z])[']([a-z])`
+25     		re, e = regexp.Compile(reStr)
+26     		if e != nil {
+27 MISS			panic(e)
+28     		}
+29     		phrase = re.ReplaceAllString(phrase, `${1}_${2}`)
+30     	
+31     		// remove extra '
+32     		reStr = `[']`
+33     		re, e = regexp.Compile(reStr)
+34     		if e != nil {
+35 MISS			panic(e)
+36     		}
+37     		phrase = re.ReplaceAllString(phrase, " ")
+38     	
+39     		// change _ to '
+40     		reStr = `_`
+41     		re, e = regexp.Compile(reStr)
+42     		if e != nil {
+43 MISS			panic(e)
+44     		}
+45     		phrase = re.ReplaceAllString(phrase, "'")
+46     	
+47     		// lowercase, trim space
+48     		phrase = strings.ToLower(phrase)
+49     		phrase = strings.TrimSpace(phrase)
+50     	
+51     		// convert all whitespace to single space
+52     		reStr = `[[:space:]]+`
+53     		re, e = regexp.Compile(reStr)
+54     		if e != nil {
+55 MISS			panic(e)
+56     		}
+57     		phrase = re.ReplaceAllString(phrase, " ")
+58     	
+59     		// split on whitespace
+60     		words := strings.Split(phrase, " ")
+61     	
+62     		// walk slice and fill frequency map
+63     		freqMap := Frequency{}
+64     		for _, word := range words {
+65     			freqMap[word]++
+66     		}
+67     	
+68     		// return frequency map
+69     		return freqMap
+70     	}
+

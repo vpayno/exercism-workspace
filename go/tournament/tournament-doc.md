@@ -19,7 +19,7 @@ import "tournament"
 func Tally(reader io.Reader, writer io.Writer) error
 ```
 
-Tally returns the results of a small football competition\.
+Tally returns the results of a small football competition.
 
 <details><summary>Example</summary>
 <p>
@@ -66,7 +66,7 @@ Courageous Californians        |  3 |  0 |  1 |  2 |  1
 
 ## type [Team](<https://github.com/vpayno/exercism-workspace/blob/main/go/tournament/tournament.go#L15-L22>)
 
-Team struct holds a team's tournament information\.
+Team struct holds a team's tournament information.
 
 ```go
 type Team struct {
@@ -76,7 +76,7 @@ type Team struct {
 
 ## type [Teams](<https://github.com/vpayno/exercism-workspace/blob/main/go/tournament/tournament.go#L25>)
 
-Teams map holds a collection of Team structs for a single tournament\.
+Teams map holds a collection of Team structs for a single tournament.
 
 ```go
 type Teams map[string]Team

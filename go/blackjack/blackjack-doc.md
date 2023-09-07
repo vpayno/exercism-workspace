@@ -18,7 +18,7 @@ import "blackjack"
 func FirstTurn(card1, card2, dealerCard string) string
 ```
 
-FirstTurn returns the decision for the first turn\, given two cards of the player and one card of the dealer\.
+FirstTurn returns the decision for the first turn, given two cards of the player and one card of the dealer.
 
 <details><summary>Example</summary>
 <p>
@@ -49,7 +49,7 @@ H
 func ParseCard(card string) int
 ```
 
-ParseCard returns the integer value of a card following blackjack ruleset\.
+ParseCard returns the integer value of a card following blackjack ruleset.
 
 <details><summary>Example</summary>
 <p>

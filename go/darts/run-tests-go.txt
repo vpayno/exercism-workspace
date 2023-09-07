@@ -5,15 +5,575 @@ Go packages: darts
 
 ===============================================================================
 
-golint darts
+Running: ../../.github/citools/go/go-lint-golangci-lint
 
-real	0m0.140s
-user	0m0.065s
-sys	0m0.123s
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.020s
+user	0m0.007s
+sys	0m0.018s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+darts_test.go:10:20: Using the variable on range scope `tc` in function literal (scopelint)
+			actual := Score(tc.x, tc.y)
+			                ^
+darts_test.go:11:17: Using the variable on range scope `tc` in function literal (scopelint)
+			if actual != tc.expected {
+			             ^
+darts_test.go:12:50: Using the variable on range scope `tc` in function literal (scopelint)
+				t.Errorf("Score(%#v, %#v) = %#v, want: %#v", tc.x, tc.y, actual, tc.expected)
+				                                             ^
+darts_test.go:22:2: for statements should only be cuddled with assignments used in the iteration (wsl)
+	for i := 0; i < b.N; i++ {
+	^
+cases_test.go:6:5: testCases is a global variable (gochecknoglobals)
+var testCases = []struct {
+    ^
+darts.go:14:35: mnd: Magic number: 2, in <argument> detected (gomnd)
+	radius = math.Sqrt(math.Pow(x-0, 2) + math.Pow(y-0, 2))
+	                                 ^
+darts.go:20:10: mnd: Magic number: 5, in <return> detected (gomnd)
+		return 5
+		       ^
+darts.go:22:10: mnd: Magic number: 10, in <return> detected (gomnd)
+		return 10
+		       ^
+darts.go:10:2: S1021: should merge variable declaration with assignment on next line (gosimple)
+	var radius float64
+	^
+darts_test.go:7:1: Function TestScore missing the call to method parallel (paralleltest)
+func TestScore(t *testing.T) {
+^
+darts_test.go:8:2: Range statement for test TestScore missing the call to method parallel in test Run (paralleltest)
+	for _, tc := range testCases {
+	^
+cases_test.go:1:9: package should be `darts_test` instead of `darts` (testpackage)
+package darts
+        ^
+darts_examples_test.go:1:9: package should be `darts_test` instead of `darts` (testpackage)
+package darts
+        ^
+darts_test.go:1:9: package should be `darts_test` instead of `darts` (testpackage)
+package darts
+        ^
+
+real	0m0.463s
+user	0m0.697s
+sys	0m0.425s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.497s
+user	0m0.708s
+sys	0m0.456s
+
+real	0m0.500s
+user	0m0.710s
+sys	0m0.458s
 
 ===============================================================================
 
-go test -v -covermode=count -coverprofile coverage.out darts
+Running: ../../.github/citools/go/go-lint-revive
+
+Running Go Lint Revive
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.023s
+user	0m0.015s
+sys	0m0.015s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
+
+real	0m0.057s
+user	0m0.030s
+sys	0m0.043s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.093s
+user	0m0.050s
+sys	0m0.071s
+
+real	0m0.095s
+user	0m0.051s
+sys	0m0.072s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.001s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.023s
+user	0m0.011s
+sys	0m0.016s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
+	info: check "./."
+internal error: package "math" without types was imported from "darts"
+
+real	0m0.083s
+user	0m0.111s
+sys	0m0.103s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.123s
+user	0m0.132s
+sys	0m0.132s
+
+real	0m0.125s
+user	0m0.133s
+sys	0m0.134s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-staticcheck
+
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.014s
+user	0m0.003s
+sys	0m0.013s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+darts.go:10:2: should merge variable declaration with assignment on next line (S1021)
+
+real	0m0.164s
+user	0m0.203s
+sys	0m0.115s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.186s
+user	0m0.212s
+sys	0m0.134s
+
+real	0m0.188s
+user	0m0.213s
+sys	0m0.134s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocritic
+
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.019s
+user	0m0.009s
+sys	0m0.014s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+
+real	0m0.830s
+user	0m2.029s
+sys	0m0.310s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.865s
+user	0m2.046s
+sys	0m0.337s
+
+real	0m0.867s
+user	0m2.047s
+sys	0m0.339s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go_vet
+
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.024s
+user	0m0.018s
+sys	0m0.014s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.082s
+user	0m0.122s
+sys	0m0.108s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.124s
+user	0m0.149s
+sys	0m0.137s
+
+real	0m0.127s
+user	0m0.150s
+sys	0m0.138s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-fixer-go_fix
+
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.014s
+user	0m0.004s
+sys	0m0.013s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.022s
+user	0m0.012s
+sys	0m0.014s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.047s
+user	0m0.021s
+sys	0m0.037s
+
+real	0m0.049s
+user	0m0.022s
+sys	0m0.038s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-errcheck
+
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.015s
+user	0m0.006s
+sys	0m0.014s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+
+real	0m0.462s
+user	0m1.382s
+sys	0m0.301s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.493s
+user	0m1.394s
+sys	0m0.328s
+
+real	0m0.497s
+user	0m1.396s
+sys	0m0.330s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.019s
+user	0m0.006s
+sys	0m0.017s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
+6 darts Score darts.go:9:1
+4 darts BenchmarkScore darts_test.go:18:1
+3 darts TestScore darts_test.go:7:1
+1 darts ExampleScore darts_examples_test.go:7:1
+
+real	0m0.003s
+user	0m0.000s
+sys	0m0.003s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.032s
+user	0m0.015s
+sys	0m0.025s
+
+real	0m0.034s
+user	0m0.015s
+sys	0m0.026s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-misspell
+
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+
+real	0m0.027s
+user	0m0.028s
+sys	0m0.013s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.043s
+user	0m0.037s
+sys	0m0.027s
+
+real	0m0.046s
+user	0m0.039s
+sys	0m0.028s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gosec
+
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.013s
+user	0m0.007s
+sys	0m0.009s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:22:15 Including rules: default
+[gosec] 2023/09/07 00:22:15 Excluding rules: default
+[gosec] 2023/09/07 00:22:15 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/darts
+[gosec] 2023/09/07 00:22:15 Checking package: darts
+[gosec] 2023/09/07 00:22:15 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/darts/darts.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 26
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.088s
+user	0m0.082s
+sys	0m0.060s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.111s
+user	0m0.093s
+sys	0m0.078s
+
+real	0m0.114s
+user	0m0.093s
+sys	0m0.080s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.013s
+user	0m0.004s
+sys	0m0.012s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
 === RUN   TestScore
 === RUN   TestScore/Missed_target
 === RUN   TestScore/On_the_outer_circle
@@ -46,33 +606,54 @@ go test -v -covermode=count -coverprofile coverage.out darts
 --- PASS: ExampleScore (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	darts	0.006s	coverage: 100.0% of statements
+ok  	darts	0.002s	coverage: 100.0% of statements
 
-real	0m0.633s
-user	0m0.702s
-sys	0m0.440s
+real	0m0.193s
+user	0m0.268s
+sys	0m0.183s
 
-===============================================================================
 
-go tool cover -func=coverage.out
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
 darts/darts.go:9:	Score		100.0%
 total:			(statements)	100.0%
 
-real	0m0.112s
-user	0m0.069s
-sys	0m0.104s
+real	0m0.030s
+user	0m0.010s
+sys	0m0.030s
 
-===============================================================================
 
-go tool cover -html coverage.out -o coverage.html
+ ==============================================================================
 
-real	0m0.086s
-user	0m0.058s
-sys	0m0.073s
+Running: go tool cover -html coverage.out -o coverage.html
 
-===============================================================================
 
-go test -v -race -covermode=atomic darts
+real	0m0.042s
+user	0m0.026s
+sys	0m0.038s
+
+
+ ==============================================================================
+
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+real	0m0.025s
+user	0m0.016s
+sys	0m0.028s
+
+real	0m0.025s
+user	0m0.017s
+sys	0m0.028s
+
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
 === RUN   TestScore
 === RUN   TestScore/Missed_target
 === RUN   TestScore/On_the_outer_circle
@@ -87,7 +668,7 @@ go test -v -race -covermode=atomic darts
 === RUN   TestScore/Just_within_the_outer_circle
 === RUN   TestScore/Just_outside_the_outer_circle
 === RUN   TestScore/Asymmetric_position_between_the_inner_and_middle_circles
---- PASS: TestScore (0.02s)
+--- PASS: TestScore (0.00s)
     --- PASS: TestScore/Missed_target (0.00s)
     --- PASS: TestScore/On_the_outer_circle (0.00s)
     --- PASS: TestScore/On_the_middle_circle (0.00s)
@@ -105,97 +686,134 @@ go test -v -race -covermode=atomic darts
 --- PASS: ExampleScore (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	darts	0.055s	coverage: 100.0% of statements
+ok  	darts	1.013s	coverage: 100.0% of statements
 
-real	0m0.697s
-user	0m0.710s
-sys	0m0.496s
+real	0m1.257s
+user	0m0.293s
+sys	0m0.202s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.579s
+user	0m0.626s
+sys	0m0.512s
+
+real	0m1.581s
+user	0m0.627s
+sys	0m0.513s
 
 ===============================================================================
 
 mv -v benchstat-new.txt benchstat-old.txt
 renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
 
-go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 goos: linux
 goarch: amd64
 pkg: darts
-cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
-BenchmarkScore-4   	 1764415	       811.8 ns/op	       0 B/op	       0 allocs/op
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+BenchmarkScore
+BenchmarkScore-8   	 3529778	       337.7 ns/op	       0 B/op	       0 allocs/op
 PASS
-ok  	darts	2.170s
+ok  	darts	1.542s
 
-real	0m2.627s
-user	0m2.749s
-sys	0m0.359s
+real	0m1.696s
+user	0m1.747s
+sys	0m0.149s
 
 ===============================================================================
 
-go test -tags bonus
+gotest -v -tags bonus
+=== RUN   TestScore
+=== RUN   TestScore/Missed_target
+=== RUN   TestScore/On_the_outer_circle
+=== RUN   TestScore/On_the_middle_circle
+=== RUN   TestScore/On_the_inner_circle
+=== RUN   TestScore/Exactly_on_centre
+=== RUN   TestScore/Near_the_centre
+=== RUN   TestScore/Just_within_the_inner_circle
+=== RUN   TestScore/Just_outside_the_inner_circle
+=== RUN   TestScore/Just_within_the_middle_circle
+=== RUN   TestScore/Just_outside_the_middle_circle
+=== RUN   TestScore/Just_within_the_outer_circle
+=== RUN   TestScore/Just_outside_the_outer_circle
+=== RUN   TestScore/Asymmetric_position_between_the_inner_and_middle_circles
+--- PASS: TestScore (0.00s)
+    --- PASS: TestScore/Missed_target (0.00s)
+    --- PASS: TestScore/On_the_outer_circle (0.00s)
+    --- PASS: TestScore/On_the_middle_circle (0.00s)
+    --- PASS: TestScore/On_the_inner_circle (0.00s)
+    --- PASS: TestScore/Exactly_on_centre (0.00s)
+    --- PASS: TestScore/Near_the_centre (0.00s)
+    --- PASS: TestScore/Just_within_the_inner_circle (0.00s)
+    --- PASS: TestScore/Just_outside_the_inner_circle (0.00s)
+    --- PASS: TestScore/Just_within_the_middle_circle (0.00s)
+    --- PASS: TestScore/Just_outside_the_middle_circle (0.00s)
+    --- PASS: TestScore/Just_within_the_outer_circle (0.00s)
+    --- PASS: TestScore/Just_outside_the_outer_circle (0.00s)
+    --- PASS: TestScore/Asymmetric_position_between_the_inner_and_middle_circles (0.00s)
+=== RUN   ExampleScore
+--- PASS: ExampleScore (0.00s)
 PASS
-ok  	darts	0.008s
+ok  	darts	0.002s
 
-real	0m0.570s
-user	0m0.706s
-sys	0m0.471s
+real	0m0.155s
+user	0m0.201s
+sys	0m0.144s
 
 ===============================================================================
-
-go install golang.org/x/perf/cmd/benchstat@latest
-
-real	0m0.693s
-user	0m0.668s
-sys	0m0.312s
 
 benchstat benchstat-old.txt benchstat-new.txt
-name     old time/op    new time/op    delta
-Score-4     739ns ± 0%     812ns ± 0%   ~     (p=1.000 n=1+1)
+benchstat-new.txt:5: missing iteration count
+goos: linux
+goarch: amd64
+pkg: darts
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+        │ benchstat-new.txt │
+        │      sec/op       │
+Score-8        337.7n ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-name     old alloc/op   new alloc/op   delta
-Score-4     0.00B          0.00B        ~     (all equal)
+        │ benchstat-new.txt │
+        │       B/op        │
+Score-8         0.000 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-name     old allocs/op  new allocs/op  delta
-Score-4      0.00           0.00        ~     (all equal)
+        │ benchstat-new.txt │
+        │     allocs/op     │
+Score-8         0.000 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-real	0m0.035s
-user	0m0.015s
-sys	0m0.031s
+cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+        │ benchstat-old.txt │
+        │      sec/op       │
+Score-4        811.8n ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-===============================================================================
+        │ benchstat-old.txt │
+        │       B/op        │
+Score-4         0.000 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-go vet darts
+        │ benchstat-old.txt │
+        │     allocs/op     │
+Score-4         0.000 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-real	0m0.319s
-user	0m0.355s
-sys	0m0.319s
-
-===============================================================================
-
-go fix darts
-
-real	0m0.061s
-user	0m0.042s
-sys	0m0.051s
-
-===============================================================================
-
-gosec ./darts
-[gosec] 2022/07/24 00:39:00 Including rules: default
-[gosec] 2022/07/24 00:39:00 Excluding rules: default
-[gosec] 2022/07/24 00:39:00 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/darts
-2022/07/24 00:39:00 internal error: package "math" without types was imported from "command-line-arguments"
-
-real	0m0.329s
-user	0m0.297s
-sys	0m0.253s
+real	0m0.002s
+user	0m0.001s
+sys	0m0.001s
 
 ===============================================================================
 
 gomarkdoc --output darts-doc.md
 
-real	0m0.027s
-user	0m0.021s
-sys	0m0.021s
+real	0m0.012s
+user	0m0.007s
+sys	0m0.004s
 
 ===============================================================================
 
@@ -210,9 +828,9 @@ func Score(x, y float64) int
     Score returns a score for a single dart throw.
 
 
-real	0m0.140s
-user	0m0.057s
-sys	0m0.147s
+real	0m0.038s
+user	0m0.015s
+sys	0m0.033s
 
 
 ===============================================================================

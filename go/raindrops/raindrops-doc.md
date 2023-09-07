@@ -6,7 +6,7 @@
 import "raindrops"
 ```
 
-Package raindrops converts a number into a string that contains raindrop sounds corresponding to certain potential factors\.
+Package raindrops converts a number into a string that contains raindrop sounds corresponding to certain potential factors.
 
 ## Index
 
@@ -19,7 +19,7 @@ Package raindrops converts a number into a string that contains raindrop sounds 
 func Convert(number int) string
 ```
 
-Convert returns a string containing raindrop sounds corresponding to factors of the number\, \`int\`\, given\.
+Convert returns a string containing raindrop sounds corresponding to factors of the number, \`int\`, given.
 
 <details><summary>Example</summary>
 <p>

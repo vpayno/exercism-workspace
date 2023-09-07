@@ -22,7 +22,7 @@ import "meteorology"
 
 ## type [MeteorologyData](<https://github.com/vpayno/exercism-workspace/blob/main/go/meteorology/meteorology.go#L58-L64>)
 
-MeteorologyData type tracks location weather information\.
+MeteorologyData type tracks location weather information.
 
 ```go
 type MeteorologyData struct {
@@ -36,11 +36,11 @@ type MeteorologyData struct {
 func (md MeteorologyData) String() string
 ```
 
-MeteorologyData String\(\) method that returns a human readable meteorology reading\.
+MeteorologyData String\(\) method that returns a human readable meteorology reading.
 
 ## type [Speed](<https://github.com/vpayno/exercism-workspace/blob/main/go/meteorology/meteorology.go#L47-L50>)
 
-Speed type tracks wind speed value and unit type\.
+Speed type tracks wind speed value and unit type.
 
 ```go
 type Speed struct {
@@ -54,17 +54,17 @@ type Speed struct {
 func (s Speed) String() string
 ```
 
-Speed String\(\) method that returns a human readable speed reading\.
+Speed String\(\) method that returns a human readable speed reading.
 
 ## type [SpeedUnit](<https://github.com/vpayno/exercism-workspace/blob/main/go/meteorology/meteorology.go#L32>)
 
-SpeedUnit Emum declaration\.
+SpeedUnit Emum declaration.
 
 ```go
 type SpeedUnit int
 ```
 
-Speed Unit Enum definitions\.
+Speed Unit Enum definitions.
 
 ```go
 const (
@@ -79,11 +79,11 @@ const (
 func (index SpeedUnit) String() string
 ```
 
-SpeedUnit String\(\) method that returns a human readable speed unit\.
+SpeedUnit String\(\) method that returns a human readable speed unit.
 
 ## type [Temperature](<https://github.com/vpayno/exercism-workspace/blob/main/go/meteorology/meteorology.go#L21-L24>)
 
-Temperature type tracks temperature value and unit type\.
+Temperature type tracks temperature value and unit type.
 
 ```go
 type Temperature struct {
@@ -97,17 +97,17 @@ type Temperature struct {
 func (t Temperature) String() string
 ```
 
-Temperature String\(\) method that returns a human readable temperature reading\.
+Temperature String\(\) method that returns a human readable temperature reading.
 
 ## type [TemperatureUnit](<https://github.com/vpayno/exercism-workspace/blob/main/go/meteorology/meteorology.go#L6>)
 
-TemperatureUnit Enum declaration\.
+TemperatureUnit Enum declaration.
 
 ```go
 type TemperatureUnit int
 ```
 
-Temperature Units Enum definitions\.
+Temperature Units Enum definitions.
 
 ```go
 const (
@@ -122,7 +122,7 @@ const (
 func (index TemperatureUnit) String() string
 ```
 
-TemperatureUnit String\(\) method that returns a human readable temperature unit\.
+TemperatureUnit String\(\) method that returns a human readable temperature unit.
 
 
 

@@ -6,7 +6,7 @@
 import "darts"
 ```
 
-Package darts is used to calculate the score in a game of darts\.
+Package darts is used to calculate the score in a game of darts.
 
 ## Index
 
@@ -19,7 +19,7 @@ Package darts is used to calculate the score in a game of darts\.
 func Score(x, y float64) int
 ```
 
-Score returns a score for a single dart throw\.
+Score returns a score for a single dart throw.
 
 <details><summary>Example</summary>
 <p>

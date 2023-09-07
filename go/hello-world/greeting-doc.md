@@ -17,7 +17,7 @@ import "greeting"
 func HelloWorld() string
 ```
 
-HelloWorld greets the world\.
+HelloWorld greets the world.
 
 <details><summary>Example</summary>
 <p>

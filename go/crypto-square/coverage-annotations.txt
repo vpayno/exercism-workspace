@@ -1,146 +1,146 @@
 
-[0m14 	func Encode(plain string) string {[0m
-[0m15 		if plain == "" {[0m
-[0m16 			return ""[0m
-[0m17 		}[0m
-[0m18 	[0m
-[0m19 		if debugMode {[0m
-[31;1m20 			fmt.Printf("plain: %q\n", plain)[0m
-[0m21 		}[0m
-[0m22 	[0m
-[0m23 		normalizedText := NormalizeText(plain)[0m
-[0m24 	[0m
-[0m25 		if debugMode {[0m
-[31;1m26 			fmt.Printf("plain: %q\n", normalizedText)[0m
-[0m27 		}[0m
-[0m28 	[0m
-[0m29 		plainTokens := GetTokens(normalizedText)[0m
-[0m30 	[0m
-[0m31 		if debugMode {[0m
-[31;1m32 			fmt.Printf("plainTokens: %#v\n", plainTokens)[0m
-[0m33 		}[0m
-[0m34 	[0m
-[0m35 		encodedTokens := EncodeTokens(plainTokens)[0m
-[0m36 	[0m
-[0m37 		if debugMode {[0m
-[31;1m38 			fmt.Printf("encodedTokens: %#v\n", encodedTokens)[0m
-[0m39 		}[0m
-[0m40 	[0m
-[0m41 		cipher := strings.Join(encodedTokens, " ")[0m
-[0m42 	[0m
-[0m43 		return cipher[0m
-[0m44 	}[0m
+14     	func Encode(plain string) string {
+15     		if plain == "" {
+16     			return ""
+17     		}
+18     	
+19     		if debugMode {
+20 MISS			fmt.Printf("plain: %q\n", plain)
+21     		}
+22     	
+23     		normalizedText := NormalizeText(plain)
+24     	
+25     		if debugMode {
+26 MISS			fmt.Printf("plain: %q\n", normalizedText)
+27     		}
+28     	
+29     		plainTokens := GetTokens(normalizedText)
+30     	
+31     		if debugMode {
+32 MISS			fmt.Printf("plainTokens: %#v\n", plainTokens)
+33     		}
+34     	
+35     		encodedTokens := EncodeTokens(plainTokens)
+36     	
+37     		if debugMode {
+38 MISS			fmt.Printf("encodedTokens: %#v\n", encodedTokens)
+39     		}
+40     	
+41     		cipher := strings.Join(encodedTokens, " ")
+42     	
+43     		return cipher
+44     	}
 
 
-[0m134 	func EncodeTokens(tokens []string) []string {[0m
-[0m135 		if len(tokens) == 0 {[0m
-[31;1m136 			return []string{}[0m
-[0m137 		}[0m
-[0m138 	[0m
-[0m139 		var sb strings.Builder[0m
-[0m140 		cipher := []string{}[0m
-[0m141 	[0m
-[0m142 		// col <= len because we need to capture incomplete tokens.[0m
-[0m143 		for col := 0; col <= len(tokens); col++ {[0m
-[0m144 			for _, row := range tokens {[0m
-[0m145 				if col < len(row) {[0m
-[0m146 					sb.WriteString(string(row[col]))[0m
-[0m147 				}[0m
-[0m148 			}[0m
-[0m149 	[0m
-[0m150 			// To prevent from ending with an empty token.[0m
-[0m151 			// Write a token to the slice.[0m
-[0m152 			if len(sb.String()) > 0 {[0m
-[0m153 				cipher = append(cipher, sb.String())[0m
-[0m154 			}[0m
-[0m155 			sb.Reset()[0m
-[0m156 		}[0m
-[0m157 	[0m
-[0m158 		return cipher[0m
-[0m159 	}[0m
+134     	func EncodeTokens(tokens []string) []string {
+135     		if len(tokens) == 0 {
+136 MISS			return []string{}
+137     		}
+138     	
+139     		var sb strings.Builder
+140     		cipher := []string{}
+141     	
+142     		// col <= len because we need to capture incomplete tokens.
+143     		for col := 0; col <= len(tokens); col++ {
+144     			for _, row := range tokens {
+145     				if col < len(row) {
+146     					sb.WriteString(string(row[col]))
+147     				}
+148     			}
+149     	
+150     			// To prevent from ending with an empty token.
+151     			// Write a token to the slice.
+152     			if len(sb.String()) > 0 {
+153     				cipher = append(cipher, sb.String())
+154     			}
+155     			sb.Reset()
+156     		}
+157     	
+158     		return cipher
+159     	}
 
 
-[0m71 	func GetSquareDimmensions(text string) (row, col int) {[0m
-[0m72 		size := len(text)[0m
-[0m73 	[0m
-[0m74 		if size == 0 {[0m
-[31;1m75 			return[0m
-[0m76 		}[0m
-[0m77 	[0m
-[0m78 		if size == 1 {[0m
-[0m79 			row, col = 1, 1[0m
-[0m80 			return[0m
-[0m81 		}[0m
-[0m82 	[0m
-[0m83 		for c := 1; c <= size; c++ {[0m
-[0m84 			for r := 1; r < size; r++ {[0m
-[0m85 				if r*c >= size && c >= r && c-r <= 1 {[0m
-[0m86 					row, col = r, c[0m
-[0m87 					return[0m
-[0m88 				}[0m
-[0m89 			}[0m
-[0m90 		}[0m
-[0m91 	[0m
-[31;1m92 		return[0m
-[0m93 	}[0m
+71     	func GetSquareDimmensions(text string) (row, col int) {
+72     		size := len(text)
+73     	
+74     		if size == 0 {
+75 MISS			return
+76     		}
+77     	
+78     		if size == 1 {
+79     			row, col = 1, 1
+80     			return
+81     		}
+82     	
+83     		for c := 1; c <= size; c++ {
+84     			for r := 1; r < size; r++ {
+85     				if r*c >= size && c >= r && c-r <= 1 {
+86     					row, col = r, c
+87     					return
+88     				}
+89     			}
+90     		}
+91     	
+92 MISS		return
+93     	}
 
 
-[0m 96 	func GetTokens(text string) []string {[0m
-[0m 97 		if text == "" {[0m
-[31;1m 98 			return []string{}[0m
-[0m 99 		}[0m
-[0m100 	[0m
-[0m101 		row, col := GetSquareDimmensions(NormalizeText(text))[0m
-[0m102 	[0m
-[0m103 		tokens := []string{}[0m
-[0m104 		var token strings.Builder[0m
-[0m105 		var count int[0m
-[0m106 	[0m
-[0m107 		for _, char := range text {[0m
-[0m108 			count++[0m
-[0m109 			token.WriteString(string(char))[0m
-[0m110 	[0m
-[0m111 			// Write a token to the slice.[0m
-[0m112 			if count == col {[0m
-[0m113 				tokens = append(tokens, token.String())[0m
-[0m114 				token.Reset()[0m
-[0m115 				count = 0[0m
-[0m116 			}[0m
-[0m117 		}[0m
-[0m118 	[0m
-[0m119 		// Prevent empty tokens from being captured.[0m
-[0m120 		if len(token.String()) > 0 {[0m
-[0m121 			tokens = append(tokens, token.String())[0m
-[0m122 		}[0m
-[0m123 	[0m
-[0m124 		// Count can be zero or larger than col.[0m
-[0m125 		// Catch incomplete tokens and add whitespace padd them.[0m
-[0m126 		if count > 0 && count < col {[0m
-[0m127 			tokens[row-1] += strings.Repeat(" ", col-count)[0m
-[0m128 		}[0m
-[0m129 	[0m
-[0m130 		return tokens[0m
-[0m131 	}[0m
+ 96     	func GetTokens(text string) []string {
+ 97     		if text == "" {
+ 98 MISS			return []string{}
+ 99     		}
+100     	
+101     		row, col := GetSquareDimmensions(NormalizeText(text))
+102     	
+103     		tokens := []string{}
+104     		var token strings.Builder
+105     		var count int
+106     	
+107     		for _, char := range text {
+108     			count++
+109     			token.WriteString(string(char))
+110     	
+111     			// Write a token to the slice.
+112     			if count == col {
+113     				tokens = append(tokens, token.String())
+114     				token.Reset()
+115     				count = 0
+116     			}
+117     		}
+118     	
+119     		// Prevent empty tokens from being captured.
+120     		if len(token.String()) > 0 {
+121     			tokens = append(tokens, token.String())
+122     		}
+123     	
+124     		// Count can be zero or larger than col.
+125     		// Catch incomplete tokens and add whitespace padd them.
+126     		if count > 0 && count < col {
+127     			tokens[row-1] += strings.Repeat(" ", col-count)
+128     		}
+129     	
+130     		return tokens
+131     	}
 
 
-[0m49 	func NormalizeText(text string) string {[0m
-[0m50 		if text == "" {[0m
-[31;1m51 			return ""[0m
-[0m52 		}[0m
-[0m53 	[0m
-[0m54 		var output string[0m
-[0m55 	[0m
-[0m56 		reStr := `[[:^alnum:]]+`[0m
-[0m57 		re, err := regexp.Compile(reStr)[0m
-[0m58 		if err != nil {[0m
-[31;1m59 			panic(err)[0m
-[0m60 		}[0m
-[0m61 	[0m
-[0m62 		// If it's not A-Z, a-z or 0-9, replace it with an empty string.[0m
-[0m63 		output = re.ReplaceAllString(text, "")[0m
-[0m64 	[0m
-[0m65 		output = strings.ToLower(output)[0m
-[0m66 	[0m
-[0m67 		return output[0m
-[0m68 	}[0m
+49     	func NormalizeText(text string) string {
+50     		if text == "" {
+51 MISS			return ""
+52     		}
+53     	
+54     		var output string
+55     	
+56     		reStr := `[[:^alnum:]]+`
+57     		re, err := regexp.Compile(reStr)
+58     		if err != nil {
+59 MISS			panic(err)
+60     		}
+61     	
+62     		// If it's not A-Z, a-z or 0-9, replace it with an empty string.
+63     		output = re.ReplaceAllString(text, "")
+64     	
+65     		output = strings.ToLower(output)
+66     	
+67     		return output
+68     	}
 

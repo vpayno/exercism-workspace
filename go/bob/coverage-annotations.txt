@@ -1,0 +1,65 @@
+
+10     	func Hey(remark string) string {
+11     		// The extra whitespace just gets in the way.
+12     		remark = strings.TrimSpace(remark)
+13     	
+14     		var reStr string
+15     	
+16     		// Question without letters.
+17     		reStr = `^([[:punct:]|[[:space:]])+[?]$`
+18     		if m, e := regexp.MatchString(reStr, remark); m {
+19     			if e != nil {
+20 MISS				panic(e)
+21     			}
+22     			return "Sure."
+23     		}
+24     	
+25     		// Yelling a question.
+26     		reStr = `^([[:upper:]]|[[:punct:]|[[:space:]])+[?]$`
+27     		if m, e := regexp.MatchString(reStr, remark); m {
+28     			if e != nil {
+29 MISS				panic(e)
+30     			}
+31     			return "Calm down, I know what I'm doing!"
+32     		}
+33     	
+34     		// Any normal question.
+35     		reStr = `^([[:alpha:]]|[[:digit:]]|[[:punct:]])([[:alpha:]]|[[:digit:]]|[[:punct:]]|[[:space:]])*[?]$`
+36     		if m, e := regexp.MatchString(reStr, remark); m {
+37     			if e != nil {
+38 MISS				panic(e)
+39     			}
+40     			return "Sure."
+41     		}
+42     	
+43     		// Letterless statement.
+44     		reStr = `^([[:digit:]]|[[:punct:]|[[:space:]])+$`
+45     		if m, e := regexp.MatchString(reStr, remark); m {
+46     			if e != nil {
+47 MISS				panic(e)
+48     			}
+49     			return "Whatever."
+50     		}
+51     	
+52     		// Yelling statement.
+53     		reStr = `^([[:upper:]]|[[:digit:]]|[[:punct:]|[[:space:]])+$`
+54     		if m, e := regexp.MatchString(reStr, remark); m {
+55     			if e != nil {
+56 MISS				panic(e)
+57     			}
+58     			return "Whoa, chill out!"
+59     		}
+60     	
+61     		// Silence
+62     		reStr = `^[[:space:]]*$`
+63     		if m, e := regexp.MatchString(reStr, remark); m {
+64     			if e != nil {
+65 MISS				panic(e)
+66     			}
+67     			return "Fine. Be that way!"
+68     		}
+69     	
+70     		// Default response.
+71     		return "Whatever."
+72     	}
+

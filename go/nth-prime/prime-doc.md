@@ -6,7 +6,7 @@
 import "prime"
 ```
 
-Package prime determines the nth prime\.
+Package prime determines the nth prime.
 
 ## Index
 
@@ -19,7 +19,7 @@ Package prime determines the nth prime\.
 func Nth(input int) (int, error)
 ```
 
-Nth returns the nth prime number\. An error must be returned if the nth prime number can't be calculated \('n' is equal or less than zero\)
+Nth returns the nth prime number. An error must be returned if the nth prime number can't be calculated \('n' is equal or less than zero\)
 
 <details><summary>Example</summary>
 <p>

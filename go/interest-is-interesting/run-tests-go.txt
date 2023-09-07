@@ -5,16 +5,617 @@ Go packages: interest
 
 ===============================================================================
 
-golint interest
-/home/vpayno/git_vpayno/exercism-workspace/go/interest-is-interesting/interest_is_interesting.go:4:6: func name will be used as interest.InterestRate by other packages, and that stutters; consider calling this Rate
+Running: ../../.github/citools/go/go-lint-golangci-lint
 
-real	0m0.143s
-user	0m0.109s
-sys	0m0.126s
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.019s
+user	0m0.005s
+sys	0m0.019s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+interest_is_interesting_test.go:16: Function 'TestInterestRate' is too long (85 > 60) (funlen)
+func TestInterestRate(t *testing.T) {
+interest_is_interesting.go:7:2: ifElseChain: rewrite if-else to switch statement (gocritic)
+	if balance < 0 {
+	^
+interest_is_interesting.go:32:107: Comment should end in a period (godot)
+// YearsBeforeDesiredBalance calculates the minimum number of years required to reach the desired balance:
+                                                                                                          ^
+interest_is_interesting.go:11: File is not `gofumpt`-ed (gofumpt)
+
+interest_is_interesting.go:14: File is not `gofumpt`-ed (gofumpt)
+
+interest_is_interesting.go:4:6: func name will be used as interest.InterestRate by other packages, and that stutters; consider calling this Rate (golint)
+func InterestRate(balance float64) float32 {
+     ^
+interest_is_interesting.go:34:20: var-declaration: should omit type float64 from declaration of var movingBalance; it will be inferred from the right-hand side (revive)
+	var movingBalance float64 = balance
+	                  ^
+interest_is_interesting_test.go:91:24: Using the variable on range scope `tt` in function literal (scopelint)
+			got := InterestRate(tt.balance)
+			                    ^
+interest_is_interesting_test.go:92:50: Using the variable on range scope `tt` in function literal (scopelint)
+			if !floatingPointEquals(float64(got), float64(tt.want)) {
+			                                              ^
+interest_is_interesting_test.go:95:6: Using the variable on range scope `tt` in function literal (scopelint)
+					tt.balance,
+					^
+interest_is_interesting.go:35:2: declarations should never be cuddled (wsl)
+	var yearsNeeded int
+	^
+interest_is_interesting_test.go:13:2: return statements should not be cuddled if block has more than two lines (wsl)
+	return absoluteDifferenceBelowThreshold || relativeDifferenceBelowThreshold
+	^
+interest_is_interesting.go:24:49: mnd: Magic number: 100, in <argument> detected (gomnd)
+	return balance * float64(InterestRate(balance)/100)
+	                                               ^
+interest_is_interesting.go:15:23: mnd: Magic number: 5_000, in <condition> detected (gomnd)
+	} else if balance >= 5_000 {
+	                     ^
+interest_is_interesting_test.go:89:2: Range statement for test TestInterestRate missing the call to method parallel in test Run (paralleltest)
+	for _, tt := range tests {
+	^
+interest_is_interesting_test.go:104:1: Function TestInterest missing the call to method parallel (paralleltest)
+func TestInterest(t *testing.T) {
+^
+interest_is_interesting_test.go:132:2: Range statement for test TestInterest missing the call to method parallel in test Run (paralleltest)
+	for _, tt := range tests {
+	^
+interest_is_interesting_test.go:147:1: Function TestAnnualBalanceUpdate missing the call to method parallel (paralleltest)
+func TestAnnualBalanceUpdate(t *testing.T) {
+^
+interest_is_interesting_test.go:190:2: Range statement for test TestAnnualBalanceUpdate missing the call to method parallel in test Run (paralleltest)
+	for _, tt := range tests {
+	^
+interest_is_interesting_test.go:205:1: Function TestYearsBeforeDesiredBalance missing the call to method parallel (paralleltest)
+func TestYearsBeforeDesiredBalance(t *testing.T) {
+^
+interest_is_interesting_test.go:244:2: Range statement for test TestYearsBeforeDesiredBalance missing the call to method parallel in test Run (paralleltest)
+	for _, tt := range tests {
+	^
+interest_is_interesting_examples_test.go:1:9: package should be `interest_test` instead of `interest` (testpackage)
+package interest
+        ^
+interest_is_interesting_test.go:1:9: package should be `interest_test` instead of `interest` (testpackage)
+package interest
+        ^
+
+real	0m0.482s
+user	0m0.779s
+sys	0m0.447s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.515s
+user	0m0.791s
+sys	0m0.481s
+
+real	0m0.519s
+user	0m0.792s
+sys	0m0.484s
 
 ===============================================================================
 
-go test -v -covermode=count -coverprofile coverage.out interest
+Running: ../../.github/citools/go/go-lint-revive
+
+Running Go Lint Revive
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.014s
+user	0m0.006s
+sys	0m0.010s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
+interest_is_interesting.go
+  (34, 20)  https://revive.run/r#var-declaration   should omit type float64 from declaration of var movingBalance; it will be inferred from the right-hand side      
+  (1, 1)    https://revive.run/r#package-comments  should have a package comment                                                                                     
+  (4, 6)    https://revive.run/r#exported          func name will be used as interest.InterestRate by other packages, and that stutters; consider calling this Rate  
+
+
+ ✖ 3 problems (0 errors) (3 warnings)
+
+real	0m0.048s
+user	0m0.027s
+sys	0m0.033s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.073s
+user	0m0.038s
+sys	0m0.052s
+
+real	0m0.075s
+user	0m0.038s
+sys	0m0.054s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
+
+real	0m0.001s
+user	0m0.001s
+sys	0m0.000s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.019s
+user	0m0.005s
+sys	0m0.020s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
+	info: check "./."
+internal error: package "fmt" without types was imported from "interest [interest.test]"
+
+real	0m0.096s
+user	0m0.093s
+sys	0m0.132s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.135s
+user	0m0.106s
+sys	0m0.173s
+
+real	0m0.138s
+user	0m0.109s
+sys	0m0.173s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-staticcheck
+
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.012s
+user	0m0.003s
+sys	0m0.012s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+interest_is_interesting.go:1:1: at least one file in a package should have a package comment (ST1000)
+interest_is_interesting.go:34:20: should omit type float64 from declaration; it will be inferred from the right-hand side (ST1023)
+
+real	0m0.174s
+user	0m0.215s
+sys	0m0.138s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.197s
+user	0m0.221s
+sys	0m0.162s
+
+real	0m0.199s
+user	0m0.221s
+sys	0m0.163s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocritic
+
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.011s
+user	0m0.005s
+sys	0m0.009s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+./interest_is_interesting.go:7:2: ifElseChain: rewrite if-else to switch statement
+
+real	0m0.822s
+user	0m1.801s
+sys	0m0.252s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.844s
+user	0m1.815s
+sys	0m0.270s
+
+real	0m0.847s
+user	0m1.817s
+sys	0m0.271s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go_vet
+
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.015s
+user	0m0.009s
+sys	0m0.010s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.087s
+user	0m0.126s
+sys	0m0.124s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.116s
+user	0m0.143s
+sys	0m0.147s
+
+real	0m0.119s
+user	0m0.144s
+sys	0m0.148s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-fixer-go_fix
+
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.016s
+user	0m0.009s
+sys	0m0.010s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.019s
+user	0m0.009s
+sys	0m0.015s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.046s
+user	0m0.024s
+sys	0m0.033s
+
+real	0m0.047s
+user	0m0.025s
+sys	0m0.033s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-errcheck
+
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.020s
+user	0m0.010s
+sys	0m0.016s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+
+real	0m0.459s
+user	0m1.448s
+sys	0m0.310s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.493s
+user	0m1.467s
+sys	0m0.338s
+
+real	0m0.496s
+user	0m1.468s
+sys	0m0.339s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.012s
+user	0m0.004s
+sys	0m0.013s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
+7 interest InterestRate interest_is_interesting.go:4:1
+3 interest TestYearsBeforeDesiredBalance interest_is_interesting_test.go:205:1
+3 interest TestAnnualBalanceUpdate interest_is_interesting_test.go:147:1
+3 interest TestInterest interest_is_interesting_test.go:104:1
+3 interest TestInterestRate interest_is_interesting_test.go:16:1
+2 interest floatingPointEquals interest_is_interesting_test.go:10:1
+2 interest YearsBeforeDesiredBalance interest_is_interesting.go:33:1
+1 interest ExampleYearsBeforeDesiredBalance interest_is_interesting_examples_test.go:43:1
+1 interest ExampleAnnualBalanceUpdate interest_is_interesting_examples_test.go:31:1
+1 interest ExampleInterest interest_is_interesting_examples_test.go:19:1
+1 interest ExampleInterestRate interest_is_interesting_examples_test.go:7:1
+1 interest AnnualBalanceUpdate interest_is_interesting.go:28:1
+1 interest Interest interest_is_interesting.go:23:1
+
+real	0m0.003s
+user	0m0.001s
+sys	0m0.002s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.025s
+user	0m0.011s
+sys	0m0.021s
+
+real	0m0.026s
+user	0m0.012s
+sys	0m0.022s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-misspell
+
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+
+real	0m0.029s
+user	0m0.038s
+sys	0m0.013s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.039s
+user	0m0.044s
+sys	0m0.021s
+
+real	0m0.041s
+user	0m0.045s
+sys	0m0.022s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gosec
+
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.015s
+user	0m0.006s
+sys	0m0.014s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:23:58 Including rules: default
+[gosec] 2023/09/07 00:23:58 Excluding rules: default
+[gosec] 2023/09/07 00:23:58 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/interest-is-interesting
+[gosec] 2023/09/07 00:23:58 Checking package: interest
+[gosec] 2023/09/07 00:23:58 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/interest-is-interesting/interest_is_interesting.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 43
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.079s
+user	0m0.054s
+sys	0m0.056s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.108s
+user	0m0.067s
+sys	0m0.081s
+
+real	0m0.109s
+user	0m0.067s
+sys	0m0.083s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.012s
+user	0m0.008s
+sys	0m0.007s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
 === RUN   TestInterestRate
 === RUN   TestInterestRate/Minimal_first_interest_rate
 === RUN   TestInterestRate/Tiny_first_interest_rate
@@ -93,34 +694,55 @@ PASS
 coverage: 100.0% of statements
 ok  	interest	0.005s	coverage: 100.0% of statements
 
-real	0m1.030s
-user	0m1.445s
-sys	0m0.764s
+real	0m0.167s
+user	0m0.228s
+sys	0m0.155s
 
-===============================================================================
 
-go tool cover -func=coverage.out
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
 interest/interest_is_interesting.go:4:	InterestRate			100.0%
 interest/interest_is_interesting.go:23:	Interest			100.0%
 interest/interest_is_interesting.go:28:	AnnualBalanceUpdate		100.0%
 interest/interest_is_interesting.go:33:	YearsBeforeDesiredBalance	100.0%
 total:					(statements)			100.0%
 
-real	0m0.169s
-user	0m0.091s
-sys	0m0.093s
+real	0m0.021s
+user	0m0.012s
+sys	0m0.016s
 
-===============================================================================
 
-go tool cover -html coverage.out -o coverage.html
+ ==============================================================================
 
-real	0m0.178s
-user	0m0.091s
-sys	0m0.138s
+Running: go tool cover -html coverage.out -o coverage.html
 
-===============================================================================
 
-go test -v -race -covermode=atomic interest
+real	0m0.025s
+user	0m0.012s
+sys	0m0.018s
+
+
+ ==============================================================================
+
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+real	0m0.010s
+user	0m0.008s
+sys	0m0.006s
+
+real	0m0.010s
+user	0m0.008s
+sys	0m0.006s
+
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
 === RUN   TestInterestRate
 === RUN   TestInterestRate/Minimal_first_interest_rate
 === RUN   TestInterestRate/Tiny_first_interest_rate
@@ -181,7 +803,7 @@ go test -v -race -covermode=atomic interest
 === RUN   TestYearsBeforeDesiredBalance/Years_before_desired_balance_for_large_start_balance
 === RUN   TestYearsBeforeDesiredBalance/Years_before_large_difference_between_start_and_target_balance
 === RUN   TestYearsBeforeDesiredBalance/Balance_is_already_above_target
---- PASS: TestYearsBeforeDesiredBalance (0.01s)
+--- PASS: TestYearsBeforeDesiredBalance (0.00s)
     --- PASS: TestYearsBeforeDesiredBalance/Years_before_desired_balance_for_small_start_balance (0.00s)
     --- PASS: TestYearsBeforeDesiredBalance/Years_before_desired_balance_for_average_start_balance (0.00s)
     --- PASS: TestYearsBeforeDesiredBalance/Years_before_desired_balance_for_large_start_balance (0.00s)
@@ -197,81 +819,137 @@ go test -v -race -covermode=atomic interest
 --- PASS: ExampleYearsBeforeDesiredBalance (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	interest	0.078s	coverage: 100.0% of statements
+ok  	interest	1.027s	coverage: 100.0% of statements
 
-real	0m1.269s
-user	0m1.599s
-sys	0m0.863s
+real	0m1.286s
+user	0m0.316s
+sys	0m0.203s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.534s
+user	0m0.589s
+sys	0m0.417s
+
+real	0m1.536s
+user	0m0.590s
+sys	0m0.419s
 
 ===============================================================================
 
-go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+mv -v benchstat-new.txt benchstat-old.txt
+renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
+
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 PASS
-ok  	interest	0.014s
+ok  	interest	0.002s
 
-real	0m0.906s
-user	0m1.158s
-sys	0m0.685s
+real	0m0.163s
+user	0m0.206s
+sys	0m0.144s
 
 ===============================================================================
 
-go test -tags bonus
+gotest -v -tags bonus
+=== RUN   TestInterestRate
+=== RUN   TestInterestRate/Minimal_first_interest_rate
+=== RUN   TestInterestRate/Tiny_first_interest_rate
+=== RUN   TestInterestRate/Maximum_first_interest_rate
+=== RUN   TestInterestRate/Minimal_second_interest_rate
+=== RUN   TestInterestRate/Tiny_second_interest_rate
+=== RUN   TestInterestRate/Maximum_second_interest_rate
+=== RUN   TestInterestRate/Minimal_third_interest_rate
+=== RUN   TestInterestRate/Tiny_third_interest_rate
+=== RUN   TestInterestRate/Large_third_interest_rate
+=== RUN   TestInterestRate/Rate_on_minimal_negative_balance
+=== RUN   TestInterestRate/Rate_on_small_negative_balance
+=== RUN   TestInterestRate/Rate_on_regular_negative_balance
+=== RUN   TestInterestRate/Rate_on_large_negative_balance
+--- PASS: TestInterestRate (0.00s)
+    --- PASS: TestInterestRate/Minimal_first_interest_rate (0.00s)
+    --- PASS: TestInterestRate/Tiny_first_interest_rate (0.00s)
+    --- PASS: TestInterestRate/Maximum_first_interest_rate (0.00s)
+    --- PASS: TestInterestRate/Minimal_second_interest_rate (0.00s)
+    --- PASS: TestInterestRate/Tiny_second_interest_rate (0.00s)
+    --- PASS: TestInterestRate/Maximum_second_interest_rate (0.00s)
+    --- PASS: TestInterestRate/Minimal_third_interest_rate (0.00s)
+    --- PASS: TestInterestRate/Tiny_third_interest_rate (0.00s)
+    --- PASS: TestInterestRate/Large_third_interest_rate (0.00s)
+    --- PASS: TestInterestRate/Rate_on_minimal_negative_balance (0.00s)
+    --- PASS: TestInterestRate/Rate_on_small_negative_balance (0.00s)
+    --- PASS: TestInterestRate/Rate_on_regular_negative_balance (0.00s)
+    --- PASS: TestInterestRate/Rate_on_large_negative_balance (0.00s)
+=== RUN   TestInterest
+=== RUN   TestInterest/Interest_on_negative_balance
+=== RUN   TestInterest/Interest_on_small_balance
+=== RUN   TestInterest/Interest_on_medium_balance
+=== RUN   TestInterest/Interest_on_large_balance
+--- PASS: TestInterest (0.00s)
+    --- PASS: TestInterest/Interest_on_negative_balance (0.00s)
+    --- PASS: TestInterest/Interest_on_small_balance (0.00s)
+    --- PASS: TestInterest/Interest_on_medium_balance (0.00s)
+    --- PASS: TestInterest/Interest_on_large_balance (0.00s)
+=== RUN   TestAnnualBalanceUpdate
+=== RUN   TestAnnualBalanceUpdate/Annual_balance_update_for_empty_start_balance
+=== RUN   TestAnnualBalanceUpdate/Annual_balance_update_for_small_positive_start_balance
+=== RUN   TestAnnualBalanceUpdate/Annual_balance_update_for_average_positive_start_balance
+=== RUN   TestAnnualBalanceUpdate/Annual_balance_update_for_large_positive_start_balance
+=== RUN   TestAnnualBalanceUpdate/Annual_balance_update_for_huge_positive_start_balance
+=== RUN   TestAnnualBalanceUpdate/Annual_balance_update_for_small_negative_start_balance
+=== RUN   TestAnnualBalanceUpdate/Annual_balance_update_for_large_negative_start_balance
+--- PASS: TestAnnualBalanceUpdate (0.00s)
+    --- PASS: TestAnnualBalanceUpdate/Annual_balance_update_for_empty_start_balance (0.00s)
+    --- PASS: TestAnnualBalanceUpdate/Annual_balance_update_for_small_positive_start_balance (0.00s)
+    --- PASS: TestAnnualBalanceUpdate/Annual_balance_update_for_average_positive_start_balance (0.00s)
+    --- PASS: TestAnnualBalanceUpdate/Annual_balance_update_for_large_positive_start_balance (0.00s)
+    --- PASS: TestAnnualBalanceUpdate/Annual_balance_update_for_huge_positive_start_balance (0.00s)
+    --- PASS: TestAnnualBalanceUpdate/Annual_balance_update_for_small_negative_start_balance (0.00s)
+    --- PASS: TestAnnualBalanceUpdate/Annual_balance_update_for_large_negative_start_balance (0.00s)
+=== RUN   TestYearsBeforeDesiredBalance
+=== RUN   TestYearsBeforeDesiredBalance/Years_before_desired_balance_for_small_start_balance
+=== RUN   TestYearsBeforeDesiredBalance/Years_before_desired_balance_for_average_start_balance
+=== RUN   TestYearsBeforeDesiredBalance/Years_before_desired_balance_for_large_start_balance
+=== RUN   TestYearsBeforeDesiredBalance/Years_before_large_difference_between_start_and_target_balance
+=== RUN   TestYearsBeforeDesiredBalance/Balance_is_already_above_target
+--- PASS: TestYearsBeforeDesiredBalance (0.00s)
+    --- PASS: TestYearsBeforeDesiredBalance/Years_before_desired_balance_for_small_start_balance (0.00s)
+    --- PASS: TestYearsBeforeDesiredBalance/Years_before_desired_balance_for_average_start_balance (0.00s)
+    --- PASS: TestYearsBeforeDesiredBalance/Years_before_desired_balance_for_large_start_balance (0.00s)
+    --- PASS: TestYearsBeforeDesiredBalance/Years_before_large_difference_between_start_and_target_balance (0.00s)
+    --- PASS: TestYearsBeforeDesiredBalance/Balance_is_already_above_target (0.00s)
+=== RUN   ExampleInterestRate
+--- PASS: ExampleInterestRate (0.00s)
+=== RUN   ExampleInterest
+--- PASS: ExampleInterest (0.00s)
+=== RUN   ExampleAnnualBalanceUpdate
+--- PASS: ExampleAnnualBalanceUpdate (0.00s)
+=== RUN   ExampleYearsBeforeDesiredBalance
+--- PASS: ExampleYearsBeforeDesiredBalance (0.00s)
 PASS
-ok  	interest	0.017s
+ok  	interest	0.003s
 
-real	0m0.902s
-user	0m1.231s
-sys	0m0.662s
-
-===============================================================================
-
-No old benchmarks to run benchstat against.
+real	0m0.130s
+user	0m0.180s
+sys	0m0.120s
 
 ===============================================================================
 
-go vet interest
+benchstat benchstat-old.txt benchstat-new.txt
 
-real	0m0.676s
-user	0m0.772s
-sys	0m0.626s
-
-===============================================================================
-
-go fix interest
-
-real	0m0.070s
-user	0m0.051s
-sys	0m0.055s
-
-===============================================================================
-
-gosec ./interest-is-interesting
-[gosec] 2022/07/27 12:27:52 Including rules: default
-[gosec] 2022/07/27 12:27:52 Excluding rules: default
-[gosec] 2022/07/27 12:27:52 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/interest-is-interesting
-[gosec] 2022/07/27 12:27:52 Checking package: interest
-[gosec] 2022/07/27 12:27:52 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/interest-is-interesting/interest_is_interesting.go
-Results:
-
-
-Summary:
-   Files: 1
-   Lines: 43
-   Nosec: 0
-  Issues: 0
-
-
-real	0m0.426s
-user	0m0.636s
-sys	0m0.323s
+real	0m0.002s
+user	0m0.000s
+sys	0m0.002s
 
 ===============================================================================
 
 gomarkdoc --output interest-doc.md
 
-real	0m0.045s
-user	0m0.036s
-sys	0m0.024s
+real	0m0.012s
+user	0m0.008s
+sys	0m0.004s
 
 ===============================================================================
 
@@ -296,9 +974,9 @@ func YearsBeforeDesiredBalance(balance, targetBalance float64) int
     reach the desired balance:
 
 
-real	0m0.201s
-user	0m0.089s
-sys	0m0.153s
+real	0m0.029s
+user	0m0.013s
+sys	0m0.021s
 
 
 ===============================================================================

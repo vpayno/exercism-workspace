@@ -130,7 +130,7 @@ true
 func NewVoteCounter(initialVotes int) *int
 ```
 
-NewVoteCounter returns a new vote counter with a given number of initial votes\.
+NewVoteCounter returns a new vote counter with a given number of initial votes.
 
 <details><summary>Example</summary>
 <p>
@@ -163,7 +163,7 @@ true
 func VoteCount(counter *int) int
 ```
 
-VoteCount extracts the number of votes from a counter\.
+VoteCount extracts the number of votes from a counter.
 
 <details><summary>Example</summary>
 <p>
@@ -196,7 +196,7 @@ VoteCount extracts the number of votes from a counter\.
 
 ## type [ElectionResult](<https://github.com/vpayno/exercism-workspace/blob/main/go/election-day/election_result.go#L4-L9>)
 
-ElectionResult represents an election result\.
+ElectionResult represents an election result.
 
 ```go
 type ElectionResult struct {

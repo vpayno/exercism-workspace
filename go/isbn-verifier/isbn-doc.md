@@ -6,7 +6,7 @@
 import "isbn"
 ```
 
-Package isbn is used to validate book id numbers\.
+Package isbn is used to validate book id numbers.
 
 ## Index
 
@@ -19,7 +19,7 @@ Package isbn is used to validate book id numbers\.
 func IsValidISBN(isbn string) bool
 ```
 
-IsValidISBN returns true if the book id number is valid\.
+IsValidISBN returns true if the book id number is valid.
 
 <details><summary>Example</summary>
 <p>

@@ -6,7 +6,7 @@
 import "meetup"
 ```
 
-Package meetup is used to calculate the days a Meetup meets\.
+Package meetup is used to calculate the days a Meetup meets.
 
 ## Index
 
@@ -17,16 +17,16 @@ Package meetup is used to calculate the days a Meetup meets\.
 
 ## Constants
 
-WeekSchedule enum values\.
+WeekSchedule enum values.
 
 ```go
 const (
-    First  WeekSchedule = 1
-    Second              = 2
-    Third               = 3
-    Fourth              = 4
-    Teenth              = 13
-    Last                = 6
+    First  WeekSchedule = 1  // number of matches
+    Second              = 2  // number of matches
+    Third               = 3  // number of matches
+    Fourth              = 4  // number of matches
+    Teenth              = 13 // start search on this day
+    Last                = 6  // number of matches
 )
 ```
 
@@ -36,7 +36,7 @@ const (
 func Day(wSched WeekSchedule, wDay time.Weekday, month time.Month, year int) int
 ```
 
-Day returns the date the Meetup meets\.
+Day returns the date the Meetup meets.
 
 <details><summary>Example</summary>
 <p>
@@ -71,7 +71,7 @@ Day returns the date the Meetup meets\.
 
 ## type [WeekSchedule](<https://github.com/vpayno/exercism-workspace/blob/main/go/meetup/meetup.go#L27>)
 
-WeekSchedule enum for making requests for the day we're looking for\.
+WeekSchedule enum for making requests for the day we're looking for.
 
 ```go
 type WeekSchedule int

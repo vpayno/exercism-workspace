@@ -5,15 +5,649 @@ Go packages: parsinglogfiles
 
 ===============================================================================
 
-golint parsinglogfiles
+Running: ../../.github/citools/go/go-lint-golangci-lint
 
-real	0m0.247s
-user	0m0.194s
-sys	0m0.167s
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.020s
+user	0m0.011s
+sys	0m0.020s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+parsing_log_files.go:9:19: var-declaration: should omit type string from declaration of var regexpString; it will be inferred from the right-hand side (revive)
+	var regexpString string = `^\[(TRC|DBG|INF|WRN|ERR|FTL)\].*$`
+	                 ^
+parsing_log_files.go:22:19: var-declaration: should omit type string from declaration of var regexpString; it will be inferred from the right-hand side (revive)
+	var regexpString string = `\b<[-~=*]*>\b`
+	                 ^
+parsing_log_files.go:38:19: var-declaration: should omit type string from declaration of var regexpString; it will be inferred from the right-hand side (revive)
+	var regexpString string = `(?i)".*password.*"`
+	                 ^
+parsing_log_files_test.go:49:23: Using the variable on range scope `tt` in function literal (scopelint)
+			got := IsValidLine(tt.text)
+			                   ^
+parsing_log_files_test.go:50:12: Using the variable on range scope `tt` in function literal (scopelint)
+			want := tt.expected
+			        ^
+parsing_log_files_test.go:92:24: Using the variable on range scope `tt` in function literal (scopelint)
+			got := SplitLogLine(tt.text)
+			                    ^
+parsing_log_files_examples_test.go:51:2: ranges should only be cuddled with assignments used in the iteration (wsl)
+	for _, line := range result {
+	^
+parsing_log_files_examples_test.go:54:2: expressions should not be cuddled with blocks (wsl)
+	fmt.Println("}")
+	^
+parsing_log_files_test.go:202:2: if statements should only be cuddled with assignments (wsl)
+	if len(a) == 0 {
+	^
+parsing_log_files_test.go:205:2: only one cuddle assignment allowed before range statement (wsl)
+	for i := range a {
+	^
+parsing_log_files_test.go:210:2: return statements should not be cuddled if block has more than two lines (wsl)
+	return true
+	^
+parsing_log_files_examples_test.go:14:2: Duplicate words (false) found (dupword)
+	// false
+	^
+parsing_log_files_test.go:5:1: Function TestIsValidLine missing the call to method parallel (paralleltest)
+func TestIsValidLine(t *testing.T) {
+^
+parsing_log_files_test.go:47:2: Range statement for test TestIsValidLine missing the call to method parallel in test Run (paralleltest)
+	for _, tt := range tests {
+	^
+parsing_log_files_test.go:58:1: Function TestSplitLogLine missing the call to method parallel (paralleltest)
+func TestSplitLogLine(t *testing.T) {
+^
+parsing_log_files_test.go:90:2: Range statement for test TestSplitLogLine missing the call to method parallel in test Run (paralleltest)
+	for _, tt := range tests {
+	^
+parsing_log_files_test.go:101:1: Function TestCountQuotedPasswords missing the call to method parallel (paralleltest)
+func TestCountQuotedPasswords(t *testing.T) {
+^
+parsing_log_files_test.go:126:2: Range statement for test TestCountQuotedPasswords missing the call to method parallel in test Run (paralleltest)
+	for _, tt := range tests {
+	^
+parsing_log_files_test.go:137:1: Function TestRemoveEndOfLineText missing the call to method parallel (paralleltest)
+func TestRemoveEndOfLineText(t *testing.T) {
+^
+parsing_log_files_test.go:149:2: Range statement for test TestRemoveEndOfLineText missing the call to method parallel in test Run (paralleltest)
+	for _, tt := range tests {
+	^
+parsing_log_files_test.go:160:1: Function TestTagWithUserName missing the call to method parallel (paralleltest)
+func TestTagWithUserName(t *testing.T) {
+^
+parsing_log_files_test.go:182:2: Range statement for test TestTagWithUserName missing the call to method parallel in test Run (paralleltest)
+	for _, tt := range tests {
+	^
+parsing_log_files.go:11:11: variable error has same name as predeclared identifier (predeclared)
+	isMatch, error := regexp.MatchString(regexpString, text)
+	         ^
+parsing_log_files.go:24:6: variable error has same name as predeclared identifier (predeclared)
+	re, error := regexp.Compile(regexpString)
+	    ^
+parsing_log_files.go:40:6: variable error has same name as predeclared identifier (predeclared)
+	re, error := regexp.Compile(regexpString)
+	    ^
+parsing_log_files_examples_test.go:1:9: package should be `parsinglogfiles_test` instead of `parsinglogfiles` (testpackage)
+package parsinglogfiles
+        ^
+parsing_log_files_test.go:1:9: package should be `parsinglogfiles_test` instead of `parsinglogfiles` (testpackage)
+package parsinglogfiles
+        ^
+parsing_log_files_test.go:198:23: parameter name 'a' is too short for the scope of its usage (varnamelen)
+func stringSliceEqual(a, b []string) bool {
+                      ^
+
+real	0m0.521s
+user	0m0.875s
+sys	0m0.488s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.558s
+user	0m0.893s
+sys	0m0.525s
+
+real	0m0.562s
+user	0m0.896s
+sys	0m0.528s
 
 ===============================================================================
 
-go test -v -covermode=count -coverprofile coverage.out parsinglogfiles
+Running: ../../.github/citools/go/go-lint-revive
+
+Running Go Lint Revive
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.027s
+user	0m0.015s
+sys	0m0.029s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
+parsing_log_files.go
+  (9, 19)   https://revive.run/r#var-declaration   should omit type string from declaration of var regexpString; it will be inferred from the right-hand side  
+  (22, 19)  https://revive.run/r#var-declaration   should omit type string from declaration of var regexpString; it will be inferred from the right-hand side  
+  (38, 19)  https://revive.run/r#var-declaration   should omit type string from declaration of var regexpString; it will be inferred from the right-hand side  
+  (56, 19)  https://revive.run/r#var-declaration   should omit type string from declaration of var regexpString; it will be inferred from the right-hand side  
+  (71, 19)  https://revive.run/r#var-declaration   should omit type string from declaration of var regexpString; it will be inferred from the right-hand side  
+  (1, 1)    https://revive.run/r#package-comments  should have a package comment                                                                               
+
+
+ ✖ 6 problems (0 errors) (6 warnings)
+
+real	0m0.066s
+user	0m0.041s
+sys	0m0.045s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.104s
+user	0m0.062s
+sys	0m0.083s
+
+real	0m0.106s
+user	0m0.063s
+sys	0m0.084s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
+
+real	0m0.001s
+user	0m0.001s
+sys	0m0.000s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.033s
+user	0m0.018s
+sys	0m0.034s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
+	info: check "./."
+internal error: package "regexp" without types was imported from "parsinglogfiles"
+
+real	0m0.104s
+user	0m0.159s
+sys	0m0.135s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.153s
+user	0m0.182s
+sys	0m0.186s
+
+real	0m0.156s
+user	0m0.184s
+sys	0m0.188s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-staticcheck
+
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.025s
+user	0m0.022s
+sys	0m0.015s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+parsing_log_files.go:1:1: at least one file in a package should have a package comment (ST1000)
+parsing_log_files.go:9:19: should omit type string from declaration; it will be inferred from the right-hand side (ST1023)
+parsing_log_files.go:22:19: should omit type string from declaration; it will be inferred from the right-hand side (ST1023)
+parsing_log_files.go:38:19: should omit type string from declaration; it will be inferred from the right-hand side (ST1023)
+parsing_log_files.go:56:19: should omit type string from declaration; it will be inferred from the right-hand side (ST1023)
+parsing_log_files.go:71:19: should omit type string from declaration; it will be inferred from the right-hand side (ST1023)
+
+real	0m0.172s
+user	0m0.231s
+sys	0m0.110s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.208s
+user	0m0.259s
+sys	0m0.133s
+
+real	0m0.210s
+user	0m0.260s
+sys	0m0.134s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocritic
+
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.019s
+user	0m0.012s
+sys	0m0.015s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+./parsing_log_files.go:11:11: builtinShadow: shadowing of predeclared identifier: error
+./parsing_log_files.go:24:6: builtinShadow: shadowing of predeclared identifier: error
+./parsing_log_files.go:40:6: builtinShadow: shadowing of predeclared identifier: error
+./parsing_log_files.go:58:6: builtinShadow: shadowing of predeclared identifier: error
+./parsing_log_files.go:73:6: builtinShadow: shadowing of predeclared identifier: error
+
+real	0m0.798s
+user	0m2.028s
+sys	0m0.293s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.827s
+user	0m2.044s
+sys	0m0.317s
+
+real	0m0.829s
+user	0m2.044s
+sys	0m0.319s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go_vet
+
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.023s
+user	0m0.009s
+sys	0m0.026s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.072s
+user	0m0.093s
+sys	0m0.111s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.106s
+user	0m0.108s
+sys	0m0.146s
+
+real	0m0.108s
+user	0m0.108s
+sys	0m0.148s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-fixer-go_fix
+
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.021s
+user	0m0.012s
+sys	0m0.021s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.024s
+user	0m0.014s
+sys	0m0.020s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.056s
+user	0m0.031s
+sys	0m0.051s
+
+real	0m0.058s
+user	0m0.032s
+sys	0m0.052s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-errcheck
+
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.037s
+user	0m0.028s
+sys	0m0.028s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+
+real	0m0.423s
+user	0m1.166s
+sys	0m0.266s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.478s
+user	0m1.204s
+sys	0m0.309s
+
+real	0m0.482s
+user	0m1.204s
+sys	0m0.312s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.032s
+user	0m0.016s
+sys	0m0.032s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
+5 parsinglogfiles stringSliceEqual parsing_log_files_test.go:198:1
+5 parsinglogfiles TestTagWithUserName parsing_log_files_test.go:160:1
+3 parsinglogfiles TestRemoveEndOfLineText parsing_log_files_test.go:137:1
+3 parsinglogfiles TestCountQuotedPasswords parsing_log_files_test.go:101:1
+3 parsinglogfiles TestSplitLogLine parsing_log_files_test.go:58:1
+3 parsinglogfiles TestIsValidLine parsing_log_files_test.go:5:1
+3 parsinglogfiles TagWithUserName parsing_log_files.go:70:1
+3 parsinglogfiles CountQuotedPasswords parsing_log_files.go:36:1
+2 parsinglogfiles ExampleTagWithUserName parsing_log_files_examples_test.go:42:1
+2 parsinglogfiles RemoveEndOfLineText parsing_log_files.go:54:1
+2 parsinglogfiles SplitLogLine parsing_log_files.go:21:1
+2 parsinglogfiles IsValidLine parsing_log_files.go:8:1
+1 parsinglogfiles ExampleRemoveEndOfLineText parsing_log_files_examples_test.go:36:1
+1 parsinglogfiles ExampleCountQuotedPasswords parsing_log_files_examples_test.go:23:1
+1 parsinglogfiles ExampleSplitLogLine parsing_log_files_examples_test.go:17:1
+1 parsinglogfiles ExampleIsValidLine parsing_log_files_examples_test.go:7:1
+
+real	0m0.003s
+user	0m0.002s
+sys	0m0.002s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.052s
+user	0m0.025s
+sys	0m0.048s
+
+real	0m0.055s
+user	0m0.025s
+sys	0m0.050s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-misspell
+
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+
+real	0m0.028s
+user	0m0.027s
+sys	0m0.015s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.047s
+user	0m0.036s
+sys	0m0.033s
+
+real	0m0.050s
+user	0m0.038s
+sys	0m0.034s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gosec
+
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.025s
+user	0m0.016s
+sys	0m0.022s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:25:55 Including rules: default
+[gosec] 2023/09/07 00:25:55 Excluding rules: default
+[gosec] 2023/09/07 00:25:55 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/parsing-log-files
+[gosec] 2023/09/07 00:25:55 Checking package: parsinglogfiles
+[gosec] 2023/09/07 00:25:55 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/parsing-log-files/parsing_log_files.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 84
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.112s
+user	0m0.113s
+sys	0m0.106s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.148s
+user	0m0.131s
+sys	0m0.141s
+
+real	0m0.150s
+user	0m0.132s
+sys	0m0.142s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.022s
+user	0m0.015s
+sys	0m0.020s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
 === RUN   TestIsValidLine
 === RUN   TestIsValidLine/Valid_ERR_message
 === RUN   TestIsValidLine/Valid_INF_message
@@ -68,15 +702,17 @@ go test -v -covermode=count -coverprofile coverage.out parsinglogfiles
 --- PASS: ExampleTagWithUserName (0.00s)
 PASS
 coverage: 84.8% of statements
-ok  	parsinglogfiles	0.022s	coverage: 84.8% of statements
+ok  	parsinglogfiles	0.003s	coverage: 84.8% of statements
 
-real	0m0.713s
-user	0m0.766s
-sys	0m0.441s
+real	0m0.177s
+user	0m0.228s
+sys	0m0.160s
 
-===============================================================================
 
-go tool cover -func=coverage.out
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
 parsinglogfiles/parsing_log_files.go:8:		IsValidLine		80.0%
 parsinglogfiles/parsing_log_files.go:21:	SplitLogLine		83.3%
 parsinglogfiles/parsing_log_files.go:36:	CountQuotedPasswords	87.5%
@@ -84,21 +720,119 @@ parsinglogfiles/parsing_log_files.go:54:	RemoveEndOfLineText	85.7%
 parsinglogfiles/parsing_log_files.go:70:	TagWithUserName		85.7%
 total:						(statements)		84.8%
 
-real	0m0.192s
-user	0m0.185s
-sys	0m0.189s
+real	0m0.046s
+user	0m0.050s
+sys	0m0.063s
 
-===============================================================================
 
-go tool cover -html coverage.out -o coverage.html
+ ==============================================================================
 
-real	0m0.188s
-user	0m0.195s
-sys	0m0.169s
+Running: go tool cover -html coverage.out -o coverage.html
 
-===============================================================================
 
-go test -v -race -covermode=atomic parsinglogfiles
+real	0m0.041s
+user	0m0.052s
+sys	0m0.061s
+
+
+ ==============================================================================
+
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+36     	func CountQuotedPasswords(lines []string) int {
+37     		var count int
+38     		var regexpString string = `(?i)".*password.*"`
+39     	
+40     		re, error := regexp.Compile(regexpString)
+41     	
+42     		if error != nil {
+43 MISS			panic(error)
+44     		}
+45     	
+46     		for _, line := range lines {
+47     			count += len(re.FindAllString(line, -1))
+48     		}
+49     	
+50     		return count
+51     	}
+
+
+ 8     	func IsValidLine(text string) bool {
+ 9     		var regexpString string = `^\[(TRC|DBG|INF|WRN|ERR|FTL)\].*$`
+10     	
+11     		isMatch, error := regexp.MatchString(regexpString, text)
+12     	
+13     		if error != nil {
+14 MISS			panic(error)
+15     		}
+16     	
+17     		return isMatch
+18     	}
+
+
+54     	func RemoveEndOfLineText(text string) string {
+55     		var replacement string
+56     		var regexpString string = `(?i)end-of-line[0-9]+`
+57     	
+58     		re, error := regexp.Compile(regexpString)
+59     	
+60     		if error != nil {
+61 MISS			panic(error)
+62     		}
+63     	
+64     		replacement = re.ReplaceAllString(text, "")
+65     	
+66     		return replacement
+67     	}
+
+
+21     	func SplitLogLine(text string) []string {
+22     		var regexpString string = `\b<[-~=*]*>\b`
+23     	
+24     		re, error := regexp.Compile(regexpString)
+25     	
+26     		if error != nil {
+27 MISS			panic(error)
+28     		}
+29     	
+30     		tokens := re.Split(text, -1)
+31     	
+32     		return tokens
+33     	}
+
+
+70     	func TagWithUserName(lines []string) []string {
+71     		var regexpString string = `^(.*User +\b)([A-Za-z][A-Za-z0-9]+)(\b.*)$`
+72     	
+73     		re, error := regexp.Compile(regexpString)
+74     	
+75     		if error != nil {
+76 MISS			panic(error)
+77     		}
+78     	
+79     		for index, line := range lines {
+80     			lines[index] = re.ReplaceAllString(line, `[USR] $2 $1$2$3`)
+81     		}
+82     	
+83     		return lines
+84     	}
+
+
+real	0m0.021s
+user	0m0.009s
+sys	0m0.024s
+
+real	0m0.021s
+user	0m0.009s
+sys	0m0.024s
+
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
 === RUN   TestIsValidLine
 === RUN   TestIsValidLine/Valid_ERR_message
 === RUN   TestIsValidLine/Valid_INF_message
@@ -107,7 +841,7 @@ go test -v -race -covermode=atomic parsinglogfiles
 === RUN   TestIsValidLine/Invalid_tag
 === RUN   TestIsValidLine/Line_with_less_characters_than_5
 === RUN   TestIsValidLine/Empty_line
---- PASS: TestIsValidLine (0.01s)
+--- PASS: TestIsValidLine (0.00s)
     --- PASS: TestIsValidLine/Valid_ERR_message (0.00s)
     --- PASS: TestIsValidLine/Valid_INF_message (0.00s)
     --- PASS: TestIsValidLine/Invalid_ERR_message (0.00s)
@@ -153,71 +887,115 @@ go test -v -race -covermode=atomic parsinglogfiles
 --- PASS: ExampleTagWithUserName (0.00s)
 PASS
 coverage: 84.8% of statements
-ok  	parsinglogfiles	0.063s	coverage: 84.8% of statements
+ok  	parsinglogfiles	1.019s	coverage: 84.8% of statements
 
-real	0m1.157s
-user	0m1.001s
-sys	0m0.697s
+real	0m1.262s
+user	0m0.278s
+sys	0m0.191s
 
-===============================================================================
 
-go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
-PASS
-ok  	parsinglogfiles	0.010s
+ ==============================================================================
 
-real	0m0.727s
-user	0m0.744s
+Exit code: 0
+
+real	0m1.587s
+user	0m0.645s
+sys	0m0.533s
+
+real	0m1.594s
+user	0m0.650s
 sys	0m0.535s
 
 ===============================================================================
 
-go test -tags bonus
+mv -v benchstat-new.txt benchstat-old.txt
+renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
+
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 PASS
-ok  	parsinglogfiles	0.010s
+ok  	parsinglogfiles	0.003s
 
-real	0m0.503s
-user	0m0.561s
-sys	0m0.378s
-
-===============================================================================
-
-No old benchmarks to run benchstat against.
+real	0m0.237s
+user	0m0.269s
+sys	0m0.212s
 
 ===============================================================================
 
-go vet parsinglogfiles
-
-real	0m0.349s
-user	0m0.429s
-sys	0m0.323s
-
-===============================================================================
-
-go fix parsinglogfiles
+gotest -v -tags bonus
+=== RUN   TestIsValidLine
+=== RUN   TestIsValidLine/Valid_ERR_message
+=== RUN   TestIsValidLine/Valid_INF_message
+=== RUN   TestIsValidLine/Invalid_ERR_message
+=== RUN   TestIsValidLine/Invalid_INF_message
+=== RUN   TestIsValidLine/Invalid_tag
+=== RUN   TestIsValidLine/Line_with_less_characters_than_5
+=== RUN   TestIsValidLine/Empty_line
+--- PASS: TestIsValidLine (0.00s)
+    --- PASS: TestIsValidLine/Valid_ERR_message (0.00s)
+    --- PASS: TestIsValidLine/Valid_INF_message (0.00s)
+    --- PASS: TestIsValidLine/Invalid_ERR_message (0.00s)
+    --- PASS: TestIsValidLine/Invalid_INF_message (0.00s)
+    --- PASS: TestIsValidLine/Invalid_tag (0.00s)
+    --- PASS: TestIsValidLine/Line_with_less_characters_than_5 (0.00s)
+    --- PASS: TestIsValidLine/Empty_line (0.00s)
+=== RUN   TestSplitLogLine
+=== RUN   TestSplitLogLine/three_sections
+=== RUN   TestSplitLogLine/three_sections_with_different_symbols_inside_angular_brackets
+=== RUN   TestSplitLogLine/two_sections_with_no_characters_between_angular_brackets
+=== RUN   TestSplitLogLine/single_section_with_some_angular_brackets
+=== RUN   TestSplitLogLine/empty_text
+--- PASS: TestSplitLogLine (0.00s)
+    --- PASS: TestSplitLogLine/three_sections (0.00s)
+    --- PASS: TestSplitLogLine/three_sections_with_different_symbols_inside_angular_brackets (0.00s)
+    --- PASS: TestSplitLogLine/two_sections_with_no_characters_between_angular_brackets (0.00s)
+    --- PASS: TestSplitLogLine/single_section_with_some_angular_brackets (0.00s)
+    --- PASS: TestSplitLogLine/empty_text (0.00s)
+=== RUN   TestCountQuotedPasswords
+=== RUN   TestCountQuotedPasswords/text_with_two_matches
+=== RUN   TestCountQuotedPasswords/text_with_no_matches
+--- PASS: TestCountQuotedPasswords (0.00s)
+    --- PASS: TestCountQuotedPasswords/text_with_two_matches (0.00s)
+    --- PASS: TestCountQuotedPasswords/text_with_no_matches (0.00s)
+=== RUN   TestRemoveEndOfLineText
+=== RUN   TestRemoveEndOfLineText/INF_message
+--- PASS: TestRemoveEndOfLineText (0.00s)
+    --- PASS: TestRemoveEndOfLineText/INF_message (0.00s)
+=== RUN   TestTagWithUserName
+=== RUN   TestTagWithUserName/INF_message
+--- PASS: TestTagWithUserName (0.00s)
+    --- PASS: TestTagWithUserName/INF_message (0.00s)
+=== RUN   ExampleIsValidLine
+--- PASS: ExampleIsValidLine (0.00s)
+=== RUN   ExampleSplitLogLine
+--- PASS: ExampleSplitLogLine (0.00s)
+=== RUN   ExampleCountQuotedPasswords
+--- PASS: ExampleCountQuotedPasswords (0.00s)
+=== RUN   ExampleRemoveEndOfLineText
+--- PASS: ExampleRemoveEndOfLineText (0.00s)
+=== RUN   ExampleTagWithUserName
+--- PASS: ExampleTagWithUserName (0.00s)
+PASS
+ok  	parsinglogfiles	0.004s
 
 real	0m0.154s
-user	0m0.138s
-sys	0m0.106s
+user	0m0.180s
+sys	0m0.137s
 
 ===============================================================================
 
-gosec ./parsing-log-files
-[gosec] 2022/07/26 07:20:23 Including rules: default
-[gosec] 2022/07/26 07:20:23 Excluding rules: default
-[gosec] 2022/07/26 07:20:23 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/parsing-log-files
-2022/07/26 07:20:24 internal error: package "regexp" without types was imported from "command-line-arguments"
+benchstat benchstat-old.txt benchstat-new.txt
 
-real	0m0.441s
-user	0m0.461s
-sys	0m0.312s
+real	0m0.003s
+user	0m0.002s
+sys	0m0.001s
 
 ===============================================================================
 
 gomarkdoc --output parsinglogfiles-doc.md
 
-real	0m0.030s
-user	0m0.028s
-sys	0m0.020s
+real	0m0.019s
+user	0m0.014s
+sys	0m0.007s
 
 ===============================================================================
 
@@ -245,9 +1023,9 @@ func TagWithUserName(lines []string) []string
     TagWithUserName returns a slice of strings with user mentions.
 
 
-real	0m0.181s
-user	0m0.157s
-sys	0m0.157s
+real	0m0.051s
+user	0m0.031s
+sys	0m0.037s
 
 
 ===============================================================================

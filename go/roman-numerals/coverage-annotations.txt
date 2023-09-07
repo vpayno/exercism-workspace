@@ -1,0 +1,120 @@
+
+ 10     	func ToRomanNumeral(input int) (string, error) {
+ 11     		if input <= 0 {
+ 12     			return "", errors.New("Roman numerals can't be less than or equal to 0")
+ 13     		}
+ 14     	
+ 15     		// Only process numbers <=3k.
+ 16     		if input > 3_000 {
+ 17     			return "", errors.New("Roman numerals were apparently rarely greater than 3k")
+ 18     		}
+ 19     	
+ 20     		/*
+ 21     		   Steps
+ 22     		   1. set remainder to number
+ 23     		   2. divide remainder by 1000
+ 24     		   3. if == 0 then look for special case for IV, IX, XL, XC, CD, CM
+ 25     		      a. if true then record it and substract it from the remainder
+ 26     		      b. if false continue with the next number
+ 27     		   4. if != 0 then
+ 28     		      a. output n, nn, nnn case
+ 29     		      b. update the remainder
+ 30     		      c. continue with the next number
+ 31     		*/
+ 32     	
+ 33     		var d2r map[int]string = map[int]string{
+ 34     			1:     "I",
+ 35     			5:     "V",
+ 36     			10:    "X",
+ 37     			50:    "L",
+ 38     			100:   "C",
+ 39     			500:   "D",
+ 40     			1_000: "M",
+ 41     		}
+ 42     	
+ 43     		var subLadder map[int]int = map[int]int{
+ 44     			10:    1,
+ 45     			50:    10,
+ 46     			100:   10,
+ 47     			500:   100,
+ 48     			1_000: 100,
+ 49     		}
+ 50     	
+ 51     		var outLadder map[int]string = map[int]string{
+ 52     			10:    "I",
+ 53     			50:    "X",
+ 54     			100:   "X",
+ 55     			500:   "C",
+ 56     			1_000: "C",
+ 57     		}
+ 58     	
+ 59     		var remainder int = input
+ 60     		var output string
+ 61     		var register int
+ 62     	
+ 63     		var numbers []int = []int{1_000, 500, 100, 50, 10, 5, 1}
+ 64     	
+ 65     		for _, next := range numbers {
+ 66     	
+ 67     			if remainder <= 0 {
+ 68     				break
+ 69     			}
+ 70     	
+ 71     			register = remainder / next
+ 72     	
+ 73     			if register == 0 {
+ 74     				subNum, found := subLadder[next]
+ 75     	
+ 76     				if !found {
+ 77     					subNum = 1
+ 78     				}
+ 79     	
+ 80     				if remainder >= next-subNum {
+ 81     	
+ 82     					// IV IX XL XC CD CM
+ 83     					value, found := outLadder[next]
+ 84     	
+ 85     					if !found {
+ 86     						value = "I"
+ 87     					}
+ 88     	
+ 89     					output += value
+ 90     	
+ 91     					value, found = d2r[next]
+ 92     	
+ 93     					if !found {
+ 94 MISS						value = ""
+ 95     					}
+ 96     	
+ 97     					output += value
+ 98     	
+ 99     					register = remainder - (next - subNum)
+100     	
+101     					remainder = register
+102     	
+103     				}
+104     	
+105     				continue
+106     	
+107     			} else {
+108     	
+109     				value, found := d2r[next]
+110     	
+111     				if !found {
+112 MISS					value = ""
+113     				}
+114     	
+115     				// III xxx CCC
+116     				output += strings.Repeat(value, register)
+117     	
+118     				register = remainder % next
+119     	
+120     				remainder = register
+121     	
+122     				continue
+123     			}
+124     		}
+125     	
+126     		return output, nil
+127     	}
+

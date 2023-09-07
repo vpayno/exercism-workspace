@@ -5,81 +5,483 @@ Go packages: bottlesong
 
 ===============================================================================
 
-golangci-lint run ./...
+Running: ../../.github/citools/go/go-lint-golangci-lint
 
-real	0m0.251s
-user	0m0.445s
-sys	0m0.259s
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.031s
+user	0m0.028s
+sys	0m0.030s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[linters_context] rowserrcheck is disabled because of generics. You can track the evolution of the generics support by following the https://github.com/golangci/golangci-lint/issues/2649."
+level=warning msg="[linters_context] structcheck is disabled because of generics. You can track the evolution of the generics support by following the https://github.com/golangci/golangci-lint/issues/2649."
+level=warning msg="[linters_context] wastedassign is disabled because of generics. You can track the evolution of the generics support by following the https://github.com/golangci/golangci-lint/issues/2649."
+cases_test.go:18: File is not `gofumpt`-ed (gofumpt)
+
+bottle_song_examples_test.go:124: line is 185 characters (lll)
+	// [Ten green bottles hanging on the wall, Ten green bottles hanging on the wall, And if one green bottle should accidentally fall, There'll be nine green bottles hanging on the wall.]
+bottle_song_examples_test.go:126: line is 188 characters (lll)
+	// [Nine green bottles hanging on the wall, Nine green bottles hanging on the wall, And if one green bottle should accidentally fall, There'll be eight green bottles hanging on the wall.]
+bottle_song_examples_test.go:128: line is 190 characters (lll)
+	// [Eight green bottles hanging on the wall, Eight green bottles hanging on the wall, And if one green bottle should accidentally fall, There'll be seven green bottles hanging on the wall.]
+bottle_song_examples_test.go:130: line is 188 characters (lll)
+	// [Seven green bottles hanging on the wall, Seven green bottles hanging on the wall, And if one green bottle should accidentally fall, There'll be six green bottles hanging on the wall.]
+bottle_song_examples_test.go:132: line is 185 characters (lll)
+	// [Six green bottles hanging on the wall, Six green bottles hanging on the wall, And if one green bottle should accidentally fall, There'll be five green bottles hanging on the wall.]
+bottle_song_examples_test.go:134: line is 187 characters (lll)
+	// [Five green bottles hanging on the wall, Five green bottles hanging on the wall, And if one green bottle should accidentally fall, There'll be four green bottles hanging on the wall.]
+bottle_song_examples_test.go:136: line is 188 characters (lll)
+	// [Four green bottles hanging on the wall, Four green bottles hanging on the wall, And if one green bottle should accidentally fall, There'll be three green bottles hanging on the wall.]
+bottle_song_examples_test.go:140: line is 183 characters (lll)
+	// [Two green bottles hanging on the wall, Two green bottles hanging on the wall, And if one green bottle should accidentally fall, There'll be one green bottle hanging on the wall.]
+bottle_song_examples_test.go:142: line is 181 characters (lll)
+	// [One green bottle hanging on the wall, One green bottle hanging on the wall, And if one green bottle should accidentally fall, There'll be no green bottles hanging on the wall.]
+bottle_song_test.go:13:21: Using the variable on range scope `tc` in function literal (scopelint)
+			actual := Recite(tc.input.startBottles, tc.input.takeDown)
+			                 ^
+bottle_song_test.go:14:22: Using the variable on range scope `tc` in function literal (scopelint)
+			if !equal(actual, tc.expected) {
+			                  ^
+bottle_song_test.go:15:47: Using the variable on range scope `tc` in function literal (scopelint)
+				t.Errorf("Recite(%d, %d) = %q, want: %q", tc.input.startBottles, tc.input.takeDown, actual, tc.expected)
+				                                          ^
+bottle_song_test.go:44:2: return statements should not be cuddled if block has more than two lines (wsl)
+	return strings.Map(
+	^
+bottle_song_test.go:70:3: return statements should not be cuddled if block has more than two lines (wsl)
+		return true
+		^
+bottle_song_test.go:57:1: calculated cyclomatic complexity for function isSeparator is 11, max is 10 (cyclop)
+func isSeparator(r rune) bool {
+^
+bottle_song.go:115:3: Duplicate words (because) found (dupword)
+		// This can't return an error because because of the other fast fails are making sure line is valid here.
+		^
+bottle_song.go:36:5: NumberNames is a global variable (gochecknoglobals)
+var NumberNames = map[Number]string{
+    ^
+cases_test.go:13:5: testCases is a global variable (gochecknoglobals)
+var testCases = []struct {
+    ^
+bottle_song.go:69:14: err113: do not define dynamic errors, use wrapped static errors instead: "errors.New(\"you can't have zero or less bottles\")" (goerr113)
+		return "", errors.New("you can't have zero or less bottles")
+		           ^
+bottle_song.go:73:14: err113: do not define dynamic errors, use wrapped static errors instead: "errors.New(\"you can't have more than 10 bottles\")" (goerr113)
+		return "", errors.New("you can't have more than 10 bottles")
+		           ^
+bottle_song.go:111:14: err113: do not define dynamic errors, use wrapped static errors instead: "fmt.Errorf(\"not enough bottles %[1]d to take down %[2]d\", start, takeDown)" (goerr113)
+		return "", fmt.Errorf("not enough bottles %[1]d to take down %[2]d", start, takeDown)
+		           ^
+bottle_song_test.go:51:4: return with no blank line before (nlreturn)
+			return r
+			^
+bottle_song_test.go:48:5: return with no blank line before (nlreturn)
+				return unicode.ToTitle(r)
+				^
+bottle_song_test.go:10:1: Function TestRecite missing the call to method parallel (paralleltest)
+func TestRecite(t *testing.T) {
+^
+bottle_song_test.go:11:2: Range statement for test TestRecite missing the call to method parallel in test Run (paralleltest)
+	for _, tc := range testCases {
+	^
+bottle_song_examples_test.go:1:9: package should be `bottlesong_test` instead of `bottlesong` (testpackage)
+package bottlesong
+        ^
+bottle_song_test.go:1:9: package should be `bottlesong_test` instead of `bottlesong` (testpackage)
+package bottlesong
+        ^
+cases_test.go:1:9: package should be `bottlesong_test` instead of `bottlesong` (testpackage)
+package bottlesong
+        ^
+bottle_song_test.go:21:12: parameter name 'b' is too short for the scope of its usage (varnamelen)
+func equal(a, b []string) bool {
+           ^
+bottle_song_test.go:45:8: parameter name 'r' is too short for the scope of its usage (varnamelen)
+		func(r rune) rune {
+		     ^
+bottle_song_test.go:39:12: parameter name 's' is too short for the scope of its usage (varnamelen)
+func Title(s string) string {
+           ^
+
+real	0m1.871s
+user	0m5.301s
+sys	0m0.814s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m1.918s
+user	0m5.338s
+sys	0m0.856s
+
+real	0m1.921s
+user	0m5.341s
+sys	0m0.856s
 
 ===============================================================================
 
-golint ./...
+Running: ../../.github/citools/go/go-lint-revive
 
-real	0m0.005s
-user	0m0.003s
-sys	0m0.002s
+Running Go Lint Revive
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.021s
+user	0m0.019s
+sys	0m0.026s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
+
+real	0m0.061s
+user	0m0.028s
+sys	0m0.049s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.096s
+user	0m0.054s
+sys	0m0.087s
+
+real	0m0.098s
+user	0m0.055s
+sys	0m0.088s
 
 ===============================================================================
 
-revive -formatter=stylish ./...
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
 
-real	0m0.239s
-user	0m0.349s
-sys	0m0.346s
-
-===============================================================================
-
-ineffassign ./...
-
-real	0m0.086s
-user	0m0.158s
-sys	0m0.117s
+real	0m0.001s
+user	0m0.000s
+sys	0m0.001s
 
 ===============================================================================
 
-go-consistent -v ./...
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.029s
+user	0m0.024s
+sys	0m0.038s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
 	info: check "./."
 internal error: package "errors" without types was imported from "bottlesong"
 
-real	0m0.096s
-user	0m0.195s
-sys	0m0.169s
+real	0m0.108s
+user	0m0.127s
+sys	0m0.151s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.148s
+user	0m0.159s
+sys	0m0.198s
+
+real	0m0.150s
+user	0m0.159s
+sys	0m0.200s
 
 ===============================================================================
 
-staticcheck ./...
+Running: ../../.github/citools/go/go-lint-staticcheck
 
-real	0m0.149s
-user	0m0.204s
-sys	0m0.164s
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.020s
+user	0m0.021s
+sys	0m0.015s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+
+real	0m1.252s
+user	0m3.544s
+sys	0m0.356s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.285s
+user	0m3.572s
+sys	0m0.380s
+
+real	0m1.287s
+user	0m3.573s
+sys	0m0.381s
 
 ===============================================================================
 
-gocritic check -enableAll ./...
+Running: ../../.github/citools/go/go-lint-gocritic
 
-real	0m0.731s
-user	0m2.281s
-sys	0m0.458s
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.028s
+user	0m0.022s
+sys	0m0.035s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+
+real	0m0.857s
+user	0m2.070s
+sys	0m0.339s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.900s
+user	0m2.101s
+sys	0m0.387s
+
+real	0m0.903s
+user	0m2.102s
+sys	0m0.388s
 
 ===============================================================================
 
-go vet ./...
+Running: ../../.github/citools/go/go-lint-go_vet
 
-real	0m0.089s
-user	0m0.185s
-sys	0m0.155s
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.032s
+user	0m0.027s
+sys	0m0.034s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.079s
+user	0m0.117s
+sys	0m0.109s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.123s
+user	0m0.152s
+sys	0m0.151s
+
+real	0m0.125s
+user	0m0.153s
+sys	0m0.152s
 
 ===============================================================================
 
-go fix ./...
+Running: ../../.github/citools/go/go-fixer-go_fix
 
-real	0m0.026s
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.020s
 user	0m0.019s
-sys	0m0.030s
+sys	0m0.020s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.023s
+user	0m0.021s
+sys	0m0.024s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.054s
+user	0m0.044s
+sys	0m0.055s
+
+real	0m0.055s
+user	0m0.045s
+sys	0m0.055s
 
 ===============================================================================
 
-gocyclo .
+Running: ../../.github/citools/go/go-lint-errcheck
+
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.018s
+user	0m0.012s
+sys	0m0.024s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+
+real	0m0.478s
+user	0m1.563s
+sys	0m0.259s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.510s
+user	0m1.582s
+sys	0m0.291s
+
+real	0m0.512s
+user	0m1.583s
+sys	0m0.292s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.031s
+user	0m0.031s
+sys	0m0.032s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
 11 bottlesong isSeparator bottle_song_test.go:57:1
 7 bottlesong Verse bottle_song.go:61:1
 5 bottlesong Recite bottle_song.go:129:1
@@ -94,25 +496,85 @@ gocyclo .
 1 bottlesong (Number).String bottle_song.go:51:1
 
 real	0m0.002s
-user	0m0.001s
-sys	0m0.001s
+user	0m0.000s
+sys	0m0.002s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.050s
+user	0m0.038s
+sys	0m0.050s
+
+real	0m0.053s
+user	0m0.039s
+sys	0m0.052s
 
 ===============================================================================
 
-misspell .
+Running: ../../.github/citools/go/go-lint-misspell
 
-real	0m0.024s
-user	0m0.029s
-sys	0m0.016s
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+
+real	0m0.047s
+user	0m0.027s
+sys	0m0.027s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.058s
+user	0m0.034s
+sys	0m0.034s
+
+real	0m0.059s
+user	0m0.035s
+sys	0m0.035s
 
 ===============================================================================
 
-gosec ./...
-[gosec] 2023/03/06 22:06:22 Including rules: default
-[gosec] 2023/03/06 22:06:22 Excluding rules: default
-[gosec] 2023/03/06 22:06:22 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/bottle-song
-[gosec] 2023/03/06 22:06:22 Checking package: bottlesong
-[gosec] 2023/03/06 22:06:22 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/bottle-song/bottle_song.go
+Running: ../../.github/citools/go/go-lint-gosec
+
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.022s
+user	0m0.018s
+sys	0m0.026s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:21:18 Including rules: default
+[gosec] 2023/09/07 00:21:18 Excluding rules: default
+[gosec] 2023/09/07 00:21:18 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/bottle-song
+[gosec] 2023/09/07 00:21:18 Checking package: bottlesong
+[gosec] 2023/09/07 00:21:18 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/bottle-song/bottle_song.go
 Results:
 
 
@@ -124,13 +586,48 @@ Results:
   Issues : [1;32m0[0m
 
 
-real	0m0.140s
-user	0m0.155s
-sys	0m0.116s
+real	0m0.119s
+user	0m0.133s
+sys	0m0.099s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.161s
+user	0m0.160s
+sys	0m0.138s
+
+real	0m0.163s
+user	0m0.161s
+sys	0m0.139s
 
 ===============================================================================
 
-gotest -v -covermode=count -coverprofile coverage.out ./...
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.025s
+user	0m0.021s
+sys	0m0.024s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
 === RUN   TestRecite
 === RUN   TestRecite/first_generic_verse
 === RUN   TestRecite/last_generic_verse
@@ -154,16 +651,18 @@ gotest -v -covermode=count -coverprofile coverage.out ./...
 === RUN   ExampleRecite
 --- PASS: ExampleRecite (0.00s)
 PASS
-	bottlesong	coverage: 100.0% of statements
-ok  	bottlesong	0.004s	coverage: 100.0% of statements
+coverage: 100.0% of statements
+ok  	bottlesong	0.003s	coverage: 100.0% of statements
 
-real	0m0.206s
-user	0m0.339s
-sys	0m0.255s
+real	0m0.166s
+user	0m0.224s
+sys	0m0.131s
 
-===============================================================================
 
-go tool cover -func=coverage.out
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
 bottlesong/bottle_song.go:51:	String		100.0%
 bottlesong/bottle_song.go:56:	Int		100.0%
 bottlesong/bottle_song.go:61:	Verse		100.0%
@@ -171,29 +670,40 @@ bottlesong/bottle_song.go:107:	Verses		100.0%
 bottlesong/bottle_song.go:129:	Recite		100.0%
 total:				(statements)	100.0%
 
-real	0m0.077s
-user	0m0.160s
-sys	0m0.123s
+real	0m0.054s
+user	0m0.071s
+sys	0m0.073s
 
-===============================================================================
 
-go tool cover -html coverage.out -o coverage.html
+ ==============================================================================
 
-real	0m0.072s
-user	0m0.133s
-sys	0m0.116s
+Running: go tool cover -html coverage.out -o coverage.html
 
-===============================================================================
 
-gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+real	0m0.058s
+user	0m0.086s
+sys	0m0.072s
 
-real	0m0.020s
-user	0m0.020s
-sys	0m0.025s
 
-===============================================================================
+ ==============================================================================
 
-gotest -v -race -covermode=atomic ./...
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+real	0m0.019s
+user	0m0.015s
+sys	0m0.023s
+
+real	0m0.019s
+user	0m0.015s
+sys	0m0.024s
+
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
 === RUN   TestRecite
 === RUN   TestRecite/first_generic_verse
 === RUN   TestRecite/last_generic_verse
@@ -217,22 +727,38 @@ gotest -v -race -covermode=atomic ./...
 === RUN   ExampleRecite
 --- PASS: ExampleRecite (0.00s)
 PASS
-	bottlesong	coverage: 100.0% of statements
-ok  	bottlesong	0.036s	coverage: 100.0% of statements
+coverage: 100.0% of statements
+ok  	bottlesong	1.016s	coverage: 100.0% of statements
 
-real	0m0.310s
-user	0m0.504s
-sys	0m0.329s
+real	0m1.240s
+user	0m0.273s
+sys	0m0.165s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.573s
+user	0m0.693s
+sys	0m0.499s
+
+real	0m1.575s
+user	0m0.693s
+sys	0m0.501s
 
 ===============================================================================
 
+mv -v benchstat-new.txt benchstat-old.txt
+renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
+
 gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 PASS
-ok  	bottlesong	0.003s
+ok  	bottlesong	0.002s
 
-real	0m0.196s
-user	0m0.339s
-sys	0m0.268s
+real	0m0.151s
+user	0m0.206s
+sys	0m0.119s
 
 ===============================================================================
 
@@ -262,21 +788,25 @@ gotest -v -tags bonus
 PASS
 ok  	bottlesong	0.002s
 
-real	0m0.155s
-user	0m0.299s
-sys	0m0.208s
+real	0m0.133s
+user	0m0.197s
+sys	0m0.125s
 
 ===============================================================================
 
-No old benchmarks to run benchstat against.
+benchstat benchstat-old.txt benchstat-new.txt
+
+real	0m0.005s
+user	0m0.000s
+sys	0m0.002s
 
 ===============================================================================
 
 gomarkdoc --output bottlesong-doc.md
 
-real	0m0.012s
-user	0m0.005s
-sys	0m0.007s
+real	0m0.010s
+user	0m0.004s
+sys	0m0.006s
 
 ===============================================================================
 
@@ -353,9 +883,9 @@ func (n Number) String() string
     String implements the Stringer interface for a Number.
 
 
-real	0m0.042s
-user	0m0.029s
-sys	0m0.053s
+real	0m0.038s
+user	0m0.030s
+sys	0m0.032s
 
 
 ===============================================================================

@@ -6,7 +6,7 @@
 import "pangram"
 ```
 
-Package pangram determines if a sentence is a pangram\.
+Package pangram determines if a sentence is a pangram.
 
 ## Index
 
@@ -19,7 +19,7 @@ Package pangram determines if a sentence is a pangram\.
 func IsPangram(input string) bool
 ```
 
-IsPangram returns true if the string contains all the ASCII letters \(a to z\)\.
+IsPangram returns true if the string contains all the ASCII letters \(a to z\).
 
 <details><summary>Example</summary>
 <p>

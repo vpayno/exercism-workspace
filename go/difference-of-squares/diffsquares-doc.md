@@ -6,7 +6,7 @@
 import "diffsquares"
 ```
 
-Package diffsquares finds the difference between the square of the sum and the sum of the squares of the first N natural numbers\.
+Package diffsquares finds the difference between the square of the sum and the sum of the squares of the first N natural numbers.
 
 <details><summary>Example (Square Of Sum Brute Force)</summary>
 <p>
@@ -59,7 +59,7 @@ Package diffsquares finds the difference between the square of the sum and the s
 func Difference(n int) int
 ```
 
-Difference returns the difference between the Square of Sums and Sum of Squares\.
+Difference returns the difference between the Square of Sums and Sum of Squares.
 
 <details><summary>Example</summary>
 <p>
@@ -110,7 +110,7 @@ Difference returns the difference between the Square of Sums and Sum of Squares\
 func SquareOfSum(n int) int
 ```
 
-SquareOfSum returns the sum\, \`int\`\, of the square of the sum of the first n \(\`int\`\) numbers \(starting with 1 to 10\, inclusive\)\.
+SquareOfSum returns the sum, \`int\`, of the square of the sum of the first n \(\`int\`\) numbers \(starting with 1 to 10, inclusive\).
 
 <details><summary>Example</summary>
 <p>
@@ -141,7 +141,7 @@ SquareOfSum returns the sum\, \`int\`\, of the square of the sum of the first n 
 func SumOfSquares(n int) int
 ```
 
-SumOfSquares returns the sum\, \`int\`\, of the sum of the first n \(\`int\`\) squares \(starting with 1 to 10\, inclusive\)\.
+SumOfSquares returns the sum, \`int\`, of the sum of the first n \(\`int\`\) squares \(starting with 1 to 10, inclusive\).
 
 <details><summary>Example</summary>
 <p>

@@ -5,81 +5,442 @@ Go packages: airportrobot
 
 ===============================================================================
 
-golangci-lint run ./...
+Running: ../../.github/citools/go/go-lint-golangci-lint
 
-real	0m0.234s
-user	0m0.403s
-sys	0m0.257s
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.023s
+user	0m0.014s
+sys	0m0.031s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+airport_robot.go:6:30: Comment should end in a period (godot)
+// Greeter language interface
+                             ^
+airport_robot.go:12:30: Comment should end in a period (godot)
+// SayHello in many languates
+                             ^
+airport_robot.go:20:29: Comment should end in a period (godot)
+// German language interface
+                            ^
+airport_robot_test.go:25:23: Using the variable on range scope `tt` in function literal (scopelint)
+			if got := SayHello(tt.name, Italian{}); got != tt.want {
+			                   ^
+airport_robot_test.go:26:59: Using the variable on range scope `tt` in function literal (scopelint)
+				t.Errorf("SayHello(%q, \"Italian{}\") = %q, want %q", tt.name, got, tt.want)
+				                                                      ^
+airport_robot_test.go:52:23: Using the variable on range scope `tt` in function literal (scopelint)
+			if got := SayHello(tt.name, Portuguese{}); got != tt.want {
+			                   ^
+airport_robot.go:17:2: return statements should not be cuddled if block has more than two lines (wsl)
+	return response
+	^
+airport_robot.go:31:2: return with no blank line before (nlreturn)
+	return response
+	^
+airport_robot.go:45:2: return with no blank line before (nlreturn)
+	return response
+	^
+airport_robot.go:59:2: return with no blank line before (nlreturn)
+	return response
+	^
+airport_robot_test.go:5:1: Function TestSayHello_Italien missing the call to method parallel (paralleltest)
+func TestSayHello_Italien(t *testing.T) {
+^
+airport_robot_test.go:23:2: Range statement for test TestSayHello_Italien missing the call to method parallel in test Run (paralleltest)
+	for _, tt := range tests {
+	^
+airport_robot_test.go:32:1: Function TestSayHello_Portuguese missing the call to method parallel (paralleltest)
+func TestSayHello_Portuguese(t *testing.T) {
+^
+airport_robot_test.go:50:2: Range statement for test TestSayHello_Portuguese missing the call to method parallel in test Run (paralleltest)
+	for _, tt := range tests {
+	^
+airport_robot_examples_test.go:1:9: package should be `airportrobot_test` instead of `airportrobot` (testpackage)
+package airportrobot
+        ^
+airport_robot_test.go:1:9: package should be `airportrobot_test` instead of `airportrobot` (testpackage)
+package airportrobot
+        ^
+
+real	0m0.425s
+user	0m0.645s
+sys	0m0.360s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.465s
+user	0m0.665s
+sys	0m0.405s
+
+real	0m0.468s
+user	0m0.666s
+sys	0m0.408s
 
 ===============================================================================
 
-golint ./...
+Running: ../../.github/citools/go/go-lint-revive
 
-real	0m0.010s
-user	0m0.006s
-sys	0m0.009s
+Running Go Lint Revive
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.018s
+user	0m0.013s
+sys	0m0.020s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
+
+real	0m0.030s
+user	0m0.016s
+sys	0m0.021s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.056s
+user	0m0.032s
+sys	0m0.048s
+
+real	0m0.057s
+user	0m0.033s
+sys	0m0.050s
 
 ===============================================================================
 
-revive -formatter=stylish ./...
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
 
-real	0m0.008s
-user	0m0.004s
-sys	0m0.005s
-
-===============================================================================
-
-ineffassign ./...
-
-real	0m0.099s
-user	0m0.170s
-sys	0m0.103s
+real	0m0.001s
+user	0m0.000s
+sys	0m0.001s
 
 ===============================================================================
 
-go-consistent -v ./...
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.022s
+user	0m0.018s
+sys	0m0.018s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
 	info: check "./."
 internal error: package "fmt" without types was imported from "airportrobot"
 
-real	0m0.117s
-user	0m0.222s
-sys	0m0.193s
+real	0m0.088s
+user	0m0.138s
+sys	0m0.116s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.131s
+user	0m0.163s
+sys	0m0.150s
+
+real	0m0.132s
+user	0m0.165s
+sys	0m0.150s
 
 ===============================================================================
 
-staticcheck ./...
+Running: ../../.github/citools/go/go-lint-staticcheck
 
-real	0m0.148s
-user	0m0.211s
-sys	0m0.142s
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.033s
+user	0m0.033s
+sys	0m0.030s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+
+real	0m0.163s
+user	0m0.196s
+sys	0m0.123s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.210s
+user	0m0.234s
+sys	0m0.166s
+
+real	0m0.211s
+user	0m0.235s
+sys	0m0.167s
 
 ===============================================================================
 
-gocritic check -enableAll ./...
+Running: ../../.github/citools/go/go-lint-gocritic
 
-real	0m0.774s
-user	0m2.757s
-sys	0m0.422s
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.030s
+user	0m0.024s
+sys	0m0.031s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+
+real	0m0.810s
+user	0m1.861s
+sys	0m0.324s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.854s
+user	0m1.890s
+sys	0m0.370s
+
+real	0m0.856s
+user	0m1.891s
+sys	0m0.370s
 
 ===============================================================================
 
-go vet ./...
+Running: ../../.github/citools/go/go-lint-go_vet
 
-real	0m0.097s
-user	0m0.243s
-sys	0m0.178s
+Running Go Vet
 
-===============================================================================
+Go version:
 
-go fix ./...
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
 
 real	0m0.023s
-user	0m0.021s
-sys	0m0.027s
+user	0m0.016s
+sys	0m0.021s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.077s
+user	0m0.111s
+sys	0m0.100s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.111s
+user	0m0.131s
+sys	0m0.132s
+
+real	0m0.113s
+user	0m0.133s
+sys	0m0.132s
 
 ===============================================================================
 
-gocyclo .
+Running: ../../.github/citools/go/go-fixer-go_fix
+
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.019s
+user	0m0.017s
+sys	0m0.015s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.022s
+user	0m0.014s
+sys	0m0.027s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.052s
+user	0m0.034s
+sys	0m0.054s
+
+real	0m0.054s
+user	0m0.036s
+sys	0m0.054s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-errcheck
+
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.024s
+user	0m0.021s
+sys	0m0.026s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+
+real	0m0.439s
+user	0m1.259s
+sys	0m0.292s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.475s
+user	0m1.284s
+sys	0m0.330s
+
+real	0m0.477s
+user	0m1.284s
+sys	0m0.333s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.034s
+user	0m0.027s
+sys	0m0.028s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
 3 airportrobot TestSayHello_Portuguese airport_robot_test.go:32:1
 3 airportrobot TestSayHello_Italien airport_robot_test.go:5:1
 1 airportrobot ExampleSayHello airport_robot_examples_test.go:5:1
@@ -91,33 +452,139 @@ gocyclo .
 1 airportrobot (German).LanguageName airport_robot.go:24:1
 1 airportrobot SayHello airport_robot.go:13:1
 
-real	0m0.002s
+real	0m0.003s
 user	0m0.000s
-sys	0m0.002s
+sys	0m0.003s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.047s
+user	0m0.032s
+sys	0m0.040s
+
+real	0m0.049s
+user	0m0.032s
+sys	0m0.042s
 
 ===============================================================================
 
-misspell .
+Running: ../../.github/citools/go/go-lint-misspell
+
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+
+real	0m0.032s
+user	0m0.039s
+sys	0m0.011s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.048s
+user	0m0.047s
+sys	0m0.026s
+
+real	0m0.051s
+user	0m0.047s
+sys	0m0.029s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gosec
+
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
 
 real	0m0.025s
-user	0m0.023s
-sys	0m0.020s
+user	0m0.025s
+sys	0m0.022s
 
-===============================================================================
 
-gosec ./...
-[gosec] 2023/03/04 20:22:43 Including rules: default
-[gosec] 2023/03/04 20:22:43 Excluding rules: default
-[gosec] 2023/03/04 20:22:43 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/airport-robot
-2023/03/04 20:22:43 internal error: package "fmt" without types was imported from "command-line-arguments"
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:20:02 Including rules: default
+[gosec] 2023/09/07 00:20:02 Excluding rules: default
+[gosec] 2023/09/07 00:20:02 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/airport-robot
+[gosec] 2023/09/07 00:20:02 Checking package: airportrobot
+[gosec] 2023/09/07 00:20:02 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/airport-robot/airport_robot.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 60
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
 
 real	0m0.116s
-user	0m0.153s
-sys	0m0.109s
+user	0m0.126s
+sys	0m0.092s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.155s
+user	0m0.156s
+sys	0m0.128s
+
+real	0m0.157s
+user	0m0.158s
+sys	0m0.129s
 
 ===============================================================================
 
-gotest -v -covermode=count -coverprofile coverage.out ./...
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.025s
+user	0m0.021s
+sys	0m0.023s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
 === RUN   TestSayHello_Italien
 === RUN   TestSayHello_Italien/name_without_spaces
 === RUN   TestSayHello_Italien/full_name
@@ -133,16 +600,18 @@ gotest -v -covermode=count -coverprofile coverage.out ./...
 === RUN   ExampleSayHello
 --- PASS: ExampleSayHello (0.00s)
 PASS
-	airportrobot	coverage: 100.0% of statements
-ok  	airportrobot	0.003s	coverage: 100.0% of statements
+coverage: 100.0% of statements
+ok  	airportrobot	0.002s	coverage: 100.0% of statements
 
-real	0m0.185s
-user	0m0.325s
-sys	0m0.209s
+real	0m0.182s
+user	0m0.190s
+sys	0m0.178s
 
-===============================================================================
 
-go tool cover -func=coverage.out
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
 airportrobot/airport_robot.go:13:	SayHello	100.0%
 airportrobot/airport_robot.go:24:	LanguageName	100.0%
 airportrobot/airport_robot.go:29:	Greet		100.0%
@@ -152,29 +621,40 @@ airportrobot/airport_robot.go:52:	LanguageName	100.0%
 airportrobot/airport_robot.go:57:	Greet		100.0%
 total:					(statements)	100.0%
 
-real	0m0.060s
-user	0m0.098s
-sys	0m0.099s
+real	0m0.054s
+user	0m0.068s
+sys	0m0.066s
 
-===============================================================================
 
-go tool cover -html coverage.out -o coverage.html
+ ==============================================================================
 
-real	0m0.065s
-user	0m0.101s
-sys	0m0.083s
+Running: go tool cover -html coverage.out -o coverage.html
 
-===============================================================================
 
-gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+real	0m0.052s
+user	0m0.086s
+sys	0m0.064s
 
-real	0m0.021s
-user	0m0.018s
-sys	0m0.024s
 
-===============================================================================
+ ==============================================================================
 
-gotest -v -race -covermode=atomic ./...
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+real	0m0.078s
+user	0m0.041s
+sys	0m0.035s
+
+real	0m0.078s
+user	0m0.041s
+sys	0m0.035s
+
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
 === RUN   TestSayHello_Italien
 === RUN   TestSayHello_Italien/name_without_spaces
 === RUN   TestSayHello_Italien/full_name
@@ -190,22 +670,38 @@ gotest -v -race -covermode=atomic ./...
 === RUN   ExampleSayHello
 --- PASS: ExampleSayHello (0.00s)
 PASS
-	airportrobot	coverage: 100.0% of statements
-ok  	airportrobot	(cached)	coverage: 100.0% of statements
+coverage: 100.0% of statements
+ok  	airportrobot	1.016s	coverage: 100.0% of statements
 
-real	0m0.119s
-user	0m0.228s
-sys	0m0.179s
+real	0m1.243s
+user	0m0.262s
+sys	0m0.155s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.647s
+user	0m0.674s
+sys	0m0.532s
+
+real	0m1.650s
+user	0m0.675s
+sys	0m0.535s
 
 ===============================================================================
 
+mv -v benchstat-new.txt benchstat-old.txt
+renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
+
 gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 PASS
-ok  	airportrobot	0.002s
+ok  	airportrobot	0.009s
 
-real	0m0.149s
-user	0m0.292s
-sys	0m0.233s
+real	0m0.170s
+user	0m0.213s
+sys	0m0.204s
 
 ===============================================================================
 
@@ -227,21 +723,25 @@ gotest -v -tags bonus
 PASS
 ok  	airportrobot	0.002s
 
-real	0m0.139s
-user	0m0.263s
-sys	0m0.189s
+real	0m0.134s
+user	0m0.162s
+sys	0m0.110s
 
 ===============================================================================
 
-No old benchmarks to run benchstat against.
+benchstat benchstat-old.txt benchstat-new.txt
+
+real	0m0.002s
+user	0m0.000s
+sys	0m0.002s
 
 ===============================================================================
 
 gomarkdoc --output airportrobot-doc.md
 
-real	0m0.013s
-user	0m0.006s
-sys	0m0.006s
+real	0m0.012s
+user	0m0.009s
+sys	0m0.003s
 
 ===============================================================================
 
@@ -293,7 +793,7 @@ func (s Portuguese) LanguageName() string
 
 
 real	0m0.042s
-user	0m0.036s
+user	0m0.028s
 sys	0m0.038s
 
 

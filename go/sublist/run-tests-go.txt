@@ -5,114 +5,587 @@ Go packages: sublist
 
 ===============================================================================
 
-golangci-lint run ./...
+Running: ../../.github/citools/go/go-lint-golangci-lint
 
-real	0m0.263s
-user	0m0.404s
-sys	0m0.249s
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.025s
+user	0m0.021s
+sys	0m0.019s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+relations.go:3:44: Comment should end in a period (godot)
+// Relation is the comparison between lists
+                                           ^
+relations.go:6:22: Comment should end in a period (godot)
+// Possible relations
+                     ^
+sublist.go:20: File is not `gofumpt`-ed (gofumpt)
+
+sublist_test.go:10:25: Using the variable on range scope `tc` in function literal (scopelint)
+			if actual := Sublist(tc.listOne, tc.listTwo); actual != tc.expected {
+			                     ^
+sublist_test.go:11:49: Using the variable on range scope `tc` in function literal (scopelint)
+				t.Fatalf("Sublist(%#v,%#v) = %v, want: %v", tc.listOne, tc.listTwo, actual, tc.expected)
+				                                            ^
+sublist.go:12:27: unnecessary conversion (unconvert)
+	str = strings.Trim(string(str), "[]")
+	                         ^
+sublist.go:19: unnecessary leading newline (whitespace)
+func Sublist(l1, l2 []int) Relation {
+
+sublist_test.go:21:2: for statements should only be cuddled with assignments used in the iteration (wsl)
+	for i := 0; i < b.N; i++ {
+	^
+cases_test.go:8:5: testCases is a global variable (gochecknoglobals)
+var testCases = []struct {
+    ^
+sublist_test.go:7:1: Function TestSublist missing the call to method parallel (paralleltest)
+func TestSublist(t *testing.T) {
+^
+sublist_test.go:8:2: Range statement for test TestSublist missing the call to method parallel in test Run (paralleltest)
+	for _, tc := range testCases {
+	^
+cases_test.go:1:9: package should be `sublist_test` instead of `sublist` (testpackage)
+package sublist
+        ^
+sublist_examples_test.go:1:9: package should be `sublist_test` instead of `sublist` (testpackage)
+package sublist
+        ^
+sublist_test.go:1:9: package should be `sublist_test` instead of `sublist` (testpackage)
+package sublist
+        ^
+sublist_examples_test.go:9:2: variable name 'l2' is too short for the scope of its usage (varnamelen)
+	l2 := []int{1, 2, 3}
+	^
+sublist.go:26:2: variable name 's2' is too short for the scope of its usage (varnamelen)
+	s2 := ListToString(l2)
+	^
+sublist_examples_test.go:8:2: variable name 'l1' is too short for the scope of its usage (varnamelen)
+	l1 := []int{1, 2, 3}
+	^
+sublist.go:25:2: variable name 's1' is too short for the scope of its usage (varnamelen)
+	s1 := ListToString(l1)
+	^
+
+real	0m0.500s
+user	0m0.710s
+sys	0m0.475s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.537s
+user	0m0.736s
+sys	0m0.505s
+
+real	0m0.540s
+user	0m0.738s
+sys	0m0.506s
 
 ===============================================================================
 
-golint ./...
+Running: ../../.github/citools/go/go-lint-revive
 
-real	0m0.010s
-user	0m0.007s
-sys	0m0.011s
+Running Go Lint Revive
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.019s
+user	0m0.016s
+sys	0m0.016s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
+
+real	0m0.054s
+user	0m0.028s
+sys	0m0.042s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.082s
+user	0m0.049s
+sys	0m0.067s
+
+real	0m0.084s
+user	0m0.050s
+sys	0m0.068s
 
 ===============================================================================
 
-revive -formatter=stylish ./...
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
 
-real	0m0.007s
-user	0m0.004s
-sys	0m0.004s
-
-===============================================================================
-
-ineffassign ./...
-
-real	0m0.081s
-user	0m0.138s
-sys	0m0.115s
+real	0m0.000s
+user	0m0.000s
+sys	0m0.000s
 
 ===============================================================================
 
-go-consistent -v ./...
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.025s
+user	0m0.020s
+sys	0m0.023s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
 	info: check "./."
 internal error: package "fmt" without types was imported from "sublist"
 
-real	0m0.102s
-user	0m0.174s
-sys	0m0.167s
+real	0m0.084s
+user	0m0.116s
+sys	0m0.091s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.120s
+user	0m0.141s
+sys	0m0.125s
+
+real	0m0.121s
+user	0m0.143s
+sys	0m0.126s
 
 ===============================================================================
 
-staticcheck ./...
+Running: ../../.github/citools/go/go-lint-staticcheck
 
-real	0m0.182s
-user	0m0.316s
-sys	0m0.174s
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.024s
+user	0m0.024s
+sys	0m0.025s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+
+real	0m0.185s
+user	0m0.218s
+sys	0m0.139s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.221s
+user	0m0.248s
+sys	0m0.173s
+
+real	0m0.222s
+user	0m0.249s
+sys	0m0.173s
 
 ===============================================================================
 
-gocritic check -enableAll ./...
+Running: ../../.github/citools/go/go-lint-gocritic
 
-real	0m0.763s
-user	0m2.607s
-sys	0m0.384s
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.022s
+user	0m0.015s
+sys	0m0.029s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+
+real	0m0.892s
+user	0m2.227s
+sys	0m0.374s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.925s
+user	0m2.248s
+sys	0m0.411s
+
+real	0m0.927s
+user	0m2.250s
+sys	0m0.411s
 
 ===============================================================================
 
-go vet ./...
+Running: ../../.github/citools/go/go-lint-go_vet
 
-real	0m0.092s
-user	0m0.150s
-sys	0m0.133s
+Running Go Vet
 
-===============================================================================
+Go version:
 
-go fix ./...
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
 
 real	0m0.025s
-user	0m0.024s
-sys	0m0.026s
+user	0m0.018s
+sys	0m0.033s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.083s
+user	0m0.112s
+sys	0m0.074s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.122s
+user	0m0.135s
+sys	0m0.119s
+
+real	0m0.124s
+user	0m0.135s
+sys	0m0.120s
 
 ===============================================================================
 
-gocyclo .
+Running: ../../.github/citools/go/go-fixer-go_fix
+
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.028s
+user	0m0.027s
+sys	0m0.023s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.025s
+user	0m0.022s
+sys	0m0.029s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.066s
+user	0m0.055s
+sys	0m0.065s
+
+real	0m0.069s
+user	0m0.056s
+sys	0m0.067s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-errcheck
+
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.024s
+user	0m0.026s
+sys	0m0.021s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+
+real	0m0.429s
+user	0m1.292s
+sys	0m0.260s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.464s
+user	0m1.323s
+sys	0m0.291s
+
+real	0m0.466s
+user	0m1.324s
+sys	0m0.291s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.025s
+user	0m0.026s
+sys	0m0.025s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
 9 sublist Sublist sublist.go:19:1
 4 sublist BenchmarkSublist sublist_test.go:17:1
 3 sublist TestSublist sublist_test.go:7:1
 1 sublist ExampleSublist sublist_examples_test.go:7:1
 1 sublist ListToString sublist.go:10:1
 
-real	0m0.002s
+real	0m0.003s
 user	0m0.001s
 sys	0m0.001s
 
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.038s
+user	0m0.036s
+sys	0m0.031s
+
+real	0m0.040s
+user	0m0.036s
+sys	0m0.032s
+
 ===============================================================================
 
-misspell .
+Running: ../../.github/citools/go/go-lint-misspell
 
-real	0m0.022s
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+
+real	0m0.021s
+user	0m0.024s
+sys	0m0.011s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.031s
+user	0m0.032s
+sys	0m0.016s
+
+real	0m0.033s
+user	0m0.033s
+sys	0m0.017s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gosec
+
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.034s
 user	0m0.029s
-sys	0m0.009s
+sys	0m0.026s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:31:24 Including rules: default
+[gosec] 2023/09/07 00:31:24 Excluding rules: default
+[gosec] 2023/09/07 00:31:24 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/sublist
+[gosec] 2023/09/07 00:31:24 Checking package: sublist
+[gosec] 2023/09/07 00:31:24 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/sublist/relations.go
+[gosec] 2023/09/07 00:31:24 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/sublist/sublist.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 2
+  Lines  : 53
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.119s
+user	0m0.130s
+sys	0m0.105s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.164s
+user	0m0.167s
+sys	0m0.138s
+
+real	0m0.167s
+user	0m0.168s
+sys	0m0.139s
 
 ===============================================================================
 
-gosec ./...
-[gosec] 2023/03/04 20:43:59 Including rules: default
-[gosec] 2023/03/04 20:43:59 Excluding rules: default
-[gosec] 2023/03/04 20:43:59 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/sublist
-2023/03/04 20:43:59 internal error: package "fmt" without types was imported from "command-line-arguments"
+Running: ../../.github/citools/go/go-test-cover-report
 
-real	0m0.118s
-user	0m0.148s
-sys	0m0.102s
+Running Go Test, Coverage & Reports
 
-===============================================================================
+Go version:
 
-gotest -v -covermode=count -coverprofile coverage.out ./...
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.030s
+user	0m0.026s
+sys	0m0.031s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
 === RUN   TestSublist
 === RUN   TestSublist/empty_lists
 === RUN   TestSublist/empty_list_within_non_empty_list
@@ -154,43 +627,56 @@ gotest -v -covermode=count -coverprofile coverage.out ./...
 === RUN   ExampleSublist
 --- PASS: ExampleSublist (0.00s)
 PASS
-	sublist	coverage: 100.0% of statements
-ok  	sublist	0.003s	coverage: 100.0% of statements
+coverage: 100.0% of statements
+ok  	sublist	0.002s	coverage: 100.0% of statements
 
-real	0m0.190s
-user	0m0.342s
-sys	0m0.229s
+real	0m0.193s
+user	0m0.238s
+sys	0m0.158s
 
-===============================================================================
 
-go tool cover -func=coverage.out
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
 sublist/sublist.go:10:	ListToString	100.0%
 sublist/sublist.go:19:	Sublist		100.0%
 total:			(statements)	100.0%
 
-real	0m0.061s
-user	0m0.111s
-sys	0m0.098s
+real	0m0.052s
+user	0m0.061s
+sys	0m0.079s
 
-===============================================================================
 
-go tool cover -html coverage.out -o coverage.html
+ ==============================================================================
 
-real	0m0.066s
-user	0m0.089s
-sys	0m0.112s
+Running: go tool cover -html coverage.out -o coverage.html
 
-===============================================================================
 
-gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+real	0m0.054s
+user	0m0.081s
+sys	0m0.071s
 
-real	0m0.026s
-user	0m0.045s
-sys	0m0.061s
 
-===============================================================================
+ ==============================================================================
 
-gotest -v -race -covermode=atomic ./...
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+real	0m0.018s
+user	0m0.016s
+sys	0m0.030s
+
+real	0m0.018s
+user	0m0.016s
+sys	0m0.030s
+
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
 === RUN   TestSublist
 === RUN   TestSublist/empty_lists
 === RUN   TestSublist/empty_list_within_non_empty_list
@@ -232,12 +718,25 @@ gotest -v -race -covermode=atomic ./...
 === RUN   ExampleSublist
 --- PASS: ExampleSublist (0.00s)
 PASS
-	sublist	coverage: 100.0% of statements
-ok  	sublist	0.021s	coverage: 100.0% of statements
+coverage: 100.0% of statements
+ok  	sublist	1.014s	coverage: 100.0% of statements
 
-real	0m0.250s
-user	0m0.354s
-sys	0m0.236s
+real	0m1.255s
+user	0m0.299s
+sys	0m0.188s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.615s
+user	0m0.728s
+sys	0m0.570s
+
+real	0m1.617s
+user	0m0.728s
+sys	0m0.571s
 
 ===============================================================================
 
@@ -250,13 +749,13 @@ goarch: amd64
 pkg: sublist
 cpu: 12th Gen Intel(R) Core(TM) i5-1240P
 BenchmarkSublist
-BenchmarkSublist-16    	  108157	     10211 ns/op	    2401 B/op	     217 allocs/op
+BenchmarkSublist-8   	   97245	     10959 ns/op	    2400 B/op	     217 allocs/op
 PASS
-ok  	sublist	1.222s
+ok  	sublist	1.195s
 
-real	0m1.384s
-user	0m1.568s
-sys	0m0.218s
+real	0m1.361s
+user	0m1.424s
+sys	0m0.178s
 
 ===============================================================================
 
@@ -304,33 +803,57 @@ gotest -v -tags bonus
 PASS
 ok  	sublist	0.002s
 
-real	0m0.145s
-user	0m0.265s
-sys	0m0.208s
+real	0m0.126s
+user	0m0.177s
+sys	0m0.122s
 
 ===============================================================================
 
 benchstat benchstat-old.txt benchstat-new.txt
-name        old time/op    new time/op    delta
-Sublist-16    10.3µs ± 0%    10.2µs ± 0%   ~     (p=1.000 n=1+1)
+benchstat-old.txt:5: missing iteration count
+benchstat-new.txt:5: missing iteration count
+goos: linux
+goarch: amd64
+pkg: sublist
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+           │ benchstat-old.txt │  benchstat-new.txt  │
+           │      sec/op       │    sec/op     vs base   │
+Sublist-16        10.21µ ± ∞ ¹
+Sublist-8                        10.96µ ± ∞ ¹
+geomean           10.21µ         10.96µ        ? ² ³
+¹ need >= 6 samples for confidence interval at level 0.95
+² benchmark set differs from baseline; geomeans may not be comparable
+³ ratios must be >0 to compute geomean
 
-name        old alloc/op   new alloc/op   delta
-Sublist-16    2.40kB ± 0%    2.40kB ± 0%   ~     (all equal)
+           │ benchstat-old.txt │  benchstat-new.txt   │
+           │       B/op        │     B/op       vs base   │
+Sublist-16       2.345Ki ± ∞ ¹
+Sublist-8                        2.344Ki ± ∞ ¹
+geomean          2.345Ki         2.344Ki        ? ² ³
+¹ need >= 6 samples for confidence interval at level 0.95
+² benchmark set differs from baseline; geomeans may not be comparable
+³ ratios must be >0 to compute geomean
 
-name        old allocs/op  new allocs/op  delta
-Sublist-16       217 ± 0%       217 ± 0%   ~     (all equal)
+           │ benchstat-old.txt │ benchstat-new.txt  │
+           │     allocs/op     │  allocs/op   vs base   │
+Sublist-16         217.0 ± ∞ ¹
+Sublist-8                        217.0 ± ∞ ¹
+geomean            217.0         217.0        ? ² ³
+¹ need >= 6 samples for confidence interval at level 0.95
+² benchmark set differs from baseline; geomeans may not be comparable
+³ ratios must be >0 to compute geomean
 
-real	0m0.004s
-user	0m0.002s
-sys	0m0.005s
+real	0m0.003s
+user	0m0.001s
+sys	0m0.002s
 
 ===============================================================================
 
 gomarkdoc --output sublist-doc.md
 
-real	0m0.009s
-user	0m0.007s
-sys	0m0.003s
+real	0m0.011s
+user	0m0.004s
+sys	0m0.008s
 
 ===============================================================================
 
@@ -362,9 +885,9 @@ func Sublist(l1, l2 []int) Relation
     Sublist returns the relationship between two lists.
 
 
-real	0m0.038s
-user	0m0.038s
-sys	0m0.030s
+real	0m0.044s
+user	0m0.028s
+sys	0m0.040s
 
 
 ===============================================================================

@@ -38,7 +38,7 @@ true <nil>
 func Distance(a, b string) (int, error)
 ```
 
-Distance returns an int for the Hamming Distance or 0 and an error if there aer issues\.
+Distance returns an int for the Hamming Distance or 0 and an error if there aer issues.
 
 <details><summary>Example</summary>
 <p>

@@ -5,15 +5,587 @@ Go packages: techpalace
 
 ===============================================================================
 
-golint techpalace
+Running: ../../.github/citools/go/go-lint-golangci-lint
 
-real	0m0.186s
-user	0m0.188s
-sys	0m0.203s
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.028s
+user	0m0.022s
+sys	0m0.032s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+welcome_to_tech_palace_examples_test.go:22:14: var-declaration: should omit type string from declaration of var message; it will be inferred from the right-hand side (revive)
+	var message string = `
+	            ^
+welcome_to_tech_palace.go:15:11: var-declaration: should omit type string from declaration of var line; it will be inferred from the right-hand side (revive)
+	var line string = strings.Repeat("*", numStarsPerLine)
+	         ^
+welcome_to_tech_palace_test.go:35:29: Using the variable on range scope `tt` in function literal (scopelint)
+			if got := WelcomeMessage(tt.customer); got != tt.want {
+			                         ^
+welcome_to_tech_palace_test.go:36:62: Using the variable on range scope `tt` in function literal (scopelint)
+				t.Errorf("WelcomeMessage(\"%s\") = \"%s\", want \"%s\"", tt.customer, got, tt.want)
+				                                                         ^
+welcome_to_tech_palace_test.go:65:24: Using the variable on range scope `tt` in function literal (scopelint)
+			if got := AddBorder(tt.welcomeMessage, tt.numStarsPerLine); got != tt.want {
+			                    ^
+welcome_to_tech_palace_test.go:5:1: Function TestWelcomeMessage missing the call to method parallel (paralleltest)
+func TestWelcomeMessage(t *testing.T) {
+^
+welcome_to_tech_palace_test.go:33:2: Range statement for test TestWelcomeMessage missing the call to method parallel in test Run (paralleltest)
+	for _, tt := range tests {
+	^
+welcome_to_tech_palace_test.go:42:1: Function TestAddBorder missing the call to method parallel (paralleltest)
+func TestAddBorder(t *testing.T) {
+^
+welcome_to_tech_palace_test.go:63:2: Range statement for test TestAddBorder missing the call to method parallel in test Run (paralleltest)
+	for _, tt := range tests {
+	^
+welcome_to_tech_palace_test.go:72:1: Function TestCleanupMessage missing the call to method parallel (paralleltest)
+func TestCleanupMessage(t *testing.T) {
+^
+welcome_to_tech_palace_test.go:95:2: Range statement for test TestCleanupMessage missing the call to method parallel in test Run (paralleltest)
+	for _, tt := range tests {
+	^
+welcome_to_tech_palace_examples_test.go:1:9: package should be `techpalace_test` instead of `techpalace` (testpackage)
+package techpalace
+        ^
+welcome_to_tech_palace_test.go:1:9: package should be `techpalace_test` instead of `techpalace` (testpackage)
+package techpalace
+        ^
+
+real	0m0.502s
+user	0m0.766s
+sys	0m0.474s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.542s
+user	0m0.794s
+sys	0m0.516s
+
+real	0m0.543s
+user	0m0.796s
+sys	0m0.516s
 
 ===============================================================================
 
-go test -v -covermode=count -coverprofile coverage.out techpalace
+Running: ../../.github/citools/go/go-lint-revive
+
+Running Go Lint Revive
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.033s
+user	0m0.046s
+sys	0m0.044s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
+welcome_to_tech_palace.go
+  (1, 1)  https://revive.run/r#package-comments  should have a package comment  
+
+welcome_to_tech_palace_examples_test.go
+  (22, 14)  https://revive.run/r#var-declaration  should omit type string from declaration of var message; it will be inferred from the right-hand side  
+
+
+ ✖ 2 problems (0 errors) (2 warnings)
+
+real	0m0.050s
+user	0m0.021s
+sys	0m0.041s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.094s
+user	0m0.072s
+sys	0m0.096s
+
+real	0m0.096s
+user	0m0.072s
+sys	0m0.097s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.001s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.022s
+user	0m0.017s
+sys	0m0.021s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
+	info: check "./."
+internal error: package "fmt" without types was imported from "techpalace"
+
+real	0m0.107s
+user	0m0.150s
+sys	0m0.159s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.140s
+user	0m0.173s
+sys	0m0.187s
+
+real	0m0.142s
+user	0m0.174s
+sys	0m0.188s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-staticcheck
+
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.029s
+user	0m0.022s
+sys	0m0.030s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+welcome_to_tech_palace.go:1:1: at least one file in a package should have a package comment (ST1000)
+welcome_to_tech_palace.go:15:11: should omit type string from declaration; it will be inferred from the right-hand side (ST1023)
+welcome_to_tech_palace_examples_test.go:22:14: should omit type string from declaration; it will be inferred from the right-hand side (ST1023)
+
+real	0m0.155s
+user	0m0.192s
+sys	0m0.113s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.199s
+user	0m0.223s
+sys	0m0.153s
+
+real	0m0.201s
+user	0m0.223s
+sys	0m0.155s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocritic
+
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.025s
+user	0m0.016s
+sys	0m0.021s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+
+real	0m0.874s
+user	0m2.294s
+sys	0m0.337s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.916s
+user	0m2.319s
+sys	0m0.371s
+
+real	0m0.920s
+user	0m2.320s
+sys	0m0.373s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go_vet
+
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.032s
+user	0m0.028s
+sys	0m0.035s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.071s
+user	0m0.121s
+sys	0m0.108s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.117s
+user	0m0.158s
+sys	0m0.154s
+
+real	0m0.120s
+user	0m0.158s
+sys	0m0.157s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-fixer-go_fix
+
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.029s
+user	0m0.026s
+sys	0m0.029s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.030s
+user	0m0.028s
+sys	0m0.030s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.070s
+user	0m0.059s
+sys	0m0.068s
+
+real	0m0.072s
+user	0m0.059s
+sys	0m0.070s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-errcheck
+
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.031s
+user	0m0.026s
+sys	0m0.034s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+
+real	0m0.476s
+user	0m1.329s
+sys	0m0.321s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.524s
+user	0m1.362s
+sys	0m0.373s
+
+real	0m0.527s
+user	0m1.363s
+sys	0m0.374s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.035s
+user	0m0.032s
+sys	0m0.042s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
+3 techpalace TestCleanupMessage welcome_to_tech_palace_test.go:72:1
+3 techpalace TestAddBorder welcome_to_tech_palace_test.go:42:1
+3 techpalace TestWelcomeMessage welcome_to_tech_palace_test.go:5:1
+1 techpalace ExampleCleanupMessage welcome_to_tech_palace_examples_test.go:21:1
+1 techpalace ExampleAddBorder welcome_to_tech_palace_examples_test.go:13:1
+1 techpalace ExampleWelcomeMessage welcome_to_tech_palace_examples_test.go:7:1
+1 techpalace CleanupMessage welcome_to_tech_palace.go:21:1
+1 techpalace AddBorder welcome_to_tech_palace.go:14:1
+1 techpalace WelcomeMessage welcome_to_tech_palace.go:9:1
+
+real	0m0.002s
+user	0m0.001s
+sys	0m0.001s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.054s
+user	0m0.042s
+sys	0m0.056s
+
+real	0m0.056s
+user	0m0.044s
+sys	0m0.057s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-misspell
+
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+
+real	0m0.041s
+user	0m0.037s
+sys	0m0.023s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.064s
+user	0m0.047s
+sys	0m0.045s
+
+real	0m0.066s
+user	0m0.048s
+sys	0m0.046s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gosec
+
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.022s
+user	0m0.021s
+sys	0m0.022s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:32:19 Including rules: default
+[gosec] 2023/09/07 00:32:19 Excluding rules: default
+[gosec] 2023/09/07 00:32:19 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/welcome-to-tech-palace
+[gosec] 2023/09/07 00:32:19 Checking package: techpalace
+[gosec] 2023/09/07 00:32:19 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/welcome-to-tech-palace/welcome_to_tech_palace.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 28
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.132s
+user	0m0.141s
+sys	0m0.115s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.166s
+user	0m0.167s
+sys	0m0.149s
+
+real	0m0.168s
+user	0m0.170s
+sys	0m0.149s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.038s
+user	0m0.027s
+sys	0m0.039s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
 === RUN   TestWelcomeMessage
 === RUN   TestWelcomeMessage/Welcome_message_for_customer_with_first_letter_capitalized
 === RUN   TestWelcomeMessage/Welcome_message_for_customer_with_only_lowercase_letters
@@ -46,35 +618,56 @@ go test -v -covermode=count -coverprofile coverage.out techpalace
 --- PASS: ExampleCleanupMessage (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	techpalace	0.012s	coverage: 100.0% of statements
+ok  	techpalace	0.003s	coverage: 100.0% of statements
 
-real	0m0.588s
-user	0m0.689s
-sys	0m0.441s
+real	0m0.180s
+user	0m0.239s
+sys	0m0.155s
 
-===============================================================================
 
-go tool cover -func=coverage.out
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
 techpalace/welcome_to_tech_palace.go:9:		WelcomeMessage	100.0%
 techpalace/welcome_to_tech_palace.go:14:	AddBorder	100.0%
 techpalace/welcome_to_tech_palace.go:21:	CleanupMessage	100.0%
 total:						(statements)	100.0%
 
-real	0m0.224s
-user	0m0.208s
-sys	0m0.195s
+real	0m0.064s
+user	0m0.079s
+sys	0m0.089s
 
-===============================================================================
 
-go tool cover -html coverage.out -o coverage.html
+ ==============================================================================
 
-real	0m0.213s
-user	0m0.204s
-sys	0m0.232s
+Running: go tool cover -html coverage.out -o coverage.html
 
-===============================================================================
 
-go test -v -race -covermode=atomic techpalace
+real	0m0.050s
+user	0m0.055s
+sys	0m0.068s
+
+
+ ==============================================================================
+
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+real	0m0.020s
+user	0m0.023s
+sys	0m0.018s
+
+real	0m0.020s
+user	0m0.023s
+sys	0m0.018s
+
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
 === RUN   TestWelcomeMessage
 === RUN   TestWelcomeMessage/Welcome_message_for_customer_with_first_letter_capitalized
 === RUN   TestWelcomeMessage/Welcome_message_for_customer_with_only_lowercase_letters
@@ -88,7 +681,7 @@ go test -v -race -covermode=atomic techpalace
 === RUN   TestAddBorder
 === RUN   TestAddBorder/Add_border_with_10_stars_per_line
 === RUN   TestAddBorder/Add_border_with_2_stars_per_line
---- PASS: TestAddBorder (0.01s)
+--- PASS: TestAddBorder (0.00s)
     --- PASS: TestAddBorder/Add_border_with_10_stars_per_line (0.00s)
     --- PASS: TestAddBorder/Add_border_with_2_stars_per_line (0.00s)
 === RUN   TestCleanupMessage
@@ -107,71 +700,93 @@ go test -v -race -covermode=atomic techpalace
 --- PASS: ExampleCleanupMessage (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	techpalace	0.050s	coverage: 100.0% of statements
+ok  	techpalace	1.014s	coverage: 100.0% of statements
 
-real	0m0.712s
-user	0m0.706s
-sys	0m0.462s
+real	0m1.258s
+user	0m0.275s
+sys	0m0.177s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.633s
+user	0m0.707s
+sys	0m0.567s
+
+real	0m1.637s
+user	0m0.711s
+sys	0m0.568s
 
 ===============================================================================
 
-go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+mv -v benchstat-new.txt benchstat-old.txt
+renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
+
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 PASS
-ok  	techpalace	0.021s
+ok  	techpalace	0.002s
 
-real	0m0.460s
-user	0m0.529s
-sys	0m0.330s
+real	0m0.147s
+user	0m0.208s
+sys	0m0.145s
 
 ===============================================================================
 
-go test -tags bonus
+gotest -v -tags bonus
+=== RUN   TestWelcomeMessage
+=== RUN   TestWelcomeMessage/Welcome_message_for_customer_with_first_letter_capitalized
+=== RUN   TestWelcomeMessage/Welcome_message_for_customer_with_only_lowercase_letters
+=== RUN   TestWelcomeMessage/Welcome_message_for_customer_with_dash_in_name
+=== RUN   TestWelcomeMessage/Welcome_message_for_customer_with_only_uppercase_letters
+--- PASS: TestWelcomeMessage (0.00s)
+    --- PASS: TestWelcomeMessage/Welcome_message_for_customer_with_first_letter_capitalized (0.00s)
+    --- PASS: TestWelcomeMessage/Welcome_message_for_customer_with_only_lowercase_letters (0.00s)
+    --- PASS: TestWelcomeMessage/Welcome_message_for_customer_with_dash_in_name (0.00s)
+    --- PASS: TestWelcomeMessage/Welcome_message_for_customer_with_only_uppercase_letters (0.00s)
+=== RUN   TestAddBorder
+=== RUN   TestAddBorder/Add_border_with_10_stars_per_line
+=== RUN   TestAddBorder/Add_border_with_2_stars_per_line
+--- PASS: TestAddBorder (0.00s)
+    --- PASS: TestAddBorder/Add_border_with_10_stars_per_line (0.00s)
+    --- PASS: TestAddBorder/Add_border_with_2_stars_per_line (0.00s)
+=== RUN   TestCleanupMessage
+=== RUN   TestCleanupMessage/Cleanup_message_with_many_stars_and_leading_and_trailing_whitespace
+=== RUN   TestCleanupMessage/Cleanup_message_without_leading_or_trailing_whitespace
+=== RUN   TestCleanupMessage/Cleanup_message_without_leading_whitespace
+--- PASS: TestCleanupMessage (0.00s)
+    --- PASS: TestCleanupMessage/Cleanup_message_with_many_stars_and_leading_and_trailing_whitespace (0.00s)
+    --- PASS: TestCleanupMessage/Cleanup_message_without_leading_or_trailing_whitespace (0.00s)
+    --- PASS: TestCleanupMessage/Cleanup_message_without_leading_whitespace (0.00s)
+=== RUN   ExampleWelcomeMessage
+--- PASS: ExampleWelcomeMessage (0.00s)
+=== RUN   ExampleAddBorder
+--- PASS: ExampleAddBorder (0.00s)
+=== RUN   ExampleCleanupMessage
+--- PASS: ExampleCleanupMessage (0.00s)
 PASS
-ok  	techpalace	0.004s
+ok  	techpalace	0.002s
 
-real	0m0.567s
-user	0m0.638s
-sys	0m0.439s
-
-===============================================================================
-
-No old benchmarks to run benchstat against.
+real	0m0.122s
+user	0m0.158s
+sys	0m0.106s
 
 ===============================================================================
 
-go vet techpalace
+benchstat benchstat-old.txt benchstat-new.txt
 
-real	0m0.298s
-user	0m0.305s
-sys	0m0.293s
-
-===============================================================================
-
-go fix techpalace
-
-real	0m0.189s
-user	0m0.199s
-sys	0m0.220s
-
-===============================================================================
-
-gosec ./welcome-to-tech-palace
-[gosec] 2022/07/24 00:41:37 Including rules: default
-[gosec] 2022/07/24 00:41:37 Excluding rules: default
-[gosec] 2022/07/24 00:41:37 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/welcome-to-tech-palace
-2022/07/24 00:41:38 internal error: package "fmt" without types was imported from "command-line-arguments"
-
-real	0m0.476s
-user	0m0.527s
-sys	0m0.370s
+real	0m0.002s
+user	0m0.001s
+sys	0m0.001s
 
 ===============================================================================
 
 gomarkdoc --output techpalace-doc.md
 
-real	0m0.023s
-user	0m0.017s
-sys	0m0.012s
+real	0m0.010s
+user	0m0.006s
+sys	0m0.004s
 
 ===============================================================================
 
@@ -191,9 +806,9 @@ func WelcomeMessage(customer string) string
     WelcomeMessage returns a welcome message for the customer.
 
 
-real	0m0.218s
-user	0m0.166s
-sys	0m0.199s
+real	0m0.040s
+user	0m0.025s
+sys	0m0.034s
 
 
 ===============================================================================

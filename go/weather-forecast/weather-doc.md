@@ -6,7 +6,7 @@
 import "weather"
 ```
 
-Package weather is a library for forcasting weather conditions in various cities in Goblinocus\.
+Package weather is a library for forcasting weather conditions in various cities in Goblinocus.
 
 ## Index
 
@@ -16,13 +16,13 @@ Package weather is a library for forcasting weather conditions in various cities
 
 ## Variables
 
-CurrentCondition stores the current weather conditions for a city\.
+CurrentCondition stores the current weather conditions for a city.
 
 ```go
 var CurrentCondition string
 ```
 
-CurrentLocation stores the current city we're forcasting for\.
+CurrentLocation stores the current city we're forcasting for.
 
 ```go
 var CurrentLocation string
@@ -34,7 +34,7 @@ var CurrentLocation string
 func Forecast(city, condition string) string
 ```
 
-Forecast returns a string with the weather conditions for a city\.
+Forecast returns a string with the weather conditions for a city.
 
 <details><summary>Example</summary>
 <p>

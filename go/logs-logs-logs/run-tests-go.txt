@@ -5,15 +5,584 @@ Go packages: logs
 
 ===============================================================================
 
-golint logs
+Running: ../../.github/citools/go/go-lint-golangci-lint
 
-real	0m0.161s
-user	0m0.114s
-sys	0m0.145s
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.035s
+user	0m0.018s
+sys	0m0.031s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+logs_logs_logs.go:10:13: var-declaration: should omit type string from declaration of var result; it will be inferred from the right-hand side (revive)
+	var result string = "default"
+	           ^
+logs_logs_logs_test.go:52:26: Using the variable on range scope `tt` in function literal (scopelint)
+			if got := Application(tt.log); got != tt.want {
+			                      ^
+logs_logs_logs_test.go:53:59: Using the variable on range scope `tt` in function literal (scopelint)
+				t.Errorf("Application(\"%s\") = \"%s\", want \"%s\"", tt.log, got, tt.want)
+				                                                      ^
+logs_logs_logs_test.go:92:22: Using the variable on range scope `tt` in function literal (scopelint)
+			if got := Replace(tt.log, tt.oldChar, tt.newChar); got != tt.want {
+			                  ^
+logs_logs_logs_examples_test.go:14:2: Duplicate words (recommendation) found (dupword)
+	// recommendation
+	^
+logs_logs_logs_test.go:7:1: Function TestApplication missing the call to method parallel (paralleltest)
+func TestApplication(t *testing.T) {
+^
+logs_logs_logs_test.go:50:2: Range statement for test TestApplication missing the call to method parallel in test Run (paralleltest)
+	for _, tt := range tests {
+	^
+logs_logs_logs_test.go:59:1: Function TestReplace missing the call to method parallel (paralleltest)
+func TestReplace(t *testing.T) {
+^
+logs_logs_logs_test.go:90:2: Range statement for test TestReplace missing the call to method parallel in test Run (paralleltest)
+	for _, tt := range tests {
+	^
+logs_logs_logs_test.go:99:1: Function TestWithinLimit missing the call to method parallel (paralleltest)
+func TestWithinLimit(t *testing.T) {
+^
+logs_logs_logs_test.go:144:2: Range statement for test TestWithinLimit missing the call to method parallel in test Run (paralleltest)
+	for _, tt := range tests {
+	^
+logs_logs_logs_examples_test.go:1:9: package should be `logs_test` instead of `logs` (testpackage)
+package logs
+        ^
+logs_logs_logs_test.go:1:9: package should be `logs_test` instead of `logs` (testpackage)
+package logs
+        ^
+
+real	0m0.532s
+user	0m0.773s
+sys	0m0.498s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.588s
+user	0m0.797s
+sys	0m0.550s
+
+real	0m0.591s
+user	0m0.799s
+sys	0m0.551s
 
 ===============================================================================
 
-go test -v -covermode=count -coverprofile coverage.out logs
+Running: ../../.github/citools/go/go-lint-revive
+
+Running Go Lint Revive
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.020s
+user	0m0.012s
+sys	0m0.016s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
+logs_logs_logs.go
+  (1, 1)    https://revive.run/r#package-comments  should have a package comment                                                                         
+  (10, 13)  https://revive.run/r#var-declaration   should omit type string from declaration of var result; it will be inferred from the right-hand side  
+
+
+ ✖ 2 problems (0 errors) (2 warnings)
+
+real	0m0.057s
+user	0m0.026s
+sys	0m0.047s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.087s
+user	0m0.042s
+sys	0m0.072s
+
+real	0m0.089s
+user	0m0.042s
+sys	0m0.075s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.029s
+user	0m0.016s
+sys	0m0.025s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
+	info: check "./."
+internal error: package "strings" without types was imported from "logs"
+
+real	0m0.105s
+user	0m0.142s
+sys	0m0.137s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.156s
+user	0m0.174s
+sys	0m0.178s
+
+real	0m0.158s
+user	0m0.175s
+sys	0m0.179s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-staticcheck
+
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.024s
+user	0m0.011s
+sys	0m0.024s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+logs_logs_logs.go:1:1: at least one file in a package should have a package comment (ST1000)
+logs_logs_logs.go:10:13: should omit type string from declaration; it will be inferred from the right-hand side (ST1023)
+
+real	0m0.192s
+user	0m0.234s
+sys	0m0.169s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.236s
+user	0m0.251s
+sys	0m0.215s
+
+real	0m0.238s
+user	0m0.252s
+sys	0m0.215s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocritic
+
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.018s
+user	0m0.010s
+sys	0m0.015s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+
+real	0m0.825s
+user	0m1.962s
+sys	0m0.255s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.853s
+user	0m1.979s
+sys	0m0.278s
+
+real	0m0.854s
+user	0m1.980s
+sys	0m0.278s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go_vet
+
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.032s
+user	0m0.024s
+sys	0m0.022s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.079s
+user	0m0.132s
+sys	0m0.089s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.121s
+user	0m0.160s
+sys	0m0.121s
+
+real	0m0.123s
+user	0m0.162s
+sys	0m0.121s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-fixer-go_fix
+
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.025s
+user	0m0.016s
+sys	0m0.020s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.029s
+user	0m0.018s
+sys	0m0.023s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.065s
+user	0m0.039s
+sys	0m0.053s
+
+real	0m0.067s
+user	0m0.041s
+sys	0m0.053s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-errcheck
+
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.024s
+user	0m0.014s
+sys	0m0.017s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+
+real	0m0.452s
+user	0m1.194s
+sys	0m0.280s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.492s
+user	0m1.213s
+sys	0m0.313s
+
+real	0m0.493s
+user	0m1.213s
+sys	0m0.314s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.020s
+user	0m0.009s
+sys	0m0.020s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
+6 logs Application logs_logs_logs.go:9:1
+3 logs TestWithinLimit logs_logs_logs_test.go:99:1
+3 logs TestReplace logs_logs_logs_test.go:59:1
+3 logs TestApplication logs_logs_logs_test.go:7:1
+1 logs ExampleWithinLimit logs_logs_logs_examples_test.go:27:1
+1 logs ExampleReplace logs_logs_logs_examples_test.go:19:1
+1 logs ExampleApplication logs_logs_logs_examples_test.go:7:1
+1 logs WithinLimit logs_logs_logs.go:38:1
+1 logs Replace logs_logs_logs.go:32:1
+
+real	0m0.002s
+user	0m0.000s
+sys	0m0.002s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.033s
+user	0m0.017s
+sys	0m0.029s
+
+real	0m0.035s
+user	0m0.018s
+sys	0m0.029s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-misspell
+
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+
+real	0m0.036s
+user	0m0.043s
+sys	0m0.017s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.051s
+user	0m0.049s
+sys	0m0.030s
+
+real	0m0.053s
+user	0m0.050s
+sys	0m0.032s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gosec
+
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.017s
+user	0m0.009s
+sys	0m0.015s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:24:49 Including rules: default
+[gosec] 2023/09/07 00:24:49 Excluding rules: default
+[gosec] 2023/09/07 00:24:49 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/logs-logs-logs
+[gosec] 2023/09/07 00:24:49 Checking package: logs
+[gosec] 2023/09/07 00:24:49 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/logs-logs-logs/logs_logs_logs.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 40
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.112s
+user	0m0.098s
+sys	0m0.092s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.144s
+user	0m0.118s
+sys	0m0.118s
+
+real	0m0.146s
+user	0m0.118s
+sys	0m0.120s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.032s
+user	0m0.016s
+sys	0m0.031s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
 === RUN   TestApplication
 === RUN   TestApplication/single_character_recommendation
 === RUN   TestApplication/single_character_search
@@ -60,35 +629,56 @@ go test -v -covermode=count -coverprofile coverage.out logs
 --- PASS: ExampleWithinLimit (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	logs	0.009s	coverage: 100.0% of statements
+ok  	logs	0.004s	coverage: 100.0% of statements
 
-real	0m0.632s
-user	0m0.703s
-sys	0m0.416s
+real	0m0.183s
+user	0m0.229s
+sys	0m0.160s
 
-===============================================================================
 
-go tool cover -func=coverage.out
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
 logs/logs_logs_logs.go:9:	Application	100.0%
 logs/logs_logs_logs.go:32:	Replace		100.0%
 logs/logs_logs_logs.go:38:	WithinLimit	100.0%
 total:				(statements)	100.0%
 
-real	0m0.182s
-user	0m0.169s
-sys	0m0.143s
+real	0m0.055s
+user	0m0.071s
+sys	0m0.072s
 
-===============================================================================
 
-go tool cover -html coverage.out -o coverage.html
+ ==============================================================================
 
-real	0m0.190s
-user	0m0.137s
-sys	0m0.158s
+Running: go tool cover -html coverage.out -o coverage.html
 
-===============================================================================
 
-go test -v -race -covermode=atomic logs
+real	0m0.054s
+user	0m0.076s
+sys	0m0.074s
+
+
+ ==============================================================================
+
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+real	0m0.020s
+user	0m0.017s
+sys	0m0.013s
+
+real	0m0.020s
+user	0m0.017s
+sys	0m0.013s
+
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
 === RUN   TestApplication
 === RUN   TestApplication/single_character_recommendation
 === RUN   TestApplication/single_character_search
@@ -97,7 +687,7 @@ go test -v -race -covermode=atomic logs
 === RUN   TestApplication/multiple_characters_recommendation(1/3)
 === RUN   TestApplication/multiple_characters_recommendation(2/3)
 === RUN   TestApplication/multiple_characters_recommendation(3/3)
---- PASS: TestApplication (0.01s)
+--- PASS: TestApplication (0.00s)
     --- PASS: TestApplication/single_character_recommendation (0.00s)
     --- PASS: TestApplication/single_character_search (0.00s)
     --- PASS: TestApplication/single_character_weather (0.00s)
@@ -135,71 +725,107 @@ go test -v -race -covermode=atomic logs
 --- PASS: ExampleWithinLimit (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	logs	0.053s	coverage: 100.0% of statements
+ok  	logs	1.015s	coverage: 100.0% of statements
 
-real	0m0.627s
-user	0m0.638s
-sys	0m0.450s
+real	0m1.261s
+user	0m0.291s
+sys	0m0.186s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.624s
+user	0m0.707s
+sys	0m0.552s
+
+real	0m1.626s
+user	0m0.710s
+sys	0m0.552s
 
 ===============================================================================
 
-go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+mv -v benchstat-new.txt benchstat-old.txt
+renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
+
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 PASS
-ok  	logs	0.025s
+ok  	logs	0.003s
 
-real	0m0.455s
-user	0m0.532s
-sys	0m0.313s
+real	0m0.184s
+user	0m0.243s
+sys	0m0.186s
 
 ===============================================================================
 
-go test -tags bonus
+gotest -v -tags bonus
+=== RUN   TestApplication
+=== RUN   TestApplication/single_character_recommendation
+=== RUN   TestApplication/single_character_search
+=== RUN   TestApplication/single_character_weather
+=== RUN   TestApplication/no_characters_default
+=== RUN   TestApplication/multiple_characters_recommendation(1/3)
+=== RUN   TestApplication/multiple_characters_recommendation(2/3)
+=== RUN   TestApplication/multiple_characters_recommendation(3/3)
+--- PASS: TestApplication (0.00s)
+    --- PASS: TestApplication/single_character_recommendation (0.00s)
+    --- PASS: TestApplication/single_character_search (0.00s)
+    --- PASS: TestApplication/single_character_weather (0.00s)
+    --- PASS: TestApplication/no_characters_default (0.00s)
+    --- PASS: TestApplication/multiple_characters_recommendation(1/3) (0.00s)
+    --- PASS: TestApplication/multiple_characters_recommendation(2/3) (0.00s)
+    --- PASS: TestApplication/multiple_characters_recommendation(3/3) (0.00s)
+=== RUN   TestReplace
+=== RUN   TestReplace/single_occurrence_of_replacement
+=== RUN   TestReplace/multiple_occurrences_of_replacement
+=== RUN   TestReplace/no_occurrences_of_replacement
+--- PASS: TestReplace (0.00s)
+    --- PASS: TestReplace/single_occurrence_of_replacement (0.00s)
+    --- PASS: TestReplace/multiple_occurrences_of_replacement (0.00s)
+    --- PASS: TestReplace/no_occurrences_of_replacement (0.00s)
+=== RUN   TestWithinLimit
+=== RUN   TestWithinLimit/exact_limit
+=== RUN   TestWithinLimit/under_limit
+=== RUN   TestWithinLimit/over_limit
+=== RUN   TestWithinLimit/exact_limit#01
+=== RUN   TestWithinLimit/under_limit#01
+=== RUN   TestWithinLimit/over_limit#01
+--- PASS: TestWithinLimit (0.00s)
+    --- PASS: TestWithinLimit/exact_limit (0.00s)
+    --- PASS: TestWithinLimit/under_limit (0.00s)
+    --- PASS: TestWithinLimit/over_limit (0.00s)
+    --- PASS: TestWithinLimit/exact_limit#01 (0.00s)
+    --- PASS: TestWithinLimit/under_limit#01 (0.00s)
+    --- PASS: TestWithinLimit/over_limit#01 (0.00s)
+=== RUN   ExampleApplication
+--- PASS: ExampleApplication (0.00s)
+=== RUN   ExampleReplace
+--- PASS: ExampleReplace (0.00s)
+=== RUN   ExampleWithinLimit
+--- PASS: ExampleWithinLimit (0.00s)
 PASS
-ok  	logs	0.006s
+ok  	logs	0.001s
 
-real	0m0.568s
-user	0m0.640s
-sys	0m0.398s
-
-===============================================================================
-
-No old benchmarks to run benchstat against.
+real	0m0.138s
+user	0m0.188s
+sys	0m0.140s
 
 ===============================================================================
 
-go vet logs
+benchstat benchstat-old.txt benchstat-new.txt
 
-real	0m0.334s
-user	0m0.389s
-sys	0m0.348s
-
-===============================================================================
-
-go fix logs
-
-real	0m0.103s
-user	0m0.059s
-sys	0m0.090s
-
-===============================================================================
-
-gosec ./logs-logs-logs
-[gosec] 2022/07/26 07:40:40 Including rules: default
-[gosec] 2022/07/26 07:40:40 Excluding rules: default
-[gosec] 2022/07/26 07:40:40 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/logs-logs-logs
-2022/07/26 07:40:40 internal error: package "strings" without types was imported from "command-line-arguments"
-
-real	0m0.342s
-user	0m0.344s
-sys	0m0.266s
+real	0m0.002s
+user	0m0.000s
+sys	0m0.002s
 
 ===============================================================================
 
 gomarkdoc --output logs-doc.md
 
-real	0m0.031s
-user	0m0.027s
-sys	0m0.009s
+real	0m0.011s
+user	0m0.004s
+sys	0m0.007s
 
 ===============================================================================
 
@@ -221,9 +847,9 @@ func WithinLimit(log string, limit int) bool
     within the limit.
 
 
-real	0m0.184s
-user	0m0.108s
-sys	0m0.121s
+real	0m0.046s
+user	0m0.021s
+sys	0m0.044s
 
 
 ===============================================================================

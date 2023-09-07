@@ -6,7 +6,7 @@
 import "romannumerals"
 ```
 
-Package romannumerals is used to convert numbers from decimals to roman numerals\.
+Package romannumerals is used to convert numbers from decimals to roman numerals.
 
 ## Index
 
@@ -19,7 +19,7 @@ Package romannumerals is used to convert numbers from decimals to roman numerals
 func ToRomanNumeral(input int) (string, error)
 ```
 
-ToRomanNumeral returns a roman numeral string and and error code\.
+ToRomanNumeral returns a roman numeral string and and error code.
 
 <details><summary>Example</summary>
 <p>

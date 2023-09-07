@@ -1,0 +1,30 @@
+
+16     	func FromRNA(rna string) ([]string, error) {
+17     		var codons []string = []string{}
+18     		var proteins []string = []string{}
+19     	
+20     		reStr := `([[:upper:]]{3})`
+21     	
+22     		re, e := regexp.Compile(reStr)
+23     	
+24     		if e != nil {
+25 MISS			panic(e)
+26     		}
+27     	
+28     		codons = re.FindAllString(rna, -1)
+29     	
+30     		for _, codon := range codons {
+31     			protein, e := FromCodon(codon)
+32     	
+33     			if e == ErrStop {
+34     				break
+35     			} else if e != nil {
+36     				return []string{}, e
+37     			}
+38     	
+39     			proteins = append(proteins, protein)
+40     		}
+41     	
+42     		return proteins, nil
+43     	}
+

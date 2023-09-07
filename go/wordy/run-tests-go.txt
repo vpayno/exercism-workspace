@@ -5,15 +5,605 @@ Go packages: wordy
 
 ===============================================================================
 
-golint wordy
+Running: ../../.github/citools/go/go-lint-golangci-lint
 
-real	0m0.145s
-user	0m0.131s
-sys	0m0.149s
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.018s
+user	0m0.016s
+sys	0m0.013s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+wordy.go:12: Function 'Answer' has too many statements (64 > 40) (funlen)
+func Answer(question string) (int, bool) {
+wordy.go:20: line is 130 characters (lll)
+		`^What is (-?[0-9]+) ?(plus|minus|multiplied by|divided by) ?(-?[0-9]+) ?(plus|minus|multiplied by|divided by) ?(-?[0-9]+)[?]$`,
+wordy.go:17:16: var-declaration: should omit type []string from declaration of var reStrings; it will be inferred from the right-hand side (revive)
+	var reStrings []string = []string{
+	              ^
+wordy_test.go:8:25: Using the variable on range scope `tc` in function literal (scopelint)
+			actual, ok := Answer(tc.question)
+			                     ^
+wordy_test.go:10:9: Using the variable on range scope `tc` in function literal (scopelint)
+			case tc.expectError:
+			     ^
+wordy_test.go:12:53: Using the variable on range scope `tc` in function literal (scopelint)
+					t.Fatalf("Answer(%q) expected error, got: %d", tc.question, actual)
+					                                               ^
+wordy.go:24: unnecessary leading newline (whitespace)
+	for _, reStr = range reStrings {
+
+wordy.go:14:2: declarations should never be cuddled (wsl)
+	var reStr string
+	^
+wordy.go:15:2: declarations should never be cuddled (wsl)
+	var e error
+	^
+wordy.go:44:2: only one cuddle assignment allowed before if statement (wsl)
+	if e1 != nil {
+	^
+wordy.go:49:2: declarations should never be cuddled (wsl)
+	var n3 int
+	^
+wordy.go:51:2: only one cuddle assignment allowed before if statement (wsl)
+	if s3 != "" {
+	^
+wordy.go:79:2: only one cuddle assignment allowed before if statement (wsl)
+	if s5 != "" {
+	^
+wordy_test.go:28:2: for statements should only be cuddled with assignments used in the iteration (wsl)
+	for i := 0; i < b.N; i++ {
+	^
+cases_test.go:130:16: Duplicate words (plus) found (dupword)
+		question:    "What is 1 plus plus 2?",
+		             ^
+cases_test.go:13:5: tests is a global variable (gochecknoglobals)
+var tests = []wordyTest{
+    ^
+wordy_test.go:5:1: Function TestAnswer missing the call to method parallel (paralleltest)
+func TestAnswer(t *testing.T) {
+^
+wordy_test.go:6:2: Range statement for test TestAnswer missing the call to method parallel in test Run (paralleltest)
+	for _, tc := range tests {
+	^
+cases_test.go:1:9: package should be `wordy_test` instead of `wordy` (testpackage)
+package wordy
+        ^
+wordy_examples_test.go:1:9: package should be `wordy_test` instead of `wordy` (testpackage)
+package wordy
+        ^
+wordy_test.go:1:9: package should be `wordy_test` instead of `wordy` (testpackage)
+package wordy
+        ^
+wordy.go:43:2: variable name 'n1' is too short for the scope of its usage (varnamelen)
+	n1, e1 := strconv.Atoi(s1)
+	^
+wordy.go:37:2: variable name 're' is too short for the scope of its usage (varnamelen)
+	re, e := regexp.Compile(reStr)
+	^
+
+real	0m0.560s
+user	0m0.803s
+sys	0m0.571s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.588s
+user	0m0.824s
+sys	0m0.593s
+
+real	0m0.590s
+user	0m0.825s
+sys	0m0.595s
 
 ===============================================================================
 
-go test -v -covermode=count -coverprofile coverage.out wordy
+Running: ../../.github/citools/go/go-lint-revive
+
+Running Go Lint Revive
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.024s
+user	0m0.011s
+sys	0m0.026s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
+wordy.go
+  (17, 16)  https://revive.run/r#var-declaration  should omit type []string from declaration of var reStrings; it will be inferred from the right-hand side  
+
+
+ ✖ 1 problem (0 errors) (1 warnings)
+
+real	0m0.064s
+user	0m0.033s
+sys	0m0.050s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.106s
+user	0m0.050s
+sys	0m0.095s
+
+real	0m0.109s
+user	0m0.051s
+sys	0m0.096s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.001s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.033s
+user	0m0.024s
+sys	0m0.031s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
+	info: check "./."
+internal error: package "math" without types was imported from "wordy"
+
+real	0m0.096s
+user	0m0.121s
+sys	0m0.134s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.149s
+user	0m0.156s
+sys	0m0.183s
+
+real	0m0.152s
+user	0m0.158s
+sys	0m0.184s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-staticcheck
+
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.019s
+user	0m0.010s
+sys	0m0.020s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+wordy.go:17:16: should omit type []string from declaration; it will be inferred from the right-hand side (ST1023)
+
+real	0m0.186s
+user	0m0.216s
+sys	0m0.113s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.220s
+user	0m0.233s
+sys	0m0.145s
+
+real	0m0.222s
+user	0m0.235s
+sys	0m0.145s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocritic
+
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.023s
+user	0m0.019s
+sys	0m0.019s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+
+real	0m0.826s
+user	0m1.872s
+sys	0m0.275s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.862s
+user	0m1.898s
+sys	0m0.303s
+
+real	0m0.864s
+user	0m1.898s
+sys	0m0.305s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go_vet
+
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.020s
+user	0m0.015s
+sys	0m0.018s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.076s
+user	0m0.119s
+sys	0m0.114s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.108s
+user	0m0.140s
+sys	0m0.141s
+
+real	0m0.110s
+user	0m0.141s
+sys	0m0.141s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-fixer-go_fix
+
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.023s
+user	0m0.015s
+sys	0m0.022s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.029s
+user	0m0.022s
+sys	0m0.018s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.065s
+user	0m0.044s
+sys	0m0.051s
+
+real	0m0.067s
+user	0m0.046s
+sys	0m0.051s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-errcheck
+
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.028s
+user	0m0.026s
+sys	0m0.019s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+
+real	0m0.511s
+user	0m1.646s
+sys	0m0.318s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.558s
+user	0m1.681s
+sys	0m0.352s
+
+real	0m0.560s
+user	0m1.682s
+sys	0m0.353s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.021s
+user	0m0.017s
+sys	0m0.017s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
+22 wordy Answer wordy.go:12:1
+6 wordy TestAnswer wordy_test.go:5:1
+4 wordy BenchmarkAnswer wordy_test.go:24:1
+1 wordy ExampleAnswer wordy_examples_test.go:7:1
+
+real	0m0.002s
+user	0m0.001s
+sys	0m0.001s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.034s
+user	0m0.026s
+sys	0m0.024s
+
+real	0m0.036s
+user	0m0.027s
+sys	0m0.025s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-misspell
+
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+
+real	0m0.029s
+user	0m0.031s
+sys	0m0.017s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.043s
+user	0m0.037s
+sys	0m0.030s
+
+real	0m0.045s
+user	0m0.038s
+sys	0m0.031s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gosec
+
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.020s
+user	0m0.017s
+sys	0m0.016s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:32:31 Including rules: default
+[gosec] 2023/09/07 00:32:31 Excluding rules: default
+[gosec] 2023/09/07 00:32:31 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/wordy
+[gosec] 2023/09/07 00:32:31 Checking package: wordy
+[gosec] 2023/09/07 00:32:31 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/wordy/wordy.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 105
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.132s
+user	0m0.118s
+sys	0m0.112s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.162s
+user	0m0.143s
+sys	0m0.133s
+
+real	0m0.164s
+user	0m0.144s
+sys	0m0.135s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.028s
+user	0m0.016s
+sys	0m0.030s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
 === RUN   TestAnswer
 === RUN   TestAnswer/just_a_number
 === RUN   TestAnswer/addition
@@ -38,7 +628,7 @@ go test -v -covermode=count -coverprofile coverage.out wordy
 === RUN   TestAnswer/reject_two_numbers_in_a_row
 === RUN   TestAnswer/reject_postfix_notation
 === RUN   TestAnswer/reject_prefix_notation
---- PASS: TestAnswer (0.01s)
+--- PASS: TestAnswer (0.00s)
     --- PASS: TestAnswer/just_a_number (0.00s)
     --- PASS: TestAnswer/addition (0.00s)
     --- PASS: TestAnswer/more_addition (0.00s)
@@ -66,33 +656,150 @@ go test -v -covermode=count -coverprofile coverage.out wordy
 --- PASS: ExampleAnswer (0.00s)
 PASS
 coverage: 86.0% of statements
-ok  	wordy	0.027s	coverage: 86.0% of statements
+ok  	wordy	0.008s	coverage: 86.0% of statements
 
-real	0m0.599s
-user	0m0.659s
-sys	0m0.447s
+real	0m0.196s
+user	0m0.239s
+sys	0m0.196s
 
-===============================================================================
 
-go tool cover -func=coverage.out
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
 wordy/wordy.go:12:	Answer		86.0%
 total:			(statements)	86.0%
 
-real	0m0.225s
-user	0m0.160s
-sys	0m0.236s
+real	0m0.049s
+user	0m0.051s
+sys	0m0.079s
 
-===============================================================================
 
-go tool cover -html coverage.out -o coverage.html
+ ==============================================================================
 
-real	0m0.182s
-user	0m0.173s
-sys	0m0.200s
+Running: go tool cover -html coverage.out -o coverage.html
 
-===============================================================================
 
-go test -v -race -covermode=atomic wordy
+real	0m0.045s
+user	0m0.061s
+sys	0m0.067s
+
+
+ ==============================================================================
+
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+ 12     	func Answer(question string) (int, bool) {
+ 13     		var result int
+ 14     		var reStr string
+ 15     		var e error
+ 16     	
+ 17     		var reStrings []string = []string{
+ 18     			`^What is (-?[0-9]+)[?]`,
+ 19     			`^What is (-?[0-9]+) ?(plus|minus|multiplied by|divided by) ?(-?[0-9]+)[?]$`,
+ 20     			`^What is (-?[0-9]+) ?(plus|minus|multiplied by|divided by) ?(-?[0-9]+) ?(plus|minus|multiplied by|divided by) ?(-?[0-9]+)[?]$`,
+ 21     			`^What is (-?[0-9]+) ?(raised to the) ?(-?[0-9]+)[a-z][a-z] power[?]$`,
+ 22     		}
+ 23     	
+ 24     		for _, reStr = range reStrings {
+ 25     	
+ 26     			match, me := regexp.MatchString(reStr, question)
+ 27     	
+ 28     			if me != nil {
+ 29 MISS				panic(me)
+ 30     			}
+ 31     	
+ 32     			if match {
+ 33     				break
+ 34     			}
+ 35     		}
+ 36     	
+ 37     		re, e := regexp.Compile(reStr)
+ 38     		if e != nil {
+ 39 MISS			panic(e)
+ 40     		}
+ 41     	
+ 42     		s1 := re.ReplaceAllString(question, "$1")
+ 43     		n1, e1 := strconv.Atoi(s1)
+ 44     		if e1 != nil {
+ 45     			return 0, false
+ 46     		}
+ 47     	
+ 48     		s3 := re.ReplaceAllString(question, "$3")
+ 49     		var n3 int
+ 50     		var e3 error
+ 51     		if s3 != "" {
+ 52     			n3, e3 = strconv.Atoi(s3)
+ 53     			if e3 != nil {
+ 54 MISS				return 0, false
+ 55     			}
+ 56     		}
+ 57     	
+ 58     		s2 := re.ReplaceAllString(question, "$2")
+ 59     		switch s2 {
+ 60     		case "":
+ 61     			result = n1
+ 62     		case "plus":
+ 63     			result = n1 + n3
+ 64     		case "minus":
+ 65     			result = n1 - n3
+ 66     		case "multiplied by":
+ 67     			result = n1 * n3
+ 68     		case "divided by":
+ 69     			result = n1 / n3
+ 70     		case "raised to the":
+ 71     			result = int(math.Pow(float64(n1), float64(n3)))
+ 72     		default:
+ 73 MISS			return 0, false
+ 74     		}
+ 75     	
+ 76     		s5 := re.ReplaceAllString(question, "$5")
+ 77     		var n5 int
+ 78     		var e5 error
+ 79     		if s5 != "" {
+ 80     			n5, e5 = strconv.Atoi(s5)
+ 81     			if e5 != nil {
+ 82 MISS				return 0, false
+ 83     			}
+ 84     		}
+ 85     	
+ 86     		s4 := re.ReplaceAllString(question, "$4")
+ 87     		switch s4 {
+ 88     		case "":
+ 89     			return result, true
+ 90     		case "plus":
+ 91     			result += n5
+ 92     		case "minus":
+ 93     			result -= n5
+ 94     		case "multiplied by":
+ 95     			result *= n5
+ 96     		case "divided by":
+ 97     			result /= n5
+ 98     		case "raised to the":
+ 99 MISS			result = int(math.Pow(float64(result), float64(n5)))
+100     		default:
+101 MISS			return result, true
+102     		}
+103     	
+104     		return result, true
+105     	}
+
+
+real	0m0.019s
+user	0m0.014s
+sys	0m0.019s
+
+real	0m0.019s
+user	0m0.014s
+sys	0m0.019s
+
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
 === RUN   TestAnswer
 === RUN   TestAnswer/just_a_number
 === RUN   TestAnswer/addition
@@ -117,7 +824,7 @@ go test -v -race -covermode=atomic wordy
 === RUN   TestAnswer/reject_two_numbers_in_a_row
 === RUN   TestAnswer/reject_postfix_notation
 === RUN   TestAnswer/reject_prefix_notation
---- PASS: TestAnswer (0.10s)
+--- PASS: TestAnswer (0.02s)
     --- PASS: TestAnswer/just_a_number (0.00s)
     --- PASS: TestAnswer/addition (0.00s)
     --- PASS: TestAnswer/more_addition (0.00s)
@@ -128,11 +835,11 @@ go test -v -race -covermode=atomic wordy
     --- PASS: TestAnswer/division (0.00s)
     --- PASS: TestAnswer/multiple_additions (0.00s)
     --- PASS: TestAnswer/addition_and_subtraction (0.00s)
-    --- PASS: TestAnswer/multiple_subtraction (0.01s)
+    --- PASS: TestAnswer/multiple_subtraction (0.00s)
     --- PASS: TestAnswer/subtraction_then_addition (0.00s)
-    --- PASS: TestAnswer/multiple_multiplication (0.02s)
-    --- PASS: TestAnswer/addition_and_multiplication (0.01s)
-    --- PASS: TestAnswer/multiple_division (0.01s)
+    --- PASS: TestAnswer/multiple_multiplication (0.00s)
+    --- PASS: TestAnswer/addition_and_multiplication (0.00s)
+    --- PASS: TestAnswer/multiple_division (0.00s)
     --- PASS: TestAnswer/unknown_operation (0.00s)
     --- PASS: TestAnswer/Non_math_question (0.00s)
     --- PASS: TestAnswer/reject_problem_missing_an_operand (0.00s)
@@ -142,100 +849,157 @@ go test -v -race -covermode=atomic wordy
     --- PASS: TestAnswer/reject_postfix_notation (0.00s)
     --- PASS: TestAnswer/reject_prefix_notation (0.00s)
 === RUN   ExampleAnswer
---- PASS: ExampleAnswer (0.01s)
+--- PASS: ExampleAnswer (0.00s)
 PASS
 coverage: 86.0% of statements
-ok  	wordy	0.130s	coverage: 86.0% of statements
+ok  	wordy	1.041s	coverage: 86.0% of statements
 
-real	0m0.739s
-user	0m0.831s
-sys	0m0.444s
+real	0m1.272s
+user	0m0.303s
+sys	0m0.179s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.624s
+user	0m0.691s
+sys	0m0.581s
+
+real	0m1.626s
+user	0m0.692s
+sys	0m0.582s
 
 ===============================================================================
 
 mv -v benchstat-new.txt benchstat-old.txt
 renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
 
-go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 goos: linux
 goarch: amd64
 pkg: wordy
-cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
-BenchmarkAnswer-4   	     237	   6107230 ns/op	 1698478 B/op	   19532 allocs/op
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+BenchmarkAnswer
+BenchmarkAnswer-8   	     924	   1473809 ns/op	 1701312 B/op	   19545 allocs/op
 PASS
-ok  	wordy	2.001s
+ok  	wordy	1.501s
 
-real	0m2.875s
-user	0m4.319s
-sys	0m0.982s
+real	0m1.666s
+user	0m1.761s
+sys	0m0.223s
 
 ===============================================================================
 
-go test -tags bonus
+gotest -v -tags bonus
+=== RUN   TestAnswer
+=== RUN   TestAnswer/just_a_number
+=== RUN   TestAnswer/addition
+=== RUN   TestAnswer/more_addition
+=== RUN   TestAnswer/addition_with_negative_numbers
+=== RUN   TestAnswer/large_addition
+=== RUN   TestAnswer/subtraction
+=== RUN   TestAnswer/multiplication
+=== RUN   TestAnswer/division
+=== RUN   TestAnswer/multiple_additions
+=== RUN   TestAnswer/addition_and_subtraction
+=== RUN   TestAnswer/multiple_subtraction
+=== RUN   TestAnswer/subtraction_then_addition
+=== RUN   TestAnswer/multiple_multiplication
+=== RUN   TestAnswer/addition_and_multiplication
+=== RUN   TestAnswer/multiple_division
+=== RUN   TestAnswer/unknown_operation
+=== RUN   TestAnswer/Non_math_question
+=== RUN   TestAnswer/reject_problem_missing_an_operand
+=== RUN   TestAnswer/reject_problem_with_no_operands_or_operators
+=== RUN   TestAnswer/reject_two_operations_in_a_row
+=== RUN   TestAnswer/reject_two_numbers_in_a_row
+=== RUN   TestAnswer/reject_postfix_notation
+=== RUN   TestAnswer/reject_prefix_notation
+--- PASS: TestAnswer (0.00s)
+    --- PASS: TestAnswer/just_a_number (0.00s)
+    --- PASS: TestAnswer/addition (0.00s)
+    --- PASS: TestAnswer/more_addition (0.00s)
+    --- PASS: TestAnswer/addition_with_negative_numbers (0.00s)
+    --- PASS: TestAnswer/large_addition (0.00s)
+    --- PASS: TestAnswer/subtraction (0.00s)
+    --- PASS: TestAnswer/multiplication (0.00s)
+    --- PASS: TestAnswer/division (0.00s)
+    --- PASS: TestAnswer/multiple_additions (0.00s)
+    --- PASS: TestAnswer/addition_and_subtraction (0.00s)
+    --- PASS: TestAnswer/multiple_subtraction (0.00s)
+    --- PASS: TestAnswer/subtraction_then_addition (0.00s)
+    --- PASS: TestAnswer/multiple_multiplication (0.00s)
+    --- PASS: TestAnswer/addition_and_multiplication (0.00s)
+    --- PASS: TestAnswer/multiple_division (0.00s)
+    --- PASS: TestAnswer/unknown_operation (0.00s)
+    --- PASS: TestAnswer/Non_math_question (0.00s)
+    --- PASS: TestAnswer/reject_problem_missing_an_operand (0.00s)
+    --- PASS: TestAnswer/reject_problem_with_no_operands_or_operators (0.00s)
+    --- PASS: TestAnswer/reject_two_operations_in_a_row (0.00s)
+    --- PASS: TestAnswer/reject_two_numbers_in_a_row (0.00s)
+    --- PASS: TestAnswer/reject_postfix_notation (0.00s)
+    --- PASS: TestAnswer/reject_prefix_notation (0.00s)
+=== RUN   ExampleAnswer
+--- PASS: ExampleAnswer (0.00s)
 PASS
-ok  	wordy	0.015s
+ok  	wordy	0.006s
 
-real	0m0.654s
-user	0m0.703s
-sys	0m0.464s
+real	0m0.147s
+user	0m0.203s
+sys	0m0.138s
 
 ===============================================================================
-
-go install golang.org/x/perf/cmd/benchstat@latest
-
-real	0m0.863s
-user	0m0.732s
-sys	0m0.319s
 
 benchstat benchstat-old.txt benchstat-new.txt
-name      old time/op    new time/op    delta
-Answer-4    5.66ms ± 0%    6.11ms ± 0%   ~     (p=1.000 n=1+1)
+benchstat-new.txt:5: missing iteration count
+goos: linux
+goarch: amd64
+pkg: wordy
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+         │ benchstat-new.txt │
+         │      sec/op       │
+Answer-8        1.474m ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-name      old alloc/op   new alloc/op   delta
-Answer-4    1.79MB ± 0%    1.70MB ± 0%   ~     (p=1.000 n=1+1)
+         │ benchstat-new.txt │
+         │       B/op        │
+Answer-8       1.622Mi ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-name      old allocs/op  new allocs/op  delta
-Answer-4     20.6k ± 0%     19.5k ± 0%   ~     (p=1.000 n=1+1)
+         │ benchstat-new.txt │
+         │     allocs/op     │
+Answer-8        19.55k ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-real	0m0.019s
-user	0m0.008s
-sys	0m0.012s
+cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+         │ benchstat-old.txt │
+         │      sec/op       │
+Answer-4        6.107m ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-===============================================================================
+         │ benchstat-old.txt │
+         │       B/op        │
+Answer-4       1.620Mi ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-go vet wordy
+         │ benchstat-old.txt │
+         │     allocs/op     │
+Answer-4        19.53k ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-real	0m0.282s
-user	0m0.346s
-sys	0m0.275s
-
-===============================================================================
-
-go fix wordy
-
-real	0m0.158s
-user	0m0.117s
-sys	0m0.147s
-
-===============================================================================
-
-gosec ./wordy
-[gosec] 2022/07/24 00:25:13 Including rules: default
-[gosec] 2022/07/24 00:25:13 Excluding rules: default
-[gosec] 2022/07/24 00:25:13 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/wordy
-2022/07/24 00:25:14 internal error: package "math" without types was imported from "command-line-arguments"
-
-real	0m0.453s
-user	0m0.502s
-sys	0m0.342s
+real	0m0.002s
+user	0m0.000s
+sys	0m0.002s
 
 ===============================================================================
 
 gomarkdoc --output wordy-doc.md
 
-real	0m0.032s
-user	0m0.022s
-sys	0m0.012s
+real	0m0.008s
+user	0m0.005s
+sys	0m0.004s
 
 ===============================================================================
 
@@ -251,9 +1015,9 @@ func Answer(question string) (int, bool)
     problem.
 
 
-real	0m0.208s
-user	0m0.163s
-sys	0m0.213s
+real	0m0.039s
+user	0m0.021s
+sys	0m0.031s
 
 
 ===============================================================================

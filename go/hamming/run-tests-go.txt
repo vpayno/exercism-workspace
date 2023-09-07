@@ -5,15 +5,588 @@ Go packages: hamming
 
 ===============================================================================
 
-golint hamming
+Running: ../../.github/citools/go/go-lint-golangci-lint
 
-real	0m0.282s
-user	0m0.356s
-sys	0m0.256s
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.030s
+user	0m0.022s
+sys	0m0.030s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+hamming_test.go:8:25: Using the variable on range scope `tc` in function literal (scopelint)
+			got, err := Distance(tc.s1, tc.s2)
+			                     ^
+hamming_test.go:10:9: Using the variable on range scope `tc` in function literal (scopelint)
+			case tc.expectError:
+			     ^
+hamming_test.go:12:59: Using the variable on range scope `tc` in function literal (scopelint)
+					t.Fatalf("Distance(%q, %q) expected error, got: %d", tc.s1, tc.s2, got)
+					                                                     ^
+hamming_test.go:27:2: for statements should only be cuddled with assignments used in the iteration (wsl)
+	for i := 0; i < b.N; i++ {
+	^
+cases_test.go:6:5: testCases is a global variable (gochecknoglobals)
+var testCases = []struct {
+    ^
+hamming.go:21:13: err113: do not define dynamic errors, use wrapped static errors instead: "errors.New(\"strings need to be of equal length\")" (goerr113)
+		return 0, errors.New("strings need to be of equal length")
+		          ^
+hamming.go:31:13: err113: do not define dynamic errors, use wrapped static errors instead: "errors.New(\"sequence a isn't valid\")" (goerr113)
+		return 0, errors.New("sequence a isn't valid")
+		          ^
+hamming.go:36:13: err113: do not define dynamic errors, use wrapped static errors instead: "errors.New(\"sequence b isn't valid\")" (goerr113)
+		return 0, errors.New("sequence b isn't valid")
+		          ^
+hamming_examples_test.go:7:6: Example_isValidDNASequence contains underscore. You should use mixedCap or MixedCap. (nosnakecase)
+func Example_isValidDNASequence() {
+     ^
+hamming_test.go:5:1: Function TestHamming missing the call to method parallel (paralleltest)
+func TestHamming(t *testing.T) {
+^
+hamming_test.go:6:2: Range statement for test TestHamming missing the call to method parallel in test Run (paralleltest)
+	for _, tc := range testCases {
+	^
+cases_test.go:1:9: package should be `hamming_test` instead of `hamming` (testpackage)
+package hamming
+        ^
+hamming_examples_test.go:1:9: package should be `hamming_test` instead of `hamming` (testpackage)
+package hamming
+        ^
+hamming_test.go:1:9: package should be `hamming_test` instead of `hamming` (testpackage)
+package hamming
+        ^
+hamming.go:16:15: parameter name 'a' is too short for the scope of its usage (varnamelen)
+func Distance(a, b string) (int, error) {
+              ^
+hamming.go:12:16: error returned from external package is unwrapped: sig: func regexp.MatchString(pattern string, s string) (matched bool, err error) (wrapcheck)
+	return match, err
+	              ^
+
+real	0m0.536s
+user	0m0.812s
+sys	0m0.530s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.583s
+user	0m0.843s
+sys	0m0.574s
+
+real	0m0.586s
+user	0m0.845s
+sys	0m0.575s
 
 ===============================================================================
 
-go test -v -covermode=count -coverprofile coverage.out hamming
+Running: ../../.github/citools/go/go-lint-revive
+
+Running Go Lint Revive
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.020s
+user	0m0.010s
+sys	0m0.022s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
+hamming.go
+  (1, 1)  https://revive.run/r#package-comments  should have a package comment  
+
+
+ ✖ 1 problem (0 errors) (1 warnings)
+
+real	0m0.057s
+user	0m0.028s
+sys	0m0.043s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.089s
+user	0m0.043s
+sys	0m0.076s
+
+real	0m0.092s
+user	0m0.045s
+sys	0m0.077s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.001s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.025s
+user	0m0.021s
+sys	0m0.019s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
+	info: check "./."
+internal error: package "errors" without types was imported from "hamming"
+
+real	0m0.092s
+user	0m0.131s
+sys	0m0.130s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.134s
+user	0m0.158s
+sys	0m0.163s
+
+real	0m0.136s
+user	0m0.160s
+sys	0m0.163s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-staticcheck
+
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.017s
+user	0m0.012s
+sys	0m0.017s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+hamming.go:1:1: at least one file in a package should have a package comment (ST1000)
+
+real	0m0.172s
+user	0m0.217s
+sys	0m0.112s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.200s
+user	0m0.235s
+sys	0m0.137s
+
+real	0m0.202s
+user	0m0.235s
+sys	0m0.139s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocritic
+
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.022s
+user	0m0.015s
+sys	0m0.022s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+
+real	0m0.811s
+user	0m1.920s
+sys	0m0.280s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.846s
+user	0m1.938s
+sys	0m0.316s
+
+real	0m0.848s
+user	0m1.940s
+sys	0m0.317s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go_vet
+
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.025s
+user	0m0.017s
+sys	0m0.023s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.071s
+user	0m0.092s
+sys	0m0.090s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.108s
+user	0m0.117s
+sys	0m0.122s
+
+real	0m0.110s
+user	0m0.118s
+sys	0m0.123s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-fixer-go_fix
+
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.022s
+user	0m0.016s
+sys	0m0.019s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.021s
+user	0m0.016s
+sys	0m0.018s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.056s
+user	0m0.041s
+sys	0m0.046s
+
+real	0m0.057s
+user	0m0.042s
+sys	0m0.046s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-errcheck
+
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.019s
+user	0m0.012s
+sys	0m0.021s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+
+real	0m0.480s
+user	0m1.442s
+sys	0m0.283s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.512s
+user	0m1.460s
+sys	0m0.314s
+
+real	0m0.514s
+user	0m1.462s
+sys	0m0.314s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.023s
+user	0m0.015s
+sys	0m0.022s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
+8 hamming Distance hamming.go:16:1
+6 hamming TestHamming hamming_test.go:5:1
+4 hamming BenchmarkHamming hamming_test.go:23:1
+1 hamming ExampleDistance hamming_examples_test.go:15:1
+1 hamming Example_isValidDNASequence hamming_examples_test.go:7:1
+1 hamming isValidDNASequence hamming.go:9:1
+
+real	0m0.002s
+user	0m0.000s
+sys	0m0.002s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.048s
+user	0m0.023s
+sys	0m0.047s
+
+real	0m0.050s
+user	0m0.024s
+sys	0m0.048s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-misspell
+
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+
+real	0m0.029s
+user	0m0.037s
+sys	0m0.012s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.040s
+user	0m0.046s
+sys	0m0.018s
+
+real	0m0.042s
+user	0m0.047s
+sys	0m0.019s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gosec
+
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.030s
+user	0m0.017s
+sys	0m0.030s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:23:40 Including rules: default
+[gosec] 2023/09/07 00:23:40 Excluding rules: default
+[gosec] 2023/09/07 00:23:40 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/hamming
+[gosec] 2023/09/07 00:23:40 Checking package: hamming
+[gosec] 2023/09/07 00:23:40 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/hamming/hamming.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 48
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.107s
+user	0m0.103s
+sys	0m0.101s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.153s
+user	0m0.133s
+sys	0m0.143s
+
+real	0m0.156s
+user	0m0.133s
+sys	0m0.145s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.017s
+user	0m0.011s
+sys	0m0.016s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
 === RUN   TestHamming
 === RUN   TestHamming/empty_strands
 === RUN   TestHamming/single_letter_identical_strands
@@ -40,34 +613,55 @@ go test -v -covermode=count -coverprofile coverage.out hamming
 --- PASS: ExampleDistance (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	hamming	0.004s	coverage: 100.0% of statements
+ok  	hamming	0.003s	coverage: 100.0% of statements
 
-real	0m0.944s
-user	0m1.197s
-sys	0m0.705s
+real	0m0.193s
+user	0m0.250s
+sys	0m0.155s
 
-===============================================================================
 
-go tool cover -func=coverage.out
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
 hamming/hamming.go:9:	isValidDNASequence	100.0%
 hamming/hamming.go:16:	Distance		100.0%
 total:			(statements)		100.0%
 
-real	0m0.433s
-user	0m0.487s
-sys	0m0.396s
+real	0m0.046s
+user	0m0.058s
+sys	0m0.060s
 
-===============================================================================
 
-go tool cover -html coverage.out -o coverage.html
+ ==============================================================================
 
-real	0m0.312s
-user	0m0.343s
-sys	0m0.284s
+Running: go tool cover -html coverage.out -o coverage.html
 
-===============================================================================
 
-go test -v -race -covermode=atomic hamming
+real	0m0.046s
+user	0m0.050s
+sys	0m0.051s
+
+
+ ==============================================================================
+
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+real	0m0.021s
+user	0m0.015s
+sys	0m0.022s
+
+real	0m0.022s
+user	0m0.015s
+sys	0m0.022s
+
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
 === RUN   TestHamming
 === RUN   TestHamming/empty_strands
 === RUN   TestHamming/single_letter_identical_strands
@@ -78,7 +672,7 @@ go test -v -race -covermode=atomic hamming
 === RUN   TestHamming/disallow_second_strand_longer
 === RUN   TestHamming/disallow_empty_first_strand
 === RUN   TestHamming/disallow_empty_second_strand
---- PASS: TestHamming (0.01s)
+--- PASS: TestHamming (0.00s)
     --- PASS: TestHamming/empty_strands (0.00s)
     --- PASS: TestHamming/single_letter_identical_strands (0.00s)
     --- PASS: TestHamming/single_letter_different_strands (0.00s)
@@ -94,76 +688,128 @@ go test -v -race -covermode=atomic hamming
 --- PASS: ExampleDistance (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	hamming	0.097s	coverage: 100.0% of statements
+ok  	hamming	1.013s	coverage: 100.0% of statements
 
-real	0m1.250s
-user	0m1.447s
-sys	0m0.865s
+real	0m1.277s
+user	0m0.330s
+sys	0m0.181s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.612s
+user	0m0.717s
+sys	0m0.497s
+
+real	0m1.614s
+user	0m0.719s
+sys	0m0.498s
 
 ===============================================================================
 
-go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+mv -v benchstat-new.txt benchstat-old.txt
+renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
+
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 goos: linux
 goarch: amd64
 pkg: hamming
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+BenchmarkHamming
+BenchmarkHamming-8   	   71739	     18625 ns/op	   20486 B/op	     308 allocs/op
+PASS
+ok  	hamming	1.510s
+
+real	0m1.681s
+user	0m1.827s
+sys	0m0.188s
+
+===============================================================================
+
+gotest -v -tags bonus
+=== RUN   TestHamming
+=== RUN   TestHamming/empty_strands
+=== RUN   TestHamming/single_letter_identical_strands
+=== RUN   TestHamming/single_letter_different_strands
+=== RUN   TestHamming/long_identical_strands
+=== RUN   TestHamming/long_different_strands
+=== RUN   TestHamming/disallow_first_strand_longer
+=== RUN   TestHamming/disallow_second_strand_longer
+=== RUN   TestHamming/disallow_empty_first_strand
+=== RUN   TestHamming/disallow_empty_second_strand
+--- PASS: TestHamming (0.00s)
+    --- PASS: TestHamming/empty_strands (0.00s)
+    --- PASS: TestHamming/single_letter_identical_strands (0.00s)
+    --- PASS: TestHamming/single_letter_different_strands (0.00s)
+    --- PASS: TestHamming/long_identical_strands (0.00s)
+    --- PASS: TestHamming/long_different_strands (0.00s)
+    --- PASS: TestHamming/disallow_first_strand_longer (0.00s)
+    --- PASS: TestHamming/disallow_second_strand_longer (0.00s)
+    --- PASS: TestHamming/disallow_empty_first_strand (0.00s)
+    --- PASS: TestHamming/disallow_empty_second_strand (0.00s)
+=== RUN   Example_isValidDNASequence
+--- PASS: Example_isValidDNASequence (0.00s)
+=== RUN   ExampleDistance
+--- PASS: ExampleDistance (0.00s)
+PASS
+ok  	hamming	0.002s
+
+real	0m0.135s
+user	0m0.198s
+sys	0m0.127s
+
+===============================================================================
+
+benchstat benchstat-old.txt benchstat-new.txt
+benchstat-new.txt:5: missing iteration count
+goos: linux
+goarch: amd64
+pkg: hamming
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+          │ benchstat-new.txt │
+          │      sec/op       │
+Hamming-8        18.63µ ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
+
+          │ benchstat-new.txt │
+          │       B/op        │
+Hamming-8       20.01Ki ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
+
+          │ benchstat-new.txt │
+          │     allocs/op     │
+Hamming-8         308.0 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
+
 cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
-BenchmarkHamming-4   	   12760	     99563 ns/op	   20355 B/op	     308 allocs/op
-PASS
-ok  	hamming	2.238s
+          │ benchstat-old.txt │
+          │      sec/op       │
+Hamming-4        99.56µ ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-real	0m3.073s
-user	0m5.245s
-sys	0m1.083s
+          │ benchstat-old.txt │
+          │       B/op        │
+Hamming-4       19.88Ki ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-===============================================================================
+          │ benchstat-old.txt │
+          │     allocs/op     │
+Hamming-4         308.0 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-go test -tags bonus
-PASS
-ok  	hamming	0.015s
-
-real	0m0.698s
-user	0m0.838s
-sys	0m0.570s
-
-===============================================================================
-
-No old benchmarks to run benchstat against.
-
-===============================================================================
-
-go vet hamming
-
-real	0m0.530s
-user	0m0.530s
-sys	0m0.533s
-
-===============================================================================
-
-go fix hamming
-
-real	0m0.232s
-user	0m0.218s
-sys	0m0.205s
-
-===============================================================================
-
-gosec ./hamming
-[gosec] 2022/07/27 12:31:40 Including rules: default
-[gosec] 2022/07/27 12:31:40 Excluding rules: default
-[gosec] 2022/07/27 12:31:40 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/hamming
-2022/07/27 12:31:41 internal error: package "errors" without types was imported from "command-line-arguments"
-
-real	0m0.770s
-user	0m0.903s
-sys	0m0.543s
+real	0m0.002s
+user	0m0.000s
+sys	0m0.002s
 
 ===============================================================================
 
 gomarkdoc --output hamming-doc.md
 
-real	0m0.061s
-user	0m0.045s
-sys	0m0.025s
+real	0m0.013s
+user	0m0.006s
+sys	0m0.008s
 
 ===============================================================================
 
@@ -178,9 +824,9 @@ func Distance(a, b string) (int, error)
     aer issues.
 
 
-real	0m0.302s
-user	0m0.312s
-sys	0m0.255s
+real	0m0.043s
+user	0m0.031s
+sys	0m0.036s
 
 
 ===============================================================================

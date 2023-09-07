@@ -5,171 +5,553 @@ Go packages: lasagna
 
 ===============================================================================
 
-golint lasagna
+Running: ../../.github/citools/go/go-lint-golangci-lint
 
-real	0m0.183s
-user	0m0.160s
-sys	0m0.193s
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.015s
+user	0m0.005s
+sys	0m0.013s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+lasagna_master_test.go:61: File is not `gofumpt`-ed (gofumpt)
+
+lasagna_master_test.go:94: File is not `gofumpt`-ed (gofumpt)
+				"mozzarella"},
+lasagna_master_test.go:105: File is not `gofumpt`-ed (gofumpt)
+				"mozzarella"},
+lasagna_master_test.go:161: line is 127 characters (lll)
+				t.Errorf("addSecretIngredient permuted friendsList (was %v, now %v), should not alter inputs", tt.friendsList, friendsList)
+lasagna_master_test.go:207: line is 128 characters (lll)
+				t.Errorf("ScaleRecipe(%v, %d) produced slice of length %d, expected %d", inputList, tt.portions, len(got), len(tt.expected))
+lasagna_master_test.go:57:30: Using the variable on range scope `tt` in function literal (scopelint)
+			if got := PreparationTime(tt.layers, tt.time); got != tt.expected {
+			                          ^
+lasagna_master_test.go:58:55: Using the variable on range scope `tt` in function literal (scopelint)
+				t.Errorf("PreparationTime(%v, %d) = %d; want %d", tt.layers, tt.time, got, tt.expected)
+				                                                  ^
+lasagna_master_test.go:123:39: Using the variable on range scope `tt` in function literal (scopelint)
+			gotNoodles, gotSauce := Quantities(tt.layers)
+			                                   ^
+lasagna_master.go:17:2: declarations should never be cuddled (wsl)
+	var sauce float64
+	^
+lasagna_master_test.go:62:2: block should not end with a whitespace (or comment) (wsl)
+	}
+	^
+lasagna_master.go:50:39: mnd: Magic number: 2.0, in <argument> detected (gomnd)
+			singles = append(singles, quantity/2.0)
+			                                   ^
+lasagna_master_test.go:15:1: Function TestPreparationTime missing the call to method parallel (paralleltest)
+func TestPreparationTime(t *testing.T) {
+^
+lasagna_master_test.go:55:2: Range statement for test TestPreparationTime missing the call to method parallel in test Run (paralleltest)
+	for _, tt := range tests {
+	^
+lasagna_master_test.go:72:1: Function TestQuantities missing the call to method parallel (paralleltest)
+func TestQuantities(t *testing.T) {
+^
+lasagna_master_test.go:121:2: Range statement for test TestQuantities missing the call to method parallel in test Run (paralleltest)
+	for _, tt := range tests {
+	^
+lasagna_master_test.go:141:1: Function TestAddSecretIngredient missing the call to method parallel (paralleltest)
+func TestAddSecretIngredient(t *testing.T) {
+^
+lasagna_master_test.go:150:2: Range statement for test TestAddSecretIngredient missing the call to method parallel in test Run (paralleltest)
+	for _, tt := range tests {
+	^
+lasagna_master_test.go:174:1: Function TestScaleRecipe missing the call to method parallel (paralleltest)
+func TestScaleRecipe(t *testing.T) {
+^
+lasagna_master_test.go:201:2: Range statement for test TestScaleRecipe missing the call to method parallel in test Run (paralleltest)
+	for _, tt := range tests {
+	^
+lasagna_master_examples_test.go:1:9: package should be `lasagna_test` instead of `lasagna` (testpackage)
+package lasagna
+        ^
+lasagna_master_test.go:1:9: package should be `lasagna_test` instead of `lasagna` (testpackage)
+package lasagna
+        ^
+
+real	0m0.604s
+user	0m0.787s
+sys	0m0.496s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.640s
+user	0m0.800s
+sys	0m0.532s
+
+real	0m0.642s
+user	0m0.800s
+sys	0m0.533s
 
 ===============================================================================
 
-go test -v -covermode=count -coverprofile coverage.out lasagna
-=== RUN   TestPreparationTime
-=== RUN   TestPreparationTime/Preparation_time_for_many_layers_with_custom_average_time
-=== RUN   TestPreparationTime/Preparation_time_for_few_layers
-=== RUN   TestPreparationTime/Preparation_time_for_default_case
---- PASS: TestPreparationTime (0.00s)
-    --- PASS: TestPreparationTime/Preparation_time_for_many_layers_with_custom_average_time (0.00s)
-    --- PASS: TestPreparationTime/Preparation_time_for_few_layers (0.00s)
-    --- PASS: TestPreparationTime/Preparation_time_for_default_case (0.00s)
-=== RUN   TestQuantities
-=== RUN   TestQuantities/few_layers
-=== RUN   TestQuantities/many_layers
-=== RUN   TestQuantities/no_noodles
-=== RUN   TestQuantities/no_sauce
---- PASS: TestQuantities (0.00s)
-    --- PASS: TestQuantities/few_layers (0.00s)
-    --- PASS: TestQuantities/many_layers (0.00s)
-    --- PASS: TestQuantities/no_noodles (0.00s)
-    --- PASS: TestQuantities/no_sauce (0.00s)
-=== RUN   TestAddSecretIngredient
-=== RUN   TestAddSecretIngredient/Adds_secret_ingredient
---- PASS: TestAddSecretIngredient (0.00s)
-    --- PASS: TestAddSecretIngredient/Adds_secret_ingredient (0.00s)
-=== RUN   TestScaleRecipe
-=== RUN   TestScaleRecipe/scales_up_correctly
-=== RUN   TestScaleRecipe/scales_up_correctly_(2)
-=== RUN   TestScaleRecipe/scales_down_correctly
-=== RUN   TestScaleRecipe/empty_recipe
---- PASS: TestScaleRecipe (0.00s)
-    --- PASS: TestScaleRecipe/scales_up_correctly (0.00s)
-    --- PASS: TestScaleRecipe/scales_up_correctly_(2) (0.00s)
-    --- PASS: TestScaleRecipe/scales_down_correctly (0.00s)
-    --- PASS: TestScaleRecipe/empty_recipe (0.00s)
-=== RUN   ExamplePreparationTime
---- PASS: ExamplePreparationTime (0.00s)
-=== RUN   ExampleQuantities
---- PASS: ExampleQuantities (0.00s)
-=== RUN   ExampleAddSecretIngredient
---- PASS: ExampleAddSecretIngredient (0.00s)
-=== RUN   ExampleScaleRecipe
---- PASS: ExampleScaleRecipe (0.00s)
-PASS
-coverage: 95.8% of statements
-ok  	lasagna	0.009s	coverage: 95.8% of statements
+Running: ../../.github/citools/go/go-lint-revive
 
-real	0m0.718s
-user	0m0.855s
-sys	0m0.585s
+Running Go Lint Revive
 
-===============================================================================
+Go version:
 
-go tool cover -func=coverage.out
-lasagna/lasagna_master.go:5:	PreparationTime		100.0%
-lasagna/lasagna_master.go:15:	Quantities		100.0%
-lasagna/lasagna_master.go:32:	AddSecretIngredient	66.7%
-lasagna/lasagna_master.go:42:	ScaleRecipe		100.0%
-total:				(statements)		95.8%
+	go version go1.21.0 linux/amd64
 
-real	0m0.091s
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.012s
+user	0m0.005s
+sys	0m0.010s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
+lasagna_master.go
+  (1, 1)  https://revive.run/r#package-comments  should have a package comment  
+
+
+ ✖ 1 problem (0 errors) (1 warnings)
+
+real	0m0.069s
 user	0m0.043s
-sys	0m0.101s
+sys	0m0.042s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.092s
+user	0m0.051s
+sys	0m0.065s
+
+real	0m0.095s
+user	0m0.053s
+sys	0m0.066s
 
 ===============================================================================
 
-go test -v -race -covermode=atomic lasagna
-=== RUN   TestPreparationTime
-=== RUN   TestPreparationTime/Preparation_time_for_many_layers_with_custom_average_time
-=== RUN   TestPreparationTime/Preparation_time_for_few_layers
-=== RUN   TestPreparationTime/Preparation_time_for_default_case
---- PASS: TestPreparationTime (0.00s)
-    --- PASS: TestPreparationTime/Preparation_time_for_many_layers_with_custom_average_time (0.00s)
-    --- PASS: TestPreparationTime/Preparation_time_for_few_layers (0.00s)
-    --- PASS: TestPreparationTime/Preparation_time_for_default_case (0.00s)
-=== RUN   TestQuantities
-=== RUN   TestQuantities/few_layers
-=== RUN   TestQuantities/many_layers
-=== RUN   TestQuantities/no_noodles
-=== RUN   TestQuantities/no_sauce
---- PASS: TestQuantities (0.00s)
-    --- PASS: TestQuantities/few_layers (0.00s)
-    --- PASS: TestQuantities/many_layers (0.00s)
-    --- PASS: TestQuantities/no_noodles (0.00s)
-    --- PASS: TestQuantities/no_sauce (0.00s)
-=== RUN   TestAddSecretIngredient
-=== RUN   TestAddSecretIngredient/Adds_secret_ingredient
---- PASS: TestAddSecretIngredient (0.00s)
-    --- PASS: TestAddSecretIngredient/Adds_secret_ingredient (0.00s)
-=== RUN   TestScaleRecipe
-=== RUN   TestScaleRecipe/scales_up_correctly
-=== RUN   TestScaleRecipe/scales_up_correctly_(2)
-=== RUN   TestScaleRecipe/scales_down_correctly
-=== RUN   TestScaleRecipe/empty_recipe
---- PASS: TestScaleRecipe (0.00s)
-    --- PASS: TestScaleRecipe/scales_up_correctly (0.00s)
-    --- PASS: TestScaleRecipe/scales_up_correctly_(2) (0.00s)
-    --- PASS: TestScaleRecipe/scales_down_correctly (0.00s)
-    --- PASS: TestScaleRecipe/empty_recipe (0.00s)
-=== RUN   ExamplePreparationTime
---- PASS: ExamplePreparationTime (0.00s)
-=== RUN   ExampleQuantities
---- PASS: ExampleQuantities (0.00s)
-=== RUN   ExampleAddSecretIngredient
---- PASS: ExampleAddSecretIngredient (0.00s)
-=== RUN   ExampleScaleRecipe
---- PASS: ExampleScaleRecipe (0.00s)
-PASS
-coverage: 95.8% of statements
-ok  	lasagna	0.028s	coverage: 95.8% of statements
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
 
-real	0m0.702s
-user	0m0.855s
-sys	0m0.428s
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
 
 ===============================================================================
 
-go test --bench . --benchmem
-PASS
-ok  	lasagna	0.006s
+Running: ../../.github/citools/go/go-lint-go-consistent
 
-real	0m0.743s
-user	0m0.880s
-sys	0m0.490s
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.012s
+user	0m0.006s
+sys	0m0.009s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
+	info: check "./."
+internal error: package "fmt" without types was imported from "lasagna [lasagna.test]"
+
+real	0m0.090s
+user	0m0.120s
+sys	0m0.108s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.112s
+user	0m0.129s
+sys	0m0.128s
+
+real	0m0.115s
+user	0m0.132s
+sys	0m0.128s
 
 ===============================================================================
 
-go test -tags bonus
-PASS
-ok  	lasagna	0.010s
+Running: ../../.github/citools/go/go-lint-staticcheck
 
-real	0m0.543s
-user	0m0.679s
-sys	0m0.393s
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.018s
+user	0m0.009s
+sys	0m0.013s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+lasagna_master.go:1:1: at least one file in a package should have a package comment (ST1000)
+
+real	0m0.180s
+user	0m0.214s
+sys	0m0.135s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.214s
+user	0m0.236s
+sys	0m0.158s
+
+real	0m0.216s
+user	0m0.236s
+sys	0m0.159s
 
 ===============================================================================
 
-go vet lasagna
+Running: ../../.github/citools/go/go-lint-gocritic
 
-real	0m0.416s
-user	0m0.493s
-sys	0m0.412s
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.019s
+user	0m0.009s
+sys	0m0.015s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+./lasagna_master.go:32:1: paramTypeCombine: func(friendList []string, myList []string) could be replaced with func(friendList, myList []string)
+./lasagna_master.go:15:1: unnamedResult: consider giving a name to these results
+
+real	0m0.820s
+user	0m2.002s
+sys	0m0.322s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.853s
+user	0m2.017s
+sys	0m0.350s
+
+real	0m0.856s
+user	0m2.018s
+sys	0m0.351s
 
 ===============================================================================
 
-go fix lasagna
+Running: ../../.github/citools/go/go-lint-go_vet
 
-real	0m0.041s
-user	0m0.020s
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.012s
+user	0m0.006s
+sys	0m0.009s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.088s
+user	0m0.135s
+sys	0m0.112s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.109s
+user	0m0.146s
+sys	0m0.131s
+
+real	0m0.111s
+user	0m0.147s
+sys	0m0.132s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-fixer-go_fix
+
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.011s
+user	0m0.007s
+sys	0m0.006s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.016s
+user	0m0.011s
+sys	0m0.008s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.038s
+user	0m0.022s
+sys	0m0.026s
+
+real	0m0.040s
+user	0m0.022s
+sys	0m0.028s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-errcheck
+
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.020s
+user	0m0.011s
+sys	0m0.015s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+
+real	0m0.464s
+user	0m1.233s
+sys	0m0.281s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.498s
+user	0m1.254s
+sys	0m0.307s
+
+real	0m0.500s
+user	0m1.255s
+sys	0m0.308s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.014s
+user	0m0.004s
+sys	0m0.013s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
+6 lasagna TestScaleRecipe lasagna_master_test.go:174:1
+6 lasagna ScaleRecipe lasagna_master.go:42:1
+4 lasagna TestAddSecretIngredient lasagna_master_test.go:141:1
+4 lasagna TestQuantities lasagna_master_test.go:72:1
+4 lasagna Quantities lasagna_master.go:15:1
+3 lasagna TestPreparationTime lasagna_master_test.go:15:1
+2 lasagna AddSecretIngredient lasagna_master.go:32:1
+2 lasagna PreparationTime lasagna_master.go:5:1
+1 lasagna ExampleScaleRecipe lasagna_master_examples_test.go:36:1
+1 lasagna ExampleAddSecretIngredient lasagna_master_examples_test.go:26:1
+1 lasagna ExampleQuantities lasagna_master_examples_test.go:17:1
+1 lasagna ExamplePreparationTime lasagna_master_examples_test.go:7:1
+
+real	0m0.003s
+user	0m0.003s
+sys	0m0.000s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.027s
+user	0m0.014s
+sys	0m0.021s
+
+real	0m0.029s
+user	0m0.016s
+sys	0m0.021s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-misspell
+
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+
+real	0m0.035s
+user	0m0.039s
+sys	0m0.017s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.050s
+user	0m0.046s
+sys	0m0.032s
+
+real	0m0.052s
+user	0m0.047s
 sys	0m0.033s
 
 ===============================================================================
 
-gosec ./lasagna-master
-[gosec] 2022/06/20 23:31:34 Including rules: default
-[gosec] 2022/06/20 23:31:34 Excluding rules: default
-[gosec] 2022/06/20 23:31:34 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/lasagna-master
-[gosec] 2022/06/20 23:31:34 Checking package: lasagna
-[gosec] 2022/06/20 23:31:34 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/lasagna-master/lasagna_master.go
+Running: ../../.github/citools/go/go-lint-gosec
+
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.018s
+user	0m0.008s
+sys	0m0.016s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:24:27 Including rules: default
+[gosec] 2023/09/07 00:24:27 Excluding rules: default
+[gosec] 2023/09/07 00:24:27 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/lasagna-master
+[gosec] 2023/09/07 00:24:27 Checking package: lasagna
+[gosec] 2023/09/07 00:24:27 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/lasagna-master/lasagna_master.go
 Results:
 
 
@@ -181,17 +563,282 @@ Results:
   Issues : [1;32m0[0m
 
 
-real	0m0.285s
-user	0m0.335s
-sys	0m0.196s
+real	0m0.074s
+user	0m0.065s
+sys	0m0.047s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.110s
+user	0m0.078s
+sys	0m0.083s
+
+real	0m0.112s
+user	0m0.080s
+sys	0m0.084s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.014s
+user	0m0.003s
+sys	0m0.014s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
+=== RUN   TestPreparationTime
+=== RUN   TestPreparationTime/Preparation_time_for_many_layers_with_custom_average_time
+=== RUN   TestPreparationTime/Preparation_time_for_few_layers
+=== RUN   TestPreparationTime/Preparation_time_for_default_case
+--- PASS: TestPreparationTime (0.00s)
+    --- PASS: TestPreparationTime/Preparation_time_for_many_layers_with_custom_average_time (0.00s)
+    --- PASS: TestPreparationTime/Preparation_time_for_few_layers (0.00s)
+    --- PASS: TestPreparationTime/Preparation_time_for_default_case (0.00s)
+=== RUN   TestQuantities
+=== RUN   TestQuantities/few_layers
+=== RUN   TestQuantities/many_layers
+=== RUN   TestQuantities/no_noodles
+=== RUN   TestQuantities/no_sauce
+--- PASS: TestQuantities (0.00s)
+    --- PASS: TestQuantities/few_layers (0.00s)
+    --- PASS: TestQuantities/many_layers (0.00s)
+    --- PASS: TestQuantities/no_noodles (0.00s)
+    --- PASS: TestQuantities/no_sauce (0.00s)
+=== RUN   TestAddSecretIngredient
+=== RUN   TestAddSecretIngredient/Adds_secret_ingredient
+--- PASS: TestAddSecretIngredient (0.00s)
+    --- PASS: TestAddSecretIngredient/Adds_secret_ingredient (0.00s)
+=== RUN   TestScaleRecipe
+=== RUN   TestScaleRecipe/scales_up_correctly
+=== RUN   TestScaleRecipe/scales_up_correctly_(2)
+=== RUN   TestScaleRecipe/scales_down_correctly
+=== RUN   TestScaleRecipe/empty_recipe
+--- PASS: TestScaleRecipe (0.00s)
+    --- PASS: TestScaleRecipe/scales_up_correctly (0.00s)
+    --- PASS: TestScaleRecipe/scales_up_correctly_(2) (0.00s)
+    --- PASS: TestScaleRecipe/scales_down_correctly (0.00s)
+    --- PASS: TestScaleRecipe/empty_recipe (0.00s)
+=== RUN   ExamplePreparationTime
+--- PASS: ExamplePreparationTime (0.00s)
+=== RUN   ExampleQuantities
+--- PASS: ExampleQuantities (0.00s)
+=== RUN   ExampleAddSecretIngredient
+--- PASS: ExampleAddSecretIngredient (0.00s)
+=== RUN   ExampleScaleRecipe
+--- PASS: ExampleScaleRecipe (0.00s)
+PASS
+coverage: 95.8% of statements
+ok  	lasagna	0.012s	coverage: 95.8% of statements
+
+real	0m0.212s
+user	0m0.280s
+sys	0m0.195s
+
+
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
+lasagna/lasagna_master.go:5:	PreparationTime		100.0%
+lasagna/lasagna_master.go:15:	Quantities		100.0%
+lasagna/lasagna_master.go:32:	AddSecretIngredient	66.7%
+lasagna/lasagna_master.go:42:	ScaleRecipe		100.0%
+total:				(statements)		95.8%
+
+real	0m0.022s
+user	0m0.012s
+sys	0m0.016s
+
+
+ ==============================================================================
+
+Running: go tool cover -html coverage.out -o coverage.html
+
+
+real	0m0.022s
+user	0m0.012s
+sys	0m0.014s
+
+
+ ==============================================================================
+
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+32     	func AddSecretIngredient(friendList []string, myList []string) {
+33     		if myList[len(myList)-1] == "?" {
+34     			myList[len(myList)-1] = friendList[len(friendList)-1]
+35     		} else {
+36 MISS			panic("You already know the secret ingredient!")
+37     		}
+38     	}
+
+
+real	0m0.010s
+user	0m0.005s
+sys	0m0.010s
+
+real	0m0.010s
+user	0m0.005s
+sys	0m0.010s
+
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
+=== RUN   TestPreparationTime
+=== RUN   TestPreparationTime/Preparation_time_for_many_layers_with_custom_average_time
+=== RUN   TestPreparationTime/Preparation_time_for_few_layers
+=== RUN   TestPreparationTime/Preparation_time_for_default_case
+--- PASS: TestPreparationTime (0.00s)
+    --- PASS: TestPreparationTime/Preparation_time_for_many_layers_with_custom_average_time (0.00s)
+    --- PASS: TestPreparationTime/Preparation_time_for_few_layers (0.00s)
+    --- PASS: TestPreparationTime/Preparation_time_for_default_case (0.00s)
+=== RUN   TestQuantities
+=== RUN   TestQuantities/few_layers
+=== RUN   TestQuantities/many_layers
+=== RUN   TestQuantities/no_noodles
+=== RUN   TestQuantities/no_sauce
+--- PASS: TestQuantities (0.00s)
+    --- PASS: TestQuantities/few_layers (0.00s)
+    --- PASS: TestQuantities/many_layers (0.00s)
+    --- PASS: TestQuantities/no_noodles (0.00s)
+    --- PASS: TestQuantities/no_sauce (0.00s)
+=== RUN   TestAddSecretIngredient
+=== RUN   TestAddSecretIngredient/Adds_secret_ingredient
+--- PASS: TestAddSecretIngredient (0.00s)
+    --- PASS: TestAddSecretIngredient/Adds_secret_ingredient (0.00s)
+=== RUN   TestScaleRecipe
+=== RUN   TestScaleRecipe/scales_up_correctly
+=== RUN   TestScaleRecipe/scales_up_correctly_(2)
+=== RUN   TestScaleRecipe/scales_down_correctly
+=== RUN   TestScaleRecipe/empty_recipe
+--- PASS: TestScaleRecipe (0.00s)
+    --- PASS: TestScaleRecipe/scales_up_correctly (0.00s)
+    --- PASS: TestScaleRecipe/scales_up_correctly_(2) (0.00s)
+    --- PASS: TestScaleRecipe/scales_down_correctly (0.00s)
+    --- PASS: TestScaleRecipe/empty_recipe (0.00s)
+=== RUN   ExamplePreparationTime
+--- PASS: ExamplePreparationTime (0.00s)
+=== RUN   ExampleQuantities
+--- PASS: ExampleQuantities (0.00s)
+=== RUN   ExampleAddSecretIngredient
+--- PASS: ExampleAddSecretIngredient (0.00s)
+=== RUN   ExampleScaleRecipe
+--- PASS: ExampleScaleRecipe (0.00s)
+PASS
+coverage: 95.8% of statements
+ok  	lasagna	1.016s	coverage: 95.8% of statements
+
+real	0m1.251s
+user	0m0.303s
+sys	0m0.175s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.545s
+user	0m0.626s
+sys	0m0.432s
+
+real	0m1.547s
+user	0m0.627s
+sys	0m0.433s
+
+===============================================================================
+
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+PASS
+ok  	lasagna	0.002s
+
+real	0m0.173s
+user	0m0.251s
+sys	0m0.178s
+
+===============================================================================
+
+gotest -v -tags bonus
+=== RUN   TestPreparationTime
+=== RUN   TestPreparationTime/Preparation_time_for_many_layers_with_custom_average_time
+=== RUN   TestPreparationTime/Preparation_time_for_few_layers
+=== RUN   TestPreparationTime/Preparation_time_for_default_case
+--- PASS: TestPreparationTime (0.00s)
+    --- PASS: TestPreparationTime/Preparation_time_for_many_layers_with_custom_average_time (0.00s)
+    --- PASS: TestPreparationTime/Preparation_time_for_few_layers (0.00s)
+    --- PASS: TestPreparationTime/Preparation_time_for_default_case (0.00s)
+=== RUN   TestQuantities
+=== RUN   TestQuantities/few_layers
+=== RUN   TestQuantities/many_layers
+=== RUN   TestQuantities/no_noodles
+=== RUN   TestQuantities/no_sauce
+--- PASS: TestQuantities (0.00s)
+    --- PASS: TestQuantities/few_layers (0.00s)
+    --- PASS: TestQuantities/many_layers (0.00s)
+    --- PASS: TestQuantities/no_noodles (0.00s)
+    --- PASS: TestQuantities/no_sauce (0.00s)
+=== RUN   TestAddSecretIngredient
+=== RUN   TestAddSecretIngredient/Adds_secret_ingredient
+--- PASS: TestAddSecretIngredient (0.00s)
+    --- PASS: TestAddSecretIngredient/Adds_secret_ingredient (0.00s)
+=== RUN   TestScaleRecipe
+=== RUN   TestScaleRecipe/scales_up_correctly
+=== RUN   TestScaleRecipe/scales_up_correctly_(2)
+=== RUN   TestScaleRecipe/scales_down_correctly
+=== RUN   TestScaleRecipe/empty_recipe
+--- PASS: TestScaleRecipe (0.00s)
+    --- PASS: TestScaleRecipe/scales_up_correctly (0.00s)
+    --- PASS: TestScaleRecipe/scales_up_correctly_(2) (0.00s)
+    --- PASS: TestScaleRecipe/scales_down_correctly (0.00s)
+    --- PASS: TestScaleRecipe/empty_recipe (0.00s)
+=== RUN   ExamplePreparationTime
+--- PASS: ExamplePreparationTime (0.00s)
+=== RUN   ExampleQuantities
+--- PASS: ExampleQuantities (0.00s)
+=== RUN   ExampleAddSecretIngredient
+--- PASS: ExampleAddSecretIngredient (0.00s)
+=== RUN   ExampleScaleRecipe
+--- PASS: ExampleScaleRecipe (0.00s)
+PASS
+ok  	lasagna	0.002s
+
+real	0m0.123s
+user	0m0.184s
+sys	0m0.106s
+
+===============================================================================
+
+No old benchmarks to run benchstat against.
 
 ===============================================================================
 
 gomarkdoc --output lasagna-doc.md
 
-real	0m0.035s
-user	0m0.018s
-sys	0m0.015s
+real	0m0.011s
+user	0m0.008s
+sys	0m0.003s
 
 ===============================================================================
 
@@ -220,9 +867,9 @@ func ScaleRecipe(quantities []float64, portions int) []float64
     2 portions and the number of portions, `int`, you want to cook.
 
 
-real	0m0.157s
-user	0m0.072s
-sys	0m0.153s
+real	0m0.027s
+user	0m0.009s
+sys	0m0.025s
 
 
 ===============================================================================

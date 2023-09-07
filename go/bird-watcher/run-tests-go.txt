@@ -5,155 +5,544 @@ Go packages: birdwatcher
 
 ===============================================================================
 
-golint birdwatcher
+Running: ../../.github/citools/go/go-lint-golangci-lint
 
-real	0m0.188s
-user	0m0.121s
-sys	0m0.111s
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.016s
+user	0m0.008s
+sys	0m0.011s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+bird_watcher_test.go:108: File is not `gofumpt`-ed (gofumpt)
+
+bird_watcher.go:23:17: var-declaration: should omit type int from declaration of var daysInWeek; it will be inferred from the right-hand side (revive)
+	var daysInWeek int = 7
+	               ^
+bird_watcher_test.go:32:29: Using the variable on range scope `tt` in function literal (scopelint)
+			if got := TotalBirdCount(tt.birdCounts); got != tt.want {
+			                         ^
+bird_watcher_test.go:33:50: Using the variable on range scope `tt` in function literal (scopelint)
+				t.Errorf("TotalBirdCount(%v) = %v; want %v", tt.birdCounts, got, tt.want)
+				                                             ^
+bird_watcher_test.go:67:26: Using the variable on range scope `tt` in function literal (scopelint)
+			if got := BirdsInWeek(tt.birdCounts, tt.week); got != tt.want {
+			                      ^
+bird_watcher.go:24:2: declarations should never be cuddled (wsl)
+	var offsetStart, offsetEnd int
+	^
+bird_watcher_test.go:109:1: block should not end with a whitespace (or comment) (wsl)
+}
+^
+bird_watcher_test.go:114:2: only one cuddle assignment allowed before if statement (wsl)
+	if reflect.ValueOf(got).Pointer() != reflect.ValueOf(counts).Pointer() {
+	^
+bird_watcher_test.go:8:1: Function TestTotalBirdCount missing the call to method parallel (paralleltest)
+func TestTotalBirdCount(t *testing.T) {
+^
+bird_watcher_test.go:30:2: Range statement for test TestTotalBirdCount missing the call to method parallel in test Run (paralleltest)
+	for _, tt := range tests {
+	^
+bird_watcher_test.go:39:1: Function TestBirdsInWeek missing the call to method parallel (paralleltest)
+func TestBirdsInWeek(t *testing.T) {
+^
+bird_watcher_test.go:65:2: Range statement for test TestBirdsInWeek missing the call to method parallel in test Run (paralleltest)
+	for _, tt := range tests {
+	^
+bird_watcher_test.go:74:1: Function TestFixBirdCount missing the call to method parallel (paralleltest)
+func TestFixBirdCount(t *testing.T) {
+^
+bird_watcher_test.go:98:2: Range statement for test TestFixBirdCount missing the call to method parallel in test Run (paralleltest)
+	for _, tt := range tests {
+	^
+bird_watcher_test.go:111:1: Function TestFixBirdCountDoesNotCreateNewSlice missing the call to method parallel (paralleltest)
+func TestFixBirdCountDoesNotCreateNewSlice(t *testing.T) {
+^
+bird_watcher_examples_test.go:1:9: package should be `birdwatcher_test` instead of `birdwatcher` (testpackage)
+package birdwatcher
+        ^
+bird_watcher_test.go:1:9: package should be `birdwatcher_test` instead of `birdwatcher` (testpackage)
+package birdwatcher
+        ^
+
+real	0m0.500s
+user	0m0.722s
+sys	0m0.469s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.530s
+user	0m0.736s
+sys	0m0.493s
+
+real	0m0.532s
+user	0m0.737s
+sys	0m0.495s
 
 ===============================================================================
 
-go test -v -covermode=count -coverprofile coverage.out birdwatcher
-=== RUN   TestTotalBirdCount
-=== RUN   TestTotalBirdCount/calculates_the_correct_total_number_of_birds
-=== RUN   TestTotalBirdCount/works_for_a_short_bird_count_list
-=== RUN   TestTotalBirdCount/works_for_a_long_bird_count_list
---- PASS: TestTotalBirdCount (0.00s)
-    --- PASS: TestTotalBirdCount/calculates_the_correct_total_number_of_birds (0.00s)
-    --- PASS: TestTotalBirdCount/works_for_a_short_bird_count_list (0.00s)
-    --- PASS: TestTotalBirdCount/works_for_a_long_bird_count_list (0.00s)
-=== RUN   TestBirdsInWeek
-=== RUN   TestBirdsInWeek/calculates_the_number_of_birds_in_the_first_week
-=== RUN   TestBirdsInWeek/calculates_the_number_of_birds_for_a_week_in_the_middle_of_the_log
-=== RUN   TestBirdsInWeek/works_when_there_is_only_one_week
---- PASS: TestBirdsInWeek (0.00s)
-    --- PASS: TestBirdsInWeek/calculates_the_number_of_birds_in_the_first_week (0.00s)
-    --- PASS: TestBirdsInWeek/calculates_the_number_of_birds_for_a_week_in_the_middle_of_the_log (0.00s)
-    --- PASS: TestBirdsInWeek/works_when_there_is_only_one_week (0.00s)
-=== RUN   TestFixBirdCount
-=== RUN   TestFixBirdCount/returns_a_bird_count_list_with_the_corrected_values
-=== RUN   TestFixBirdCount/works_for_a_short_bird_count_list
-=== RUN   TestFixBirdCount/works_for_a_long_bird_count_list
---- PASS: TestFixBirdCount (0.00s)
-    --- PASS: TestFixBirdCount/returns_a_bird_count_list_with_the_corrected_values (0.00s)
-    --- PASS: TestFixBirdCount/works_for_a_short_bird_count_list (0.00s)
-    --- PASS: TestFixBirdCount/works_for_a_long_bird_count_list (0.00s)
-=== RUN   TestFixBirdCountDoesNotCreateNewSlice
---- PASS: TestFixBirdCountDoesNotCreateNewSlice (0.00s)
-=== RUN   ExampleTotalBirdCount
---- PASS: ExampleTotalBirdCount (0.00s)
-=== RUN   ExampleBirdsInWeek
---- PASS: ExampleBirdsInWeek (0.00s)
-=== RUN   ExampleFixBirdCountLog
---- PASS: ExampleFixBirdCountLog (0.00s)
-PASS
-coverage: 100.0% of statements
-ok  	birdwatcher	0.017s	coverage: 100.0% of statements
+Running: ../../.github/citools/go/go-lint-revive
 
-real	0m0.688s
-user	0m0.792s
-sys	0m0.537s
+Running Go Lint Revive
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.012s
+user	0m0.006s
+sys	0m0.009s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
+bird_watcher.go
+  (23, 17)  https://revive.run/r#var-declaration   should omit type int from declaration of var daysInWeek; it will be inferred from the right-hand side  
+  (1, 1)    https://revive.run/r#package-comments  should have a package comment                                                                          
+
+
+ ✖ 2 problems (0 errors) (2 warnings)
+
+real	0m0.039s
+user	0m0.025s
+sys	0m0.023s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.062s
+user	0m0.036s
+sys	0m0.042s
+
+real	0m0.064s
+user	0m0.038s
+sys	0m0.043s
 
 ===============================================================================
 
-go tool cover -func=coverage.out
-birdwatcher/bird_watcher.go:4:	sum		100.0%
-birdwatcher/bird_watcher.go:16:	TotalBirdCount	100.0%
-birdwatcher/bird_watcher.go:22:	BirdsInWeek	100.0%
-birdwatcher/bird_watcher.go:34:	FixBirdCountLog	100.0%
-total:				(statements)	100.0%
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
 
-real	0m0.123s
-user	0m0.028s
+real	0m0.001s
+user	0m0.001s
+sys	0m0.000s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.019s
+user	0m0.012s
+sys	0m0.013s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
+	info: check "./."
+internal error: package "fmt" without types was imported from "birdwatcher [birdwatcher.test]"
+
+real	0m0.085s
+user	0m0.128s
+sys	0m0.108s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.118s
+user	0m0.149s
+sys	0m0.130s
+
+real	0m0.120s
+user	0m0.149s
+sys	0m0.132s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-staticcheck
+
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.014s
+user	0m0.007s
+sys	0m0.010s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+bird_watcher.go:1:1: at least one file in a package should have a package comment (ST1000)
+bird_watcher.go:23:17: should omit type int from declaration; it will be inferred from the right-hand side (ST1023)
+
+real	0m0.189s
+user	0m0.223s
+sys	0m0.123s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.213s
+user	0m0.234s
+sys	0m0.145s
+
+real	0m0.215s
+user	0m0.234s
 sys	0m0.146s
 
 ===============================================================================
 
-go test -v -race -covermode=atomic birdwatcher
-=== RUN   TestTotalBirdCount
-=== RUN   TestTotalBirdCount/calculates_the_correct_total_number_of_birds
-=== RUN   TestTotalBirdCount/works_for_a_short_bird_count_list
-=== RUN   TestTotalBirdCount/works_for_a_long_bird_count_list
---- PASS: TestTotalBirdCount (0.00s)
-    --- PASS: TestTotalBirdCount/calculates_the_correct_total_number_of_birds (0.00s)
-    --- PASS: TestTotalBirdCount/works_for_a_short_bird_count_list (0.00s)
-    --- PASS: TestTotalBirdCount/works_for_a_long_bird_count_list (0.00s)
-=== RUN   TestBirdsInWeek
-=== RUN   TestBirdsInWeek/calculates_the_number_of_birds_in_the_first_week
-=== RUN   TestBirdsInWeek/calculates_the_number_of_birds_for_a_week_in_the_middle_of_the_log
-=== RUN   TestBirdsInWeek/works_when_there_is_only_one_week
---- PASS: TestBirdsInWeek (0.00s)
-    --- PASS: TestBirdsInWeek/calculates_the_number_of_birds_in_the_first_week (0.00s)
-    --- PASS: TestBirdsInWeek/calculates_the_number_of_birds_for_a_week_in_the_middle_of_the_log (0.00s)
-    --- PASS: TestBirdsInWeek/works_when_there_is_only_one_week (0.00s)
-=== RUN   TestFixBirdCount
-=== RUN   TestFixBirdCount/returns_a_bird_count_list_with_the_corrected_values
-=== RUN   TestFixBirdCount/works_for_a_short_bird_count_list
-=== RUN   TestFixBirdCount/works_for_a_long_bird_count_list
---- PASS: TestFixBirdCount (0.00s)
-    --- PASS: TestFixBirdCount/returns_a_bird_count_list_with_the_corrected_values (0.00s)
-    --- PASS: TestFixBirdCount/works_for_a_short_bird_count_list (0.00s)
-    --- PASS: TestFixBirdCount/works_for_a_long_bird_count_list (0.00s)
-=== RUN   TestFixBirdCountDoesNotCreateNewSlice
---- PASS: TestFixBirdCountDoesNotCreateNewSlice (0.00s)
-=== RUN   ExampleTotalBirdCount
---- PASS: ExampleTotalBirdCount (0.00s)
-=== RUN   ExampleBirdsInWeek
---- PASS: ExampleBirdsInWeek (0.00s)
-=== RUN   ExampleFixBirdCountLog
---- PASS: ExampleFixBirdCountLog (0.00s)
-PASS
-coverage: 100.0% of statements
-ok  	birdwatcher	0.045s	coverage: 100.0% of statements
+Running: ../../.github/citools/go/go-lint-gocritic
 
-real	0m0.706s
-user	0m0.744s
-sys	0m0.483s
+Running Go gocritic
 
-===============================================================================
+Go version:
 
-go test --bench . --benchmem
-PASS
-ok  	birdwatcher	0.015s
+	go version go1.21.0 linux/amd64
 
-real	0m0.715s
-user	0m0.842s
-sys	0m0.519s
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.011s
+user	0m0.005s
+sys	0m0.010s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+
+real	0m0.837s
+user	0m2.021s
+sys	0m0.296s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.870s
+user	0m2.033s
+sys	0m0.325s
+
+real	0m0.872s
+user	0m2.033s
+sys	0m0.327s
 
 ===============================================================================
 
-go test -tags bonus
-PASS
-ok  	birdwatcher	0.008s
+Running: ../../.github/citools/go/go-lint-go_vet
 
-real	0m0.465s
-user	0m0.588s
-sys	0m0.347s
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.015s
+user	0m0.006s
+sys	0m0.013s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.087s
+user	0m0.143s
+sys	0m0.120s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.113s
+user	0m0.157s
+sys	0m0.141s
+
+real	0m0.115s
+user	0m0.158s
+sys	0m0.142s
 
 ===============================================================================
 
-go vet birdwatcher
+Running: ../../.github/citools/go/go-fixer-go_fix
 
-real	0m0.346s
-user	0m0.409s
-sys	0m0.358s
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.012s
+user	0m0.006s
+sys	0m0.009s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.017s
+user	0m0.007s
+sys	0m0.014s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.044s
+user	0m0.020s
+sys	0m0.035s
+
+real	0m0.046s
+user	0m0.022s
+sys	0m0.035s
 
 ===============================================================================
 
-go fix birdwatcher
+Running: ../../.github/citools/go/go-lint-errcheck
 
-real	0m0.049s
-user	0m0.029s
-sys	0m0.049s
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.018s
+user	0m0.007s
+sys	0m0.016s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+
+real	0m0.528s
+user	0m1.567s
+sys	0m0.316s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.559s
+user	0m1.581s
+sys	0m0.345s
+
+real	0m0.562s
+user	0m1.582s
+sys	0m0.346s
 
 ===============================================================================
 
-gosec ./bird-watcher
-[gosec] 2022/06/20 23:42:20 Including rules: default
-[gosec] 2022/06/20 23:42:20 Excluding rules: default
-[gosec] 2022/06/20 23:42:20 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/bird-watcher
-[gosec] 2022/06/20 23:42:20 Checking package: birdwatcher
-[gosec] 2022/06/20 23:42:20 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/bird-watcher/bird_watcher.go
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.012s
+user	0m0.006s
+sys	0m0.010s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
+3 birdwatcher TestFixBirdCount bird_watcher_test.go:74:1
+3 birdwatcher TestBirdsInWeek bird_watcher_test.go:39:1
+3 birdwatcher TestTotalBirdCount bird_watcher_test.go:8:1
+2 birdwatcher TestFixBirdCountDoesNotCreateNewSlice bird_watcher_test.go:111:1
+2 birdwatcher FixBirdCountLog bird_watcher.go:34:1
+2 birdwatcher sum bird_watcher.go:4:1
+1 birdwatcher ExampleFixBirdCountLog bird_watcher_examples_test.go:21:1
+1 birdwatcher ExampleBirdsInWeek bird_watcher_examples_test.go:14:1
+1 birdwatcher ExampleTotalBirdCount bird_watcher_examples_test.go:7:1
+1 birdwatcher BirdsInWeek bird_watcher.go:22:1
+1 birdwatcher TotalBirdCount bird_watcher.go:16:1
+
+real	0m0.003s
+user	0m0.000s
+sys	0m0.003s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.025s
+user	0m0.012s
+sys	0m0.020s
+
+real	0m0.027s
+user	0m0.012s
+sys	0m0.022s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-misspell
+
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+
+real	0m0.031s
+user	0m0.031s
+sys	0m0.013s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.046s
+user	0m0.039s
+sys	0m0.025s
+
+real	0m0.048s
+user	0m0.039s
+sys	0m0.027s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gosec
+
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.015s
+user	0m0.007s
+sys	0m0.013s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:20:56 Including rules: default
+[gosec] 2023/09/07 00:20:56 Excluding rules: default
+[gosec] 2023/09/07 00:20:56 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/bird-watcher
+[gosec] 2023/09/07 00:20:56 Checking package: birdwatcher
+[gosec] 2023/09/07 00:20:56 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/bird-watcher/bird_watcher.go
 Results:
 
 
@@ -165,17 +554,249 @@ Results:
   Issues : [1;32m0[0m
 
 
-real	0m0.293s
-user	0m0.293s
-sys	0m0.250s
+real	0m0.071s
+user	0m0.062s
+sys	0m0.040s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.104s
+user	0m0.078s
+sys	0m0.068s
+
+real	0m0.107s
+user	0m0.079s
+sys	0m0.070s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.011s
+user	0m0.006s
+sys	0m0.008s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
+=== RUN   TestTotalBirdCount
+=== RUN   TestTotalBirdCount/calculates_the_correct_total_number_of_birds
+=== RUN   TestTotalBirdCount/works_for_a_short_bird_count_list
+=== RUN   TestTotalBirdCount/works_for_a_long_bird_count_list
+--- PASS: TestTotalBirdCount (0.00s)
+    --- PASS: TestTotalBirdCount/calculates_the_correct_total_number_of_birds (0.00s)
+    --- PASS: TestTotalBirdCount/works_for_a_short_bird_count_list (0.00s)
+    --- PASS: TestTotalBirdCount/works_for_a_long_bird_count_list (0.00s)
+=== RUN   TestBirdsInWeek
+=== RUN   TestBirdsInWeek/calculates_the_number_of_birds_in_the_first_week
+=== RUN   TestBirdsInWeek/calculates_the_number_of_birds_for_a_week_in_the_middle_of_the_log
+=== RUN   TestBirdsInWeek/works_when_there_is_only_one_week
+--- PASS: TestBirdsInWeek (0.00s)
+    --- PASS: TestBirdsInWeek/calculates_the_number_of_birds_in_the_first_week (0.00s)
+    --- PASS: TestBirdsInWeek/calculates_the_number_of_birds_for_a_week_in_the_middle_of_the_log (0.00s)
+    --- PASS: TestBirdsInWeek/works_when_there_is_only_one_week (0.00s)
+=== RUN   TestFixBirdCount
+=== RUN   TestFixBirdCount/returns_a_bird_count_list_with_the_corrected_values
+=== RUN   TestFixBirdCount/works_for_a_short_bird_count_list
+=== RUN   TestFixBirdCount/works_for_a_long_bird_count_list
+--- PASS: TestFixBirdCount (0.00s)
+    --- PASS: TestFixBirdCount/returns_a_bird_count_list_with_the_corrected_values (0.00s)
+    --- PASS: TestFixBirdCount/works_for_a_short_bird_count_list (0.00s)
+    --- PASS: TestFixBirdCount/works_for_a_long_bird_count_list (0.00s)
+=== RUN   TestFixBirdCountDoesNotCreateNewSlice
+--- PASS: TestFixBirdCountDoesNotCreateNewSlice (0.00s)
+=== RUN   ExampleTotalBirdCount
+--- PASS: ExampleTotalBirdCount (0.00s)
+=== RUN   ExampleBirdsInWeek
+--- PASS: ExampleBirdsInWeek (0.00s)
+=== RUN   ExampleFixBirdCountLog
+--- PASS: ExampleFixBirdCountLog (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	birdwatcher	0.003s	coverage: 100.0% of statements
+
+real	0m0.172s
+user	0m0.201s
+sys	0m0.167s
+
+
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
+birdwatcher/bird_watcher.go:4:	sum		100.0%
+birdwatcher/bird_watcher.go:16:	TotalBirdCount	100.0%
+birdwatcher/bird_watcher.go:22:	BirdsInWeek	100.0%
+birdwatcher/bird_watcher.go:34:	FixBirdCountLog	100.0%
+total:				(statements)	100.0%
+
+real	0m0.027s
+user	0m0.013s
+sys	0m0.021s
+
+
+ ==============================================================================
+
+Running: go tool cover -html coverage.out -o coverage.html
+
+
+real	0m0.029s
+user	0m0.013s
+sys	0m0.023s
+
+
+ ==============================================================================
+
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+real	0m0.011s
+user	0m0.004s
+sys	0m0.011s
+
+real	0m0.012s
+user	0m0.004s
+sys	0m0.011s
+
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
+=== RUN   TestTotalBirdCount
+=== RUN   TestTotalBirdCount/calculates_the_correct_total_number_of_birds
+=== RUN   TestTotalBirdCount/works_for_a_short_bird_count_list
+=== RUN   TestTotalBirdCount/works_for_a_long_bird_count_list
+--- PASS: TestTotalBirdCount (0.00s)
+    --- PASS: TestTotalBirdCount/calculates_the_correct_total_number_of_birds (0.00s)
+    --- PASS: TestTotalBirdCount/works_for_a_short_bird_count_list (0.00s)
+    --- PASS: TestTotalBirdCount/works_for_a_long_bird_count_list (0.00s)
+=== RUN   TestBirdsInWeek
+=== RUN   TestBirdsInWeek/calculates_the_number_of_birds_in_the_first_week
+=== RUN   TestBirdsInWeek/calculates_the_number_of_birds_for_a_week_in_the_middle_of_the_log
+=== RUN   TestBirdsInWeek/works_when_there_is_only_one_week
+--- PASS: TestBirdsInWeek (0.00s)
+    --- PASS: TestBirdsInWeek/calculates_the_number_of_birds_in_the_first_week (0.00s)
+    --- PASS: TestBirdsInWeek/calculates_the_number_of_birds_for_a_week_in_the_middle_of_the_log (0.00s)
+    --- PASS: TestBirdsInWeek/works_when_there_is_only_one_week (0.00s)
+=== RUN   TestFixBirdCount
+=== RUN   TestFixBirdCount/returns_a_bird_count_list_with_the_corrected_values
+=== RUN   TestFixBirdCount/works_for_a_short_bird_count_list
+=== RUN   TestFixBirdCount/works_for_a_long_bird_count_list
+--- PASS: TestFixBirdCount (0.00s)
+    --- PASS: TestFixBirdCount/returns_a_bird_count_list_with_the_corrected_values (0.00s)
+    --- PASS: TestFixBirdCount/works_for_a_short_bird_count_list (0.00s)
+    --- PASS: TestFixBirdCount/works_for_a_long_bird_count_list (0.00s)
+=== RUN   TestFixBirdCountDoesNotCreateNewSlice
+--- PASS: TestFixBirdCountDoesNotCreateNewSlice (0.00s)
+=== RUN   ExampleTotalBirdCount
+--- PASS: ExampleTotalBirdCount (0.00s)
+=== RUN   ExampleBirdsInWeek
+--- PASS: ExampleBirdsInWeek (0.00s)
+=== RUN   ExampleFixBirdCountLog
+--- PASS: ExampleFixBirdCountLog (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	birdwatcher	1.023s	coverage: 100.0% of statements
+
+real	0m1.267s
+user	0m0.307s
+sys	0m0.179s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.530s
+user	0m0.549s
+sys	0m0.420s
+
+real	0m1.532s
+user	0m0.550s
+sys	0m0.420s
+
+===============================================================================
+
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+PASS
+ok  	birdwatcher	0.003s
+
+real	0m0.164s
+user	0m0.182s
+sys	0m0.164s
+
+===============================================================================
+
+gotest -v -tags bonus
+=== RUN   TestTotalBirdCount
+=== RUN   TestTotalBirdCount/calculates_the_correct_total_number_of_birds
+=== RUN   TestTotalBirdCount/works_for_a_short_bird_count_list
+=== RUN   TestTotalBirdCount/works_for_a_long_bird_count_list
+--- PASS: TestTotalBirdCount (0.00s)
+    --- PASS: TestTotalBirdCount/calculates_the_correct_total_number_of_birds (0.00s)
+    --- PASS: TestTotalBirdCount/works_for_a_short_bird_count_list (0.00s)
+    --- PASS: TestTotalBirdCount/works_for_a_long_bird_count_list (0.00s)
+=== RUN   TestBirdsInWeek
+=== RUN   TestBirdsInWeek/calculates_the_number_of_birds_in_the_first_week
+=== RUN   TestBirdsInWeek/calculates_the_number_of_birds_for_a_week_in_the_middle_of_the_log
+=== RUN   TestBirdsInWeek/works_when_there_is_only_one_week
+--- PASS: TestBirdsInWeek (0.00s)
+    --- PASS: TestBirdsInWeek/calculates_the_number_of_birds_in_the_first_week (0.00s)
+    --- PASS: TestBirdsInWeek/calculates_the_number_of_birds_for_a_week_in_the_middle_of_the_log (0.00s)
+    --- PASS: TestBirdsInWeek/works_when_there_is_only_one_week (0.00s)
+=== RUN   TestFixBirdCount
+=== RUN   TestFixBirdCount/returns_a_bird_count_list_with_the_corrected_values
+=== RUN   TestFixBirdCount/works_for_a_short_bird_count_list
+=== RUN   TestFixBirdCount/works_for_a_long_bird_count_list
+--- PASS: TestFixBirdCount (0.00s)
+    --- PASS: TestFixBirdCount/returns_a_bird_count_list_with_the_corrected_values (0.00s)
+    --- PASS: TestFixBirdCount/works_for_a_short_bird_count_list (0.00s)
+    --- PASS: TestFixBirdCount/works_for_a_long_bird_count_list (0.00s)
+=== RUN   TestFixBirdCountDoesNotCreateNewSlice
+--- PASS: TestFixBirdCountDoesNotCreateNewSlice (0.00s)
+=== RUN   ExampleTotalBirdCount
+--- PASS: ExampleTotalBirdCount (0.00s)
+=== RUN   ExampleBirdsInWeek
+--- PASS: ExampleBirdsInWeek (0.00s)
+=== RUN   ExampleFixBirdCountLog
+--- PASS: ExampleFixBirdCountLog (0.00s)
+PASS
+ok  	birdwatcher	0.002s
+
+real	0m0.139s
+user	0m0.192s
+sys	0m0.148s
+
+===============================================================================
+
+No old benchmarks to run benchstat against.
 
 ===============================================================================
 
 gomarkdoc --output birdwatcher-doc.md
 
-real	0m0.029s
-user	0m0.018s
-sys	0m0.019s
+real	0m0.012s
+user	0m0.007s
+sys	0m0.005s
 
 ===============================================================================
 
@@ -198,9 +819,9 @@ func TotalBirdCount(birdsPerDay []int) int
     counts.
 
 
-real	0m0.141s
-user	0m0.055s
-sys	0m0.148s
+real	0m0.026s
+user	0m0.014s
+sys	0m0.019s
 
 
 ===============================================================================

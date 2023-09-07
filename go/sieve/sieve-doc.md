@@ -6,7 +6,7 @@
 import "sieve"
 ```
 
-Package sieve of Eratosthenes is used to find all the primes from 2 up to a given number\.
+Package sieve of Eratosthenes is used to find all the primes from 2 up to a given number.
 
 ## Index
 
@@ -19,7 +19,7 @@ Package sieve of Eratosthenes is used to find all the primes from 2 up to a give
 func Sieve(limit int) []int
 ```
 
-Sieve returns a list of prime numbers using the Sieve of Eratosthenes\. https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes Litering the code with optimization todos so I can play with Go benchmarks\.
+Sieve returns a list of prime numbers using the Sieve of Eratosthenes. https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes Litering the code with optimization todos so I can play with Go benchmarks.
 
 ```
 algorithm Sieve of Eratosthenes is

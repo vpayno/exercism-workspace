@@ -5,17 +5,39 @@ Go packages: listops
 
 ===============================================================================
 
-golangci-lint run --enable-all ./...
+Running: ../../.github/citools/go/go-lint-golangci-lint
+
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.015s
+user	0m0.009s
+sys	0m0.009s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
 level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
-level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
 level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
-level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
-level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
 level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
 level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
 level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
-level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
-level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
 list_ops.go:4:82: Comment should end in a period (godot)
 // IntList is an abstraction of a list of integers which we can define methods on
                                                                                  ^
@@ -137,32 +159,58 @@ package listops
 list_ops_test.go:1:9: package should be `listops_test` instead of `listops` (testpackage)
 package listops
         ^
-list_ops_test.go:108:6: variable name 'tt' is too short for the scope of its usage (varnamelen)
-	for _, tt := range filterTestCases {
-	    ^
 list_ops.go:92:2: variable name 'r' is too short for the scope of its usage (varnamelen)
 	r := s
 	^
 list_ops.go:70:2: variable name 'r' is too short for the scope of its usage (varnamelen)
 	r := IntList{}
 	^
+list_ops_test.go:108:6: variable name 'tt' is too short for the scope of its usage (varnamelen)
+	for _, tt := range filterTestCases {
+	    ^
 
-real	0m0.787s
-user	0m1.314s
-sys	0m0.735s
+real	0m0.557s
+user	0m0.829s
+sys	0m0.537s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.585s
+user	0m0.843s
+sys	0m0.558s
+
+real	0m0.586s
+user	0m0.845s
+sys	0m0.558s
 
 ===============================================================================
 
-golint ./...
-list_ops.go:18:1: comment on exported method IntList.Foldr should be of the form "Foldr ..."
+Running: ../../.github/citools/go/go-lint-revive
 
-real	0m0.008s
-user	0m0.004s
-sys	0m0.004s
+Running Go Lint Revive
 
-===============================================================================
+Go version:
 
-revive -formatter=stylish ./...
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.013s
+user	0m0.006s
+sys	0m0.011s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
 list_ops.go
   (18, 1)  https://revive.run/r#exported         comment on exported method IntList.Foldr should be of the form "Foldr ..."                        
   (22, 8)  https://revive.run/r#var-declaration  should omit type IntList from declaration of var r; it will be inferred from the right-hand side  
@@ -172,40 +220,150 @@ list_ops.go
 
  ✖ 4 problems (0 errors) (4 warnings)
 
-real	0m0.040s
-user	0m0.021s
-sys	0m0.031s
+real	0m0.058s
+user	0m0.041s
+sys	0m0.034s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.085s
+user	0m0.054s
+sys	0m0.055s
+
+real	0m0.088s
+user	0m0.055s
+sys	0m0.057s
 
 ===============================================================================
 
-ineffassign ./...
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
 
-real	0m0.093s
-user	0m0.169s
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.014s
+user	0m0.006s
+sys	0m0.012s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
+	info: check "./."
+internal error: package "fmt" without types was imported from "listops [listops.test]"
+
+real	0m0.111s
+user	0m0.162s
+sys	0m0.125s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.136s
+user	0m0.177s
+sys	0m0.142s
+
+real	0m0.138s
+user	0m0.178s
 sys	0m0.143s
 
 ===============================================================================
 
-go-consistent -v ./...
-	info: check "./."
-internal error: package "fmt" without types was imported from "listops [listops.test]"
+Running: ../../.github/citools/go/go-lint-staticcheck
 
-real	0m0.113s
-user	0m0.181s
-sys	0m0.198s
+Running Go StaticCheck
 
-===============================================================================
+Go version:
 
-staticcheck ./...
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.023s
+user	0m0.015s
+sys	0m0.014s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+list_ops.go:18:1: comment on exported method Foldr should be of the form "Foldr ..." (ST1020)
+list_ops.go:22:8: should omit type IntList from declaration; it will be inferred from the right-hand side (ST1023)
+list_ops.go:35:8: should omit type IntList from declaration; it will be inferred from the right-hand side (ST1023)
+list_ops.go:57:8: should omit type IntList from declaration; it will be inferred from the right-hand side (ST1023)
 list_ops.go:95:3: should replace loop with r = append(r, l...) (S1011)
 
-real	0m0.180s
-user	0m0.272s
-sys	0m0.179s
+real	0m0.188s
+user	0m0.223s
+sys	0m0.175s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.225s
+user	0m0.241s
+sys	0m0.203s
+
+real	0m0.226s
+user	0m0.241s
+sys	0m0.205s
 
 ===============================================================================
 
-gocritic check -enableAll ./...
+Running: ../../.github/citools/go/go-lint-gocritic
+
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.013s
+user	0m0.009s
+sys	0m0.007s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
 ./list_ops.go:9:2: commentedOutCode: may want to remove commented-out code
 ./list_ops.go:20:2: commentedOutCode: may want to remove commented-out code
 ./list_ops.go:33:2: commentedOutCode: may want to remove commented-out code
@@ -216,13 +374,48 @@ gocritic check -enableAll ./...
 ./list_ops.go:83:2: commentedOutCode: may want to remove commented-out code
 ./list_ops.go:90:2: commentedOutCode: may want to remove commented-out code
 
-real	0m0.802s
-user	0m2.182s
-sys	0m0.407s
+real	0m0.834s
+user	0m2.012s
+sys	0m0.239s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.857s
+user	0m2.025s
+sys	0m0.256s
+
+real	0m0.859s
+user	0m2.026s
+sys	0m0.258s
 
 ===============================================================================
 
-go vet ./...
+Running: ../../.github/citools/go/go-lint-go_vet
+
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.019s
+user	0m0.005s
+sys	0m0.020s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
 # listops
 ./list_ops_examples_test.go:7:1: ExampleFoldl refers to unknown identifier: Foldl
 ./list_ops_examples_test.go:17:1: ExampleFoldr refers to unknown identifier: Foldr
@@ -231,29 +424,134 @@ go vet ./...
 ./list_ops_examples_test.go:53:1: ExampleReverse refers to unknown identifier: Reverse
 ./list_ops_examples_test.go:70:1: ExampleConcat refers to unknown identifier: Concat
 
-real	0m0.095s
-user	0m0.195s
-sys	0m0.189s
+real	0m0.087s
+user	0m0.110s
+sys	0m0.096s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.118s
+user	0m0.121s
+sys	0m0.125s
+
+real	0m0.119s
+user	0m0.122s
+sys	0m0.126s
 
 ===============================================================================
 
-go fix ./...
+Running: ../../.github/citools/go/go-fixer-go_fix
 
-real	0m0.019s
-user	0m0.011s
-sys	0m0.012s
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.012s
+user	0m0.005s
+sys	0m0.009s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.017s
+user	0m0.009s
+sys	0m0.011s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.039s
+user	0m0.022s
+sys	0m0.028s
+
+real	0m0.041s
+user	0m0.022s
+sys	0m0.030s
 
 ===============================================================================
 
-errcheck ./...
+Running: ../../.github/citools/go/go-lint-errcheck
 
-real	0m0.424s
-user	0m1.391s
-sys	0m0.323s
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.018s
+user	0m0.008s
+sys	0m0.016s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+
+real	0m0.461s
+user	0m1.354s
+sys	0m0.290s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.493s
+user	0m1.373s
+sys	0m0.312s
+
+real	0m0.495s
+user	0m1.375s
+sys	0m0.312s
 
 ===============================================================================
 
-gocyclo .
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.011s
+user	0m0.004s
+sys	0m0.011s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
 4 listops TestFold list_ops_test.go:66:1
 3 listops TestConcatMethod list_ops_test.go:284:1
 3 listops TestAppendMethod list_ops_test.go:249:1
@@ -278,26 +576,86 @@ gocyclo .
 1 listops (IntList).Append list_ops.go:82:1
 1 listops (IntList).Length list_ops.go:47:1
 
-real	0m0.003s
-user	0m0.002s
+real	0m0.002s
+user	0m0.001s
 sys	0m0.001s
 
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.022s
+user	0m0.009s
+sys	0m0.019s
+
+real	0m0.023s
+user	0m0.011s
+sys	0m0.020s
+
 ===============================================================================
 
-misspell .
+Running: ../../.github/citools/go/go-lint-misspell
 
-real	0m0.026s
-user	0m0.030s
-sys	0m0.016s
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+
+real	0m0.024s
+user	0m0.024s
+sys	0m0.012s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.033s
+user	0m0.027s
+sys	0m0.021s
+
+real	0m0.036s
+user	0m0.027s
+sys	0m0.023s
 
 ===============================================================================
 
-gosec ./...
-[gosec] 2023/04/03 23:02:14 Including rules: default
-[gosec] 2023/04/03 23:02:14 Excluding rules: default
-[gosec] 2023/04/03 23:02:14 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/list-ops
-[gosec] 2023/04/03 23:02:14 Checking package: listops
-[gosec] 2023/04/03 23:02:14 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/list-ops/list_ops.go
+Running: ../../.github/citools/go/go-lint-gosec
+
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.012s
+user	0m0.006s
+sys	0m0.010s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:24:44 Including rules: default
+[gosec] 2023/09/07 00:24:44 Excluding rules: default
+[gosec] 2023/09/07 00:24:44 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/list-ops
+[gosec] 2023/09/07 00:24:44 Checking package: listops
+[gosec] 2023/09/07 00:24:44 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/list-ops/list_ops.go
 Results:
 
 
@@ -309,13 +667,48 @@ Results:
   Issues : [1;32m0[0m
 
 
-real	0m0.084s
-user	0m0.060s
-sys	0m0.073s
+real	0m0.103s
+user	0m0.100s
+sys	0m0.049s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.124s
+user	0m0.111s
+sys	0m0.067s
+
+real	0m0.126s
+user	0m0.112s
+sys	0m0.068s
 
 ===============================================================================
 
-gotest -v -covermode=count -coverprofile coverage.out ./...
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.015s
+user	0m0.010s
+sys	0m0.010s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
 === RUN   TestFold
     list_ops_test.go:77: PASS: foldl: empty list
     list_ops_test.go:77: PASS: foldl: direction independent function applied to non-empty list
@@ -366,16 +759,18 @@ gotest -v -covermode=count -coverprofile coverage.out ./...
 === RUN   ExampleConcat
 --- PASS: ExampleConcat (0.00s)
 PASS
-	listops	coverage: 100.0% of statements
+coverage: 100.0% of statements
 ok  	listops	0.003s	coverage: 100.0% of statements
 
-real	0m0.227s
-user	0m0.309s
-sys	0m0.190s
+real	0m0.183s
+user	0m0.248s
+sys	0m0.159s
 
-===============================================================================
 
-go tool cover -func=coverage.out
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
 listops/list_ops.go:8:	Foldl		100.0%
 listops/list_ops.go:19:	Foldr		100.0%
 listops/list_ops.go:32:	Filter		100.0%
@@ -386,29 +781,40 @@ listops/list_ops.go:82:	Append		100.0%
 listops/list_ops.go:89:	Concat		100.0%
 total:			(statements)	100.0%
 
-real	0m0.023s
-user	0m0.014s
-sys	0m0.015s
+real	0m0.029s
+user	0m0.015s
+sys	0m0.021s
 
-===============================================================================
 
-go tool cover -html coverage.out -o coverage.html
+ ==============================================================================
 
-real	0m0.022s
-user	0m0.017s
-sys	0m0.012s
+Running: go tool cover -html coverage.out -o coverage.html
 
-===============================================================================
 
-gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+real	0m0.031s
+user	0m0.011s
+sys	0m0.027s
 
-real	0m0.009s
-user	0m0.001s
+
+ ==============================================================================
+
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+real	0m0.012s
+user	0m0.002s
 sys	0m0.013s
 
-===============================================================================
+real	0m0.012s
+user	0m0.002s
+sys	0m0.013s
 
-gotest -v -race -covermode=atomic ./...
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
 === RUN   TestFold
     list_ops_test.go:77: PASS: foldl: empty list
     list_ops_test.go:77: PASS: foldl: direction independent function applied to non-empty list
@@ -459,12 +865,25 @@ gotest -v -race -covermode=atomic ./...
 === RUN   ExampleConcat
 --- PASS: ExampleConcat (0.00s)
 PASS
-	listops	coverage: 100.0% of statements
-ok  	listops	0.025s	coverage: 100.0% of statements
+coverage: 100.0% of statements
+ok  	listops	1.013s	coverage: 100.0% of statements
 
-real	0m0.315s
-user	0m0.375s
-sys	0m0.287s
+real	0m1.258s
+user	0m0.285s
+sys	0m0.140s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.540s
+user	0m0.575s
+sys	0m0.382s
+
+real	0m1.542s
+user	0m0.577s
+sys	0m0.382s
 
 ===============================================================================
 
@@ -475,9 +894,9 @@ gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 PASS
 ok  	listops	0.002s
 
-real	0m0.180s
-user	0m0.308s
-sys	0m0.271s
+real	0m0.157s
+user	0m0.176s
+sys	0m0.121s
 
 ===============================================================================
 
@@ -532,11 +951,11 @@ gotest -v -tags bonus
 === RUN   ExampleConcat
 --- PASS: ExampleConcat (0.00s)
 PASS
-ok  	listops	0.002s
+ok  	listops	0.003s
 
-real	0m0.162s
-user	0m0.269s
-sys	0m0.238s
+real	0m0.184s
+user	0m0.271s
+sys	0m0.163s
 
 ===============================================================================
 
@@ -550,9 +969,9 @@ sys	0m0.002s
 
 gomarkdoc --output listops-doc.md
 
-real	0m0.012s
-user	0m0.008s
-sys	0m0.004s
+real	0m0.021s
+user	0m0.016s
+sys	0m0.007s
 
 ===============================================================================
 
@@ -592,9 +1011,9 @@ func (s IntList) Reverse() IntList
     Reverse returns a reversed list.
 
 
-real	0m0.030s
-user	0m0.015s
-sys	0m0.023s
+real	0m0.032s
+user	0m0.013s
+sys	0m0.026s
 
 
 ===============================================================================

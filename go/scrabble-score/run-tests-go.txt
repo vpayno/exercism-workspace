@@ -5,15 +5,582 @@ Go packages: scrabble
 
 ===============================================================================
 
-golint scrabble
+Running: ../../.github/citools/go/go-lint-golangci-lint
 
-real	0m0.192s
-user	0m0.159s
-sys	0m0.157s
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.032s
+user	0m0.020s
+sys	0m0.030s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+scrabble_score_test.go:8:23: Using the variable on range scope `tc` in function literal (scopelint)
+			if actual := Score(tc.input); actual != tc.expected {
+			                   ^
+scrabble_score_test.go:9:41: Using the variable on range scope `tc` in function literal (scopelint)
+				t.Errorf("Score(%q) = %d, want:%d", tc.input, actual, tc.expected)
+				                                    ^
+scrabble_score.go:36:2: declarations should never be cuddled (wsl)
+	var letters string
+	^
+scrabble_score_test.go:19:2: for statements should only be cuddled with assignments used in the iteration (wsl)
+	for i := 0; i < b.N; i++ {
+	^
+cases_test.go:12:5: scrabbleScoreTests is a global variable (gochecknoglobals)
+var scrabbleScoreTests = []scrabbleTest{
+    ^
+scrabble_score.go:16:10: mnd: Magic number: 2, in <return> detected (gomnd)
+		return 2
+		       ^
+scrabble_score.go:18:10: mnd: Magic number: 3, in <return> detected (gomnd)
+		return 3
+		       ^
+scrabble_score.go:20:10: mnd: Magic number: 4, in <return> detected (gomnd)
+		return 4
+		       ^
+scrabble_score.go:22:10: mnd: Magic number: 5, in <return> detected (gomnd)
+		return 5
+		       ^
+scrabble_score.go:24:10: mnd: Magic number: 8, in <return> detected (gomnd)
+		return 8
+		       ^
+scrabble_score.go:26:10: mnd: Magic number: 10, in <return> detected (gomnd)
+		return 10
+		       ^
+scrabble_score_test.go:5:1: Function TestScore missing the call to method parallel (paralleltest)
+func TestScore(t *testing.T) {
+^
+scrabble_score_test.go:6:2: Range statement for test TestScore missing the call to method parallel in test Run (paralleltest)
+	for _, tc := range scrabbleScoreTests {
+	^
+cases_test.go:1:9: package should be `scrabble_test` instead of `scrabble` (testpackage)
+package scrabble
+        ^
+scrabble_score_examples_test.go:1:9: package should be `scrabble_test` instead of `scrabble` (testpackage)
+package scrabble
+        ^
+scrabble_score_test.go:1:9: package should be `scrabble_test` instead of `scrabble` (testpackage)
+package scrabble
+        ^
+
+real	0m0.567s
+user	0m0.825s
+sys	0m0.558s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.615s
+user	0m0.855s
+sys	0m0.601s
+
+real	0m0.617s
+user	0m0.856s
+sys	0m0.602s
 
 ===============================================================================
 
-go test -v -covermode=count -coverprofile coverage.out scrabble
+Running: ../../.github/citools/go/go-lint-revive
+
+Running Go Lint Revive
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.017s
+user	0m0.013s
+sys	0m0.015s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
+
+real	0m0.070s
+user	0m0.027s
+sys	0m0.063s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.099s
+user	0m0.047s
+sys	0m0.085s
+
+real	0m0.102s
+user	0m0.048s
+sys	0m0.087s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
+
+real	0m0.000s
+user	0m0.000s
+sys	0m0.000s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.022s
+user	0m0.010s
+sys	0m0.026s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
+	info: check "./."
+internal error: package "regexp" without types was imported from "scrabble"
+
+real	0m0.094s
+user	0m0.122s
+sys	0m0.106s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.131s
+user	0m0.142s
+sys	0m0.141s
+
+real	0m0.133s
+user	0m0.143s
+sys	0m0.142s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-staticcheck
+
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.020s
+user	0m0.023s
+sys	0m0.012s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+scrabble_score.go:36:2: should merge variable declaration with assignment on next line (S1021)
+
+real	0m0.172s
+user	0m0.199s
+sys	0m0.134s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.204s
+user	0m0.228s
+sys	0m0.156s
+
+real	0m0.206s
+user	0m0.229s
+sys	0m0.156s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocritic
+
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.031s
+user	0m0.023s
+sys	0m0.031s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+
+real	0m0.848s
+user	0m2.027s
+sys	0m0.313s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.898s
+user	0m2.057s
+sys	0m0.361s
+
+real	0m0.900s
+user	0m2.059s
+sys	0m0.362s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go_vet
+
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.023s
+user	0m0.020s
+sys	0m0.021s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.103s
+user	0m0.155s
+sys	0m0.129s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.137s
+user	0m0.179s
+sys	0m0.161s
+
+real	0m0.139s
+user	0m0.179s
+sys	0m0.163s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-fixer-go_fix
+
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.026s
+user	0m0.017s
+sys	0m0.023s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.024s
+user	0m0.020s
+sys	0m0.017s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.066s
+user	0m0.047s
+sys	0m0.052s
+
+real	0m0.068s
+user	0m0.049s
+sys	0m0.053s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-errcheck
+
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.021s
+user	0m0.016s
+sys	0m0.018s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+
+real	0m0.449s
+user	0m1.375s
+sys	0m0.273s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.481s
+user	0m1.396s
+sys	0m0.300s
+
+real	0m0.483s
+user	0m1.398s
+sys	0m0.300s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.020s
+user	0m0.013s
+sys	0m0.018s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
+7 scrabble charScore scrabble_score.go:11:1
+4 scrabble BenchmarkScore scrabble_score_test.go:15:1
+3 scrabble TestScore scrabble_score_test.go:5:1
+3 scrabble Score scrabble_score.go:34:1
+2 scrabble ExampleScore scrabble_score_examples_test.go:7:1
+
+real	0m0.002s
+user	0m0.001s
+sys	0m0.001s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.033s
+user	0m0.023s
+sys	0m0.025s
+
+real	0m0.035s
+user	0m0.025s
+sys	0m0.025s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-misspell
+
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+
+real	0m0.030s
+user	0m0.035s
+sys	0m0.016s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.047s
+user	0m0.044s
+sys	0m0.030s
+
+real	0m0.049s
+user	0m0.045s
+sys	0m0.031s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gosec
+
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.023s
+user	0m0.014s
+sys	0m0.027s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:30:18 Including rules: default
+[gosec] 2023/09/07 00:30:18 Excluding rules: default
+[gosec] 2023/09/07 00:30:18 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/scrabble-score
+[gosec] 2023/09/07 00:30:18 Checking package: scrabble
+[gosec] 2023/09/07 00:30:18 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/scrabble-score/scrabble_score.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 50
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.106s
+user	0m0.119s
+sys	0m0.090s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.149s
+user	0m0.142s
+sys	0m0.135s
+
+real	0m0.153s
+user	0m0.143s
+sys	0m0.137s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.020s
+user	0m0.017s
+sys	0m0.016s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
 === RUN   TestScore
 === RUN   TestScore/lowercase_letter
 === RUN   TestScore/uppercase_letter
@@ -42,34 +609,55 @@ go test -v -covermode=count -coverprofile coverage.out scrabble
 --- PASS: ExampleScore (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	scrabble	0.019s	coverage: 100.0% of statements
+ok  	scrabble	0.003s	coverage: 100.0% of statements
 
-real	0m0.837s
-user	0m0.914s
-sys	0m0.639s
+real	0m0.177s
+user	0m0.225s
+sys	0m0.161s
 
-===============================================================================
 
-go tool cover -func=coverage.out
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
 scrabble/scrabble_score.go:11:	charScore	100.0%
 scrabble/scrabble_score.go:34:	Score		100.0%
 total:				(statements)	100.0%
 
-real	0m0.282s
-user	0m0.253s
-sys	0m0.311s
+real	0m0.061s
+user	0m0.073s
+sys	0m0.089s
 
-===============================================================================
 
-go tool cover -html coverage.out -o coverage.html
+ ==============================================================================
 
-real	0m0.274s
-user	0m0.269s
-sys	0m0.306s
+Running: go tool cover -html coverage.out -o coverage.html
 
-===============================================================================
 
-go test -v -race -covermode=atomic scrabble
+real	0m0.047s
+user	0m0.043s
+sys	0m0.073s
+
+
+ ==============================================================================
+
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+real	0m0.018s
+user	0m0.016s
+sys	0m0.020s
+
+real	0m0.018s
+user	0m0.016s
+sys	0m0.020s
+
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
 === RUN   TestScore
 === RUN   TestScore/lowercase_letter
 === RUN   TestScore/uppercase_letter
@@ -98,76 +686,130 @@ go test -v -race -covermode=atomic scrabble
 --- PASS: ExampleScore (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	scrabble	0.038s	coverage: 100.0% of statements
+ok  	scrabble	1.017s	coverage: 100.0% of statements
 
-real	0m0.948s
-user	0m1.065s
-sys	0m0.754s
+real	0m1.233s
+user	0m0.267s
+sys	0m0.147s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.570s
+user	0m0.647s
+sys	0m0.520s
+
+real	0m1.573s
+user	0m0.648s
+sys	0m0.522s
 
 ===============================================================================
 
-go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+mv -v benchstat-new.txt benchstat-old.txt
+renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
+
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 goos: linux
 goarch: amd64
 pkg: scrabble
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+BenchmarkScore
+BenchmarkScore-8   	   47186	     23521 ns/op	   26671 B/op	     385 allocs/op
+PASS
+ok  	scrabble	1.371s
+
+real	0m1.515s
+user	0m1.606s
+sys	0m0.197s
+
+===============================================================================
+
+gotest -v -tags bonus
+=== RUN   TestScore
+=== RUN   TestScore/lowercase_letter
+=== RUN   TestScore/uppercase_letter
+=== RUN   TestScore/valuable_letter
+=== RUN   TestScore/short_word
+=== RUN   TestScore/short,_valuable_word
+=== RUN   TestScore/medium_word
+=== RUN   TestScore/medium,_valuable_word
+=== RUN   TestScore/long,_mixed-case_word
+=== RUN   TestScore/english-like_word
+=== RUN   TestScore/empty_input
+=== RUN   TestScore/entire_alphabet_available
+--- PASS: TestScore (0.00s)
+    --- PASS: TestScore/lowercase_letter (0.00s)
+    --- PASS: TestScore/uppercase_letter (0.00s)
+    --- PASS: TestScore/valuable_letter (0.00s)
+    --- PASS: TestScore/short_word (0.00s)
+    --- PASS: TestScore/short,_valuable_word (0.00s)
+    --- PASS: TestScore/medium_word (0.00s)
+    --- PASS: TestScore/medium,_valuable_word (0.00s)
+    --- PASS: TestScore/long,_mixed-case_word (0.00s)
+    --- PASS: TestScore/english-like_word (0.00s)
+    --- PASS: TestScore/empty_input (0.00s)
+    --- PASS: TestScore/entire_alphabet_available (0.00s)
+=== RUN   ExampleScore
+--- PASS: ExampleScore (0.00s)
+PASS
+ok  	scrabble	0.002s
+
+real	0m0.138s
+user	0m0.192s
+sys	0m0.116s
+
+===============================================================================
+
+benchstat benchstat-old.txt benchstat-new.txt
+benchstat-new.txt:5: missing iteration count
+goos: linux
+goarch: amd64
+pkg: scrabble
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+        │ benchstat-new.txt │
+        │      sec/op       │
+Score-8        23.52µ ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
+
+        │ benchstat-new.txt │
+        │       B/op        │
+Score-8       26.05Ki ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
+
+        │ benchstat-new.txt │
+        │     allocs/op     │
+Score-8         385.0 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
+
 cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
-BenchmarkScore-4   	   10000	    133667 ns/op	   26492 B/op	     385 allocs/op
-PASS
-ok  	scrabble	1.409s
+        │ benchstat-old.txt │
+        │      sec/op       │
+Score-4        133.7µ ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-real	0m2.205s
-user	0m3.526s
-sys	0m0.894s
+        │ benchstat-old.txt │
+        │       B/op        │
+Score-4       25.87Ki ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-===============================================================================
+        │ benchstat-old.txt │
+        │     allocs/op     │
+Score-4         385.0 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
 
-go test -tags bonus
-PASS
-ok  	scrabble	0.017s
-
-real	0m0.970s
-user	0m1.250s
-sys	0m0.676s
-
-===============================================================================
-
-No old benchmarks to run benchstat against.
-
-===============================================================================
-
-go vet scrabble
-
-real	0m0.619s
-user	0m0.804s
-sys	0m0.443s
-
-===============================================================================
-
-go fix scrabble
-
-real	0m0.214s
-user	0m0.282s
-sys	0m0.192s
-
-===============================================================================
-
-gosec ./scrabble-score
-[gosec] 2022/07/25 08:09:25 Including rules: default
-[gosec] 2022/07/25 08:09:25 Excluding rules: default
-[gosec] 2022/07/25 08:09:25 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/scrabble-score
-2022/07/25 08:09:25 internal error: package "regexp" without types was imported from "command-line-arguments"
-
-real	0m0.740s
-user	0m0.841s
-sys	0m0.542s
+real	0m0.002s
+user	0m0.000s
+sys	0m0.002s
 
 ===============================================================================
 
 gomarkdoc --output scrabble-doc.md
 
-real	0m0.030s
-user	0m0.021s
-sys	0m0.015s
+real	0m0.015s
+user	0m0.007s
+sys	0m0.010s
 
 ===============================================================================
 
@@ -182,9 +824,9 @@ func Score(word string) int
     Score returns an `int` scrablle score for a given word (`string`).
 
 
-real	0m0.283s
-user	0m0.226s
-sys	0m0.191s
+real	0m0.046s
+user	0m0.027s
+sys	0m0.037s
 
 
 ===============================================================================

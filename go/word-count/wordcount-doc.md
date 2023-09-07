@@ -6,7 +6,7 @@
 import "wordcount"
 ```
 
-Package wordcount is used to count word frequencies\.
+Package wordcount is used to count word frequencies.
 
 ## Index
 
@@ -16,7 +16,7 @@ Package wordcount is used to count word frequencies\.
 
 ## type [Frequency](<https://github.com/vpayno/exercism-workspace/blob/main/go/word-count/word_count.go#L10>)
 
-Frequency is a map used to count word frequencies\.
+Frequency is a map used to count word frequencies.
 
 ```go
 type Frequency map[string]int
@@ -28,7 +28,7 @@ type Frequency map[string]int
 func WordCount(phrase string) Frequency
 ```
 
-WordCount returns a frequency map for the words counts in the string\.
+WordCount returns a frequency map for the words counts in the string.
 
 <details><summary>Example</summary>
 <p>

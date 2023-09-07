@@ -5,15 +5,614 @@ Go packages: grains
 
 ===============================================================================
 
-golint grains
+Running: ../../.github/citools/go/go-lint-golangci-lint
 
-real	0m0.283s
-user	0m0.283s
-sys	0m0.311s
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.038s
+user	0m0.032s
+sys	0m0.041s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+grains_test.go:40:10: Error return value is not checked (errcheck)
+			Square(test.input)
+			      ^
+cases_test.go:6:46: Comment should end in a period (godot)
+// returns the number of grains on the square
+                                             ^
+grains.go:40: line is 133 characters (lll)
+// https://en.wikipedia.org/wiki/Wheat_and_chessboard_problem#:~:text=The%20number%20of%20grains%20of,of%20one%20grain%20of%20wheat).
+grains.go:42:79: `substract` is a misspelling of `subtract` (misspell)
+	// Can't use gemetric sequences because we need a number larger than 2^64 to substract 1 from.
+	                                                                             ^
+grains.go:34:12: var-declaration: should omit type float64 from declaration of var power; it will be inferred from the right-hand side (revive)
+	var power float64 = float64(number - 1)
+	          ^
+grains.go:55:12: var-declaration: should omit type *big.Int from declaration of var total; it will be inferred from the right-hand side (revive)
+	var total *big.Int = new(big.Int).Exp(two, size, nil)
+	          ^
+grains_test.go:10:35: Using the variable on range scope `tc` in function literal (scopelint)
+			actualVal, actualErr := Square(tc.input)
+			                               ^
+grains_test.go:11:7: Using the variable on range scope `tc` in function literal (scopelint)
+			if tc.expectError {
+			   ^
+grains_test.go:13:56: Using the variable on range scope `tc` in function literal (scopelint)
+					t.Errorf("Square(%d) expected an error, got: %d", tc.input, actualVal)
+					                                                  ^
+grains.go:41:21: block should not start with a whitespace (wsl)
+func Total() uint64 {
+                    ^
+grains.go:56:2: expressions should not be cuddled with declarations or returns (wsl)
+	total.Sub(total, big.NewInt(int64(1)))
+	^
+grains_test.go:49:2: for statements should only be cuddled with assignments used in the iteration (wsl)
+	for i := 0; i < b.N; i++ {
+	^
+cases_test.go:7:5: squareTests is a global variable (gochecknoglobals)
+var squareTests = []struct {
+    ^
+grains.go:31:13: err113: do not define dynamic errors, use wrapped static errors instead: "fmt.Errorf(\"[%d] is not a valid square id on our chess board\", number)" (goerr113)
+		return 0, fmt.Errorf("[%d] is not a valid square id on our chess board", number)
+		          ^
+grains.go:36:25: mnd: Magic number: 2.0, in <argument> detected (gomnd)
+	return uint64(math.Pow(2.0, power)), nil
+	                       ^
+grains.go:52:26: mnd: Magic number: 2, in <argument> detected (gomnd)
+	two := big.NewInt(int64(2))
+	                        ^
+grains_test.go:7:1: Function TestSquare missing the call to method parallel (paralleltest)
+func TestSquare(t *testing.T) {
+^
+grains_test.go:8:2: Range statement for test TestSquare missing the call to method parallel in test Run (paralleltest)
+	for _, tc := range squareTests {
+	^
+grains_test.go:26:1: Function TestTotal missing the call to method parallel (paralleltest)
+func TestTotal(t *testing.T) {
+^
+cases_test.go:1:9: package should be `grains_test` instead of `grains` (testpackage)
+package grains
+        ^
+grains_examples_test.go:1:9: package should be `grains_test` instead of `grains` (testpackage)
+package grains
+        ^
+grains_test.go:1:9: package should be `grains_test` instead of `grains` (testpackage)
+package grains
+        ^
+
+real	0m0.741s
+user	0m1.045s
+sys	0m0.542s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.799s
+user	0m1.084s
+sys	0m0.600s
+
+real	0m0.801s
+user	0m1.085s
+sys	0m0.601s
 
 ===============================================================================
 
-go test -v -covermode=count -coverprofile coverage.out grains
+Running: ../../.github/citools/go/go-lint-revive
+
+Running Go Lint Revive
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.021s
+user	0m0.021s
+sys	0m0.025s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
+grains.go
+  (34, 12)  https://revive.run/r#var-declaration  should omit type float64 from declaration of var power; it will be inferred from the right-hand side  
+
+
+ ✖ 1 problem (0 errors) (1 warnings)
+
+real	0m0.080s
+user	0m0.035s
+sys	0m0.046s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.113s
+user	0m0.061s
+sys	0m0.082s
+
+real	0m0.115s
+user	0m0.062s
+sys	0m0.083s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.001s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.024s
+user	0m0.021s
+sys	0m0.027s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
+	info: check "./."
+internal error: package "fmt" without types was imported from "grains"
+
+real	0m0.088s
+user	0m0.109s
+sys	0m0.090s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.122s
+user	0m0.140s
+sys	0m0.122s
+
+real	0m0.125s
+user	0m0.141s
+sys	0m0.124s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-staticcheck
+
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.023s
+user	0m0.021s
+sys	0m0.023s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+grains.go:34:12: should omit type float64 from declaration; it will be inferred from the right-hand side (ST1023)
+grains.go:55:12: should omit type *big.Int from declaration; it will be inferred from the right-hand side (ST1023)
+
+real	0m0.236s
+user	0m0.333s
+sys	0m0.132s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.270s
+user	0m0.359s
+sys	0m0.164s
+
+real	0m0.271s
+user	0m0.361s
+sys	0m0.164s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocritic
+
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.027s
+user	0m0.024s
+sys	0m0.028s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+
+real	0m0.882s
+user	0m1.925s
+sys	0m0.306s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.921s
+user	0m1.952s
+sys	0m0.347s
+
+real	0m0.922s
+user	0m1.954s
+sys	0m0.347s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go_vet
+
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.026s
+user	0m0.025s
+sys	0m0.030s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.132s
+user	0m0.203s
+sys	0m0.117s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.170s
+user	0m0.235s
+sys	0m0.155s
+
+real	0m0.172s
+user	0m0.236s
+sys	0m0.156s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-fixer-go_fix
+
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.030s
+user	0m0.030s
+sys	0m0.026s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.040s
+user	0m0.032s
+sys	0m0.042s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.083s
+user	0m0.067s
+sys	0m0.079s
+
+real	0m0.085s
+user	0m0.067s
+sys	0m0.081s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-errcheck
+
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.042s
+user	0m0.036s
+sys	0m0.044s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+grains_test.go:40:10:	Square(test.input)
+
+real	0m0.480s
+user	0m1.421s
+sys	0m0.266s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.537s
+user	0m1.463s
+sys	0m0.326s
+
+real	0m0.540s
+user	0m1.465s
+sys	0m0.326s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.024s
+user	0m0.023s
+sys	0m0.029s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
+6 grains TestSquare grains_test.go:7:1
+4 grains BenchmarkSquare grains_test.go:33:1
+3 grains BenchmarkTotal grains_test.go:45:1
+3 grains isValidSquareID grains.go:20:1
+2 grains TestTotal grains_test.go:26:1
+2 grains Square grains.go:29:1
+1 grains ExampleTotal grains_examples_test.go:19:1
+1 grains ExampleSquare grains_examples_test.go:7:1
+1 grains Total grains.go:41:1
+
+real	0m0.002s
+user	0m0.001s
+sys	0m0.001s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.037s
+user	0m0.029s
+sys	0m0.039s
+
+real	0m0.039s
+user	0m0.030s
+sys	0m0.040s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-misspell
+
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+grains.go:42:78: "substract" is a misspelling of "subtract"
+coverage.html:122:85: "substract" is a misspelling of "subtract"
+run-tests-go.txt:49:18: "substract" is a misspelling of "subtract"
+run-tests-go.txt:50:78: "substract" is a misspelling of "subtract"
+
+real	0m0.031s
+user	0m0.031s
+sys	0m0.014s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.041s
+user	0m0.039s
+sys	0m0.021s
+
+real	0m0.043s
+user	0m0.040s
+sys	0m0.021s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gosec
+
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.031s
+user	0m0.022s
+sys	0m0.041s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:23:27 Including rules: default
+[gosec] 2023/09/07 00:23:27 Excluding rules: default
+[gosec] 2023/09/07 00:23:27 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/grains
+[gosec] 2023/09/07 00:23:27 Checking package: grains
+[gosec] 2023/09/07 00:23:27 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/grains/grains.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 91
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.113s
+user	0m0.125s
+sys	0m0.097s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.159s
+user	0m0.155s
+sys	0m0.151s
+
+real	0m0.161s
+user	0m0.156s
+sys	0m0.152s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.021s
+user	0m0.020s
+sys	0m0.017s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
 === RUN   TestSquare
 === RUN   TestSquare/grains_on_square_1
 === RUN   TestSquare/grains_on_square_2
@@ -44,35 +643,56 @@ go test -v -covermode=count -coverprofile coverage.out grains
 --- PASS: ExampleTotal (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	grains	0.013s	coverage: 100.0% of statements
+ok  	grains	0.002s	coverage: 100.0% of statements
 
-real	0m1.082s
-user	0m1.198s
-sys	0m0.832s
+real	0m0.173s
+user	0m0.279s
+sys	0m0.148s
 
-===============================================================================
 
-go tool cover -func=coverage.out
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
 grains/grains.go:20:	isValidSquareID	100.0%
 grains/grains.go:29:	Square		100.0%
 grains/grains.go:41:	Total		100.0%
 total:			(statements)	100.0%
 
-real	0m0.504s
-user	0m0.690s
-sys	0m0.492s
+real	0m0.052s
+user	0m0.050s
+sys	0m0.087s
 
-===============================================================================
 
-go tool cover -html coverage.out -o coverage.html
+ ==============================================================================
 
-real	0m0.564s
-user	0m0.642s
-sys	0m0.553s
+Running: go tool cover -html coverage.out -o coverage.html
 
-===============================================================================
 
-go test -v -race -covermode=atomic grains
+real	0m0.062s
+user	0m0.074s
+sys	0m0.076s
+
+
+ ==============================================================================
+
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+real	0m0.024s
+user	0m0.024s
+sys	0m0.029s
+
+real	0m0.024s
+user	0m0.024s
+sys	0m0.029s
+
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
 === RUN   TestSquare
 === RUN   TestSquare/grains_on_square_1
 === RUN   TestSquare/grains_on_square_2
@@ -84,7 +704,7 @@ go test -v -race -covermode=atomic grains
 === RUN   TestSquare/square_0_raises_an_exception
 === RUN   TestSquare/negative_square_raises_an_exception
 === RUN   TestSquare/square_greater_than_64_raises_an_exception
---- PASS: TestSquare (0.01s)
+--- PASS: TestSquare (0.00s)
     --- PASS: TestSquare/grains_on_square_1 (0.00s)
     --- PASS: TestSquare/grains_on_square_2 (0.00s)
     --- PASS: TestSquare/grains_on_square_3 (0.00s)
@@ -103,110 +723,155 @@ go test -v -race -covermode=atomic grains
 --- PASS: ExampleTotal (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	grains	0.066s	coverage: 100.0% of statements
+ok  	grains	1.018s	coverage: 100.0% of statements
 
-real	0m1.464s
-user	0m2.078s
-sys	0m1.039s
+real	0m1.703s
+user	0m0.857s
+sys	0m0.188s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m2.048s
+user	0m1.308s
+sys	0m0.556s
+
+real	0m2.051s
+user	0m1.309s
+sys	0m0.558s
 
 ===============================================================================
 
 mv -v benchstat-new.txt benchstat-old.txt
 renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
 
-go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 goos: linux
 goarch: amd64
 pkg: grains
-cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
-BenchmarkSquare-4   	  729800	      2388 ns/op	     200 B/op	       7 allocs/op
-BenchmarkTotal-4    	 1238496	       914.7 ns/op	     128 B/op	       6 allocs/op
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+BenchmarkSquare
+BenchmarkSquare-8   	 2515102	       489.0 ns/op	     200 B/op	       7 allocs/op
+BenchmarkTotal
+BenchmarkTotal-8    	 9378760	       120.8 ns/op	     104 B/op	       3 allocs/op
 PASS
-ok  	grains	4.018s
+ok  	grains	2.981s
 
-real	0m4.916s
-user	0m7.169s
-sys	0m1.355s
+real	0m3.145s
+user	0m3.276s
+sys	0m0.214s
 
 ===============================================================================
 
-go test -tags bonus
+gotest -v -tags bonus
+=== RUN   TestSquare
+=== RUN   TestSquare/grains_on_square_1
+=== RUN   TestSquare/grains_on_square_2
+=== RUN   TestSquare/grains_on_square_3
+=== RUN   TestSquare/grains_on_square_4
+=== RUN   TestSquare/grains_on_square_16
+=== RUN   TestSquare/grains_on_square_32
+=== RUN   TestSquare/grains_on_square_64
+=== RUN   TestSquare/square_0_raises_an_exception
+=== RUN   TestSquare/negative_square_raises_an_exception
+=== RUN   TestSquare/square_greater_than_64_raises_an_exception
+--- PASS: TestSquare (0.00s)
+    --- PASS: TestSquare/grains_on_square_1 (0.00s)
+    --- PASS: TestSquare/grains_on_square_2 (0.00s)
+    --- PASS: TestSquare/grains_on_square_3 (0.00s)
+    --- PASS: TestSquare/grains_on_square_4 (0.00s)
+    --- PASS: TestSquare/grains_on_square_16 (0.00s)
+    --- PASS: TestSquare/grains_on_square_32 (0.00s)
+    --- PASS: TestSquare/grains_on_square_64 (0.00s)
+    --- PASS: TestSquare/square_0_raises_an_exception (0.00s)
+    --- PASS: TestSquare/negative_square_raises_an_exception (0.00s)
+    --- PASS: TestSquare/square_greater_than_64_raises_an_exception (0.00s)
+=== RUN   TestTotal
+--- PASS: TestTotal (0.00s)
+=== RUN   ExampleSquare
+--- PASS: ExampleSquare (0.00s)
+=== RUN   ExampleTotal
+--- PASS: ExampleTotal (0.00s)
 PASS
-ok  	grains	0.009s
+ok  	grains	0.002s
 
-real	0m0.913s
-user	0m1.207s
-sys	0m0.720s
+real	0m0.125s
+user	0m0.162s
+sys	0m0.143s
 
 ===============================================================================
-
-go install golang.org/x/perf/cmd/benchstat@latest
-
-real	0m1.048s
-user	0m1.019s
-sys	0m0.578s
 
 benchstat benchstat-old.txt benchstat-new.txt
-name      old time/op    new time/op    delta
-Square-4    1.52µs ± 0%    2.39µs ± 0%   ~     (p=1.000 n=1+1)
-Total-4      687ns ± 0%     915ns ± 0%   ~     (p=1.000 n=1+1)
+benchstat-new.txt:5: missing iteration count
+benchstat-new.txt:7: missing iteration count
+goos: linux
+goarch: amd64
+pkg: grains
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+         │ benchstat-new.txt │
+         │      sec/op       │
+Square-8        489.0n ± ∞ ¹
+Total-8         120.8n ± ∞ ¹
+geomean         243.0n
+¹ need >= 6 samples for confidence interval at level 0.95
 
-name      old alloc/op   new alloc/op   delta
-Square-4      200B ± 0%      200B ± 0%   ~     (all equal)
-Total-4       128B ± 0%      128B ± 0%   ~     (all equal)
+         │ benchstat-new.txt │
+         │       B/op        │
+Square-8         200.0 ± ∞ ¹
+Total-8          104.0 ± ∞ ¹
+geomean          144.2
+¹ need >= 6 samples for confidence interval at level 0.95
 
-name      old allocs/op  new allocs/op  delta
-Square-4      7.00 ± 0%      7.00 ± 0%   ~     (all equal)
-Total-4       6.00 ± 0%      6.00 ± 0%   ~     (all equal)
+         │ benchstat-new.txt │
+         │     allocs/op     │
+Square-8         7.000 ± ∞ ¹
+Total-8          3.000 ± ∞ ¹
+geomean          4.583
+¹ need >= 6 samples for confidence interval at level 0.95
 
-real	0m0.072s
-user	0m0.049s
-sys	0m0.071s
+cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+         │ benchstat-old.txt │
+         │      sec/op       │
+Square-4        2.388µ ± ∞ ¹
+Total-4         914.7n ± ∞ ¹
+geomean         1.478µ
+¹ need >= 6 samples for confidence interval at level 0.95
 
-===============================================================================
+         │ benchstat-old.txt │
+         │       B/op        │
+Square-4         200.0 ± ∞ ¹
+Total-4          128.0 ± ∞ ¹
+geomean          160.0
+¹ need >= 6 samples for confidence interval at level 0.95
 
-go vet grains
+         │ benchstat-old.txt │
+         │     allocs/op     │
+Square-4         7.000 ± ∞ ¹
+Total-4          6.000 ± ∞ ¹
+geomean          6.481
+¹ need >= 6 samples for confidence interval at level 0.95
 
-real	0m0.906s
-user	0m1.140s
-sys	0m0.620s
-
-===============================================================================
-
-go fix grains
-
-real	0m0.377s
-user	0m0.314s
-sys	0m0.276s
-
-===============================================================================
-
-gosec ./grains
-[gosec] 2022/07/27 12:33:10 Including rules: default
-[gosec] 2022/07/27 12:33:10 Excluding rules: default
-[gosec] 2022/07/27 12:33:10 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/grains
-2022/07/27 12:33:11 internal error: package "fmt" without types was imported from "command-line-arguments"
-
-real	0m0.912s
-user	0m1.122s
-sys	0m0.682s
+real	0m0.003s
+user	0m0.002s
+sys	0m0.001s
 
 ===============================================================================
 
 gomarkdoc --output grains-doc.md
 
-real	0m0.050s
-user	0m0.040s
-sys	0m0.035s
+real	0m0.014s
+user	0m0.010s
+sys	0m0.004s
 
 ===============================================================================
 
 go doc -all grains
 package grains // import "grains"
 
-Package grains calculates the number of grains of wheat on a given
-chessboard square or on the whole chessboard given that the number on each
-square doubles.
+Package grains calculates the number of grains of wheat on a given chessboard
+square or on the whole chessboard given that the number on each square doubles.
 
 FUNCTIONS
 
@@ -218,9 +883,9 @@ func Total() uint64
     https://en.wikipedia.org/wiki/Wheat_and_chessboard_problem#:~:text=The%20number%20of%20grains%20of,of%20one%20grain%20of%20wheat).
 
 
-real	0m0.370s
-user	0m0.402s
-sys	0m0.420s
+real	0m0.034s
+user	0m0.026s
+sys	0m0.028s
 
 
 ===============================================================================

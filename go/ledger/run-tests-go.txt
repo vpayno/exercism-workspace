@@ -5,86 +5,502 @@ Go packages: ledger
 
 ===============================================================================
 
-golangci-lint run ./...
+Running: ../../.github/citools/go/go-lint-golangci-lint
+
+Running GoLangCi-Lint
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.029s
+user	0m0.026s
+sys	0m0.030s
+
+
+ ==============================================================================
+
+Running: golangci-lint run --enable-all ./...
+
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
 ledger_test.go:291:14: Error return value is not checked (errcheck)
 	FormatLedger("USD", "en-US", entries)
 	            ^
 ledger_test.go:303:16: Error return value is not checked (errcheck)
 			FormatLedger(tt.currency, tt.locale, tt.entries)
 			            ^
+ledger.go:89: Function 'localizedCurrency' has too many statements (50 > 40) (funlen)
+func localizedCurrency(locale, currency string, cents int) (string, error) {
+ledger.go:57:7: string `nl-NL` has 8 occurrences, make it a constant (goconst)
+	case "nl-NL":
+	     ^
+ledger.go:60:7: string `en-US` has 7 occurrences, make it a constant (goconst)
+	case "en-US":
+	     ^
+ledger.go:168: File is not `gofumpt`-ed (gofumpt)
 
-real	0m9.569s
-user	0m19.126s
-sys	0m3.935s
+ledger.go:232: File is not `gofumpt`-ed (gofumpt)
+
+ledger.go:238: File is not `gofumpt`-ed (gofumpt)
+
+ledger.go:1: line is 122 characters (lll)
+// Package ledger prints a nicely formatted ledger, given a locale (American or Dutch) and a currency (US dollar or euro).
+ledger_test.go:253:32: Using the variable on range scope `tc` in function literal (scopelint)
+			actual, err := FormatLedger(tc.currency, tc.locale, tc.entries)
+			                            ^
+ledger_test.go:255:78: Using the variable on range scope `tc` in function literal (scopelint)
+				t.Fatalf("FormatLedger for input named %q returned unexpected error %v", tc.name, err)
+				                                                                         ^
+ledger_test.go:257:16: Using the variable on range scope `tc` in function literal (scopelint)
+			expected := tc.expected[1:] // Strip initial newline
+			            ^
+ledger_test.go:268:27: Using the variable on range scope `tt` in function literal (scopelint)
+			_, err := FormatLedger(tt.currency, tt.locale, tt.entries)
+			                       ^
+ledger_test.go:270:67: Using the variable on range scope `tt` in function literal (scopelint)
+				t.Fatalf("FormatLedger for input %q expected error, got nil", tt.name)
+				                                                              ^
+ledger_test.go:292:2: if statements should only be cuddled with assignments (wsl)
+	if !reflect.DeepEqual(entries, entriesCopy) {
+	^
+ledger_test.go:301:2: for statements should only be cuddled with assignments used in the iteration (wsl)
+	for i := 0; i < b.N; i++ {
+	^
+ledger_test.go:8:5: successTestCases is a global variable (gochecknoglobals)
+var successTestCases = []struct {
+    ^
+ledger_test.go:194:5: failureTestCases is a global variable (gochecknoglobals)
+var failureTestCases = []struct {
+    ^
+ledger.go:41:14: err113: do not define dynamic errors, use wrapped static errors instead: "errors.New(\"wrong size date\")" (goerr113)
+		return "", errors.New("wrong size date")
+		           ^
+ledger.go:53:14: err113: do not define dynamic errors, use wrapped static errors instead: "errors.New(\"invalid date separator\")" (goerr113)
+		return "", errors.New("invalid date separator")
+		           ^
+ledger.go:64:18: err113: do not define dynamic errors, use wrapped static errors instead: "errors.New(\"failed to render localized date\")" (goerr113)
+		return output, errors.New("failed to render localized date")
+		               ^
+ledger.go:83:14: err113: do not define dynamic errors, use wrapped static errors instead: "errors.New(\"failed to render localized header\")" (goerr113)
+		return "", errors.New("failed to render localized header")
+		           ^
+ledger.go:119:14: err113: do not define dynamic errors, use wrapped static errors instead: "errors.New(\"invalid currency\")" (goerr113)
+		return "", errors.New("invalid currency")
+		           ^
+ledger.go:199:21: err113: do not define dynamic errors, use wrapped static errors instead: "errors.New(\"unable to copy the entries slice\")" (goerr113)
+		return []Entry{}, errors.New("unable to copy the entries slice")
+		                  ^
+ledger.go:40:18: mnd: Magic number: 10, in <condition> detected (gomnd)
+	if len(date) != 10 {
+	                ^
+ledger.go:250:31: mnd: Magic number: 25, in <condition> detected (gomnd)
+		if len(entry.Description) > 25 {
+		                            ^
+ledger_test.go:250:1: Function TestFormatLedgerSuccess missing the call to method parallel (paralleltest)
+func TestFormatLedgerSuccess(t *testing.T) {
+^
+ledger_test.go:251:2: Range statement for test TestFormatLedgerSuccess missing the call to method parallel in test Run (paralleltest)
+	for _, tc := range successTestCases {
+	^
+ledger_test.go:265:1: Function TestFormatLedgerFailure missing the call to method parallel (paralleltest)
+func TestFormatLedgerFailure(t *testing.T) {
+^
+ledger_test.go:266:2: Range statement for test TestFormatLedgerFailure missing the call to method parallel in test Run (paralleltest)
+	for _, tt := range failureTestCases {
+	^
+ledger_test.go:276:1: Function TestFormatLedgerNotChangeInput missing the call to method parallel (paralleltest)
+func TestFormatLedgerNotChangeInput(t *testing.T) {
+^
+ledger_test.go:1:9: package should be `ledger_test` instead of `ledger` (testpackage)
+package ledger
+        ^
+ledger.go:202:2: variable name 'es' is too short for the scope of its usage (varnamelen)
+	es := entriesCopy
+	^
+ledger.go:46:2: variable name 'd1' is too short for the scope of its usage (varnamelen)
+	d1 := date[0:4]
+	^
+ledger.go:207:7: variable name 'i' is too short for the scope of its usage (varnamelen)
+		for i, e := range rest {
+		    ^
+ledger.go:48:2: variable name 'd3' is too short for the scope of its usage (varnamelen)
+	d3 := date[5:7]
+	^
+ledger.go:50:2: variable name 'd5' is too short for the scope of its usage (varnamelen)
+	d5 := date[8:10]
+	^
+
+real	0m0.626s
+user	0m1.069s
+sys	0m0.577s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.672s
+user	0m1.106s
+sys	0m0.619s
+
+real	0m0.676s
+user	0m1.108s
+sys	0m0.621s
 
 ===============================================================================
 
-golint ./...
+Running: ../../.github/citools/go/go-lint-revive
 
-real	0m0.096s
-user	0m0.079s
-sys	0m0.068s
+Running Go Lint Revive
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.023s
+user	0m0.018s
+sys	0m0.022s
+
+
+ ==============================================================================
+
+Running: revive -formatter=stylish ./...
+
+
+real	0m0.056s
+user	0m0.041s
+sys	0m0.031s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.089s
+user	0m0.064s
+sys	0m0.062s
+
+real	0m0.091s
+user	0m0.065s
+sys	0m0.063s
 
 ===============================================================================
 
-revive -formatter=stylish ./...
+Running: ../../.github/citools/go/go-lint-ineffassign
+../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
 
-real	0m0.047s
-user	0m0.032s
-sys	0m0.016s
-
-===============================================================================
-
-ineffassign ./...
-
-real	0m0.285s
-user	0m0.279s
-sys	0m0.325s
+real	0m0.001s
+user	0m0.000s
+sys	0m0.000s
 
 ===============================================================================
 
-go-consistent -v ./...
+Running: ../../.github/citools/go/go-lint-go-consistent
+
+Running Go go-consistent
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.019s
+user	0m0.011s
+sys	0m0.023s
+
+
+ ==============================================================================
+
+Running: go-consistent -v ./...
+
 	info: check "./."
+internal error: package "errors" without types was imported from "ledger"
 
-real	0m0.455s
-user	0m0.519s
-sys	0m0.412s
+real	0m0.088s
+user	0m0.130s
+sys	0m0.109s
 
-===============================================================================
 
-staticcheck ./...
+ ==============================================================================
 
-real	0m0.557s
-user	0m0.514s
-sys	0m0.455s
+Exit code: -1
 
-===============================================================================
+real	0m0.122s
+user	0m0.148s
+sys	0m0.145s
 
-gocritic check -enableAll ./...
-
-real	0m2.807s
-user	0m4.748s
-sys	0m1.332s
+real	0m0.123s
+user	0m0.150s
+sys	0m0.145s
 
 ===============================================================================
 
-go vet ./...
+Running: ../../.github/citools/go/go-lint-staticcheck
 
-real	0m0.296s
-user	0m0.307s
-sys	0m0.323s
+Running Go StaticCheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.031s
+user	0m0.032s
+sys	0m0.036s
+
+
+ ==============================================================================
+
+Running: staticcheck -checks=all ./...
+
+
+real	0m0.161s
+user	0m0.231s
+sys	0m0.109s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.205s
+user	0m0.270s
+sys	0m0.155s
+
+real	0m0.207s
+user	0m0.270s
+sys	0m0.157s
 
 ===============================================================================
 
-go fix ./...
+Running: ../../.github/citools/go/go-lint-gocritic
 
-real	0m0.102s
-user	0m0.093s
-sys	0m0.121s
+Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.023s
+user	0m0.023s
+sys	0m0.031s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+
+real	0m0.846s
+user	0m2.068s
+sys	0m0.280s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.881s
+user	0m2.097s
+sys	0m0.321s
+
+real	0m0.882s
+user	0m2.098s
+sys	0m0.321s
 
 ===============================================================================
 
-gocyclo .
+Running: ../../.github/citools/go/go-lint-go_vet
+
+Running Go Vet
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.020s
+user	0m0.022s
+sys	0m0.018s
+
+
+ ==============================================================================
+
+Running: go vet ./...
+
+
+real	0m0.079s
+user	0m0.140s
+sys	0m0.106s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.121s
+user	0m0.171s
+sys	0m0.141s
+
+real	0m0.124s
+user	0m0.172s
+sys	0m0.142s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-fixer-go_fix
+
+Running go fix
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.022s
+user	0m0.026s
+sys	0m0.023s
+
+
+ ==============================================================================
+
+Running: go fix ./...
+
+
+real	0m0.025s
+user	0m0.026s
+sys	0m0.019s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.058s
+user	0m0.058s
+sys	0m0.050s
+
+real	0m0.060s
+user	0m0.059s
+sys	0m0.051s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-errcheck
+
+Running Go errcheck
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.021s
+user	0m0.019s
+sys	0m0.021s
+
+
+ ==============================================================================
+
+Running: errcheck ./...
+
+ledger_test.go:291:14:	FormatLedger("USD", "en-US", entries)
+ledger_test.go:303:16:	FormatLedger(tt.currency, tt.locale, tt.entries)
+
+real	0m0.445s
+user	0m1.256s
+sys	0m0.258s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.476s
+user	0m1.282s
+sys	0m0.286s
+
+real	0m0.478s
+user	0m1.283s
+sys	0m0.287s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-gocyclo
+
+Running Go gocyclo
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.022s
+user	0m0.014s
+sys	0m0.036s
+
+
+ ==============================================================================
+
+Running: gocyclo .
+
 22 ledger localizedCurrency ledger.go:89:1
 10 ledger sortEntries ledger.go:193:1
 9 ledger FormatLedger ledger.go:224:1
@@ -95,33 +511,139 @@ gocyclo .
 3 ledger localizedHeader ledger.go:70:1
 2 ledger TestFormatLedgerNotChangeInput ledger_test.go:276:1
 
-real	0m0.020s
-user	0m0.013s
-sys	0m0.008s
+real	0m0.003s
+user	0m0.003s
+sys	0m0.000s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.037s
+user	0m0.021s
+sys	0m0.047s
+
+real	0m0.039s
+user	0m0.021s
+sys	0m0.049s
 
 ===============================================================================
 
-misspell .
+Running: ../../.github/citools/go/go-lint-misspell
 
-real	0m0.151s
-user	0m0.121s
-sys	0m0.087s
+Running Go misspell
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: misspell .
+
+
+real	0m0.025s
+user	0m0.025s
+sys	0m0.012s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.036s
+user	0m0.031s
+sys	0m0.023s
+
+real	0m0.039s
+user	0m0.031s
+sys	0m0.025s
 
 ===============================================================================
 
-gosec ./...
-[gosec] 2022/08/31 21:15:29 Including rules: default
-[gosec] 2022/08/31 21:15:29 Excluding rules: default
-[gosec] 2022/08/31 21:15:29 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/ledger
-2022/08/31 21:15:29 internal error: package "errors" without types was imported from "command-line-arguments"
+Running: ../../.github/citools/go/go-lint-gosec
 
-real	0m0.662s
-user	0m0.703s
-sys	0m0.498s
+Running Go GoSec
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.024s
+user	0m0.023s
+sys	0m0.033s
+
+
+ ==============================================================================
+
+Running: gosec ./...
+
+[gosec] 2023/09/07 00:24:38 Including rules: default
+[gosec] 2023/09/07 00:24:38 Excluding rules: default
+[gosec] 2023/09/07 00:24:38 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/ledger
+[gosec] 2023/09/07 00:24:39 Checking package: ledger
+[gosec] 2023/09/07 00:24:39 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/ledger/ledger.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 272
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.128s
+user	0m0.158s
+sys	0m0.107s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.163s
+user	0m0.188s
+sys	0m0.149s
+
+real	0m0.165s
+user	0m0.188s
+sys	0m0.150s
 
 ===============================================================================
 
-gotest -v -covermode=count -coverprofile coverage.out ./...
+Running: ../../.github/citools/go/go-test-cover-report
+
+Running Go Test, Coverage & Reports
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.029s
+user	0m0.029s
+sys	0m0.028s
+
+
+ ==============================================================================
+
+Running: gotest -v -covermode=count -coverprofile coverage.out ./...
+
 === RUN   TestFormatLedgerSuccess
 === RUN   TestFormatLedgerSuccess/empty_ledger
 === RUN   TestFormatLedgerSuccess/one_entry
@@ -162,15 +684,17 @@ gotest -v -covermode=count -coverprofile coverage.out ./...
 --- PASS: TestFormatLedgerNotChangeInput (0.00s)
 PASS
 coverage: 96.2% of statements
-ok  	ledger	0.020s	coverage: 96.2% of statements
+ok  	ledger	0.003s	coverage: 96.2% of statements
 
-real	0m0.814s
-user	0m0.924s
-sys	0m0.677s
+real	0m0.186s
+user	0m0.253s
+sys	0m0.158s
 
-===============================================================================
 
-go tool cover -func=coverage.out
+ ==============================================================================
+
+Running: go tool cover -func=coverage.out
+
 ledger/ledger.go:39:	localizedDate		93.3%
 ledger/ledger.go:70:	localizedHeader		100.0%
 ledger/ledger.go:89:	localizedCurrency	100.0%
@@ -178,21 +702,26 @@ ledger/ledger.go:193:	sortEntries		85.7%
 ledger/ledger.go:224:	FormatLedger		95.8%
 total:			(statements)		96.2%
 
-real	0m0.219s
-user	0m0.222s
-sys	0m0.238s
+real	0m0.057s
+user	0m0.084s
+sys	0m0.089s
 
-===============================================================================
 
-go tool cover -html coverage.out -o coverage.html
+ ==============================================================================
 
-real	0m0.288s
-user	0m0.241s
-sys	0m0.306s
+Running: go tool cover -html coverage.out -o coverage.html
 
-===============================================================================
 
-gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+real	0m0.053s
+user	0m0.079s
+sys	0m0.082s
+
+
+ ==============================================================================
+
+Running: cover_annotate
+
+Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
 
 224     	func FormatLedger(currency, locale string, entries []Entry) (string, error) {
 225     		if len(entries) == 0 {
@@ -308,13 +837,19 @@ gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annota
 221     	}
 
 
-real	0m0.106s
-user	0m0.072s
-sys	0m0.095s
+real	0m0.022s
+user	0m0.019s
+sys	0m0.030s
 
-===============================================================================
+real	0m0.022s
+user	0m0.019s
+sys	0m0.030s
 
-gotest -v -race -covermode=atomic ./...
+
+ ==============================================================================
+
+Running: gotest -v -race -covermode=atomic ./...
+
 === RUN   TestFormatLedgerSuccess
 === RUN   TestFormatLedgerSuccess/empty_ledger
 === RUN   TestFormatLedgerSuccess/one_entry
@@ -355,27 +890,43 @@ gotest -v -race -covermode=atomic ./...
 --- PASS: TestFormatLedgerNotChangeInput (0.00s)
 PASS
 coverage: 96.2% of statements
-ok  	ledger	0.037s	coverage: 96.2% of statements
+ok  	ledger	1.015s	coverage: 96.2% of statements
 
-real	0m0.904s
-user	0m0.908s
-sys	0m0.603s
+real	0m1.267s
+user	0m0.302s
+sys	0m0.190s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.628s
+user	0m0.771s
+sys	0m0.588s
+
+real	0m1.630s
+user	0m0.772s
+sys	0m0.589s
 
 ===============================================================================
+
+mv -v benchstat-new.txt benchstat-old.txt
+renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
 
 gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 goos: linux
 goarch: amd64
 pkg: ledger
-cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
 BenchmarkFormatLedger
-BenchmarkFormatLedger-4   	   26844	     46222 ns/op	    7281 B/op	     243 allocs/op
+BenchmarkFormatLedger-8   	   79789	     12738 ns/op	    7282 B/op	     243 allocs/op
 PASS
-ok  	ledger	1.746s
+ok  	ledger	1.173s
 
-real	0m2.249s
-user	0m3.036s
-sys	0m0.590s
+real	0m1.315s
+user	0m1.402s
+sys	0m0.166s
 
 ===============================================================================
 
@@ -419,23 +970,63 @@ gotest -v -tags bonus
 === RUN   TestFormatLedgerNotChangeInput
 --- PASS: TestFormatLedgerNotChangeInput (0.00s)
 PASS
-ok  	ledger	0.015s
+ok  	ledger	0.002s
 
-real	0m0.531s
-user	0m0.591s
-sys	0m0.405s
+real	0m0.132s
+user	0m0.178s
+sys	0m0.142s
 
 ===============================================================================
 
-No old benchmarks to run benchstat against.
+benchstat benchstat-old.txt benchstat-new.txt
+benchstat-old.txt:5: missing iteration count
+benchstat-new.txt:5: missing iteration count
+goos: linux
+goarch: amd64
+pkg: ledger
+cpu: 12th Gen Intel(R) Core(TM) i5-1240P
+               │ benchstat-new.txt │
+               │      sec/op       │
+FormatLedger-8        12.74µ ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
+
+               │ benchstat-new.txt │
+               │       B/op        │
+FormatLedger-8       7.111Ki ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
+
+               │ benchstat-new.txt │
+               │     allocs/op     │
+FormatLedger-8         243.0 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
+
+cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
+               │ benchstat-old.txt │
+               │      sec/op       │
+FormatLedger-4        46.22µ ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
+
+               │ benchstat-old.txt │
+               │       B/op        │
+FormatLedger-4       7.110Ki ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
+
+               │ benchstat-old.txt │
+               │     allocs/op     │
+FormatLedger-4         243.0 ± ∞ ¹
+¹ need >= 6 samples for confidence interval at level 0.95
+
+real	0m0.003s
+user	0m0.001s
+sys	0m0.001s
 
 ===============================================================================
 
 gomarkdoc --output ledger-doc.md
 
-real	0m0.058s
-user	0m0.038s
-sys	0m0.049s
+real	0m0.011s
+user	0m0.004s
+sys	0m0.007s
 
 ===============================================================================
 
@@ -461,9 +1052,9 @@ type Entry struct {
     Entry type consists of a date, description and change.
 
 
-real	0m0.208s
-user	0m0.125s
-sys	0m0.208s
+real	0m0.038s
+user	0m0.025s
+sys	0m0.043s
 
 
 ===============================================================================

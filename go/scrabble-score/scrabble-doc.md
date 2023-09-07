@@ -6,7 +6,7 @@
 import "scrabble"
 ```
 
-Package scrabble Given a word\, compute the Scrabble score for that word\.
+Package scrabble Given a word, compute the Scrabble score for that word.
 
 ## Index
 
@@ -19,7 +19,7 @@ Package scrabble Given a word\, compute the Scrabble score for that word\.
 func Score(word string) int
 ```
 
-Score returns an \`int\` scrablle score for a given word \(\`string\`\)\.
+Score returns an \`int\` scrablle score for a given word \(\`string\`\).
 
 <details><summary>Example</summary>
 <p>
