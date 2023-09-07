@@ -67,10 +67,16 @@ main() {
 	time curl https://sh.rustup.rs -sSf | bash -s -- -y || exit
 	printf "\n"
 
-	# ENV PATH="/root/.cargo/bin:${PATH}"
-	printf "source %s\n" "${HOME}/.cargo/env" | tee -a "${HOME}/.bashrc"
+	cat >>~/.bashrc <<-EOF
+		export PATH="${PATH}:${HOME}/.cargo/bin"
+	EOF
+
 	# shellcheck disable=SC1091
 	source "${HOME}/.bashrc"
+
+	echo Running: rustup install stable
+	time rustup install stable || exit
+	printf "\n"
 
 	echo Running: rustup default stable
 	time rustup default stable || exit
@@ -132,4 +138,4 @@ main() {
 	layer_end "${0}" "$@"
 }
 
-main "${@}" |& tee /root/layer-15.00-exercism-rust.log
+time main "${@}" |& tee /root/layer-15.00-exercism-rust.log
