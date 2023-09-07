@@ -1,0 +1,38 @@
+#!/bin/bash
+#
+# .github/citools/go/go-lint-golangci-lint
+#
+
+# go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+
+# shellcheck disable=SC1091
+source ../../.github/citools/includes/wrapper-library || exit
+
+declare -i retval=0
+
+declare -a args
+args=("${@}")
+if [[ ${#args[@]} -eq 0 ]]; then
+	args=(run --enable-all)
+fi
+
+main() {
+	printf "\nRunning GoLangCi-Lint\n\n"
+
+	show_tool_versions_go
+
+	print_ruler
+
+	run_command go clean ./...
+
+	print_ruler
+
+	run_command golangci-lint "${args[@]}" ./...
+
+	print_ruler
+
+	echo Exit code: "${retval}"
+	return "${retval}"
+}
+
+time main "${@}"

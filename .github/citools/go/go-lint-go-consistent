@@ -1,0 +1,36 @@
+#!/bin/bash
+#
+# .github/citools/go/go-lint-go-consistent
+#
+
+# shellcheck disable=SC1091
+source ../../.github/citools/includes/wrapper-library || exit
+
+declare -i retval=0
+
+declare -a args
+args=("${@}")
+if [[ ${#args[@]} -eq 0 ]]; then
+	args=(-v)
+fi
+
+main() {
+	printf "\nRunning Go go-consistent\n\n"
+
+	show_tool_versions_go
+
+	print_ruler
+
+	run_command go clean ./...
+
+	print_ruler
+
+	run_command go-consistent "${args[@]}" ./...
+
+	print_ruler
+
+	echo Exit code: "${retval}"
+	return "${retval}"
+}
+
+time main "${@}"

@@ -1,0 +1,38 @@
+#!/bin/bash
+#
+# .github/citools/go/go-lint-gocyclo
+#
+
+# go install github.com/fzipp/gocyclo/cmd/gocyclo@latest
+
+# shellcheck disable=SC1091
+source ../../.github/citools/includes/wrapper-library || exit
+
+declare -i retval=0
+
+declare -a args
+args=("${@}")
+if [[ ${#args[@]} -eq 0 ]]; then
+	args=()
+fi
+
+main() {
+	printf "\nRunning Go gocyclo\n\n"
+
+	show_tool_versions_go
+
+	print_ruler
+
+	run_command go clean ./...
+
+	print_ruler
+
+	run_command gocyclo "${args[@]}" .
+
+	print_ruler
+
+	echo Exit code: "${retval}"
+	return "${retval}"
+}
+
+time main "${@}"

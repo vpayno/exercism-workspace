@@ -1,0 +1,38 @@
+#!/bin/bash
+#
+# .github/citools/go/go-lint-revive
+#
+
+# go install github.com/mgechev/revive@latest
+
+# shellcheck disable=SC1091
+source ../../.github/citools/includes/wrapper-library || exit
+
+declare -i retval=0
+
+declare -a args
+args=("${@}")
+if [[ ${#args[@]} -eq 0 ]]; then
+	args=(-formatter=stylish)
+fi
+
+main() {
+	printf "\nRunning Go Lint Revive\n\n"
+
+	show_tool_versions_go
+
+	print_ruler
+
+	run_command go clean ./...
+
+	print_ruler
+
+	run_command revive "${args[@]}" ./...
+
+	print_ruler
+
+	echo Exit code: "${retval}"
+	return "${retval}"
+}
+
+time main "${@}"

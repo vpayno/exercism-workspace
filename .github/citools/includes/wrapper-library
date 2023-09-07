@@ -76,3 +76,33 @@ show_tool_versions_rust() {
 	# md_code_tag
 	printf "\n"
 } # show_tool_versions_rust()
+
+show_tool_versions_go() {
+	# md_code_tag text
+	printf "Go version:\n"
+	printf "\n"
+	go version | paste /dev/null -
+	# md_code_tag
+	printf "\n"
+
+	if [[ -z ${GITHUB_ACTIONS} ]]; then
+		return
+	fi
+
+	# md_code_tag text
+	printf "Installed Go packages:\n"
+	printf "\n"
+	# shellcheck disable=SC2012
+	ls ~/go/bin | paste /dev/null -
+	# md_code_tag
+	printf "\n"
+
+	# md_code_tag text
+	printf "Environment variables:\n"
+	printf "\n"
+	printf "%s=%s\n" "PATH" "${PATH}"
+	printf "\n"
+	printf "%s=%s\n" "GOBIN" "${GOBIN}" "GOPATH" "${GOPATH}"
+	# md_code_tag
+	printf "\n"
+} # show_tool_versions_go()

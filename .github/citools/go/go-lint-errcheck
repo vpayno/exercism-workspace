@@ -1,0 +1,30 @@
+#!/bin/bash
+#
+# .github/citools/go/go-lint-errcheck
+#
+
+# shellcheck disable=SC1091
+source ../../.github/citools/includes/wrapper-library || exit
+
+declare -i retval=0
+
+main() {
+	printf "\nRunning Go errcheck\n\n"
+
+	show_tool_versions_go
+
+	print_ruler
+
+	run_command go clean ./...
+
+	print_ruler
+
+	run_command errcheck "${@}" ./...
+
+	print_ruler
+
+	echo Exit code: "${retval}"
+	return "${retval}"
+}
+
+time main "${@}"

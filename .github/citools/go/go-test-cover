@@ -1,0 +1,34 @@
+#!/bin/bash
+#
+# .github/citools/go/go-test-cover
+#
+
+# shellcheck disable=SC1091
+source ../../.github/citools/includes/wrapper-library || exit
+
+declare -i retval=0
+
+main() {
+	printf "\nRunning Go Test & Coverage\n\n"
+
+	show_tool_versions_go
+
+	print_ruler
+
+	run_command go clean ./...
+
+	print_ruler
+
+	run_command gotest -v -covermode=count -coverprofile coverage.out ./...
+
+	print_ruler
+
+	run_command go tool cover -func=coverage.out
+
+	print_ruler
+
+	echo Exit code: "${retval}"
+	return "${retval}"
+}
+
+time main "${@}"

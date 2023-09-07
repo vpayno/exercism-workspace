@@ -1,0 +1,38 @@
+#!/bin/bash
+#
+# .github/citools/go/go-lint-staticcheck
+#
+
+# go install honnef.co/go/tools/cmd/staticcheck@latest
+
+# shellcheck disable=SC1091
+source ../../.github/citools/includes/wrapper-library || exit
+
+declare -i retval=0
+
+declare -a args
+args=("${@}")
+if [[ ${#args[@]} -eq 0 ]]; then
+	args=(-checks=all)
+fi
+
+main() {
+	printf "\nRunning Go StaticCheck\n\n"
+
+	show_tool_versions_go
+
+	print_ruler
+
+	run_command go clean ./...
+
+	print_ruler
+
+	run_command staticcheck "${args[@]}" ./...
+
+	print_ruler
+
+	echo Exit code: "${retval}"
+	return "${retval}"
+}
+
+time main "${@}"
