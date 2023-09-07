@@ -6,7 +6,7 @@
 import "census"
 ```
 
-Package census simulates a system used to collect census data\.
+Package census simulates a system used to collect census data.
 
 ## Index
 
@@ -23,7 +23,7 @@ Package census simulates a system used to collect census data\.
 func Count(residents []*Resident) int
 ```
 
-Count counts all residents that have provided the required information\.
+Count counts all residents that have provided the required information.
 
 <details><summary>Example</summary>
 <p>
@@ -60,7 +60,7 @@ Count counts all residents that have provided the required information\.
 
 ## type [Resident](<https://github.com/vpayno/exercism-workspace/blob/main/go/census/census.go#L5-L9>)
 
-Resident represents a resident in this city\.
+Resident represents a resident in this city.
 
 ```go
 type Resident struct {
@@ -76,7 +76,7 @@ type Resident struct {
 func NewResident(name string, age int, address map[string]string) *Resident
 ```
 
-NewResident registers a new resident in this city\.
+NewResident registers a new resident in this city.
 
 <details><summary>Example</summary>
 <p>
@@ -107,7 +107,35 @@ NewResident registers a new resident in this city\.
 func (r *Resident) Delete()
 ```
 
-Delete deletes a resident's information\.
+Delete deletes a resident's information.
+
+<details><summary>Example</summary>
+<p>
+
+```go
+{
+	name := "Matthew Sanabria"
+	age := 29
+	address := map[string]string{"street": "Main St."}
+
+	resident := NewResident(name, age, address)
+
+	fmt.Printf("%#v\n", resident)
+	resident.Delete()
+	fmt.Printf("%#v\n", resident)
+
+}
+```
+
+#### Output
+
+```
+&census.Resident{Name:"Matthew Sanabria", Age:29, Address:map[string]string{"street":"Main St."}}
+&census.Resident{Name:"", Age:0, Address:map[string]string(nil)}
+```
+
+</p>
+</details>
 
 ### func \(\*Resident\) [HasRequiredInfo](<https://github.com/vpayno/exercism-workspace/blob/main/go/census/census.go#L23>)
 
@@ -115,7 +143,32 @@ Delete deletes a resident's information\.
 func (r *Resident) HasRequiredInfo() bool
 ```
 
-HasRequiredInfo determines if a given resident has all of the required information\.
+HasRequiredInfo determines if a given resident has all of the required information.
+
+<details><summary>Example</summary>
+<p>
+
+```go
+{
+	name := "Matthew Sanabria"
+	age := 0
+	address := make(map[string]string)
+
+	resident := NewResident(name, age, address)
+
+	fmt.Println(resident.HasRequiredInfo())
+
+}
+```
+
+#### Output
+
+```
+false
+```
+
+</p>
+</details>
 
 
 

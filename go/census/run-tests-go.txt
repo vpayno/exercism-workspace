@@ -5,15 +5,242 @@ Go packages: census
 
 ===============================================================================
 
-golint census
+golangci-lint run --enable-all ./...
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+census_test.go:43: Function 'TestHasRequiredInfo' is too long (92 > 60) (funlen)
+func TestHasRequiredInfo(t *testing.T) {
+census_test.go:185: Function 'TestCount' is too long (72 > 60) (funlen)
+func TestCount(t *testing.T) {
+census_examples_test.go:8:10: string `Matthew Sanabria` has 4 occurrences, make it a constant (goconst)
+	name := "Matthew Sanabria"
+	        ^
+census_test.go:32: File is not `gofumpt`-ed (gofumpt)
 
-real	0m0.179s
-user	0m0.131s
-sys	0m0.117s
+census_test.go:130: File is not `gofumpt`-ed (gofumpt)
+
+census_test.go:174: File is not `gofumpt`-ed (gofumpt)
+
+census.go:24:13: var-declaration: should omit type bool from declaration of var result; it will be inferred from the right-hand side (revive)
+	var result bool = true
+	           ^
+census_test.go:33:28: Using the variable on range scope `test` in function literal (scopelint)
+			resident := NewResident(test.resident.Name, test.resident.Age, test.resident.Address)
+			                        ^
+census_test.go:35:36: Using the variable on range scope `test` in function literal (scopelint)
+			if !reflect.DeepEqual(resident, test.resident) {
+			                                ^
+census_test.go:36:57: Using the variable on range scope `test` in function literal (scopelint)
+				t.Errorf("NewResident() = %#v, want %#v", resident, test.resident)
+				                                                    ^
+census_test.go:31: unnecessary leading newline (whitespace)
+		t.Run(test.name, func(t *testing.T) {
+
+census_test.go:129: unnecessary leading newline (whitespace)
+		t.Run(test.name, func(t *testing.T) {
+
+census_test.go:173: unnecessary leading newline (whitespace)
+		t.Run(test.name, func(t *testing.T) {
+
+census.go:12:77: block should not start with a whitespace (wsl)
+func NewResident(name string, age int, address map[string]string) *Resident {
+                                                                            ^
+census.go:40:29: block should not start with a whitespace (wsl)
+func (r *Resident) Delete() {
+                            ^
+census.go:43:7: Name, Age, Address are missing in Resident (exhaustivestruct)
+	*r = Resident{}
+	     ^
+census_test.go:16:15: Name, Age, Address are missing in Resident (exhaustivestruct)
+			resident: &Resident{},
+			           ^
+census_test.go:51:15: Name, Age, Address are missing in Resident (exhaustivestruct)
+			resident: &Resident{},
+			           ^
+census_test.go:118:15: Age is missing in Resident (exhaustivestruct)
+			resident: &Resident{
+			           ^
+census_examples_test.go:17:6: ExampleResident_HasRequiredInfo contains underscore. You should use mixedCap or MixedCap. (nosnakecase)
+func ExampleResident_HasRequiredInfo() {
+     ^
+census_examples_test.go:29:6: ExampleResident_Delete contains underscore. You should use mixedCap or MixedCap. (nosnakecase)
+func ExampleResident_Delete() {
+     ^
+census_test.go:9:1: Function TestNewResident missing the call to method parallel (paralleltest)
+func TestNewResident(t *testing.T) {
+^
+census_test.go:30:2: Range statement for test TestNewResident missing the call to method parallel in test Run (paralleltest)
+	for _, test := range tests {
+	^
+census_test.go:128:2: Range statement for test TestHasRequiredInfo missing the call to method parallel in test Run (paralleltest)
+	for _, test := range tests {
+	^
+census_test.go:139:1: Function TestDelete missing the call to method parallel (paralleltest)
+func TestDelete(t *testing.T) {
+^
+census_test.go:172:2: Range statement for test TestDelete missing the call to method parallel in test Run (paralleltest)
+	for _, test := range tests {
+	^
+census_test.go:250:2: Range statement for test TestCount missing the call to method parallel in test Run (paralleltest)
+	for _, test := range tests {
+	^
+census_examples_test.go:1:9: package should be `census_test` instead of `census` (testpackage)
+package census
+        ^
+census_test.go:2:9: package should be `census_test` instead of `census` (testpackage)
+package census
+        ^
+
+real	0m1.544s
+user	0m3.426s
+sys	0m0.560s
 
 ===============================================================================
 
-go test -v -covermode=count -coverprofile coverage.out census
+golint ./...
+
+real	0m0.027s
+user	0m0.003s
+sys	0m0.006s
+
+===============================================================================
+
+revive -formatter=stylish ./...
+census.go
+  (24, 13)  https://revive.run/r#var-declaration  should omit type bool from declaration of var result; it will be inferred from the right-hand side  
+
+
+ ✖ 1 problem (0 errors) (1 warnings)
+
+real	0m0.099s
+user	0m0.037s
+sys	0m0.053s
+
+===============================================================================
+
+ineffassign ./...
+
+real	0m0.109s
+user	0m0.140s
+sys	0m0.104s
+
+===============================================================================
+
+go-consistent -v ./...
+	info: check "./."
+internal error: package "fmt" without types was imported from "census [census.test]"
+
+real	0m0.108s
+user	0m0.153s
+sys	0m0.130s
+
+===============================================================================
+
+staticcheck ./...
+
+real	0m1.273s
+user	0m3.803s
+sys	0m0.380s
+
+===============================================================================
+
+gocritic check -enableAll ./...
+panic: load embedded ruleguard rules: rules/rules.go:13: can't load fmt
+
+goroutine 1 [running]:
+main.main()
+	/home/vpayno/go/pkg/mod/github.com/go-critic/go-critic@v0.6.7/cmd/gocritic/main.go:13 +0x52
+
+real	0m0.064s
+user	0m0.017s
+sys	0m0.036s
+
+===============================================================================
+
+go vet ./...
+
+real	0m0.102s
+user	0m0.150s
+sys	0m0.143s
+
+===============================================================================
+
+go fix ./...
+
+real	0m0.015s
+user	0m0.004s
+sys	0m0.014s
+
+===============================================================================
+
+errcheck ./...
+
+real	0m0.470s
+user	0m1.235s
+sys	0m0.267s
+
+===============================================================================
+
+gocyclo .
+5 census TestDelete census_test.go:139:1
+4 census (*Resident).HasRequiredInfo census.go:23:1
+3 census TestCount census_test.go:185:1
+3 census TestHasRequiredInfo census_test.go:43:1
+3 census TestNewResident census_test.go:9:1
+3 census Count census.go:47:1
+1 census ExampleCount census_examples_test.go:44:1
+1 census ExampleResident_Delete census_examples_test.go:29:1
+1 census ExampleResident_HasRequiredInfo census_examples_test.go:17:1
+1 census ExampleNewResident census_examples_test.go:7:1
+1 census (*Resident).Delete census.go:40:1
+1 census NewResident census.go:12:1
+
+real	0m0.022s
+user	0m0.001s
+sys	0m0.005s
+
+===============================================================================
+
+misspell .
+
+real	0m0.033s
+user	0m0.027s
+sys	0m0.019s
+
+===============================================================================
+
+gosec ./...
+[gosec] 2023/09/03 17:20:25 Including rules: default
+[gosec] 2023/09/03 17:20:25 Excluding rules: default
+[gosec] 2023/09/03 17:20:25 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/census
+[gosec] 2023/09/03 17:20:25 Checking package: census
+[gosec] 2023/09/03 17:20:25 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/census/census.go
+Results:
+
+
+[1;36mSummary:[0m
+  Gosec  : dev
+  Files  : 1
+  Lines  : 57
+  Nosec  : 0
+  Issues : [1;32m0[0m
+
+
+real	0m0.085s
+user	0m0.066s
+sys	0m0.039s
+
+===============================================================================
+
+gotest -v -covermode=count -coverprofile coverage.out ./...
 === RUN   TestNewResident
 === RUN   TestNewResident/no_data_collected
 === RUN   TestNewResident/all_data_collected
@@ -56,19 +283,19 @@ go test -v -covermode=count -coverprofile coverage.out census
     --- PASS: TestCount/some_data_collected (0.00s)
 === RUN   ExampleNewResident
 --- PASS: ExampleNewResident (0.00s)
-=== RUN   ExampleHasRequiredInfo
---- PASS: ExampleHasRequiredInfo (0.00s)
-=== RUN   ExampleDelete
---- PASS: ExampleDelete (0.00s)
+=== RUN   ExampleResident_HasRequiredInfo
+--- PASS: ExampleResident_HasRequiredInfo (0.00s)
+=== RUN   ExampleResident_Delete
+--- PASS: ExampleResident_Delete (0.00s)
 === RUN   ExampleCount
 --- PASS: ExampleCount (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	census	0.009s	coverage: 100.0% of statements
+ok  	census	0.002s	coverage: 100.0% of statements
 
-real	0m1.295s
-user	0m1.978s
-sys	0m0.938s
+real	0m0.276s
+user	0m0.676s
+sys	0m0.279s
 
 ===============================================================================
 
@@ -79,21 +306,29 @@ census/census.go:40:	Delete		100.0%
 census/census.go:47:	Count		100.0%
 total:			(statements)	100.0%
 
-real	0m0.144s
-user	0m0.119s
-sys	0m0.106s
+real	0m0.019s
+user	0m0.008s
+sys	0m0.016s
 
 ===============================================================================
 
 go tool cover -html coverage.out -o coverage.html
 
-real	0m0.127s
-user	0m0.074s
-sys	0m0.144s
+real	0m0.022s
+user	0m0.012s
+sys	0m0.015s
 
 ===============================================================================
 
-go test -v -race -covermode=atomic census
+gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
+
+real	0m0.069s
+user	0m0.006s
+sys	0m0.023s
+
+===============================================================================
+
+gotest -v -race -covermode=atomic ./...
 === RUN   TestNewResident
 === RUN   TestNewResident/no_data_collected
 === RUN   TestNewResident/all_data_collected
@@ -109,7 +344,7 @@ go test -v -race -covermode=atomic census
 === RUN   TestHasRequiredInfo/missing_street
 === RUN   TestHasRequiredInfo/age_is_optional
 === RUN   TestHasRequiredInfo/unknown_key_with_value_that_is_not_empty
---- PASS: TestHasRequiredInfo (0.02s)
+--- PASS: TestHasRequiredInfo (0.00s)
     --- PASS: TestHasRequiredInfo/no_data_collected (0.00s)
     --- PASS: TestHasRequiredInfo/all_data_collected (0.00s)
     --- PASS: TestHasRequiredInfo/missing_name (0.00s)
@@ -122,7 +357,7 @@ go test -v -race -covermode=atomic census
 === RUN   TestDelete/no_data_collected
 === RUN   TestDelete/all_data_collected
 === RUN   TestDelete/some_data_collected
---- PASS: TestDelete (0.01s)
+--- PASS: TestDelete (0.00s)
     --- PASS: TestDelete/no_data_collected (0.00s)
     --- PASS: TestDelete/all_data_collected (0.00s)
     --- PASS: TestDelete/some_data_collected (0.00s)
@@ -136,92 +371,106 @@ go test -v -race -covermode=atomic census
     --- PASS: TestCount/some_data_collected (0.00s)
 === RUN   ExampleNewResident
 --- PASS: ExampleNewResident (0.00s)
-=== RUN   ExampleHasRequiredInfo
---- PASS: ExampleHasRequiredInfo (0.00s)
-=== RUN   ExampleDelete
---- PASS: ExampleDelete (0.00s)
+=== RUN   ExampleResident_HasRequiredInfo
+--- PASS: ExampleResident_HasRequiredInfo (0.00s)
+=== RUN   ExampleResident_Delete
+--- PASS: ExampleResident_Delete (0.00s)
 === RUN   ExampleCount
 --- PASS: ExampleCount (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	census	0.175s	coverage: 100.0% of statements
+ok  	census	1.015s	coverage: 100.0% of statements
 
-real	0m1.539s
-user	0m1.942s
-sys	0m1.033s
+real	0m6.179s
+user	0m13.133s
+sys	0m1.732s
 
 ===============================================================================
 
-go test --run=xxx --bench . --benchmem |& tee benchstat-new.txt
+mv -v benchstat-new.txt benchstat-old.txt
+renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
+
+gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 PASS
-ok  	census	0.033s
+ok  	census	0.002s
 
-real	0m0.898s
-user	0m1.114s
-sys	0m0.716s
+real	0m0.134s
+user	0m0.192s
+sys	0m0.138s
 
 ===============================================================================
 
-go test -tags bonus
+gotest -v -tags bonus
+=== RUN   TestNewResident
+=== RUN   TestNewResident/no_data_collected
+=== RUN   TestNewResident/all_data_collected
+--- PASS: TestNewResident (0.00s)
+    --- PASS: TestNewResident/no_data_collected (0.00s)
+    --- PASS: TestNewResident/all_data_collected (0.00s)
+=== RUN   TestHasRequiredInfo
+=== RUN   TestHasRequiredInfo/no_data_collected
+=== RUN   TestHasRequiredInfo/all_data_collected
+=== RUN   TestHasRequiredInfo/missing_name
+=== RUN   TestHasRequiredInfo/nil_map_as_address
+=== RUN   TestHasRequiredInfo/empty_map_as_address
+=== RUN   TestHasRequiredInfo/missing_street
+=== RUN   TestHasRequiredInfo/age_is_optional
+=== RUN   TestHasRequiredInfo/unknown_key_with_value_that_is_not_empty
+--- PASS: TestHasRequiredInfo (0.00s)
+    --- PASS: TestHasRequiredInfo/no_data_collected (0.00s)
+    --- PASS: TestHasRequiredInfo/all_data_collected (0.00s)
+    --- PASS: TestHasRequiredInfo/missing_name (0.00s)
+    --- PASS: TestHasRequiredInfo/nil_map_as_address (0.00s)
+    --- PASS: TestHasRequiredInfo/empty_map_as_address (0.00s)
+    --- PASS: TestHasRequiredInfo/missing_street (0.00s)
+    --- PASS: TestHasRequiredInfo/age_is_optional (0.00s)
+    --- PASS: TestHasRequiredInfo/unknown_key_with_value_that_is_not_empty (0.00s)
+=== RUN   TestDelete
+=== RUN   TestDelete/no_data_collected
+=== RUN   TestDelete/all_data_collected
+=== RUN   TestDelete/some_data_collected
+--- PASS: TestDelete (0.00s)
+    --- PASS: TestDelete/no_data_collected (0.00s)
+    --- PASS: TestDelete/all_data_collected (0.00s)
+    --- PASS: TestDelete/some_data_collected (0.00s)
+=== RUN   TestCount
+=== RUN   TestCount/no_data_collected
+=== RUN   TestCount/all_data_collected
+=== RUN   TestCount/some_data_collected
+--- PASS: TestCount (0.00s)
+    --- PASS: TestCount/no_data_collected (0.00s)
+    --- PASS: TestCount/all_data_collected (0.00s)
+    --- PASS: TestCount/some_data_collected (0.00s)
+=== RUN   ExampleNewResident
+--- PASS: ExampleNewResident (0.00s)
+=== RUN   ExampleResident_HasRequiredInfo
+--- PASS: ExampleResident_HasRequiredInfo (0.00s)
+=== RUN   ExampleResident_Delete
+--- PASS: ExampleResident_Delete (0.00s)
+=== RUN   ExampleCount
+--- PASS: ExampleCount (0.00s)
 PASS
-ok  	census	0.006s
+ok  	census	0.002s
 
-real	0m0.976s
-user	0m1.252s
-sys	0m0.733s
-
-===============================================================================
-
-No old benchmarks to run benchstat against.
+real	0m0.113s
+user	0m0.159s
+sys	0m0.117s
 
 ===============================================================================
 
-go vet census
-# census
-./census_examples_test.go:17:1: ExampleHasRequiredInfo refers to unknown identifier: HasRequiredInfo
-./census_examples_test.go:29:1: ExampleDelete refers to unknown identifier: Delete
+benchstat benchstat-old.txt benchstat-new.txt
 
-real	0m0.574s
-user	0m0.775s
-sys	0m0.617s
-
-===============================================================================
-
-go fix census
-
-real	0m0.083s
-user	0m0.041s
-sys	0m0.075s
-
-===============================================================================
-
-gosec ./census
-[gosec] 2022/07/28 07:57:45 Including rules: default
-[gosec] 2022/07/28 07:57:45 Excluding rules: default
-[gosec] 2022/07/28 07:57:45 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/census
-[gosec] 2022/07/28 07:57:45 Checking package: census
-[gosec] 2022/07/28 07:57:45 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/census/census.go
-Results:
-
-
-Summary:
-   Files: 1
-   Lines: 57
-   Nosec: 0
-  Issues: 0
-
-
-real	0m0.471s
-user	0m0.627s
-sys	0m0.330s
+real	0m0.018s
+user	0m0.000s
+sys	0m0.002s
 
 ===============================================================================
 
 gomarkdoc --output census-doc.md
 
-real	0m0.037s
-user	0m0.031s
-sys	0m0.018s
+real	0m0.042s
+user	0m0.011s
+sys	0m0.009s
 
 ===============================================================================
 
@@ -256,9 +505,9 @@ func (r *Resident) HasRequiredInfo() bool
     information.
 
 
-real	0m0.302s
-user	0m0.163s
-sys	0m0.265s
+real	0m0.033s
+user	0m0.018s
+sys	0m0.024s
 
 
 ===============================================================================

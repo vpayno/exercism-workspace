@@ -14,7 +14,7 @@ func ExampleNewResident() {
 	// &{Matthew Sanabria 29 map[street:Main St.]}
 }
 
-func ExampleHasRequiredInfo() {
+func ExampleResident_HasRequiredInfo() {
 	name := "Matthew Sanabria"
 	age := 0
 	address := make(map[string]string)
@@ -26,7 +26,7 @@ func ExampleHasRequiredInfo() {
 	// false
 }
 
-func ExampleDelete() {
+func ExampleResident_Delete() {
 	name := "Matthew Sanabria"
 	age := 29
 	address := map[string]string{"street": "Main St."}
