@@ -69,6 +69,7 @@ main() {
 
 	# ENV PATH="/root/.cargo/bin:${PATH}"
 	printf "source %s\n" "${HOME}/.cargo/env" | tee -a "${HOME}/.bashrc"
+	# shellcheck disable=SC1091
 	source "${HOME}/.bashrc"
 
 	echo Running: rustup default stable
