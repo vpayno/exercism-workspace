@@ -44,7 +44,11 @@ main() {
 		cargo-kcov
 		cargo-llvm-cov
 		cargo-tarpaulin
+		clippy-sarif
 		grcov
+		sarif-fmt
+		spellcheck
+		strip-ansi-cli
 		zellij
 	)
 
