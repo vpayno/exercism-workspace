@@ -6,19 +6,19 @@ From debian:bullseye-slim As ci-generic-base
 
 COPY .github/docker /.github/docker
 
-RUN .github/docker/layer-00.00-base-dependencies.sh ci-generic-debian
+RUN sh .github/docker/layer-00.00-base-dependencies.sh ci-generic-debian
 
-RUN .github/docker/layer-00.10-base-daggerio.sh ci-generic-debian
+RUN bash .github/docker/layer-00.10-base-daggerio.sh ci-generic-debian
 
-RUN .github/docker/layer-02.20-exercism-nodejs.sh ci-generic-debian
+RUN bash .github/docker/layer-02.20-exercism-nodejs.sh ci-generic-debian
 
-RUN .github/docker/layer-10.00-exercism-gcc_clang_llvm.sh ci-generic-debian
+RUN bash .github/docker/layer-10.00-exercism-gcc_clang_llvm.sh ci-generic-debian
 
-RUN .github/docker/layer-15.00-exercism-rust.sh ci-generic-debian
+RUN bash .github/docker/layer-15.00-exercism-rust.sh ci-generic-debian
 
-RUN .github/docker/layer-16.00-exercism-go.sh ci-generic-debian
+RUN bash .github/docker/layer-16.00-exercism-go.sh ci-generic-debian
 
-RUN .github/docker/layer-99.00-summary.sh ci-generic-debian
+RUN bash .github/docker/layer-99.00-summary.sh ci-generic-debian
 
 # Copies your code file from your action repository to the filesystem path `/` of the container
 COPY .github/docker/entrypoint.sh /entrypoint.sh
