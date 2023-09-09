@@ -2,7 +2,7 @@
 #
 # .github/workflows/go.yml
 #
-name: Go Workflow
+name: Go Workflow 2.0
 on:  # yamllint disable-line rule:truthy
   pull_request:
   workflow_dispatch:
@@ -17,7 +17,12 @@ jobs:
     runs-on: 'ubuntu-latest'
     outputs:
       docs_changed: ${{ steps.check_file_changed.outputs.docs_changed }}
+      matrix_exercise: ${{ steps.check_file_changed.outputs.matrix_exercise }}
+      exercise_count: ${{ steps.check_file_changed.outputs.exercise_count }}
     steps:
+      - name: Check GitHub Vars
+        id: github-vars
+        run: set | grep -e ^CI -e ^GITHUB_ -e ^RUNNER_
       - name: Checkout Repo
         id: checkout-repo
         uses: actions/checkout@v3
@@ -27,11 +32,60 @@ jobs:
           submodules: recursive
       - name: Get Change List
         id: check_file_changed
-        run: |
+        run: |-
+          {
+            printf "Workflow: %s\n\n" "${GITHUB_WORKFLOW}"
+            printf "Runner: name[%s] arch[%s]\n" "${RUNNER_NAME}" "${RUNNER_ARCH}"
+            printf "Repo: %s\n" "${GITHUB_REPOSITORY}"
+            printf "User: %s\n" "${GITHUB_TRIGGERING_ACTOR}"
+            printf "\n"
+          } | tee -a "${GITHUB_STEP_SUMMARY}"
+
+          # get user info for default gh container
+          {
+            printf "\`\`\`text\n"
+            printf "Container user info:\n"
+            who
+            printf "\n"
+            id
+            printf "\`\`\`\n"
+          } | tee -a "${GITHUB_STEP_SUMMARY}"
+          printf "\n"
+
           # Diff HEAD with the previous commit then output to stdout.
-          printf "=== Which files changed? ===\n"
-          GIT_DIFF="$(git diff --name-only HEAD^ HEAD)"
-          printf "%s\n" "${GIT_DIFF}"
+          GIT_DIFF="$(git diff --name-only HEAD^ HEAD | tee /tmp/changed_files.txt)"
+          {
+            printf "=== Which files changed? ===\n"
+            printf "\`\`\`text\n"
+            printf "%s\n" "${GIT_DIFF}"
+            printf "\`\`\`\n"
+          } | tee -a "${GITHUB_STEP_SUMMARY}"
+          HAS_WF_DIFF=false
+          HAS_EX_DIFF=false
+          if printf "%s\n" "${GIT_DIFF}" | grep -E '^(.github/workflows/go.yml|.github/citools/go/)$'; then
+            HAS_WF_DIFF=true
+          fi
+          if printf "%s\n" "${GIT_DIFF}" | grep -E '^(go/.*[.]go|go/.*/go[.](sum|mod))$'; then
+            HAS_EX_DIFF=true
+          fi
+          printf "\n"
+          printf "=== Did WF/CI change without exercise changes? ===\n"
+          CI_FORCE_FULL=false
+          if ${HAS_WF_DIFF} && ! ${HAS_EX_DIFF}; then
+            CI_FORCE_FULL=true
+            printf "%s\n" "${CI_FORCE_FULL}"
+          fi
+          printf "\n"
+
+          # Get changed exercise list.
+          if [[ ${GITHUB_EVENT_NAME} == pull_request ]] && ! ${CI_FORCE_FULL}; then
+            printf "Generating pull request changed exercise list.\n"
+            grep -E '^go/[-a-z0-9]+./.*$' /tmp/changed_files.txt | cut -f1,2 -d/ | sort -Vu | tee /tmp/exercises.txt || true
+          else
+            printf "Generating complete exercise list.\n"
+            find ./go/ -type d -print | grep -v -E '^[.]/go/(|[.].*)$' | sed -r -e 's:[.]/(go/[-a-z0-9]+)/?.*$:\1:g' | sort -Vu | tee /tmp/exercises.txt
+            HAS_DIFF=true
+          fi
           printf "\n"
 
           # Check if the files are present in the changed file list (added, modified, deleted) then output to stdout.
@@ -39,6 +93,7 @@ jobs:
           printf "=== Which Golang files changed? ===\n"
           if printf "%s\n" "${GIT_DIFF}" | grep -E '^(go/.*[.]go|go/.*/go[.](sum|mod)|.github/workflows/go.yml)'; then
             HAS_DIFF=true
+            printf "%s\n" "${HAS_DIFF}"
           fi
           printf "\n"
 
@@ -47,8 +102,67 @@ jobs:
           printf "%s\n" "${HAS_DIFF}"
           printf "\n"
 
+          # Generate exercise job matrix from changed files list.
+          printf "=== Generating matrix exercise list. ===\n"
+          declare -i last=0
+          declare -i count=0
+          last=$(wc -l /tmp/exercises.txt | cut -f1 -d\ )
+          ((last -= 1)) || true
+          entries=""
+          while read -r line; do
+            if [[ ! ${count} -lt ${last} ]]; then
+              comma=""
+            else
+              comma=","
+            fi
+            printf -v entry "\"%s\"%s\n" "${line}" "${comma}"
+            ((count += 1))
+            entries+="${entry}"
+          done < <(sort -V /tmp/exercises.txt)
+          jq --sort-keys . >/tmp/exercises.json <<EOF
+            [ ${entries} ]
+          EOF
+          exercise_count="$(jq '. | length' /tmp/exercises.json)"
+          printf "%s=%s\n" "exercise_count" "${exercise_count}" | tee -a "${GITHUB_OUTPUT}"
+          matrix_exercise="$(jq --compact-output --sort-keys . /tmp/exercises.json)"
+          printf "%s=%s\n" "matrix_exercise" "${matrix_exercise}" | tee -a "${GITHUB_OUTPUT}"
+          printf "\n"
+          cat "${GITHUB_OUTPUT}"
+
+          # Don't run stage 2 if PR mode doesn't have testable changes.
+          if [[ ${GITHUB_EVENT_NAME} == pull_request ]] && [[ -z ${entries} ]]; then
+            printf "In PR mode with no testable changes, disabling stage 2.\n"
+            HAS_DIFF=false
+          fi
+
           # Set the output named "docs_changed"
           printf "%s=%s\n" "docs_changed" "${HAS_DIFF}" >> "${GITHUB_OUTPUT}"
+  check-matrix:
+    runs-on: ubuntu-latest
+    needs: stage1
+    steps:
+      - name: Install json2yaml
+        run: sudo npm install -g json2yaml
+      - name: Check matrix::exercises
+        run: |-
+          exercise_count='${{ needs.stage1.outputs.exercise_count }}'
+          matrix_exercise='${{ needs.stage1.outputs.matrix_exercise }}'
+          {
+            printf "\`\`\`text\n"
+            printf "exercise_count=%s\n" "${exercise_count}"
+            printf "matrix_exercise=%s\n" "${matrix_exercise}"
+            printf "\`\`\`\n"
+            printf "json:\n"
+            printf "\`\`\`text\n"
+            printf "%s" "${matrix_exercise}" | jq .
+            printf "\`\`\`\n"
+          } | tee -a "${GITHUB_STEP_SUMMARY}"
+          {
+            printf "yaml:\n"
+            printf "\`\`\`text\n"
+            printf "{ \"matrix\": { \"exercise\": %s } }" "${matrix_exercise}" | json2yaml
+            printf "\`\`\`\n"
+          } | tee -a "${GITHUB_STEP_SUMMARY}"
   stage2:
     name: Go Checks
     strategy:
@@ -60,60 +174,73 @@ jobs:
             go-version: "1.21"
           - os: "windows-latest"
             go-version: "1.21"
+        exercise: ${{fromJson(needs.stage1.outputs.matrix_exercise)}}
     runs-on: "${{ matrix.os }}"
+    container:
+      image: vpayno/ci-generic-debian:latest
     needs: [stage1]
     if: needs.stage1.outputs.docs_changed == 'True'
     steps:
-      - name: Checkout Repo
+      - name: Checkout Repo (${{ matrix.go-version }}) [${{ matrix.exercise }}]
         id: checkout-repo
         uses: actions/checkout@v3
-      - name: Set up Go ${{ matrix.go-version }}
-        id: setup-go
-        uses: actions/setup-go@v3
-        with:
-          go-version: ${{ matrix.go-version }}
-      - name: Show Go version
-        id: go-version
-        run: |
-          go version
-      - name: Install Go Tools
-        id: install-go-tools
-        run: |
-          go install golang.org/x/lint/golint@latest
-          go install golang.org/x/tools/cmd/cover@latest
-          go install github.com/securego/gosec/v2/cmd/gosec@latest
-          go install github.com/rakyll/gotest@latest
-      - name: CD to Go Dir
+      - name: Go Setup (${{ matrix.go-version }}) [${{ matrix.exercise }}]
+        id: go-setup
+        run: |-
+          ./.github/citools/common/run_wrapper_script "./${{ matrix.exercise }}" ../../.github/citools/go/go-setup-config
+      - name: Verify Go Verify (${{ matrix.go-version }}) [${{ matrix.exercise }}]
+        id: go-verify
+        run: |-
+          ./.github/citools/common/run_wrapper_script "./${{ matrix.exercise }}" ../../.github/citools/go/go-setup-verify
+      - name: Show Dir Contents (${{ matrix.go-version }}) [${{ matrix.exercise }}]
         id: cd-to-go-dir
-        run: |
-          pwd
-          ls
-          cd ./go
-          pwd
-          ls
-      - name: Analysing the code with golint
-        id: golint
-        run: |
-          cd ./go
-          ./for_each golint -set_exit_status pkg_name
-      - name: Analysing the code with go vet
+        run: |-
+          ls -lhva "./${{ matrix.exercise }}"
+      - name: Analysing the code with revive (${{ matrix.go-version }}) [${{ matrix.exercise }}]
+        id: go-revive
+        run: |-
+          ./.github/citools/common/run_wrapper_script "./${{ matrix.exercise }}" ../../.github/citools/go/go-lint-revive
+      - name: Analysing the code with go vet (${{ matrix.go-version }}) [${{ matrix.exercise }}]
         id: go-vet
-        run: |
-          cd ./go
-          ./for_each go vet pkg_name
-      - name: Testing with gotest
-        id: go-test-run
-        run: |
-          cd ./go
-          ./for_each gotest -v -covermode=count -coverprofile coverage.out pkg_name
-      - name: Testing with go test coverage
+        run: |-
+          ./.github/citools/common/run_wrapper_script "./${{ matrix.exercise }}" ../../.github/citools/go/go-lint-go_vet
+      - name: Testing with go test coverage (${{ matrix.go-version }}) [${{ matrix.exercise }}]
         id: go-test-coverage
-        run: |
-          cd ./go
-          ./for_each go tool cover -func=coverage.out
-          git restore ./*/coverage.out
-      - name: Testing with gosec
+        run: |-
+          ./.github/citools/common/run_wrapper_script "./${{ matrix.exercise }}" ../../.github/citools/go/go-test-cover
+      - name: Testing with errcheck (${{ matrix.go-version }}) [${{ matrix.exercise }}]
+        id: go-test-errcheck
+        run: |-
+          ./.github/citools/common/run_wrapper_script "./${{ matrix.exercise }}" ../../.github/citools/go/go-lint-errcheck
+      - name: Testing with gocritic (${{ matrix.go-version }}) [${{ matrix.exercise }}]
+        id: go-test-gocritic
+        run: |-
+          ./.github/citools/common/run_wrapper_script "./${{ matrix.exercise }}" ../../.github/citools/go/go-lint-gocritic
+      - name: Testing with gocyclo (${{ matrix.go-version }}) [${{ matrix.exercise }}]
+        id: go-test-gocyclo
+        run: |-
+          ./.github/citools/common/run_wrapper_script "./${{ matrix.exercise }}" ../../.github/citools/go/go-lint-gocyclo
+      - name: Testing with golangci-lint (${{ matrix.go-version }}) [${{ matrix.exercise }}]
+        id: go-test-golangci-lint
+        run: |-
+          ./.github/citools/common/run_wrapper_script "./${{ matrix.exercise }}" ../../.github/citools/go/go-lint-golangci-lint
+      - name: Testing with go-consistent (${{ matrix.go-version }}) [${{ matrix.exercise }}]
+        id: go-test-go-consistent
+        run: |-
+          ./.github/citools/common/run_wrapper_script "./${{ matrix.exercise }}" ../../.github/citools/go/go-lint-go-consistent
+      - name: Testing with go-ineffassign (${{ matrix.go-version }}) [${{ matrix.exercise }}]
+        id: go-test-ineffassign
+        run: |-
+          ./.github/citools/common/run_wrapper_script "./${{ matrix.exercise }}" ../../.github/citools/go/go-lint-ineffassign
+      - name: Testing with staticcheck (${{ matrix.go-version }}) [${{ matrix.exercise }}]
+        id: go-test-staticcheck
+        run: |-
+          ./.github/citools/common/run_wrapper_script "./${{ matrix.exercise }}" ../../.github/citools/go/go-lint-staticcheck
+      - name: Testing with misspell (${{ matrix.go-version }}) [${{ matrix.exercise }}]
+        id: go-test-misspell
+        run: |-
+          ./.github/citools/common/run_wrapper_script "./${{ matrix.exercise }}" ../../.github/citools/go/go-lint-misspell
+      - name: Testing with gosec (${{ matrix.go-version }}) [${{ matrix.exercise }}]
         id: go-test-security
         run: |-
-          cd ./go
-          gosec ./...
+          ./.github/citools/common/run_wrapper_script "./${{ matrix.exercise }}" ../../.github/citools/go/go-lint-gosec

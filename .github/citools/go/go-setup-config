@@ -13,7 +13,21 @@ main() {
 
 	print_ruler
 
+	printf "Adding paths to GITHUB_PATH...\n"
+	printf "%s\n" "/root/.golang/go/bin" | tee -a "${GITHUB_PATH}"
 	printf "%s\n" "/root/go/bin" | tee -a "${GITHUB_PATH}"
+
+	print_ruler
+
+	tree /root/.golang/go/bin
+
+	print_ruler
+
+	tree /root/go/bin
+
+	print_ruler
+
+	tail -n 1000 -v "${GITHUB_PATH}"
 
 	print_ruler
 
