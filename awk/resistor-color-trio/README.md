@@ -69,3 +69,10 @@ For example, an input of `"orange", "orange", "orange"` should return:
 ### Based on
 
 Maud de Vries, Erik Schierboom - https://github.com/exercism/problem-specifications/issues/1549
+
+### My Solution
+
+- [my solution](./resistor-color-trio.awk)
+- [awkunit tests](./resistor-color-trio_test.awk)
+- [test cases](./test-cases.awk)
+- [run-tests](./run-tests-awk.txt)

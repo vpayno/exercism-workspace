@@ -28,3 +28,4 @@
 - [grains](./grains/README.md)
 - [triangle](./triangle/README.md)
 - [resistor-color-duo](./resistor-color-duo/README.md)
+- [resistor-color-trio](./resistor-color-trio/README.md)

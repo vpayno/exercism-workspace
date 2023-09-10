@@ -1,0 +1,213 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+AWKLIBPATH=/usr/lib/x86_64-linux-gnu/gawk:../.lib
+
+/usr/lib/x86_64-linux-gnu/gawk
+filefuncs.so
+fnmatch.so
+fork.so
+inplace.so
+intdiv.so
+ordchr.so
+readdir.so
+readfile.so
+revoutput.so
+revtwoway.so
+rwarray.so
+time.so
+
+../.lib
+awkunit.awk
+awkunit.so
+
+gawk  --lint --file=./awkunit.awk < /dev/null > /dev/null
+gawk: ./awkunit.awk:3: warning: `load' is a gawk extension
+gawk: warning: function `assertEquals' defined but never called directly
+gawk: warning: function `assert' defined but never called directly
+gawk: ./awkunit.awk:26: warning: reference to uninitialized variable `_assert_exit'
+
+real	0m0.003s
+user	0m0.002s
+sys	0m0.001s
+
+gawk  --lint --file=./resistor-color-trio.awk < /dev/null > /dev/null
+
+real	0m0.004s
+user	0m0.001s
+sys	0m0.003s
+
+gawk  --lint --file=./test-cases.awk < /dev/null > /dev/null
+
+real	0m0.004s
+user	0m0.004s
+sys	0m0.000s
+
+exit 0
+
+===============================================================================
+
+Running: bats ./test-resistor-color-trio.bats
+1..14
+ok 1 Orange and orange and black
+ok 2 Blue and grey and brown
+ok 3 Brown and red and red
+ok 4 Red and black and red
+ok 5 Green and brown and orange
+ok 6 Yellow and violet and yellow
+ok 7 Blue and violet and grey
+ok 8 Minimum possible value
+ok 9 Maximum possible value
+ok 10 Invalid first color
+ok 11 Invalid second color
+ok 12 Invalid third color
+ok 13 First two colors make an invalid octal number
+ok 14 Ignore extra colors
+
+real	0m0.584s
+user	0m0.381s
+sys	0m0.228s
+
+exit 0
+
+===============================================================================
+
+AWKLIBPATH=/usr/lib/x86_64-linux-gnu/gawk:../.lib
+
+/usr/lib/x86_64-linux-gnu/gawk
+filefuncs.so
+fnmatch.so
+fork.so
+inplace.so
+intdiv.so
+ordchr.so
+readdir.so
+readfile.so
+revoutput.so
+revtwoway.so
+rwarray.so
+time.so
+
+../.lib
+awkunit.awk
+awkunit.so
+
+Running: gawk  --file ./resistor-color-trio_test.awk && printf \n%s\n Tests Passed! || printf \n%s\n Tests Failed!
+
+Running 3 tests...
+
+Test 1:
+     input -> [one two three]
+    output -> [error:invalid color]
+    result -> passed
+
+Test 2:
+     input -> [orange orange black]
+    output -> [33 ohms]
+    result -> passed
+
+Test 3:
+     input -> [orange orange orange]
+    output -> [33 kiloohms]
+    result -> passed
+
+Running 15 test cases
+
+Test 4:
+     input -> [black grey black]
+    output -> [8 ohms]
+    result -> passed
+
+Test 5:
+     input -> [orange orange black]
+    output -> [33 ohms]
+    result -> passed
+
+Test 6:
+     input -> [white white white]
+    output -> [99 gigaohms]
+    result -> passed
+
+Test 7:
+     input -> [brown red red]
+    output -> [1200 ohms]
+    result -> passed
+
+Test 8:
+     input -> [orange orange orange]
+    output -> [33 kiloohms]
+    result -> passed
+
+Test 9:
+     input -> [red black red]
+    output -> [2 kiloohms]
+    result -> passed
+
+Test 10:
+     input -> [blue grey brown]
+    output -> [680 ohms]
+    result -> passed
+
+Test 11:
+     input -> [white white baz]
+    output -> [error:invalid color]
+    result -> passed
+
+Test 12:
+     input -> [blue green yellow orange]
+    output -> [650 kiloohms]
+    result -> passed
+
+Test 13:
+     input -> [yellow violet yellow]
+    output -> [470 kiloohms]
+    result -> passed
+
+Test 14:
+     input -> [foo white white]
+    output -> [error:invalid color]
+    result -> passed
+
+Test 15:
+     input -> [green brown orange]
+    output -> [51 kiloohms]
+    result -> passed
+
+Test 16:
+     input -> [blue violet blue]
+    output -> [67 megaohms]
+    result -> passed
+
+Test 17:
+     input -> [black black black]
+    output -> [0 ohms]
+    result -> passed
+
+Test 18:
+     input -> [white bar white]
+    output -> [error:invalid color]
+    result -> passed
+
+
+18 out of 18 tests passed!
+
+real	0m0.010s
+user	0m0.006s
+sys	0m0.005s
+
+Tests Passed!
+
+exit 0
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.054s
+user	0m0.050s
+sys	0m0.029s
+
+===============================================================================
+
