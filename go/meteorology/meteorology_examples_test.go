@@ -2,7 +2,7 @@ package meteorology
 
 import "fmt"
 
-func ExampleTemperatureUnitString() {
+func ExampleTemperatureUnit_String() {
 	celsiusUnit := Celsius
 	fahrenheitUnit := Fahrenheit
 
@@ -13,7 +13,7 @@ func ExampleTemperatureUnitString() {
 	// °F
 }
 
-func ExampleTemperatureString() {
+func ExampleTemperature_String() {
 	celsiusTemp := Temperature{
 		degree: 21,
 		unit:   Celsius,
@@ -31,7 +31,7 @@ func ExampleTemperatureString() {
 	// 75 °F
 }
 
-func ExampleSpeedUnitString() {
+func ExampleSpeedUnit_String() {
 	mphUnit := MilesPerHour
 	kmhUnit := KmPerHour
 
@@ -42,7 +42,7 @@ func ExampleSpeedUnitString() {
 	// km/h
 }
 
-func ExampleSpeedString() {
+func ExampleSpeed_String() {
 	windSpeed := Speed{
 		magnitude: 18,
 		unit:      KmPerHour,
@@ -59,7 +59,7 @@ func ExampleSpeedString() {
 	// 36 mph
 }
 
-func ExampleMeteorologyDataString() {
+func ExampleMeteorologyData_String() {
 
 	sfData := MeteorologyData{
 		location: "San Francisco",

@@ -38,6 +38,40 @@ func (md MeteorologyData) String() string
 
 MeteorologyData String\(\) method that returns a human readable meteorology reading.
 
+<details><summary>Example</summary>
+<p>
+
+```go
+{
+
+	sfData := MeteorologyData{
+		location: "San Francisco",
+		temperature: Temperature{
+			degree: 57,
+			unit:   Fahrenheit,
+		},
+		windDirection: "NW",
+		windSpeed: Speed{
+			magnitude: 19,
+			unit:      MilesPerHour,
+		},
+		humidity: 60,
+	}
+
+	fmt.Println(sfData)
+
+}
+```
+
+#### Output
+
+```
+San Francisco: 57 °F, Wind NW at 19 mph, 60% Humidity
+```
+
+</p>
+</details>
+
 ## type [Speed](<https://github.com/vpayno/exercism-workspace/blob/main/go/meteorology/meteorology.go#L47-L50>)
 
 Speed type tracks wind speed value and unit type.
@@ -55,6 +89,36 @@ func (s Speed) String() string
 ```
 
 Speed String\(\) method that returns a human readable speed reading.
+
+<details><summary>Example</summary>
+<p>
+
+```go
+{
+	windSpeed := Speed{
+		magnitude: 18,
+		unit:      KmPerHour,
+	}
+	fmt.Println(windSpeed)
+
+	windSpeed = Speed{
+		magnitude: 36,
+		unit:      MilesPerHour,
+	}
+	fmt.Println(windSpeed)
+
+}
+```
+
+#### Output
+
+```
+18 km/h
+36 mph
+```
+
+</p>
+</details>
 
 ## type [SpeedUnit](<https://github.com/vpayno/exercism-workspace/blob/main/go/meteorology/meteorology.go#L32>)
 
@@ -81,6 +145,30 @@ func (index SpeedUnit) String() string
 
 SpeedUnit String\(\) method that returns a human readable speed unit.
 
+<details><summary>Example</summary>
+<p>
+
+```go
+{
+	mphUnit := MilesPerHour
+	kmhUnit := KmPerHour
+
+	fmt.Println(mphUnit)
+	fmt.Println(kmhUnit)
+
+}
+```
+
+#### Output
+
+```
+mph
+km/h
+```
+
+</p>
+</details>
+
 ## type [Temperature](<https://github.com/vpayno/exercism-workspace/blob/main/go/meteorology/meteorology.go#L21-L24>)
 
 Temperature type tracks temperature value and unit type.
@@ -98,6 +186,37 @@ func (t Temperature) String() string
 ```
 
 Temperature String\(\) method that returns a human readable temperature reading.
+
+<details><summary>Example</summary>
+<p>
+
+```go
+{
+	celsiusTemp := Temperature{
+		degree: 21,
+		unit:   Celsius,
+	}
+
+	fahrenheitTemp := Temperature{
+		degree: 75,
+		unit:   Fahrenheit,
+	}
+
+	fmt.Println(celsiusTemp)
+	fmt.Println(fahrenheitTemp)
+
+}
+```
+
+#### Output
+
+```
+21 °C
+75 °F
+```
+
+</p>
+</details>
 
 ## type [TemperatureUnit](<https://github.com/vpayno/exercism-workspace/blob/main/go/meteorology/meteorology.go#L6>)
 
@@ -123,6 +242,30 @@ func (index TemperatureUnit) String() string
 ```
 
 TemperatureUnit String\(\) method that returns a human readable temperature unit.
+
+<details><summary>Example</summary>
+<p>
+
+```go
+{
+	celsiusUnit := Celsius
+	fahrenheitUnit := Fahrenheit
+
+	fmt.Println(celsiusUnit)
+	fmt.Println(fahrenheitUnit)
+
+}
+```
+
+#### Output
+
+```
+°C
+°F
+```
+
+</p>
+</details>
 
 
 

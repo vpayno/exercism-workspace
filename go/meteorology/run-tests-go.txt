@@ -19,25 +19,25 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.032s
-user	0m0.021s
-sys	0m0.028s
+real	0m0.028s
+user	0m0.022s
+sys	0m0.029s
 
 
  ==============================================================================
 
 Running: golangci-lint run --enable-all ./...
 
-level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
 level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
-level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
-level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
-level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
-level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
 level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
 level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
-level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
 level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
 meteorology_examples_test.go:63: File is not `gofumpt`-ed (gofumpt)
 
 meteorology.go:58:6: type name will be used as meteorology.MeteorologyData by other packages, and that stutters; consider calling this Data (golint)
@@ -53,26 +53,26 @@ meteorology_test.go:57:14: Using the variable on range scope `tt` in function li
 			if got := tt.temp.String(); got != tt.want {
 			          ^
 meteorology_examples_test.go:62: unnecessary leading newline (whitespace)
-func ExampleMeteorologyDataString() {
+func ExampleMeteorologyData_String() {
 
-meteorology_examples_test.go:5:1: tests: ExampleTemperatureUnitString refers to unknown identifier: TemperatureUnitString (govet)
-func ExampleTemperatureUnitString() {
-^
-meteorology_examples_test.go:16:1: tests: ExampleTemperatureString refers to unknown identifier: TemperatureString (govet)
-func ExampleTemperatureString() {
-^
-meteorology_examples_test.go:34:1: tests: ExampleSpeedUnitString refers to unknown identifier: SpeedUnitString (govet)
-func ExampleSpeedUnitString() {
-^
-meteorology_examples_test.go:45:1: tests: ExampleSpeedString refers to unknown identifier: SpeedString (govet)
-func ExampleSpeedString() {
-^
 meteorology.go:17:2: return with no blank line before (nlreturn)
 	return units[index]
 	^
 meteorology.go:43:2: return with no blank line before (nlreturn)
 	return units[index]
 	^
+meteorology_examples_test.go:5:6: ExampleTemperatureUnit_String contains underscore. You should use mixedCap or MixedCap. (nosnakecase)
+func ExampleTemperatureUnit_String() {
+     ^
+meteorology_examples_test.go:16:6: ExampleTemperature_String contains underscore. You should use mixedCap or MixedCap. (nosnakecase)
+func ExampleTemperature_String() {
+     ^
+meteorology_examples_test.go:34:6: ExampleSpeedUnit_String contains underscore. You should use mixedCap or MixedCap. (nosnakecase)
+func ExampleSpeedUnit_String() {
+     ^
+meteorology_examples_test.go:45:6: ExampleSpeed_String contains underscore. You should use mixedCap or MixedCap. (nosnakecase)
+func ExampleSpeed_String() {
+     ^
 meteorology_test.go:7:1: Function TestTemperatureUnitString missing the call to method parallel (paralleltest)
 func TestTemperatureUnitString(t *testing.T) {
 ^
@@ -113,22 +113,22 @@ meteorology.go:68:6: variable name 's' is too short for the scope of its usage (
 	var s string
 	    ^
 
-real	0m0.436s
-user	0m0.646s
-sys	0m0.386s
+real	0m0.501s
+user	0m0.871s
+sys	0m0.415s
 
 
  ==============================================================================
 
 Exit code: -1
 
-real	0m0.485s
-user	0m0.671s
-sys	0m0.431s
+real	0m0.539s
+user	0m0.900s
+sys	0m0.449s
 
-real	0m0.488s
-user	0m0.673s
-sys	0m0.432s
+real	0m0.540s
+user	0m0.902s
+sys	0m0.449s
 
 ===============================================================================
 
@@ -147,8 +147,8 @@ Running: go clean ./...
 
 
 real	0m0.025s
-user	0m0.019s
-sys	0m0.023s
+user	0m0.024s
+sys	0m0.026s
 
 
  ==============================================================================
@@ -156,28 +156,28 @@ sys	0m0.023s
 Running: revive -formatter=stylish ./...
 
 meteorology.go
-  (58, 6)  https://revive.run/r#exported          type name will be used as meteorology.MeteorologyData by other packages, and that stutters; consider calling this Data  
   (1, 1)   https://revive.run/r#package-comments  should have a package comment                                                                                           
+  (58, 6)  https://revive.run/r#exported          type name will be used as meteorology.MeteorologyData by other packages, and that stutters; consider calling this Data  
 
 
  ✖ 2 problems (0 errors) (2 warnings)
 
-real	0m0.031s
-user	0m0.016s
-sys	0m0.023s
+real	0m0.089s
+user	0m0.025s
+sys	0m0.044s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.069s
-user	0m0.042s
-sys	0m0.056s
+real	0m0.125s
+user	0m0.053s
+sys	0m0.079s
 
-real	0m0.071s
-user	0m0.043s
-sys	0m0.058s
+real	0m0.127s
+user	0m0.054s
+sys	0m0.080s
 
 ===============================================================================
 
@@ -185,8 +185,8 @@ Running: ../../.github/citools/go/go-lint-ineffassign
 ../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
 
 real	0m0.001s
-user	0m0.001s
-sys	0m0.000s
+user	0m0.000s
+sys	0m0.002s
 
 ===============================================================================
 
@@ -204,9 +204,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.022s
-user	0m0.017s
-sys	0m0.017s
+real	0m0.021s
+user	0m0.015s
+sys	0m0.019s
 
 
  ==============================================================================
@@ -216,22 +216,22 @@ Running: go-consistent -v ./...
 	info: check "./."
 internal error: package "fmt" without types was imported from "meteorology"
 
-real	0m0.086s
-user	0m0.134s
-sys	0m0.105s
+real	0m0.085s
+user	0m0.097s
+sys	0m0.103s
 
 
  ==============================================================================
 
 Exit code: -1
 
-real	0m0.126s
-user	0m0.156s
-sys	0m0.140s
+real	0m0.120s
+user	0m0.118s
+sys	0m0.135s
 
-real	0m0.127s
-user	0m0.156s
-sys	0m0.141s
+real	0m0.123s
+user	0m0.120s
+sys	0m0.136s
 
 ===============================================================================
 
@@ -249,9 +249,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.031s
-user	0m0.025s
-sys	0m0.030s
+real	0m0.020s
+user	0m0.015s
+sys	0m0.023s
 
 
  ==============================================================================
@@ -265,22 +265,22 @@ meteorology.go:40:1: comment on exported method String should be of the form "St
 meteorology.go:52:1: comment on exported method String should be of the form "String ..." (ST1020)
 meteorology.go:66:1: comment on exported method String should be of the form "String ..." (ST1020)
 
-real	0m0.163s
-user	0m0.191s
-sys	0m0.134s
+real	0m0.208s
+user	0m0.203s
+sys	0m0.142s
 
 
  ==============================================================================
 
 Exit code: -1
 
-real	0m0.204s
-user	0m0.222s
-sys	0m0.174s
-
-real	0m0.206s
-user	0m0.222s
+real	0m0.238s
+user	0m0.220s
 sys	0m0.176s
+
+real	0m0.240s
+user	0m0.220s
+sys	0m0.178s
 
 ===============================================================================
 
@@ -298,9 +298,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.024s
-user	0m0.017s
-sys	0m0.027s
+real	0m0.026s
+user	0m0.024s
+sys	0m0.032s
 
 
  ==============================================================================
@@ -308,22 +308,22 @@ sys	0m0.027s
 Running: gocritic check -enableAll ./...
 
 
-real	0m0.823s
-user	0m1.901s
-sys	0m0.308s
+real	0m0.833s
+user	0m2.060s
+sys	0m0.293s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.860s
-user	0m1.920s
-sys	0m0.350s
+real	0m0.868s
+user	0m2.091s
+sys	0m0.331s
 
-real	0m0.862s
-user	0m1.921s
-sys	0m0.352s
+real	0m0.870s
+user	0m2.091s
+sys	0m0.332s
 
 ===============================================================================
 
@@ -341,38 +341,32 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.022s
+real	0m0.019s
 user	0m0.016s
-sys	0m0.025s
+sys	0m0.018s
 
 
  ==============================================================================
 
 Running: go vet ./...
 
-# meteorology
-./meteorology_examples_test.go:5:1: ExampleTemperatureUnitString refers to unknown identifier: TemperatureUnitString
-./meteorology_examples_test.go:16:1: ExampleTemperatureString refers to unknown identifier: TemperatureString
-./meteorology_examples_test.go:34:1: ExampleSpeedUnitString refers to unknown identifier: SpeedUnitString
-./meteorology_examples_test.go:45:1: ExampleSpeedString refers to unknown identifier: SpeedString
-./meteorology_examples_test.go:62:1: ExampleMeteorologyDataString refers to unknown identifier: MeteorologyDataString
 
-real	0m0.084s
-user	0m0.114s
-sys	0m0.106s
+real	0m0.082s
+user	0m0.122s
+sys	0m0.132s
 
 
  ==============================================================================
 
-Exit code: -1
+Exit code: 0
 
-real	0m0.118s
-user	0m0.137s
-sys	0m0.139s
+real	0m0.109s
+user	0m0.140s
+sys	0m0.161s
 
-real	0m0.119s
-user	0m0.138s
-sys	0m0.140s
+real	0m0.111s
+user	0m0.141s
+sys	0m0.161s
 
 ===============================================================================
 
@@ -390,9 +384,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.020s
-user	0m0.014s
-sys	0m0.019s
+real	0m0.022s
+user	0m0.022s
+sys	0m0.015s
 
 
  ==============================================================================
@@ -400,22 +394,22 @@ sys	0m0.019s
 Running: go fix ./...
 
 
-real	0m0.024s
+real	0m0.043s
 user	0m0.021s
-sys	0m0.018s
+sys	0m0.023s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.054s
-user	0m0.037s
-sys	0m0.048s
+real	0m0.079s
+user	0m0.051s
+sys	0m0.049s
 
-real	0m0.056s
-user	0m0.039s
-sys	0m0.048s
+real	0m0.080s
+user	0m0.051s
+sys	0m0.051s
 
 ===============================================================================
 
@@ -433,9 +427,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.027s
-user	0m0.017s
-sys	0m0.024s
+real	0m0.034s
+user	0m0.030s
+sys	0m0.035s
 
 
  ==============================================================================
@@ -443,22 +437,22 @@ sys	0m0.024s
 Running: errcheck ./...
 
 
-real	0m0.415s
-user	0m1.288s
-sys	0m0.264s
+real	0m0.541s
+user	0m1.532s
+sys	0m0.368s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.454s
-user	0m1.309s
-sys	0m0.299s
+real	0m0.592s
+user	0m1.569s
+sys	0m0.421s
 
-real	0m0.455s
-user	0m1.309s
-sys	0m0.301s
+real	0m0.595s
+user	0m1.569s
+sys	0m0.424s
 
 ===============================================================================
 
@@ -476,9 +470,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.040s
-user	0m0.028s
-sys	0m0.039s
+real	0m0.022s
+user	0m0.023s
+sys	0m0.020s
 
 
  ==============================================================================
@@ -490,33 +484,33 @@ Running: gocyclo .
 3 meteorology TestSpeedUnitString meteorology_test.go:64:1
 3 meteorology TestTemperatureString meteorology_test.go:33:1
 3 meteorology TestTemperatureUnitString meteorology_test.go:7:1
-1 meteorology ExampleMeteorologyDataString meteorology_examples_test.go:62:1
-1 meteorology ExampleSpeedString meteorology_examples_test.go:45:1
-1 meteorology ExampleSpeedUnitString meteorology_examples_test.go:34:1
-1 meteorology ExampleTemperatureString meteorology_examples_test.go:16:1
-1 meteorology ExampleTemperatureUnitString meteorology_examples_test.go:5:1
+1 meteorology ExampleMeteorologyData_String meteorology_examples_test.go:62:1
+1 meteorology ExampleSpeed_String meteorology_examples_test.go:45:1
+1 meteorology ExampleSpeedUnit_String meteorology_examples_test.go:34:1
+1 meteorology ExampleTemperature_String meteorology_examples_test.go:16:1
+1 meteorology ExampleTemperatureUnit_String meteorology_examples_test.go:5:1
 1 meteorology (MeteorologyData).String meteorology.go:67:1
 1 meteorology (Speed).String meteorology.go:53:1
 1 meteorology (SpeedUnit).String meteorology.go:41:1
 1 meteorology (Temperature).String meteorology.go:27:1
 1 meteorology (TemperatureUnit).String meteorology.go:15:1
 
-real	0m0.003s
-user	0m0.000s
-sys	0m0.003s
+real	0m0.023s
+user	0m0.003s
+sys	0m0.005s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.059s
-user	0m0.034s
-sys	0m0.056s
+real	0m0.055s
+user	0m0.032s
+sys	0m0.031s
 
-real	0m0.061s
-user	0m0.036s
-sys	0m0.057s
+real	0m0.057s
+user	0m0.032s
+sys	0m0.033s
 
 ===============================================================================
 
@@ -534,22 +528,22 @@ Go version:
 Running: misspell .
 
 
-real	0m0.025s
-user	0m0.028s
-sys	0m0.010s
+real	0m0.059s
+user	0m0.043s
+sys	0m0.024s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.034s
-user	0m0.033s
-sys	0m0.018s
+real	0m0.078s
+user	0m0.052s
+sys	0m0.041s
 
-real	0m0.036s
-user	0m0.033s
-sys	0m0.019s
+real	0m0.082s
+user	0m0.054s
+sys	0m0.043s
 
 ===============================================================================
 
@@ -567,20 +561,20 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.028s
-user	0m0.025s
-sys	0m0.031s
+real	0m0.031s
+user	0m0.026s
+sys	0m0.033s
 
 
  ==============================================================================
 
 Running: gosec ./...
 
-[gosec] 2023/09/07 00:25:13 Including rules: default
-[gosec] 2023/09/07 00:25:13 Excluding rules: default
-[gosec] 2023/09/07 00:25:13 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/meteorology
-[gosec] 2023/09/07 00:25:13 Checking package: meteorology
-[gosec] 2023/09/07 00:25:13 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/meteorology/meteorology.go
+[gosec] 2023/09/10 01:27:05 Including rules: default
+[gosec] 2023/09/10 01:27:05 Excluding rules: default
+[gosec] 2023/09/10 01:27:05 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/meteorology
+[gosec] 2023/09/10 01:27:05 Checking package: meteorology
+[gosec] 2023/09/10 01:27:05 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/meteorology/meteorology.go
 Results:
 
 
@@ -592,22 +586,22 @@ Results:
   Issues : [1;32m0[0m
 
 
-real	0m0.123s
-user	0m0.147s
-sys	0m0.096s
+real	0m0.139s
+user	0m0.155s
+sys	0m0.092s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.165s
-user	0m0.177s
-sys	0m0.138s
-
-real	0m0.167s
-user	0m0.177s
+real	0m0.192s
+user	0m0.195s
 sys	0m0.140s
+
+real	0m0.196s
+user	0m0.197s
+sys	0m0.142s
 
 ===============================================================================
 
@@ -625,9 +619,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.025s
-user	0m0.020s
-sys	0m0.023s
+real	0m0.028s
+user	0m0.021s
+sys	0m0.029s
 
 
  ==============================================================================
@@ -670,23 +664,23 @@ Running: gotest -v -covermode=count -coverprofile coverage.out ./...
     --- PASS: TestMeteorologyDataString/Athens (0.00s)
     --- PASS: TestMeteorologyDataString/Delhi (0.00s)
     --- PASS: TestMeteorologyDataString/San_Francisco (0.00s)
-=== RUN   ExampleTemperatureUnitString
---- PASS: ExampleTemperatureUnitString (0.00s)
-=== RUN   ExampleTemperatureString
---- PASS: ExampleTemperatureString (0.00s)
-=== RUN   ExampleSpeedUnitString
---- PASS: ExampleSpeedUnitString (0.00s)
-=== RUN   ExampleSpeedString
---- PASS: ExampleSpeedString (0.00s)
-=== RUN   ExampleMeteorologyDataString
---- PASS: ExampleMeteorologyDataString (0.00s)
+=== RUN   ExampleTemperatureUnit_String
+--- PASS: ExampleTemperatureUnit_String (0.00s)
+=== RUN   ExampleTemperature_String
+--- PASS: ExampleTemperature_String (0.00s)
+=== RUN   ExampleSpeedUnit_String
+--- PASS: ExampleSpeedUnit_String (0.00s)
+=== RUN   ExampleSpeed_String
+--- PASS: ExampleSpeed_String (0.00s)
+=== RUN   ExampleMeteorologyData_String
+--- PASS: ExampleMeteorologyData_String (0.00s)
 PASS
 coverage: 100.0% of statements
 ok  	meteorology	0.006s	coverage: 100.0% of statements
 
-real	0m0.214s
+real	0m0.236s
 user	0m0.285s
-sys	0m0.168s
+sys	0m0.177s
 
 
  ==============================================================================
@@ -700,9 +694,9 @@ meteorology/meteorology.go:53:	String		100.0%
 meteorology/meteorology.go:67:	String		100.0%
 total:				(statements)	100.0%
 
-real	0m0.043s
-user	0m0.058s
-sys	0m0.067s
+real	0m0.060s
+user	0m0.078s
+sys	0m0.089s
 
 
  ==============================================================================
@@ -710,9 +704,9 @@ sys	0m0.067s
 Running: go tool cover -html coverage.out -o coverage.html
 
 
-real	0m0.045s
-user	0m0.058s
-sys	0m0.074s
+real	0m0.043s
+user	0m0.069s
+sys	0m0.058s
 
 
  ==============================================================================
@@ -721,13 +715,13 @@ Running: cover_annotate
 
 Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
 
-real	0m0.018s
-user	0m0.021s
-sys	0m0.019s
+real	0m0.090s
+user	0m0.023s
+sys	0m0.051s
 
-real	0m0.018s
-user	0m0.021s
-sys	0m0.019s
+real	0m0.090s
+user	0m0.023s
+sys	0m0.051s
 
 
  ==============================================================================
@@ -770,46 +764,49 @@ Running: gotest -v -race -covermode=atomic ./...
     --- PASS: TestMeteorologyDataString/Athens (0.00s)
     --- PASS: TestMeteorologyDataString/Delhi (0.00s)
     --- PASS: TestMeteorologyDataString/San_Francisco (0.00s)
-=== RUN   ExampleTemperatureUnitString
---- PASS: ExampleTemperatureUnitString (0.00s)
-=== RUN   ExampleTemperatureString
---- PASS: ExampleTemperatureString (0.00s)
-=== RUN   ExampleSpeedUnitString
---- PASS: ExampleSpeedUnitString (0.00s)
-=== RUN   ExampleSpeedString
---- PASS: ExampleSpeedString (0.00s)
-=== RUN   ExampleMeteorologyDataString
---- PASS: ExampleMeteorologyDataString (0.00s)
+=== RUN   ExampleTemperatureUnit_String
+--- PASS: ExampleTemperatureUnit_String (0.00s)
+=== RUN   ExampleTemperature_String
+--- PASS: ExampleTemperature_String (0.00s)
+=== RUN   ExampleSpeedUnit_String
+--- PASS: ExampleSpeedUnit_String (0.00s)
+=== RUN   ExampleSpeed_String
+--- PASS: ExampleSpeed_String (0.00s)
+=== RUN   ExampleMeteorologyData_String
+--- PASS: ExampleMeteorologyData_String (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	meteorology	1.016s	coverage: 100.0% of statements
+ok  	meteorology	1.014s	coverage: 100.0% of statements
 
-real	0m1.251s
-user	0m0.302s
-sys	0m0.135s
+real	0m1.428s
+user	0m0.370s
+sys	0m0.219s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m1.610s
-user	0m0.752s
-sys	0m0.496s
+real	0m1.896s
+user	0m0.855s
+sys	0m0.629s
 
-real	0m1.612s
-user	0m0.753s
-sys	0m0.496s
+real	0m1.898s
+user	0m0.857s
+sys	0m0.629s
 
 ===============================================================================
+
+mv -v benchstat-new.txt benchstat-old.txt
+renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
 
 gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 PASS
 ok  	meteorology	0.002s
 
-real	0m0.158s
-user	0m0.186s
-sys	0m0.139s
+real	0m0.163s
+user	0m0.210s
+sys	0m0.179s
 
 ===============================================================================
 
@@ -850,32 +847,36 @@ gotest -v -tags bonus
     --- PASS: TestMeteorologyDataString/Athens (0.00s)
     --- PASS: TestMeteorologyDataString/Delhi (0.00s)
     --- PASS: TestMeteorologyDataString/San_Francisco (0.00s)
-=== RUN   ExampleTemperatureUnitString
---- PASS: ExampleTemperatureUnitString (0.00s)
-=== RUN   ExampleTemperatureString
---- PASS: ExampleTemperatureString (0.00s)
-=== RUN   ExampleSpeedUnitString
---- PASS: ExampleSpeedUnitString (0.00s)
-=== RUN   ExampleSpeedString
---- PASS: ExampleSpeedString (0.00s)
-=== RUN   ExampleMeteorologyDataString
---- PASS: ExampleMeteorologyDataString (0.00s)
+=== RUN   ExampleTemperatureUnit_String
+--- PASS: ExampleTemperatureUnit_String (0.00s)
+=== RUN   ExampleTemperature_String
+--- PASS: ExampleTemperature_String (0.00s)
+=== RUN   ExampleSpeedUnit_String
+--- PASS: ExampleSpeedUnit_String (0.00s)
+=== RUN   ExampleSpeed_String
+--- PASS: ExampleSpeed_String (0.00s)
+=== RUN   ExampleMeteorologyData_String
+--- PASS: ExampleMeteorologyData_String (0.00s)
 PASS
 ok  	meteorology	0.002s
 
-real	0m0.141s
-user	0m0.187s
-sys	0m0.145s
+real	0m0.126s
+user	0m0.184s
+sys	0m0.107s
 
 ===============================================================================
 
-No old benchmarks to run benchstat against.
+benchstat benchstat-old.txt benchstat-new.txt
+
+real	0m0.017s
+user	0m0.001s
+sys	0m0.002s
 
 ===============================================================================
 
 gomarkdoc --output meteorology-doc.md
 
-real	0m0.013s
+real	0m0.030s
 user	0m0.008s
 sys	0m0.005s
 
@@ -939,9 +940,9 @@ func (index TemperatureUnit) String() string
     unit.
 
 
-real	0m0.044s
-user	0m0.023s
-sys	0m0.043s
+real	0m0.050s
+user	0m0.032s
+sys	0m0.042s
 
 
 ===============================================================================
