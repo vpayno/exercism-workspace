@@ -77,6 +77,15 @@ show_tool_versions_rust() {
 	printf "\n"
 } # show_tool_versions_rust()
 
+show_tool_versions_go_short() {
+	# md_code_tag text
+	printf "Go version:\n"
+	printf "\n"
+	go version | paste /dev/null -
+	# md_code_tag
+	printf "\n"
+} # show_tool_versions_go_short()
+
 show_tool_versions_go() {
 	# md_code_tag text
 	printf "Go version:\n"
@@ -93,7 +102,7 @@ show_tool_versions_go() {
 	printf "Installed Go packages:\n"
 	printf "\n"
 	# shellcheck disable=SC2012
-	ls ~/go/bin | paste /dev/null -
+	ls /root/go/bin | paste /dev/null -
 	# md_code_tag
 	printf "\n"
 
