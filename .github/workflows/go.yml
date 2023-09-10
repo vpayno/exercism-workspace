@@ -215,7 +215,7 @@ jobs:
       - name: Testing with gocritic (${{ matrix.go-version }}) [${{ matrix.exercise }}]
         id: go-test-gocritic
         run: |-
-          ./.github/citools/common/run_wrapper_script "./${{ matrix.exercise }}" ../../.github/citools/go/go-lint-gocritic
+          ./.github/citools/common/run_wrapper_script "./${{ matrix.exercise }}" ../../.github/citools/go/go-lint-gocritic check -enableAll -exitCode 0
       - name: Testing with gocyclo (${{ matrix.go-version }}) [${{ matrix.exercise }}]
         id: go-test-gocyclo
         run: |-
