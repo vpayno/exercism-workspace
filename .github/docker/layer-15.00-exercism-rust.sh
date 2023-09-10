@@ -135,6 +135,10 @@ main() {
 	cargo cache --info
 	printf "\n"
 
+	echo Running: rm -rf /root/.cargo/registry/
+	time rm -rf /root/.cargo/registry/
+	printf "\n"
+
 	layer_end "${0}" "$@"
 }
 
