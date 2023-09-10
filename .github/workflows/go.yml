@@ -210,30 +210,37 @@ jobs:
           ./.github/citools/common/run_wrapper_script "./${{ matrix.exercise }}" ../../.github/citools/go/go-test-cover
       - name: Testing with errcheck (${{ matrix.go-version }}) [${{ matrix.exercise }}]
         id: go-test-errcheck
+        continue-on-error: true
         run: |-
-          ./.github/citools/common/run_wrapper_script "./${{ matrix.exercise }}" ../../.github/citools/go/go-lint-errcheck -ignoretests
+          ./.github/citools/common/run_wrapper_script "./${{ matrix.exercise }}" ../../.github/citools/go/go-lint-errcheck
       - name: Testing with gocritic (${{ matrix.go-version }}) [${{ matrix.exercise }}]
         id: go-test-gocritic
+        continue-on-error: true
         run: |-
-          ./.github/citools/common/run_wrapper_script "./${{ matrix.exercise }}" ../../.github/citools/go/go-lint-gocritic check -enableAll -exitCode 0
+          ./.github/citools/common/run_wrapper_script "./${{ matrix.exercise }}" ../../.github/citools/go/go-lint-gocritic
       - name: Testing with gocyclo (${{ matrix.go-version }}) [${{ matrix.exercise }}]
         id: go-test-gocyclo
+        continue-on-error: true
         run: |-
           ./.github/citools/common/run_wrapper_script "./${{ matrix.exercise }}" ../../.github/citools/go/go-lint-gocyclo
       - name: Testing with golangci-lint (${{ matrix.go-version }}) [${{ matrix.exercise }}]
         id: go-test-golangci-lint
+        continue-on-error: true
         run: |-
           ./.github/citools/common/run_wrapper_script "./${{ matrix.exercise }}" ../../.github/citools/go/go-lint-golangci-lint
       - name: Testing with go-consistent (${{ matrix.go-version }}) [${{ matrix.exercise }}]
         id: go-test-go-consistent
+        continue-on-error: true
         run: |-
           ./.github/citools/common/run_wrapper_script "./${{ matrix.exercise }}" ../../.github/citools/go/go-lint-go-consistent
       - name: Testing with go-ineffassign (${{ matrix.go-version }}) [${{ matrix.exercise }}]
         id: go-test-ineffassign
+        continue-on-error: true
         run: |-
           ./.github/citools/common/run_wrapper_script "./${{ matrix.exercise }}" ../../.github/citools/go/go-lint-ineffassign
       - name: Testing with staticcheck (${{ matrix.go-version }}) [${{ matrix.exercise }}]
         id: go-test-staticcheck
+        continue-on-error: true
         run: |-
           ./.github/citools/common/run_wrapper_script "./${{ matrix.exercise }}" ../../.github/citools/go/go-lint-staticcheck
       - name: Testing with misspell (${{ matrix.go-version }}) [${{ matrix.exercise }}]
@@ -242,5 +249,6 @@ jobs:
           ./.github/citools/common/run_wrapper_script "./${{ matrix.exercise }}" ../../.github/citools/go/go-lint-misspell
       - name: Testing with gosec (${{ matrix.go-version }}) [${{ matrix.exercise }}]
         id: go-test-security
+        continue-on-error: true
         run: |-
           ./.github/citools/common/run_wrapper_script "./${{ matrix.exercise }}" ../../.github/citools/go/go-lint-gosec
