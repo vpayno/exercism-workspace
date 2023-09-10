@@ -27,3 +27,4 @@
 - [armstrong-numbers](./armstrong-numbers/README.md)
 - [grains](./grains/README.md)
 - [triangle](./triangle/README.md)
+- [resistor-color-duo](./resistor-color-duo/README.md)

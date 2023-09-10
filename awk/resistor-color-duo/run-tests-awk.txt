@@ -1,0 +1,188 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+AWKLIBPATH=/usr/lib/x86_64-linux-gnu/gawk:../.lib
+
+/usr/lib/x86_64-linux-gnu/gawk
+filefuncs.so
+fnmatch.so
+fork.so
+inplace.so
+intdiv.so
+ordchr.so
+readdir.so
+readfile.so
+revoutput.so
+revtwoway.so
+rwarray.so
+time.so
+
+../.lib
+awkunit.awk
+awkunit.so
+
+gawk  --lint --file=./awkunit.awk < /dev/null > /dev/null
+gawk: ./awkunit.awk:3: warning: `load' is a gawk extension
+gawk: warning: function `assertEquals' defined but never called directly
+gawk: warning: function `assert' defined but never called directly
+gawk: ./awkunit.awk:26: warning: reference to uninitialized variable `_assert_exit'
+
+real	0m0.005s
+user	0m0.001s
+sys	0m0.005s
+
+gawk  --lint --file=./resistor-color-duo.awk < /dev/null > /dev/null
+
+real	0m0.004s
+user	0m0.002s
+sys	0m0.002s
+
+gawk  --lint --file=./test-cases.awk < /dev/null > /dev/null
+
+real	0m0.005s
+user	0m0.002s
+sys	0m0.003s
+
+exit 0
+
+===============================================================================
+
+Running: bats ./test-resistor-color-duo.bats
+1..9
+ok 1 brown black
+ok 2 blue grey
+ok 3 yellow violet
+ok 4 white red
+ok 5 orange orange
+ok 6 invalid color
+ok 7 ignore too many colors
+ok 8 black brown
+ok 9 black grey
+
+real	0m0.376s
+user	0m0.252s
+sys	0m0.148s
+
+exit 0
+
+===============================================================================
+
+AWKLIBPATH=/usr/lib/x86_64-linux-gnu/gawk:../.lib
+
+/usr/lib/x86_64-linux-gnu/gawk
+filefuncs.so
+fnmatch.so
+fork.so
+inplace.so
+intdiv.so
+ordchr.so
+readdir.so
+readfile.so
+revoutput.so
+revtwoway.so
+rwarray.so
+time.so
+
+../.lib
+awkunit.awk
+awkunit.so
+
+Running: gawk  --file ./resistor-color-duo_test.awk && printf \n%s\n Tests Passed! || printf \n%s\n Tests Failed!
+
+Running 3 tests...
+
+Test 1:
+     input -> [one two]
+    output -> [error:invalid color]
+    result -> passed
+
+Test 2:
+     input -> [brown green]
+    output -> [15]
+    result -> passed
+
+Test 3:
+     input -> [brown green violet]
+    output -> [15]
+    result -> passed
+
+Running 11 test cases
+
+Test 4:
+     input -> [orange orange]
+    output -> [33]
+    result -> passed
+
+Test 5:
+     input -> [yellow violet]
+    output -> [47]
+    result -> passed
+
+Test 6:
+     input -> [blue grey]
+    output -> [68]
+    result -> passed
+
+Test 7:
+     input -> [brown green]
+    output -> [15]
+    result -> passed
+
+Test 8:
+     input -> [foo]
+    output -> [error:invalid color]
+    result -> passed
+
+Test 9:
+     input -> [brown black]
+    output -> [10]
+    result -> passed
+
+Test 10:
+     input -> [brown green violet]
+    output -> [15]
+    result -> passed
+
+Test 11:
+     input -> [black brown]
+    output -> [1]
+    result -> passed
+
+Test 12:
+     input -> [green brown orange]
+    output -> [51]
+    result -> passed
+
+Test 13:
+     input -> [black grey]
+    output -> [8]
+    result -> passed
+
+Test 14:
+     input -> [white red]
+    output -> [92]
+    result -> passed
+
+
+14 out of 14 tests passed!
+
+real	0m0.005s
+user	0m0.002s
+sys	0m0.003s
+
+Tests Passed!
+
+exit 0
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.034s
+user	0m0.042s
+sys	0m0.014s
+
+===============================================================================
+

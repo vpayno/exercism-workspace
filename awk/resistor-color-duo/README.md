@@ -46,3 +46,10 @@ brown-green-violet should return 15 too, ignoring the third color.
 ### Based on
 
 Maud de Vries, Erik Schierboom - https://github.com/exercism/problem-specifications/issues/1464
+
+### My Solution
+
+- [my solution](./resistor-color-duo.awk)
+- [awkunit tests](./resistor-color-duo_test.awk)
+- [test cases](./test-cases.awk)
+- [run-tests](./run-tests-awk.txt)
