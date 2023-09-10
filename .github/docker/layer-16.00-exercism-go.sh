@@ -226,6 +226,14 @@ main() {
 	time go install -tags extended github.com/gohugoio/hugo@latest || ((retval++))
 	printf "\n"
 
+	echo Running: rm -rf /root/go/pkg/*
+	time rm -rf /root/go/pkg/*
+	printf "\n"
+
+	echo Running: rm -rf /root/go/src/*
+	time rm -rf /root/go/src/*
+	printf "\n"
+
 	layer_end "${0}" "$@"
 
 	echo exit "${retval}"
