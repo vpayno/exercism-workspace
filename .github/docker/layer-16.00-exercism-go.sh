@@ -101,6 +101,7 @@ main() {
 		github.com/fzipp/gocyclo/cmd/gocyclo@latest
 		github.com/get-woke/woke@latest
 		github.com/go-critic/go-critic/cmd/gocritic@latest
+		github.com/golangci/golangci-lint/cmd/golangci-lint@latest
 		github.com/google/yamlfmt/cmd/yamlfmt@latest
 		github.com/gordonklaus/ineffassign@latest
 		github.com/goreleaser/goreleaser@latest
