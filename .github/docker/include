@@ -32,8 +32,8 @@ layer_begin() {
 layer_end() {
 	printf "=== %s:%s start ===\n\n" "${0}" "layer_end()"
 
-	echo Running: apt-get purge libx11.* libqt.*
-	apt-get purge libx11.* libqt.* || exit
+	echo Running: apt-get purge -y libx11.* libqt.*
+	apt-get purge -y libx11.* libqt.* || exit
 	printf "\n"
 
 	echo Running: apt-get remove -y x11-common

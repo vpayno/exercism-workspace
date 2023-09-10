@@ -22,8 +22,8 @@ main() {
 	apt remove -y $(apt list --installed | grep -e xorg -e xserver -e qt | cut -f1 -d/) || exit
 	printf "\n"
 
-	echo Running: apt-get purge libx11.* libqt.*
-	apt-get purge libx11.* libqt.* || exit
+	echo Running: apt-get purge -y libx11.* libqt.*
+	apt-get purge -y libx11.* libqt.* || exit
 	printf "\n"
 
 	echo Running: apt-get remove -y x11-common
