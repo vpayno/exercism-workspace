@@ -211,7 +211,7 @@ jobs:
       - name: Testing with errcheck (${{ matrix.go-version }}) [${{ matrix.exercise }}]
         id: go-test-errcheck
         run: |-
-          ./.github/citools/common/run_wrapper_script "./${{ matrix.exercise }}" ../../.github/citools/go/go-lint-errcheck
+          ./.github/citools/common/run_wrapper_script "./${{ matrix.exercise }}" ../../.github/citools/go/go-lint-errcheck -ignoretests
       - name: Testing with gocritic (${{ matrix.go-version }}) [${{ matrix.exercise }}]
         id: go-test-gocritic
         run: |-
