@@ -89,7 +89,7 @@ jobs:
           printf "\n"
 
           # Check if the files are present in the changed file list (added, modified, deleted) then output to stdout.
-          HAS_DIFF=false
+          HAS_DIFF="${HAS_DIFF:-false}"
           printf "=== Which Golang files changed? ===\n"
           if printf "%s\n" "${GIT_DIFF}" | grep -E '^(go/.*[.]go|go/.*/go[.](sum|mod)|.github/workflows/go.yml)'; then
             HAS_DIFF=true
@@ -179,7 +179,7 @@ jobs:
     container:
       image: vpayno/ci-generic-debian:latest
     needs: [stage1]
-    if: needs.stage1.outputs.docs_changed == 'True'
+    if: needs.stage1.outputs.docs_changed == 'true'
     steps:
       - name: Checkout Repo (${{ matrix.go-version }}) [${{ matrix.exercise }}]
         id: checkout-repo
