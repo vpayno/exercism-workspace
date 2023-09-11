@@ -61,6 +61,9 @@ function casesScrabbleScore() {
     printf "Running %d test cases\n\n", length(cases)
     caseNum = 0
 
+    # orders array by index in for loop
+    PROCINFO["sorted_in"] = "@ind_str_asc"
+
     # Associative arrays don't preserve insert order.
     for (key in cases) {
         input = key

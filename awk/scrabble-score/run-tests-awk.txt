@@ -29,25 +29,25 @@ gawk: warning: function `assertEquals' defined but never called directly
 gawk: warning: function `assert' defined but never called directly
 gawk: ./awkunit.awk:26: warning: reference to uninitialized variable `_assert_exit'
 
-real	0m0.005s
-user	0m0.003s
-sys	0m0.002s
+real	0m0.002s
+user	0m0.001s
+sys	0m0.001s
 
 gawk  --lint --file=./scrabble-score.awk < /dev/null > /dev/null
 gawk: ./scrabble-score.awk:17: warning: `switch' is a gawk extension
 gawk: ./scrabble-score.awk:18: warning: `case' is a gawk extension
 gawk: ./scrabble-score.awk:40: warning: `default' is a gawk extension
 
-real	0m0.005s
-user	0m0.002s
-sys	0m0.003s
+real	0m0.002s
+user	0m0.001s
+sys	0m0.001s
 
 gawk  --lint --file=./test-cases.awk < /dev/null > /dev/null
 gawk: ./test-cases.awk:8: warning: subscript of array `cases' is null string
 
-real	0m0.004s
-user	0m0.001s
-sys	0m0.003s
+real	0m0.002s
+user	0m0.000s
+sys	0m0.002s
 
 exit 0
 
@@ -68,9 +68,9 @@ ok 10 empty input
 ok 11 entire alphabet available
 ok 12 bonus: blank tile counts as zero
 
-real	0m0.506s
-user	0m0.343s
-sys	0m0.194s
+real	0m0.474s
+user	0m0.299s
+sys	0m0.197s
 
 exit 0
 
@@ -118,83 +118,83 @@ Test 3:
 Running 34 test cases
 
 Test 4:
-     input -> [zoo]
-    output -> [ZOO,12]
-    result -> passed
-
-Test 5:
-     input -> [abcdefghijklmnopqrstuvwxyz]
-    output -> [ABCDEFGHIJKLMNOPQRSTUVWXYZ,87]
-    result -> passed
-
-Test 6:
-     input -> [u]
-    output -> [U,1]
-    result -> passed
-
-Test 7:
      input -> []
     output -> [,0]
     result -> passed
 
-Test 8:
+Test 5:
      input -> [OxyphenButazone]
     output -> [OXYPHENBUTAZONE,41]
     result -> passed
 
+Test 6:
+     input -> [a]
+    output -> [A,1]
+    result -> passed
+
+Test 7:
+     input -> [abcdefghijklmnop rstuvwxyz]
+    output -> [ABCDEFGHIJKLMNOP RSTUVWXYZ,77]
+    result -> passed
+
+Test 8:
+     input -> [abcdefghijklmnopqrstuvwxyz]
+    output -> [ABCDEFGHIJKLMNOPQRSTUVWXYZ,87]
+    result -> passed
+
 Test 9:
-     input -> [v]
-    output -> [V,4]
-    result -> passed
-
-Test 10:
-     input -> [i]
-    output -> [I,1]
-    result -> passed
-
-Test 11:
-     input -> [j]
-    output -> [J,8]
-    result -> passed
-
-Test 12:
-     input -> [w]
-    output -> [W,4]
-    result -> passed
-
-Test 13:
-     input -> [x]
-    output -> [X,8]
-    result -> passed
-
-Test 14:
-     input -> [k]
-    output -> [K,5]
-    result -> passed
-
-Test 15:
-     input -> [y]
-    output -> [Y,4]
-    result -> passed
-
-Test 16:
-     input -> [l]
-    output -> [L,1]
-    result -> passed
-
-Test 17:
-     input -> [pinata]
-    output -> [PINATA,8]
-    result -> passed
-
-Test 18:
      input -> [at]
     output -> [AT,2]
     result -> passed
 
+Test 10:
+     input -> [b]
+    output -> [B,3]
+    result -> passed
+
+Test 11:
+     input -> [c]
+    output -> [C,3]
+    result -> passed
+
+Test 12:
+     input -> [d]
+    output -> [D,2]
+    result -> passed
+
+Test 13:
+     input -> [e]
+    output -> [E,1]
+    result -> passed
+
+Test 14:
+     input -> [f]
+    output -> [F,4]
+    result -> passed
+
+Test 15:
+     input -> [g]
+    output -> [G,2]
+    result -> passed
+
+Test 16:
+     input -> [i]
+    output -> [I,1]
+    result -> passed
+
+Test 17:
+     input -> [j]
+    output -> [J,8]
+    result -> passed
+
+Test 18:
+     input -> [k]
+    output -> [K,5]
+    result -> passed
+
 Test 19:
-     input -> [z]
-    output -> [Z,10]
+     input -> [l]
+    output -> [L,1]
     result -> passed
 
 Test 20:
@@ -208,91 +208,91 @@ Test 21:
     result -> passed
 
 Test 22:
-     input -> [a]
-    output -> [A,1]
-    result -> passed
-
-Test 23:
-     input -> [b]
-    output -> [B,3]
-    result -> passed
-
-Test 24:
      input -> [o]
     output -> [O,1]
     result -> passed
 
-Test 25:
-     input -> [quirky]
-    output -> [QUIRKY,22]
-    result -> passed
-
-Test 26:
+Test 23:
      input -> [p]
     output -> [P,3]
     result -> passed
 
-Test 27:
-     input -> [c]
-    output -> [C,3]
+Test 24:
+     input -> [pinata]
+    output -> [PINATA,8]
     result -> passed
 
-Test 28:
-     input -> [street]
-    output -> [STREET,6]
-    result -> passed
-
-Test 29:
+Test 25:
      input -> [q]
     output -> [Q,10]
     result -> passed
 
-Test 30:
-     input -> [d]
-    output -> [D,2]
+Test 26:
+     input -> [quirky]
+    output -> [QUIRKY,22]
     result -> passed
 
-Test 31:
+Test 27:
      input -> [r]
     output -> [R,1]
     result -> passed
 
-Test 32:
-     input -> [e]
-    output -> [E,1]
-    result -> passed
-
-Test 33:
-     input -> [f]
-    output -> [F,4]
-    result -> passed
-
-Test 34:
+Test 28:
      input -> [s]
     output -> [S,1]
     result -> passed
 
+Test 29:
+     input -> [street]
+    output -> [STREET,6]
+    result -> passed
+
+Test 30:
+     input -> [t]
+    output -> [T,1]
+    result -> passed
+
+Test 31:
+     input -> [u]
+    output -> [U,1]
+    result -> passed
+
+Test 32:
+     input -> [v]
+    output -> [V,4]
+    result -> passed
+
+Test 33:
+     input -> [w]
+    output -> [W,4]
+    result -> passed
+
+Test 34:
+     input -> [x]
+    output -> [X,8]
+    result -> passed
+
 Test 35:
-     input -> [abcdefghijklmnop rstuvwxyz]
-    output -> [ABCDEFGHIJKLMNOP RSTUVWXYZ,77]
+     input -> [y]
+    output -> [Y,4]
     result -> passed
 
 Test 36:
-     input -> [g]
-    output -> [G,2]
+     input -> [z]
+    output -> [Z,10]
     result -> passed
 
 Test 37:
-     input -> [t]
-    output -> [T,1]
+     input -> [zoo]
+    output -> [ZOO,12]
     result -> passed
 
 
 37 out of 37 tests passed!
 
-real	0m0.008s
-user	0m0.002s
-sys	0m0.006s
+real	0m0.009s
+user	0m0.003s
+sys	0m0.005s
 
 Tests Passed!
 
@@ -302,9 +302,9 @@ exit 0
 
 Running: misspell .
 
-real	0m0.028s
-user	0m0.029s
-sys	0m0.017s
+real	0m0.033s
+user	0m0.039s
+sys	0m0.015s
 
 ===============================================================================
 
