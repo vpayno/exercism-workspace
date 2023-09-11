@@ -8,6 +8,26 @@ import "diffsquares"
 
 Package diffsquares finds the difference between the square of the sum and the sum of the squares of the first N natural numbers.
 
+<details><summary>Example (Difference Brute Force)</summary>
+<p>
+
+```go
+{
+	defaultMethod = "default"
+	fmt.Println(Difference(10))
+
+}
+```
+
+#### Output
+
+```
+2640
+```
+
+</p>
+</details>
+
 <details><summary>Example (Square Of Sum Brute Force)</summary>
 <p>
 
@@ -79,26 +99,6 @@ Difference returns the difference between the Square of Sums and Sum of Squares.
 2640
 5806679228129780
 2176789148168973847
-```
-
-</p>
-</details>
-
-<details><summary>Example ("rute Force)</summary>
-<p>
-
-```go
-{
-	defaultMethod = "default"
-	fmt.Println(Difference(10))
-
-}
-```
-
-#### Output
-
-```
-2640
 ```
 
 </p>

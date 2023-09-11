@@ -44,7 +44,7 @@ func Example_sumOfSquaresBruteForce() {
 	// 385
 }
 
-func ExampleDifference_BruteForce() {
+func Example_differenceBruteForce() {
 	defaultMethod = "default"
 	fmt.Println(Difference(10))
 	// Output:

@@ -19,25 +19,25 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.018s
-user	0m0.006s
-sys	0m0.014s
+real	0m0.012s
+user	0m0.004s
+sys	0m0.011s
 
 
  ==============================================================================
 
 Running: golangci-lint run --enable-all ./...
 
-level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
-level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
-level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
-level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
-level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
-level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
-level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
-level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
-level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
 level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
 difference_of_squares.go:1: line is 132 characters (lll)
 // Package diffsquares finds the difference between the square of the sum and the sum of the squares of the first N natural numbers.
 difference_of_squares.go:9: line is 130 characters (lll)
@@ -96,14 +96,14 @@ difference_of_squares.go:33:36: mnd: Magic number: 2.0, in <argument> detected (
 difference_of_squares.go:57:35: mnd: Magic number: 2.0, in <argument> detected (gomnd)
 		sum += int(math.Pow(float64(i), 2.0))
 		                                ^
-difference_of_squares_examples_test.go:47:1: tests: ExampleDifference_BruteForce refers to unknown field or method: Difference.BruteForce (govet)
-func ExampleDifference_BruteForce() {
-^
 difference_of_squares_examples_test.go:35:6: Example_squareOfSumBruteForce contains underscore. You should use mixedCap or MixedCap. (nosnakecase)
 func Example_squareOfSumBruteForce() {
      ^
 difference_of_squares_examples_test.go:41:6: Example_sumOfSquaresBruteForce contains underscore. You should use mixedCap or MixedCap. (nosnakecase)
 func Example_sumOfSquaresBruteForce() {
+     ^
+difference_of_squares_examples_test.go:47:6: Example_differenceBruteForce contains underscore. You should use mixedCap or MixedCap. (nosnakecase)
+func Example_differenceBruteForce() {
      ^
 difference_of_squares_test.go:13:1: Function TestSquareOfSum missing the call to method parallel (paralleltest)
 func TestSquareOfSum(t *testing.T) {
@@ -123,32 +123,32 @@ package diffsquares
 difference_of_squares_test.go:1:9: package should be `diffsquares_test` instead of `diffsquares` (testpackage)
 package diffsquares
         ^
-difference_of_squares_benchmarks_test.go:76:6: variable name 'r' is too short for the scope of its usage (varnamelen)
-	var r int
-	    ^
-difference_of_squares_benchmarks_test.go:48:6: variable name 'r' is too short for the scope of its usage (varnamelen)
-	var r int
-	    ^
 difference_of_squares_benchmarks_test.go:20:6: variable name 'r' is too short for the scope of its usage (varnamelen)
 	var r int
 	    ^
+difference_of_squares_benchmarks_test.go:34:6: variable name 'r' is too short for the scope of its usage (varnamelen)
+	var r int
+	    ^
+difference_of_squares_benchmarks_test.go:62:6: variable name 'r' is too short for the scope of its usage (varnamelen)
+	var r int
+	    ^
 
-real	0m0.529s
-user	0m0.838s
-sys	0m0.472s
+real	0m0.395s
+user	0m0.566s
+sys	0m0.380s
 
 
  ==============================================================================
 
 Exit code: -1
 
-real	0m0.556s
-user	0m0.850s
-sys	0m0.493s
+real	0m0.416s
+user	0m0.575s
+sys	0m0.399s
 
-real	0m0.558s
-user	0m0.850s
-sys	0m0.495s
+real	0m0.418s
+user	0m0.577s
+sys	0m0.399s
 
 ===============================================================================
 
@@ -167,8 +167,8 @@ Running: go clean ./...
 
 
 real	0m0.015s
-user	0m0.006s
-sys	0m0.011s
+user	0m0.010s
+sys	0m0.009s
 
 
  ==============================================================================
@@ -183,22 +183,22 @@ difference_of_squares.go
 
  ✖ 3 problems (0 errors) (3 warnings)
 
-real	0m0.058s
-user	0m0.026s
-sys	0m0.048s
+real	0m0.093s
+user	0m0.042s
+sys	0m0.051s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.083s
-user	0m0.037s
-sys	0m0.069s
+real	0m0.119s
+user	0m0.056s
+sys	0m0.070s
 
-real	0m0.085s
-user	0m0.037s
-sys	0m0.071s
+real	0m0.120s
+user	0m0.057s
+sys	0m0.070s
 
 ===============================================================================
 
@@ -206,8 +206,8 @@ Running: ../../.github/citools/go/go-lint-ineffassign
 ../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
 
 real	0m0.001s
-user	0m0.000s
-sys	0m0.001s
+user	0m0.001s
+sys	0m0.000s
 
 ===============================================================================
 
@@ -225,9 +225,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.023s
+real	0m0.025s
 user	0m0.013s
-sys	0m0.015s
+sys	0m0.020s
 
 
  ==============================================================================
@@ -237,22 +237,22 @@ Running: go-consistent -v ./...
 	info: check "./."
 internal error: package "math" without types was imported from "diffsquares"
 
-real	0m0.101s
-user	0m0.136s
-sys	0m0.112s
+real	0m0.091s
+user	0m0.112s
+sys	0m0.113s
 
 
  ==============================================================================
 
 Exit code: -1
 
-real	0m0.146s
-user	0m0.162s
-sys	0m0.143s
+real	0m0.137s
+user	0m0.137s
+sys	0m0.149s
 
-real	0m0.148s
-user	0m0.162s
-sys	0m0.145s
+real	0m0.140s
+user	0m0.138s
+sys	0m0.151s
 
 ===============================================================================
 
@@ -270,9 +270,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.016s
-user	0m0.010s
-sys	0m0.011s
+real	0m0.013s
+user	0m0.007s
+sys	0m0.009s
 
 
  ==============================================================================
@@ -282,22 +282,22 @@ Running: staticcheck -checks=all ./...
 difference_of_squares.go:20:10: should omit type int from declaration; it will be inferred from the right-hand side (ST1023)
 difference_of_squares.go:47:10: should omit type int from declaration; it will be inferred from the right-hand side (ST1023)
 
-real	0m0.199s
-user	0m0.253s
-sys	0m0.158s
+real	0m0.173s
+user	0m0.198s
+sys	0m0.115s
 
 
  ==============================================================================
 
 Exit code: -1
 
-real	0m0.226s
-user	0m0.268s
-sys	0m0.179s
+real	0m0.197s
+user	0m0.212s
+sys	0m0.133s
 
-real	0m0.227s
-user	0m0.269s
-sys	0m0.179s
+real	0m0.200s
+user	0m0.213s
+sys	0m0.135s
 
 ===============================================================================
 
@@ -315,9 +315,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.018s
-user	0m0.005s
-sys	0m0.017s
+real	0m0.024s
+user	0m0.012s
+sys	0m0.019s
 
 
  ==============================================================================
@@ -325,22 +325,22 @@ sys	0m0.017s
 Running: gocritic check -enableAll ./...
 
 
-real	0m0.800s
-user	0m1.849s
-sys	0m0.322s
+real	0m0.831s
+user	0m1.978s
+sys	0m0.271s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.831s
-user	0m1.862s
-sys	0m0.347s
+real	0m0.875s
+user	0m2.000s
+sys	0m0.308s
 
-real	0m0.833s
-user	0m1.863s
-sys	0m0.349s
+real	0m0.879s
+user	0m2.002s
+sys	0m0.310s
 
 ===============================================================================
 
@@ -359,33 +359,31 @@ Running: go clean ./...
 
 
 real	0m0.019s
-user	0m0.012s
-sys	0m0.011s
+user	0m0.005s
+sys	0m0.017s
 
 
  ==============================================================================
 
 Running: go vet ./...
 
-# diffsquares
-./difference_of_squares_examples_test.go:47:1: ExampleDifference_BruteForce refers to unknown field or method: Difference.BruteForce
 
-real	0m0.076s
-user	0m0.127s
-sys	0m0.092s
+real	0m0.089s
+user	0m0.124s
+sys	0m0.122s
 
 
  ==============================================================================
 
-Exit code: -1
+Exit code: 0
 
-real	0m0.113s
-user	0m0.145s
-sys	0m0.119s
+real	0m0.117s
+user	0m0.135s
+sys	0m0.144s
 
-real	0m0.115s
-user	0m0.146s
-sys	0m0.119s
+real	0m0.119s
+user	0m0.136s
+sys	0m0.145s
 
 ===============================================================================
 
@@ -403,9 +401,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.014s
-user	0m0.008s
-sys	0m0.009s
+real	0m0.016s
+user	0m0.006s
+sys	0m0.013s
 
 
  ==============================================================================
@@ -413,8 +411,8 @@ sys	0m0.009s
 Running: go fix ./...
 
 
-real	0m0.017s
-user	0m0.007s
+real	0m0.019s
+user	0m0.013s
 sys	0m0.012s
 
 
@@ -422,13 +420,13 @@ sys	0m0.012s
 
 Exit code: 0
 
-real	0m0.043s
-user	0m0.021s
-sys	0m0.032s
+real	0m0.047s
+user	0m0.024s
+sys	0m0.036s
 
-real	0m0.045s
-user	0m0.022s
-sys	0m0.033s
+real	0m0.049s
+user	0m0.024s
+sys	0m0.038s
 
 ===============================================================================
 
@@ -446,9 +444,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.017s
+real	0m0.021s
 user	0m0.008s
-sys	0m0.012s
+sys	0m0.018s
 
 
  ==============================================================================
@@ -456,22 +454,22 @@ sys	0m0.012s
 Running: errcheck ./...
 
 
-real	0m0.403s
-user	0m1.111s
-sys	0m0.244s
+real	0m0.439s
+user	0m1.241s
+sys	0m0.297s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.435s
-user	0m1.126s
-sys	0m0.270s
+real	0m0.480s
+user	0m1.256s
+sys	0m0.333s
 
-real	0m0.437s
-user	0m1.128s
-sys	0m0.271s
+real	0m0.485s
+user	0m1.258s
+sys	0m0.336s
 
 ===============================================================================
 
@@ -489,9 +487,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.022s
-user	0m0.010s
-sys	0m0.016s
+real	0m0.013s
+user	0m0.005s
+sys	0m0.011s
 
 
  ==============================================================================
@@ -513,7 +511,7 @@ Running: gocyclo .
 2 diffsquares SumOfSquares difference_of_squares.go:37:1
 2 diffsquares squareOfSumBruteForce difference_of_squares.go:26:1
 2 diffsquares SquareOfSum difference_of_squares.go:10:1
-1 diffsquares ExampleDifference_BruteForce difference_of_squares_examples_test.go:47:1
+1 diffsquares Example_differenceBruteForce difference_of_squares_examples_test.go:47:1
 1 diffsquares Example_sumOfSquaresBruteForce difference_of_squares_examples_test.go:41:1
 1 diffsquares Example_squareOfSumBruteForce difference_of_squares_examples_test.go:35:1
 1 diffsquares ExampleDifference difference_of_squares_examples_test.go:25:1
@@ -523,22 +521,22 @@ Running: gocyclo .
 1 diffsquares sumOfSquaresGauss difference_of_squares.go:46:1
 1 diffsquares squareOfSumGauss difference_of_squares.go:19:1
 
-real	0m0.006s
+real	0m0.002s
 user	0m0.002s
-sys	0m0.004s
+sys	0m0.000s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.041s
-user	0m0.017s
-sys	0m0.032s
+real	0m0.027s
+user	0m0.009s
+sys	0m0.026s
 
-real	0m0.042s
-user	0m0.017s
-sys	0m0.034s
+real	0m0.029s
+user	0m0.010s
+sys	0m0.026s
 
 ===============================================================================
 
@@ -556,22 +554,22 @@ Go version:
 Running: misspell .
 
 
-real	0m0.029s
-user	0m0.043s
-sys	0m0.010s
+real	0m0.022s
+user	0m0.020s
+sys	0m0.014s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.045s
-user	0m0.056s
+real	0m0.032s
+user	0m0.026s
 sys	0m0.022s
 
-real	0m0.048s
-user	0m0.057s
-sys	0m0.023s
+real	0m0.033s
+user	0m0.027s
+sys	0m0.022s
 
 ===============================================================================
 
@@ -589,20 +587,20 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.015s
-user	0m0.006s
-sys	0m0.012s
+real	0m0.017s
+user	0m0.009s
+sys	0m0.013s
 
 
  ==============================================================================
 
 Running: gosec ./...
 
-[gosec] 2023/09/07 00:22:21 Including rules: default
-[gosec] 2023/09/07 00:22:21 Excluding rules: default
-[gosec] 2023/09/07 00:22:21 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/difference-of-squares
-[gosec] 2023/09/07 00:22:21 Checking package: diffsquares
-[gosec] 2023/09/07 00:22:21 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/difference-of-squares/difference_of_squares.go
+[gosec] 2023/09/10 21:43:06 Including rules: default
+[gosec] 2023/09/10 21:43:06 Excluding rules: default
+[gosec] 2023/09/10 21:43:06 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/difference-of-squares
+[gosec] 2023/09/10 21:43:06 Checking package: diffsquares
+[gosec] 2023/09/10 21:43:06 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/difference-of-squares/difference_of_squares.go
 Results:
 
 
@@ -614,22 +612,22 @@ Results:
   Issues : [1;32m0[0m
 
 
-real	0m0.098s
-user	0m0.076s
-sys	0m0.072s
+real	0m0.097s
+user	0m0.078s
+sys	0m0.042s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.123s
+real	0m0.125s
 user	0m0.090s
-sys	0m0.089s
+sys	0m0.067s
 
 real	0m0.126s
 user	0m0.091s
-sys	0m0.091s
+sys	0m0.067s
 
 ===============================================================================
 
@@ -647,9 +645,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.015s
-user	0m0.003s
-sys	0m0.016s
+real	0m0.023s
+user	0m0.011s
+sys	0m0.018s
 
 
  ==============================================================================
@@ -672,15 +670,15 @@ Running: gotest -v -covermode=count -coverprofile coverage.out ./...
 --- PASS: Example_squareOfSumBruteForce (0.00s)
 === RUN   Example_sumOfSquaresBruteForce
 --- PASS: Example_sumOfSquaresBruteForce (0.00s)
-=== RUN   ExampleDifference_BruteForce
---- PASS: ExampleDifference_BruteForce (0.00s)
+=== RUN   Example_differenceBruteForce
+--- PASS: Example_differenceBruteForce (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	diffsquares	0.002s	coverage: 100.0% of statements
+ok  	diffsquares	0.003s	coverage: 100.0% of statements
 
-real	0m0.191s
-user	0m0.242s
-sys	0m0.182s
+real	0m0.218s
+user	0m0.301s
+sys	0m0.183s
 
 
  ==============================================================================
@@ -696,9 +694,9 @@ diffsquares/difference_of_squares.go:53:	sumOfSquaresBruteForce	100.0%
 diffsquares/difference_of_squares.go:64:	Difference		100.0%
 total:						(statements)		100.0%
 
-real	0m0.029s
-user	0m0.019s
-sys	0m0.023s
+real	0m0.043s
+user	0m0.023s
+sys	0m0.037s
 
 
  ==============================================================================
@@ -706,9 +704,9 @@ sys	0m0.023s
 Running: go tool cover -html coverage.out -o coverage.html
 
 
-real	0m0.026s
-user	0m0.013s
-sys	0m0.024s
+real	0m0.041s
+user	0m0.024s
+sys	0m0.034s
 
 
  ==============================================================================
@@ -718,12 +716,12 @@ Running: cover_annotate
 Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
 
 real	0m0.013s
-user	0m0.003s
-sys	0m0.014s
+user	0m0.008s
+sys	0m0.012s
 
 real	0m0.013s
-user	0m0.003s
-sys	0m0.014s
+user	0m0.009s
+sys	0m0.012s
 
 
  ==============================================================================
@@ -746,28 +744,28 @@ Running: gotest -v -race -covermode=atomic ./...
 --- PASS: Example_squareOfSumBruteForce (0.00s)
 === RUN   Example_sumOfSquaresBruteForce
 --- PASS: Example_sumOfSquaresBruteForce (0.00s)
-=== RUN   ExampleDifference_BruteForce
---- PASS: ExampleDifference_BruteForce (0.00s)
+=== RUN   Example_differenceBruteForce
+--- PASS: Example_differenceBruteForce (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	diffsquares	1.014s	coverage: 100.0% of statements
+ok  	diffsquares	1.016s	coverage: 100.0% of statements
 
-real	0m1.240s
-user	0m0.259s
-sys	0m0.160s
+real	0m1.269s
+user	0m0.270s
+sys	0m0.156s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m1.527s
-user	0m0.548s
-sys	0m0.424s
+real	0m1.624s
+user	0m0.646s
+sys	0m0.453s
 
-real	0m1.529s
-user	0m0.550s
-sys	0m0.425s
+real	0m1.626s
+user	0m0.647s
+sys	0m0.454s
 
 ===============================================================================
 
@@ -781,61 +779,61 @@ pkg: diffsquares
 cpu: 12th Gen Intel(R) Core(TM) i5-1240P
 Benchmark_squareOfSumBruteForce
 Benchmark_squareOfSumBruteForce/input_size_10
-Benchmark_squareOfSumBruteForce/input_size_10-8         	65260878	        18.76 ns/op	       0 B/op	       0 allocs/op
+Benchmark_squareOfSumBruteForce/input_size_10-8         	71607553	        15.59 ns/op	       0 B/op	       0 allocs/op
 Benchmark_squareOfSumBruteForce/input_size_100
-Benchmark_squareOfSumBruteForce/input_size_100-8        	28727955	        39.90 ns/op	       0 B/op	       0 allocs/op
+Benchmark_squareOfSumBruteForce/input_size_100-8        	30178106	        39.30 ns/op	       0 B/op	       0 allocs/op
 Benchmark_squareOfSumBruteForce/input_size_1000
-Benchmark_squareOfSumBruteForce/input_size_1000-8       	 4833860	       238.2 ns/op	       0 B/op	       0 allocs/op
+Benchmark_squareOfSumBruteForce/input_size_1000-8       	 4857363	       240.3 ns/op	       0 B/op	       0 allocs/op
 Benchmark_squareOfSumBruteForce/input_size_10000
-Benchmark_squareOfSumBruteForce/input_size_10000-8      	  506860	      2329 ns/op	       0 B/op	       0 allocs/op
+Benchmark_squareOfSumBruteForce/input_size_10000-8      	  511855	      2329 ns/op	       0 B/op	       0 allocs/op
 Benchmark_sumOfSquaresBruteForce
 Benchmark_sumOfSquaresBruteForce/input_size_10
-Benchmark_sumOfSquaresBruteForce/input_size_10-8        	 9536739	       123.3 ns/op	       0 B/op	       0 allocs/op
+Benchmark_sumOfSquaresBruteForce/input_size_10-8        	 9877256	       118.3 ns/op	       0 B/op	       0 allocs/op
 Benchmark_sumOfSquaresBruteForce/input_size_100
-Benchmark_sumOfSquaresBruteForce/input_size_100-8       	  871184	      1466 ns/op	       0 B/op	       0 allocs/op
+Benchmark_sumOfSquaresBruteForce/input_size_100-8       	  870933	      1389 ns/op	       0 B/op	       0 allocs/op
 Benchmark_sumOfSquaresBruteForce/input_size_1000
-Benchmark_sumOfSquaresBruteForce/input_size_1000-8      	   88890	     13647 ns/op	       0 B/op	       0 allocs/op
+Benchmark_sumOfSquaresBruteForce/input_size_1000-8      	   93055	     13818 ns/op	       0 B/op	       0 allocs/op
 Benchmark_sumOfSquaresBruteForce/input_size_10000
-Benchmark_sumOfSquaresBruteForce/input_size_10000-8     	    8983	    137880 ns/op	       0 B/op	       0 allocs/op
+Benchmark_sumOfSquaresBruteForce/input_size_10000-8     	    8790	    130127 ns/op	       0 B/op	       0 allocs/op
 Benchmark_squareOfSumGauss
 Benchmark_squareOfSumGauss/input_size_10
-Benchmark_squareOfSumGauss/input_size_10-8              	81535269	        14.85 ns/op	       0 B/op	       0 allocs/op
+Benchmark_squareOfSumGauss/input_size_10-8              	83686243	        15.16 ns/op	       0 B/op	       0 allocs/op
 Benchmark_squareOfSumGauss/input_size_100
-Benchmark_squareOfSumGauss/input_size_100-8             	64242895	        15.68 ns/op	       0 B/op	       0 allocs/op
+Benchmark_squareOfSumGauss/input_size_100-8             	82519615	        15.19 ns/op	       0 B/op	       0 allocs/op
 Benchmark_squareOfSumGauss/input_size_1000
-Benchmark_squareOfSumGauss/input_size_1000-8            	69711468	        14.94 ns/op	       0 B/op	       0 allocs/op
+Benchmark_squareOfSumGauss/input_size_1000-8            	83581150	        14.85 ns/op	       0 B/op	       0 allocs/op
 Benchmark_squareOfSumGauss/input_size_10000
-Benchmark_squareOfSumGauss/input_size_10000-8           	72954270	        15.52 ns/op	       0 B/op	       0 allocs/op
+Benchmark_squareOfSumGauss/input_size_10000-8           	77736037	        14.87 ns/op	       0 B/op	       0 allocs/op
 Benchmark_sumOfSquaresGauss
 Benchmark_sumOfSquaresGauss/input_size_10
-Benchmark_sumOfSquaresGauss/input_size_10-8             	1000000000	         0.9166 ns/op	       0 B/op	       0 allocs/op
+Benchmark_sumOfSquaresGauss/input_size_10-8             	1000000000	         0.9018 ns/op	       0 B/op	       0 allocs/op
 Benchmark_sumOfSquaresGauss/input_size_100
-Benchmark_sumOfSquaresGauss/input_size_100-8            	1000000000	         0.8591 ns/op	       0 B/op	       0 allocs/op
+Benchmark_sumOfSquaresGauss/input_size_100-8            	1000000000	         0.9173 ns/op	       0 B/op	       0 allocs/op
 Benchmark_sumOfSquaresGauss/input_size_1000
-Benchmark_sumOfSquaresGauss/input_size_1000-8           	1000000000	         0.8592 ns/op	       0 B/op	       0 allocs/op
+Benchmark_sumOfSquaresGauss/input_size_1000-8           	1000000000	         0.8454 ns/op	       0 B/op	       0 allocs/op
 Benchmark_sumOfSquaresGauss/input_size_10000
-Benchmark_sumOfSquaresGauss/input_size_10000-8          	1000000000	         0.9019 ns/op	       0 B/op	       0 allocs/op
+Benchmark_sumOfSquaresGauss/input_size_10000-8          	1000000000	         0.8438 ns/op	       0 B/op	       0 allocs/op
 BenchmarkDifference2
 BenchmarkDifference2/input_size_10
-BenchmarkDifference2/input_size_10-8                    	58354600	        18.40 ns/op	       0 B/op	       0 allocs/op
+BenchmarkDifference2/input_size_10-8                    	73759489	        17.35 ns/op	       0 B/op	       0 allocs/op
 BenchmarkDifference2/input_size_100
-BenchmarkDifference2/input_size_100-8                   	68028196	        18.28 ns/op	       0 B/op	       0 allocs/op
+BenchmarkDifference2/input_size_100-8                   	71601099	        17.04 ns/op	       0 B/op	       0 allocs/op
 BenchmarkDifference2/input_size_1000
-BenchmarkDifference2/input_size_1000-8                  	73059724	        17.84 ns/op	       0 B/op	       0 allocs/op
+BenchmarkDifference2/input_size_1000-8                  	75317954	        16.69 ns/op	       0 B/op	       0 allocs/op
 BenchmarkDifference2/input_size_10000
-BenchmarkDifference2/input_size_10000-8                 	67205625	        17.88 ns/op	       0 B/op	       0 allocs/op
+BenchmarkDifference2/input_size_10000-8                 	72780176	        17.92 ns/op	       0 B/op	       0 allocs/op
 BenchmarkSquareOfSum
-BenchmarkSquareOfSum-8                                  	72406717	        16.56 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSquareOfSum-8                                  	78462141	        16.88 ns/op	       0 B/op	       0 allocs/op
 BenchmarkSumOfSquares
-BenchmarkSumOfSquares-8                                 	656380638	         1.702 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSumOfSquares-8                                 	693659665	         1.829 ns/op	       0 B/op	       0 allocs/op
 BenchmarkDifference
-BenchmarkDifference-8                                   	72435668	        17.44 ns/op	       0 B/op	       0 allocs/op
+BenchmarkDifference-8                                   	61025012	        17.15 ns/op	       0 B/op	       0 allocs/op
 PASS
-ok  	diffsquares	30.095s
+ok  	diffsquares	34.004s
 
-real	0m30.237s
-user	0m30.299s
-sys	0m0.184s
+real	0m34.161s
+user	0m34.265s
+sys	0m0.217s
 
 ===============================================================================
 
@@ -856,18 +854,46 @@ gotest -v -tags bonus
 --- PASS: Example_squareOfSumBruteForce (0.00s)
 === RUN   Example_sumOfSquaresBruteForce
 --- PASS: Example_sumOfSquaresBruteForce (0.00s)
-=== RUN   ExampleDifference_BruteForce
---- PASS: ExampleDifference_BruteForce (0.00s)
+=== RUN   Example_differenceBruteForce
+--- PASS: Example_differenceBruteForce (0.00s)
 PASS
 ok  	diffsquares	0.002s
 
-real	0m0.138s
-user	0m0.178s
-sys	0m0.129s
+real	0m0.126s
+user	0m0.157s
+sys	0m0.097s
 
 ===============================================================================
 
 benchstat benchstat-old.txt benchstat-new.txt
+benchstat-old.txt:5: missing iteration count
+benchstat-old.txt:6: missing iteration count
+benchstat-old.txt:8: missing iteration count
+benchstat-old.txt:10: missing iteration count
+benchstat-old.txt:12: missing iteration count
+benchstat-old.txt:14: missing iteration count
+benchstat-old.txt:15: missing iteration count
+benchstat-old.txt:17: missing iteration count
+benchstat-old.txt:19: missing iteration count
+benchstat-old.txt:21: missing iteration count
+benchstat-old.txt:23: missing iteration count
+benchstat-old.txt:24: missing iteration count
+benchstat-old.txt:26: missing iteration count
+benchstat-old.txt:28: missing iteration count
+benchstat-old.txt:30: missing iteration count
+benchstat-old.txt:32: missing iteration count
+benchstat-old.txt:33: missing iteration count
+benchstat-old.txt:35: missing iteration count
+benchstat-old.txt:37: missing iteration count
+benchstat-old.txt:39: missing iteration count
+benchstat-old.txt:41: missing iteration count
+benchstat-old.txt:42: missing iteration count
+benchstat-old.txt:44: missing iteration count
+benchstat-old.txt:46: missing iteration count
+benchstat-old.txt:48: missing iteration count
+benchstat-old.txt:50: missing iteration count
+benchstat-old.txt:52: missing iteration count
+benchstat-old.txt:54: missing iteration count
 benchstat-new.txt:5: missing iteration count
 benchstat-new.txt:6: missing iteration count
 benchstat-new.txt:8: missing iteration count
@@ -900,190 +926,107 @@ goos: linux
 goarch: amd64
 pkg: diffsquares
 cpu: 12th Gen Intel(R) Core(TM) i5-1240P
-                                           │ benchstat-new.txt │
-                                           │      sec/op       │
-_squareOfSumBruteForce/input_size_10-8            18.76n ± ∞ ¹
-_squareOfSumBruteForce/input_size_100-8           39.90n ± ∞ ¹
-_squareOfSumBruteForce/input_size_1000-8          238.2n ± ∞ ¹
-_squareOfSumBruteForce/input_size_10000-8         2.329µ ± ∞ ¹
-_sumOfSquaresBruteForce/input_size_10-8           123.3n ± ∞ ¹
-_sumOfSquaresBruteForce/input_size_100-8          1.466µ ± ∞ ¹
-_sumOfSquaresBruteForce/input_size_1000-8         13.65µ ± ∞ ¹
-_sumOfSquaresBruteForce/input_size_10000-8        137.9µ ± ∞ ¹
-_squareOfSumGauss/input_size_10-8                 14.85n ± ∞ ¹
-_squareOfSumGauss/input_size_100-8                15.68n ± ∞ ¹
-_squareOfSumGauss/input_size_1000-8               14.94n ± ∞ ¹
-_squareOfSumGauss/input_size_10000-8              15.52n ± ∞ ¹
-_sumOfSquaresGauss/input_size_10-8               0.9166n ± ∞ ¹
-_sumOfSquaresGauss/input_size_100-8              0.8591n ± ∞ ¹
-_sumOfSquaresGauss/input_size_1000-8             0.8592n ± ∞ ¹
-_sumOfSquaresGauss/input_size_10000-8            0.9019n ± ∞ ¹
-Difference2/input_size_10-8                       18.40n ± ∞ ¹
-Difference2/input_size_100-8                      18.28n ± ∞ ¹
-Difference2/input_size_1000-8                     17.84n ± ∞ ¹
-Difference2/input_size_10000-8                    17.88n ± ∞ ¹
-SquareOfSum-8                                     16.56n ± ∞ ¹
-SumOfSquares-8                                    1.702n ± ∞ ¹
-Difference-8                                      17.44n ± ∞ ¹
-geomean                                           34.57n
+                                           │ benchstat-old.txt │           benchstat-new.txt           │
+                                           │      sec/op       │    sec/op      vs base                │
+_squareOfSumBruteForce/input_size_10-8            18.76n ± ∞ ¹    15.59n ± ∞ ¹       ~ (p=1.000 n=1) ²
+_squareOfSumBruteForce/input_size_100-8           39.90n ± ∞ ¹    39.30n ± ∞ ¹       ~ (p=1.000 n=1) ²
+_squareOfSumBruteForce/input_size_1000-8          238.2n ± ∞ ¹    240.3n ± ∞ ¹       ~ (p=1.000 n=1) ²
+_squareOfSumBruteForce/input_size_10000-8         2.329µ ± ∞ ¹    2.329µ ± ∞ ¹       ~ (p=1.000 n=1) ³
+_sumOfSquaresBruteForce/input_size_10-8           123.3n ± ∞ ¹    118.3n ± ∞ ¹       ~ (p=1.000 n=1) ²
+_sumOfSquaresBruteForce/input_size_100-8          1.466µ ± ∞ ¹    1.389µ ± ∞ ¹       ~ (p=1.000 n=1) ²
+_sumOfSquaresBruteForce/input_size_1000-8         13.65µ ± ∞ ¹    13.82µ ± ∞ ¹       ~ (p=1.000 n=1) ²
+_sumOfSquaresBruteForce/input_size_10000-8        137.9µ ± ∞ ¹    130.1µ ± ∞ ¹       ~ (p=1.000 n=1) ²
+_squareOfSumGauss/input_size_10-8                 14.85n ± ∞ ¹    15.16n ± ∞ ¹       ~ (p=1.000 n=1) ²
+_squareOfSumGauss/input_size_100-8                15.68n ± ∞ ¹    15.19n ± ∞ ¹       ~ (p=1.000 n=1) ²
+_squareOfSumGauss/input_size_1000-8               14.94n ± ∞ ¹    14.85n ± ∞ ¹       ~ (p=1.000 n=1) ²
+_squareOfSumGauss/input_size_10000-8              15.52n ± ∞ ¹    14.87n ± ∞ ¹       ~ (p=1.000 n=1) ²
+_sumOfSquaresGauss/input_size_10-8               0.9166n ± ∞ ¹   0.9018n ± ∞ ¹       ~ (p=1.000 n=1) ²
+_sumOfSquaresGauss/input_size_100-8              0.8591n ± ∞ ¹   0.9173n ± ∞ ¹       ~ (p=1.000 n=1) ²
+_sumOfSquaresGauss/input_size_1000-8             0.8592n ± ∞ ¹   0.8454n ± ∞ ¹       ~ (p=1.000 n=1) ²
+_sumOfSquaresGauss/input_size_10000-8            0.9019n ± ∞ ¹   0.8438n ± ∞ ¹       ~ (p=1.000 n=1) ²
+Difference2/input_size_10-8                       18.40n ± ∞ ¹    17.35n ± ∞ ¹       ~ (p=1.000 n=1) ²
+Difference2/input_size_100-8                      18.28n ± ∞ ¹    17.04n ± ∞ ¹       ~ (p=1.000 n=1) ²
+Difference2/input_size_1000-8                     17.84n ± ∞ ¹    16.69n ± ∞ ¹       ~ (p=1.000 n=1) ²
+Difference2/input_size_10000-8                    17.88n ± ∞ ¹    17.92n ± ∞ ¹       ~ (p=1.000 n=1) ²
+SquareOfSum-8                                     16.56n ± ∞ ¹    16.88n ± ∞ ¹       ~ (p=1.000 n=1) ²
+SumOfSquares-8                                    1.702n ± ∞ ¹    1.829n ± ∞ ¹       ~ (p=1.000 n=1) ²
+Difference-8                                      17.44n ± ∞ ¹    17.15n ± ∞ ¹       ~ (p=1.000 n=1) ²
+geomean                                           34.57n          33.76n        -2.34%
 ¹ need >= 6 samples for confidence interval at level 0.95
+² need >= 4 samples to detect a difference at alpha level 0.05
+³ all samples are equal
 
-                                           │ benchstat-new.txt │
-                                           │       B/op        │
-_squareOfSumBruteForce/input_size_10-8             0.000 ± ∞ ¹
-_squareOfSumBruteForce/input_size_100-8            0.000 ± ∞ ¹
-_squareOfSumBruteForce/input_size_1000-8           0.000 ± ∞ ¹
-_squareOfSumBruteForce/input_size_10000-8          0.000 ± ∞ ¹
-_sumOfSquaresBruteForce/input_size_10-8            0.000 ± ∞ ¹
-_sumOfSquaresBruteForce/input_size_100-8           0.000 ± ∞ ¹
-_sumOfSquaresBruteForce/input_size_1000-8          0.000 ± ∞ ¹
-_sumOfSquaresBruteForce/input_size_10000-8         0.000 ± ∞ ¹
-_squareOfSumGauss/input_size_10-8                  0.000 ± ∞ ¹
-_squareOfSumGauss/input_size_100-8                 0.000 ± ∞ ¹
-_squareOfSumGauss/input_size_1000-8                0.000 ± ∞ ¹
-_squareOfSumGauss/input_size_10000-8               0.000 ± ∞ ¹
-_sumOfSquaresGauss/input_size_10-8                 0.000 ± ∞ ¹
-_sumOfSquaresGauss/input_size_100-8                0.000 ± ∞ ¹
-_sumOfSquaresGauss/input_size_1000-8               0.000 ± ∞ ¹
-_sumOfSquaresGauss/input_size_10000-8              0.000 ± ∞ ¹
-Difference2/input_size_10-8                        0.000 ± ∞ ¹
-Difference2/input_size_100-8                       0.000 ± ∞ ¹
-Difference2/input_size_1000-8                      0.000 ± ∞ ¹
-Difference2/input_size_10000-8                     0.000 ± ∞ ¹
-SquareOfSum-8                                      0.000 ± ∞ ¹
-SumOfSquares-8                                     0.000 ± ∞ ¹
-Difference-8                                       0.000 ± ∞ ¹
-geomean                                                      ²
+                                           │ benchstat-old.txt │          benchstat-new.txt          │
+                                           │       B/op        │    B/op      vs base                │
+_squareOfSumBruteForce/input_size_10-8             0.000 ± ∞ ¹   0.000 ± ∞ ¹       ~ (p=1.000 n=1) ²
+_squareOfSumBruteForce/input_size_100-8            0.000 ± ∞ ¹   0.000 ± ∞ ¹       ~ (p=1.000 n=1) ²
+_squareOfSumBruteForce/input_size_1000-8           0.000 ± ∞ ¹   0.000 ± ∞ ¹       ~ (p=1.000 n=1) ²
+_squareOfSumBruteForce/input_size_10000-8          0.000 ± ∞ ¹   0.000 ± ∞ ¹       ~ (p=1.000 n=1) ²
+_sumOfSquaresBruteForce/input_size_10-8            0.000 ± ∞ ¹   0.000 ± ∞ ¹       ~ (p=1.000 n=1) ²
+_sumOfSquaresBruteForce/input_size_100-8           0.000 ± ∞ ¹   0.000 ± ∞ ¹       ~ (p=1.000 n=1) ²
+_sumOfSquaresBruteForce/input_size_1000-8          0.000 ± ∞ ¹   0.000 ± ∞ ¹       ~ (p=1.000 n=1) ²
+_sumOfSquaresBruteForce/input_size_10000-8         0.000 ± ∞ ¹   0.000 ± ∞ ¹       ~ (p=1.000 n=1) ²
+_squareOfSumGauss/input_size_10-8                  0.000 ± ∞ ¹   0.000 ± ∞ ¹       ~ (p=1.000 n=1) ²
+_squareOfSumGauss/input_size_100-8                 0.000 ± ∞ ¹   0.000 ± ∞ ¹       ~ (p=1.000 n=1) ²
+_squareOfSumGauss/input_size_1000-8                0.000 ± ∞ ¹   0.000 ± ∞ ¹       ~ (p=1.000 n=1) ²
+_squareOfSumGauss/input_size_10000-8               0.000 ± ∞ ¹   0.000 ± ∞ ¹       ~ (p=1.000 n=1) ²
+_sumOfSquaresGauss/input_size_10-8                 0.000 ± ∞ ¹   0.000 ± ∞ ¹       ~ (p=1.000 n=1) ²
+_sumOfSquaresGauss/input_size_100-8                0.000 ± ∞ ¹   0.000 ± ∞ ¹       ~ (p=1.000 n=1) ²
+_sumOfSquaresGauss/input_size_1000-8               0.000 ± ∞ ¹   0.000 ± ∞ ¹       ~ (p=1.000 n=1) ²
+_sumOfSquaresGauss/input_size_10000-8              0.000 ± ∞ ¹   0.000 ± ∞ ¹       ~ (p=1.000 n=1) ²
+Difference2/input_size_10-8                        0.000 ± ∞ ¹   0.000 ± ∞ ¹       ~ (p=1.000 n=1) ²
+Difference2/input_size_100-8                       0.000 ± ∞ ¹   0.000 ± ∞ ¹       ~ (p=1.000 n=1) ²
+Difference2/input_size_1000-8                      0.000 ± ∞ ¹   0.000 ± ∞ ¹       ~ (p=1.000 n=1) ²
+Difference2/input_size_10000-8                     0.000 ± ∞ ¹   0.000 ± ∞ ¹       ~ (p=1.000 n=1) ²
+SquareOfSum-8                                      0.000 ± ∞ ¹   0.000 ± ∞ ¹       ~ (p=1.000 n=1) ²
+SumOfSquares-8                                     0.000 ± ∞ ¹   0.000 ± ∞ ¹       ~ (p=1.000 n=1) ²
+Difference-8                                       0.000 ± ∞ ¹   0.000 ± ∞ ¹       ~ (p=1.000 n=1) ²
+geomean                                                      ³                +0.00%               ³
 ¹ need >= 6 samples for confidence interval at level 0.95
-² summaries must be >0 to compute geomean
+² all samples are equal
+³ summaries must be >0 to compute geomean
 
-                                           │ benchstat-new.txt │
-                                           │     allocs/op     │
-_squareOfSumBruteForce/input_size_10-8             0.000 ± ∞ ¹
-_squareOfSumBruteForce/input_size_100-8            0.000 ± ∞ ¹
-_squareOfSumBruteForce/input_size_1000-8           0.000 ± ∞ ¹
-_squareOfSumBruteForce/input_size_10000-8          0.000 ± ∞ ¹
-_sumOfSquaresBruteForce/input_size_10-8            0.000 ± ∞ ¹
-_sumOfSquaresBruteForce/input_size_100-8           0.000 ± ∞ ¹
-_sumOfSquaresBruteForce/input_size_1000-8          0.000 ± ∞ ¹
-_sumOfSquaresBruteForce/input_size_10000-8         0.000 ± ∞ ¹
-_squareOfSumGauss/input_size_10-8                  0.000 ± ∞ ¹
-_squareOfSumGauss/input_size_100-8                 0.000 ± ∞ ¹
-_squareOfSumGauss/input_size_1000-8                0.000 ± ∞ ¹
-_squareOfSumGauss/input_size_10000-8               0.000 ± ∞ ¹
-_sumOfSquaresGauss/input_size_10-8                 0.000 ± ∞ ¹
-_sumOfSquaresGauss/input_size_100-8                0.000 ± ∞ ¹
-_sumOfSquaresGauss/input_size_1000-8               0.000 ± ∞ ¹
-_sumOfSquaresGauss/input_size_10000-8              0.000 ± ∞ ¹
-Difference2/input_size_10-8                        0.000 ± ∞ ¹
-Difference2/input_size_100-8                       0.000 ± ∞ ¹
-Difference2/input_size_1000-8                      0.000 ± ∞ ¹
-Difference2/input_size_10000-8                     0.000 ± ∞ ¹
-SquareOfSum-8                                      0.000 ± ∞ ¹
-SumOfSquares-8                                     0.000 ± ∞ ¹
-Difference-8                                       0.000 ± ∞ ¹
-geomean                                                      ²
+                                           │ benchstat-old.txt │          benchstat-new.txt          │
+                                           │     allocs/op     │  allocs/op   vs base                │
+_squareOfSumBruteForce/input_size_10-8             0.000 ± ∞ ¹   0.000 ± ∞ ¹       ~ (p=1.000 n=1) ²
+_squareOfSumBruteForce/input_size_100-8            0.000 ± ∞ ¹   0.000 ± ∞ ¹       ~ (p=1.000 n=1) ²
+_squareOfSumBruteForce/input_size_1000-8           0.000 ± ∞ ¹   0.000 ± ∞ ¹       ~ (p=1.000 n=1) ²
+_squareOfSumBruteForce/input_size_10000-8          0.000 ± ∞ ¹   0.000 ± ∞ ¹       ~ (p=1.000 n=1) ²
+_sumOfSquaresBruteForce/input_size_10-8            0.000 ± ∞ ¹   0.000 ± ∞ ¹       ~ (p=1.000 n=1) ²
+_sumOfSquaresBruteForce/input_size_100-8           0.000 ± ∞ ¹   0.000 ± ∞ ¹       ~ (p=1.000 n=1) ²
+_sumOfSquaresBruteForce/input_size_1000-8          0.000 ± ∞ ¹   0.000 ± ∞ ¹       ~ (p=1.000 n=1) ²
+_sumOfSquaresBruteForce/input_size_10000-8         0.000 ± ∞ ¹   0.000 ± ∞ ¹       ~ (p=1.000 n=1) ²
+_squareOfSumGauss/input_size_10-8                  0.000 ± ∞ ¹   0.000 ± ∞ ¹       ~ (p=1.000 n=1) ²
+_squareOfSumGauss/input_size_100-8                 0.000 ± ∞ ¹   0.000 ± ∞ ¹       ~ (p=1.000 n=1) ²
+_squareOfSumGauss/input_size_1000-8                0.000 ± ∞ ¹   0.000 ± ∞ ¹       ~ (p=1.000 n=1) ²
+_squareOfSumGauss/input_size_10000-8               0.000 ± ∞ ¹   0.000 ± ∞ ¹       ~ (p=1.000 n=1) ²
+_sumOfSquaresGauss/input_size_10-8                 0.000 ± ∞ ¹   0.000 ± ∞ ¹       ~ (p=1.000 n=1) ²
+_sumOfSquaresGauss/input_size_100-8                0.000 ± ∞ ¹   0.000 ± ∞ ¹       ~ (p=1.000 n=1) ²
+_sumOfSquaresGauss/input_size_1000-8               0.000 ± ∞ ¹   0.000 ± ∞ ¹       ~ (p=1.000 n=1) ²
+_sumOfSquaresGauss/input_size_10000-8              0.000 ± ∞ ¹   0.000 ± ∞ ¹       ~ (p=1.000 n=1) ²
+Difference2/input_size_10-8                        0.000 ± ∞ ¹   0.000 ± ∞ ¹       ~ (p=1.000 n=1) ²
+Difference2/input_size_100-8                       0.000 ± ∞ ¹   0.000 ± ∞ ¹       ~ (p=1.000 n=1) ²
+Difference2/input_size_1000-8                      0.000 ± ∞ ¹   0.000 ± ∞ ¹       ~ (p=1.000 n=1) ²
+Difference2/input_size_10000-8                     0.000 ± ∞ ¹   0.000 ± ∞ ¹       ~ (p=1.000 n=1) ²
+SquareOfSum-8                                      0.000 ± ∞ ¹   0.000 ± ∞ ¹       ~ (p=1.000 n=1) ²
+SumOfSquares-8                                     0.000 ± ∞ ¹   0.000 ± ∞ ¹       ~ (p=1.000 n=1) ²
+Difference-8                                       0.000 ± ∞ ¹   0.000 ± ∞ ¹       ~ (p=1.000 n=1) ²
+geomean                                                      ³                +0.00%               ³
 ¹ need >= 6 samples for confidence interval at level 0.95
-² summaries must be >0 to compute geomean
+² all samples are equal
+³ summaries must be >0 to compute geomean
 
-cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
-                                           │ benchstat-old.txt │
-                                           │      sec/op       │
-_squareOfSumBruteForce/input_size_10-4            36.32n ± ∞ ¹
-_squareOfSumBruteForce/input_size_100-4           131.1n ± ∞ ¹
-_squareOfSumBruteForce/input_size_1000-4          945.4n ± ∞ ¹
-_squareOfSumBruteForce/input_size_10000-4         9.273µ ± ∞ ¹
-_sumOfSquaresBruteForce/input_size_10-4           291.4n ± ∞ ¹
-_sumOfSquaresBruteForce/input_size_100-4          3.511µ ± ∞ ¹
-_sumOfSquaresBruteForce/input_size_1000-4         34.28µ ± ∞ ¹
-_sumOfSquaresBruteForce/input_size_10000-4        347.1µ ± ∞ ¹
-_squareOfSumGauss/input_size_10-4                 50.20n ± ∞ ¹
-_squareOfSumGauss/input_size_100-4                34.02n ± ∞ ¹
-_squareOfSumGauss/input_size_1000-4               34.72n ± ∞ ¹
-_squareOfSumGauss/input_size_10000-4              35.09n ± ∞ ¹
-_sumOfSquaresGauss/input_size_10-4                2.339n ± ∞ ¹
-_sumOfSquaresGauss/input_size_100-4               2.323n ± ∞ ¹
-_sumOfSquaresGauss/input_size_1000-4              2.396n ± ∞ ¹
-_sumOfSquaresGauss/input_size_10000-4             2.466n ± ∞ ¹
-Difference2/input_size_10-4                       43.57n ± ∞ ¹
-Difference2/input_size_100-4                      43.28n ± ∞ ¹
-Difference2/input_size_1000-4                     43.96n ± ∞ ¹
-Difference2/input_size_10000-4                    45.85n ± ∞ ¹
-SquareOfSum-4                                     37.79n ± ∞ ¹
-SumOfSquares-4                                    5.311n ± ∞ ¹
-Difference-4                                      43.55n ± ∞ ¹
-geomean                                           90.95n
-¹ need >= 6 samples for confidence interval at level 0.95
-
-                                           │ benchstat-old.txt │
-                                           │       B/op        │
-_squareOfSumBruteForce/input_size_10-4             0.000 ± ∞ ¹
-_squareOfSumBruteForce/input_size_100-4            0.000 ± ∞ ¹
-_squareOfSumBruteForce/input_size_1000-4           0.000 ± ∞ ¹
-_squareOfSumBruteForce/input_size_10000-4          0.000 ± ∞ ¹
-_sumOfSquaresBruteForce/input_size_10-4            0.000 ± ∞ ¹
-_sumOfSquaresBruteForce/input_size_100-4           0.000 ± ∞ ¹
-_sumOfSquaresBruteForce/input_size_1000-4          0.000 ± ∞ ¹
-_sumOfSquaresBruteForce/input_size_10000-4         0.000 ± ∞ ¹
-_squareOfSumGauss/input_size_10-4                  0.000 ± ∞ ¹
-_squareOfSumGauss/input_size_100-4                 0.000 ± ∞ ¹
-_squareOfSumGauss/input_size_1000-4                0.000 ± ∞ ¹
-_squareOfSumGauss/input_size_10000-4               0.000 ± ∞ ¹
-_sumOfSquaresGauss/input_size_10-4                 0.000 ± ∞ ¹
-_sumOfSquaresGauss/input_size_100-4                0.000 ± ∞ ¹
-_sumOfSquaresGauss/input_size_1000-4               0.000 ± ∞ ¹
-_sumOfSquaresGauss/input_size_10000-4              0.000 ± ∞ ¹
-Difference2/input_size_10-4                        0.000 ± ∞ ¹
-Difference2/input_size_100-4                       0.000 ± ∞ ¹
-Difference2/input_size_1000-4                      0.000 ± ∞ ¹
-Difference2/input_size_10000-4                     0.000 ± ∞ ¹
-SquareOfSum-4                                      0.000 ± ∞ ¹
-SumOfSquares-4                                     0.000 ± ∞ ¹
-Difference-4                                       0.000 ± ∞ ¹
-geomean                                                      ²
-¹ need >= 6 samples for confidence interval at level 0.95
-² summaries must be >0 to compute geomean
-
-                                           │ benchstat-old.txt │
-                                           │     allocs/op     │
-_squareOfSumBruteForce/input_size_10-4             0.000 ± ∞ ¹
-_squareOfSumBruteForce/input_size_100-4            0.000 ± ∞ ¹
-_squareOfSumBruteForce/input_size_1000-4           0.000 ± ∞ ¹
-_squareOfSumBruteForce/input_size_10000-4          0.000 ± ∞ ¹
-_sumOfSquaresBruteForce/input_size_10-4            0.000 ± ∞ ¹
-_sumOfSquaresBruteForce/input_size_100-4           0.000 ± ∞ ¹
-_sumOfSquaresBruteForce/input_size_1000-4          0.000 ± ∞ ¹
-_sumOfSquaresBruteForce/input_size_10000-4         0.000 ± ∞ ¹
-_squareOfSumGauss/input_size_10-4                  0.000 ± ∞ ¹
-_squareOfSumGauss/input_size_100-4                 0.000 ± ∞ ¹
-_squareOfSumGauss/input_size_1000-4                0.000 ± ∞ ¹
-_squareOfSumGauss/input_size_10000-4               0.000 ± ∞ ¹
-_sumOfSquaresGauss/input_size_10-4                 0.000 ± ∞ ¹
-_sumOfSquaresGauss/input_size_100-4                0.000 ± ∞ ¹
-_sumOfSquaresGauss/input_size_1000-4               0.000 ± ∞ ¹
-_sumOfSquaresGauss/input_size_10000-4              0.000 ± ∞ ¹
-Difference2/input_size_10-4                        0.000 ± ∞ ¹
-Difference2/input_size_100-4                       0.000 ± ∞ ¹
-Difference2/input_size_1000-4                      0.000 ± ∞ ¹
-Difference2/input_size_10000-4                     0.000 ± ∞ ¹
-SquareOfSum-4                                      0.000 ± ∞ ¹
-SumOfSquares-4                                     0.000 ± ∞ ¹
-Difference-4                                       0.000 ± ∞ ¹
-geomean                                                      ²
-¹ need >= 6 samples for confidence interval at level 0.95
-² summaries must be >0 to compute geomean
-
-real	0m0.006s
-user	0m0.004s
-sys	0m0.003s
+real	0m0.005s
+user	0m0.002s
+sys	0m0.004s
 
 ===============================================================================
 
 gomarkdoc --output diffsquares-doc.md
 
 real	0m0.010s
-user	0m0.007s
-sys	0m0.003s
+user	0m0.003s
+sys	0m0.007s
 
 ===============================================================================
 
@@ -1108,9 +1051,9 @@ func SumOfSquares(n int) int
     squares (starting with 1 to 10, inclusive).
 
 
-real	0m0.027s
-user	0m0.014s
-sys	0m0.019s
+real	0m0.030s
+user	0m0.015s
+sys	0m0.022s
 
 
 ===============================================================================
