@@ -19,25 +19,25 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.030s
-user	0m0.029s
-sys	0m0.026s
+real	0m0.023s
+user	0m0.015s
+sys	0m0.025s
 
 
  ==============================================================================
 
 Running: golangci-lint run --enable-all ./...
 
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
 level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
 level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
 level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
 level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
-level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
 level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
-level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
 level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
-level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
-level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
 nucleotide_count.go:64:3: use of `fmt.Printf` forbidden by pattern `^(fmt\.Print(|f|ln)|print|println)$` (forbidigo)
 		fmt.Printf("%s\n", d)
 		^
@@ -61,7 +61,7 @@ nucleotide_count_test.go:14:9: Using the variable on range scope `tc` in functio
 nucleotide_count_test.go:16:58: Using the variable on range scope `tc` in function literal (scopelint)
 					t.Fatalf("DNA.Counts(%q) expected error, got: %#v", tc.strand, actual)
 					                                                    ^
-cases_test.go:6:5: testCases is a global variable (gochecknoglobals)
+cases_test.go:8:5: testCases is a global variable (gochecknoglobals)
 var testCases = []struct {
     ^
 nucleotide_count.go:25:17: err113: do not define dynamic errors, use wrapped static errors instead: "fmt.Errorf(\"DNA sequence, %q, contains invalid nucleotides\", string(d))" (goerr113)
@@ -89,22 +89,22 @@ nucleotide_count_test.go:1:9: package should be `dna_test` instead of `dna` (tes
 package dna
         ^
 
-real	0m0.490s
-user	0m0.848s
-sys	0m0.495s
+real	0m0.516s
+user	0m0.808s
+sys	0m0.501s
 
 
  ==============================================================================
 
 Exit code: -1
 
-real	0m0.531s
-user	0m0.883s
-sys	0m0.529s
+real	0m0.562s
+user	0m0.833s
+sys	0m0.547s
 
-real	0m0.533s
-user	0m0.883s
-sys	0m0.531s
+real	0m0.565s
+user	0m0.837s
+sys	0m0.547s
 
 ===============================================================================
 
@@ -122,9 +122,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.024s
-user	0m0.021s
-sys	0m0.027s
+real	0m0.023s
+user	0m0.024s
+sys	0m0.023s
 
 
  ==============================================================================
@@ -138,9 +138,9 @@ nucleotide_count.go
 
  ✖ 2 problems (0 errors) (2 warnings)
 
-real	0m0.059s
+real	0m0.060s
 user	0m0.030s
-sys	0m0.030s
+sys	0m0.046s
 
 
  ==============================================================================
@@ -148,12 +148,12 @@ sys	0m0.030s
 Exit code: 0
 
 real	0m0.093s
-user	0m0.056s
-sys	0m0.067s
+user	0m0.062s
+sys	0m0.076s
 
-real	0m0.094s
-user	0m0.057s
-sys	0m0.067s
+real	0m0.095s
+user	0m0.062s
+sys	0m0.077s
 
 ===============================================================================
 
@@ -162,7 +162,7 @@ Running: ../../.github/citools/go/go-lint-ineffassign
 
 real	0m0.001s
 user	0m0.000s
-sys	0m0.001s
+sys	0m0.000s
 
 ===============================================================================
 
@@ -180,8 +180,8 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.024s
-user	0m0.019s
+real	0m0.034s
+user	0m0.039s
 sys	0m0.027s
 
 
@@ -192,22 +192,22 @@ Running: go-consistent -v ./...
 	info: check "./."
 internal error: package "fmt" without types was imported from "dna"
 
-real	0m0.081s
-user	0m0.118s
-sys	0m0.101s
+real	0m0.099s
+user	0m0.127s
+sys	0m0.105s
 
 
  ==============================================================================
 
 Exit code: -1
 
-real	0m0.125s
-user	0m0.148s
-sys	0m0.145s
-
-real	0m0.128s
-user	0m0.151s
+real	0m0.153s
+user	0m0.177s
 sys	0m0.146s
+
+real	0m0.155s
+user	0m0.178s
+sys	0m0.148s
 
 ===============================================================================
 
@@ -225,9 +225,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.018s
-user	0m0.017s
-sys	0m0.017s
+real	0m0.028s
+user	0m0.030s
+sys	0m0.029s
 
 
  ==============================================================================
@@ -236,22 +236,22 @@ Running: staticcheck -checks=all ./...
 
 nucleotide_count.go:44:8: should omit type Histogram from declaration; it will be inferred from the right-hand side (ST1023)
 
-real	0m0.175s
-user	0m0.190s
-sys	0m0.104s
+real	0m0.156s
+user	0m0.186s
+sys	0m0.137s
 
 
  ==============================================================================
 
 Exit code: -1
 
-real	0m0.202s
-user	0m0.213s
-sys	0m0.128s
+real	0m0.198s
+user	0m0.225s
+sys	0m0.174s
 
-real	0m0.204s
-user	0m0.214s
-sys	0m0.129s
+real	0m0.200s
+user	0m0.226s
+sys	0m0.175s
 
 ===============================================================================
 
@@ -269,9 +269,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.032s
-user	0m0.030s
-sys	0m0.038s
+real	0m0.033s
+user	0m0.033s
+sys	0m0.033s
 
 
  ==============================================================================
@@ -279,22 +279,22 @@ sys	0m0.038s
 Running: gocritic check -enableAll ./...
 
 
-real	0m0.815s
-user	0m2.037s
-sys	0m0.261s
+real	0m0.775s
+user	0m1.877s
+sys	0m0.289s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.861s
-user	0m2.075s
-sys	0m0.309s
+real	0m0.819s
+user	0m1.918s
+sys	0m0.329s
 
-real	0m0.864s
-user	0m2.075s
-sys	0m0.312s
+real	0m0.821s
+user	0m1.920s
+sys	0m0.329s
 
 ===============================================================================
 
@@ -313,8 +313,8 @@ Running: go clean ./...
 
 
 real	0m0.021s
-user	0m0.020s
-sys	0m0.025s
+user	0m0.018s
+sys	0m0.021s
 
 
  ==============================================================================
@@ -322,22 +322,22 @@ sys	0m0.025s
 Running: go vet ./...
 
 
-real	0m0.084s
-user	0m0.137s
-sys	0m0.099s
+real	0m0.110s
+user	0m0.163s
+sys	0m0.137s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.114s
-user	0m0.160s
-sys	0m0.133s
+real	0m0.143s
+user	0m0.188s
+sys	0m0.165s
 
-real	0m0.116s
-user	0m0.161s
-sys	0m0.133s
+real	0m0.145s
+user	0m0.189s
+sys	0m0.165s
 
 ===============================================================================
 
@@ -355,9 +355,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.036s
-user	0m0.037s
-sys	0m0.036s
+real	0m0.032s
+user	0m0.027s
+sys	0m0.035s
 
 
  ==============================================================================
@@ -365,22 +365,22 @@ sys	0m0.036s
 Running: go fix ./...
 
 
-real	0m0.026s
-user	0m0.022s
-sys	0m0.021s
+real	0m0.041s
+user	0m0.031s
+sys	0m0.047s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.075s
-user	0m0.067s
-sys	0m0.068s
+real	0m0.093s
+user	0m0.066s
+sys	0m0.102s
 
-real	0m0.078s
-user	0m0.068s
-sys	0m0.069s
+real	0m0.096s
+user	0m0.070s
+sys	0m0.102s
 
 ===============================================================================
 
@@ -398,9 +398,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.025s
-user	0m0.025s
-sys	0m0.024s
+real	0m0.044s
+user	0m0.044s
+sys	0m0.037s
 
 
  ==============================================================================
@@ -408,22 +408,22 @@ sys	0m0.024s
 Running: errcheck ./...
 
 
-real	0m0.481s
-user	0m1.504s
-sys	0m0.294s
+real	0m0.545s
+user	0m1.656s
+sys	0m0.329s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.521s
-user	0m1.536s
-sys	0m0.331s
+real	0m0.609s
+user	0m1.710s
+sys	0m0.386s
 
-real	0m0.523s
-user	0m1.537s
-sys	0m0.332s
+real	0m0.612s
+user	0m1.712s
+sys	0m0.387s
 
 ===============================================================================
 
@@ -441,9 +441,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.029s
-user	0m0.028s
-sys	0m0.030s
+real	0m0.021s
+user	0m0.021s
+sys	0m0.026s
 
 
  ==============================================================================
@@ -458,21 +458,21 @@ Running: gocyclo .
 1 dna (DNA).String nucleotide_count.go:32:1
 
 real	0m0.002s
-user	0m0.002s
-sys	0m0.000s
+user	0m0.001s
+sys	0m0.001s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.040s
-user	0m0.034s
-sys	0m0.039s
+real	0m0.032s
+user	0m0.028s
+sys	0m0.033s
 
-real	0m0.041s
-user	0m0.035s
-sys	0m0.040s
+real	0m0.034s
+user	0m0.029s
+sys	0m0.034s
 
 ===============================================================================
 
@@ -490,22 +490,22 @@ Go version:
 Running: misspell .
 
 
-real	0m0.023s
-user	0m0.026s
-sys	0m0.011s
+real	0m0.025s
+user	0m0.038s
+sys	0m0.012s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.033s
-user	0m0.032s
-sys	0m0.020s
+real	0m0.037s
+user	0m0.044s
+sys	0m0.024s
 
-real	0m0.035s
-user	0m0.033s
-sys	0m0.020s
+real	0m0.039s
+user	0m0.044s
+sys	0m0.025s
 
 ===============================================================================
 
@@ -523,20 +523,20 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.021s
-user	0m0.029s
-sys	0m0.018s
+real	0m0.030s
+user	0m0.025s
+sys	0m0.034s
 
 
  ==============================================================================
 
 Running: gosec ./...
 
-[gosec] 2023/09/10 21:57:21 Including rules: default
-[gosec] 2023/09/10 21:57:21 Excluding rules: default
-[gosec] 2023/09/10 21:57:21 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/nucleotide-count
-[gosec] 2023/09/10 21:57:21 Checking package: dna
-[gosec] 2023/09/10 21:57:21 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/nucleotide-count/nucleotide_count.go
+[gosec] 2023/09/10 21:58:59 Including rules: default
+[gosec] 2023/09/10 21:58:59 Excluding rules: default
+[gosec] 2023/09/10 21:58:59 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/nucleotide-count
+[gosec] 2023/09/10 21:58:59 Checking package: dna
+[gosec] 2023/09/10 21:58:59 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/nucleotide-count/nucleotide_count.go
 Results:
 
 
@@ -548,22 +548,22 @@ Results:
   Issues : [1;32m0[0m
 
 
-real	0m0.123s
-user	0m0.142s
-sys	0m0.090s
+real	0m0.106s
+user	0m0.148s
+sys	0m0.091s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.154s
-user	0m0.176s
-sys	0m0.117s
+real	0m0.147s
+user	0m0.179s
+sys	0m0.133s
 
-real	0m0.156s
-user	0m0.177s
-sys	0m0.118s
+real	0m0.149s
+user	0m0.180s
+sys	0m0.134s
 
 ===============================================================================
 
@@ -581,9 +581,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.028s
-user	0m0.025s
-sys	0m0.028s
+real	0m0.023s
+user	0m0.019s
+sys	0m0.021s
 
 
  ==============================================================================
@@ -610,9 +610,9 @@ PASS
 coverage: 87.5% of statements
 ok  	dna	0.002s	coverage: 87.5% of statements
 
-real	0m0.204s
-user	0m0.268s
-sys	0m0.158s
+real	0m0.167s
+user	0m0.206s
+sys	0m0.133s
 
 
  ==============================================================================
@@ -624,9 +624,9 @@ dna/nucleotide_count.go:32:	String		100.0%
 dna/nucleotide_count.go:43:	Counts		81.8%
 total:				(statements)	87.5%
 
-real	0m0.051s
-user	0m0.080s
-sys	0m0.078s
+real	0m0.052s
+user	0m0.075s
+sys	0m0.076s
 
 
  ==============================================================================
@@ -634,9 +634,9 @@ sys	0m0.078s
 Running: go tool cover -html coverage.out -o coverage.html
 
 
-real	0m0.050s
-user	0m0.074s
-sys	0m0.079s
+real	0m0.048s
+user	0m0.079s
+sys	0m0.071s
 
 
  ==============================================================================
@@ -674,13 +674,13 @@ Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee covera
 69     	}
 
 
-real	0m0.025s
-user	0m0.022s
-sys	0m0.032s
+real	0m0.018s
+user	0m0.018s
+sys	0m0.026s
 
-real	0m0.025s
-user	0m0.022s
-sys	0m0.032s
+real	0m0.018s
+user	0m0.018s
+sys	0m0.026s
 
 
  ==============================================================================
@@ -705,24 +705,24 @@ Running: gotest -v -race -covermode=atomic ./...
 --- PASS: Example_dna_Invalid (0.00s)
 PASS
 coverage: 87.5% of statements
-ok  	dna	1.015s	coverage: 87.5% of statements
+ok  	dna	1.013s	coverage: 87.5% of statements
 
-real	0m1.286s
-user	0m0.339s
-sys	0m0.239s
+real	0m1.231s
+user	0m0.280s
+sys	0m0.150s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m1.655s
-user	0m0.812s
-sys	0m0.622s
+real	0m1.551s
+user	0m0.683s
+sys	0m0.487s
 
-real	0m1.657s
-user	0m0.813s
-sys	0m0.623s
+real	0m1.553s
+user	0m0.683s
+sys	0m0.489s
 
 ===============================================================================
 
@@ -733,9 +733,9 @@ gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 PASS
 ok  	dna	0.002s
 
-real	0m0.172s
-user	0m0.201s
-sys	0m0.147s
+real	0m0.157s
+user	0m0.202s
+sys	0m0.125s
 
 ===============================================================================
 
@@ -759,9 +759,9 @@ gotest -v -tags bonus
 PASS
 ok  	dna	0.002s
 
-real	0m0.131s
-user	0m0.182s
-sys	0m0.138s
+real	0m0.136s
+user	0m0.177s
+sys	0m0.128s
 
 ===============================================================================
 
@@ -775,9 +775,9 @@ sys	0m0.002s
 
 gomarkdoc --output dna-doc.md
 
-real	0m0.011s
-user	0m0.006s
-sys	0m0.005s
+real	0m0.013s
+user	0m0.010s
+sys	0m0.003s
 
 ===============================================================================
 
@@ -809,9 +809,9 @@ type Histogram map[rune]int
     suitable data type.
 
 
-real	0m0.037s
-user	0m0.029s
-sys	0m0.035s
+real	0m0.049s
+user	0m0.037s
+sys	0m0.034s
 
 
 ===============================================================================
