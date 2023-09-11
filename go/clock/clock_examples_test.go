@@ -9,7 +9,7 @@ var clock Clock = Clock{
 	m: 35,
 }
 
-func ExampleAdd() {
+func ExampleClock_Add() {
 	fmt.Printf("%s + 00:%2d = %s\n", clock, 20, clock.Add(20))
 	fmt.Printf("%s + 00:%2d = %s\n", clock, 40, clock.Add(40))
 	// Output:
@@ -17,7 +17,7 @@ func ExampleAdd() {
 	// 20:35 + 00:40 = 21:15
 }
 
-func ExampleSubtract() {
+func ExampleClock_Subtract() {
 	fmt.Printf("%s - 00:%2d = %s\n", clock, 20, clock.Subtract(20))
 	fmt.Printf("%s - 00:%2d = %s\n", clock, 40, clock.Subtract(40))
 	// Output:
