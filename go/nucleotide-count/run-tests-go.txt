@@ -19,25 +19,25 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.026s
-user	0m0.015s
-sys	0m0.031s
+real	0m0.030s
+user	0m0.029s
+sys	0m0.026s
 
 
  ==============================================================================
 
 Running: golangci-lint run --enable-all ./...
 
-level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
-level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
-level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
-level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
-level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
 level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
 level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
-level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
-level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
 level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
 nucleotide_count.go:64:3: use of `fmt.Printf` forbidden by pattern `^(fmt\.Print(|f|ln)|print|println)$` (forbidigo)
 		fmt.Printf("%s\n", d)
 		^
@@ -67,12 +67,12 @@ var testCases = []struct {
 nucleotide_count.go:25:17: err113: do not define dynamic errors, use wrapped static errors instead: "fmt.Errorf(\"DNA sequence, %q, contains invalid nucleotides\", string(d))" (goerr113)
 		return false, fmt.Errorf("DNA sequence, %q, contains invalid nucleotides", string(d))
 		              ^
-nucleotide_count_examples_test.go:7:1: tests: ExampleDNA_Valid refers to unknown field or method: DNA.Valid (govet)
-func ExampleDNA_Valid() {
-^
-nucleotide_count_examples_test.go:19:1: tests: ExampleDNA_Invalid refers to unknown field or method: DNA.Invalid (govet)
-func ExampleDNA_Invalid() {
-^
+nucleotide_count_examples_test.go:7:6: Example_dna_Valid contains underscore. You should use mixedCap or MixedCap. (nosnakecase)
+func Example_dna_Valid() {
+     ^
+nucleotide_count_examples_test.go:19:6: Example_dna_Invalid contains underscore. You should use mixedCap or MixedCap. (nosnakecase)
+func Example_dna_Invalid() {
+     ^
 nucleotide_count_test.go:8:1: Function TestCounts missing the call to method parallel (paralleltest)
 func TestCounts(t *testing.T) {
 ^
@@ -89,22 +89,22 @@ nucleotide_count_test.go:1:9: package should be `dna_test` instead of `dna` (tes
 package dna
         ^
 
-real	0m0.546s
-user	0m0.839s
-sys	0m0.571s
+real	0m0.490s
+user	0m0.848s
+sys	0m0.495s
 
 
  ==============================================================================
 
 Exit code: -1
 
-real	0m0.593s
-user	0m0.862s
-sys	0m0.622s
+real	0m0.531s
+user	0m0.883s
+sys	0m0.529s
 
-real	0m0.597s
-user	0m0.865s
-sys	0m0.624s
+real	0m0.533s
+user	0m0.883s
+sys	0m0.531s
 
 ===============================================================================
 
@@ -122,9 +122,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.031s
-user	0m0.031s
-sys	0m0.031s
+real	0m0.024s
+user	0m0.021s
+sys	0m0.027s
 
 
  ==============================================================================
@@ -138,22 +138,22 @@ nucleotide_count.go
 
  ✖ 2 problems (0 errors) (2 warnings)
 
-real	0m0.061s
-user	0m0.035s
-sys	0m0.046s
+real	0m0.059s
+user	0m0.030s
+sys	0m0.030s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.104s
-user	0m0.072s
-sys	0m0.088s
+real	0m0.093s
+user	0m0.056s
+sys	0m0.067s
 
-real	0m0.106s
-user	0m0.074s
-sys	0m0.088s
+real	0m0.094s
+user	0m0.057s
+sys	0m0.067s
 
 ===============================================================================
 
@@ -180,9 +180,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.037s
-user	0m0.030s
-sys	0m0.037s
+real	0m0.024s
+user	0m0.019s
+sys	0m0.027s
 
 
  ==============================================================================
@@ -192,22 +192,22 @@ Running: go-consistent -v ./...
 	info: check "./."
 internal error: package "fmt" without types was imported from "dna"
 
-real	0m0.102s
-user	0m0.148s
-sys	0m0.131s
+real	0m0.081s
+user	0m0.118s
+sys	0m0.101s
 
 
  ==============================================================================
 
 Exit code: -1
 
-real	0m0.161s
-user	0m0.184s
-sys	0m0.189s
+real	0m0.125s
+user	0m0.148s
+sys	0m0.145s
 
-real	0m0.165s
-user	0m0.187s
-sys	0m0.190s
+real	0m0.128s
+user	0m0.151s
+sys	0m0.146s
 
 ===============================================================================
 
@@ -225,9 +225,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.020s
-user	0m0.013s
-sys	0m0.028s
+real	0m0.018s
+user	0m0.017s
+sys	0m0.017s
 
 
  ==============================================================================
@@ -236,22 +236,22 @@ Running: staticcheck -checks=all ./...
 
 nucleotide_count.go:44:8: should omit type Histogram from declaration; it will be inferred from the right-hand side (ST1023)
 
-real	0m0.198s
-user	0m0.241s
-sys	0m0.163s
+real	0m0.175s
+user	0m0.190s
+sys	0m0.104s
 
 
  ==============================================================================
 
 Exit code: -1
 
-real	0m0.229s
-user	0m0.258s
-sys	0m0.202s
+real	0m0.202s
+user	0m0.213s
+sys	0m0.128s
 
-real	0m0.231s
-user	0m0.258s
-sys	0m0.204s
+real	0m0.204s
+user	0m0.214s
+sys	0m0.129s
 
 ===============================================================================
 
@@ -269,9 +269,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.025s
-user	0m0.028s
-sys	0m0.026s
+real	0m0.032s
+user	0m0.030s
+sys	0m0.038s
 
 
  ==============================================================================
@@ -279,22 +279,22 @@ sys	0m0.026s
 Running: gocritic check -enableAll ./...
 
 
-real	0m0.857s
-user	0m1.976s
-sys	0m0.305s
+real	0m0.815s
+user	0m2.037s
+sys	0m0.261s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.893s
-user	0m2.008s
-sys	0m0.342s
+real	0m0.861s
+user	0m2.075s
+sys	0m0.309s
 
-real	0m0.895s
-user	0m2.010s
-sys	0m0.342s
+real	0m0.864s
+user	0m2.075s
+sys	0m0.312s
 
 ===============================================================================
 
@@ -312,35 +312,32 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.026s
-user	0m0.022s
-sys	0m0.032s
+real	0m0.021s
+user	0m0.020s
+sys	0m0.025s
 
 
  ==============================================================================
 
 Running: go vet ./...
 
-# dna
-./nucleotide_count_examples_test.go:7:1: ExampleDNA_Valid refers to unknown field or method: DNA.Valid
-./nucleotide_count_examples_test.go:19:1: ExampleDNA_Invalid refers to unknown field or method: DNA.Invalid
 
-real	0m0.082s
-user	0m0.130s
-sys	0m0.087s
+real	0m0.084s
+user	0m0.137s
+sys	0m0.099s
 
 
  ==============================================================================
 
-Exit code: -1
+Exit code: 0
 
-real	0m0.119s
-user	0m0.158s
-sys	0m0.129s
+real	0m0.114s
+user	0m0.160s
+sys	0m0.133s
 
-real	0m0.121s
-user	0m0.158s
-sys	0m0.130s
+real	0m0.116s
+user	0m0.161s
+sys	0m0.133s
 
 ===============================================================================
 
@@ -358,9 +355,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.022s
-user	0m0.020s
-sys	0m0.030s
+real	0m0.036s
+user	0m0.037s
+sys	0m0.036s
 
 
  ==============================================================================
@@ -368,22 +365,22 @@ sys	0m0.030s
 Running: go fix ./...
 
 
-real	0m0.024s
-user	0m0.019s
-sys	0m0.024s
+real	0m0.026s
+user	0m0.022s
+sys	0m0.021s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.058s
-user	0m0.048s
-sys	0m0.061s
+real	0m0.075s
+user	0m0.067s
+sys	0m0.068s
 
-real	0m0.059s
-user	0m0.048s
-sys	0m0.062s
+real	0m0.078s
+user	0m0.068s
+sys	0m0.069s
 
 ===============================================================================
 
@@ -401,9 +398,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.022s
-user	0m0.024s
-sys	0m0.018s
+real	0m0.025s
+user	0m0.025s
+sys	0m0.024s
 
 
  ==============================================================================
@@ -411,22 +408,22 @@ sys	0m0.018s
 Running: errcheck ./...
 
 
-real	0m0.476s
-user	0m1.411s
-sys	0m0.312s
+real	0m0.481s
+user	0m1.504s
+sys	0m0.294s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.509s
-user	0m1.439s
-sys	0m0.339s
+real	0m0.521s
+user	0m1.536s
+sys	0m0.331s
 
-real	0m0.511s
-user	0m1.441s
-sys	0m0.339s
+real	0m0.523s
+user	0m1.537s
+sys	0m0.332s
 
 ===============================================================================
 
@@ -444,9 +441,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.028s
-user	0m0.029s
-sys	0m0.023s
+real	0m0.029s
+user	0m0.028s
+sys	0m0.030s
 
 
  ==============================================================================
@@ -456,26 +453,26 @@ Running: gocyclo .
 6 dna TestCounts nucleotide_count_test.go:8:1
 5 dna (DNA).Counts nucleotide_count.go:43:1
 2 dna (DNA).IsValid nucleotide_count.go:20:1
-1 dna ExampleDNA_Invalid nucleotide_count_examples_test.go:19:1
-1 dna ExampleDNA_Valid nucleotide_count_examples_test.go:7:1
+1 dna Example_dna_Invalid nucleotide_count_examples_test.go:19:1
+1 dna Example_dna_Valid nucleotide_count_examples_test.go:7:1
 1 dna (DNA).String nucleotide_count.go:32:1
 
-real	0m0.003s
-user	0m0.000s
-sys	0m0.003s
+real	0m0.002s
+user	0m0.002s
+sys	0m0.000s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.042s
-user	0m0.036s
-sys	0m0.035s
+real	0m0.040s
+user	0m0.034s
+sys	0m0.039s
 
-real	0m0.044s
-user	0m0.036s
-sys	0m0.036s
+real	0m0.041s
+user	0m0.035s
+sys	0m0.040s
 
 ===============================================================================
 
@@ -493,22 +490,22 @@ Go version:
 Running: misspell .
 
 
-real	0m0.025s
-user	0m0.024s
-sys	0m0.015s
+real	0m0.023s
+user	0m0.026s
+sys	0m0.011s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.044s
+real	0m0.033s
 user	0m0.032s
-sys	0m0.033s
+sys	0m0.020s
 
-real	0m0.046s
-user	0m0.034s
-sys	0m0.033s
+real	0m0.035s
+user	0m0.033s
+sys	0m0.020s
 
 ===============================================================================
 
@@ -526,20 +523,20 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.029s
-user	0m0.022s
-sys	0m0.034s
+real	0m0.021s
+user	0m0.029s
+sys	0m0.018s
 
 
  ==============================================================================
 
 Running: gosec ./...
 
-[gosec] 2023/09/07 00:25:28 Including rules: default
-[gosec] 2023/09/07 00:25:28 Excluding rules: default
-[gosec] 2023/09/07 00:25:28 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/nucleotide-count
-[gosec] 2023/09/07 00:25:28 Checking package: dna
-[gosec] 2023/09/07 00:25:28 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/nucleotide-count/nucleotide_count.go
+[gosec] 2023/09/10 21:57:21 Including rules: default
+[gosec] 2023/09/10 21:57:21 Excluding rules: default
+[gosec] 2023/09/10 21:57:21 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/nucleotide-count
+[gosec] 2023/09/10 21:57:21 Checking package: dna
+[gosec] 2023/09/10 21:57:21 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/nucleotide-count/nucleotide_count.go
 Results:
 
 
@@ -551,22 +548,22 @@ Results:
   Issues : [1;32m0[0m
 
 
-real	0m0.126s
-user	0m0.126s
-sys	0m0.097s
+real	0m0.123s
+user	0m0.142s
+sys	0m0.090s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.168s
-user	0m0.154s
-sys	0m0.141s
+real	0m0.154s
+user	0m0.176s
+sys	0m0.117s
 
-real	0m0.170s
-user	0m0.155s
-sys	0m0.142s
+real	0m0.156s
+user	0m0.177s
+sys	0m0.118s
 
 ===============================================================================
 
@@ -584,8 +581,8 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.022s
-user	0m0.011s
+real	0m0.028s
+user	0m0.025s
 sys	0m0.028s
 
 
@@ -605,17 +602,17 @@ Running: gotest -v -covermode=count -coverprofile coverage.out ./...
     --- PASS: TestCounts/strand_with_repeated_nucleotide (0.00s)
     --- PASS: TestCounts/strand_with_multiple_nucleotides (0.00s)
     --- PASS: TestCounts/strand_with_invalid_nucleotides (0.00s)
-=== RUN   ExampleDNA_Valid
---- PASS: ExampleDNA_Valid (0.00s)
-=== RUN   ExampleDNA_Invalid
---- PASS: ExampleDNA_Invalid (0.00s)
+=== RUN   Example_dna_Valid
+--- PASS: Example_dna_Valid (0.00s)
+=== RUN   Example_dna_Invalid
+--- PASS: Example_dna_Invalid (0.00s)
 PASS
 coverage: 87.5% of statements
-ok  	dna	0.003s	coverage: 87.5% of statements
+ok  	dna	0.002s	coverage: 87.5% of statements
 
-real	0m0.173s
-user	0m0.193s
-sys	0m0.130s
+real	0m0.204s
+user	0m0.268s
+sys	0m0.158s
 
 
  ==============================================================================
@@ -627,9 +624,9 @@ dna/nucleotide_count.go:32:	String		100.0%
 dna/nucleotide_count.go:43:	Counts		81.8%
 total:				(statements)	87.5%
 
-real	0m0.049s
-user	0m0.054s
-sys	0m0.062s
+real	0m0.051s
+user	0m0.080s
+sys	0m0.078s
 
 
  ==============================================================================
@@ -637,9 +634,9 @@ sys	0m0.062s
 Running: go tool cover -html coverage.out -o coverage.html
 
 
-real	0m0.054s
-user	0m0.054s
-sys	0m0.093s
+real	0m0.050s
+user	0m0.074s
+sys	0m0.079s
 
 
  ==============================================================================
@@ -677,13 +674,13 @@ Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee covera
 69     	}
 
 
-real	0m0.021s
-user	0m0.021s
-sys	0m0.021s
+real	0m0.025s
+user	0m0.022s
+sys	0m0.032s
 
-real	0m0.021s
-user	0m0.021s
-sys	0m0.021s
+real	0m0.025s
+user	0m0.022s
+sys	0m0.032s
 
 
  ==============================================================================
@@ -702,30 +699,30 @@ Running: gotest -v -race -covermode=atomic ./...
     --- PASS: TestCounts/strand_with_repeated_nucleotide (0.00s)
     --- PASS: TestCounts/strand_with_multiple_nucleotides (0.00s)
     --- PASS: TestCounts/strand_with_invalid_nucleotides (0.00s)
-=== RUN   ExampleDNA_Valid
---- PASS: ExampleDNA_Valid (0.00s)
-=== RUN   ExampleDNA_Invalid
---- PASS: ExampleDNA_Invalid (0.00s)
+=== RUN   Example_dna_Valid
+--- PASS: Example_dna_Valid (0.00s)
+=== RUN   Example_dna_Invalid
+--- PASS: Example_dna_Invalid (0.00s)
 PASS
 coverage: 87.5% of statements
-ok  	dna	1.018s	coverage: 87.5% of statements
+ok  	dna	1.015s	coverage: 87.5% of statements
 
-real	0m1.251s
-user	0m0.274s
-sys	0m0.174s
+real	0m1.286s
+user	0m0.339s
+sys	0m0.239s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m1.584s
-user	0m0.614s
-sys	0m0.518s
+real	0m1.655s
+user	0m0.812s
+sys	0m0.622s
 
-real	0m1.586s
-user	0m0.615s
-sys	0m0.520s
+real	0m1.657s
+user	0m0.813s
+sys	0m0.623s
 
 ===============================================================================
 
@@ -736,9 +733,9 @@ gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 PASS
 ok  	dna	0.002s
 
-real	0m0.148s
-user	0m0.187s
-sys	0m0.130s
+real	0m0.172s
+user	0m0.201s
+sys	0m0.147s
 
 ===============================================================================
 
@@ -755,31 +752,31 @@ gotest -v -tags bonus
     --- PASS: TestCounts/strand_with_repeated_nucleotide (0.00s)
     --- PASS: TestCounts/strand_with_multiple_nucleotides (0.00s)
     --- PASS: TestCounts/strand_with_invalid_nucleotides (0.00s)
-=== RUN   ExampleDNA_Valid
---- PASS: ExampleDNA_Valid (0.00s)
-=== RUN   ExampleDNA_Invalid
---- PASS: ExampleDNA_Invalid (0.00s)
+=== RUN   Example_dna_Valid
+--- PASS: Example_dna_Valid (0.00s)
+=== RUN   Example_dna_Invalid
+--- PASS: Example_dna_Invalid (0.00s)
 PASS
-ok  	dna	0.003s
+ok  	dna	0.002s
 
-real	0m0.129s
-user	0m0.165s
-sys	0m0.134s
+real	0m0.131s
+user	0m0.182s
+sys	0m0.138s
 
 ===============================================================================
 
 benchstat benchstat-old.txt benchstat-new.txt
 
-real	0m0.002s
-user	0m0.001s
-sys	0m0.001s
+real	0m0.001s
+user	0m0.000s
+sys	0m0.002s
 
 ===============================================================================
 
 gomarkdoc --output dna-doc.md
 
-real	0m0.012s
-user	0m0.007s
+real	0m0.011s
+user	0m0.006s
 sys	0m0.005s
 
 ===============================================================================
@@ -812,9 +809,9 @@ type Histogram map[rune]int
     suitable data type.
 
 
-real	0m0.036s
-user	0m0.024s
-sys	0m0.036s
+real	0m0.037s
+user	0m0.029s
+sys	0m0.035s
 
 
 ===============================================================================

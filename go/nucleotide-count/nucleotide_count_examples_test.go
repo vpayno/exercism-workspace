@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-func ExampleDNA_Valid() {
+func Example_dna_Valid() {
 	var dna DNA = "ACGT"
 
 	h, e := dna.Counts()
@@ -16,7 +16,7 @@ func ExampleDNA_Valid() {
 	// e: <nil>
 }
 
-func ExampleDNA_Invalid() {
+func Example_dna_Invalid() {
 	var dna DNA = "ACXGT"
 
 	h, e := dna.Counts()

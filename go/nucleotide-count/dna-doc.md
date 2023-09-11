@@ -8,24 +8,7 @@ import "dna"
 
 Package dna is a package used to inspect DNA sequences.
 
-## Index
-
-- [type DNA](<#type-dna>)
-  - [func (d DNA) Counts() (Histogram, error)](<#func-dna-counts>)
-  - [func (d DNA) IsValid() (bool, error)](<#func-dna-isvalid>)
-  - [func (d DNA) String() string](<#func-dna-string>)
-- [type Histogram](<#type-histogram>)
-
-
-## type [DNA](<https://github.com/vpayno/exercism-workspace/blob/main/go/nucleotide-count/nucleotide_count.go#L17>)
-
-DNA is a list of nucleotides.
-
-```go
-type DNA string
-```
-
-<details><summary>Example ()nvalid)</summary>
+<details><summary>Example (Dna_ Invalid)</summary>
 <p>
 
 ```go
@@ -50,7 +33,7 @@ e: DNA sequence, "ACXGT", contains invalid nucleotides
 </p>
 </details>
 
-<details><summary>Example (6alid)</summary>
+<details><summary>Example (Dna_ Valid)</summary>
 <p>
 
 ```go
@@ -74,6 +57,23 @@ e: <nil>
 
 </p>
 </details>
+
+## Index
+
+- [type DNA](<#type-dna>)
+  - [func (d DNA) Counts() (Histogram, error)](<#func-dna-counts>)
+  - [func (d DNA) IsValid() (bool, error)](<#func-dna-isvalid>)
+  - [func (d DNA) String() string](<#func-dna-string>)
+- [type Histogram](<#type-histogram>)
+
+
+## type [DNA](<https://github.com/vpayno/exercism-workspace/blob/main/go/nucleotide-count/nucleotide_count.go#L17>)
+
+DNA is a list of nucleotides.
+
+```go
+type DNA string
+```
 
 ### func \(DNA\) [Counts](<https://github.com/vpayno/exercism-workspace/blob/main/go/nucleotide-count/nucleotide_count.go#L43>)
 
