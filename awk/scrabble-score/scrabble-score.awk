@@ -1,9 +1,5 @@
 #!/usr/bin/gawk --bignum --lint --file
 
-function is_color(color) {
-    return match(color, /^(black|brown|red|orange|yellow|green|blue|violet|grey|white)?$/)
-}
-
 function scrabbleScore(input) {
     uppercase = ""
     score = 0
