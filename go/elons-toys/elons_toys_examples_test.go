@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-func ExampleDrive() {
+func ExampleCar_Drive() {
 	speed := 5
 	batteryDrain := 2
 	car := NewCar(speed, batteryDrain)
@@ -22,7 +22,7 @@ func ExampleDrive() {
 	// &{speed:5 batteryDrain:2 battery:0 distance:5}
 }
 
-func ExampleDisplayDistance() {
+func ExampleCar_DisplayDistance() {
 	speed := 5
 	batteryDrain := 2
 	car := NewCar(speed, batteryDrain)
@@ -32,7 +32,7 @@ func ExampleDisplayDistance() {
 	// Driven 0 meters
 }
 
-func ExampleDisplayBattery() {
+func ExampleCar_DisplayBattery() {
 	speed := 5
 	batteryDrain := 2
 	car := NewCar(speed, batteryDrain)
@@ -42,7 +42,7 @@ func ExampleDisplayBattery() {
 	// Battery at 100%
 }
 
-func ExampleCanFinish() {
+func ExampleCar_CanFinish() {
 	speed := 5
 	batteryDrain := 2
 	car := NewCar(speed, batteryDrain)

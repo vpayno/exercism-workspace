@@ -19,9 +19,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.021s
-user	0m0.012s
-sys	0m0.029s
+real	0m0.041s
+user	0m0.034s
+sys	0m0.034s
 
 
  ==============================================================================
@@ -29,18 +29,17 @@ sys	0m0.029s
 Running: golangci-lint run --enable-all ./...
 
 level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
-level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
-level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
 level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
-level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
-level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
-level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
 level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
-level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
 level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
-elons_toys.go:10:14: var-declaration: should omit type bool from declaration of var success; it will be inferred from the right-hand side (revive)
-	var success bool = false
-	            ^
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+elons_toys_test.go:115: Function 'TestCanFinish' is too long (62 > 60) (funlen)
+func TestCanFinish(t *testing.T) {
 elons_toys_test.go:47:11: Using the variable on range scope `tt` in function literal (scopelint)
 			car := tt.car
 			       ^
@@ -62,18 +61,18 @@ elons_toys_test.go:134:9: distance is missing in Car (exhaustivestruct)
 car.go:17:17: mnd: Magic number: 100, in <assign> detected (gomnd)
 		battery:      100,
 		              ^
-elons_toys_examples_test.go:7:1: tests: ExampleDrive refers to unknown identifier: Drive (govet)
-func ExampleDrive() {
-^
-elons_toys_examples_test.go:25:1: tests: ExampleDisplayDistance refers to unknown identifier: DisplayDistance (govet)
-func ExampleDisplayDistance() {
-^
-elons_toys_examples_test.go:35:1: tests: ExampleDisplayBattery refers to unknown identifier: DisplayBattery (govet)
-func ExampleDisplayBattery() {
-^
-elons_toys_examples_test.go:45:1: tests: ExampleCanFinish refers to unknown identifier: CanFinish (govet)
-func ExampleCanFinish() {
-^
+elons_toys_examples_test.go:7:6: ExampleCar_Drive contains underscore. You should use mixedCap or MixedCap. (nosnakecase)
+func ExampleCar_Drive() {
+     ^
+elons_toys_examples_test.go:25:6: ExampleCar_DisplayDistance contains underscore. You should use mixedCap or MixedCap. (nosnakecase)
+func ExampleCar_DisplayDistance() {
+     ^
+elons_toys_examples_test.go:35:6: ExampleCar_DisplayBattery contains underscore. You should use mixedCap or MixedCap. (nosnakecase)
+func ExampleCar_DisplayBattery() {
+     ^
+elons_toys_examples_test.go:45:6: ExampleCar_CanFinish contains underscore. You should use mixedCap or MixedCap. (nosnakecase)
+func ExampleCar_CanFinish() {
+     ^
 elons_toys_test.go:7:1: Function TestDrive missing the call to method parallel (paralleltest)
 func TestDrive(t *testing.T) {
 ^
@@ -92,9 +91,6 @@ func TestDisplayBattery(t *testing.T) {
 elons_toys_test.go:104:2: Range statement for test TestDisplayBattery missing the call to method parallel in test Run (paralleltest)
 	for _, tt := range tests {
 	^
-elons_toys_test.go:115:1: Function TestCanFinish missing the call to method parallel (paralleltest)
-func TestCanFinish(t *testing.T) {
-^
 elons_toys_test.go:164:2: Range statement for test TestCanFinish missing the call to method parallel in test Run (paralleltest)
 	for _, tt := range tests {
 	^
@@ -105,22 +101,22 @@ elons_toys_test.go:1:9: package should be `elon_test` instead of `elon` (testpac
 package elon
         ^
 
-real	0m0.450s
-user	0m0.716s
-sys	0m0.429s
+real	0m0.397s
+user	0m0.626s
+sys	0m0.339s
 
 
  ==============================================================================
 
 Exit code: -1
 
-real	0m0.485s
-user	0m0.735s
-sys	0m0.470s
+real	0m0.462s
+user	0m0.674s
+sys	0m0.394s
 
-real	0m0.487s
-user	0m0.736s
-sys	0m0.471s
+real	0m0.466s
+user	0m0.678s
+sys	0m0.394s
 
 ===============================================================================
 
@@ -138,9 +134,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.022s
-user	0m0.014s
-sys	0m0.021s
+real	0m0.021s
+user	0m0.016s
+sys	0m0.024s
 
 
  ==============================================================================
@@ -150,28 +146,25 @@ Running: revive -formatter=stylish ./...
 car.go
   (1, 1)  https://revive.run/r#package-comments  should have a package comment  
 
-elons_toys.go
-  (10, 14)  https://revive.run/r#var-declaration  should omit type bool from declaration of var success; it will be inferred from the right-hand side  
 
+ ✖ 1 problem (0 errors) (1 warnings)
 
- ✖ 2 problems (0 errors) (2 warnings)
-
-real	0m0.027s
-user	0m0.014s
-sys	0m0.019s
+real	0m0.034s
+user	0m0.019s
+sys	0m0.026s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.061s
-user	0m0.036s
-sys	0m0.045s
+real	0m0.066s
+user	0m0.041s
+sys	0m0.058s
 
-real	0m0.062s
-user	0m0.037s
-sys	0m0.046s
+real	0m0.068s
+user	0m0.042s
+sys	0m0.058s
 
 ===============================================================================
 
@@ -198,9 +191,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.024s
-user	0m0.016s
-sys	0m0.024s
+real	0m0.029s
+user	0m0.021s
+sys	0m0.028s
 
 
  ==============================================================================
@@ -210,22 +203,22 @@ Running: go-consistent -v ./...
 	info: check "./."
 internal error: package "fmt" without types was imported from "elon"
 
-real	0m0.083s
-user	0m0.115s
-sys	0m0.108s
+real	0m0.088s
+user	0m0.118s
+sys	0m0.097s
 
 
  ==============================================================================
 
 Exit code: -1
 
-real	0m0.120s
-user	0m0.136s
+real	0m0.137s
+user	0m0.148s
 sys	0m0.143s
 
-real	0m0.122s
-user	0m0.136s
-sys	0m0.145s
+real	0m0.140s
+user	0m0.150s
+sys	0m0.143s
 
 ===============================================================================
 
@@ -243,9 +236,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.025s
-user	0m0.019s
-sys	0m0.027s
+real	0m0.021s
+user	0m0.011s
+sys	0m0.028s
 
 
  ==============================================================================
@@ -254,24 +247,23 @@ Running: staticcheck -checks=all ./...
 
 car.go:1:1: at least one file in a package should have a package comment (ST1000)
 elons_toys.go:1:1: at least one file in a package should have a package comment (ST1000)
-elons_toys.go:10:14: should omit type bool from declaration; it will be inferred from the right-hand side (ST1023)
 
-real	0m0.153s
-user	0m0.195s
-sys	0m0.125s
+real	0m0.170s
+user	0m0.231s
+sys	0m0.145s
 
 
  ==============================================================================
 
 Exit code: -1
 
-real	0m0.190s
-user	0m0.221s
-sys	0m0.161s
+real	0m0.201s
+user	0m0.246s
+sys	0m0.181s
 
-real	0m0.192s
-user	0m0.222s
-sys	0m0.162s
+real	0m0.203s
+user	0m0.246s
+sys	0m0.183s
 
 ===============================================================================
 
@@ -289,9 +281,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.023s
-user	0m0.017s
-sys	0m0.025s
+real	0m0.022s
+user	0m0.019s
+sys	0m0.023s
 
 
  ==============================================================================
@@ -299,22 +291,22 @@ sys	0m0.025s
 Running: gocritic check -enableAll ./...
 
 
-real	0m0.818s
-user	0m1.967s
-sys	0m0.275s
+real	0m0.823s
+user	0m1.973s
+sys	0m0.260s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.854s
-user	0m1.992s
-sys	0m0.308s
-
 real	0m0.855s
-user	0m1.993s
-sys	0m0.308s
+user	0m1.997s
+sys	0m0.291s
+
+real	0m0.857s
+user	0m1.999s
+sys	0m0.291s
 
 ===============================================================================
 
@@ -332,37 +324,32 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.026s
-user	0m0.020s
-sys	0m0.026s
+real	0m0.021s
+user	0m0.019s
+sys	0m0.023s
 
 
  ==============================================================================
 
 Running: go vet ./...
 
-# elon
-./elons_toys_examples_test.go:7:1: ExampleDrive refers to unknown identifier: Drive
-./elons_toys_examples_test.go:25:1: ExampleDisplayDistance refers to unknown identifier: DisplayDistance
-./elons_toys_examples_test.go:35:1: ExampleDisplayBattery refers to unknown identifier: DisplayBattery
-./elons_toys_examples_test.go:45:1: ExampleCanFinish refers to unknown identifier: CanFinish
 
-real	0m0.082s
-user	0m0.106s
-sys	0m0.093s
+real	0m0.076s
+user	0m0.101s
+sys	0m0.096s
 
 
  ==============================================================================
 
-Exit code: -1
+Exit code: 0
 
-real	0m0.116s
-user	0m0.133s
-sys	0m0.124s
+real	0m0.108s
+user	0m0.126s
+sys	0m0.129s
 
-real	0m0.118s
-user	0m0.134s
-sys	0m0.125s
+real	0m0.110s
+user	0m0.127s
+sys	0m0.130s
 
 ===============================================================================
 
@@ -380,9 +367,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.021s
-user	0m0.015s
-sys	0m0.023s
+real	0m0.022s
+user	0m0.016s
+sys	0m0.026s
 
 
  ==============================================================================
@@ -391,21 +378,21 @@ Running: go fix ./...
 
 
 real	0m0.024s
-user	0m0.020s
-sys	0m0.023s
+user	0m0.019s
+sys	0m0.020s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.055s
-user	0m0.043s
+real	0m0.056s
+user	0m0.041s
 sys	0m0.052s
 
-real	0m0.057s
-user	0m0.043s
-sys	0m0.055s
+real	0m0.058s
+user	0m0.041s
+sys	0m0.054s
 
 ===============================================================================
 
@@ -423,9 +410,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.038s
-user	0m0.028s
-sys	0m0.037s
+real	0m0.024s
+user	0m0.020s
+sys	0m0.024s
 
 
  ==============================================================================
@@ -433,22 +420,22 @@ sys	0m0.037s
 Running: errcheck ./...
 
 
-real	0m0.434s
-user	0m1.245s
-sys	0m0.288s
+real	0m0.468s
+user	0m1.398s
+sys	0m0.292s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.490s
-user	0m1.285s
-sys	0m0.337s
+real	0m0.502s
+user	0m1.424s
+sys	0m0.322s
 
-real	0m0.493s
-user	0m1.286s
-sys	0m0.339s
+real	0m0.503s
+user	0m1.425s
+sys	0m0.322s
 
 ===============================================================================
 
@@ -466,9 +453,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.023s
-user	0m0.016s
-sys	0m0.025s
+real	0m0.022s
+user	0m0.020s
+sys	0m0.019s
 
 
  ==============================================================================
@@ -480,31 +467,31 @@ Running: gocyclo .
 3 elon TestDisplayDistance elons_toys_test.go:57:1
 3 elon TestDrive elons_toys_test.go:7:1
 2 elon (*Car).Drive elons_toys.go:9:1
-1 elon ExampleCanFinish elons_toys_examples_test.go:45:1
-1 elon ExampleDisplayBattery elons_toys_examples_test.go:35:1
-1 elon ExampleDisplayDistance elons_toys_examples_test.go:25:1
-1 elon ExampleDrive elons_toys_examples_test.go:7:1
+1 elon ExampleCar_CanFinish elons_toys_examples_test.go:45:1
+1 elon ExampleCar_DisplayBattery elons_toys_examples_test.go:35:1
+1 elon ExampleCar_DisplayDistance elons_toys_examples_test.go:25:1
+1 elon ExampleCar_Drive elons_toys_examples_test.go:7:1
 1 elon (*Car).CanFinish elons_toys.go:33:1
 1 elon (*Car).DisplayBattery elons_toys.go:28:1
 1 elon (*Car).DisplayDistance elons_toys.go:23:1
 1 elon NewCar car.go:13:1
 
-real	0m0.003s
+real	0m0.002s
 user	0m0.000s
-sys	0m0.003s
+sys	0m0.002s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.038s
-user	0m0.020s
-sys	0m0.041s
+real	0m0.035s
+user	0m0.028s
+sys	0m0.028s
 
-real	0m0.040s
-user	0m0.021s
-sys	0m0.041s
+real	0m0.037s
+user	0m0.028s
+sys	0m0.029s
 
 ===============================================================================
 
@@ -522,22 +509,22 @@ Go version:
 Running: misspell .
 
 
-real	0m0.033s
-user	0m0.040s
-sys	0m0.018s
+real	0m0.023s
+user	0m0.026s
+sys	0m0.012s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.050s
-user	0m0.045s
-sys	0m0.036s
+real	0m0.034s
+user	0m0.031s
+sys	0m0.021s
 
-real	0m0.052s
-user	0m0.045s
-sys	0m0.038s
+real	0m0.035s
+user	0m0.031s
+sys	0m0.023s
 
 ===============================================================================
 
@@ -555,21 +542,21 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.024s
+real	0m0.031s
 user	0m0.018s
-sys	0m0.030s
+sys	0m0.041s
 
 
  ==============================================================================
 
 Running: gosec ./...
 
-[gosec] 2023/09/07 00:23:00 Including rules: default
-[gosec] 2023/09/07 00:23:00 Excluding rules: default
-[gosec] 2023/09/07 00:23:00 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/elons-toys
-[gosec] 2023/09/07 00:23:00 Checking package: elon
-[gosec] 2023/09/07 00:23:00 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/elons-toys/car.go
-[gosec] 2023/09/07 00:23:00 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/elons-toys/elons_toys.go
+[gosec] 2023/09/10 20:55:58 Including rules: default
+[gosec] 2023/09/10 20:55:58 Excluding rules: default
+[gosec] 2023/09/10 20:55:58 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/elons-toys
+[gosec] 2023/09/10 20:55:58 Checking package: elon
+[gosec] 2023/09/10 20:55:58 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/elons-toys/car.go
+[gosec] 2023/09/10 20:55:58 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/elons-toys/elons_toys.go
 Results:
 
 
@@ -581,22 +568,22 @@ Results:
   Issues : [1;32m0[0m
 
 
-real	0m0.120s
-user	0m0.130s
-sys	0m0.103s
+real	0m0.135s
+user	0m0.170s
+sys	0m0.117s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.153s
-user	0m0.152s
-sys	0m0.143s
+real	0m0.178s
+user	0m0.194s
+sys	0m0.168s
 
-real	0m0.155s
-user	0m0.153s
-sys	0m0.144s
+real	0m0.181s
+user	0m0.194s
+sys	0m0.170s
 
 ===============================================================================
 
@@ -616,7 +603,7 @@ Running: go clean ./...
 
 real	0m0.020s
 user	0m0.015s
-sys	0m0.018s
+sys	0m0.021s
 
 
  ==============================================================================
@@ -647,21 +634,21 @@ Running: gotest -v -covermode=count -coverprofile coverage.out ./...
     --- PASS: TestCanFinish/Car_has_40%_battery._Car_can_finish_the_race (0.00s)
     --- PASS: TestCanFinish/Car_has_60%_battery._Car_cannot_finish_the_race (0.00s)
     --- PASS: TestCanFinish/Car_has_30%_battery._Car_cannot_finish_the_race (0.00s)
-=== RUN   ExampleDrive
---- PASS: ExampleDrive (0.00s)
-=== RUN   ExampleDisplayDistance
---- PASS: ExampleDisplayDistance (0.00s)
-=== RUN   ExampleDisplayBattery
---- PASS: ExampleDisplayBattery (0.00s)
-=== RUN   ExampleCanFinish
---- PASS: ExampleCanFinish (0.00s)
+=== RUN   ExampleCar_Drive
+--- PASS: ExampleCar_Drive (0.00s)
+=== RUN   ExampleCar_DisplayDistance
+--- PASS: ExampleCar_DisplayDistance (0.00s)
+=== RUN   ExampleCar_DisplayBattery
+--- PASS: ExampleCar_DisplayBattery (0.00s)
+=== RUN   ExampleCar_CanFinish
+--- PASS: ExampleCar_CanFinish (0.00s)
 PASS
 coverage: 100.0% of statements
 ok  	elon	0.003s	coverage: 100.0% of statements
 
 real	0m0.180s
-user	0m0.210s
-sys	0m0.148s
+user	0m0.227s
+sys	0m0.140s
 
 
  ==============================================================================
@@ -675,9 +662,9 @@ elon/elons_toys.go:28:	DisplayBattery	100.0%
 elon/elons_toys.go:33:	CanFinish	100.0%
 total:			(statements)	100.0%
 
-real	0m0.050s
-user	0m0.075s
-sys	0m0.067s
+real	0m0.056s
+user	0m0.069s
+sys	0m0.088s
 
 
  ==============================================================================
@@ -685,9 +672,9 @@ sys	0m0.067s
 Running: go tool cover -html coverage.out -o coverage.html
 
 
-real	0m0.050s
-user	0m0.069s
-sys	0m0.060s
+real	0m0.054s
+user	0m0.060s
+sys	0m0.066s
 
 
  ==============================================================================
@@ -696,13 +683,13 @@ Running: cover_annotate
 
 Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
 
-real	0m0.018s
-user	0m0.017s
-sys	0m0.019s
+real	0m0.019s
+user	0m0.016s
+sys	0m0.022s
 
-real	0m0.018s
-user	0m0.017s
-sys	0m0.019s
+real	0m0.019s
+user	0m0.016s
+sys	0m0.022s
 
 
  ==============================================================================
@@ -733,34 +720,34 @@ Running: gotest -v -race -covermode=atomic ./...
     --- PASS: TestCanFinish/Car_has_40%_battery._Car_can_finish_the_race (0.00s)
     --- PASS: TestCanFinish/Car_has_60%_battery._Car_cannot_finish_the_race (0.00s)
     --- PASS: TestCanFinish/Car_has_30%_battery._Car_cannot_finish_the_race (0.00s)
-=== RUN   ExampleDrive
---- PASS: ExampleDrive (0.00s)
-=== RUN   ExampleDisplayDistance
---- PASS: ExampleDisplayDistance (0.00s)
-=== RUN   ExampleDisplayBattery
---- PASS: ExampleDisplayBattery (0.00s)
-=== RUN   ExampleCanFinish
---- PASS: ExampleCanFinish (0.00s)
+=== RUN   ExampleCar_Drive
+--- PASS: ExampleCar_Drive (0.00s)
+=== RUN   ExampleCar_DisplayDistance
+--- PASS: ExampleCar_DisplayDistance (0.00s)
+=== RUN   ExampleCar_DisplayBattery
+--- PASS: ExampleCar_DisplayBattery (0.00s)
+=== RUN   ExampleCar_CanFinish
+--- PASS: ExampleCar_CanFinish (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	elon	1.015s	coverage: 100.0% of statements
+ok  	elon	1.013s	coverage: 100.0% of statements
 
-real	0m1.257s
-user	0m0.293s
-sys	0m0.172s
+real	0m1.255s
+user	0m0.330s
+sys	0m0.178s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m1.585s
-user	0m0.683s
-sys	0m0.493s
+real	0m1.595s
+user	0m0.721s
+sys	0m0.525s
 
-real	0m1.587s
-user	0m0.684s
-sys	0m0.494s
+real	0m1.597s
+user	0m0.722s
+sys	0m0.527s
 
 ===============================================================================
 
@@ -769,11 +756,11 @@ renamed 'benchstat-new.txt' -> 'benchstat-old.txt'
 
 gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 PASS
-ok  	elon	0.003s
+ok  	elon	0.002s
 
-real	0m0.168s
-user	0m0.220s
-sys	0m0.158s
+real	0m0.183s
+user	0m0.245s
+sys	0m0.179s
 
 ===============================================================================
 
@@ -802,36 +789,36 @@ gotest -v -tags bonus
     --- PASS: TestCanFinish/Car_has_40%_battery._Car_can_finish_the_race (0.00s)
     --- PASS: TestCanFinish/Car_has_60%_battery._Car_cannot_finish_the_race (0.00s)
     --- PASS: TestCanFinish/Car_has_30%_battery._Car_cannot_finish_the_race (0.00s)
-=== RUN   ExampleDrive
---- PASS: ExampleDrive (0.00s)
-=== RUN   ExampleDisplayDistance
---- PASS: ExampleDisplayDistance (0.00s)
-=== RUN   ExampleDisplayBattery
---- PASS: ExampleDisplayBattery (0.00s)
-=== RUN   ExampleCanFinish
---- PASS: ExampleCanFinish (0.00s)
+=== RUN   ExampleCar_Drive
+--- PASS: ExampleCar_Drive (0.00s)
+=== RUN   ExampleCar_DisplayDistance
+--- PASS: ExampleCar_DisplayDistance (0.00s)
+=== RUN   ExampleCar_DisplayBattery
+--- PASS: ExampleCar_DisplayBattery (0.00s)
+=== RUN   ExampleCar_CanFinish
+--- PASS: ExampleCar_CanFinish (0.00s)
 PASS
 ok  	elon	0.002s
 
-real	0m0.135s
-user	0m0.198s
-sys	0m0.124s
+real	0m0.130s
+user	0m0.177s
+sys	0m0.115s
 
 ===============================================================================
 
 benchstat benchstat-old.txt benchstat-new.txt
 
-real	0m0.001s
-user	0m0.001s
-sys	0m0.001s
+real	0m0.002s
+user	0m0.000s
+sys	0m0.002s
 
 ===============================================================================
 
 gomarkdoc --output elon-doc.md
 
-real	0m0.010s
-user	0m0.005s
-sys	0m0.004s
+real	0m0.011s
+user	0m0.006s
+sys	0m0.005s
 
 ===============================================================================
 
@@ -866,9 +853,9 @@ func (car *Car) Drive() bool
     and reduces the battery (`int`) according to the battery drainage.
 
 
-real	0m0.035s
-user	0m0.020s
-sys	0m0.030s
+real	0m0.039s
+user	0m0.022s
+sys	0m0.036s
 
 
 ===============================================================================

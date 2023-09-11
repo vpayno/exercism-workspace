@@ -42,6 +42,35 @@ func (car *Car) CanFinish(trackDistance int) bool
 
 CanFinish returns true if the car can finish by testing the given trackDistance \(\`int\`\).
 
+<details><summary>Example</summary>
+<p>
+
+```go
+{
+	speed := 5
+	batteryDrain := 2
+	car := NewCar(speed, batteryDrain)
+
+	trackDistance := 100
+
+	fmt.Println(car.CanFinish(trackDistance))
+
+	car.battery = 30
+	fmt.Println(car.CanFinish(trackDistance))
+
+}
+```
+
+#### Output
+
+```
+true
+false
+```
+
+</p>
+</details>
+
 ### func \(\*Car\) [DisplayBattery](<https://github.com/vpayno/exercism-workspace/blob/main/go/elons-toys/elons_toys.go#L28>)
 
 ```go
@@ -49,6 +78,29 @@ func (car *Car) DisplayBattery() string
 ```
 
 DisplayBattery returns the battery percentage as displayed on the LED display as a \`string\`.
+
+<details><summary>Example</summary>
+<p>
+
+```go
+{
+	speed := 5
+	batteryDrain := 2
+	car := NewCar(speed, batteryDrain)
+
+	fmt.Println(car.DisplayBattery())
+
+}
+```
+
+#### Output
+
+```
+Battery at 100%
+```
+
+</p>
+</details>
 
 ### func \(\*Car\) [DisplayDistance](<https://github.com/vpayno/exercism-workspace/blob/main/go/elons-toys/elons_toys.go#L23>)
 
@@ -58,6 +110,29 @@ func (car *Car) DisplayDistance() string
 
 DisplayDistance returns the distance as displayed on the LED display as a \`string\`.
 
+<details><summary>Example</summary>
+<p>
+
+```go
+{
+	speed := 5
+	batteryDrain := 2
+	car := NewCar(speed, batteryDrain)
+
+	fmt.Println(car.DisplayDistance())
+
+}
+```
+
+#### Output
+
+```
+Driven 0 meters
+```
+
+</p>
+</details>
+
 ### func \(\*Car\) [Drive](<https://github.com/vpayno/exercism-workspace/blob/main/go/elons-toys/elons_toys.go#L9>)
 
 ```go
@@ -65,6 +140,37 @@ func (car *Car) Drive() bool
 ```
 
 Drive updates the number of meters driven based on the car's speed \(\`int\`\), and reduces the battery \(\`int\`\) according to the battery drainage.
+
+<details><summary>Example</summary>
+<p>
+
+```go
+{
+	speed := 5
+	batteryDrain := 2
+	car := NewCar(speed, batteryDrain)
+
+	fmt.Println(car.Drive())
+	fmt.Printf("%+v\n", car)
+
+	car.battery = 0
+	fmt.Println(car.Drive())
+	fmt.Printf("%+v\n", car)
+
+}
+```
+
+#### Output
+
+```
+true
+&{speed:5 batteryDrain:2 battery:98 distance:5}
+false
+&{speed:5 batteryDrain:2 battery:0 distance:5}
+```
+
+</p>
+</details>
 
 
 

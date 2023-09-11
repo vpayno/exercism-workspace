@@ -7,7 +7,7 @@ import (
 // Drive updates the number of meters driven based on the car's speed (`int`), and
 // reduces the battery (`int`) according to the battery drainage.
 func (car *Car) Drive() bool {
-	var success bool = false
+	success := false
 
 	if car.battery-car.batteryDrain >= 0 {
 		car.battery -= car.batteryDrain

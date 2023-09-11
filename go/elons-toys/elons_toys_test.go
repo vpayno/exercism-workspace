@@ -166,7 +166,12 @@ func TestCanFinish(t *testing.T) {
 			got := tt.car.CanFinish(tt.trackDistance)
 
 			if got != tt.expected {
-				t.Errorf("method CanFinish(%v) = %v. Expected value %v", tt.trackDistance, got, tt.expected)
+				t.Errorf(
+					"method CanFinish(%v) = %v. Expected value %v",
+					tt.trackDistance,
+					got,
+					tt.expected,
+				)
 			}
 		})
 	}
