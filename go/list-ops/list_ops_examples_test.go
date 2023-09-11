@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-func ExampleFoldl() {
+func Example_list_Foldl() {
 	f := func(x, y int) int { return x * y }
 	i := 5
 	list := IntList{1, 2, 3, 4}
@@ -14,7 +14,7 @@ func ExampleFoldl() {
 	// 120
 }
 
-func ExampleFoldr() {
+func Example_list_Foldr() {
 	f := func(x, y int) int { return x * y }
 	i := 5
 	list := IntList{1, 2, 3, 4}
@@ -24,7 +24,7 @@ func ExampleFoldr() {
 	// 120
 }
 
-func ExampleFilter() {
+func Example_list_Filter() {
 	f := func(n int) bool { return n%2 == 0 }
 	list := IntList{1, 2, 3, 4}
 
@@ -33,7 +33,7 @@ func ExampleFilter() {
 	// [2 4]
 }
 
-func ExampleMap() {
+func Example_list_Map() {
 	f := func(x int) int { return x + 1 }
 	list := IntList{1, 2, 3, 4}
 
@@ -42,7 +42,7 @@ func ExampleMap() {
 	// [2 3 4 5]
 }
 
-func ExampleLen() {
+func Example_list_Len() {
 	list := IntList{1, 2, 3, 4}
 
 	fmt.Println(list.Length())
@@ -50,7 +50,7 @@ func ExampleLen() {
 	// 4
 }
 
-func ExampleReverse() {
+func Example_list_Reverse() {
 	list := IntList{1, 2, 3, 4}
 
 	fmt.Println(list.Reverse())
@@ -58,7 +58,7 @@ func ExampleReverse() {
 	// [4 3 2 1]
 }
 
-func ExampleAppend() {
+func Example_list_Append() {
 	list1 := IntList{1, 2, 3, 4}
 	list2 := IntList{5, 6, 7, 8}
 
@@ -67,9 +67,9 @@ func ExampleAppend() {
 	// [1 2 3 4 5 6 7 8]
 }
 
-func ExampleConcat() {
+func Example_list_Concat() {
 	list1 := IntList{1, 2, 3, 4}
-	list2 := []IntList{IntList{5}, IntList{6, 7}, IntList{}, IntList{8, 9}}
+	list2 := []IntList{{5}, {6, 7}, {}, {8, 9}}
 
 	fmt.Println(list1.Concat(list2))
 	// Output:

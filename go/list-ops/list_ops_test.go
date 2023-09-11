@@ -78,7 +78,6 @@ func TestFold(t *testing.T) {
 		}
 
 	}
-
 }
 
 var filterTestCases = []struct {

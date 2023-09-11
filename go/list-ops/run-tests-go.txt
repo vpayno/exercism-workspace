@@ -19,32 +19,28 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.015s
+real	0m0.021s
 user	0m0.009s
-sys	0m0.009s
+sys	0m0.019s
 
 
  ==============================================================================
 
 Running: golangci-lint run --enable-all ./...
 
-level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
-level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
-level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
-level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
-level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
-level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
 level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
-level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
 level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
 level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
 list_ops.go:4:82: Comment should end in a period (godot)
 // IntList is an abstraction of a list of integers which we can define methods on
                                                                                  ^
-list_ops_examples_test.go:72: File is not `gofmt`-ed with `-s` (gofmt)
-	list2 := []IntList{IntList{5}, IntList{6, 7}, IntList{}, IntList{8, 9}}
-list_ops_test.go:81: File is not `gofumpt`-ed (gofumpt)
-
 list_ops.go:57:2: Consider pre-allocating `r` (prealloc)
 	var r IntList = IntList{}
 	^
@@ -57,10 +53,10 @@ list_ops.go:35:8: var-declaration: should omit type IntList from declaration of 
 list_ops_test.go:79: unnecessary trailing newline (whitespace)
 
 	}
-list_ops_test.go:116: unnecessary trailing newline (whitespace)
+list_ops_test.go:115: unnecessary trailing newline (whitespace)
 
 	}
-list_ops_test.go:148: unnecessary trailing newline (whitespace)
+list_ops_test.go:147: unnecessary trailing newline (whitespace)
 
 	}
 list_ops.go:8:60: block should not start with a whitespace (wsl)
@@ -72,9 +68,6 @@ func (s IntList) Foldr(fn func(int, int) int, acc int) int {
 list_ops.go:32:52: block should not start with a whitespace (wsl)
 func (s IntList) Filter(fn func(int) bool) IntList {
                                                    ^
-list_ops_test.go:82:1: block should not end with a whitespace (or comment) (wsl)
-}
-^
 list_ops_test.go:80:2: block should not end with a whitespace (or comment) (wsl)
 	}
 	^
@@ -84,73 +77,82 @@ list_ops_test.go:74:3: if statements should only be cuddled with assignments (ws
 list_ops_test.go:68:2: ranges should only be cuddled with assignments used in the iteration (wsl)
 	for _, tt := range foldTestCases {
 	^
-list_ops_test.go:117:2: block should not end with a whitespace (or comment) (wsl)
+list_ops_test.go:116:2: block should not end with a whitespace (or comment) (wsl)
 	}
 	^
-list_ops_test.go:111:3: only one cuddle assignment allowed before if statement (wsl)
+list_ops_test.go:110:3: only one cuddle assignment allowed before if statement (wsl)
 		if !reflect.DeepEqual(IntList(tt.want), got) {
 		^
+list_ops_test.go:148:2: block should not end with a whitespace (or comment) (wsl)
+	}
+	^
 list_ops_test.go:8:5: foldTestCases is a global variable (gochecknoglobals)
 var foldTestCases = []struct {
     ^
-list_ops_test.go:84:5: filterTestCases is a global variable (gochecknoglobals)
+list_ops_test.go:83:5: filterTestCases is a global variable (gochecknoglobals)
 var filterTestCases = []struct {
     ^
-list_ops_test.go:120:5: lengthTestCases is a global variable (gochecknoglobals)
+list_ops_test.go:119:5: lengthTestCases is a global variable (gochecknoglobals)
 var lengthTestCases = []struct {
     ^
-list_ops_test.go:152:5: mapTestCases is a global variable (gochecknoglobals)
+list_ops_test.go:151:5: mapTestCases is a global variable (gochecknoglobals)
 var mapTestCases = []struct {
     ^
-list_ops_test.go:187:5: reverseTestCases is a global variable (gochecknoglobals)
+list_ops_test.go:186:5: reverseTestCases is a global variable (gochecknoglobals)
 var reverseTestCases = []struct {
     ^
-list_ops_test.go:219:5: appendTestCases is a global variable (gochecknoglobals)
+list_ops_test.go:218:5: appendTestCases is a global variable (gochecknoglobals)
 var appendTestCases = []struct {
     ^
-list_ops_test.go:261:5: concatTestCases is a global variable (gochecknoglobals)
+list_ops_test.go:260:5: concatTestCases is a global variable (gochecknoglobals)
 var concatTestCases = []struct {
     ^
 list_ops.go:95:3: S1011: should replace loop with `r = append(r, l...)` (gosimple)
 		for _, n := range l {
 		^
-list_ops_examples_test.go:7:1: tests: ExampleFoldl refers to unknown identifier: Foldl (govet)
-func ExampleFoldl() {
-^
-list_ops_examples_test.go:17:1: tests: ExampleFoldr refers to unknown identifier: Foldr (govet)
-func ExampleFoldr() {
-^
-list_ops_examples_test.go:27:1: tests: ExampleFilter refers to unknown identifier: Filter (govet)
-func ExampleFilter() {
-^
-list_ops_examples_test.go:45:1: tests: ExampleLen refers to unknown identifier: Len (govet)
-func ExampleLen() {
-^
-list_ops_examples_test.go:53:1: tests: ExampleReverse refers to unknown identifier: Reverse (govet)
-func ExampleReverse() {
-^
-list_ops_examples_test.go:70:1: tests: ExampleConcat refers to unknown identifier: Concat (govet)
-func ExampleConcat() {
-^
+list_ops_examples_test.go:7:6: Example_list_Foldl contains underscore. You should use mixedCap or MixedCap. (nosnakecase)
+func Example_list_Foldl() {
+     ^
+list_ops_examples_test.go:17:6: Example_list_Foldr contains underscore. You should use mixedCap or MixedCap. (nosnakecase)
+func Example_list_Foldr() {
+     ^
+list_ops_examples_test.go:27:6: Example_list_Filter contains underscore. You should use mixedCap or MixedCap. (nosnakecase)
+func Example_list_Filter() {
+     ^
+list_ops_examples_test.go:36:6: Example_list_Map contains underscore. You should use mixedCap or MixedCap. (nosnakecase)
+func Example_list_Map() {
+     ^
+list_ops_examples_test.go:45:6: Example_list_Len contains underscore. You should use mixedCap or MixedCap. (nosnakecase)
+func Example_list_Len() {
+     ^
+list_ops_examples_test.go:53:6: Example_list_Reverse contains underscore. You should use mixedCap or MixedCap. (nosnakecase)
+func Example_list_Reverse() {
+     ^
+list_ops_examples_test.go:61:6: Example_list_Append contains underscore. You should use mixedCap or MixedCap. (nosnakecase)
+func Example_list_Append() {
+     ^
+list_ops_examples_test.go:70:6: Example_list_Concat contains underscore. You should use mixedCap or MixedCap. (nosnakecase)
+func Example_list_Concat() {
+     ^
 list_ops_test.go:66:1: Function TestFold missing the call to method parallel (paralleltest)
 func TestFold(t *testing.T) {
 ^
-list_ops_test.go:107:1: Function TestFilterMethod missing the call to method parallel (paralleltest)
+list_ops_test.go:106:1: Function TestFilterMethod missing the call to method parallel (paralleltest)
 func TestFilterMethod(t *testing.T) {
 ^
-list_ops_test.go:140:1: Function TestLengthMethod missing the call to method parallel (paralleltest)
+list_ops_test.go:139:1: Function TestLengthMethod missing the call to method parallel (paralleltest)
 func TestLengthMethod(t *testing.T) {
 ^
-list_ops_test.go:175:1: Function TestMapMethod missing the call to method parallel (paralleltest)
+list_ops_test.go:174:1: Function TestMapMethod missing the call to method parallel (paralleltest)
 func TestMapMethod(t *testing.T) {
 ^
-list_ops_test.go:207:1: Function TestReverseMethod missing the call to method parallel (paralleltest)
+list_ops_test.go:206:1: Function TestReverseMethod missing the call to method parallel (paralleltest)
 func TestReverseMethod(t *testing.T) {
 ^
-list_ops_test.go:249:1: Function TestAppendMethod missing the call to method parallel (paralleltest)
+list_ops_test.go:248:1: Function TestAppendMethod missing the call to method parallel (paralleltest)
 func TestAppendMethod(t *testing.T) {
 ^
-list_ops_test.go:284:1: Function TestConcatMethod missing the call to method parallel (paralleltest)
+list_ops_test.go:283:1: Function TestConcatMethod missing the call to method parallel (paralleltest)
 func TestConcatMethod(t *testing.T) {
 ^
 list_ops_examples_test.go:1:9: package should be `listops_test` instead of `listops` (testpackage)
@@ -159,32 +161,32 @@ package listops
 list_ops_test.go:1:9: package should be `listops_test` instead of `listops` (testpackage)
 package listops
         ^
-list_ops.go:92:2: variable name 'r' is too short for the scope of its usage (varnamelen)
-	r := s
-	^
 list_ops.go:70:2: variable name 'r' is too short for the scope of its usage (varnamelen)
 	r := IntList{}
 	^
-list_ops_test.go:108:6: variable name 'tt' is too short for the scope of its usage (varnamelen)
+list_ops.go:92:2: variable name 'r' is too short for the scope of its usage (varnamelen)
+	r := s
+	^
+list_ops_test.go:107:6: variable name 'tt' is too short for the scope of its usage (varnamelen)
 	for _, tt := range filterTestCases {
 	    ^
 
-real	0m0.557s
-user	0m0.829s
-sys	0m0.537s
+real	0m0.473s
+user	0m0.781s
+sys	0m0.452s
 
 
  ==============================================================================
 
 Exit code: -1
 
-real	0m0.585s
-user	0m0.843s
-sys	0m0.558s
+real	0m0.516s
+user	0m0.800s
+sys	0m0.492s
 
-real	0m0.586s
-user	0m0.845s
-sys	0m0.558s
+real	0m0.520s
+user	0m0.801s
+sys	0m0.496s
 
 ===============================================================================
 
@@ -202,9 +204,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.013s
-user	0m0.006s
-sys	0m0.011s
+real	0m0.009s
+user	0m0.002s
+sys	0m0.009s
 
 
  ==============================================================================
@@ -212,30 +214,30 @@ sys	0m0.011s
 Running: revive -formatter=stylish ./...
 
 list_ops.go
-  (18, 1)  https://revive.run/r#exported         comment on exported method IntList.Foldr should be of the form "Foldr ..."                        
   (22, 8)  https://revive.run/r#var-declaration  should omit type IntList from declaration of var r; it will be inferred from the right-hand side  
   (35, 8)  https://revive.run/r#var-declaration  should omit type IntList from declaration of var r; it will be inferred from the right-hand side  
   (57, 8)  https://revive.run/r#var-declaration  should omit type IntList from declaration of var r; it will be inferred from the right-hand side  
+  (18, 1)  https://revive.run/r#exported         comment on exported method IntList.Foldr should be of the form "Foldr ..."                        
 
 
  ✖ 4 problems (0 errors) (4 warnings)
 
-real	0m0.058s
-user	0m0.041s
-sys	0m0.034s
+real	0m0.042s
+user	0m0.027s
+sys	0m0.026s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.085s
-user	0m0.054s
-sys	0m0.055s
+real	0m0.061s
+user	0m0.035s
+sys	0m0.043s
 
-real	0m0.088s
-user	0m0.055s
-sys	0m0.057s
+real	0m0.062s
+user	0m0.036s
+sys	0m0.043s
 
 ===============================================================================
 
@@ -243,7 +245,7 @@ Running: ../../.github/citools/go/go-lint-ineffassign
 ../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
 
 real	0m0.001s
-user	0m0.000s
+user	0m0.001s
 sys	0m0.000s
 
 ===============================================================================
@@ -262,9 +264,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.014s
-user	0m0.006s
-sys	0m0.012s
+real	0m0.010s
+user	0m0.005s
+sys	0m0.008s
 
 
  ==============================================================================
@@ -274,22 +276,22 @@ Running: go-consistent -v ./...
 	info: check "./."
 internal error: package "fmt" without types was imported from "listops [listops.test]"
 
-real	0m0.111s
-user	0m0.162s
-sys	0m0.125s
+real	0m0.092s
+user	0m0.123s
+sys	0m0.136s
 
 
  ==============================================================================
 
 Exit code: -1
 
-real	0m0.136s
-user	0m0.177s
-sys	0m0.142s
+real	0m0.112s
+user	0m0.136s
+sys	0m0.150s
 
-real	0m0.138s
-user	0m0.178s
-sys	0m0.143s
+real	0m0.114s
+user	0m0.137s
+sys	0m0.152s
 
 ===============================================================================
 
@@ -307,9 +309,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.023s
-user	0m0.015s
-sys	0m0.014s
+real	0m0.012s
+user	0m0.008s
+sys	0m0.007s
 
 
  ==============================================================================
@@ -322,22 +324,22 @@ list_ops.go:35:8: should omit type IntList from declaration; it will be inferred
 list_ops.go:57:8: should omit type IntList from declaration; it will be inferred from the right-hand side (ST1023)
 list_ops.go:95:3: should replace loop with r = append(r, l...) (S1011)
 
-real	0m0.188s
-user	0m0.223s
-sys	0m0.175s
+real	0m0.181s
+user	0m0.192s
+sys	0m0.119s
 
 
  ==============================================================================
 
 Exit code: -1
 
-real	0m0.225s
-user	0m0.241s
-sys	0m0.203s
+real	0m0.203s
+user	0m0.207s
+sys	0m0.133s
 
-real	0m0.226s
-user	0m0.241s
-sys	0m0.205s
+real	0m0.205s
+user	0m0.208s
+sys	0m0.134s
 
 ===============================================================================
 
@@ -355,9 +357,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.013s
-user	0m0.009s
-sys	0m0.007s
+real	0m0.022s
+user	0m0.014s
+sys	0m0.016s
 
 
  ==============================================================================
@@ -374,22 +376,22 @@ Running: gocritic check -enableAll ./...
 ./list_ops.go:83:2: commentedOutCode: may want to remove commented-out code
 ./list_ops.go:90:2: commentedOutCode: may want to remove commented-out code
 
-real	0m0.834s
-user	0m2.012s
-sys	0m0.239s
+real	0m0.839s
+user	0m2.164s
+sys	0m0.291s
 
 
  ==============================================================================
 
 Exit code: -1
 
-real	0m0.857s
-user	0m2.025s
-sys	0m0.256s
+real	0m0.879s
+user	0m2.192s
+sys	0m0.320s
 
-real	0m0.859s
-user	0m2.026s
-sys	0m0.258s
+real	0m0.882s
+user	0m2.194s
+sys	0m0.321s
 
 ===============================================================================
 
@@ -407,39 +409,32 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.019s
-user	0m0.005s
-sys	0m0.020s
+real	0m0.009s
+user	0m0.003s
+sys	0m0.009s
 
 
  ==============================================================================
 
 Running: go vet ./...
 
-# listops
-./list_ops_examples_test.go:7:1: ExampleFoldl refers to unknown identifier: Foldl
-./list_ops_examples_test.go:17:1: ExampleFoldr refers to unknown identifier: Foldr
-./list_ops_examples_test.go:27:1: ExampleFilter refers to unknown identifier: Filter
-./list_ops_examples_test.go:45:1: ExampleLen refers to unknown identifier: Len
-./list_ops_examples_test.go:53:1: ExampleReverse refers to unknown identifier: Reverse
-./list_ops_examples_test.go:70:1: ExampleConcat refers to unknown identifier: Concat
 
-real	0m0.087s
+real	0m0.072s
 user	0m0.110s
-sys	0m0.096s
+sys	0m0.076s
 
 
  ==============================================================================
 
-Exit code: -1
+Exit code: 0
 
-real	0m0.118s
-user	0m0.121s
-sys	0m0.125s
+real	0m0.090s
+user	0m0.118s
+sys	0m0.093s
 
-real	0m0.119s
-user	0m0.122s
-sys	0m0.126s
+real	0m0.092s
+user	0m0.119s
+sys	0m0.094s
 
 ===============================================================================
 
@@ -457,9 +452,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.012s
-user	0m0.005s
-sys	0m0.009s
+real	0m0.011s
+user	0m0.008s
+sys	0m0.007s
 
 
  ==============================================================================
@@ -467,22 +462,22 @@ sys	0m0.009s
 Running: go fix ./...
 
 
-real	0m0.017s
-user	0m0.009s
-sys	0m0.011s
+real	0m0.016s
+user	0m0.010s
+sys	0m0.008s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.039s
-user	0m0.022s
-sys	0m0.028s
+real	0m0.037s
+user	0m0.023s
+sys	0m0.023s
 
-real	0m0.041s
-user	0m0.022s
-sys	0m0.030s
+real	0m0.039s
+user	0m0.025s
+sys	0m0.023s
 
 ===============================================================================
 
@@ -500,8 +495,8 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.018s
-user	0m0.008s
+real	0m0.016s
+user	0m0.004s
 sys	0m0.016s
 
 
@@ -510,22 +505,22 @@ sys	0m0.016s
 Running: errcheck ./...
 
 
-real	0m0.461s
-user	0m1.354s
-sys	0m0.290s
+real	0m0.468s
+user	0m1.428s
+sys	0m0.303s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.493s
-user	0m1.373s
-sys	0m0.312s
+real	0m0.498s
+user	0m1.440s
+sys	0m0.330s
 
-real	0m0.495s
-user	0m1.375s
-sys	0m0.312s
+real	0m0.501s
+user	0m1.442s
+sys	0m0.330s
 
 ===============================================================================
 
@@ -543,9 +538,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.011s
-user	0m0.004s
-sys	0m0.011s
+real	0m0.015s
+user	0m0.008s
+sys	0m0.010s
 
 
  ==============================================================================
@@ -553,45 +548,45 @@ sys	0m0.011s
 Running: gocyclo .
 
 4 listops TestFold list_ops_test.go:66:1
-3 listops TestConcatMethod list_ops_test.go:284:1
-3 listops TestAppendMethod list_ops_test.go:249:1
-3 listops TestReverseMethod list_ops_test.go:207:1
-3 listops TestMapMethod list_ops_test.go:175:1
-3 listops TestLengthMethod list_ops_test.go:140:1
-3 listops TestFilterMethod list_ops_test.go:107:1
+3 listops TestConcatMethod list_ops_test.go:283:1
+3 listops TestAppendMethod list_ops_test.go:248:1
+3 listops TestReverseMethod list_ops_test.go:206:1
+3 listops TestMapMethod list_ops_test.go:174:1
+3 listops TestLengthMethod list_ops_test.go:139:1
+3 listops TestFilterMethod list_ops_test.go:106:1
 3 listops (IntList).Concat list_ops.go:89:1
 3 listops (IntList).Filter list_ops.go:32:1
 2 listops (IntList).Reverse list_ops.go:67:1
 2 listops (IntList).Map list_ops.go:54:1
 2 listops (IntList).Foldr list_ops.go:19:1
 2 listops (IntList).Foldl list_ops.go:8:1
-1 listops ExampleConcat list_ops_examples_test.go:70:1
-1 listops ExampleAppend list_ops_examples_test.go:61:1
-1 listops ExampleReverse list_ops_examples_test.go:53:1
-1 listops ExampleLen list_ops_examples_test.go:45:1
-1 listops ExampleMap list_ops_examples_test.go:36:1
-1 listops ExampleFilter list_ops_examples_test.go:27:1
-1 listops ExampleFoldr list_ops_examples_test.go:17:1
-1 listops ExampleFoldl list_ops_examples_test.go:7:1
+1 listops Example_list_Concat list_ops_examples_test.go:70:1
+1 listops Example_list_Append list_ops_examples_test.go:61:1
+1 listops Example_list_Reverse list_ops_examples_test.go:53:1
+1 listops Example_list_Len list_ops_examples_test.go:45:1
+1 listops Example_list_Map list_ops_examples_test.go:36:1
+1 listops Example_list_Filter list_ops_examples_test.go:27:1
+1 listops Example_list_Foldr list_ops_examples_test.go:17:1
+1 listops Example_list_Foldl list_ops_examples_test.go:7:1
 1 listops (IntList).Append list_ops.go:82:1
 1 listops (IntList).Length list_ops.go:47:1
 
-real	0m0.002s
+real	0m0.003s
 user	0m0.001s
-sys	0m0.001s
+sys	0m0.002s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.022s
-user	0m0.009s
-sys	0m0.019s
+real	0m0.028s
+user	0m0.014s
+sys	0m0.021s
 
-real	0m0.023s
-user	0m0.011s
-sys	0m0.020s
+real	0m0.030s
+user	0m0.014s
+sys	0m0.023s
 
 ===============================================================================
 
@@ -609,22 +604,22 @@ Go version:
 Running: misspell .
 
 
-real	0m0.024s
-user	0m0.024s
-sys	0m0.012s
+real	0m0.037s
+user	0m0.048s
+sys	0m0.014s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.033s
-user	0m0.027s
-sys	0m0.021s
+real	0m0.055s
+user	0m0.056s
+sys	0m0.030s
 
-real	0m0.036s
-user	0m0.027s
-sys	0m0.023s
+real	0m0.057s
+user	0m0.058s
+sys	0m0.030s
 
 ===============================================================================
 
@@ -642,20 +637,20 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.012s
-user	0m0.006s
-sys	0m0.010s
+real	0m0.011s
+user	0m0.005s
+sys	0m0.008s
 
 
  ==============================================================================
 
 Running: gosec ./...
 
-[gosec] 2023/09/07 00:24:44 Including rules: default
-[gosec] 2023/09/07 00:24:44 Excluding rules: default
-[gosec] 2023/09/07 00:24:44 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/list-ops
-[gosec] 2023/09/07 00:24:44 Checking package: listops
-[gosec] 2023/09/07 00:24:44 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/list-ops/list_ops.go
+[gosec] 2023/09/10 21:55:02 Including rules: default
+[gosec] 2023/09/10 21:55:02 Excluding rules: default
+[gosec] 2023/09/10 21:55:02 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/list-ops
+[gosec] 2023/09/10 21:55:02 Checking package: listops
+[gosec] 2023/09/10 21:55:02 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/list-ops/list_ops.go
 Results:
 
 
@@ -667,22 +662,22 @@ Results:
   Issues : [1;32m0[0m
 
 
-real	0m0.103s
-user	0m0.100s
-sys	0m0.049s
+real	0m0.100s
+user	0m0.103s
+sys	0m0.051s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.124s
-user	0m0.111s
-sys	0m0.067s
+real	0m0.123s
+user	0m0.113s
+sys	0m0.068s
 
 real	0m0.126s
-user	0m0.112s
-sys	0m0.068s
+user	0m0.116s
+sys	0m0.069s
 
 ===============================================================================
 
@@ -700,9 +695,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.015s
-user	0m0.010s
-sys	0m0.010s
+real	0m0.023s
+user	0m0.009s
+sys	0m0.021s
 
 
  ==============================================================================
@@ -718,53 +713,53 @@ Running: gotest -v -covermode=count -coverprofile coverage.out ./...
     list_ops_test.go:77: PASS: foldr: direction dependent function applied to non-empty list
 --- PASS: TestFold (0.00s)
 === RUN   TestFilterMethod
-    list_ops_test.go:114: PASS: filter: empty list
-    list_ops_test.go:114: PASS: filter: non-empty list
+    list_ops_test.go:113: PASS: filter: empty list
+    list_ops_test.go:113: PASS: filter: non-empty list
 --- PASS: TestFilterMethod (0.00s)
 === RUN   TestLengthMethod
-    list_ops_test.go:146: PASS: length: empty list
-    list_ops_test.go:146: PASS: length: non-empty list
+    list_ops_test.go:145: PASS: length: empty list
+    list_ops_test.go:145: PASS: length: non-empty list
 --- PASS: TestLengthMethod (0.00s)
 === RUN   TestMapMethod
-    list_ops_test.go:181: PASS: map: empty list
-    list_ops_test.go:181: PASS: map: non-empty list
+    list_ops_test.go:180: PASS: map: empty list
+    list_ops_test.go:180: PASS: map: non-empty list
 --- PASS: TestMapMethod (0.00s)
 === RUN   TestReverseMethod
-    list_ops_test.go:213: PASS: reverse: empty list
-    list_ops_test.go:213: PASS: reverse: non-empty list
+    list_ops_test.go:212: PASS: reverse: empty list
+    list_ops_test.go:212: PASS: reverse: non-empty list
 --- PASS: TestReverseMethod (0.00s)
 === RUN   TestAppendMethod
-    list_ops_test.go:255: PASS: append: empty list
-    list_ops_test.go:255: PASS: append: empty list to list
-    list_ops_test.go:255: PASS: append: non-empty lists
+    list_ops_test.go:254: PASS: append: empty list
+    list_ops_test.go:254: PASS: append: empty list to list
+    list_ops_test.go:254: PASS: append: non-empty lists
 --- PASS: TestAppendMethod (0.00s)
 === RUN   TestConcatMethod
-    list_ops_test.go:290: PASS: concat: empty list
-    list_ops_test.go:290: PASS: concat: list of lists
+    list_ops_test.go:289: PASS: concat: empty list
+    list_ops_test.go:289: PASS: concat: list of lists
 --- PASS: TestConcatMethod (0.00s)
-=== RUN   ExampleFoldl
---- PASS: ExampleFoldl (0.00s)
-=== RUN   ExampleFoldr
---- PASS: ExampleFoldr (0.00s)
-=== RUN   ExampleFilter
---- PASS: ExampleFilter (0.00s)
-=== RUN   ExampleMap
---- PASS: ExampleMap (0.00s)
-=== RUN   ExampleLen
---- PASS: ExampleLen (0.00s)
-=== RUN   ExampleReverse
---- PASS: ExampleReverse (0.00s)
-=== RUN   ExampleAppend
---- PASS: ExampleAppend (0.00s)
-=== RUN   ExampleConcat
---- PASS: ExampleConcat (0.00s)
+=== RUN   Example_list_Foldl
+--- PASS: Example_list_Foldl (0.00s)
+=== RUN   Example_list_Foldr
+--- PASS: Example_list_Foldr (0.00s)
+=== RUN   Example_list_Filter
+--- PASS: Example_list_Filter (0.00s)
+=== RUN   Example_list_Map
+--- PASS: Example_list_Map (0.00s)
+=== RUN   Example_list_Len
+--- PASS: Example_list_Len (0.00s)
+=== RUN   Example_list_Reverse
+--- PASS: Example_list_Reverse (0.00s)
+=== RUN   Example_list_Append
+--- PASS: Example_list_Append (0.00s)
+=== RUN   Example_list_Concat
+--- PASS: Example_list_Concat (0.00s)
 PASS
 coverage: 100.0% of statements
 ok  	listops	0.003s	coverage: 100.0% of statements
 
-real	0m0.183s
-user	0m0.248s
-sys	0m0.159s
+real	0m0.231s
+user	0m0.326s
+sys	0m0.166s
 
 
  ==============================================================================
@@ -781,9 +776,9 @@ listops/list_ops.go:82:	Append		100.0%
 listops/list_ops.go:89:	Concat		100.0%
 total:			(statements)	100.0%
 
-real	0m0.029s
-user	0m0.015s
-sys	0m0.021s
+real	0m0.020s
+user	0m0.011s
+sys	0m0.016s
 
 
  ==============================================================================
@@ -791,9 +786,9 @@ sys	0m0.021s
 Running: go tool cover -html coverage.out -o coverage.html
 
 
-real	0m0.031s
-user	0m0.011s
-sys	0m0.027s
+real	0m0.023s
+user	0m0.009s
+sys	0m0.020s
 
 
  ==============================================================================
@@ -802,13 +797,13 @@ Running: cover_annotate
 
 Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
 
-real	0m0.012s
-user	0m0.002s
-sys	0m0.013s
+real	0m0.008s
+user	0m0.003s
+sys	0m0.008s
 
-real	0m0.012s
-user	0m0.002s
-sys	0m0.013s
+real	0m0.008s
+user	0m0.003s
+sys	0m0.008s
 
 
  ==============================================================================
@@ -824,66 +819,66 @@ Running: gotest -v -race -covermode=atomic ./...
     list_ops_test.go:77: PASS: foldr: direction dependent function applied to non-empty list
 --- PASS: TestFold (0.00s)
 === RUN   TestFilterMethod
-    list_ops_test.go:114: PASS: filter: empty list
-    list_ops_test.go:114: PASS: filter: non-empty list
+    list_ops_test.go:113: PASS: filter: empty list
+    list_ops_test.go:113: PASS: filter: non-empty list
 --- PASS: TestFilterMethod (0.00s)
 === RUN   TestLengthMethod
-    list_ops_test.go:146: PASS: length: empty list
-    list_ops_test.go:146: PASS: length: non-empty list
+    list_ops_test.go:145: PASS: length: empty list
+    list_ops_test.go:145: PASS: length: non-empty list
 --- PASS: TestLengthMethod (0.00s)
 === RUN   TestMapMethod
-    list_ops_test.go:181: PASS: map: empty list
-    list_ops_test.go:181: PASS: map: non-empty list
+    list_ops_test.go:180: PASS: map: empty list
+    list_ops_test.go:180: PASS: map: non-empty list
 --- PASS: TestMapMethod (0.00s)
 === RUN   TestReverseMethod
-    list_ops_test.go:213: PASS: reverse: empty list
-    list_ops_test.go:213: PASS: reverse: non-empty list
+    list_ops_test.go:212: PASS: reverse: empty list
+    list_ops_test.go:212: PASS: reverse: non-empty list
 --- PASS: TestReverseMethod (0.00s)
 === RUN   TestAppendMethod
-    list_ops_test.go:255: PASS: append: empty list
-    list_ops_test.go:255: PASS: append: empty list to list
-    list_ops_test.go:255: PASS: append: non-empty lists
+    list_ops_test.go:254: PASS: append: empty list
+    list_ops_test.go:254: PASS: append: empty list to list
+    list_ops_test.go:254: PASS: append: non-empty lists
 --- PASS: TestAppendMethod (0.00s)
 === RUN   TestConcatMethod
-    list_ops_test.go:290: PASS: concat: empty list
-    list_ops_test.go:290: PASS: concat: list of lists
+    list_ops_test.go:289: PASS: concat: empty list
+    list_ops_test.go:289: PASS: concat: list of lists
 --- PASS: TestConcatMethod (0.00s)
-=== RUN   ExampleFoldl
---- PASS: ExampleFoldl (0.00s)
-=== RUN   ExampleFoldr
---- PASS: ExampleFoldr (0.00s)
-=== RUN   ExampleFilter
---- PASS: ExampleFilter (0.00s)
-=== RUN   ExampleMap
---- PASS: ExampleMap (0.00s)
-=== RUN   ExampleLen
---- PASS: ExampleLen (0.00s)
-=== RUN   ExampleReverse
---- PASS: ExampleReverse (0.00s)
-=== RUN   ExampleAppend
---- PASS: ExampleAppend (0.00s)
-=== RUN   ExampleConcat
---- PASS: ExampleConcat (0.00s)
+=== RUN   Example_list_Foldl
+--- PASS: Example_list_Foldl (0.00s)
+=== RUN   Example_list_Foldr
+--- PASS: Example_list_Foldr (0.00s)
+=== RUN   Example_list_Filter
+--- PASS: Example_list_Filter (0.00s)
+=== RUN   Example_list_Map
+--- PASS: Example_list_Map (0.00s)
+=== RUN   Example_list_Len
+--- PASS: Example_list_Len (0.00s)
+=== RUN   Example_list_Reverse
+--- PASS: Example_list_Reverse (0.00s)
+=== RUN   Example_list_Append
+--- PASS: Example_list_Append (0.00s)
+=== RUN   Example_list_Concat
+--- PASS: Example_list_Concat (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	listops	1.013s	coverage: 100.0% of statements
+ok  	listops	1.015s	coverage: 100.0% of statements
 
-real	0m1.258s
-user	0m0.285s
-sys	0m0.140s
+real	0m1.259s
+user	0m0.317s
+sys	0m0.142s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m1.540s
-user	0m0.575s
-sys	0m0.382s
+real	0m1.582s
+user	0m0.679s
+sys	0m0.395s
 
-real	0m1.542s
-user	0m0.577s
-sys	0m0.382s
+real	0m1.585s
+user	0m0.680s
+sys	0m0.396s
 
 ===============================================================================
 
@@ -894,9 +889,9 @@ gotest -v --run=xxx --bench . --benchmem |& tee benchstat-new.txt
 PASS
 ok  	listops	0.002s
 
-real	0m0.157s
-user	0m0.176s
-sys	0m0.121s
+real	0m0.158s
+user	0m0.228s
+sys	0m0.163s
 
 ===============================================================================
 
@@ -910,68 +905,68 @@ gotest -v -tags bonus
     list_ops_test.go:77: PASS: foldr: direction dependent function applied to non-empty list
 --- PASS: TestFold (0.00s)
 === RUN   TestFilterMethod
-    list_ops_test.go:114: PASS: filter: empty list
-    list_ops_test.go:114: PASS: filter: non-empty list
+    list_ops_test.go:113: PASS: filter: empty list
+    list_ops_test.go:113: PASS: filter: non-empty list
 --- PASS: TestFilterMethod (0.00s)
 === RUN   TestLengthMethod
-    list_ops_test.go:146: PASS: length: empty list
-    list_ops_test.go:146: PASS: length: non-empty list
+    list_ops_test.go:145: PASS: length: empty list
+    list_ops_test.go:145: PASS: length: non-empty list
 --- PASS: TestLengthMethod (0.00s)
 === RUN   TestMapMethod
-    list_ops_test.go:181: PASS: map: empty list
-    list_ops_test.go:181: PASS: map: non-empty list
+    list_ops_test.go:180: PASS: map: empty list
+    list_ops_test.go:180: PASS: map: non-empty list
 --- PASS: TestMapMethod (0.00s)
 === RUN   TestReverseMethod
-    list_ops_test.go:213: PASS: reverse: empty list
-    list_ops_test.go:213: PASS: reverse: non-empty list
+    list_ops_test.go:212: PASS: reverse: empty list
+    list_ops_test.go:212: PASS: reverse: non-empty list
 --- PASS: TestReverseMethod (0.00s)
 === RUN   TestAppendMethod
-    list_ops_test.go:255: PASS: append: empty list
-    list_ops_test.go:255: PASS: append: empty list to list
-    list_ops_test.go:255: PASS: append: non-empty lists
+    list_ops_test.go:254: PASS: append: empty list
+    list_ops_test.go:254: PASS: append: empty list to list
+    list_ops_test.go:254: PASS: append: non-empty lists
 --- PASS: TestAppendMethod (0.00s)
 === RUN   TestConcatMethod
-    list_ops_test.go:290: PASS: concat: empty list
-    list_ops_test.go:290: PASS: concat: list of lists
+    list_ops_test.go:289: PASS: concat: empty list
+    list_ops_test.go:289: PASS: concat: list of lists
 --- PASS: TestConcatMethod (0.00s)
-=== RUN   ExampleFoldl
---- PASS: ExampleFoldl (0.00s)
-=== RUN   ExampleFoldr
---- PASS: ExampleFoldr (0.00s)
-=== RUN   ExampleFilter
---- PASS: ExampleFilter (0.00s)
-=== RUN   ExampleMap
---- PASS: ExampleMap (0.00s)
-=== RUN   ExampleLen
---- PASS: ExampleLen (0.00s)
-=== RUN   ExampleReverse
---- PASS: ExampleReverse (0.00s)
-=== RUN   ExampleAppend
---- PASS: ExampleAppend (0.00s)
-=== RUN   ExampleConcat
---- PASS: ExampleConcat (0.00s)
+=== RUN   Example_list_Foldl
+--- PASS: Example_list_Foldl (0.00s)
+=== RUN   Example_list_Foldr
+--- PASS: Example_list_Foldr (0.00s)
+=== RUN   Example_list_Filter
+--- PASS: Example_list_Filter (0.00s)
+=== RUN   Example_list_Map
+--- PASS: Example_list_Map (0.00s)
+=== RUN   Example_list_Len
+--- PASS: Example_list_Len (0.00s)
+=== RUN   Example_list_Reverse
+--- PASS: Example_list_Reverse (0.00s)
+=== RUN   Example_list_Append
+--- PASS: Example_list_Append (0.00s)
+=== RUN   Example_list_Concat
+--- PASS: Example_list_Concat (0.00s)
 PASS
-ok  	listops	0.003s
+ok  	listops	0.002s
 
-real	0m0.184s
-user	0m0.271s
-sys	0m0.163s
+real	0m0.116s
+user	0m0.169s
+sys	0m0.112s
 
 ===============================================================================
 
 benchstat benchstat-old.txt benchstat-new.txt
 
 real	0m0.002s
-user	0m0.000s
-sys	0m0.002s
+user	0m0.002s
+sys	0m0.000s
 
 ===============================================================================
 
 gomarkdoc --output listops-doc.md
 
-real	0m0.021s
-user	0m0.016s
-sys	0m0.007s
+real	0m0.011s
+user	0m0.010s
+sys	0m0.001s
 
 ===============================================================================
 
@@ -1011,9 +1006,9 @@ func (s IntList) Reverse() IntList
     Reverse returns a reversed list.
 
 
-real	0m0.032s
-user	0m0.013s
-sys	0m0.026s
+real	0m0.028s
+user	0m0.012s
+sys	0m0.022s
 
 
 ===============================================================================
