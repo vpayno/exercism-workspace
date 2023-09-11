@@ -63,3 +63,10 @@ This exercise will try to mimic this, using inconsistent input formats that your
 ### Based on
 
 Based on an exercise by the JumpstartLab team for students at The Turing School of Software and Design. - https://turing.edu
+
+### My Solution
+
+- [my solution](./etl.awk)
+- [awkunit tests](./etl_test.awk)
+- [test cases](./test-cases.awk)
+- [run-tests](./run-tests-awk.txt)

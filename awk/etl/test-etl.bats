@@ -30,7 +30,7 @@ END_INPUT
     [[ $BATS_RUN_SKIPPED == "true" ]] || skip
     run gawk -f etl.awk << END_INPUT
 1: A
-7: 
+7:
 END_INPUT
 
     assert_success
@@ -57,7 +57,7 @@ END_INPUT
     run gawk -f etl.awk << END_INPUT
 
 2:"D","G"
-        
+
 1:  "E", "A"
 END_INPUT
 
@@ -71,16 +71,16 @@ END_INPUT
 
 @test 'multiple scores with differing numbers of letters' {
     [[ $BATS_RUN_SKIPPED == "true" ]] || skip
-    
+
     # there are tab characters below
     run gawk -f etl.awk << END_INPUT
-1:	"A", "E", "I", "O", "U", "L", "N", "R", "S", "T"
-2:	"D", "G"
-4:	"F", "H", "V", "W", "Y"
-3:	"m", "B", "C", "P"
-5:	"K"
-8:	"J", "X"
-10:	"Q", "Z"
+1:  "A", "E", "I", "O", "U", "L", "N", "R", "S", "T"
+2:  "D", "G"
+4:  "F", "H", "V", "W", "Y"
+3:  "m", "B", "C", "P"
+5:  "K"
+8:  "J", "X"
+10: "Q", "Z"
 END_INPUT
 
     assert_success
