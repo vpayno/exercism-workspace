@@ -19,29 +19,29 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.019s
-user	0m0.016s
-sys	0m0.022s
+real	0m0.042s
+user	0m0.035s
+sys	0m0.052s
 
 
  ==============================================================================
 
 Running: golangci-lint run --enable-all ./...
 
-level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
-level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
-level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
-level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
-level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
-level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
 level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
-level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
-level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
 level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
-cases_test.go:259:35: Comment should end in a period (godot)
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+cases_test.go:261:35: Comment should end in a period (godot)
 // Compare two clocks for equality
                                   ^
-cases_test.go:266: File is not `gofumpt`-ed (gofumpt)
+cases_test.go:268: File is not `gofumpt`-ed (gofumpt)
 }{{
 	description: "clocks with same time",
 	c1:          hm{15, 37},
@@ -65,37 +65,37 @@ clock_test.go:14:43: Using the variable on range scope `tc` in function literal 
 clock_test.go:23:21: Using the variable on range scope `tc` in function literal (scopelint)
 			if actual := New(tc.h, tc.m).Add(tc.addedValue); tc.expected != actual.String() {
 			                 ^
-clock_test.go:96:2: assignments should only be cuddled with other assignments (wsl)
+clock_test.go:99:2: assignments should only be cuddled with other assignments (wsl)
 	c := New(12, 0)
 	^
-clock_test.go:97:2: only cuddled expressions if assigning variable or using from line above (wsl)
+clock_test.go:100:2: only cuddled expressions if assigning variable or using from line above (wsl)
 	b.ResetTimer()
 	^
-clock_test.go:98:2: only one cuddle assignment allowed before for statement (wsl)
+clock_test.go:101:2: only one cuddle assignment allowed before for statement (wsl)
 	for i := 0; i < b.N; i++ {
 	^
-clock_test.go:109:2: assignments should only be cuddled with other assignments (wsl)
+clock_test.go:112:2: assignments should only be cuddled with other assignments (wsl)
 	c := New(12, 0)
 	^
-clock_test.go:110:2: only cuddled expressions if assigning variable or using from line above (wsl)
+clock_test.go:113:2: only cuddled expressions if assigning variable or using from line above (wsl)
 	b.ResetTimer()
 	^
-clock_test.go:111:2: only one cuddle assignment allowed before for statement (wsl)
+clock_test.go:114:2: only one cuddle assignment allowed before for statement (wsl)
 	for i := 0; i < b.N; i++ {
 	^
-clock_test.go:122:2: for statements should only be cuddled with assignments used in the iteration (wsl)
+clock_test.go:125:2: for statements should only be cuddled with assignments used in the iteration (wsl)
 	for i := 0; i < b.N; i++ {
 	^
-cases_test.go:6:5: timeTestCases is a global variable (gochecknoglobals)
+cases_test.go:8:5: timeTestCases is a global variable (gochecknoglobals)
 var timeTestCases = []struct {
     ^
-cases_test.go:133:5: addTestCases is a global variable (gochecknoglobals)
+cases_test.go:135:5: addTestCases is a global variable (gochecknoglobals)
 var addTestCases = []struct {
     ^
-cases_test.go:196:5: subtractTestCases is a global variable (gochecknoglobals)
+cases_test.go:198:5: subtractTestCases is a global variable (gochecknoglobals)
 var subtractTestCases = []struct {
     ^
-cases_test.go:262:5: equalTestCases is a global variable (gochecknoglobals)
+cases_test.go:264:5: equalTestCases is a global variable (gochecknoglobals)
 var equalTestCases = []struct {
     ^
 clock.go:25:15: mnd: Magic number: 60, in <condition> detected (gomnd)
@@ -137,16 +137,16 @@ func TestAddMinutesStringless(t *testing.T) {
 clock_test.go:41:2: Range statement for test TestAddMinutesStringless missing the call to method parallel in test Run (paralleltest)
 	for _, tc := range addTestCases {
 	^
-clock_test.go:58:1: Function TestSubtractMinutesStringless missing the call to method parallel (paralleltest)
+clock_test.go:59:1: Function TestSubtractMinutesStringless missing the call to method parallel (paralleltest)
 func TestSubtractMinutesStringless(t *testing.T) {
 ^
-clock_test.go:59:2: Range statement for test TestSubtractMinutesStringless missing the call to method parallel in test Run (paralleltest)
+clock_test.go:60:2: Range statement for test TestSubtractMinutesStringless missing the call to method parallel in test Run (paralleltest)
 	for _, tc := range subtractTestCases {
 	^
-clock_test.go:76:1: Function TestCompareClocks missing the call to method parallel (paralleltest)
+clock_test.go:78:1: Function TestCompareClocks missing the call to method parallel (paralleltest)
 func TestCompareClocks(t *testing.T) {
 ^
-clock_test.go:77:2: Range statement for test TestCompareClocks missing the call to method parallel in test Run (paralleltest)
+clock_test.go:79:2: Range statement for test TestCompareClocks missing the call to method parallel in test Run (paralleltest)
 	for _, tc := range equalTestCases {
 	^
 cases_test.go:1:9: package should be `clock_test` instead of `clock` (testpackage)
@@ -158,26 +158,26 @@ package clock
 clock_test.go:1:9: package should be `clock_test` instead of `clock` (testpackage)
 package clock
         ^
-clock.go:13:16: parameter name 'm' is too short for the scope of its usage (varnamelen)
+clock.go:13:16: parameter name 'h' is too short for the scope of its usage (varnamelen)
 func normalize(h, m int) (int, int) {
                ^
 
-real	0m0.562s
-user	0m0.886s
-sys	0m0.572s
+real	0m0.563s
+user	0m0.900s
+sys	0m0.499s
 
 
  ==============================================================================
 
 Exit code: -1
 
-real	0m0.594s
-user	0m0.912s
-sys	0m0.602s
+real	0m0.629s
+user	0m0.947s
+sys	0m0.573s
 
-real	0m0.596s
-user	0m0.914s
-sys	0m0.603s
+real	0m0.633s
+user	0m0.948s
+sys	0m0.577s
 
 ===============================================================================
 
@@ -195,40 +195,40 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.027s
-user	0m0.017s
-sys	0m0.037s
+real	0m0.026s
+user	0m0.023s
+sys	0m0.024s
 
 
  ==============================================================================
 
 Running: revive -formatter=stylish ./...
 
-clock_examples_test.go
-  (7, 11)  https://revive.run/r#var-declaration  should omit type Clock from declaration of var clock; it will be inferred from the right-hand side  
-
 clock.go
   (23, 14)  https://revive.run/r#var-declaration  should omit type int from declaration of var minutes; it will be inferred from the right-hand side  
+
+clock_examples_test.go
+  (7, 11)  https://revive.run/r#var-declaration  should omit type Clock from declaration of var clock; it will be inferred from the right-hand side  
 
 
  ✖ 2 problems (0 errors) (2 warnings)
 
-real	0m0.076s
-user	0m0.037s
-sys	0m0.050s
+real	0m0.057s
+user	0m0.033s
+sys	0m0.041s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.113s
-user	0m0.059s
-sys	0m0.097s
+real	0m0.094s
+user	0m0.061s
+sys	0m0.075s
 
-real	0m0.115s
-user	0m0.060s
-sys	0m0.097s
+real	0m0.095s
+user	0m0.063s
+sys	0m0.075s
 
 ===============================================================================
 
@@ -236,7 +236,7 @@ Running: ../../.github/citools/go/go-lint-ineffassign
 ../run-tests: line 41: .github/citools/go/go-lint-ineffassign: No such file or directory
 
 real	0m0.001s
-user	0m0.001s
+user	0m0.000s
 sys	0m0.000s
 
 ===============================================================================
@@ -255,9 +255,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.020s
-user	0m0.012s
-sys	0m0.019s
+real	0m0.031s
+user	0m0.022s
+sys	0m0.033s
 
 
  ==============================================================================
@@ -267,22 +267,22 @@ Running: go-consistent -v ./...
 	info: check "./."
 internal error: package "fmt" without types was imported from "clock"
 
-real	0m0.081s
-user	0m0.108s
-sys	0m0.121s
+real	0m0.094s
+user	0m0.142s
+sys	0m0.131s
 
 
  ==============================================================================
 
 Exit code: -1
 
-real	0m0.113s
-user	0m0.124s
-sys	0m0.153s
+real	0m0.138s
+user	0m0.171s
+sys	0m0.174s
 
-real	0m0.114s
-user	0m0.124s
-sys	0m0.155s
+real	0m0.140s
+user	0m0.171s
+sys	0m0.176s
 
 ===============================================================================
 
@@ -301,8 +301,8 @@ Running: go clean ./...
 
 
 real	0m0.028s
-user	0m0.028s
-sys	0m0.030s
+user	0m0.027s
+sys	0m0.027s
 
 
  ==============================================================================
@@ -311,22 +311,22 @@ Running: staticcheck -checks=all ./...
 
 clock.go:23:14: should omit type int from declaration; it will be inferred from the right-hand side (ST1023)
 
-real	0m0.184s
-user	0m0.208s
-sys	0m0.112s
+real	0m0.166s
+user	0m0.202s
+sys	0m0.121s
 
 
  ==============================================================================
 
 Exit code: -1
 
-real	0m0.224s
-user	0m0.245s
-sys	0m0.151s
+real	0m0.205s
+user	0m0.236s
+sys	0m0.155s
 
-real	0m0.226s
-user	0m0.245s
-sys	0m0.152s
+real	0m0.207s
+user	0m0.238s
+sys	0m0.155s
 
 ===============================================================================
 
@@ -344,9 +344,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.030s
-user	0m0.022s
-sys	0m0.038s
+real	0m0.036s
+user	0m0.031s
+sys	0m0.034s
 
 
  ==============================================================================
@@ -355,22 +355,22 @@ Running: gocritic check -enableAll ./...
 
 ./clock.go:13:1: unnamedResult: consider giving a name to these results
 
-real	0m0.864s
-user	0m2.179s
-sys	0m0.296s
+real	0m0.917s
+user	0m2.344s
+sys	0m0.286s
 
 
  ==============================================================================
 
 Exit code: -1
 
-real	0m0.907s
-user	0m2.208s
-sys	0m0.346s
+real	0m0.969s
+user	0m2.384s
+sys	0m0.333s
 
-real	0m0.909s
-user	0m2.209s
-sys	0m0.347s
+real	0m0.972s
+user	0m2.385s
+sys	0m0.334s
 
 ===============================================================================
 
@@ -388,9 +388,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.023s
-user	0m0.017s
-sys	0m0.027s
+real	0m0.018s
+user	0m0.014s
+sys	0m0.018s
 
 
  ==============================================================================
@@ -398,22 +398,22 @@ sys	0m0.027s
 Running: go vet ./...
 
 
-real	0m0.079s
-user	0m0.123s
-sys	0m0.090s
+real	0m0.075s
+user	0m0.122s
+sys	0m0.111s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.112s
-user	0m0.146s
-sys	0m0.124s
+real	0m0.102s
+user	0m0.140s
+sys	0m0.138s
 
-real	0m0.114s
-user	0m0.147s
-sys	0m0.125s
+real	0m0.104s
+user	0m0.142s
+sys	0m0.138s
 
 ===============================================================================
 
@@ -431,9 +431,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.021s
-user	0m0.015s
-sys	0m0.018s
+real	0m0.030s
+user	0m0.025s
+sys	0m0.029s
 
 
  ==============================================================================
@@ -441,22 +441,22 @@ sys	0m0.018s
 Running: go fix ./...
 
 
-real	0m0.029s
-user	0m0.019s
-sys	0m0.038s
+real	0m0.027s
+user	0m0.023s
+sys	0m0.027s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.060s
-user	0m0.040s
-sys	0m0.062s
+real	0m0.067s
+user	0m0.053s
+sys	0m0.066s
 
-real	0m0.062s
-user	0m0.042s
-sys	0m0.063s
+real	0m0.069s
+user	0m0.053s
+sys	0m0.067s
 
 ===============================================================================
 
@@ -475,8 +475,8 @@ Running: go clean ./...
 
 
 real	0m0.032s
-user	0m0.027s
-sys	0m0.038s
+user	0m0.023s
+sys	0m0.027s
 
 
  ==============================================================================
@@ -484,22 +484,22 @@ sys	0m0.038s
 Running: errcheck ./...
 
 
-real	0m0.480s
-user	0m1.416s
-sys	0m0.277s
+real	0m0.446s
+user	0m1.169s
+sys	0m0.295s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.528s
-user	0m1.451s
-sys	0m0.329s
+real	0m0.492s
+user	0m1.197s
+sys	0m0.336s
 
-real	0m0.529s
-user	0m1.453s
-sys	0m0.330s
+real	0m0.494s
+user	0m1.198s
+sys	0m0.337s
 
 ===============================================================================
 
@@ -517,8 +517,8 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.025s
-user	0m0.022s
+real	0m0.026s
+user	0m0.028s
 sys	0m0.026s
 
 
@@ -526,11 +526,11 @@ sys	0m0.026s
 
 Running: gocyclo .
 
-4 clock BenchmarkCreateClocks clock_test.go:118:1
-4 clock BenchmarkSubtractMinutes clock_test.go:105:1
-4 clock BenchmarkAddMinutes clock_test.go:92:1
-4 clock TestCompareClocks clock_test.go:76:1
-4 clock TestSubtractMinutesStringless clock_test.go:58:1
+4 clock BenchmarkCreateClocks clock_test.go:121:1
+4 clock BenchmarkSubtractMinutes clock_test.go:108:1
+4 clock BenchmarkAddMinutes clock_test.go:95:1
+4 clock TestCompareClocks clock_test.go:78:1
+4 clock TestSubtractMinutesStringless clock_test.go:59:1
 4 clock TestAddMinutesStringless clock_test.go:40:1
 4 clock normalize clock.go:13:1
 3 clock TestSubtractMinutes clock_test.go:30:1
@@ -544,21 +544,21 @@ Running: gocyclo .
 1 clock (Clock).Add clock.go:44:1
 1 clock New clock.go:34:1
 
-real	0m0.003s
-user	0m0.001s
-sys	0m0.002s
+real	0m0.005s
+user	0m0.004s
+sys	0m0.001s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.036s
-user	0m0.029s
+real	0m0.041s
+user	0m0.038s
 sys	0m0.034s
 
-real	0m0.038s
-user	0m0.029s
+real	0m0.043s
+user	0m0.039s
 sys	0m0.036s
 
 ===============================================================================
@@ -577,22 +577,22 @@ Go version:
 Running: misspell .
 
 
-real	0m0.031s
-user	0m0.029s
-sys	0m0.017s
+real	0m0.032s
+user	0m0.040s
+sys	0m0.014s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.047s
-user	0m0.037s
-sys	0m0.031s
+real	0m0.046s
+user	0m0.047s
+sys	0m0.025s
 
-real	0m0.051s
-user	0m0.039s
-sys	0m0.033s
+real	0m0.049s
+user	0m0.050s
+sys	0m0.025s
 
 ===============================================================================
 
@@ -610,20 +610,20 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.036s
-user	0m0.034s
-sys	0m0.026s
+real	0m0.039s
+user	0m0.030s
+sys	0m0.044s
 
 
  ==============================================================================
 
 Running: gosec ./...
 
-[gosec] 2023/09/10 21:47:55 Including rules: default
-[gosec] 2023/09/10 21:47:55 Excluding rules: default
-[gosec] 2023/09/10 21:47:55 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/clock
-[gosec] 2023/09/10 21:47:55 Checking package: clock
-[gosec] 2023/09/10 21:47:55 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/clock/clock.go
+[gosec] 2023/09/10 21:50:44 Including rules: default
+[gosec] 2023/09/10 21:50:44 Excluding rules: default
+[gosec] 2023/09/10 21:50:44 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/clock
+[gosec] 2023/09/10 21:50:44 Checking package: clock
+[gosec] 2023/09/10 21:50:44 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/clock/clock.go
 Results:
 
 
@@ -635,22 +635,22 @@ Results:
   Issues : [1;32m0[0m
 
 
-real	0m0.129s
-user	0m0.132s
-sys	0m0.122s
+real	0m0.128s
+user	0m0.151s
+sys	0m0.119s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.178s
-user	0m0.174s
-sys	0m0.157s
+real	0m0.189s
+user	0m0.195s
+sys	0m0.179s
 
-real	0m0.180s
-user	0m0.174s
-sys	0m0.159s
+real	0m0.192s
+user	0m0.197s
+sys	0m0.180s
 
 ===============================================================================
 
@@ -668,9 +668,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.028s
-user	0m0.027s
-sys	0m0.020s
+real	0m0.022s
+user	0m0.019s
+sys	0m0.025s
 
 
  ==============================================================================
@@ -833,11 +833,11 @@ Running: gotest -v -covermode=count -coverprofile coverage.out ./...
 --- PASS: ExampleString (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	clock	0.005s	coverage: 100.0% of statements
+ok  	clock	0.006s	coverage: 100.0% of statements
 
-real	0m0.183s
-user	0m0.227s
-sys	0m0.163s
+real	0m0.179s
+user	0m0.245s
+sys	0m0.137s
 
 
  ==============================================================================
@@ -851,9 +851,9 @@ clock/clock.go:51:	Subtract	100.0%
 clock/clock.go:58:	String		100.0%
 total:			(statements)	100.0%
 
-real	0m0.060s
-user	0m0.070s
-sys	0m0.085s
+real	0m0.047s
+user	0m0.052s
+sys	0m0.058s
 
 
  ==============================================================================
@@ -862,8 +862,8 @@ Running: go tool cover -html coverage.out -o coverage.html
 
 
 real	0m0.049s
-user	0m0.049s
-sys	0m0.056s
+user	0m0.078s
+sys	0m0.055s
 
 
  ==============================================================================
@@ -872,13 +872,13 @@ Running: cover_annotate
 
 Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
 
-real	0m0.028s
-user	0m0.014s
-sys	0m0.025s
+real	0m0.018s
+user	0m0.019s
+sys	0m0.020s
 
-real	0m0.029s
-user	0m0.014s
-sys	0m0.025s
+real	0m0.018s
+user	0m0.019s
+sys	0m0.020s
 
 
  ==============================================================================
@@ -1041,24 +1041,24 @@ Running: gotest -v -race -covermode=atomic ./...
 --- PASS: ExampleString (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	clock	1.019s	coverage: 100.0% of statements
+ok  	clock	1.034s	coverage: 100.0% of statements
 
-real	0m1.294s
-user	0m0.362s
-sys	0m0.181s
+real	0m1.280s
+user	0m0.329s
+sys	0m0.176s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m1.660s
-user	0m0.761s
-sys	0m0.545s
+real	0m1.605s
+user	0m0.747s
+sys	0m0.480s
 
-real	0m1.664s
-user	0m0.763s
-sys	0m0.547s
+real	0m1.607s
+user	0m0.749s
+sys	0m0.481s
 
 ===============================================================================
 
@@ -1071,17 +1071,17 @@ goarch: amd64
 pkg: clock
 cpu: 12th Gen Intel(R) Core(TM) i5-1240P
 BenchmarkAddMinutes
-BenchmarkAddMinutes-8        	128899436	         9.280 ns/op	       0 B/op	       0 allocs/op
+BenchmarkAddMinutes-8        	128080137	         9.005 ns/op	       0 B/op	       0 allocs/op
 BenchmarkSubtractMinutes
-BenchmarkSubtractMinutes-8   	21508438	        56.32 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSubtractMinutes-8   	20420551	        55.56 ns/op	       0 B/op	       0 allocs/op
 BenchmarkCreateClocks
-BenchmarkCreateClocks-8      	 9198804	       124.5 ns/op	       0 B/op	       0 allocs/op
+BenchmarkCreateClocks-8      	 8791478	       124.3 ns/op	       0 B/op	       0 allocs/op
 PASS
-ok  	clock	4.356s
+ok  	clock	4.387s
 
-real	0m4.509s
-user	0m4.565s
-sys	0m0.144s
+real	0m4.554s
+user	0m4.615s
+sys	0m0.165s
 
 ===============================================================================
 
@@ -1241,11 +1241,11 @@ gotest -v -tags bonus
 === RUN   ExampleString
 --- PASS: ExampleString (0.00s)
 PASS
-ok  	clock	0.005s
+ok  	clock	0.003s
 
-real	0m0.141s
-user	0m0.213s
-sys	0m0.179s
+real	0m0.144s
+user	0m0.208s
+sys	0m0.136s
 
 ===============================================================================
 
@@ -1260,12 +1260,12 @@ goos: linux
 goarch: amd64
 pkg: clock
 cpu: 12th Gen Intel(R) Core(TM) i5-1240P
-                  │ benchstat-old.txt │           benchstat-new.txt           │
-                  │      sec/op       │    sec/op     vs base                 │
-AddMinutes-8            10.950n ± ∞ ¹   9.280n ± ∞ ¹        ~ (p=1.000 n=1) ²
-SubtractMinutes-8        68.80n ± ∞ ¹   56.32n ± ∞ ¹        ~ (p=1.000 n=1) ²
-CreateClocks-8           147.5n ± ∞ ¹   124.5n ± ∞ ¹        ~ (p=1.000 n=1) ²
-geomean                  48.08n         40.22n        -16.34%
+                  │ benchstat-old.txt │          benchstat-new.txt           │
+                  │      sec/op       │    sec/op     vs base                │
+AddMinutes-8             9.280n ± ∞ ¹   9.005n ± ∞ ¹       ~ (p=1.000 n=1) ²
+SubtractMinutes-8        56.32n ± ∞ ¹   55.56n ± ∞ ¹       ~ (p=1.000 n=1) ²
+CreateClocks-8           124.5n ± ∞ ¹   124.3n ± ∞ ¹       ~ (p=1.000 n=1) ²
+geomean                  40.22n         39.62n        -1.50%
 ¹ need >= 6 samples for confidence interval at level 0.95
 ² need >= 4 samples to detect a difference at alpha level 0.05
 
@@ -1290,7 +1290,7 @@ geomean                             ³                +0.00%               ³
 ³ summaries must be >0 to compute geomean
 
 real	0m0.003s
-user	0m0.001s
+user	0m0.002s
 sys	0m0.002s
 
 ===============================================================================
@@ -1298,7 +1298,7 @@ sys	0m0.002s
 gomarkdoc --output clock-doc.md
 
 real	0m0.016s
-user	0m0.008s
+user	0m0.009s
 sys	0m0.008s
 
 ===============================================================================
@@ -1328,9 +1328,9 @@ func (c Clock) Subtract(m int) Clock
     Subtract returns a clock with the subtracted minutes.
 
 
-real	0m0.055s
-user	0m0.039s
-sys	0m0.058s
+real	0m0.036s
+user	0m0.023s
+sys	0m0.030s
 
 
 ===============================================================================
