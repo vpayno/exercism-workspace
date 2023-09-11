@@ -98,7 +98,6 @@ func NewVigenere(key string) Cipher {
 
 	reStr := `^a+$`
 	match, err := regexp.MatchString(reStr, key)
-
 	if err != nil {
 		panic(err)
 	}
@@ -190,7 +189,6 @@ func normalize(text string) string {
 
 	reStr := `[[:^alpha:]]`
 	re, err := regexp.Compile(reStr)
-
 	if err != nil {
 		panic(err)
 	}

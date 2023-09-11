@@ -2,7 +2,7 @@ package cipher
 
 import "fmt"
 
-func ExampleNormalizeText() {
+func Example_normalizeText() {
 	data := []string{
 		".9K3,7.asEi:js9;70-1+34-aSf_78As=98p2;'./,]p[8rT[7}aR67>uio<2G4",
 		"12 34",
@@ -19,7 +19,7 @@ func ExampleNormalizeText() {
 	// output: ""
 }
 
-func ExampleFixKey() {
+func Example_fixKey() {
 	oldKey := "1234567890"
 	newKey := fixKey(oldKey, 20)
 
@@ -29,7 +29,7 @@ func ExampleFixKey() {
 	// newKey: "12345678901234567890"
 }
 
-func ExampleCeasarCipher() {
+func Example_ceasarCipher() {
 	data := []string{
 		"A.B.C;defuvw:X,Y,Z,",
 		"abcxyz",
@@ -49,7 +49,7 @@ func ExampleCeasarCipher() {
 	// decoded: "abcxyz"
 }
 
-func ExampleShiftCipher() {
+func Example_shiftCipher() {
 	data := []string{
 		"A.B.C;defuvw:X,Y,Z,",
 		"abcxyz",
@@ -69,9 +69,9 @@ func ExampleShiftCipher() {
 	// decoded: "abcxyz"
 }
 
-func ExampleVigenereCipher() {
+func Example_vigenereCipher() {
 	data := [][]string{
-		[]string{"abcdefghijklmnopqrstuvwxyz", "aaaaaaaaaaaaaaaaaaaaaaaaaa"},
+		{"abcdefghijklmnopqrstuvwxyz", "aaaaaaaaaaaaaaaaaaaaaaaaaa"},
 	}
 	for _, entry := range data {
 		key := entry[0]
@@ -80,7 +80,13 @@ func ExampleVigenereCipher() {
 		vigenere := NewVigenere(key)
 		encoded := vigenere.Encode(plain)
 		decoded := vigenere.Decode(encoded)
-		fmt.Printf("     key: %q\n  plain: %q\nencoded: %q\ndecoded: %#v\n", key, plain, encoded, decoded)
+		fmt.Printf(
+			"     key: %q\n  plain: %q\nencoded: %q\ndecoded: %#v\n",
+			key,
+			plain,
+			encoded,
+			decoded,
+		)
 	}
 	// Output:
 	//     key: "abcdefghijklmnopqrstuvwxyz"

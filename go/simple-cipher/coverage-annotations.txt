@@ -6,124 +6,122 @@
  98     	
  99     		reStr := `^a+$`
 100     		match, err := regexp.MatchString(reStr, key)
-101     	
-102     		if err != nil {
-103 MISS			panic(err)
-104     		}
-105     	
-106     		// a+ key not allowed
-107     		if match {
-108     			return nil
-109     		}
-110     	
-111     		reStr = `^[a-z]+$`
-112     		match, err = regexp.MatchString(reStr, key)
-113     	
-114     		if err != nil {
-115 MISS			panic(err)
-116     		}
-117     	
-118     		// key doesn't consist of just a-z letters
-119     		if !match {
-120     			return nil
-121     		}
-122     	
-123     		cipher := vigenere{
-124     			key: key,
-125     		}
-126     	
-127     		return cipher
-128     	}
+101     		if err != nil {
+102 MISS			panic(err)
+103     		}
+104     	
+105     		// a+ key not allowed
+106     		if match {
+107     			return nil
+108     		}
+109     	
+110     		reStr = `^[a-z]+$`
+111     		match, err = regexp.MatchString(reStr, key)
+112     	
+113     		if err != nil {
+114 MISS			panic(err)
+115     		}
+116     	
+117     		// key doesn't consist of just a-z letters
+118     		if !match {
+119     			return nil
+120     		}
+121     	
+122     		cipher := vigenere{
+123     			key: key,
+124     		}
+125     	
+126     		return cipher
+127     	}
 
 
-204     	func fixKey(oldKey string, size int) string {
-205     		if size <= 0 {
-206 MISS			return ""
-207     		}
+202     	func fixKey(oldKey string, size int) string {
+203     		if size <= 0 {
+204 MISS			return ""
+205     		}
+206     	
+207     		newKey := oldKey
 208     	
-209     		newKey := oldKey
-210     	
-211     		for len(newKey) < size {
-212     			newKey += oldKey
-213     		}
+209     		for len(newKey) < size {
+210     			newKey += oldKey
+211     		}
+212     	
+213     		newKey = newKey[:size]
 214     	
-215     		newKey = newKey[:size]
-216     	
-217     		return newKey
-218     	}
+215     		return newKey
+216     	}
 
 
-184     	func normalize(text string) string {
-185     		if text == "" {
-186 MISS			return ""
-187     		}
-188     	
-189     		var output string
-190     	
-191     		reStr := `[[:^alpha:]]`
-192     		re, err := regexp.Compile(reStr)
-193     	
-194     		if err != nil {
-195 MISS			panic(err)
-196     		}
-197     	
-198     		output = re.ReplaceAllString(text, "")
-199     		output = strings.ToLower(output)
-200     	
-201     		return output
-202     	}
+183     	func normalize(text string) string {
+184     		if text == "" {
+185 MISS			return ""
+186     		}
+187     	
+188     		var output string
+189     	
+190     		reStr := `[[:^alpha:]]`
+191     		re, err := regexp.Compile(reStr)
+192     		if err != nil {
+193 MISS			panic(err)
+194     		}
+195     	
+196     		output = re.ReplaceAllString(text, "")
+197     		output = strings.ToLower(output)
+198     	
+199     		return output
+200     	}
 
 
-158     	func (v vigenere) Decode(cipher string) string {
-159     		if cipher == "" {
-160 MISS			return ""
-161     		}
-162     	
-163     		input := cipher
-164     	
-165     		key := fixKey(v.key, len(input))
-166     	
-167     		var plain strings.Builder
-168     	
-169     		for i, char := range key {
-170     			offset := int(char) - 97
-171     			target := int(input[i]) - offset
-172     	
-173     			// Chars below A need to roll back to top of the range.
-174     			if target < 97 {
-175     				target += 26
-176     			}
-177     	
-178     			plain.WriteRune(rune(target))
-179     		}
-180     	
-181     		return plain.String()
-182     	}
+157     	func (v vigenere) Decode(cipher string) string {
+158     		if cipher == "" {
+159 MISS			return ""
+160     		}
+161     	
+162     		input := cipher
+163     	
+164     		key := fixKey(v.key, len(input))
+165     	
+166     		var plain strings.Builder
+167     	
+168     		for i, char := range key {
+169     			offset := int(char) - 97
+170     			target := int(input[i]) - offset
+171     	
+172     			// Chars below A need to roll back to top of the range.
+173     			if target < 97 {
+174     				target += 26
+175     			}
+176     	
+177     			plain.WriteRune(rune(target))
+178     		}
+179     	
+180     		return plain.String()
+181     	}
 
 
-131     	func (v vigenere) Encode(plain string) string {
-132     		if plain == "" {
-133 MISS			return ""
-134     		}
-135     	
-136     		input := normalize(plain)
-137     	
-138     		key := fixKey(v.key, len(input))
-139     	
-140     		var cipher strings.Builder
-141     	
-142     		for i, char := range key {
-143     			offset := int(char) - 97
-144     			target := int(input[i]) + offset
-145     	
-146     			// Chars above Z need to roll back to bottom of the range.
-147     			if target > 122 {
-148     				target -= 26
-149     			}
-150     	
-151     			cipher.WriteRune(rune(target))
-152     		}
-153     	
-154     		return cipher.String()
-155     	}
+130     	func (v vigenere) Encode(plain string) string {
+131     		if plain == "" {
+132 MISS			return ""
+133     		}
+134     	
+135     		input := normalize(plain)
+136     	
+137     		key := fixKey(v.key, len(input))
+138     	
+139     		var cipher strings.Builder
+140     	
+141     		for i, char := range key {
+142     			offset := int(char) - 97
+143     			target := int(input[i]) + offset
+144     	
+145     			// Chars above Z need to roll back to bottom of the range.
+146     			if target > 122 {
+147     				target -= 26
+148     			}
+149     	
+150     			cipher.WriteRune(rune(target))
+151     		}
+152     	
+153     		return cipher.String()
+154     	}
 

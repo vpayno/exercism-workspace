@@ -24,7 +24,11 @@ var caesarTests = []cipherTest{
 	{"I am a panda bear.", "ldpdsdqgdehdu", "iamapandabear"},
 	{"Programming is AWESOME!", "surjudpplqjlvdzhvrph", "programmingisawesome"},
 	{"today is holiday", "wrgdblvkrolgdb", "todayisholiday"},
-	{"Twas the night before Christmas", "wzdvwkhqljkwehiruhfkulvwpdv", "twasthenightbeforechristmas"},
+	{
+		"Twas the night before Christmas",
+		"wzdvwkhqljkwehiruhfkulvwpdv",
+		"twasthenightbeforechristmas",
+	},
 	{" -- @#!", "", ""},
 	{"", "", ""},
 }
@@ -56,15 +60,21 @@ func testCipher(c Cipher, tests []cipherTest, t *testing.T) {
 
 var NSATests = []cipherTest{
 	{"THE ENEMY IS NEAR", "qebbkbjvfpkbxo", "theenemyisnear"},
-	{"SPIES SEND SECRET MESSAGES",
+	{
+		"SPIES SEND SECRET MESSAGES",
 		"pmfbppbkapbzobqjbppxdbp",
-		"spiessendsecretmessages"},
-	{"THOMAS JEFFERSON DESIGNED A SUBSTITUTION CIPHER",
+		"spiessendsecretmessages",
+	},
+	{
+		"THOMAS JEFFERSON DESIGNED A SUBSTITUTION CIPHER",
 		"qeljxpgbccboplkabpfdkbaxprypqfqrqflkzfmebo",
-		"thomasjeffersondesignedasubstitutioncipher"},
-	{"the quick brown fox jumps over the lazy dog",
+		"thomasjeffersondesignedasubstitutioncipher",
+	},
+	{
+		"the quick brown fox jumps over the lazy dog",
 		"qebnrfzhyoltkclugrjmplsboqebixwvald",
-		"thequickbrownfoxjumpsoverthelazydog"},
+		"thequickbrownfoxjumpsoverthelazydog",
+	},
 }
 
 func TestShift(t *testing.T) {
@@ -85,7 +95,6 @@ func TestShift(t *testing.T) {
 		}
 		testCipher(c, NSATests, t)
 	})
-
 }
 
 func TestWrongShiftKey(t *testing.T) {

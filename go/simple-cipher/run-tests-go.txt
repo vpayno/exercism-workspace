@@ -19,91 +19,86 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.031s
-user	0m0.022s
-sys	0m0.024s
+real	0m0.020s
+user	0m0.015s
+sys	0m0.017s
 
 
  ==============================================================================
 
 Running: golangci-lint run --enable-all ./...
 
-level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
 level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
-level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
-level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
-level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
 level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
 level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
 level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
 level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
-level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
 simple_cipher_test.go:8:60: Comment should end in a period (godot)
 // type for testing implementations of the Cipher interface
                                                            ^
-simple_cipher_examples_test.go:74: File is not `gofmt`-ed with `-s` (gofmt)
-		[]string{"abcdefghijklmnopqrstuvwxyz", "aaaaaaaaaaaaaaaaaaaaaaaaaa"},
-simple_cipher.go:101: File is not `gofumpt`-ed (gofumpt)
-
-simple_cipher.go:193: File is not `gofumpt`-ed (gofumpt)
-
-simple_cipher_test.go:59: File is not `gofumpt`-ed (gofumpt)
-	{"SPIES SEND SECRET MESSAGES",
-simple_cipher_test.go:45:23: Using the variable on range scope `test` in function literal (scopelint)
+simple_cipher_test.go:49:23: Using the variable on range scope `test` in function literal (scopelint)
 			if enc := c.Encode(test.source); enc != test.cipher {
 			                   ^
-simple_cipher_test.go:46:47: Using the variable on range scope `test` in function literal (scopelint)
+simple_cipher_test.go:50:47: Using the variable on range scope `test` in function literal (scopelint)
 				tt.Errorf("Encode(%s): got %q, want %q.", test.source, enc, test.cipher)
 				                                          ^
-simple_cipher_test.go:50:23: Using the variable on range scope `test` in function literal (scopelint)
+simple_cipher_test.go:54:23: Using the variable on range scope `test` in function literal (scopelint)
 			if dec := c.Decode(test.cipher); dec != test.plain {
 			                   ^
-simple_cipher_test.go:34:2: only cuddled expressions if assigning variable or using from line above (wsl)
+simple_cipher.go:101:2: only one cuddle assignment allowed before if statement (wsl)
+	if err != nil {
+	^
+simple_cipher.go:192:2: only one cuddle assignment allowed before if statement (wsl)
+	if err != nil {
+	^
+simple_cipher_test.go:38:2: only cuddled expressions if assigning variable or using from line above (wsl)
 	t.Run("no extra symbols", func(t *testing.T) {
 	^
-simple_cipher_test.go:89:1: block should not end with a whitespace (or comment) (wsl)
-}
-^
-simple_cipher_test.go:146:2: assignments should only be cuddled with other assignments (wsl)
+simple_cipher_test.go:155:2: assignments should only be cuddled with other assignments (wsl)
 	c := NewCaesar()
 	^
-simple_cipher_test.go:147:2: only cuddled expressions if assigning variable or using from line above (wsl)
+simple_cipher_test.go:156:2: only cuddled expressions if assigning variable or using from line above (wsl)
 	b.ResetTimer()
 	^
-simple_cipher_test.go:148:2: only one cuddle assignment allowed before for statement (wsl)
+simple_cipher_test.go:157:2: only one cuddle assignment allowed before for statement (wsl)
 	for i := 0; i < b.N; i++ {
 	^
-simple_cipher_test.go:159:2: assignments should only be cuddled with other assignments (wsl)
+simple_cipher_test.go:168:2: assignments should only be cuddled with other assignments (wsl)
 	c := NewCaesar()
 	^
-simple_cipher_test.go:160:2: only cuddled expressions if assigning variable or using from line above (wsl)
+simple_cipher_test.go:169:2: only cuddled expressions if assigning variable or using from line above (wsl)
 	b.ResetTimer()
 	^
-simple_cipher_test.go:161:2: only one cuddle assignment allowed before for statement (wsl)
+simple_cipher_test.go:170:2: only one cuddle assignment allowed before for statement (wsl)
 	for i := 0; i < b.N; i++ {
 	^
-simple_cipher_test.go:172:2: for statements should only be cuddled with assignments used in the iteration (wsl)
+simple_cipher_test.go:181:2: for statements should only be cuddled with assignments used in the iteration (wsl)
 	for i := 0; i < b.N; i++ {
 	^
-simple_cipher_test.go:183:2: assignments should only be cuddled with other assignments (wsl)
+simple_cipher_test.go:192:2: assignments should only be cuddled with other assignments (wsl)
 	s := NewShift(5)
 	^
-simple_cipher_test.go:187:2: only one cuddle assignment allowed before for statement (wsl)
+simple_cipher_test.go:196:2: only one cuddle assignment allowed before for statement (wsl)
 	for i := 0; i < b.N; i++ {
 	^
-simple_cipher_test.go:213:2: for statements should only be cuddled with assignments used in the iteration (wsl)
+simple_cipher_test.go:222:2: for statements should only be cuddled with assignments used in the iteration (wsl)
 	for i := 0; i < b.N; i++ {
 	^
-simple_cipher_test.go:225:2: only one cuddle assignment allowed before range statement (wsl)
+simple_cipher_test.go:234:2: only one cuddle assignment allowed before range statement (wsl)
 	for i, test := range vtests {
 	^
-simple_cipher_test.go:231:2: expressions should not be cuddled with blocks (wsl)
+simple_cipher_test.go:240:2: expressions should not be cuddled with blocks (wsl)
 	b.ResetTimer()
 	^
-simple_cipher_test.go:247:2: only one cuddle assignment allowed before range statement (wsl)
+simple_cipher_test.go:256:2: only one cuddle assignment allowed before range statement (wsl)
 	for i, test := range vtests {
 	^
-simple_cipher_test.go:253:2: expressions should not be cuddled with blocks (wsl)
+simple_cipher_test.go:262:2: expressions should not be cuddled with blocks (wsl)
 	b.ResetTimer()
 	^
 simple_cipher_test.go:15:5: caesarPrepped is a global variable (gochecknoglobals)
@@ -112,16 +107,16 @@ var caesarPrepped = []cipherTest{
 simple_cipher_test.go:22:5: caesarTests is a global variable (gochecknoglobals)
 var caesarTests = []cipherTest{
     ^
-simple_cipher_test.go:57:5: NSATests is a global variable (gochecknoglobals)
+simple_cipher_test.go:61:5: NSATests is a global variable (gochecknoglobals)
 var NSATests = []cipherTest{
     ^
-simple_cipher_test.go:99:5: vtests is a global variable (gochecknoglobals)
+simple_cipher_test.go:108:5: vtests is a global variable (gochecknoglobals)
 var vtests = []struct {
     ^
-simple_cipher.go:147:15: mnd: Magic number: 122, in <condition> detected (gomnd)
+simple_cipher.go:146:15: mnd: Magic number: 122, in <condition> detected (gomnd)
 		if target > 122 {
 		            ^
-simple_cipher.go:174:15: mnd: Magic number: 97, in <condition> detected (gomnd)
+simple_cipher.go:173:15: mnd: Magic number: 97, in <condition> detected (gomnd)
 		if target < 97 {
 		            ^
 simple_cipher.go:59:22: mnd: Magic number: 26, in <operation> detected (gomnd)
@@ -130,27 +125,12 @@ simple_cipher.go:59:22: mnd: Magic number: 26, in <operation> detected (gomnd)
 simple_cipher.go:86:22: mnd: Magic number: 26, in <operation> detected (gomnd)
 		letter = (letter % 26) + offset
 		                   ^
-simple_cipher.go:143:25: mnd: Magic number: 97, in <operation> detected (gomnd)
+simple_cipher.go:142:25: mnd: Magic number: 97, in <operation> detected (gomnd)
 		offset := int(char) - 97
 		                      ^
-simple_cipher.go:170:25: mnd: Magic number: 97, in <operation> detected (gomnd)
+simple_cipher.go:169:25: mnd: Magic number: 97, in <operation> detected (gomnd)
 		offset := int(char) - 97
 		                      ^
-simple_cipher_examples_test.go:5:1: tests: ExampleNormalizeText refers to unknown identifier: NormalizeText (govet)
-func ExampleNormalizeText() {
-^
-simple_cipher_examples_test.go:22:1: tests: ExampleFixKey refers to unknown identifier: FixKey (govet)
-func ExampleFixKey() {
-^
-simple_cipher_examples_test.go:32:1: tests: ExampleCeasarCipher refers to unknown identifier: CeasarCipher (govet)
-func ExampleCeasarCipher() {
-^
-simple_cipher_examples_test.go:52:1: tests: ExampleShiftCipher refers to unknown identifier: ShiftCipher (govet)
-func ExampleShiftCipher() {
-^
-simple_cipher_examples_test.go:72:1: tests: ExampleVigenereCipher refers to unknown identifier: VigenereCipher (govet)
-func ExampleVigenereCipher() {
-^
 simple_cipher.go:18:1: NewCaesar returns interface (cipher.Cipher) (ireturn)
 func NewCaesar() Cipher {
 ^
@@ -160,31 +140,46 @@ func NewShift(distance int) Cipher {
 simple_cipher.go:94:1: NewVigenere returns interface (cipher.Cipher) (ireturn)
 func NewVigenere(key string) Cipher {
 ^
-simple_cipher_test.go:32:1: Function TestCaesar missing the call to method parallel (paralleltest)
+simple_cipher_examples_test.go:5:6: Example_normalizeText contains underscore. You should use mixedCap or MixedCap. (nosnakecase)
+func Example_normalizeText() {
+     ^
+simple_cipher_examples_test.go:22:6: Example_fixKey contains underscore. You should use mixedCap or MixedCap. (nosnakecase)
+func Example_fixKey() {
+     ^
+simple_cipher_examples_test.go:32:6: Example_ceasarCipher contains underscore. You should use mixedCap or MixedCap. (nosnakecase)
+func Example_ceasarCipher() {
+     ^
+simple_cipher_examples_test.go:52:6: Example_shiftCipher contains underscore. You should use mixedCap or MixedCap. (nosnakecase)
+func Example_shiftCipher() {
+     ^
+simple_cipher_examples_test.go:72:6: Example_vigenereCipher contains underscore. You should use mixedCap or MixedCap. (nosnakecase)
+func Example_vigenereCipher() {
+     ^
+simple_cipher_test.go:36:1: Function TestCaesar missing the call to method parallel (paralleltest)
 func TestCaesar(t *testing.T) {
 ^
-simple_cipher_test.go:37:2: Function TestCaesar has missing the call to method parallel in the test run (paralleltest)
+simple_cipher_test.go:41:2: Function TestCaesar has missing the call to method parallel in the test run (paralleltest)
 	t.Run("with extra symbols", func(t *testing.T) {
 	^
-simple_cipher_test.go:70:1: Function TestShift missing the call to method parallel (paralleltest)
+simple_cipher_test.go:80:1: Function TestShift missing the call to method parallel (paralleltest)
 func TestShift(t *testing.T) {
 ^
-simple_cipher_test.go:72:2: Function TestShift has missing the call to method parallel in the test run (paralleltest)
+simple_cipher_test.go:82:2: Function TestShift has missing the call to method parallel in the test run (paralleltest)
 	t.Run(fmt.Sprintf("key=%d", 3), func(t *testing.T) {
 	^
-simple_cipher_test.go:81:2: Function TestShift has missing the call to method parallel in the test run (paralleltest)
+simple_cipher_test.go:91:2: Function TestShift has missing the call to method parallel in the test run (paralleltest)
 	t.Run(fmt.Sprintf("key=%d", -3), func(t *testing.T) {
 	^
-simple_cipher_test.go:91:1: Function TestWrongShiftKey missing the call to method parallel (paralleltest)
+simple_cipher_test.go:100:1: Function TestWrongShiftKey missing the call to method parallel (paralleltest)
 func TestWrongShiftKey(t *testing.T) {
 ^
-simple_cipher_test.go:119:1: Function TestVigenere missing the call to method parallel (paralleltest)
+simple_cipher_test.go:128:1: Function TestVigenere missing the call to method parallel (paralleltest)
 func TestVigenere(t *testing.T) {
 ^
-simple_cipher_test.go:120:2: Range statement for test TestVigenere missing the call to method parallel in test Run (paralleltest)
+simple_cipher_test.go:129:2: Range statement for test TestVigenere missing the call to method parallel in test Run (paralleltest)
 	for _, test := range vtests {
 	^
-simple_cipher_test.go:132:1: Function TestVigenereWrongKey missing the call to method parallel (paralleltest)
+simple_cipher_test.go:141:1: Function TestVigenereWrongKey missing the call to method parallel (paralleltest)
 func TestVigenereWrongKey(t *testing.T) {
 ^
 simple_cipher_examples_test.go:1:9: package should be `cipher_test` instead of `cipher` (testpackage)
@@ -193,29 +188,26 @@ package cipher
 simple_cipher_test.go:1:9: package should be `cipher_test` instead of `cipher` (testpackage)
 package cipher
         ^
-simple_cipher_test.go:42:6: parameter *testing.T should be the first or after context.Context (thelper)
+simple_cipher_test.go:46:6: parameter *testing.T should be the first or after context.Context (thelper)
 func testCipher(c Cipher, tests []cipherTest, t *testing.T) {
      ^
-simple_cipher.go:192:2: variable name 're' is too short for the scope of its usage (varnamelen)
-	re, err := regexp.Compile(reStr)
-	^
 
-real	0m0.543s
-user	0m0.862s
-sys	0m0.502s
+real	0m0.559s
+user	0m0.967s
+sys	0m0.539s
 
 
  ==============================================================================
 
 Exit code: -1
 
-real	0m0.586s
-user	0m0.893s
-sys	0m0.534s
+real	0m0.598s
+user	0m0.995s
+sys	0m0.569s
 
-real	0m0.588s
-user	0m0.894s
-sys	0m0.536s
+real	0m0.600s
+user	0m0.996s
+sys	0m0.570s
 
 ===============================================================================
 
@@ -233,9 +225,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.030s
-user	0m0.022s
-sys	0m0.023s
+real	0m0.020s
+user	0m0.011s
+sys	0m0.022s
 
 
  ==============================================================================
@@ -243,22 +235,22 @@ sys	0m0.023s
 Running: revive -formatter=stylish ./...
 
 
-real	0m0.048s
-user	0m0.026s
-sys	0m0.035s
+real	0m0.045s
+user	0m0.018s
+sys	0m0.040s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.091s
-user	0m0.056s
+real	0m0.073s
+user	0m0.034s
 sys	0m0.068s
 
-real	0m0.093s
-user	0m0.058s
-sys	0m0.068s
+real	0m0.075s
+user	0m0.034s
+sys	0m0.070s
 
 ===============================================================================
 
@@ -285,9 +277,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.027s
-user	0m0.020s
-sys	0m0.024s
+real	0m0.018s
+user	0m0.015s
+sys	0m0.014s
 
 
  ==============================================================================
@@ -297,22 +289,22 @@ Running: go-consistent -v ./...
 	info: check "./."
 internal error: package "regexp" without types was imported from "cipher"
 
-real	0m0.087s
-user	0m0.118s
-sys	0m0.104s
+real	0m0.091s
+user	0m0.130s
+sys	0m0.122s
 
 
  ==============================================================================
 
 Exit code: -1
 
-real	0m0.126s
-user	0m0.145s
-sys	0m0.137s
+real	0m0.119s
+user	0m0.151s
+sys	0m0.144s
 
-real	0m0.127s
-user	0m0.146s
-sys	0m0.138s
+real	0m0.121s
+user	0m0.153s
+sys	0m0.144s
 
 ===============================================================================
 
@@ -330,8 +322,8 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.022s
-user	0m0.017s
+real	0m0.025s
+user	0m0.019s
 sys	0m0.021s
 
 
@@ -340,28 +332,71 @@ sys	0m0.021s
 Running: staticcheck -checks=all ./...
 
 
-real	0m0.180s
-user	0m0.211s
-sys	0m0.145s
+real	0m0.161s
+user	0m0.210s
+sys	0m0.121s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.214s
-user	0m0.233s
-sys	0m0.178s
+real	0m0.196s
+user	0m0.234s
+sys	0m0.149s
 
-real	0m0.216s
-user	0m0.233s
-sys	0m0.180s
+real	0m0.198s
+user	0m0.236s
+sys	0m0.149s
 
 ===============================================================================
 
 Running: ../../.github/citools/go/go-lint-gocritic
 
 Running Go gocritic
+
+Go version:
+
+	go version go1.21.0 linux/amd64
+
+
+ ==============================================================================
+
+Running: go clean ./...
+
+
+real	0m0.018s
+user	0m0.015s
+sys	0m0.014s
+
+
+ ==============================================================================
+
+Running: gocritic check -enableAll ./...
+
+
+real	0m0.840s
+user	0m2.158s
+sys	0m0.296s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.867s
+user	0m2.177s
+sys	0m0.317s
+
+real	0m0.869s
+user	0m2.178s
+sys	0m0.319s
+
+===============================================================================
+
+Running: ../../.github/citools/go/go-lint-go_vet
+
+Running Go Vet
 
 Go version:
 
@@ -380,74 +415,25 @@ sys	0m0.018s
 
  ==============================================================================
 
-Running: gocritic check -enableAll ./...
+Running: go vet ./...
 
 
-real	0m0.857s
-user	0m2.155s
-sys	0m0.309s
+real	0m0.107s
+user	0m0.177s
+sys	0m0.142s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.893s
-user	0m2.182s
-sys	0m0.335s
+real	0m0.137s
+user	0m0.195s
+sys	0m0.169s
 
-real	0m0.895s
-user	0m2.182s
-sys	0m0.337s
-
-===============================================================================
-
-Running: ../../.github/citools/go/go-lint-go_vet
-
-Running Go Vet
-
-Go version:
-
-	go version go1.21.0 linux/amd64
-
-
- ==============================================================================
-
-Running: go clean ./...
-
-
-real	0m0.023s
-user	0m0.018s
-sys	0m0.019s
-
-
- ==============================================================================
-
-Running: go vet ./...
-
-# cipher
-./simple_cipher_examples_test.go:5:1: ExampleNormalizeText refers to unknown identifier: NormalizeText
-./simple_cipher_examples_test.go:22:1: ExampleFixKey refers to unknown identifier: FixKey
-./simple_cipher_examples_test.go:32:1: ExampleCeasarCipher refers to unknown identifier: CeasarCipher
-./simple_cipher_examples_test.go:52:1: ExampleShiftCipher refers to unknown identifier: ShiftCipher
-./simple_cipher_examples_test.go:72:1: ExampleVigenereCipher refers to unknown identifier: VigenereCipher
-
-real	0m0.097s
-user	0m0.152s
-sys	0m0.135s
-
-
- ==============================================================================
-
-Exit code: -1
-
-real	0m0.131s
-user	0m0.173s
-sys	0m0.165s
-
-real	0m0.133s
-user	0m0.173s
-sys	0m0.167s
+real	0m0.139s
+user	0m0.195s
+sys	0m0.171s
 
 ===============================================================================
 
@@ -465,9 +451,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.020s
-user	0m0.010s
-sys	0m0.020s
+real	0m0.021s
+user	0m0.011s
+sys	0m0.019s
 
 
  ==============================================================================
@@ -475,22 +461,22 @@ sys	0m0.020s
 Running: go fix ./...
 
 
-real	0m0.032s
-user	0m0.025s
-sys	0m0.023s
+real	0m0.030s
+user	0m0.022s
+sys	0m0.026s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.063s
-user	0m0.041s
-sys	0m0.052s
+real	0m0.069s
+user	0m0.039s
+sys	0m0.058s
 
-real	0m0.065s
-user	0m0.042s
-sys	0m0.053s
+real	0m0.071s
+user	0m0.041s
+sys	0m0.059s
 
 ===============================================================================
 
@@ -508,9 +494,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.034s
-user	0m0.028s
-sys	0m0.027s
+real	0m0.026s
+user	0m0.017s
+sys	0m0.024s
 
 
  ==============================================================================
@@ -518,22 +504,22 @@ sys	0m0.027s
 Running: errcheck ./...
 
 
-real	0m0.499s
-user	0m1.365s
-sys	0m0.292s
+real	0m0.501s
+user	0m1.542s
+sys	0m0.297s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.551s
-user	0m1.401s
-sys	0m0.338s
+real	0m0.541s
+user	0m1.564s
+sys	0m0.332s
 
-real	0m0.555s
-user	0m1.402s
-sys	0m0.339s
+real	0m0.543s
+user	0m1.564s
+sys	0m0.334s
 
 ===============================================================================
 
@@ -551,59 +537,59 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.020s
-user	0m0.016s
-sys	0m0.017s
+real	0m0.022s
+user	0m0.017s
+sys	0m0.021s
 
 
  ==============================================================================
 
 Running: gocyclo .
 
-7 cipher BenchmarkDecVigenere simple_cipher_test.go:242:1
-7 cipher BenchmarkEncVigenere simple_cipher_test.go:220:1
+7 cipher BenchmarkDecVigenere simple_cipher_test.go:251:1
+7 cipher BenchmarkEncVigenere simple_cipher_test.go:229:1
 6 cipher NewVigenere simple_cipher.go:94:1
-4 cipher BenchmarkNewVigenere simple_cipher_test.go:209:1
-4 cipher BenchmarkDecodeShift simple_cipher_test.go:194:1
-4 cipher BenchmarkEncodeShift simple_cipher_test.go:179:1
-4 cipher BenchmarkNewShift simple_cipher_test.go:168:1
-4 cipher BenchmarkDecodeCaesar simple_cipher_test.go:155:1
-4 cipher BenchmarkEncodeCaesar simple_cipher_test.go:142:1
-4 cipher testCipher simple_cipher_test.go:42:1
-4 cipher (vigenere).Decode simple_cipher.go:158:1
-4 cipher (vigenere).Encode simple_cipher.go:131:1
+4 cipher BenchmarkNewVigenere simple_cipher_test.go:218:1
+4 cipher BenchmarkDecodeShift simple_cipher_test.go:203:1
+4 cipher BenchmarkEncodeShift simple_cipher_test.go:188:1
+4 cipher BenchmarkNewShift simple_cipher_test.go:177:1
+4 cipher BenchmarkDecodeCaesar simple_cipher_test.go:164:1
+4 cipher BenchmarkEncodeCaesar simple_cipher_test.go:151:1
+4 cipher testCipher simple_cipher_test.go:46:1
+4 cipher (vigenere).Decode simple_cipher.go:157:1
+4 cipher (vigenere).Encode simple_cipher.go:130:1
 4 cipher (shift).Decode simple_cipher.go:67:1
 4 cipher (shift).Encode simple_cipher.go:40:1
 4 cipher NewShift simple_cipher.go:27:1
-3 cipher TestVigenereWrongKey simple_cipher_test.go:132:1
-3 cipher TestVigenere simple_cipher_test.go:119:1
-3 cipher TestWrongShiftKey simple_cipher_test.go:91:1
-3 cipher TestShift simple_cipher_test.go:70:1
-3 cipher fixKey simple_cipher.go:204:1
-3 cipher normalize simple_cipher.go:184:1
-2 cipher ExampleVigenereCipher simple_cipher_examples_test.go:72:1
-2 cipher ExampleShiftCipher simple_cipher_examples_test.go:52:1
-2 cipher ExampleCeasarCipher simple_cipher_examples_test.go:32:1
-2 cipher ExampleNormalizeText simple_cipher_examples_test.go:5:1
-1 cipher TestCaesar simple_cipher_test.go:32:1
-1 cipher ExampleFixKey simple_cipher_examples_test.go:22:1
+3 cipher TestVigenereWrongKey simple_cipher_test.go:141:1
+3 cipher TestVigenere simple_cipher_test.go:128:1
+3 cipher TestWrongShiftKey simple_cipher_test.go:100:1
+3 cipher TestShift simple_cipher_test.go:80:1
+3 cipher fixKey simple_cipher.go:202:1
+3 cipher normalize simple_cipher.go:183:1
+2 cipher Example_vigenereCipher simple_cipher_examples_test.go:72:1
+2 cipher Example_shiftCipher simple_cipher_examples_test.go:52:1
+2 cipher Example_ceasarCipher simple_cipher_examples_test.go:32:1
+2 cipher Example_normalizeText simple_cipher_examples_test.go:5:1
+1 cipher TestCaesar simple_cipher_test.go:36:1
+1 cipher Example_fixKey simple_cipher_examples_test.go:22:1
 1 cipher NewCaesar simple_cipher.go:18:1
 
 real	0m0.005s
-user	0m0.001s
-sys	0m0.004s
+user	0m0.002s
+sys	0m0.003s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.036s
-user	0m0.022s
-sys	0m0.031s
-
 real	0m0.038s
-user	0m0.022s
+user	0m0.025s
+sys	0m0.032s
+
+real	0m0.039s
+user	0m0.027s
 sys	0m0.032s
 
 ===============================================================================
@@ -622,22 +608,22 @@ Go version:
 Running: misspell .
 
 
-real	0m0.030s
-user	0m0.034s
-sys	0m0.015s
+real	0m0.027s
+user	0m0.036s
+sys	0m0.009s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.042s
-user	0m0.041s
-sys	0m0.024s
-
-real	0m0.045s
+real	0m0.039s
 user	0m0.043s
-sys	0m0.025s
+sys	0m0.019s
+
+real	0m0.043s
+user	0m0.045s
+sys	0m0.020s
 
 ===============================================================================
 
@@ -655,48 +641,48 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.038s
-user	0m0.027s
-sys	0m0.030s
+real	0m0.018s
+user	0m0.017s
+sys	0m0.011s
 
 
  ==============================================================================
 
 Running: gosec ./...
 
-[gosec] 2023/09/07 00:30:35 Including rules: default
-[gosec] 2023/09/07 00:30:35 Excluding rules: default
-[gosec] 2023/09/07 00:30:35 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/simple-cipher
-[gosec] 2023/09/07 00:30:35 Checking package: cipher
-[gosec] 2023/09/07 00:30:35 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/simple-cipher/cipher.go
-[gosec] 2023/09/07 00:30:35 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/simple-cipher/simple_cipher.go
+[gosec] 2023/09/10 22:02:47 Including rules: default
+[gosec] 2023/09/10 22:02:47 Excluding rules: default
+[gosec] 2023/09/10 22:02:47 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/simple-cipher
+[gosec] 2023/09/10 22:02:47 Checking package: cipher
+[gosec] 2023/09/10 22:02:47 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/simple-cipher/cipher.go
+[gosec] 2023/09/10 22:02:47 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/simple-cipher/simple_cipher.go
 Results:
 
 
 [1;36mSummary:[0m
   Gosec  : dev
   Files  : 2
-  Lines  : 225
+  Lines  : 223
   Nosec  : 0
   Issues : [1;32m0[0m
 
 
-real	0m0.112s
-user	0m0.109s
-sys	0m0.087s
+real	0m0.110s
+user	0m0.112s
+sys	0m0.090s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.170s
-user	0m0.142s
-sys	0m0.138s
+real	0m0.139s
+user	0m0.134s
+sys	0m0.110s
 
-real	0m0.174s
-user	0m0.145s
-sys	0m0.139s
+real	0m0.141s
+user	0m0.135s
+sys	0m0.111s
 
 ===============================================================================
 
@@ -714,9 +700,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.027s
-user	0m0.014s
-sys	0m0.026s
+real	0m0.025s
+user	0m0.012s
+sys	0m0.030s
 
 
  ==============================================================================
@@ -863,23 +849,23 @@ Running: gotest -v -covermode=count -coverprofile coverage.out ./...
         --- PASS: TestVigenere/key=qgbvno/Decode(sugars) (0.00s)
 === RUN   TestVigenereWrongKey
 --- PASS: TestVigenereWrongKey (0.00s)
-=== RUN   ExampleNormalizeText
---- PASS: ExampleNormalizeText (0.00s)
-=== RUN   ExampleFixKey
---- PASS: ExampleFixKey (0.00s)
-=== RUN   ExampleCeasarCipher
---- PASS: ExampleCeasarCipher (0.00s)
-=== RUN   ExampleShiftCipher
---- PASS: ExampleShiftCipher (0.00s)
-=== RUN   ExampleVigenereCipher
---- PASS: ExampleVigenereCipher (0.00s)
+=== RUN   Example_normalizeText
+--- PASS: Example_normalizeText (0.00s)
+=== RUN   Example_fixKey
+--- PASS: Example_fixKey (0.00s)
+=== RUN   Example_ceasarCipher
+--- PASS: Example_ceasarCipher (0.00s)
+=== RUN   Example_shiftCipher
+--- PASS: Example_shiftCipher (0.00s)
+=== RUN   Example_vigenereCipher
+--- PASS: Example_vigenereCipher (0.00s)
 PASS
 coverage: 92.1% of statements
-ok  	cipher	0.008s	coverage: 92.1% of statements
+ok  	cipher	0.006s	coverage: 92.1% of statements
 
-real	0m0.211s
-user	0m0.273s
-sys	0m0.148s
+real	0m0.223s
+user	0m0.322s
+sys	0m0.171s
 
 
  ==============================================================================
@@ -891,15 +877,15 @@ cipher/simple_cipher.go:27:	NewShift	100.0%
 cipher/simple_cipher.go:40:	Encode		100.0%
 cipher/simple_cipher.go:67:	Decode		100.0%
 cipher/simple_cipher.go:94:	NewVigenere	87.5%
-cipher/simple_cipher.go:131:	Encode		91.7%
-cipher/simple_cipher.go:158:	Decode		91.7%
-cipher/simple_cipher.go:184:	normalize	80.0%
-cipher/simple_cipher.go:204:	fixKey		85.7%
+cipher/simple_cipher.go:130:	Encode		91.7%
+cipher/simple_cipher.go:157:	Decode		91.7%
+cipher/simple_cipher.go:183:	normalize	80.0%
+cipher/simple_cipher.go:202:	fixKey		85.7%
 total:				(statements)	92.1%
 
-real	0m0.050s
-user	0m0.058s
-sys	0m0.077s
+real	0m0.046s
+user	0m0.063s
+sys	0m0.064s
 
 
  ==============================================================================
@@ -907,9 +893,9 @@ sys	0m0.077s
 Running: go tool cover -html coverage.out -o coverage.html
 
 
-real	0m0.043s
-user	0m0.050s
-sys	0m0.068s
+real	0m0.049s
+user	0m0.059s
+sys	0m0.066s
 
 
  ==============================================================================
@@ -925,135 +911,133 @@ Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee covera
  98     	
  99     		reStr := `^a+$`
 100     		match, err := regexp.MatchString(reStr, key)
-101     	
-102     		if err != nil {
-103 MISS			panic(err)
-104     		}
-105     	
-106     		// a+ key not allowed
-107     		if match {
-108     			return nil
-109     		}
-110     	
-111     		reStr = `^[a-z]+$`
-112     		match, err = regexp.MatchString(reStr, key)
-113     	
-114     		if err != nil {
-115 MISS			panic(err)
-116     		}
-117     	
-118     		// key doesn't consist of just a-z letters
-119     		if !match {
-120     			return nil
-121     		}
-122     	
-123     		cipher := vigenere{
-124     			key: key,
-125     		}
-126     	
-127     		return cipher
-128     	}
+101     		if err != nil {
+102 MISS			panic(err)
+103     		}
+104     	
+105     		// a+ key not allowed
+106     		if match {
+107     			return nil
+108     		}
+109     	
+110     		reStr = `^[a-z]+$`
+111     		match, err = regexp.MatchString(reStr, key)
+112     	
+113     		if err != nil {
+114 MISS			panic(err)
+115     		}
+116     	
+117     		// key doesn't consist of just a-z letters
+118     		if !match {
+119     			return nil
+120     		}
+121     	
+122     		cipher := vigenere{
+123     			key: key,
+124     		}
+125     	
+126     		return cipher
+127     	}
 
 
-204     	func fixKey(oldKey string, size int) string {
-205     		if size <= 0 {
-206 MISS			return ""
-207     		}
+202     	func fixKey(oldKey string, size int) string {
+203     		if size <= 0 {
+204 MISS			return ""
+205     		}
+206     	
+207     		newKey := oldKey
 208     	
-209     		newKey := oldKey
-210     	
-211     		for len(newKey) < size {
-212     			newKey += oldKey
-213     		}
+209     		for len(newKey) < size {
+210     			newKey += oldKey
+211     		}
+212     	
+213     		newKey = newKey[:size]
 214     	
-215     		newKey = newKey[:size]
-216     	
-217     		return newKey
-218     	}
+215     		return newKey
+216     	}
 
 
-184     	func normalize(text string) string {
-185     		if text == "" {
-186 MISS			return ""
-187     		}
-188     	
-189     		var output string
-190     	
-191     		reStr := `[[:^alpha:]]`
-192     		re, err := regexp.Compile(reStr)
-193     	
-194     		if err != nil {
-195 MISS			panic(err)
-196     		}
-197     	
-198     		output = re.ReplaceAllString(text, "")
-199     		output = strings.ToLower(output)
-200     	
-201     		return output
-202     	}
+183     	func normalize(text string) string {
+184     		if text == "" {
+185 MISS			return ""
+186     		}
+187     	
+188     		var output string
+189     	
+190     		reStr := `[[:^alpha:]]`
+191     		re, err := regexp.Compile(reStr)
+192     		if err != nil {
+193 MISS			panic(err)
+194     		}
+195     	
+196     		output = re.ReplaceAllString(text, "")
+197     		output = strings.ToLower(output)
+198     	
+199     		return output
+200     	}
 
 
-158     	func (v vigenere) Decode(cipher string) string {
-159     		if cipher == "" {
-160 MISS			return ""
-161     		}
-162     	
-163     		input := cipher
-164     	
-165     		key := fixKey(v.key, len(input))
-166     	
-167     		var plain strings.Builder
-168     	
-169     		for i, char := range key {
-170     			offset := int(char) - 97
-171     			target := int(input[i]) - offset
-172     	
-173     			// Chars below A need to roll back to top of the range.
-174     			if target < 97 {
-175     				target += 26
-176     			}
-177     	
-178     			plain.WriteRune(rune(target))
-179     		}
-180     	
-181     		return plain.String()
-182     	}
+157     	func (v vigenere) Decode(cipher string) string {
+158     		if cipher == "" {
+159 MISS			return ""
+160     		}
+161     	
+162     		input := cipher
+163     	
+164     		key := fixKey(v.key, len(input))
+165     	
+166     		var plain strings.Builder
+167     	
+168     		for i, char := range key {
+169     			offset := int(char) - 97
+170     			target := int(input[i]) - offset
+171     	
+172     			// Chars below A need to roll back to top of the range.
+173     			if target < 97 {
+174     				target += 26
+175     			}
+176     	
+177     			plain.WriteRune(rune(target))
+178     		}
+179     	
+180     		return plain.String()
+181     	}
 
 
-131     	func (v vigenere) Encode(plain string) string {
-132     		if plain == "" {
-133 MISS			return ""
-134     		}
-135     	
-136     		input := normalize(plain)
-137     	
-138     		key := fixKey(v.key, len(input))
-139     	
-140     		var cipher strings.Builder
-141     	
-142     		for i, char := range key {
-143     			offset := int(char) - 97
-144     			target := int(input[i]) + offset
-145     	
-146     			// Chars above Z need to roll back to bottom of the range.
-147     			if target > 122 {
-148     				target -= 26
-149     			}
-150     	
-151     			cipher.WriteRune(rune(target))
-152     		}
-153     	
-154     		return cipher.String()
-155     	}
+130     	func (v vigenere) Encode(plain string) string {
+131     		if plain == "" {
+132 MISS			return ""
+133     		}
+134     	
+135     		input := normalize(plain)
+136     	
+137     		key := fixKey(v.key, len(input))
+138     	
+139     		var cipher strings.Builder
+140     	
+141     		for i, char := range key {
+142     			offset := int(char) - 97
+143     			target := int(input[i]) + offset
+144     	
+145     			// Chars above Z need to roll back to bottom of the range.
+146     			if target > 122 {
+147     				target -= 26
+148     			}
+149     	
+150     			cipher.WriteRune(rune(target))
+151     		}
+152     	
+153     		return cipher.String()
+154     	}
 
 
-real	0m0.020s
-user	0m0.012s
-sys	0m0.022s
+real	0m0.015s
+user	0m0.013s
+sys	0m0.016s
 
-real	0m0.020s
-user	0m0.012s
-sys	0m0.022s
+real	0m0.015s
+user	0m0.013s
+sys	0m0.016s
 
 
  ==============================================================================
@@ -1085,7 +1069,7 @@ Running: gotest -v -race -covermode=atomic ./...
 === RUN   TestCaesar/with_extra_symbols/Decode()
 === RUN   TestCaesar/with_extra_symbols/Encode()
 === RUN   TestCaesar/with_extra_symbols/Decode()#01
---- PASS: TestCaesar (0.01s)
+--- PASS: TestCaesar (0.00s)
     --- PASS: TestCaesar/no_extra_symbols (0.00s)
         --- PASS: TestCaesar/no_extra_symbols/Encode(iamapandabear) (0.00s)
         --- PASS: TestCaesar/no_extra_symbols/Decode(ldpdsdqgdehdu) (0.00s)
@@ -1135,7 +1119,7 @@ Running: gotest -v -race -covermode=atomic ./...
 === RUN   TestShift/key=-3/Decode(qeljxpgbccboplkabpfdkbaxprypqfqrqflkzfmebo)
 === RUN   TestShift/key=-3/Encode(the_quick_brown_fox_jumps_over_the_lazy_dog)
 === RUN   TestShift/key=-3/Decode(qebnrfzhyoltkclugrjmplsboqebixwvald)
---- PASS: TestShift (0.01s)
+--- PASS: TestShift (0.00s)
     --- PASS: TestShift/key=3 (0.00s)
         --- PASS: TestShift/key=3/Encode(Go,_go,_gophers) (0.00s)
         --- PASS: TestShift/key=3/Decode(jrjrjrskhuv) (0.00s)
@@ -1200,36 +1184,36 @@ Running: gotest -v -race -covermode=atomic ./...
         --- PASS: TestVigenere/key=qgbvno/Decode(sugars) (0.00s)
 === RUN   TestVigenereWrongKey
 --- PASS: TestVigenereWrongKey (0.00s)
-=== RUN   ExampleNormalizeText
---- PASS: ExampleNormalizeText (0.00s)
-=== RUN   ExampleFixKey
---- PASS: ExampleFixKey (0.00s)
-=== RUN   ExampleCeasarCipher
---- PASS: ExampleCeasarCipher (0.00s)
-=== RUN   ExampleShiftCipher
---- PASS: ExampleShiftCipher (0.00s)
-=== RUN   ExampleVigenereCipher
---- PASS: ExampleVigenereCipher (0.00s)
+=== RUN   Example_normalizeText
+--- PASS: Example_normalizeText (0.00s)
+=== RUN   Example_fixKey
+--- PASS: Example_fixKey (0.00s)
+=== RUN   Example_ceasarCipher
+--- PASS: Example_ceasarCipher (0.00s)
+=== RUN   Example_shiftCipher
+--- PASS: Example_shiftCipher (0.00s)
+=== RUN   Example_vigenereCipher
+--- PASS: Example_vigenereCipher (0.00s)
 PASS
 coverage: 92.1% of statements
-ok  	cipher	1.036s	coverage: 92.1% of statements
+ok  	cipher	1.024s	coverage: 92.1% of statements
 
-real	0m1.284s
-user	0m0.316s
-sys	0m0.189s
+real	0m1.293s
+user	0m0.358s
+sys	0m0.195s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m1.649s
-user	0m0.730s
-sys	0m0.543s
+real	0m1.660s
+user	0m0.833s
+sys	0m0.549s
 
-real	0m1.651s
-user	0m0.731s
-sys	0m0.544s
+real	0m1.663s
+user	0m0.836s
+sys	0m0.549s
 
 ===============================================================================
 
@@ -1242,27 +1226,27 @@ goarch: amd64
 pkg: cipher
 cpu: 12th Gen Intel(R) Core(TM) i5-1240P
 BenchmarkEncodeCaesar
-BenchmarkEncodeCaesar-8   	  133518	      9154 ns/op	    5515 B/op	     104 allocs/op
+BenchmarkEncodeCaesar-8   	  123675	      9189 ns/op	    5513 B/op	     104 allocs/op
 BenchmarkDecodeCaesar
-BenchmarkDecodeCaesar-8   	 2185735	       547.1 ns/op	     184 B/op	      12 allocs/op
+BenchmarkDecodeCaesar-8   	 1879539	       560.3 ns/op	     184 B/op	      12 allocs/op
 BenchmarkNewShift
-BenchmarkNewShift-8       	69165717	        20.51 ns/op	       0 B/op	       0 allocs/op
+BenchmarkNewShift-8       	59023688	        20.04 ns/op	       0 B/op	       0 allocs/op
 BenchmarkEncodeShift
-BenchmarkEncodeShift-8    	   64356	     18424 ns/op	    9694 B/op	     185 allocs/op
+BenchmarkEncodeShift-8    	   67670	     19611 ns/op	    9699 B/op	     185 allocs/op
 BenchmarkDecodeShift
-BenchmarkDecodeShift-8    	  855981	      1345 ns/op	     504 B/op	      25 allocs/op
+BenchmarkDecodeShift-8    	  828325	      1341 ns/op	     504 B/op	      25 allocs/op
 BenchmarkNewVigenere
-BenchmarkNewVigenere-8    	   55738	     22226 ns/op	   23766 B/op	     345 allocs/op
+BenchmarkNewVigenere-8    	   47727	     26811 ns/op	   23766 B/op	     345 allocs/op
 BenchmarkEncVigenere
-BenchmarkEncVigenere-8    	  155208	      7620 ns/op	    5374 B/op	     103 allocs/op
+BenchmarkEncVigenere-8    	  148969	      8024 ns/op	    5372 B/op	     103 allocs/op
 BenchmarkDecVigenere
-BenchmarkDecVigenere-8    	 2421415	       499.6 ns/op	     160 B/op	      13 allocs/op
+BenchmarkDecVigenere-8    	 2327863	       511.6 ns/op	     160 B/op	      13 allocs/op
 PASS
-ok  	cipher	12.977s
+ok  	cipher	12.298s
 
-real	0m13.124s
-user	0m13.493s
-sys	0m0.306s
+real	0m12.462s
+user	0m12.877s
+sys	0m0.388s
 
 ===============================================================================
 
@@ -1407,26 +1391,34 @@ gotest -v -tags bonus
         --- PASS: TestVigenere/key=qgbvno/Decode(sugars) (0.00s)
 === RUN   TestVigenereWrongKey
 --- PASS: TestVigenereWrongKey (0.00s)
-=== RUN   ExampleNormalizeText
---- PASS: ExampleNormalizeText (0.00s)
-=== RUN   ExampleFixKey
---- PASS: ExampleFixKey (0.00s)
-=== RUN   ExampleCeasarCipher
---- PASS: ExampleCeasarCipher (0.00s)
-=== RUN   ExampleShiftCipher
---- PASS: ExampleShiftCipher (0.00s)
-=== RUN   ExampleVigenereCipher
---- PASS: ExampleVigenereCipher (0.00s)
+=== RUN   Example_normalizeText
+--- PASS: Example_normalizeText (0.00s)
+=== RUN   Example_fixKey
+--- PASS: Example_fixKey (0.00s)
+=== RUN   Example_ceasarCipher
+--- PASS: Example_ceasarCipher (0.00s)
+=== RUN   Example_shiftCipher
+--- PASS: Example_shiftCipher (0.00s)
+=== RUN   Example_vigenereCipher
+--- PASS: Example_vigenereCipher (0.00s)
 PASS
-ok  	cipher	0.005s
+ok  	cipher	0.002s
 
-real	0m0.131s
-user	0m0.181s
-sys	0m0.132s
+real	0m0.137s
+user	0m0.191s
+sys	0m0.148s
 
 ===============================================================================
 
 benchstat benchstat-old.txt benchstat-new.txt
+benchstat-old.txt:5: missing iteration count
+benchstat-old.txt:7: missing iteration count
+benchstat-old.txt:9: missing iteration count
+benchstat-old.txt:11: missing iteration count
+benchstat-old.txt:13: missing iteration count
+benchstat-old.txt:15: missing iteration count
+benchstat-old.txt:17: missing iteration count
+benchstat-old.txt:19: missing iteration count
 benchstat-new.txt:5: missing iteration count
 benchstat-new.txt:7: missing iteration count
 benchstat-new.txt:9: missing iteration count
@@ -1439,100 +1431,62 @@ goos: linux
 goarch: amd64
 pkg: cipher
 cpu: 12th Gen Intel(R) Core(TM) i5-1240P
-               │ benchstat-new.txt │
-               │      sec/op       │
-EncodeCaesar-8        9.154µ ± ∞ ¹
-DecodeCaesar-8        547.1n ± ∞ ¹
-NewShift-8            20.51n ± ∞ ¹
-EncodeShift-8         18.42µ ± ∞ ¹
-DecodeShift-8         1.345µ ± ∞ ¹
-NewVigenere-8         22.23µ ± ∞ ¹
-EncVigenere-8         7.620µ ± ∞ ¹
-DecVigenere-8         499.6n ± ∞ ¹
-geomean               1.957µ
+               │ benchstat-old.txt │          benchstat-new.txt           │
+               │      sec/op       │    sec/op     vs base                │
+EncodeCaesar-8        9.154µ ± ∞ ¹   9.189µ ± ∞ ¹       ~ (p=1.000 n=1) ²
+DecodeCaesar-8        547.1n ± ∞ ¹   560.3n ± ∞ ¹       ~ (p=1.000 n=1) ²
+NewShift-8            20.51n ± ∞ ¹   20.04n ± ∞ ¹       ~ (p=1.000 n=1) ²
+EncodeShift-8         18.42µ ± ∞ ¹   19.61µ ± ∞ ¹       ~ (p=1.000 n=1) ²
+DecodeShift-8         1.345µ ± ∞ ¹   1.341µ ± ∞ ¹       ~ (p=1.000 n=1) ²
+NewVigenere-8         22.23µ ± ∞ ¹   26.81µ ± ∞ ¹       ~ (p=1.000 n=1) ²
+EncVigenere-8         7.620µ ± ∞ ¹   8.024µ ± ∞ ¹       ~ (p=1.000 n=1) ²
+DecVigenere-8         499.6n ± ∞ ¹   511.6n ± ∞ ¹       ~ (p=1.000 n=1) ²
+geomean               1.957µ         2.039µ        +4.17%
 ¹ need >= 6 samples for confidence interval at level 0.95
+² need >= 4 samples to detect a difference at alpha level 0.05
 
-               │ benchstat-new.txt │
-               │       B/op        │
-EncodeCaesar-8       5.386Ki ± ∞ ¹
-DecodeCaesar-8         184.0 ± ∞ ¹
-NewShift-8             0.000 ± ∞ ¹
-EncodeShift-8        9.467Ki ± ∞ ¹
-DecodeShift-8          504.0 ± ∞ ¹
-NewVigenere-8        23.21Ki ± ∞ ¹
-EncVigenere-8        5.248Ki ± ∞ ¹
-DecVigenere-8          160.0 ± ∞ ¹
-geomean                          ²
+               │ benchstat-old.txt │           benchstat-new.txt           │
+               │       B/op        │     B/op       vs base                │
+EncodeCaesar-8       5.386Ki ± ∞ ¹   5.384Ki ± ∞ ¹       ~ (p=1.000 n=1) ²
+DecodeCaesar-8         184.0 ± ∞ ¹     184.0 ± ∞ ¹       ~ (p=1.000 n=1) ³
+NewShift-8             0.000 ± ∞ ¹     0.000 ± ∞ ¹       ~ (p=1.000 n=1) ³
+EncodeShift-8        9.467Ki ± ∞ ¹   9.472Ki ± ∞ ¹       ~ (p=1.000 n=1) ²
+DecodeShift-8          504.0 ± ∞ ¹     504.0 ± ∞ ¹       ~ (p=1.000 n=1) ³
+NewVigenere-8        23.21Ki ± ∞ ¹   23.21Ki ± ∞ ¹       ~ (p=1.000 n=1) ³
+EncVigenere-8        5.248Ki ± ∞ ¹   5.246Ki ± ∞ ¹       ~ (p=1.000 n=1) ²
+DecVigenere-8          160.0 ± ∞ ¹     160.0 ± ∞ ¹       ~ (p=1.000 n=1) ³
+geomean                          ⁴                  -0.00%               ⁴
 ¹ need >= 6 samples for confidence interval at level 0.95
-² summaries must be >0 to compute geomean
+² need >= 4 samples to detect a difference at alpha level 0.05
+³ all samples are equal
+⁴ summaries must be >0 to compute geomean
 
-               │ benchstat-new.txt │
-               │     allocs/op     │
-EncodeCaesar-8         104.0 ± ∞ ¹
-DecodeCaesar-8         12.00 ± ∞ ¹
-NewShift-8             0.000 ± ∞ ¹
-EncodeShift-8          185.0 ± ∞ ¹
-DecodeShift-8          25.00 ± ∞ ¹
-NewVigenere-8          345.0 ± ∞ ¹
-EncVigenere-8          103.0 ± ∞ ¹
-DecVigenere-8          13.00 ± ∞ ¹
-geomean                          ²
+               │ benchstat-old.txt │          benchstat-new.txt          │
+               │     allocs/op     │  allocs/op   vs base                │
+EncodeCaesar-8         104.0 ± ∞ ¹   104.0 ± ∞ ¹       ~ (p=1.000 n=1) ²
+DecodeCaesar-8         12.00 ± ∞ ¹   12.00 ± ∞ ¹       ~ (p=1.000 n=1) ²
+NewShift-8             0.000 ± ∞ ¹   0.000 ± ∞ ¹       ~ (p=1.000 n=1) ²
+EncodeShift-8          185.0 ± ∞ ¹   185.0 ± ∞ ¹       ~ (p=1.000 n=1) ²
+DecodeShift-8          25.00 ± ∞ ¹   25.00 ± ∞ ¹       ~ (p=1.000 n=1) ²
+NewVigenere-8          345.0 ± ∞ ¹   345.0 ± ∞ ¹       ~ (p=1.000 n=1) ²
+EncVigenere-8          103.0 ± ∞ ¹   103.0 ± ∞ ¹       ~ (p=1.000 n=1) ²
+DecVigenere-8          13.00 ± ∞ ¹   13.00 ± ∞ ¹       ~ (p=1.000 n=1) ²
+geomean                          ³                +0.00%               ³
 ¹ need >= 6 samples for confidence interval at level 0.95
-² summaries must be >0 to compute geomean
+² all samples are equal
+³ summaries must be >0 to compute geomean
 
-cpu: Intel(R) Core(TM) i7-7Y75 CPU @ 1.30GHz
-               │ benchstat-old.txt │
-               │      sec/op       │
-EncodeCaesar-4        28.35µ ± ∞ ¹
-DecodeCaesar-4        1.650µ ± ∞ ¹
-NewShift-4            25.17n ± ∞ ¹
-EncodeShift-4         52.00µ ± ∞ ¹
-DecodeShift-4         4.083µ ± ∞ ¹
-NewVigenere-4         82.51µ ± ∞ ¹
-EncVigenere-4         26.01µ ± ∞ ¹
-DecVigenere-4         1.497µ ± ∞ ¹
-geomean               5.471µ
-¹ need >= 6 samples for confidence interval at level 0.95
-
-               │ benchstat-old.txt │
-               │       B/op        │
-EncodeCaesar-4       5.312Ki ± ∞ ¹
-DecodeCaesar-4         184.0 ± ∞ ¹
-NewShift-4             0.000 ± ∞ ¹
-EncodeShift-4        9.347Ki ± ∞ ¹
-DecodeShift-4          504.0 ± ∞ ¹
-NewVigenere-4        23.05Ki ± ∞ ¹
-EncVigenere-4        5.174Ki ± ∞ ¹
-DecVigenere-4          160.0 ± ∞ ¹
-geomean                          ²
-¹ need >= 6 samples for confidence interval at level 0.95
-² summaries must be >0 to compute geomean
-
-               │ benchstat-old.txt │
-               │     allocs/op     │
-EncodeCaesar-4         104.0 ± ∞ ¹
-DecodeCaesar-4         12.00 ± ∞ ¹
-NewShift-4             0.000 ± ∞ ¹
-EncodeShift-4          185.0 ± ∞ ¹
-DecodeShift-4          25.00 ± ∞ ¹
-NewVigenere-4          345.0 ± ∞ ¹
-EncVigenere-4          103.0 ± ∞ ¹
-DecVigenere-4          13.00 ± ∞ ¹
-geomean                          ²
-¹ need >= 6 samples for confidence interval at level 0.95
-² summaries must be >0 to compute geomean
-
-real	0m0.015s
-user	0m0.004s
-sys	0m0.004s
+real	0m0.002s
+user	0m0.001s
+sys	0m0.001s
 
 ===============================================================================
 
 gomarkdoc --output cipher-doc.md
 
 real	0m0.010s
-user	0m0.008s
-sys	0m0.002s
+user	0m0.004s
+sys	0m0.006s
 
 ===============================================================================
 
@@ -1559,9 +1513,9 @@ func NewVigenere(key string) Cipher
     NewVigenere returns a Cipher.
 
 
-real	0m0.037s
-user	0m0.020s
-sys	0m0.031s
+real	0m0.032s
+user	0m0.023s
+sys	0m0.028s
 
 
 ===============================================================================
