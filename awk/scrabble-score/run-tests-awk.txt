@@ -1,0 +1,311 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+AWKLIBPATH=/usr/lib/x86_64-linux-gnu/gawk:../.lib
+
+/usr/lib/x86_64-linux-gnu/gawk
+filefuncs.so
+fnmatch.so
+fork.so
+inplace.so
+intdiv.so
+ordchr.so
+readdir.so
+readfile.so
+revoutput.so
+revtwoway.so
+rwarray.so
+time.so
+
+../.lib
+awkunit.awk
+awkunit.so
+
+gawk  --lint --file=./awkunit.awk < /dev/null > /dev/null
+gawk: ./awkunit.awk:3: warning: `load' is a gawk extension
+gawk: warning: function `assertEquals' defined but never called directly
+gawk: warning: function `assert' defined but never called directly
+gawk: ./awkunit.awk:26: warning: reference to uninitialized variable `_assert_exit'
+
+real	0m0.003s
+user	0m0.003s
+sys	0m0.000s
+
+gawk  --lint --file=./scrabble-score.awk < /dev/null > /dev/null
+gawk: ./scrabble-score.awk:21: warning: `switch' is a gawk extension
+gawk: ./scrabble-score.awk:22: warning: `case' is a gawk extension
+gawk: ./scrabble-score.awk:44: warning: `default' is a gawk extension
+gawk: warning: function `is_color' defined but never called directly
+
+real	0m0.003s
+user	0m0.002s
+sys	0m0.001s
+
+gawk  --lint --file=./test-cases.awk < /dev/null > /dev/null
+gawk: ./test-cases.awk:8: warning: subscript of array `cases' is null string
+
+real	0m0.003s
+user	0m0.002s
+sys	0m0.000s
+
+exit 0
+
+===============================================================================
+
+Running: bats ./test-scrabble-score.bats
+1..12
+ok 1 lowercase letter
+ok 2 uppercase letter
+ok 3 valuable letter
+ok 4 short word
+ok 5 short, valuable word
+ok 6 medium word
+ok 7 medium, valuable word
+ok 8 long, mixed-case word
+ok 9 english-like word
+ok 10 empty input
+ok 11 entire alphabet available
+ok 12 bonus: blank tile counts as zero
+
+real	0m0.447s
+user	0m0.288s
+sys	0m0.178s
+
+exit 0
+
+===============================================================================
+
+AWKLIBPATH=/usr/lib/x86_64-linux-gnu/gawk:../.lib
+
+/usr/lib/x86_64-linux-gnu/gawk
+filefuncs.so
+fnmatch.so
+fork.so
+inplace.so
+intdiv.so
+ordchr.so
+readdir.so
+readfile.so
+revoutput.so
+revtwoway.so
+rwarray.so
+time.so
+
+../.lib
+awkunit.awk
+awkunit.so
+
+Running: gawk  --file ./scrabble-score_test.awk && printf \n%s\n Tests Passed! || printf \n%s\n Tests Failed!
+
+Running 3 tests...
+
+Test 1:
+     input -> []
+    output -> [,0]
+    result -> passed
+
+Test 2:
+     input -> [a]
+    output -> [A,1]
+    result -> passed
+
+Test 3:
+     input -> [abcdefghijklmnopqrstuvwxyz]
+    output -> [ABCDEFGHIJKLMNOPQRSTUVWXYZ,87]
+    result -> passed
+
+Running 34 test cases
+
+Test 4:
+     input -> [zoo]
+    output -> [ZOO,12]
+    result -> passed
+
+Test 5:
+     input -> [abcdefghijklmnopqrstuvwxyz]
+    output -> [ABCDEFGHIJKLMNOPQRSTUVWXYZ,87]
+    result -> passed
+
+Test 6:
+     input -> [u]
+    output -> [U,1]
+    result -> passed
+
+Test 7:
+     input -> []
+    output -> [,0]
+    result -> passed
+
+Test 8:
+     input -> [OxyphenButazone]
+    output -> [OXYPHENBUTAZONE,41]
+    result -> passed
+
+Test 9:
+     input -> [v]
+    output -> [V,4]
+    result -> passed
+
+Test 10:
+     input -> [i]
+    output -> [I,1]
+    result -> passed
+
+Test 11:
+     input -> [j]
+    output -> [J,8]
+    result -> passed
+
+Test 12:
+     input -> [w]
+    output -> [W,4]
+    result -> passed
+
+Test 13:
+     input -> [x]
+    output -> [X,8]
+    result -> passed
+
+Test 14:
+     input -> [k]
+    output -> [K,5]
+    result -> passed
+
+Test 15:
+     input -> [y]
+    output -> [Y,4]
+    result -> passed
+
+Test 16:
+     input -> [l]
+    output -> [L,1]
+    result -> passed
+
+Test 17:
+     input -> [pinata]
+    output -> [PINATA,8]
+    result -> passed
+
+Test 18:
+     input -> [at]
+    output -> [AT,2]
+    result -> passed
+
+Test 19:
+     input -> [z]
+    output -> [Z,10]
+    result -> passed
+
+Test 20:
+     input -> [m]
+    output -> [M,3]
+    result -> passed
+
+Test 21:
+     input -> [n]
+    output -> [N,1]
+    result -> passed
+
+Test 22:
+     input -> [a]
+    output -> [A,1]
+    result -> passed
+
+Test 23:
+     input -> [b]
+    output -> [B,3]
+    result -> passed
+
+Test 24:
+     input -> [o]
+    output -> [O,1]
+    result -> passed
+
+Test 25:
+     input -> [quirky]
+    output -> [QUIRKY,22]
+    result -> passed
+
+Test 26:
+     input -> [p]
+    output -> [P,3]
+    result -> passed
+
+Test 27:
+     input -> [c]
+    output -> [C,3]
+    result -> passed
+
+Test 28:
+     input -> [street]
+    output -> [STREET,6]
+    result -> passed
+
+Test 29:
+     input -> [q]
+    output -> [Q,10]
+    result -> passed
+
+Test 30:
+     input -> [d]
+    output -> [D,2]
+    result -> passed
+
+Test 31:
+     input -> [r]
+    output -> [R,1]
+    result -> passed
+
+Test 32:
+     input -> [e]
+    output -> [E,1]
+    result -> passed
+
+Test 33:
+     input -> [f]
+    output -> [F,4]
+    result -> passed
+
+Test 34:
+     input -> [s]
+    output -> [S,1]
+    result -> passed
+
+Test 35:
+     input -> [abcdefghijklmnop rstuvwxyz]
+    output -> [ABCDEFGHIJKLMNOP RSTUVWXYZ,77]
+    result -> passed
+
+Test 36:
+     input -> [g]
+    output -> [G,2]
+    result -> passed
+
+Test 37:
+     input -> [t]
+    output -> [T,1]
+    result -> passed
+
+
+37 out of 37 tests passed!
+
+real	0m0.007s
+user	0m0.003s
+sys	0m0.004s
+
+Tests Passed!
+
+exit 0
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.042s
+user	0m0.044s
+sys	0m0.017s
+
+===============================================================================
+

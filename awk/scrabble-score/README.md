@@ -53,3 +53,10 @@ And to total:
 ### Based on
 
 Inspired by the Extreme Startup game - https://github.com/rchatley/extreme_startup
+
+### My Solution
+
+- [my solution](./scrabble-score.awk)
+- [awkunit tests](./scrabble-score_test.awk)
+- [test cases](./test-cases.awk)
+- [run-tests](./run-tests-awk.txt)
