@@ -1,58 +1,39 @@
 #!/usr/bin/gawk --bignum --lint --file
 
-function etl(input) {
-    uppercase = ""
-    score = 0
+function etl() {
+    PROCINFO["sorted_in"] = "@ind_str_asc"
 
-    if (length(input) == 0) {
-        return uppercase "," score
+    for (i=2; i<=NF; i++) {
+        key = tolower($i)
+        score = $1
+        scores[key] = score
+    }
+}
+
+# arrays keep getting passed as a scalar, using global
+function prettyEtl() {
+    PROCINFO["sorted_in"] = "@ind_str_asc"
+
+    for (key in scores) {
+        lines = lines key "," scores[key] "\n"
     }
 
-    _ = split(input, chars, "")
-
-    for (i=1; i<=length(input); ++i) {
-        letter = toupper(chars[i])
-
-        # intentionally using strings with fallthrough cases and single regex cases
-        switch(letter) {
-            case /^[AEIOULNRST]$/:
-                score += 1
-                break
-            case "D":
-            case "G":
-                score += 2
-                break
-            case /^[BCMP]$/:
-                score += 3
-                break
-            case /^[FHVWY]$/:
-                score += 4
-                break
-            case "K":
-                score += 5
-                break
-            case /^[JX]$/:
-                score += 8
-                break
-            case /^[QZ]$/:
-                score += 10
-                break
-            default:
-                break
-        }
-
-        uppercase = uppercase letter
-    }
-
-    return uppercase "," score
+    return lines
 }
 
 BEGIN {
+    FPAT = "[[:alnum:]]+"
 }
 
-{
-    print etl($0)
+# score: keys
+#$1  $2   $3   $4   $5   $6 -> $0
+# 1: "A", "E", "I", "O", "U"
+NF > 1 {
+    # uses $0-9
+    etl()
 }
 
 END {
+    # uses scores array
+    print prettyEtl()
 }

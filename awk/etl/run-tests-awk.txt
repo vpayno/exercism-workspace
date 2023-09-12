@@ -1,0 +1,121 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+AWKLIBPATH=/usr/lib/x86_64-linux-gnu/gawk:../.lib
+
+/usr/lib/x86_64-linux-gnu/gawk
+filefuncs.so
+fnmatch.so
+fork.so
+inplace.so
+intdiv.so
+ordchr.so
+readdir.so
+readfile.so
+revoutput.so
+revtwoway.so
+rwarray.so
+time.so
+
+../.lib
+awkunit.awk
+awkunit.so
+
+gawk  --lint --file=./awkunit.awk < /dev/null > /dev/null
+gawk: ./awkunit.awk:3: warning: `load' is a gawk extension
+gawk: warning: function `assertEquals' defined but never called directly
+gawk: warning: function `assert' defined but never called directly
+gawk: ./awkunit.awk:26: warning: reference to uninitialized variable `_assert_exit'
+
+real	0m0.005s
+user	0m0.003s
+sys	0m0.002s
+
+gawk  --lint --file=./etl.awk < /dev/null > /dev/null
+gawk: ./etl.awk:25: warning: `FPAT' is a gawk extension
+gawk: ./etl.awk:17: warning: behavior of `for' loop on untyped variable is not defined by POSIX
+gawk: ./etl.awk:21: warning: reference to uninitialized variable `lines'
+
+real	0m0.005s
+user	0m0.001s
+sys	0m0.003s
+
+exit 0
+
+===============================================================================
+
+Running: bats ./test-etl.bats
+1..6
+ok 1 single letter
+ok 2 single score with multiple letters
+ok 3 a score with no letters
+ok 4 multiple scores with multiple letters
+ok 5 multiple scores with multiple letters, blank lines
+ok 6 multiple scores with differing numbers of letters
+
+real	0m0.367s
+user	0m0.276s
+sys	0m0.107s
+
+exit 0
+
+===============================================================================
+
+AWKLIBPATH=/usr/lib/x86_64-linux-gnu/gawk:../.lib
+
+/usr/lib/x86_64-linux-gnu/gawk
+filefuncs.so
+fnmatch.so
+fork.so
+inplace.so
+intdiv.so
+ordchr.so
+readdir.so
+readfile.so
+revoutput.so
+revtwoway.so
+rwarray.so
+time.so
+
+../.lib
+awkunit.awk
+awkunit.so
+
+Running: gawk  --file ./etl_test.awk && printf \n%s\n Tests Passed! || printf \n%s\n Tests Failed!
+
+
+Running 1 tests...
+
+Test 1:
+     input -> []
+    output -> [a,1
+e,1
+i,1
+o,1
+u,1
+]
+    result -> passed
+
+
+1 out of 1 tests passed!
+
+real	0m0.004s
+user	0m0.003s
+sys	0m0.001s
+
+Tests Passed!
+
+exit 0
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.025s
+user	0m0.029s
+sys	0m0.009s
+
+===============================================================================
+
