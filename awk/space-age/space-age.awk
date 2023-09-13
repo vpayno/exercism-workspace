@@ -20,9 +20,11 @@ function spaceAge(input) {
     planets["Uranus"]=84.016846
     planets["Neptune"]=164.79132
 
-    # already tested that we have a correct input, we don't need to check that
-    # we got 3 numbers.
-    _ = split(input, data, " ")
+    data_count  = split(input, data, " ")
+
+    if (data_count != 2) {
+        return "error:unexpected number of values"
+    }
 
     planet = data[1]
 

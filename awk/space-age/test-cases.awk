@@ -7,6 +7,8 @@
 BEGIN {
     cases[""]="error:no planet or seconds given"
 
+    cases["one two three"] = "error:unexpected number of values"
+
     cases["Mercury 2134835688"]="280.88"
     cases["Venus 189839836"]="9.78"
     cases["Earth 1000000000"]="31.69"
