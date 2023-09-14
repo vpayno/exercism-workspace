@@ -1,0 +1,347 @@
+/home/vpayno/git_vpayno/exercism-workspace/rust/luhn/src/lib.rs:
+    1|       |/// Check a Luhn checksum.
+    2|       |///
+    3|       |/// Example - test empty string
+    4|       |/// ```rust
+    5|       |/// use luhn::*;
+    6|       |///
+    7|       |/// let input: &str = "";
+    8|       |///
+    9|       |/// let want: bool = false;
+   10|       |/// let got: bool = luhn::is_valid(input);
+   11|       |///
+   12|       |/// assert_eq!(got, want);
+   13|       |/// ```
+   14|       |///
+   15|       |/// Example - test string with non-ascii char
+   16|       |/// ```rust
+   17|       |/// use luhn::*;
+   18|       |///
+   19|       |/// let input: &str = "123 ✓ 456";
+   20|       |///
+   21|       |/// let want: bool = false;
+   22|       |/// let got: bool = luhn::is_valid(input);
+   23|       |///
+   24|       |/// assert_eq!(got, want);
+   25|       |/// ```
+   26|       |///
+   27|       |/// Example - test string with ascii letter
+   28|       |/// ```rust
+   29|       |/// use luhn::*;
+   30|       |///
+   31|       |/// let input: &str = "123 a 456";
+   32|       |///
+   33|       |/// let want: bool = false;
+   34|       |/// let got: bool = luhn::is_valid(input);
+   35|       |///
+   36|       |/// assert_eq!(got, want);
+   37|       |/// ```
+   38|       |///
+   39|       |/// Example - valid input that's a luhn number
+   40|       |/// ```rust
+   41|       |/// use luhn::*;
+   42|       |///
+   43|       |/// let input: &str = "4539 3195 0343 6467";
+   44|       |///
+   45|       |/// let want: bool = true;
+   46|       |/// let got: bool = luhn::is_valid(input);
+   47|       |///
+   48|       |/// assert_eq!(got, want);
+   49|       |/// ```
+   50|       |///
+   51|       |/// Example - valid input that isn't a luhn number
+   52|       |/// ```rust
+   53|       |/// use luhn::*;
+   54|       |///
+   55|       |/// let input: &str = "8273 1232 7352 0569";
+   56|       |///
+   57|       |/// let want: bool = false;
+   58|       |/// let got: bool = luhn::is_valid(input);
+   59|       |///
+   60|       |/// assert_eq!(got, want);
+   61|       |/// ```
+   62|     63|pub fn is_valid(code: &str) -> bool {
+   63|     63|    if code.trim() == "0" {
+   64|      6|        return false;
+   65|     57|    }
+   66|     57|
+   67|     57|    if code.trim().is_empty() {
+   68|      0|        return false;
+   69|     57|    };
+   70|     57|
+   71|     57|    if !code.is_ascii() {
+   72|      6|        return false;
+   73|     51|    };
+   74|     51|
+   75|     51|    if !is_only_numbers_and_spaces(code) {
+   76|     21|        return false;
+   77|     30|    };
+   78|     30|
+   79|     30|    let digits: Vec<u32> = extract_digits_from_str_slice(code);
+   80|     30|
+   81|     30|    let numbers = step_one_and_two(digits);
+   82|     30|
+   83|     30|    let digit_sum: u32 = sum(numbers);
+   84|     30|
+   85|     30|    (digit_sum % 10) == 0
+   86|     63|}
+  ------------------
+  | luhn::is_valid:
+  |   62|     63|pub fn is_valid(code: &str) -> bool {
+  |   63|     63|    if code.trim() == "0" {
+  |   64|      6|        return false;
+  |   65|     57|    }
+  |   66|     57|
+  |   67|     57|    if code.trim().is_empty() {
+  |   68|      0|        return false;
+  |   69|     57|    };
+  |   70|     57|
+  |   71|     57|    if !code.is_ascii() {
+  |   72|      6|        return false;
+  |   73|     51|    };
+  |   74|     51|
+  |   75|     51|    if !is_only_numbers_and_spaces(code) {
+  |   76|     21|        return false;
+  |   77|     30|    };
+  |   78|     30|
+  |   79|     30|    let digits: Vec<u32> = extract_digits_from_str_slice(code);
+  |   80|     30|
+  |   81|     30|    let numbers = step_one_and_two(digits);
+  |   82|     30|
+  |   83|     30|    let digit_sum: u32 = sum(numbers);
+  |   84|     30|
+  |   85|     30|    (digit_sum % 10) == 0
+  |   86|     63|}
+  ------------------
+  | Unexecuted instantiation: luhn::is_valid
+  ------------------
+   87|       |
+   88|       |/// Performs the first and second steps of the luhn algorithm.
+   89|       |///
+   90|       |/// Example
+   91|       |/// ```rust
+   92|       |/// use luhn::*;
+   93|       |///
+   94|       |/// let input: &str = "4539 3195 0343 6467";
+   95|       |///
+   96|       |/// let want: Vec<u32> = vec![7,3,4,3,3,8,3,0,5,9,1,6,9,6,5,8];
+   97|       |/// let got: Vec<u32> = step_one_and_two(extract_digits_from_str_slice(input));
+   98|       |///
+   99|       |/// assert_eq!(got, want);
+  100|       |/// ```
+  101|     30|pub fn step_one_and_two(mut vector: Vec<u32>) -> Vec<u32> {
+  102|     30|    let mut i = 1;
+  103|       |
+  104|     96|    while i < vector.len() {
+  105|     93|        vector[i] *= 2;
+  106|     93|
+  107|     93|        if vector[i] > 9 {
+  108|     48|            vector[i] -= 9;
+  109|     48|        }
+                       ^45
+  110|       |
+  111|     93|        i += 2;
+  112|     93|
+  113|     93|        if i >= vector.len() {
+  114|     27|            break;
+  115|     66|        }
+  116|       |    }
+  117|       |
+  118|     30|    vector
+  119|     30|}
+  ------------------
+  | luhn::step_one_and_two:
+  |  101|     30|pub fn step_one_and_two(mut vector: Vec<u32>) -> Vec<u32> {
+  |  102|     30|    let mut i = 1;
+  |  103|       |
+  |  104|     96|    while i < vector.len() {
+  |  105|     93|        vector[i] *= 2;
+  |  106|     93|
+  |  107|     93|        if vector[i] > 9 {
+  |  108|     48|            vector[i] -= 9;
+  |  109|     48|        }
+  |                       ^45
+  |  110|       |
+  |  111|     93|        i += 2;
+  |  112|     93|
+  |  113|     93|        if i >= vector.len() {
+  |  114|     27|            break;
+  |  115|     66|        }
+  |  116|       |    }
+  |  117|       |
+  |  118|     30|    vector
+  |  119|     30|}
+  ------------------
+  | Unexecuted instantiation: luhn::step_one_and_two
+  ------------------
+  120|       |
+  121|       |/// Sums Vector of numbers.
+  122|       |///
+  123|       |/// Example
+  124|       |/// ```rust
+  125|       |/// use luhn::*;
+  126|       |///
+  127|       |/// let input: &str = "0 1234 5678 9";
+  128|       |///
+  129|       |/// let want: u32 = 45;
+  130|       |/// let got: u32 = luhn::sum(extract_digits_from_str_slice(input));
+  131|       |///
+  132|       |/// assert_eq!(got, want);
+  133|       |/// ```
+  134|       |///
+  135|       |/// Example
+  136|       |/// ```rust
+  137|       |/// use luhn::*;
+  138|       |///
+  139|       |/// let input: &str = "4539 3195 0343 6467";
+  140|       |/// let digits: Vec<u32> = step_one_and_two(extract_digits_from_str_slice(input));
+  141|       |///
+  142|       |/// let want: u32 = 80;
+  143|       |/// let got: u32 = luhn::sum(digits);
+  144|       |///
+  145|       |/// assert_eq!(got, want);
+  146|       |/// ```
+  147|     30|pub fn sum(vector: Vec<u32>) -> u32 {
+  148|     30|    vector.iter().sum()
+  149|     30|}
+  ------------------
+  | luhn::sum:
+  |  147|     30|pub fn sum(vector: Vec<u32>) -> u32 {
+  |  148|     30|    vector.iter().sum()
+  |  149|     30|}
+  ------------------
+  | Unexecuted instantiation: luhn::sum
+  ------------------
+  150|       |
+  151|       |/// Creates a reversed Vector of u32 from a string slice.
+  152|       |///
+  153|       |/// Example
+  154|       |/// ```rust
+  155|       |/// use luhn::*;
+  156|       |///
+  157|       |/// let input: &str = "1a2b 3c4d";
+  158|       |///
+  159|       |/// let want: Vec<u32> = vec![4,3,2,1];
+  160|       |/// let got: Vec<u32> = extract_digits_from_str_slice(input);
+  161|       |///
+  162|       |/// println!("want: {:?}\n", want);
+  163|       |/// println!(" got: {:?}\n", got);
+  164|       |///
+  165|       |/// assert!(got == want, "vectors aren't equal");
+  166|       |/// ```
+  167|     30|pub fn extract_digits_from_str_slice(code: &str) -> Vec<u32> {
+  168|     30|    code.chars()
+  169|    243|        .filter(|x| x.is_ascii_digit())
+  ------------------
+  | luhn::extract_digits_from_str_slice::{closure#0}:
+  |  169|    243|        .filter(|x| x.is_ascii_digit())
+  ------------------
+  | Unexecuted instantiation: luhn::extract_digits_from_str_slice::{closure#0}
+  ------------------
+  170|    204|        .map(|x| x.to_digit(10).unwrap())
+  ------------------
+  | luhn::extract_digits_from_str_slice::{closure#1}:
+  |  170|    204|        .map(|x| x.to_digit(10).unwrap())
+  ------------------
+  | Unexecuted instantiation: luhn::extract_digits_from_str_slice::{closure#1}
+  ------------------
+  171|     30|        .rev()
+  172|     30|        .collect()
+  173|     30|}
+  ------------------
+  | luhn::extract_digits_from_str_slice:
+  |  167|     30|pub fn extract_digits_from_str_slice(code: &str) -> Vec<u32> {
+  |  168|     30|    code.chars()
+  |  169|     30|        .filter(|x| x.is_ascii_digit())
+  |  170|     30|        .map(|x| x.to_digit(10).unwrap())
+  |  171|     30|        .rev()
+  |  172|     30|        .collect()
+  |  173|     30|}
+  ------------------
+  | Unexecuted instantiation: luhn::extract_digits_from_str_slice
+  ------------------
+  174|       |
+  175|       |/// Checks to see if string slice only has numbers and spaces.
+  176|       |///
+  177|       |/// Example
+  178|       |/// ```rust
+  179|       |/// use luhn::*;
+  180|       |///
+  181|       |/// let input: &str = "1234 5678 9";
+  182|       |///
+  183|       |/// let want: bool = true;
+  184|       |/// let got: bool = luhn::is_only_numbers_and_spaces(input);
+  185|       |///
+  186|       |/// assert_eq!(got, want);
+  187|       |/// ```
+  188|       |///
+  189|       |/// Example
+  190|       |/// ```rust
+  191|       |/// use luhn::*;
+  192|       |///
+  193|       |/// let input: &str = "1234 a678 9";
+  194|       |///
+  195|       |/// let want: bool = false;
+  196|       |/// let got: bool = luhn::is_only_numbers_and_spaces(input);
+  197|       |///
+  198|       |/// assert_eq!(got, want);
+  199|       |/// ```
+  200|     51|pub fn is_only_numbers_and_spaces(code: &str) -> bool {
+  201|    315|    for c in code.chars() {
+                                ^51
+  202|    315|        if !c.is_ascii_digit() && !c.is_whitespace() {
+                                                ^60
+  203|     21|            return false;
+  204|    294|        };
+  205|       |    }
+  206|       |
+  207|     30|    true
+  208|     51|}
+  ------------------
+  | luhn::is_only_numbers_and_spaces:
+  |  200|     51|pub fn is_only_numbers_and_spaces(code: &str) -> bool {
+  |  201|    315|    for c in code.chars() {
+  |                                ^51
+  |  202|    315|        if !c.is_ascii_digit() && !c.is_whitespace() {
+  |                                                ^60
+  |  203|     21|            return false;
+  |  204|    294|        };
+  |  205|       |    }
+  |  206|       |
+  |  207|     30|    true
+  |  208|     51|}
+  ------------------
+  | Unexecuted instantiation: luhn::is_only_numbers_and_spaces
+  ------------------
+
+/home/vpayno/git_vpayno/exercism-workspace/rust/luhn/src/main.rs:
+    1|       |use luhn::*;
+    2|       |
+    3|      0|fn main() {
+    4|      0|    let input: &str = "4539 3195 0343 6467";
+    5|      0|
+    6|      0|    println!("is empty: {}\n", input.is_empty());
+    7|      0|
+    8|      0|    println!("is ascii: {}\n", input.is_ascii());
+    9|      0|
+   10|      0|    println!("is correct: {}\n", is_only_numbers_and_spaces(input));
+   11|      0|
+   12|      0|    let clean: Vec<u32> = extract_digits_from_str_slice(input);
+   13|      0|
+   14|      0|    println!("  clean: {:?}\n", clean);
+   15|      0|
+   16|      0|    let updated: Vec<u32> = step_one_and_two(clean);
+   17|      0|
+   18|      0|    println!("updated: {:?}\n", updated);
+   19|      0|
+   20|      0|    let digit_sum: u32 = sum(updated);
+   21|      0|
+   22|      0|    println!("valid: {}\n", digit_sum % 80 == 0);
+   23|      0|
+   24|      0|    println!("valid: {}\n", is_valid(input));
+   25|      0|}
+  ------------------
+  | Unexecuted instantiation: luhn::main
+  ------------------
+  | Unexecuted instantiation: luhn::main
+  ------------------

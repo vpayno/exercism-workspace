@@ -60,7 +60,11 @@
 /// assert_eq!(got, want);
 /// ```
 pub fn is_valid(code: &str) -> bool {
-    if code.is_empty() {
+    if code.trim() == "0" {
+        return false;
+    }
+
+    if code.trim().is_empty() {
         return false;
     };
 
