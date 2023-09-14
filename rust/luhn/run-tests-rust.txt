@@ -1,0 +1,691 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: ../../.github/citools/rust/rust-lint-check --release
+
+Running Rust Cargo Check
+
+Rust version:
+
+	rustc 1.72.0 (5680fa18f 2023-08-23)
+
+
+ ==============================================================================
+
+Running: cargo clean
+
+
+real	0m0.015s
+user	0m0.006s
+sys	0m0.008s
+
+
+ ==============================================================================
+
+Running: cargo check --future-incompat-report --release
+
+    Checking luhn v1.6.1 (/home/vpayno/git_vpayno/exercism-workspace/rust/luhn)
+    Finished release [optimized] target(s) in 0.15s
+note: 0 dependencies had future-incompatible warnings
+
+real	0m0.161s
+user	0m0.035s
+sys	0m0.052s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.196s
+user	0m0.050s
+sys	0m0.074s
+
+real	0m0.199s
+user	0m0.050s
+sys	0m0.078s
+
+===============================================================================
+
+Running: ../../.github/citools/rust/rust-lint-clippy --release
+
+Running Rust Cargo Clippy
+
+Rust version:
+
+	rustc 1.72.0 (5680fa18f 2023-08-23)
+
+
+ ==============================================================================
+
+Running: cargo clean
+
+
+real	0m0.008s
+user	0m0.004s
+sys	0m0.004s
+
+
+ ==============================================================================
+
+Running: cargo clippy --release
+
+    Checking luhn v1.6.1 (/home/vpayno/git_vpayno/exercism-workspace/rust/luhn)
+    Finished release [optimized] target(s) in 0.12s
+
+real	0m0.150s
+user	0m0.073s
+sys	0m0.075s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.168s
+user	0m0.081s
+sys	0m0.087s
+
+real	0m0.170s
+user	0m0.082s
+sys	0m0.088s
+
+===============================================================================
+
+Running: ../../.github/citools/rust/rust-lint-audit
+No deps found, skipping cargo audit.
+
+real	0m0.045s
+user	0m0.025s
+sys	0m0.021s
+
+real	0m0.047s
+user	0m0.025s
+sys	0m0.023s
+
+===============================================================================
+
+rm -fv ./*.profraw ./*.profdata
+
+===============================================================================
+
+Running: ../../.github/citools/rust/rust-test-with-tarpaulin
+
+Running Rust Tests With Tarpaulin
+
+Rust version:
+
+	rustc 1.72.0 (5680fa18f 2023-08-23)
+
+
+ ==============================================================================
+
+Running: cargo clean
+
+
+real	0m0.007s
+user	0m0.006s
+sys	0m0.001s
+
+
+ ==============================================================================
+
+Running: cargo test
+
+   Compiling luhn v1.6.1 (/home/vpayno/git_vpayno/exercism-workspace/rust/luhn)
+    Finished test [unoptimized + debuginfo] target(s) in 0.43s
+     Running unittests src/lib.rs (target/debug/deps/luhn-3f6a174d2f371f79)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/main.rs (target/debug/deps/luhn-6ddc1b7958eb610c)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/luhn.rs (target/debug/deps/luhn-43c07f4df5e12404)
+
+running 21 tests
+test strings_that_contain_non_digits_are_invalid ... ok
+test symbols_are_invalid ... ok
+test test_a_simple_valid_sin_that_becomes_invalid_if_reversed ... ok
+test test_a_valid_canadian_sin ... ok
+test test_a_simple_valid_sin_that_remains_valid_if_reversed ... ok
+test test_input_digit_9_is_correctly_converted_to_output_digit_9 ... ok
+test test_a_single_zero_is_invalid ... FAILED
+test test_invalid_canadian_sin ... ok
+test test_invalid_credit_card ... ok
+test test_invalid_char_in_middle_with_sum_divisible_by_10_isnt_allowed ... ok
+test test_more_than_a_single_zero_is_valid ... ok
+test test_single_digit_strings_can_not_be_valid ... ok
+test test_single_zero_with_space_is_invalid ... FAILED
+test test_using_ascii_value_for_doubled_nondigit_isnt_allowed ... ok
+test test_using_ascii_value_for_nondoubled_nondigit_isnt_allowed ... ok
+test test_valid_number_with_an_even_number_of_digits ... ok
+test test_valid_number_with_an_odd_number_of_spaces ... ok
+test test_valid_strings_with_a_nondigit_added_at_the_end_become_invalid ... ok
+test test_valid_strings_with_numeric_unicode_characters_become_invalid ... ok
+test test_valid_strings_with_punctuation_included_become_invalid ... ok
+test test_valid_strings_with_symbols_included_become_invalid ... ok
+
+failures:
+
+---- test_a_single_zero_is_invalid stdout ----
+thread 'test_a_single_zero_is_invalid' panicked at 'assertion failed: `(left == right)`
+  left: `true`,
+ right: `false`', tests/luhn.rs:4:5
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- test_single_zero_with_space_is_invalid stdout ----
+thread 'test_single_zero_with_space_is_invalid' panicked at 'assertion failed: `(left == right)`
+  left: `true`,
+ right: `false`', tests/luhn.rs:4:5
+
+
+failures:
+    test_a_single_zero_is_invalid
+    test_single_zero_with_space_is_invalid
+
+test result: FAILED. 19 passed; 2 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `--test luhn`
+
+real	0m0.442s
+user	0m0.929s
+sys	0m0.492s
+
+
+ ==============================================================================
+
+Running: cargo tarpaulin --release --timeout=300
+
+[2mSep 14 00:26:33.408[0m [32m INFO[0m cargo_tarpaulin::config: Creating config
+[2mSep 14 00:26:33.416[0m [32m INFO[0m cargo_tarpaulin: Running Tarpaulin
+[2mSep 14 00:26:33.416[0m [32m INFO[0m cargo_tarpaulin: Building project
+[2mSep 14 00:26:33.416[0m [32m INFO[0m cargo_tarpaulin::cargo: Cleaning project
+   Compiling luhn v1.6.1 (/home/vpayno/git_vpayno/exercism-workspace/rust/luhn)
+    Finished release [optimized] target(s) in 0.51s
+[2mSep 14 00:26:33.968[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
+[2mSep 14 00:26:33.968[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/luhn/target/release/deps/luhn-1b157b7c3a977123
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+[2mSep 14 00:26:34.503[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
+[2mSep 14 00:26:34.503[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/luhn/target/release/deps/luhn-04324a570905c8de
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+[2mSep 14 00:26:34.981[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
+[2mSep 14 00:26:34.981[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/luhn/target/release/deps/luhn-f6109e72a4ccae09
+
+running 21 tests
+test symbols_are_invalid ... ok
+test test_a_single_zero_is_invalid ... FAILED
+test test_invalid_canadian_sin ... ok
+test strings_that_contain_non_digits_are_invalid ... ok
+test test_input_digit_9_is_correctly_converted_to_output_digit_9 ... ok
+test test_a_valid_canadian_sin ... ok
+test test_a_simple_valid_sin_that_remains_valid_if_reversed ... ok
+test test_a_simple_valid_sin_that_becomes_invalid_if_reversed ... ok
+test test_single_digit_strings_can_not_be_valid ... ok
+test test_invalid_credit_card ... ok
+test test_more_than_a_single_zero_is_valid ... ok
+test test_invalid_char_in_middle_with_sum_divisible_by_10_isnt_allowed ... ok
+test test_using_ascii_value_for_nondoubled_nondigit_isnt_allowed ... ok
+test test_valid_number_with_an_even_number_of_digits ... ok
+test test_valid_number_with_an_odd_number_of_spaces ... ok
+test test_using_ascii_value_for_doubled_nondigit_isnt_allowed ... ok
+test test_single_zero_with_space_is_invalid ... FAILED
+test test_valid_strings_with_punctuation_included_become_invalid ... ok
+test test_valid_strings_with_symbols_included_become_invalid ... ok
+test test_valid_strings_with_a_nondigit_added_at_the_end_become_invalid ... ok
+test test_valid_strings_with_numeric_unicode_characters_become_invalid ... ok
+
+failures:
+
+---- test_a_single_zero_is_invalid stdout ----
+thread 'test_a_single_zero_is_invalid' panicked at 'assertion failed: `(left == right)`
+  left: `true`,
+ right: `false`', tests/luhn.rs:4:5
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- test_single_zero_with_space_is_invalid stdout ----
+thread 'test_single_zero_with_space_is_invalid' panicked at 'assertion failed: `(left == right)`
+  left: `true`,
+ right: `false`', tests/luhn.rs:4:5
+
+
+failures:
+    test_a_single_zero_is_invalid
+    test_single_zero_with_space_is_invalid
+
+test result: FAILED. 19 passed; 2 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.04s
+
+Error: "Test failed during run"
+
+real	0m2.075s
+user	0m1.042s
+sys	0m1.659s
+
+
+ ==============================================================================
+
+Exit code: -2
+
+real	0m2.533s
+user	0m1.980s
+sys	0m2.159s
+
+real	0m2.535s
+user	0m1.980s
+sys	0m2.161s
+
+===============================================================================
+
+Running: ../../.github/citools/rust/rust-test-with-llvm-coverage
+
+Running Rust Tests With LLVM Coverage
+
+Rust version:
+
+	rustc 1.72.0 (5680fa18f 2023-08-23)
+
+
+ ==============================================================================
+
+Running: cargo clean
+
+
+real	0m0.015s
+user	0m0.005s
+sys	0m0.010s
+
+
+ ==============================================================================
+
+Running: cargo llvm-cov clean --workspace
+
+
+real	0m0.176s
+user	0m0.096s
+sys	0m0.082s
+
+
+ ==============================================================================
+
+Running: cargo test
+
+   Compiling luhn v1.6.1 (/home/vpayno/git_vpayno/exercism-workspace/rust/luhn)
+    Finished test [unoptimized + debuginfo] target(s) in 0.39s
+     Running unittests src/lib.rs (target/debug/deps/luhn-3f6a174d2f371f79)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/main.rs (target/debug/deps/luhn-6ddc1b7958eb610c)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/luhn.rs (target/debug/deps/luhn-43c07f4df5e12404)
+
+running 21 tests
+test strings_that_contain_non_digits_are_invalid ... ok
+test symbols_are_invalid ... ok
+test test_a_simple_valid_sin_that_becomes_invalid_if_reversed ... ok
+test test_a_simple_valid_sin_that_remains_valid_if_reversed ... ok
+test test_a_valid_canadian_sin ... ok
+test test_input_digit_9_is_correctly_converted_to_output_digit_9 ... ok
+test test_a_single_zero_is_invalid ... FAILED
+test test_invalid_canadian_sin ... ok
+test test_invalid_char_in_middle_with_sum_divisible_by_10_isnt_allowed ... ok
+test test_invalid_credit_card ... ok
+test test_more_than_a_single_zero_is_valid ... ok
+test test_single_digit_strings_can_not_be_valid ... ok
+test test_using_ascii_value_for_doubled_nondigit_isnt_allowed ... ok
+test test_single_zero_with_space_is_invalid ... FAILED
+test test_using_ascii_value_for_nondoubled_nondigit_isnt_allowed ... ok
+test test_valid_number_with_an_even_number_of_digits ... ok
+test test_valid_number_with_an_odd_number_of_spaces ... ok
+test test_valid_strings_with_a_nondigit_added_at_the_end_become_invalid ... ok
+test test_valid_strings_with_numeric_unicode_characters_become_invalid ... ok
+test test_valid_strings_with_punctuation_included_become_invalid ... ok
+test test_valid_strings_with_symbols_included_become_invalid ... ok
+
+failures:
+
+---- test_a_single_zero_is_invalid stdout ----
+thread 'test_a_single_zero_is_invalid' panicked at 'assertion failed: `(left == right)`
+  left: `true`,
+ right: `false`', tests/luhn.rs:4:5
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- test_single_zero_with_space_is_invalid stdout ----
+thread 'test_single_zero_with_space_is_invalid' panicked at 'assertion failed: `(left == right)`
+  left: `true`,
+ right: `false`', tests/luhn.rs:4:5
+
+
+failures:
+    test_a_single_zero_is_invalid
+    test_single_zero_with_space_is_invalid
+
+test result: FAILED. 19 passed; 2 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `--test luhn`
+
+real	0m0.405s
+user	0m0.878s
+sys	0m0.429s
+
+
+ ==============================================================================
+
+Running: cargo llvm-cov --no-clean --all-features --workspace
+
+   Compiling luhn v1.6.1 (/home/vpayno/git_vpayno/exercism-workspace/rust/luhn)
+    Finished test [unoptimized + debuginfo] target(s) in 0.37s
+     Running unittests src/lib.rs (target/llvm-cov-target/debug/deps/luhn-b51e438b344fc9a4)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/main.rs (target/llvm-cov-target/debug/deps/luhn-d981f5079ce971e1)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/luhn.rs (target/llvm-cov-target/debug/deps/luhn-533150d49871267a)
+
+running 21 tests
+test strings_that_contain_non_digits_are_invalid ... ok
+test symbols_are_invalid ... ok
+test test_a_simple_valid_sin_that_becomes_invalid_if_reversed ... ok
+test test_a_simple_valid_sin_that_remains_valid_if_reversed ... ok
+test test_a_single_zero_is_invalid ... FAILED
+test test_a_valid_canadian_sin ... ok
+test test_input_digit_9_is_correctly_converted_to_output_digit_9 ... ok
+test test_invalid_canadian_sin ... ok
+test test_invalid_char_in_middle_with_sum_divisible_by_10_isnt_allowed ... ok
+test test_invalid_credit_card ... ok
+test test_more_than_a_single_zero_is_valid ... ok
+test test_single_digit_strings_can_not_be_valid ... ok
+test test_single_zero_with_space_is_invalid ... FAILED
+test test_using_ascii_value_for_doubled_nondigit_isnt_allowed ... ok
+test test_using_ascii_value_for_nondoubled_nondigit_isnt_allowed ... ok
+test test_valid_number_with_an_even_number_of_digits ... ok
+test test_valid_number_with_an_odd_number_of_spaces ... ok
+test test_valid_strings_with_a_nondigit_added_at_the_end_become_invalid ... ok
+test test_valid_strings_with_numeric_unicode_characters_become_invalid ... ok
+test test_valid_strings_with_punctuation_included_become_invalid ... ok
+test test_valid_strings_with_symbols_included_become_invalid ... ok
+
+failures:
+
+---- test_a_single_zero_is_invalid stdout ----
+thread 'test_a_single_zero_is_invalid' panicked at 'assertion failed: `(left == right)`
+  left: `true`,
+ right: `false`', tests/luhn.rs:4:5
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- test_single_zero_with_space_is_invalid stdout ----
+thread 'test_single_zero_with_space_is_invalid' panicked at 'assertion failed: `(left == right)`
+  left: `true`,
+ right: `false`', tests/luhn.rs:4:5
+
+
+failures:
+    test_a_single_zero_is_invalid
+    test_single_zero_with_space_is_invalid
+
+test result: FAILED. 19 passed; 2 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `--test luhn`
+error: process didn't exit successfully: `/home/vpayno/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/cargo test --tests --manifest-path /home/vpayno/git_vpayno/exercism-workspace/rust/luhn/Cargo.toml --target-dir /home/vpayno/git_vpayno/exercism-workspace/rust/luhn/target/llvm-cov-target --all-features --workspace` (exit status: 101)
+
+real	0m0.499s
+user	0m0.650s
+sys	0m0.316s
+
+
+ ==============================================================================
+
+Running: cargo llvm-cov report --lcov --output-path report.lcov
+
+
+    Finished report saved to report.lcov
+
+real	0m0.117s
+user	0m0.063s
+sys	0m0.055s
+
+    Finished test [unoptimized + debuginfo] target(s) in 0.00s
+     Running unittests src/lib.rs (target/llvm-cov-target/debug/deps/luhn-b51e438b344fc9a4)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/main.rs (target/llvm-cov-target/debug/deps/luhn-d981f5079ce971e1)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/luhn.rs (target/llvm-cov-target/debug/deps/luhn-533150d49871267a)
+
+running 21 tests
+test strings_that_contain_non_digits_are_invalid ... ok
+test symbols_are_invalid ... ok
+test test_a_simple_valid_sin_that_becomes_invalid_if_reversed ... ok
+test test_a_simple_valid_sin_that_remains_valid_if_reversed ... ok
+test test_a_single_zero_is_invalid ... FAILED
+test test_a_valid_canadian_sin ... ok
+test test_input_digit_9_is_correctly_converted_to_output_digit_9 ... ok
+test test_invalid_canadian_sin ... ok
+test test_invalid_char_in_middle_with_sum_divisible_by_10_isnt_allowed ... ok
+test test_invalid_credit_card ... ok
+test test_more_than_a_single_zero_is_valid ... ok
+test test_single_digit_strings_can_not_be_valid ... ok
+test test_single_zero_with_space_is_invalid ... FAILED
+test test_using_ascii_value_for_doubled_nondigit_isnt_allowed ... ok
+test test_using_ascii_value_for_nondoubled_nondigit_isnt_allowed ... ok
+test test_valid_number_with_an_even_number_of_digits ... ok
+test test_valid_number_with_an_odd_number_of_spaces ... ok
+test test_valid_strings_with_a_nondigit_added_at_the_end_become_invalid ... ok
+test test_valid_strings_with_numeric_unicode_characters_become_invalid ... ok
+test test_valid_strings_with_punctuation_included_become_invalid ... ok
+test test_valid_strings_with_symbols_included_become_invalid ... ok
+
+failures:
+
+---- test_a_single_zero_is_invalid stdout ----
+thread 'test_a_single_zero_is_invalid' panicked at 'assertion failed: `(left == right)`
+  left: `true`,
+ right: `false`', tests/luhn.rs:4:5
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- test_single_zero_with_space_is_invalid stdout ----
+thread 'test_single_zero_with_space_is_invalid' panicked at 'assertion failed: `(left == right)`
+  left: `true`,
+ right: `false`', tests/luhn.rs:4:5
+
+
+failures:
+    test_a_single_zero_is_invalid
+    test_single_zero_with_space_is_invalid
+
+test result: FAILED. 19 passed; 2 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `--test luhn`
+error: process didn't exit successfully: `/home/vpayno/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/cargo test --tests --manifest-path /home/vpayno/git_vpayno/exercism-workspace/rust/luhn/Cargo.toml --target-dir /home/vpayno/git_vpayno/exercism-workspace/rust/luhn/target/llvm-cov-target --all-features --workspace` (exit status: 101)
+
+real	0m0.173s
+user	0m0.092s
+sys	0m0.080s
+
+ ==============================================================================
+
+Running: cargo llvm-cov --no-clean --all-features --workspace --text --output-path=coverage-annotations.txt
+
+    Finished test [unoptimized + debuginfo] target(s) in 0.00s
+     Running unittests src/lib.rs (target/llvm-cov-target/debug/deps/luhn-b51e438b344fc9a4)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/main.rs (target/llvm-cov-target/debug/deps/luhn-d981f5079ce971e1)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/luhn.rs (target/llvm-cov-target/debug/deps/luhn-533150d49871267a)
+
+running 21 tests
+test strings_that_contain_non_digits_are_invalid ... ok
+test symbols_are_invalid ... ok
+test test_a_simple_valid_sin_that_becomes_invalid_if_reversed ... ok
+test test_a_simple_valid_sin_that_remains_valid_if_reversed ... ok
+test test_a_single_zero_is_invalid ... FAILED
+test test_a_valid_canadian_sin ... ok
+test test_input_digit_9_is_correctly_converted_to_output_digit_9 ... ok
+test test_invalid_canadian_sin ... ok
+test test_invalid_char_in_middle_with_sum_divisible_by_10_isnt_allowed ... ok
+test test_invalid_credit_card ... ok
+test test_more_than_a_single_zero_is_valid ... ok
+test test_single_digit_strings_can_not_be_valid ... ok
+test test_single_zero_with_space_is_invalid ... FAILED
+test test_using_ascii_value_for_doubled_nondigit_isnt_allowed ... ok
+test test_using_ascii_value_for_nondoubled_nondigit_isnt_allowed ... ok
+test test_valid_number_with_an_even_number_of_digits ... ok
+test test_valid_number_with_an_odd_number_of_spaces ... ok
+test test_valid_strings_with_a_nondigit_added_at_the_end_become_invalid ... ok
+test test_valid_strings_with_numeric_unicode_characters_become_invalid ... ok
+test test_valid_strings_with_punctuation_included_become_invalid ... ok
+test test_valid_strings_with_symbols_included_become_invalid ... ok
+
+failures:
+
+---- test_a_single_zero_is_invalid stdout ----
+thread 'test_a_single_zero_is_invalid' panicked at 'assertion failed: `(left == right)`
+  left: `true`,
+ right: `false`', tests/luhn.rs:4:5
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- test_single_zero_with_space_is_invalid stdout ----
+thread 'test_single_zero_with_space_is_invalid' panicked at 'assertion failed: `(left == right)`
+  left: `true`,
+ right: `false`', tests/luhn.rs:4:5
+
+
+failures:
+    test_a_single_zero_is_invalid
+    test_single_zero_with_space_is_invalid
+
+test result: FAILED. 19 passed; 2 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `--test luhn`
+error: process didn't exit successfully: `/home/vpayno/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/cargo test --tests --manifest-path /home/vpayno/git_vpayno/exercism-workspace/rust/luhn/Cargo.toml --target-dir /home/vpayno/git_vpayno/exercism-workspace/rust/luhn/target/llvm-cov-target --all-features --workspace` (exit status: 101)
+
+real	0m0.183s
+user	0m0.105s
+sys	0m0.079s
+
+
+ ==============================================================================
+
+Running: cargo llvm-cov clean --workspace
+
+
+real	0m0.157s
+user	0m0.090s
+sys	0m0.070s
+
+
+ ==============================================================================
+
+Running: lcov --list report.lcov
+
+Reading tracefile report.lcov
+            |Lines       |Functions  |Branches    
+Filename    |Rate     Num|Rate    Num|Rate     Num
+==================================================
+[/home/vpayno/git_vpayno/exercism-workspace/rust/luhn/src/]
+lib.rs      |98.1%     53|50.0%    14|    -      0
+main.rs     | 0.0%     23| 0.0%     2|    -      0
+==================================================
+      Total:|68.4%     76|43.8%    16|    -      0
+
+real	0m0.039s
+user	0m0.031s
+sys	0m0.007s
+
+
+Running: lcov --summary report.lcov
+
+Reading tracefile report.lcov
+Summary coverage rate:
+  lines......: 68.4% (52 of 76 lines)
+  functions..: 43.8% (7 of 16 functions)
+  branches...: no data found
+
+real	0m0.034s
+user	0m0.028s
+sys	0m0.006s
+
+
+ ==============================================================================
+
+Exit code: -4
+
+real	0m1.811s
+user	0m2.046s
+sys	0m1.141s
+
+real	0m1.813s
+user	0m2.047s
+sys	0m1.142s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.027s
+user	0m0.031s
+sys	0m0.015s
+
+===============================================================================
+
+Running: cargo doc
+ Documenting luhn v1.6.1 (/home/vpayno/git_vpayno/exercism-workspace/rust/luhn)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.18s
+
+real	0m0.191s
+user	0m0.159s
+sys	0m0.034s
+
+===============================================================================
+
+Running: cargo clean
+
+real	0m0.013s
+user	0m0.005s
+sys	0m0.008s
+
+===============================================================================
+

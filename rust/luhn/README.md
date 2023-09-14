@@ -100,3 +100,8 @@ Sum the digits
 ### Based on
 
 The Luhn Algorithm on Wikipedia - http://en.wikipedia.org/wiki/Luhn_algorithm
+
+### My Solution
+
+- [my solution](./src/lib.rs)
+- [run-tests](./run-tests-rust.txt)
