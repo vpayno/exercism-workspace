@@ -1,0 +1,184 @@
+    1|       |pub trait Zero {
+    2|       |    const ZERO: Self;
+    3|       |}
+    4|       |
+    5|       |impl Zero for i32 {
+    6|       |    const ZERO: Self = 0;
+    7|       |}
+    8|       |
+    9|       |impl Zero for i64 {
+   10|       |    const ZERO: Self = 0;
+   11|       |}
+   12|       |
+   13|       |impl Zero for i128 {
+   14|       |    const ZERO: Self = 0;
+   15|       |}
+   16|       |
+   17|       |impl Zero for u32 {
+   18|       |    const ZERO: Self = 0;
+   19|       |}
+   20|       |
+   21|       |impl Zero for u64 {
+   22|       |    const ZERO: Self = 0;
+   23|       |}
+   24|       |
+   25|       |impl Zero for u128 {
+   26|       |    const ZERO: Self = 0;
+   27|       |}
+   28|       |
+   29|       |impl Zero for f32 {
+   30|       |    const ZERO: Self = 0.0;
+   31|       |}
+   32|       |
+   33|       |impl Zero for f64 {
+   34|       |    const ZERO: Self = 0.0;
+   35|       |}
+   36|       |
+   37|       |pub struct Triangle<T> {
+   38|       |    pub a: T,
+   39|       |    pub b: T,
+   40|       |    pub c: T,
+   41|       |}
+   42|       |
+   43|       |/// Creates a new Triangle
+   44|       |///
+   45|       |/// Example
+   46|       |/// ```rust
+   47|       |/// use triangle::*;
+   48|       |///
+   49|       |/// let equilateral: [u64; 3] = [5, 5, 5];
+   50|       |/// let isosceles: [u64; 3] = [4, 7, 4];
+   51|       |/// let scalene: [u64; 3] = [2, 3, 4];
+   52|       |///
+   53|       |/// if let Some(t) = Triangle::build(equilateral) {
+   54|       |///     assert!(t.is_equilateral());
+   55|       |///     assert!(!t.is_isosceles());
+   56|       |///     assert!(!t.is_scalene());
+   57|       |/// }
+   58|       |///
+   59|       |/// if let Some(t) = Triangle::build(isosceles) {
+   60|       |///     assert!(!t.is_equilateral());
+   61|       |///     assert!(t.is_isosceles());
+   62|       |///     assert!(!t.is_scalene());
+   63|       |/// }
+   64|       |///
+   65|       |/// if let Some(t) = Triangle::build(scalene) {
+   66|       |///     assert!(!t.is_equilateral());
+   67|       |///     assert!(!t.is_isosceles());
+   68|       |///     assert!(t.is_scalene());
+   69|       |/// }
+   70|       |/// ```
+   71|       |impl<T> Triangle<T>
+   72|       |where
+   73|       |    T: Copy + std::ops::Add<Output = T> + PartialOrd + PartialEq + Zero,
+   74|       |{
+   75|     66|    pub fn build(sides: [T; 3]) -> Option<Triangle<T>> {
+   76|     66|        match (sides[0], sides[1], sides[2]) {
+   77|     66|            (a, b, c) if a <= T::ZERO || b <= T::ZERO || c <= T::ZERO => None,
+                           ^15                         ^57             ^54             ^15
+   78|     51|            (a, b, c) if (a + b > c) && (a + c > b) && (b + c > a) => Some(Triangle { a, b, c }),
+                           ^42                        ^45            ^45            ^42
+   79|      9|            _ => None,
+   80|       |        }
+   81|     66|    }
+  ------------------
+  | Unexecuted instantiation: <triangle::Triangle<_>>::build
+  ------------------
+  | <triangle::Triangle<f64>>::build:
+  |   75|     15|    pub fn build(sides: [T; 3]) -> Option<Triangle<T>> {
+  |   76|     15|        match (sides[0], sides[1], sides[2]) {
+  |   77|     15|            (a, b, c) if a <= T::ZERO || b <= T::ZERO || c <= T::ZERO => None,
+  |                           ^3                          ^12             ^12             ^3
+  |   78|     12|            (a, b, c) if (a + b > c) && (a + c > b) && (b + c > a) => Some(Triangle { a, b, c }),
+  |                           ^9                         ^9             ^9             ^9
+  |   79|      3|            _ => None,
+  |   80|       |        }
+  |   81|     15|    }
+  ------------------
+  | <triangle::Triangle<i32>>::build:
+  |   75|     51|    pub fn build(sides: [T; 3]) -> Option<Triangle<T>> {
+  |   76|     51|        match (sides[0], sides[1], sides[2]) {
+  |   77|     51|            (a, b, c) if a <= T::ZERO || b <= T::ZERO || c <= T::ZERO => None,
+  |                           ^12                         ^45             ^42             ^12
+  |   78|     39|            (a, b, c) if (a + b > c) && (a + c > b) && (b + c > a) => Some(Triangle { a, b, c }),
+  |                           ^33                        ^36            ^36            ^33
+  |   79|      6|            _ => None,
+  |   80|       |        }
+  |   81|     51|    }
+  ------------------
+   82|       |
+   83|       |    /// Tests triangle is equilateral
+   84|     39|    pub fn is_equilateral(&self) -> bool {
+   85|     39|        self.a == self.b && self.a == self.c
+                                          ^12
+   86|     39|    }
+  ------------------
+  | Unexecuted instantiation: <triangle::Triangle<_>>::is_equilateral
+  ------------------
+  | <triangle::Triangle<f64>>::is_equilateral:
+  |   84|      9|    pub fn is_equilateral(&self) -> bool {
+  |   85|      9|        self.a == self.b && self.a == self.c
+  |                                          ^3
+  |   86|      9|    }
+  ------------------
+  | <triangle::Triangle<i32>>::is_equilateral:
+  |   84|     30|    pub fn is_equilateral(&self) -> bool {
+  |   85|     30|        self.a == self.b && self.a == self.c
+  |                                          ^9
+  |   86|     30|    }
+  ------------------
+   87|       |
+   88|       |    /// Tests triangle is scalene
+   89|     30|    pub fn is_isosceles(&self) -> bool {
+   90|     30|        (self.a == self.b && self.a != self.c)
+                                           ^3
+   91|     27|            || (self.b == self.c && self.b != self.a)
+                                                  ^6
+   92|     21|            || (self.a == self.c && self.a != self.b)
+                                                  ^6
+   93|     30|    }
+  ------------------
+  | Unexecuted instantiation: <triangle::Triangle<_>>::is_isosceles
+  ------------------
+  | <triangle::Triangle<f64>>::is_isosceles:
+  |   89|      6|    pub fn is_isosceles(&self) -> bool {
+  |   90|      6|        (self.a == self.b && self.a != self.c)
+  |                                           ^0
+  |   91|      6|            || (self.b == self.c && self.b != self.a)
+  |                                                  ^3
+  |   92|      3|            || (self.a == self.c && self.a != self.b)
+  |                                                  ^0
+  |   93|      6|    }
+  ------------------
+  | <triangle::Triangle<i32>>::is_isosceles:
+  |   89|     24|    pub fn is_isosceles(&self) -> bool {
+  |   90|     24|        (self.a == self.b && self.a != self.c)
+  |                                           ^3
+  |   91|     21|            || (self.b == self.c && self.b != self.a)
+  |                                                  ^3
+  |   92|     18|            || (self.a == self.c && self.a != self.b)
+  |                                                  ^6
+  |   93|     24|    }
+  ------------------
+   94|       |
+   95|       |    /// Tests triangle is isosceles
+   96|     39|    pub fn is_scalene(&self) -> bool {
+   97|     39|        self.a != self.b && self.a != self.c && self.b != self.c
+                                          ^27                 ^21
+   98|     39|    }
+  ------------------
+  | Unexecuted instantiation: <triangle::Triangle<_>>::is_scalene
+  ------------------
+  | <triangle::Triangle<i32>>::is_scalene:
+  |   96|     30|    pub fn is_scalene(&self) -> bool {
+  |   97|     30|        self.a != self.b && self.a != self.c && self.b != self.c
+  |                                          ^21                 ^15
+  |   98|     30|    }
+  ------------------
+  | <triangle::Triangle<f64>>::is_scalene:
+  |   96|      9|    pub fn is_scalene(&self) -> bool {
+  |   97|      9|        self.a != self.b && self.a != self.c && self.b != self.c
+  |                                          ^6                  ^6
+  |   98|      9|    }
+  ------------------
+   99|       |}

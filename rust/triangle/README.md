@@ -82,3 +82,8 @@ cargo test --features generic
 ### Based on
 
 The Ruby Koans triangle project, parts 1 & 2 - http://rubykoans.com
+
+### My Solution
+
+- [my solution](./src/lib.rs)
+- [run-tests](./run-tests-rust.txt)
