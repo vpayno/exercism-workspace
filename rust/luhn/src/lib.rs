@@ -60,22 +60,41 @@
 /// assert_eq!(got, want);
 /// ```
 pub fn is_valid(code: &str) -> bool {
-    if code.trim() == "0" {
-        return false;
+    match code.trim() {
+        code if code == "0" => false,
+        code if code.is_empty() => false,
+        code if !code.is_ascii() => false,
+        code if !is_only_numbers_and_spaces(code) => false,
+        _ => is_luhn_number(code),
     }
+}
 
-    if code.trim().is_empty() {
-        return false;
-    };
-
-    if !code.is_ascii() {
-        return false;
-    };
-
-    if !is_only_numbers_and_spaces(code) {
-        return false;
-    };
-
+/// Does the math on a checked input string to see if it's a valid luhn number.
+///
+/// Example - test if a number is a luhn number
+/// ```rust
+/// use luhn::*;
+///
+/// let input: &str = "4539 3195 0343 6467";
+///
+/// let want: bool = true;
+/// let got: bool = luhn::is_luhn_number(input);
+///
+/// assert_eq!(got, want);
+/// ```
+///
+/// Example - valid input that isn't a luhn number
+/// ```rust
+/// use luhn::*;
+///
+/// let input: &str = "8273 1232 7352 0569";
+///
+/// let want: bool = false;
+/// let got: bool = luhn::is_luhn_number(input);
+///
+/// assert_eq!(got, want);
+/// ```
+pub fn is_luhn_number(code: &str) -> bool {
     let digits: Vec<u32> = extract_digits_from_str_slice(code);
 
     let numbers = step_one_and_two(digits);
