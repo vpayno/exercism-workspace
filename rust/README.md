@@ -35,3 +35,4 @@
 - [armstrong-numbers](./armstrong-numbers/README.md)
 - [luhn](./luhn/README.md)
 - [triangle](./triangle/README.md)
+- [allergies](./allergies/README.md)

@@ -1,0 +1,519 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: ../../.github/citools/rust/rust-lint-check --release
+
+Running Rust Cargo Check
+
+Rust version:
+
+	rustc 1.72.0 (5680fa18f 2023-08-23)
+
+
+ ==============================================================================
+
+Running: cargo clean
+
+
+real	0m0.013s
+user	0m0.003s
+sys	0m0.010s
+
+
+ ==============================================================================
+
+Running: cargo check --future-incompat-report --release
+
+    Checking allergies v1.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/allergies)
+    Finished release [optimized] target(s) in 0.12s
+note: 0 dependencies had future-incompatible warnings
+
+real	0m0.132s
+user	0m0.023s
+sys	0m0.032s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.158s
+user	0m0.034s
+sys	0m0.047s
+
+real	0m0.171s
+user	0m0.036s
+sys	0m0.049s
+
+===============================================================================
+
+Running: ../../.github/citools/rust/rust-lint-clippy --release
+
+Running Rust Cargo Clippy
+
+Rust version:
+
+	rustc 1.72.0 (5680fa18f 2023-08-23)
+
+
+ ==============================================================================
+
+Running: cargo clean
+
+
+real	0m0.016s
+user	0m0.011s
+sys	0m0.005s
+
+
+ ==============================================================================
+
+Running: cargo clippy --release
+
+    Checking allergies v1.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/allergies)
+    Finished release [optimized] target(s) in 0.09s
+
+real	0m0.122s
+user	0m0.067s
+sys	0m0.054s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.151s
+user	0m0.087s
+sys	0m0.064s
+
+real	0m0.152s
+user	0m0.088s
+sys	0m0.065s
+
+===============================================================================
+
+Running: ../../.github/citools/rust/rust-lint-audit
+No deps found, skipping cargo audit.
+
+real	0m0.035s
+user	0m0.015s
+sys	0m0.021s
+
+real	0m0.037s
+user	0m0.015s
+sys	0m0.023s
+
+===============================================================================
+
+rm -fv ./*.profraw ./*.profdata
+
+===============================================================================
+
+Running: ../../.github/citools/rust/rust-test-with-tarpaulin
+
+Running Rust Tests With Tarpaulin
+
+Rust version:
+
+	rustc 1.72.0 (5680fa18f 2023-08-23)
+
+
+ ==============================================================================
+
+Running: cargo clean
+
+
+real	0m0.015s
+user	0m0.011s
+sys	0m0.004s
+
+
+ ==============================================================================
+
+Running: cargo test --all-features
+
+   Compiling allergies v1.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/allergies)
+    Finished test [unoptimized + debuginfo] target(s) in 0.36s
+     Running unittests src/lib.rs (target/debug/deps/allergies-fb7e8cf18e744307)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/allergies.rs (target/debug/deps/allergies-85a62ddf86e8b054)
+
+running 19 tests
+test allergic_to_eggs_and_shellfish ... ok
+test allergic_to_eggs_and_peanuts ... ok
+test allergic_to_just_eggs ... ok
+test allergic_to_everything ... ok
+test allergic_to_just_peanuts ... ok
+test allergic_to_just_strawberries ... ok
+test allergic_to_many_things ... ok
+test is_allergic_to_cats ... ok
+test is_allergic_to_chocolate ... ok
+test is_allergic_to_eggs ... ok
+test is_allergic_to_eggs_and_shellfish_but_not_strawberries ... ok
+test is_allergic_to_peanuts ... ok
+test is_allergic_to_pollen ... ok
+test is_allergic_to_shellfish ... ok
+test is_allergic_to_strawberries ... ok
+test is_allergic_to_tomatoes ... ok
+test is_not_allergic_to_anything ... ok
+test no_allergies_at_all ... ok
+test scores_over_255_do_not_trigger_false_positives ... ok
+
+test result: ok. 19 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests allergies
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+real	0m0.394s
+user	0m0.482s
+sys	0m0.221s
+
+
+ ==============================================================================
+
+Running: cargo tarpaulin --release --timeout=300
+
+[2mSep 15 22:29:15.870[0m [32m INFO[0m cargo_tarpaulin::config: Creating config
+[2mSep 15 22:29:15.885[0m [32m INFO[0m cargo_tarpaulin: Running Tarpaulin
+[2mSep 15 22:29:15.885[0m [32m INFO[0m cargo_tarpaulin: Building project
+[2mSep 15 22:29:15.885[0m [32m INFO[0m cargo_tarpaulin::cargo: Cleaning project
+   Compiling allergies v1.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/allergies)
+    Finished release [optimized] target(s) in 0.46s
+[2mSep 15 22:29:16.388[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
+[2mSep 15 22:29:16.388[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/allergies/target/release/deps/allergies-bed28d49ce4e0788
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+[2mSep 15 22:29:16.869[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
+[2mSep 15 22:29:16.869[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/allergies/target/release/deps/allergies-0a9caac7e9f37a28
+
+running 19 tests
+test is_allergic_to_cats ... ok
+test allergic_to_just_eggs ... ok
+test allergic_to_just_strawberries ... ok
+test allergic_to_just_peanuts ... ok
+test allergic_to_many_things ... ok
+test allergic_to_everything ... ok
+test allergic_to_eggs_and_shellfish ... ok
+test allergic_to_eggs_and_peanuts ... ok
+test is_allergic_to_eggs ... ok
+test is_allergic_to_pollen ... ok
+test is_allergic_to_peanuts ... ok
+test is_allergic_to_chocolate ... ok
+test is_allergic_to_eggs_and_shellfish_but_not_strawberries ... ok
+test is_allergic_to_shellfish ... ok
+test is_allergic_to_strawberries ... ok
+test is_allergic_to_tomatoes ... ok
+test is_not_allergic_to_anything ... ok
+test no_allergies_at_all ... ok
+test scores_over_255_do_not_trigger_false_positives ... ok
+
+test result: ok. 19 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+[2mSep 15 22:29:17.359[0m [32m INFO[0m cargo_tarpaulin::report: Coverage Results:
+|| Uncovered Lines:
+|| src/lib.rs: 22-23
+|| Tested/Total Lines:
+|| src/lib.rs: 4/6
+|| 
+66.67% coverage, 4/6 lines covered
+
+real	0m1.540s
+user	0m0.585s
+sys	0m1.041s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.960s
+user	0m1.081s
+sys	0m1.274s
+
+real	0m1.961s
+user	0m1.083s
+sys	0m1.274s
+
+===============================================================================
+
+Running: ../../.github/citools/rust/rust-test-with-llvm-coverage
+
+Running Rust Tests With LLVM Coverage
+
+Rust version:
+
+	rustc 1.72.0 (5680fa18f 2023-08-23)
+
+
+ ==============================================================================
+
+Running: cargo clean
+
+
+real	0m0.011s
+user	0m0.004s
+sys	0m0.008s
+
+
+ ==============================================================================
+
+Running: cargo llvm-cov clean --workspace
+
+
+real	0m0.230s
+user	0m0.104s
+sys	0m0.105s
+
+
+ ==============================================================================
+
+Running: cargo test --all-features --doc
+
+   Compiling allergies v1.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/allergies)
+    Finished test [unoptimized + debuginfo] target(s) in 0.11s
+   Doc-tests allergies
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+real	0m0.141s
+user	0m0.106s
+sys	0m0.063s
+
+
+ ==============================================================================
+
+Running: cargo llvm-cov --no-clean --all-features --workspace
+
+   Compiling allergies v1.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/allergies)
+    Finished test [unoptimized + debuginfo] target(s) in 0.34s
+     Running unittests src/lib.rs (target/llvm-cov-target/debug/deps/allergies-279d041368e6cbcd)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/allergies.rs (target/llvm-cov-target/debug/deps/allergies-2323032117a73e7d)
+
+running 19 tests
+test allergic_to_eggs_and_peanuts ... ok
+test allergic_to_eggs_and_shellfish ... ok
+test allergic_to_everything ... ok
+test allergic_to_just_eggs ... ok
+test allergic_to_just_peanuts ... ok
+test allergic_to_just_strawberries ... ok
+test allergic_to_many_things ... ok
+test is_allergic_to_cats ... ok
+test is_allergic_to_chocolate ... ok
+test is_allergic_to_eggs ... ok
+test is_allergic_to_eggs_and_shellfish_but_not_strawberries ... ok
+test is_allergic_to_peanuts ... ok
+test is_allergic_to_pollen ... ok
+test is_allergic_to_shellfish ... ok
+test is_allergic_to_strawberries ... ok
+test is_allergic_to_tomatoes ... ok
+test is_not_allergic_to_anything ... ok
+test no_allergies_at_all ... ok
+test scores_over_255_do_not_trigger_false_positives ... ok
+
+test result: ok. 19 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+Filename                                                                 Regions    Missed Regions     Cover   Functions  Missed Functions  Executed       Lines      Missed Lines     Cover    Branches   Missed Branches     Cover
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+/home/vpayno/git_vpayno/exercism-workspace/rust/allergies/src/lib.rs          13                 3    76.92%           6                 2    66.67%          27                 2    92.59%           0                 0         -
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+TOTAL                                                                         13                 3    76.92%           6                 2    66.67%          27                 2    92.59%           0                 0         -
+
+real	0m0.533s
+user	0m0.368s
+sys	0m0.197s
+
+
+ ==============================================================================
+
+Running: cargo llvm-cov report --lcov --output-path report.lcov
+
+
+    Finished report saved to report.lcov
+
+real	0m0.139s
+user	0m0.079s
+sys	0m0.060s
+
+    Finished test [unoptimized + debuginfo] target(s) in 0.00s
+     Running unittests src/lib.rs (target/llvm-cov-target/debug/deps/allergies-279d041368e6cbcd)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/allergies.rs (target/llvm-cov-target/debug/deps/allergies-2323032117a73e7d)
+
+running 19 tests
+test allergic_to_eggs_and_peanuts ... ok
+test allergic_to_eggs_and_shellfish ... ok
+test allergic_to_everything ... ok
+test allergic_to_just_eggs ... ok
+test allergic_to_just_peanuts ... ok
+test allergic_to_just_strawberries ... ok
+test allergic_to_many_things ... ok
+test is_allergic_to_cats ... ok
+test is_allergic_to_chocolate ... ok
+test is_allergic_to_eggs ... ok
+test is_allergic_to_eggs_and_shellfish_but_not_strawberries ... ok
+test is_allergic_to_peanuts ... ok
+test is_allergic_to_pollen ... ok
+test is_allergic_to_shellfish ... ok
+test is_allergic_to_strawberries ... ok
+test is_allergic_to_tomatoes ... ok
+test is_not_allergic_to_anything ... ok
+test no_allergies_at_all ... ok
+test scores_over_255_do_not_trigger_false_positives ... ok
+
+test result: ok. 19 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+real	0m0.166s
+user	0m0.083s
+sys	0m0.081s
+
+ ==============================================================================
+
+Running: cargo llvm-cov --no-clean --all-features --workspace --text --output-path=coverage-annotations.txt
+
+    Finished test [unoptimized + debuginfo] target(s) in 0.00s
+     Running unittests src/lib.rs (target/llvm-cov-target/debug/deps/allergies-279d041368e6cbcd)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/allergies.rs (target/llvm-cov-target/debug/deps/allergies-2323032117a73e7d)
+
+running 19 tests
+test allergic_to_eggs_and_peanuts ... ok
+test allergic_to_eggs_and_shellfish ... ok
+test allergic_to_everything ... ok
+test allergic_to_just_eggs ... ok
+test allergic_to_just_peanuts ... ok
+test allergic_to_just_strawberries ... ok
+test allergic_to_many_things ... ok
+test is_allergic_to_cats ... ok
+test is_allergic_to_chocolate ... ok
+test is_allergic_to_eggs ... ok
+test is_allergic_to_eggs_and_shellfish_but_not_strawberries ... ok
+test is_allergic_to_peanuts ... ok
+test is_allergic_to_pollen ... ok
+test is_allergic_to_shellfish ... ok
+test is_allergic_to_strawberries ... ok
+test is_allergic_to_tomatoes ... ok
+test is_not_allergic_to_anything ... ok
+test no_allergies_at_all ... ok
+test scores_over_255_do_not_trigger_false_positives ... ok
+
+test result: ok. 19 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+    Finished report saved to coverage-annotations.txt
+
+real	0m0.165s
+user	0m0.076s
+sys	0m0.091s
+
+
+ ==============================================================================
+
+Running: cargo llvm-cov clean --workspace
+
+
+real	0m0.137s
+user	0m0.086s
+sys	0m0.054s
+
+
+ ==============================================================================
+
+Running: lcov --list report.lcov
+
+Reading tracefile report.lcov
+            |Lines       |Functions  |Branches    
+Filename    |Rate     Num|Rate    Num|Rate     Num
+==================================================
+[/home/vpayno/git_vpayno/exercism-workspace/rust/allergies/src/]
+lib.rs      | 100%     25|30.8%    13|    -      0
+==================================================
+      Total:| 100%     25|30.8%    13|    -      0
+
+real	0m0.083s
+user	0m0.037s
+sys	0m0.010s
+
+
+Running: lcov --summary report.lcov
+
+Reading tracefile report.lcov
+Summary coverage rate:
+  lines......: 100.0% (25 of 25 lines)
+  functions..: 30.8% (4 of 13 functions)
+  branches...: no data found
+
+real	0m0.033s
+user	0m0.027s
+sys	0m0.006s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.651s
+user	0m0.976s
+sys	0m0.683s
+
+real	0m1.653s
+user	0m0.977s
+sys	0m0.684s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.035s
+user	0m0.026s
+sys	0m0.012s
+
+===============================================================================
+
+Running: cargo doc
+ Documenting allergies v1.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/allergies)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.18s
+
+real	0m0.193s
+user	0m0.156s
+sys	0m0.039s
+
+===============================================================================
+
+Running: cargo clean
+
+real	0m0.009s
+user	0m0.005s
+sys	0m0.003s
+
+===============================================================================
+

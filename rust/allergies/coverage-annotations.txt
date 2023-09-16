@@ -1,0 +1,108 @@
+    1|       |pub struct Allergies {
+    2|       |    score: u32,
+    3|       |}
+    4|       |
+    5|    264|#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+                       ^0  ^0 ^0
+  ------------------
+  | Unexecuted instantiation: <allergies::Allergen as core::fmt::Debug>::fmt
+  ------------------
+  | Unexecuted instantiation: <allergies::Allergen as core::fmt::Debug>::fmt
+  ------------------
+  | Unexecuted instantiation: <allergies::Allergen as core::clone::Clone>::clone
+  ------------------
+  | Unexecuted instantiation: <allergies::Allergen as core::clone::Clone>::clone
+  ------------------
+  | <allergies::Allergen as core::cmp::PartialEq>::eq:
+  |    5|    264|#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+  ------------------
+  | Unexecuted instantiation: <allergies::Allergen as core::cmp::PartialEq>::eq
+  ------------------
+  | Unexecuted instantiation: <allergies::Allergen as core::cmp::PartialEq>::eq
+  ------------------
+    6|       |pub enum Allergen {
+    7|       |    Eggs = 0b0000_0001,
+    8|       |    Peanuts = 0b0000_0010,
+    9|       |    Shellfish = 0b0000_0100,
+   10|       |    Strawberries = 0b0000_1000,
+   11|       |    Tomatoes = 0b0001_0000,
+   12|       |    Chocolate = 0b0010_0000,
+   13|       |    Pollen = 0b0100_0000,
+   14|       |    Cats = 0b1000_0000,
+   15|       |}
+   16|       |
+   17|       |impl Allergies {
+   18|     57|    pub fn new(score: u32) -> Self {
+   19|     57|        Allergies { score }
+   20|     57|    }
+  ------------------
+  | <allergies::Allergies>::new:
+  |   18|     57|    pub fn new(score: u32) -> Self {
+  |   19|     57|        Allergies { score }
+  |   20|     57|    }
+  ------------------
+  | Unexecuted instantiation: <allergies::Allergies>::new
+  ------------------
+   21|       |
+   22|     42|    pub fn is_allergic_to(&self, allergen: &Allergen) -> bool {
+   23|     42|        self.score & *allergen as u32 == *allergen as u32
+   24|     42|    }
+  ------------------
+  | <allergies::Allergies>::is_allergic_to:
+  |   22|     42|    pub fn is_allergic_to(&self, allergen: &Allergen) -> bool {
+  |   23|     42|        self.score & *allergen as u32 == *allergen as u32
+  |   24|     42|    }
+  ------------------
+  | Unexecuted instantiation: <allergies::Allergies>::is_allergic_to
+  ------------------
+   25|       |
+   26|     27|    pub fn allergies(&self) -> Vec<Allergen> {
+   27|     27|        let allergens: [Allergen; 8] = [
+   28|     27|            Allergen::Eggs,
+   29|     27|            Allergen::Peanuts,
+   30|     27|            Allergen::Shellfish,
+   31|     27|            Allergen::Strawberries,
+   32|     27|            Allergen::Tomatoes,
+   33|     27|            Allergen::Chocolate,
+   34|     27|            Allergen::Pollen,
+   35|     27|            Allergen::Cats,
+   36|     27|        ];
+   37|     27|        let mut result: Vec<Allergen> = Vec::new();
+   38|       |
+   39|    243|        for allergen in allergens {
+                          ^216
+   40|    216|            if self.score & allergen as u32 == allergen as u32 {
+   41|     81|                result.push(allergen);
+   42|    135|            }
+   43|       |        }
+   44|       |
+   45|     27|        result
+   46|     27|    }
+  ------------------
+  | <allergies::Allergies>::allergies:
+  |   26|     27|    pub fn allergies(&self) -> Vec<Allergen> {
+  |   27|     27|        let allergens: [Allergen; 8] = [
+  |   28|     27|            Allergen::Eggs,
+  |   29|     27|            Allergen::Peanuts,
+  |   30|     27|            Allergen::Shellfish,
+  |   31|     27|            Allergen::Strawberries,
+  |   32|     27|            Allergen::Tomatoes,
+  |   33|     27|            Allergen::Chocolate,
+  |   34|     27|            Allergen::Pollen,
+  |   35|     27|            Allergen::Cats,
+  |   36|     27|        ];
+  |   37|     27|        let mut result: Vec<Allergen> = Vec::new();
+  |   38|       |
+  |   39|    243|        for allergen in allergens {
+  |                          ^216
+  |   40|    216|            if self.score & allergen as u32 == allergen as u32 {
+  |   41|     81|                result.push(allergen);
+  |   42|    135|            }
+  |   43|       |        }
+  |   44|       |
+  |   45|     27|        result
+  |   46|     27|    }
+  ------------------
+  | Unexecuted instantiation: <allergies::Allergies>::allergies
+  ------------------
+   47|       |}

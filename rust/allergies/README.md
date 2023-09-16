@@ -64,3 +64,8 @@ score is 257, your program should only report the eggs (1) allergy.
 ### Based on
 
 Jumpstart Lab Warm-up - http://jumpstartlab.com
+
+### My Solution
+
+- [my solution](./src/lib.rs)
+- [run-tests](./run-tests-rust.txt)
