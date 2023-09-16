@@ -37,7 +37,7 @@ impl Allergies {
         let mut result: Vec<Allergen> = Vec::new();
 
         for allergen in allergens {
-            if self.score & allergen as u32 == allergen as u32 {
+            if self.is_allergic_to(&allergen) {
                 result.push(allergen);
             }
         }

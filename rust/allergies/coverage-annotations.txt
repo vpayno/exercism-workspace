@@ -44,14 +44,14 @@
   | Unexecuted instantiation: <allergies::Allergies>::new
   ------------------
    21|       |
-   22|     42|    pub fn is_allergic_to(&self, allergen: &Allergen) -> bool {
-   23|     42|        self.score & *allergen as u32 == *allergen as u32
-   24|     42|    }
+   22|    258|    pub fn is_allergic_to(&self, allergen: &Allergen) -> bool {
+   23|    258|        self.score & *allergen as u32 == *allergen as u32
+   24|    258|    }
   ------------------
   | <allergies::Allergies>::is_allergic_to:
-  |   22|     42|    pub fn is_allergic_to(&self, allergen: &Allergen) -> bool {
-  |   23|     42|        self.score & *allergen as u32 == *allergen as u32
-  |   24|     42|    }
+  |   22|    258|    pub fn is_allergic_to(&self, allergen: &Allergen) -> bool {
+  |   23|    258|        self.score & *allergen as u32 == *allergen as u32
+  |   24|    258|    }
   ------------------
   | Unexecuted instantiation: <allergies::Allergies>::is_allergic_to
   ------------------
@@ -71,7 +71,7 @@
    38|       |
    39|    243|        for allergen in allergens {
                           ^216
-   40|    216|            if self.score & allergen as u32 == allergen as u32 {
+   40|    216|            if self.is_allergic_to(&allergen) {
    41|     81|                result.push(allergen);
    42|    135|            }
    43|       |        }
@@ -95,7 +95,7 @@
   |   38|       |
   |   39|    243|        for allergen in allergens {
   |                          ^216
-  |   40|    216|            if self.score & allergen as u32 == allergen as u32 {
+  |   40|    216|            if self.is_allergic_to(&allergen) {
   |   41|     81|                result.push(allergen);
   |   42|    135|            }
   |   43|       |        }
