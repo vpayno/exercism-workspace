@@ -2,8 +2,6 @@
 
 /// Find the square of a sum of numbers.
 ///
-/// <https://en.wikipedia.org/wiki/Sum-of-squares_optimization>
-///
 /// Example
 /// ```rust
 /// use difference_of_squares::*;
@@ -19,8 +17,6 @@ pub fn square_of_sum(number: u32) -> u32 {
 
 /// Find the sum of square numbers.
 ///
-/// <https://en.wikipedia.org/wiki/Sum-of-squares_optimization>
-///
 /// Example
 /// ```rust
 /// use difference_of_squares::*;
@@ -35,8 +31,6 @@ pub fn sum_of_squares(number: u32) -> u32 {
 }
 
 /// Find difference of squares.
-///
-/// <https://en.wikipedia.org/wiki/Sum-of-squares_optimization>
 ///
 /// Example
 /// ```rust
