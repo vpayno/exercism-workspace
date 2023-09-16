@@ -36,3 +36,4 @@
 - [luhn](./luhn/README.md)
 - [triangle](./triangle/README.md)
 - [allergies](./allergies/README.md)
+- [difference-of-squares](./difference-of-squares/README.md)

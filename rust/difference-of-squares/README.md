@@ -52,3 +52,8 @@ algorithm for the problem is a key skill in software engineering.
 ### Based on
 
 Problem 6 at Project Euler - http://projecteuler.net/problem=6
+
+### My Solution
+
+- [my solution](./src/lib.rs)
+- [run-tests](./run-tests-rust.txt)

@@ -1,11 +1,52 @@
-pub fn square_of_sum(n: u32) -> u32 {
-    todo!("square of sum of 1...{n}")
+//! Exercise Url: <https://exercism.org/tracks/rust/exercises/difference-of-squares>
+
+/// Find the square of a sum of numbers.
+///
+/// <https://en.wikipedia.org/wiki/Sum-of-squares_optimization>
+///
+/// Example
+/// ```rust
+/// use difference_of_squares::*;
+///
+/// let want: u32 = 25_502_500;
+/// let got: u32 = square_of_sum(100);
+///
+/// assert_eq!(got, want);
+/// ```
+pub fn square_of_sum(number: u32) -> u32 {
+    u32::pow(number * (number + 1) / 2, 2)
 }
 
-pub fn sum_of_squares(n: u32) -> u32 {
-    todo!("sum of squares of 1...{n}")
+/// Find the sum of square numbers.
+///
+/// <https://en.wikipedia.org/wiki/Sum-of-squares_optimization>
+///
+/// Example
+/// ```rust
+/// use difference_of_squares::*;
+///
+/// let want: u32 = 338_350;
+/// let got: u32 = sum_of_squares(100);
+///
+/// assert_eq!(got, want);
+/// ```
+pub fn sum_of_squares(number: u32) -> u32 {
+    number * (number + 1) * (2 * number + 1) / 6
 }
 
-pub fn difference(n: u32) -> u32 {
-    todo!("difference between square of sum of 1...{n} and sum of squares of 1...{n}")
+/// Find difference of squares.
+///
+/// <https://en.wikipedia.org/wiki/Sum-of-squares_optimization>
+///
+/// Example
+/// ```rust
+/// use difference_of_squares::*;
+///
+/// let want: u32 = square_of_sum(100) - sum_of_squares(100);
+/// let got: u32 = difference(100);
+///
+/// assert_eq!(got, want);
+/// ```
+pub fn difference(number: u32) -> u32 {
+    square_of_sum(number) - sum_of_squares(number)
 }
