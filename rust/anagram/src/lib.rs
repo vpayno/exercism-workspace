@@ -11,7 +11,10 @@ pub fn anagrams_for<'a>(word: &str, possible_anagrams: &[&'a str]) -> HashSet<&'
     let test_word: String = match String::from_utf16(&vec_word.clone()) {
         Ok(value) => value,
         Err(error) => {
-            println!("falied to convert {:?} to a string: {}", vec_word, error);
+            println!(
+                "falied to convert test word {:?} to a string: {}",
+                vec_word, error
+            );
 
             return anagrams.clone();
         }
@@ -35,7 +38,11 @@ pub fn anagrams_for<'a>(word: &str, possible_anagrams: &[&'a str]) -> HashSet<&'
         let test_candidate: String = match String::from_utf16(&vec_candidate.clone()) {
             Ok(value) => value,
             Err(error) => {
-                panic!("{}", error);
+                println!(
+                    "falied to convert candidate {:?} to a string: {}",
+                    vec_candidate, error
+                );
+                continue;
             }
         };
 
