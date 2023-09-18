@@ -11,13 +11,10 @@
 /// assert_eq!(got, want);
 /// ```
 pub fn score(word: &str) -> u64 {
-    let mut result: u64 = 0;
-
-    let binding = word.to_lowercase();
-    let letters: &str = binding.trim();
-
-    for letter in letters.chars() {
-        result += match letter {
+    word.to_lowercase()
+        .trim()
+        .chars()
+        .map(|c| match c {
             'a' | 'e' | 'i' | 'o' | 'u' | 'l' | 'n' | 'r' | 's' | 't' => 1,
             'd' | 'g' => 2,
             'b' | 'c' | 'm' | 'p' => 3,
@@ -26,8 +23,6 @@ pub fn score(word: &str) -> u64 {
             'j' | 'x' => 8,
             'q' | 'z' => 10,
             _ => 0,
-        };
-    }
-
-    result
+        })
+        .sum()
 }

@@ -11,51 +11,54 @@
    11|       |/// assert_eq!(got, want);
    12|       |/// ```
    13|     42|pub fn score(word: &str) -> u64 {
-   14|     42|    let mut result: u64 = 0;
-   15|     42|
-   16|     42|    let binding = word.to_lowercase();
-   17|     42|    let letters: &str = binding.trim();
-   18|       |
-   19|    258|    for letter in letters.chars() {
-                                        ^42
-   20|    258|        result += match letter {
-   21|    165|            'a' | 'e' | 'i' | 'o' | 'u' | 'l' | 'n' | 'r' | 's' | 't' => 1,
-   22|      6|            'd' | 'g' => 2,
-   23|     24|            'b' | 'c' | 'm' | 'p' => 3,
-   24|     27|            'f' | 'h' | 'v' | 'w' | 'y' => 4,
-   25|      6|            'k' => 5,
-   26|      9|            'j' | 'x' => 8,
-   27|     15|            'q' | 'z' => 10,
-   28|      6|            _ => 0,
-   29|       |        };
-   30|       |    }
-   31|       |
-   32|     42|    result
-   33|     42|}
+   14|     42|    word.to_lowercase()
+   15|     42|        .trim()
+   16|     42|        .chars()
+   17|    258|        .map(|c| match c {
+   18|    165|            'a' | 'e' | 'i' | 'o' | 'u' | 'l' | 'n' | 'r' | 's' | 't' => 1,
+   19|      6|            'd' | 'g' => 2,
+   20|     24|            'b' | 'c' | 'm' | 'p' => 3,
+   21|     27|            'f' | 'h' | 'v' | 'w' | 'y' => 4,
+   22|      6|            'k' => 5,
+   23|      9|            'j' | 'x' => 8,
+   24|     15|            'q' | 'z' => 10,
+   25|      6|            _ => 0,
+   26|    258|        })
+  ------------------
+  | scrabble_score::score::{closure#0}:
+  |   17|    258|        .map(|c| match c {
+  |   18|    165|            'a' | 'e' | 'i' | 'o' | 'u' | 'l' | 'n' | 'r' | 's' | 't' => 1,
+  |   19|      6|            'd' | 'g' => 2,
+  |   20|     24|            'b' | 'c' | 'm' | 'p' => 3,
+  |   21|     27|            'f' | 'h' | 'v' | 'w' | 'y' => 4,
+  |   22|      6|            'k' => 5,
+  |   23|      9|            'j' | 'x' => 8,
+  |   24|     15|            'q' | 'z' => 10,
+  |   25|      6|            _ => 0,
+  |   26|    258|        })
+  ------------------
+  | Unexecuted instantiation: scrabble_score::score::{closure#0}
+  ------------------
+   27|     42|        .sum()
+   28|     42|}
   ------------------
   | scrabble_score::score:
   |   13|     42|pub fn score(word: &str) -> u64 {
-  |   14|     42|    let mut result: u64 = 0;
-  |   15|     42|
-  |   16|     42|    let binding = word.to_lowercase();
-  |   17|     42|    let letters: &str = binding.trim();
-  |   18|       |
-  |   19|    258|    for letter in letters.chars() {
-  |                                        ^42
-  |   20|    258|        result += match letter {
-  |   21|    165|            'a' | 'e' | 'i' | 'o' | 'u' | 'l' | 'n' | 'r' | 's' | 't' => 1,
-  |   22|      6|            'd' | 'g' => 2,
-  |   23|     24|            'b' | 'c' | 'm' | 'p' => 3,
-  |   24|     27|            'f' | 'h' | 'v' | 'w' | 'y' => 4,
-  |   25|      6|            'k' => 5,
-  |   26|      9|            'j' | 'x' => 8,
-  |   27|     15|            'q' | 'z' => 10,
-  |   28|      6|            _ => 0,
-  |   29|       |        };
-  |   30|       |    }
-  |   31|       |
-  |   32|     42|    result
-  |   33|     42|}
+  |   14|     42|    word.to_lowercase()
+  |   15|     42|        .trim()
+  |   16|     42|        .chars()
+  |   17|     42|        .map(|c| match c {
+  |   18|       |            'a' | 'e' | 'i' | 'o' | 'u' | 'l' | 'n' | 'r' | 's' | 't' => 1,
+  |   19|       |            'd' | 'g' => 2,
+  |   20|       |            'b' | 'c' | 'm' | 'p' => 3,
+  |   21|       |            'f' | 'h' | 'v' | 'w' | 'y' => 4,
+  |   22|       |            'k' => 5,
+  |   23|       |            'j' | 'x' => 8,
+  |   24|       |            'q' | 'z' => 10,
+  |   25|       |            _ => 0,
+  |   26|     42|        })
+  |   27|     42|        .sum()
+  |   28|     42|}
   ------------------
   | Unexecuted instantiation: scrabble_score::score
   ------------------
