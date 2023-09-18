@@ -38,3 +38,4 @@
 - [allergies](./allergies/README.md)
 - [difference-of-squares](./difference-of-squares/README.md)
 - [anagram](./anagram/README.md)
+- [scrabble-score](./scrabble-score/README.md)
