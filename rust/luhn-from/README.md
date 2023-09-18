@@ -40,3 +40,8 @@ In this exercise you'll implement the [From trait](https://doc.rust-lang.org/std
 ### Based on
 
 The Rust track maintainers, based on the original Luhn exercise
+
+### My Solution
+
+- [my solution](./src/lib.rs)
+- [run-tests](./run-tests-rust.txt)
