@@ -40,3 +40,4 @@
 - [anagram](./anagram/README.md)
 - [scrabble-score](./scrabble-score/README.md)
 - [luhn-from](./luhn-from/README.md)
+- [collatz-conjecture](./collatz-conjecture/README.md)

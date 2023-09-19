@@ -59,3 +59,8 @@ Resulting in 9 steps. So for input n = 12, the return value would be 9.
 ### Based on
 
 An unsolved problem in mathematics named after mathematician Lothar Collatz - https://en.wikipedia.org/wiki/3x_%2B_1_problem
+
+### My Solution
+
+- [my solution](./src/lib.rs)
+- [run-tests](./run-tests-rust.txt)
