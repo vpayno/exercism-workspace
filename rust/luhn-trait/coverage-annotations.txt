@@ -1,0 +1,256 @@
+    1|       |pub trait Luhn {
+    2|       |    fn valid_luhn(&self) -> bool;
+    3|       |}
+    4|       |
+    5|       |impl<'a> Luhn for &'a str {
+    6|     45|    fn valid_luhn(&self) -> bool {
+    7|     45|        match self {
+    8|     45|            code if *code == "0" => false,
+                          ^0                      ^0
+    9|     45|            code if code.is_empty() => false,
+                          ^0                         ^0
+   10|     45|            code if !code.is_ascii() => false,
+                          ^0                          ^0
+   11|     45|            code if !is_only_numbers_and_spaces(code) => false,
+                          ^0                                           ^0
+   12|     45|            _ => is_luhn_number(self),
+   13|       |        }
+   14|     45|    }
+  ------------------
+  | Unexecuted instantiation: <&str as luhn_trait::Luhn>::valid_luhn
+  ------------------
+  | <&str as luhn_trait::Luhn>::valid_luhn:
+  |    6|     45|    fn valid_luhn(&self) -> bool {
+  |    7|     45|        match self {
+  |    8|     45|            code if *code == "0" => false,
+  |                          ^0                      ^0
+  |    9|     45|            code if code.is_empty() => false,
+  |                          ^0                         ^0
+  |   10|     45|            code if !code.is_ascii() => false,
+  |                          ^0                          ^0
+  |   11|     45|            code if !is_only_numbers_and_spaces(code) => false,
+  |                          ^0                                           ^0
+  |   12|     45|            _ => is_luhn_number(self),
+  |   13|       |        }
+  |   14|     45|    }
+  ------------------
+   15|       |}
+   16|       |
+   17|       |impl Luhn for String {
+   18|     36|    fn valid_luhn(&self) -> bool {
+   19|     36|        self.as_str().valid_luhn()
+   20|     36|    }
+  ------------------
+  | Unexecuted instantiation: <alloc::string::String as luhn_trait::Luhn>::valid_luhn
+  ------------------
+  | <alloc::string::String as luhn_trait::Luhn>::valid_luhn:
+  |   18|     36|    fn valid_luhn(&self) -> bool {
+  |   19|     36|        self.as_str().valid_luhn()
+  |   20|     36|    }
+  ------------------
+   21|       |}
+   22|       |impl Luhn for u8 {
+   23|      6|    fn valid_luhn(&self) -> bool {
+   24|      6|        self.to_string().valid_luhn()
+   25|      6|    }
+  ------------------
+  | Unexecuted instantiation: <u8 as luhn_trait::Luhn>::valid_luhn
+  ------------------
+  | <u8 as luhn_trait::Luhn>::valid_luhn:
+  |   23|      6|    fn valid_luhn(&self) -> bool {
+  |   24|      6|        self.to_string().valid_luhn()
+  |   25|      6|    }
+  ------------------
+   26|       |}
+   27|       |impl Luhn for u16 {
+   28|      6|    fn valid_luhn(&self) -> bool {
+   29|      6|        self.to_string().valid_luhn()
+   30|      6|    }
+  ------------------
+  | Unexecuted instantiation: <u16 as luhn_trait::Luhn>::valid_luhn
+  ------------------
+  | <u16 as luhn_trait::Luhn>::valid_luhn:
+  |   28|      6|    fn valid_luhn(&self) -> bool {
+  |   29|      6|        self.to_string().valid_luhn()
+  |   30|      6|    }
+  ------------------
+   31|       |}
+   32|       |impl Luhn for u32 {
+   33|      6|    fn valid_luhn(&self) -> bool {
+   34|      6|        self.to_string().valid_luhn()
+   35|      6|    }
+  ------------------
+  | Unexecuted instantiation: <u32 as luhn_trait::Luhn>::valid_luhn
+  ------------------
+  | <u32 as luhn_trait::Luhn>::valid_luhn:
+  |   33|      6|    fn valid_luhn(&self) -> bool {
+  |   34|      6|        self.to_string().valid_luhn()
+  |   35|      6|    }
+  ------------------
+   36|       |}
+   37|       |impl Luhn for u64 {
+   38|      6|    fn valid_luhn(&self) -> bool {
+   39|      6|        self.to_string().valid_luhn()
+   40|      6|    }
+  ------------------
+  | Unexecuted instantiation: <u64 as luhn_trait::Luhn>::valid_luhn
+  ------------------
+  | <u64 as luhn_trait::Luhn>::valid_luhn:
+  |   38|      6|    fn valid_luhn(&self) -> bool {
+  |   39|      6|        self.to_string().valid_luhn()
+  |   40|      6|    }
+  ------------------
+   41|       |}
+   42|       |impl Luhn for usize {
+   43|      6|    fn valid_luhn(&self) -> bool {
+   44|      6|        self.to_string().valid_luhn()
+   45|      6|    }
+  ------------------
+  | Unexecuted instantiation: <usize as luhn_trait::Luhn>::valid_luhn
+  ------------------
+  | <usize as luhn_trait::Luhn>::valid_luhn:
+  |   43|      6|    fn valid_luhn(&self) -> bool {
+  |   44|      6|        self.to_string().valid_luhn()
+  |   45|      6|    }
+  ------------------
+   46|       |}
+   47|       |
+   48|     45|pub fn is_luhn_number(code: &str) -> bool {
+   49|     45|    let digits: Vec<u32> = extract_digits_from_str_slice(code);
+   50|     45|
+   51|     45|    let numbers = step_one_and_two(digits);
+   52|     45|
+   53|     45|    let digit_sum: u32 = sum(numbers);
+   54|     45|
+   55|     45|    (digit_sum % 10) == 0
+   56|     45|}
+  ------------------
+  | Unexecuted instantiation: luhn_trait::is_luhn_number
+  ------------------
+  | luhn_trait::is_luhn_number:
+  |   48|     45|pub fn is_luhn_number(code: &str) -> bool {
+  |   49|     45|    let digits: Vec<u32> = extract_digits_from_str_slice(code);
+  |   50|     45|
+  |   51|     45|    let numbers = step_one_and_two(digits);
+  |   52|     45|
+  |   53|     45|    let digit_sum: u32 = sum(numbers);
+  |   54|     45|
+  |   55|     45|    (digit_sum % 10) == 0
+  |   56|     45|}
+  ------------------
+   57|       |
+   58|     45|pub fn step_one_and_two(mut vector: Vec<u32>) -> Vec<u32> {
+   59|     45|    let mut i = 1;
+   60|       |
+   61|    189|    while i < vector.len() {
+   62|    189|        vector[i] *= 2;
+   63|    189|
+   64|    189|        if vector[i] > 9 {
+   65|     81|            vector[i] -= 9;
+   66|    108|        }
+   67|       |
+   68|    189|        i += 2;
+   69|    189|
+   70|    189|        if i >= vector.len() {
+   71|     45|            break;
+   72|    144|        }
+   73|       |    }
+   74|       |
+   75|     45|    vector
+   76|     45|}
+  ------------------
+  | Unexecuted instantiation: luhn_trait::step_one_and_two
+  ------------------
+  | luhn_trait::step_one_and_two:
+  |   58|     45|pub fn step_one_and_two(mut vector: Vec<u32>) -> Vec<u32> {
+  |   59|     45|    let mut i = 1;
+  |   60|       |
+  |   61|    189|    while i < vector.len() {
+  |   62|    189|        vector[i] *= 2;
+  |   63|    189|
+  |   64|    189|        if vector[i] > 9 {
+  |   65|     81|            vector[i] -= 9;
+  |   66|    108|        }
+  |   67|       |
+  |   68|    189|        i += 2;
+  |   69|    189|
+  |   70|    189|        if i >= vector.len() {
+  |   71|     45|            break;
+  |   72|    144|        }
+  |   73|       |    }
+  |   74|       |
+  |   75|     45|    vector
+  |   76|     45|}
+  ------------------
+   77|       |
+   78|     45|pub fn sum(vector: Vec<u32>) -> u32 {
+   79|     45|    vector.iter().sum()
+   80|     45|}
+  ------------------
+  | Unexecuted instantiation: luhn_trait::sum
+  ------------------
+  | luhn_trait::sum:
+  |   78|     45|pub fn sum(vector: Vec<u32>) -> u32 {
+  |   79|     45|    vector.iter().sum()
+  |   80|     45|}
+  ------------------
+   81|       |
+   82|     45|pub fn extract_digits_from_str_slice(code: &str) -> Vec<u32> {
+   83|     45|    code.chars()
+   84|    429|        .filter(|x| x.is_ascii_digit())
+  ------------------
+  | Unexecuted instantiation: luhn_trait::extract_digits_from_str_slice::{closure#0}
+  ------------------
+  | luhn_trait::extract_digits_from_str_slice::{closure#0}:
+  |   84|    429|        .filter(|x| x.is_ascii_digit())
+  ------------------
+   85|    405|        .map(|x| x.to_digit(10).unwrap())
+  ------------------
+  | Unexecuted instantiation: luhn_trait::extract_digits_from_str_slice::{closure#1}
+  ------------------
+  | luhn_trait::extract_digits_from_str_slice::{closure#1}:
+  |   85|    405|        .map(|x| x.to_digit(10).unwrap())
+  ------------------
+   86|     45|        .rev()
+   87|     45|        .collect()
+   88|     45|}
+  ------------------
+  | Unexecuted instantiation: luhn_trait::extract_digits_from_str_slice
+  ------------------
+  | luhn_trait::extract_digits_from_str_slice:
+  |   82|     45|pub fn extract_digits_from_str_slice(code: &str) -> Vec<u32> {
+  |   83|     45|    code.chars()
+  |   84|     45|        .filter(|x| x.is_ascii_digit())
+  |   85|     45|        .map(|x| x.to_digit(10).unwrap())
+  |   86|     45|        .rev()
+  |   87|     45|        .collect()
+  |   88|     45|}
+  ------------------
+   89|       |
+   90|     45|pub fn is_only_numbers_and_spaces(code: &str) -> bool {
+   91|    429|    for c in code.chars() {
+                                ^45
+   92|    429|        if !c.is_ascii_digit() && !c.is_whitespace() {
+                                                ^24
+   93|      0|            return false;
+   94|    429|        };
+   95|       |    }
+   96|       |
+   97|     45|    true
+   98|     45|}
+  ------------------
+  | Unexecuted instantiation: luhn_trait::is_only_numbers_and_spaces
+  ------------------
+  | luhn_trait::is_only_numbers_and_spaces:
+  |   90|     45|pub fn is_only_numbers_and_spaces(code: &str) -> bool {
+  |   91|    429|    for c in code.chars() {
+  |                                ^45
+  |   92|    429|        if !c.is_ascii_digit() && !c.is_whitespace() {
+  |                                                ^24
+  |   93|      0|            return false;
+  |   94|    429|        };
+  |   95|       |    }
+  |   96|       |
+  |   97|     45|    true
+  |   98|     45|}
+  ------------------

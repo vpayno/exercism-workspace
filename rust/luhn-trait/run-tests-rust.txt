@@ -1,0 +1,464 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: ../../.github/citools/rust/rust-lint-check --release
+
+Running Rust Cargo Check
+
+Rust version:
+
+	rustc 1.72.0 (5680fa18f 2023-08-23)
+
+
+ ==============================================================================
+
+Running: cargo clean
+
+
+real	0m0.014s
+user	0m0.005s
+sys	0m0.009s
+
+
+ ==============================================================================
+
+Running: cargo check --future-incompat-report --release
+
+    Checking luhn-trait v0.0.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/luhn-trait)
+    Finished release [optimized] target(s) in 0.15s
+note: 0 dependencies had future-incompatible warnings
+
+real	0m0.158s
+user	0m0.021s
+sys	0m0.040s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.188s
+user	0m0.032s
+sys	0m0.061s
+
+real	0m0.192s
+user	0m0.034s
+sys	0m0.063s
+
+===============================================================================
+
+Running: ../../.github/citools/rust/rust-lint-clippy --release
+
+Running Rust Cargo Clippy
+
+Rust version:
+
+	rustc 1.72.0 (5680fa18f 2023-08-23)
+
+
+ ==============================================================================
+
+Running: cargo clean
+
+
+real	0m0.008s
+user	0m0.006s
+sys	0m0.002s
+
+
+ ==============================================================================
+
+Running: cargo clippy --release
+
+    Checking luhn-trait v0.0.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/luhn-trait)
+    Finished release [optimized] target(s) in 0.08s
+
+real	0m0.108s
+user	0m0.051s
+sys	0m0.058s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.128s
+user	0m0.061s
+sys	0m0.068s
+
+real	0m0.130s
+user	0m0.062s
+sys	0m0.069s
+
+===============================================================================
+
+Running: ../../.github/citools/rust/rust-lint-audit
+No deps found, skipping cargo audit.
+
+real	0m0.046s
+user	0m0.022s
+sys	0m0.025s
+
+real	0m0.048s
+user	0m0.023s
+sys	0m0.026s
+
+===============================================================================
+
+rm -fv ./*.profraw ./*.profdata
+
+===============================================================================
+
+Running: ../../.github/citools/rust/rust-test-with-tarpaulin
+
+Running Rust Tests With Tarpaulin
+
+Rust version:
+
+	rustc 1.72.0 (5680fa18f 2023-08-23)
+
+
+ ==============================================================================
+
+Running: cargo clean
+
+
+real	0m0.010s
+user	0m0.005s
+sys	0m0.005s
+
+
+ ==============================================================================
+
+Running: cargo test --all-features
+
+   Compiling luhn-trait v0.0.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/luhn-trait)
+    Finished test [unoptimized + debuginfo] target(s) in 0.38s
+     Running unittests src/lib.rs (target/debug/deps/luhn_trait-959ab26895591430)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/luhn-trait.rs (target/debug/deps/luhn_trait-97aaa95ce4c3f8ad)
+
+running 8 tests
+test you_can_validate_from_a_u16 ... ok
+test you_can_validate_from_a_str ... ok
+test input_digit_9_is_still_correctly_converted_to_output_digit_9 ... ok
+test you_can_validate_from_a_string ... ok
+test you_can_validate_from_a_u32 ... ok
+test you_can_validate_from_a_u64 ... ok
+test you_can_validate_from_a_u8 ... ok
+test you_can_validate_from_a_usize ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests luhn-trait
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+real	0m0.414s
+user	0m0.639s
+sys	0m0.255s
+
+
+ ==============================================================================
+
+Running: cargo tarpaulin --release --timeout=300
+
+[2mSep 18 21:40:02.874[0m [32m INFO[0m cargo_tarpaulin::config: Creating config
+[2mSep 18 21:40:02.885[0m [32m INFO[0m cargo_tarpaulin: Running Tarpaulin
+[2mSep 18 21:40:02.885[0m [32m INFO[0m cargo_tarpaulin: Building project
+[2mSep 18 21:40:02.886[0m [32m INFO[0m cargo_tarpaulin::cargo: Cleaning project
+   Compiling luhn-trait v0.0.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/luhn-trait)
+    Finished release [optimized] target(s) in 0.49s
+[2mSep 18 21:40:03.426[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
+[2mSep 18 21:40:03.426[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/luhn-trait/target/release/deps/luhn_trait-c359a82a0c01e758
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+[2mSep 18 21:40:03.916[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
+[2mSep 18 21:40:03.916[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/luhn-trait/target/release/deps/luhn_trait-2bedbc1206753bfd
+
+running 8 tests
+test you_can_validate_from_a_usize ... ok
+test you_can_validate_from_a_u16 ... ok
+test you_can_validate_from_a_string ... ok
+test you_can_validate_from_a_str ... ok
+test you_can_validate_from_a_u8 ... ok
+test you_can_validate_from_a_u64 ... ok
+test you_can_validate_from_a_u32 ... ok
+test input_digit_9_is_still_correctly_converted_to_output_digit_9 ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+[2mSep 18 21:40:04.411[0m [32m INFO[0m cargo_tarpaulin::report: Coverage Results:
+|| Uncovered Lines:
+|| src/lib.rs: 7, 9-12, 48, 58, 75, 78, 82, 90-91, 97
+|| Tested/Total Lines:
+|| src/lib.rs: 18/31
+|| 
+58.06% coverage, 18/31 lines covered
+
+real	0m1.554s
+user	0m0.587s
+sys	0m1.050s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.991s
+user	0m1.237s
+sys	0m1.319s
+
+real	0m1.994s
+user	0m1.238s
+sys	0m1.321s
+
+===============================================================================
+
+Running: ../../.github/citools/rust/rust-test-with-llvm-coverage
+
+Running Rust Tests With LLVM Coverage
+
+Rust version:
+
+	rustc 1.72.0 (5680fa18f 2023-08-23)
+
+
+ ==============================================================================
+
+Running: cargo clean
+
+
+real	0m0.014s
+user	0m0.008s
+sys	0m0.006s
+
+
+ ==============================================================================
+
+Running: cargo llvm-cov clean --workspace
+
+
+real	0m0.224s
+user	0m0.126s
+sys	0m0.100s
+
+
+ ==============================================================================
+
+Running: cargo test --all-features --doc
+
+   Compiling luhn-trait v0.0.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/luhn-trait)
+    Finished test [unoptimized + debuginfo] target(s) in 0.14s
+   Doc-tests luhn-trait
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+real	0m0.171s
+user	0m0.234s
+sys	0m0.087s
+
+
+ ==============================================================================
+
+Running: cargo llvm-cov --no-clean --all-features --workspace
+
+   Compiling luhn-trait v0.0.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/luhn-trait)
+    Finished test [unoptimized + debuginfo] target(s) in 0.34s
+     Running unittests src/lib.rs (target/llvm-cov-target/debug/deps/luhn_trait-236d908bb0669b06)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/luhn-trait.rs (target/llvm-cov-target/debug/deps/luhn_trait-c8a99d53a893a2b6)
+
+running 8 tests
+test input_digit_9_is_still_correctly_converted_to_output_digit_9 ... ok
+test you_can_validate_from_a_str ... ok
+test you_can_validate_from_a_string ... ok
+test you_can_validate_from_a_u16 ... ok
+test you_can_validate_from_a_u32 ... ok
+test you_can_validate_from_a_u64 ... ok
+test you_can_validate_from_a_u8 ... ok
+test you_can_validate_from_a_usize ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+Filename                                                                  Regions    Missed Regions     Cover   Functions  Missed Functions  Executed       Lines      Missed Lines     Cover    Branches   Missed Branches     Cover
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+/home/vpayno/git_vpayno/exercism-workspace/rust/luhn-trait/src/lib.rs          46                 9    80.43%          14                 0   100.00%          69                 1    98.55%           0                 0         -
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+TOTAL                                                                          46                 9    80.43%          14                 0   100.00%          69                 1    98.55%           0                 0         -
+
+real	0m0.487s
+user	0m0.348s
+sys	0m0.198s
+
+
+ ==============================================================================
+
+Running: cargo llvm-cov report --lcov --output-path report.lcov
+
+
+    Finished report saved to report.lcov
+
+real	0m0.142s
+user	0m0.071s
+sys	0m0.072s
+
+    Finished test [unoptimized + debuginfo] target(s) in 0.00s
+     Running unittests src/lib.rs (target/llvm-cov-target/debug/deps/luhn_trait-236d908bb0669b06)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/luhn-trait.rs (target/llvm-cov-target/debug/deps/luhn_trait-c8a99d53a893a2b6)
+
+running 8 tests
+test input_digit_9_is_still_correctly_converted_to_output_digit_9 ... ok
+test you_can_validate_from_a_str ... ok
+test you_can_validate_from_a_string ... ok
+test you_can_validate_from_a_u16 ... ok
+test you_can_validate_from_a_u32 ... ok
+test you_can_validate_from_a_u64 ... ok
+test you_can_validate_from_a_u8 ... ok
+test you_can_validate_from_a_usize ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+real	0m0.176s
+user	0m0.092s
+sys	0m0.081s
+
+ ==============================================================================
+
+Running: cargo llvm-cov --no-clean --all-features --workspace --text --output-path=coverage-annotations.txt
+
+    Finished test [unoptimized + debuginfo] target(s) in 0.00s
+     Running unittests src/lib.rs (target/llvm-cov-target/debug/deps/luhn_trait-236d908bb0669b06)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/luhn-trait.rs (target/llvm-cov-target/debug/deps/luhn_trait-c8a99d53a893a2b6)
+
+running 8 tests
+test input_digit_9_is_still_correctly_converted_to_output_digit_9 ... ok
+test you_can_validate_from_a_str ... ok
+test you_can_validate_from_a_string ... ok
+test you_can_validate_from_a_u16 ... ok
+test you_can_validate_from_a_u32 ... ok
+test you_can_validate_from_a_u64 ... ok
+test you_can_validate_from_a_u8 ... ok
+test you_can_validate_from_a_usize ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+    Finished report saved to coverage-annotations.txt
+
+real	0m0.152s
+user	0m0.074s
+sys	0m0.080s
+
+
+ ==============================================================================
+
+Running: cargo llvm-cov clean --workspace
+
+
+real	0m0.139s
+user	0m0.080s
+sys	0m0.061s
+
+
+ ==============================================================================
+
+Running: lcov --list report.lcov
+
+Reading tracefile report.lcov
+            |Lines       |Functions  |Branches    
+Filename    |Rate     Num|Rate    Num|Rate     Num
+==================================================
+[/home/vpayno/git_vpayno/exercism-workspace/rust/luhn-trait/src/]
+lib.rs      |98.5%     67|50.0%    28|    -      0
+==================================================
+      Total:|98.5%     67|50.0%    28|    -      0
+
+real	0m0.036s
+user	0m0.031s
+sys	0m0.005s
+
+
+Running: lcov --summary report.lcov
+
+Reading tracefile report.lcov
+Summary coverage rate:
+  lines......: 98.5% (66 of 67 lines)
+  functions..: 50.0% (14 of 28 functions)
+  branches...: no data found
+
+real	0m0.033s
+user	0m0.028s
+sys	0m0.006s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.588s
+user	0m1.098s
+sys	0m0.703s
+
+real	0m1.590s
+user	0m1.099s
+sys	0m0.704s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.024s
+user	0m0.034s
+sys	0m0.012s
+
+===============================================================================
+
+Running: cargo doc
+ Documenting luhn-trait v0.0.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/luhn-trait)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.18s
+
+real	0m0.191s
+user	0m0.155s
+sys	0m0.037s
+
+===============================================================================
+
+Running: cargo clean
+
+real	0m0.011s
+user	0m0.006s
+sys	0m0.005s
+
+===============================================================================
+

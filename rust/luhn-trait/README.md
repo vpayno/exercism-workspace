@@ -54,3 +54,8 @@ In this exercise you'll create and implement a custom [trait](https://doc.rust-l
 ### Based on
 
 The Rust track maintainers, based on the original Luhn exercise
+
+### My Solution
+
+- [my solution](./src/lib.rs)
+- [run-tests](./run-tests-rust.txt)
