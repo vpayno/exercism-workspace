@@ -1,15 +1,14 @@
 pub fn collatz(start: u64) -> Option<u64> {
-    if start == 0 {
-        return None;
+    match start {
+        num if num == 0 => None,
+        num if num == 1 => Some(0),
+        num => calculate_cc(num),
     }
+}
 
-    let mut count: u64 = 0;
-
-    if start == 1 {
-        return Some(count);
-    }
-
+pub fn calculate_cc(start: u64) -> Option<u64> {
     let mut num: u128 = start as u128;
+    let mut count: u64 = 0;
 
     while num > 1 {
         /* Not sure why limitation in the tests this was necessary since we still need u128 for this to work and we do get a value.

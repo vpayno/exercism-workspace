@@ -1,95 +1,101 @@
     1|     24|pub fn collatz(start: u64) -> Option<u64> {
-    2|     24|    if start == 0 {
-    3|      3|        return None;
-    4|     21|    }
-    5|     21|
-    6|     21|    let mut count: u64 = 0;
-    7|     21|
-    8|     21|    if start == 1 {
-    9|      3|        return Some(count);
-   10|     18|    }
-   11|     18|
-   12|     18|    let mut num: u128 = start as u128;
-   13|       |
-   14|  1.06k|    while num > 1 {
-   15|       |        /* Not sure why limitation in the tests this was necessary since we still need u128 for this to work and we do get a value.
-   16|       |         * thread 'one_million' panicked at 'assertion failed: `(left == right)`
-   17|       |         *   left: `Some(152)`,
-   18|       |         *  right: `None`', tests/collatz-conjecture.rs:20:5
-   19|       |         * note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
-   20|       |         *
-   21|       |         * ---- sixteen stdout ----
-   22|       |         * thread 'sixteen' panicked at 'assertion failed: `(left == right)`
-   23|       |         *   left: `Some(4)`,
-   24|       |         *  right: `None`', tests/collatz-conjecture.rs:10:5
-   25|       |         *
-   26|       |         * ---- twelve stdout ----
-   27|       |         * thread 'twelve' panicked at 'assertion failed: `(left == right)`
-   28|       |         *   left: `Some(9)`,
-   29|       |         *  right: `None`', tests/collatz-conjecture.rs:15:5
-   30|       |         */
-   31|  1.05k|        if num >= u64::MAX as u128 {
-   32|      9|            return None;
-   33|  1.05k|        }
-   34|  1.05k|
-   35|  1.05k|        count += 1;
-   36|  1.05k|
-   37|  1.05k|        if num % 2 == 0 {
-   38|    642|            num /= 2;
-   39|    642|        } else {
-   40|    408|            num = num * 3 + 1;
-   41|    408|        }
-   42|       |    }
-   43|       |
-   44|      9|    Some(count)
-   45|     24|}
+    2|     24|    match start {
+    3|     24|        num if num == 0 => None,
+                      ^3                 ^3
+    4|     21|        num if num == 1 => Some(0),
+                      ^3                 ^3
+    5|     18|        num => calculate_cc(num),
+    6|       |    }
+    7|     24|}
   ------------------
   | collatz_conjecture::collatz:
   |    1|     24|pub fn collatz(start: u64) -> Option<u64> {
-  |    2|     24|    if start == 0 {
-  |    3|      3|        return None;
-  |    4|     21|    }
-  |    5|     21|
-  |    6|     21|    let mut count: u64 = 0;
-  |    7|     21|
-  |    8|     21|    if start == 1 {
-  |    9|      3|        return Some(count);
-  |   10|     18|    }
-  |   11|     18|
-  |   12|     18|    let mut num: u128 = start as u128;
-  |   13|       |
-  |   14|  1.06k|    while num > 1 {
-  |   15|       |        /* Not sure why limitation in the tests this was necessary since we still need u128 for this to work and we do get a value.
-  |   16|       |         * thread 'one_million' panicked at 'assertion failed: `(left == right)`
-  |   17|       |         *   left: `Some(152)`,
-  |   18|       |         *  right: `None`', tests/collatz-conjecture.rs:20:5
-  |   19|       |         * note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
-  |   20|       |         *
-  |   21|       |         * ---- sixteen stdout ----
-  |   22|       |         * thread 'sixteen' panicked at 'assertion failed: `(left == right)`
-  |   23|       |         *   left: `Some(4)`,
-  |   24|       |         *  right: `None`', tests/collatz-conjecture.rs:10:5
-  |   25|       |         *
-  |   26|       |         * ---- twelve stdout ----
-  |   27|       |         * thread 'twelve' panicked at 'assertion failed: `(left == right)`
-  |   28|       |         *   left: `Some(9)`,
-  |   29|       |         *  right: `None`', tests/collatz-conjecture.rs:15:5
-  |   30|       |         */
-  |   31|  1.05k|        if num >= u64::MAX as u128 {
-  |   32|      9|            return None;
-  |   33|  1.05k|        }
-  |   34|  1.05k|
-  |   35|  1.05k|        count += 1;
-  |   36|  1.05k|
-  |   37|  1.05k|        if num % 2 == 0 {
-  |   38|    642|            num /= 2;
-  |   39|    642|        } else {
-  |   40|    408|            num = num * 3 + 1;
-  |   41|    408|        }
-  |   42|       |    }
-  |   43|       |
-  |   44|      9|    Some(count)
-  |   45|     24|}
+  |    2|     24|    match start {
+  |    3|     24|        num if num == 0 => None,
+  |                      ^3                 ^3
+  |    4|     21|        num if num == 1 => Some(0),
+  |                      ^3                 ^3
+  |    5|     18|        num => calculate_cc(num),
+  |    6|       |    }
+  |    7|     24|}
   ------------------
   | Unexecuted instantiation: collatz_conjecture::collatz
+  ------------------
+    8|       |
+    9|     18|pub fn calculate_cc(start: u64) -> Option<u64> {
+   10|     18|    let mut num: u128 = start as u128;
+   11|     18|    let mut count: u64 = 0;
+   12|       |
+   13|  1.06k|    while num > 1 {
+   14|       |        /* Not sure why limitation in the tests this was necessary since we still need u128 for this to work and we do get a value.
+   15|       |         * thread 'one_million' panicked at 'assertion failed: `(left == right)`
+   16|       |         *   left: `Some(152)`,
+   17|       |         *  right: `None`', tests/collatz-conjecture.rs:20:5
+   18|       |         * note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+   19|       |         *
+   20|       |         * ---- sixteen stdout ----
+   21|       |         * thread 'sixteen' panicked at 'assertion failed: `(left == right)`
+   22|       |         *   left: `Some(4)`,
+   23|       |         *  right: `None`', tests/collatz-conjecture.rs:10:5
+   24|       |         *
+   25|       |         * ---- twelve stdout ----
+   26|       |         * thread 'twelve' panicked at 'assertion failed: `(left == right)`
+   27|       |         *   left: `Some(9)`,
+   28|       |         *  right: `None`', tests/collatz-conjecture.rs:15:5
+   29|       |         */
+   30|  1.05k|        if num >= u64::MAX as u128 {
+   31|      9|            return None;
+   32|  1.05k|        }
+   33|  1.05k|
+   34|  1.05k|        count += 1;
+   35|  1.05k|
+   36|  1.05k|        if num % 2 == 0 {
+   37|    642|            num /= 2;
+   38|    642|        } else {
+   39|    408|            num = num * 3 + 1;
+   40|    408|        }
+   41|       |    }
+   42|       |
+   43|      9|    Some(count)
+   44|     18|}
+  ------------------
+  | collatz_conjecture::calculate_cc:
+  |    9|     18|pub fn calculate_cc(start: u64) -> Option<u64> {
+  |   10|     18|    let mut num: u128 = start as u128;
+  |   11|     18|    let mut count: u64 = 0;
+  |   12|       |
+  |   13|  1.06k|    while num > 1 {
+  |   14|       |        /* Not sure why limitation in the tests this was necessary since we still need u128 for this to work and we do get a value.
+  |   15|       |         * thread 'one_million' panicked at 'assertion failed: `(left == right)`
+  |   16|       |         *   left: `Some(152)`,
+  |   17|       |         *  right: `None`', tests/collatz-conjecture.rs:20:5
+  |   18|       |         * note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+  |   19|       |         *
+  |   20|       |         * ---- sixteen stdout ----
+  |   21|       |         * thread 'sixteen' panicked at 'assertion failed: `(left == right)`
+  |   22|       |         *   left: `Some(4)`,
+  |   23|       |         *  right: `None`', tests/collatz-conjecture.rs:10:5
+  |   24|       |         *
+  |   25|       |         * ---- twelve stdout ----
+  |   26|       |         * thread 'twelve' panicked at 'assertion failed: `(left == right)`
+  |   27|       |         *   left: `Some(9)`,
+  |   28|       |         *  right: `None`', tests/collatz-conjecture.rs:15:5
+  |   29|       |         */
+  |   30|  1.05k|        if num >= u64::MAX as u128 {
+  |   31|      9|            return None;
+  |   32|  1.05k|        }
+  |   33|  1.05k|
+  |   34|  1.05k|        count += 1;
+  |   35|  1.05k|
+  |   36|  1.05k|        if num % 2 == 0 {
+  |   37|    642|            num /= 2;
+  |   38|    642|        } else {
+  |   39|    408|            num = num * 3 + 1;
+  |   40|    408|        }
+  |   41|       |    }
+  |   42|       |
+  |   43|      9|    Some(count)
+  |   44|     18|}
+  ------------------
+  | Unexecuted instantiation: collatz_conjecture::calculate_cc
   ------------------
