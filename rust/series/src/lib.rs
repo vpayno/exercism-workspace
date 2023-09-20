@@ -26,40 +26,18 @@
 pub fn series(sequence: &str, span: usize) -> Vec<String> {
     match (sequence, span) {
         (_, span) if span == 0 => {
-            // this corner case, with_zero_length, doesn't make sense
+            // this corner case, with_zero_length, doesn't make sense, why isn't the data just an empty vector?
             vec!["".to_string(); sequence.len() + 1]
         }
-        (sequence, _) if sequence.is_empty() => {
-            // why are we returning a vector with empty strings?
-            vec!["".to_string(); sequence.len()]
-        }
-        (sequence, span) if sequence.len() == span => {
-            // this corner case makes sense
-            vec![sequence.to_string()]
-        }
-        // corner case ignored by tests
         (sequence, span) if sequence.len() < span => {
+            // corner case ignored by tests
             vec![]
         }
-        _ => series_main(sequence, span),
+        _ => sequence
+            .chars()
+            .collect::<Vec<char>>()
+            .windows(span)
+            .map(|x| x.iter().collect::<String>())
+            .collect(),
     }
-}
-
-fn series_main(sequence: &str, span: usize) -> Vec<String> {
-    // only one test to test the logic of the program?
-    let mut groups: Vec<String> = vec![];
-    let mut remaining: usize = sequence.len();
-
-    for (index, _) in sequence.chars().enumerate() {
-        if remaining < span || index + span > sequence.len() {
-            break;
-        }
-        remaining -= 1;
-
-        let group: String = sequence[index..span + index].to_string();
-
-        groups.push(group);
-    }
-
-    groups
 }
