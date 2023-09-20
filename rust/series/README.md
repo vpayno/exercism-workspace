@@ -48,3 +48,8 @@ in the input; the digits need not be *numerically consecutive*.
 ### Based on
 
 A subset of the Problem 8 at Project Euler - http://projecteuler.net/problem=8
+
+### My Solution
+
+- [my solution](./src/lib.rs)
+- [run-tests](./run-tests-rust.txt)
