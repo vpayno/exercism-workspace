@@ -33,7 +33,7 @@ pub fn series(sequence: &str, span: usize) -> Vec<String> {
             // corner case ignored by tests
             vec![]
         }
-        _ => sequence
+        (sequence, span) => sequence
             .chars()
             .collect::<Vec<char>>()
             .windows(span)
