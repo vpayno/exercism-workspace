@@ -24,26 +24,28 @@
 /// assert_eq!(got, want);
 /// ```
 pub fn series(sequence: &str, span: usize) -> Vec<String> {
-    if span == 0 {
-        // this corner case, with_zero_length, doesn't make sense
-        return vec!["".to_string(); sequence.len() + 1];
+    match (sequence, span) {
+        (_, span) if span == 0 => {
+            // this corner case, with_zero_length, doesn't make sense
+            vec!["".to_string(); sequence.len() + 1]
+        }
+        (sequence, _) if sequence.is_empty() => {
+            // why are we returning a vector with empty strings?
+            vec!["".to_string(); sequence.len()]
+        }
+        (sequence, span) if sequence.len() == span => {
+            // this corner case makes sense
+            vec![sequence.to_string()]
+        }
+        // corner case ignored by tests
+        (sequence, span) if sequence.len() < span => {
+            vec![]
+        }
+        _ => series_main(sequence, span),
     }
+}
 
-    if sequence.is_empty() {
-        // why are we returning a vector with empty strings?
-        return vec!["".to_string(); sequence.len()];
-    }
-
-    if sequence.len() == span {
-        // this corner case makes sense
-        return vec![sequence.to_string()];
-    }
-
-    // corner case ignored by tests
-    if sequence.len() < span {
-        return vec![];
-    }
-
+fn series_main(sequence: &str, span: usize) -> Vec<String> {
     // only one test to test the logic of the program?
     let mut groups: Vec<String> = vec![];
     let mut remaining: usize = sequence.len();

@@ -24,87 +24,103 @@
    24|       |/// assert_eq!(got, want);
    25|       |/// ```
    26|     15|pub fn series(sequence: &str, span: usize) -> Vec<String> {
-   27|     15|    if span == 0 {
-   28|       |        // this corner case, with_zero_length, doesn't make sense
-   29|      3|        return vec!["".to_string(); sequence.len() + 1];
-   30|     12|    }
-   31|     12|
-   32|     12|    if sequence.is_empty() {
-   33|       |        // why are we returning a vector with empty strings?
-   34|      0|        return vec!["".to_string(); sequence.len()];
-   35|     12|    }
-   36|     12|
-   37|     12|    if sequence.len() == span {
-   38|       |        // this corner case makes sense
-   39|      3|        return vec![sequence.to_string()];
-   40|      9|    }
-   41|      9|
-   42|      9|    // corner case ignored by tests
-   43|      9|    if sequence.len() < span {
-   44|      6|        return vec![];
-   45|      3|    }
-   46|      3|
-   47|      3|    // only one test to test the logic of the program?
-   48|      3|    let mut groups: Vec<String> = vec![];
-   49|      3|    let mut remaining: usize = sequence.len();
-   50|       |
-   51|     15|    for (index, _) in sequence.chars().enumerate() {
-                                    ^3
-   52|     15|        if remaining < span || index + span > sequence.len() {
-                                             ^12
-   53|      3|            break;
-   54|     12|        }
-   55|     12|        remaining -= 1;
-   56|     12|
-   57|     12|        let group: String = sequence[index..span + index].to_string();
-   58|     12|
-   59|     12|        groups.push(group);
-   60|       |    }
-   61|       |
-   62|      3|    groups
-   63|     15|}
+   27|     15|    match (sequence, span) {
+   28|     15|        (_, span) if span == 0 => {
+                          ^3
+   29|       |            // this corner case, with_zero_length, doesn't make sense
+   30|      3|            vec!["".to_string(); sequence.len() + 1]
+   31|       |        }
+   32|     12|        (sequence, _) if sequence.is_empty() => {
+                       ^0
+   33|       |            // why are we returning a vector with empty strings?
+   34|      0|            vec!["".to_string(); sequence.len()]
+   35|       |        }
+   36|     12|        (sequence, span) if sequence.len() == span => {
+                       ^3
+   37|       |            // this corner case makes sense
+   38|      3|            vec![sequence.to_string()]
+   39|       |        }
+   40|       |        // corner case ignored by tests
+   41|      9|        (sequence, span) if sequence.len() < span => {
+                       ^6
+   42|      6|            vec![]
+   43|       |        }
+   44|      3|        _ => series_main(sequence, span),
+   45|       |    }
+   46|     15|}
   ------------------
   | series::series:
   |   26|     15|pub fn series(sequence: &str, span: usize) -> Vec<String> {
-  |   27|     15|    if span == 0 {
-  |   28|       |        // this corner case, with_zero_length, doesn't make sense
-  |   29|      3|        return vec!["".to_string(); sequence.len() + 1];
-  |   30|     12|    }
-  |   31|     12|
-  |   32|     12|    if sequence.is_empty() {
-  |   33|       |        // why are we returning a vector with empty strings?
-  |   34|      0|        return vec!["".to_string(); sequence.len()];
-  |   35|     12|    }
-  |   36|     12|
-  |   37|     12|    if sequence.len() == span {
-  |   38|       |        // this corner case makes sense
-  |   39|      3|        return vec![sequence.to_string()];
-  |   40|      9|    }
-  |   41|      9|
-  |   42|      9|    // corner case ignored by tests
-  |   43|      9|    if sequence.len() < span {
-  |   44|      6|        return vec![];
-  |   45|      3|    }
-  |   46|      3|
-  |   47|      3|    // only one test to test the logic of the program?
-  |   48|      3|    let mut groups: Vec<String> = vec![];
-  |   49|      3|    let mut remaining: usize = sequence.len();
-  |   50|       |
-  |   51|     15|    for (index, _) in sequence.chars().enumerate() {
-  |                                    ^3
-  |   52|     15|        if remaining < span || index + span > sequence.len() {
-  |                                             ^12
-  |   53|      3|            break;
-  |   54|     12|        }
-  |   55|     12|        remaining -= 1;
-  |   56|     12|
-  |   57|     12|        let group: String = sequence[index..span + index].to_string();
-  |   58|     12|
-  |   59|     12|        groups.push(group);
-  |   60|       |    }
-  |   61|       |
-  |   62|      3|    groups
-  |   63|     15|}
+  |   27|     15|    match (sequence, span) {
+  |   28|     15|        (_, span) if span == 0 => {
+  |                          ^3
+  |   29|       |            // this corner case, with_zero_length, doesn't make sense
+  |   30|      3|            vec!["".to_string(); sequence.len() + 1]
+  |   31|       |        }
+  |   32|     12|        (sequence, _) if sequence.is_empty() => {
+  |                       ^0
+  |   33|       |            // why are we returning a vector with empty strings?
+  |   34|      0|            vec!["".to_string(); sequence.len()]
+  |   35|       |        }
+  |   36|     12|        (sequence, span) if sequence.len() == span => {
+  |                       ^3
+  |   37|       |            // this corner case makes sense
+  |   38|      3|            vec![sequence.to_string()]
+  |   39|       |        }
+  |   40|       |        // corner case ignored by tests
+  |   41|      9|        (sequence, span) if sequence.len() < span => {
+  |                       ^6
+  |   42|      6|            vec![]
+  |   43|       |        }
+  |   44|      3|        _ => series_main(sequence, span),
+  |   45|       |    }
+  |   46|     15|}
   ------------------
   | Unexecuted instantiation: series::series
+  ------------------
+   47|       |
+   48|      3|fn series_main(sequence: &str, span: usize) -> Vec<String> {
+   49|      3|    // only one test to test the logic of the program?
+   50|      3|    let mut groups: Vec<String> = vec![];
+   51|      3|    let mut remaining: usize = sequence.len();
+   52|       |
+   53|     15|    for (index, _) in sequence.chars().enumerate() {
+                                    ^3
+   54|     15|        if remaining < span || index + span > sequence.len() {
+                                             ^12
+   55|      3|            break;
+   56|     12|        }
+   57|     12|        remaining -= 1;
+   58|     12|
+   59|     12|        let group: String = sequence[index..span + index].to_string();
+   60|     12|
+   61|     12|        groups.push(group);
+   62|       |    }
+   63|       |
+   64|      3|    groups
+   65|      3|}
+  ------------------
+  | series::series_main:
+  |   48|      3|fn series_main(sequence: &str, span: usize) -> Vec<String> {
+  |   49|      3|    // only one test to test the logic of the program?
+  |   50|      3|    let mut groups: Vec<String> = vec![];
+  |   51|      3|    let mut remaining: usize = sequence.len();
+  |   52|       |
+  |   53|     15|    for (index, _) in sequence.chars().enumerate() {
+  |                                    ^3
+  |   54|     15|        if remaining < span || index + span > sequence.len() {
+  |                                             ^12
+  |   55|      3|            break;
+  |   56|     12|        }
+  |   57|     12|        remaining -= 1;
+  |   58|     12|
+  |   59|     12|        let group: String = sequence[index..span + index].to_string();
+  |   60|     12|
+  |   61|     12|        groups.push(group);
+  |   62|       |    }
+  |   63|       |
+  |   64|      3|    groups
+  |   65|      3|}
+  ------------------
+  | Unexecuted instantiation: series::series_main
   ------------------
