@@ -45,6 +45,7 @@ main() {
 
 	echo Running: ../../.github/citools/rust/rust-test-with-llvm-coverage
 	time ../../.github/citools/rust/rust-test-with-llvm-coverage
+
 	print_ruler
 
 	# go install github.com/client9/misspell/cmd/misspell@latest
@@ -64,6 +65,35 @@ main() {
 
 	echo Running: cargo clean
 	time cargo clean
+
+	print_ruler
+
+	cd ..
+	pwd
+
+	print_ruler
+
+	{
+		printf "[workspace]\n"
+		printf "resolver = \"%d\"\n" 2
+		printf "members = [\n"
+		for d in ./*; do
+			if [[ -d $d ]]; then
+				printf "    \"%s\",\n" "$d"
+			fi
+		done
+		printf "]\n"
+	} >Cargo.toml
+
+	print_ruler
+
+	echo Running: rust-analyzer -v lsif . '>' index.lsif
+	time rust-analyzer -v lsif . >index.lsif
+
+	print_ruler
+
+	echo Running: rust-analyzer -v scip .
+	time rust-analyzer -v scip .
 
 	print_ruler
 } # main()

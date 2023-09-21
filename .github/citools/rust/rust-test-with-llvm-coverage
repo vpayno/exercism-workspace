@@ -19,7 +19,7 @@ main() {
 
 	print_ruler
 
-	run_command cargo llvm-cov clean --workspace
+	run_command cargo llvm-cov clean
 
 	print_ruler
 
@@ -33,23 +33,23 @@ main() {
 	# https://github.com/taiki-e/cargo-llvm-cov
 
 	# --no-clean let's us generate real reports later on
-	run_command cargo llvm-cov --no-clean --all-features --workspace
+	run_command cargo llvm-cov --no-clean --all-features
 
 	print_ruler
 
 	run_command cargo llvm-cov report --lcov --output-path report.lcov
 
 	# show missing coverage with source - seems to only work for bin projects
-	run_command cargo llvm-cov --no-clean --all-features --workspace --show-missing-lines >coverage-missing-lines.txt
+	run_command cargo llvm-cov --no-clean --all-features --show-missing-lines >coverage-missing-lines.txt
 
 	print_ruler
 
 	# show missing coverage with source - seems to only work for bin projects
-	run_command cargo llvm-cov --no-clean --all-features --workspace --text --output-path=coverage-annotations.txt
+	run_command cargo llvm-cov --no-clean --all-features --text --output-path=coverage-annotations.txt
 
 	print_ruler
 
-	run_command cargo llvm-cov clean --workspace
+	run_command cargo llvm-cov clean
 
 	print_ruler
 
