@@ -11,55 +11,61 @@
 19     			if e != nil {
 20 MISS				panic(e)
 21     			}
-22     			return "Sure."
-23     		}
-24     	
-25     		// Yelling a question.
-26     		reStr = `^([[:upper:]]|[[:punct:]|[[:space:]])+[?]$`
-27     		if m, e := regexp.MatchString(reStr, remark); m {
-28     			if e != nil {
-29 MISS				panic(e)
-30     			}
-31     			return "Calm down, I know what I'm doing!"
-32     		}
-33     	
-34     		// Any normal question.
-35     		reStr = `^([[:alpha:]]|[[:digit:]]|[[:punct:]])([[:alpha:]]|[[:digit:]]|[[:punct:]]|[[:space:]])*[?]$`
-36     		if m, e := regexp.MatchString(reStr, remark); m {
-37     			if e != nil {
-38 MISS				panic(e)
-39     			}
-40     			return "Sure."
-41     		}
+22     	
+23     			return "Sure."
+24     		}
+25     	
+26     		// Yelling a question.
+27     		reStr = `^([[:upper:]]|[[:punct:]]|[[:space:]])+[?]$`
+28     		if m, e := regexp.MatchString(reStr, remark); m {
+29     			if e != nil {
+30 MISS				panic(e)
+31     			}
+32     	
+33     			return "Calm down, I know what I'm doing!"
+34     		}
+35     	
+36     		// Any normal question.
+37     		reStr = `^([[:alpha:]]|[[:digit:]]|[[:punct:]])([[:alpha:]]|[[:digit:]]|[[:punct:]]|[[:space:]])*[?]$`
+38     		if m, e := regexp.MatchString(reStr, remark); m {
+39     			if e != nil {
+40 MISS				panic(e)
+41     			}
 42     	
-43     		// Letterless statement.
-44     		reStr = `^([[:digit:]]|[[:punct:]|[[:space:]])+$`
-45     		if m, e := regexp.MatchString(reStr, remark); m {
-46     			if e != nil {
-47 MISS				panic(e)
-48     			}
-49     			return "Whatever."
-50     		}
-51     	
-52     		// Yelling statement.
-53     		reStr = `^([[:upper:]]|[[:digit:]]|[[:punct:]|[[:space:]])+$`
-54     		if m, e := regexp.MatchString(reStr, remark); m {
-55     			if e != nil {
-56 MISS				panic(e)
-57     			}
-58     			return "Whoa, chill out!"
-59     		}
-60     	
-61     		// Silence
-62     		reStr = `^[[:space:]]*$`
-63     		if m, e := regexp.MatchString(reStr, remark); m {
-64     			if e != nil {
-65 MISS				panic(e)
-66     			}
-67     			return "Fine. Be that way!"
-68     		}
-69     	
-70     		// Default response.
-71     		return "Whatever."
-72     	}
+43     			return "Sure."
+44     		}
+45     	
+46     		// Letterless statement.
+47     		reStr = `^([[:digit:]]|[[:punct:]|[[:space:]])+$`
+48     		if m, e := regexp.MatchString(reStr, remark); m {
+49     			if e != nil {
+50 MISS				panic(e)
+51     			}
+52     	
+53     			return "Whatever."
+54     		}
+55     	
+56     		// Yelling statement.
+57     		reStr = `^([[:upper:]]|[[:digit:]]|[[:punct:]|[[:space:]])+$`
+58     		if m, e := regexp.MatchString(reStr, remark); m {
+59     			if e != nil {
+60 MISS				panic(e)
+61     			}
+62     	
+63     			return "Whoa, chill out!"
+64     		}
+65     	
+66     		// Silence
+67     		reStr = `^[[:space:]]*$`
+68     		if m, e := regexp.MatchString(reStr, remark); m {
+69     			if e != nil {
+70 MISS				panic(e)
+71     			}
+72     	
+73     			return "Fine. Be that way!"
+74     		}
+75     	
+76     		// Default response.
+77     		return "Whatever."
+78     	}
 

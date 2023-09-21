@@ -24,7 +24,7 @@ func Hey(remark string) string {
 	}
 
 	// Yelling a question.
-	reStr = `^([[:upper:]]|[[:punct:]|[[:space:]])+[?]$`
+	reStr = `^([[:upper:]]|[[:punct:]]|[[:space:]])+[?]$`
 	if m, e := regexp.MatchString(reStr, remark); m {
 		if e != nil {
 			panic(e)
