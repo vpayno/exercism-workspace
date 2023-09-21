@@ -22,7 +22,7 @@ pub fn reply(remark: &str) -> &str {
 
         // This is his response if you ask him a question, such as "How are you?" The convention used for questions is that it ends with a question mark.
         remark if !is_yelling(remark) && is_question(remark) => {
-            println!("Response to a yelling question:");
+            println!("Response to a statement question:");
             "Sure."
         }
 
