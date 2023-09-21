@@ -11,7 +11,7 @@ std::string hey(std::string greeting) {
     }
 
     // Question with only spaces and punctuation.
-    const std::regex re_question_garbage("^([[:punct:]|[[:space:]])+[?]$",
+    const std::regex re_question_garbage("^([[:punct:]]|[[:space:]])+[?]$",
                                          std::regex_constants::egrep);
     if (std::regex_search(greeting, re_question_garbage)) {
         return "Sure.";
@@ -19,7 +19,7 @@ std::string hey(std::string greeting) {
 
     // Question with uppercase letters, punctuation and spaces.
     const std::regex re_question_yelling(
-        "^([[:upper:]]|[[:punct:]|[[:space:]])+[?]$",
+        "^([[:upper:]]|[[:punct:]]|[[:space:]])+[?]$",
         std::regex_constants::egrep);
     if (std::regex_search(greeting, re_question_yelling)) {
         return "Calm down, I know what I'm doing!";
@@ -34,14 +34,15 @@ std::string hey(std::string greeting) {
 
     // Generic statement.
     const std::regex re_generic_statement(
-        "^([[:digit:]]|[[:punct:]|[[:space:]])+$", std::regex_constants::egrep);
+        "^([[:digit:]]|[[:punct:]]|[[:space:]])+$",
+        std::regex_constants::egrep);
     if (std::regex_search(greeting, re_generic_statement)) {
         return "Whatever.";
     }
 
     // Yelling statement.
     const std::regex re_yelling_statement(
-        "^([[:upper:]]|[[:digit:]]|[[:punct:]|[[:space:]])+$",
+        "^([[:upper:]]|[[:digit:]]|[[:punct:]]|[[:space:]])+$",
         std::regex_constants::egrep);
     if (std::regex_search(greeting, re_yelling_statement)) {
         return "Whoa, chill out!";

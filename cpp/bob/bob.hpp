@@ -6,7 +6,7 @@
 
 namespace bob {
 
-    std::string hey(std::string greeting);
+std::string hey(std::string greeting);
 
 } // namespace bob
 
