@@ -19,7 +19,7 @@ char *hey_bob(char *greeting) {
 
     // Question with only spaces and punctuation.
     regex_compile_result =
-        regcomp(&re_comp, "^([[:punct:]|[[:space:]])+[?]$", REG_EXTENDED);
+        regcomp(&re_comp, "^([[:punct:]]|[[:space:]])+[?]$", REG_EXTENDED);
     if (regex_compile_result) {
         (void)fprintf(stderr, "Could not compile regex\n");
         abort();
@@ -32,7 +32,7 @@ char *hey_bob(char *greeting) {
 
     // Question with uppercase letters, punctuation and spaces.
     regex_compile_result = regcomp(
-        &re_comp, "^([[:upper:]]|[[:punct:]|[[:space:]])+[?]$", REG_EXTENDED);
+        &re_comp, "^([[:upper:]]|[[:punct:]]|[[:space:]])+[?]$", REG_EXTENDED);
     if (regex_compile_result) {
         (void)fprintf(stderr, "Could not compile regex\n");
         abort();
@@ -58,7 +58,7 @@ char *hey_bob(char *greeting) {
 
     // Generic statement.
     regex_compile_result = regcomp(
-        &re_comp, "^([[:digit:]]|[[:punct:]|[[:space:]])+$", REG_EXTENDED);
+        &re_comp, "^([[:digit:]]|[[:punct:]]|[[:space:]])+$", REG_EXTENDED);
     if (regex_compile_result) {
         (void)fprintf(stderr, "Could not compile regex\n");
         abort();
@@ -70,9 +70,9 @@ char *hey_bob(char *greeting) {
     }
 
     // Yelling statement.
-    regex_compile_result =
-        regcomp(&re_comp, "^([[:upper:]]|[[:digit:]]|[[:punct:]|[[:space:]])+$",
-                REG_EXTENDED);
+    regex_compile_result = regcomp(
+        &re_comp, "^([[:upper:]]|[[:digit:]]|[[:punct:]]|[[:space:]])+$",
+        REG_EXTENDED);
     if (regex_compile_result) {
         (void)fprintf(stderr, "Could not compile regex\n");
         abort();
