@@ -43,3 +43,4 @@
 - [collatz-conjecture](./collatz-conjecture/README.md)
 - [luhn-trait](./luhn-trait/README.md)
 - [series](./series/README.md)
+- [bob](./bob/README.md)

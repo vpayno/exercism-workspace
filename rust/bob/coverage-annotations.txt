@@ -1,0 +1,203 @@
+    1|     75|pub fn reply(remark: &str) -> &str {
+    2|     75|    println!("Remark: {}", remark);
+    3|     75|
+    4|     75|    match remark {
+    5|       |        // This is how he responds to silence. The convention used for silence is nothing, or various combinations of whitespace characters.
+    6|     75|        remark if is_silence(remark) => {
+                      ^12
+    7|     12|            println!("Response to silence:");
+    8|     12|            "Fine. Be that way!"
+    9|       |        }
+   10|       |
+   11|       |        // This is what he says if you yell a question at him.
+   12|     63|        remark if is_yelling(remark) && is_question(remark) => {
+                      ^3                              ^18
+   13|      3|            println!("Response to a yelling question:");
+   14|      3|            "Calm down, I know what I'm doing!"
+   15|       |        }
+   16|       |
+   17|       |        // This is his answer if you YELL AT HIM. The convention used for yelling is ALL CAPITAL LETTERS.
+   18|     60|        remark if is_yelling(remark) && !is_question(remark) => {
+                      ^15                             ^15
+   19|     15|            println!("Response to a yelling statement:");
+   20|     15|            "Whoa, chill out!"
+   21|       |        }
+   22|       |
+   23|       |        // This is his response if you ask him a question, such as "How are you?" The convention used for questions is that it ends with a question mark.
+   24|     45|        remark if !is_yelling(remark) && is_question(remark) => {
+                      ^21
+   25|     21|            println!("Response to a yelling question:");
+   26|     21|            "Sure."
+   27|       |        }
+   28|       |
+   29|       |        // This is what he answers to anything else.
+   30|     24|        _ => "Whatever.",
+   31|       |    }
+   32|     75|}
+  ------------------
+  | bob::reply:
+  |    1|     75|pub fn reply(remark: &str) -> &str {
+  |    2|     75|    println!("Remark: {}", remark);
+  |    3|     75|
+  |    4|     75|    match remark {
+  |    5|       |        // This is how he responds to silence. The convention used for silence is nothing, or various combinations of whitespace characters.
+  |    6|     75|        remark if is_silence(remark) => {
+  |                      ^12
+  |    7|     12|            println!("Response to silence:");
+  |    8|     12|            "Fine. Be that way!"
+  |    9|       |        }
+  |   10|       |
+  |   11|       |        // This is what he says if you yell a question at him.
+  |   12|     63|        remark if is_yelling(remark) && is_question(remark) => {
+  |                      ^3                              ^18
+  |   13|      3|            println!("Response to a yelling question:");
+  |   14|      3|            "Calm down, I know what I'm doing!"
+  |   15|       |        }
+  |   16|       |
+  |   17|       |        // This is his answer if you YELL AT HIM. The convention used for yelling is ALL CAPITAL LETTERS.
+  |   18|     60|        remark if is_yelling(remark) && !is_question(remark) => {
+  |                      ^15                             ^15
+  |   19|     15|            println!("Response to a yelling statement:");
+  |   20|     15|            "Whoa, chill out!"
+  |   21|       |        }
+  |   22|       |
+  |   23|       |        // This is his response if you ask him a question, such as "How are you?" The convention used for questions is that it ends with a question mark.
+  |   24|     45|        remark if !is_yelling(remark) && is_question(remark) => {
+  |                      ^21
+  |   25|     21|            println!("Response to a yelling question:");
+  |   26|     21|            "Sure."
+  |   27|       |        }
+  |   28|       |
+  |   29|       |        // This is what he answers to anything else.
+  |   30|     24|        _ => "Whatever.",
+  |   31|       |    }
+  |   32|     75|}
+  ------------------
+  | Unexecuted instantiation: bob::reply
+  ------------------
+   33|       |
+   34|       |// yelling has to have letters that are all in caps and possibly other characters
+   35|    168|fn is_yelling(remark: &str) -> bool {
+   36|    168|    match remark.trim() {
+   37|       |        // not yelling if there aren't any lettters in the string
+   38|  4.04k|        remark if remark.chars().filter(|c| c.is_alphabetic()).count() == 0 => {
+                      ^27       ^168                                       ^168
+  ------------------
+  | bob::is_yelling::{closure#0}:
+  |   38|  4.04k|        remark if remark.chars().filter(|c| c.is_alphabetic()).count() == 0 => {
+  ------------------
+  | Unexecuted instantiation: bob::is_yelling::{closure#0}
+  ------------------
+   39|     27|            println!("is_yelling(): false - found string without letters");
+   40|     27|            false
+   41|       |        }
+   42|       |
+   43|       |        // not yelling if there's at least 1 lowercase letter in the string
+   44|    810|        remark if remark.chars().any(|c| c.is_ascii_lowercase()) => {
+                      ^108      ^141                                         ^141
+  ------------------
+  | bob::is_yelling::{closure#1}:
+  |   44|    810|        remark if remark.chars().any(|c| c.is_ascii_lowercase()) => {
+  ------------------
+  | Unexecuted instantiation: bob::is_yelling::{closure#1}
+  ------------------
+   45|    108|            println!("is_yelling(): false - found lower case");
+   46|    108|            false
+   47|       |        }
+   48|       |
+   49|       |        // are all the letters in the string uppercase letters?
+   50|     33|        remark
+   51|     33|            if remark
+   52|     33|                .chars()
+   53|    612|                .filter(|c| c.is_alphabetic())
+  ------------------
+  | bob::is_yelling::{closure#2}:
+  |   53|    612|                .filter(|c| c.is_alphabetic())
+  ------------------
+  | Unexecuted instantiation: bob::is_yelling::{closure#2}
+  ------------------
+   54|    384|                .all(|c| c.is_ascii_uppercase()) =>
+                                                             ^33
+  ------------------
+  | bob::is_yelling::{closure#3}:
+  |   54|    384|                .all(|c| c.is_ascii_uppercase()) =>
+  ------------------
+  | Unexecuted instantiation: bob::is_yelling::{closure#3}
+  ------------------
+   55|       |        {
+   56|     33|            println!("is_yelling(): true - found alpha upcase onlyletters");
+   57|     33|            true
+   58|       |        }
+   59|       |
+   60|       |        // catch-all, not yelling
+   61|       |        _ => {
+   62|      0|            println!("is_yelling(): false - everything else");
+   63|      0|            false
+   64|       |        }
+   65|       |    }
+   66|    168|}
+  ------------------
+  | bob::is_yelling:
+  |   35|    168|fn is_yelling(remark: &str) -> bool {
+  |   36|    168|    match remark.trim() {
+  |   37|       |        // not yelling if there aren't any lettters in the string
+  |   38|    168|        remark if remark.chars().filter(|c| c.is_alphabetic()).count() == 0 => {
+  |                      ^27
+  |   39|     27|            println!("is_yelling(): false - found string without letters");
+  |   40|     27|            false
+  |   41|       |        }
+  |   42|       |
+  |   43|       |        // not yelling if there's at least 1 lowercase letter in the string
+  |   44|    141|        remark if remark.chars().any(|c| c.is_ascii_lowercase()) => {
+  |                      ^108
+  |   45|    108|            println!("is_yelling(): false - found lower case");
+  |   46|    108|            false
+  |   47|       |        }
+  |   48|       |
+  |   49|       |        // are all the letters in the string uppercase letters?
+  |   50|     33|        remark
+  |   51|     33|            if remark
+  |   52|     33|                .chars()
+  |   53|     33|                .filter(|c| c.is_alphabetic())
+  |   54|     33|                .all(|c| c.is_ascii_uppercase()) =>
+  |   55|       |        {
+  |   56|     33|            println!("is_yelling(): true - found alpha upcase onlyletters");
+  |   57|     33|            true
+  |   58|       |        }
+  |   59|       |
+  |   60|       |        // catch-all, not yelling
+  |   61|       |        _ => {
+  |   62|      0|            println!("is_yelling(): false - everything else");
+  |   63|      0|            false
+  |   64|       |        }
+  |   65|       |    }
+  |   66|    168|}
+  ------------------
+  | Unexecuted instantiation: bob::is_yelling
+  ------------------
+   67|       |
+   68|       |// only requirement is that it ends in a question mark
+   69|     78|fn is_question(remark: &str) -> bool {
+   70|     78|    remark.trim().ends_with('?')
+   71|     78|}
+  ------------------
+  | bob::is_question:
+  |   69|     78|fn is_question(remark: &str) -> bool {
+  |   70|     78|    remark.trim().ends_with('?')
+  |   71|     78|}
+  ------------------
+  | Unexecuted instantiation: bob::is_question
+  ------------------
+   72|       |
+   73|       |// only whitespace or empty string
+   74|     75|fn is_silence(remark: &str) -> bool {
+   75|     75|    remark.trim().is_empty()
+   76|     75|}
+  ------------------
+  | bob::is_silence:
+  |   74|     75|fn is_silence(remark: &str) -> bool {
+  |   75|     75|    remark.trim().is_empty()
+  |   76|     75|}
+  ------------------
+  | Unexecuted instantiation: bob::is_silence
+  ------------------
