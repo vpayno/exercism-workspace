@@ -14,7 +14,7 @@ func Hey(remark string) string {
 	var reStr string
 
 	// Question without letters.
-	reStr = `^([[:punct:]|[[:space:]])+[?]$`
+	reStr = `^([[:punct:]]|[[:space:]])+[?]$`
 	if m, e := regexp.MatchString(reStr, remark); m {
 		if e != nil {
 			panic(e)
@@ -44,7 +44,7 @@ func Hey(remark string) string {
 	}
 
 	// Letterless statement.
-	reStr = `^([[:digit:]]|[[:punct:]|[[:space:]])+$`
+	reStr = `^([[:digit:]]|[[:punct:]]|[[:space:]])+$`
 	if m, e := regexp.MatchString(reStr, remark); m {
 		if e != nil {
 			panic(e)
@@ -54,7 +54,7 @@ func Hey(remark string) string {
 	}
 
 	// Yelling statement.
-	reStr = `^([[:upper:]]|[[:digit:]]|[[:punct:]|[[:space:]])+$`
+	reStr = `^([[:upper:]]|[[:digit:]]|[[:punct:]]|[[:space:]])+$`
 	if m, e := regexp.MatchString(reStr, remark); m {
 		if e != nil {
 			panic(e)

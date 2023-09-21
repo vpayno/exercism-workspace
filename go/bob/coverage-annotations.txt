@@ -6,7 +6,7 @@
 14     		var reStr string
 15     	
 16     		// Question without letters.
-17     		reStr = `^([[:punct:]|[[:space:]])+[?]$`
+17     		reStr = `^([[:punct:]]|[[:space:]])+[?]$`
 18     		if m, e := regexp.MatchString(reStr, remark); m {
 19     			if e != nil {
 20 MISS				panic(e)
@@ -36,7 +36,7 @@
 44     		}
 45     	
 46     		// Letterless statement.
-47     		reStr = `^([[:digit:]]|[[:punct:]|[[:space:]])+$`
+47     		reStr = `^([[:digit:]]|[[:punct:]]|[[:space:]])+$`
 48     		if m, e := regexp.MatchString(reStr, remark); m {
 49     			if e != nil {
 50 MISS				panic(e)
@@ -46,7 +46,7 @@
 54     		}
 55     	
 56     		// Yelling statement.
-57     		reStr = `^([[:upper:]]|[[:digit:]]|[[:punct:]|[[:space:]])+$`
+57     		reStr = `^([[:upper:]]|[[:digit:]]|[[:punct:]]|[[:space:]])+$`
 58     		if m, e := regexp.MatchString(reStr, remark); m {
 59     			if e != nil {
 60 MISS				panic(e)

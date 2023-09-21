@@ -94,7 +94,7 @@ func Hey(remark string) string <span class="cov10" title="30">{
         var reStr string
 
         // Question without letters.
-        reStr = `^([[:punct:]|[[:space:]])+[?]$`
+        reStr = `^([[:punct:]]|[[:space:]])+[?]$`
         if m, e := regexp.MatchString(reStr, remark); m </span><span class="cov1" title="1">{
                 if e != nil </span><span class="cov0" title="0">{
                         panic(e)</span>
@@ -124,7 +124,7 @@ func Hey(remark string) string <span class="cov10" title="30">{
         }
 
         // Letterless statement.
-        <span class="cov8" title="20">reStr = `^([[:digit:]]|[[:punct:]|[[:space:]])+$`
+        <span class="cov8" title="20">reStr = `^([[:digit:]]|[[:punct:]]|[[:space:]])+$`
         if m, e := regexp.MatchString(reStr, remark); m </span><span class="cov1" title="1">{
                 if e != nil </span><span class="cov0" title="0">{
                         panic(e)</span>
@@ -134,7 +134,7 @@ func Hey(remark string) string <span class="cov10" title="30">{
         }
 
         // Yelling statement.
-        <span class="cov8" title="19">reStr = `^([[:upper:]]|[[:digit:]]|[[:punct:]|[[:space:]])+$`
+        <span class="cov8" title="19">reStr = `^([[:upper:]]|[[:digit:]]|[[:punct:]]|[[:space:]])+$`
         if m, e := regexp.MatchString(reStr, remark); m </span><span class="cov5" title="6">{
                 if e != nil </span><span class="cov0" title="0">{
                         panic(e)</span>
