@@ -19,6 +19,7 @@ func Hey(remark string) string {
 		if e != nil {
 			panic(e)
 		}
+
 		return "Sure."
 	}
 
@@ -28,6 +29,7 @@ func Hey(remark string) string {
 		if e != nil {
 			panic(e)
 		}
+
 		return "Calm down, I know what I'm doing!"
 	}
 
@@ -37,6 +39,7 @@ func Hey(remark string) string {
 		if e != nil {
 			panic(e)
 		}
+
 		return "Sure."
 	}
 
@@ -46,6 +49,7 @@ func Hey(remark string) string {
 		if e != nil {
 			panic(e)
 		}
+
 		return "Whatever."
 	}
 
@@ -55,6 +59,7 @@ func Hey(remark string) string {
 		if e != nil {
 			panic(e)
 		}
+
 		return "Whoa, chill out!"
 	}
 
@@ -64,6 +69,7 @@ func Hey(remark string) string {
 		if e != nil {
 			panic(e)
 		}
+
 		return "Fine. Be that way!"
 	}
 
