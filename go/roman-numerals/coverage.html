@@ -55,7 +55,7 @@
 			<div id="nav">
 				<select id="files">
 				
-				<option value="file0">romannumerals/roman_numerals.go (94.9%)</option>
+				<option value="file0">romannumerals/roman_numerals.go (100.0%)</option>
 				
 				</select>
 			</div>
@@ -83,127 +83,57 @@ package romannumerals
 
 import (
         "errors"
-        "strings"
+        "sort"
 )
 
 // ToRomanNumeral returns a roman numeral string and and error code.
-func ToRomanNumeral(input int) (string, error) <span class="cov7" title="49">{
+func ToRomanNumeral(input int) (string, error) <span class="cov6" title="49">{
         if input &lt;= 0 </span><span class="cov2" title="3">{
                 return "", errors.New("Roman numerals can't be less than or equal to 0")
         }</span>
 
         // Only process numbers &lt;=3k.
-        <span class="cov7" title="46">if input &gt; 3_000 </span><span class="cov2" title="2">{
+        <span class="cov6" title="46">if input &gt; 3_000 </span><span class="cov1" title="2">{
                 return "", errors.New("Roman numerals were apparently rarely greater than 3k")
         }</span>
 
-        /*
-           Steps
-           1. set remainder to number
-           2. divide remainder by 1000
-           3. if == 0 then look for special case for IV, IX, XL, XC, CD, CM
-              a. if true then record it and substract it from the remainder
-              b. if false continue with the next number
-           4. if != 0 then
-              a. output n, nn, nnn case
-              b. update the remainder
-              c. continue with the next number
-        */
-
-        <span class="cov7" title="44">var d2r map[int]string = map[int]string{
+        <span class="cov6" title="44">d2r := map[int]string{
                 1:     "I",
+                4:     "IV",
                 5:     "V",
+                9:     "IX",
                 10:    "X",
+                40:    "XL",
                 50:    "L",
+                90:    "XC",
                 100:   "C",
+                400:   "CD",
                 500:   "D",
+                900:   "CM",
                 1_000: "M",
         }
 
-        var subLadder map[int]int = map[int]int{
-                10:    1,
-                50:    10,
-                100:   10,
-                500:   100,
-                1_000: 100,
+        output := ""
+
+        decimals := make([]int, 0, len(d2r))
+
+        for d := range d2r </span><span class="cov10" title="572">{
+                decimals = append(decimals, d)
+        }</span>
+
+        <span class="cov6" title="44">sort.Sort(sort.Reverse(sort.IntSlice(decimals)))
+
+        for _, decimal := range decimals </span><span class="cov10" title="572">{
+                roman := d2r[decimal]
+
+                for input &gt;= decimal </span><span class="cov7" title="117">{
+                        output += roman
+
+                        input -= decimal
+                }</span>
         }
 
-        var outLadder map[int]string = map[int]string{
-                10:    "I",
-                50:    "X",
-                100:   "X",
-                500:   "C",
-                1_000: "C",
-        }
-
-        var remainder int = input
-        var output string
-        var register int
-
-        var numbers []int = []int{1_000, 500, 100, 50, 10, 5, 1}
-
-        for _, next := range numbers </span><span class="cov10" title="279">{
-
-                if remainder &lt;= 0 </span><span class="cov5" title="17">{
-                        break</span>
-                }
-
-                <span class="cov9" title="262">register = remainder / next
-
-                if register == 0 </span><span class="cov9" title="182">{
-                        subNum, found := subLadder[next]
-
-                        if !found </span><span class="cov5" title="19">{
-                                subNum = 1
-                        }</span>
-
-                        <span class="cov9" title="182">if remainder &gt;= next-subNum </span><span class="cov5" title="13">{
-
-                                // IV IX XL XC CD CM
-                                value, found := outLadder[next]
-
-                                if !found </span><span class="cov2" title="3">{
-                                        value = "I"
-                                }</span>
-
-                                <span class="cov5" title="13">output += value
-
-                                value, found = d2r[next]
-
-                                if !found </span><span class="cov0" title="0">{
-                                        value = ""
-                                }</span>
-
-                                <span class="cov5" title="13">output += value
-
-                                register = remainder - (next - subNum)
-
-                                remainder = register</span>
-
-                        }
-
-                        <span class="cov9" title="182">continue</span>
-
-                } else<span class="cov8" title="80"> {
-
-                        value, found := d2r[next]
-
-                        if !found </span><span class="cov0" title="0">{
-                                value = ""
-                        }</span>
-
-                        // III xxx CCC
-                        <span class="cov8" title="80">output += strings.Repeat(value, register)
-
-                        register = remainder % next
-
-                        remainder = register
-
-                        continue</span>
-                }
-        }
-
-        <span class="cov7" title="44">return output, nil</span>
+        <span class="cov6" title="44">return output, nil</span>
 }
 </pre>
 		
