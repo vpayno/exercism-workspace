@@ -30,7 +30,7 @@ ToRomanNumeral returns a roman numeral string and and error code.
 		0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11,
 		50, 51, 100, 101,
 		500, 501, 1_000, 1_001,
-		3_000, 3_001,
+		3_000, 3_001, 4_001,
 	}
 
 	for _, n := range numbers {
@@ -65,7 +65,8 @@ ToRomanNumeral returns a roman numeral string and and error code.
 1000 -> "M", e: <nil>
 1001 -> "MI", e: <nil>
 3000 -> "MMM", e: <nil>
-3001 -> "", e: Roman numerals were apparently rarely greater than 3k
+3001 -> "MMMI", e: <nil>
+4001 -> "", e: Roman numerals were apparently rarely greater than 3k
 ```
 
 </p>

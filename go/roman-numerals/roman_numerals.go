@@ -13,7 +13,7 @@ func ToRomanNumeral(input int) (string, error) {
 	}
 
 	// Only process numbers <=3k.
-	if input > 3_000 {
+	if input > 3_999 {
 		return "", errors.New("Roman numerals were apparently rarely greater than 3k")
 	}
 

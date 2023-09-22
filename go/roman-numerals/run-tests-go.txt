@@ -19,44 +19,52 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.036s
-user	0m0.024s
-sys	0m0.026s
+real	0m0.034s
+user	0m0.015s
+sys	0m0.032s
 
 
  ==============================================================================
 
 Running: golangci-lint run --enable-all ./...
 
-level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
-level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
-level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
-level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
-level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
-level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
 level=warning msg="[runner] The linter 'structcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
 level=warning msg="[runner] The linter 'ifshort' is deprecated (since v1.48.0) due to: The repository of the linter has been deprecated by the owner. "
 level=warning msg="[runner] The linter 'golint' is deprecated (since v1.41.0) due to: The repository of the linter has been archived by the owner. Replaced by revive."
-level=warning msg="[runner] The linter 'nosnakecase' is deprecated (since v1.48.1) due to: The repository of the linter has been deprecated by the owner. Replaced by revive(var-naming)."
-roman_numerals_test.go:47:18: Error return value is not checked (errcheck)
+level=warning msg="[runner] The linter 'varcheck' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'deadcode' is deprecated (since v1.49.0) due to: The owner seems to have abandoned the linter. Replaced by unused."
+level=warning msg="[runner] The linter 'scopelint' is deprecated (since v1.39.0) due to: The repository of the linter has been deprecated by the owner. Replaced by exportloopref."
+level=warning msg="[runner] The linter 'interfacer' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. "
+level=warning msg="[runner] The linter 'exhaustivestruct' is deprecated (since v1.46.0) due to: The owner seems to have abandoned the linter. Replaced by exhaustruct."
+level=warning msg="[runner] The linter 'maligned' is deprecated (since v1.38.0) due to: The repository of the linter has been archived by the owner. Replaced by govet 'fieldalignment'."
+level=warning msg="[linters_context] rowserrcheck is disabled because of generics. You can track the evolution of the generics support by following the https://github.com/golangci/golangci-lint/issues/2649."
+level=warning msg="[linters_context] structcheck is disabled because of generics. You can track the evolution of the generics support by following the https://github.com/golangci/golangci-lint/issues/2649."
+level=warning msg="[linters_context] wastedassign is disabled because of generics. You can track the evolution of the generics support by following the https://github.com/golangci/golangci-lint/issues/2649."
+roman_numerals_test.go:43:18: Error return value is not checked (errcheck)
 			ToRomanNumeral(tc.input)
 			              ^
+roman_numerals_test.go:17: File is not `gofumpt`-ed (gofumpt)
+
 roman_numerals_test.go:8:34: Using the variable on range scope `tc` in function literal (scopelint)
 			actual, err := ToRomanNumeral(tc.input)
 			                              ^
-roman_numerals_test.go:13:6: Using the variable on range scope `tc` in function literal (scopelint)
-					tc.input,
-					^
-roman_numerals_test.go:15:6: Using the variable on range scope `tc` in function literal (scopelint)
-					tc.expected,
-					^
-roman_numerals_test.go:45:2: for statements should only be cuddled with assignments used in the iteration (wsl)
+roman_numerals_test.go:11:65: Using the variable on range scope `tc` in function literal (scopelint)
+				t.Fatalf("ToRomanNumeral(%d) returned error: %v, want: %q", tc.input, err, tc.expected)
+				                                                            ^
+roman_numerals_test.go:13:17: Using the variable on range scope `tc` in function literal (scopelint)
+			if actual != tc.expected {
+			             ^
+roman_numerals_test.go:18:2: block should not end with a whitespace (or comment) (wsl)
+	}
+	^
+roman_numerals_test.go:41:2: for statements should only be cuddled with assignments used in the iteration (wsl)
 	for i := 0; i < b.N; i++ {
 	^
 roman_numerals.go:9:1: Duplicate words (and) found (dupword)
 // ToRomanNumeral returns a roman numeral string and and error code.
 ^
-cases_test.go:12:5: validRomanNumeralTests is a global variable (gochecknoglobals)
+cases_test.go:14:5: validRomanNumeralTests is a global variable (gochecknoglobals)
 var validRomanNumeralTests = []romanNumeralTest{
     ^
 roman_numerals.go:12:14: err113: do not define dynamic errors, use wrapped static errors instead: "errors.New(\"Roman numerals can't be less than or equal to 0\")" (goerr113)
@@ -65,8 +73,8 @@ roman_numerals.go:12:14: err113: do not define dynamic errors, use wrapped stati
 roman_numerals.go:17:14: err113: do not define dynamic errors, use wrapped static errors instead: "errors.New(\"Roman numerals were apparently rarely greater than 3k\")" (goerr113)
 		return "", errors.New("Roman numerals were apparently rarely greater than 3k")
 		           ^
-roman_numerals.go:16:13: mnd: Magic number: 3_000, in <condition> detected (gomnd)
-	if input > 3_000 {
+roman_numerals.go:16:13: mnd: Magic number: 3_999, in <condition> detected (gomnd)
+	if input > 3_999 {
 	           ^
 roman_numerals_test.go:5:1: Function TestRomanNumerals missing the call to method parallel (paralleltest)
 func TestRomanNumerals(t *testing.T) {
@@ -74,10 +82,10 @@ func TestRomanNumerals(t *testing.T) {
 roman_numerals_test.go:6:2: Range statement for test TestRomanNumerals missing the call to method parallel in test Run (paralleltest)
 	for _, tc := range validRomanNumeralTests {
 	^
-roman_numerals_test.go:25:1: Function TestRomanNumeralsInvalid missing the call to method parallel (paralleltest)
+roman_numerals_test.go:21:1: Function TestRomanNumeralsInvalid missing the call to method parallel (paralleltest)
 func TestRomanNumeralsInvalid(t *testing.T) {
 ^
-roman_numerals_test.go:31:2: Range statement for test TestRomanNumeralsInvalid missing the call to method parallel in test Run (paralleltest)
+roman_numerals_test.go:27:2: Range statement for test TestRomanNumeralsInvalid missing the call to method parallel in test Run (paralleltest)
 	for _, tc := range invalidRomanNumeralTests {
 	^
 cases_test.go:1:9: package should be `romannumerals_test` instead of `romannumerals` (testpackage)
@@ -90,22 +98,22 @@ roman_numerals_test.go:1:9: package should be `romannumerals_test` instead of `r
 package romannumerals
         ^
 
-real	0m0.517s
-user	0m0.768s
-sys	0m0.489s
+real	0m1.437s
+user	0m3.362s
+sys	0m0.586s
 
 
  ==============================================================================
 
 Exit code: -1
 
-real	0m0.574s
-user	0m0.801s
-sys	0m0.535s
+real	0m1.493s
+user	0m3.388s
+sys	0m0.636s
 
-real	0m0.577s
-user	0m0.801s
-sys	0m0.540s
+real	0m1.496s
+user	0m3.388s
+sys	0m0.640s
 
 ===============================================================================
 
@@ -123,9 +131,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.022s
-user	0m0.013s
-sys	0m0.018s
+real	0m0.017s
+user	0m0.006s
+sys	0m0.016s
 
 
  ==============================================================================
@@ -133,22 +141,22 @@ sys	0m0.018s
 Running: revive -formatter=stylish ./...
 
 
-real	0m0.086s
-user	0m0.040s
-sys	0m0.048s
+real	0m0.043s
+user	0m0.020s
+sys	0m0.035s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.119s
-user	0m0.057s
-sys	0m0.077s
+real	0m0.070s
+user	0m0.030s
+sys	0m0.061s
 
-real	0m0.121s
-user	0m0.058s
-sys	0m0.078s
+real	0m0.072s
+user	0m0.032s
+sys	0m0.061s
 
 ===============================================================================
 
@@ -166,9 +174,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.026s
-user	0m0.014s
-sys	0m0.022s
+real	0m0.024s
+user	0m0.013s
+sys	0m0.019s
 
 
  ==============================================================================
@@ -176,22 +184,22 @@ sys	0m0.022s
 Running: ineffassign ./...
 
 
-real	0m0.076s
-user	0m0.113s
-sys	0m0.098s
+real	0m0.093s
+user	0m0.123s
+sys	0m0.117s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.119s
-user	0m0.135s
-sys	0m0.135s
+real	0m0.133s
+user	0m0.141s
+sys	0m0.150s
 
-real	0m0.122s
-user	0m0.136s
-sys	0m0.136s
+real	0m0.135s
+user	0m0.142s
+sys	0m0.151s
 
 ===============================================================================
 
@@ -209,9 +217,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.018s
-user	0m0.010s
-sys	0m0.015s
+real	0m0.019s
+user	0m0.014s
+sys	0m0.012s
 
 
  ==============================================================================
@@ -221,22 +229,22 @@ Running: go-consistent -v ./...
 	info: check "./."
 internal error: package "errors" without types was imported from "romannumerals"
 
-real	0m0.089s
-user	0m0.120s
-sys	0m0.095s
+real	0m0.078s
+user	0m0.112s
+sys	0m0.101s
 
 
  ==============================================================================
 
 Exit code: -1
 
-real	0m0.117s
-user	0m0.134s
-sys	0m0.119s
+real	0m0.110s
+user	0m0.132s
+sys	0m0.125s
 
-real	0m0.118s
-user	0m0.134s
-sys	0m0.121s
+real	0m0.112s
+user	0m0.135s
+sys	0m0.125s
 
 ===============================================================================
 
@@ -254,9 +262,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.019s
-user	0m0.007s
-sys	0m0.019s
+real	0m0.023s
+user	0m0.011s
+sys	0m0.020s
 
 
  ==============================================================================
@@ -266,22 +274,22 @@ Running: staticcheck -checks=all ./...
 roman_numerals.go:12:14: error strings should not be capitalized (ST1005)
 roman_numerals.go:17:14: error strings should not be capitalized (ST1005)
 
-real	0m1.231s
-user	0m3.548s
-sys	0m0.354s
+real	0m1.232s
+user	0m3.726s
+sys	0m0.351s
 
 
  ==============================================================================
 
 Exit code: -1
 
-real	0m1.264s
-user	0m3.560s
-sys	0m0.388s
-
 real	0m1.268s
-user	0m3.562s
-sys	0m0.389s
+user	0m3.744s
+sys	0m0.382s
+
+real	0m1.271s
+user	0m3.745s
+sys	0m0.384s
 
 ===============================================================================
 
@@ -299,9 +307,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.040s
-user	0m0.018s
-sys	0m0.040s
+real	0m0.030s
+user	0m0.014s
+sys	0m0.027s
 
 
  ==============================================================================
@@ -309,22 +317,22 @@ sys	0m0.040s
 Running: gocritic check -enableAll ./...
 
 
-real	0m0.888s
-user	0m2.038s
-sys	0m0.325s
+real	0m0.794s
+user	0m1.925s
+sys	0m0.305s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.952s
-user	0m2.065s
-sys	0m0.387s
+real	0m0.840s
+user	0m1.947s
+sys	0m0.344s
 
-real	0m0.956s
-user	0m2.066s
-sys	0m0.390s
+real	0m0.843s
+user	0m1.949s
+sys	0m0.346s
 
 ===============================================================================
 
@@ -342,9 +350,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.040s
-user	0m0.025s
-sys	0m0.031s
+real	0m0.021s
+user	0m0.013s
+sys	0m0.014s
 
 
  ==============================================================================
@@ -352,22 +360,22 @@ sys	0m0.031s
 Running: go vet ./...
 
 
-real	0m0.088s
-user	0m0.119s
-sys	0m0.130s
+real	0m0.071s
+user	0m0.102s
+sys	0m0.095s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.145s
-user	0m0.153s
-sys	0m0.176s
+real	0m0.104s
+user	0m0.116s
+sys	0m0.124s
 
-real	0m0.147s
-user	0m0.153s
-sys	0m0.178s
+real	0m0.106s
+user	0m0.117s
+sys	0m0.125s
 
 ===============================================================================
 
@@ -385,9 +393,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.029s
-user	0m0.022s
-sys	0m0.016s
+real	0m0.025s
+user	0m0.013s
+sys	0m0.022s
 
 
  ==============================================================================
@@ -395,22 +403,22 @@ sys	0m0.016s
 Running: go fix ./...
 
 
-real	0m0.048s
-user	0m0.016s
-sys	0m0.033s
+real	0m0.036s
+user	0m0.022s
+sys	0m0.027s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.090s
-user	0m0.040s
-sys	0m0.063s
+real	0m0.073s
+user	0m0.041s
+sys	0m0.059s
 
-real	0m0.092s
+real	0m0.074s
 user	0m0.042s
-sys	0m0.063s
+sys	0m0.059s
 
 ===============================================================================
 
@@ -428,33 +436,33 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.032s
-user	0m0.022s
-sys	0m0.022s
+real	0m0.031s
+user	0m0.017s
+sys	0m0.026s
 
 
  ==============================================================================
 
 Running: errcheck ./...
 
-roman_numerals_test.go:47:18:	ToRomanNumeral(tc.input)
+roman_numerals_test.go:43:18:	ToRomanNumeral(tc.input)
 
-real	0m0.487s
-user	0m1.576s
-sys	0m0.310s
+real	0m0.465s
+user	0m1.424s
+sys	0m0.280s
 
 
  ==============================================================================
 
 Exit code: -1
 
-real	0m0.537s
-user	0m1.605s
-sys	0m0.349s
+real	0m0.515s
+user	0m1.450s
+sys	0m0.323s
 
-real	0m0.539s
-user	0m1.606s
-sys	0m0.350s
+real	0m0.518s
+user	0m1.451s
+sys	0m0.325s
 
 ===============================================================================
 
@@ -473,8 +481,8 @@ Running: go clean ./...
 
 
 real	0m0.019s
-user	0m0.017s
-sys	0m0.009s
+user	0m0.011s
+sys	0m0.014s
 
 
  ==============================================================================
@@ -482,27 +490,27 @@ sys	0m0.009s
 Running: gocyclo .
 
 6 romannumerals ToRomanNumeral roman_numerals.go:10:1
-4 romannumerals BenchmarkRomanNumerals roman_numerals_test.go:41:1
+4 romannumerals BenchmarkRomanNumerals roman_numerals_test.go:37:1
 4 romannumerals TestRomanNumerals roman_numerals_test.go:5:1
-3 romannumerals TestRomanNumeralsInvalid roman_numerals_test.go:25:1
+3 romannumerals TestRomanNumeralsInvalid roman_numerals_test.go:21:1
 2 romannumerals ExampleToRomanNumeral roman_numerals_examples_test.go:5:1
 
-real	0m0.014s
-user	0m0.002s
-sys	0m0.001s
+real	0m0.003s
+user	0m0.003s
+sys	0m0.000s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.041s
-user	0m0.023s
-sys	0m0.018s
+real	0m0.034s
+user	0m0.018s
+sys	0m0.025s
 
-real	0m0.043s
-user	0m0.025s
-sys	0m0.018s
+real	0m0.035s
+user	0m0.020s
+sys	0m0.025s
 
 ===============================================================================
 
@@ -519,25 +527,23 @@ Go version:
 
 Running: misspell .
 
-coverage-annotations.txt:17:46: "substract" is a misspelling of "subtract"
-coverage.html:105:44: "substract" is a misspelling of "subtract"
 
-real	0m0.027s
-user	0m0.032s
-sys	0m0.012s
+real	0m0.030s
+user	0m0.042s
+sys	0m0.010s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.041s
-user	0m0.040s
+real	0m0.043s
+user	0m0.048s
 sys	0m0.022s
 
-real	0m0.043s
-user	0m0.041s
-sys	0m0.024s
+real	0m0.045s
+user	0m0.049s
+sys	0m0.022s
 
 ===============================================================================
 
@@ -555,20 +561,20 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.020s
-user	0m0.012s
-sys	0m0.012s
+real	0m0.019s
+user	0m0.009s
+sys	0m0.018s
 
 
  ==============================================================================
 
 Running: gosec ./...
 
-[gosec] 2023/09/21 23:24:17 Including rules: default
-[gosec] 2023/09/21 23:24:17 Excluding rules: default
-[gosec] 2023/09/21 23:24:17 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/roman-numerals
-[gosec] 2023/09/21 23:24:17 Checking package: romannumerals
-[gosec] 2023/09/21 23:24:17 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/roman-numerals/roman_numerals.go
+[gosec] 2023/09/22 08:50:44 Including rules: default
+[gosec] 2023/09/22 08:50:44 Excluding rules: default
+[gosec] 2023/09/22 08:50:44 Import directory: /home/vpayno/git_vpayno/exercism-workspace/go/roman-numerals
+[gosec] 2023/09/22 08:50:44 Checking package: romannumerals
+[gosec] 2023/09/22 08:50:44 Checking file: /home/vpayno/git_vpayno/exercism-workspace/go/roman-numerals/roman_numerals.go
 Results:
 
 
@@ -580,22 +586,22 @@ Results:
   Issues : [1;32m0[0m
 
 
-real	0m0.121s
-user	0m0.135s
-sys	0m0.133s
+real	0m0.103s
+user	0m0.094s
+sys	0m0.093s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m0.154s
-user	0m0.153s
-sys	0m0.154s
+real	0m0.133s
+user	0m0.105s
+sys	0m0.125s
 
-real	0m0.156s
-user	0m0.154s
-sys	0m0.155s
+real	0m0.135s
+user	0m0.106s
+sys	0m0.125s
 
 ===============================================================================
 
@@ -613,9 +619,9 @@ Go version:
 Running: go clean ./...
 
 
-real	0m0.023s
-user	0m0.012s
-sys	0m0.020s
+real	0m0.039s
+user	0m0.018s
+sys	0m0.033s
 
 
  ==============================================================================
@@ -647,6 +653,8 @@ Running: gotest -v -covermode=count -coverprofile coverage.out ./...
 === RUN   TestRomanNumerals/166_is_CLXVI
 === RUN   TestRomanNumerals/666_is_DCLXVI
 === RUN   TestRomanNumerals/1666_is_MDCLXVI
+=== RUN   TestRomanNumerals/3001_is_MMMI
+=== RUN   TestRomanNumerals/3999_is_MMMCMXCIX
 --- PASS: TestRomanNumerals (0.00s)
     --- PASS: TestRomanNumerals/1_is_I (0.00s)
     --- PASS: TestRomanNumerals/2_is_II (0.00s)
@@ -672,23 +680,25 @@ Running: gotest -v -covermode=count -coverprofile coverage.out ./...
     --- PASS: TestRomanNumerals/166_is_CLXVI (0.00s)
     --- PASS: TestRomanNumerals/666_is_DCLXVI (0.00s)
     --- PASS: TestRomanNumerals/1666_is_MDCLXVI (0.00s)
+    --- PASS: TestRomanNumerals/3001_is_MMMI (0.00s)
+    --- PASS: TestRomanNumerals/3999_is_MMMCMXCIX (0.00s)
 === RUN   TestRomanNumeralsInvalid
 === RUN   TestRomanNumeralsInvalid/0_is_out_of_range
 === RUN   TestRomanNumeralsInvalid/-1_is_out_of_range
-=== RUN   TestRomanNumeralsInvalid/3001_is_out_of_range
+=== RUN   TestRomanNumeralsInvalid/4000_is_out_of_range
 --- PASS: TestRomanNumeralsInvalid (0.00s)
     --- PASS: TestRomanNumeralsInvalid/0_is_out_of_range (0.00s)
     --- PASS: TestRomanNumeralsInvalid/-1_is_out_of_range (0.00s)
-    --- PASS: TestRomanNumeralsInvalid/3001_is_out_of_range (0.00s)
+    --- PASS: TestRomanNumeralsInvalid/4000_is_out_of_range (0.00s)
 === RUN   ExampleToRomanNumeral
 --- PASS: ExampleToRomanNumeral (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	romannumerals	0.004s	coverage: 100.0% of statements
+ok  	romannumerals	0.003s	coverage: 100.0% of statements
 
-real	0m0.198s
-user	0m0.208s
-sys	0m0.172s
+real	0m0.214s
+user	0m0.262s
+sys	0m0.174s
 
 
  ==============================================================================
@@ -698,9 +708,9 @@ Running: go tool cover -func=coverage.out
 romannumerals/roman_numerals.go:10:	ToRomanNumeral	100.0%
 total:					(statements)	100.0%
 
-real	0m0.060s
-user	0m0.070s
-sys	0m0.069s
+real	0m0.046s
+user	0m0.037s
+sys	0m0.071s
 
 
  ==============================================================================
@@ -708,9 +718,9 @@ sys	0m0.069s
 Running: go tool cover -html coverage.out -o coverage.html
 
 
-real	0m0.043s
+real	0m0.044s
 user	0m0.046s
-sys	0m0.051s
+sys	0m0.047s
 
 
  ==============================================================================
@@ -719,13 +729,13 @@ Running: cover_annotate
 
 Running: gocov convert coverage.out | gocov annotate -ceiling=100 - | tee coverage-annotations.txt
 
-real	0m0.041s
-user	0m0.017s
-sys	0m0.023s
+real	0m0.016s
+user	0m0.009s
+sys	0m0.015s
 
-real	0m0.041s
-user	0m0.018s
-sys	0m0.023s
+real	0m0.016s
+user	0m0.009s
+sys	0m0.015s
 
 
  ==============================================================================
@@ -757,6 +767,8 @@ Running: gotest -v -race -covermode=atomic ./...
 === RUN   TestRomanNumerals/166_is_CLXVI
 === RUN   TestRomanNumerals/666_is_DCLXVI
 === RUN   TestRomanNumerals/1666_is_MDCLXVI
+=== RUN   TestRomanNumerals/3001_is_MMMI
+=== RUN   TestRomanNumerals/3999_is_MMMCMXCIX
 --- PASS: TestRomanNumerals (0.00s)
     --- PASS: TestRomanNumerals/1_is_I (0.00s)
     --- PASS: TestRomanNumerals/2_is_II (0.00s)
@@ -782,36 +794,38 @@ Running: gotest -v -race -covermode=atomic ./...
     --- PASS: TestRomanNumerals/166_is_CLXVI (0.00s)
     --- PASS: TestRomanNumerals/666_is_DCLXVI (0.00s)
     --- PASS: TestRomanNumerals/1666_is_MDCLXVI (0.00s)
+    --- PASS: TestRomanNumerals/3001_is_MMMI (0.00s)
+    --- PASS: TestRomanNumerals/3999_is_MMMCMXCIX (0.00s)
 === RUN   TestRomanNumeralsInvalid
 === RUN   TestRomanNumeralsInvalid/0_is_out_of_range
 === RUN   TestRomanNumeralsInvalid/-1_is_out_of_range
-=== RUN   TestRomanNumeralsInvalid/3001_is_out_of_range
+=== RUN   TestRomanNumeralsInvalid/4000_is_out_of_range
 --- PASS: TestRomanNumeralsInvalid (0.00s)
     --- PASS: TestRomanNumeralsInvalid/0_is_out_of_range (0.00s)
     --- PASS: TestRomanNumeralsInvalid/-1_is_out_of_range (0.00s)
-    --- PASS: TestRomanNumeralsInvalid/3001_is_out_of_range (0.00s)
+    --- PASS: TestRomanNumeralsInvalid/4000_is_out_of_range (0.00s)
 === RUN   ExampleToRomanNumeral
 --- PASS: ExampleToRomanNumeral (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	romannumerals	1.016s	coverage: 100.0% of statements
+ok  	romannumerals	1.017s	coverage: 100.0% of statements
 
-real	0m1.460s
-user	0m0.376s
-sys	0m0.230s
+real	0m1.305s
+user	0m0.337s
+sys	0m0.249s
 
 
  ==============================================================================
 
 Exit code: 0
 
-real	0m1.843s
-user	0m0.740s
-sys	0m0.580s
+real	0m1.683s
+user	0m0.717s
+sys	0m0.604s
 
-real	0m1.847s
-user	0m0.741s
-sys	0m0.582s
+real	0m1.685s
+user	0m0.718s
+sys	0m0.605s
 
 ===============================================================================
 
@@ -824,13 +838,13 @@ goarch: amd64
 pkg: romannumerals
 cpu: 12th Gen Intel(R) Core(TM) i5-1240P
 BenchmarkRomanNumerals
-BenchmarkRomanNumerals-8   	   35883	     32718 ns/op	   25428 B/op	     153 allocs/op
+BenchmarkRomanNumerals-8   	   32944	     36660 ns/op	   27573 B/op	     169 allocs/op
 PASS
-ok  	romannumerals	1.524s
+ok  	romannumerals	1.582s
 
-real	0m1.677s
-user	0m1.749s
-sys	0m0.191s
+real	0m1.722s
+user	0m1.806s
+sys	0m0.182s
 
 ===============================================================================
 
@@ -860,6 +874,8 @@ gotest -v -tags bonus
 === RUN   TestRomanNumerals/166_is_CLXVI
 === RUN   TestRomanNumerals/666_is_DCLXVI
 === RUN   TestRomanNumerals/1666_is_MDCLXVI
+=== RUN   TestRomanNumerals/3001_is_MMMI
+=== RUN   TestRomanNumerals/3999_is_MMMCMXCIX
 --- PASS: TestRomanNumerals (0.00s)
     --- PASS: TestRomanNumerals/1_is_I (0.00s)
     --- PASS: TestRomanNumerals/2_is_II (0.00s)
@@ -885,22 +901,24 @@ gotest -v -tags bonus
     --- PASS: TestRomanNumerals/166_is_CLXVI (0.00s)
     --- PASS: TestRomanNumerals/666_is_DCLXVI (0.00s)
     --- PASS: TestRomanNumerals/1666_is_MDCLXVI (0.00s)
+    --- PASS: TestRomanNumerals/3001_is_MMMI (0.00s)
+    --- PASS: TestRomanNumerals/3999_is_MMMCMXCIX (0.00s)
 === RUN   TestRomanNumeralsInvalid
 === RUN   TestRomanNumeralsInvalid/0_is_out_of_range
 === RUN   TestRomanNumeralsInvalid/-1_is_out_of_range
-=== RUN   TestRomanNumeralsInvalid/3001_is_out_of_range
+=== RUN   TestRomanNumeralsInvalid/4000_is_out_of_range
 --- PASS: TestRomanNumeralsInvalid (0.00s)
     --- PASS: TestRomanNumeralsInvalid/0_is_out_of_range (0.00s)
     --- PASS: TestRomanNumeralsInvalid/-1_is_out_of_range (0.00s)
-    --- PASS: TestRomanNumeralsInvalid/3001_is_out_of_range (0.00s)
+    --- PASS: TestRomanNumeralsInvalid/4000_is_out_of_range (0.00s)
 === RUN   ExampleToRomanNumeral
 --- PASS: ExampleToRomanNumeral (0.00s)
 PASS
-ok  	romannumerals	0.003s
+ok  	romannumerals	0.002s
 
-real	0m0.133s
-user	0m0.173s
-sys	0m0.140s
+real	0m0.156s
+user	0m0.191s
+sys	0m0.177s
 
 ===============================================================================
 
@@ -911,35 +929,35 @@ goos: linux
 goarch: amd64
 pkg: romannumerals
 cpu: 12th Gen Intel(R) Core(TM) i5-1240P
-                │ benchstat-old.txt │        benchstat-new.txt         │
-                │      sec/op       │    sec/op      vs base           │
-RomanNumerals-8        7.754µ ± ∞ ¹   32.718µ ± ∞ ¹  ~ (p=1.000 n=1) ²
+                │ benchstat-old.txt │        benchstat-new.txt        │
+                │      sec/op       │    sec/op     vs base           │
+RomanNumerals-8        32.72µ ± ∞ ¹   36.66µ ± ∞ ¹  ~ (p=1.000 n=1) ²
 ¹ need >= 6 samples for confidence interval at level 0.95
 ² need >= 4 samples to detect a difference at alpha level 0.05
 
                 │ benchstat-old.txt │        benchstat-new.txt         │
                 │       B/op        │     B/op       vs base           │
-RomanNumerals-8         256.0 ± ∞ ¹   25428.0 ± ∞ ¹  ~ (p=1.000 n=1) ²
+RomanNumerals-8       24.83Ki ± ∞ ¹   26.93Ki ± ∞ ¹  ~ (p=1.000 n=1) ²
 ¹ need >= 6 samples for confidence interval at level 0.95
 ² need >= 4 samples to detect a difference at alpha level 0.05
 
-                │ benchstat-old.txt │        benchstat-new.txt        │
-                │     allocs/op     │  allocs/op    vs base           │
-RomanNumerals-8         63.00 ± ∞ ¹   153.00 ± ∞ ¹  ~ (p=1.000 n=1) ²
+                │ benchstat-old.txt │       benchstat-new.txt        │
+                │     allocs/op     │  allocs/op   vs base           │
+RomanNumerals-8         153.0 ± ∞ ¹   169.0 ± ∞ ¹  ~ (p=1.000 n=1) ²
 ¹ need >= 6 samples for confidence interval at level 0.95
 ² need >= 4 samples to detect a difference at alpha level 0.05
 
-real	0m0.014s
-user	0m0.003s
-sys	0m0.001s
+real	0m0.004s
+user	0m0.000s
+sys	0m0.003s
 
 ===============================================================================
 
 gomarkdoc --output romannumerals-doc.md
 
-real	0m0.016s
-user	0m0.007s
-sys	0m0.010s
+real	0m0.012s
+user	0m0.006s
+sys	0m0.006s
 
 ===============================================================================
 
@@ -955,9 +973,9 @@ func ToRomanNumeral(input int) (string, error)
     ToRomanNumeral returns a roman numeral string and and error code.
 
 
-real	0m0.062s
-user	0m0.036s
-sys	0m0.037s
+real	0m0.042s
+user	0m0.020s
+sys	0m0.035s
 
 
 ===============================================================================

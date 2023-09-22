@@ -87,17 +87,17 @@ import (
 )
 
 // ToRomanNumeral returns a roman numeral string and and error code.
-func ToRomanNumeral(input int) (string, error) <span class="cov6" title="49">{
+func ToRomanNumeral(input int) (string, error) <span class="cov6" title="52">{
         if input &lt;= 0 </span><span class="cov2" title="3">{
                 return "", errors.New("Roman numerals can't be less than or equal to 0")
         }</span>
 
         // Only process numbers &lt;=3k.
-        <span class="cov6" title="46">if input &gt; 3_000 </span><span class="cov1" title="2">{
+        <span class="cov6" title="49">if input &gt; 3_999 </span><span class="cov1" title="2">{
                 return "", errors.New("Roman numerals were apparently rarely greater than 3k")
         }</span>
 
-        <span class="cov6" title="44">d2r := map[int]string{
+        <span class="cov6" title="47">d2r := map[int]string{
                 1:     "I",
                 4:     "IV",
                 5:     "V",
@@ -117,23 +117,23 @@ func ToRomanNumeral(input int) (string, error) <span class="cov6" title="49">{
 
         decimals := make([]int, 0, len(d2r))
 
-        for d := range d2r </span><span class="cov10" title="572">{
+        for d := range d2r </span><span class="cov10" title="611">{
                 decimals = append(decimals, d)
         }</span>
 
-        <span class="cov6" title="44">sort.Sort(sort.Reverse(sort.IntSlice(decimals)))
+        <span class="cov6" title="47">sort.Sort(sort.Reverse(sort.IntSlice(decimals)))
 
-        for _, decimal := range decimals </span><span class="cov10" title="572">{
+        for _, decimal := range decimals </span><span class="cov10" title="611">{
                 roman := d2r[decimal]
 
-                for input &gt;= decimal </span><span class="cov7" title="117">{
+                for input &gt;= decimal </span><span class="cov7" title="131">{
                         output += roman
 
                         input -= decimal
                 }</span>
         }
 
-        <span class="cov6" title="44">return output, nil</span>
+        <span class="cov6" title="47">return output, nil</span>
 }
 </pre>
 		
