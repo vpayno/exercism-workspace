@@ -42,3 +42,10 @@ I think you got the idea!
 ### Created by
 
 - @IsaacG
+
+### My Solution
+
+- [my solution](./all-your-base.awk)
+- [awkunit tests](./all-your-base_test.awk)
+- [test cases](./test-cases.awk)
+- [run-tests](./run-tests-awk.txt)

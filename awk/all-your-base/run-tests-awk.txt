@@ -1,0 +1,185 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+AWKLIBPATH=/usr/lib/x86_64-linux-gnu/gawk:../.lib
+
+/usr/lib/x86_64-linux-gnu/gawk
+filefuncs.so
+fnmatch.so
+fork.so
+inplace.so
+intdiv.so
+ordchr.so
+readdir.so
+readfile.so
+revoutput.so
+revtwoway.so
+rwarray.so
+time.so
+
+../.lib
+awkunit.awk
+awkunit.so
+
+gawk -v obase=10 --lint --file=./all-your-base.awk < /dev/null > /dev/null
+gawk: ./all-your-base.awk:3: warning: `load' is a gawk extension
+
+real	0m0.005s
+user	0m0.002s
+sys	0m0.003s
+
+gawk -v obase=10 --lint --file=./awkunit.awk < /dev/null > /dev/null
+gawk: ./awkunit.awk:3: warning: `load' is a gawk extension
+gawk: warning: function `assertEquals' defined but never called directly
+gawk: warning: function `assert' defined but never called directly
+gawk: ./awkunit.awk:26: warning: reference to uninitialized variable `_assert_exit'
+
+real	0m0.005s
+user	0m0.001s
+sys	0m0.004s
+
+gawk -v obase=10 --lint --file=./test-cases.awk < /dev/null > /dev/null
+
+real	0m0.005s
+user	0m0.000s
+sys	0m0.004s
+
+exit 0
+
+===============================================================================
+
+Running: bats ./test-all-your-base.bats
+1..21
+ok 1 single bit to one decimal
+ok 2 binary to single decimal
+ok 3 single decimal to binary
+ok 4 binary to multiple decimal
+ok 5 decimal to binary
+ok 6 trinary to hexadecimal
+ok 7 hexadecimal to trinary
+ok 8 15 bit integer
+ok 9 empty list
+ok 10 single zero
+ok 11 multiple zeroes
+ok 12 leading zeros
+ok 13 input base is one
+ok 14 input base is zero
+ok 15 input base is negative
+ok 16 negative digit
+ok 17 invalid positive digit
+ok 18 output base is one
+ok 19 output base is zero
+ok 20 output base is negative
+ok 21 both bases are negative
+
+real	0m0.817s
+user	0m0.547s
+sys	0m0.287s
+
+exit 0
+
+===============================================================================
+
+AWKLIBPATH=/usr/lib/x86_64-linux-gnu/gawk:../.lib
+
+/usr/lib/x86_64-linux-gnu/gawk
+filefuncs.so
+fnmatch.so
+fork.so
+inplace.so
+intdiv.so
+ordchr.so
+readdir.so
+readfile.so
+revoutput.so
+revtwoway.so
+rwarray.so
+time.so
+
+../.lib
+awkunit.awk
+awkunit.so
+
+Running: gawk -v obase=10 --file ./all-your-base_test.awk && printf \n%s\n Tests Passed! || printf \n%s\n Tests Failed!
+
+Running 2 tests...
+
+Test 1:
+     input -> [2]
+    digits -> [1 0 1]
+    output -> [5]
+    result -> passed
+
+Test 2:
+     input -> [10]
+    digits -> [5]
+    output -> [1 0 1]
+    result -> passed
+
+Running 7 test cases
+
+Test 3:
+     input -> [10]
+    digits -> []
+    output -> [error:output base, 1, is less than or equal to 1]
+    result -> passed
+
+Test 4:
+     input -> [10]
+    digits -> []
+    output -> []
+    result -> passed
+
+Test 5:
+     input -> [10]
+    digits -> [5]
+    output -> [1 0 1]
+    result -> passed
+
+Test 6:
+     input -> [1]
+    digits -> []
+    output -> [error:input base, 1, is less than or equal to 1]
+    result -> passed
+
+Test 7:
+     input -> [2]
+    digits -> [1 -1 1]
+    output -> [error:found negative input digit, -1]
+    result -> passed
+
+Test 8:
+     input -> [2]
+    digits -> [1 0 1]
+    output -> [5]
+    result -> passed
+
+Test 9:
+     input -> [2]
+    digits -> [1 2 1]
+    output -> [error:found input digit, 2, that is larger than input base, 2]
+    result -> passed
+
+
+9 out of 9 tests passed!
+
+real	0m0.010s
+user	0m0.003s
+sys	0m0.008s
+
+Tests Passed!
+
+exit 0
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.037s
+user	0m0.036s
+sys	0m0.019s
+
+===============================================================================
+

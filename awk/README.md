@@ -32,3 +32,4 @@
 - [scrabble-score](./scrabble-score/README.md)
 - [etl](./etl/README.md)
 - [space-age](./space-age/README.md)
+- [all-your-base](./all-your-base/README.md)
