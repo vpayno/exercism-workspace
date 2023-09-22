@@ -51,3 +51,17 @@ sed -r -i -e '/#\[ignore\]/d' ./tests/*.rs
 git add ./tests/*.rs
 git diff --cached ./tests/*.rs
 printf "\n"
+
+{
+	printf "[workspace]\n"
+	printf "resolver = \"%d\"\n" 2
+	printf "members = [\n"
+	for d in ./*; do
+		if [[ -d $d ]]; then
+			printf "    \"%s\",\n" "$d"
+		fi
+	done
+	printf "]\n"
+} >Cargo.toml
+git add Cargo.toml
+printf "\n"
