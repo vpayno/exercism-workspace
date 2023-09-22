@@ -44,3 +44,4 @@
 - [luhn-trait](./luhn-trait/README.md)
 - [series](./series/README.md)
 - [bob](./bob/README.md)
+- [all-your-base](./all-your-base/README.md)

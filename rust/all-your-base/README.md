@@ -60,3 +60,8 @@ I think you got the idea!
 - @stringparser
 - @xakon
 - @ZapAnton
+
+### My Solution
+
+- [my solution](./src/lib.rs)
+- [run-tests](./run-tests-rust.txt)

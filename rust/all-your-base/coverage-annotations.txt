@@ -1,0 +1,167 @@
+    1|     15|#[derive(Debug, PartialEq, Eq)]
+                       ^0  ^0
+  ------------------
+  | Unexecuted instantiation: <allyourbase::Error as core::fmt::Debug>::fmt
+  ------------------
+  | Unexecuted instantiation: <allyourbase::Error as core::fmt::Debug>::fmt
+  ------------------
+  | <allyourbase::Error as core::cmp::PartialEq>::eq:
+  |    1|     15|#[derive(Debug, PartialEq, Eq)]
+  ------------------
+  | Unexecuted instantiation: <allyourbase::Error as core::cmp::PartialEq>::eq
+  ------------------
+  | Unexecuted instantiation: <allyourbase::Error as core::cmp::PartialEq>::eq
+  ------------------
+    2|       |pub enum Error {
+    3|       |    InvalidInputBase,
+    4|       |    InvalidOutputBase,
+    5|       |    InvalidDigit(u32),
+    6|       |}
+    7|       |
+    8|       |/// Convert a number between two bases.
+    9|       |///
+   10|       |/// A number is any slice of digits.
+   11|       |/// A digit is any unsigned integer (e.g. u8, u16, u32, u64, or usize).
+   12|       |/// Bases are specified as unsigned integers.
+   13|       |///
+   14|       |/// Return the corresponding Error enum if the conversion is impossible.
+   15|       |///
+   16|       |/// You are allowed to change the function signature as long as all test still pass.
+   17|       |///
+   18|       |/// Example:
+   19|       |/// Input
+   20|       |///   number: &[4, 2]
+   21|       |///   from_base: 10
+   22|       |///   to_base: 2
+   23|       |/// Result
+   24|       |///   Ok(vec![1, 0, 1, 0, 1, 0])
+   25|       |///
+   26|       |/// The example corresponds to converting the number 42 from decimal
+   27|       |/// which is equivalent to 101010 in binary.
+   28|       |///
+   29|       |/// Notes:
+   30|       |///  * The empty slice ( "[]" ) is equal to the number 0.
+   31|       |///  * Never output leading 0 digits, unless the input number is 0, in which the output must be `[0]`.
+   32|       |///    However, your function must be able to process input with leading 0 digits.
+   33|       |///
+   34|     51|pub fn convert(input_digits: &[u32], from_base: u32, to_base: u32) -> Result<Vec<u32>, Error> {
+   35|     51|    println!("input_digits: {:?}", input_digits);
+   36|     51|
+   37|     51|    if from_base <= 1 {
+   38|      6|        return Err(Error::InvalidInputBase);
+   39|     45|    }
+   40|     45|
+   41|     45|    if to_base <= 1 {
+   42|      6|        return Err(Error::InvalidOutputBase);
+   43|     39|    }
+   44|     39|
+   45|     39|    if input_digits.is_empty() {
+   46|      3|        return Ok(vec![0]);
+   47|     36|    }
+   48|       |
+   49|    126|    for digit in input_digits {
+                      ^93
+   50|     93|        if *digit >= from_base {
+   51|      3|            return Err(Error::InvalidDigit(*digit));
+   52|     90|        }
+   53|       |    }
+   54|       |
+   55|       |    // args: accumulator, element
+   56|     87|    let base2ten_op = |mut base_ten: u32, digit: &u32| -> u32 {
+                      ^33
+   57|     87|        base_ten *= from_base;
+   58|     87|        base_ten += digit;
+   59|     87|
+   60|     87|        base_ten
+   61|     87|    };
+  ------------------
+  | allyourbase::convert::{closure#0}:
+  |   56|     87|    let base2ten_op = |mut base_ten: u32, digit: &u32| -> u32 {
+  |   57|     87|        base_ten *= from_base;
+  |   58|     87|        base_ten += digit;
+  |   59|     87|
+  |   60|     87|        base_ten
+  |   61|     87|    };
+  ------------------
+  | Unexecuted instantiation: allyourbase::convert::{closure#0}
+  ------------------
+   62|       |
+   63|     33|    let mut base_ten: u32 = input_digits.iter().fold(0, base2ten_op);
+   64|     33|
+   65|     33|    println!("to base 10: {}", base_ten);
+   66|     33|
+   67|     33|    let mut output_digits: Vec<u32> = Vec::new();
+   68|     33|
+   69|     33|    if base_ten == 0 {
+   70|      6|        output_digits.push(0);
+   71|      6|
+   72|      6|        return Ok(output_digits);
+   73|     27|    }
+   74|       |
+   75|     99|    while base_ten > 0 {
+   76|     72|        output_digits.insert(0, base_ten % to_base);
+   77|     72|
+   78|     72|        base_ten /= to_base;
+   79|     72|    }
+   80|       |
+   81|     27|    println!("output_digits: {:?}", output_digits);
+   82|     27|
+   83|     27|    Ok(output_digits)
+   84|     51|}
+  ------------------
+  | allyourbase::convert:
+  |   34|     51|pub fn convert(input_digits: &[u32], from_base: u32, to_base: u32) -> Result<Vec<u32>, Error> {
+  |   35|     51|    println!("input_digits: {:?}", input_digits);
+  |   36|     51|
+  |   37|     51|    if from_base <= 1 {
+  |   38|      6|        return Err(Error::InvalidInputBase);
+  |   39|     45|    }
+  |   40|     45|
+  |   41|     45|    if to_base <= 1 {
+  |   42|      6|        return Err(Error::InvalidOutputBase);
+  |   43|     39|    }
+  |   44|     39|
+  |   45|     39|    if input_digits.is_empty() {
+  |   46|      3|        return Ok(vec![0]);
+  |   47|     36|    }
+  |   48|       |
+  |   49|    126|    for digit in input_digits {
+  |                      ^93
+  |   50|     93|        if *digit >= from_base {
+  |   51|      3|            return Err(Error::InvalidDigit(*digit));
+  |   52|     90|        }
+  |   53|       |    }
+  |   54|       |
+  |   55|       |    // args: accumulator, element
+  |   56|     33|    let base2ten_op = |mut base_ten: u32, digit: &u32| -> u32 {
+  |   57|       |        base_ten *= from_base;
+  |   58|       |        base_ten += digit;
+  |   59|       |
+  |   60|       |        base_ten
+  |   61|       |    };
+  |   62|       |
+  |   63|     33|    let mut base_ten: u32 = input_digits.iter().fold(0, base2ten_op);
+  |   64|     33|
+  |   65|     33|    println!("to base 10: {}", base_ten);
+  |   66|     33|
+  |   67|     33|    let mut output_digits: Vec<u32> = Vec::new();
+  |   68|     33|
+  |   69|     33|    if base_ten == 0 {
+  |   70|      6|        output_digits.push(0);
+  |   71|      6|
+  |   72|      6|        return Ok(output_digits);
+  |   73|     27|    }
+  |   74|       |
+  |   75|     99|    while base_ten > 0 {
+  |   76|     72|        output_digits.insert(0, base_ten % to_base);
+  |   77|     72|
+  |   78|     72|        base_ten /= to_base;
+  |   79|     72|    }
+  |   80|       |
+  |   81|     27|    println!("output_digits: {:?}", output_digits);
+  |   82|     27|
+  |   83|     27|    Ok(output_digits)
+  |   84|     51|}
+  ------------------
+  | Unexecuted instantiation: allyourbase::convert
+  ------------------
