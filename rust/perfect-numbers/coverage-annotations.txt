@@ -1,0 +1,128 @@
+    1|     33|#[derive(Debug, PartialEq, Eq)]
+                       ^0  ^0
+  ------------------
+  | Unexecuted instantiation: <perfect_numbers::Classification as core::fmt::Debug>::fmt
+  ------------------
+  | Unexecuted instantiation: <perfect_numbers::Classification as core::fmt::Debug>::fmt
+  ------------------
+  | Unexecuted instantiation: <perfect_numbers::Classification as core::cmp::PartialEq>::eq
+  ------------------
+  | <perfect_numbers::Classification as core::cmp::PartialEq>::eq:
+  |    1|     33|#[derive(Debug, PartialEq, Eq)]
+  ------------------
+  | Unexecuted instantiation: <perfect_numbers::Classification as core::cmp::PartialEq>::eq
+  ------------------
+    2|       |pub enum Classification {
+    3|       |    Abundant,
+    4|       |    Perfect,
+    5|       |    Deficient,
+    6|       |}
+    7|       |
+    8|       |/// Determine if a number is perfect, abundant or deficient based on Nicomachus' (60 - 120 CE) classification scheme for positive integers.
+    9|       |///
+   10|       |/// Example - Invalid Input
+   11|       |/// ```rust
+   12|       |/// use perfect_numbers::*;
+   13|       |///
+   14|       |/// let want: Option<Classification> = None;
+   15|       |///
+   16|       |/// match classify(0) {
+   17|       |///     Some(got) => { assert!(false); }
+   18|       |///     None => { assert!(true) },
+   19|       |/// };
+   20|       |/// ```
+   21|       |///
+   22|       |/// Example - Perfect
+   23|       |/// ```rust
+   24|       |/// use perfect_numbers::*;
+   25|       |///
+   26|       |/// let want: Classification = Classification::Perfect;
+   27|       |///
+   28|       |/// match classify(6) {
+   29|       |///     Some(got) => { assert_eq!(got, want); }
+   30|       |///     None => {},
+   31|       |/// };
+   32|       |/// ```
+   33|       |///
+   34|       |/// Example - Abundant
+   35|       |/// ```rust
+   36|       |/// use perfect_numbers::*;
+   37|       |///
+   38|       |/// let want: Classification = Classification::Abundant;
+   39|       |///
+   40|       |/// match classify(12) {
+   41|       |///     Some(got) => { assert_eq!(got, want); }
+   42|       |///     None => {},
+   43|       |/// };
+   44|       |/// ```
+   45|       |///
+   46|       |/// Example - Deficient
+   47|       |/// ```rust
+   48|       |/// use perfect_numbers::*;
+   49|       |///
+   50|       |/// let want: Classification = Classification::Deficient;
+   51|       |///
+   52|       |/// match classify(8) {
+   53|       |///     Some(got) => { assert_eq!(got, want); }
+   54|       |///     None => {},
+   55|       |/// };
+   56|       |/// ```
+   57|     36|pub fn classify(number: u64) -> Option<Classification> {
+   58|     36|    if number == 0 {
+   59|      3|        return None;
+   60|     33|    }
+   61|     33|
+   62|     33|    let mut factors: Vec<u64> = Vec::new();
+   63|     33|
+   64|     33|    let mut factor: u64 = 1;
+   65|       |
+   66|   301M|    while factor < number {
+   67|   301M|        if number % factor == 0 {
+   68|    351|            factors.push(factor);
+   69|   301M|        }
+   70|       |
+   71|   301M|        factor += 1;
+   72|       |    }
+   73|       |
+   74|     33|    let aliquot_sum: u64 = factors.iter().sum();
+   75|     33|
+   76|     33|    Some(match aliquot_sum {
+   77|     33|        sum if sum > number => Classification::Abundant,
+                      ^9                     ^9
+   78|     24|        sum if sum < number => Classification::Deficient,
+                      ^15                    ^15
+   79|      9|        _ => Classification::Perfect,
+   80|       |    })
+   81|     36|}
+  ------------------
+  | Unexecuted instantiation: perfect_numbers::classify
+  ------------------
+  | perfect_numbers::classify:
+  |   57|     36|pub fn classify(number: u64) -> Option<Classification> {
+  |   58|     36|    if number == 0 {
+  |   59|      3|        return None;
+  |   60|     33|    }
+  |   61|     33|
+  |   62|     33|    let mut factors: Vec<u64> = Vec::new();
+  |   63|     33|
+  |   64|     33|    let mut factor: u64 = 1;
+  |   65|       |
+  |   66|   301M|    while factor < number {
+  |   67|   301M|        if number % factor == 0 {
+  |   68|    351|            factors.push(factor);
+  |   69|   301M|        }
+  |   70|       |
+  |   71|   301M|        factor += 1;
+  |   72|       |    }
+  |   73|       |
+  |   74|     33|    let aliquot_sum: u64 = factors.iter().sum();
+  |   75|     33|
+  |   76|     33|    Some(match aliquot_sum {
+  |   77|     33|        sum if sum > number => Classification::Abundant,
+  |                      ^9                     ^9
+  |   78|     24|        sum if sum < number => Classification::Deficient,
+  |                      ^15                    ^15
+  |   79|      9|        _ => Classification::Perfect,
+  |   80|       |    })
+  |   81|     36|}
+  ------------------

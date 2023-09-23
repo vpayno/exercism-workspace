@@ -48,3 +48,8 @@ Implement a way to determine whether a given number is **perfect**. Depending on
 ### Based on
 
 Taken from Chapter 2 of Functional Thinking by Neal Ford. - http://shop.oreilly.com/product/0636920029687.do
+
+### My Solution
+
+- [my solution](./src/lib.rs)
+- [run-tests](./run-tests-rust.txt)

@@ -46,3 +46,4 @@
 - [bob](./bob/README.md)
 - [all-your-base](./all-your-base/README.md)
 - [high-scores](./high-scores/README.md)
+- [perfect-numbers](./perfect-numbers/README.md)
