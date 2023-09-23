@@ -1,0 +1,89 @@
+    1|       |use std::fmt::Debug;
+    2|       |
+    3|      0|#[derive(Debug)]
+  ------------------
+  | Unexecuted instantiation: <high_scores::HighScores as core::fmt::Debug>::fmt
+  ------------------
+  | Unexecuted instantiation: <high_scores::HighScores as core::fmt::Debug>::fmt
+  ------------------
+    4|       |pub struct HighScores {
+    5|       |    scores: Vec<u32>,
+    6|       |}
+    7|       |
+    8|       |impl HighScores {
+    9|     33|    pub fn new(scores: &[u32]) -> Self {
+   10|     33|        HighScores {
+   11|     33|            scores: scores.to_vec(),
+   12|     33|        }
+   13|     33|    }
+  ------------------
+  | Unexecuted instantiation: <high_scores::HighScores>::new
+  ------------------
+  | <high_scores::HighScores>::new:
+  |    9|     33|    pub fn new(scores: &[u32]) -> Self {
+  |   10|     33|        HighScores {
+  |   11|     33|            scores: scores.to_vec(),
+  |   12|     33|        }
+  |   13|     33|    }
+  ------------------
+   14|       |
+   15|      3|    pub fn scores(&self) -> &[u32] {
+   16|      3|        &self.scores
+   17|      3|    }
+  ------------------
+  | Unexecuted instantiation: <high_scores::HighScores>::scores
+  ------------------
+  | <high_scores::HighScores>::scores:
+  |   15|      3|    pub fn scores(&self) -> &[u32] {
+  |   16|      3|        &self.scores
+  |   17|      3|    }
+  ------------------
+   18|       |
+   19|      6|    pub fn latest(&self) -> Option<u32> {
+   20|      6|        self.scores.last().copied()
+   21|      6|    }
+  ------------------
+  | Unexecuted instantiation: <high_scores::HighScores>::latest
+  ------------------
+  | <high_scores::HighScores>::latest:
+  |   19|      6|    pub fn latest(&self) -> Option<u32> {
+  |   20|      6|        self.scores.last().copied()
+  |   21|      6|    }
+  ------------------
+   22|       |
+   23|      6|    pub fn personal_best(&self) -> Option<u32> {
+   24|      6|        self.scores.iter().max().copied()
+   25|      6|    }
+  ------------------
+  | Unexecuted instantiation: <high_scores::HighScores>::personal_best
+  ------------------
+  | <high_scores::HighScores>::personal_best:
+  |   23|      6|    pub fn personal_best(&self) -> Option<u32> {
+  |   24|      6|        self.scores.iter().max().copied()
+  |   25|      6|    }
+  ------------------
+   26|       |
+   27|     18|    pub fn personal_top_three(&self) -> Vec<u32> {
+   28|     18|        let mut top = self.scores.clone();
+   29|     18|
+   30|    189|        top.sort_by(|a, b| b.cmp(a));
+  ------------------
+  | Unexecuted instantiation: <high_scores::HighScores>::personal_top_three::{closure#0}
+  ------------------
+  | <high_scores::HighScores>::personal_top_three::{closure#0}:
+  |   30|    189|        top.sort_by(|a, b| b.cmp(a));
+  ------------------
+   31|     18|        top[0..top.len().min(3)].to_vec()
+   32|     18|    }
+  ------------------
+  | Unexecuted instantiation: <high_scores::HighScores>::personal_top_three
+  ------------------
+  | <high_scores::HighScores>::personal_top_three:
+  |   27|     18|    pub fn personal_top_three(&self) -> Vec<u32> {
+  |   28|     18|        let mut top = self.scores.clone();
+  |   29|     18|
+  |   30|     18|        top.sort_by(|a, b| b.cmp(a));
+  |   31|     18|        top[0..top.len().min(3)].to_vec()
+  |   32|     18|    }
+  ------------------
+   33|       |}

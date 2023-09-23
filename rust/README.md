@@ -45,3 +45,4 @@
 - [series](./series/README.md)
 - [bob](./bob/README.md)
 - [all-your-base](./all-your-base/README.md)
+- [high-scores](./high-scores/README.md)

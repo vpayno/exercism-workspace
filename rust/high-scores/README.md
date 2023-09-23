@@ -28,3 +28,8 @@ necessary. You will require some lifetime annotations, though.
 ### Based on
 
 Tribute to the eighties' arcade game Frogger
+
+### My Solution
+
+- [my solution](./src/lib.rs)
+- [run-tests](./run-tests-rust.txt)
