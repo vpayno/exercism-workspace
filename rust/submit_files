@@ -26,7 +26,14 @@ kebab_case_to_snake_case() {
 
 # package_name_snake="$(kebab_case_to_snake_case "$(get_awk_package_name)")"
 
-declare -a RUST_FILES=(./src/lib.rs ./Cargo.toml ./Cargo.lock run-tests-rust.txt)
+declare -a RUST_FILES=(./src/lib.rs run-tests-rust.txt)
+
+declare -i DEP_COUNT
+DEP_COUNT=$(tomljson Cargo.toml | jq '.dependencies | length')
+
+if [[ ${DEP_COUNT} -gt 0 ]]; then
+	RUST_FILES+=(./Cargo.toml) # ./Cargo.lock
+fi
 
 # mapfile -t RUST_FILES < <(
 #	find . -type f -name "*[.]go" | grep -v "_test[.]go"
