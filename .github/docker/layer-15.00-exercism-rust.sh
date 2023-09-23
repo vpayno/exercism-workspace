@@ -38,6 +38,8 @@ main() {
 	CRATES=(
 		cargo-audit
 		cargo-cache
+		cargo-deps
+		cargo-deps-list
 		cargo-edit
 		cargo-fix
 		cargo-fuzz
