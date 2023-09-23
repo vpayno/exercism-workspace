@@ -47,7 +47,8 @@ git add ../README.md ./README.md
 git diff --cached ../README.md ./README.md
 printf "\n"
 
-sed -r -i -e '/#\[ignore\]/d' ./tests/*.rs
+sed -r -i -e '/#\[ignore\]$/d' ./tests/*.rs
+sed -r -i -e 's/#\[ignore\]\s+//g' ./tests/*.rs
 git add ./tests/*.rs
 git diff --cached ./tests/*.rs
 printf "\n"
