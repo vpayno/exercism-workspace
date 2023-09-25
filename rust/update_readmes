@@ -53,16 +53,17 @@ git add ./tests/*.rs
 git diff --cached ./tests/*.rs
 printf "\n"
 
+cd ..
 {
 	printf "[workspace]\n"
 	printf "resolver = \"%d\"\n" 2
 	printf "members = [\n"
 	for d in ./*; do
-		if [[ -d $d ]]; then
+		if [[ -d $d ]] && [[ ${d} != "./target" ]]; then
 			printf "    \"%s\",\n" "$d"
 		fi
 	done
 	printf "]\n"
-} >../Cargo.toml
-git add ../Cargo.toml
+} >./Cargo.toml
+git add ./Cargo.toml
 printf "\n"
