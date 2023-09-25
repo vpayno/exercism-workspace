@@ -1,0 +1,33 @@
+    1|       |use std::collections::BTreeMap;
+    2|       |
+    3|     12|pub fn transform(old_format: &BTreeMap<i32, Vec<char>>) -> BTreeMap<char, i32> {
+    4|     12|    let mut new_format: BTreeMap<char, i32> = BTreeMap::new();
+    5|       |
+    6|     45|    for (score, letters) in old_format {
+                       ^33
+    7|    141|        for letter in letters {
+                          ^108
+    8|    108|            new_format.insert(letter.to_ascii_lowercase(), *score);
+    9|    108|        }
+   10|       |    }
+   11|       |
+   12|     12|    new_format
+   13|     12|}
+  ------------------
+  | etl::transform:
+  |    3|     12|pub fn transform(old_format: &BTreeMap<i32, Vec<char>>) -> BTreeMap<char, i32> {
+  |    4|     12|    let mut new_format: BTreeMap<char, i32> = BTreeMap::new();
+  |    5|       |
+  |    6|     45|    for (score, letters) in old_format {
+  |                       ^33
+  |    7|    141|        for letter in letters {
+  |                          ^108
+  |    8|    108|            new_format.insert(letter.to_ascii_lowercase(), *score);
+  |    9|    108|        }
+  |   10|       |    }
+  |   11|       |
+  |   12|     12|    new_format
+  |   13|     12|}
+  ------------------
+  | Unexecuted instantiation: etl::transform
+  ------------------

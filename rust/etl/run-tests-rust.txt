@@ -1,0 +1,483 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: ../../.github/citools/rust/rust-lint-check --release
+
+Running Rust Cargo Check
+
+Rust version:
+
+	rustc 1.72.1 (d5c2e9c34 2023-09-13)
+
+
+ ==============================================================================
+
+Running: cargo clean
+
+
+real	0m0.047s
+user	0m0.012s
+sys	0m0.034s
+
+
+ ==============================================================================
+
+Running: cargo check --future-incompat-report --release
+
+    Checking etl v1.0.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/etl)
+    Finished release [optimized] target(s) in 0.15s
+note: 0 dependencies had future-incompatible warnings
+
+real	0m0.158s
+user	0m0.035s
+sys	0m0.044s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.226s
+user	0m0.057s
+sys	0m0.091s
+
+real	0m0.237s
+user	0m0.059s
+sys	0m0.093s
+
+===============================================================================
+
+Running: ../../.github/citools/rust/rust-lint-clippy --release
+
+Running Rust Cargo Clippy
+
+Rust version:
+
+	rustc 1.72.1 (d5c2e9c34 2023-09-13)
+
+
+ ==============================================================================
+
+Running: cargo clean
+
+
+real	0m0.012s
+user	0m0.010s
+sys	0m0.002s
+
+
+ ==============================================================================
+
+Running: cargo clippy --release
+
+    Checking etl v1.0.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/etl)
+    Finished release [optimized] target(s) in 0.09s
+
+real	0m0.120s
+user	0m0.058s
+sys	0m0.060s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.148s
+user	0m0.075s
+sys	0m0.072s
+
+real	0m0.151s
+user	0m0.075s
+sys	0m0.075s
+
+===============================================================================
+
+Running: ../../.github/citools/rust/rust-lint-audit
+No deps found, skipping cargo audit.
+
+real	0m0.047s
+user	0m0.022s
+sys	0m0.026s
+
+real	0m0.048s
+user	0m0.023s
+sys	0m0.026s
+
+===============================================================================
+
+rm -fv ./*.profraw ./*.profdata
+
+===============================================================================
+
+Running: ../../.github/citools/rust/rust-test-with-tarpaulin
+
+Running Rust Tests With Tarpaulin
+
+Rust version:
+
+	rustc 1.72.1 (d5c2e9c34 2023-09-13)
+
+
+ ==============================================================================
+
+Running: cargo clean
+
+
+real	0m0.019s
+user	0m0.008s
+sys	0m0.011s
+
+
+ ==============================================================================
+
+Running: cargo test --all-features
+
+   Compiling etl v1.0.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/etl)
+    Finished test [unoptimized + debuginfo] target(s) in 0.61s
+     Running unittests src/lib.rs (/home/vpayno/git_vpayno/exercism-workspace/rust/target/debug/deps/etl-acc3ff2fd4f6f345)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/etl.rs (/home/vpayno/git_vpayno/exercism-workspace/rust/target/debug/deps/etl-3c537a5580ed4b38)
+
+running 4 tests
+test full_dataset ... ok
+test more_keys ... ok
+test transform_more_values ... ok
+test transform_one_value ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests etl
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+real	0m0.656s
+user	0m1.288s
+sys	0m0.331s
+
+
+ ==============================================================================
+
+Running: cargo tarpaulin --release --timeout=300
+
+[2mSep 24 20:03:10.489[0m [32m INFO[0m cargo_tarpaulin::config: Creating config
+[2mSep 24 20:03:10.511[0m [32m INFO[0m cargo_tarpaulin: Running Tarpaulin
+[2mSep 24 20:03:10.511[0m [32m INFO[0m cargo_tarpaulin: Building project
+[2mSep 24 20:03:10.511[0m [32m INFO[0m cargo_tarpaulin::cargo: Cleaning project
+   Compiling etl v1.0.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/etl)
+    Finished release [optimized] target(s) in 1.20s
+[2mSep 24 20:03:11.795[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
+[2mSep 24 20:03:11.808[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/target/release/deps/etl-58d3d34114a9fa11
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+[2mSep 24 20:03:12.234[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
+[2mSep 24 20:03:12.247[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/target/release/deps/etl-bd4b5ed1667ec607
+
+running 4 tests
+test transform_one_value ... ok
+test transform_more_values ... ok
+test full_dataset ... ok
+test more_keys ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+[2mSep 24 20:03:12.684[0m [32m INFO[0m cargo_tarpaulin::report: Coverage Results:
+|| Uncovered Lines:
+|| anagram/src/lib.rs: 4-5, 7-9, 11-14, 16, 19, 23, 25, 27-28, 30-32, 35-36, 38-41, 43, 45, 49-50, 53, 55, 58-60, 63, 66, 68
+|| luhn-from/src/lib.rs: 6, 8
+|| luhn-trait/src/lib.rs: 6-12
+|| simple-linked-list/src/lib.rs: 16, 28-29, 32-33, 36-39, 41-42, 45-49, 53-54, 58-60, 62-64, 67, 72-73, 75-76, 79, 97-99, 101-103, 107, 109
+|| space-age/src/lib.rs: 24-25
+|| triangle/src/lib.rs: 75-79, 84-85, 89-92, 96-97
+|| Tested/Total Lines:
+|| anagram/src/lib.rs: 0/36
+|| etl/src/lib.rs: 4/4
+|| luhn-from/src/lib.rs: 0/2
+|| luhn-trait/src/lib.rs: 0/7
+|| simple-linked-list/src/lib.rs: 0/38
+|| space-age/src/lib.rs: 0/2
+|| triangle/src/lib.rs: 0/13
+|| 
+3.92% coverage, 4/102 lines covered
+
+real	0m2.231s
+user	0m2.475s
+sys	0m1.064s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m2.922s
+user	0m3.779s
+sys	0m1.415s
+
+real	0m2.923s
+user	0m3.779s
+sys	0m1.417s
+
+===============================================================================
+
+Running: ../../.github/citools/rust/rust-test-with-llvm-coverage
+
+Running Rust Tests With LLVM Coverage
+
+Rust version:
+
+	rustc 1.72.1 (d5c2e9c34 2023-09-13)
+
+
+ ==============================================================================
+
+Running: cargo clean
+
+
+real	0m0.018s
+user	0m0.006s
+sys	0m0.012s
+
+
+ ==============================================================================
+
+Running: cargo llvm-cov clean
+
+
+real	0m0.179s
+user	0m0.094s
+sys	0m0.077s
+
+
+ ==============================================================================
+
+Running: cargo test --all-features --doc
+
+   Compiling etl v1.0.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/etl)
+    Finished test [unoptimized + debuginfo] target(s) in 0.17s
+   Doc-tests etl
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+real	0m0.211s
+user	0m0.205s
+sys	0m0.087s
+
+
+ ==============================================================================
+
+Running: cargo llvm-cov --no-clean --all-features
+
+   Compiling etl v1.0.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/etl)
+    Finished test [unoptimized + debuginfo] target(s) in 0.59s
+     Running unittests src/lib.rs (/home/vpayno/git_vpayno/exercism-workspace/rust/target/llvm-cov-target/debug/deps/etl-c9880575bc49ffc9)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/etl.rs (/home/vpayno/git_vpayno/exercism-workspace/rust/target/llvm-cov-target/debug/deps/etl-5e72eaea93b5921d)
+
+running 4 tests
+test full_dataset ... ok
+test more_keys ... ok
+test transform_more_values ... ok
+test transform_one_value ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+Filename                                                           Regions    Missed Regions     Cover   Functions  Missed Functions  Executed       Lines      Missed Lines     Cover    Branches   Missed Branches     Cover
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+/home/vpayno/git_vpayno/exercism-workspace/rust/etl/src/lib.rs           7                 0   100.00%           1                 0   100.00%           8                 0   100.00%           0                 0         -
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+TOTAL                                                                    7                 0   100.00%           1                 0   100.00%           8                 0   100.00%           0                 0         -
+
+real	0m0.762s
+user	0m0.762s
+sys	0m0.266s
+
+
+ ==============================================================================
+
+Running: cargo llvm-cov report --lcov --output-path report.lcov
+
+
+    Finished report saved to report.lcov
+
+real	0m0.155s
+user	0m0.085s
+sys	0m0.070s
+
+    Finished test [unoptimized + debuginfo] target(s) in 0.01s
+     Running unittests src/lib.rs (/home/vpayno/git_vpayno/exercism-workspace/rust/target/llvm-cov-target/debug/deps/etl-c9880575bc49ffc9)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/etl.rs (/home/vpayno/git_vpayno/exercism-workspace/rust/target/llvm-cov-target/debug/deps/etl-5e72eaea93b5921d)
+
+running 4 tests
+test full_dataset ... ok
+test more_keys ... ok
+test transform_more_values ... ok
+test transform_one_value ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+real	0m0.185s
+user	0m0.093s
+sys	0m0.091s
+
+ ==============================================================================
+
+Running: cargo llvm-cov --no-clean --all-features --text --output-path=coverage-annotations.txt
+
+    Finished test [unoptimized + debuginfo] target(s) in 0.01s
+     Running unittests src/lib.rs (/home/vpayno/git_vpayno/exercism-workspace/rust/target/llvm-cov-target/debug/deps/etl-c9880575bc49ffc9)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/etl.rs (/home/vpayno/git_vpayno/exercism-workspace/rust/target/llvm-cov-target/debug/deps/etl-5e72eaea93b5921d)
+
+running 4 tests
+test full_dataset ... ok
+test more_keys ... ok
+test transform_more_values ... ok
+test transform_one_value ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+    Finished report saved to coverage-annotations.txt
+
+real	0m0.173s
+user	0m0.102s
+sys	0m0.073s
+
+
+ ==============================================================================
+
+Running: cargo llvm-cov clean
+
+
+real	0m0.116s
+user	0m0.062s
+sys	0m0.057s
+
+
+ ==============================================================================
+
+Running: lcov --list report.lcov
+
+Reading tracefile report.lcov
+            |Lines       |Functions  |Branches    
+Filename    |Rate     Num|Rate    Num|Rate     Num
+==================================================
+[/home/vpayno/git_vpayno/exercism-workspace/rust/etl/src/]
+lib.rs      | 100%      8|50.0%     2|    -      0
+==================================================
+      Total:| 100%      8|50.0%     2|    -      0
+
+real	0m0.050s
+user	0m0.033s
+sys	0m0.005s
+
+
+Running: lcov --summary report.lcov
+
+Reading tracefile report.lcov
+Summary coverage rate:
+  lines......: 100.0% (8 of 8 lines)
+  functions..: 50.0% (1 of 2 functions)
+  branches...: no data found
+
+real	0m0.034s
+user	0m0.030s
+sys	0m0.004s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.898s
+user	0m1.480s
+sys	0m0.750s
+
+real	0m1.900s
+user	0m1.482s
+sys	0m0.750s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.027s
+user	0m0.022s
+sys	0m0.014s
+
+===============================================================================
+
+Running: cargo doc
+ Documenting etl v1.0.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/etl)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.22s
+
+real	0m0.234s
+user	0m0.190s
+sys	0m0.046s
+
+===============================================================================
+
+Running: cargo clean
+
+real	0m0.016s
+user	0m0.009s
+sys	0m0.006s
+
+===============================================================================
+
+/home/vpayno/git_vpayno/exercism-workspace/rust
+
+===============================================================================
+
+
+===============================================================================
+
+Running: rust-analyzer -v lsif . > index.lsif
+Generating LSIF started...
+Generating LSIF finished in 8.43579493s
+
+real	0m8.871s
+user	0m8.564s
+sys	0m0.308s
+
+===============================================================================
+
+Running: rust-analyzer -v scip .
+Generating SCIP start...
+rust-analyzer: Loading metadata
+Generating SCIP finished 8.410932657s
+
+real	0m8.791s
+user	0m8.519s
+sys	0m0.288s
+
+===============================================================================
+
