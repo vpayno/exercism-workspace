@@ -33,3 +33,4 @@
 - [etl](./etl/README.md)
 - [space-age](./space-age/README.md)
 - [all-your-base](./all-your-base/README.md)
+- [high-scores](./high-scores/README.md)

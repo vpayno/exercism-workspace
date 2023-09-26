@@ -158,3 +158,10 @@ both `asort` and `asorti` can take the name of a comparison function as a 3rd pa
 ### Based on
 
 Tribute to the eighties' arcade game Frogger
+
+### My Solution
+
+- [my solution](./high-scores.awk)
+- [awkunit tests](./high-scores_test.awk)
+- [test cases](./test-cases.awk)
+- [run-tests](./run-tests-awk.txt)

@@ -1,0 +1,186 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+AWKLIBPATH=/usr/lib/x86_64-linux-gnu/gawk:../.lib
+
+/usr/lib/x86_64-linux-gnu/gawk
+filefuncs.so
+fnmatch.so
+fork.so
+inplace.so
+intdiv.so
+ordchr.so
+readdir.so
+readfile.so
+revoutput.so
+revtwoway.so
+rwarray.so
+time.so
+
+../.lib
+awkunit.awk
+awkunit.so
+
+gawk  --lint --file=./awkunit.awk < /dev/null > /dev/null
+gawk: ./awkunit.awk:3: warning: `load' is a gawk extension
+gawk: warning: function `assertEquals' defined but never called directly
+gawk: warning: function `assert' defined but never called directly
+gawk: ./awkunit.awk:26: warning: reference to uninitialized variable `_assert_exit'
+
+real	0m0.002s
+user	0m0.000s
+sys	0m0.002s
+
+gawk  --lint --file=./high-scores.awk < /dev/null > /dev/null
+gawk: ./high-scores.awk:3: warning: `load' is a gawk extension
+gawk: ./high-scores.awk:57: warning: `asort' is a gawk extension
+
+real	0m0.002s
+user	0m0.001s
+sys	0m0.001s
+
+gawk  --lint --file=./test-cases.awk < /dev/null > /dev/null
+
+real	0m0.002s
+user	0m0.002s
+sys	0m0.000s
+
+exit 0
+
+===============================================================================
+
+Running: bats ./test-high-scores.bats
+1..12
+ok 1 List of scores
+ok 2 Latest score
+ok 3 Personal best
+ok 4 Personal top three from a list of scores
+ok 5 Personal top three from highest to lowest
+ok 6 Personal top three when there is a tie
+ok 7 Personal top three when there are less then 3
+ok 8 Personal top three when there is only one
+ok 9 Latest score after personal top scores
+ok 10 Scores after personal top scores
+ok 11 Latest score after personal best
+ok 12 Scores after personal best
+
+real	0m0.527s
+user	0m0.397s
+sys	0m0.154s
+
+exit 0
+
+===============================================================================
+
+AWKLIBPATH=/usr/lib/x86_64-linux-gnu/gawk:../.lib
+
+/usr/lib/x86_64-linux-gnu/gawk
+filefuncs.so
+fnmatch.so
+fork.so
+inplace.so
+intdiv.so
+ordchr.so
+readdir.so
+readfile.so
+revoutput.so
+revtwoway.so
+rwarray.so
+time.so
+
+../.lib
+awkunit.awk
+awkunit.so
+
+Running: gawk  --file ./high-scores_test.awk && printf \n%s\n Tests Passed! || printf \n%s\n Tests Failed!
+
+Running 5 tests...
+
+Test 1: is_number()
+     input -> [123]
+    output -> [true]
+    result -> passed
+
+Test 2: is_cmd_list()
+     input -> [123]
+    output -> [true]
+    result -> passed
+
+Test 3: is_cmd_latest()
+     input -> [123]
+    output -> [true]
+    result -> passed
+
+Test 4: is_cmd_best()
+     input -> [123]
+    output -> [true]
+    result -> passed
+
+Test 5: is_cmd_top_three()
+     input -> [123]
+    output -> [true]
+    result -> passed
+
+Running 5 test cases
+
+Test 6: [30 50 20 70 latest]
+     input -> [30 50 20 70 latest]
+    output -> [70
+]
+    result -> passed
+
+Test 7: [30 50 20 70 list]
+     input -> [30 50 20 70 list]
+    output -> [30
+50
+20
+70
+]
+    result -> passed
+
+Test 8: [30 50 20 70 personalBest]
+     input -> [30 50 20 70 personalBest]
+    output -> [70
+]
+    result -> passed
+
+Test 9: [30 50 20 70 personalTopThree]
+     input -> [30 50 20 70 personalTopThree]
+    output -> [70
+50
+30
+]
+    result -> passed
+
+Test 10: [30 50 20 70 personalTopThree latest]
+     input -> [30 50 20 70 personalTopThree latest]
+    output -> [70
+50
+30
+70
+]
+    result -> passed
+
+
+10 out of 10 tests passed!
+
+real	0m0.005s
+user	0m0.003s
+sys	0m0.003s
+
+Tests Passed!
+
+exit 0
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.025s
+user	0m0.028s
+sys	0m0.011s
+
+===============================================================================
+
