@@ -98,7 +98,7 @@ function casesHighScores() {
 
         got = ""
 
-        # add scores, latest and best to global score
+        # add scores, latest and best to global scope
         for (idx = 1; idx <= a_len; idx++) {
             line = a[idx]
 
