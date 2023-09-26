@@ -29,23 +29,23 @@ gawk: warning: function `assertEquals' defined but never called directly
 gawk: warning: function `assert' defined but never called directly
 gawk: ./awkunit.awk:26: warning: reference to uninitialized variable `_assert_exit'
 
-real	0m0.002s
+real	0m0.004s
 user	0m0.000s
-sys	0m0.002s
+sys	0m0.004s
 
 gawk  --lint --file=./high-scores.awk < /dev/null > /dev/null
 gawk: ./high-scores.awk:3: warning: `load' is a gawk extension
 gawk: ./high-scores.awk:57: warning: `asort' is a gawk extension
 
-real	0m0.002s
-user	0m0.001s
-sys	0m0.001s
+real	0m0.005s
+user	0m0.002s
+sys	0m0.002s
 
 gawk  --lint --file=./test-cases.awk < /dev/null > /dev/null
 
-real	0m0.002s
+real	0m0.003s
 user	0m0.002s
-sys	0m0.000s
+sys	0m0.001s
 
 exit 0
 
@@ -66,9 +66,9 @@ ok 10 Scores after personal top scores
 ok 11 Latest score after personal best
 ok 12 Scores after personal best
 
-real	0m0.527s
-user	0m0.397s
-sys	0m0.154s
+real	0m0.586s
+user	0m0.435s
+sys	0m0.178s
 
 exit 0
 
@@ -104,22 +104,22 @@ Test 1: is_number()
     result -> passed
 
 Test 2: is_cmd_list()
-     input -> [123]
+     input -> [list]
     output -> [true]
     result -> passed
 
 Test 3: is_cmd_latest()
-     input -> [123]
+     input -> [latest]
     output -> [true]
     result -> passed
 
 Test 4: is_cmd_best()
-     input -> [123]
+     input -> [personalBest]
     output -> [true]
     result -> passed
 
 Test 5: is_cmd_top_three()
-     input -> [123]
+     input -> [personalTopThree]
     output -> [true]
     result -> passed
 
@@ -167,8 +167,8 @@ Test 10: [30 50 20 70 personalTopThree latest]
 10 out of 10 tests passed!
 
 real	0m0.005s
-user	0m0.003s
-sys	0m0.003s
+user	0m0.005s
+sys	0m0.000s
 
 Tests Passed!
 
@@ -179,8 +179,8 @@ exit 0
 Running: misspell .
 
 real	0m0.025s
-user	0m0.028s
-sys	0m0.011s
+user	0m0.030s
+sys	0m0.010s
 
 ===============================================================================
 

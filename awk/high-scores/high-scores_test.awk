@@ -32,11 +32,11 @@ function testHighScores_isNumber() {
 
 function testHighScores_isCmdList() {
     test_name = "is_cmd_list()"
-    input = "123"
+    input = "list"
     want = "true"
 
     _debugTestPre()
-    got = is_number(input) ? "true" : "false"
+    got = is_cmd_list(input) ? "true" : "false"
 
     assertEquals(got, want)
     _debugTestPost()
@@ -44,11 +44,11 @@ function testHighScores_isCmdList() {
 
 function testHighScores_isCmdLatest() {
     test_name = "is_cmd_latest()"
-    input = "123"
+    input = "latest"
     want = "true"
 
     _debugTestPre()
-    got = is_number(input) ? "true" : "false"
+    got = is_cmd_latest(input) ? "true" : "false"
 
     assertEquals(got, want)
     _debugTestPost()
@@ -56,11 +56,11 @@ function testHighScores_isCmdLatest() {
 
 function testHighScores_isCmdBest() {
     test_name = "is_cmd_best()"
-    input = "123"
+    input = "personalBest"
     want = "true"
 
     _debugTestPre()
-    got = is_number(input) ? "true" : "false"
+    got = is_cmd_best(input) ? "true" : "false"
 
     assertEquals(got, want)
     _debugTestPost()
@@ -68,11 +68,11 @@ function testHighScores_isCmdBest() {
 
 function testHighScores_isCmdTopThree() {
     test_name = "is_cmd_top_three()"
-    input = "123"
+    input = "personalTopThree"
     want = "true"
 
     _debugTestPre()
-    got = is_number(input) ? "true" : "false"
+    got = is_cmd_top_three(input) ? "true" : "false"
 
     assertEquals(got, want)
     _debugTestPost()
