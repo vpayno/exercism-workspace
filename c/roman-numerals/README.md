@@ -66,3 +66,8 @@ Learn more about [Roman numerals on Wikipedia][roman-numerals].
 ### Based on
 
 The Roman Numeral Kata - https://codingdojo.org/kata/RomanNumerals/
+
+### My Solution
+
+- [my solution](./roman_numerals.c)
+- [run-tests](./run-tests-c.txt)
