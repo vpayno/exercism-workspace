@@ -8,7 +8,7 @@ passed = 0
 testCount = 0
 
 function _debugTestPre() {
-    printf "Test %s:\n", (passed + 1)
+    printf "Test %s: %s\n", (passed + 1), test_name
     printf "     input -> [%s]\n", input
 }
 
@@ -19,15 +19,18 @@ function _debugTestPost() {
 }
 
 function testPackageName_zero() {
+    test_name = "packageName()"
     input = ""
     want = ""
 
-    # _ = split(input, a, " ")
+    # a_len = split(input, a, " ")
 
     _debugTestPre()
+
     got = packageName(input)
 
     assertEquals(got, want)
+
     _debugTestPost()
 }
 
@@ -43,12 +46,16 @@ function casesPackageName() {
         input = key
         want = cases[key]
 
-        # _ = split(input, a, " ")
+        test_name = "[" input "]"
+
+        # a_len = split(input, a, " ")
 
         _debugTestPre()
+
         got = packageName(input)
 
         assertEquals(got, want)
+
         _debugTestPost()
     }
 }
