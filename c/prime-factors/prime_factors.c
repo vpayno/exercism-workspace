@@ -6,10 +6,10 @@ size_t find_factors(uint64_t number, uint64_t factors[static MAXFACTORS]) {
     switch (number) {
     case 0:
     case 1:
-        return (size_t)0;
+        return count;
     case 2:
-        factors[0] = 2;
-        return (size_t)1;
+        factors[count++] = 2;
+        return count;
     }
 
     int factor = 0;
