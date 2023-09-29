@@ -28,14 +28,13 @@ bool check(std::string text) {
             }
 
             bracket_stack.pop();
-            continue;
         }
     }
 
     return bracket_stack.empty();
 }
 
-bool bracket_match(char open_bracket, char close_bracket) {
+bool bracket_match(const char open_bracket, const char close_bracket) {
     if (open_bracket == '[' and close_bracket == ']') {
         return true;
     }
@@ -51,15 +50,16 @@ bool bracket_match(char open_bracket, char close_bracket) {
     return false;
 }
 
-bool bracket_open(char bracket) {
+bool bracket_open(const char bracket) {
     return bracket == '[' or bracket == '(' or bracket == '{';
 }
 
-bool bracket_close(char bracket) {
+bool bracket_close(const char bracket) {
     return bracket == ']' or bracket == ')' or bracket == '}';
 }
 
-bool bracket_either(char bracket) {
+bool bracket_either(const char bracket) {
     return bracket_open(bracket) or bracket_close(bracket);
 }
+
 } // namespace matching_brackets
