@@ -50,3 +50,4 @@
 - [all-your-base](./all-your-base/README.md)
 - [roman-numerals](./roman-numerals/README.md)
 - [prime-factors](./prime-factors/README.md)
+- [matching-brackets](./matching-brackets/README.md)

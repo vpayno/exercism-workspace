@@ -1,0 +1,120 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: make clean
+rm -rf *.o *.out *.out.dSYM
+
+real	0m0.004s
+user	0m0.002s
+sys	0m0.001s
+
+===============================================================================
+
+Running: make test | ansifilter
+Compiling tests.out
+test_matching_brackets.c:133:test_paired_square_brackets:PASS
+test_matching_brackets.c:134:test_empty_string:PASS
+test_matching_brackets.c:135:test_unpaired_brackets:PASS
+test_matching_brackets.c:136:test_wrong_ordered_brackets:PASS
+test_matching_brackets.c:137:test_wrong_closing_bracket:PASS
+test_matching_brackets.c:138:test_paired_with_whitespace:PASS
+test_matching_brackets.c:139:test_partially_paired_brackets:PASS
+test_matching_brackets.c:140:test_simple_nested_brackets:PASS
+test_matching_brackets.c:141:test_several_paired_brackets:PASS
+test_matching_brackets.c:142:test_paired_and_nested_brackets:PASS
+test_matching_brackets.c:143:test_unopened_closing_brackets:PASS
+test_matching_brackets.c:144:test_unpaired_and_nested_brackets:PASS
+test_matching_brackets.c:145:test_paired_and_wrong_nested_brackets:PASS
+test_matching_brackets.c:146:test_paired_and_wrong_nested_brackets_but_innermost_are_correct:PASS
+test_matching_brackets.c:147:test_paired_and_incomplete_brackets:PASS
+test_matching_brackets.c:148:test_too_many_closing_brackets:PASS
+test_matching_brackets.c:149:test_early_unexpected_brackets:PASS
+test_matching_brackets.c:150:test_early_mismatched_brackets:PASS
+test_matching_brackets.c:151:test_math_expression:PASS
+test_matching_brackets.c:152:test_complex_latex_expression:PASS
+
+-----------------------
+20 Tests 0 Failures 0 Ignored 
+OK
+
+real	0m0.116s
+user	0m0.088s
+sys	0m0.028s
+
+===============================================================================
+
+Running: make memcheck | ansifilter
+Compiling memcheck
+test_matching_brackets.c:133:test_paired_square_brackets:PASS
+test_matching_brackets.c:134:test_empty_string:PASS
+test_matching_brackets.c:135:test_unpaired_brackets:PASS
+test_matching_brackets.c:136:test_wrong_ordered_brackets:PASS
+test_matching_brackets.c:137:test_wrong_closing_bracket:PASS
+test_matching_brackets.c:138:test_paired_with_whitespace:PASS
+test_matching_brackets.c:139:test_partially_paired_brackets:PASS
+test_matching_brackets.c:140:test_simple_nested_brackets:PASS
+test_matching_brackets.c:141:test_several_paired_brackets:PASS
+test_matching_brackets.c:142:test_paired_and_nested_brackets:PASS
+test_matching_brackets.c:143:test_unopened_closing_brackets:PASS
+test_matching_brackets.c:144:test_unpaired_and_nested_brackets:PASS
+test_matching_brackets.c:145:test_paired_and_wrong_nested_brackets:PASS
+test_matching_brackets.c:146:test_paired_and_wrong_nested_brackets_but_innermost_are_correct:PASS
+test_matching_brackets.c:147:test_paired_and_incomplete_brackets:PASS
+test_matching_brackets.c:148:test_too_many_closing_brackets:PASS
+test_matching_brackets.c:149:test_early_unexpected_brackets:PASS
+test_matching_brackets.c:150:test_early_mismatched_brackets:PASS
+test_matching_brackets.c:151:test_math_expression:PASS
+test_matching_brackets.c:152:test_complex_latex_expression:PASS
+
+-----------------------
+20 Tests 0 Failures 0 Ignored 
+OK
+Memory check passed
+
+real	0m0.141s
+user	0m0.100s
+sys	0m0.042s
+
+===============================================================================
+
+Running: clang-format-16 -style=file -i ./matching_brackets.c ./test_matching_brackets.c ./matching_brackets.h
+
+real	0m0.024s
+user	0m0.011s
+sys	0m0.013s
+
+===============================================================================
+
+Running: ../../.github/citools/cpp/clang-check
+Running: clang-check-16 --analyze ./matching_brackets.h
+
+real	0m0.024s
+user	0m0.011s
+sys	0m0.013s
+
+
+real	0m0.026s
+user	0m0.012s
+sys	0m0.014s
+
+===============================================================================
+
+Running: ../../.github/citools/cpp/clang-tidy | head -n 100
+4 warnings generated.
+Suppressed 4 warnings (4 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+
+real	0m0.030s
+user	0m0.020s
+sys	0m0.010s
+Running: clang-tidy-16 ./matching_brackets.h
+
+
+real	0m0.032s
+user	0m0.021s
+sys	0m0.012s
+
+===============================================================================
+
