@@ -20,19 +20,43 @@
    20|     21|    if perimeter == 0 {
    21|      0|        return triplets;
    22|     21|    }
-   23|       |
-   24|  49.5k|    for b in 2..=(perimeter / 2) {
-                               ^21
-   25|   338M|        for a in 1..=b {
-                                   ^49.5k
+   23|     21|
+   24|  49.5k|    (2..perimeter / 2).for_each(|b| {
+   25|   338M|        (1..=b).for_each(|a| {
    26|   338M|            let c: u32 = perimeter - a - b;
    27|   338M|
    28|   338M|            if a.pow(2) + b.pow(2) == c.pow(2) {
    29|     54|                triplets.insert([a, b, c]);
    30|   338M|            }
-   31|       |        }
-   32|       |    }
-   33|       |
+   31|   338M|        });
+  ------------------
+  | pythagorean_triplet::find::{closure#0}::{closure#0}:
+  |   25|   338M|        (1..=b).for_each(|a| {
+  |   26|   338M|            let c: u32 = perimeter - a - b;
+  |   27|   338M|
+  |   28|   338M|            if a.pow(2) + b.pow(2) == c.pow(2) {
+  |   29|     54|                triplets.insert([a, b, c]);
+  |   30|   338M|            }
+  |   31|   338M|        });
+  ------------------
+  | Unexecuted instantiation: pythagorean_triplet::find::{closure#0}::{closure#0}
+  ------------------
+   32|  49.5k|    });
+  ------------------
+  | pythagorean_triplet::find::{closure#0}:
+  |   24|  49.5k|    (2..perimeter / 2).for_each(|b| {
+  |   25|  49.5k|        (1..=b).for_each(|a| {
+  |   26|       |            let c: u32 = perimeter - a - b;
+  |   27|       |
+  |   28|       |            if a.pow(2) + b.pow(2) == c.pow(2) {
+  |   29|       |                triplets.insert([a, b, c]);
+  |   30|       |            }
+  |   31|  49.5k|        });
+  |   32|  49.5k|    });
+  ------------------
+  | Unexecuted instantiation: pythagorean_triplet::find::{closure#0}
+  ------------------
+   33|     21|
    34|     21|    triplets
    35|     21|}
   ------------------
@@ -43,19 +67,17 @@
   |   20|     21|    if perimeter == 0 {
   |   21|      0|        return triplets;
   |   22|     21|    }
-  |   23|       |
-  |   24|  49.5k|    for b in 2..=(perimeter / 2) {
-  |                               ^21
-  |   25|   338M|        for a in 1..=b {
-  |                                   ^49.5k
-  |   26|   338M|            let c: u32 = perimeter - a - b;
-  |   27|   338M|
-  |   28|   338M|            if a.pow(2) + b.pow(2) == c.pow(2) {
-  |   29|     54|                triplets.insert([a, b, c]);
-  |   30|   338M|            }
-  |   31|       |        }
-  |   32|       |    }
-  |   33|       |
+  |   23|     21|
+  |   24|     21|    (2..perimeter / 2).for_each(|b| {
+  |   25|       |        (1..=b).for_each(|a| {
+  |   26|       |            let c: u32 = perimeter - a - b;
+  |   27|       |
+  |   28|       |            if a.pow(2) + b.pow(2) == c.pow(2) {
+  |   29|       |                triplets.insert([a, b, c]);
+  |   30|       |            }
+  |   31|       |        });
+  |   32|     21|    });
+  |   33|     21|
   |   34|     21|    triplets
   |   35|     21|}
   ------------------

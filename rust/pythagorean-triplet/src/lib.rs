@@ -21,15 +21,15 @@ pub fn find(perimeter: u32) -> HashSet<[u32; 3]> {
         return triplets;
     }
 
-    for b in 2..=(perimeter / 2) {
-        for a in 1..=b {
+    (2..perimeter / 2).for_each(|b| {
+        (1..=b).for_each(|a| {
             let c: u32 = perimeter - a - b;
 
             if a.pow(2) + b.pow(2) == c.pow(2) {
                 triplets.insert([a, b, c]);
             }
-        }
-    }
+        });
+    });
 
     triplets
 }
