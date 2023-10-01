@@ -20,7 +20,7 @@ Exercism Workspace
 |   July        |  Jurassic          |  C            (5/5),  C++   (5/5),  Fortran  (0/5)  |
 |   August      |  Apps              |  Dart         (5/5),  Java  (0/5),  Kotlin   (0/5)  |
 |   September   |  Slimline          |  Awk          (5/5),  Bash\*  (5/5),  jq       (0/5),  Perl  (0/5)  |
-|   October     |  Object-Oriented   |  |
+|   October     |  Object-Oriented   |  Ruby         (0/5),  Java  (0/5)  |
 |   November    |  Nibbly            |  |
 |   December    |  Diversions        |  |
 
@@ -68,6 +68,10 @@ Exercism Workspace
 - Languages: 8th, Awk, Bash, jq, Perl, Raku
 - Exercises: Atbash Cipher, Darts, Gigasecond, Luhn, Series
 
+#### Object-Oriented October
+
+- Languages: Crystal, C#, Java, Pharo, PowerShell, Ruby
+- Exercises: Binary Search Tree, Circular Buffer, Clock, Matrix, Simple Cipher
 
 ### 12in23 Badges
 
