@@ -1,0 +1,63 @@
+    1|       |use std::collections::HashSet;
+    2|       |
+    3|       |/// Finds all the possible Pythagorean triplets for the given perimeter of a triangle.
+    4|       |///
+    5|       |/// Example
+    6|       |/// ```rust
+    7|       |/// use pythagorean_triplet::*;
+    8|       |/// use std::collections::HashSet;
+    9|       |///
+   10|       |/// let perimeter: u32 = 12;
+   11|       |///
+   12|       |/// let want: HashSet<[u32; 3]> = vec![[3u32, 4, 5]].into_iter().collect();
+   13|       |/// let got: HashSet<[u32; 3]> = find(perimeter);
+   14|       |///
+   15|       |/// assert_eq!(got, want);
+   16|       |/// ```
+   17|     21|pub fn find(perimeter: u32) -> HashSet<[u32; 3]> {
+   18|     21|    let mut triplets: HashSet<[u32; 3]> = HashSet::new();
+   19|     21|
+   20|     21|    if perimeter == 0 {
+   21|      0|        return triplets;
+   22|     21|    }
+   23|       |
+   24|  49.5k|    for b in 2..=(perimeter / 2) {
+                               ^21
+   25|   338M|        for a in 1..=b {
+                                   ^49.5k
+   26|   338M|            let c: u32 = perimeter - a - b;
+   27|   338M|
+   28|   338M|            if a.pow(2) + b.pow(2) == c.pow(2) {
+   29|     54|                triplets.insert([a, b, c]);
+   30|   338M|            }
+   31|       |        }
+   32|       |    }
+   33|       |
+   34|     21|    triplets
+   35|     21|}
+  ------------------
+  | pythagorean_triplet::find:
+  |   17|     21|pub fn find(perimeter: u32) -> HashSet<[u32; 3]> {
+  |   18|     21|    let mut triplets: HashSet<[u32; 3]> = HashSet::new();
+  |   19|     21|
+  |   20|     21|    if perimeter == 0 {
+  |   21|      0|        return triplets;
+  |   22|     21|    }
+  |   23|       |
+  |   24|  49.5k|    for b in 2..=(perimeter / 2) {
+  |                               ^21
+  |   25|   338M|        for a in 1..=b {
+  |                                   ^49.5k
+  |   26|   338M|            let c: u32 = perimeter - a - b;
+  |   27|   338M|
+  |   28|   338M|            if a.pow(2) + b.pow(2) == c.pow(2) {
+  |   29|     54|                triplets.insert([a, b, c]);
+  |   30|   338M|            }
+  |   31|       |        }
+  |   32|       |    }
+  |   33|       |
+  |   34|     21|    triplets
+  |   35|     21|}
+  ------------------
+  | Unexecuted instantiation: pythagorean_triplet::find
+  ------------------

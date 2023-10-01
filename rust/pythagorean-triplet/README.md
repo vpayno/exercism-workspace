@@ -57,3 +57,8 @@ For example, with N = 1000, there is exactly one Pythagorean triplet for which `
 ### Based on
 
 Problem 9 at Project Euler - http://projecteuler.net/problem=9
+
+### My Solution
+
+- [my solution](./src/lib.rs)
+- [run-tests](./run-tests-rust.txt)
