@@ -6,5 +6,7 @@
 
 ## Tools
 
+- [for_each](./for_each)
+
 ## [Exercises](https://exercism.org/tracks/ruby/exercises)
 
