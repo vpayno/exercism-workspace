@@ -8,6 +8,7 @@
 
 - [for_each](./for_each)
 - [submit_files](./submit_files)
+- [update_readmes](./update_readmes)
 
 ## [Exercises](https://exercism.org/tracks/ruby/exercises)
 
