@@ -7,6 +7,7 @@
 ## Tools
 
 - [for_each](./for_each)
+- [submit_files](./submit_files)
 
 ## [Exercises](https://exercism.org/tracks/ruby/exercises)
 
