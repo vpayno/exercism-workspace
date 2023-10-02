@@ -149,6 +149,7 @@ Exercism Workspace
 - [Common Lisp](common-lisp/README.md)
 - [C](c/README.md)
 - [C++](cpp/README.md)
+- [Ruby](ruby/README.md)
 
 ## Tools/Scripts
 
