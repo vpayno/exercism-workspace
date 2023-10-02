@@ -169,3 +169,4 @@ Exercism Workspace
 - [Common Lisp run-tests](./common-lisp/run-tests)
 - [C run-tests](./c/run-tests)
 - [C++ run-tests](./cpp/run-tests)
+- [Ruby run-tests](./ruby/run-tests)
