@@ -1,3 +1,14 @@
+/// Computes list of prime factors for a given natural number.
+///
+/// Example
+/// ```rust
+/// use prime_factors::*;
+///
+/// let want: Vec<u64> = vec![2u64, 3, 5];
+/// let got: Vec<u64> = factors(30);
+///
+/// assert_eq!(got, want);
+/// ```
 pub fn factors(n: u64) -> Vec<u64> {
     let mut factors: Vec<u64> = Vec::new();
 

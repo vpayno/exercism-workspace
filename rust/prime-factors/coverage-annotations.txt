@@ -1,73 +1,84 @@
-    1|     21|pub fn factors(n: u64) -> Vec<u64> {
-    2|     21|    let mut factors: Vec<u64> = Vec::new();
-    3|     21|
-    4|     21|    if n <= 1 {
-    5|      3|        return factors;
-    6|     18|    }
-    7|     18|
-    8|     18|    if n == 2 {
-    9|      3|        factors.push(2);
-   10|      3|        return factors;
-   11|     15|    }
-   12|     15|
-   13|     15|    let mut factor;
-   14|     15|    let mut number = n;
-   15|     15|
-   16|     15|    factor = 2;
-   17|     30|    while number % factor == 0 {
-   18|     15|        number /= factor;
-   19|     15|        factors.push(factor);
-   20|     15|    }
-   21|       |
-   22|     15|    factor = 3;
-   23|  1.34M|    while number > 1 {
-   24|  1.34M|        while number % factor == 0 && number > 1 {
+    1|       |/// Computes list of prime factors for a given natural number.
+    2|       |///
+    3|       |/// Example
+    4|       |/// ```rust
+    5|       |/// use prime_factors::*;
+    6|       |///
+    7|       |/// let want: Vec<u64> = vec![2u64, 3, 5];
+    8|       |/// let got: Vec<u64> = factors(30);
+    9|       |///
+   10|       |/// assert_eq!(got, want);
+   11|       |/// ```
+   12|     21|pub fn factors(n: u64) -> Vec<u64> {
+   13|     21|    let mut factors: Vec<u64> = Vec::new();
+   14|     21|
+   15|     21|    if n <= 1 {
+   16|      3|        return factors;
+   17|     18|    }
+   18|     18|
+   19|     18|    if n == 2 {
+   20|      3|        factors.push(2);
+   21|      3|        return factors;
+   22|     15|    }
+   23|     15|
+   24|     15|    let mut factor;
+   25|     15|    let mut number = n;
+   26|     15|
+   27|     15|    factor = 2;
+   28|     30|    while number % factor == 0 {
+   29|     15|        number /= factor;
+   30|     15|        factors.push(factor);
+   31|     15|    }
+   32|       |
+   33|     15|    factor = 3;
+   34|  1.34M|    while number > 1 {
+   35|  1.34M|        while number % factor == 0 && number > 1 {
                                                     ^30
-   25|     30|            number /= factor;
-   26|     30|            factors.push(factor);
-   27|     30|        }
-   28|       |
-   29|  1.34M|        factor += 2;
-   30|       |    }
-   31|       |
-   32|     15|    factors
-   33|     21|}
+   36|     30|            number /= factor;
+   37|     30|            factors.push(factor);
+   38|     30|        }
+   39|       |
+   40|  1.34M|        factor += 2;
+   41|       |    }
+   42|       |
+   43|     15|    factors
+   44|     21|}
   ------------------
   | Unexecuted instantiation: prime_factors::factors
   ------------------
   | prime_factors::factors:
-  |    1|     21|pub fn factors(n: u64) -> Vec<u64> {
-  |    2|     21|    let mut factors: Vec<u64> = Vec::new();
-  |    3|     21|
-  |    4|     21|    if n <= 1 {
-  |    5|      3|        return factors;
-  |    6|     18|    }
-  |    7|     18|
-  |    8|     18|    if n == 2 {
-  |    9|      3|        factors.push(2);
-  |   10|      3|        return factors;
-  |   11|     15|    }
-  |   12|     15|
-  |   13|     15|    let mut factor;
-  |   14|     15|    let mut number = n;
-  |   15|     15|
-  |   16|     15|    factor = 2;
-  |   17|     30|    while number % factor == 0 {
-  |   18|     15|        number /= factor;
-  |   19|     15|        factors.push(factor);
-  |   20|     15|    }
-  |   21|       |
-  |   22|     15|    factor = 3;
-  |   23|  1.34M|    while number > 1 {
-  |   24|  1.34M|        while number % factor == 0 && number > 1 {
+  |   12|     21|pub fn factors(n: u64) -> Vec<u64> {
+  |   13|     21|    let mut factors: Vec<u64> = Vec::new();
+  |   14|     21|
+  |   15|     21|    if n <= 1 {
+  |   16|      3|        return factors;
+  |   17|     18|    }
+  |   18|     18|
+  |   19|     18|    if n == 2 {
+  |   20|      3|        factors.push(2);
+  |   21|      3|        return factors;
+  |   22|     15|    }
+  |   23|     15|
+  |   24|     15|    let mut factor;
+  |   25|     15|    let mut number = n;
+  |   26|     15|
+  |   27|     15|    factor = 2;
+  |   28|     30|    while number % factor == 0 {
+  |   29|     15|        number /= factor;
+  |   30|     15|        factors.push(factor);
+  |   31|     15|    }
+  |   32|       |
+  |   33|     15|    factor = 3;
+  |   34|  1.34M|    while number > 1 {
+  |   35|  1.34M|        while number % factor == 0 && number > 1 {
   |                                                    ^30
-  |   25|     30|            number /= factor;
-  |   26|     30|            factors.push(factor);
-  |   27|     30|        }
-  |   28|       |
-  |   29|  1.34M|        factor += 2;
-  |   30|       |    }
-  |   31|       |
-  |   32|     15|    factors
-  |   33|     21|}
+  |   36|     30|            number /= factor;
+  |   37|     30|            factors.push(factor);
+  |   38|     30|        }
+  |   39|       |
+  |   40|  1.34M|        factor += 2;
+  |   41|       |    }
+  |   42|       |
+  |   43|     15|    factors
+  |   44|     21|}
   ------------------
