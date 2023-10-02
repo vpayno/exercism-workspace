@@ -1,0 +1,73 @@
+    1|     21|pub fn factors(n: u64) -> Vec<u64> {
+    2|     21|    let mut factors: Vec<u64> = Vec::new();
+    3|     21|
+    4|     21|    if n <= 1 {
+    5|      3|        return factors;
+    6|     18|    }
+    7|     18|
+    8|     18|    if n == 2 {
+    9|      3|        factors.push(2);
+   10|      3|        return factors;
+   11|     15|    }
+   12|     15|
+   13|     15|    let mut factor;
+   14|     15|    let mut number = n;
+   15|     15|
+   16|     15|    factor = 2;
+   17|     30|    while number % factor == 0 {
+   18|     15|        number /= factor;
+   19|     15|        factors.push(factor);
+   20|     15|    }
+   21|       |
+   22|     15|    factor = 3;
+   23|  1.34M|    while number > 1 {
+   24|  1.34M|        while number % factor == 0 && number > 1 {
+                                                    ^30
+   25|     30|            number /= factor;
+   26|     30|            factors.push(factor);
+   27|     30|        }
+   28|       |
+   29|  1.34M|        factor += 2;
+   30|       |    }
+   31|       |
+   32|     15|    factors
+   33|     21|}
+  ------------------
+  | Unexecuted instantiation: prime_factors::factors
+  ------------------
+  | prime_factors::factors:
+  |    1|     21|pub fn factors(n: u64) -> Vec<u64> {
+  |    2|     21|    let mut factors: Vec<u64> = Vec::new();
+  |    3|     21|
+  |    4|     21|    if n <= 1 {
+  |    5|      3|        return factors;
+  |    6|     18|    }
+  |    7|     18|
+  |    8|     18|    if n == 2 {
+  |    9|      3|        factors.push(2);
+  |   10|      3|        return factors;
+  |   11|     15|    }
+  |   12|     15|
+  |   13|     15|    let mut factor;
+  |   14|     15|    let mut number = n;
+  |   15|     15|
+  |   16|     15|    factor = 2;
+  |   17|     30|    while number % factor == 0 {
+  |   18|     15|        number /= factor;
+  |   19|     15|        factors.push(factor);
+  |   20|     15|    }
+  |   21|       |
+  |   22|     15|    factor = 3;
+  |   23|  1.34M|    while number > 1 {
+  |   24|  1.34M|        while number % factor == 0 && number > 1 {
+  |                                                    ^30
+  |   25|     30|            number /= factor;
+  |   26|     30|            factors.push(factor);
+  |   27|     30|        }
+  |   28|       |
+  |   29|  1.34M|        factor += 2;
+  |   30|       |    }
+  |   31|       |
+  |   32|     15|    factors
+  |   33|     21|}
+  ------------------

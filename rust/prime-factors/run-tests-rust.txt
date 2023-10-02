@@ -1,0 +1,498 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: ../../.github/citools/rust/rust-lint-check --release
+
+Running Rust Cargo Check
+
+Rust version:
+
+	rustc 1.72.1 (d5c2e9c34 2023-09-13)
+
+
+ ==============================================================================
+
+Running: cargo clean
+
+
+real	0m0.059s
+user	0m0.011s
+sys	0m0.047s
+
+
+ ==============================================================================
+
+Running: cargo check --future-incompat-report --release
+
+    Checking prime_factors v1.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/prime-factors)
+    Finished release [optimized] target(s) in 0.13s
+note: 0 dependencies had future-incompatible warnings
+
+real	0m0.144s
+user	0m0.029s
+sys	0m0.042s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.216s
+user	0m0.045s
+sys	0m0.097s
+
+real	0m0.220s
+user	0m0.047s
+sys	0m0.099s
+
+===============================================================================
+
+Running: ../../.github/citools/rust/rust-lint-clippy --release
+
+Running Rust Cargo Clippy
+
+Rust version:
+
+	rustc 1.72.1 (d5c2e9c34 2023-09-13)
+
+
+ ==============================================================================
+
+Running: cargo clean
+
+
+real	0m0.015s
+user	0m0.010s
+sys	0m0.005s
+
+
+ ==============================================================================
+
+Running: cargo clippy --release
+
+    Checking prime_factors v1.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/prime-factors)
+    Finished release [optimized] target(s) in 0.10s
+
+real	0m0.128s
+user	0m0.070s
+sys	0m0.059s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.154s
+user	0m0.084s
+sys	0m0.071s
+
+real	0m0.156s
+user	0m0.085s
+sys	0m0.072s
+
+===============================================================================
+
+Running: ../../.github/citools/rust/rust-lint-audit
+No deps found, skipping cargo audit.
+
+real	0m0.046s
+user	0m0.018s
+sys	0m0.029s
+
+real	0m0.048s
+user	0m0.019s
+sys	0m0.030s
+
+===============================================================================
+
+rm -fv ./*.profraw ./*.profdata
+
+===============================================================================
+
+Running: ../../.github/citools/rust/rust-test-with-tarpaulin
+
+Running Rust Tests With Tarpaulin
+
+Rust version:
+
+	rustc 1.72.1 (d5c2e9c34 2023-09-13)
+
+
+ ==============================================================================
+
+Running: cargo clean
+
+
+real	0m0.013s
+user	0m0.005s
+sys	0m0.008s
+
+
+ ==============================================================================
+
+Running: cargo test --all-features
+
+   Compiling prime_factors v1.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/prime-factors)
+    Finished test [unoptimized + debuginfo] target(s) in 0.32s
+     Running unittests src/lib.rs (/home/vpayno/git_vpayno/exercism-workspace/rust/target/debug/deps/prime_factors-857d47f14c5ab0b0)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/prime-factors.rs (/home/vpayno/git_vpayno/exercism-workspace/rust/target/debug/deps/prime_factors-4ed9138cad36d939)
+
+running 7 tests
+test no_factors ... ok
+test prime_number ... ok
+test cube_of_a_prime ... ok
+test product_of_primes_and_non_primes ... ok
+test square_of_a_prime ... ok
+test factors_include_large_prime ... ok
+test product_of_primes ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests prime_factors
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+real	0m0.359s
+user	0m0.479s
+sys	0m0.222s
+
+
+ ==============================================================================
+
+Running: cargo tarpaulin --release --timeout=300
+
+[2mOct 01 19:15:14.999[0m [32m INFO[0m cargo_tarpaulin::config: Creating config
+[2mOct 01 19:15:15.018[0m [32m INFO[0m cargo_tarpaulin: Running Tarpaulin
+[2mOct 01 19:15:15.018[0m [32m INFO[0m cargo_tarpaulin: Building project
+[2mOct 01 19:15:15.018[0m [32m INFO[0m cargo_tarpaulin::cargo: Cleaning project
+   Compiling prime_factors v1.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/prime-factors)
+    Finished release [optimized] target(s) in 0.37s
+[2mOct 01 19:15:15.458[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
+[2mOct 01 19:15:15.458[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/target/release/deps/prime_factors-525d2bb1d40c4420
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+[2mOct 01 19:15:15.835[0m [32m INFO[0m cargo_tarpaulin::process_handling::linux: Launching test
+[2mOct 01 19:15:15.835[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/target/release/deps/prime_factors-1cd2b7cec8bcf3bf
+
+running 7 tests
+test no_factors ... ok
+test prime_number ... ok
+test square_of_a_prime ... ok
+test product_of_primes_and_non_primes ... ok
+test product_of_primes ... ok
+test cube_of_a_prime ... ok
+test factors_include_large_prime ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+[2mOct 01 19:15:16.227[0m [32m INFO[0m cargo_tarpaulin::report: Coverage Results:
+|| Uncovered Lines:
+|| anagram/src/lib.rs: 4-5, 7-9, 11-14, 16, 19, 23, 25, 27-28, 30-32, 35-36, 38-41, 43, 45, 49-50, 53, 55, 58-60, 63, 66, 68
+|| luhn-from/src/lib.rs: 6, 8
+|| luhn-trait/src/lib.rs: 6-12
+|| simple-linked-list/src/lib.rs: 16, 28-29, 32-33, 36-39, 41-42, 45-49, 53-54, 58-60, 62-64, 67, 72-73, 75-76, 79, 97-99, 101-103, 107, 109
+|| space-age/src/lib.rs: 24-25
+|| triangle/src/lib.rs: 75-79, 84-85, 89-92, 96-97
+|| Tested/Total Lines:
+|| anagram/src/lib.rs: 0/36
+|| luhn-from/src/lib.rs: 0/2
+|| luhn-trait/src/lib.rs: 0/7
+|| prime-factors/src/lib.rs: 9/9
+|| simple-linked-list/src/lib.rs: 0/38
+|| space-age/src/lib.rs: 0/2
+|| triangle/src/lib.rs: 0/13
+|| 
+8.41% coverage, 9/107 lines covered
+
+real	0m1.249s
+user	0m0.555s
+sys	0m0.814s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.633s
+user	0m1.045s
+sys	0m1.052s
+
+real	0m1.635s
+user	0m1.045s
+sys	0m1.054s
+
+===============================================================================
+
+Running: ../../.github/citools/rust/rust-test-with-llvm-coverage
+
+Running Rust Tests With LLVM Coverage
+
+Rust version:
+
+	rustc 1.72.1 (d5c2e9c34 2023-09-13)
+
+
+ ==============================================================================
+
+Running: cargo clean
+
+
+real	0m0.016s
+user	0m0.005s
+sys	0m0.011s
+
+
+ ==============================================================================
+
+Running: cargo llvm-cov clean
+
+
+real	0m0.133s
+user	0m0.077s
+sys	0m0.058s
+
+
+ ==============================================================================
+
+Running: cargo test --all-features --doc
+
+   Compiling prime_factors v1.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/prime-factors)
+    Finished test [unoptimized + debuginfo] target(s) in 0.12s
+   Doc-tests prime_factors
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+real	0m0.146s
+user	0m0.093s
+sys	0m0.075s
+
+
+ ==============================================================================
+
+Running: cargo llvm-cov --no-clean --all-features
+
+   Compiling prime_factors v1.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/prime-factors)
+    Finished test [unoptimized + debuginfo] target(s) in 0.34s
+     Running unittests src/lib.rs (/home/vpayno/git_vpayno/exercism-workspace/rust/target/llvm-cov-target/debug/deps/prime_factors-3a994a9c3905a226)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/prime-factors.rs (/home/vpayno/git_vpayno/exercism-workspace/rust/target/llvm-cov-target/debug/deps/prime_factors-fc62da005e939b4a)
+
+running 7 tests
+test cube_of_a_prime ... ok
+test factors_include_large_prime ... ok
+test no_factors ... ok
+test prime_number ... ok
+test product_of_primes ... ok
+test product_of_primes_and_non_primes ... ok
+test square_of_a_prime ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+Filename                                                                     Regions    Missed Regions     Cover   Functions  Missed Functions  Executed       Lines      Missed Lines     Cover    Branches   Missed Branches     Cover
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+/home/vpayno/git_vpayno/exercism-workspace/rust/prime-factors/src/lib.rs          15                 0   100.00%           1                 0   100.00%          29                 0   100.00%           0                 0         -
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+TOTAL                                                                             15                 0   100.00%           1                 0   100.00%          29                 0   100.00%           0                 0         -
+
+real	0m0.490s
+user	0m0.394s
+sys	0m0.193s
+
+
+ ==============================================================================
+
+Running: cargo llvm-cov report --lcov --output-path report.lcov
+
+
+    Finished report saved to report.lcov
+
+real	0m0.158s
+user	0m0.088s
+sys	0m0.070s
+
+    Finished test [unoptimized + debuginfo] target(s) in 0.01s
+     Running unittests src/lib.rs (/home/vpayno/git_vpayno/exercism-workspace/rust/target/llvm-cov-target/debug/deps/prime_factors-3a994a9c3905a226)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/prime-factors.rs (/home/vpayno/git_vpayno/exercism-workspace/rust/target/llvm-cov-target/debug/deps/prime_factors-fc62da005e939b4a)
+
+running 7 tests
+test cube_of_a_prime ... ok
+test factors_include_large_prime ... ok
+test no_factors ... ok
+test prime_number ... ok
+test product_of_primes ... ok
+test product_of_primes_and_non_primes ... ok
+test square_of_a_prime ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+real	0m0.209s
+user	0m0.115s
+sys	0m0.094s
+
+ ==============================================================================
+
+Running: cargo llvm-cov --no-clean --all-features --text --output-path=coverage-annotations.txt
+
+    Finished test [unoptimized + debuginfo] target(s) in 0.01s
+     Running unittests src/lib.rs (/home/vpayno/git_vpayno/exercism-workspace/rust/target/llvm-cov-target/debug/deps/prime_factors-3a994a9c3905a226)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/prime-factors.rs (/home/vpayno/git_vpayno/exercism-workspace/rust/target/llvm-cov-target/debug/deps/prime_factors-fc62da005e939b4a)
+
+running 7 tests
+test cube_of_a_prime ... ok
+test factors_include_large_prime ... ok
+test no_factors ... ok
+test prime_number ... ok
+test product_of_primes ... ok
+test product_of_primes_and_non_primes ... ok
+test square_of_a_prime ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+    Finished report saved to coverage-annotations.txt
+
+real	0m0.159s
+user	0m0.082s
+sys	0m0.079s
+
+
+ ==============================================================================
+
+Running: cargo llvm-cov clean
+
+
+real	0m0.091s
+user	0m0.055s
+sys	0m0.038s
+
+
+ ==============================================================================
+
+Running: lcov --list report.lcov
+
+Reading tracefile report.lcov
+            |Lines       |Functions  |Branches    
+Filename    |Rate     Num|Rate    Num|Rate     Num
+==================================================
+[/home/vpayno/git_vpayno/exercism-workspace/rust/prime-factors/src/]
+lib.rs      | 100%     29|50.0%     2|    -      0
+==================================================
+      Total:| 100%     29|50.0%     2|    -      0
+
+real	0m0.041s
+user	0m0.033s
+sys	0m0.008s
+
+
+Running: lcov --summary report.lcov
+
+Reading tracefile report.lcov
+Summary coverage rate:
+  lines......: 100.0% (29 of 29 lines)
+  functions..: 50.0% (1 of 2 functions)
+  branches...: no data found
+
+real	0m0.037s
+user	0m0.033s
+sys	0m0.004s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.493s
+user	0m0.983s
+sys	0m0.637s
+
+real	0m1.495s
+user	0m0.984s
+sys	0m0.638s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.024s
+user	0m0.022s
+sys	0m0.018s
+
+===============================================================================
+
+Running: cargo doc
+ Documenting prime_factors v1.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/prime-factors)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.20s
+
+real	0m0.207s
+user	0m0.162s
+sys	0m0.046s
+
+===============================================================================
+
+Running: cargo clean
+
+real	0m0.012s
+user	0m0.005s
+sys	0m0.007s
+
+===============================================================================
+
+/home/vpayno/git_vpayno/exercism-workspace/rust
+
+===============================================================================
+
+
+===============================================================================
+
+Running: rust-analyzer -v lsif . > index.lsif
+Generating LSIF started...
+Generating LSIF finished in 7.723052854s
+
+real	0m8.069s
+user	0m7.803s
+sys	0m0.268s
+
+===============================================================================
+
+Running: rust-analyzer -v scip .
+Generating SCIP start...
+rust-analyzer: Loading metadata
+Generating SCIP finished 7.753947941s
+
+real	0m8.100s
+user	0m7.864s
+sys	0m0.249s
+
+===============================================================================
+
