@@ -25,6 +25,11 @@ run_command() {
 	# md_code_tag
 } # run_command()
 
+track_errors() {
+	((retval++))
+	printf "\nERROR: Failure detected in last command.\n"
+} # track_errors()
+
 print_ruler() {
 	printf "\n "
 	printf "=%.0s" {1..78}

@@ -14,7 +14,7 @@ main() {
 	print_ruler
 
 	echo Running: sudo apt update
-	time sudo apt update || ((retval++))
+	time sudo apt update || track_errors
 
 	print_ruler
 
@@ -46,22 +46,22 @@ main() {
 	)
 
 	echo Running: sudo apt install -y "${debs[@]}"
-	time sudo apt install -y "${debs[@]}" || ((retval++))
+	time sudo apt install -y "${debs[@]}" || track_errors
 
 	print_ruler
 
 	echo Running: curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer \| bash
-	time curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer | bash || ((retval++))
+	time curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer | bash || track_errors
 
 	print_ruler
 
 	echo Running: curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-doctor \| bash
-	time curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-doctor | bash || ((retval++))
+	time curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-doctor | bash || track_errors
 
 	print_ruler
 
 	echo Running: rbenv -v
-	time rbenv -v || ((retval++))
+	time rbenv -v || track_errors
 
 	print_ruler
 
@@ -77,25 +77,25 @@ main() {
 	print_ruler
 
 	echo Running: rbenv install --list
-	time rbenv install --list || ((retval++))
+	time rbenv install --list || track_errors
 
 	print_ruler
 
 	local ruby_version
-	ruby_version="$(rbenv install --list 2>/dev/null | grep '^3[.]1[.]' | tail -n 1)" || ((retval++))
+	ruby_version="$(rbenv install --list 2>/dev/null | grep '^3[.][0-9][.]' | tail -n 1)" || track_errors
 
 	echo Running: rbenv install "${ruby_version}"
-	time rbenv install "${ruby_version}" || ((retval++))
+	time rbenv install "${ruby_version}" || track_errors
 
 	print_ruler
 
 	echo Running: rbenv global "${ruby_version}"
-	time rbenv global "${ruby_version}" || ((retval++))
+	time rbenv global "${ruby_version}" || track_errors
 
 	print_ruler
 
 	echo Running: ruby -v
-	time ruby -v || ((retval++))
+	time ruby -v || track_errors
 
 	print_ruler
 
@@ -113,7 +113,7 @@ main() {
 	)
 
 	echo Running: gem install "${gems[@]}"
-	time gem install "${gems[@]}" || ((retval++))
+	time gem install "${gems[@]}" || track_errors
 
 	print_ruler
 
