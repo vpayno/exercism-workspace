@@ -1,0 +1,37 @@
+#!/bin/bash
+#
+# .github/citools/ruby/ruby-setup-install
+#
+
+# shellcheck disable=SC1091
+source ../../.github/citools/includes/wrapper-library || exit
+
+declare -i retval=0
+
+main() {
+	printf "Ruby Installation\n\n"
+
+	print_ruler
+
+	echo Running: sudo apt install ruby-full
+	time sudo apt install -y ruby-full || ((retval++))
+
+	print_ruler
+
+	local -a gems
+	gems=(
+		rubycritic
+		simplecov
+		simplecov-cobertura
+	)
+
+	echo Running: gem install "${gems[@]}"
+	time gem install "${gems[@]}" || ((retval++))
+
+	print_ruler
+
+	echo Exit code: "${retval}"
+	return "${retval}"
+}
+
+time main "${@}"

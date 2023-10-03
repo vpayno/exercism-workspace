@@ -1,0 +1,48 @@
+#!/bin/bash
+#
+# .github/citools/ruby/ruby-setup-verify
+#
+
+# shellcheck disable=SC1091
+source ../../.github/citools/includes/wrapper-library || exit
+
+declare -i retval=0
+
+declare -A ruby_cmds
+
+ruby_cmds=(
+	[ruby]=$(
+		command -v ruby >&/dev/null
+		echo "$?"
+	)
+	[rubycritic]=$(
+		command -v rubycritic >&/dev/null
+		echo "$?"
+	)
+)
+
+main() {
+	for key in "${!ruby_cmds[@]}"; do
+		if [[ ${ruby_cmds[${key}]} -ne 0 ]]; then
+			printf "ERROR: command [%s] not found.\n" "${key}"
+			((retval++))
+		fi
+	done
+
+	if [[ ${retval} -ne 0 ]]; then
+		return "${retval}"
+	fi
+
+	printf "Verifying Ruby Installation\n\n"
+
+	print_ruler
+
+	show_tool_versions_ruby
+
+	print_ruler
+
+	echo Exit code: "${retval}"
+	return "${retval}"
+}
+
+time main "${@}"

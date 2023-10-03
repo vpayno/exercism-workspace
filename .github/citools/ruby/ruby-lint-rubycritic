@@ -1,0 +1,28 @@
+#!/bin/bash
+#
+# .github/citools/ruby/ruby-lint-rubycritic
+#
+
+# shellcheck disable=SC1091
+source ../../.github/citools/includes/wrapper-library || exit
+
+declare -i retval=0
+
+main() {
+	printf "\nRunning RubyCritic\n\n"
+
+	show_tool_versions_ruby
+
+	print_ruler
+
+	# https://github.com/whitesmith/rubycritic
+
+	run_command rubycritic --path .rubycritic --format console --no-browser . || ((retval++))
+
+	print_ruler
+
+	echo Exit code: "${retval}"
+	return "${retval}"
+}
+
+time main "${@}"

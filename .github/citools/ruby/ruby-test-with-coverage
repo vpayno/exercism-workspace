@@ -1,0 +1,34 @@
+#!/bin/bash
+#
+# .github/citools/ruby/ruby-test-with-coverage
+#
+
+# shellcheck disable=SC1091
+source ../../.github/citools/includes/wrapper-library || exit
+
+declare -i retval=0
+
+main() {
+	printf "\nRunning Ruby Tests With Coverage\n\n"
+
+	show_tool_versions_ruby
+
+	print_ruler
+
+	run_command rm -rf ./coverage
+
+	print_ruler
+
+	# https://github.com/simplecov-ruby/simplecov
+	# https://github.com/dashingrocket/simplecov-cobertura
+	# https://about.codecov.io/blog/getting-started-with-code-coverage-for-ruby/
+
+	run_command ruby ./*_test.rb -v || ((retval++))
+
+	print_ruler
+
+	echo Exit code: "${retval}"
+	return "${retval}"
+}
+
+time main "${@}"

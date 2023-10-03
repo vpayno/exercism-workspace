@@ -115,3 +115,32 @@ show_tool_versions_go() {
 	# md_code_tag
 	printf "\n"
 } # show_tool_versions_go()
+
+show_tool_versions_ruby_short() {
+	# md_code_tag text
+	printf "Ruby version:\n"
+	printf "\n"
+	ruby --version | paste /dev/null -
+	# md_code_tag
+	printf "\n"
+} # show_tool_versions_ruby_short()
+
+show_tool_versions_ruby() {
+	# md_code_tag text
+	printf "Ruby version:\n"
+	printf "\n"
+	ruby --version | paste /dev/null -
+	# md_code_tag
+	printf "\n"
+
+	if [[ -z ${GITHUB_ACTIONS} ]]; then
+		return
+	fi
+
+	# md_code_tag text
+	printf "Installed Gem packages:\n"
+	printf "\n"
+	gem list | paste /dev/null -
+	# md_code_tag
+	printf "\n"
+} # show_tool_versions_ruby()
