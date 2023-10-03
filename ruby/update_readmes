@@ -48,3 +48,31 @@ sed -r -i -e 's/^(\s+)(skip)\b.*$/\1# \2/g' ./*_test.rb
 git add ./*_test.rb
 git diff --cached ./*_test.rb
 printf "\n"
+
+for f in ./*_test.rb; do
+	if ! grep -q simplecov "${f}"; then
+		{ cat | sponge "${f}"; } <<-EOF
+			# frozen_string_literal: false
+
+			# https://github.com/simplecov-ruby/simplecov
+			require 'simplecov'
+
+			# line coverage
+			SimpleCov.start if ENV['COVERAGE'] != 'branch'
+
+			# branch coverage
+			if ENV['COVERAGE'] == 'branch'
+			  SimpleCov.start do
+			    enable_coverage :branch
+			    primary_coverage :branch
+			  end
+			end
+
+			# name the test file/group
+			SimpleCov.command_name 'test:exercism'
+
+			# original exercism tests
+			$(cat "${f}")
+		EOF
+	fi
+done
