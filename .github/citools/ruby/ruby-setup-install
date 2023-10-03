@@ -55,11 +55,6 @@ main() {
 
 	print_ruler
 
-	echo Running: curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-doctor \| bash
-	time curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-doctor | bash || track_errors
-
-	print_ruler
-
 	echo Running: rbenv -v
 	time rbenv -v || track_errors
 
@@ -114,6 +109,11 @@ main() {
 
 	echo Running: gem install "${gems[@]}"
 	time gem install "${gems[@]}" || track_errors
+
+	print_ruler
+
+	echo Running: curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-doctor \| bash
+	time curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-doctor | bash || track_errors
 
 	print_ruler
 
