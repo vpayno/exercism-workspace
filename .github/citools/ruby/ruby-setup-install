@@ -13,13 +13,100 @@ main() {
 
 	print_ruler
 
-	echo Running: sudo apt install ruby-full
-	time sudo apt install -y ruby-full || ((retval++))
+	echo Running: sudo apt update
+	time sudo apt update || ((retval++))
+
+	print_ruler
+
+	local -a debs
+	debs=(
+		autoconf
+		automake
+		bison
+		build-essential
+		curl
+		g++
+		gcc
+		git
+		gnupg
+		libc6-dev
+		libffi-dev
+		libgdbm-dev
+		libgmp-dev
+		libncurses5-dev
+		libreadline-dev
+		libsqlite3-dev
+		libssl-dev
+		libtool
+		libyaml-dev
+		make
+		pkg-config
+		sqlite3
+		zlib1g-dev
+	)
+
+	echo Running: sudo apt install -y "${debs[@]}"
+	time sudo apt install -y "${debs[@]}" || ((retval++))
+
+	print_ruler
+
+	echo Running: curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer \| bash
+	time curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer | bash || ((retval++))
+
+	print_ruler
+
+	echo Running: curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-doctor \| bash
+	time curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-doctor | bash || ((retval++))
+
+	print_ruler
+
+	echo Running: rbenv -v
+	time rbenv -v || ((retval++))
+
+	print_ruler
+
+	printf "Configuring Shell: "
+	# shellcheck disable=SC2016
+	echo 'export PATH="${HOME}/.rbenv/bin:${PATH}"' >>/etc/profile.d/rbenv.sh
+	# shellcheck disable=SC2016
+	echo 'eval "$(rbenv init -)"' >>/etc/profile.d/rbenv.sh
+	# shellcheck disable=SC1090
+	source /etc/profile.d/rbenv.sh
+	printf "done\n"
+
+	print_ruler
+
+	echo Running: rbenv install --list
+	time rbenv install --list || ((retval++))
+
+	print_ruler
+
+	local ruby_version
+	ruby_version="$(rbenv install --list 2>/dev/null | grep '^3[.]1[.]' | tail -n 1)" || ((retval++))
+
+	echo Running: rbenv install "${ruby_version}"
+	time rbenv install "${ruby_version}" || ((retval++))
+
+	print_ruler
+
+	echo Running: rbenv global "${ruby_version}"
+	time rbenv global "${ruby_version}" || ((retval++))
+
+	print_ruler
+
+	echo Running: ruby -v
+	time ruby -v || ((retval++))
 
 	print_ruler
 
 	local -a gems
 	gems=(
+		rspec
+		rspec-core
+		rspec-expectations
+		rspec-mocks
+		rspec-parameterized
+		rspec-support
 		rubycritic
 		simplecov
 		simplecov-cobertura

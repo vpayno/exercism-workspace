@@ -37,6 +37,16 @@ main() {
 
 	print_ruler
 
+	printf "RBENV_SHELL=%s\n" "${RBENV_SHELL}"
+	printf "PATH=%s\n" "${PATH}"
+
+	print_ruler
+
+	echo Running: rbenv init -
+	time rbenv init -
+
+	print_ruler
+
 	show_tool_versions_ruby
 
 	print_ruler
