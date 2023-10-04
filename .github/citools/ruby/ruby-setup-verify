@@ -22,17 +22,6 @@ ruby_cmds=(
 )
 
 main() {
-	for key in "${!ruby_cmds[@]}"; do
-		if [[ ${ruby_cmds[${key}]} -ne 0 ]]; then
-			printf "ERROR: command [%s] not found.\n" "${key}"
-			((retval++))
-		fi
-	done
-
-	if [[ ${retval} -ne 0 ]]; then
-		return "${retval}"
-	fi
-
 	printf "Verifying Ruby Installation\n\n"
 
 	print_ruler
@@ -44,6 +33,17 @@ main() {
 
 	echo Running: rbenv init -
 	time rbenv init -
+
+	for key in "${!ruby_cmds[@]}"; do
+		if [[ ${ruby_cmds[${key}]} -ne 0 ]]; then
+			printf "ERROR: command [%s] not found.\n" "${key}"
+			((retval++))
+		fi
+	done
+
+	if [[ ${retval} -ne 0 ]]; then
+		return "${retval}"
+	fi
 
 	print_ruler
 
