@@ -21,8 +21,30 @@ jobs:
       exercise_count: ${{ steps.check_file_changed.outputs.exercise_count }}
     steps:
       - name: Check GitHub Vars
-        id: github-vars
-        run: set | grep -e ^CI -e ^GITHUB_ -e ^RUNNER_
+        id: github-vars-check
+        run: |-
+          {
+            printf "\`\`\`text\n"
+            printf "Runner environment info:\n"
+            set | grep -e ^CI -e ^GITHUB_ -e ^RUNNER_
+            printf "\`\`\`\n"
+          } | tee -a "${GITHUB_STEP_SUMMARY}"
+      - name: Check GitHub User
+        id: github-user-check
+        run: |-
+          # get user info for default gh container
+          {
+            printf "\`\`\`text\n"
+            printf "Container user info:\n"
+            who
+            printf "\n"
+            id
+            printf "\n"
+            printf "HOME: %s\n" "${HOME}"
+            printf "\n"
+            printf "SHELL: %s\n" "$(getent passwd "${USER}" | awk -F: '{print $NF}')"
+            printf "\`\`\`\n"
+          } | tee -a "${GITHUB_STEP_SUMMARY}"
       - name: Checkout Repo
         id: checkout-repo
         uses: actions/checkout@v3
@@ -40,17 +62,6 @@ jobs:
             printf "User: %s\n" "${GITHUB_TRIGGERING_ACTOR}"
             printf "\n"
           } | tee -a "${GITHUB_STEP_SUMMARY}"
-
-          # get user info for default gh container
-          {
-            printf "\`\`\`text\n"
-            printf "Container user info:\n"
-            who
-            printf "\n"
-            id
-            printf "\`\`\`\n"
-          } | tee -a "${GITHUB_STEP_SUMMARY}"
-          printf "\n"
 
           # Diff HEAD with the previous commit then output to stdout.
           GIT_DIFF="$(git diff --name-only HEAD^ HEAD | tee /tmp/changed_files.txt)"
