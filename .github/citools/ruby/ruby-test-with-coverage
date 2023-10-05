@@ -27,6 +27,12 @@ main() {
 
 	print_ruler
 
+	local coverage_raw
+	coverage_raw="$(xq -q coverage -a line-rate ./coverage/coverage.xml)"
+	printf "Coverage: %.1f%%\n" "$(bc <<<"scale=1; ${coverage_raw}* 100")"
+
+	print_ruler
+
 	echo Exit code: "${retval}"
 	return "${retval}"
 }
