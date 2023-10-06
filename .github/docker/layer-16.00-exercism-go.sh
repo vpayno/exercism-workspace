@@ -118,6 +118,7 @@ main() {
 		github.com/rhysd/actionlint/cmd/actionlint@latest
 		github.com/securego/gosec/v2/cmd/gosec@latest
 		github.com/segmentio/golines@latest
+		github.com/sibprogrammer/xq@latest
 		golang.org/x/lint/golint@latest
 		golang.org/x/perf/cmd/benchstat@latest
 		golang.org/x/tools/cmd/cover@latest
