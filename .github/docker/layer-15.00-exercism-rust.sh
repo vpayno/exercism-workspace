@@ -65,16 +65,40 @@ main() {
 	time apt install -y "${PACKAGES[@]}" || exit
 	printf "\n"
 
+	tee /etc/profile.d/rust.sh <<-EOF
+		#
+		# /etc/profile.d/rust.sh
+		#
+
+		export RUSTUP_HOME="/usr/local/rustup"
+		export RUSTPATH="/usr/local/cargo"
+		export CARGO_HOME="\${RUSTPATH}"
+		export RUSTBIN="\${RUSTPATH}/bin"
+		export PATH="\${RUSTBIN}:\${PATH}"
+		export CARGO_REGISTRIES_CRATES_IO_PROTOCOL="sparse"
+	EOF
+
+	echo Running: source /etc/profile.d/rust.sh
+	# shellcheck disable=SC1091
+	source /etc/profile.d/rust.sh || exit
+
+	printf "PATH=%s\n" "${PATH}"
+	printf "RUSTUP_HOME=%s\n" "${RUSTUP_HOME}"
+	printf "RUSTPATH=%s\n" "${RUSTPATH}"
+	printf "CARGO_HOME=%s\n" "${CARGO_HOME}"
+	printf "RUSTBIN=%s\n" "${RUSTBIN}"
+	printf "CARGO_REGISTRIES_CRATES_IO_PROTOCOL=%s\n" "${CARGO_REGISTRIES_CRATES_IO_PROTOCOL}"
+	printf "\n"
+
 	echo Running: curl https://sh.rustup.rs -sSf \| bash -s -- -y
 	time curl https://sh.rustup.rs -sSf | bash -s -- -y || exit
 	printf "\n"
 
-	cat >>~/.bashrc <<-EOF
-		export PATH="${PATH}:${HOME}/.cargo/bin"
-	EOF
+	echo Running: chgrp -R adm "${RUSTUP_HOME}"
+	chgrp -R adm "${RUSTUP_HOME}" || exit
 
-	# shellcheck disable=SC1091
-	source "${HOME}/.bashrc"
+	echo Running: chgrp -R adm "${CARGO_HOME}"
+	chgrp -R adm "${CARGO_HOME}" || exit
 
 	echo Running: rustup install stable
 	time rustup install stable || exit
@@ -88,14 +112,13 @@ main() {
 	rustc --version || exit
 	printf "\n"
 
-	export CARGO_REGISTRIES_CRATES_IO_PROTOCOL="sparse"
-
 	echo Running: cargo install sccache
 	time cargo install sccache || exit
 	printf "\n"
 
+	# this has to be added to the environment after sccache is installed
 	export RUSTC_WRAPPER="sccache"
-	echo RUSTC_WRAPPER="sccache" | tee -a "${HOME}/.bashrc"
+	echo export RUSTC_WRAPPER="sccache" | tee -a /etc/profile.d/rust.sh
 	printf "\n"
 
 	echo Running: sccache --start-server
@@ -137,8 +160,8 @@ main() {
 	cargo cache --info
 	printf "\n"
 
-	echo Running: rm -rf /root/.cargo/registry/
-	time rm -rf /root/.cargo/registry/
+	echo Running: rm -rf /root/.cargo/registry/ /usr/local/cargo/registry/
+	time rm -rf /root/.cargo/registry/ /usr/local/cargo/registry/
 	printf "\n"
 
 	layer_end "${0}" "$@"
