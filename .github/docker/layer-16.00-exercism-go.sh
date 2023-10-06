@@ -67,11 +67,11 @@ golang_first_install() {
 	time curl -sS https://dl.google.com/go/go"${GOVER}".linux-"${GOARCH}".tar.gz | tar -C ~/.golang/ -xzf - || return 1
 	printf "\n"
 
-	echo source "${HOME}"/.bashrc
+	#echo source "${HOME}"/.bashrc
 	# shellcheck disable=SC1091
-	source "${HOME}"/.bashrc
+	#source "${HOME}"/.bashrc
 
-	PATH_OLD="${PATH}"
+	#PATH_OLD="${PATH}"
 	PATH="${HOME}/.golang/go/bin:${PATH}"
 
 	echo go version
@@ -82,7 +82,7 @@ golang_first_install() {
 	time golang_install_latest
 	printf "\n"
 
-	PATH="${PATH_OLD}"
+	#PATH="${PATH_OLD}"
 } # golang_first_install()
 
 main() {
@@ -192,19 +192,33 @@ main() {
 		fi
 	EOF
 
-	echo Running: golang_first_install
-	time golang_first_install || exit
-	printf "\n"
+	tee /etc/profile.d/go.sh <<-EOF
+		#
+		# /etc/profile.d/go.sh
+		#
 
-	# shellcheck disable=SC1091
-	source "${HOME}/.bashrc"
+		export GOPATH="/usr/local/go"
+		export GOBIN="\${GOPATH}/bin"
+		export GOSRC="\${GOPATH}/src"
+		export PATH="\${GOBIN}:\${PATH}"
+	EOF
 
+	echo Running: source /etc/profile.d/go.sh
 	# shellcheck disable=SC1091
-	source "${HOME}/.bashrc"
+	source /etc/profile.d/go.sh || exit
+
 	printf "PATH=%s\n" "${PATH}"
 	printf "GOPATH=%s\n" "${GOPATH}"
 	printf "GOBIN=%s\n" "${GOBIN}"
 	printf "GOSRC=%s\n" "${GOSRC}"
+	printf "\n"
+
+	echo Running: golang_first_install
+	time golang_first_install || exit
+	printf "\n"
+
+	echo Running: ls -lh /usr/local/go/{,bin}
+	ls -lh /usr/local/go/{,bin}
 	printf "\n"
 
 	echo Running: go version
@@ -227,12 +241,15 @@ main() {
 	time go install -tags extended github.com/gohugoio/hugo@latest || ((retval++))
 	printf "\n"
 
-	echo Running: rm -rf /root/go/pkg/*
-	time rm -rf /root/go/pkg/*
+	echo Running: chgrp -R adm "${GOPATH}"
+	chgrp -R adm "${GOPATH}" || exit
+
+	echo Running: rm -rf /root/go/pkg/* /usr/local/go/pkg/*
+	time rm -rf /root/go/pkg/* /usr/local/go/pkg/*
 	printf "\n"
 
-	echo Running: rm -rf /root/go/src/*
-	time rm -rf /root/go/src/*
+	echo Running: rm -rf /root/go/src/* /usr/local/go/src/*
+	time rm -rf /root/go/src/* /usr/local/go/src/*
 	printf "\n"
 
 	layer_end "${0}" "$@"
