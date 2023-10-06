@@ -60,29 +60,21 @@ golang_first_install() {
 
 	printf "Installing Go version %s...\n\n" "${GOVER}"
 
-	echo mkdir -v ~/.golang
-	[[ -d ~/.golang ]] || mkdir -v ~/.golang
-
-	echo curl -sS https://go.dev/dl/go"${GOVER}".linux-"${GOARCH}".tar.gz '|' tar -C ~/.golang/ -xzf -
-	time curl -sS https://dl.google.com/go/go"${GOVER}".linux-"${GOARCH}".tar.gz | tar -C ~/.golang/ -xzf - || return 1
+	echo Running: curl -sS https://go.dev/dl/go"${GOVER}".linux-"${GOARCH}".tar.gz '|' tar -C /usr/local/ -xzf -
+	time curl -sS https://dl.google.com/go/go"${GOVER}".linux-"${GOARCH}".tar.gz | tar -C /usr/local/ -xzf - || return 1
 	printf "\n"
 
-	#echo source "${HOME}"/.bashrc
-	# shellcheck disable=SC1091
-	#source "${HOME}"/.bashrc
-
-	#PATH_OLD="${PATH}"
-	PATH="${HOME}/.golang/go/bin:${PATH}"
-
-	echo go version
+	echo Running: go version
 	go version
 	printf "\n"
 
-	echo golang_install_latest
+	echo Running: golang_install_latest
 	time golang_install_latest
 	printf "\n"
 
-	#PATH="${PATH_OLD}"
+	echo Running: go version
+	go version
+	printf "\n"
 } # golang_first_install()
 
 main() {
@@ -170,19 +162,16 @@ main() {
 	time apt install -y "${PACKAGES[@]}" || exit
 	printf "\n"
 
-	cat >>"${HOME:-/root}/.bashrc" <<-EOF
-		# go setup
-		declare -x GOPATH
-		declare -x GOBIN
-		declare -x GOSRC
-		declare -x PATH
+	tee /etc/profile.d/go.sh <<-EOF
+		#
+		# /etc/profile.d/go.sh
+		#
 
-		GOPATH="/root/go"
-		GOBIN="/root/go/bin"
-		GOSRC="/root/go/src"
-		PATH="${PATH}:/root/.golang/go/bin:/root/go/bin"
-
-		export GOPATH GOBIN GOSRC PATH
+		export GOROOT="/usr/local/go"
+		export GOPATH="/usr/local/go"
+		export GOBIN="\${GOPATH}/bin"
+		export GOSRC="\${GOPATH}/src"
+		export PATH="\${GOBIN}:\${PATH}"
 
 		if [[ ${HOSTTYPE} == x86_64 ]]; then
 			export GOARCH="amd64"
@@ -193,22 +182,12 @@ main() {
 		fi
 	EOF
 
-	tee /etc/profile.d/go.sh <<-EOF
-		#
-		# /etc/profile.d/go.sh
-		#
-
-		export GOPATH="/usr/local/go"
-		export GOBIN="\${GOPATH}/bin"
-		export GOSRC="\${GOPATH}/src"
-		export PATH="\${GOBIN}:\${PATH}"
-	EOF
-
 	echo Running: source /etc/profile.d/go.sh
 	# shellcheck disable=SC1091
 	source /etc/profile.d/go.sh || exit
 
 	printf "PATH=%s\n" "${PATH}"
+	printf "GOROOT=%s\n" "${GOROOT}"
 	printf "GOPATH=%s\n" "${GOPATH}"
 	printf "GOBIN=%s\n" "${GOBIN}"
 	printf "GOSRC=%s\n" "${GOSRC}"
@@ -245,17 +224,21 @@ main() {
 	echo Running: chgrp -R adm "${GOPATH}"
 	chgrp -R adm "${GOPATH}" || exit
 
-	echo Running: rm -rf /root/go/pkg/* /usr/local/go/pkg/*
-	time rm -rf /root/go/pkg/* /usr/local/go/pkg/*
+	echo Running: rm -rf /root/sdk/*
+	time rm -rf /root/sdk/*
 	printf "\n"
 
-	echo Running: rm -rf /root/go/src/* /usr/local/go/src/*
-	time rm -rf /root/go/src/* /usr/local/go/src/*
+	echo Running: rm -rf /usr/local/go/pkg/*
+	time rm -rf /usr/local/go/pkg/*
+	printf "\n"
+
+	echo Running: rm -rf /usr/local/go/src/*
+	time rm -rf /usr/local/go/src/*
 	printf "\n"
 
 	layer_end "${0}" "$@"
 
-	echo exit "${retval}"
+	echo Running: exit "${retval}"
 	exit "${retval}"
 }
 
