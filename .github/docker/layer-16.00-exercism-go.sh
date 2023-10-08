@@ -184,7 +184,7 @@ main() {
 
 	echo Running: source /etc/profile.d/go.sh
 	# shellcheck disable=SC1091
-	source /etc/profile.d/go.sh || exit
+	source /etc/profile.d/go.sh || ((retval++))
 
 	printf "PATH=%s\n" "${PATH}"
 	#printf "GOROOT=%s\n" "${GOROOT}"
@@ -198,7 +198,7 @@ main() {
 	#printf "\n"
 
 	echo Running: golang_first_install
-	time golang_first_install || exit
+	time golang_first_install || ((retval++))
 	printf "\n"
 
 	echo Running: ls /root/sdk/
@@ -214,7 +214,7 @@ main() {
 	printf "\n"
 
 	echo Running: go version
-	go version || exit
+	go version || ((retval++))
 	printf "\n"
 
 	for go_x_tool in "${GO_X_TOOLS[@]}"; do
@@ -246,7 +246,7 @@ main() {
 	printf "\n"
 
 	echo Running: rm -rf /root/.cache/go-build
-	time rm -rf /root/.cache/go-build
+	time rm -rf /root/.cache/go-build || ((retval++))
 	printf "\n"
 
 	echo Running: mv /root/sdk /etc/skel/
