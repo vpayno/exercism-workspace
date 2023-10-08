@@ -167,8 +167,8 @@ main() {
 		# /etc/profile.d/go.sh
 		#
 
-		export GOROOT="/usr/local/go"
 		export GOPATH="/usr/local/go"
+		export GOROOT="\${GOPATH}/sdk"
 		export GOBIN="\${GOPATH}/bin"
 		export GOSRC="\${GOPATH}/src"
 		export PATH="\${GOBIN}:\${PATH}"
@@ -191,6 +191,10 @@ main() {
 	printf "GOPATH=%s\n" "${GOPATH}"
 	printf "GOBIN=%s\n" "${GOBIN}"
 	printf "GOSRC=%s\n" "${GOSRC}"
+	printf "\n"
+
+	echo Running: mkdir -pv "${GOROOT}"
+	time mkdir -pv "${GOROOT}"
 	printf "\n"
 
 	echo Running: golang_first_install
@@ -223,9 +227,6 @@ main() {
 
 	echo Running: chgrp -R adm "${GOPATH}"
 	chgrp -R adm "${GOPATH}" || exit
-
-	echo Running: rm -rf /root/sdk/*
-	time rm -rf /root/sdk/*
 	printf "\n"
 
 	echo Running: rm -rf /usr/local/go/pkg/*
@@ -234,6 +235,10 @@ main() {
 
 	echo Running: rm -rf /usr/local/go/src/*
 	time rm -rf /usr/local/go/src/*
+	printf "\n"
+
+	echo Running: rm -rf /root/.cache/go-build
+	time rm -rf /root/.cache/go-build
 	printf "\n"
 
 	layer_end "${0}" "$@"
