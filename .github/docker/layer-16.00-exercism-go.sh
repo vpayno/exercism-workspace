@@ -168,7 +168,7 @@ main() {
 		#
 
 		export GOPATH="/usr/local/go"
-		export GOROOT="/usr/lib/go"
+		#export GOROOT="/usr/lib/go"
 		export GOBIN="\${GOPATH}/bin"
 		export GOSRC="\${GOPATH}/src"
 		export PATH="\${GOBIN}:\${PATH}"
@@ -187,18 +187,26 @@ main() {
 	source /etc/profile.d/go.sh || exit
 
 	printf "PATH=%s\n" "${PATH}"
-	printf "GOROOT=%s\n" "${GOROOT}"
+	#printf "GOROOT=%s\n" "${GOROOT}"
 	printf "GOPATH=%s\n" "${GOPATH}"
 	printf "GOBIN=%s\n" "${GOBIN}"
 	printf "GOSRC=%s\n" "${GOSRC}"
 	printf "\n"
 
-	echo Running: mkdir -pv "${GOROOT}"
-	time mkdir -pv "${GOROOT}"
-	printf "\n"
+	#echo Running: mkdir -pv "${GOROOT}"
+	#time mkdir -pv "${GOROOT}" || ((retval++))
+	#printf "\n"
 
 	echo Running: golang_first_install
 	time golang_first_install || exit
+	printf "\n"
+
+	echo Running: ls /root/sdk/
+	ls /root/sdk/
+	printf "\n"
+
+	echo Running: ls /root/sdk/*
+	ls /root/sdk/*
 	printf "\n"
 
 	echo Running: ls -lh /usr/local/go/{,bin}
