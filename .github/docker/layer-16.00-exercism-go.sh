@@ -168,7 +168,7 @@ main() {
 		#
 
 		export GOPATH="/usr/local/go"
-		export GOROOT="\${GOPATH}/sdk"
+		export GOROOT="/usr/lib/go"
 		export GOBIN="\${GOPATH}/bin"
 		export GOSRC="\${GOPATH}/src"
 		export PATH="\${GOBIN}:\${PATH}"
