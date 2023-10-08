@@ -234,19 +234,27 @@ main() {
 	printf "\n"
 
 	echo Running: chgrp -R adm "${GOPATH}"
-	chgrp -R adm "${GOPATH}" || exit
+	chgrp -R adm "${GOPATH}" || ((retval++))
 	printf "\n"
 
 	echo Running: rm -rf /usr/local/go/pkg/*
-	time rm -rf /usr/local/go/pkg/*
+	time rm -rf /usr/local/go/pkg/* || ((retval++))
 	printf "\n"
 
 	echo Running: rm -rf /usr/local/go/src/*
-	time rm -rf /usr/local/go/src/*
+	time rm -rf /usr/local/go/src/* || ((retval++))
 	printf "\n"
 
 	echo Running: rm -rf /root/.cache/go-build
 	time rm -rf /root/.cache/go-build
+	printf "\n"
+
+	echo Running: mv /root/sdk /etc/skel/
+	time mv /root/sdk /etc/skel/ || ((retval++))
+	printf "\n"
+
+	echo Running: ln -sv /etc/skel/sdk /root/sdk
+	ln -sv /etc/skel/sdk /root/sdk || ((retval++))
 	printf "\n"
 
 	layer_end "${0}" "$@"
