@@ -1,0 +1,39 @@
+#!/bin/bash
+#
+# .github/citools/common/gh-setup-env
+#
+
+# shellcheck disable=SC1091
+source ../../.github/citools/includes/wrapper-library || exit
+
+declare -i retval=0
+
+main() {
+	printf "Setup GitHub Environment\n\n"
+
+	print_ruler
+
+	printf "Adding Go paths to GITHUB_PATH...\n"
+	printf "%s\n" "/usr/local/go/bin" | tee -a "${GITHUB_PATH}"
+
+	print_ruler
+
+	printf "Adding Rust paths to GITHUB_PATH...\n"
+	printf "%s\n" "/usr/local/cargo/bin" | tee -a "${GITHUB_PATH}"
+
+	print_ruler
+
+	printf "Adding Ruby paths to GITHUB_PATH...\n"
+	printf "%s\n" "${HOME}/.rbenv/bin" "${HOME}/.rbenv/shims" | tee -a "${GITHUB_PATH}"
+
+	print_ruler
+
+	tail -n 1000 -v "${GITHUB_PATH}"
+
+	print_ruler
+
+	echo Exit code: "${retval}"
+	return "${retval}"
+}
+
+time main "${@}"

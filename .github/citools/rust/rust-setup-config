@@ -13,7 +13,9 @@ main() {
 
 	print_ruler
 
-	printf "%s\n" "/usr/local/cargo/bin" | tee -a "${GITHUB_PATH}"
+	source ../../.github/citools/common/gh-setup-env || exit
+
+	tree /usr/local/cargo/bin
 
 	print_ruler
 
