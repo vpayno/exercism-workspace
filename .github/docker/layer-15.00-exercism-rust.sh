@@ -65,9 +65,9 @@ main() {
 	time apt install -y "${PACKAGES[@]}" || exit
 	printf "\n"
 
-	tee /etc/profile.d/rust.sh <<-EOF
+	tee /etc/bashrc.d/rust.sh <<-EOF
 		#
-		# /etc/profile.d/rust.sh
+		# /etc/bashrc.d/rust.sh
 		#
 
 		export RUSTUP_HOME="/usr/local/rustup"
@@ -78,9 +78,9 @@ main() {
 		export CARGO_REGISTRIES_CRATES_IO_PROTOCOL="sparse"
 	EOF
 
-	echo Running: source /etc/profile.d/rust.sh
+	echo Running: source /etc/bashrc.d/rust.sh
 	# shellcheck disable=SC1091
-	source /etc/profile.d/rust.sh || exit
+	source /etc/bashrc.d/rust.sh || exit
 
 	printf "PATH=%s\n" "${PATH}"
 	printf "RUSTUP_HOME=%s\n" "${RUSTUP_HOME}"
@@ -118,7 +118,7 @@ main() {
 
 	# this has to be added to the environment after sccache is installed
 	export RUSTC_WRAPPER="sccache"
-	echo export RUSTC_WRAPPER="sccache" | tee -a /etc/profile.d/rust.sh
+	echo export RUSTC_WRAPPER="sccache" | tee -a /etc/bashrc.d/rust.sh
 	printf "\n"
 
 	echo Running: sccache --start-server

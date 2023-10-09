@@ -162,9 +162,9 @@ main() {
 	time apt install -y "${PACKAGES[@]}" || exit
 	printf "\n"
 
-	tee /etc/profile.d/go.sh <<-EOF
+	tee /etc/bashrc.d/go.sh <<-EOF
 		#
-		# /etc/profile.d/go.sh
+		# /etc/bashrc.d/go.sh
 		#
 
 		export GOPATH="/usr/local/go"
@@ -173,18 +173,18 @@ main() {
 		export GOSRC="\${GOPATH}/src"
 		export PATH="\${GOBIN}:\${PATH}"
 
-		if [[ ${HOSTTYPE} == x86_64 ]]; then
+		if [ ${HOSTTYPE} == x86_64 ]; then
 			export GOARCH="amd64"
-		elif [[ ${HOSTTYPE} == i686 ]]; then
+		elif [ ${HOSTTYPE} == i686 ]; then
 			export GOARCH="i386"
-		elif [[ ${HOSTTYPE} == aarch64 ]]; then
+		elif [ ${HOSTTYPE} == aarch64 ]; then
 			export GOARCH="arm64"
 		fi
 	EOF
 
-	echo Running: source /etc/profile.d/go.sh
+	echo Running: source /etc/bashrc.d/go.sh
 	# shellcheck disable=SC1091
-	source /etc/profile.d/go.sh || ((retval++))
+	source /etc/bashrc.d/go.sh || ((retval++))
 
 	printf "PATH=%s\n" "${PATH}"
 	#printf "GOROOT=%s\n" "${GOROOT}"

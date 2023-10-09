@@ -8,6 +8,8 @@ COPY .github/docker /.github/docker
 
 RUN sh .github/docker/layer-00.00-base-dependencies.sh ci-generic-debian
 
+RUN bash .github/docker/layer-00.01-base-env_setup.sh ci-generic-debian
+
 RUN bash .github/docker/layer-00.10-base-daggerio.sh ci-generic-debian
 
 RUN bash .github/docker/layer-02.20-exercism-nodejs.sh ci-generic-debian
