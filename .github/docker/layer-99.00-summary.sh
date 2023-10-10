@@ -10,6 +10,8 @@ set -o pipefail
 . /.github/docker/include
 
 main() {
+	declare -i retval=0
+
 	layer_begin "${0}" "$@"
 
 	printf "OS Info:\n"
@@ -27,7 +29,7 @@ main() {
 	printf "\n"
 
 	# shellcheck disable=SC1090
-	source ~/.cargo/env
+	source ~/.cargo/env || track_errors
 
 	printf "Show cargo packages:\n"
 	echo Running cargo install --list
@@ -46,9 +48,12 @@ main() {
 	printf "\n"
 
 	layer_end "${0}" "$@"
+
+	echo Running: return "${retval}"
+	return "${retval}"
 }
 
-main "${@}" |& tee /root/layer-15.00-exercism-rust.log
+main "${@}" |& tee /root/layer-99.00-exercism-summary.log
 
 if [[ -n ${GITHUB_STEP_SUMMARY} ]]; then
 	{
