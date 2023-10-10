@@ -92,15 +92,33 @@ main() {
 	printf "CARGO_REGISTRIES_CRATES_IO_PROTOCOL=%s\n" "${CARGO_REGISTRIES_CRATES_IO_PROTOCOL}"
 	printf "\n"
 
+	echo Running: mkdir -pv "${RUSTUP_HOME}"
+	mkdir -pv "${RUSTUP_HOME}"
+	printf "\n"
+
+	echo Running: mkdir -pv "${RUSTUP_HOME}"
+	mkdir -pv "${RUSTUP_HOME}"
+	printf "\n"
+
+	echo Running: ln -sv "${CARGO_HOME}" "${HOME}/.cargo"
+	ln -sv "${CARGO_HOME}" "${HOME}/.cargo"
+	printf "\n"
+
+	echo Running: ln -sv "${RUSTUP_HOME}" "${HOME}/.rustup"
+	ln -sv "${RUSTUP_HOME}" "${HOME}/.rustup"
+	printf "\n"
+
+	echo Running: ln -sv "${CARGO_HOME}" "/etc/skel/.cargo"
+	ln -sv "${CARGO_HOME}" "/etc/skel/.cargo"
+	printf "\n"
+
+	echo Running: ln -sv "${RUSTUP_HOME}" "/etc/skel/.rustup"
+	ln -sv "${RUSTUP_HOME}" "/etc/skel/.rustup"
+	printf "\n"
+
 	echo Running: curl https://sh.rustup.rs -sSf \| bash -s -- -y
 	time curl https://sh.rustup.rs -sSf | bash -s -- -y || track_errors
 	printf "\n"
-
-	echo Running: chgrp -R adm "${RUSTUP_HOME}"
-	chgrp -R adm "${RUSTUP_HOME}" || track_errors
-
-	echo Running: chgrp -R adm "${CARGO_HOME}"
-	chgrp -R adm "${CARGO_HOME}" || track_errors
 
 	echo Running: rustup install stable
 	time rustup install stable || track_errors
@@ -166,10 +184,18 @@ main() {
 	time rm -rf /root/.cargo/registry/ /usr/local/cargo/registry/
 	printf "\n"
 
+	echo Running: chgrp -R adm "${RUSTUP_HOME}"
+	chgrp -R adm "${RUSTUP_HOME}" || track_errors
+	printf "\n"
+
+	echo Running: chgrp -R adm "${CARGO_HOME}"
+	chgrp -R adm "${CARGO_HOME}" || track_errors
+	printf "\n"
+
 	layer_end "${0}" "$@"
 
-	echo Running: exit "${retval}"
-	exit "${retval}"
+	echo Running: return "${retval}"
+	return "${retval}"
 }
 
 time main "${@}" |& tee /root/layer-15.00-exercism-rust.log
