@@ -33,7 +33,11 @@ main() {
 	printf "\n"
 
 	echo Running: ln -sv /usr/local/rbenv "/etc/skel/.rbenv"
-	ln -sv /usr/local/rbenv "/etc/skel/.rbenv"
+	ln -sv /usr/local/rbenv "/etc/skel/.rbenv" || track_errors
+	printf "\n"
+
+	echo Checking installation:
+	ls -lh /usr/local/ /usr/local/rbenv/ /root/.rbenv /etc/skel/.rbenv
 	printf "\n"
 
 	printf "Configuring Shell: "
@@ -50,13 +54,13 @@ main() {
 
 	echo Running: source /etc/bashrc.d/ruby.sh
 	# shellcheck disable=SC1091
-	source /etc/bashrc.d/ruby.sh || ((retval++))
+	source /etc/bashrc.d/ruby.sh || track_errors
 	printf "\n"
 
 	layer_end "${0}" "$@"
 
-	echo Running: exit "${retval}"
-	exit "${retval}"
+	echo Running: return "${retval}"
+	return "${retval}"
 }
 
-time main "${@}" |& tee /root/layer-16.00-exercism-go.log
+time main "${@}" |& tee /root/layer-17.00-exercism-ruby.log
