@@ -162,9 +162,9 @@ main() {
 	time apt install -y "${PACKAGES[@]}" || track_errors
 	printf "\n"
 
-	tee /etc/bashrc.d/go.sh <<-EOF
+	tee /etc/profile.d/go.sh <<-EOF
 		#
-		# /etc/bashrc.d/go.sh
+		# /etc/profile.d/go.sh
 		#
 
 		export GOPATH="/usr/local/go"
@@ -181,9 +181,9 @@ main() {
 		fi
 	EOF
 
-	echo Running: source /etc/bashrc.d/go.sh
+	echo Running: source /etc/profile.d/go.sh
 	# shellcheck disable=SC1091
-	source /etc/bashrc.d/go.sh || ((retval++))
+	source /etc/profile.d/go.sh || ((retval++))
 
 	printf "PATH=%s\n" "${PATH}"
 	printf "GOPATH=%s\n" "${GOPATH}"

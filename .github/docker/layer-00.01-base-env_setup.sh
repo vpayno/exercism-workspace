@@ -10,23 +10,14 @@
 main() {
 	layer_begin "${0}" "$@"
 
-	echo Setting Up /etc/bashrc.d/ in /etc/bash.bashrc
-	# borrowed this from /etc/profile
-	tee -a /etc/bash.bashrc <<-EOF
-
-		if [ -d /etc/bashrc.d ]; then
-			for i in /etc/bashrc.d/\*.sh; do
-				if [ -r \$i ]; then
-					. \$i
-				fi
-		   done
-		   unset i
-		fi
+	echo Adding ~/.bash_profile that sources ~/.profile
+	tee "${HOME}"/.bash_profile <<-EOF
+		. "\${HOME}"/.profile
 	EOF
 	printf "\n"
 
-	echo Running: mkdir -pv /etc/bashrc.d/
-	mkdir -pv /etc/bashrc.d/ || exit
+	echo Copying ~/.bash_profile to /etc/skel/.bash_profile
+	cp -v "${HOME}"/.bash_profile /etc/skel/
 	printf "\n"
 
 	layer_end "${0}" "$@"

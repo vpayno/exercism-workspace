@@ -41,9 +41,9 @@ main() {
 	printf "\n"
 
 	printf "Configuring Shell: "
-	tee /etc/bashrc.d/ruby.sh <<-EOF
+	tee /etc/profile.d/ruby.sh <<-EOF
 		#
-		# /etc/bashrc.d/ruby.sh
+		# /etc/profile.d/ruby.sh
 		#
 
 		export PATH="/usr/local/rbenv/bin:/usr/local/rbenv/bin/shims:\${PATH}"
@@ -52,9 +52,9 @@ main() {
 	EOF
 	printf "done\n"
 
-	echo Running: source /etc/bashrc.d/ruby.sh
+	echo Running: source /etc/profile.d/ruby.sh
 	# shellcheck disable=SC1091
-	source /etc/bashrc.d/ruby.sh || track_errors
+	source /etc/profile.d/ruby.sh || track_errors
 	printf "\n"
 
 	layer_end "${0}" "$@"
