@@ -168,7 +168,6 @@ main() {
 		#
 
 		export GOPATH="/usr/local/go"
-		#export GOROOT="/usr/lib/go"
 		export GOBIN="\${GOPATH}/bin"
 		export GOSRC="\${GOPATH}/src"
 		export PATH="\${GOBIN}:\${PATH}"
@@ -187,34 +186,60 @@ main() {
 	source /etc/bashrc.d/go.sh || ((retval++))
 
 	printf "PATH=%s\n" "${PATH}"
-	#printf "GOROOT=%s\n" "${GOROOT}"
 	printf "GOPATH=%s\n" "${GOPATH}"
 	printf "GOBIN=%s\n" "${GOBIN}"
 	printf "GOSRC=%s\n" "${GOSRC}"
 	printf "\n"
 
-	#echo Running: mkdir -pv "${GOROOT}"
-	#time mkdir -pv "${GOROOT}" || ((retval++))
-	#printf "\n"
+	GO_DIR=/usr/local/go
+	GO_SDK=/usr/local/go-sdk
+
+	echo Running: mkdir -pv "${GO_DIR}"
+	time mkdir -pv "${GO_DIR}" || ((retval++))
+	printf "\n"
+
+	echo Running: mkdir -pv "${GO_SDK}"
+	time mkdir -pv "${GO_SDK}" || ((retval++))
+	printf "\n"
+
+	echo Running: ln -sv "${GO_DIR}" "${HOME}/go"
+	ln -sv "${GO_DIR}" "${HOME}/go"
+	printf "\n"
+
+	echo Running: ln -sv "${GO_SDK}" "${HOME}/sdk"
+	ln -sv "${GO_SDK}" "${HOME}/sdk"
+	printf "\n"
+
+	echo Running: ln -sv "${GO_DIR}" "/etc/skel/go"
+	ln -sv "${GO_DIR}" "/etc/skel/go"
+	printf "\n"
+
+	echo Running: ln -sv "${GO_SDK}" "/etc/skel/sdk"
+	ln -sv "${GO_SDK}" "/etc/skel/sdk"
+	printf "\n"
 
 	echo Running: golang_first_install
 	time golang_first_install || ((retval++))
 	printf "\n"
 
-	echo Running: ls /root/sdk/
-	ls /root/sdk/
+	echo Running: ls "${GO_SDK}/"
+	ls "${GO_SDK}/"
 	printf "\n"
 
-	echo Running: ls /root/sdk/*
-	ls /root/sdk/*
+	echo Running: ls "${GO_SDK}"/*
+	ls "${GO_SDK}"/*
 	printf "\n"
 
-	echo Running: ls -lh /usr/local/go/{,bin}
-	ls -lh /usr/local/go/{,bin}
+	echo Running: ls -lh "${GO_DIR}"/{,bin}
+	ls -lh "${GO_DIR}"/{,bin}
 	printf "\n"
 
 	echo Running: go version
 	go version || ((retval++))
+	printf "\n"
+
+	echo Running: go env
+	go env || ((retval++))
 	printf "\n"
 
 	for go_x_tool in "${GO_X_TOOLS[@]}"; do
@@ -233,34 +258,26 @@ main() {
 	time go install -tags extended github.com/gohugoio/hugo@latest || ((retval++))
 	printf "\n"
 
-	echo Running: chgrp -R adm "${GOPATH}"
-	chgrp -R adm "${GOPATH}" || ((retval++))
+	echo Running: chgrp -R adm "${GO_DIR}" "${GO_SDK}"
+	chgrp -R adm "${GO_DIR}" "${GO_SDK}" || ((retval++))
 	printf "\n"
 
-	echo Running: rm -rf /usr/local/go/pkg/*
-	time rm -rf /usr/local/go/pkg/* || ((retval++))
+	echo Running: rm -rf "${GO_DIR}"/pkg/*
+	time rm -rf "${GO_DIR}"/pkg/* || ((retval++))
 	printf "\n"
 
-	echo Running: rm -rf /usr/local/go/src/*
-	time rm -rf /usr/local/go/src/* || ((retval++))
+	echo Running: rm -rf "${GO_DIR}"/src/*
+	time rm -rf "${GO_DIR}"/src/* || ((retval++))
 	printf "\n"
 
 	echo Running: rm -rf /root/.cache/go-build
 	time rm -rf /root/.cache/go-build || ((retval++))
 	printf "\n"
 
-	echo Running: mv /root/sdk /etc/skel/
-	time mv /root/sdk /etc/skel/ || ((retval++))
-	printf "\n"
-
-	echo Running: ln -sv /etc/skel/sdk /root/sdk
-	ln -sv /etc/skel/sdk /root/sdk || ((retval++))
-	printf "\n"
-
 	layer_end "${0}" "$@"
 
-	echo Running: exit "${retval}"
-	exit "${retval}"
+	echo Running: return "${retval}"
+	return "${retval}"
 }
 
 time main "${@}" |& tee /root/layer-16.00-exercism-go.log
