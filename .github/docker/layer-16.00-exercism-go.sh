@@ -78,9 +78,9 @@ golang_first_install() {
 } # golang_first_install()
 
 main() {
-	layer_begin "${0}" "$@"
-
 	declare -i retval=0
+
+	layer_begin "${0}" "$@"
 
 	declare -a PACKAGES
 	PACKAGES=(
@@ -159,7 +159,7 @@ main() {
 	)
 
 	echo Running: apt install -y "${PACKAGES[@]}"
-	time apt install -y "${PACKAGES[@]}" || exit
+	time apt install -y "${PACKAGES[@]}" || track_errors
 	printf "\n"
 
 	tee /etc/bashrc.d/go.sh <<-EOF

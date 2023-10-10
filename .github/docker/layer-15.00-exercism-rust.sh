@@ -12,6 +12,8 @@ set -o pipefail
 . /.github/docker/include
 
 main() {
+	declare -i retval=0
+
 	layer_begin "${0}" "$@"
 
 	declare -a PACKAGES
@@ -62,7 +64,7 @@ main() {
 	)
 
 	echo Running: apt install -y "${PACKAGES[@]}"
-	time apt install -y "${PACKAGES[@]}" || exit
+	time apt install -y "${PACKAGES[@]}" || track_errors
 	printf "\n"
 
 	tee /etc/bashrc.d/rust.sh <<-EOF
@@ -80,7 +82,7 @@ main() {
 
 	echo Running: source /etc/bashrc.d/rust.sh
 	# shellcheck disable=SC1091
-	source /etc/bashrc.d/rust.sh || exit
+	source /etc/bashrc.d/rust.sh || track_errors
 
 	printf "PATH=%s\n" "${PATH}"
 	printf "RUSTUP_HOME=%s\n" "${RUSTUP_HOME}"
@@ -91,29 +93,29 @@ main() {
 	printf "\n"
 
 	echo Running: curl https://sh.rustup.rs -sSf \| bash -s -- -y
-	time curl https://sh.rustup.rs -sSf | bash -s -- -y || exit
+	time curl https://sh.rustup.rs -sSf | bash -s -- -y || track_errors
 	printf "\n"
 
 	echo Running: chgrp -R adm "${RUSTUP_HOME}"
-	chgrp -R adm "${RUSTUP_HOME}" || exit
+	chgrp -R adm "${RUSTUP_HOME}" || track_errors
 
 	echo Running: chgrp -R adm "${CARGO_HOME}"
-	chgrp -R adm "${CARGO_HOME}" || exit
+	chgrp -R adm "${CARGO_HOME}" || track_errors
 
 	echo Running: rustup install stable
-	time rustup install stable || exit
+	time rustup install stable || track_errors
 	printf "\n"
 
 	echo Running: rustup default stable
-	time rustup default stable || exit
+	time rustup default stable || track_errors
 	printf "\n"
 
 	echo Running: rustc --version
-	rustc --version || exit
+	rustc --version || track_errors
 	printf "\n"
 
 	echo Running: cargo install sccache
-	time cargo install sccache || exit
+	time cargo install sccache || track_errors
 	printf "\n"
 
 	# this has to be added to the environment after sccache is installed
@@ -127,12 +129,12 @@ main() {
 
 	for component in "${COMPONENTS[@]}"; do
 		echo Running: rustup component add "${component}"
-		time rustup component add "${component}" || exit
+		time rustup component add "${component}" || track_errors
 		printf "\n"
 	done
 
 	echo Running: cargo install "${CRATES[@]}"
-	time cargo install "${CRATES[@]}" || exit
+	time cargo install "${CRATES[@]}" || track_errors
 	printf "\n"
 
 	printf "Installed Rust components:\n"
@@ -165,6 +167,9 @@ main() {
 	printf "\n"
 
 	layer_end "${0}" "$@"
+
+	echo Running: exit "${retval}"
+	exit "${retval}"
 }
 
 time main "${@}" |& tee /root/layer-15.00-exercism-rust.log
