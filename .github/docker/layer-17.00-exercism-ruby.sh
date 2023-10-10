@@ -24,13 +24,25 @@ main() {
 	time /.github/citools/ruby/ruby-setup-config || track_errors
 	printf "\n"
 
+	echo Running: mv .rbenv /usr/local/rbenv
+	time mv "${HOME}/.rbenv" /usr/local/rbenv || track_errors
+	printf "\n"
+
+	echo Running: ln -sv /usr/local/rbenv "${HOME}/.rbenv"
+	ln -sv /usr/local/rbenv "${HOME}/.rbenv" || track_errors
+	printf "\n"
+
+	echo Running: ln -sv /usr/local/rbenv "/etc/skel/.rbenv"
+	ln -sv /usr/local/rbenv "/etc/skel/.rbenv"
+	printf "\n"
+
 	printf "Configuring Shell: "
 	tee /etc/bashrc.d/ruby.sh <<-EOF
 		#
 		# /etc/bashrc.d/ruby.sh
 		#
 
-		export PATH="\${HOME}/.rbenv/bin:\${HOME}/.rbenv/bin/shims:\${PATH}"
+		export PATH="/usr/local/rbenv/bin:/usr/local/rbenv/bin/shims:\${PATH}"
 
 		eval "\$(rbenv init -)"
 	EOF
