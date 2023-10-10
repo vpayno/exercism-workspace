@@ -20,6 +20,8 @@ RUN bash .github/docker/layer-15.00-exercism-rust.sh ci-generic-debian
 
 RUN bash .github/docker/layer-16.00-exercism-go.sh ci-generic-debian
 
+RUN bash .github/docker/layer-17.00-exercism-ruby.sh ci-generic-debian
+
 RUN bash .github/docker/layer-99.00-summary.sh ci-generic-debian
 
 # Copies your code file from your action repository to the filesystem path `/` of the container
