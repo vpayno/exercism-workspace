@@ -173,11 +173,11 @@ main() {
 		export GOSRC="\${GOPATH}/src"
 		export PATH="\${GOBIN}:\${PATH}"
 
-		if [ ${HOSTTYPE} == x86_64 ]; then
+		if [ "${HOSTTYPE}" = x86_64 ]]; then
 			export GOARCH="amd64"
-		elif [ ${HOSTTYPE} == i686 ]; then
+		elif [ "${HOSTTYPE}" = i686 ]; then
 			export GOARCH="i386"
-		elif [ ${HOSTTYPE} == aarch64 ]; then
+		elif [ "${HOSTTYPE}" = aarch64 ]; then
 			export GOARCH="arm64"
 		fi
 	EOF
