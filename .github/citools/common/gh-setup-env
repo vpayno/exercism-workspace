@@ -38,6 +38,16 @@ main() {
 
 	print_ruler
 
+	printf "Setup Go symlinks for github user:\n"
+
+	cd "${HOME}" || track_errors
+	ln -sv /usr/local/go go
+	ln -sv /usr/local/go-sdk sdk
+	ls -l ~/go ~/sdk
+	cd - || track_errors
+
+	print_ruler
+
 	printf "Adding Rust paths to GITHUB_PATH...\n"
 	printf "%s\n" "/usr/local/cargo/bin" | tee -a "${GITHUB_PATH}"
 
