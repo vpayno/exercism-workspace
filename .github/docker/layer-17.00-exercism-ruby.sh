@@ -60,6 +60,10 @@ main() {
 	source /etc/profile.d/ruby.sh || track_errors
 	printf "\n"
 
+	echo Running: chgrp -R adm /usr/local/rbenv
+	chgrp -R adm /usr/local/rbenv || track_errors
+	printf "\n"
+
 	layer_end "${0}" "$@"
 
 	echo Running: return "${retval}"
