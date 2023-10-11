@@ -6,6 +6,8 @@ From debian:bullseye-slim As ci-generic-base
 
 COPY .github/docker /.github/docker
 
+COPY .github/citools/ /.github/citools/
+
 RUN sh .github/docker/layer-00.00-base-dependencies.sh ci-generic-debian
 
 RUN bash .github/docker/layer-00.01-base-env_setup.sh ci-generic-debian
