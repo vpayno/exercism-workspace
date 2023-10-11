@@ -186,7 +186,7 @@ main() {
 
 	echo Running: source /etc/profile.d/go.sh
 	# shellcheck disable=SC1091
-	source /etc/profile.d/go.sh || ((retval++))
+	source /etc/profile.d/go.sh || track_errors
 
 	printf "PATH=%s\n" "${PATH}"
 	printf "GOPATH=%s\n" "${GOPATH}"
@@ -198,11 +198,11 @@ main() {
 	GO_SDK=/usr/local/go-sdk
 
 	echo Running: mkdir -pv "${GO_DIR}"
-	time mkdir -pv "${GO_DIR}" || ((retval++))
+	time mkdir -pv "${GO_DIR}" || track_errors
 	printf "\n"
 
 	echo Running: mkdir -pv "${GO_SDK}"
-	time mkdir -pv "${GO_SDK}" || ((retval++))
+	time mkdir -pv "${GO_SDK}" || track_errors
 	printf "\n"
 
 	echo Running: ln -sv "${GO_DIR}" "${HOME}/go"
@@ -222,7 +222,7 @@ main() {
 	printf "\n"
 
 	echo Running: golang_first_install
-	time golang_first_install || ((retval++))
+	time golang_first_install || track_errors
 	printf "\n"
 
 	echo Running: ls "${GO_SDK}/"
@@ -238,43 +238,43 @@ main() {
 	printf "\n"
 
 	echo Running: go version
-	go version || ((retval++))
+	go version || track_errors
 	printf "\n"
 
 	echo Running: go env
-	go env || ((retval++))
+	go env || track_errors
 	printf "\n"
 
 	for go_x_tool in "${GO_X_TOOLS[@]}"; do
 		echo Running: go install golang.org/x/tools/cmd/"${go_x_tool}"@latest
-		time go install golang.org/x/tools/cmd/"${go_x_tool}"@latest || ((retval++))
+		time go install golang.org/x/tools/cmd/"${go_x_tool}"@latest || track_errors
 		printf "\n"
 	done
 
 	for go_crate in "${CRATES[@]}"; do
 		echo Running: go install "${go_crate}"
-		time go install "${go_crate}" || ((retval++))
+		time go install "${go_crate}" || track_errors
 		printf "\n"
 	done
 
 	echo Running: go install -tags extended github.com/gohugoio/hugo@latest
-	time go install -tags extended github.com/gohugoio/hugo@latest || ((retval++))
+	time go install -tags extended github.com/gohugoio/hugo@latest || track_errors
 	printf "\n"
 
 	echo Running: chgrp -R adm "${GO_DIR}" "${GO_SDK}"
-	chgrp -R adm "${GO_DIR}" "${GO_SDK}" || ((retval++))
+	chgrp -R adm "${GO_DIR}" "${GO_SDK}" || track_errors
 	printf "\n"
 
 	echo Running: rm -rf "${GO_DIR}"/pkg/*
-	time rm -rf "${GO_DIR}"/pkg/* || ((retval++))
+	time rm -rf "${GO_DIR}"/pkg/* || track_errors
 	printf "\n"
 
 	echo Running: rm -rf "${GO_DIR}"/src/*
-	time rm -rf "${GO_DIR}"/src/* || ((retval++))
+	time rm -rf "${GO_DIR}"/src/* || track_errors
 	printf "\n"
 
 	echo Running: rm -rf /root/.cache/go-build
-	time rm -rf /root/.cache/go-build || ((retval++))
+	time rm -rf /root/.cache/go-build || track_errors
 	printf "\n"
 
 	layer_end "${0}" "$@"
