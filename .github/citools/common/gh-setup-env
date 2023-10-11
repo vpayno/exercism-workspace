@@ -11,7 +11,7 @@ declare -i retval=0
 main() {
 	printf "Setup GitHub Environment\n\n"
 
-	if [[ -z ${GITHUB_PATH} ]]; then
+	if [[ -z ${GITHUB_PATH} || -z ${GITHUB_ENV} ]]; then
 		printf "Skipping since we aren't running directly in a GH CI Workflow.\n"
 		return
 	fi
@@ -20,6 +20,21 @@ main() {
 
 	printf "Adding Go paths to GITHUB_PATH...\n"
 	printf "%s\n" "/usr/local/go/bin" | tee -a "${GITHUB_PATH}"
+
+	print_ruler
+
+	printf "Adding Go paths to GITHUB_ENV...\n"
+	printf "%s=%s\n" "GOPATH" "/usr/local/go" | tee -a "${GITHUB_ENV}"
+	printf "%s=%s\n" "GOBIN" "/usr/local/go/bin" | tee -a "${GITHUB_ENV}"
+	printf "%s=%s\n" "GOSRC" "/usr/local/go/src" | tee -a "${GITHUB_ENV}"
+
+	if [ "${HOSTTYPE}" = x86_64 ]; then
+		printf "%s=%s\n" "GOARCH" "amd64" | tee -a "${GITHUB_ENV}"
+	elif [ "${HOSTTYPE}" = i686 ]; then
+		printf "%s=%s\n" "GOARCH" "i386" | tee -a "${GITHUB_ENV}"
+	elif [ "${HOSTTYPE}" = aarch64 ]; then
+		printf "%s=%s\n" "GOARCH" "arm64" | tee -a "${GITHUB_ENV}"
+	fi
 
 	print_ruler
 
