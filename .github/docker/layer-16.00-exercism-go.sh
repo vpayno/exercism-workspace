@@ -11,6 +11,9 @@ set -o pipefail
 # shellcheck disable=SC1091
 . /.github/docker/include
 
+# shellcheck disable=SC1091
+source /.github/citools/includes/wrapper-library || exit
+
 golang_show_dl_urls() {
 	curl -sS https://go.dev/dl/ | grep 'class="download"' | sed -r -e 's/^.*href="(.*)">.*$/https:\/\/go.dev\1/' | sort -V
 } # golang_show_dl_urls()

@@ -11,6 +11,9 @@ set -o pipefail
 # shellcheck disable=SC1091
 . /.github/docker/include
 
+# shellcheck disable=SC1091
+source /.github/citools/includes/wrapper-library || exit
+
 main() {
 	declare -i retval=0
 
