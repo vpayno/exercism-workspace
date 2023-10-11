@@ -56,11 +56,6 @@ main() {
 
 	print_ruler
 
-	echo Running: rbenv -v
-	time rbenv -v || track_errors
-
-	print_ruler
-
 	printf "Configuring Shell: "
 	# shellcheck disable=SC2016
 	{
@@ -70,6 +65,11 @@ main() {
 	# shellcheck disable=SC1090
 	source "${HOME}"/.profile || track_errors
 	printf "done\n"
+
+	print_ruler
+
+	echo Running: rbenv -v
+	time rbenv -v || track_errors
 
 	print_ruler
 
