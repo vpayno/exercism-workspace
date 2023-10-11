@@ -11,6 +11,11 @@ declare -i retval=0
 main() {
 	printf "Setup GitHub Environment\n\n"
 
+	if [[ -z ${GITHUB_PATH} ]]; then
+		printf "Skipping since we aren't running directly in a GH CI Workflow.\n"
+		return
+	fi
+
 	print_ruler
 
 	printf "Adding Go paths to GITHUB_PATH...\n"
