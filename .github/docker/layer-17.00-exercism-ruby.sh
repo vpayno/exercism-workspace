@@ -55,6 +55,10 @@ main() {
 	EOF
 	printf "done\n"
 
+	echo Adding source /etc/profile.d/ruby.sh to ~/.bashrc and /etc/skel/.bashrc
+	echo '. /etc/profile.d/ruby.sh' | tee -a "${HOME}/.bashrc" | tee -a /etc/skel/.bashrc
+	printf "\n"
+
 	echo Running: source /etc/profile.d/ruby.sh
 	# shellcheck disable=SC1091
 	source /etc/profile.d/ruby.sh || track_errors
