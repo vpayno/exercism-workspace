@@ -165,23 +165,24 @@ main() {
 	time apt install -y "${PACKAGES[@]}" || track_errors
 	printf "\n"
 
+	# Note to self: make sure that variables in the here-doc are escaped as needed!
 	tee /etc/profile.d/go.sh <<-EOF
 		#
 		# /etc/profile.d/go.sh
 		#
 
 		export GO_PREFIX="/usr/local"
-		export GOROOT="${GO_PREFIX}/go-sdk"
-		export GOPATH="${GO_PREFIX}/go"
+		export GOROOT="\${GO_PREFIX}/go-sdk"
+		export GOPATH="\${GO_PREFIX}/go"
 		export GOBIN="\${GOPATH}/bin"
 		export GOSRC="\${GOPATH}/src"
 		export PATH="\${GOBIN}:\${PATH}"
 
-		if [ "${HOSTTYPE}" = x86_64 ]; then
+		if [ "\${HOSTTYPE}" = x86_64 ]; then
 			export GOARCH="amd64"
-		elif [ "${HOSTTYPE}" = i686 ]; then
+		elif [ "\${HOSTTYPE}" = i686 ]; then
 			export GOARCH="i386"
-		elif [ "${HOSTTYPE}" = aarch64 ]; then
+		elif [ "\${HOSTTYPE}" = aarch64 ]; then
 			export GOARCH="arm64"
 		fi
 	EOF
