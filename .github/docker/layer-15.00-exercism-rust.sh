@@ -183,8 +183,8 @@ main() {
 	cargo cache --info
 	printf "\n"
 
-	echo Running: rm -rf /root/.cargo/registry/ /usr/local/cargo/registry/
-	time rm -rf /root/.cargo/registry/ /usr/local/cargo/registry/
+	echo Running: rm -rf /root/.cargo/registry/ /usr/local/cargo/registry/ /root/.cache/sccache/
+	time rm -rf /root/.cargo/registry/ /usr/local/cargo/registry/ /root/.cache/sccache/
 	printf "\n"
 
 	echo Running: chgrp -R adm "${RUSTUP_HOME}"
