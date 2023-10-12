@@ -54,8 +54,32 @@ main() {
 
 	print_ruler
 
+	source /etc/profile.d/rust.sh || track_errors
+
 	printf "Adding Rust paths to GITHUB_PATH...\n"
-	printf "%s\n" "/usr/local/cargo/bin" | tee -a "${GITHUB_PATH}"
+	printf "%s\n" "${RUSTBIN}" | tee -a "${GITHUB_PATH}" || track_errors
+	printf "\n"
+
+	printf "Adding Go paths to GITHUB_ENV...\n"
+	if [[ -n ${RUSTC_WRAPPER} ]]; then
+		printf "%s=%s\n" "RUSTC_WRAPPER" "${RUSTC_WRAPPER}" | tee -a "${GITHUB_ENV}" || track_errors
+	fi
+	if [[ -n ${CARGO_REGISTRIES_CRATES_IO_PROTOCOL} ]]; then
+		printf "%s=%s\n" "CARGO_REGISTRIES_CRATES_IO_PROTOCOL" "${CARGO_REGISTRIES_CRATES_IO_PROTOCOL}" | tee -a "${GITHUB_ENV}" || track_errors
+	fi
+	printf "\n"
+
+	echo Adding source /etc/profile.d/rust.sh to ~/.bashrc
+	echo '. /etc/profile.d/rust.sh' | tee -a "${HOME}/.bashrc" || track_errors
+	printf "\n"
+
+	printf "Setup Rust symlinks for github user:\n"
+	cd "${HOME}" || track_errors
+	ln -sv "${CARGO_HOME}" .cargo || track_errors
+	ln -sv "${RUSTUP_HOME}" .rustup || track_errors
+	ls -l ~/.cargo ~/.rustup
+	cd - || track_errors
+	printf "\n"
 
 	print_ruler
 
