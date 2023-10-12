@@ -18,33 +18,39 @@ main() {
 
 	print_ruler
 
-	printf "Adding Go paths to GITHUB_PATH...\n"
-	printf "%s\n" "/usr/local/go/bin" | tee -a "${GITHUB_PATH}"
+	source /etc/profile.d/go.sh || track_errors
 
-	print_ruler
+	printf "Adding Go paths to GITHUB_PATH...\n"
+	printf "%s\n" "${GOPATH}/bin" | tee -a "${GITHUB_PATH}" || track_errors
+	printf "\n"
 
 	printf "Adding Go paths to GITHUB_ENV...\n"
-	printf "%s=%s\n" "GOPATH" "/usr/local/go" | tee -a "${GITHUB_ENV}"
-	printf "%s=%s\n" "GOBIN" "/usr/local/go/bin" | tee -a "${GITHUB_ENV}"
-	printf "%s=%s\n" "GOSRC" "/usr/local/go/src" | tee -a "${GITHUB_ENV}"
+	printf "%s=%s\n" "GOROOT" "${GOPATH}" | tee -a "${GITHUB_ENV}" || track_errors
+	printf "%s=%s\n" "GOPATH" "${GOROOT}" | tee -a "${GITHUB_ENV}" || track_errors
+	printf "%s=%s\n" "GOBIN" "${GOPATH}/bin" | tee -a "${GITHUB_ENV}" || track_errors
+	printf "%s=%s\n" "GOSRC" "${GOPATH}/src" | tee -a "${GITHUB_ENV}" || track_errors
+	printf "\n"
 
 	if [ "${HOSTTYPE}" = x86_64 ]; then
-		printf "%s=%s\n" "GOARCH" "amd64" | tee -a "${GITHUB_ENV}"
+		printf "%s=%s\n" "GOARCH" "amd64" | tee -a "${GITHUB_ENV}" || track_errors
 	elif [ "${HOSTTYPE}" = i686 ]; then
-		printf "%s=%s\n" "GOARCH" "i386" | tee -a "${GITHUB_ENV}"
+		printf "%s=%s\n" "GOARCH" "i386" | tee -a "${GITHUB_ENV}" || track_errors
 	elif [ "${HOSTTYPE}" = aarch64 ]; then
-		printf "%s=%s\n" "GOARCH" "arm64" | tee -a "${GITHUB_ENV}"
+		printf "%s=%s\n" "GOARCH" "arm64" | tee -a "${GITHUB_ENV}" || track_errors
 	fi
-
-	print_ruler
+	printf "\n"
 
 	printf "Setup Go symlinks for github user:\n"
-
 	cd "${HOME}" || track_errors
-	ln -sv /usr/local/go go
-	ln -sv /usr/local/go-sdk sdk
+	ln -sv "${GOPATH}" go || track_errors
+	ln -sv "${GOROOT}" sdk || track_errors
 	ls -l ~/go ~/sdk
 	cd - || track_errors
+	printf "\n"
+
+	echo Adding source /etc/profile.d/go.sh to ~/.bashrc
+	echo '. /etc/profile.d/go.sh' | tee -a "${HOME}/.bashrc" || track_errors
+	printf "\n"
 
 	print_ruler
 
