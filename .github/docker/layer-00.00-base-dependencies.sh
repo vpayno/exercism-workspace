@@ -13,8 +13,8 @@ main() {
 	PACKAGES="apt-utils bash bsdextrautils coreutils curl jq moreutils sudo tmux tree util-linux vim-nox"
 
 	printf "Collecting apt installed packages:\n"
-	echo Running: apt list --installed \> /root/apt-pkgs-start.txt
-	apt list --installed >/root/apt-pkgs-start.txt
+	echo Running: apt list --installed \> "${HOME}"/apt-pkgs-start.txt
+	apt list --installed >"${HOME}"/apt-pkgs-start.txt
 	printf "\n"
 
 	echo Running: apt remove -y "$(apt list --installed | grep -e xorg -e xserver -e qt | cut -f1 -d/)"
@@ -38,4 +38,4 @@ main() {
 	layer_end "${0}" "$@"
 }
 
-main "${@}" 2>&1 | tee /root/layer-00.00-base-dependencies.log
+main "${@}" 2>&1 | tee "${HOME}"/layer-00.00-base-dependencies.log

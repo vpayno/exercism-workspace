@@ -82,4 +82,4 @@ EOF
 	layer_end "${0}" "$@"
 }
 
-main "${@}" |& tee /root/layer-10.00-exercism-gcc_clang_llvm.log
+main "${@}" |& tee "${HOME}"/layer-10.00-exercism-gcc_clang_llvm.log

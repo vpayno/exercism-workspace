@@ -37,4 +37,4 @@ main() {
 	layer_end "${0}" "$@"
 }
 
-main "${@}" |& tee /root/layer-02.20-exercism-nodejs.log
+main "${@}" |& tee "${HOME}"/layer-02.20-exercism-nodejs.log

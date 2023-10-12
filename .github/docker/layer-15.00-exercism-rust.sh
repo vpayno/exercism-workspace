@@ -188,8 +188,8 @@ main() {
 	cargo cache --info
 	printf "\n"
 
-	echo Running: rm -rf /root/.cargo/registry/ /usr/local/cargo/registry/ /root/.cache/sccache/
-	time rm -rf /root/.cargo/registry/ /usr/local/cargo/registry/ /root/.cache/sccache/
+	echo Running: rm -rf "${HOME}"/.cargo/registry/ /usr/local/cargo/registry/ "${HOME}"/.cache/sccache/
+	time rm -rf "${HOME}"/.cargo/registry/ /usr/local/cargo/registry/ "${HOME}"/.cache/sccache/
 	printf "\n"
 
 	echo Running: chgrp -R adm "${RUSTUP_HOME}"
@@ -206,4 +206,4 @@ main() {
 	return "${retval}"
 }
 
-time main "${@}" |& tee /root/layer-15.00-exercism-rust.log
+time main "${@}" |& tee "${HOME}"/layer-15.00-exercism-rust.log

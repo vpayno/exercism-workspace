@@ -23,4 +23,4 @@ main() {
 	layer_end "${0}" "$@"
 }
 
-main "${@}" 2>&1 | tee /root/layer-00.01-base-env_setup.log
+main "${@}" 2>&1 | tee "${HOME}"/layer-00.01-base-env_setup.log

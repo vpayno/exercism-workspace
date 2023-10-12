@@ -19,4 +19,4 @@ main() {
 	layer_end "${0}" "$@"
 }
 
-main "${@}" |& tee /root/layer-00.10-base-daggerio.log
+main "${@}" |& tee "${HOME}"/layer-00.10-base-daggerio.log

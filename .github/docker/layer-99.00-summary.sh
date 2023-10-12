@@ -22,13 +22,13 @@ main() {
 	printf "\n"
 
 	printf "Collecting apt installed packages:\n"
-	echo Running: apt list --installed \> /root/apt-pkgs-end.txt
-	apt list --installed >/root/apt-pkgs-end.txt
+	echo Running: apt list --installed \> "${HOME}"/apt-pkgs-end.txt
+	apt list --installed >"${HOME}"/apt-pkgs-end.txt
 	printf "\n"
 
 	printf "Show apt package diff:\n"
-	echo Running: diff -uNr /root/apt-pkgs-{start,end}.txt
-	diff -uNr /root/apt-pkgs-{start,end}.txt
+	echo Running: diff -uNr "${HOME}"/apt-pkgs-{start,end}.txt
+	diff -uNr "${HOME}"/apt-pkgs-{start,end}.txt
 	printf "\n"
 
 	# shellcheck disable=SC1090
@@ -56,12 +56,12 @@ main() {
 	return "${retval}"
 }
 
-main "${@}" |& tee /root/layer-99.00-exercism-summary.log
+main "${@}" |& tee "${HOME}"/layer-99.00-exercism-summary.log
 
 if [[ -n ${GITHUB_STEP_SUMMARY} ]]; then
 	{
 		printf "\`\`\`text\n"
-		cat /root/layer-15.00-exercism-rust.log
+		cat "${HOME}"/layer-15.00-exercism-rust.log
 		printf "\`\`\`\n"
 	} >>"${GITHUB_STEP_SUMMARY}"
 fi

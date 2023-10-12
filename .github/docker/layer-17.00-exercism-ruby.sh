@@ -40,7 +40,7 @@ main() {
 	printf "\n"
 
 	echo Checking installation:
-	ls -lh /usr/local/ /usr/local/rbenv/ /root/.rbenv /etc/skel/.rbenv
+	ls -lh /usr/local/ /usr/local/rbenv/ "${HOME}"/.rbenv /etc/skel/.rbenv
 	printf "\n"
 
 	printf "Configuring Shell: "
@@ -74,4 +74,4 @@ main() {
 	return "${retval}"
 }
 
-time main "${@}" |& tee /root/layer-17.00-exercism-ruby.log
+time main "${@}" |& tee "${HOME}"/layer-17.00-exercism-ruby.log

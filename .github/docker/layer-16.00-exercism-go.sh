@@ -281,8 +281,8 @@ main() {
 	time rm -rf "${GO_DIR}"/src/* || track_errors
 	printf "\n"
 
-	echo Running: rm -rf /root/.cache/go-build
-	time rm -rf /root/.cache/go-build || track_errors
+	echo Running: rm -rf "${HOME}"/.cache/go-build
+	time rm -rf "${HOME}"/.cache/go-build || track_errors
 	printf "\n"
 
 	layer_end "${0}" "$@"
@@ -291,4 +291,4 @@ main() {
 	return "${retval}"
 }
 
-time main "${@}" |& tee /root/layer-16.00-exercism-go.log
+time main "${@}" |& tee "${HOME}"/layer-16.00-exercism-go.log
