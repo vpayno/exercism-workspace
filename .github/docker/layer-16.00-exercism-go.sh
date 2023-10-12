@@ -186,9 +186,14 @@ main() {
 		fi
 	EOF
 
+	echo Adding source /etc/profile.d/go.sh to ~/.bashrc and /etc/skel/.bashrc
+	echo '. /etc/profile.d/go.sh' | tee -a "${HOME}/.bashrc" | tee -a /etc/skel/.bashrc
+	printf "\n"
+
 	echo Running: source /etc/profile.d/go.sh
 	# shellcheck disable=SC1091
 	source /etc/profile.d/go.sh || track_errors
+	printf "\n"
 
 	printf "PATH=%s\n" "${PATH}"
 	printf "GOROOT=%s\n" "${GOROOT}"
