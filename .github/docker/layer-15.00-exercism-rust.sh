@@ -83,9 +83,14 @@ main() {
 		export CARGO_REGISTRIES_CRATES_IO_PROTOCOL="sparse"
 	EOF
 
+	echo Adding source /etc/profile.d/rust.sh to ~/.bashrc and /etc/skel/.bashrc
+	echo '. /etc/profile.d/rust.sh' | tee -a "${HOME}/.bashrc" | tee -a /etc/skel/.bashrc
+	printf "\n"
+
 	echo Running: source /etc/profile.d/rust.sh
 	# shellcheck disable=SC1091
 	source /etc/profile.d/rust.sh || track_errors
+	printf "\n"
 
 	printf "PATH=%s\n" "${PATH}"
 	printf "RUSTUP_HOME=%s\n" "${RUSTUP_HOME}"
