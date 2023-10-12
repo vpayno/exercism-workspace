@@ -170,7 +170,9 @@ main() {
 		# /etc/profile.d/go.sh
 		#
 
-		export GOPATH="/usr/local/go"
+		export GO_PREFIX="/usr/local"
+		export GOROOT="${GO_PREFIX}/go-sdk"
+		export GOPATH="${GO_PREFIX}/go"
 		export GOBIN="\${GOPATH}/bin"
 		export GOSRC="\${GOPATH}/src"
 		export PATH="\${GOBIN}:\${PATH}"
@@ -189,13 +191,14 @@ main() {
 	source /etc/profile.d/go.sh || track_errors
 
 	printf "PATH=%s\n" "${PATH}"
+	printf "GOROOT=%s\n" "${GOROOT}"
 	printf "GOPATH=%s\n" "${GOPATH}"
 	printf "GOBIN=%s\n" "${GOBIN}"
 	printf "GOSRC=%s\n" "${GOSRC}"
 	printf "\n"
 
-	GO_DIR=/usr/local/go
-	GO_SDK=/usr/local/go-sdk
+	GO_DIR="${GOPATH}"
+	GO_SDK="${GOROOT}"
 
 	echo Running: mkdir -pv "${GO_DIR}"
 	time mkdir -pv "${GO_DIR}" || track_errors
