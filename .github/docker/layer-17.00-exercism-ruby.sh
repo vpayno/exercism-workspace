@@ -68,6 +68,10 @@ main() {
 	chgrp -R adm /usr/local/rbenv || track_errors
 	printf "\n"
 
+	echo Running: setfacl -RPdm g:adm:w /usr/local/rbenv
+	setfacl -RPdm g:adm:w /usr/local/rbenv || track_errors
+	printf "\n"
+
 	layer_end "${0}" "$@"
 
 	echo Running: return "${retval}"

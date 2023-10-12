@@ -273,6 +273,10 @@ main() {
 	chgrp -R adm "${GO_DIR}" "${GO_SDK}" || track_errors
 	printf "\n"
 
+	echo Running: setfacl -RPdm g:adm:w "${GO_DIR}" "${GO_SDK}"
+	setfacl -RPdm g:adm:w "${GO_DIR}" "${GO_SDK}" || track_errors
+	printf "\n"
+
 	echo Running: rm -rf "${GO_DIR}"/pkg/*
 	time rm -rf "${GO_DIR}"/pkg/* || track_errors
 	printf "\n"

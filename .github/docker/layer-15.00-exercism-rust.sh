@@ -192,12 +192,12 @@ main() {
 	time rm -rf "${HOME}"/.cargo/registry/ /usr/local/cargo/registry/ "${HOME}"/.cache/sccache/
 	printf "\n"
 
-	echo Running: chgrp -R adm "${RUSTUP_HOME}"
-	chgrp -R adm "${RUSTUP_HOME}" || track_errors
+	echo Running: chgrp -R adm "${RUSTUP_HOME}" "${CARGO_HOME}"
+	chgrp -R adm "${RUSTUP_HOME}" "${CARGO_HOME}" || track_errors
 	printf "\n"
 
-	echo Running: chgrp -R adm "${CARGO_HOME}"
-	chgrp -R adm "${CARGO_HOME}" || track_errors
+	echo Running: setfacl -RPdm g:adm:w "${RUSTUP_HOME}" "${CARGO_HOME}"
+	setfacl -RPdm g:adm:w "${RUSTUP_HOME}" "${CARGO_HOME}" || track_errors
 	printf "\n"
 
 	layer_end "${0}" "$@"
