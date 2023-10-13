@@ -128,3 +128,8 @@ SimpleCalculator.calculate(512, 0, "/")
 ### Created by
 
 - @pvcarrera
+
+### My Solution
+
+- [my solution](./simple_calculator.rb)
+- [run-tests](./run-tests-ruby.txt)
