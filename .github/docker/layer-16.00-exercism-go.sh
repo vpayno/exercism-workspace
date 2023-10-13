@@ -172,7 +172,7 @@ main() {
 		#
 
 		export GO_PREFIX="/usr/local"
-		export GOROOT="\${GO_PREFIX}/go-sdk"
+		export GOROOT="\$(find "\${GO_PREFIX}/go-sdk/" -maxdepth 1 -type d -regex '^.*/go[1-9]+[.][1-9][0-9]+[.]?[0-9]?$' | sort -V | tail -n 1)"
 		export GOPATH="\${GO_PREFIX}/go"
 		export GOBIN="\${GOPATH}/bin"
 		export GOSRC="\${GOPATH}/src"
