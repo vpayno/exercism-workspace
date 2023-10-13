@@ -58,6 +58,10 @@ layer_end() {
 	apt-get clean -y || exit
 	printf "\n"
 
+	echo Running: du -shc /var/lib/apt/lists/
+	du -shc /var/lib/apt/lists/ || exit
+	printf "\n"
+
 	echo Running: rm -rf /var/lib/apt/lists/*
 	rm -rf /var/lib/apt/lists/* || exit
 	printf "\n"

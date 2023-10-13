@@ -288,16 +288,12 @@ main() {
 	setfacl -RPdm g:adm:w "${GO_DIR}" "${GO_SDK_ROOT}" || track_errors
 	printf "\n"
 
-	echo Running: rm -rf "${GO_DIR}"/pkg/*
-	time rm -rf "${GO_DIR}"/pkg/* || track_errors
+	echo Running: du -shc "${GO_DIR}"/pkg/ "${GO_DIR}"/src/ "${HOME}"/.cache/go-build/
+	time du -shc "${GO_DIR}"/pkg/ "${GO_DIR}"/src/ "${HOME}"/.cache/go-build/ || track_errors
 	printf "\n"
 
-	echo Running: rm -rf "${GO_DIR}"/src/*
-	time rm -rf "${GO_DIR}"/src/* || track_errors
-	printf "\n"
-
-	echo Running: rm -rf "${HOME}"/.cache/go-build
-	time rm -rf "${HOME}"/.cache/go-build || track_errors
+	echo Running: rm -rf "${GO_DIR}"/pkg/* "${GO_DIR}"/src/* "${HOME}"/.cache/go-build
+	time rm -rf "${GO_DIR}"/pkg/* "${GO_DIR}"/src/* "${HOME}"/.cache/go-build || track_errors
 	printf "\n"
 
 	layer_end "${0}" "$@"

@@ -188,6 +188,10 @@ main() {
 	cargo cache --info
 	printf "\n"
 
+	echo Running: du -shc "${HOME}"/.cargo/registry/ /usr/local/cargo/registry/ "${HOME}"/.cache/sccache/
+	time du -shc "${HOME}"/.cargo/registry/ /usr/local/cargo/registry/ "${HOME}"/.cache/sccache/
+	printf "\n"
+
 	echo Running: rm -rf "${HOME}"/.cargo/registry/ /usr/local/cargo/registry/ "${HOME}"/.cache/sccache/
 	time rm -rf "${HOME}"/.cargo/registry/ /usr/local/cargo/registry/ "${HOME}"/.cache/sccache/
 	printf "\n"
