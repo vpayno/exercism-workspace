@@ -25,8 +25,8 @@ main() {
 	printf "\n"
 
 	printf "Adding Go paths to GITHUB_ENV...\n"
-	printf "%s=%s\n" "GOROOT" "${GOPATH}" | tee -a "${GITHUB_ENV}" || track_errors
-	printf "%s=%s\n" "GOPATH" "${GOROOT}" | tee -a "${GITHUB_ENV}" || track_errors
+	printf "%s=%s\n" "GOROOT" "${GOROOT}" | tee -a "${GITHUB_ENV}" || track_errors
+	printf "%s=%s\n" "GOPATH" "${GOPATH}" | tee -a "${GITHUB_ENV}" || track_errors
 	printf "%s=%s\n" "GOBIN" "${GOPATH}/bin" | tee -a "${GITHUB_ENV}" || track_errors
 	printf "%s=%s\n" "GOSRC" "${GOPATH}/src" | tee -a "${GITHUB_ENV}" || track_errors
 	printf "\n"
