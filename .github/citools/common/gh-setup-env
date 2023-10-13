@@ -42,8 +42,12 @@ main() {
 
 	printf "Setup Go symlinks for github user:\n"
 	cd "${HOME}" || track_errors
-	ln -sv "${GOPATH}" go || track_errors
-	ln -sv "${GOROOT}" sdk || track_errors
+	if [[ ! -d go ]]; then
+		ln -sv "${GOPATH}" go || track_errors
+	fi
+	if [[ ! -d sdk ]]; then
+		ln -sv "${GO_PREFIX}/go-sdk" sdk || track_errors
+	fi
 	ls -l ~/go ~/sdk
 	cd - || track_errors
 	printf "\n"
