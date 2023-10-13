@@ -79,8 +79,12 @@ main() {
 
 	printf "Setup Rust symlinks for github user:\n"
 	cd "${HOME}" || track_errors
-	ln -sv "${CARGO_HOME}" .cargo || track_errors
-	ln -sv "${RUSTUP_HOME}" .rustup || track_errors
+	if [[ ! -d .cargo ]]; then
+		ln -sv "${CARGO_HOME}" .cargo || track_errors
+	fi
+	if [[ ! -d .rustup ]]; then
+		ln -sv "${RUSTUP_HOME}" .rustup || track_errors
+	fi
 	ls -l ~/.cargo ~/.rustup
 	cd - || track_errors
 	printf "\n"
