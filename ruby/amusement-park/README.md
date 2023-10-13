@@ -170,3 +170,8 @@ attendee.pass_id
 ### Contributed to by
 
 - @kotp
+
+### My Solution
+
+- [my solution](./attendee.rb)
+- [run-tests](./run-tests-ruby.txt)
