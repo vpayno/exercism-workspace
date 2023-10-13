@@ -172,7 +172,9 @@ main() {
 		#
 
 		export GO_PREFIX="/usr/local"
-		export GOROOT="\$(find "\${GO_PREFIX}/go-sdk/" -maxdepth 1 -type d -regex '^.*/go[1-9]+[.][1-9][0-9]+[.]?[0-9]?$' | sort -V | tail -n 1)"
+		if [ -d "\${GO_PREFIX}/go-sdk/" ]; then
+			export GOROOT="\$(find "\${GO_PREFIX}/go-sdk/" -maxdepth 1 -type d -regex '^.*/go[1-9]+[.][1-9][0-9]+[.]?[0-9]?$' | sort -V | tail -n 1)"
+		fi
 		export GOPATH="\${GO_PREFIX}/go"
 		export GOBIN="\${GOPATH}/bin"
 		export GOSRC="\${GOPATH}/src"
@@ -204,42 +206,50 @@ main() {
 	printf "\n"
 
 	GO_DIR="${GOPATH}"
-	GO_SDK="${GOROOT}"
+	GO_SDK_ROOT="${GO_PREFIX}/go-sdk"
 
 	echo Running: mkdir -pv "${GO_DIR}"
 	time mkdir -pv "${GO_DIR}" || track_errors
 	printf "\n"
 
-	echo Running: mkdir -pv "${GO_SDK}"
-	time mkdir -pv "${GO_SDK}" || track_errors
+	echo Running: mkdir -pv "${GO_SDK_ROOT}"
+	time mkdir -pv "${GO_SDK_ROOT}" || track_errors
 	printf "\n"
 
 	echo Running: ln -sv "${GO_DIR}" "${HOME}/go"
 	ln -sv "${GO_DIR}" "${HOME}/go"
 	printf "\n"
 
-	echo Running: ln -sv "${GO_SDK}" "${HOME}/sdk"
-	ln -sv "${GO_SDK}" "${HOME}/sdk"
+	echo Running: ln -sv "${GO_SDK_ROOT}" "${HOME}/sdk"
+	ln -sv "${GO_SDK_ROOT}" "${HOME}/sdk"
 	printf "\n"
 
 	echo Running: ln -sv "${GO_DIR}" "/etc/skel/go"
 	ln -sv "${GO_DIR}" "/etc/skel/go"
 	printf "\n"
 
-	echo Running: ln -sv "${GO_SDK}" "/etc/skel/sdk"
-	ln -sv "${GO_SDK}" "/etc/skel/sdk"
+	echo Running: ln -sv "${GO_SDK_ROOT}" "/etc/skel/sdk"
+	ln -sv "${GO_SDK_ROOT}" "/etc/skel/sdk"
 	printf "\n"
 
 	echo Running: golang_first_install
 	time golang_first_install || track_errors
 	printf "\n"
 
-	echo Running: ls "${GO_SDK}/"
-	ls "${GO_SDK}/"
+	echo Running: source /etc/profile.d/go.sh
+	# shellcheck disable=SC1091
+	source /etc/profile.d/go.sh || track_errors
 	printf "\n"
 
-	echo Running: ls "${GO_SDK}"/*
-	ls "${GO_SDK}"/*
+	printf "GOROOT=%s\n" "${GOROOT}"
+	printf "\n"
+
+	echo Running: ls "${GO_SDK_ROOT}/"
+	ls "${GO_SDK_ROOT}/"
+	printf "\n"
+
+	echo Running: ls "${GO_SDK_ROOT}"/*
+	ls "${GO_SDK_ROOT}"/*
 	printf "\n"
 
 	echo Running: ls -lh "${GO_DIR}"/{,bin}
@@ -270,12 +280,12 @@ main() {
 	time go install -tags extended github.com/gohugoio/hugo@latest || track_errors
 	printf "\n"
 
-	echo Running: chgrp -R adm "${GO_DIR}" "${GO_SDK}"
-	chgrp -R adm "${GO_DIR}" "${GO_SDK}" || track_errors
+	echo Running: chgrp -R adm "${GO_DIR}" "${GO_SDK_ROOT}"
+	chgrp -R adm "${GO_DIR}" "${GO_SDK_ROOT}" || track_errors
 	printf "\n"
 
-	echo Running: setfacl -RPdm g:adm:w "${GO_DIR}" "${GO_SDK}"
-	setfacl -RPdm g:adm:w "${GO_DIR}" "${GO_SDK}" || track_errors
+	echo Running: setfacl -RPdm g:adm:w "${GO_DIR}" "${GO_SDK_ROOT}"
+	setfacl -RPdm g:adm:w "${GO_DIR}" "${GO_SDK_ROOT}" || track_errors
 	printf "\n"
 
 	echo Running: rm -rf "${GO_DIR}"/pkg/*
