@@ -57,6 +57,10 @@ for f in ./*_test.rb; do
 			# https://github.com/simplecov-ruby/simplecov
 			require 'simplecov'
 
+			# https://about.codecov.io/blog/getting-started-with-code-coverage-for-ruby/
+			require 'simplecov-cobertura'
+			SimpleCov.formatter = SimpleCov::Formatter::CoberturaFormatter
+
 			# line coverage
 			SimpleCov.start if ENV['COVERAGE'] != 'branch'
 
