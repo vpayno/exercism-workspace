@@ -1,0 +1,168 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-lint-rubycritic
+
+Running RubyCritic
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rubycritic --path .rubycritic --format console --no-browser .
+
+running flay smells
+
+running flog smells
+[32m.[0m[32m.[0m
+running reek smells
+[32m.[0m[32m.[0m
+running complexity
+[32m.[0m[32m.[0m
+running attributes
+[32m.[0m[32m.[0m
+running churn
+[32m.[0m[32m.[0m
+running simple_cov
+[32m.[0m[32m.[0m
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing safe_level with the 2nd argument of ERB.new is deprecated. Do not use it, and specify other arguments as keyword arguments.
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing trim_mode with the 3rd argument of ERB.new is deprecated. Use keyword argument like ERB.new(str, trim_mode: ...) instead.
+Attendee:
+  Rating:       A
+  Churn:        0
+  Complexity:   7.42
+  Duplication:  0
+  Smells:       3
+    * (InstanceVariableAssumption) Attendee assumes too much for instance variable '@pass_id'
+      - attendee.rb:5
+    * (MissingSafeMethod) Attendee has missing safe method 'issue_pass!'
+      - attendee.rb:12
+    * (MissingSafeMethod) Attendee has missing safe method 'revoke_pass!'
+      - attendee.rb:16
+
+AttendeeTest:
+  Rating:       A
+  Churn:        0
+  Complexity:   46.4
+  Duplication:  0
+  Smells:       5
+    * (FeatureEnvy) AttendeeTest#test_does_not_fit_ride_and_pass refers to 'attendee' more than self (maybe move it to another class?)
+      - attendee_test.rb:70
+      - attendee_test.rb:71
+    * (FeatureEnvy) AttendeeTest#test_fits_ride_and_pass refers to 'attendee' more than self (maybe move it to another class?)
+      - attendee_test.rb:64
+      - attendee_test.rb:65
+    * (FeatureEnvy) AttendeeTest#test_when_issued_pass refers to 'attendee' more than self (maybe move it to another class?)
+      - attendee_test.rb:35
+      - attendee_test.rb:36
+    * (FeatureEnvy) AttendeeTest#test_when_revoked_doesnt_have_pass refers to 'attendee' more than self (maybe move it to another class?)
+      - attendee_test.rb:41
+      - attendee_test.rb:42
+      - attendee_test.rb:43
+    * (IrresponsibleModule) AttendeeTest has no descriptive comment
+      - attendee_test.rb:28
+Score: 93.27
+
+real	0m0.638s
+user	0m0.529s
+sys	0m0.105s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.696s
+user	0m0.555s
+sys	0m0.142s
+
+real	0m0.698s
+user	0m0.555s
+sys	0m0.143s
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-test-with-coverage
+
+Running Ruby Tests With Coverage
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rm -rf ./coverage
+
+
+real	0m0.002s
+user	0m0.000s
+sys	0m0.002s
+
+
+ ==============================================================================
+
+Running: ruby ./attendee_test.rb -v
+
+Run options: -v --seed 59210
+
+# Running:
+
+AttendeeTest#test_doesnt_fit_big_ride = 0.00 s = .
+AttendeeTest#test_fits_small_ride = 0.00 s = .
+AttendeeTest#test_fits_ride_but_no_pass = 0.00 s = .
+AttendeeTest#test_when_revoked_doesnt_have_pass = 0.00 s = .
+AttendeeTest#test_does_not_fit_ride_and_pass = 0.00 s = .
+AttendeeTest#test_fits_ride_and_pass = 0.00 s = .
+AttendeeTest#test_fits_ride_exactly = 0.00 s = .
+AttendeeTest#test_new_instance_doesnt_have_pass = 0.00 s = .
+AttendeeTest#test_when_issued_pass = 0.00 s = .
+
+Finished in 0.003318s, 2712.3009 runs/s, 2712.3009 assertions/s.
+
+9 runs, 9 assertions, 0 failures, 0 errors, 0 skips
+Coverage report generated for test:exercism to /home/vpayno/git_vpayno/exercism-workspace/ruby/amusement-park-improvements/coverage/coverage.xml. 14 / 14 LOC (100.00%) covered
+
+real	0m0.177s
+user	0m0.120s
+sys	0m0.058s
+
+
+ ==============================================================================
+
+Coverage: 100.0%
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.244s
+user	0m0.140s
+sys	0m0.109s
+
+real	0m0.246s
+user	0m0.142s
+sys	0m0.109s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.025s
+user	0m0.027s
+sys	0m0.015s
+
+===============================================================================
+
+/home/vpayno/git_vpayno/exercism-workspace/ruby
+
+===============================================================================
+

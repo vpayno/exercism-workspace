@@ -17,3 +17,4 @@
 - [lasagna](./lasagna/README.md)
 - [log-line-parser](./log-line-parser/README.md)
 - [amusement-park](./amusement-park/README.md)
+- [amusement-park-improvements](./amusement-park-improvements/README.md)

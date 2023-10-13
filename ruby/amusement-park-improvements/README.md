@@ -91,3 +91,8 @@ attendee.allowed_to_ride?(120)
 - @kotp
 - @iHiD
 - @kayn1
+
+### My Solution
+
+- [my solution](./attendee.rb)
+- [run-tests](./run-tests-ruby.txt)
