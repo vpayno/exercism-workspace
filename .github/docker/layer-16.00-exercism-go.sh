@@ -63,7 +63,7 @@ golang_first_install() {
 
 	printf "Installing Go version %s...\n\n" "${GOVER}"
 
-	echo Running: curl -sS https://go.dev/dl/go"${GOVER}".linux-"${GOARCH}".tar.gz '|' tar -C /usr/local/ -xzf -
+	echo Running: curl -sS https://dl.google.com/go/go"${GOVER}".linux-"${GOARCH}".tar.gz \| tar -C /usr/local/ -xzf -
 	time curl -sS https://dl.google.com/go/go"${GOVER}".linux-"${GOARCH}".tar.gz | tar -C /usr/local/ -xzf - || return 1
 	printf "\n"
 
