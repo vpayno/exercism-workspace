@@ -151,3 +151,8 @@ LogLineParser.new('[INFO]: Operation completed').reformat
 ### Created by
 
 - @pvcarrera
+
+### My Solution
+
+- [my solution](./log_line_parser.rb)
+- [run-tests](./run-tests-ruby.txt)

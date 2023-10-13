@@ -1,0 +1,151 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-lint-rubycritic
+
+Running RubyCritic
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rubycritic --path .rubycritic --format console --no-browser .
+
+running flay smells
+
+running flog smells
+[32m.[0m[32m.[0m
+running reek smells
+[32m.[0m[32m.[0m
+running complexity
+[32m.[0m[32m.[0m
+running attributes
+[32m.[0m[32m.[0m
+running churn
+[32m.[0m[32m.[0m
+running simple_cov
+[32m.[0m[32m.[0m
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing safe_level with the 2nd argument of ERB.new is deprecated. Do not use it, and specify other arguments as keyword arguments.
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing trim_mode with the 3rd argument of ERB.new is deprecated. Use keyword argument like ERB.new(str, trim_mode: ...) instead.
+LogLineParser:
+  Rating:       A
+  Churn:        0
+  Complexity:   10.71
+  Duplication:  0
+  Smells:       0
+
+LogLineParserTest:
+  Rating:       A
+  Churn:        0
+  Complexity:   42.9
+  Duplication:  0
+  Smells:       1
+    * (IrresponsibleModule) LogLineParserTest has no descriptive comment
+      - log_line_parser_test.rb:30
+Score: 93.3
+
+real	0m0.675s
+user	0m0.546s
+sys	0m0.127s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.741s
+user	0m0.576s
+sys	0m0.168s
+
+real	0m0.746s
+user	0m0.580s
+sys	0m0.169s
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-test-with-coverage
+
+Running Ruby Tests With Coverage
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rm -rf ./coverage
+
+
+real	0m0.002s
+user	0m0.000s
+sys	0m0.002s
+
+
+ ==============================================================================
+
+Running: ruby ./log_line_parser_test.rb -v
+
+Run options: -v --seed 41811
+
+# Running:
+
+LogLineParserTest#test_info_log_level = 0.00 s = .
+LogLineParserTest#test_warning_reformat = 0.00 s = .
+LogLineParserTest#test_info_reformat = 0.00 s = .
+LogLineParserTest#test_reformat_with_leading_and_trailing_space = 0.00 s = .
+LogLineParserTest#test_warning_message = 0.00 s = .
+LogLineParserTest#test_error_reformat = 0.00 s = .
+LogLineParserTest#test_message_with_leading_and_trailing_space = 0.00 s = .
+LogLineParserTest#test_info_message = 0.00 s = .
+LogLineParserTest#test_error_message = 0.00 s = .
+LogLineParserTest#test_warning_log_level = 0.00 s = .
+LogLineParserTest#test_error_log_level = 0.00 s = .
+
+Finished in 0.003780s, 2909.8996 runs/s, 2909.8996 assertions/s.
+
+11 runs, 11 assertions, 0 failures, 0 errors, 0 skips
+Coverage report generated for test:exercism to /home/vpayno/git_vpayno/exercism-workspace/ruby/log-line-parser/coverage/coverage.xml. 10 / 10 LOC (100.00%) covered
+
+real	0m0.185s
+user	0m0.139s
+sys	0m0.046s
+
+
+ ==============================================================================
+
+Coverage: 100.0%
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.264s
+user	0m0.176s
+sys	0m0.094s
+
+real	0m0.267s
+user	0m0.177s
+sys	0m0.096s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.023s
+user	0m0.023s
+sys	0m0.012s
+
+===============================================================================
+
+/home/vpayno/git_vpayno/exercism-workspace/ruby
+
+===============================================================================
+

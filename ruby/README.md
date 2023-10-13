@@ -15,3 +15,4 @@
 
 - [hello-world](./hello-world/README.md)
 - [lasagna](./lasagna/README.md)
+- [log-line-parser](./log-line-parser/README.md)

@@ -1,17 +1,23 @@
+# frozen_string_literal: false
+
+# https://exercism.org/tracks/ruby/exercises/log-line-parser
+# LogLineParser parses loglines
 class LogLineParser
+  attr_reader :line
+
   def initialize(line)
     @line = line
   end
 
   def message
-    raise 'Please implement the LogLineParser#message method'
+    @message ||= line.gsub(/\[\w+\]:/, '').strip
   end
 
   def log_level
-    raise 'Please implement the LogLineParser#log_level method'
+    @log_level ||= line[/\w+/].downcase
   end
 
   def reformat
-    raise 'Please implement the LogLineParser#reformat method'
+    @reformat ||= "#{message} (#{log_level})"
   end
 end
