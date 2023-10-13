@@ -14,3 +14,4 @@
 ## [Exercises](https://exercism.org/tracks/ruby/exercises)
 
 - [hello-world](./hello-world/README.md)
+- [lasagna](./lasagna/README.md)

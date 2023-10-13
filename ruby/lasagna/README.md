@@ -139,3 +139,8 @@ lasagna.total_time_in_minutes(number_of_layers: 3, actual_minutes_in_oven: 20)
 
 - @iHiD
 - @pvcarrera
+
+### My Solution
+
+- [my solution](./lasagna.rb)
+- [run-tests](./run-tests-ruby.txt)
