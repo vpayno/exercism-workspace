@@ -78,5 +78,24 @@ for f in ./*_test.rb; do
 			# original exercism tests
 			$(cat "${f}")
 		EOF
+
+		git add "${f}"
 	fi
 done
+printf "\n"
+
+for f in ./*.rb; do
+	if ! grep -q frozen_string_literal: "${f}"; then
+		{ cat | sponge "${f}"; } <<-EOF
+			# frozen_string_literal: false
+
+			$(cat "${f}")
+		EOF
+
+		git add "${f}"
+	fi
+done
+printf "\n"
+
+git status ..
+printf "\n"
