@@ -41,6 +41,16 @@ get_rust_package_name() {
 	toml get Cargo.toml package | jq -r .name
 } # get_rust_package_name()
 
+show_tool_versions_rust_short() {
+	# md_code_tag text
+	printf "Rust version:\n"
+	printf "\n"
+	rustc --version | paste /dev/null -
+	rustup --version | paste /dev/null -
+	# md_code_tag
+	printf "\n"
+} # show_tool_versions_rust_short()
+
 show_tool_versions_rust() {
 	# md_code_tag text
 	printf "Rust version:\n"
