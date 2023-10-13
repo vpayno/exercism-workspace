@@ -102,7 +102,9 @@ main() {
 
 	printf "Setup Ruby symlinks for github user:\n"
 	cd "${HOME}" || track_errors
-	ln -sv "/usr/local/rbenv" .rbenv || track_errors
+	if [[ ! -d .rbenv ]]; then
+		ln -sv "/usr/local/rbenv" .rbenv || track_errors
+	fi
 	ls -l ~/.rbenv
 	cd - || track_errors
 	printf "\n"
