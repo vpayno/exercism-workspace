@@ -26,3 +26,4 @@
 - [chess-game](./chess-game/README.md)
 - [bird-count](./bird-count/README.md)
 - [boutique-inventory](./boutique-inventory/README.md)
+- [boutique-inventory-improvements](./boutique-inventory-improvements/README.md)

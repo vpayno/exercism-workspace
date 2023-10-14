@@ -1,0 +1,154 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-lint-rubycritic
+
+Running RubyCritic
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rubycritic --path .rubycritic --format console --no-browser .
+
+running flay smells
+
+running flog smells
+[32m.[0m[32m.[0m
+running reek smells
+[32m.[0m[32m.[0m
+running complexity
+[32m.[0m[32m.[0m
+running attributes
+[32m.[0m[32m.[0m
+running churn
+[32m.[0m[32m.[0m
+running simple_cov
+[32m.[0m[32m.[0m
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing safe_level with the 2nd argument of ERB.new is deprecated. Do not use it, and specify other arguments as keyword arguments.
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing trim_mode with the 3rd argument of ERB.new is deprecated. Use keyword argument like ERB.new(str, trim_mode: ...) instead.
+BoutiqueInventory:
+  Rating:       A
+  Churn:        0
+  Complexity:   46.58
+  Duplication:  0
+  Smells:       1
+    * (HighComplexity) BoutiqueInventory#total_stock has a flog score of 31
+      - boutique_inventory.rb:18
+
+BoutiqueInventoryTest:
+  Rating:       A
+  Churn:        0
+  Complexity:   43.75
+  Duplication:  0
+  Smells:       3
+    * (DuplicateMethodCall) BoutiqueInventoryTest#test_items_is_an_array_of_ostruct calls 'BoutiqueInventory.new(items).items' 2 times
+      - boutique_inventory_test.rb:75
+      - boutique_inventory_test.rb:76
+    * (IrresponsibleModule) BoutiqueInventoryTest has no descriptive comment
+      - boutique_inventory_test.rb:28
+    * (TooManyStatements) BoutiqueInventoryTest#test_items_is_an_array_of_ostruct has approx 6 statements
+      - boutique_inventory_test.rb:70
+Score: 88.71
+
+real	0m0.608s
+user	0m0.486s
+sys	0m0.114s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.706s
+user	0m0.534s
+sys	0m0.170s
+
+real	0m0.709s
+user	0m0.535s
+sys	0m0.172s
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-test-with-coverage
+
+Running Ruby Tests With Coverage
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rm -rf ./coverage
+
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.001s
+
+
+ ==============================================================================
+
+Running: ruby ./boutique_inventory_test.rb -v
+
+Run options: -v --seed 56376
+
+# Running:
+
+BoutiqueInventoryTest#test_one_item_name = 0.00 s = .
+BoutiqueInventoryTest#test_three_item_names = 0.00 s = .
+BoutiqueInventoryTest#test_items_is_an_array_of_ostruct = 0.00 s = .
+BoutiqueInventoryTest#test_total_stock_for_no_items = 0.00 s = .
+BoutiqueInventoryTest#test_total_stock_for_no_stock = 0.00 s = .
+BoutiqueInventoryTest#test_no_item_names = 0.00 s = .
+BoutiqueInventoryTest#test_total_stock_for_some_items = 0.00 s = .
+
+Finished in 0.003377s, 2072.5898 runs/s, 2664.7583 assertions/s.
+
+7 runs, 9 assertions, 0 failures, 0 errors, 0 skips
+Coverage report generated for test:exercism to /home/vpayno/git_vpayno/exercism-workspace/ruby/boutique-inventory-improvements/coverage/coverage.xml. 9 / 9 LOC (100.00%) covered
+
+real	0m0.163s
+user	0m0.118s
+sys	0m0.046s
+
+
+ ==============================================================================
+
+Coverage: 100.0%
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.250s
+user	0m0.148s
+sys	0m0.109s
+
+real	0m0.252s
+user	0m0.148s
+sys	0m0.111s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.023s
+user	0m0.028s
+sys	0m0.014s
+
+===============================================================================
+
+/home/vpayno/git_vpayno/exercism-workspace/ruby
+
+===============================================================================
+
