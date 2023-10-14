@@ -1,0 +1,151 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-lint-rubycritic
+
+Running RubyCritic
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rubycritic --path .rubycritic --format console --no-browser .
+
+running flay smells
+
+running flog smells
+[32m.[0m[32m.[0m
+running reek smells
+[32m.[0m[32m.[0m
+running complexity
+[32m.[0m[32m.[0m
+running attributes
+[32m.[0m[32m.[0m
+running churn
+[32m.[0m[32m.[0m
+running simple_cov
+[32m.[0m[32m.[0m
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing safe_level with the 2nd argument of ERB.new is deprecated. Do not use it, and specify other arguments as keyword arguments.
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing trim_mode with the 3rd argument of ERB.new is deprecated. Use keyword argument like ERB.new(str, trim_mode: ...) instead.
+BirdCount:
+  Rating:       A
+  Churn:        0
+  Complexity:   12.71
+  Duplication:  0
+  Smells:       0
+
+BirdCountTest:
+  Rating:       B
+  Churn:        0
+  Complexity:   54.18
+  Duplication:  0
+  Smells:       1
+    * (IrresponsibleModule) BirdCountTest has no descriptive comment
+      - bird_count_test.rb:30
+Score: 91.64
+
+real	0m0.654s
+user	0m0.520s
+sys	0m0.125s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.739s
+user	0m0.558s
+sys	0m0.177s
+
+real	0m0.742s
+user	0m0.559s
+sys	0m0.180s
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-test-with-coverage
+
+Running Ruby Tests With Coverage
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rm -rf ./coverage
+
+
+real	0m0.002s
+user	0m0.000s
+sys	0m0.002s
+
+
+ ==============================================================================
+
+Running: ruby ./bird_count_test.rb -v
+
+Run options: -v --seed 65211
+
+# Running:
+
+BirdCountTest#test_total_for_busy_week = 0.00 s = .
+BirdCountTest#test_has_day_without_birds = 0.00 s = .
+BirdCountTest#test_last_week = 0.00 s = .
+BirdCountTest#test_busy_days_for_busy_week = 0.00 s = .
+BirdCountTest#test_yesterday_for_busy_week = 0.00 s = .
+BirdCountTest#test_has_day_without_birds_whith_no_day_without_birds = 0.00 s = .
+BirdCountTest#test_total_for_disappointing_week = 0.00 s = .
+BirdCountTest#test_yesterday_for_disappointing_week = 0.00 s = .
+BirdCountTest#test_busy_days_for_dissapointing_week = 0.00 s = .
+
+Finished in 0.001635s, 5502.9581 runs/s, 5502.9581 assertions/s.
+
+9 runs, 9 assertions, 0 failures, 0 errors, 0 skips
+Coverage report generated for test:exercism to /home/vpayno/git_vpayno/exercism-workspace/ruby/bird-count/coverage/coverage.xml. 16 / 16 LOC (100.00%) covered
+
+real	0m0.161s
+user	0m0.115s
+sys	0m0.046s
+
+
+ ==============================================================================
+
+Coverage: 100.0%
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.252s
+user	0m0.164s
+sys	0m0.093s
+
+real	0m0.254s
+user	0m0.165s
+sys	0m0.094s
+
+===============================================================================
+
+Running: misspell .
+bird_count_test.rb:63:33: "whith" is a misspelling of "with"
+run-tests-ruby.txt:105:41: "whith" is a misspelling of "with"
+
+real	0m0.025s
+user	0m0.027s
+sys	0m0.008s
+
+===============================================================================
+
+/home/vpayno/git_vpayno/exercism-workspace/ruby
+
+===============================================================================
+

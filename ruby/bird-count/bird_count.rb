@@ -1,25 +1,35 @@
+# frozen_string_literal: false
+
+# https://exercism.org/tracks/ruby/exercises/bird-count
+# Bird Count exercise
 class BirdCount
   def self.last_week
-    raise 'Please implement the BirdCount.last_week method'
+    [0, 2, 5, 3, 7, 8, 4]
   end
 
   def initialize(birds_per_day)
-    raise 'Please implement the BirdCount#initialize method'
+    @this_week = birds_per_day
   end
 
   def yesterday
-    raise 'Please implement the BirdCount#yesterday method'
+    @this_week[-2]
   end
 
   def total
-    raise 'Please implement the BirdCount#total method'
+    @this_week.sum
   end
 
   def busy_days
-    raise 'Please implement the BirdCount#busy_days method'
+    @this_week.reduce(0) do |sum, item|
+      next sum += 1 if item >= 5
+
+      sum
+    end
   end
 
   def day_without_birds?
-    raise 'Please implement the BirdCount#day_without_birds method'
+    @this_week.each { |number| return true if number.zero? }
+
+    false
   end
 end

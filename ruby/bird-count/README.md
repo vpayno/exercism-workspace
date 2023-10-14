@@ -154,3 +154,8 @@ bird_count.day_without_birds?
 ### Created by
 
 - @pvcarrera
+
+### My Solution
+
+- [my solution](./bird_count.rb)
+- [run-tests](./run-tests-ruby.txt)
