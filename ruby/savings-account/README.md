@@ -101,3 +101,8 @@ Note that the value returned is an instance of `Integer`.
 ### Contributed to by
 
 - @dvik1950
+
+### My Solution
+
+- [my solution](./savings_account.rb)
+- [run-tests](./run-tests-ruby.txt)

@@ -1,0 +1,167 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-lint-rubycritic
+
+Running RubyCritic
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rubycritic --path .rubycritic --format console --no-browser .
+
+running flay smells
+
+running flog smells
+[32m.[0m[32m.[0m
+running reek smells
+[32m.[0m[32m.[0m
+running complexity
+[32m.[0m[32m.[0m
+running attributes
+[32m.[0m[32m.[0m
+running churn
+[32m.[0m[32m.[0m
+running simple_cov
+[32m.[0m[32m.[0m
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing safe_level with the 2nd argument of ERB.new is deprecated. Do not use it, and specify other arguments as keyword arguments.
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing trim_mode with the 3rd argument of ERB.new is deprecated. Use keyword argument like ERB.new(str, trim_mode: ...) instead.
+SavingsAccount:
+  Rating:       A
+  Churn:        0
+  Complexity:   17.72
+  Duplication:  0
+  Smells:       0
+
+SavingsAccountTest:
+  Rating:       B
+  Churn:        0
+  Complexity:   61.3
+  Duplication:  0
+  Smells:       2
+    * (IrresponsibleModule) SavingsAccountTest has no descriptive comment
+      - savings_account_test.rb:28
+    * (TooManyMethods) SavingsAccountTest has at least 25 methods
+      - savings_account_test.rb:28
+Score: 90.12
+
+real	0m0.649s
+user	0m0.539s
+sys	0m0.109s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.702s
+user	0m0.561s
+sys	0m0.141s
+
+real	0m0.704s
+user	0m0.563s
+sys	0m0.142s
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-test-with-coverage
+
+Running Ruby Tests With Coverage
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rm -rf ./coverage
+
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.001s
+
+
+ ==============================================================================
+
+Running: ruby ./savings_account_test.rb -v
+
+Run options: -v --seed 39256
+
+# Running:
+
+SavingsAccountTest#test_annual_balance_update_for_average_negative_start_balance = 0.00 s = .
+SavingsAccountTest#test_small_negative_interest_rate = 0.00 s = .
+SavingsAccountTest#test_maximal_second_interest_rate = 0.00 s = .
+SavingsAccountTest#test_annual_balance_update_for_huge_positive_start_balance = 0.00 s = .
+SavingsAccountTest#test_annual_balance_update_for_large_positive_start_balance = 0.00 s = .
+SavingsAccountTest#test_annual_balance_update_for_small_positive_start_balance = 0.00 s = .
+SavingsAccountTest#test_years_before_desired_balance_for_large_start_balance = 0.00 s = .
+SavingsAccountTest#test_regular_negative_interest_rate = 0.00 s = .
+SavingsAccountTest#test_years_before_desired_balance_for_small_start_balance = 0.00 s = .
+SavingsAccountTest#test_annual_balance_update_for_average_positive_start_balance = 0.00 s = .
+SavingsAccountTest#test_large_negative_interest_rate = 0.00 s = .
+SavingsAccountTest#test_large_third_interest_rate = 0.00 s = .
+SavingsAccountTest#test_tiny_third_interest_rate = 0.00 s = .
+SavingsAccountTest#test_years_before_desired_balance_for_average_start_balance = 0.00 s = .
+SavingsAccountTest#test_minimal_first_interest_rate = 0.00 s = .
+SavingsAccountTest#test_years_before_desired_balance_for_large_difference_between_start_and_desired_balance = 0.00 s = .
+SavingsAccountTest#test_annual_balance_update_for_empty_start_balance = 0.00 s = .
+SavingsAccountTest#test_minimal_second_interest_rate = 0.00 s = .
+SavingsAccountTest#test_tiny_first_interest_rate = 0.00 s = .
+SavingsAccountTest#test_annual_balance_update_for_large_negative_start_balance = 0.00 s = .
+SavingsAccountTest#test_minimal_negative_interest_rate = 0.00 s = .
+SavingsAccountTest#test_annual_balance_update_for_small_negative_start_balance = 0.00 s = .
+SavingsAccountTest#test_minimal_third_interest_rate = 0.00 s = .
+SavingsAccountTest#test_tiny_second_interest_rate = 0.00 s = .
+SavingsAccountTest#test_maximal_first_interest_rate = 0.00 s = .
+
+Finished in 0.002195s, 11390.7422 runs/s, 11390.7422 assertions/s.
+
+25 runs, 25 assertions, 0 failures, 0 errors, 0 skips
+Coverage report generated for test:exercism to /home/vpayno/git_vpayno/exercism-workspace/ruby/savings-account/coverage/coverage.xml. 18 / 18 LOC (100.00%) covered
+
+real	0m0.182s
+user	0m0.127s
+sys	0m0.055s
+
+
+ ==============================================================================
+
+Coverage: 100.0%
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.241s
+user	0m0.150s
+sys	0m0.094s
+
+real	0m0.243s
+user	0m0.151s
+sys	0m0.095s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.024s
+user	0m0.038s
+sys	0m0.008s
+
+===============================================================================
+
+/home/vpayno/git_vpayno/exercism-workspace/ruby
+
+===============================================================================
+
