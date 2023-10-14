@@ -23,3 +23,4 @@
 - [moviegoer](./moviegoer/README.md)
 - [savings-account](./savings-account/README.md)
 - [port-palermo](./port-palermo/README.md)
+- [chess-game](./chess-game/README.md)

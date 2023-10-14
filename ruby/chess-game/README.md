@@ -177,3 +177,8 @@ Chess.move_message("John", "Doe", "A1")
 ### Contributed to by
 
 - @kotp
+
+### My Solution
+
+- [my solution](./chess_game.rb)
+- [run-tests](./run-tests-ruby.txt)

@@ -1,0 +1,156 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-lint-rubycritic
+
+Running RubyCritic
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rubycritic --path .rubycritic --format console --no-browser .
+
+running flay smells
+
+running flog smells
+[32m.[0m[32m.[0m
+running reek smells
+[32m.[0m[32m.[0m
+running complexity
+[32m.[0m[32m.[0m
+running attributes
+[32m.[0m[32m.[0m
+running churn
+[32m.[0m[32m.[0m
+running simple_cov
+[32m.[0m[32m.[0m
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing safe_level with the 2nd argument of ERB.new is deprecated. Do not use it, and specify other arguments as keyword arguments.
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing trim_mode with the 3rd argument of ERB.new is deprecated. Use keyword argument like ERB.new(str, trim_mode: ...) instead.
+Chess:
+  Rating:       A
+  Churn:        0
+  Complexity:   13.23
+  Duplication:  0
+  Smells:       0
+
+ChessTest:
+  Rating:       A
+  Churn:        0
+  Complexity:   32.5
+  Duplication:  0
+  Smells:       2
+    * (IrresponsibleModule) ChessTest has no descriptive comment
+      - chess_game_test.rb:28
+    * (UncommunicativeMethodName) ChessTest#test_incorrect_message_when_being_on_rank_0 has the name 'test_incorrect_message_when_being_on_rank_0'
+      - chess_game_test.rb:81
+Score: 94.28
+
+real	0m0.654s
+user	0m0.532s
+sys	0m0.120s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.743s
+user	0m0.581s
+sys	0m0.165s
+
+real	0m0.747s
+user	0m0.583s
+sys	0m0.167s
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-test-with-coverage
+
+Running Ruby Tests With Coverage
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rm -rf ./coverage
+
+
+real	0m0.001s
+user	0m0.001s
+sys	0m0.000s
+
+
+ ==============================================================================
+
+Running: ruby ./chess_game_test.rb -v
+
+Run options: -v --seed 20541
+
+# Running:
+
+ChessTest#test_correct_message_when_moving_to_corner = 0.00 s = .
+ChessTest#test_false_when_rank_is_less_than_one = 0.00 s = .
+ChessTest#test_true_for_another_valid_square = 0.00 s = .
+ChessTest#test_true_when_given_a_valid_square = 0.00 s = .
+ChessTest#test_correct_message_for_a_move = 0.00 s = .
+ChessTest#test_correct_nickname_for_2_letter_last_name = 0.00 s = .
+ChessTest#test_false_when_rank_is_out_of_range = 0.00 s = .
+ChessTest#test_incorrect_message_when_being_on_rank_0 = 0.00 s = .
+ChessTest#test_have_8_ranks = 0.00 s = .
+ChessTest#test_correct_nickname_for_2_letter_first_name = 0.00 s = .
+ChessTest#test_correct_player_nick_name = 0.00 s = .
+ChessTest#test_have_8_files = 0.00 s = .
+ChessTest#test_incorrect_message_when_out_of_board = 0.00 s = .
+ChessTest#test_false_when_file_is_out_of_range = 0.00 s = .
+
+Finished in 0.003120s, 4487.6182 runs/s, 4487.6182 assertions/s.
+
+14 runs, 14 assertions, 0 failures, 0 errors, 0 skips
+Coverage report generated for test:exercism to /home/vpayno/git_vpayno/exercism-workspace/ruby/chess-game/coverage/coverage.xml. 12 / 12 LOC (100.00%) covered
+
+real	0m0.195s
+user	0m0.146s
+sys	0m0.049s
+
+
+ ==============================================================================
+
+Coverage: 100.0%
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.272s
+user	0m0.182s
+sys	0m0.096s
+
+real	0m0.274s
+user	0m0.184s
+sys	0m0.096s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.027s
+user	0m0.030s
+sys	0m0.009s
+
+===============================================================================
+
+/home/vpayno/git_vpayno/exercism-workspace/ruby
+
+===============================================================================
+
