@@ -25,3 +25,4 @@
 - [port-palermo](./port-palermo/README.md)
 - [chess-game](./chess-game/README.md)
 - [bird-count](./bird-count/README.md)
+- [boutique-inventory](./boutique-inventory/README.md)

@@ -166,3 +166,8 @@ BoutiqueInventory.new([
 ### Created by
 
 - @iHiD
+
+### My Solution
+
+- [my solution](./boutique_inventory.rb)
+- [run-tests](./run-tests-ruby.txt)
