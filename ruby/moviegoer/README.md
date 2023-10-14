@@ -98,3 +98,8 @@ Moviegoer.new(17, member: false).claim_free_popcorn!
 
 - @lxmrc
 - @iHiD
+
+### My Solution
+
+- [my solution](./moviegoer.rb)
+- [run-tests](./run-tests-ruby.txt)

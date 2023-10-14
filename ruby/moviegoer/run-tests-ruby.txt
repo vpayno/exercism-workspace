@@ -1,0 +1,148 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-lint-rubycritic
+
+Running RubyCritic
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rubycritic --path .rubycritic --format console --no-browser .
+
+running flay smells
+
+running flog smells
+[32m.[0m[32m.[0m
+running reek smells
+[32m.[0m[32m.[0m
+running complexity
+[32m.[0m[32m.[0m
+running attributes
+[32m.[0m[32m.[0m
+running churn
+[32m.[0m[32m.[0m
+running simple_cov
+[32m.[0m[32m.[0m
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing safe_level with the 2nd argument of ERB.new is deprecated. Do not use it, and specify other arguments as keyword arguments.
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing trim_mode with the 3rd argument of ERB.new is deprecated. Use keyword argument like ERB.new(str, trim_mode: ...) instead.
+MoviegoerTest:
+  Rating:       A
+  Churn:        0
+  Complexity:   26.52
+  Duplication:  0
+  Smells:       1
+    * (IrresponsibleModule) MoviegoerTest has no descriptive comment
+      - moviegoer_test.rb:28
+
+NotMovieClubMemberError:
+  Rating:       A
+  Churn:        0
+  Complexity:   7.08
+  Duplication:  0
+  Smells:       1
+    * (MissingSafeMethod) Moviegoer has missing safe method 'claim_free_popcorn!'
+      - moviegoer.rb:23
+Score: 95.8
+
+real	0m0.609s
+user	0m0.509s
+sys	0m0.097s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.704s
+user	0m0.546s
+sys	0m0.162s
+
+real	0m0.709s
+user	0m0.548s
+sys	0m0.164s
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-test-with-coverage
+
+Running Ruby Tests With Coverage
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rm -rf ./coverage
+
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.001s
+
+
+ ==============================================================================
+
+Running: ruby ./moviegoer_test.rb -v
+
+Run options: -v --seed 61071
+
+# Running:
+
+MoviegoerTest#test_regular_ticket_price = 0.00 s = .
+MoviegoerTest#test_seniors_discount = 0.00 s = .
+MoviegoerTest#test_members_get_free_popcorn = 0.00 s = .
+MoviegoerTest#test_regular_moviegoers_dont_get_free_popcorn = 0.00 s = .
+MoviegoerTest#test_kids_cant_see_the_scary_movie = 0.00 s = .
+MoviegoerTest#test_adults_can_see_the_scary_movie = 0.00 s = .
+
+Finished in 0.002098s, 2860.3193 runs/s, 2860.3193 assertions/s.
+
+6 runs, 6 assertions, 0 failures, 0 errors, 0 skips
+Coverage report generated for test:exercism to /home/vpayno/git_vpayno/exercism-workspace/ruby/moviegoer/coverage/coverage.xml. 11 / 11 LOC (100.00%) covered
+
+real	0m0.183s
+user	0m0.127s
+sys	0m0.055s
+
+
+ ==============================================================================
+
+Coverage: 100.0%
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.264s
+user	0m0.163s
+sys	0m0.104s
+
+real	0m0.266s
+user	0m0.165s
+sys	0m0.104s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.031s
+user	0m0.049s
+sys	0m0.012s
+
+===============================================================================
+
+/home/vpayno/git_vpayno/exercism-workspace/ruby
+
+===============================================================================
+

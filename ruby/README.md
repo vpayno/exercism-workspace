@@ -20,3 +20,4 @@
 - [amusement-park-improvements](./amusement-park-improvements/README.md)
 - [simple-calculator](./simple-calculator/README.md)
 - [assembly-line](./assembly-line/README.md)
+- [moviegoer](./moviegoer/README.md)
