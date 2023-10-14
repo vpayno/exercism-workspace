@@ -87,3 +87,8 @@ AssemblyLine.new(6).working_items_per_minute
 
 - @kotp
 - @iHiD
+
+### My Solution
+
+- [my solution](./assembly_line.rb)
+- [run-tests](./run-tests-ruby.txt)
