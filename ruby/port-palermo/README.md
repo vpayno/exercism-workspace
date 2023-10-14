@@ -121,3 +121,8 @@ Port.get_terminal(:OIL123)
 ### Contributed to by
 
 - @egemen-dev
+
+### My Solution
+
+- [my solution](./port_palermo.rb)
+- [run-tests](./run-tests-ruby.txt)
