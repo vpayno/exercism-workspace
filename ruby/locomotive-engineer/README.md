@@ -517,3 +517,8 @@ LocomotiveEngineer.extend_route_information({"from": "Berlin", "to": "Hamburg"},
 
 - @meatball133
 - @kotp
+
+### My Solution
+
+- [my solution](./locomotive_engineer.rb)
+- [run-tests](./run-tests-ruby.txt)

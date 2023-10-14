@@ -1,17 +1,25 @@
+# frozen_string_literal: false
+
+# https://exercism.org/tracks/ruby/exercises/locomotive-engineer
+# Locomotive Engineer exercise
 class LocomotiveEngineer
-  def self.generate_list_of_wagons
-    raise 'Please implement the LocomotiveEngineer.generate_list_of_wagons method'
+  def self.generate_list_of_wagons(*args)
+    args
   end
 
   def self.fix_list_of_wagons(each_wagons_id, missing_wagons)
-    raise 'Please implement the LocomotiveEngineer.fix_list_of_wagons method'
+    first, second, *rest = each_wagons_id.reject { |item| item == 1 }
+
+    [1, *missing_wagons, *rest, first, second]
   end
 
-  def self.add_missing_stops
-    raise 'Please implement the LocomotiveEngineer.add_missing_stops method'
+  def self.add_missing_stops(routing, **args)
+    routing[:stops] = args.values
+
+    routing
   end
 
   def self.extend_route_information(route, more_route_information)
-    raise 'Please implement the LocomotiveEngineer.extend_route_information method'
+    { **route, **more_route_information }
   end
 end
