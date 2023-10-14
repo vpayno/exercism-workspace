@@ -66,3 +66,10 @@ jobs:
       #   ./location_of_script_within_repo/buildscript.sh
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v2
+  summary:
+    runs-on: ubuntu-latest
+    name: Summary
+    steps:
+      - name: Summary
+        run: |-
+          printf "[%s](%s)\n" "Code Scanning Overview" 'https://github.com/vpayno/exercism-workspace/security/code-scanning?query=pr%3A275+is%3Aopen' | tee -a "${GITHUB_STEP_SUMMARY}"
