@@ -1,0 +1,29 @@
+#!/bin/bash
+#
+# .github/citools/ruby/ruby-lint-formatter
+#
+
+# shellcheck disable=SC1091
+source ../../.github/citools/includes/wrapper-library || exit
+
+declare -i retval=0
+
+main() {
+	printf "\nRunning Ruby Formatter\n\n"
+
+	show_tool_versions_ruby_short
+
+	print_ruler
+
+	# https://github.com/ruby-formatter/rufo
+	# https://github.com/rubocop/rubocop
+
+	run_command rubocop -a .
+
+	print_ruler
+
+	echo Exit code: "${retval}"
+	return "${retval}"
+}
+
+time main "${@}"
