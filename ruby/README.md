@@ -30,3 +30,4 @@
 - [locomotive-engineer](./locomotive-engineer/README.md)
 - [two-fer](./two-fer/README.md)
 - [raindrops](./raindrops/README.md)
+- [gigasecond](./gigasecond/README.md)
