@@ -25,9 +25,9 @@ class Integer
   # using the argument as a way to initialize the variable without an extra statement and
   # it lets you append to an existing string
   def to_sounds(result = '')
-    result = "#{result}Pling" if pling?
-    result = "#{result}Plang" if plang?
-    result = "#{result}Plong" if plong?
+    result << 'Pling' if pling?
+    result << 'Plang' if plang?
+    result << 'Plong' if plong?
 
     result = to_s if result.empty?
 
