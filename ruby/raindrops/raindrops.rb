@@ -4,7 +4,7 @@
 # Raindrops exercise
 class Raindrops
   def self.convert(number)
-    number.sounds
+    number.to_sounds
   end
 end
 
@@ -24,7 +24,7 @@ class Integer
 
   # using the argument as a way to initialize the variable without an extra statement and
   # it lets you append to an existing string
-  def sounds(result = '')
+  def to_sounds(result = '')
     result = "#{result}Pling" if pling?
     result = "#{result}Plang" if plang?
     result = "#{result}Plong" if plong?
