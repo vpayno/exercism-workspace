@@ -4,15 +4,7 @@
 # Raindrops exercise
 class Raindrops
   def self.convert(number)
-    sounds = ''
-
-    sounds = "#{sounds}Pling" if number.pling?
-    sounds = "#{sounds}Plang" if number.plang?
-    sounds = "#{sounds}Plong" if number.plong?
-
-    sounds = number.to_s if sounds.empty?
-
-    sounds
+    number.sounds
   end
 end
 
@@ -28,5 +20,17 @@ class Integer
 
   def plong?
     (self % 7).zero?
+  end
+
+  # using the argument as a way to initialize the variable without an extra statement and
+  # it lets you append to an existing string
+  def sounds(result = '')
+    result = "#{result}Pling" if pling?
+    result = "#{result}Plang" if plang?
+    result = "#{result}Plong" if plong?
+
+    result = to_s if result.empty?
+
+    result
   end
 end
