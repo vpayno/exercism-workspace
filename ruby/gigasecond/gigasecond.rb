@@ -2,7 +2,7 @@
 
 # https://exercism.org/tracks/ruby/exercises/gigasecond
 # Gigasecond exercise
-class Gigasecond
+module Gigasecond
   GIGASECOND = 10**9
 
   def self.from(time_stamp)
