@@ -38,3 +38,8 @@ output: [1,2,3,4,5]
 ### Based on
 
 Interview Question - https://reference.wolfram.com/language/ref/Flatten.html
+
+### My Solution
+
+- [my solution](./flatten_array.rb)
+- [run-tests](./run-tests-ruby.txt)

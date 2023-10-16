@@ -1,0 +1,192 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-lint-rubycritic
+
+Running RubyCritic
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rubycritic --path .rubycritic --format console --no-browser .
+
+running flay smells
+
+running flog smells
+[32m.[0m[32m.[0m
+running reek smells
+[32m.[0m[32m.[0m
+running complexity
+[32m.[0m[32m.[0m
+running attributes
+[32m.[0m[32m.[0m
+running churn
+[32m.[0m[32m.[0m
+running simple_cov
+[32m.[0m[32m.[0m
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing safe_level with the 2nd argument of ERB.new is deprecated. Do not use it, and specify other arguments as keyword arguments.
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing trim_mode with the 3rd argument of ERB.new is deprecated. Use keyword argument like ERB.new(str, trim_mode: ...) instead.
+FlattenArray:
+  Rating:       A
+  Churn:        0
+  Complexity:   2.2
+  Duplication:  0
+  Smells:       0
+
+FlattenArrayTest:
+  Rating:       A
+  Churn:        0
+  Complexity:   39.51
+  Duplication:  0
+  Smells:       1
+    * (IrresponsibleModule) FlattenArrayTest has no descriptive comment
+      - flatten_array_test.rb:28
+Score: 94.79
+
+real	0m0.644s
+user	0m0.522s
+sys	0m0.113s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.699s
+user	0m0.546s
+sys	0m0.147s
+
+real	0m0.701s
+user	0m0.546s
+sys	0m0.148s
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-lint-formatter
+
+Running Ruby Formatter
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rubocop -a .
+
+Inspecting 2 files
+.C
+
+Offenses:
+
+flatten_array_test.rb:28:1: C: Style/Documentation: Missing top-level documentation comment for class FlattenArrayTest.
+class FlattenArrayTest < Minitest::Test
+^^^^^^^^^^^^^^^^^^^^^^
+
+2 files inspected, 1 offense detected
+
+real	0m0.992s
+user	0m0.877s
+sys	0m0.196s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m1.060s
+user	0m0.901s
+sys	0m0.246s
+
+real	0m1.062s
+user	0m0.902s
+sys	0m0.247s
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-test-with-coverage
+
+Running Ruby Tests With Coverage
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rm -rf ./coverage
+
+
+real	0m0.002s
+user	0m0.000s
+sys	0m0.001s
+
+
+ ==============================================================================
+
+Running: ruby ./flatten_array_test.rb -v
+
+Run options: -v --seed 47044
+
+# Running:
+
+FlattenArrayTest#test_all_values_in_nested_list_are_null = 0.00 s = .
+FlattenArrayTest#test_flattens_array_with_just_integers_present = 0.00 s = .
+FlattenArrayTest#test_6_level_nest_list_with_null_values = 0.00 s = .
+FlattenArrayTest#test_5_level_nesting = 0.00 s = .
+FlattenArrayTest#test_6_level_nesting = 0.00 s = .
+FlattenArrayTest#test_empty = 0.00 s = .
+FlattenArrayTest#test_flattens_a_nested_array = 0.00 s = .
+FlattenArrayTest#test_no_nesting = 0.00 s = .
+
+Finished in 0.004326s, 1849.3103 runs/s, 2542.8017 assertions/s.
+
+8 runs, 11 assertions, 0 failures, 0 errors, 0 skips
+Coverage report generated for test:exercism to /home/vpayno/git_vpayno/exercism-workspace/ruby/flatten-array/coverage/coverage.xml. 3 / 3 LOC (100.00%) covered
+
+real	0m0.224s
+user	0m0.163s
+sys	0m0.061s
+
+
+ ==============================================================================
+
+Coverage: 100.0%
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.295s
+user	0m0.189s
+sys	0m0.110s
+
+real	0m0.297s
+user	0m0.189s
+sys	0m0.112s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.022s
+user	0m0.025s
+sys	0m0.010s
+
+===============================================================================
+
+/home/vpayno/git_vpayno/exercism-workspace/ruby
+
+===============================================================================
+
