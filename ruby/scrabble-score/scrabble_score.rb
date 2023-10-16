@@ -8,6 +8,8 @@ class Scrabble
   end
 
   def score
+    return 0 if @word.empty?
+
     @word.chars.map { |letter| score_letter letter }.sum
   end
 
