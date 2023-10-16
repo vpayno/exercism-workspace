@@ -1,0 +1,230 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-lint-rubycritic
+
+Running RubyCritic
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rubycritic --path .rubycritic --format console --no-browser .
+
+running flay smells
+
+running flog smells
+[32m.[0m[32m.[0m
+running reek smells
+[32m.[0m[32m.[0m
+running complexity
+[32m.[0m[32m.[0m
+running attributes
+[32m.[0m[32m.[0m
+running churn
+[32m.[0m[32m.[0m
+running simple_cov
+[32m.[0m[32m.[0m
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing safe_level with the 2nd argument of ERB.new is deprecated. Do not use it, and specify other arguments as keyword arguments.
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing trim_mode with the 3rd argument of ERB.new is deprecated. Use keyword argument like ERB.new(str, trim_mode: ...) instead.
+Grains:
+  Rating:       A
+  Churn:        0
+  Complexity:   8.75
+  Duplication:  0
+  Smells:       0
+
+GrainsTest:
+  Rating:       A
+  Churn:        0
+  Complexity:   32.39
+  Duplication:  0
+  Smells:       8
+    * (IrresponsibleModule) GrainsTest has no descriptive comment
+      - grains_test.rb:28
+    * (UncommunicativeMethodName) GrainsTest#test_1 has the name 'test_1'
+      - grains_test.rb:29
+    * (UncommunicativeMethodName) GrainsTest#test_16 has the name 'test_16'
+      - grains_test.rb:49
+    * (UncommunicativeMethodName) GrainsTest#test_2 has the name 'test_2'
+      - grains_test.rb:34
+    * (UncommunicativeMethodName) GrainsTest#test_3 has the name 'test_3'
+      - grains_test.rb:39
+    * (UncommunicativeMethodName) GrainsTest#test_32 has the name 'test_32'
+      - grains_test.rb:54
+    * (UncommunicativeMethodName) GrainsTest#test_4 has the name 'test_4'
+      - grains_test.rb:44
+    * (UncommunicativeMethodName) GrainsTest#test_64 has the name 'test_64'
+      - grains_test.rb:59
+Score: 94.86
+
+real	0m0.658s
+user	0m0.542s
+sys	0m0.108s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.715s
+user	0m0.570s
+sys	0m0.141s
+
+real	0m0.719s
+user	0m0.572s
+sys	0m0.143s
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-lint-formatter
+
+Running Ruby Formatter
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rubocop -a .
+
+Inspecting 2 files
+.C
+
+Offenses:
+
+grains_test.rb:28:1: C: Style/Documentation: Missing top-level documentation comment for class GrainsTest.
+class GrainsTest < Minitest::Test
+^^^^^^^^^^^^^^^^
+grains_test.rb:29:7: C: Naming/VariableNumber: Use normalcase for method name numbers.
+  def test_1
+      ^^^^^^
+grains_test.rb:34:7: C: Naming/VariableNumber: Use normalcase for method name numbers.
+  def test_2
+      ^^^^^^
+grains_test.rb:39:7: C: Naming/VariableNumber: Use normalcase for method name numbers.
+  def test_3
+      ^^^^^^
+grains_test.rb:44:7: C: Naming/VariableNumber: Use normalcase for method name numbers.
+  def test_4
+      ^^^^^^
+grains_test.rb:49:7: C: Naming/VariableNumber: Use normalcase for method name numbers.
+  def test_16
+      ^^^^^^^
+grains_test.rb:54:7: C: Naming/VariableNumber: Use normalcase for method name numbers.
+  def test_32
+      ^^^^^^^
+grains_test.rb:59:7: C: Naming/VariableNumber: Use normalcase for method name numbers.
+  def test_64
+      ^^^^^^^
+
+2 files inspected, 8 offenses detected
+
+real	0m0.929s
+user	0m0.815s
+sys	0m0.196s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.983s
+user	0m0.849s
+sys	0m0.221s
+
+real	0m0.985s
+user	0m0.850s
+sys	0m0.221s
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-test-with-coverage
+
+Running Ruby Tests With Coverage
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rm -rf ./coverage
+
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.001s
+
+
+ ==============================================================================
+
+Running: ruby ./grains_test.rb -v
+
+Run options: -v --seed 53698
+
+# Running:
+
+GrainsTest#test_32 = 0.00 s = .
+GrainsTest#test_returns_the_total_number_of_grains_on_the_board = 0.00 s = .
+GrainsTest#test_2 = 0.00 s = .
+GrainsTest#test_64 = 0.00 s = .
+GrainsTest#test_1 = 0.00 s = .
+GrainsTest#test_square_0_raises_an_exception = 0.00 s = .
+GrainsTest#test_16 = 0.00 s = .
+GrainsTest#test_4 = 0.00 s = .
+GrainsTest#test_negative_square_raises_an_exception = 0.00 s = .
+GrainsTest#test_3 = 0.00 s = .
+GrainsTest#test_square_greater_than_64_raises_an_exception = 0.00 s = .
+
+Finished in 0.007279s, 1511.1542 runs/s, 1511.1542 assertions/s.
+
+11 runs, 11 assertions, 0 failures, 0 errors, 0 skips
+Coverage report generated for test:exercism to /home/vpayno/git_vpayno/exercism-workspace/ruby/grains/coverage/coverage.xml. 8 / 8 LOC (100.00%) covered
+
+real	0m0.196s
+user	0m0.138s
+sys	0m0.058s
+
+
+ ==============================================================================
+
+Coverage: 100.0%
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.276s
+user	0m0.172s
+sys	0m0.110s
+
+real	0m0.278s
+user	0m0.172s
+sys	0m0.111s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.023s
+user	0m0.017s
+sys	0m0.017s
+
+===============================================================================
+
+/home/vpayno/git_vpayno/exercism-workspace/ruby
+
+===============================================================================
+

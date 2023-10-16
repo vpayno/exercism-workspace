@@ -1,7 +1,20 @@
-=begin
-Write your code for the 'Grains' exercise in this file. Make the tests in
-`grains_test.rb` pass.
+# frozen_string_literal: false
 
-To get started with TDD, see the `README.md` file in your
-`ruby/grains` directory.
-=end
+# https://exercism.org/tracks/ruby/exercises/grains
+# Grains exercise
+module Grains
+  INDEX_MIN = 1
+  INDEX_MAX = 64
+
+  def self.square(index)
+    raise ArgumentError, 'index must be between 1 and 64' unless (INDEX_MIN..INDEX_MAX).include?(index)
+
+    1 << (index - 1)
+  end
+
+  def self.total
+    # (1 << 64) - 1
+    # ((1 << 63) << 1) - 1
+    ((1..64).map { |index| square(index) }).sum
+  end
+end

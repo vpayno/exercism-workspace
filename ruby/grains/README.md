@@ -41,3 +41,8 @@ Write code that shows:
 ### Based on
 
 The CodeRanch Cattle Drive, Assignment 6 - https://coderanch.com/wiki/718824/Grains
+
+### My Solution
+
+- [my solution](./grains.rb)
+- [run-tests](./run-tests-ruby.txt)
