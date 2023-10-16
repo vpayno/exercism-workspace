@@ -34,3 +34,8 @@ Write some code to determine whether a number is an Armstrong number.
 ### Based on
 
 Wikipedia - https://en.wikipedia.org/wiki/Narcissistic_number
+
+### My Solution
+
+- [my solution](./armstrong_numbers.rb)
+- [run-tests](./run-tests-ruby.txt)
