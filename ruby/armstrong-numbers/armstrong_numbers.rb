@@ -5,6 +5,9 @@
 module ArmstrongNumbers
   def self.include?(candidate)
     digits = candidate.digits
-    digits.map { |digit| digit**digits.count }.sum == candidate
+    powers = digits.map { |digit| digit**digits.count }
+    sum = powers.sum
+
+    sum == candidate
   end
 end
