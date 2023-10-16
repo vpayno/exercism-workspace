@@ -12,7 +12,7 @@ impl From<u64> for Duration {
     /// from returns the planet's orbital period.
     fn from(seconds: u64) -> Self {
         Duration {
-            age_in_seconds: (seconds as f64) / (SECONDS_IN_EARTH_YEAR),
+            age_in_seconds: (seconds as f64) / SECONDS_IN_EARTH_YEAR,
         }
     }
 }
