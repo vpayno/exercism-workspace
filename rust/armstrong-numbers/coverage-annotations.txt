@@ -10,18 +10,13 @@
    10|       |
    11|    237|    while num > 0 {
    12|    204|        let pow_temp: u64 = num % 10;
-   13|    204|        let mut pow_temp_total = 1;
-   14|    204|
-   15|  1.54k|        for _ in 0..digit_count {
-   16|  1.54k|            pow_temp_total *= pow_temp;
-   17|  1.54k|        }
-   18|       |
-   19|    204|        pow_total += pow_temp_total;
-   20|    204|        num /= 10;
-   21|       |    }
-   22|       |
-   23|     33|    pow_total == (candidate as u64)
-   24|     39|}
+   13|    204|
+   14|    204|        pow_total += pow_temp.pow(digit_count as u32);
+   15|    204|        num /= 10;
+   16|    204|    }
+   17|       |
+   18|     33|    pow_total == (candidate as u64)
+   19|     39|}
   ------------------
   | Unexecuted instantiation: armstrong_numbers::is_armstrong_number
   ------------------
@@ -38,16 +33,11 @@
   |   10|       |
   |   11|    237|    while num > 0 {
   |   12|    204|        let pow_temp: u64 = num % 10;
-  |   13|    204|        let mut pow_temp_total = 1;
-  |   14|    204|
-  |   15|  1.54k|        for _ in 0..digit_count {
-  |   16|  1.54k|            pow_temp_total *= pow_temp;
-  |   17|  1.54k|        }
-  |   18|       |
-  |   19|    204|        pow_total += pow_temp_total;
-  |   20|    204|        num /= 10;
-  |   21|       |    }
-  |   22|       |
-  |   23|     33|    pow_total == (candidate as u64)
-  |   24|     39|}
+  |   13|    204|
+  |   14|    204|        pow_total += pow_temp.pow(digit_count as u32);
+  |   15|    204|        num /= 10;
+  |   16|    204|    }
+  |   17|       |
+  |   18|     33|    pow_total == (candidate as u64)
+  |   19|     39|}
   ------------------

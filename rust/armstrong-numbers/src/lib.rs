@@ -10,13 +10,8 @@ pub fn is_armstrong_number(candidate: u32) -> bool {
 
     while num > 0 {
         let pow_temp: u64 = num % 10;
-        let mut pow_temp_total = 1;
 
-        for _ in 0..digit_count {
-            pow_temp_total *= pow_temp;
-        }
-
-        pow_total += pow_temp_total;
+        pow_total += pow_temp.pow(digit_count as u32);
         num /= 10;
     }
 
