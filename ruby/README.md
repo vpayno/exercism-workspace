@@ -36,3 +36,4 @@
 - [flatten-array](./flatten-array/README.md)
 - [space-age](./space-age/README.md)
 - [armstrong-numbers](./armstrong-numbers/README.md)
+- [scrabble-score](./scrabble-score/README.md)

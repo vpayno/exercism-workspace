@@ -1,0 +1,238 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-lint-rubycritic
+
+Running RubyCritic
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rubycritic --path .rubycritic --format console --no-browser .
+
+running flay smells
+
+running flog smells
+[32m.[0m[32m.[0m
+running reek smells
+[32m.[0m[32m.[0m
+running complexity
+[32m.[0m[32m.[0m
+running attributes
+[32m.[0m[32m.[0m
+running churn
+[32m.[0m[32m.[0m
+running simple_cov
+[32m.[0m[32m.[0m
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing safe_level with the 2nd argument of ERB.new is deprecated. Do not use it, and specify other arguments as keyword arguments.
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing trim_mode with the 3rd argument of ERB.new is deprecated. Use keyword argument like ERB.new(str, trim_mode: ...) instead.
+Scrabble:
+  Rating:       A
+  Churn:        0
+  Complexity:   16.41
+  Duplication:  0
+  Smells:       2
+    * (ControlParameter) Scrabble#score_letter is controlled by argument 'letter'
+      - scrabble_score.rb:15
+    * (TooManyStatements) Scrabble#score_letter has approx 8 statements
+      - scrabble_score.rb:14
+
+ScrabbleScoreTest:
+  Rating:       A
+  Churn:        0
+  Complexity:   46.15
+  Duplication:  0
+  Smells:       1
+    * (IrresponsibleModule) ScrabbleScoreTest has no descriptive comment
+      - scrabble_score_test.rb:28
+Score: 92.18
+
+real	0m0.679s
+user	0m0.542s
+sys	0m0.130s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.753s
+user	0m0.573s
+sys	0m0.177s
+
+real	0m0.756s
+user	0m0.574s
+sys	0m0.178s
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-lint-formatter
+
+Running Ruby Formatter
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rubocop -a .
+
+Inspecting 2 files
+CC
+
+Offenses:
+
+scrabble_score.rb:14:3: C: Metrics/CyclomaticComplexity: Cyclomatic complexity for score_letter is too high. [8/7]
+  def score_letter(letter) ...
+  ^^^^^^^^^^^^^^^^^^^^^^^^
+scrabble_score.rb:14:3: C: Metrics/MethodLength: Method has too many lines. [18/10]
+  def score_letter(letter) ...
+  ^^^^^^^^^^^^^^^^^^^^^^^^
+scrabble_score_test.rb:28:1: C: Style/Documentation: Missing top-level documentation comment for class ScrabbleScoreTest.
+class ScrabbleScoreTest < Minitest::Test
+^^^^^^^^^^^^^^^^^^^^^^^
+scrabble_score_test.rb:31:34: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal 1, Scrabble.new("a").score
+                                 ^^^
+scrabble_score_test.rb:36:34: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal 1, Scrabble.new("A").score
+                                 ^^^
+scrabble_score_test.rb:41:34: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal 4, Scrabble.new("f").score
+                                 ^^^
+scrabble_score_test.rb:46:34: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal 2, Scrabble.new("at").score
+                                 ^^^^
+scrabble_score_test.rb:51:35: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal 12, Scrabble.new("zoo").score
+                                  ^^^^^
+scrabble_score_test.rb:56:34: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal 6, Scrabble.new("street").score
+                                 ^^^^^^^^
+scrabble_score_test.rb:61:35: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal 22, Scrabble.new("quirky").score
+                                  ^^^^^^^^
+scrabble_score_test.rb:66:35: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal 41, Scrabble.new("OxyphenButazone").score
+                                  ^^^^^^^^^^^^^^^^^
+scrabble_score_test.rb:71:34: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal 8, Scrabble.new("pinata").score
+                                 ^^^^^^^^
+scrabble_score_test.rb:76:34: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal 0, Scrabble.new("").score
+                                 ^^
+scrabble_score_test.rb:81:35: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal 87, Scrabble.new("abcdefghijklmnopqrstuvwxyz").score
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+2 files inspected, 14 offenses detected, 11 offenses corrected
+
+real	0m0.998s
+user	0m0.888s
+sys	0m0.202s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m1.080s
+user	0m0.923s
+sys	0m0.253s
+
+real	0m1.083s
+user	0m0.926s
+sys	0m0.253s
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-test-with-coverage
+
+Running Ruby Tests With Coverage
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rm -rf ./coverage
+
+
+real	0m0.001s
+user	0m0.001s
+sys	0m0.000s
+
+
+ ==============================================================================
+
+Running: ruby ./scrabble_score_test.rb -v
+
+Run options: -v --seed 41895
+
+# Running:
+
+ScrabbleScoreTest#test_medium_valuable_word = 0.00 s = .
+ScrabbleScoreTest#test_english_like_word = 0.00 s = .
+ScrabbleScoreTest#test_medium_word = 0.00 s = .
+ScrabbleScoreTest#test_short_valuable_word = 0.00 s = .
+ScrabbleScoreTest#test_valuable_letter = 0.00 s = .
+ScrabbleScoreTest#test_lowercase_letter = 0.00 s = .
+ScrabbleScoreTest#test_entire_alphabet_available = 0.00 s = .
+ScrabbleScoreTest#test_long_mixed_case_word = 0.00 s = .
+ScrabbleScoreTest#test_short_word = 0.00 s = .
+ScrabbleScoreTest#test_uppercase_letter = 0.00 s = .
+ScrabbleScoreTest#test_empty_input = 0.00 s = .
+
+Finished in 0.006078s, 1809.9000 runs/s, 1809.9000 assertions/s.
+
+11 runs, 11 assertions, 0 failures, 0 errors, 0 skips
+Coverage report generated for test:exercism to /home/vpayno/git_vpayno/exercism-workspace/ruby/scrabble-score/coverage/coverage.xml. 15 / 16 LOC (93.75%) covered
+
+real	0m0.180s
+user	0m0.118s
+sys	0m0.062s
+
+
+ ==============================================================================
+
+Coverage: 94.0%
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.245s
+user	0m0.148s
+sys	0m0.101s
+
+real	0m0.248s
+user	0m0.148s
+sys	0m0.103s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.025s
+user	0m0.026s
+sys	0m0.011s
+
+===============================================================================
+
+/home/vpayno/git_vpayno/exercism-workspace/ruby
+
+===============================================================================
+
