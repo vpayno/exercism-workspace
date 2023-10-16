@@ -1,7 +1,13 @@
-=begin
-Write your code for the 'Leap' exercise in this file. Make the tests in
-`leap_test.rb` pass.
+# frozen_string_literal: false
 
-To get started with TDD, see the `README.md` file in your
-`ruby/leap` directory.
-=end
+# https://exercism.org/tracks/ruby/exercises/leap
+# Leap exercise
+module Year
+  def self.leap?(year)
+    return true if (year % 400).zero?
+    return false if (year % 100).zero?
+    return true if (year % 4).zero?
+
+    false
+  end
+end
