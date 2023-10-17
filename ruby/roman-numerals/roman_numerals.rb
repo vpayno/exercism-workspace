@@ -25,7 +25,7 @@ class Integer
 
     D2R.each do |decimal, roman|
       while number >= decimal
-        buffer += roman
+        buffer = "#{buffer}#{roman}"
         number -= decimal
       end
     end
