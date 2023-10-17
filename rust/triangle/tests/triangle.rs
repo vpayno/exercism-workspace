@@ -88,6 +88,15 @@ fn isosceles_triangles_have_two_equal_sides_four() {
 }
 
 #[test]
+fn isosceles_triangle_equilateral_triangles_are_also_isosceles() {
+    let sides = [4, 4, 4];
+    let triangle = Triangle::build(sides).unwrap();
+    assert!(triangle.is_equilateral());
+    assert!(triangle.is_isosceles());
+    assert!(!triangle.is_scalene());
+}
+
+#[test]
 fn scalene_triangle_has_no_equal_sides_one() {
     let sides = [3, 4, 5];
     let triangle = Triangle::build(sides).unwrap();

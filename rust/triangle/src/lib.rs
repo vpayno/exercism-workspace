@@ -52,7 +52,7 @@ pub struct Triangle<T> {
 ///
 /// if let Some(t) = Triangle::build(equilateral) {
 ///     assert!(t.is_equilateral());
-///     assert!(!t.is_isosceles());
+///     assert!(t.is_isosceles());
 ///     assert!(!t.is_scalene());
 /// }
 ///
@@ -87,9 +87,7 @@ where
 
     /// Tests triangle is scalene
     pub fn is_isosceles(&self) -> bool {
-        (self.a == self.b && self.a != self.c)
-            || (self.b == self.c && self.b != self.a)
-            || (self.a == self.c && self.a != self.b)
+        self.a == self.b || self.b == self.c || self.a == self.c
     }
 
     /// Tests triangle is isosceles
