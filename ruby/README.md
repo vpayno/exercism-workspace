@@ -38,3 +38,4 @@
 - [armstrong-numbers](./armstrong-numbers/README.md)
 - [scrabble-score](./scrabble-score/README.md)
 - [luhn](./luhn/README.md)
+- [triangle](./triangle/README.md)

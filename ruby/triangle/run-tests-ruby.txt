@@ -1,0 +1,207 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-lint-rubycritic
+
+Running RubyCritic
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rubycritic --path .rubycritic --format console --no-browser .
+
+running flay smells
+
+running flog smells
+[32m.[0m[32m.[0m
+running reek smells
+[32m.[0m[32m.[0m
+running complexity
+[32m.[0m[32m.[0m
+running attributes
+[32m.[0m[32m.[0m
+running churn
+[32m.[0m[32m.[0m
+running simple_cov
+[32m.[0m[32m.[0m
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing safe_level with the 2nd argument of ERB.new is deprecated. Do not use it, and specify other arguments as keyword arguments.
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing trim_mode with the 3rd argument of ERB.new is deprecated. Use keyword argument like ERB.new(str, trim_mode: ...) instead.
+Triangle:
+  Rating:       A
+  Churn:        0
+  Complexity:   32.84
+  Duplication:  0
+  Smells:       0
+
+TriangleTest:
+  Rating:       B
+  Churn:        0
+  Complexity:   93.01
+  Duplication:  0
+  Smells:       2
+    * (IrresponsibleModule) TriangleTest has no descriptive comment
+      - triangle_test.rb:28
+    * (TooManyMethods) TriangleTest has at least 21 methods
+      - triangle_test.rb:28
+Score: 84.27
+
+real	0m0.667s
+user	0m0.555s
+sys	0m0.104s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.755s
+user	0m0.595s
+sys	0m0.156s
+
+real	0m0.759s
+user	0m0.599s
+sys	0m0.156s
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-lint-formatter
+
+Running Ruby Formatter
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rubocop -a .
+
+Inspecting 2 files
+.C
+
+Offenses:
+
+triangle_test.rb:28:1: C: Style/Documentation: Missing top-level documentation comment for class TriangleTest.
+class TriangleTest < Minitest::Test
+^^^^^^^^^^^^^^^^^^
+
+2 files inspected, 1 offense detected
+
+real	0m0.949s
+user	0m0.853s
+sys	0m0.177s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m1.001s
+user	0m0.880s
+sys	0m0.205s
+
+real	0m1.003s
+user	0m0.881s
+sys	0m0.206s
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-test-with-coverage
+
+Running Ruby Tests With Coverage
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rm -rf ./coverage
+
+
+real	0m0.002s
+user	0m0.000s
+sys	0m0.002s
+
+
+ ==============================================================================
+
+Running: ruby ./triangle_test.rb -v
+
+Run options: -v --seed 7354
+
+# Running:
+
+TriangleTest#test_equilateral_triangle_any_side_is_unequal = 0.00 s = .
+TriangleTest#test_isosceles_triangle_second_triangle_inequality_violation = 0.00 s = .
+TriangleTest#test_equilateral_triangle_all_zero_sides_is_not_a_triangle = 0.00 s = .
+TriangleTest#test_isosceles_triangle_no_sides_are_equal = 0.00 s = .
+TriangleTest#test_equilateral_triangle_sides_may_be_floats = 0.00 s = .
+TriangleTest#test_isosceles_triangle_first_two_sides_are_equal = 0.00 s = .
+TriangleTest#test_isosceles_triangle_equilateral_triangles_are_also_isosceles = 0.00 s = .
+TriangleTest#test_scalene_triangle_may_not_violate_triangle_inequality = 0.00 s = .
+TriangleTest#test_scalene_triangle_first_and_second_sides_are_equal = 0.00 s = .
+TriangleTest#test_isosceles_triangle_sides_may_be_floats = 0.00 s = .
+TriangleTest#test_scalene_triangle_no_sides_are_equal = 0.00 s = .
+TriangleTest#test_equilateral_triangle_no_sides_are_equal = 0.00 s = .
+TriangleTest#test_isosceles_triangle_first_triangle_inequality_violation = 0.00 s = .
+TriangleTest#test_isosceles_triangle_third_triangle_inequality_violation = 0.00 s = .
+TriangleTest#test_scalene_triangle_sides_may_be_floats = 0.00 s = .
+TriangleTest#test_isosceles_triangle_last_two_sides_are_equal = 0.00 s = .
+TriangleTest#test_scalene_triangle_first_and_third_sides_are_equal = 0.00 s = .
+TriangleTest#test_isosceles_triangle_first_and_last_sides_are_equal = 0.00 s = .
+TriangleTest#test_scalene_triangle_all_sides_are_equal = 0.00 s = .
+TriangleTest#test_scalene_triangle_second_and_third_sides_are_equal = 0.00 s = .
+TriangleTest#test_equilateral_triangle_all_sides_are_equal = 0.00 s = .
+
+Finished in 0.006020s, 3488.3188 runs/s, 3488.3188 assertions/s.
+
+21 runs, 21 assertions, 0 failures, 0 errors, 0 skips
+Coverage report generated for test:exercism to /home/vpayno/git_vpayno/exercism-workspace/ruby/triangle/coverage/coverage.xml. 15 / 15 LOC (100.00%) covered
+
+real	0m0.177s
+user	0m0.128s
+sys	0m0.048s
+
+
+ ==============================================================================
+
+Coverage: 100.0%
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.239s
+user	0m0.160s
+sys	0m0.082s
+
+real	0m0.241s
+user	0m0.161s
+sys	0m0.083s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.026s
+user	0m0.023s
+sys	0m0.012s
+
+===============================================================================
+
+/home/vpayno/git_vpayno/exercism-workspace/ruby
+
+===============================================================================
+
