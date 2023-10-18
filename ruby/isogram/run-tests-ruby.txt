@@ -1,0 +1,240 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-lint-rubycritic
+
+Running RubyCritic
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rubycritic --path .rubycritic --format console --no-browser .
+
+running flay smells
+
+running flog smells
+[32m.[0m[32m.[0m
+running reek smells
+[32m.[0m[32m.[0m
+running complexity
+[32m.[0m[32m.[0m
+running attributes
+[32m.[0m[32m.[0m
+running churn
+[32m.[0m[32m.[0m
+running simple_cov
+[32m.[0m[32m.[0m
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing safe_level with the 2nd argument of ERB.new is deprecated. Do not use it, and specify other arguments as keyword arguments.
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing trim_mode with the 3rd argument of ERB.new is deprecated. Use keyword argument like ERB.new(str, trim_mode: ...) instead.
+Isogram:
+  Rating:       A
+  Churn:        0
+  Complexity:   9.24
+  Duplication:  0
+  Smells:       0
+
+IsogramTest:
+  Rating:       A
+  Churn:        0
+  Complexity:   36.96
+  Duplication:  0
+  Smells:       1
+    * (IrresponsibleModule) IsogramTest has no descriptive comment
+      - isogram_test.rb:28
+Score: 94.23
+
+real	0m0.655s
+user	0m0.548s
+sys	0m0.101s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.712s
+user	0m0.577s
+sys	0m0.132s
+
+real	0m0.716s
+user	0m0.579s
+sys	0m0.134s
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-lint-formatter
+
+Running Ruby Formatter
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rubocop -a .
+
+Inspecting 2 files
+.C
+
+Offenses:
+
+isogram_test.rb:28:1: C: Style/Documentation: Missing top-level documentation comment for class IsogramTest.
+class IsogramTest < Minitest::Test
+^^^^^^^^^^^^^^^^^
+isogram_test.rb:31:13: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    input = ""
+            ^^
+isogram_test.rb:37:13: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    input = "isogram"
+            ^^^^^^^^^
+isogram_test.rb:43:13: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    input = "eleven"
+            ^^^^^^^^
+isogram_test.rb:49:13: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    input = "zzyzx"
+            ^^^^^^^
+isogram_test.rb:55:13: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    input = "subdermatoglyphic"
+            ^^^^^^^^^^^^^^^^^^^
+isogram_test.rb:61:13: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    input = "Alphabet"
+            ^^^^^^^^^^
+isogram_test.rb:67:13: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    input = "alphAbet"
+            ^^^^^^^^^^
+isogram_test.rb:73:13: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    input = "thumbscrew-japingly"
+            ^^^^^^^^^^^^^^^^^^^^^
+isogram_test.rb:79:13: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    input = "thumbscrew-jappingly"
+            ^^^^^^^^^^^^^^^^^^^^^^
+isogram_test.rb:85:13: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    input = "six-year-old"
+            ^^^^^^^^^^^^^^
+isogram_test.rb:91:13: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    input = "Emily Jung Schwartzkopf"
+            ^^^^^^^^^^^^^^^^^^^^^^^^^
+isogram_test.rb:97:13: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    input = "accentor"
+            ^^^^^^^^^^
+isogram_test.rb:103:13: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    input = "angola"
+            ^^^^^^^^
+isogram_test.rb:109:13: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    input = "up-to-date"
+            ^^^^^^^^^^^^
+
+2 files inspected, 15 offenses detected, 14 offenses corrected
+
+real	0m0.952s
+user	0m0.844s
+sys	0m0.187s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m1.004s
+user	0m0.863s
+sys	0m0.222s
+
+real	0m1.005s
+user	0m0.863s
+sys	0m0.223s
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-test-with-coverage
+
+Running Ruby Tests With Coverage
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rm -rf ./coverage
+
+
+real	0m0.002s
+user	0m0.000s
+sys	0m0.001s
+
+
+ ==============================================================================
+
+Running: ruby ./isogram_test.rb -v
+
+Run options: -v --seed 49853
+
+# Running:
+
+IsogramTest#test_made_up_name_that_is_an_isogram = 0.00 s = .
+IsogramTest#test_empty_string = 0.00 s = .
+IsogramTest#test_word_with_duplicated_character_in_mixed_case = 0.00 s = .
+IsogramTest#test_hypothetical_isogrammic_word_with_hyphen = 0.00 s = .
+IsogramTest#test_same_first_and_last_characters = 0.00 s = .
+IsogramTest#test_word_with_one_duplicated_character = 0.00 s = .
+IsogramTest#test_hypothetical_word_with_duplicated_character_following_hyphen = 0.00 s = .
+IsogramTest#test_isogram_with_only_lower_case_characters = 0.00 s = .
+IsogramTest#test_duplicated_character_in_the_middle = 0.00 s = .
+IsogramTest#test_isogram_with_duplicated_hyphen = 0.00 s = .
+IsogramTest#test_longest_reported_english_isogram = 0.00 s = .
+IsogramTest#test_word_with_duplicated_character_in_mixed_case_lowercase_first = 0.00 s = .
+IsogramTest#test_word_with_one_duplicated_character_from_the_end_of_the_alphabet = 0.00 s = .
+IsogramTest#test_word_with_duplicated_character_and_with_two_hyphens = 0.00 s = .
+
+Finished in 0.007090s, 1974.5297 runs/s, 1974.5297 assertions/s.
+
+14 runs, 14 assertions, 0 failures, 0 errors, 0 skips
+Coverage report generated for test:exercism to /home/vpayno/git_vpayno/exercism-workspace/ruby/isogram/coverage/coverage.xml. 7 / 7 LOC (100.00%) covered
+
+real	0m0.185s
+user	0m0.126s
+sys	0m0.058s
+
+
+ ==============================================================================
+
+Coverage: 100.0%
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.258s
+user	0m0.159s
+sys	0m0.101s
+
+real	0m0.259s
+user	0m0.160s
+sys	0m0.101s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.030s
+user	0m0.030s
+sys	0m0.013s
+
+===============================================================================
+
+/home/vpayno/git_vpayno/exercism-workspace/ruby
+
+===============================================================================
+
