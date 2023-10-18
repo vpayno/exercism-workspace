@@ -1,7 +1,12 @@
-=begin
-Write your code for the 'Pangram' exercise in this file. Make the tests in
-`pangram_test.rb` pass.
+# frozen_string_literal: false
 
-To get started with TDD, see the `README.md` file in your
-`ruby/pangram` directory.
-=end
+# https://exercism.org/tracks/ruby/exercises/pangram
+# Pangram exercise
+module Pangram
+  def self.pangram?(input)
+    text = input.downcase
+    letters = text.chars.uniq.select { |char| ('a'..'z').include?(char) }
+
+    letters.length == 26
+  end
+end

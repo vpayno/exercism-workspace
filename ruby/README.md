@@ -43,3 +43,4 @@
 - [darts](./darts/README.md)
 - [collatz-conjecture](./collatz-conjecture/README.md)
 - [isogram](./isogram/README.md)
+- [pangram](./pangram/README.md)
