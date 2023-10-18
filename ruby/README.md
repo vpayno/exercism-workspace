@@ -40,3 +40,4 @@
 - [luhn](./luhn/README.md)
 - [triangle](./triangle/README.md)
 - [roman-numerals](./roman-numerals/README.md)
+- [darts](./darts/README.md)

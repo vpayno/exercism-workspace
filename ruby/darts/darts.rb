@@ -1,7 +1,20 @@
-=begin
-Write your code for the 'Darts' exercise in this file. Make the tests in
-`darts_test.rb` pass.
+# frozen_string_literal: false
 
-To get started with TDD, see the `README.md` file in your
-`ruby/darts` directory.
-=end
+# https://exercism.org/tracks/ruby/exercises/darts
+# Darts exercise
+class Darts
+  def initialize(point_x, point_y)
+    @point_x = point_x
+    @point_y = point_y
+
+    @distance = Math.hypot(@point_x, @point_y)
+  end
+
+  def score
+    return 10 if @distance <= 1.0
+    return 5 if @distance <= 5.0
+    return 1 if @distance <= 10.0
+
+    0
+  end
+end
