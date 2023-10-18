@@ -41,3 +41,4 @@
 - [triangle](./triangle/README.md)
 - [roman-numerals](./roman-numerals/README.md)
 - [darts](./darts/README.md)
+- [collatz-conjecture](./collatz-conjecture/README.md)

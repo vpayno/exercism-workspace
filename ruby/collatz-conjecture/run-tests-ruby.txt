@@ -1,0 +1,195 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-lint-rubycritic
+
+Running RubyCritic
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rubycritic --path .rubycritic --format console --no-browser .
+
+running flay smells
+
+running flog smells
+[32m.[0m[32m.[0m
+running reek smells
+[32m.[0m[32m.[0m
+running complexity
+[32m.[0m[32m.[0m
+running attributes
+[32m.[0m[32m.[0m
+running churn
+[32m.[0m[32m.[0m
+running simple_cov
+[32m.[0m[32m.[0m
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing safe_level with the 2nd argument of ERB.new is deprecated. Do not use it, and specify other arguments as keyword arguments.
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing trim_mode with the 3rd argument of ERB.new is deprecated. Use keyword argument like ERB.new(str, trim_mode: ...) instead.
+CollatzConjecture:
+  Rating:       A
+  Churn:        0
+  Complexity:   16.58
+  Duplication:  0
+  Smells:       1
+    * (TooManyStatements) CollatzConjecture#self.steps has approx 8 statements
+      - collatz_conjecture.rb:6
+
+CollatzConjectureTest:
+  Rating:       A
+  Churn:        0
+  Complexity:   17.49
+  Duplication:  0
+  Smells:       1
+    * (IrresponsibleModule) CollatzConjectureTest has no descriptive comment
+      - collatz_conjecture_test.rb:28
+Score: 95.74
+
+real	0m0.625s
+user	0m0.509s
+sys	0m0.108s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.678s
+user	0m0.533s
+sys	0m0.140s
+
+real	0m0.681s
+user	0m0.536s
+sys	0m0.140s
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-lint-formatter
+
+Running Ruby Formatter
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rubocop -a .
+
+Inspecting 2 files
+CC
+
+Offenses:
+
+collatz_conjecture.rb:6:3: C: Metrics/MethodLength: Method has too many lines. [13/10]
+  def self.steps(start) ...
+  ^^^^^^^^^^^^^^^^^^^^^
+collatz_conjecture_test.rb:28:1: C: Style/Documentation: Missing top-level documentation comment for class CollatzConjectureTest.
+class CollatzConjectureTest < Minitest::Test
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+2 files inspected, 2 offenses detected
+
+real	0m0.935s
+user	0m0.812s
+sys	0m0.205s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m1.020s
+user	0m0.850s
+sys	0m0.256s
+
+real	0m1.022s
+user	0m0.850s
+sys	0m0.258s
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-test-with-coverage
+
+Running Ruby Tests With Coverage
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rm -rf ./coverage
+
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.001s
+
+
+ ==============================================================================
+
+Running: ruby ./collatz_conjecture_test.rb -v
+
+Run options: -v --seed 41650
+
+# Running:
+
+CollatzConjectureTest#test_negative_value_is_an_error = 0.00 s = .
+CollatzConjectureTest#test_zero_is_an_error = 0.00 s = .
+CollatzConjectureTest#test_divide_if_even = 0.00 s = .
+CollatzConjectureTest#test_large_number_of_even_and_odd_steps = 0.00 s = .
+CollatzConjectureTest#test_even_and_odd_steps = 0.00 s = .
+CollatzConjectureTest#test_zero_steps_for_one = 0.00 s = .
+
+Finished in 0.001203s, 4988.6675 runs/s, 4988.6675 assertions/s.
+
+6 runs, 6 assertions, 0 failures, 0 errors, 0 skips
+Coverage report generated for test:exercism to /home/vpayno/git_vpayno/exercism-workspace/ruby/collatz-conjecture/coverage/coverage.xml. 12 / 12 LOC (100.00%) covered
+
+real	0m0.189s
+user	0m0.133s
+sys	0m0.054s
+
+
+ ==============================================================================
+
+Coverage: 100.0%
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.254s
+user	0m0.167s
+sys	0m0.091s
+
+real	0m0.256s
+user	0m0.168s
+sys	0m0.092s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.020s
+user	0m0.018s
+sys	0m0.015s
+
+===============================================================================
+
+/home/vpayno/git_vpayno/exercism-workspace/ruby
+
+===============================================================================
+
