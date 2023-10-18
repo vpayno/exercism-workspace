@@ -44,3 +44,4 @@
 - [collatz-conjecture](./collatz-conjecture/README.md)
 - [isogram](./isogram/README.md)
 - [pangram](./pangram/README.md)
+- [nucleotide-count](./nucleotide-count/README.md)

@@ -1,0 +1,206 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-lint-rubycritic
+
+Running RubyCritic
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rubycritic --path .rubycritic --format console --no-browser .
+
+running flay smells
+[32m.[0m
+running flog smells
+[32m.[0m[32m.[0m
+running reek smells
+[32m.[0m[32m.[0m
+running complexity
+[32m.[0m[32m.[0m
+running attributes
+[32m.[0m[32m.[0m
+running churn
+Warning: coverage data provided by Coverage [32] exceeds number of lines in /home/vpayno/git_vpayno/exercism-workspace/ruby/nucleotide-count/nucleotide_count.rb [30]
+[32m.[0m[32m.[0m
+running simple_cov
+[32m.[0m[32m.[0m
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing safe_level with the 2nd argument of ERB.new is deprecated. Do not use it, and specify other arguments as keyword arguments.
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing trim_mode with the 3rd argument of ERB.new is deprecated. Use keyword argument like ERB.new(str, trim_mode: ...) instead.
+Nucleotide:
+  Rating:       A
+  Churn:        0
+  Complexity:   13.22
+  Duplication:  0
+  Smells:       0
+
+NucleotideTest:
+  Rating:       B
+  Churn:        0
+  Complexity:   35.06
+  Duplication:  36
+  Smells:       5
+    * (DuplicateCode) Similar code found in 2 nodes
+      - nucleotide_count_test.rb:51
+      - nucleotide_count_test.rb:57
+    * (DuplicateMethodCall) NucleotideTest#test_counts_a_nucleotide_only_once calls 'dna.count('T')' 3 times
+      - nucleotide_count_test.rb:46
+      - nucleotide_count_test.rb:47
+      - nucleotide_count_test.rb:48
+    * (FeatureEnvy) NucleotideTest#test_counts_a_nucleotide_only_once refers to 'dna' more than self (maybe move it to another class?)
+      - nucleotide_count_test.rb:46
+      - nucleotide_count_test.rb:47
+      - nucleotide_count_test.rb:48
+    * (IrresponsibleModule) NucleotideTest has no descriptive comment
+      - nucleotide_count_test.rb:28
+    * (UncommunicativeVariableName) NucleotideTest#test_counts_all_nucleotides has the variable name 's'
+      - nucleotide_count_test.rb:65
+Score: 90.84
+
+real	0m0.998s
+user	0m0.681s
+sys	0m0.157s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.049s
+user	0m0.702s
+sys	0m0.190s
+
+real	0m1.051s
+user	0m0.703s
+sys	0m0.190s
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-lint-formatter
+
+Running Ruby Formatter
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rubocop -a .
+
+Inspecting 2 files
+.C
+
+Offenses:
+
+nucleotide_count_test.rb:28:1: C: Style/Documentation: Missing top-level documentation comment for class NucleotideTest.
+class NucleotideTest < Minitest::Test
+^^^^^^^^^^^^^^^^^^^^
+
+2 files inspected, 1 offense detected
+
+real	0m1.128s
+user	0m1.004s
+sys	0m0.214s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m1.195s
+user	0m1.029s
+sys	0m0.259s
+
+real	0m1.196s
+user	0m1.030s
+sys	0m0.261s
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-test-with-coverage
+
+Running Ruby Tests With Coverage
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rm -rf ./coverage
+
+
+real	0m0.002s
+user	0m0.000s
+sys	0m0.002s
+
+
+ ==============================================================================
+
+Running: ruby ./nucleotide_count_test.rb -v
+
+Run options: -v --seed 37955
+
+# Running:
+
+NucleotideTest#test_empty_dna_strand_has_no_adenosine = 0.00 s = .
+NucleotideTest#test_repetitive_sequence_has_only_guanosine = 0.00 s = .
+NucleotideTest#test_validates_dna = 0.00 s = .
+NucleotideTest#test_counts_all_nucleotides = 0.00 s = .
+NucleotideTest#test_repetitive_cytidine_gets_counted = 0.00 s = .
+NucleotideTest#test_counts_only_thymidine = 0.00 s = .
+NucleotideTest#test_empty_dna_strand_has_no_nucleotides = 0.00 s = .
+NucleotideTest#test_counts_a_nucleotide_only_once = 0.00 s = .
+
+Finished in 0.007399s, 1081.2246 runs/s, 1081.2246 assertions/s.
+
+8 runs, 8 assertions, 0 failures, 0 errors, 0 skips
+Coverage report generated for test:exercism to /home/vpayno/git_vpayno/exercism-workspace/ruby/nucleotide-count/coverage/coverage.xml. 14 / 14 LOC (100.00%) covered
+
+real	0m0.184s
+user	0m0.128s
+sys	0m0.057s
+
+
+ ==============================================================================
+
+Coverage: 100.0%
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.285s
+user	0m0.172s
+sys	0m0.118s
+
+real	0m0.287s
+user	0m0.172s
+sys	0m0.120s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.055s
+user	0m0.034s
+sys	0m0.021s
+
+===============================================================================
+
+/home/vpayno/git_vpayno/exercism-workspace/ruby
+
+===============================================================================
+

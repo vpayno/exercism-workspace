@@ -49,3 +49,8 @@ For example:
 ### Based on
 
 The Calculating DNA Nucleotides_problem at Rosalind - https://rosalind.info/problems/dna/
+
+### My Solution
+
+- [my solution](./nucleotide_count.rb)
+- [run-tests](./run-tests-ruby.txt)
