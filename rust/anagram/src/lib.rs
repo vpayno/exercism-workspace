@@ -20,8 +20,6 @@ pub fn anagrams_for<'a>(word: &str, possible_anagrams: &[&'a str]) -> HashSet<&'
         }
     };
 
-    let test_length = vec_word.len();
-
     println!("\ntest_word: {}", word);
 
     for candidate in possible_anagrams {
@@ -45,10 +43,6 @@ pub fn anagrams_for<'a>(word: &str, possible_anagrams: &[&'a str]) -> HashSet<&'
                 continue;
             }
         };
-
-        if test_length != vec_candidate.len() {
-            continue;
-        }
 
         println!(
             "test_word: {}\ttest_candidate: {}",

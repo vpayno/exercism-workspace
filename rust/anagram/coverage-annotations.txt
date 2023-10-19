@@ -20,54 +20,48 @@
    20|       |        }
    21|       |    };
    22|       |
-   23|     42|    let test_length = vec_word.len();
-   24|     42|
-   25|     42|    println!("\ntest_word: {}", word);
-   26|       |
-   27|    138|    for candidate in possible_anagrams {
+   23|     42|    println!("\ntest_word: {}", word);
+   24|       |
+   25|    138|    for candidate in possible_anagrams {
                       ^96
-   28|     96|        let lc_candidate: String = candidate.to_lowercase().graphemes(true).collect();
-   29|     96|
-   30|     96|        if lc_word.eq(&lc_candidate) {
-   31|      9|            println!("{} == {} | skipping", lc_word, lc_candidate);
-   32|      9|            continue;
-   33|     87|        }
-   34|     87|
-   35|     87|        let mut vec_candidate: Vec<u16> = lc_candidate.encode_utf16().collect();
-   36|     87|        vec_candidate.sort();
-   37|       |
-   38|     87|        let test_candidate: String = match String::from_utf16(&vec_candidate.clone()) {
-   39|     87|            Ok(value) => value,
-   40|      0|            Err(error) => {
-   41|      0|                println!(
-   42|      0|                    "falied to convert candidate {:?} to a string: {}",
-   43|      0|                    vec_candidate, error
-   44|      0|                );
-   45|      0|                continue;
-   46|       |            }
-   47|       |        };
-   48|       |
-   49|     87|        if test_length != vec_candidate.len() {
-   50|     39|            continue;
-   51|     48|        }
-   52|     48|
-   53|     48|        println!(
-   54|     48|            "test_word: {}\ttest_candidate: {}",
-   55|     48|            test_word, test_candidate
-   56|     48|        );
-   57|     48|
-   58|     48|        if test_word.eq(&test_candidate) {
-   59|     24|            println!("{} == {} | adding {}", test_word, test_candidate, candidate);
-   60|     24|            anagrams.insert(*candidate);
-   61|     24|        }
-   62|       |
-   63|     48|        println!();
-   64|       |    }
-   65|       |
-   66|     42|    println!("found anagrams: {:?}", anagrams);
-   67|     42|
-   68|     42|    anagrams.clone()
-   69|     42|}
+   26|     96|        let lc_candidate: String = candidate.to_lowercase().graphemes(true).collect();
+   27|     96|
+   28|     96|        if lc_word.eq(&lc_candidate) {
+   29|      9|            println!("{} == {} | skipping", lc_word, lc_candidate);
+   30|      9|            continue;
+   31|     87|        }
+   32|     87|
+   33|     87|        let mut vec_candidate: Vec<u16> = lc_candidate.encode_utf16().collect();
+   34|     87|        vec_candidate.sort();
+   35|       |
+   36|     87|        let test_candidate: String = match String::from_utf16(&vec_candidate.clone()) {
+   37|     87|            Ok(value) => value,
+   38|      0|            Err(error) => {
+   39|      0|                println!(
+   40|      0|                    "falied to convert candidate {:?} to a string: {}",
+   41|      0|                    vec_candidate, error
+   42|      0|                );
+   43|      0|                continue;
+   44|       |            }
+   45|       |        };
+   46|       |
+   47|     87|        println!(
+   48|     87|            "test_word: {}\ttest_candidate: {}",
+   49|     87|            test_word, test_candidate
+   50|     87|        );
+   51|     87|
+   52|     87|        if test_word.eq(&test_candidate) {
+   53|     24|            println!("{} == {} | adding {}", test_word, test_candidate, candidate);
+   54|     24|            anagrams.insert(*candidate);
+   55|     63|        }
+   56|       |
+   57|     87|        println!();
+   58|       |    }
+   59|       |
+   60|     42|    println!("found anagrams: {:?}", anagrams);
+   61|     42|
+   62|     42|    anagrams.clone()
+   63|     42|}
   ------------------
   | Unexecuted instantiation: anagram::anagrams_for
   ------------------
@@ -91,52 +85,46 @@
   |   20|       |        }
   |   21|       |    };
   |   22|       |
-  |   23|     42|    let test_length = vec_word.len();
-  |   24|     42|
-  |   25|     42|    println!("\ntest_word: {}", word);
-  |   26|       |
-  |   27|    138|    for candidate in possible_anagrams {
+  |   23|     42|    println!("\ntest_word: {}", word);
+  |   24|       |
+  |   25|    138|    for candidate in possible_anagrams {
   |                      ^96
-  |   28|     96|        let lc_candidate: String = candidate.to_lowercase().graphemes(true).collect();
-  |   29|     96|
-  |   30|     96|        if lc_word.eq(&lc_candidate) {
-  |   31|      9|            println!("{} == {} | skipping", lc_word, lc_candidate);
-  |   32|      9|            continue;
-  |   33|     87|        }
-  |   34|     87|
-  |   35|     87|        let mut vec_candidate: Vec<u16> = lc_candidate.encode_utf16().collect();
-  |   36|     87|        vec_candidate.sort();
-  |   37|       |
-  |   38|     87|        let test_candidate: String = match String::from_utf16(&vec_candidate.clone()) {
-  |   39|     87|            Ok(value) => value,
-  |   40|      0|            Err(error) => {
-  |   41|      0|                println!(
-  |   42|      0|                    "falied to convert candidate {:?} to a string: {}",
-  |   43|      0|                    vec_candidate, error
-  |   44|      0|                );
-  |   45|      0|                continue;
-  |   46|       |            }
-  |   47|       |        };
-  |   48|       |
-  |   49|     87|        if test_length != vec_candidate.len() {
-  |   50|     39|            continue;
-  |   51|     48|        }
-  |   52|     48|
-  |   53|     48|        println!(
-  |   54|     48|            "test_word: {}\ttest_candidate: {}",
-  |   55|     48|            test_word, test_candidate
-  |   56|     48|        );
-  |   57|     48|
-  |   58|     48|        if test_word.eq(&test_candidate) {
-  |   59|     24|            println!("{} == {} | adding {}", test_word, test_candidate, candidate);
-  |   60|     24|            anagrams.insert(*candidate);
-  |   61|     24|        }
-  |   62|       |
-  |   63|     48|        println!();
-  |   64|       |    }
-  |   65|       |
-  |   66|     42|    println!("found anagrams: {:?}", anagrams);
-  |   67|     42|
-  |   68|     42|    anagrams.clone()
-  |   69|     42|}
+  |   26|     96|        let lc_candidate: String = candidate.to_lowercase().graphemes(true).collect();
+  |   27|     96|
+  |   28|     96|        if lc_word.eq(&lc_candidate) {
+  |   29|      9|            println!("{} == {} | skipping", lc_word, lc_candidate);
+  |   30|      9|            continue;
+  |   31|     87|        }
+  |   32|     87|
+  |   33|     87|        let mut vec_candidate: Vec<u16> = lc_candidate.encode_utf16().collect();
+  |   34|     87|        vec_candidate.sort();
+  |   35|       |
+  |   36|     87|        let test_candidate: String = match String::from_utf16(&vec_candidate.clone()) {
+  |   37|     87|            Ok(value) => value,
+  |   38|      0|            Err(error) => {
+  |   39|      0|                println!(
+  |   40|      0|                    "falied to convert candidate {:?} to a string: {}",
+  |   41|      0|                    vec_candidate, error
+  |   42|      0|                );
+  |   43|      0|                continue;
+  |   44|       |            }
+  |   45|       |        };
+  |   46|       |
+  |   47|     87|        println!(
+  |   48|     87|            "test_word: {}\ttest_candidate: {}",
+  |   49|     87|            test_word, test_candidate
+  |   50|     87|        );
+  |   51|     87|
+  |   52|     87|        if test_word.eq(&test_candidate) {
+  |   53|     24|            println!("{} == {} | adding {}", test_word, test_candidate, candidate);
+  |   54|     24|            anagrams.insert(*candidate);
+  |   55|     63|        }
+  |   56|       |
+  |   57|     87|        println!();
+  |   58|       |    }
+  |   59|       |
+  |   60|     42|    println!("found anagrams: {:?}", anagrams);
+  |   61|     42|
+  |   62|     42|    anagrams.clone()
+  |   63|     42|}
   ------------------
