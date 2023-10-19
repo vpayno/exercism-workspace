@@ -1,0 +1,294 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-lint-rubycritic
+
+Running RubyCritic
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rubycritic --path .rubycritic --format console --no-browser .
+
+running flay smells
+[32m.[0m[32m.[0m
+running flog smells
+[32m.[0m[32m.[0m
+running reek smells
+[32m.[0m[32m.[0m
+running complexity
+[32m.[0m[32m.[0m
+running attributes
+[32m.[0m[32m.[0m
+running churn
+[32m.[0m[32m.[0m
+running simple_cov
+[32m.[0m[32m.[0m
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing safe_level with the 2nd argument of ERB.new is deprecated. Do not use it, and specify other arguments as keyword arguments.
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing trim_mode with the 3rd argument of ERB.new is deprecated. Use keyword argument like ERB.new(str, trim_mode: ...) instead.
+Anagram:
+  Rating:       A
+  Churn:        0
+  Complexity:   16.94
+  Duplication:  0
+  Smells:       0
+
+AnagramTest:
+  Rating:       C
+  Churn:        0
+  Complexity:   74.67
+  Duplication:  153
+  Smells:       4
+    * (DuplicateCode) Similar code found in 6 nodes
+      - anagram_test.rb:77
+      - anagram_test.rb:109
+      - anagram_test.rb:117
+      - anagram_test.rb:125
+      - anagram_test.rb:133
+      - anagram_test.rb:141
+    * (DuplicateCode) Similar code found in 3 nodes
+      - anagram_test.rb:85
+      - anagram_test.rb:93
+      - anagram_test.rb:101
+    * (IrresponsibleModule) AnagramTest has no descriptive comment
+      - anagram_test.rb:28
+    * (TooManyMethods) AnagramTest has at least 16 methods
+      - anagram_test.rb:28
+Score: 72.92
+
+real	0m0.670s
+user	0m0.546s
+sys	0m0.116s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.764s
+user	0m0.590s
+sys	0m0.172s
+
+real	0m0.768s
+user	0m0.592s
+sys	0m0.174s
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-lint-formatter
+
+Running Ruby Formatter
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rubocop -a .
+
+Inspecting 2 files
+.C
+
+Offenses:
+
+anagram_test.rb:28:1: C: Style/Documentation: Missing top-level documentation comment for class AnagramTest.
+class AnagramTest < Minitest::Test
+^^^^^^^^^^^^^^^^^
+anagram_test.rb:31:28: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    detector = Anagram.new("diaper")
+                           ^^^^^^^^
+anagram_test.rb:39:28: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    detector = Anagram.new("solemn")
+                           ^^^^^^^^
+anagram_test.rb:47:28: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    detector = Anagram.new("good")
+                           ^^^^^^
+anagram_test.rb:55:28: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    detector = Anagram.new("listen")
+                           ^^^^^^^^
+anagram_test.rb:57:17: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    expected = ["inlets"]
+                ^^^^^^^^
+anagram_test.rb:63:28: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    detector = Anagram.new("allergy")
+                           ^^^^^^^^^
+anagram_test.rb:71:28: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    detector = Anagram.new("nose")
+                           ^^^^^^
+anagram_test.rb:79:28: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    detector = Anagram.new("mass")
+                           ^^^^^^
+anagram_test.rb:80:32: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    anagrams = detector.match(["last"])
+                               ^^^^^^
+anagram_test.rb:87:28: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    detector = Anagram.new("Orchestra")
+                           ^^^^^^^^^^^
+anagram_test.rb:89:17: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    expected = ["Carthorse"]
+                ^^^^^^^^^^^
+anagram_test.rb:95:28: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    detector = Anagram.new("Orchestra")
+                           ^^^^^^^^^^^
+anagram_test.rb:97:17: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    expected = ["carthorse"]
+                ^^^^^^^^^^^
+anagram_test.rb:103:28: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    detector = Anagram.new("orchestra")
+                           ^^^^^^^^^^^
+anagram_test.rb:105:17: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    expected = ["Carthorse"]
+                ^^^^^^^^^^^
+anagram_test.rb:111:28: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    detector = Anagram.new("go")
+                           ^^^^
+anagram_test.rb:112:32: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    anagrams = detector.match(["go Go GO"])
+                               ^^^^^^^^^^
+anagram_test.rb:119:28: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    detector = Anagram.new("tapper")
+                           ^^^^^^^^
+anagram_test.rb:120:32: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    anagrams = detector.match(["patter"])
+                               ^^^^^^^^
+anagram_test.rb:127:28: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    detector = Anagram.new("BANANA")
+                           ^^^^^^^^
+anagram_test.rb:128:32: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    anagrams = detector.match(["BANANA"])
+                               ^^^^^^^^
+anagram_test.rb:135:28: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    detector = Anagram.new("BANANA")
+                           ^^^^^^^^
+anagram_test.rb:136:32: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    anagrams = detector.match(["Banana"])
+                               ^^^^^^^^
+anagram_test.rb:143:28: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    detector = Anagram.new("BANANA")
+                           ^^^^^^^^
+anagram_test.rb:144:32: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    anagrams = detector.match(["banana"])
+                               ^^^^^^^^
+anagram_test.rb:151:28: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    detector = Anagram.new("LISTEN")
+                           ^^^^^^^^
+anagram_test.rb:153:17: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    expected = ["Silent"]
+                ^^^^^^^^
+
+2 files inspected, 28 offenses detected, 27 offenses corrected
+
+real	0m0.990s
+user	0m0.883s
+sys	0m0.189s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m1.076s
+user	0m0.924s
+sys	0m0.239s
+
+real	0m1.078s
+user	0m0.925s
+sys	0m0.240s
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-test-with-coverage
+
+Running Ruby Tests With Coverage
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rm -rf ./coverage
+
+
+real	0m0.001s
+user	0m0.001s
+sys	0m0.000s
+
+
+ ==============================================================================
+
+Running: ruby ./anagram_test.rb -v
+
+Run options: -v --seed 12445
+
+# Running:
+
+AnagramTest#test_words_other_than_themselves_can_be_anagrams = 0.00 s = .
+AnagramTest#test_detects_three_anagrams = 0.00 s = .
+AnagramTest#test_detects_two_anagrams = 0.00 s = .
+AnagramTest#test_does_not_detect_anagram_subsets = 0.00 s = .
+AnagramTest#test_no_matches = 0.00 s = .
+AnagramTest#test_detects_multiple_anagrams_with_different_case = 0.00 s = .
+AnagramTest#test_does_not_detect_an_anagram_if_the_original_word_is_repeated = 0.00 s = .
+AnagramTest#test_detects_anagram = 0.00 s = .
+AnagramTest#test_detects_anagrams_using_case_insensitive_possible_matches = 0.00 s = .
+AnagramTest#test_words_are_not_anagrams_of_themselves_even_if_letter_case_is_completely_different = 0.00 s = .
+AnagramTest#test_anagrams_must_use_all_letters_exactly_once = 0.00 s = .
+AnagramTest#test_does_not_detect_non_anagrams_with_identical_checksum = 0.00 s = .
+AnagramTest#test_words_are_not_anagrams_of_themselves_even_if_letter_case_is_partially_different = 0.00 s = .
+AnagramTest#test_detects_anagrams_case_insensitively = 0.00 s = .
+AnagramTest#test_detects_anagrams_using_case_insensitive_subject = 0.00 s = .
+AnagramTest#test_words_are_not_anagrams_of_themselves = 0.00 s = .
+
+Finished in 0.005191s, 3082.4115 runs/s, 3082.4115 assertions/s.
+
+16 runs, 16 assertions, 0 failures, 0 errors, 0 skips
+Coverage report generated for test:exercism to /home/vpayno/git_vpayno/exercism-workspace/ruby/anagram/coverage/coverage.xml. 9 / 9 LOC (100.00%) covered
+
+real	0m0.172s
+user	0m0.115s
+sys	0m0.057s
+
+
+ ==============================================================================
+
+Coverage: 100.0%
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.241s
+user	0m0.146s
+sys	0m0.099s
+
+real	0m0.243s
+user	0m0.146s
+sys	0m0.100s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.024s
+user	0m0.023s
+sys	0m0.015s
+
+===============================================================================
+
+/home/vpayno/git_vpayno/exercism-workspace/ruby
+
+===============================================================================
+

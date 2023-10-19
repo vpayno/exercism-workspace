@@ -45,3 +45,4 @@
 - [isogram](./isogram/README.md)
 - [pangram](./pangram/README.md)
 - [nucleotide-count](./nucleotide-count/README.md)
+- [anagram](./anagram/README.md)

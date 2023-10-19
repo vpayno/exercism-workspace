@@ -46,3 +46,8 @@ Given the target `"stone"` and candidates `"stone"`, `"tones"`, `"banana"`, `"to
 ### Based on
 
 Inspired by the Extreme Startup game - https://github.com/rchatley/extreme_startup
+
+### My Solution
+
+- [my solution](./anagram.rb)
+- [run-tests](./run-tests-ruby.txt)
