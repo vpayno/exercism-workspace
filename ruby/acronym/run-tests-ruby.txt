@@ -1,0 +1,220 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-lint-rubycritic
+
+Running RubyCritic
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rubycritic --path .rubycritic --format console --no-browser .
+
+running flay smells
+
+running flog smells
+[32m.[0m[32m.[0m
+running reek smells
+[32m.[0m[32m.[0m
+running complexity
+[32m.[0m[32m.[0m
+running attributes
+[32m.[0m[32m.[0m
+running churn
+[32m.[0m[32m.[0m
+running simple_cov
+[32m.[0m[32m.[0m
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing safe_level with the 2nd argument of ERB.new is deprecated. Do not use it, and specify other arguments as keyword arguments.
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing trim_mode with the 3rd argument of ERB.new is deprecated. Use keyword argument like ERB.new(str, trim_mode: ...) instead.
+Acronym:
+  Rating:       A
+  Churn:        0
+  Complexity:   10.62
+  Duplication:  0
+  Smells:       1
+    * (TooManyStatements) Acronym#self.abbreviate has approx 9 statements
+      - acronym.rb:6
+
+AcronymTest:
+  Rating:       A
+  Churn:        0
+  Complexity:   16.8
+  Duplication:  0
+  Smells:       1
+    * (IrresponsibleModule) AcronymTest has no descriptive comment
+      - acronym_test.rb:28
+Score: 96.57
+
+real	0m0.665s
+user	0m0.540s
+sys	0m0.116s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.740s
+user	0m0.574s
+sys	0m0.163s
+
+real	0m0.744s
+user	0m0.576s
+sys	0m0.165s
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-lint-formatter
+
+Running Ruby Formatter
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rubocop -a .
+
+Inspecting 2 files
+CC
+
+Offenses:
+
+acronym.rb:6:3: C: Metrics/MethodLength: Method has too many lines. [14/10]
+  def self.abbreviate(input) ...
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^
+acronym_test.rb:28:1: C: Style/Documentation: Missing top-level documentation comment for class AcronymTest.
+class AcronymTest < Minitest::Test
+^^^^^^^^^^^^^^^^^
+acronym_test.rb:31:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "PNG", Acronym.abbreviate('Portable Network Graphics')
+                 ^^^^^
+acronym_test.rb:36:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "ROR", Acronym.abbreviate('Ruby on Rails')
+                 ^^^^^
+acronym_test.rb:41:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "FIFO", Acronym.abbreviate('First In, First Out')
+                 ^^^^^^
+acronym_test.rb:46:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "GIMP", Acronym.abbreviate('GNU Image Manipulation Program')
+                 ^^^^^^
+acronym_test.rb:51:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "CMOS", Acronym.abbreviate('Complementary metal-oxide semiconductor')
+                 ^^^^^^
+acronym_test.rb:56:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "ROTFLSHTMDCOALM",
+                 ^^^^^^^^^^^^^^^^^
+acronym_test.rb:57:7: C: [Corrected] Layout/ArgumentAlignment: Align the arguments of a method call if they span more than one line.
+      Acronym.abbreviate('Rolling On The Floor Laughing So Hard That My Dogs Came Over And Licked Me')
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+acronym_test.rb:62:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "SIMUFTA", Acronym.abbreviate('Something - I made up from thin air')
+                 ^^^^^^^^^
+
+2 files inspected, 10 offenses detected, 8 offenses corrected
+
+real	0m0.893s
+user	0m0.779s
+sys	0m0.190s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.942s
+user	0m0.798s
+sys	0m0.224s
+
+real	0m0.944s
+user	0m0.798s
+sys	0m0.226s
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-test-with-coverage
+
+Running Ruby Tests With Coverage
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rm -rf ./coverage
+
+
+real	0m0.001s
+user	0m0.001s
+sys	0m0.000s
+
+
+ ==============================================================================
+
+Running: ruby ./acronym_test.rb -v
+
+Run options: -v --seed 21202
+
+# Running:
+
+AcronymTest#test_lowercase_words = 0.00 s = .
+AcronymTest#test_all_caps_word = 0.00 s = .
+AcronymTest#test_very_long_abbreviation = 0.00 s = .
+AcronymTest#test_consecutive_delimiters = 0.00 s = .
+AcronymTest#test_punctuation = 0.00 s = .
+AcronymTest#test_basic = 0.00 s = .
+AcronymTest#test_punctuation_without_whitespace = 0.00 s = .
+
+Finished in 0.007326s, 955.5302 runs/s, 955.5302 assertions/s.
+
+7 runs, 7 assertions, 0 failures, 0 errors, 0 skips
+Coverage report generated for test:exercism to /home/vpayno/git_vpayno/exercism-workspace/ruby/acronym/coverage/coverage.xml. 13 / 13 LOC (100.00%) covered
+
+real	0m0.167s
+user	0m0.121s
+sys	0m0.045s
+
+
+ ==============================================================================
+
+Coverage: 100.0%
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.238s
+user	0m0.153s
+sys	0m0.090s
+
+real	0m0.240s
+user	0m0.154s
+sys	0m0.091s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.023s
+user	0m0.023s
+sys	0m0.011s
+
+===============================================================================
+
+/home/vpayno/git_vpayno/exercism-workspace/ruby
+
+===============================================================================
+

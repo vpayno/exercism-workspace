@@ -46,3 +46,8 @@ For example:
 ### Based on
 
 Julien Vanier - https://github.com/monkbroc
+
+### My Solution
+
+- [my solution](./acronym.rb)
+- [run-tests](./run-tests-ruby.txt)
