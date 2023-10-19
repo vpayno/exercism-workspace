@@ -24,10 +24,6 @@ std::vector<std::string> anagram::matches(std::vector<std::string> words) {
                        tolower);
         std::sort(sorted.begin(), sorted.end());
 
-        if (target == word) {
-            continue;
-        }
-
         if (target_lower == lower) {
             continue;
         }

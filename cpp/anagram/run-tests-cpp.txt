@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.009s
+real	0m0.017s
 user	0m0.002s
-sys	0m0.008s
+sys	0m0.015s
 
 ===============================================================================
 
@@ -55,12 +55,16 @@ make[1]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/anagr
 
 === All Tests Passed ===
 
-find . -regextype posix-egrep -regex "^.*(tests-main|CompilerId).*[.](gcda|gcno)$" -print -delete
+find . -regextype posix-egrep -regex '^.*(tests-main|CompilerId).*[.](gcda|gcno)$' -print -delete
 ./build/CMakeFiles/3.22.2/CompilerIdCXX/CMakeCXXCompilerId.gcno
 ./build/CMakeFiles/anagram.dir/test/tests-main.cpp.gcno
 ./build/CMakeFiles/anagram.dir/test/tests-main.cpp.gcda
 
-find . -regextype posix-egrep -regex "^.*[.](gcda|gcno)30931"
+find . -regextype posix-egrep -regex '^.*[.](gcda|gcno)$'
+./build/CMakeFiles/anagram.dir/anagram_test.cpp.gcno
+./build/CMakeFiles/anagram.dir/anagram.cpp.gcno
+./build/CMakeFiles/anagram.dir/anagram.cpp.gcda
+./build/CMakeFiles/anagram.dir/anagram_test.cpp.gcda
 
 gcovr --print-summary
 ------------------------------------------------------------------------------
@@ -69,19 +73,19 @@ Directory: .
 ------------------------------------------------------------------------------
 File                                       Lines    Exec  Cover   Missing
 ------------------------------------------------------------------------------
-anagram.cpp                                   19      17    89%   9,14
+anagram.cpp                                   17      15    88%   9,14
 anagram.hpp                                    5       5   100%   
 anagram_test.cpp                              84      84   100%   
 test/catch.hpp                                48      27    56%   1448-1450,1642-1643,1827-1833,1835-1836,2016-2017,2039-2040,2227,2229,2560
 ------------------------------------------------------------------------------
-TOTAL                                        156     133    85%
+TOTAL                                        154     131    85%
 ------------------------------------------------------------------------------
-lines: 85.3% (133 out of 156)
-branches: 42.4% (208 out of 490)
+lines: 85.1% (131 out of 154)
+branches: 42.2% (206 out of 488)
 
-real	0m9.963s
-user	0m9.143s
-sys	0m0.815s
+real	0m9.020s
+user	0m8.291s
+sys	0m0.656s
 
 ===============================================================================
 
@@ -89,9 +93,9 @@ cmake-format --in-place CMakeLists.txt
 WARNING config_util.py:307: The following configuration options were ignored:
   max_subargs_per_line
 
-real	0m0.148s
-user	0m0.112s
-sys	0m0.038s
+real	0m0.211s
+user	0m0.132s
+sys	0m0.057s
 
 ===============================================================================
 
@@ -111,30 +115,30 @@ found lint:
   Convention: 3
 
 
-real	0m0.155s
-user	0m0.119s
-sys	0m0.037s
+real	0m0.172s
+user	0m0.128s
+sys	0m0.043s
 
 ===============================================================================
 
 Running: clang-format-16 -style=file -i ./anagram.cpp ./anagram_test.cpp ./anagram.hpp
 
 real	0m0.020s
-user	0m0.008s
-sys	0m0.011s
+user	0m0.011s
+sys	0m0.008s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./anagram.cpp ./anagram_test.cpp ./anagram.hpp
+Running: clang-check-16 --analyze ./anagram.cpp ./anagram_test.cpp ./anagram.hpp
 
-real	0m5.081s
-user	0m4.901s
-sys	0m0.178s
+real	0m4.823s
+user	0m4.645s
+sys	0m0.177s
 
 
-real	0m5.083s
-user	0m4.903s
+real	0m4.824s
+user	0m4.646s
 sys	0m0.178s
 
 ===============================================================================
@@ -146,9 +150,9 @@ Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 Suppressed 77943 warnings (77938 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 
-real	0m17.971s
-user	0m17.666s
-sys	0m0.305s
+real	0m17.704s
+user	0m17.430s
+sys	0m0.271s
 Running: clang-tidy-16 ./anagram.cpp ./anagram_test.cpp ./anagram.hpp
 /home/vpayno/git_vpayno/exercism-workspace/cpp/anagram/anagram_test.cpp:16:5: warning: variable 'expected' of type 'vector<string>' (aka 'vector<basic_string<char>>') can be declared 'const' [misc-const-correctness]
     vector<string> expected;
@@ -156,9 +160,9 @@ Running: clang-tidy-16 ./anagram.cpp ./anagram_test.cpp ./anagram.hpp
                    const 
 
 
-real	0m17.973s
-user	0m17.668s
-sys	0m0.305s
+real	0m17.705s
+user	0m17.430s
+sys	0m0.274s
 
 ===============================================================================
 
