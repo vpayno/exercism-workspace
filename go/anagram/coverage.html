@@ -100,11 +100,16 @@ func Detect(subject string, candidates []string) []string <span class="cov7" tit
 
         for _, candidate := range candidates </span><span class="cov10" title="45">{
                 candidateLower = strings.ToLower(candidate)
-                tmpSlice = strings.Split(candidateLower, "")
+
+                if subjectLower == candidateLower </span><span class="cov4" title="4">{
+                        continue</span>
+                }
+
+                <span class="cov9" title="41">tmpSlice = strings.Split(candidateLower, "")
                 sort.Strings(tmpSlice)
                 sortedCandidate := strings.Join(tmpSlice, "")
 
-                if sortedWord == sortedCandidate &amp;&amp; subjectLower != candidateLower </span><span class="cov7" title="15">{
+                if sortedWord == sortedCandidate </span><span class="cov7" title="15">{
                         anagrams = append(anagrams, candidate)
                 }</span>
         }

@@ -20,11 +20,16 @@ func Detect(subject string, candidates []string) []string {
 
 	for _, candidate := range candidates {
 		candidateLower = strings.ToLower(candidate)
+
+		if subjectLower == candidateLower {
+			continue
+		}
+
 		tmpSlice = strings.Split(candidateLower, "")
 		sort.Strings(tmpSlice)
 		sortedCandidate := strings.Join(tmpSlice, "")
 
-		if sortedWord == sortedCandidate && subjectLower != candidateLower {
+		if sortedWord == sortedCandidate {
 			anagrams = append(anagrams, candidate)
 		}
 	}
