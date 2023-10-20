@@ -1,7 +1,25 @@
-=begin
-Write your code for the 'Rna Transcription' exercise in this file. Make the tests in
-`rna_transcription_test.rb` pass.
+# frozen_string_literal: false
 
-To get started with TDD, see the `README.md` file in your
-`ruby/rna-transcription` directory.
-=end
+# https://exercism.org/tracks/ruby/exercises/rna-transcription
+# RNA Transcription exercise
+module Complement
+  def self.of_dna(dna_sequence)
+    dna_sequence = dna_sequence.upcase.chomp
+
+    return '' if dna_sequence.empty?
+
+    raise ArgumentError, "invalid dna sequence [#{dna_sequence}]" unless dna_sequence.match(/^[GCTA]+$/)
+
+    rna_sequence = dna_sequence.chars.map do |nucleotide|
+      dna_to_rna = {
+        'G' => 'C',
+        'C' => 'G',
+        'T' => 'A',
+        'A' => 'U'
+      }
+      dna_to_rna[nucleotide]
+    end
+
+    rna_sequence.join('')
+  end
+end

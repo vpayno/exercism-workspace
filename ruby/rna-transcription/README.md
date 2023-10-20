@@ -72,3 +72,8 @@ If you want to look at how the inputs and outputs are structured, take a look at
 ### Based on
 
 Hyperphysics - https://web.archive.org/web/20220408112140/http://hyperphysics.phy-astr.gsu.edu/hbase/Organic/transcription.html
+
+### My Solution
+
+- [my solution](./rna_transcription.rb)
+- [run-tests](./run-tests-ruby.txt)
