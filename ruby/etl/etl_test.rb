@@ -1,3 +1,27 @@
+# frozen_string_literal: false
+
+# https://github.com/simplecov-ruby/simplecov
+require 'simplecov'
+
+# https://about.codecov.io/blog/getting-started-with-code-coverage-for-ruby/
+require 'simplecov-cobertura'
+SimpleCov.formatter = SimpleCov::Formatter::CoberturaFormatter
+
+# line coverage
+SimpleCov.start if ENV['COVERAGE'] != 'branch'
+
+# branch coverage
+if ENV['COVERAGE'] == 'branch'
+  SimpleCov.start do
+    enable_coverage :branch
+    primary_coverage :branch
+  end
+end
+
+# name the test file/group
+SimpleCov.command_name 'test:exercism'
+
+# original exercism tests
 require 'minitest/autorun'
 require_relative 'etl'
 
@@ -5,7 +29,7 @@ class EtlTest < Minitest::Test
   def test_a_single_letter
     # skip
     old = {
-      1 => ["A"]
+      1 => ['A']
     }
     expected = {
       'a' => 1
@@ -14,7 +38,7 @@ class EtlTest < Minitest::Test
   end
 
   def test_single_score_with_multiple_letters
-    skip
+    # skip
     old = {
       1 => %w[A E I O U]
     }
@@ -29,7 +53,7 @@ class EtlTest < Minitest::Test
   end
 
   def test_multiple_scores_with_multiple_letters
-    skip
+    # skip
     old = {
       1 => %w[A E],
       2 => %w[D G]
@@ -44,13 +68,13 @@ class EtlTest < Minitest::Test
   end
 
   def test_multiple_scores_with_differing_numbers_of_letters
-    skip
+    # skip
     old = {
       1 => %w[A E I O U L N R S T],
       2 => %w[D G],
       3 => %w[B C M P],
       4 => %w[F H V W Y],
-      5 => ["K"],
+      5 => ['K'],
       8 => %w[J X],
       10 => %w[Q Z]
     }

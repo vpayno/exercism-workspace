@@ -1,0 +1,205 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-lint-rubycritic
+
+Running RubyCritic
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rubycritic --path .rubycritic --format console --no-browser .
+
+running flay smells
+
+running flog smells
+[32m.[0m[32m.[0m
+running reek smells
+[32m.[0m[32m.[0m
+running complexity
+[32m.[0m[32m.[0m
+running attributes
+[32m.[0m[32m.[0m
+running churn
+[32m.[0m[32m.[0m
+running simple_cov
+[32m.[0m[32m.[0m
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing safe_level with the 2nd argument of ERB.new is deprecated. Do not use it, and specify other arguments as keyword arguments.
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing trim_mode with the 3rd argument of ERB.new is deprecated. Use keyword argument like ERB.new(str, trim_mode: ...) instead.
+ETL:
+  Rating:       A
+  Churn:        0
+  Complexity:   5.81
+  Duplication:  0
+  Smells:       1
+    * (NestedIterators) ETL#self.transform contains iterators nested 2 deep
+      - etl.rb:10
+
+EtlTest:
+  Rating:       A
+  Churn:        0
+  Complexity:   24.58
+  Duplication:  0
+  Smells:       1
+    * (IrresponsibleModule) EtlTest has no descriptive comment
+      - etl_test.rb:28
+Score: 96.2
+
+real	0m0.780s
+user	0m0.633s
+sys	0m0.141s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.834s
+user	0m0.659s
+sys	0m0.172s
+
+real	0m0.836s
+user	0m0.660s
+sys	0m0.173s
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-lint-formatter
+
+Running Ruby Formatter
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rubocop -a .
+
+Inspecting 2 files
+.C
+
+Offenses:
+
+etl_test.rb:28:1: C: Style/Documentation: Missing top-level documentation comment for class EtlTest.
+class EtlTest < Minitest::Test
+^^^^^^^^^^^^^
+etl_test.rb:32:13: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+      1 => ["A"]
+            ^^^
+etl_test.rb:40:3: C: Metrics/MethodLength: Method has too many lines. [11/10]
+  def test_single_score_with_multiple_letters ...
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+etl_test.rb:55:3: C: Metrics/MethodLength: Method has too many lines. [11/10]
+  def test_multiple_scores_with_multiple_letters ...
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+etl_test.rb:70:3: C: Metrics/MethodLength: Method has too many lines. [38/10]
+  def test_multiple_scores_with_differing_numbers_of_letters ...
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+etl_test.rb:77:13: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+      5 => ["K"],
+            ^^^
+
+2 files inspected, 6 offenses detected, 2 offenses corrected
+
+real	0m1.155s
+user	0m1.031s
+sys	0m0.223s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m1.221s
+user	0m1.056s
+sys	0m0.267s
+
+real	0m1.223s
+user	0m1.057s
+sys	0m0.267s
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-test-with-coverage
+
+Running Ruby Tests With Coverage
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rm -rf ./coverage
+
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.001s
+
+
+ ==============================================================================
+
+Running: ruby ./etl_test.rb -v
+
+Run options: -v --seed 19607
+
+# Running:
+
+EtlTest#test_multiple_scores_with_differing_numbers_of_letters = 0.00 s = .
+EtlTest#test_a_single_letter = 0.00 s = .
+EtlTest#test_multiple_scores_with_multiple_letters = 0.00 s = .
+EtlTest#test_single_score_with_multiple_letters = 0.00 s = .
+
+Finished in 0.004652s, 859.8083 runs/s, 859.8083 assertions/s.
+
+4 runs, 4 assertions, 0 failures, 0 errors, 0 skips
+Coverage report generated for test:exercism to /home/vpayno/git_vpayno/exercism-workspace/ruby/etl/coverage/coverage.xml. 7 / 7 LOC (100.00%) covered
+
+real	0m0.184s
+user	0m0.124s
+sys	0m0.060s
+
+
+ ==============================================================================
+
+Coverage: 100.0%
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.249s
+user	0m0.144s
+sys	0m0.108s
+
+real	0m0.251s
+user	0m0.146s
+sys	0m0.109s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.020s
+user	0m0.021s
+sys	0m0.012s
+
+===============================================================================
+
+/home/vpayno/git_vpayno/exercism-workspace/ruby
+
+===============================================================================
+

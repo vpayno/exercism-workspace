@@ -72,3 +72,8 @@ If you want to look at how the data was previously structured and how it needs t
 ### Based on
 
 Exercise by the JumpstartLab team for students at The Turing School of Software and Design. - https://turing.edu
+
+### My Solution
+
+- [my solution](./etl.rb)
+- [run-tests](./run-tests-ruby.txt)
