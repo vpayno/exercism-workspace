@@ -42,3 +42,8 @@ Finding the best algorithm for the problem is a key skill in software engineerin
 ### Based on
 
 Problem 6 at Project Euler - https://projecteuler.net/problem=6
+
+### My Solution
+
+- [my solution](./difference_of_squares.rb)
+- [run-tests](./run-tests-ruby.txt)

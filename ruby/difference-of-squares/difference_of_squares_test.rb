@@ -1,3 +1,27 @@
+# frozen_string_literal: false
+
+# https://github.com/simplecov-ruby/simplecov
+require 'simplecov'
+
+# https://about.codecov.io/blog/getting-started-with-code-coverage-for-ruby/
+require 'simplecov-cobertura'
+SimpleCov.formatter = SimpleCov::Formatter::CoberturaFormatter
+
+# line coverage
+SimpleCov.start if ENV['COVERAGE'] != 'branch'
+
+# branch coverage
+if ENV['COVERAGE'] == 'branch'
+  SimpleCov.start do
+    enable_coverage :branch
+    primary_coverage :branch
+  end
+end
+
+# name the test file/group
+SimpleCov.command_name 'test:exercism'
+
+# original exercism tests
 require 'minitest/autorun'
 require_relative 'difference_of_squares'
 
@@ -8,42 +32,42 @@ class DifferenceOfSquaresTest < Minitest::Test
   end
 
   def test_square_of_sum_5
-    skip
+    # skip
     assert_equal 225, Squares.new(5).square_of_sum
   end
 
   def test_square_of_sum_100
-    skip
+    # skip
     assert_equal 25_502_500, Squares.new(100).square_of_sum
   end
 
   def test_sum_of_squares_1
-    skip
+    # skip
     assert_equal 1, Squares.new(1).sum_of_squares
   end
 
   def test_sum_of_squares_5
-    skip
+    # skip
     assert_equal 55, Squares.new(5).sum_of_squares
   end
 
   def test_sum_of_squares_100
-    skip
+    # skip
     assert_equal 338_350, Squares.new(100).sum_of_squares
   end
 
   def test_difference_of_squares_1
-    skip
+    # skip
     assert_equal 0, Squares.new(1).difference
   end
 
   def test_difference_of_squares_5
-    skip
+    # skip
     assert_equal 170, Squares.new(5).difference
   end
 
   def test_difference_of_squares_100
-    skip
+    # skip
     assert_equal 25_164_150, Squares.new(100).difference
   end
 end

@@ -48,3 +48,4 @@
 - [anagram](./anagram/README.md)
 - [acronym](./acronym/README.md)
 - [rna-transcription](./rna-transcription/README.md)
+- [difference-of-squares](./difference-of-squares/README.md)

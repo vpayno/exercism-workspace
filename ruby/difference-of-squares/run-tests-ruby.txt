@@ -1,0 +1,238 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-lint-rubycritic
+
+Running RubyCritic
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rubycritic --path .rubycritic --format console --no-browser .
+
+running flay smells
+
+running flog smells
+[32m.[0m[32m.[0m
+running reek smells
+[32m.[0m[32m.[0m
+running complexity
+[32m.[0m[32m.[0m
+running attributes
+[32m.[0m[32m.[0m
+running churn
+[32m.[0m[32m.[0m
+running simple_cov
+[32m.[0m[32m.[0m
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing safe_level with the 2nd argument of ERB.new is deprecated. Do not use it, and specify other arguments as keyword arguments.
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing trim_mode with the 3rd argument of ERB.new is deprecated. Use keyword argument like ERB.new(str, trim_mode: ...) instead.
+DifferenceOfSquaresTest:
+  Rating:       A
+  Churn:        0
+  Complexity:   41.53
+  Duplication:  0
+  Smells:       10
+    * (IrresponsibleModule) DifferenceOfSquaresTest has no descriptive comment
+      - difference_of_squares_test.rb:28
+    * (UncommunicativeMethodName) DifferenceOfSquaresTest#test_difference_of_squares_1 has the name 'test_difference_of_squares_1'
+      - difference_of_squares_test.rb:59
+    * (UncommunicativeMethodName) DifferenceOfSquaresTest#test_difference_of_squares_100 has the name 'test_difference_of_squares_100'
+      - difference_of_squares_test.rb:69
+    * (UncommunicativeMethodName) DifferenceOfSquaresTest#test_difference_of_squares_5 has the name 'test_difference_of_squares_5'
+      - difference_of_squares_test.rb:64
+    * (UncommunicativeMethodName) DifferenceOfSquaresTest#test_square_of_sum_1 has the name 'test_square_of_sum_1'
+      - difference_of_squares_test.rb:29
+    * (UncommunicativeMethodName) DifferenceOfSquaresTest#test_square_of_sum_100 has the name 'test_square_of_sum_100'
+      - difference_of_squares_test.rb:39
+    * (UncommunicativeMethodName) DifferenceOfSquaresTest#test_square_of_sum_5 has the name 'test_square_of_sum_5'
+      - difference_of_squares_test.rb:34
+    * (UncommunicativeMethodName) DifferenceOfSquaresTest#test_sum_of_squares_1 has the name 'test_sum_of_squares_1'
+      - difference_of_squares_test.rb:44
+    * (UncommunicativeMethodName) DifferenceOfSquaresTest#test_sum_of_squares_100 has the name 'test_sum_of_squares_100'
+      - difference_of_squares_test.rb:54
+    * (UncommunicativeMethodName) DifferenceOfSquaresTest#test_sum_of_squares_5 has the name 'test_sum_of_squares_5'
+      - difference_of_squares_test.rb:49
+
+Squares:
+  Rating:       A
+  Churn:        0
+  Complexity:   20.5
+  Duplication:  0
+  Smells:       0
+Score: 92.25
+
+real	0m0.782s
+user	0m0.634s
+sys	0m0.141s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.848s
+user	0m0.660s
+sys	0m0.184s
+
+real	0m0.851s
+user	0m0.660s
+sys	0m0.185s
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-lint-formatter
+
+Running Ruby Formatter
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rubocop -a .
+
+Inspecting 2 files
+.C
+
+Offenses:
+
+difference_of_squares_test.rb:28:1: C: Style/Documentation: Missing top-level documentation comment for class DifferenceOfSquaresTest.
+class DifferenceOfSquaresTest < Minitest::Test
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+difference_of_squares_test.rb:29:7: C: Naming/VariableNumber: Use normalcase for method name numbers.
+  def test_square_of_sum_1
+      ^^^^^^^^^^^^^^^^^^^^
+difference_of_squares_test.rb:34:7: C: Naming/VariableNumber: Use normalcase for method name numbers.
+  def test_square_of_sum_5
+      ^^^^^^^^^^^^^^^^^^^^
+difference_of_squares_test.rb:39:7: C: Naming/VariableNumber: Use normalcase for method name numbers.
+  def test_square_of_sum_100
+      ^^^^^^^^^^^^^^^^^^^^^^
+difference_of_squares_test.rb:44:7: C: Naming/VariableNumber: Use normalcase for method name numbers.
+  def test_sum_of_squares_1
+      ^^^^^^^^^^^^^^^^^^^^^
+difference_of_squares_test.rb:49:7: C: Naming/VariableNumber: Use normalcase for method name numbers.
+  def test_sum_of_squares_5
+      ^^^^^^^^^^^^^^^^^^^^^
+difference_of_squares_test.rb:54:7: C: Naming/VariableNumber: Use normalcase for method name numbers.
+  def test_sum_of_squares_100
+      ^^^^^^^^^^^^^^^^^^^^^^^
+difference_of_squares_test.rb:59:7: C: Naming/VariableNumber: Use normalcase for method name numbers.
+  def test_difference_of_squares_1
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+difference_of_squares_test.rb:64:7: C: Naming/VariableNumber: Use normalcase for method name numbers.
+  def test_difference_of_squares_5
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+difference_of_squares_test.rb:69:7: C: Naming/VariableNumber: Use normalcase for method name numbers.
+  def test_difference_of_squares_100
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+2 files inspected, 10 offenses detected
+
+real	0m0.991s
+user	0m0.903s
+sys	0m0.164s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m1.045s
+user	0m0.926s
+sys	0m0.198s
+
+real	0m1.047s
+user	0m0.926s
+sys	0m0.200s
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-test-with-coverage
+
+Running Ruby Tests With Coverage
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rm -rf ./coverage
+
+
+real	0m0.001s
+user	0m0.001s
+sys	0m0.000s
+
+
+ ==============================================================================
+
+Running: ruby ./difference_of_squares_test.rb -v
+
+Run options: -v --seed 48620
+
+# Running:
+
+DifferenceOfSquaresTest#test_difference_of_squares_5 = 0.00 s = .
+DifferenceOfSquaresTest#test_difference_of_squares_1 = 0.00 s = .
+DifferenceOfSquaresTest#test_square_of_sum_1 = 0.00 s = .
+DifferenceOfSquaresTest#test_square_of_sum_5 = 0.00 s = .
+DifferenceOfSquaresTest#test_sum_of_squares_100 = 0.00 s = .
+DifferenceOfSquaresTest#test_square_of_sum_100 = 0.00 s = .
+DifferenceOfSquaresTest#test_sum_of_squares_1 = 0.00 s = .
+DifferenceOfSquaresTest#test_difference_of_squares_100 = 0.00 s = .
+DifferenceOfSquaresTest#test_sum_of_squares_5 = 0.00 s = .
+
+Finished in 0.000969s, 9292.1163 runs/s, 9292.1163 assertions/s.
+
+9 runs, 9 assertions, 0 failures, 0 errors, 0 skips
+Coverage report generated for test:exercism to /home/vpayno/git_vpayno/exercism-workspace/ruby/difference-of-squares/coverage/coverage.xml. 9 / 9 LOC (100.00%) covered
+
+real	0m0.205s
+user	0m0.144s
+sys	0m0.062s
+
+
+ ==============================================================================
+
+Coverage: 100.0%
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.284s
+user	0m0.177s
+sys	0m0.112s
+
+real	0m0.286s
+user	0m0.177s
+sys	0m0.114s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.022s
+user	0m0.025s
+sys	0m0.009s
+
+===============================================================================
+
+/home/vpayno/git_vpayno/exercism-workspace/ruby
+
+===============================================================================
+
