@@ -1,3 +1,27 @@
+# frozen_string_literal: false
+
+# https://github.com/simplecov-ruby/simplecov
+require 'simplecov'
+
+# https://about.codecov.io/blog/getting-started-with-code-coverage-for-ruby/
+require 'simplecov-cobertura'
+SimpleCov.formatter = SimpleCov::Formatter::CoberturaFormatter
+
+# line coverage
+SimpleCov.start if ENV['COVERAGE'] != 'branch'
+
+# branch coverage
+if ENV['COVERAGE'] == 'branch'
+  SimpleCov.start do
+    enable_coverage :branch
+    primary_coverage :branch
+  end
+end
+
+# name the test file/group
+SimpleCov.command_name 'test:exercism'
+
+# original exercism tests
 require 'minitest/autorun'
 require_relative 'resistor_color_duo'
 
@@ -8,32 +32,32 @@ class ResistorColorDuoTest < Minitest::Test
   end
 
   def test_blue_and_grey
-    skip
+    # skip
     assert_equal 68, ResistorColorDuo.value(%w[blue grey])
   end
 
   def test_yellow_and_violet
-    skip
+    # skip
     assert_equal 47, ResistorColorDuo.value(%w[yellow violet])
   end
 
   def test_white_and_red
-    skip
+    # skip
     assert_equal 92, ResistorColorDuo.value(%w[white red])
   end
 
   def test_orange_and_orange
-    skip
+    # skip
     assert_equal 33, ResistorColorDuo.value(%w[orange orange])
   end
 
   def test_ignore_additional_colors
-    skip
+    # skip
     assert_equal 51, ResistorColorDuo.value(%w[green brown orange])
   end
 
   def test_black_and_brown_one_digit
-    skip
+    # skip
     assert_equal 1, ResistorColorDuo.value(%w[black brown])
   end
 end

@@ -51,3 +51,4 @@
 - [difference-of-squares](./difference-of-squares/README.md)
 - [etl](./etl/README.md)
 - [resistor-color](./resistor-color/README.md)
+- [resistor-color-duo](./resistor-color-duo/README.md)
