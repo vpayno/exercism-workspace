@@ -31,3 +31,8 @@ A HighScore accepts an array with one or more numbers, each representing one 'ga
 ### Based on
 
 Tribute to the eighties' arcade game Frogger
+
+### My Solution
+
+- [my solution](./high_scores.rb)
+- [run-tests](./run-tests-ruby.txt)
