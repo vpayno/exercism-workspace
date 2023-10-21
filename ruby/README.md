@@ -50,3 +50,4 @@
 - [rna-transcription](./rna-transcription/README.md)
 - [difference-of-squares](./difference-of-squares/README.md)
 - [etl](./etl/README.md)
+- [resistor-color](./resistor-color/README.md)
