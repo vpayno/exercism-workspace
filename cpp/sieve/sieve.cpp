@@ -30,10 +30,10 @@ std::vector<int> primes(int limit) {
     numbers.at(0) = numbers.at(1) = false;
     numbers.at(2) = true;
 
-    for (int number = 2; number <= limit; number++) {
+    for (int number = 3; number <= limit; number += 2) {
         // is prime
         if (numbers.at(number)) {
-            for (int j = 2; number * j <= limit; j++) {
+            for (int j = 3; number * j <= limit; j++) {
                 const size_t index = size_t(number) * size_t(j);
                 numbers.at(index) = false;
             }
