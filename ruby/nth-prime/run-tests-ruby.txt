@@ -1,0 +1,205 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-lint-rubycritic
+
+Running RubyCritic
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rubycritic --path .rubycritic --format console --no-browser .
+
+running flay smells
+
+running flog smells
+[32m.[0m[32m.[0m
+running reek smells
+[32m.[0m[32m.[0m
+running complexity
+[32m.[0m[32m.[0m
+running attributes
+[32m.[0m[32m.[0m
+running churn
+[32m.[0m[32m.[0m
+running simple_cov
+[32m.[0m[32m.[0m
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing safe_level with the 2nd argument of ERB.new is deprecated. Do not use it, and specify other arguments as keyword arguments.
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing trim_mode with the 3rd argument of ERB.new is deprecated. Use keyword argument like ERB.new(str, trim_mode: ...) instead.
+NthPrimeTest:
+  Rating:       A
+  Churn:        0
+  Complexity:   14.95
+  Duplication:  0
+  Smells:       1
+    * (IrresponsibleModule) NthPrimeTest has no descriptive comment
+      - nth_prime_test.rb:28
+
+Prime:
+  Rating:       A
+  Churn:        0
+  Complexity:   37.89
+  Duplication:  0
+  Smells:       2
+    * (HighComplexity) Prime::sieve has a flog score of 28
+      - nth_prime.rb:16
+    * (TooManyStatements) Prime#self.sieve has approx 20 statements
+      - nth_prime.rb:16
+Score: 93.4
+
+real	0m0.857s
+user	0m0.719s
+sys	0m0.128s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.911s
+user	0m0.749s
+sys	0m0.156s
+
+real	0m0.913s
+user	0m0.749s
+sys	0m0.158s
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-lint-formatter
+
+Running Ruby Formatter
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rubocop -a .
+
+Inspecting 2 files
+CC
+
+Offenses:
+
+nth_prime.rb:16:3: C: Metrics/AbcSize: Assignment Branch Condition size for sieve is too high. [<17, 17, 12> 26.87/17]
+  def self.sieve(limit) ...
+  ^^^^^^^^^^^^^^^^^^^^^
+nth_prime.rb:16:3: C: Metrics/CyclomaticComplexity: Cyclomatic complexity for sieve is too high. [10/7]
+  def self.sieve(limit) ...
+  ^^^^^^^^^^^^^^^^^^^^^
+nth_prime.rb:16:3: C: Metrics/MethodLength: Method has too many lines. [23/10]
+  def self.sieve(limit) ...
+  ^^^^^^^^^^^^^^^^^^^^^
+nth_prime.rb:16:3: C: Metrics/PerceivedComplexity: Perceived complexity for sieve is too high. [10/8]
+  def self.sieve(limit) ...
+  ^^^^^^^^^^^^^^^^^^^^^
+nth_prime_test.rb:28:1: C: Style/Documentation: Missing top-level documentation comment for class NthPrimeTest.
+class NthPrimeTest < Minitest::Test
+^^^^^^^^^^^^^^^^^^
+
+2 files inspected, 5 offenses detected
+
+real	0m1.224s
+user	0m1.088s
+sys	0m0.246s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m1.285s
+user	0m1.116s
+sys	0m0.282s
+
+real	0m1.287s
+user	0m1.117s
+sys	0m0.283s
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-test-with-coverage
+
+Running Ruby Tests With Coverage
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rm -rf ./coverage
+
+
+real	0m0.002s
+user	0m0.000s
+sys	0m0.001s
+
+
+ ==============================================================================
+
+Running: ruby ./nth_prime_test.rb -v
+
+Run options: -v --seed 55939
+
+# Running:
+
+NthPrimeTest#test_second_prime = 0.00 s = .
+NthPrimeTest#test_there_is_no_zeroth_prime = 0.00 s = .
+NthPrimeTest#test_big_prime = 0.69 s = .
+NthPrimeTest#test_first_prime = 0.00 s = .
+NthPrimeTest#test_sixth_prime = 0.71 s = .
+
+Finished in 1.402808s, 3.5643 runs/s, 3.5643 assertions/s.
+
+5 runs, 5 assertions, 0 failures, 0 errors, 0 skips
+Coverage report generated for test:exercism to /home/vpayno/git_vpayno/exercism-workspace/ruby/nth-prime/coverage/coverage.xml. 28 / 28 LOC (100.00%) covered
+
+real	0m1.600s
+user	0m1.528s
+sys	0m0.072s
+
+
+ ==============================================================================
+
+Coverage: 100.0%
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.679s
+user	0m1.565s
+sys	0m0.118s
+
+real	0m1.681s
+user	0m1.566s
+sys	0m0.119s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.022s
+user	0m0.022s
+sys	0m0.014s
+
+===============================================================================
+
+/home/vpayno/git_vpayno/exercism-workspace/ruby
+
+===============================================================================
+

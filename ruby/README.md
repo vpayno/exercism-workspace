@@ -55,3 +55,4 @@
 - [resistor-color-trio](./resistor-color-trio/README.md)
 - [high-scores](./high-scores/README.md)
 - [sieve](./sieve/README.md)
+- [nth-prime](./nth-prime/README.md)
