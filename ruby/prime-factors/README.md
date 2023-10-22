@@ -60,3 +60,8 @@ Success!
 ### Based on
 
 The Prime Factors Kata by Uncle Bob - https://web.archive.org/web/20221026171801/http://butunclebob.com/ArticleS.UncleBob.ThePrimeFactorsKata
+
+### My Solution
+
+- [my solution](./prime_factors.rb)
+- [run-tests](./run-tests-ruby.txt)
