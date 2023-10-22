@@ -1,0 +1,222 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-lint-rubycritic
+
+Running RubyCritic
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rubycritic --path .rubycritic --format console --no-browser .
+
+running flay smells
+
+running flog smells
+[32m.[0m[32m.[0m
+running reek smells
+[32m.[0m[32m.[0m
+running complexity
+[32m.[0m[32m.[0m
+running attributes
+[32m.[0m[32m.[0m
+running churn
+[32m.[0m[32m.[0m
+running simple_cov
+[32m.[0m[32m.[0m
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing safe_level with the 2nd argument of ERB.new is deprecated. Do not use it, and specify other arguments as keyword arguments.
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing trim_mode with the 3rd argument of ERB.new is deprecated. Use keyword argument like ERB.new(str, trim_mode: ...) instead.
+Sieve:
+  Rating:       A
+  Churn:        0
+  Complexity:   29.41
+  Duplication:  0
+  Smells:       3
+    * (HighComplexity) Sieve#primes has a flog score of 28
+      - sieve.rb:10
+    * (InstanceVariableAssumption) Sieve assumes too much for instance variable '@numbers'
+      - sieve.rb:5
+    * (TooManyStatements) Sieve#primes has approx 20 statements
+      - sieve.rb:10
+
+SieveTest:
+  Rating:       B
+  Churn:        0
+  Complexity:   71.34
+  Duplication:  0
+  Smells:       4
+    * (HighComplexity) SieveTest#test_find_primes_up_to_1000 has a flog score of 51
+      - sieve_test.rb:53
+    * (IrresponsibleModule) SieveTest has no descriptive comment
+      - sieve_test.rb:28
+    * (UncommunicativeMethodName) SieveTest#test_find_primes_up_to_10 has the name 'test_find_primes_up_to_10'
+      - sieve_test.rb:41
+    * (UncommunicativeMethodName) SieveTest#test_find_primes_up_to_1000 has the name 'test_find_primes_up_to_1000'
+      - sieve_test.rb:53
+Score: 87.41
+
+real	0m0.686s
+user	0m0.540s
+sys	0m0.139s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.786s
+user	0m0.575s
+sys	0m0.209s
+
+real	0m0.790s
+user	0m0.577s
+sys	0m0.211s
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-lint-formatter
+
+Running Ruby Formatter
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rubocop -a .
+
+Inspecting 2 files
+CC
+
+Offenses:
+
+sieve.rb:10:3: C: Metrics/AbcSize: Assignment Branch Condition size for primes is too high. [<17, 17, 12> 26.87/17]
+  def primes ...
+  ^^^^^^^^^^
+sieve.rb:10:3: C: Metrics/CyclomaticComplexity: Cyclomatic complexity for primes is too high. [10/7]
+  def primes ...
+  ^^^^^^^^^^
+sieve.rb:10:3: C: Metrics/MethodLength: Method has too many lines. [23/10]
+  def primes ...
+  ^^^^^^^^^^
+sieve.rb:10:3: C: Metrics/PerceivedComplexity: Perceived complexity for primes is too high. [10/8]
+  def primes ...
+  ^^^^^^^^^^
+sieve_test.rb:28:1: C: Style/Documentation: Missing top-level documentation comment for class SieveTest.
+class SieveTest < Minitest::Test
+^^^^^^^^^^^^^^^
+sieve_test.rb:41:7: C: Naming/VariableNumber: Use normalcase for method name numbers.
+  def test_find_primes_up_to_10
+      ^^^^^^^^^^^^^^^^^^^^^^^^^
+sieve_test.rb:53:3: C: Metrics/MethodLength: Method has too many lines. [13/10]
+  def test_find_primes_up_to_1000 ...
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sieve_test.rb:53:7: C: Naming/VariableNumber: Use normalcase for method name numbers.
+  def test_find_primes_up_to_1000
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+2 files inspected, 8 offenses detected
+
+real	0m1.071s
+user	0m0.985s
+sys	0m0.217s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m1.124s
+user	0m1.011s
+sys	0m0.247s
+
+real	0m1.126s
+user	0m1.012s
+sys	0m0.249s
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-test-with-coverage
+
+Running Ruby Tests With Coverage
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rm -rf ./coverage
+
+
+real	0m0.002s
+user	0m0.000s
+sys	0m0.002s
+
+
+ ==============================================================================
+
+Running: ruby ./sieve_test.rb -v
+
+Run options: -v --seed 51674
+
+# Running:
+
+SieveTest#test_find_primes_up_to_10 = 0.00 s = .
+SieveTest#test_no_primes_under_two = 0.00 s = .
+SieveTest#test_find_first_prime = 0.00 s = .
+SieveTest#test_find_primes_up_to_1000 = 0.00 s = .
+SieveTest#test_limit_is_prime = 0.00 s = .
+
+Finished in 0.007435s, 672.5049 runs/s, 672.5049 assertions/s.
+
+5 runs, 5 assertions, 0 failures, 0 errors, 0 skips
+Coverage report generated for test:exercism to /home/vpayno/git_vpayno/exercism-workspace/ruby/sieve/coverage/coverage.xml. 24 / 24 LOC (100.00%) covered
+
+real	0m0.171s
+user	0m0.121s
+sys	0m0.050s
+
+
+ ==============================================================================
+
+Coverage: 100.0%
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.247s
+user	0m0.154s
+sys	0m0.096s
+
+real	0m0.249s
+user	0m0.154s
+sys	0m0.097s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.032s
+user	0m0.020s
+sys	0m0.030s
+
+===============================================================================
+
+/home/vpayno/git_vpayno/exercism-workspace/ruby
+
+===============================================================================
+

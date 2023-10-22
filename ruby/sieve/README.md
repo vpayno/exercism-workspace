@@ -62,3 +62,8 @@ A good first test is to check that you do not use division or remainder operatio
 ### Based on
 
 Sieve of Eratosthenes at Wikipedia - https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
+
+### My Solution
+
+- [my solution](./sieve.rb)
+- [run-tests](./run-tests-ruby.txt)

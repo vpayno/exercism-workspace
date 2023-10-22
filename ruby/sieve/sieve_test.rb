@@ -1,3 +1,27 @@
+# frozen_string_literal: false
+
+# https://github.com/simplecov-ruby/simplecov
+require 'simplecov'
+
+# https://about.codecov.io/blog/getting-started-with-code-coverage-for-ruby/
+require 'simplecov-cobertura'
+SimpleCov.formatter = SimpleCov::Formatter::CoberturaFormatter
+
+# line coverage
+SimpleCov.start if ENV['COVERAGE'] != 'branch'
+
+# branch coverage
+if ENV['COVERAGE'] == 'branch'
+  SimpleCov.start do
+    enable_coverage :branch
+    primary_coverage :branch
+  end
+end
+
+# name the test file/group
+SimpleCov.command_name 'test:exercism'
+
+# original exercism tests
 require 'minitest/autorun'
 require_relative 'sieve'
 
@@ -9,25 +33,25 @@ class SieveTest < Minitest::Test
   end
 
   def test_find_first_prime
-    skip
+    # skip
     expected = [2]
     assert_equal expected, Sieve.new(2).primes
   end
 
   def test_find_primes_up_to_10
-    skip
+    # skip
     expected = [2, 3, 5, 7]
     assert_equal expected, Sieve.new(10).primes
   end
 
   def test_limit_is_prime
-    skip
+    # skip
     expected = [2, 3, 5, 7, 11, 13]
     assert_equal expected, Sieve.new(13).primes
   end
 
   def test_find_primes_up_to_1000
-    skip
+    # skip
     expected = [
       2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59,
       61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139,
