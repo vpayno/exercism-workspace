@@ -1,0 +1,193 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-lint-rubycritic
+
+Running RubyCritic
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rubycritic --path .rubycritic --format console --no-browser .
+
+running flay smells
+
+running flog smells
+[32m.[0m[32m.[0m
+running reek smells
+[32m.[0m[32m.[0m
+running complexity
+[32m.[0m[32m.[0m
+running attributes
+[32m.[0m[32m.[0m
+running churn
+[32m.[0m[32m.[0m
+running simple_cov
+[32m.[0m[32m.[0m
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing safe_level with the 2nd argument of ERB.new is deprecated. Do not use it, and specify other arguments as keyword arguments.
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing trim_mode with the 3rd argument of ERB.new is deprecated. Use keyword argument like ERB.new(str, trim_mode: ...) instead.
+PerfectNumber:
+  Rating:       A
+  Churn:        0
+  Complexity:   17.1
+  Duplication:  0
+  Smells:       1
+    * (TooManyStatements) PerfectNumber#self.classify has approx 8 statements
+      - perfect_numbers.rb:20
+
+PerfectNumberTest:
+  Rating:       A
+  Churn:        0
+  Complexity:   10.87
+  Duplication:  0
+  Smells:       1
+    * (IrresponsibleModule) PerfectNumberTest has no descriptive comment
+      - perfect_numbers_test.rb:28
+Score: 96.5
+
+real	0m0.640s
+user	0m0.509s
+sys	0m0.125s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.701s
+user	0m0.542s
+sys	0m0.155s
+
+real	0m0.703s
+user	0m0.544s
+sys	0m0.156s
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-lint-formatter
+
+Running Ruby Formatter
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rubocop -a .
+
+Inspecting 2 files
+CC
+
+Offenses:
+
+perfect_numbers.rb:20:3: C: Metrics/MethodLength: Method has too many lines. [13/10]
+  def self.classify(number) ...
+  ^^^^^^^^^^^^^^^^^^^^^^^^^
+perfect_numbers_test.rb:28:1: C: Style/Documentation: Missing top-level documentation comment for class PerfectNumberTest.
+class PerfectNumberTest < Minitest::Test
+^^^^^^^^^^^^^^^^^^^^^^^
+
+2 files inspected, 2 offenses detected
+
+real	0m1.001s
+user	0m0.881s
+sys	0m0.214s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m1.074s
+user	0m0.914s
+sys	0m0.258s
+
+real	0m1.076s
+user	0m0.915s
+sys	0m0.259s
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-test-with-coverage
+
+Running Ruby Tests With Coverage
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rm -rf ./coverage
+
+
+real	0m0.001s
+user	0m0.001s
+sys	0m0.000s
+
+
+ ==============================================================================
+
+Running: ruby ./perfect_numbers_test.rb -v
+
+Run options: -v --seed 38606
+
+# Running:
+
+PerfectNumberTest#test_initialize_perfect_number = 0.00 s = .
+PerfectNumberTest#test_classify_deficient = 0.00 s = .
+PerfectNumberTest#test_classify_abundant = 0.00 s = .
+PerfectNumberTest#test_classify_perfect = 0.00 s = .
+
+Finished in 0.001446s, 2766.3684 runs/s, 2766.3684 assertions/s.
+
+4 runs, 4 assertions, 0 failures, 0 errors, 0 skips
+Coverage report generated for test:exercism to /home/vpayno/git_vpayno/exercism-workspace/ruby/perfect-numbers/coverage/coverage.xml. 19 / 20 LOC (95.00%) covered
+
+real	0m0.185s
+user	0m0.131s
+sys	0m0.055s
+
+
+ ==============================================================================
+
+Coverage: 95.0%
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.242s
+user	0m0.159s
+sys	0m0.089s
+
+real	0m0.244s
+user	0m0.159s
+sys	0m0.091s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.023s
+user	0m0.022s
+sys	0m0.011s
+
+===============================================================================
+
+/home/vpayno/git_vpayno/exercism-workspace/ruby
+
+===============================================================================
+
