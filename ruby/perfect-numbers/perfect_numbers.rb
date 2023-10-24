@@ -20,13 +20,9 @@ module PerfectNumber
   def self.classify(number)
     raise 'perfect numbers are postive' unless number.positive?
 
-    factors = []
-
-    (1...number).each do |factor|
-      factors.push(factor) if number.modulo(factor).zero?
+    aliquot_sum = (1...number).reduce do |sum, factor|
+      sum + (number.modulo(factor).zero? ? factor : 0)
     end
-
-    aliquot_sum = factors.sum
 
     if aliquot_sum > number
       ABUNDANT.to_s
