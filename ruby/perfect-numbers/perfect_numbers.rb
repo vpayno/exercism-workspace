@@ -3,19 +3,45 @@
 # https://exercism.org/tracks/ruby/exercises/perfect-numbers
 # Perfect Numbers exercise
 module PerfectNumber
-  Struct.new('Kind', :name, :value) do
+  Struct.new('Kind', :aliquot_sum, :number) do
+    def deficient
+      -1
+    end
+
+    def perfect
+      0
+    end
+
+    def abundant
+      1
+    end
+
+    def kind
+      if aliquot_sum > number
+        abundant
+      elsif aliquot_sum < number
+        deficient
+      else
+        perfect
+      end
+    end
+
     def to_s
-      name
+      kinds = {
+        -1 => 'deficient',
+        0 => 'perfect',
+        1 => 'abundant'
+      }
+
+      kinds[kind]
     end
 
     def to_i
-      value
+      kind
     end
-  end
 
-  DEFICIENT = Struct::Kind.new('deficient', -1)
-  PERFECT = Struct::Kind.new('perfect', 0)
-  ABUNDANT = Struct::Kind.new('abundant', 1)
+    private :deficient, :perfect, :abundant, :kind
+  end
 
   def self.classify(number)
     raise 'perfect numbers are postive' unless number.positive?
@@ -24,12 +50,6 @@ module PerfectNumber
       sum + (number.modulo(factor).zero? ? factor : 0)
     end
 
-    if aliquot_sum > number
-      ABUNDANT.to_s
-    elsif aliquot_sum < number
-      DEFICIENT.to_s
-    else
-      PERFECT.to_s
-    end
+    Struct::Kind.new(aliquot_sum, number).to_s
   end
 end
