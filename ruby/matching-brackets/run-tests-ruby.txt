@@ -1,0 +1,279 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-lint-rubycritic
+
+Running RubyCritic
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rubycritic --path .rubycritic --format console --no-browser .
+
+running flay smells
+
+running flog smells
+[32m.[0m[32m.[0m
+running reek smells
+[32m.[0m[32m.[0m
+running complexity
+[32m.[0m[32m.[0m
+running attributes
+[32m.[0m[32m.[0m
+running churn
+[32m.[0m[32m.[0m
+running simple_cov
+[32m.[0m[32m.[0m
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing safe_level with the 2nd argument of ERB.new is deprecated. Do not use it, and specify other arguments as keyword arguments.
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing trim_mode with the 3rd argument of ERB.new is deprecated. Use keyword argument like ERB.new(str, trim_mode: ...) instead.
+Brackets:
+  Rating:       A
+  Churn:        0
+  Complexity:   28.44
+  Duplication:  0
+  Smells:       4
+    * (ControlParameter) Brackets#self.bracket_match? is controlled by argument 'close_bracket'
+      - matching_brackets.rb:29
+      - matching_brackets.rb:30
+      - matching_brackets.rb:31
+    * (ControlParameter) Brackets#self.bracket_match? is controlled by argument 'open_bracket'
+      - matching_brackets.rb:29
+      - matching_brackets.rb:30
+      - matching_brackets.rb:31
+    * (DuplicateMethodCall) Brackets#self.paired? calls 'stack.empty?' 2 times
+      - matching_brackets.rb:19
+      - matching_brackets.rb:25
+    * (TooManyStatements) Brackets#self.paired? has approx 10 statements
+      - matching_brackets.rb:6
+
+MatchingBracketsTest:
+  Rating:       A
+  Churn:        0
+  Complexity:   48.0
+  Duplication:  0
+  Smells:       2
+    * (IrresponsibleModule) MatchingBracketsTest has no descriptive comment
+      - matching_brackets_test.rb:28
+    * (TooManyMethods) MatchingBracketsTest has at least 20 methods
+      - matching_brackets_test.rb:28
+Score: 90.45
+
+real	0m0.871s
+user	0m0.744s
+sys	0m0.118s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.933s
+user	0m0.775s
+sys	0m0.153s
+
+real	0m0.935s
+user	0m0.777s
+sys	0m0.154s
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-lint-formatter
+
+Running Ruby Formatter
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rubocop -a .
+
+Inspecting 2 files
+CC
+
+Offenses:
+
+matching_brackets.rb:6:3: C: Metrics/MethodLength: Method has too many lines. [13/10]
+  def self.paired?(text) ...
+  ^^^^^^^^^^^^^^^^^^^^^^
+matching_brackets_test.rb:28:1: C: Style/Documentation: Missing top-level documentation comment for class MatchingBracketsTest.
+class MatchingBracketsTest < Minitest::Test
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+matching_brackets_test.rb:31:29: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert Brackets.paired?("[]")
+                            ^^^^
+matching_brackets_test.rb:36:29: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert Brackets.paired?("")
+                            ^^
+matching_brackets_test.rb:41:29: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    refute Brackets.paired?("[[")
+                            ^^^^
+matching_brackets_test.rb:46:29: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    refute Brackets.paired?("}{")
+                            ^^^^
+matching_brackets_test.rb:51:29: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    refute Brackets.paired?("{]")
+                            ^^^^
+matching_brackets_test.rb:56:29: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert Brackets.paired?("{ }")
+                            ^^^^^
+matching_brackets_test.rb:61:29: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    refute Brackets.paired?("{[])")
+                            ^^^^^^
+matching_brackets_test.rb:66:29: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert Brackets.paired?("{[]}")
+                            ^^^^^^
+matching_brackets_test.rb:71:29: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert Brackets.paired?("{}[]")
+                            ^^^^^^
+matching_brackets_test.rb:76:29: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert Brackets.paired?("([{}({}[])])")
+                            ^^^^^^^^^^^^^^
+matching_brackets_test.rb:81:29: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    refute Brackets.paired?("{[)][]}")
+                            ^^^^^^^^^
+matching_brackets_test.rb:86:29: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    refute Brackets.paired?("([{])")
+                            ^^^^^^^
+matching_brackets_test.rb:91:29: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    refute Brackets.paired?("[({]})")
+                            ^^^^^^^^
+matching_brackets_test.rb:96:29: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    refute Brackets.paired?("[({}])")
+                            ^^^^^^^^
+matching_brackets_test.rb:101:29: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    refute Brackets.paired?("{}[")
+                            ^^^^^
+matching_brackets_test.rb:106:29: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    refute Brackets.paired?("[]]")
+                            ^^^^^
+matching_brackets_test.rb:111:29: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    refute Brackets.paired?(")()")
+                            ^^^^^
+matching_brackets_test.rb:116:29: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    refute Brackets.paired?("{)()")
+                            ^^^^^^
+matching_brackets_test.rb:121:29: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert Brackets.paired?("(((185 + 223.85) * 15) - 543)/2")
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+2 files inspected, 21 offenses detected, 19 offenses corrected
+
+real	0m1.222s
+user	0m1.115s
+sys	0m0.224s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m1.280s
+user	0m1.141s
+sys	0m0.260s
+
+real	0m1.281s
+user	0m1.142s
+sys	0m0.260s
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-test-with-coverage
+
+Running Ruby Tests With Coverage
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rm -rf ./coverage
+
+
+real	0m0.001s
+user	0m0.001s
+sys	0m0.000s
+
+
+ ==============================================================================
+
+Running: ruby ./matching_brackets_test.rb -v
+
+Run options: -v --seed 65273
+
+# Running:
+
+MatchingBracketsTest#test_early_unexpected_brackets = 0.00 s = .
+MatchingBracketsTest#test_simple_nested_brackets = 0.00 s = .
+MatchingBracketsTest#test_paired_and_incomplete_brackets = 0.00 s = .
+MatchingBracketsTest#test_unpaired_brackets = 0.00 s = .
+MatchingBracketsTest#test_early_mismatched_brackets = 0.00 s = .
+MatchingBracketsTest#test_unopened_closing_brackets = 0.00 s = .
+MatchingBracketsTest#test_several_paired_brackets = 0.00 s = .
+MatchingBracketsTest#test_unpaired_and_nested_brackets = 0.00 s = .
+MatchingBracketsTest#test_paired_with_whitespace = 0.00 s = .
+MatchingBracketsTest#test_partially_paired_brackets = 0.00 s = .
+MatchingBracketsTest#test_paired_and_wrong_nested_brackets_but_innermost_are_correct = 0.00 s = .
+MatchingBracketsTest#test_paired_and_nested_brackets = 0.00 s = .
+MatchingBracketsTest#test_wrong_closing_bracket = 0.00 s = .
+MatchingBracketsTest#test_paired_and_wrong_nested_brackets = 0.00 s = .
+MatchingBracketsTest#test_math_expression = 0.00 s = .
+MatchingBracketsTest#test_wrong_ordered_brackets = 0.00 s = .
+MatchingBracketsTest#test_paired_square_brackets = 0.00 s = .
+MatchingBracketsTest#test_empty_string = 0.00 s = .
+MatchingBracketsTest#test_too_many_closing_brackets = 0.00 s = .
+MatchingBracketsTest#test_complex_latex_expression = 0.00 s = .
+
+Finished in 0.009964s, 2007.2621 runs/s, 2007.2621 assertions/s.
+
+20 runs, 20 assertions, 0 failures, 0 errors, 0 skips
+Coverage report generated for test:exercism to /home/vpayno/git_vpayno/exercism-workspace/ruby/matching-brackets/coverage/coverage.xml. 24 / 24 LOC (100.00%) covered
+
+real	0m0.209s
+user	0m0.147s
+sys	0m0.062s
+
+
+ ==============================================================================
+
+Coverage: 100.0%
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.269s
+user	0m0.167s
+sys	0m0.105s
+
+real	0m0.270s
+user	0m0.167s
+sys	0m0.106s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.025s
+user	0m0.029s
+sys	0m0.009s
+
+===============================================================================
+
+/home/vpayno/git_vpayno/exercism-workspace/ruby
+
+===============================================================================
+

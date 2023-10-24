@@ -32,3 +32,8 @@ The string may also contain other characters, which for the purposes of this exe
 ### Based on
 
 Ginna Baker
+
+### My Solution
+
+- [my solution](./matching_brackets.rb)
+- [run-tests](./run-tests-ruby.txt)
