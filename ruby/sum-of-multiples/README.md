@@ -62,3 +62,8 @@ To calculate the energy points earned by the player, we need to find all the uni
 ### Based on
 
 A variation on Problem 1 at Project Euler - https://projecteuler.net/problem=1
+
+### My Solution
+
+- [my solution](./sum_of_multiples.rb)
+- [run-tests](./run-tests-ruby.txt)

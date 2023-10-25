@@ -1,0 +1,216 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-lint-rubycritic
+
+Running RubyCritic
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rubycritic --path .rubycritic --format console --no-browser .
+
+running flay smells
+
+running flog smells
+[32m.[0m[32m.[0m
+running reek smells
+[32m.[0m[32m.[0m
+running complexity
+[32m.[0m[32m.[0m
+running attributes
+[32m.[0m[32m.[0m
+running churn
+[32m.[0m[32m.[0m
+running simple_cov
+[32m.[0m[32m.[0m
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing safe_level with the 2nd argument of ERB.new is deprecated. Do not use it, and specify other arguments as keyword arguments.
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing trim_mode with the 3rd argument of ERB.new is deprecated. Use keyword argument like ERB.new(str, trim_mode: ...) instead.
+SumOfMultiples:
+  Rating:       A
+  Churn:        0
+  Complexity:   12.45
+  Duplication:  0
+  Smells:       1
+    * (NestedIterators) SumOfMultiples#to contains iterators nested 2 deep
+      - sum_of_multiples.rb:16
+
+SumOfMultiplesTest:
+  Rating:       B
+  Churn:        0
+  Complexity:   73.35
+  Duplication:  0
+  Smells:       4
+    * (IrresponsibleModule) SumOfMultiplesTest has no descriptive comment
+      - sum_of_multiples_test.rb:28
+    * (UncommunicativeMethodName) SumOfMultiplesTest#test_all_numbers_are_multiples_of_1 has the name 'test_all_numbers_are_multiples_of_1'
+      - sum_of_multiples_test.rb:95
+    * (UncommunicativeMethodName) SumOfMultiplesTest#test_solutions_using_include_exclude_must_extend_to_cardinality_greater_than_3 has the name 'test_solutions_using_include_exclude_must_extend_to_cardinality_greater_than_3'
+      - sum_of_multiples_test.rb:113
+    * (UncommunicativeMethodName) SumOfMultiplesTest#test_the_only_multiple_of_0_is_0 has the name 'test_the_only_multiple_of_0_is_0'
+      - sum_of_multiples_test.rb:107
+Score: 89.28
+
+real	0m0.635s
+user	0m0.500s
+sys	0m0.132s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.692s
+user	0m0.526s
+sys	0m0.164s
+
+real	0m0.698s
+user	0m0.528s
+sys	0m0.167s
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-lint-formatter
+
+Running Ruby Formatter
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rubocop -a .
+
+Inspecting 2 files
+.C
+
+Offenses:
+
+sum_of_multiples_test.rb:28:1: C: Style/Documentation: Missing top-level documentation comment for class SumOfMultiplesTest.
+class SumOfMultiplesTest < Minitest::Test
+^^^^^^^^^^^^^^^^^^^^^^^^
+sum_of_multiples_test.rb:95:7: C: Naming/VariableNumber: Use normalcase for method name numbers.
+  def test_all_numbers_are_multiples_of_1
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sum_of_multiples_test.rb:107:7: C: Naming/VariableNumber: Use normalcase for method name numbers.
+  def test_the_only_multiple_of_0_is_0
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sum_of_multiples_test.rb:113:7: C: Naming/VariableNumber: Use normalcase for method name numbers.
+  def test_solutions_using_include_exclude_must_extend_to_cardinality_greater_than_3
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+2 files inspected, 4 offenses detected
+
+real	0m0.921s
+user	0m0.809s
+sys	0m0.193s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m0.995s
+user	0m0.847s
+sys	0m0.233s
+
+real	0m0.997s
+user	0m0.847s
+sys	0m0.234s
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-test-with-coverage
+
+Running Ruby Tests With Coverage
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rm -rf ./coverage
+
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.001s
+
+
+ ==============================================================================
+
+Running: ruby ./sum_of_multiples_test.rb -v
+
+Run options: -v --seed 62805
+
+# Running:
+
+SumOfMultiplesTest#test_much_larger_factors = 0.00 s = .
+SumOfMultiplesTest#test_a_much_larger_limit = 0.00 s = .
+SumOfMultiplesTest#test_each_multiple_is_only_counted_once = 0.00 s = .
+SumOfMultiplesTest#test_more_than_one_multiple_within_limit = 0.00 s = .
+SumOfMultiplesTest#test_no_multiples_within_limit = 0.00 s = .
+SumOfMultiplesTest#test_one_factor_has_multiples_within_limit = 0.00 s = .
+SumOfMultiplesTest#test_the_only_multiple_of_0_is_0 = 0.00 s = .
+SumOfMultiplesTest#test_solutions_using_include_exclude_must_extend_to_cardinality_greater_than_3 = 0.01 s = .
+SumOfMultiplesTest#test_more_than_one_factor_with_multiples_within_limit = 0.00 s = .
+SumOfMultiplesTest#test_some_pairs_of_factors_relatively_prime_and_some_not = 0.00 s = .
+SumOfMultiplesTest#test_all_numbers_are_multiples_of_1 = 0.00 s = .
+SumOfMultiplesTest#test_no_factors_means_an_empty_sum = 0.00 s = .
+SumOfMultiplesTest#test_one_factor_is_a_multiple_of_another = 0.00 s = .
+SumOfMultiplesTest#test_three_factors = 0.00 s = .
+SumOfMultiplesTest#test_factors_not_relatively_prime = 0.00 s = .
+
+Finished in 0.019333s, 775.8745 runs/s, 775.8745 assertions/s.
+
+15 runs, 15 assertions, 0 failures, 0 errors, 0 skips
+Coverage report generated for test:exercism to /home/vpayno/git_vpayno/exercism-workspace/ruby/sum-of-multiples/coverage/coverage.xml. 10 / 10 LOC (100.00%) covered
+
+real	0m0.206s
+user	0m0.149s
+sys	0m0.056s
+
+
+ ==============================================================================
+
+Coverage: 100.0%
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.262s
+user	0m0.173s
+sys	0m0.092s
+
+real	0m0.264s
+user	0m0.173s
+sys	0m0.094s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.028s
+user	0m0.029s
+sys	0m0.014s
+
+===============================================================================
+
+/home/vpayno/git_vpayno/exercism-workspace/ruby
+
+===============================================================================
+

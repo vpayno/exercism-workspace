@@ -1,7 +1,23 @@
-=begin
-Write your code for the 'Sum Of Multiples' exercise in this file. Make the tests in
-`sum_of_multiples_test.rb` pass.
+# frozen_string_literal: false
 
-To get started with TDD, see the `README.md` file in your
-`ruby/sum-of-multiples` directory.
-=end
+# https://exercism.org/tracks/ruby/exercises/sum-of-multiples
+# Sum of Multiples exercise
+class SumOfMultiples
+  def initialize(*args)
+    @magical_items = args
+
+    @multiples = []
+  end
+
+  def to(base_value)
+    return 0 if base_value.zero?
+
+    @magical_items.each do |item|
+      (1...base_value).each do |multiple|
+        @multiples.push(multiple) if multiple.modulo(item).zero?
+      end
+    end
+
+    @multiples.uniq.sum
+  end
+end

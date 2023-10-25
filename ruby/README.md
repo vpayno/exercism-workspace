@@ -59,3 +59,4 @@
 - [prime-factors](./prime-factors/README.md)
 - [matching-brackets](./matching-brackets/README.md)
 - [perfect-numbers](./perfect-numbers/README.md)
+- [sum-of-multiples](./sum-of-multiples/README.md)
