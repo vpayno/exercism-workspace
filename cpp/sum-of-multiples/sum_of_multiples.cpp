@@ -12,9 +12,9 @@ int to(std::vector<int> items, int points) {
     std::set<int> multiples{};
 
     for (auto iter : items) {
-        for (int i = 1; i < points; i++) {
-            if (i % iter == 0) {
-                multiples.insert(i);
+        for (int multiple = 1; multiple < points; multiple++) {
+            if (multiple % iter == 0) {
+                multiples.insert(multiple);
             }
         }
     }

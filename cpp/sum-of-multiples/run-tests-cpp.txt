@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.006s
-user	0m0.001s
-sys	0m0.006s
+real	0m0.014s
+user	0m0.003s
+sys	0m0.011s
 
 ===============================================================================
 
@@ -55,12 +55,16 @@ make[1]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/sum-o
 
 === All Tests Passed ===
 
-find . -regextype posix-egrep -regex "^.*(tests-main|CompilerId).*[.](gcda|gcno)$" -print -delete
+find . -regextype posix-egrep -regex '^.*(tests-main|CompilerId).*[.](gcda|gcno)$' -print -delete
 ./build/CMakeFiles/3.22.2/CompilerIdCXX/CMakeCXXCompilerId.gcno
 ./build/CMakeFiles/sum-of-multiples.dir/test/tests-main.cpp.gcno
 ./build/CMakeFiles/sum-of-multiples.dir/test/tests-main.cpp.gcda
 
-find . -regextype posix-egrep -regex "^.*[.](gcda|gcno)25885"
+find . -regextype posix-egrep -regex '^.*[.](gcda|gcno)$'
+./build/CMakeFiles/sum-of-multiples.dir/sum_of_multiples_test.cpp.gcno
+./build/CMakeFiles/sum-of-multiples.dir/sum_of_multiples.cpp.gcno
+./build/CMakeFiles/sum-of-multiples.dir/sum_of_multiples.cpp.gcda
+./build/CMakeFiles/sum-of-multiples.dir/sum_of_multiples_test.cpp.gcda
 
 gcovr --print-summary
 ------------------------------------------------------------------------------
@@ -78,9 +82,9 @@ TOTAL                                         78      73    93%
 lines: 93.6% (73 out of 78)
 branches: 40.4% (93 out of 230)
 
-real	0m9.720s
-user	0m9.028s
-sys	0m0.671s
+real	0m8.907s
+user	0m8.223s
+sys	0m0.677s
 
 ===============================================================================
 
@@ -88,9 +92,9 @@ cmake-format --in-place CMakeLists.txt
 WARNING config_util.py:307: The following configuration options were ignored:
   max_subargs_per_line
 
-real	0m0.153s
-user	0m0.115s
-sys	0m0.037s
+real	0m0.174s
+user	0m0.119s
+sys	0m0.057s
 
 ===============================================================================
 
@@ -110,31 +114,31 @@ found lint:
   Convention: 3
 
 
-real	0m0.176s
-user	0m0.137s
-sys	0m0.041s
+real	0m0.186s
+user	0m0.130s
+sys	0m0.057s
 
 ===============================================================================
 
 Running: clang-format-16 -style=file -i ./sum_of_multiples.cpp ./sum_of_multiples_test.cpp ./sum_of_multiples.hpp
 
-real	0m0.022s
-user	0m0.010s
-sys	0m0.012s
+real	0m0.020s
+user	0m0.008s
+sys	0m0.011s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./sum_of_multiples.cpp ./sum_of_multiples_test.cpp ./sum_of_multiples.hpp
+Running: clang-check-16 --analyze ./sum_of_multiples.cpp ./sum_of_multiples_test.cpp ./sum_of_multiples.hpp
 
-real	0m0.757s
-user	0m0.713s
-sys	0m0.043s
+real	0m0.676s
+user	0m0.636s
+sys	0m0.039s
 
 
-real	0m0.759s
-user	0m0.714s
-sys	0m0.045s
+real	0m0.677s
+user	0m0.638s
+sys	0m0.039s
 
 ===============================================================================
 
@@ -145,15 +149,15 @@ Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 Suppressed 73272 warnings (73267 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 
-real	0m9.375s
-user	0m9.280s
-sys	0m0.064s
+real	0m8.293s
+user	0m8.229s
+sys	0m0.063s
 Running: clang-tidy-16 ./sum_of_multiples.cpp ./sum_of_multiples_test.cpp ./sum_of_multiples.hpp
 
 
-real	0m9.377s
-user	0m9.281s
-sys	0m0.066s
+real	0m8.295s
+user	0m8.230s
+sys	0m0.065s
 
 ===============================================================================
 
