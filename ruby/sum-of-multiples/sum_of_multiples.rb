@@ -1,12 +1,14 @@
 # frozen_string_literal: false
 
+require 'set'
+
 # https://exercism.org/tracks/ruby/exercises/sum-of-multiples
 # Sum of Multiples exercise
 class SumOfMultiples
   def initialize(*args)
     @magical_items = args
 
-    @multiples = []
+    @multiples = Set[]
   end
 
   def to(base_value)
@@ -14,10 +16,10 @@ class SumOfMultiples
 
     @magical_items.each do |item|
       (1...base_value).each do |multiple|
-        @multiples.push(multiple) if multiple.modulo(item).zero?
+        @multiples.add(multiple) if multiple.modulo(item).zero?
       end
     end
 
-    @multiples.uniq.sum
+    @multiples.sum
   end
 end
