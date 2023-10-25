@@ -28,9 +28,9 @@ module PerfectNumber
 
     def to_s
       kinds = {
-        -1 => 'deficient',
-        0 => 'perfect',
-        1 => 'abundant'
+        deficient => 'deficient',
+        perfect => 'perfect',
+        abundant => 'abundant'
       }
 
       kinds[kind]
