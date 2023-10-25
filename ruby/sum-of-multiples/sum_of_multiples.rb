@@ -15,11 +15,17 @@ class SumOfMultiples
     return 0 if base_value.zero?
 
     @magical_items.each do |item|
-      (1...base_value).each do |multiple|
-        @multiples.add(multiple) if multiple.modulo(item).zero?
-      end
+      get_multiples item, base_value
     end
 
     @multiples.sum
   end
+
+  def get_multiples(factor, limit)
+    (1...limit).each do |multiple|
+      @multiples.add(multiple) if multiple.modulo(factor).zero?
+    end
+  end
+
+  private :get_multiples
 end
