@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.011s
-user	0m0.002s
-sys	0m0.007s
+real	0m0.017s
+user	0m0.001s
+sys	0m0.016s
 
 ===============================================================================
 
@@ -55,12 +55,16 @@ make[1]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/isbn-
 
 === All Tests Passed ===
 
-find . -regextype posix-egrep -regex "^.*(tests-main|CompilerId).*[.](gcda|gcno)$" -print -delete
+find . -regextype posix-egrep -regex '^.*(tests-main|CompilerId).*[.](gcda|gcno)$' -print -delete
 ./build/CMakeFiles/3.22.2/CompilerIdCXX/CMakeCXXCompilerId.gcno
 ./build/CMakeFiles/isbn-verifier.dir/test/tests-main.cpp.gcno
 ./build/CMakeFiles/isbn-verifier.dir/test/tests-main.cpp.gcda
 
-find . -regextype posix-egrep -regex "^.*[.](gcda|gcno)9260"
+find . -regextype posix-egrep -regex '^.*[.](gcda|gcno)$'
+./build/CMakeFiles/isbn-verifier.dir/isbn_verifier_test.cpp.gcno
+./build/CMakeFiles/isbn-verifier.dir/isbn_verifier.cpp.gcno
+./build/CMakeFiles/isbn-verifier.dir/isbn_verifier.cpp.gcda
+./build/CMakeFiles/isbn-verifier.dir/isbn_verifier_test.cpp.gcda
 
 gcovr --print-summary
 ------------------------------------------------------------------------------
@@ -69,18 +73,18 @@ Directory: .
 ------------------------------------------------------------------------------
 File                                       Lines    Exec  Cover   Missing
 ------------------------------------------------------------------------------
-isbn_verifier.cpp                             29      29   100%   
+isbn_verifier.cpp                             24      24   100%   
 isbn_verifier_test.cpp                        51      51   100%   
 test/catch.hpp                                34      29    85%   1642-1643,2301-2302,2560
 ------------------------------------------------------------------------------
-TOTAL                                        114     109    95%
+TOTAL                                        109     104    95%
 ------------------------------------------------------------------------------
-lines: 95.6% (109 out of 114)
-branches: 41.1% (156 out of 380)
+lines: 95.4% (104 out of 109)
+branches: 40.3% (149 out of 370)
 
-real	0m12.048s
-user	0m11.206s
-sys	0m0.836s
+real	0m10.677s
+user	0m9.866s
+sys	0m0.807s
 
 ===============================================================================
 
@@ -88,9 +92,9 @@ cmake-format --in-place CMakeLists.txt
 WARNING config_util.py:307: The following configuration options were ignored:
   max_subargs_per_line
 
-real	0m0.158s
-user	0m0.117s
-sys	0m0.043s
+real	0m0.198s
+user	0m0.118s
+sys	0m0.081s
 
 ===============================================================================
 
@@ -110,31 +114,31 @@ found lint:
   Convention: 3
 
 
-real	0m0.173s
-user	0m0.139s
-sys	0m0.037s
+real	0m0.186s
+user	0m0.120s
+sys	0m0.067s
 
 ===============================================================================
 
 Running: clang-format-16 -style=file -i ./isbn_verifier.cpp ./isbn_verifier_test.cpp ./isbn_verifier.hpp
 
-real	0m0.028s
-user	0m0.014s
-sys	0m0.014s
+real	0m0.018s
+user	0m0.006s
+sys	0m0.012s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./isbn_verifier.cpp ./isbn_verifier_test.cpp ./isbn_verifier.hpp
+Running: clang-check-16 --analyze ./isbn_verifier.cpp ./isbn_verifier_test.cpp ./isbn_verifier.hpp
 
-real	0m3.501s
-user	0m3.396s
+real	0m3.189s
+user	0m3.085s
+sys	0m0.103s
+
+
+real	0m3.191s
+user	0m3.085s
 sys	0m0.105s
-
-
-real	0m3.503s
-user	0m3.397s
-sys	0m0.106s
 
 ===============================================================================
 
@@ -145,15 +149,15 @@ Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 Suppressed 116244 warnings (116239 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 
-real	0m21.584s
-user	0m21.439s
-sys	0m0.142s
+real	0m19.478s
+user	0m19.345s
+sys	0m0.130s
 Running: clang-tidy-16 ./isbn_verifier.cpp ./isbn_verifier_test.cpp ./isbn_verifier.hpp
 
 
-real	0m21.586s
-user	0m21.442s
-sys	0m0.142s
+real	0m19.480s
+user	0m19.346s
+sys	0m0.132s
 
 ===============================================================================
 
