@@ -61,3 +61,4 @@
 - [perfect-numbers](./perfect-numbers/README.md)
 - [sum-of-multiples](./sum-of-multiples/README.md)
 - [microwave](./microwave/README.md)
+- [bob](./bob/README.md)

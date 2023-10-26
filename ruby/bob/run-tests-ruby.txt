@@ -1,0 +1,363 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-lint-rubycritic
+
+Running RubyCritic
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rubycritic --path .rubycritic --format console --no-browser .
+
+running flay smells
+
+running flog smells
+[32m.[0m[32m.[0m
+running reek smells
+[32m.[0m[32m.[0m
+running complexity
+[32m.[0m[32m.[0m
+running attributes
+[32m.[0m[32m.[0m
+running churn
+[32m.[0m[32m.[0m
+running simple_cov
+[32m.[0m[32m.[0m
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing safe_level with the 2nd argument of ERB.new is deprecated. Do not use it, and specify other arguments as keyword arguments.
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing trim_mode with the 3rd argument of ERB.new is deprecated. Use keyword argument like ERB.new(str, trim_mode: ...) instead.
+Bob:
+  Rating:       A
+  Churn:        0
+  Complexity:   10.82
+  Duplication:  0
+  Smells:       1
+    * (TooManyStatements) Bob#self.hey has approx 10 statements
+      - bob.rb:6
+
+BobTest:
+  Rating:       B
+  Churn:        0
+  Complexity:   66.0
+  Duplication:  0
+  Smells:       2
+    * (IrresponsibleModule) BobTest has no descriptive comment
+      - bob_test.rb:28
+    * (TooManyMethods) BobTest has at least 25 methods
+      - bob_test.rb:28
+Score: 90.4
+
+real	0m0.691s
+user	0m0.589s
+sys	0m0.099s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.738s
+user	0m0.610s
+sys	0m0.127s
+
+real	0m0.742s
+user	0m0.610s
+sys	0m0.131s
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-lint-formatter
+
+Running Ruby Formatter
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rubocop -a .
+
+Inspecting 2 files
+.C
+
+Offenses:
+
+bob_test.rb:28:1: C: Metrics/ClassLength: Class has too many lines. [102/100]
+class BobTest < Minitest::Test ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+bob_test.rb:28:1: C: Style/Documentation: Missing top-level documentation comment for class BobTest.
+class BobTest < Minitest::Test
+^^^^^^^^^^^^^
+bob_test.rb:31:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    remark = "Tom-ay-to, tom-aaaah-to."
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+bob_test.rb:32:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "Whatever.", Bob.hey(remark), 'Bob hears "Tom-ay-to, tom-aaaah-to.", and..'
+                 ^^^^^^^^^^^
+bob_test.rb:37:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    remark = "WATCH OUT!"
+             ^^^^^^^^^^^^
+bob_test.rb:38:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "Whoa, chill out!", Bob.hey(remark), 'Bob hears "WATCH OUT!", and..'
+                 ^^^^^^^^^^^^^^^^^^
+bob_test.rb:43:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    remark = "FCECDFCAAB"
+             ^^^^^^^^^^^^
+bob_test.rb:44:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "Whoa, chill out!", Bob.hey(remark), 'Bob hears "FCECDFCAAB", and..'
+                 ^^^^^^^^^^^^^^^^^^
+bob_test.rb:49:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    remark = "Does this cryogenic chamber make me look fat?"
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+bob_test.rb:50:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "Sure.", Bob.hey(remark), 'Bob hears "Does this cryogenic chamber make me look fat?", and..'
+                 ^^^^^^^
+bob_test.rb:55:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    remark = "You are, what, like 15?"
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+bob_test.rb:56:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "Sure.", Bob.hey(remark), 'Bob hears "You are, what, like 15?", and..'
+                 ^^^^^^^
+bob_test.rb:61:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    remark = "fffbbcbeab?"
+             ^^^^^^^^^^^^^
+bob_test.rb:62:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "Sure.", Bob.hey(remark), 'Bob hears "fffbbcbeab?", and..'
+                 ^^^^^^^
+bob_test.rb:67:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    remark = "Hi there!"
+             ^^^^^^^^^^^
+bob_test.rb:68:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "Whatever.", Bob.hey(remark), 'Bob hears "Hi there!", and..'
+                 ^^^^^^^^^^^
+bob_test.rb:74:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "Whatever.", Bob.hey(remark), %q(Bob hears "It's OK if you don't want to go work for NASA.", and..)
+                 ^^^^^^^^^^^
+bob_test.rb:85:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    remark = "1, 2, 3 GO!"
+             ^^^^^^^^^^^^^
+bob_test.rb:86:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "Whoa, chill out!", Bob.hey(remark), 'Bob hears "1, 2, 3 GO!", and..'
+                 ^^^^^^^^^^^^^^^^^^
+bob_test.rb:91:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    remark = "1, 2, 3"
+             ^^^^^^^^^
+bob_test.rb:92:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "Whatever.", Bob.hey(remark), 'Bob hears "1, 2, 3", and..'
+                 ^^^^^^^^^^^
+bob_test.rb:97:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    remark = "4?"
+             ^^^^
+bob_test.rb:98:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "Sure.", Bob.hey(remark), 'Bob hears "4?", and..'
+                 ^^^^^^^
+bob_test.rb:104:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "Whoa, chill out!", Bob.hey(remark), %q{Bob hears "ZOMG THE %^*@\#$(*^ ZOMBIES ARE COMING!!11!!1!", and..}
+                 ^^^^^^^^^^^^^^^^^^
+bob_test.rb:104:54: C: [Corrected] Layout/TrailingWhitespace: Trailing whitespace detected.
+    assert_equal 'Whoa, chill out!', Bob.hey(remark), 
+                                                     ^
+bob_test.rb:104:121: C: [Corrected] Layout/LineLength: Line is too long. [123/120]
+    assert_equal "Whoa, chill out!", Bob.hey(remark), %q{Bob hears "ZOMG THE %^*@\#$(*^ ZOMBIES ARE COMING!!11!!1!", and..}
+                                                                                                                        ^^^
+bob_test.rb:105:1: C: [Corrected] Layout/ArgumentAlignment: Align the arguments of a method call if they span more than one line.
+%q{Bob hears "ZOMG THE %^*@\#$(*^ ZOMBIES ARE COMING!!11!!1!", and..}
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+bob_test.rb:109:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    remark = "I HATE THE DENTIST"
+             ^^^^^^^^^^^^^^^^^^^^
+bob_test.rb:110:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "Whoa, chill out!", Bob.hey(remark), 'Bob hears "I HATE THE DENTIST", and..'
+                 ^^^^^^^^^^^^^^^^^^
+bob_test.rb:115:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    remark = "Ending with ? means a question."
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+bob_test.rb:116:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "Whatever.", Bob.hey(remark), 'Bob hears "Ending with ? means a question.", and..'
+                 ^^^^^^^^^^^
+bob_test.rb:121:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    remark = ":) ?"
+             ^^^^^^
+bob_test.rb:122:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "Sure.", Bob.hey(remark), 'Bob hears ":) ?", and..'
+                 ^^^^^^^
+bob_test.rb:127:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    remark = "Wait! Hang on. Are you going to be OK?"
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+bob_test.rb:128:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "Sure.", Bob.hey(remark), 'Bob hears "Wait! Hang on. Are you going to be OK?", and..'
+                 ^^^^^^^
+bob_test.rb:133:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    remark = ""
+             ^^
+bob_test.rb:134:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "Fine. Be that way!", Bob.hey(remark), 'Bob hears "", and..'
+                 ^^^^^^^^^^^^^^^^^^^^
+bob_test.rb:139:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    remark = "          "
+             ^^^^^^^^^^^^
+bob_test.rb:140:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "Fine. Be that way!", Bob.hey(remark), 'Bob hears "          ", and..'
+                 ^^^^^^^^^^^^^^^^^^^^
+bob_test.rb:146:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "Fine. Be that way!", Bob.hey(remark), %q(Bob hears "\t\t\t\t\t\t\t\t\t\t", and..)
+                 ^^^^^^^^^^^^^^^^^^^^
+bob_test.rb:152:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "Whatever.", Bob.hey(remark), %q(Bob hears "\nDoes this cryogenic chamber make me look fat?\nNo.", and..)
+                 ^^^^^^^^^^^
+bob_test.rb:152:121: C: [Corrected] Layout/LineLength: Line is too long. [122/120]
+    assert_equal "Whatever.", Bob.hey(remark), %q(Bob hears "\nDoes this cryogenic chamber make me look fat?\nNo.", and..)
+                                                                                                                        ^^
+bob_test.rb:153:47: C: [Corrected] Layout/TrailingWhitespace: Trailing whitespace detected.
+    assert_equal 'Whatever.', Bob.hey(remark), 
+                                              ^
+bob_test.rb:154:1: C: [Corrected] Layout/ArgumentAlignment: Align the arguments of a method call if they span more than one line.
+%q(Bob hears "\nDoes this cryogenic chamber make me look fat?\nNo.", and..)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+bob_test.rb:157:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    remark = "         hmmmmmmm..."
+             ^^^^^^^^^^^^^^^^^^^^^^
+bob_test.rb:158:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "Whatever.", Bob.hey(remark), 'Bob hears "         hmmmmmmm...", and..'
+                 ^^^^^^^^^^^
+bob_test.rb:163:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    remark = "Okay if like my  spacebar  quite a bit?   "
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+bob_test.rb:164:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "Sure.", Bob.hey(remark), 'Bob hears "Okay if like my  spacebar  quite a bit?   ", and..'
+                 ^^^^^^^
+bob_test.rb:170:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "Fine. Be that way!", Bob.hey(remark), %q(Bob hears "\n\r \t", and..)
+                 ^^^^^^^^^^^^^^^^^^^^
+bob_test.rb:175:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    remark = "This is a statement ending with whitespace      "
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+bob_test.rb:176:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "Whatever.", Bob.hey(remark), 'Bob hears "This is a statement ending with whitespace      ", and..'
+                 ^^^^^^^^^^^
+
+2 files inspected, 51 offenses detected, 49 offenses corrected
+
+real	0m0.992s
+user	0m0.875s
+sys	0m0.202s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m1.065s
+user	0m0.910s
+sys	0m0.245s
+
+real	0m1.067s
+user	0m0.910s
+sys	0m0.246s
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-test-with-coverage
+
+Running Ruby Tests With Coverage
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rm -rf ./coverage
+
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.001s
+
+
+ ==============================================================================
+
+Running: ruby ./bob_test.rb -v
+
+Run options: -v --seed 23871
+
+# Running:
+
+BobTest#test_no_letters = 0.00 s = .
+BobTest#test_silence = 0.00 s = .
+BobTest#test_non_question_ending_with_whitespace = 0.00 s = .
+BobTest#test_using_acronyms_in_regular_speech = 0.00 s = .
+BobTest#test_ending_with_whitespace = 0.00 s = .
+BobTest#test_prattling_on = 0.00 s = .
+BobTest#test_alternate_silence = 0.00 s = .
+BobTest#test_asking_gibberish = 0.00 s = .
+BobTest#test_forceful_question = 0.00 s = .
+BobTest#test_asking_a_numeric_question = 0.00 s = .
+BobTest#test_multiple_line_question = 0.00 s = .
+BobTest#test_non_letters_with_question = 0.00 s = .
+BobTest#test_stating_something = 0.00 s = .
+BobTest#test_shouting_numbers = 0.00 s = .
+BobTest#test_shouting_with_no_exclamation_mark = 0.00 s = .
+BobTest#test_statement_containing_question_mark = 0.00 s = .
+BobTest#test_other_whitespace = 0.00 s = .
+BobTest#test_question_with_no_letters = 0.00 s = .
+BobTest#test_talking_forcefully = 0.00 s = .
+BobTest#test_shouting = 0.00 s = .
+BobTest#test_starting_with_whitespace = 0.00 s = .
+BobTest#test_prolonged_silence = 0.00 s = .
+BobTest#test_shouting_gibberish = 0.00 s = .
+BobTest#test_shouting_with_special_characters = 0.00 s = .
+BobTest#test_asking_a_question = 0.00 s = .
+
+Finished in 0.001967s, 12708.8056 runs/s, 12708.8056 assertions/s.
+
+25 runs, 25 assertions, 0 failures, 0 errors, 0 skips
+Coverage report generated for test:exercism to /home/vpayno/git_vpayno/exercism-workspace/ruby/bob/coverage/coverage.xml. 12 / 12 LOC (100.00%) covered
+
+real	0m0.182s
+user	0m0.131s
+sys	0m0.051s
+
+
+ ==============================================================================
+
+Coverage: 100.0%
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.254s
+user	0m0.171s
+sys	0m0.089s
+
+real	0m0.256s
+user	0m0.173s
+sys	0m0.090s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.021s
+user	0m0.019s
+sys	0m0.014s
+
+===============================================================================
+
+/home/vpayno/git_vpayno/exercism-workspace/ruby
+
+===============================================================================
+
