@@ -21,3 +21,8 @@ Build a class that accepts buttons entered and converts them to the proper displ
 
 - @aleksandrilyin
 - @petertseng
+
+### My Solution
+
+- [my solution](./microwave.rb)
+- [run-tests](./run-tests-ruby.txt)
