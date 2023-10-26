@@ -63,3 +63,4 @@
 - [microwave](./microwave/README.md)
 - [bob](./bob/README.md)
 - [isbn-verifier](./isbn-verifier/README.md)
+- [protein-translation](./protein-translation/README.md)

@@ -72,3 +72,8 @@ Learn more about [protein translation on Wikipedia][protein-translation].
 ### Based on
 
 Tyler Long
+
+### My Solution
+
+- [my solution](./protein_translation.rb)
+- [run-tests](./run-tests-ruby.txt)

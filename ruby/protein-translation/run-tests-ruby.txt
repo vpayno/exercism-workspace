@@ -1,0 +1,440 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-lint-rubycritic
+
+Running RubyCritic
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rubycritic --path .rubycritic --format console --no-browser .
+
+running flay smells
+
+running flog smells
+[32m.[0m[32m.[0m
+running reek smells
+[32m.[0m[32m.[0m
+running complexity
+[32m.[0m[32m.[0m
+running attributes
+[32m.[0m[32m.[0m
+running churn
+[32m.[0m[32m.[0m
+running simple_cov
+[32m.[0m[32m.[0m
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing safe_level with the 2nd argument of ERB.new is deprecated. Do not use it, and specify other arguments as keyword arguments.
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing trim_mode with the 3rd argument of ERB.new is deprecated. Use keyword argument like ERB.new(str, trim_mode: ...) instead.
+Translation:
+  Rating:       A
+  Churn:        0
+  Complexity:   22.05
+  Duplication:  0
+  Smells:       1
+    * (TooManyStatements) Translation#self.of_rna has approx 11 statements
+      - protein_translation.rb:34
+
+ProteinTranslationTest:
+  Rating:       B
+  Churn:        0
+  Complexity:   96.24
+  Duplication:  0
+  Smells:       17
+    * (IrresponsibleModule) ProteinTranslationTest has no descriptive comment
+      - protein_translation_test.rb:28
+    * (TooManyMethods) ProteinTranslationTest has at least 30 methods
+      - protein_translation_test.rb:28
+    * (UncommunicativeMethodName) ProteinTranslationTest#test_cysteine_rna_sequence_1 has the name 'test_cysteine_rna_sequence_1'
+      - protein_translation_test.rb:113
+    * (UncommunicativeMethodName) ProteinTranslationTest#test_cysteine_rna_sequence_2 has the name 'test_cysteine_rna_sequence_2'
+      - protein_translation_test.rb:120
+    * (UncommunicativeMethodName) ProteinTranslationTest#test_leucine_rna_sequence_1 has the name 'test_leucine_rna_sequence_1'
+      - protein_translation_test.rb:57
+    * (UncommunicativeMethodName) ProteinTranslationTest#test_leucine_rna_sequence_2 has the name 'test_leucine_rna_sequence_2'
+      - protein_translation_test.rb:64
+    * (UncommunicativeMethodName) ProteinTranslationTest#test_phenylalanine_rna_sequence_1 has the name 'test_phenylalanine_rna_sequence_1'
+      - protein_translation_test.rb:43
+    * (UncommunicativeMethodName) ProteinTranslationTest#test_phenylalanine_rna_sequence_2 has the name 'test_phenylalanine_rna_sequence_2'
+      - protein_translation_test.rb:50
+    * (UncommunicativeMethodName) ProteinTranslationTest#test_serine_rna_sequence_1 has the name 'test_serine_rna_sequence_1'
+      - protein_translation_test.rb:71
+    * (UncommunicativeMethodName) ProteinTranslationTest#test_serine_rna_sequence_2 has the name 'test_serine_rna_sequence_2'
+      - protein_translation_test.rb:78
+    * (UncommunicativeMethodName) ProteinTranslationTest#test_serine_rna_sequence_3 has the name 'test_serine_rna_sequence_3'
+      - protein_translation_test.rb:85
+    * (UncommunicativeMethodName) ProteinTranslationTest#test_serine_rna_sequence_4 has the name 'test_serine_rna_sequence_4'
+      - protein_translation_test.rb:92
+    * (UncommunicativeMethodName) ProteinTranslationTest#test_stop_codon_rna_sequence_1 has the name 'test_stop_codon_rna_sequence_1'
+      - protein_translation_test.rb:134
+    * (UncommunicativeMethodName) ProteinTranslationTest#test_stop_codon_rna_sequence_2 has the name 'test_stop_codon_rna_sequence_2'
+      - protein_translation_test.rb:141
+    * (UncommunicativeMethodName) ProteinTranslationTest#test_stop_codon_rna_sequence_3 has the name 'test_stop_codon_rna_sequence_3'
+      - protein_translation_test.rb:148
+    * (UncommunicativeMethodName) ProteinTranslationTest#test_tyrosine_rna_sequence_1 has the name 'test_tyrosine_rna_sequence_1'
+      - protein_translation_test.rb:99
+    * (UncommunicativeMethodName) ProteinTranslationTest#test_tyrosine_rna_sequence_2 has the name 'test_tyrosine_rna_sequence_2'
+      - protein_translation_test.rb:106
+Score: 85.21
+
+real	0m0.652s
+user	0m0.551s
+sys	0m0.098s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.733s
+user	0m0.582s
+sys	0m0.153s
+
+real	0m0.736s
+user	0m0.583s
+sys	0m0.155s
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-lint-formatter
+
+Running Ruby Formatter
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rubocop -a .
+
+Inspecting 2 files
+CC
+
+Offenses:
+
+protein_translation.rb:8:3: C: Metrics/MethodLength: Method has too many lines. [21/10]
+  def self.to_protein(codon) ...
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^
+protein_translation.rb:34:3: C: Metrics/MethodLength: Method has too many lines. [13/10]
+  def self.of_rna(rna_sequence) ...
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+protein_translation_test.rb:28:1: C: Metrics/ClassLength: Class has too many lines. [153/100]
+class ProteinTranslationTest < Minitest::Test ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+protein_translation_test.rb:28:1: C: Style/Documentation: Missing top-level documentation comment for class ProteinTranslationTest.
+class ProteinTranslationTest < Minitest::Test
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+protein_translation_test.rb:31:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    strand = ""
+             ^^
+protein_translation_test.rb:38:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    strand = "AUG"
+             ^^^^^
+protein_translation_test.rb:39:17: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    expected = ["Methionine"]
+                ^^^^^^^^^^^^
+protein_translation_test.rb:43:7: C: Naming/VariableNumber: Use normalcase for method name numbers.
+  def test_phenylalanine_rna_sequence_1
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+protein_translation_test.rb:45:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    strand = "UUU"
+             ^^^^^
+protein_translation_test.rb:46:17: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    expected = ["Phenylalanine"]
+                ^^^^^^^^^^^^^^^
+protein_translation_test.rb:50:7: C: Naming/VariableNumber: Use normalcase for method name numbers.
+  def test_phenylalanine_rna_sequence_2
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+protein_translation_test.rb:52:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    strand = "UUC"
+             ^^^^^
+protein_translation_test.rb:53:17: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    expected = ["Phenylalanine"]
+                ^^^^^^^^^^^^^^^
+protein_translation_test.rb:57:7: C: Naming/VariableNumber: Use normalcase for method name numbers.
+  def test_leucine_rna_sequence_1
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+protein_translation_test.rb:59:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    strand = "UUA"
+             ^^^^^
+protein_translation_test.rb:60:17: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    expected = ["Leucine"]
+                ^^^^^^^^^
+protein_translation_test.rb:64:7: C: Naming/VariableNumber: Use normalcase for method name numbers.
+  def test_leucine_rna_sequence_2
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+protein_translation_test.rb:66:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    strand = "UUG"
+             ^^^^^
+protein_translation_test.rb:67:17: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    expected = ["Leucine"]
+                ^^^^^^^^^
+protein_translation_test.rb:71:7: C: Naming/VariableNumber: Use normalcase for method name numbers.
+  def test_serine_rna_sequence_1
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+protein_translation_test.rb:73:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    strand = "UCU"
+             ^^^^^
+protein_translation_test.rb:74:17: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    expected = ["Serine"]
+                ^^^^^^^^
+protein_translation_test.rb:78:7: C: Naming/VariableNumber: Use normalcase for method name numbers.
+  def test_serine_rna_sequence_2
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+protein_translation_test.rb:80:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    strand = "UCC"
+             ^^^^^
+protein_translation_test.rb:81:17: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    expected = ["Serine"]
+                ^^^^^^^^
+protein_translation_test.rb:85:7: C: Naming/VariableNumber: Use normalcase for method name numbers.
+  def test_serine_rna_sequence_3
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+protein_translation_test.rb:87:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    strand = "UCA"
+             ^^^^^
+protein_translation_test.rb:88:17: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    expected = ["Serine"]
+                ^^^^^^^^
+protein_translation_test.rb:92:7: C: Naming/VariableNumber: Use normalcase for method name numbers.
+  def test_serine_rna_sequence_4
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+protein_translation_test.rb:94:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    strand = "UCG"
+             ^^^^^
+protein_translation_test.rb:95:17: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    expected = ["Serine"]
+                ^^^^^^^^
+protein_translation_test.rb:99:7: C: Naming/VariableNumber: Use normalcase for method name numbers.
+  def test_tyrosine_rna_sequence_1
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+protein_translation_test.rb:101:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    strand = "UAU"
+             ^^^^^
+protein_translation_test.rb:102:17: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    expected = ["Tyrosine"]
+                ^^^^^^^^^^
+protein_translation_test.rb:106:7: C: Naming/VariableNumber: Use normalcase for method name numbers.
+  def test_tyrosine_rna_sequence_2
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+protein_translation_test.rb:108:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    strand = "UAC"
+             ^^^^^
+protein_translation_test.rb:109:17: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    expected = ["Tyrosine"]
+                ^^^^^^^^^^
+protein_translation_test.rb:113:7: C: Naming/VariableNumber: Use normalcase for method name numbers.
+  def test_cysteine_rna_sequence_1
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+protein_translation_test.rb:115:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    strand = "UGU"
+             ^^^^^
+protein_translation_test.rb:116:17: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    expected = ["Cysteine"]
+                ^^^^^^^^^^
+protein_translation_test.rb:120:7: C: Naming/VariableNumber: Use normalcase for method name numbers.
+  def test_cysteine_rna_sequence_2
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+protein_translation_test.rb:122:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    strand = "UGC"
+             ^^^^^
+protein_translation_test.rb:123:17: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    expected = ["Cysteine"]
+                ^^^^^^^^^^
+protein_translation_test.rb:129:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    strand = "UGG"
+             ^^^^^
+protein_translation_test.rb:130:17: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    expected = ["Tryptophan"]
+                ^^^^^^^^^^^^
+protein_translation_test.rb:134:7: C: Naming/VariableNumber: Use normalcase for method name numbers.
+  def test_stop_codon_rna_sequence_1
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+protein_translation_test.rb:136:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    strand = "UAA"
+             ^^^^^
+protein_translation_test.rb:141:7: C: Naming/VariableNumber: Use normalcase for method name numbers.
+  def test_stop_codon_rna_sequence_2
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+protein_translation_test.rb:143:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    strand = "UAG"
+             ^^^^^
+protein_translation_test.rb:148:7: C: Naming/VariableNumber: Use normalcase for method name numbers.
+  def test_stop_codon_rna_sequence_3
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+protein_translation_test.rb:150:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    strand = "UGA"
+             ^^^^^
+protein_translation_test.rb:157:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    strand = "UUUUUU"
+             ^^^^^^^^
+protein_translation_test.rb:164:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    strand = "UUAUUG"
+             ^^^^^^^^
+protein_translation_test.rb:171:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    strand = "AUGUUUUGG"
+             ^^^^^^^^^^^
+protein_translation_test.rb:178:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    strand = "UAGUGG"
+             ^^^^^^^^
+protein_translation_test.rb:185:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    strand = "UGGUAG"
+             ^^^^^^^^
+protein_translation_test.rb:186:17: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    expected = ["Tryptophan"]
+                ^^^^^^^^^^^^
+protein_translation_test.rb:192:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    strand = "AUGUUUUAA"
+             ^^^^^^^^^^^
+protein_translation_test.rb:199:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    strand = "UGGUAGUGG"
+             ^^^^^^^^^^^
+protein_translation_test.rb:200:17: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    expected = ["Tryptophan"]
+                ^^^^^^^^^^^^
+protein_translation_test.rb:206:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    strand = "UGGUGUUAUUAAUGGUUU"
+             ^^^^^^^^^^^^^^^^^^^^
+protein_translation_test.rb:213:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    strand = "AAA"
+             ^^^^^
+protein_translation_test.rb:221:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    strand = "XYZ"
+             ^^^^^
+protein_translation_test.rb:229:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    strand = "AUGU"
+             ^^^^^^
+protein_translation_test.rb:237:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    strand = "UUCUUCUAAUGGU"
+             ^^^^^^^^^^^^^^^
+
+2 files inspected, 65 offenses detected, 46 offenses corrected
+
+real	0m1.080s
+user	0m0.949s
+sys	0m0.230s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m1.151s
+user	0m0.983s
+sys	0m0.271s
+
+real	0m1.152s
+user	0m0.984s
+sys	0m0.272s
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-test-with-coverage
+
+Running Ruby Tests With Coverage
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rm -rf ./coverage
+
+
+real	0m0.001s
+user	0m0.001s
+sys	0m0.000s
+
+
+ ==============================================================================
+
+Running: ruby ./protein_translation_test.rb -v
+
+Run options: -v --seed 13077
+
+# Running:
+
+ProteinTranslationTest#test_serine_rna_sequence_3 = 0.00 s = .
+ProteinTranslationTest#test_stop_codon_rna_sequence_3 = 0.00 s = .
+ProteinTranslationTest#test_translation_stops_if_stop_codon_in_middle_of_three_codon_sequence = 0.00 s = .
+ProteinTranslationTest#test_serine_rna_sequence_4 = 0.00 s = .
+ProteinTranslationTest#test_translation_stops_if_stop_codon_at_end_of_three_codon_sequence = 0.00 s = .
+ProteinTranslationTest#test_leucine_rna_sequence_1 = 0.00 s = .
+ProteinTranslationTest#test_tyrosine_rna_sequence_1 = 0.00 s = .
+ProteinTranslationTest#test_cysteine_rna_sequence_2 = 0.00 s = .
+ProteinTranslationTest#test_methionine_rna_sequence = 0.00 s = .
+ProteinTranslationTest#test_leucine_rna_sequence_2 = 0.00 s = .
+ProteinTranslationTest#test_serine_rna_sequence_1 = 0.00 s = .
+ProteinTranslationTest#test_empty_rna_sequence_results_in_no_proteins = 0.00 s = .
+ProteinTranslationTest#test_tryptophan_rna_sequence = 0.00 s = .
+ProteinTranslationTest#test_phenylalanine_rna_sequence_2 = 0.00 s = .
+ProteinTranslationTest#test_sequence_of_two_different_protein_codons_translates_into_proteins = 0.00 s = .
+ProteinTranslationTest#test_translation_stops_if_stop_codon_at_end_of_two_codon_sequence = 0.00 s = .
+ProteinTranslationTest#test_translation_stops_if_stop_codon_at_beginning_of_sequence = 0.00 s = .
+ProteinTranslationTest#test_incomplete_rna_sequence_can_translate_if_valid_until_a_stop_codon = 0.00 s = .
+ProteinTranslationTest#test_non_existing_codon_cant_translate = 0.00 s = .
+ProteinTranslationTest#test_stop_codon_rna_sequence_1 = 0.00 s = .
+ProteinTranslationTest#test_sequence_of_two_protein_codons_translates_into_proteins = 0.00 s = .
+ProteinTranslationTest#test_serine_rna_sequence_2 = 0.00 s = .
+ProteinTranslationTest#test_stop_codon_rna_sequence_2 = 0.00 s = .
+ProteinTranslationTest#test_translation_stops_if_stop_codon_in_middle_of_six_codon_sequence = 0.00 s = .
+ProteinTranslationTest#test_translate_rna_strand_into_correct_protein_list = 0.00 s = .
+ProteinTranslationTest#test_incomplete_rna_sequence_cant_translate = 0.00 s = .
+ProteinTranslationTest#test_unknown_amino_acids_not_part_of_a_codon_cant_translate = 0.00 s = .
+ProteinTranslationTest#test_cysteine_rna_sequence_1 = 0.00 s = .
+ProteinTranslationTest#test_phenylalanine_rna_sequence_1 = 0.00 s = .
+ProteinTranslationTest#test_tyrosine_rna_sequence_2 = 0.00 s = .
+
+Finished in 0.002871s, 10451.0863 runs/s, 10451.0863 assertions/s.
+
+30 runs, 30 assertions, 0 failures, 0 errors, 0 skips
+Coverage report generated for test:exercism to /home/vpayno/git_vpayno/exercism-workspace/ruby/protein-translation/coverage/coverage.xml. 23 / 23 LOC (100.00%) covered
+
+real	0m0.186s
+user	0m0.135s
+sys	0m0.049s
+
+
+ ==============================================================================
+
+Coverage: 100.0%
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.267s
+user	0m0.171s
+sys	0m0.098s
+
+real	0m0.269s
+user	0m0.173s
+sys	0m0.099s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.025s
+user	0m0.023s
+sys	0m0.016s
+
+===============================================================================
+
+/home/vpayno/git_vpayno/exercism-workspace/ruby
+
+===============================================================================
+
