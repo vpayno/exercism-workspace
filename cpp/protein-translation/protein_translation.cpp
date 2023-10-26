@@ -15,18 +15,12 @@ ProteinList proteins(RnaSequence rna_sequence) {
         return result;
     }
 
-    if (rna_sequence.length() % k_codon_length != 0) {
-        return result;
-    }
-
     const std::string re_str{R"--((\w\w\w))--"};
     const std::regex re_exp(re_str);
 
     auto words_begin =
         std::sregex_iterator(rna_sequence.begin(), rna_sequence.end(), re_exp);
     auto words_end = std::sregex_iterator();
-
-    // auto codon_count = std::distance(words_begin, words_end);
 
     for (auto i = words_begin; i != words_end; ++i) {
         auto match = *i;

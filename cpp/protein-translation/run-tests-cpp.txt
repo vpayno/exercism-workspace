@@ -6,8 +6,8 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.008s
-user	0m0.001s
+real	0m0.018s
+user	0m0.000s
 sys	0m0.006s
 
 ===============================================================================
@@ -55,12 +55,16 @@ make[1]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/prote
 
 === All Tests Passed ===
 
-find . -regextype posix-egrep -regex "^.*(tests-main|CompilerId).*[.](gcda|gcno)$" -print -delete
+find . -regextype posix-egrep -regex '^.*(tests-main|CompilerId).*[.](gcda|gcno)$' -print -delete
 ./build/CMakeFiles/3.22.2/CompilerIdCXX/CMakeCXXCompilerId.gcno
 ./build/CMakeFiles/protein-translation.dir/test/tests-main.cpp.gcno
 ./build/CMakeFiles/protein-translation.dir/test/tests-main.cpp.gcda
 
-find . -regextype posix-egrep -regex "^.*[.](gcda|gcno)6783"
+find . -regextype posix-egrep -regex '^.*[.](gcda|gcno)$'
+./build/CMakeFiles/protein-translation.dir/protein_translation_test.cpp.gcno
+./build/CMakeFiles/protein-translation.dir/protein_translation.cpp.gcno
+./build/CMakeFiles/protein-translation.dir/protein_translation.cpp.gcda
+./build/CMakeFiles/protein-translation.dir/protein_translation_test.cpp.gcda
 
 gcovr --print-summary
 ------------------------------------------------------------------------------
@@ -69,18 +73,18 @@ Directory: .
 ------------------------------------------------------------------------------
 File                                       Lines    Exec  Cover   Missing
 ------------------------------------------------------------------------------
-protein_translation.cpp                       27      20    74%   11,15,19,40,42,53,55
+protein_translation.cpp                       25      19    76%   11,15,34,36,47,49
 protein_translation_test.cpp                  69      69   100%   
 test/catch.hpp                                48      27    56%   1448-1450,1642-1643,1827-1833,1835-1836,2016-2017,2039-2040,2227,2229,2560
 ------------------------------------------------------------------------------
-TOTAL                                        144     116    80%
+TOTAL                                        142     115    81%
 ------------------------------------------------------------------------------
-lines: 80.6% (116 out of 144)
-branches: 40.9% (265 out of 648)
+lines: 81.0% (115 out of 142)
+branches: 40.9% (264 out of 646)
 
-real	0m12.058s
-user	0m11.233s
-sys	0m0.822s
+real	0m10.987s
+user	0m10.156s
+sys	0m0.818s
 
 ===============================================================================
 
@@ -88,9 +92,9 @@ cmake-format --in-place CMakeLists.txt
 WARNING config_util.py:307: The following configuration options were ignored:
   max_subargs_per_line
 
-real	0m0.153s
-user	0m0.100s
-sys	0m0.055s
+real	0m0.189s
+user	0m0.114s
+sys	0m0.076s
 
 ===============================================================================
 
@@ -110,31 +114,31 @@ found lint:
   Convention: 3
 
 
-real	0m0.179s
-user	0m0.139s
-sys	0m0.042s
+real	0m0.180s
+user	0m0.122s
+sys	0m0.058s
 
 ===============================================================================
 
 Running: clang-format-16 -style=file -i ./protein_translation.cpp ./protein_translation_test.cpp ./protein_translation.hpp
 
-real	0m0.020s
+real	0m0.021s
 user	0m0.011s
 sys	0m0.009s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./protein_translation.cpp ./protein_translation_test.cpp ./protein_translation.hpp
+Running: clang-check-16 --analyze ./protein_translation.cpp ./protein_translation_test.cpp ./protein_translation.hpp
 
-real	0m3.521s
-user	0m3.415s
-sys	0m0.106s
+real	0m3.146s
+user	0m3.056s
+sys	0m0.089s
 
 
-real	0m3.523s
-user	0m3.416s
-sys	0m0.106s
+real	0m3.148s
+user	0m3.056s
+sys	0m0.091s
 
 ===============================================================================
 
@@ -145,15 +149,15 @@ Running: ../../.github/citools/cpp/clang-tidy | head -n 100
 Suppressed 116113 warnings (116108 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 
-real	0m22.911s
-user	0m22.779s
-sys	0m0.128s
+real	0m20.351s
+user	0m20.232s
+sys	0m0.114s
 Running: clang-tidy-16 ./protein_translation.cpp ./protein_translation_test.cpp ./protein_translation.hpp
 
 
-real	0m22.913s
-user	0m22.780s
-sys	0m0.130s
+real	0m20.352s
+user	0m20.233s
+sys	0m0.116s
 
 ===============================================================================
 
