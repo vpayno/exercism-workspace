@@ -1,0 +1,274 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-lint-rubycritic
+
+Running RubyCritic
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rubycritic --path .rubycritic --format console --no-browser .
+
+running flay smells
+
+running flog smells
+[32m.[0m[32m.[0m
+running reek smells
+[32m.[0m[32m.[0m
+running complexity
+[32m.[0m[32m.[0m
+running attributes
+[32m.[0m[32m.[0m
+running churn
+[32m.[0m[32m.[0m
+running simple_cov
+[32m.[0m[32m.[0m
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing safe_level with the 2nd argument of ERB.new is deprecated. Do not use it, and specify other arguments as keyword arguments.
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing trim_mode with the 3rd argument of ERB.new is deprecated. Use keyword argument like ERB.new(str, trim_mode: ...) instead.
+IsbnVerifier:
+  Rating:       A
+  Churn:        0
+  Complexity:   17.4
+  Duplication:  0
+  Smells:       1
+    * (TooManyStatements) IsbnVerifier#self.valid? has approx 6 statements
+      - isbn_verifier.rb:6
+
+IsbnVerifierTest:
+  Rating:       B
+  Churn:        0
+  Complexity:   50.16
+  Duplication:  0
+  Smells:       4
+    * (IrresponsibleModule) IsbnVerifierTest has no descriptive comment
+      - isbn_verifier_test.rb:28
+    * (TooManyMethods) IsbnVerifierTest has at least 19 methods
+      - isbn_verifier_test.rb:28
+    * (UncommunicativeMethodName) IsbnVerifierTest#test_check_digit_of_x_should_not_be_used_for_0 has the name 'test_check_digit_of_x_should_not_be_used_for_0'
+      - isbn_verifier_test.rb:107
+    * (UncommunicativeMethodName) IsbnVerifierTest#test_valid_isbn_with_a_check_digit_of_10 has the name 'test_valid_isbn_with_a_check_digit_of_10'
+      - isbn_verifier_test.rb:41
+Score: 91.56
+
+real	0m0.667s
+user	0m0.552s
+sys	0m0.113s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.726s
+user	0m0.584s
+sys	0m0.143s
+
+real	0m0.729s
+user	0m0.584s
+sys	0m0.146s
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-lint-formatter
+
+Running Ruby Formatter
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rubocop -a .
+
+Inspecting 2 files
+.C
+
+Offenses:
+
+isbn_verifier_test.rb:28:1: C: Style/Documentation: Missing top-level documentation comment for class IsbnVerifierTest.
+class IsbnVerifierTest < Minitest::Test
+^^^^^^^^^^^^^^^^^^^^^^
+isbn_verifier_test.rb:31:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    string = "3-598-21508-8"
+             ^^^^^^^^^^^^^^^
+isbn_verifier_test.rb:37:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    string = "3-598-21508-9"
+             ^^^^^^^^^^^^^^^
+isbn_verifier_test.rb:41:7: C: Naming/VariableNumber: Use normalcase for method name numbers.
+  def test_valid_isbn_with_a_check_digit_of_10
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+isbn_verifier_test.rb:43:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    string = "3-598-21507-X"
+             ^^^^^^^^^^^^^^^
+isbn_verifier_test.rb:49:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    string = "3-598-21507-A"
+             ^^^^^^^^^^^^^^^
+isbn_verifier_test.rb:55:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    string = "4-598-21507-B"
+             ^^^^^^^^^^^^^^^
+isbn_verifier_test.rb:61:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    string = "3-598-P1581-X"
+             ^^^^^^^^^^^^^^^
+isbn_verifier_test.rb:67:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    string = "3-598-2X507-9"
+             ^^^^^^^^^^^^^^^
+isbn_verifier_test.rb:73:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    string = "3598215088"
+             ^^^^^^^^^^^^
+isbn_verifier_test.rb:79:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    string = "359821507X"
+             ^^^^^^^^^^^^
+isbn_verifier_test.rb:85:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    string = "359821507"
+             ^^^^^^^^^^^
+isbn_verifier_test.rb:91:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    string = "3598215078X"
+             ^^^^^^^^^^^^^
+isbn_verifier_test.rb:97:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    string = "00"
+             ^^^^
+isbn_verifier_test.rb:103:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    string = "3-598-21507"
+             ^^^^^^^^^^^^^
+isbn_verifier_test.rb:107:7: C: Naming/VariableNumber: Use normalcase for method name numbers.
+  def test_check_digit_of_x_should_not_be_used_for_0
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+isbn_verifier_test.rb:109:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    string = "3-598-21515-X"
+             ^^^^^^^^^^^^^^^
+isbn_verifier_test.rb:115:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    string = ""
+             ^^
+isbn_verifier_test.rb:121:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    string = "134456729"
+             ^^^^^^^^^^^
+isbn_verifier_test.rb:127:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    string = "3132P34035"
+             ^^^^^^^^^^^^
+isbn_verifier_test.rb:133:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    string = "3598P215088"
+             ^^^^^^^^^^^^^
+isbn_verifier_test.rb:139:14: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    string = "98245726788"
+             ^^^^^^^^^^^^^
+
+2 files inspected, 22 offenses detected, 19 offenses corrected
+
+real	0m1.019s
+user	0m0.894s
+sys	0m0.214s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m1.085s
+user	0m0.926s
+sys	0m0.252s
+
+real	0m1.087s
+user	0m0.926s
+sys	0m0.254s
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-test-with-coverage
+
+Running Ruby Tests With Coverage
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rm -rf ./coverage
+
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.001s
+
+
+ ==============================================================================
+
+Running: ruby ./isbn_verifier_test.rb -v
+
+Run options: -v --seed 27669
+
+# Running:
+
+IsbnVerifierTest#test_check_digit_of_x_should_not_be_used_for_0 = 0.00 s = .
+IsbnVerifierTest#test_isbn_without_check_digit_and_dashes = 0.00 s = .
+IsbnVerifierTest#test_x_is_only_valid_as_a_check_digit = 0.00 s = .
+IsbnVerifierTest#test_invalid_characters_are_not_ignored_before_checking_length = 0.00 s = .
+IsbnVerifierTest#test_check_digit_is_a_character_other_than_x = 0.00 s = .
+IsbnVerifierTest#test_valid_isbn = 0.00 s = .
+IsbnVerifierTest#test_valid_isbn_without_separating_dashes = 0.00 s = .
+IsbnVerifierTest#test_input_is_9_characters = 0.00 s = .
+IsbnVerifierTest#test_isbn_without_check_digit = 0.00 s = .
+IsbnVerifierTest#test_isbn_without_separating_dashes_and_x_as_check_digit = 0.00 s = .
+IsbnVerifierTest#test_invalid_check_digit_in_isbn_is_not_treated_as_zero = 0.00 s = .
+IsbnVerifierTest#test_valid_isbn_with_a_check_digit_of_10 = 0.00 s = .
+IsbnVerifierTest#test_empty_isbn = 0.00 s = .
+IsbnVerifierTest#test_input_is_too_long_but_contains_a_valid_isbn = 0.00 s = .
+IsbnVerifierTest#test_invalid_isbn_check_digit = 0.00 s = .
+IsbnVerifierTest#test_invalid_character_in_isbn_is_not_treated_as_zero = 0.00 s = .
+IsbnVerifierTest#test_too_short_isbn = 0.00 s = .
+IsbnVerifierTest#test_invalid_characters_are_not_ignored_after_checking_length = 0.00 s = .
+IsbnVerifierTest#test_too_long_isbn_and_no_dashes = 0.00 s = .
+
+Finished in 0.005723s, 3319.9174 runs/s, 3319.9174 assertions/s.
+
+19 runs, 19 assertions, 0 failures, 0 errors, 0 skips
+Coverage report generated for test:exercism to /home/vpayno/git_vpayno/exercism-workspace/ruby/isbn-verifier/coverage/coverage.xml. 11 / 11 LOC (100.00%) covered
+
+real	0m0.192s
+user	0m0.130s
+sys	0m0.063s
+
+
+ ==============================================================================
+
+Coverage: 100.0%
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.274s
+user	0m0.162s
+sys	0m0.117s
+
+real	0m0.276s
+user	0m0.163s
+sys	0m0.118s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.025s
+user	0m0.031s
+sys	0m0.011s
+
+===============================================================================
+
+/home/vpayno/git_vpayno/exercism-workspace/ruby
+
+===============================================================================
+
