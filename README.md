@@ -11,7 +11,7 @@ Exercism Workspace
 
 |   Month       |  Name              |  Languages           |
 |   :---        |  :---              |  :---                |
-|   January     |  Introduction      |  ✓                   |
+|   January     |  Introduction      |  ✓  (jq, Rust)  |
 |   February    |  Functional        |  Haskell      (5/5)  |
 |   March       |  Mechanical        |  C            (2/5),  C++   (5/5),  Go       (3/5),  Rust  (5/5)  |
 |   April       |  Analytical        |  Python       (5/5)  |
