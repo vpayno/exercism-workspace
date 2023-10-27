@@ -1,0 +1,238 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-lint-rubycritic
+
+Running RubyCritic
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rubycritic --path .rubycritic --format console --no-browser .
+
+running flay smells
+
+running flog smells
+[32m.[0m[32m.[0m
+running reek smells
+[32m.[0m[32m.[0m
+running complexity
+[32m.[0m[32m.[0m
+running attributes
+[32m.[0m[32m.[0m
+running churn
+[32m.[0m[32m.[0m
+running simple_cov
+[32m.[0m[32m.[0m
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing safe_level with the 2nd argument of ERB.new is deprecated. Do not use it, and specify other arguments as keyword arguments.
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing trim_mode with the 3rd argument of ERB.new is deprecated. Use keyword argument like ERB.new(str, trim_mode: ...) instead.
+Series:
+  Rating:       A
+  Churn:        0
+  Complexity:   21.96
+  Duplication:  0
+  Smells:       1
+    * (TooManyStatements) Series#slices has approx 13 statements
+      - series.rb:12
+
+SeriesTest:
+  Rating:       A
+  Churn:        0
+  Complexity:   41.53
+  Duplication:  0
+  Smells:       1
+    * (IrresponsibleModule) SeriesTest has no descriptive comment
+      - series_test.rb:28
+Score: 92.06
+
+real	0m0.791s
+user	0m0.672s
+sys	0m0.117s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.844s
+user	0m0.692s
+sys	0m0.155s
+
+real	0m0.846s
+user	0m0.693s
+sys	0m0.156s
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-lint-formatter
+
+Running Ruby Formatter
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rubocop -a .
+
+Inspecting 2 files
+CC
+
+Offenses:
+
+series.rb:12:3: C: Metrics/CyclomaticComplexity: Cyclomatic complexity for slices is too high. [8/7]
+  def slices(span) ...
+  ^^^^^^^^^^^^^^^^
+series.rb:12:3: C: Metrics/MethodLength: Method has too many lines. [14/10]
+  def slices(span) ...
+  ^^^^^^^^^^^^^^^^
+series_test.rb:28:1: C: Style/Documentation: Missing top-level documentation comment for class SeriesTest.
+class SeriesTest < Minitest::Test
+^^^^^^^^^^^^^^^^
+series_test.rb:31:25: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    series = Series.new("1")
+                        ^^^
+series_test.rb:32:19: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal ["1"], series.slices(1)
+                  ^^^
+series_test.rb:37:25: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    series = Series.new("12")
+                        ^^^^
+series_test.rb:43:25: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    series = Series.new("35")
+                        ^^^^
+series_test.rb:44:19: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal ["35"], series.slices(2)
+                  ^^^^
+series_test.rb:49:25: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    series = Series.new("9142")
+                        ^^^^^^
+series_test.rb:55:25: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    series = Series.new("777777")
+                        ^^^^^^^^
+series_test.rb:61:25: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    series = Series.new("918493904243")
+                        ^^^^^^^^^^^^^^
+series_test.rb:67:20: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    slice_string = "12345"
+                   ^^^^^^^
+series_test.rb:76:20: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    slice_string = "12345"
+                   ^^^^^^^
+series_test.rb:85:20: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    slice_string = "123"
+                   ^^^^^
+series_test.rb:94:20: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    slice_string = ""
+                   ^^
+
+2 files inspected, 15 offenses detected, 12 offenses corrected
+
+real	0m1.053s
+user	0m0.925s
+sys	0m0.212s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m1.115s
+user	0m0.958s
+sys	0m0.241s
+
+real	0m1.118s
+user	0m0.959s
+sys	0m0.243s
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-test-with-coverage
+
+Running Ruby Tests With Coverage
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rm -rf ./coverage
+
+
+real	0m0.001s
+user	0m0.001s
+sys	0m0.000s
+
+
+ ==============================================================================
+
+Running: ruby ./series_test.rb -v
+
+Run options: -v --seed 26000
+
+# Running:
+
+SeriesTest#test_slices_can_include_duplicates = 0.00 s = .
+SeriesTest#test_slices_of_one_from_two = 0.00 s = .
+SeriesTest#test_empty_series_is_invalid = 0.00 s = .
+SeriesTest#test_slices_of_a_long_series = 0.00 s = .
+SeriesTest#test_slices_of_one_from_one = 0.00 s = .
+SeriesTest#test_slices_of_two = 0.00 s = .
+SeriesTest#test_slice_length_is_too_large = 0.00 s = .
+SeriesTest#test_slice_length_cannot_be_negative = 0.00 s = .
+SeriesTest#test_slices_of_two_overlap = 0.00 s = .
+SeriesTest#test_slice_length_cannot_be_zero = 0.00 s = .
+
+Finished in 0.006294s, 1588.9233 runs/s, 1588.9233 assertions/s.
+
+10 runs, 10 assertions, 0 failures, 0 errors, 0 skips
+Coverage report generated for test:exercism to /home/vpayno/git_vpayno/exercism-workspace/ruby/series/coverage/coverage.xml. 19 / 19 LOC (100.00%) covered
+
+real	0m0.172s
+user	0m0.124s
+sys	0m0.049s
+
+
+ ==============================================================================
+
+Coverage: 100.0%
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.231s
+user	0m0.152s
+sys	0m0.084s
+
+real	0m0.233s
+user	0m0.152s
+sys	0m0.086s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.027s
+user	0m0.026s
+sys	0m0.011s
+
+===============================================================================
+
+/home/vpayno/git_vpayno/exercism-workspace/ruby
+
+===============================================================================
+

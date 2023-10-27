@@ -64,3 +64,4 @@
 - [bob](./bob/README.md)
 - [isbn-verifier](./isbn-verifier/README.md)
 - [protein-translation](./protein-translation/README.md)
+- [series](./series/README.md)
