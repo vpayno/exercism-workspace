@@ -1,0 +1,494 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-lint-rubycritic
+
+Running RubyCritic
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rubycritic --path .rubycritic --format console --no-browser .
+
+running flay smells
+
+running flog smells
+[32m.[0m[32m.[0m
+running reek smells
+[32m.[0m[32m.[0m
+running complexity
+[32m.[0m[32m.[0m
+running attributes
+[32m.[0m[32m.[0m
+running churn
+[32m.[0m[32m.[0m
+running simple_cov
+[32m.[0m[32m.[0m
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing safe_level with the 2nd argument of ERB.new is deprecated. Do not use it, and specify other arguments as keyword arguments.
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing trim_mode with the 3rd argument of ERB.new is deprecated. Use keyword argument like ERB.new(str, trim_mode: ...) instead.
+Allergies:
+  Rating:       A
+  Churn:        0
+  Complexity:   11.58
+  Duplication:  0
+  Smells:       0
+
+AllergiesTest:
+  Rating:       D
+  Churn:        0
+  Complexity:   200.93
+  Duplication:  0
+  Smells:       2
+    * (IrresponsibleModule) AllergiesTest has no descriptive comment
+      - allergies_test.rb:28
+    * (TooManyMethods) AllergiesTest has at least 50 methods
+      - allergies_test.rb:28
+Score: 73.44
+
+real	0m0.723s
+user	0m0.609s
+sys	0m0.111s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.818s
+user	0m0.654s
+sys	0m0.168s
+
+real	0m0.822s
+user	0m0.657s
+sys	0m0.168s
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-lint-formatter
+
+Running Ruby Formatter
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rubocop -a .
+
+Inspecting 2 files
+CC
+
+Offenses:
+
+allergies.rb:6:3: C: Metrics/MethodLength: Method has too many lines. [11/10]
+  def initialize(score) ...
+  ^^^^^^^^^^^^^^^^^^^^^
+allergies_test.rb:28:1: C: Metrics/ClassLength: Class has too many lines. [200/100]
+class AllergiesTest < Minitest::Test ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+allergies_test.rb:28:1: C: Style/Documentation: Missing top-level documentation comment for class AllergiesTest.
+class AllergiesTest < Minitest::Test
+^^^^^^^^^^^^^^^^^^^
+allergies_test.rb:32:35: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    refute allergies.allergic_to?("eggs"), "Tom is not allergic, but it says he is."
+                                  ^^^^^^
+allergies_test.rb:32:44: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    refute allergies.allergic_to?("eggs"), "Tom is not allergic, but it says he is."
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+allergies_test.rb:38:35: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert allergies.allergic_to?("eggs"), "Tom is allergic, but it says he is not."
+                                  ^^^^^^
+allergies_test.rb:38:44: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert allergies.allergic_to?("eggs"), "Tom is allergic, but it says he is not."
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+allergies_test.rb:44:35: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert allergies.allergic_to?("eggs"), "Tom is allergic, but it says he is not."
+                                  ^^^^^^
+allergies_test.rb:44:44: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert allergies.allergic_to?("eggs"), "Tom is allergic, but it says he is not."
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+allergies_test.rb:50:35: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    refute allergies.allergic_to?("eggs"), "Tom is not allergic, but it says he is."
+                                  ^^^^^^
+allergies_test.rb:50:44: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    refute allergies.allergic_to?("eggs"), "Tom is not allergic, but it says he is."
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+allergies_test.rb:56:35: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert allergies.allergic_to?("eggs"), "Tom is allergic, but it says he is not."
+                                  ^^^^^^
+allergies_test.rb:56:44: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert allergies.allergic_to?("eggs"), "Tom is allergic, but it says he is not."
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+allergies_test.rb:62:35: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    refute allergies.allergic_to?("peanuts"), "Tom is not allergic, but it says he is."
+                                  ^^^^^^^^^
+allergies_test.rb:62:47: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    refute allergies.allergic_to?("peanuts"), "Tom is not allergic, but it says he is."
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+allergies_test.rb:68:35: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert allergies.allergic_to?("peanuts"), "Tom is allergic, but it says he is not."
+                                  ^^^^^^^^^
+allergies_test.rb:68:47: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert allergies.allergic_to?("peanuts"), "Tom is allergic, but it says he is not."
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+allergies_test.rb:74:35: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert allergies.allergic_to?("peanuts"), "Tom is allergic, but it says he is not."
+                                  ^^^^^^^^^
+allergies_test.rb:74:47: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert allergies.allergic_to?("peanuts"), "Tom is allergic, but it says he is not."
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+allergies_test.rb:80:35: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    refute allergies.allergic_to?("peanuts"), "Tom is not allergic, but it says he is."
+                                  ^^^^^^^^^
+allergies_test.rb:80:47: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    refute allergies.allergic_to?("peanuts"), "Tom is not allergic, but it says he is."
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+allergies_test.rb:86:35: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert allergies.allergic_to?("peanuts"), "Tom is allergic, but it says he is not."
+                                  ^^^^^^^^^
+allergies_test.rb:86:47: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert allergies.allergic_to?("peanuts"), "Tom is allergic, but it says he is not."
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+allergies_test.rb:92:35: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    refute allergies.allergic_to?("shellfish"), "Tom is not allergic, but it says he is."
+                                  ^^^^^^^^^^^
+allergies_test.rb:92:49: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    refute allergies.allergic_to?("shellfish"), "Tom is not allergic, but it says he is."
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+allergies_test.rb:98:35: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert allergies.allergic_to?("shellfish"), "Tom is allergic, but it says he is not."
+                                  ^^^^^^^^^^^
+allergies_test.rb:98:49: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert allergies.allergic_to?("shellfish"), "Tom is allergic, but it says he is not."
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+allergies_test.rb:104:35: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert allergies.allergic_to?("shellfish"), "Tom is allergic, but it says he is not."
+                                  ^^^^^^^^^^^
+allergies_test.rb:104:49: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert allergies.allergic_to?("shellfish"), "Tom is allergic, but it says he is not."
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+allergies_test.rb:110:35: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    refute allergies.allergic_to?("shellfish"), "Tom is not allergic, but it says he is."
+                                  ^^^^^^^^^^^
+allergies_test.rb:110:49: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    refute allergies.allergic_to?("shellfish"), "Tom is not allergic, but it says he is."
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+allergies_test.rb:116:35: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert allergies.allergic_to?("shellfish"), "Tom is allergic, but it says he is not."
+                                  ^^^^^^^^^^^
+allergies_test.rb:116:49: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert allergies.allergic_to?("shellfish"), "Tom is allergic, but it says he is not."
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+allergies_test.rb:122:35: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    refute allergies.allergic_to?("strawberries"), "Tom is not allergic, but it says he is."
+                                  ^^^^^^^^^^^^^^
+allergies_test.rb:122:52: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    refute allergies.allergic_to?("strawberries"), "Tom is not allergic, but it says he is."
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+allergies_test.rb:128:35: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert allergies.allergic_to?("strawberries"), "Tom is allergic, but it says he is not."
+                                  ^^^^^^^^^^^^^^
+allergies_test.rb:128:52: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert allergies.allergic_to?("strawberries"), "Tom is allergic, but it says he is not."
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+allergies_test.rb:134:35: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert allergies.allergic_to?("strawberries"), "Tom is allergic, but it says he is not."
+                                  ^^^^^^^^^^^^^^
+allergies_test.rb:134:52: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert allergies.allergic_to?("strawberries"), "Tom is allergic, but it says he is not."
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+allergies_test.rb:140:35: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    refute allergies.allergic_to?("strawberries"), "Tom is not allergic, but it says he is."
+                                  ^^^^^^^^^^^^^^
+allergies_test.rb:140:52: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    refute allergies.allergic_to?("strawberries"), "Tom is not allergic, but it says he is."
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+allergies_test.rb:146:35: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert allergies.allergic_to?("strawberries"), "Tom is allergic, but it says he is not."
+                                  ^^^^^^^^^^^^^^
+allergies_test.rb:146:52: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert allergies.allergic_to?("strawberries"), "Tom is allergic, but it says he is not."
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+allergies_test.rb:152:35: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    refute allergies.allergic_to?("tomatoes"), "Tom is not allergic, but it says he is."
+                                  ^^^^^^^^^^
+allergies_test.rb:152:48: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    refute allergies.allergic_to?("tomatoes"), "Tom is not allergic, but it says he is."
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+allergies_test.rb:158:35: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert allergies.allergic_to?("tomatoes"), "Tom is allergic, but it says he is not."
+                                  ^^^^^^^^^^
+allergies_test.rb:158:48: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert allergies.allergic_to?("tomatoes"), "Tom is allergic, but it says he is not."
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+allergies_test.rb:164:35: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert allergies.allergic_to?("tomatoes"), "Tom is allergic, but it says he is not."
+                                  ^^^^^^^^^^
+allergies_test.rb:164:48: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert allergies.allergic_to?("tomatoes"), "Tom is allergic, but it says he is not."
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+allergies_test.rb:170:35: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    refute allergies.allergic_to?("tomatoes"), "Tom is not allergic, but it says he is."
+                                  ^^^^^^^^^^
+allergies_test.rb:170:48: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    refute allergies.allergic_to?("tomatoes"), "Tom is not allergic, but it says he is."
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+allergies_test.rb:176:35: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert allergies.allergic_to?("tomatoes"), "Tom is allergic, but it says he is not."
+                                  ^^^^^^^^^^
+allergies_test.rb:176:48: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert allergies.allergic_to?("tomatoes"), "Tom is allergic, but it says he is not."
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+allergies_test.rb:182:35: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    refute allergies.allergic_to?("chocolate"), "Tom is not allergic, but it says he is."
+                                  ^^^^^^^^^^^
+allergies_test.rb:182:49: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    refute allergies.allergic_to?("chocolate"), "Tom is not allergic, but it says he is."
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+allergies_test.rb:188:35: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert allergies.allergic_to?("chocolate"), "Tom is allergic, but it says he is not."
+                                  ^^^^^^^^^^^
+allergies_test.rb:188:49: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert allergies.allergic_to?("chocolate"), "Tom is allergic, but it says he is not."
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+allergies_test.rb:194:35: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert allergies.allergic_to?("chocolate"), "Tom is allergic, but it says he is not."
+                                  ^^^^^^^^^^^
+allergies_test.rb:194:49: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert allergies.allergic_to?("chocolate"), "Tom is allergic, but it says he is not."
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+allergies_test.rb:200:35: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    refute allergies.allergic_to?("chocolate"), "Tom is not allergic, but it says he is."
+                                  ^^^^^^^^^^^
+allergies_test.rb:200:49: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    refute allergies.allergic_to?("chocolate"), "Tom is not allergic, but it says he is."
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+allergies_test.rb:206:35: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert allergies.allergic_to?("chocolate"), "Tom is allergic, but it says he is not."
+                                  ^^^^^^^^^^^
+allergies_test.rb:206:49: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert allergies.allergic_to?("chocolate"), "Tom is allergic, but it says he is not."
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+allergies_test.rb:212:35: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    refute allergies.allergic_to?("pollen"), "Tom is not allergic, but it says he is."
+                                  ^^^^^^^^
+allergies_test.rb:212:46: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    refute allergies.allergic_to?("pollen"), "Tom is not allergic, but it says he is."
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+allergies_test.rb:218:35: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert allergies.allergic_to?("pollen"), "Tom is allergic, but it says he is not."
+                                  ^^^^^^^^
+allergies_test.rb:218:46: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert allergies.allergic_to?("pollen"), "Tom is allergic, but it says he is not."
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+allergies_test.rb:224:35: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert allergies.allergic_to?("pollen"), "Tom is allergic, but it says he is not."
+                                  ^^^^^^^^
+allergies_test.rb:224:46: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert allergies.allergic_to?("pollen"), "Tom is allergic, but it says he is not."
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+allergies_test.rb:230:35: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    refute allergies.allergic_to?("pollen"), "Tom is not allergic, but it says he is."
+                                  ^^^^^^^^
+allergies_test.rb:230:46: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    refute allergies.allergic_to?("pollen"), "Tom is not allergic, but it says he is."
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+allergies_test.rb:236:35: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert allergies.allergic_to?("pollen"), "Tom is allergic, but it says he is not."
+                                  ^^^^^^^^
+allergies_test.rb:236:46: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert allergies.allergic_to?("pollen"), "Tom is allergic, but it says he is not."
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+allergies_test.rb:242:35: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    refute allergies.allergic_to?("cats"), "Tom is not allergic, but it says he is."
+                                  ^^^^^^
+allergies_test.rb:242:44: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    refute allergies.allergic_to?("cats"), "Tom is not allergic, but it says he is."
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+allergies_test.rb:248:35: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert allergies.allergic_to?("cats"), "Tom is allergic, but it says he is not."
+                                  ^^^^^^
+allergies_test.rb:248:44: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert allergies.allergic_to?("cats"), "Tom is allergic, but it says he is not."
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+allergies_test.rb:254:35: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert allergies.allergic_to?("cats"), "Tom is allergic, but it says he is not."
+                                  ^^^^^^
+allergies_test.rb:254:44: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert allergies.allergic_to?("cats"), "Tom is allergic, but it says he is not."
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+allergies_test.rb:260:35: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    refute allergies.allergic_to?("cats"), "Tom is not allergic, but it says he is."
+                                  ^^^^^^
+allergies_test.rb:260:44: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    refute allergies.allergic_to?("cats"), "Tom is not allergic, but it says he is."
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+allergies_test.rb:266:35: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert allergies.allergic_to?("cats"), "Tom is allergic, but it says he is not."
+                                  ^^^^^^
+allergies_test.rb:266:44: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert allergies.allergic_to?("cats"), "Tom is allergic, but it says he is not."
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+allergies_test.rb:277:17: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    expected = ["eggs"]
+                ^^^^^^
+allergies_test.rb:283:17: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    expected = ["peanuts"]
+                ^^^^^^^^^
+allergies_test.rb:289:17: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    expected = ["strawberries"]
+                ^^^^^^^^^^^^^^
+allergies_test.rb:325:17: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    expected = ["eggs"]
+                ^^^^^^
+
+2 files inspected, 87 offenses detected, 84 offenses corrected
+
+real	0m1.187s
+user	0m1.068s
+sys	0m0.224s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m1.262s
+user	0m1.096s
+sys	0m0.274s
+
+real	0m1.265s
+user	0m1.098s
+sys	0m0.276s
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-test-with-coverage
+
+Running Ruby Tests With Coverage
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rm -rf ./coverage
+
+
+real	0m0.002s
+user	0m0.002s
+sys	0m0.001s
+
+
+ ==============================================================================
+
+Running: ruby ./allergies_test.rb -v
+
+Run options: -v --seed 40395
+
+# Running:
+
+AllergiesTest#test_list_when_more_than_eggs_but_not_peanuts = 0.00 s = .
+AllergiesTest#test_testing_for_peanuts_allergy_not_allergic_to_anything = 0.00 s = .
+AllergiesTest#test_testing_for_shellfish_allergy_allergic_to_something_but_not_shellfish = 0.00 s = .
+AllergiesTest#test_testing_for_eggs_allergy_not_allergic_to_anything = 0.00 s = .
+AllergiesTest#test_testing_for_pollen_allergy_allergic_to_everything = 0.00 s = .
+AllergiesTest#test_testing_for_shellfish_allergy_not_allergic_to_anything = 0.00 s = .
+AllergiesTest#test_testing_for_tomatoes_allergy_allergic_to_everything = 0.00 s = .
+AllergiesTest#test_testing_for_chocolate_allergy_allergic_to_everything = 0.00 s = .
+AllergiesTest#test_testing_for_cats_allergy_not_allergic_to_anything = 0.00 s = .
+AllergiesTest#test_testing_for_chocolate_allergy_not_allergic_to_anything = 0.00 s = .
+AllergiesTest#test_testing_for_shellfish_allergy_allergic_only_to_shellfish = 0.00 s = .
+AllergiesTest#test_testing_for_cats_allergy_allergic_to_cats_and_something_else = 0.00 s = .
+AllergiesTest#test_testing_for_peanuts_allergy_allergic_to_everything = 0.00 s = .
+AllergiesTest#test_testing_for_shellfish_allergy_allergic_to_shellfish_and_something_else = 0.00 s = .
+AllergiesTest#test_testing_for_strawberries_allergy_allergic_only_to_strawberries = 0.00 s = .
+AllergiesTest#test_list_when_everything = 0.00 s = .
+AllergiesTest#test_testing_for_eggs_allergy_allergic_to_something_but_not_eggs = 0.00 s = .
+AllergiesTest#test_testing_for_chocolate_allergy_allergic_to_chocolate_and_something_else = 0.00 s = .
+AllergiesTest#test_testing_for_peanuts_allergy_allergic_only_to_peanuts = 0.00 s = .
+AllergiesTest#test_testing_for_strawberries_allergy_allergic_to_strawberries_and_something_else = 0.00 s = .
+AllergiesTest#test_list_when_lots_of_stuff = 0.00 s = .
+AllergiesTest#test_testing_for_tomatoes_allergy_not_allergic_to_anything = 0.00 s = .
+AllergiesTest#test_testing_for_cats_allergy_allergic_to_everything = 0.00 s = .
+AllergiesTest#test_testing_for_strawberries_allergy_allergic_to_something_but_not_strawberries = 0.00 s = .
+AllergiesTest#test_testing_for_tomatoes_allergy_allergic_only_to_tomatoes = 0.00 s = .
+AllergiesTest#test_testing_for_cats_allergy_allergic_only_to_cats = 0.00 s = .
+AllergiesTest#test_testing_for_peanuts_allergy_allergic_to_something_but_not_peanuts = 0.00 s = .
+AllergiesTest#test_testing_for_chocolate_allergy_allergic_to_something_but_not_chocolate = 0.00 s = .
+AllergiesTest#test_testing_for_pollen_allergy_allergic_only_to_pollen = 0.00 s = .
+AllergiesTest#test_testing_for_strawberries_allergy_not_allergic_to_anything = 0.00 s = .
+AllergiesTest#test_list_when_no_allergen_score_parts = 0.00 s = .
+AllergiesTest#test_testing_for_eggs_allergy_allergic_to_everything = 0.00 s = .
+AllergiesTest#test_list_when_just_strawberries = 0.00 s = .
+AllergiesTest#test_testing_for_cats_allergy_allergic_to_something_but_not_cats = 0.00 s = .
+AllergiesTest#test_testing_for_chocolate_allergy_allergic_only_to_chocolate = 0.00 s = .
+AllergiesTest#test_testing_for_pollen_allergy_allergic_to_pollen_and_something_else = 0.00 s = .
+AllergiesTest#test_testing_for_strawberries_allergy_allergic_to_everything = 0.00 s = .
+AllergiesTest#test_list_when_just_eggs = 0.00 s = .
+AllergiesTest#test_list_when_just_peanuts = 0.00 s = .
+AllergiesTest#test_testing_for_pollen_allergy_not_allergic_to_anything = 0.00 s = .
+AllergiesTest#test_list_when_eggs_and_peanuts = 0.00 s = .
+AllergiesTest#test_testing_for_peanuts_allergy_allergic_to_peanuts_and_something_else = 0.00 s = .
+AllergiesTest#test_testing_for_eggs_allergy_allergic_only_to_eggs = 0.00 s = .
+AllergiesTest#test_list_when_no_allergies = 0.00 s = .
+AllergiesTest#test_testing_for_tomatoes_allergy_allergic_to_something_but_not_tomatoes = 0.00 s = .
+AllergiesTest#test_testing_for_shellfish_allergy_allergic_to_everything = 0.00 s = .
+AllergiesTest#test_testing_for_eggs_allergy_allergic_to_eggs_and_something_else = 0.00 s = .
+AllergiesTest#test_testing_for_pollen_allergy_allergic_to_something_but_not_pollen = 0.00 s = .
+AllergiesTest#test_list_when_no_allergen_score_parts_without_highest_valid_score = 0.00 s = .
+AllergiesTest#test_testing_for_tomatoes_allergy_allergic_to_tomatoes_and_something_else = 0.00 s = .
+
+Finished in 0.002438s, 20507.6378 runs/s, 20507.6378 assertions/s.
+
+50 runs, 50 assertions, 0 failures, 0 errors, 0 skips
+Coverage report generated for test:exercism to /home/vpayno/git_vpayno/exercism-workspace/ruby/allergies/coverage/coverage.xml. 11 / 11 LOC (100.00%) covered
+
+real	0m0.194s
+user	0m0.130s
+sys	0m0.064s
+
+
+ ==============================================================================
+
+Coverage: 100.0%
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.259s
+user	0m0.160s
+sys	0m0.103s
+
+real	0m0.261s
+user	0m0.160s
+sys	0m0.105s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.027s
+user	0m0.031s
+sys	0m0.013s
+
+===============================================================================
+
+/home/vpayno/git_vpayno/exercism-workspace/ruby
+
+===============================================================================
+
