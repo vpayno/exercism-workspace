@@ -1,7 +1,42 @@
-=begin
-Write your code for the 'Word Count' exercise in this file. Make the tests in
-`word_count_test.rb` pass.
+# frozen_string_literal: false
 
-To get started with TDD, see the `README.md` file in your
-`ruby/word-count` directory.
-=end
+# https://exercism.org/tracks/ruby/exercises/word-count
+# Word Count exercise
+class Phrase
+  def initialize(text)
+    @text = text.chomp.strip
+
+    @text.chars.select! do |rune|
+      rune.letter? || rune.digit? || rune.space? || rune.apostrophe?
+    end&.join('')
+  end
+
+  def word_count
+    @words = @text.scan(/\b[[:alpha:][:digit:]']+\b/).collect
+
+    @counts = Hash.new(0)
+
+    @words.each { |word| @counts[word.downcase] += 1 }
+
+    @counts
+  end
+end
+
+# Extending the String class
+class String
+  def apostrophe?
+    match?(/'/)
+  end
+
+  def space?
+    match?(/[[:space:]]/)
+  end
+
+  def letter?
+    match?(/[[:alpha:]]/)
+  end
+
+  def digit?
+    match?(/[[:digit:]]/)
+  end
+end

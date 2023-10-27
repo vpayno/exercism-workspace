@@ -1,0 +1,400 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-lint-rubycritic
+
+Running RubyCritic
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rubycritic --path .rubycritic --format console --no-browser .
+
+running flay smells
+[32m.[0m[32m.[0m[32m.[0m[32m.[0m
+running flog smells
+[32m.[0m[32m.[0m
+running reek smells
+[32m.[0m[32m.[0m
+running complexity
+[32m.[0m[32m.[0m
+running attributes
+[32m.[0m[32m.[0m
+running churn
+[32m.[0m[32m.[0m
+running simple_cov
+[32m.[0m[32m.[0m
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing safe_level with the 2nd argument of ERB.new is deprecated. Do not use it, and specify other arguments as keyword arguments.
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing trim_mode with the 3rd argument of ERB.new is deprecated. Use keyword argument like ERB.new(str, trim_mode: ...) instead.
+Phrase:
+  Rating:       A
+  Churn:        0
+  Complexity:   25.78
+  Duplication:  0
+  Smells:       3
+    * (FeatureEnvy) Phrase#initialize refers to 'rune' more than self (maybe move it to another class?)
+      - word_count.rb:10
+    * (InstanceVariableAssumption) Phrase assumes too much for instance variable '@counts'
+      - word_count.rb:5
+    * (InstanceVariableAssumption) Phrase assumes too much for instance variable '@words'
+      - word_count.rb:5
+
+WordCountTest:
+  Rating:       D
+  Churn:        0
+  Complexity:   70.97
+  Duplication:  238
+  Smells:       5
+    * (DuplicateCode) Similar code found in 5 nodes
+      - word_count_test.rb:36
+      - word_count_test.rb:50
+      - word_count_test.rb:57
+      - word_count_test.rb:71
+      - word_count_test.rb:113
+    * (DuplicateCode) Similar code found in 2 nodes
+      - word_count_test.rb:43
+      - word_count_test.rb:64
+    * (DuplicateCode) Similar code found in 3 nodes
+      - word_count_test.rb:78
+      - word_count_test.rb:106
+      - word_count_test.rb:120
+    * (DuplicateCode) Similar code found in 2 nodes
+      - word_count_test.rb:85
+      - word_count_test.rb:99
+    * (IrresponsibleModule) WordCountTest has no descriptive comment
+      - word_count_test.rb:28
+Score: 66.03
+
+real	0m0.656s
+user	0m0.551s
+sys	0m0.100s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.747s
+user	0m0.597s
+sys	0m0.151s
+
+real	0m0.751s
+user	0m0.601s
+sys	0m0.152s
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-lint-formatter
+
+Running Ruby Formatter
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rubocop -a .
+
+Inspecting 2 files
+.C
+
+Offenses:
+
+word_count_test.rb:28:1: C: Style/Documentation: Missing top-level documentation comment for class WordCountTest.
+class WordCountTest < Minitest::Test
+^^^^^^^^^^^^^^^^^^^
+word_count_test.rb:31:25: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    phrase = Phrase.new("word")
+                        ^^^^^^
+word_count_test.rb:32:16: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    counts = { "word" => 1 }
+               ^^^^^^
+word_count_test.rb:38:25: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    phrase = Phrase.new("one of each")
+                        ^^^^^^^^^^^^^
+word_count_test.rb:39:16: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    counts = { "one" => 1, "of" => 1, "each" => 1 }
+               ^^^^^
+word_count_test.rb:39:28: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    counts = { "one" => 1, "of" => 1, "each" => 1 }
+                           ^^^^
+word_count_test.rb:39:39: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    counts = { "one" => 1, "of" => 1, "each" => 1 }
+                                      ^^^^^^
+word_count_test.rb:45:25: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    phrase = Phrase.new("one fish two fish red fish blue fish")
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+word_count_test.rb:46:16: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    counts = { "one" => 1, "fish" => 4, "two" => 1, "red" => 1, "blue" => 1 }
+               ^^^^^
+word_count_test.rb:46:28: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    counts = { "one" => 1, "fish" => 4, "two" => 1, "red" => 1, "blue" => 1 }
+                           ^^^^^^
+word_count_test.rb:46:41: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    counts = { "one" => 1, "fish" => 4, "two" => 1, "red" => 1, "blue" => 1 }
+                                        ^^^^^
+word_count_test.rb:46:53: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    counts = { "one" => 1, "fish" => 4, "two" => 1, "red" => 1, "blue" => 1 }
+                                                    ^^^^^
+word_count_test.rb:46:65: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    counts = { "one" => 1, "fish" => 4, "two" => 1, "red" => 1, "blue" => 1 }
+                                                                ^^^^^^
+word_count_test.rb:52:25: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    phrase = Phrase.new("one,two,three")
+                        ^^^^^^^^^^^^^^^
+word_count_test.rb:53:16: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    counts = { "one" => 1, "two" => 1, "three" => 1 }
+               ^^^^^
+word_count_test.rb:53:28: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    counts = { "one" => 1, "two" => 1, "three" => 1 }
+                           ^^^^^
+word_count_test.rb:53:40: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    counts = { "one" => 1, "two" => 1, "three" => 1 }
+                                       ^^^^^^^
+word_count_test.rb:60:16: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    counts = { "one" => 1, "two" => 1, "three" => 1 }
+               ^^^^^
+word_count_test.rb:60:28: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    counts = { "one" => 1, "two" => 1, "three" => 1 }
+                           ^^^^^
+word_count_test.rb:60:40: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    counts = { "one" => 1, "two" => 1, "three" => 1 }
+                                       ^^^^^^^
+word_count_test.rb:66:25: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    phrase = Phrase.new("car: carpet as java: javascript!!&@$%^&")
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+word_count_test.rb:67:16: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    counts = { "car" => 1, "carpet" => 1, "as" => 1, "java" => 1, "javascript" => 1 }
+               ^^^^^
+word_count_test.rb:67:28: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    counts = { "car" => 1, "carpet" => 1, "as" => 1, "java" => 1, "javascript" => 1 }
+                           ^^^^^^^^
+word_count_test.rb:67:43: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    counts = { "car" => 1, "carpet" => 1, "as" => 1, "java" => 1, "javascript" => 1 }
+                                          ^^^^
+word_count_test.rb:67:54: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    counts = { "car" => 1, "carpet" => 1, "as" => 1, "java" => 1, "javascript" => 1 }
+                                                     ^^^^^^
+word_count_test.rb:67:67: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    counts = { "car" => 1, "carpet" => 1, "as" => 1, "java" => 1, "javascript" => 1 }
+                                                                  ^^^^^^^^^^^^
+word_count_test.rb:73:25: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    phrase = Phrase.new("testing, 1, 2 testing")
+                        ^^^^^^^^^^^^^^^^^^^^^^^
+word_count_test.rb:74:16: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    counts = { "testing" => 2, "1" => 1, "2" => 1 }
+               ^^^^^^^^^
+word_count_test.rb:74:32: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    counts = { "testing" => 2, "1" => 1, "2" => 1 }
+                               ^^^
+word_count_test.rb:74:42: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    counts = { "testing" => 2, "1" => 1, "2" => 1 }
+                                         ^^^
+word_count_test.rb:80:25: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    phrase = Phrase.new("go Go GO Stop stop")
+                        ^^^^^^^^^^^^^^^^^^^^
+word_count_test.rb:81:16: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    counts = { "go" => 3, "stop" => 2 }
+               ^^^^
+word_count_test.rb:81:27: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    counts = { "go" => 3, "stop" => 2 }
+                          ^^^^^^
+word_count_test.rb:88:16: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    counts = { "first" => 1, "don't" => 2, "laugh" => 1, "then" => 1, "cry" => 1, "you're" => 1, "getting" => 1, "it" => 1 }
+               ^^^^^^^
+word_count_test.rb:88:44: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    counts = { "first" => 1, "don't" => 2, "laugh" => 1, "then" => 1, "cry" => 1, "you're" => 1, "getting" => 1, "it" => 1 }
+                                           ^^^^^^^
+word_count_test.rb:88:58: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    counts = { "first" => 1, "don't" => 2, "laugh" => 1, "then" => 1, "cry" => 1, "you're" => 1, "getting" => 1, "it" => 1 }
+                                                         ^^^^^^
+word_count_test.rb:88:71: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    counts = { "first" => 1, "don't" => 2, "laugh" => 1, "then" => 1, "cry" => 1, "you're" => 1, "getting" => 1, "it" => 1 }
+                                                                      ^^^^^
+word_count_test.rb:88:98: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    counts = { "first" => 1, "don't" => 2, "laugh" => 1, "then" => 1, "cry" => 1, "you're" => 1, "getting" => 1, "it" => 1 }
+                                                                                                 ^^^^^^^^^
+word_count_test.rb:88:113: C: [Corrected] Layout/TrailingWhitespace: Trailing whitespace detected.
+    counts = { 'first' => 1, "don't" => 2, 'laugh' => 1, 'then' => 1, 'cry' => 1, "you're" => 1, 'getting' => 1, 
+                                                                                                                ^
+word_count_test.rb:88:114: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    counts = { "first" => 1, "don't" => 2, "laugh" => 1, "then" => 1, "cry" => 1, "you're" => 1, "getting" => 1, "it" => 1 }
+                                                                                                                 ^^^^
+word_count_test.rb:88:121: C: [Corrected] Layout/LineLength: Line is too long. [124/120]
+    counts = { "first" => 1, "don't" => 2, "laugh" => 1, "then" => 1, "cry" => 1, "you're" => 1, "getting" => 1, "it" => 1 }
+                                                                                                                        ^^^^
+word_count_test.rb:89:1: C: [Corrected] Layout/HashAlignment: Align the keys of a hash literal if they span more than one line.
+'it' => 1 }
+^^^^^^^^^
+word_count_test.rb:95:16: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    counts = { "joe" => 1, "can't" => 1, "tell" => 1, "between" => 1, "large" => 2, "and" => 1 }
+               ^^^^^
+word_count_test.rb:95:42: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    counts = { "joe" => 1, "can't" => 1, "tell" => 1, "between" => 1, "large" => 2, "and" => 1 }
+                                         ^^^^^^
+word_count_test.rb:95:55: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    counts = { "joe" => 1, "can't" => 1, "tell" => 1, "between" => 1, "large" => 2, "and" => 1 }
+                                                      ^^^^^^^^^
+word_count_test.rb:95:71: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    counts = { "joe" => 1, "can't" => 1, "tell" => 1, "between" => 1, "large" => 2, "and" => 1 }
+                                                                      ^^^^^^^
+word_count_test.rb:95:85: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    counts = { "joe" => 1, "can't" => 1, "tell" => 1, "between" => 1, "large" => 2, "and" => 1 }
+                                                                                    ^^^^^
+word_count_test.rb:102:16: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    counts = { "joe" => 1, "can't" => 1, "tell" => 1, "between" => 1, "app" => 1, "apple" => 1, "and" => 1, "a" => 1 }
+               ^^^^^
+word_count_test.rb:102:42: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    counts = { "joe" => 1, "can't" => 1, "tell" => 1, "between" => 1, "app" => 1, "apple" => 1, "and" => 1, "a" => 1 }
+                                         ^^^^^^
+word_count_test.rb:102:55: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    counts = { "joe" => 1, "can't" => 1, "tell" => 1, "between" => 1, "app" => 1, "apple" => 1, "and" => 1, "a" => 1 }
+                                                      ^^^^^^^^^
+word_count_test.rb:102:71: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    counts = { "joe" => 1, "can't" => 1, "tell" => 1, "between" => 1, "app" => 1, "apple" => 1, "and" => 1, "a" => 1 }
+                                                                      ^^^^^
+word_count_test.rb:102:83: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    counts = { "joe" => 1, "can't" => 1, "tell" => 1, "between" => 1, "app" => 1, "apple" => 1, "and" => 1, "a" => 1 }
+                                                                                  ^^^^^^^
+word_count_test.rb:102:97: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    counts = { "joe" => 1, "can't" => 1, "tell" => 1, "between" => 1, "app" => 1, "apple" => 1, "and" => 1, "a" => 1 }
+                                                                                                ^^^^^
+word_count_test.rb:102:109: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    counts = { "joe" => 1, "can't" => 1, "tell" => 1, "between" => 1, "app" => 1, "apple" => 1, "and" => 1, "a" => 1 }
+                                                                                                            ^^^
+word_count_test.rb:108:25: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    phrase = Phrase.new(" multiple   whitespaces")
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^
+word_count_test.rb:109:16: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    counts = { "multiple" => 1, "whitespaces" => 1 }
+               ^^^^^^^^^^
+word_count_test.rb:109:33: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    counts = { "multiple" => 1, "whitespaces" => 1 }
+                                ^^^^^^^^^^^^^
+word_count_test.rb:116:16: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    counts = { "one" => 1, "two" => 1, "three" => 1 }
+               ^^^^^
+word_count_test.rb:116:28: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    counts = { "one" => 1, "two" => 1, "three" => 1 }
+                           ^^^^^
+word_count_test.rb:116:40: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    counts = { "one" => 1, "two" => 1, "three" => 1 }
+                                       ^^^^^^^
+word_count_test.rb:123:16: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    counts = { "can" => 1, "can't" => 2 }
+               ^^^^^
+
+2 files inspected, 61 offenses detected, 60 offenses corrected
+
+real	0m1.009s
+user	0m0.876s
+sys	0m0.219s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m1.078s
+user	0m0.910s
+sys	0m0.258s
+
+real	0m1.080s
+user	0m0.911s
+sys	0m0.259s
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-test-with-coverage
+
+Running Ruby Tests With Coverage
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rm -rf ./coverage
+
+
+real	0m0.002s
+user	0m0.001s
+sys	0m0.000s
+
+
+ ==============================================================================
+
+Running: ruby ./word_count_test.rb -v
+
+Run options: -v --seed 27366
+
+# Running:
+
+WordCountTest#test_multiple_spaces_not_detected_as_a_word = 0.00 s = .
+WordCountTest#test_count_one_word = 0.00 s = .
+WordCountTest#test_handles_cramped_lists = 0.00 s = .
+WordCountTest#test_ignore_punctuation = 0.00 s = .
+WordCountTest#test_quotation_for_word_with_apostrophe = 0.00 s = .
+WordCountTest#test_multiple_occurrences_of_a_word = 0.00 s = .
+WordCountTest#test_count_one_of_each_word = 0.00 s = .
+WordCountTest#test_alternating_word_separators_not_detected_as_a_word = 0.00 s = .
+WordCountTest#test_handles_expanded_lists = 0.00 s = .
+WordCountTest#test_include_numbers = 0.00 s = .
+WordCountTest#test_substrings_from_the_beginning = 0.00 s = .
+WordCountTest#test_normalize_case = 0.00 s = .
+WordCountTest#test_with_apostrophes = 0.00 s = .
+WordCountTest#test_with_quotations = 0.00 s = .
+
+Finished in 0.006057s, 2311.2578 runs/s, 2311.2578 assertions/s.
+
+14 runs, 14 assertions, 0 failures, 0 errors, 0 skips
+Coverage report generated for test:exercism to /home/vpayno/git_vpayno/exercism-workspace/ruby/word-count/coverage/coverage.xml. 19 / 19 LOC (100.00%) covered
+
+real	0m0.188s
+user	0m0.125s
+sys	0m0.064s
+
+
+ ==============================================================================
+
+Coverage: 100.0%
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.244s
+user	0m0.154s
+sys	0m0.094s
+
+real	0m0.246s
+user	0m0.155s
+sys	0m0.095s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.027s
+user	0m0.031s
+sys	0m0.011s
+
+===============================================================================
+
+/home/vpayno/git_vpayno/exercism-workspace/ruby
+
+===============================================================================
+
