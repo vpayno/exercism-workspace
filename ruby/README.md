@@ -67,3 +67,4 @@
 - [series](./series/README.md)
 - [word-count](./word-count/README.md)
 - [allergies](./allergies/README.md)
+- [simple-cipher](./simple-cipher/README.md)

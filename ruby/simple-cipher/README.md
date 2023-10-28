@@ -93,3 +93,8 @@ Take a look at [Diffie-Hellman on Wikipedia][dh] for one of the first implementa
 ### Based on
 
 Substitution Cipher at Wikipedia - https://en.wikipedia.org/wiki/Substitution_cipher
+
+### My Solution
+
+- [my solution](./simple_cipher.rb)
+- [run-tests](./run-tests-ruby.txt)

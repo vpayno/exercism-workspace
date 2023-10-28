@@ -1,0 +1,232 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-lint-rubycritic
+
+Running RubyCritic
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rubycritic --path .rubycritic --format console --no-browser .
+
+running flay smells
+[32m.[0m
+running flog smells
+[32m.[0m[32m.[0m
+running reek smells
+[32m.[0m[32m.[0m
+running complexity
+[32m.[0m[32m.[0m
+running attributes
+[32m.[0m[32m.[0m
+running churn
+[32m.[0m[32m.[0m
+running simple_cov
+[32m.[0m[32m.[0m
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing safe_level with the 2nd argument of ERB.new is deprecated. Do not use it, and specify other arguments as keyword arguments.
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing trim_mode with the 3rd argument of ERB.new is deprecated. Use keyword argument like ERB.new(str, trim_mode: ...) instead.
+Cipher:
+  Rating:       B
+  Churn:        0
+  Complexity:   54.66
+  Duplication:  32
+  Smells:       4
+    * (DuplicateCode) Similar code found in 2 nodes
+      - simple_cipher.rb:15
+      - simple_cipher.rb:21
+    * (ControlParameter) Cipher#initialize is controlled by argument 'key'
+      - simple_cipher.rb:9
+    * (UtilityFunction) Cipher#to_char doesn't depend on instance state (maybe move it to another class?)
+      - simple_cipher.rb:41
+    * (UtilityFunction) Cipher#to_ord doesn't depend on instance state (maybe move it to another class?)
+      - simple_cipher.rb:37
+
+RandomKeyCipherTest:
+  Rating:       B
+  Churn:        0
+  Complexity:   62.74
+  Duplication:  0
+  Smells:       8
+    * (InstanceVariableAssumption) PseudoShiftCipherTest assumes too much for instance variable '@cipher'
+      - simple_cipher_test.rb:128
+    * (InstanceVariableAssumption) RandomKeyCipherTest assumes too much for instance variable '@cipher'
+      - simple_cipher_test.rb:28
+    * (InstanceVariableAssumption) SubstitutionCipherTest assumes too much for instance variable '@cipher'
+      - simple_cipher_test.rb:82
+    * (InstanceVariableAssumption) SubstitutionCipherTest assumes too much for instance variable '@key'
+      - simple_cipher_test.rb:82
+    * (IrresponsibleModule) IncorrectKeyCipherTest has no descriptive comment
+      - simple_cipher_test.rb:59
+    * (IrresponsibleModule) PseudoShiftCipherTest has no descriptive comment
+      - simple_cipher_test.rb:128
+    * (IrresponsibleModule) RandomKeyCipherTest has no descriptive comment
+      - simple_cipher_test.rb:28
+    * (IrresponsibleModule) SubstitutionCipherTest has no descriptive comment
+      - simple_cipher_test.rb:82
+Score: 82.2
+
+real	0m0.652s
+user	0m0.544s
+sys	0m0.104s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.740s
+user	0m0.588s
+sys	0m0.154s
+
+real	0m0.742s
+user	0m0.589s
+sys	0m0.155s
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-lint-formatter
+
+Running Ruby Formatter
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rubocop -a .
+
+Inspecting 2 files
+.C
+
+Offenses:
+
+simple_cipher_test.rb:28:1: C: Style/Documentation: Missing top-level documentation comment for class RandomKeyCipherTest.
+class RandomKeyCipherTest < Minitest::Test
+^^^^^^^^^^^^^^^^^^^^^^^^^
+simple_cipher_test.rb:59:1: C: Style/Documentation: Missing top-level documentation comment for class IncorrectKeyCipherTest.
+class IncorrectKeyCipherTest < Minitest::Test
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+simple_cipher_test.rb:82:1: C: Style/Documentation: Missing top-level documentation comment for class SubstitutionCipherTest.
+class SubstitutionCipherTest < Minitest::Test
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+simple_cipher_test.rb:128:1: C: Style/Documentation: Missing top-level documentation comment for class PseudoShiftCipherTest.
+class PseudoShiftCipherTest < Minitest::Test
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+2 files inspected, 4 offenses detected
+
+real	0m0.944s
+user	0m0.809s
+sys	0m0.225s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m1.039s
+user	0m0.857s
+sys	0m0.276s
+
+real	0m1.041s
+user	0m0.858s
+sys	0m0.277s
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-test-with-coverage
+
+Running Ruby Tests With Coverage
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rm -rf ./coverage
+
+
+real	0m0.001s
+user	0m0.001s
+sys	0m0.000s
+
+
+ ==============================================================================
+
+Running: ruby ./simple_cipher_test.rb -v
+
+Run options: -v --seed 5422
+
+# Running:
+
+RandomKeyCipherTest#test_cipher_encode = 0.00 s = .
+RandomKeyCipherTest#test_cipher_key_is_letters = 0.00 s = .
+RandomKeyCipherTest#test_cipher_decode = 0.00 s = .
+RandomKeyCipherTest#test_cipher_reversible = 0.00 s = .
+SubstitutionCipherTest#test_cipher_decode = 0.00 s = .
+SubstitutionCipherTest#test_cipher_encode = 0.00 s = .
+SubstitutionCipherTest#test_cipher_encode_wrap = 0.00 s = .
+SubstitutionCipherTest#test_cipher_key_is_as_submitted = 0.00 s = .
+SubstitutionCipherTest#test_cipher_reversible = 0.00 s = .
+SubstitutionCipherTest#test_double_shift_encode = 0.00 s = .
+PseudoShiftCipherTest#test_cipher_encode = 0.00 s = .
+PseudoShiftCipherTest#test_cipher_reversible = 0.00 s = .
+PseudoShiftCipherTest#test_cipher_decode = 0.00 s = .
+IncorrectKeyCipherTest#test_cipher_with_empty_key = 0.00 s = .
+IncorrectKeyCipherTest#test_cipher_with_caps_key = 0.00 s = .
+IncorrectKeyCipherTest#test_cipher_with_numeric_key = 0.00 s = .
+
+Finished in 0.006156s, 2599.2398 runs/s, 2761.6922 assertions/s.
+
+16 runs, 17 assertions, 0 failures, 0 errors, 0 skips
+Coverage report generated for test:exercism to /home/vpayno/git_vpayno/exercism-workspace/ruby/simple-cipher/coverage/coverage.xml. 21 / 21 LOC (100.00%) covered
+
+real	0m0.189s
+user	0m0.133s
+sys	0m0.057s
+
+
+ ==============================================================================
+
+Coverage: 100.0%
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.251s
+user	0m0.160s
+sys	0m0.095s
+
+real	0m0.253s
+user	0m0.161s
+sys	0m0.096s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.025s
+user	0m0.024s
+sys	0m0.013s
+
+===============================================================================
+
+/home/vpayno/git_vpayno/exercism-workspace/ruby
+
+===============================================================================
+

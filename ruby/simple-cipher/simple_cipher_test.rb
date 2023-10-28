@@ -1,3 +1,27 @@
+# frozen_string_literal: false
+
+# https://github.com/simplecov-ruby/simplecov
+require 'simplecov'
+
+# https://about.codecov.io/blog/getting-started-with-code-coverage-for-ruby/
+require 'simplecov-cobertura'
+SimpleCov.formatter = SimpleCov::Formatter::CoberturaFormatter
+
+# line coverage
+SimpleCov.start if ENV['COVERAGE'] != 'branch'
+
+# branch coverage
+if ENV['COVERAGE'] == 'branch'
+  SimpleCov.start do
+    enable_coverage :branch
+    primary_coverage :branch
+  end
+end
+
+# name the test file/group
+SimpleCov.command_name 'test:exercism'
+
+# original exercism tests
 require 'minitest/autorun'
 require_relative 'simple_cipher'
 
@@ -14,19 +38,19 @@ class RandomKeyCipherTest < Minitest::Test
   # outputs the key. This is a critical problem with shift ciphers, some
   # characters will always output the key verbatim.
   def test_cipher_encode
-    skip
+    # skip
     plaintext = 'aaaaaaaaaa'
     assert_equal(@cipher.key[0, 10], @cipher.encode(plaintext))
   end
 
   def test_cipher_decode
-    skip
+    # skip
     plaintext = 'aaaaaaaaaa'
     assert_equal(plaintext, @cipher.decode(@cipher.key[0, 10]))
   end
 
   def test_cipher_reversible
-    skip
+    # skip
     plaintext = 'abcdefghij'
     assert_equal(plaintext, @cipher.decode(@cipher.encode(plaintext)))
   end
@@ -34,21 +58,21 @@ end
 
 class IncorrectKeyCipherTest < Minitest::Test
   def test_cipher_with_caps_key
-    skip
+    # skip
     assert_raises ArgumentError do
       Cipher.new('ABCDEF')
     end
   end
 
   def test_cipher_with_numeric_key
-    skip
+    # skip
     assert_raises ArgumentError do
       Cipher.new('12345')
     end
   end
 
   def test_cipher_with_empty_key
-    skip
+    # skip
     assert_raises ArgumentError do
       Cipher.new('')
     end
@@ -62,39 +86,39 @@ class SubstitutionCipherTest < Minitest::Test
   end
 
   def test_cipher_key_is_as_submitted
-    skip
+    # skip
     assert_equal(@cipher.key, @key)
   end
 
   def test_cipher_encode
-    skip
+    # skip
     plaintext = 'aaaaaaaaaa'
     ciphertext = 'abcdefghij'
     assert_equal(ciphertext, @cipher.encode(plaintext))
   end
 
   def test_cipher_decode
-    skip
+    # skip
     plaintext = 'aaaaaaaaaa'
     ciphertext = 'abcdefghij'
     assert_equal(plaintext, @cipher.decode(ciphertext))
   end
 
   def test_cipher_reversible
-    skip
+    # skip
     plaintext = 'abcdefghij'
     assert_equal(plaintext, @cipher.decode(@cipher.encode(plaintext)))
   end
 
   def test_double_shift_encode
-    skip
+    # skip
     plaintext = 'iamapandabear'
     ciphertext = 'qayaeaagaciai'
     assert_equal(ciphertext, Cipher.new('iamapandabear').encode(plaintext))
   end
 
   def test_cipher_encode_wrap
-    skip
+    # skip
     plaintext = 'zzzzzzzzzz'
     ciphertext = 'zabcdefghi'
     assert_equal(ciphertext, @cipher.encode(plaintext))
@@ -107,21 +131,21 @@ class PseudoShiftCipherTest < Minitest::Test
   end
 
   def test_cipher_encode
-    skip
+    # skip
     plaintext = 'aaaaaaaaaa'
     ciphertext = 'dddddddddd'
     assert_equal(ciphertext, @cipher.encode(plaintext))
   end
 
   def test_cipher_decode
-    skip
+    # skip
     plaintext = 'aaaaaaaaaa'
     ciphertext = 'dddddddddd'
     assert_equal(plaintext, @cipher.decode(ciphertext))
   end
 
   def test_cipher_reversible
-    skip
+    # skip
     plaintext = 'abcdefghij'
     assert_equal(plaintext, @cipher.decode(@cipher.encode(plaintext)))
   end

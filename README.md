@@ -20,7 +20,7 @@ Exercism Workspace
 |   July        |  Jurassic          |  C            (5/5),  C++   (5/5),  Fortran  (0/5)  |
 |   August      |  Apps              |  Dart         (5/5),  Java  (0/5),  Kotlin   (0/5)  |
 |   September   |  Slimline          |  Awk          (5/5),  Bash\*  (5/5),  jq       (0/5),  Perl  (0/5)  |
-|   October     |  Object-Oriented   |  Ruby         (0/5),  Java  (0/5)  |
+|   October     |  Object-Oriented   |  Ruby         (1/5),  Java  (0/5)  |
 |   November    |  Nibbly            |  |
 |   December    |  Diversions        |  |
 
