@@ -1,0 +1,450 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-lint-rubycritic
+
+Running RubyCritic
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rubycritic --path .rubycritic --format console --no-browser .
+
+running flay smells
+[32m.[0m[32m.[0m[32m.[0m
+running flog smells
+[32m.[0m[32m.[0m
+running reek smells
+[32m.[0m[32m.[0m
+running complexity
+[32m.[0m[32m.[0m
+running attributes
+[32m.[0m[32m.[0m
+running churn
+[32m.[0m[32m.[0m
+running simple_cov
+[32m.[0m[32m.[0m
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing safe_level with the 2nd argument of ERB.new is deprecated. Do not use it, and specify other arguments as keyword arguments.
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing trim_mode with the 3rd argument of ERB.new is deprecated. Use keyword argument like ERB.new(str, trim_mode: ...) instead.
+Clock:
+  Rating:       A
+  Churn:        0
+  Complexity:   31.04
+  Duplication:  0
+  Smells:       1
+    * (UtilityFunction) Clock#normalize doesn't depend on instance state (maybe move it to another class?)
+      - clock.rb:15
+
+ClockTest:
+  Rating:       F
+  Churn:        0
+  Complexity:   297.43
+  Duplication:  658
+  Smells:       37
+    * (DuplicateCode) Similar code found in 16 nodes
+      - clock_test.rb:129
+      - clock_test.rb:135
+      - clock_test.rb:141
+      - clock_test.rb:147
+      - clock_test.rb:153
+      - clock_test.rb:159
+      - clock_test.rb:165
+      - clock_test.rb:171
+      - clock_test.rb:177
+      - clock_test.rb:183
+      - clock_test.rb:189
+      - clock_test.rb:195
+      - clock_test.rb:201
+      - clock_test.rb:207
+      - clock_test.rb:213
+      - clock_test.rb:219
+    * (DuplicateCode) Similar code found in 14 nodes
+      - clock_test.rb:225
+      - clock_test.rb:246
+      - clock_test.rb:253
+      - clock_test.rb:260
+      - clock_test.rb:267
+      - clock_test.rb:274
+      - clock_test.rb:281
+      - clock_test.rb:288
+      - clock_test.rb:295
+      - clock_test.rb:302
+      - clock_test.rb:309
+      - clock_test.rb:316
+      - clock_test.rb:323
+      - clock_test.rb:330
+    * (DuplicateCode) Similar code found in 2 nodes
+      - clock_test.rb:232
+      - clock_test.rb:239
+    * (IrresponsibleModule) ClockTest has no descriptive comment
+      - clock_test.rb:28
+    * (TooManyMethods) ClockTest has at least 52 methods
+      - clock_test.rb:28
+    * (UncommunicativeVariableName) ClockTest#test_clocks_a_minute_apart has the variable name 'clock1'
+      - clock_test.rb:234
+    * (UncommunicativeVariableName) ClockTest#test_clocks_a_minute_apart has the variable name 'clock2'
+      - clock_test.rb:235
+    * (UncommunicativeVariableName) ClockTest#test_clocks_an_hour_apart has the variable name 'clock1'
+      - clock_test.rb:241
+    * (UncommunicativeVariableName) ClockTest#test_clocks_an_hour_apart has the variable name 'clock2'
+      - clock_test.rb:242
+    * (UncommunicativeVariableName) ClockTest#test_clocks_with_hour_overflow has the variable name 'clock1'
+      - clock_test.rb:248
+    * (UncommunicativeVariableName) ClockTest#test_clocks_with_hour_overflow has the variable name 'clock2'
+      - clock_test.rb:249
+    * (UncommunicativeVariableName) ClockTest#test_clocks_with_hour_overflow_by_several_days has the variable name 'clock1'
+      - clock_test.rb:255
+    * (UncommunicativeVariableName) ClockTest#test_clocks_with_hour_overflow_by_several_days has the variable name 'clock2'
+      - clock_test.rb:256
+    * (UncommunicativeVariableName) ClockTest#test_clocks_with_minute_overflow has the variable name 'clock1'
+      - clock_test.rb:283
+    * (UncommunicativeVariableName) ClockTest#test_clocks_with_minute_overflow has the variable name 'clock2'
+      - clock_test.rb:284
+    * (UncommunicativeVariableName) ClockTest#test_clocks_with_minute_overflow_by_several_days has the variable name 'clock1'
+      - clock_test.rb:290
+    * (UncommunicativeVariableName) ClockTest#test_clocks_with_minute_overflow_by_several_days has the variable name 'clock2'
+      - clock_test.rb:291
+    * (UncommunicativeVariableName) ClockTest#test_clocks_with_negative_hour has the variable name 'clock1'
+      - clock_test.rb:262
+    * (UncommunicativeVariableName) ClockTest#test_clocks_with_negative_hour has the variable name 'clock2'
+      - clock_test.rb:263
+    * (UncommunicativeVariableName) ClockTest#test_clocks_with_negative_hour_that_wraps has the variable name 'clock1'
+      - clock_test.rb:269
+    * (UncommunicativeVariableName) ClockTest#test_clocks_with_negative_hour_that_wraps has the variable name 'clock2'
+      - clock_test.rb:270
+    * (UncommunicativeVariableName) ClockTest#test_clocks_with_negative_hour_that_wraps_multiple_times has the variable name 'clock1'
+      - clock_test.rb:276
+    * (UncommunicativeVariableName) ClockTest#test_clocks_with_negative_hour_that_wraps_multiple_times has the variable name 'clock2'
+      - clock_test.rb:277
+    * (UncommunicativeVariableName) ClockTest#test_clocks_with_negative_hours_and_minutes has the variable name 'clock1'
+      - clock_test.rb:318
+    * (UncommunicativeVariableName) ClockTest#test_clocks_with_negative_hours_and_minutes has the variable name 'clock2'
+      - clock_test.rb:319
+    * (UncommunicativeVariableName) ClockTest#test_clocks_with_negative_hours_and_minutes_that_wrap has the variable name 'clock1'
+      - clock_test.rb:325
+    * (UncommunicativeVariableName) ClockTest#test_clocks_with_negative_hours_and_minutes_that_wrap has the variable name 'clock2'
+      - clock_test.rb:326
+    * (UncommunicativeVariableName) ClockTest#test_clocks_with_negative_minute has the variable name 'clock1'
+      - clock_test.rb:297
+    * (UncommunicativeVariableName) ClockTest#test_clocks_with_negative_minute has the variable name 'clock2'
+      - clock_test.rb:298
+    * (UncommunicativeVariableName) ClockTest#test_clocks_with_negative_minute_that_wraps has the variable name 'clock1'
+      - clock_test.rb:304
+    * (UncommunicativeVariableName) ClockTest#test_clocks_with_negative_minute_that_wraps has the variable name 'clock2'
+      - clock_test.rb:305
+    * (UncommunicativeVariableName) ClockTest#test_clocks_with_negative_minute_that_wraps_multiple_times has the variable name 'clock1'
+      - clock_test.rb:311
+    * (UncommunicativeVariableName) ClockTest#test_clocks_with_negative_minute_that_wraps_multiple_times has the variable name 'clock2'
+      - clock_test.rb:312
+    * (UncommunicativeVariableName) ClockTest#test_clocks_with_same_time has the variable name 'clock1'
+      - clock_test.rb:227
+    * (UncommunicativeVariableName) ClockTest#test_clocks_with_same_time has the variable name 'clock2'
+      - clock_test.rb:228
+    * (UncommunicativeVariableName) ClockTest#test_full_clockand_zeroed_clock has the variable name 'clock1'
+      - clock_test.rb:332
+    * (UncommunicativeVariableName) ClockTest#test_full_clockand_zeroed_clock has the variable name 'clock2'
+      - clock_test.rb:333
+Score: 0.0
+
+real	0m0.809s
+user	0m0.699s
+sys	0m0.106s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.895s
+user	0m0.738s
+sys	0m0.160s
+
+real	0m0.899s
+user	0m0.739s
+sys	0m0.162s
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-lint-formatter
+
+Running Ruby Formatter
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rubocop -a .
+
+Inspecting 2 files
+.C
+
+Offenses:
+
+clock_test.rb:28:1: C: Metrics/ClassLength: Class has too many lines. [204/100]
+class ClockTest < Minitest::Test ...
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+clock_test.rb:28:1: C: Style/Documentation: Missing top-level documentation comment for class ClockTest.
+class ClockTest < Minitest::Test
+^^^^^^^^^^^^^^^
+clock_test.rb:31:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "08:00", Clock.new(hour: 8).to_s
+                 ^^^^^^^
+clock_test.rb:36:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "11:09", Clock.new(hour: 11, minute: 9).to_s
+                 ^^^^^^^
+clock_test.rb:41:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "00:00", Clock.new(hour: 24).to_s
+                 ^^^^^^^
+clock_test.rb:46:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "01:00", Clock.new(hour: 25).to_s
+                 ^^^^^^^
+clock_test.rb:51:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "04:00", Clock.new(hour: 100).to_s
+                 ^^^^^^^
+clock_test.rb:56:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "02:00", Clock.new(hour: 1, minute: 60).to_s
+                 ^^^^^^^
+clock_test.rb:61:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "02:40", Clock.new(minute: 160).to_s
+                 ^^^^^^^
+clock_test.rb:66:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "04:43", Clock.new(minute: 1723).to_s
+                 ^^^^^^^
+clock_test.rb:71:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "03:40", Clock.new(hour: 25, minute: 160).to_s
+                 ^^^^^^^
+clock_test.rb:76:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "11:01", Clock.new(hour: 201, minute: 3001).to_s
+                 ^^^^^^^
+clock_test.rb:81:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "00:00", Clock.new(hour: 72, minute: 8640).to_s
+                 ^^^^^^^
+clock_test.rb:86:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "23:15", Clock.new(hour: -1, minute: 15).to_s
+                 ^^^^^^^
+clock_test.rb:91:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "23:00", Clock.new(hour: -25).to_s
+                 ^^^^^^^
+clock_test.rb:96:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "05:00", Clock.new(hour: -91).to_s
+                 ^^^^^^^
+clock_test.rb:101:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "00:20", Clock.new(hour: 1, minute: -40).to_s
+                 ^^^^^^^
+clock_test.rb:106:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "22:20", Clock.new(hour: 1, minute: -160).to_s
+                 ^^^^^^^
+clock_test.rb:111:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "16:40", Clock.new(hour: 1, minute: -4820).to_s
+                 ^^^^^^^
+clock_test.rb:116:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "01:00", Clock.new(hour: 2, minute: -60).to_s
+                 ^^^^^^^
+clock_test.rb:121:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "20:20", Clock.new(hour: -25, minute: -160).to_s
+                 ^^^^^^^
+clock_test.rb:126:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "22:10", Clock.new(hour: -121, minute: -5810).to_s
+                 ^^^^^^^
+clock_test.rb:132:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "10:03", (clock + Clock.new(minute: 3)).to_s
+                 ^^^^^^^
+clock_test.rb:138:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "06:41", (clock + Clock.new(minute: 0)).to_s
+                 ^^^^^^^
+clock_test.rb:144:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "01:25", (clock + Clock.new(minute: 40)).to_s
+                 ^^^^^^^
+clock_test.rb:150:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "11:01", (clock + Clock.new(minute: 61)).to_s
+                 ^^^^^^^
+clock_test.rb:156:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "03:25", (clock + Clock.new(minute: 160)).to_s
+                 ^^^^^^^
+clock_test.rb:162:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "00:01", (clock + Clock.new(minute: 2)).to_s
+                 ^^^^^^^
+clock_test.rb:168:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "06:32", (clock + Clock.new(minute: 1500)).to_s
+                 ^^^^^^^
+clock_test.rb:174:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "11:21", (clock + Clock.new(minute: 3500)).to_s
+                 ^^^^^^^
+clock_test.rb:180:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "10:00", (clock - Clock.new(minute: 3)).to_s
+                 ^^^^^^^
+clock_test.rb:186:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "09:33", (clock - Clock.new(minute: 30)).to_s
+                 ^^^^^^^
+clock_test.rb:192:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "08:53", (clock - Clock.new(minute: 70)).to_s
+                 ^^^^^^^
+clock_test.rb:198:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "23:59", (clock - Clock.new(minute: 4)).to_s
+                 ^^^^^^^
+clock_test.rb:204:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "21:20", (clock - Clock.new(minute: 160)).to_s
+                 ^^^^^^^
+clock_test.rb:210:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "03:35", (clock - Clock.new(minute: 160)).to_s
+                 ^^^^^^^
+clock_test.rb:216:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "04:32", (clock - Clock.new(minute: 1500)).to_s
+                 ^^^^^^^
+clock_test.rb:222:18: C: [Corrected] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    assert_equal "00:20", (clock - Clock.new(minute: 3000)).to_s
+                 ^^^^^^^
+
+2 files inspected, 38 offenses detected, 36 offenses corrected
+
+real	0m1.150s
+user	0m0.981s
+sys	0m0.203s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m1.231s
+user	0m1.012s
+sys	0m0.259s
+
+real	0m1.232s
+user	0m1.012s
+sys	0m0.260s
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-test-with-coverage
+
+Running Ruby Tests With Coverage
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rm -rf ./coverage
+
+
+real	0m0.002s
+user	0m0.001s
+sys	0m0.001s
+
+
+ ==============================================================================
+
+Running: ruby ./clock_test.rb -v
+
+Run options: -v --seed 50084
+
+# Running:
+
+ClockTest#test_clocks_with_negative_hour = 0.00 s = .
+ClockTest#test_on_the_hour = 0.00 s = .
+ClockTest#test_add_to_next_hour = 0.00 s = .
+ClockTest#test_negative_hour_and_minutes_both_roll_over_continuously = 0.00 s = .
+ClockTest#test_subtract_more_than_two_hours = 0.00 s = .
+ClockTest#test_midnight_is_zero_hours = 0.00 s = .
+ClockTest#test_add_across_midnight = 0.00 s = .
+ClockTest#test_clocks_with_minute_overflow = 0.00 s = .
+ClockTest#test_negative_hour_rolls_over_continuously = 0.00 s = .
+ClockTest#test_clocks_with_same_time = 0.00 s = .
+ClockTest#test_negative_minutes = 0.00 s = .
+ClockTest#test_hour_and_minutes_roll_over_continuously = 0.00 s = .
+ClockTest#test_hour_and_minutes_roll_over_to_exactly_midnight = 0.00 s = .
+ClockTest#test_hour_rolls_over = 0.00 s = .
+ClockTest#test_clocks_with_negative_minute_that_wraps = 0.00 s = .
+ClockTest#test_hour_rolls_over_continuously = 0.00 s = .
+ClockTest#test_negative_hour_rolls_over = 0.00 s = .
+ClockTest#test_negative_minutes_roll_over = 0.00 s = .
+ClockTest#test_subtract_more_than_one_day = 0.00 s = .
+ClockTest#test_sixty_minutes_is_next_hour = 0.00 s = .
+ClockTest#test_add_minutes = 0.00 s = .
+ClockTest#test_subtract_more_than_two_days = 0.00 s = .
+ClockTest#test_negative_hour = 0.00 s = .
+ClockTest#test_subtract_across_midnight = 0.00 s = .
+ClockTest#test_clocks_with_negative_minute = 0.00 s = .
+ClockTest#test_subtract_to_previous_hour = 0.00 s = .
+ClockTest#test_negative_minutes_roll_over_continuously = 0.00 s = .
+ClockTest#test_add_more_than_one_hour = 0.00 s = .
+ClockTest#test_clocks_with_negative_hours_and_minutes_that_wrap = 0.00 s = .
+ClockTest#test_add_no_minutes = 0.00 s = .
+ClockTest#test_clocks_with_negative_hour_that_wraps = 0.00 s = .
+ClockTest#test_clocks_with_negative_hour_that_wraps_multiple_times = 0.00 s = .
+ClockTest#test_full_clockand_zeroed_clock = 0.00 s = .
+ClockTest#test_past_the_hour = 0.00 s = .
+ClockTest#test_clocks_with_minute_overflow_by_several_days = 0.00 s = .
+ClockTest#test_clocks_a_minute_apart = 0.00 s = .
+ClockTest#test_hour_and_minutes_roll_over = 0.00 s = .
+ClockTest#test_subtract_more_than_an_hour = 0.00 s = .
+ClockTest#test_add_more_than_two_hours_with_carry = 0.00 s = .
+ClockTest#test_negative_hour_and_minutes_both_roll_over = 0.00 s = .
+ClockTest#test_add_more_than_two_days = 0.00 s = .
+ClockTest#test_clocks_with_hour_overflow_by_several_days = 0.00 s = .
+ClockTest#test_minutes_roll_over = 0.00 s = .
+ClockTest#test_clocks_an_hour_apart = 0.00 s = .
+ClockTest#test_clocks_with_negative_minute_that_wraps_multiple_times = 0.00 s = .
+ClockTest#test_clocks_with_negative_hours_and_minutes = 0.00 s = .
+ClockTest#test_negative_sixty_minutes_is_previous_hour = 0.00 s = .
+ClockTest#test_subtract_minutes = 0.00 s = .
+ClockTest#test_subtract_more_than_two_hours_with_borrow = 0.00 s = .
+ClockTest#test_add_more_than_one_day = 0.00 s = .
+ClockTest#test_clocks_with_hour_overflow = 0.00 s = .
+ClockTest#test_minutes_roll_over_continuously = 0.00 s = .
+
+Finished in 0.009892s, 5256.8194 runs/s, 5256.8194 assertions/s.
+
+52 runs, 52 assertions, 0 failures, 0 errors, 0 skips
+Coverage report generated for test:exercism to /home/vpayno/git_vpayno/exercism-workspace/ruby/clock/coverage/coverage.xml. 18 / 18 LOC (100.00%) covered
+
+real	0m0.200s
+user	0m0.147s
+sys	0m0.052s
+
+
+ ==============================================================================
+
+Coverage: 100.0%
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.291s
+user	0m0.189s
+sys	0m0.106s
+
+real	0m0.293s
+user	0m0.191s
+sys	0m0.106s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.025s
+user	0m0.027s
+sys	0m0.010s
+
+===============================================================================
+
+/home/vpayno/git_vpayno/exercism-workspace/ruby
+
+===============================================================================
+

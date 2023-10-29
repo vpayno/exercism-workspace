@@ -68,3 +68,4 @@
 - [word-count](./word-count/README.md)
 - [allergies](./allergies/README.md)
 - [simple-cipher](./simple-cipher/README.md)
+- [clock](./clock/README.md)
