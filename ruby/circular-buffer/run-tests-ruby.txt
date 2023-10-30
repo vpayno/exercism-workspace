@@ -1,0 +1,330 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-lint-rubycritic
+
+Running RubyCritic
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rubycritic --path .rubycritic --format console --no-browser .
+
+running flay smells
+[32m.[0m
+running flog smells
+[32m.[0m[32m.[0m
+running reek smells
+[32m.[0m[32m.[0m
+running complexity
+[32m.[0m[32m.[0m
+running attributes
+[32m.[0m[32m.[0m
+running churn
+[32m.[0m[32m.[0m
+running simple_cov
+[32m.[0m[32m.[0m
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing safe_level with the 2nd argument of ERB.new is deprecated. Do not use it, and specify other arguments as keyword arguments.
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing trim_mode with the 3rd argument of ERB.new is deprecated. Use keyword argument like ERB.new(str, trim_mode: ...) instead.
+CircularBuffer::BufferEmptyException:
+  Rating:       A
+  Churn:        0
+  Complexity:   37.19
+  Duplication:  0
+  Smells:       3
+    * (DuplicateMethodCall) CircularBuffer#write! calls '@capacity + 1' 2 times
+      - circular_buffer.rb:36
+      - circular_buffer.rb:37
+    * (FeatureEnvy) CircularBuffer#to_s refers to 'output' more than self (maybe move it to another class?)
+      - circular_buffer.rb:45
+      - circular_buffer.rb:46
+      - circular_buffer.rb:47
+      - circular_buffer.rb:48
+      - circular_buffer.rb:50
+    * (TooManyStatements) CircularBuffer#to_s has approx 6 statements
+      - circular_buffer.rb:43
+
+CircularBufferTest:
+  Rating:       C
+  Churn:        0
+  Complexity:   109.62
+  Duplication:  52
+  Smells:       28
+    * (DuplicateCode) Similar code found in 2 nodes
+      - circular_buffer_test.rb:42
+      - circular_buffer_test.rb:104
+    * (DuplicateMethodCall) CircularBufferTest#test_alternate_read_and_write_into_buffer_overflow calls 'buffer.read' 7 times
+      - circular_buffer_test.rb:118
+      - circular_buffer_test.rb:119
+      - circular_buffer_test.rb:121
+      - circular_buffer_test.rb:126
+      - circular_buffer_test.rb:128
+      - circular_buffer_test.rb:129
+      - circular_buffer_test.rb:130
+    * (DuplicateMethodCall) CircularBufferTest#test_alternate_read_and_write_into_buffer_overflow calls 'buffer.write i' 2 times
+      - circular_buffer_test.rb:117
+      - circular_buffer_test.rb:122
+    * (DuplicateMethodCall) CircularBufferTest#test_alternate_write_and_read calls 'buffer.read' 2 times
+      - circular_buffer_test.rb:69
+      - circular_buffer_test.rb:71
+    * (DuplicateMethodCall) CircularBufferTest#test_clearing_buffer calls 'buffer.read' 3 times
+      - circular_buffer_test.rb:57
+      - circular_buffer_test.rb:60
+      - circular_buffer_test.rb:62
+    * (DuplicateMethodCall) CircularBufferTest#test_forced_writes_to_non_full_buffer_should_behave_like_writes calls 'buffer.read' 3 times
+      - circular_buffer_test.rb:109
+      - circular_buffer_test.rb:110
+      - circular_buffer_test.rb:111
+    * (DuplicateMethodCall) CircularBufferTest#test_overwriting_oldest_item_in_a_full_buffer calls 'buffer.read' 3 times
+      - circular_buffer_test.rb:99
+      - circular_buffer_test.rb:100
+      - circular_buffer_test.rb:101
+    * (DuplicateMethodCall) CircularBufferTest#test_reads_back_oldest_item calls 'buffer.read' 3 times
+      - circular_buffer_test.rb:79
+      - circular_buffer_test.rb:81
+      - circular_buffer_test.rb:82
+    * (DuplicateMethodCall) CircularBufferTest#test_write_and_read_back_multiple_items calls 'buffer.read' 3 times
+      - circular_buffer_test.rb:47
+      - circular_buffer_test.rb:48
+      - circular_buffer_test.rb:49
+    * (DuplicateMethodCall) CircularBufferTest#test_write_and_read_back_one_item calls 'buffer.read' 2 times
+      - circular_buffer_test.rb:38
+      - circular_buffer_test.rb:39
+    * (FeatureEnvy) CircularBufferTest#test_alternate_read_and_write_into_buffer_overflow refers to 'buffer' more than self (maybe move it to another class?)
+      - circular_buffer_test.rb:117
+      - circular_buffer_test.rb:118
+      - circular_buffer_test.rb:119
+      - circular_buffer_test.rb:120
+      - circular_buffer_test.rb:121
+      - circular_buffer_test.rb:122
+      - circular_buffer_test.rb:123
+      - circular_buffer_test.rb:124
+      - circular_buffer_test.rb:126
+      - circular_buffer_test.rb:128
+      - circular_buffer_test.rb:129
+      - circular_buffer_test.rb:130
+    * (FeatureEnvy) CircularBufferTest#test_alternate_write_and_read refers to 'buffer' more than self (maybe move it to another class?)
+      - circular_buffer_test.rb:68
+      - circular_buffer_test.rb:69
+      - circular_buffer_test.rb:70
+      - circular_buffer_test.rb:71
+    * (FeatureEnvy) CircularBufferTest#test_clearing_buffer refers to 'buffer' more than self (maybe move it to another class?)
+      - circular_buffer_test.rb:55
+      - circular_buffer_test.rb:56
+      - circular_buffer_test.rb:57
+      - circular_buffer_test.rb:58
+      - circular_buffer_test.rb:59
+      - circular_buffer_test.rb:60
+      - circular_buffer_test.rb:61
+      - circular_buffer_test.rb:62
+    * (FeatureEnvy) CircularBufferTest#test_forced_writes_to_non_full_buffer_should_behave_like_writes refers to 'buffer' more than self (maybe move it to another class?)
+      - circular_buffer_test.rb:107
+      - circular_buffer_test.rb:108
+      - circular_buffer_test.rb:109
+      - circular_buffer_test.rb:110
+      - circular_buffer_test.rb:111
+    * (FeatureEnvy) CircularBufferTest#test_overwriting_oldest_item_in_a_full_buffer refers to 'buffer' more than self (maybe move it to another class?)
+      - circular_buffer_test.rb:96
+      - circular_buffer_test.rb:97
+      - circular_buffer_test.rb:98
+      - circular_buffer_test.rb:99
+      - circular_buffer_test.rb:100
+      - circular_buffer_test.rb:101
+    * (FeatureEnvy) CircularBufferTest#test_reads_back_oldest_item refers to 'buffer' more than self (maybe move it to another class?)
+      - circular_buffer_test.rb:77
+      - circular_buffer_test.rb:78
+      - circular_buffer_test.rb:79
+      - circular_buffer_test.rb:80
+      - circular_buffer_test.rb:81
+      - circular_buffer_test.rb:82
+    * (FeatureEnvy) CircularBufferTest#test_write_and_read_back_multiple_items refers to 'buffer' more than self (maybe move it to another class?)
+      - circular_buffer_test.rb:45
+      - circular_buffer_test.rb:46
+      - circular_buffer_test.rb:47
+      - circular_buffer_test.rb:48
+      - circular_buffer_test.rb:49
+    * (FeatureEnvy) CircularBufferTest#test_write_and_read_back_one_item refers to 'buffer' more than self (maybe move it to another class?)
+      - circular_buffer_test.rb:37
+      - circular_buffer_test.rb:38
+      - circular_buffer_test.rb:39
+    * (FeatureEnvy) CircularBufferTest#test_writing_to_a_full_buffer_throws_an_exception refers to 'buffer' more than self (maybe move it to another class?)
+      - circular_buffer_test.rb:88
+      - circular_buffer_test.rb:89
+      - circular_buffer_test.rb:90
+    * (IrresponsibleModule) CircularBufferTest has no descriptive comment
+      - circular_buffer_test.rb:28
+    * (TooManyStatements) CircularBufferTest#test_alternate_read_and_write_into_buffer_overflow has approx 17 statements
+      - circular_buffer_test.rb:114
+    * (TooManyStatements) CircularBufferTest#test_clearing_buffer has approx 11 statements
+      - circular_buffer_test.rb:52
+    * (TooManyStatements) CircularBufferTest#test_forced_writes_to_non_full_buffer_should_behave_like_writes has approx 7 statements
+      - circular_buffer_test.rb:104
+    * (TooManyStatements) CircularBufferTest#test_overwriting_oldest_item_in_a_full_buffer has approx 8 statements
+      - circular_buffer_test.rb:93
+    * (TooManyStatements) CircularBufferTest#test_reads_back_oldest_item has approx 7 statements
+      - circular_buffer_test.rb:74
+    * (TooManyStatements) CircularBufferTest#test_write_and_read_back_multiple_items has approx 7 statements
+      - circular_buffer_test.rb:42
+    * (UncommunicativeVariableName) CircularBufferTest#test_alternate_read_and_write_into_buffer_overflow has the variable name 'i'
+      - circular_buffer_test.rb:117
+      - circular_buffer_test.rb:122
+      - circular_buffer_test.rb:125
+    * (UncommunicativeVariableName) CircularBufferTest#test_clearing_buffer has the variable name 'i'
+      - circular_buffer_test.rb:55
+Score: 75.4
+
+real	0m0.680s
+user	0m0.547s
+sys	0m0.125s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.764s
+user	0m0.582s
+sys	0m0.179s
+
+real	0m0.769s
+user	0m0.584s
+sys	0m0.182s
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-lint-formatter
+
+Running Ruby Formatter
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rubocop -a .
+
+Inspecting 2 files
+.C
+
+Offenses:
+
+circular_buffer_test.rb:28:1: C: Style/Documentation: Missing top-level documentation comment for class CircularBufferTest.
+class CircularBufferTest < Minitest::Test
+^^^^^^^^^^^^^^^^^^^^^^^^
+circular_buffer_test.rb:114:3: C: Metrics/AbcSize: Assignment Branch Condition size for test_alternate_read_and_write_into_buffer_overflow is too high. [<4, 20, 3> 20.62/17]
+  def test_alternate_read_and_write_into_buffer_overflow ...
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+circular_buffer_test.rb:114:3: C: Metrics/MethodLength: Method has too many lines. [15/10]
+  def test_alternate_read_and_write_into_buffer_overflow ...
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+2 files inspected, 3 offenses detected
+
+real	0m0.994s
+user	0m0.856s
+sys	0m0.166s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m1.064s
+user	0m0.889s
+sys	0m0.208s
+
+real	0m1.066s
+user	0m0.889s
+sys	0m0.210s
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-test-with-coverage
+
+Running Ruby Tests With Coverage
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rm -rf ./coverage
+
+
+real	0m0.001s
+user	0m0.001s
+sys	0m0.000s
+
+
+ ==============================================================================
+
+Running: ruby ./circular_buffer_test.rb -v
+
+Run options: -v --seed 37127
+
+# Running:
+
+CircularBufferTest#test_write_and_read_back_one_item = 0.00 s = .
+CircularBufferTest#test_clearing_buffer = 0.00 s = .
+CircularBufferTest#test_overwriting_oldest_item_in_a_full_buffer = 0.00 s = .
+CircularBufferTest#test_read_empty_buffer_throws_buffer_empty_exception = 0.00 s = .
+CircularBufferTest#test_reads_back_oldest_item = 0.00 s = .
+CircularBufferTest#test_forced_writes_to_non_full_buffer_should_behave_like_writes = 0.00 s = .
+CircularBufferTest#test_write_and_read_back_multiple_items = 0.00 s = .
+CircularBufferTest#test_alternate_write_and_read = 0.00 s = .
+CircularBufferTest#test_alternate_read_and_write_into_buffer_overflow = 0.00 s = .
+CircularBufferTest#test_writing_to_a_full_buffer_throws_an_exception = 0.00 s = .
+
+Finished in 0.005119s, 1953.3257 runs/s, 5078.6468 assertions/s.
+
+10 runs, 26 assertions, 0 failures, 0 errors, 0 skips
+Coverage report generated for test:exercism to /home/vpayno/git_vpayno/exercism-workspace/ruby/circular-buffer/coverage/coverage.xml. 27 / 33 LOC (81.82%) covered
+
+real	0m0.174s
+user	0m0.123s
+sys	0m0.052s
+
+
+ ==============================================================================
+
+Coverage: 82.0%
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.230s
+user	0m0.150s
+sys	0m0.084s
+
+real	0m0.231s
+user	0m0.152s
+sys	0m0.085s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.023s
+user	0m0.020s
+sys	0m0.017s
+
+===============================================================================
+
+/home/vpayno/git_vpayno/exercism-workspace/ruby
+
+===============================================================================
+
