@@ -70,3 +70,4 @@
 - [simple-cipher](./simple-cipher/README.md)
 - [clock](./clock/README.md)
 - [circular-buffer](./circular-buffer/README.md)
+- [binary-search-tree](./binary-search-tree/README.md)

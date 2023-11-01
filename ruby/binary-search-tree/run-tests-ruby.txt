@@ -1,0 +1,261 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-lint-rubycritic
+
+Running RubyCritic
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rubycritic --path .rubycritic --format console --no-browser .
+
+running flay smells
+[32m.[0m
+running flog smells
+[32m.[0m[32m.[0m
+running reek smells
+[32m.[0m[32m.[0m
+running complexity
+[32m.[0m[32m.[0m
+running attributes
+[32m.[0m[32m.[0m
+running churn
+[32m.[0m[32m.[0m
+running simple_cov
+[32m.[0m[32m.[0m
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing safe_level with the 2nd argument of ERB.new is deprecated. Do not use it, and specify other arguments as keyword arguments.
+/home/vpayno/.rbenv/versions/3.1.1/lib/ruby/gems/3.1.0/gems/rubycritic-4.6.1/lib/rubycritic/generators/text/list.rb:13: warning: Passing trim_mode with the 3rd argument of ERB.new is deprecated. Use keyword argument like ERB.new(str, trim_mode: ...) instead.
+Bst:
+  Rating:       A
+  Churn:        0
+  Complexity:   18.61
+  Duplication:  0
+  Smells:       0
+
+BstTest:
+  Rating:       C
+  Churn:        0
+  Complexity:   127.65
+  Duplication:  54
+  Smells:       16
+    * (DuplicateCode) Similar code found in 3 nodes
+      - binary_search_tree_test.rb:33
+      - binary_search_tree_test.rb:41
+      - binary_search_tree_test.rb:49
+    * (HighComplexity) BstTest#test_complex_tree has a flog score of 45
+      - binary_search_tree_test.rb:57
+    * (DuplicateMethodCall) BstTest#test_complex_tree calls 'four.left' 3 times
+      - binary_search_tree_test.rb:67
+      - binary_search_tree_test.rb:68
+      - binary_search_tree_test.rb:69
+    * (DuplicateMethodCall) BstTest#test_complex_tree calls 'four.right' 3 times
+      - binary_search_tree_test.rb:70
+      - binary_search_tree_test.rb:71
+      - binary_search_tree_test.rb:72
+    * (DuplicateMethodCall) BstTest#test_each_returns_enumerator_if_no_block calls 'each_enumerator.next' 2 times
+      - binary_search_tree_test.rb:121
+      - binary_search_tree_test.rb:123
+    * (FeatureEnvy) BstTest#test_complex_tree refers to 'four' more than self (maybe move it to another class?)
+      - binary_search_tree_test.rb:60
+      - binary_search_tree_test.rb:61
+      - binary_search_tree_test.rb:62
+      - binary_search_tree_test.rb:63
+      - binary_search_tree_test.rb:64
+      - binary_search_tree_test.rb:65
+      - binary_search_tree_test.rb:66
+      - binary_search_tree_test.rb:67
+      - binary_search_tree_test.rb:68
+      - binary_search_tree_test.rb:69
+      - binary_search_tree_test.rb:70
+      - binary_search_tree_test.rb:71
+      - binary_search_tree_test.rb:72
+    * (FeatureEnvy) BstTest#test_inserting_less refers to 'four' more than self (maybe move it to another class?)
+      - binary_search_tree_test.rb:36
+      - binary_search_tree_test.rb:37
+      - binary_search_tree_test.rb:38
+    * (FeatureEnvy) BstTest#test_inserting_right refers to 'four' more than self (maybe move it to another class?)
+      - binary_search_tree_test.rb:52
+      - binary_search_tree_test.rb:53
+      - binary_search_tree_test.rb:54
+    * (FeatureEnvy) BstTest#test_inserting_same refers to 'four' more than self (maybe move it to another class?)
+      - binary_search_tree_test.rb:44
+      - binary_search_tree_test.rb:45
+      - binary_search_tree_test.rb:46
+    * (FeatureEnvy) BstTest#test_iterating_over_complex_tree refers to 'four' more than self (maybe move it to another class?)
+      - binary_search_tree_test.rb:103
+      - binary_search_tree_test.rb:104
+      - binary_search_tree_test.rb:105
+      - binary_search_tree_test.rb:106
+      - binary_search_tree_test.rb:107
+      - binary_search_tree_test.rb:108
+    * (IrresponsibleModule) BstTest has no descriptive comment
+      - binary_search_tree_test.rb:28
+    * (TooManyStatements) BstTest#test_complex_tree has approx 14 statements
+      - binary_search_tree_test.rb:57
+    * (TooManyStatements) BstTest#test_each_returns_enumerator_if_no_block has approx 9 statements
+      - binary_search_tree_test.rb:112
+    * (TooManyStatements) BstTest#test_iterating_over_complex_tree has approx 8 statements
+      - binary_search_tree_test.rb:100
+    * (UncommunicativeVariableName) BstTest#test_each_returns_enumerator_if_no_block has the variable name 'x'
+      - binary_search_tree_test.rb:116
+      - binary_search_tree_test.rb:121
+    * (UtilityFunction) BstTest#record_all_data doesn't depend on instance state (maybe move it to another class?)
+      - binary_search_tree_test.rb:75
+Score: 75.47
+
+real	0m0.754s
+user	0m0.578s
+sys	0m0.112s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.832s
+user	0m0.621s
+sys	0m0.151s
+
+real	0m0.834s
+user	0m0.622s
+sys	0m0.153s
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-lint-formatter
+
+Running Ruby Formatter
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rubocop -a .
+
+Inspecting 2 files
+.C
+
+Offenses:
+
+binary_search_tree_test.rb:28:1: C: Style/Documentation: Missing top-level documentation comment for class BstTest.
+class BstTest < Minitest::Test
+^^^^^^^^^^^^^
+binary_search_tree_test.rb:57:3: C: Metrics/AbcSize: Assignment Branch Condition size for test_complex_tree is too high. [<1, 31, 0> 31.02/17]
+  def test_complex_tree ...
+  ^^^^^^^^^^^^^^^^^^^^^
+binary_search_tree_test.rb:57:3: C: Metrics/MethodLength: Method has too many lines. [14/10]
+  def test_complex_tree ...
+  ^^^^^^^^^^^^^^^^^^^^^
+
+2 files inspected, 3 offenses detected
+
+real	0m0.973s
+user	0m0.826s
+sys	0m0.217s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m1.049s
+user	0m0.857s
+sys	0m0.265s
+
+real	0m1.051s
+user	0m0.858s
+sys	0m0.266s
+
+===============================================================================
+
+Running: ../../.github/citools/ruby/ruby-test-with-coverage
+
+Running Ruby Tests With Coverage
+
+Ruby version:
+
+	ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
+	rbenv 1.2.0-11-ge4f61e6
+
+
+ ==============================================================================
+
+Running: rm -rf ./coverage
+
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.001s
+
+
+ ==============================================================================
+
+Running: ruby ./binary_search_tree_test.rb -v
+
+Run options: -v --seed 26547
+
+# Running:
+
+BstTest#test_iterating_one_element = 0.00 s = .
+BstTest#test_iterating_over_complex_tree = 0.00 s = .
+BstTest#test_inserting_right = 0.00 s = .
+BstTest#test_inserting_same = 0.00 s = .
+BstTest#test_complex_tree = 0.00 s = .
+BstTest#test_each_returns_enumerator_if_no_block = 0.00 s = .
+BstTest#test_inserting_less = 0.00 s = .
+BstTest#test_iterating_over_smaller_element = 0.00 s = .
+BstTest#test_data_is_retained = 0.00 s = .
+BstTest#test_iterating_over_larger_element = 0.00 s = .
+
+Finished in 0.007252s, 1378.8921 runs/s, 3723.0087 assertions/s.
+
+10 runs, 27 assertions, 0 failures, 0 errors, 0 skips
+Coverage report generated for test:exercism to /home/vpayno/git_vpayno/exercism-workspace/ruby/binary-search-tree/coverage/coverage.xml. 15 / 15 LOC (100.00%) covered
+
+real	0m0.164s
+user	0m0.127s
+sys	0m0.036s
+
+
+ ==============================================================================
+
+Coverage: 100.0%
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.221s
+user	0m0.153s
+sys	0m0.071s
+
+real	0m0.223s
+user	0m0.153s
+sys	0m0.073s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.041s
+user	0m0.037s
+sys	0m0.015s
+
+===============================================================================
+
+/home/vpayno/git_vpayno/exercism-workspace/ruby
+
+===============================================================================
+

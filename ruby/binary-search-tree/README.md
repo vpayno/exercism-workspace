@@ -75,3 +75,8 @@ And if we then added 1, 5, and 7, it would look like this
 ### Based on
 
 Josh Cheek - https://twitter.com/josh_cheek
+
+### My Solution
+
+- [my solution](./binary_search_tree.rb)
+- [run-tests](./run-tests-ruby.txt)
