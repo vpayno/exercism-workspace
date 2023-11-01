@@ -16,8 +16,7 @@ typedef struct {
     int value;
 } new_map; // output
 
-size_t convert(const legacy_map *input, const size_t input_len,
-               new_map **output);
+size_t convert(const legacy_map *input, size_t input_len, new_map **output);
 
 int cmp(const void *value_a, const void *value_b);
 

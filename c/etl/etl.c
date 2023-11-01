@@ -13,7 +13,7 @@ size_t convert(const legacy_map *input, const size_t input_len,
     size_t key = 0;
     for (size_t i = 0; i < input_len; i++) {
         for (size_t j = 0; j < strlen(input[i].keys); j++) {
-            (*output)[key].key = tolower(input[i].keys[j]);
+            (*output)[key].key = (char)tolower(input[i].keys[j]);
             (*output)[key].value = tolower(input[i].value);
 
             key += 1;
