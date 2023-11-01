@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf *.o *.out *.out.dSYM
 
-real	0m0.004s
-user	0m0.002s
-sys	0m0.001s
+real	0m0.015s
+user	0m0.003s
+sys	0m0.002s
 
 ===============================================================================
 
@@ -29,9 +29,9 @@ test_grains.c:67:test_total:PASS
 10 Tests 0 Failures 0 Ignored 
 OK
 
-real	0m0.157s
-user	0m0.112s
-sys	0m0.047s
+real	0m0.160s
+user	0m0.094s
+sys	0m0.049s
 
 ===============================================================================
 
@@ -53,48 +53,48 @@ test_grains.c:67:test_total:PASS
 OK
 Memory check passed
 
-real	0m0.151s
-user	0m0.114s
-sys	0m0.039s
+real	0m0.201s
+user	0m0.146s
+sys	0m0.038s
 
 ===============================================================================
 
 Running: clang-format-16 -style=file -i ./grains.c ./test_grains.c ./grains.h
 
-real	0m0.024s
+real	0m0.025s
 user	0m0.012s
-sys	0m0.012s
+sys	0m0.013s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./grains.h
+Running: clang-check-16 --analyze ./grains.h
 
-real	0m0.026s
-user	0m0.013s
+real	0m0.029s
+user	0m0.015s
 sys	0m0.013s
 
 
-real	0m0.028s
-user	0m0.013s
-sys	0m0.015s
+real	0m0.030s
+user	0m0.016s
+sys	0m0.014s
 
 ===============================================================================
 
-Running: ../../.github/citools/cpp/clang-tidy | head -n 100
+Running: ../../.github/citools/cpp/clang-tidy --fix | head -n 100
 269 warnings generated.
 Suppressed 269 warnings (269 in non-user code).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 
-real	0m0.034s
-user	0m0.020s
-sys	0m0.014s
-Running: clang-tidy-16 ./grains.h
+real	0m0.029s
+user	0m0.018s
+sys	0m0.011s
+Running: clang-tidy-16 --fix ./grains.h
 
 
-real	0m0.037s
-user	0m0.022s
-sys	0m0.016s
+real	0m0.031s
+user	0m0.019s
+sys	0m0.013s
 
 ===============================================================================
 

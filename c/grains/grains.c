@@ -12,7 +12,7 @@ uint64_t square(uint8_t index) {
     return (uint64_t)1 << (uint8_t)(index - 1);
 }
 
-uint64_t total() {
+uint64_t total(void) {
     /* The result of the left shift is undefined due to shifting by '64', which
     is greater or equal to the width of type 'uint64_t' return (uint64_t)1 <<
     64;
