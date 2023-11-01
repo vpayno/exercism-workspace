@@ -21,7 +21,7 @@ Exercism Workspace
 |   August      |  Apps              |  Dart         (5/5),  Java  (0/5),  Kotlin   (0/5)  |
 |   September   |  Slimline          |  Awk          (5/5),  Bash\*  (5/5),  jq       (0/5),  Perl  (0/5)  |
 |   October     |  Object-Oriented   |  Ruby         (5/5),  Java  (0/5)  |
-|   November    |  Nibbly            |  |
+|   November    |  Nibbly            |  WebAssembly  (0/5),  x86-64 Assembly  |
 |   December    |  Diversions        |  |
 
 \* not completed in 2023
@@ -72,6 +72,11 @@ Exercism Workspace
 
 - Languages: Crystal, C#, Java, Pharo, PowerShell, Ruby
 - Exercises: Binary Search Tree, Circular Buffer, Clock, Matrix, Simple Cipher
+
+#### Nibbly November
+
+- Languages: MIPS Assembly, WebAssembly, x86-64 Assembly
+- Exercises: Pop Count, Grains, Resistor Color, Rotational Cipher, Nucleotide Count
 
 ### 12in23 Badges
 
