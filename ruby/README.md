@@ -71,3 +71,4 @@
 - [clock](./clock/README.md)
 - [circular-buffer](./circular-buffer/README.md)
 - [binary-search-tree](./binary-search-tree/README.md)
+- [matrix](./matrix/README.md)

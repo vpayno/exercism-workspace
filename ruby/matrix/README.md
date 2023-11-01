@@ -61,3 +61,8 @@ And its columns:
 ### Based on
 
 Exercise by the JumpstartLab team for students at The Turing School of Software and Design. - https://turing.edu
+
+### My Solution
+
+- [my solution](./matrix.rb)
+- [run-tests](./run-tests-ruby.txt)
