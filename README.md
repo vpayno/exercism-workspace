@@ -157,6 +157,7 @@ Exercism Workspace
 - [C](c/README.md)
 - [C++](cpp/README.md)
 - [Ruby](ruby/README.md)
+- [WebAssembly](wasm/README.md)
 
 ## Tools/Scripts
 
