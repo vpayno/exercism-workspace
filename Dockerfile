@@ -14,7 +14,7 @@ RUN bash .github/docker/layer-00.01-base-env_setup.sh ci-generic-debian
 
 RUN bash .github/docker/layer-00.10-base-daggerio.sh ci-generic-debian
 
-RUN bash .github/docker/layer-02.20-exercism-nodejs.sh ci-generic-debian
+RUN bash .github/docker/layer-09.00-exercism-nodejs.sh ci-generic-debian
 
 RUN bash .github/docker/layer-10.00-exercism-gcc_clang_llvm.sh ci-generic-debian
 
