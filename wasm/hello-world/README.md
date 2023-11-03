@@ -13,9 +13,9 @@ or environment.
 
 The objectives are simple:
 
-- Modify the provided code so that it produces the string "Hello, World!".
-- Run the test suite and make sure that it succeeds.
-- Submit your solution and check it at the website.
+-   Modify the provided code so that it produces the string "Hello, World!".
+-   Run the test suite and make sure that it succeeds.
+-   Submit your solution and check it at the website.
 
 If everything goes well, you will be ready to fetch your first real exercise.
 
@@ -23,8 +23,14 @@ If everything goes well, you will be ready to fetch your first real exercise.
 
 ### Created by
 
-- @bushidocodes
+-   @bushidocodes
 
 ### Based on
 
 This is an exercise to introduce users to using Exercism - http://en.wikipedia.org/wiki/%22Hello,_world!%22_program
+
+
+### My Solution
+
+- [my solution]()
+- [run-tests](./run-tests-wasm.txt)

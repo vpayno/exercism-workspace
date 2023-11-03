@@ -52,21 +52,21 @@ This command will upload your solution to the Exercism website and print the sol
 
 It's possible to submit an incomplete solution which allows you to:
 
-- See how others have completed the exercise
-- Request help from a mentor
+-   See how others have completed the exercise
+-   Request help from a mentor
 
 ## Need to get help?
 
 If you'd like help solving the exercise, check the following pages:
 
-- The [WebAssembly track's documentation](https://exercism.org/docs/tracks/wasm)
-- The [WebAssembly track's programming category on the forum](https://forum.exercism.org/c/programming/wasm)
-- [Exercism's programming category on the forum](https://forum.exercism.org/c/programming/5)
-- The [Frequently Asked Questions](https://exercism.org/docs/using/faqs)
+-   The [WebAssembly track's documentation](https://exercism.org/docs/tracks/wasm)
+-   The [WebAssembly track's programming category on the forum](https://forum.exercism.org/c/programming/wasm)
+-   [Exercism's programming category on the forum](https://forum.exercism.org/c/programming/5)
+-   The [Frequently Asked Questions](https://exercism.org/docs/using/faqs)
 
 Should those resources not suffice, you could submit your (incomplete) solution to request mentoring.
 
 To get help if you're having trouble, you can use one of the following resources:
 
-- [/r/WebAssembly](https://www.reddit.com/r/WebAssembly/) is the WebAssembly subreddit.
-- [Github issue tracker](https://github.com/exercism/wasm/issues) is where we track our development and maintenance of Javascript exercises in exercism. But if none of the above links help you, feel free to post an issue here.
+-   [/r/WebAssembly](https://www.reddit.com/r/WebAssembly/) is the WebAssembly subreddit.
+-   [Github issue tracker](https://github.com/exercism/wasm/issues) is where we track our development and maintenance of Javascript exercises in exercism. But if none of the above links help you, feel free to post an issue here.

@@ -13,3 +13,4 @@
 
 ## [Exercises](https://exercism.org/tracks/wasm/exercises)
 
+- [hello-world](./hello-world/README.md)
