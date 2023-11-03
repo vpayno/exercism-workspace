@@ -101,6 +101,7 @@ Exercism Workspace
 [![C Workflow](https://github.com/vpayno/exercism-workspace/actions/workflows/c.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/c.yml)
 [![CPP Workflow](https://github.com/vpayno/exercism-workspace/actions/workflows/cpp.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/cpp.yml)
 [![Ruby Workflow](https://github.com/vpayno/exercism-workspace/actions/workflows/ruby.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/ruby.yml)
+[![WebAssembly Workflow](https://github.com/vpayno/exercism-workspace/actions/workflows/wasm.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/wasm.yml)
 
 [![Git PR Checks](https://github.com/vpayno/exercism-workspace/actions/workflows/git-pr.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/git-pr.yml)
 [![Check Links](https://github.com/vpayno/exercism-workspace/actions/workflows/links.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/links.yml)
@@ -135,6 +136,7 @@ Exercism Workspace
 - [C Workflow](.github/workflows/c.yml)
 - [C++ Workflow](.github/workflows/cpp.yml)
 - [Ruby Workflow](.github/workflows/ruby.yml)
+- [WebAssembly Workflow](.github/workflows/wasm.yml)
 - [Link Checker Workflow](.github/workflows/links.yml)
 - [CodeQL Workflow](.github/workflows/codeql-analysis.yml)
 - [Woke PR](.github/workflows/woke-pr.yml)
