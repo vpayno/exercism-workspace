@@ -43,7 +43,7 @@ get_rust_package_name() {
 
 show_tool_versions_rust_short() {
 	# md_code_tag text
-	printf "Rust version:\n"
+	printf "Rust versions:\n"
 	printf "\n"
 	rustc --version | paste /dev/null -
 	rustup --version | paste /dev/null -
@@ -52,12 +52,7 @@ show_tool_versions_rust_short() {
 } # show_tool_versions_rust_short()
 
 show_tool_versions_rust() {
-	# md_code_tag text
-	printf "Rust version:\n"
-	printf "\n"
-	rustc --version | paste /dev/null -
-	# md_code_tag
-	printf "\n"
+	show_tool_versions_rust_short
 
 	if [[ -z ${GITHUB_ACTIONS} ]]; then
 		return
@@ -102,12 +97,7 @@ show_tool_versions_go_short() {
 } # show_tool_versions_go_short()
 
 show_tool_versions_go() {
-	# md_code_tag text
-	printf "Go version:\n"
-	printf "\n"
-	go version | paste /dev/null -
-	# md_code_tag
-	printf "\n"
+	show_tool_versions_go_short
 
 	if [[ -z ${GITHUB_ACTIONS} ]]; then
 		return
@@ -133,7 +123,7 @@ show_tool_versions_go() {
 
 show_tool_versions_ruby_short() {
 	# md_code_tag text
-	printf "Ruby version:\n"
+	printf "Ruby versions:\n"
 	printf "\n"
 	ruby --version | paste /dev/null -
 	rbenv --version | paste /dev/null -
@@ -142,13 +132,7 @@ show_tool_versions_ruby_short() {
 } # show_tool_versions_ruby_short()
 
 show_tool_versions_ruby() {
-	# md_code_tag text
-	printf "Ruby version:\n"
-	printf "\n"
-	ruby --version | paste /dev/null -
-	rbenv --version | paste /dev/null -
-	# md_code_tag
-	printf "\n"
+	show_tool_versions_ruby_short
 
 	if [[ -z ${GITHUB_ACTIONS} ]]; then
 		return
