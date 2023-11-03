@@ -11,7 +11,12 @@ set -o pipefail
 # shellcheck disable=SC1091
 . /.github/docker/include
 
+# shellcheck disable=SC1091
+source /.github/citools/includes/wrapper-library || exit
+
 main() {
+	declare -i retval=0
+
 	layer_begin "${0}" "$@"
 
 	declare -a PACKAGES
@@ -57,29 +62,37 @@ main() {
 	# chmod -v +x llvm.sh
 	# ./llvm.sh 16 all
 
-	tee -a /etc/apt/sources.list <<EOF
-# deb http://apt.llvm.org/bullseye/ llvm-toolchain-bullseye main
-# deb-src http://apt.llvm.org/bullseye/ llvm-toolchain-bullseye main
-# deb http://apt.llvm.org/bullseye/ llvm-toolchain-bullseye-14 main
-# deb-src http://apt.llvm.org/bullseye/ llvm-toolchain-bullseye-14 main
-# deb http://apt.llvm.org/bullseye/ llvm-toolchain-bullseye-15 main
-# deb-src http://apt.llvm.org/bullseye/ llvm-toolchain-bullseye-15 main
-deb http://apt.llvm.org/bullseye/ llvm-toolchain-bullseye-16 main
-deb-src http://apt.llvm.org/bullseye/ llvm-toolchain-bullseye-16 main
-# deb http://apt.llvm.org/bullseye/ llvm-toolchain-bullseye-17 main
- #deb-src http://apt.llvm.org/bullseye/ llvm-toolchain-bullseye-17 main
-EOF
+	echo Creating /etc/apt/sources.list.d/llvm.list
+	tee -a /etc/apt/sources.list.d/llvm.list <<-EOF
+		# deb http://apt.llvm.org/bookworm/ llvm-toolchain-bookworm main
+		# deb-src http://apt.llvm.org/bookworm/ llvm-toolchain-bookworm main
+		# deb http://apt.llvm.org/bookworm/ llvm-toolchain-bookworm-14 main
+		# deb-src http://apt.llvm.org/bookworm/ llvm-toolchain-bookworm-14 main
+		# deb http://apt.llvm.org/bookworm/ llvm-toolchain-bookworm-15 main
+		# deb-src http://apt.llvm.org/bookworm/ llvm-toolchain-bookworm-15 main
+		deb http://apt.llvm.org/bookworm/ llvm-toolchain-bookworm-16 main
+		deb-src http://apt.llvm.org/bookworm/ llvm-toolchain-bookworm-16 main
+		# deb http://apt.llvm.org/bookworm/ llvm-toolchain-bookworm-17 main
+		# deb-src http://apt.llvm.org/bookworm/ llvm-toolchain-bookworm-17 main
+	EOF
 
 	#wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
-	curl -sS https://apt.llvm.org/llvm-snapshot.gpg.key | tee /etc/apt/trusted.gpg.d/apt.llvm.org.asc
+	echo Running: curl -sS https://apt.llvm.org/llvm-snapshot.gpg.key | tee /etc/apt/trusted.gpg.d/apt.llvm.org.asc
+	time curl -sS https://apt.llvm.org/llvm-snapshot.gpg.key | tee /etc/apt/trusted.gpg.d/apt.llvm.org.asc || track_errors
+	printf "\n"
 
-	apt update
+	echo Running: apt update
+	time apt update || track_errors
+	printf "\n"
 
-	echo apt install -y "${PACKAGES[@]}"
-	apt install -y "${PACKAGES[@]}" || exit
+	echo Running: apt install -y "${PACKAGES[@]}"
+	time apt install -y "${PACKAGES[@]}" || track_errors
 	printf "\n"
 
 	layer_end "${0}" "$@"
+
+	echo Running: return "${retval}"
+	return "${retval}"
 }
 
 main "${@}" |& tee "${HOME}"/layer-10.00-exercism-gcc_clang_llvm.log
