@@ -176,3 +176,4 @@ Exercism Workspace
 - [C run-tests](./c/run-tests)
 - [C++ run-tests](./cpp/run-tests)
 - [Ruby run-tests](./ruby/run-tests)
+- [WebAssembly run-tests](./wasm/run-tests)
