@@ -196,11 +196,23 @@ jobs:
         id: config-wasm-tools
         run: |-
           ./.github/citools/common/run_wrapper_script "./${{ matrix.exercise }}" ../../.github/citools/wasm/wasm-setup-config
+      - name: Install WebAssembly Tools [${{ matrix.exercise }}]
+        id: wasm-install
+        run: |-
+          ./.github/citools/common/run_wrapper_script "./${{ matrix.exercise }}" ../../.github/citools/wasm/wasm-setup-install
       - name: Show WebAssembly version [${{ matrix.exercise }}]
         id: wasm-version
         run: |-
           ./.github/citools/common/run_wrapper_script "./${{ matrix.exercise }}" ../../.github/citools/wasm/wasm-setup-verify
-      - name: Testing with cargo test coverage [${{ matrix.exercise }}]
-        id: cargo-test-coverage
+      - name: Run npm install [${{ matrix.exercise }}]
+        id: npm-install
+        run: |-
+          ./.github/citools/common/run_wrapper_script "./${{ matrix.exercise }}" npm install
+      - name: Run npm audit [${{ matrix.exercise }}]
+        id: npm-audit
+        run: |-
+          ./.github/citools/common/run_wrapper_script "./${{ matrix.exercise }}" npm audit
+      - name: Testing with npm test coverage [${{ matrix.exercise }}]
+        id: npm-test-coverage
         run: |-
           ./.github/citools/common/run_wrapper_script "./${{ matrix.exercise }}" ../../.github/citools/wasm/wasm-test-with-coverage
