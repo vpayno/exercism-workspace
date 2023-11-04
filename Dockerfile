@@ -2,7 +2,7 @@
 # Dockerfile
 #
 
-From debian:bullseye-slim As ci-generic-base
+From debian:bookworm-slim As ci-generic-base
 
 COPY .github/docker /.github/docker
 
