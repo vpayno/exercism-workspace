@@ -110,6 +110,10 @@ Exercism Workspace
 [![CodeQL](https://github.com/vpayno/exercism-workspace/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/codeql-analysis.yml)
 [![Docker Build](https://github.com/vpayno/exercism-workspace/actions/workflows/docker-build.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/docker-build.yml)
 
+### CI Containers
+
+- [ci-generic-debian](https://hub.docker.com/r/vpayno/ci-generic-debian/tags)
+
 ### Workflow Versions
 
 - 1.0 - original versions
