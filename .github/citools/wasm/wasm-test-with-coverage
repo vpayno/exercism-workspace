@@ -23,13 +23,15 @@ main() {
 
 	print_ruler
 
-	run_command lcov --list ./coverage/lcov.info
+	if [[ -s ./coverage/lcov.info ]]; then
+		run_command lcov --list ./coverage/lcov.info
 
-	print_ruler
+		print_ruler
 
-	run_command lcov --summary ./coverage/lcov.info
+		run_command lcov --summary ./coverage/lcov.info
 
-	print_ruler
+		print_ruler
+	fi
 
 	echo Exit code: "${retval}"
 	return "${retval}"
