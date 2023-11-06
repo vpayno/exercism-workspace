@@ -39,6 +39,9 @@ EOF
 
 fi
 
+sed -r -i -e 's/xtest/test/g' ./*.spec.js
+git add ./*.spec.js
+
 if [[ ! -f .prettierignore ]]; then
 	ln -sv ../.prettierignore .prettierignore
 	git add .prettierignore
