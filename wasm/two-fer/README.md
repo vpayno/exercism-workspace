@@ -51,3 +51,8 @@ The buffer for the input string uses bytes 128-192 of linear memory.
 ### Based on
 
 https://github.com/exercism/problem-specifications/issues/757
+
+### My Solution
+
+- [my solution]()
+- [run-tests](./run-tests-wasm.txt)
