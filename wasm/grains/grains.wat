@@ -33,7 +33,22 @@
 
   ;; Result is unsigned i64
   (func (export "total") (result i64)
-    ;; let it wrap to get the highest value
-    (i64.const -1)
+    ;; let it wrap to get the highest value (u64::MAX)
+    ;; (i64.const -1)
+
+    ;; ((((1_u64) << 63) - 1) << 1) + 1
+    (i64.add
+      (i64.shl
+        (i64.sub
+          (i64.shl
+            (i64.const 1)
+            (i64.const 63)
+            ) ;; shl
+          (i64.const 1)
+          ) ;; sub
+          (i64.const 1)
+        ) ;; shl
+        (i64.const 1)
+      ) ;; add
   )
 )
