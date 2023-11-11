@@ -200,6 +200,7 @@
     )
   )
 
+  ;; print i32u if debugging is enabled
   (func $debug_print_i32u (export "debug_print_i32u") (param $value i32)
       (if
         (i32.eq
@@ -212,6 +213,7 @@
         ) ;; if debugging
     ) ;; debug_print_i32u()
 
+  ;; print utf-8 str if debugging is enabled
   (func $debug_print_str (export "debug_print_str") (param $offset i32) (param $length i32)
       (if
         (i32.eq
