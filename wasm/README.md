@@ -18,3 +18,4 @@
 - [reverse-string](./reverse-string/README.md)
 - [grains](./grains/README.md)
 - [resistor-color](./resistor-color/README.md)
+- [nucleotide-count](./nucleotide-count/README.md)

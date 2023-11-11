@@ -42,3 +42,8 @@ The result should be returned as a 4-way tuple: `(i32 i32 i32 i32)`. Each number
 ### Based on
 
 The Calculating DNA Nucleotides_problem at Rosalind - http://rosalind.info/problems/dna/
+
+### My Solution
+
+- [my solution]()
+- [run-tests](./run-tests-wasm.txt)
