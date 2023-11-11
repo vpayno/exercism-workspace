@@ -21,7 +21,7 @@ Exercism Workspace
 |   August      |  Apps              |  Dart         (5/5),  Java  (0/5),  Kotlin   (0/5)  |
 |   September   |  Slimline          |  Awk          (5/5),  Bash\*  (5/5),  jq       (0/5),  Perl  (0/5)  |
 |   October     |  Object-Oriented   |  Ruby         (5/5),  Java  (0/5)  |
-|   November    |  Nibbly            |  WebAssembly  (1/5),  x86-64 Assembly  (0/5) |
+|   November    |  Nibbly            |  WebAssembly  (2/5),  x86-64 Assembly  (0/5) |
 |   December    |  Diversions        |  |
 
 \* not completed in 2023

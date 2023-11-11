@@ -56,3 +56,8 @@ You will then have to internally build an array of structures using offsets and 
 ### Based on
 
 Maud de Vries, Erik Schierboom - https://github.com/exercism/problem-specifications/issues/1458
+
+### My Solution
+
+- [my solution]()
+- [run-tests](./run-tests-wasm.txt)

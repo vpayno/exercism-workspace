@@ -17,3 +17,4 @@
 - [two-fer](./two-fer/README.md)
 - [reverse-string](./reverse-string/README.md)
 - [grains](./grains/README.md)
+- [resistor-color](./resistor-color/README.md)
