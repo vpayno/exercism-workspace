@@ -73,3 +73,8 @@ No linear memory is required for this exercise.
 ### Based on
 
 Christian Willner, Eric Willigers - https://forum.exercism.org/t/new-exercise-suggestion-pop-count/7632/5
+
+### My Solution
+
+- [my solution]()
+- [run-tests](./run-tests-wasm.txt)
