@@ -20,3 +20,4 @@
 - [resistor-color](./resistor-color/README.md)
 - [nucleotide-count](./nucleotide-count/README.md)
 - [pop-count](./pop-count/README.md)
+- [leap](./leap/README.md)
