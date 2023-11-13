@@ -22,3 +22,4 @@
 - [pop-count](./pop-count/README.md)
 - [leap](./leap/README.md)
 - [raindrops](./raindrops/README.md)
+- [difference-of-squares](./difference-of-squares/README.md)
