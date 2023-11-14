@@ -23,3 +23,4 @@
 - [leap](./leap/README.md)
 - [raindrops](./raindrops/README.md)
 - [difference-of-squares](./difference-of-squares/README.md)
+- [collatz-conjecture](./collatz-conjecture/README.md)
