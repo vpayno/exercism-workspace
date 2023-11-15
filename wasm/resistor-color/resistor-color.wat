@@ -1,3 +1,5 @@
+;; https://exercism.org/tracks/wasm/exercises/resistor-color
+
 (module
   ;; (import "console" "log_mem_as_utf8" (func $log_mem_as_utf8 (param $byteOffset i32) (param $length i32)))
   ;; (import "console" "log_i32_u" (func $log_i32_u (param i32)))
