@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf *.o *.out *.out.dSYM
 
-real	0m0.006s
-user	0m0.002s
-sys	0m0.004s
+real	0m0.018s
+user	0m0.003s
+sys	0m0.003s
 
 ===============================================================================
 
@@ -23,9 +23,9 @@ test_resistor_color.c:36:test_colors:PASS
 4 Tests 0 Failures 0 Ignored 
 OK
 
-real	0m0.126s
-user	0m0.082s
-sys	0m0.034s
+real	0m0.202s
+user	0m0.099s
+sys	0m0.041s
 
 ===============================================================================
 
@@ -41,59 +41,45 @@ test_resistor_color.c:36:test_colors:PASS
 OK
 Memory check passed
 
-real	0m0.125s
-user	0m0.094s
-sys	0m0.032s
+real	0m0.146s
+user	0m0.097s
+sys	0m0.034s
 
 ===============================================================================
 
 Running: clang-format-16 -style=file -i ./resistor_color.c ./test_resistor_color.c ./resistor_color.h
 
-real	0m0.018s
-user	0m0.010s
-sys	0m0.008s
+real	0m0.402s
+user	0m0.017s
+sys	0m0.059s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
 Running: clang-check-16 --analyze ./resistor_color.h
-/home/vpayno/git_vpayno/exercism-workspace/c/resistor-color/resistor_color.h:20:30: warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
-const resistor_band_t *colors();
-                             ^
-                              void
-1 warning generated.
 
-real	0m0.085s
-user	0m0.036s
-sys	0m0.045s
+real	0m0.046s
+user	0m0.020s
+sys	0m0.014s
 
 
-real	0m0.087s
-user	0m0.036s
-sys	0m0.048s
+real	0m0.049s
+user	0m0.021s
+sys	0m0.016s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy --fix | head -n 100
-1 warning generated.
-clang-tidy applied 1 of 1 suggested fixes.
 
-real	0m0.114s
-user	0m0.062s
-sys	0m0.052s
+real	0m0.064s
+user	0m0.016s
+sys	0m0.020s
 Running: clang-tidy-16 --fix ./resistor_color.h
-/home/vpayno/git_vpayno/exercism-workspace/c/resistor-color/resistor_color.h:20:30: warning: a function declaration without a prototype is deprecated in all versions of C [clang-diagnostic-strict-prototypes]
-const resistor_band_t *colors();
-                             ^
-                              void
-/home/vpayno/git_vpayno/exercism-workspace/c/resistor-color/resistor_color.h:20:31: note: FIX-IT applied suggested code changes
-const resistor_band_t *colors();
-                              ^
 
 
-real	0m0.127s
-user	0m0.072s
-sys	0m0.064s
+real	0m0.066s
+user	0m0.019s
+sys	0m0.020s
 
 ===============================================================================
 
