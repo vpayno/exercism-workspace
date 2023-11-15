@@ -29,3 +29,8 @@ No linear memory is required for this exercise.
 ### Based on
 
 Wikipedia - https://en.wikipedia.org/wiki/Narcissistic_number
+
+### My Solution
+
+- [my solution]()
+- [run-tests](./run-tests-wasm.txt)
