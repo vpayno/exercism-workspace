@@ -26,3 +26,4 @@
 - [collatz-conjecture](./collatz-conjecture/README.md)
 - [armstrong-numbers](./armstrong-numbers/README.md)
 - [darts](./darts/README.md)
+- [square-root](./square-root/README.md)

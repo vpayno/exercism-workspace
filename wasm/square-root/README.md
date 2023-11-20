@@ -30,3 +30,8 @@ No linear memory is required for this exercise.
 ### Based on
 
 wolf99 - https://github.com/exercism/problem-specifications/pull/1582
+
+### My Solution
+
+- [my solution]()
+- [run-tests](./run-tests-wasm.txt)
