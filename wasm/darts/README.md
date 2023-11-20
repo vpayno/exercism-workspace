@@ -30,3 +30,8 @@ Write a function that given a point in the target (defined by its `real` cartesi
 ### Based on
 
 Inspired by an exercise created by a professor Della Paolera in Argentina
+
+### My Solution
+
+- [my solution]()
+- [run-tests](./run-tests-wasm.txt)
