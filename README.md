@@ -76,7 +76,7 @@ Exercism Workspace
 #### Nibbly November
 
 - Languages: MIPS Assembly, WebAssembly, x86-64 Assembly
-- Exercises: Pop Count, Grains, Resistor Color, Rotational Cipher, Nucleotide Count
+- Exercises: Eliud's Eggs/Pop Count, Grains, Resistor Color, Rotational Cipher, Nucleotide Count
 
 ### 12in23 Badges
 
