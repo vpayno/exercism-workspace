@@ -46,7 +46,7 @@
   (global $debug_label_unequallength_offset i32 (i32.const 136))
   (global $debug_label_unequallength_length i32 (i32.const 14))
   (global $debug_label_equallength_offset i32 (i32.const 138))
-  (global $debug_label_equallength_length i32 (i32.const 10))
+  (global $debug_label_equallength_length i32 (i32.const 12))
   (global $debug_label_empty_offset i32 (i32.const 151))
   (global $debug_label_empty_length i32 (i32.const 5))
   (global $debug_label_different_offset i32 (i32.const 157))
