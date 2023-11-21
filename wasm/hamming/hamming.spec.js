@@ -106,4 +106,12 @@ describe("Hamming", () => {
     test("disallow empty second strand", () => {
         expect(compute("G", "")).toEqual(-1);
     });
+
+    test("disallow invalid first strand", () => {
+        expect(compute("ACGB", "ACGT")).toEqual(-1);
+    });
+
+    test("disallow invalid second strand", () => {
+        expect(compute("ACGT", "ACGB")).toEqual(-1);
+    });
 });

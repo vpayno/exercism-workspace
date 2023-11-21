@@ -21,13 +21,18 @@
 
   (global $error i32 (i32.const -1))
 
+  (global $rune_A i32 (i32.const 65))
+  (global $rune_C i32 (i32.const 67))
+  (global $rune_G i32 (i32.const 71))
+  (global $rune_T i32 (i32.const 84))
+
   ;; test data starts at 1024
-  ;;                     v     v      v       v     v        v              v            v     v         v
-  ;;                     111111111111111111111111111111111111111111111111111111111111111111111111111111111
-  ;;                     000000000011111111112222222222333333333344444444445555555555666666666677777777778
-  ;;                     012345678901234567890123456789012345678901234567890123456789012345678901234567890
-  ;;                     ^     ^      ^       ^     ^        ^              ^            ^     ^         ^
-  (data (i32.const 100) "first|second|readptr|limit|distance|unequal_length|equal_length|empty|different|")
+  ;;                     v     v      v       v     v        v v            v     v         v v                v
+  ;;                     111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
+  ;;                     000000000011111111112222222222333333333344444444445555555555666666666677777777778888888
+  ;;                     012345678901234567890123456789012345678901234567890123456789012345678901234567890123456
+  ;;                     ^     ^      ^       ^     ^        ^ ^            ^     ^         ^ ^                ^
+  (data (i32.const 100) "first|second|readptr|limit|distance|unequal_length|empty|different|invalid_nucleotide|")
   (global $debug_label_first_offset i32 (i32.const 100))
   (global $debug_label_first_length i32 (i32.const 5))
   (global $debug_label_second_offset i32 (i32.const 106))
@@ -40,12 +45,16 @@
   (global $debug_label_distance_length i32 (i32.const 8))
   (global $debug_label_unequallength_offset i32 (i32.const 136))
   (global $debug_label_unequallength_length i32 (i32.const 14))
-  (global $debug_label_equallength_offset i32 (i32.const 151))
+  (global $debug_label_equallength_offset i32 (i32.const 138))
   (global $debug_label_equallength_length i32 (i32.const 10))
-  (global $debug_label_empty_offset i32 (i32.const 164))
+  (global $debug_label_empty_offset i32 (i32.const 151))
   (global $debug_label_empty_length i32 (i32.const 5))
-  (global $debug_label_different_offset i32 (i32.const 170))
+  (global $debug_label_different_offset i32 (i32.const 157))
   (global $debug_label_different_length i32 (i32.const 9))
+  (global $debug_label_invalidnucleotide_offset i32 (i32.const 167))
+  (global $debug_label_invalidnucleotide_length i32 (i32.const 18))
+  (global $debug_label_validnucleotide_offset i32 (i32.const 169))
+  (global $debug_label_validnucleotide_length i32 (i32.const 16))
 
   ;;
   ;; Calculate the hamming distance between two strings.
@@ -120,6 +129,26 @@
 
     (loop $my_loop
       (if
+        (i32.and
+          (call $is_nucleotide (i32.load8_u (local.get $first_readptr)))
+          (call $is_nucleotide (i32.load8_u (local.get $second_readptr)))
+          ) ;; or
+        (then
+          (call $debug_print_str (global.get $debug_label_validnucleotide_offset) (global.get $debug_label_validnucleotide_length))
+          ;; (call $debug_print_i32u (i32.load8_u (local.get $first_readptr)))
+          ;; (call $debug_print_i32u (i32.load8_u (local.get $second_readptr)))
+          ) ;; then
+        (else
+          (call $debug_print_str (global.get $debug_label_invalidnucleotide_offset) (global.get $debug_label_invalidnucleotide_length))
+          (call $debug_print_i32u (i32.load8_u (local.get $first_readptr)))
+          (call $debug_print_i32u (i32.load8_u (local.get $second_readptr)))
+
+          ;; no tests, so it's either a return -1 (error) or the distance so far
+          (return (global.get $error))
+          ) ;; then
+        ) ;; invalid nucleotide?
+
+      (if
         (i32.ne
           (i32.load8_u (local.get $first_readptr))
           (i32.load8_u (local.get $second_readptr))
@@ -129,7 +158,7 @@
             (local.get $distance)
             (i32.const 1)
             ) ;; d++
-          ) ;; set distance
+          ) ;; different nucleotides, distance++
 
           (call $debug_print_str (global.get $debug_label_different_offset) (global.get $debug_label_different_length))
           (call $debug_print_i32u (i32.load8_u (local.get $first_readptr)))
@@ -171,6 +200,52 @@
 
     (return (local.get $distance))
   ) ;; compute()
+
+  ;; is the nucleotide valid?
+  (func $is_nucleotide (export "is_nucleotide") (param $rune i32) (result i32)
+    ;; ACGT only?
+    (if
+      (i32.eq
+        (global.get $rune_A)
+        (local.get $rune)
+        ) ;; A?
+      (then
+        (return (global.get $true))
+        ) ;; then
+      ) ;; A?
+
+    (if
+      (i32.eq
+        (global.get $rune_C)
+        (local.get $rune)
+        ) ;; C?
+      (then
+        (return (global.get $true))
+        ) ;; then
+      ) ;; A?
+
+    (if
+      (i32.eq
+        (global.get $rune_G)
+        (local.get $rune)
+        ) ;; G?
+      (then
+        (return (global.get $true))
+        ) ;; then
+      ) ;; A?
+
+    (if
+      (i32.eq
+        (global.get $rune_T)
+        (local.get $rune)
+        ) ;; T?
+      (then
+        (return (global.get $true))
+        ) ;; then
+      ) ;; A?
+
+    (return (global.get $false))
+    ) ;; is_nucleotide()
 
   ;; print i32u if debugging is enabled
   (func $debug_print_i32u (export "debug_print_i32u") (param $value i32)
