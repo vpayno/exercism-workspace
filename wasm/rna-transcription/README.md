@@ -56,3 +56,8 @@ The input string can be modified in place if desired.
 ### Based on
 
 Hyperphysics - http://hyperphysics.phy-astr.gsu.edu/hbase/Organic/transcription.html
+
+### My Solution
+
+- [my solution]()
+- [run-tests](./run-tests-wasm.txt)
