@@ -43,3 +43,8 @@ You should not have to modify these buffers or allocate additional memory.
 ### Based on
 
 The Calculating Point Mutations problem at Rosalind - http://rosalind.info/problems/hamm/
+
+### My Solution
+
+- [my solution]()
+- [run-tests](./run-tests-wasm.txt)

@@ -1,4 +1,4 @@
 export default {
-  presets: ["@exercism/babel-preset-javascript"],
-  plugins: [],
+    presets: ["@exercism/babel-preset-javascript"],
+    plugins: [],
 };

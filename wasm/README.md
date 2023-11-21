@@ -27,3 +27,4 @@
 - [armstrong-numbers](./armstrong-numbers/README.md)
 - [darts](./darts/README.md)
 - [square-root](./square-root/README.md)
+- [hamming](./hamming/README.md)
