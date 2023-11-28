@@ -76,13 +76,12 @@
     (call $debug_print_i32u (local.get $number))
 
     (if
-      (i32.eq
+      (i32.eqz
         (i32.rem_u
           (local.get $number)
           (i32.const 3)
           ) ;; modulo
-        (i32.const 0)
-        ) ;; eq
+        ) ;; eqz
       (then
         (call $debug_print_str (global.get $debug_label_three_offset) (global.get $debug_label_three_length))
 
@@ -104,13 +103,12 @@
       ) ;; if number % 3 == 0
 
     (if
-      (i32.eq
+      (i32.eqz
         (i32.rem_u
           (local.get $number)
           (i32.const 5)
           ) ;; modulo
-        (i32.const 0)
-        ) ;; eq
+        ) ;; eqz
       (then
         (call $debug_print_str (global.get $debug_label_five_offset) (global.get $debug_label_five_length))
 
@@ -132,13 +130,12 @@
       ) ;; if number % 5 == 0
 
     (if
-      (i32.eq
+      (i32.eqz
         (i32.rem_u
           (local.get $number)
           (i32.const 7)
           ) ;; modulo
-        (i32.const 0)
-        ) ;; eq
+        ) ;; eqz
       (then
         (call $debug_print_str (global.get $debug_label_seven_offset) (global.get $debug_label_seven_length))
 
@@ -163,10 +160,9 @@
     (call $debug_print_str (local.get $result_offset) (local.get $write_length))
 
     (if
-      (i32.eq
+      (i32.eqz
         (local.get $write_length)
-        (i32.const 0)
-        ) ;; eq
+        ) ;; eqz
       (then
         (call $debug_print_str (global.get $debug_label_itoa_offset) (global.get $debug_label_itoa_length))
 
@@ -205,7 +201,7 @@
             ;; (call $debug_print_i32u (local.get $number))
 
             (if $my_loop
-              (i32.eq (local.get $number) (i32.const 0))
+              (i32.eqz (local.get $number))
               (then
 
                 (local.set $write_length
