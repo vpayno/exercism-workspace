@@ -76,10 +76,9 @@
     (call $debug_print_i32u (local.get $length))
 
     (if
-      (i32.eq
+      (i32.eqz
         (local.get $length)
-        (i32.const 0)
-        ) ;; eq
+        ) ;; eqz
       (then
         (call $debug_print_str (global.get $debug_label_empty_offset) (global.get $debug_label_empty_length))
         (call $debug_print_i32u (local.get $length))
