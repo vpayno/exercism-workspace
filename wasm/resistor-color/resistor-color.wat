@@ -77,112 +77,82 @@
     ;; (call $log_mem_as_utf8 (local.get $offset) (local.get $length))
 
     (if
-      (i32.eq
-        (call $str_cmp
-          (local.get $offset) (local.get $length)
-          (global.get $black_offset) (global.get $black_length)
-          ) ;; str_cmp
-        (global.get $true)
-        ) ;; eq
+      (call $str_cmp
+        (local.get $offset) (local.get $length)
+        (global.get $black_offset) (global.get $black_length)
+        ) ;; str_cmp
         (return (global.get $black_value))
       ) ;; if black
 
     (if
-      (i32.eq
-        (call $str_cmp
-          (local.get $offset) (local.get $length)
-          (global.get $brown_offset) (global.get $brown_length)
-          ) ;; str_cmp
-        (global.get $true)
-        ) ;; eq
+      (call $str_cmp
+        (local.get $offset) (local.get $length)
+        (global.get $brown_offset) (global.get $brown_length)
+        ) ;; str_cmp
         (return (global.get $brown_value))
       ) ;; if brown
 
     (if
-      (i32.eq
-        (call $str_cmp
-          (local.get $offset) (local.get $length)
-          (global.get $red_offset) (global.get $red_length)
-          ) ;; str_cmp
-        (global.get $true)
-        ) ;; eq
+      (call $str_cmp
+        (local.get $offset) (local.get $length)
+        (global.get $red_offset) (global.get $red_length)
+        ) ;; str_cmp
         (return (global.get $red_value))
       ) ;; if red
 
     (if
-      (i32.eq
-        (call $str_cmp
-          (local.get $offset) (local.get $length)
-          (global.get $orange_offset) (global.get $orange_length)
-          ) ;; str_cmp
-        (global.get $true)
-        ) ;; eq
+      (call $str_cmp
+        (local.get $offset) (local.get $length)
+        (global.get $orange_offset) (global.get $orange_length)
+        ) ;; str_cmp
         (return (global.get $orange_value))
       ) ;; if orange
 
     (if
-      (i32.eq
-        (call $str_cmp
-          (local.get $offset) (local.get $length)
-          (global.get $yellow_offset) (global.get $yellow_length)
-          ) ;; str_cmp
-        (global.get $true)
-        ) ;; eq
+      (call $str_cmp
+        (local.get $offset) (local.get $length)
+        (global.get $yellow_offset) (global.get $yellow_length)
+        ) ;; str_cmp
         (return (global.get $yellow_value))
       ) ;; if yellow
 
     (if
-      (i32.eq
-        (call $str_cmp
-          (local.get $offset) (local.get $length)
-          (global.get $green_offset) (global.get $green_length)
-          ) ;; str_cmp
-        (global.get $true)
-        ) ;; eq
+      (call $str_cmp
+        (local.get $offset) (local.get $length)
+        (global.get $green_offset) (global.get $green_length)
+        ) ;; str_cmp
         (return (global.get $green_value))
       ) ;; if green
 
     (if
-      (i32.eq
-        (call $str_cmp
-          (local.get $offset) (local.get $length)
-          (global.get $blue_offset) (global.get $blue_length)
-          ) ;; str_cmp
-        (global.get $true)
-        ) ;; eq
+      (call $str_cmp
+        (local.get $offset) (local.get $length)
+        (global.get $blue_offset) (global.get $blue_length)
+        ) ;; str_cmp
         (return (global.get $blue_value))
       ) ;; if blue
 
     (if
-      (i32.eq
-        (call $str_cmp
-          (local.get $offset) (local.get $length)
-          (global.get $violet_offset) (global.get $violet_length)
-          ) ;; str_cmp
-        (global.get $true)
-        ) ;; eq
+      (call $str_cmp
+        (local.get $offset) (local.get $length)
+        (global.get $violet_offset) (global.get $violet_length)
+        ) ;; str_cmp
         (return (global.get $violet_value))
       ) ;; if violet
 
     (if
-      (i32.eq
-        (call $str_cmp
-          (local.get $offset) (local.get $length)
-          (global.get $grey_offset) (global.get $grey_length)
-          ) ;; str_cmp
-        (global.get $true)
-        ) ;; eq
+      (call $str_cmp
+        (local.get $offset) (local.get $length)
+        (global.get $grey_offset) (global.get $grey_length)
+        ) ;; str_cmp
         (return (global.get $grey_value))
       ) ;; if grey
 
     (if
-      (i32.eq
-        (call $str_cmp
-          (local.get $offset) (local.get $length)
-          (global.get $white_offset) (global.get $white_length)
-          ) ;; str_cmp
-        (global.get $true)
-        ) ;; eq
+      (call $str_cmp
+        (local.get $offset) (local.get $length)
+        (global.get $white_offset) (global.get $white_length)
+        ) ;; str_cmp
         (return (global.get $white_value))
       ) ;; if white
 
