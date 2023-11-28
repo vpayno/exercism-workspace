@@ -48,3 +48,8 @@ The input string can be modified in place if desired.
 ### Based on
 
 Wikipedia - https://en.wikipedia.org/wiki/Caesar_cipher
+
+### My Solution
+
+- [my solution]()
+- [run-tests](./run-tests-wasm.txt)
