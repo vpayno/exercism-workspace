@@ -64,10 +64,9 @@
     (local.set $error (i32.const -1))
 
     (if
-      (i32.eq
+      (i32.eqz
         (local.get $sequence_length)
-        (i32.const 0)
-        ) ;; eq
+        ) ;; eqz
       (then
         (return
           (local.get $a_count)
