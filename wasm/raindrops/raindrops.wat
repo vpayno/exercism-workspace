@@ -256,10 +256,7 @@
     ;; write_length is also the digit count
     (if
       (i32.and
-        (i32.eq
-          (local.get $no_sounds)
-          (global.get $true)
-          ) ;; eq
+        (local.get $no_sounds)
         (i32.gt_u
           (local.get $write_length)
           (i32.const 1)
@@ -321,10 +318,7 @@
   ;; print i32u if debugging is enabled
   (func $debug_print_i32u (export "debug_print_i32u") (param $value i32)
       (if
-        (i32.eq
-          (global.get $debug)
-          (global.get $true)
-          ) ;; eq
+        (global.get $debug)
         (then
           (call $log_i32_u (local.get $value))
           ) ;; then
@@ -335,10 +329,7 @@
   (func $debug_print_str (export "debug_print_str") (param $offset i32) (param $length i32)
       (if
         (i32.and
-          (i32.eq
-            (global.get $debug)
-            (global.get $true)
-            ) ;; eq
+          (global.get $debug)
           (i32.gt_u
             (local.get $length)
             (i32.const 0)
