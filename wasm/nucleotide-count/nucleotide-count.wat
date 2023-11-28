@@ -202,10 +202,7 @@
   ;; print i32u if debugging is enabled
   (func $debug_print_i32u (export "debug_print_i32u") (param $value i32)
       (if
-        (i32.eq
-          (global.get $debug)
-          (global.get $true)
-          ) ;; eq
+        (global.get $debug)
         (then
           (call $log_i32_u (local.get $value))
           ) ;; then
@@ -215,10 +212,7 @@
   ;; print utf-8 str if debugging is enabled
   (func $debug_print_str (export "debug_print_str") (param $offset i32) (param $length i32)
       (if
-        (i32.eq
-          (global.get $debug)
-          (global.get $true)
-          ) ;; eq
+        (global.get $debug)
         (then
           (call $log_mem_as_utf8 (local.get $offset) (local.get $length))
           ) ;; then
