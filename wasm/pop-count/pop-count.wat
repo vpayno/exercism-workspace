@@ -28,39 +28,7 @@
     (call $debug_print_str (global.get $debug_label_number_offset) (global.get $debug_label_number_length))
     (call $debug_print_i32u (local.get $number))
 
-    (local.set $egg_count (i32.const 0))
-
-    (loop $my_loop
-      (local.set $egg_count
-        (i32.add
-          (local.get $egg_count)
-          (i32.and
-            (local.get $number)
-            (i32.const 1)
-            ) ;; and
-          ) ;; add
-        ) ;; set count
-
-      (call $debug_print_str (global.get $debug_label_bit_offset) (global.get $debug_label_bit_length))
-      (call $debug_print_i32u (i32.and (local.get $number) (i32.const 1)))
-
-      (call $debug_print_str (global.get $debug_label_eggcount_offset) (global.get $debug_label_eggcount_length))
-      (call $debug_print_i32u (local.get $egg_count))
-
-      (local.set $number
-        (i32.shr_u (local.get $number) (i32.const 1))
-        ) ;; set number
-
-      (call $debug_print_str (global.get $debug_label_number_offset) (global.get $debug_label_number_length))
-      (call $debug_print_i32u (local.get $number))
-
-      (br_if $my_loop
-        (i32.gt_u
-          (local.get $number)
-          (i32.const 0)
-          ) ;; gt
-        ) ;; br_if
-      ) ;; loop
+    (local.set $egg_count (i32.popcnt (local.get $number)))
 
     (call $debug_print_str (global.get $debug_label_eggcount_offset) (global.get $debug_label_eggcount_length))
     (call $debug_print_i32u (local.get $egg_count))
