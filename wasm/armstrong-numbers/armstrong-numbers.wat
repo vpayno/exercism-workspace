@@ -119,7 +119,7 @@
     ;; (call $log_i32_s (local.get $exponent))
 
     (if
-      (i32.eq (local.get $exponent) (i32.const 0))
+      (i32.eqz (local.get $exponent))
       (then
         ;; (call $log_mem_as_utf8 (global.get $debug_label_powreturn_offset) (global.get $debug_label_powreturn_length))
         ;; (call $log_i32_s (i32.const 1))
