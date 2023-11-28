@@ -28,18 +28,12 @@
 
   ;; test data starts at 64, ends at 319 (reused as output)
 
-  ;; ascii - 65- 90 A-Z
-  ;; ascii - 91-116 a-z
-  ;;                     00000000001111111111222222
-  ;;                     01234567890123456789012345
-  (data (i32.const 500) "abcdefghijklmnopqrstuvwxyz")
-
-  ;;                      v      v      v
-  ;;                      11111111111111111111111111111111111
-  ;;                      00000000000000000000000000000000000
-  ;;                      00000000001111111111222222222233333
-  ;;                      01234567890123456789012345678901234
-  ;;                      ^     ^      ^
+  ;;                      v     v      v     v
+  ;;                      11111111111111111111
+  ;;                      00000000000000000000
+  ;;                      00000000001111111111
+  ;;                      01234567890123456789
+  ;;                      ^     ^      ^     ^
   (data (i32.const 1000) "plain|cipher|empty|")
   (global $debug_label_plain_offset i32 (i32.const 1000))
   (global $debug_label_plain_length i32 (i32.const 5))
