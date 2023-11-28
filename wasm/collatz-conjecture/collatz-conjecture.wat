@@ -34,9 +34,8 @@
         ) ;; count+=1
 
       (if
-        (i32.eq
+        (i32.eqz
           (i32.rem_s (local.get $number) (i32.const 2))
-          (i32.const 0)
           ) ;; eq
         (then
           (local.set $number
