@@ -33,9 +33,11 @@ COPY .github/docker/entrypoint.sh /entrypoint.sh
 
 RUN rm -rvf /.github
 
+SHELL ["bash", "-c"]
+
 # app + args
 # Executes `entrypoint.sh` when the Docker container starts up
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["bash", "-c", "/entrypoint.sh"]
 
 # Extra args
 CMD []
