@@ -3,8 +3,8 @@
 # https://docs.github.com/en/actions/creating-actions/dockerfile-support-for-github-actions
 
 # shellcheck disable=SC1091
-# Setup the enviroment.
-. "${HOME}/.bashrc"
+# Setup the enviroment. Note: ${HOME} isn't available yet.
+. "/root/.bashrc"
 printf "\n"
 
 # `$#` expands to the number of arguments and `$@` expands to the supplied `args`
