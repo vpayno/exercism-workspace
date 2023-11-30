@@ -64,7 +64,7 @@ plain_segments_t cipher::plain_text_segments() const {
         std::string segment_str = re_match[0];
 
         segment_str.erase(std::remove_if(segment_str.begin(), segment_str.end(),
-                                         std::ptr_fun(::isspace)),
+                                         std::function(::isspace)),
                           segment_str.end());
         segments.emplace_back(segment_str);
     }
