@@ -75,7 +75,7 @@ main() {
 		export NODENV_ROOT=/usr/local/nodenv
 		export PATH="\${NODENV_ROOT}/bin:\${NODENV_ROOT}/shims:\${PATH}"
 
-		eval "\$(nodenv init - bash)"
+		eval "\$(nodenv init -)"
 	EOF
 	printf "done\n"
 
