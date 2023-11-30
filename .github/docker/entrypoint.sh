@@ -9,8 +9,9 @@ printf "\n"
 
 # `$#` expands to the number of arguments and `$@` expands to the supplied `args`
 printf "Starting container entrypoint.sh:\n"
-printf "\t%d args: [" "$#"
+printf "\targ count: %d\n" "$#"
+printf "\targs: ["
 printf " '%s'" "$@"
-printf "]\n"
+printf " ]\n"
 
 "$@"
