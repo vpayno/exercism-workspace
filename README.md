@@ -22,7 +22,7 @@ Exercism Workspace
 |   September   |  Slimline          |  Awk          (5/5),  Bash\*  (5/5),  jq       (0/5),  Perl  (0/5)  |
 |   October     |  Object-Oriented   |  Ruby         (5/5),  Java  (0/5)  |
 |   November    |  Nibbly            |  WebAssembly  (5/5),  x86-64 Assembly  (0/5) |
-|   December    |  Diversions        |  |
+|   December    |  Diversions        |  Lua          (0/5),  Vimscript  (0/5)  |
 
 \* not completed in 2023
 
@@ -77,6 +77,11 @@ Exercism Workspace
 
 - Languages: MIPS Assembly, WebAssembly, x86-64 Assembly
 - Exercises: Eliud's Eggs/Pop Count, Grains, Resistor Color, Rotational Cipher, Nucleotide Count
+
+#### Diversions December
+
+- Languages: CFML, Groovy, Lua, Vimscript, Wren
+- Exercises: All Your Base, Flatten Array, Queen Attack, Dnd Character, Run-Length Encoding
 
 ### 12in23 Badges
 
