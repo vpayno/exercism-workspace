@@ -37,7 +37,7 @@ SHELL ["bash", "-c"]
 
 # app + args
 # Executes `entrypoint.sh` when the Docker container starts up
-ENTRYPOINT ["bash", "-c", "/entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
 
 # Extra args
 CMD []
