@@ -1,0 +1,38 @@
+#!/bin/bash
+
+if [[ ! -d .exercism ]]; then
+	printf "ERROR: Run from inside a project directory.\n\n"
+	exit 1
+fi
+
+# declare package_name_snake
+
+get_lua_package_name() {
+	# these are kebab-case
+	basename "${PWD}"
+} # get_lua_package_name()
+
+kebab_case_to_pascal_case() {
+	printf "%s" "${@}" | sed -r -e 's/(^|[-])(\w)/\U\2/g'
+} # kebab_case_to_pascal_case()
+
+kebab_case_to_camel_case() {
+	printf "%s" "${@}" | sed -r -e 's/([-])(\w)/\U\2/g'
+} # kebab_case_to_camel_case()
+
+kebab_case_to_snake_case() {
+	printf "%s" "${@}" | sed -r -e 's/(\w)([-])(\w)/\1_\3/g'
+} # kebab_case_to_snake_case()
+
+package_name="$(get_lua_package_name "$(get_lua_package_name)")"
+
+declare -a LUA_FILES=("./${package_name}.lua" run-tests-lua.txt)
+
+# mapfile -t LUA_FILES < <(
+#	find . -type f -name "*[.]go" | grep -v "_test[.]go"
+#	find . -type f -name "*_examples_test[.]go"
+#)
+
+echo Running: exercism submit "${LUA_FILES[@]}"
+time exercism submit "${LUA_FILES[@]}"
+printf "\n"
