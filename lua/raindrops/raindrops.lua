@@ -1,21 +1,5 @@
 return function(n)
-	local sounds = ""
+	local sounds = string.format("%s%s%s", n % 3 == 0 and "Pling" or "", n % 5 == 0 and "Plang" or "", n % 7 == 0 and "Plong" or "")
 
-	if n % 3 == 0 then
-		sounds = sounds .. "Pling"
-	end
-
-	if n % 5 == 0 then
-		sounds = sounds .. "Plang"
-	end
-
-	if n % 7 == 0 then
-		sounds = sounds .. "Plong"
-	end
-
-	if sounds == "" then
-		sounds = tostring(n)
-	end
-
-	return sounds
+	return sounds == "" and tostring(n) or sounds
 end
