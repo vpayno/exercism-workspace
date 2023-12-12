@@ -1,0 +1,91 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: luacheck --no-color ./leap.lua
+Checking leap.lua                                 OK
+
+Total: 0 warnings / 0 errors in 1 file
+
+real	0m0.035s
+user	0m0.020s
+sys	0m0.015s
+
+===============================================================================
+
+Running: busted --coverage --lpath= --cpath= --output=gtest -Xoutput --plain
+[==========] Running tests from scanned files.
+[----------] Global test environment setup.
+[----------] Running tests from ./leap_spec.lua
+[ RUN      ] ./leap_spec.lua @ 4: leap a known leap year
+[       OK ] ./leap_spec.lua @ 4: leap a known leap year (0.45 ms)
+[ RUN      ] ./leap_spec.lua @ 8: leap any old year
+[       OK ] ./leap_spec.lua @ 8: leap any old year (0.52 ms)
+[ RUN      ] ./leap_spec.lua @ 12: leap turn of the 20th century
+[       OK ] ./leap_spec.lua @ 12: leap turn of the 20th century (0.57 ms)
+[ RUN      ] ./leap_spec.lua @ 16: leap turn of the 21st century
+[       OK ] ./leap_spec.lua @ 16: leap turn of the 21st century (0.45 ms)
+[----------] 4 tests from ./leap_spec.lua (11.89 ms total)
+
+[----------] Global test environment teardown.
+[==========] 4 tests from 1 test file ran. (13.66 ms total)
+[  PASSED  ] 4 tests.
+
+real	0m0.039s
+user	0m0.033s
+sys	0m0.005s
+
+===============================================================================
+
+Running: luacov .
+
+real	0m0.063s
+user	0m0.060s
+sys	0m0.003s
+
+===============================================================================
+
+Running: luacov-console .
+
+real	0m0.014s
+user	0m0.011s
+sys	0m0.003s
+
+Running: luacov-console --no-colored --summary .
+==============================================================================
+Summary
+==============================================================================
+
+File          Hits Missed Coverage
+----------------------------------
+leap.lua      8    0      100.00%
+leap_spec.lua 10   0      100.00%
+----------------------------------
+Total         18   0      100.00%
+
+real	0m0.017s
+user	0m0.011s
+sys	0m0.005s
+
+===============================================================================
+
+Running: stylua ./leap.lua ./leap_spec.lua
+
+real	0m0.011s
+user	0m0.007s
+sys	0m0.006s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.034s
+user	0m0.035s
+sys	0m0.016s
+
+===============================================================================
+
+
+===============================================================================
+

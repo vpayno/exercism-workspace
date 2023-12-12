@@ -41,3 +41,8 @@ For a delightful, four minute explanation of the whole leap year phenomenon, go 
 ### Based on
 
 CodeRanch Cattle Drive, Assignment 3 - https://coderanch.com/t/718816/Leap
+
+### My Solution
+
+- [my solution](./leap.lua)
+- [run-tests](./run-tests-lua.txt)

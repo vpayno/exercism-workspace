@@ -1,0 +1,55 @@
+==============================================================================
+leap_spec.lua
+==============================================================================
+* local is_leap_year = require('leap')
+
+* describe('leap', function()
+*   it('a known leap year', function()
+*     assert.is_true(is_leap_year(1996))
+    end)
+
+*   it('any old year', function()
+*     assert.is_false(is_leap_year(1997))
+    end)
+
+*   it('turn of the 20th century', function()
+*     assert.is_false(is_leap_year(1900))
+    end)
+
+*   it('turn of the 21st century', function()
+*     assert.is_true(is_leap_year(2000))
+    end)
+  end)
+
+==============================================================================
+leap.lua
+==============================================================================
+  local leap_year = function(year)
+
+*     if year % 400 == 0 then
+*         return true
+      end
+
+*     if year % 100 == 0 then
+*         return false
+      end
+
+*     if year % 4 == 0 then
+*         return true
+      end
+
+*     return false
+  end
+
+* return leap_year
+
+==============================================================================
+Summary
+==============================================================================
+
+File          Hits Missed Coverage
+----------------------------------
+leap.lua      8    0      100.00%
+leap_spec.lua 10   0      100.00%
+----------------------------------
+Total         18   0      100.00%
