@@ -1,0 +1,109 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: luacheck --no-color ./darts.lua
+Checking darts.lua                                OK
+
+Total: 0 warnings / 0 errors in 1 file
+
+real	0m0.031s
+user	0m0.023s
+sys	0m0.007s
+
+===============================================================================
+
+Running: busted --coverage --lpath= --cpath= --output=gtest -Xoutput --plain
+[==========] Running tests from scanned files.
+[----------] Global test environment setup.
+[----------] Running tests from ./darts_spec.lua
+[ RUN      ] ./darts_spec.lua @ 4: darts Missed target
+[       OK ] ./darts_spec.lua @ 4: darts Missed target (0.96 ms)
+[ RUN      ] ./darts_spec.lua @ 8: darts On the outer circle
+[       OK ] ./darts_spec.lua @ 8: darts On the outer circle (0.61 ms)
+[ RUN      ] ./darts_spec.lua @ 12: darts On the middle circle
+[       OK ] ./darts_spec.lua @ 12: darts On the middle circle (0.78 ms)
+[ RUN      ] ./darts_spec.lua @ 16: darts On the inner circle
+[       OK ] ./darts_spec.lua @ 16: darts On the inner circle (0.60 ms)
+[ RUN      ] ./darts_spec.lua @ 20: darts Exactly on center
+[       OK ] ./darts_spec.lua @ 20: darts Exactly on center (0.58 ms)
+[ RUN      ] ./darts_spec.lua @ 24: darts Near the center
+[       OK ] ./darts_spec.lua @ 24: darts Near the center (0.64 ms)
+[ RUN      ] ./darts_spec.lua @ 28: darts Just within the inner circle
+[       OK ] ./darts_spec.lua @ 28: darts Just within the inner circle (0.51 ms)
+[ RUN      ] ./darts_spec.lua @ 32: darts Just outside the inner circle
+[       OK ] ./darts_spec.lua @ 32: darts Just outside the inner circle (0.49 ms)
+[ RUN      ] ./darts_spec.lua @ 36: darts Just within the middle circle
+[       OK ] ./darts_spec.lua @ 36: darts Just within the middle circle (0.65 ms)
+[ RUN      ] ./darts_spec.lua @ 40: darts Just outside the middle circle
+[       OK ] ./darts_spec.lua @ 40: darts Just outside the middle circle (0.57 ms)
+[ RUN      ] ./darts_spec.lua @ 44: darts Just within the outer circle
+[       OK ] ./darts_spec.lua @ 44: darts Just within the outer circle (0.53 ms)
+[ RUN      ] ./darts_spec.lua @ 48: darts Just outside the outer circle
+[       OK ] ./darts_spec.lua @ 48: darts Just outside the outer circle (0.91 ms)
+[ RUN      ] ./darts_spec.lua @ 52: darts Asymmetric position between the inner and middle circles
+[       OK ] ./darts_spec.lua @ 52: darts Asymmetric position between the inner and middle circles (0.50 ms)
+[----------] 13 tests from ./darts_spec.lua (37.67 ms total)
+
+[----------] Global test environment teardown.
+[==========] 13 tests from 1 test file ran. (39.47 ms total)
+[  PASSED  ] 13 tests.
+
+real	0m0.063s
+user	0m0.056s
+sys	0m0.004s
+
+===============================================================================
+
+Running: luacov .
+
+real	0m0.066s
+user	0m0.060s
+sys	0m0.006s
+
+===============================================================================
+
+Running: luacov-console .
+
+real	0m0.014s
+user	0m0.010s
+sys	0m0.003s
+
+Running: luacov-console --no-colored --summary .
+==============================================================================
+Summary
+==============================================================================
+
+File           Hits Missed Coverage
+-----------------------------------
+darts.lua      11   0      100.00%
+darts_spec.lua 28   0      100.00%
+-----------------------------------
+Total          39   0      100.00%
+
+real	0m0.013s
+user	0m0.009s
+sys	0m0.004s
+
+===============================================================================
+
+Running: stylua ./darts.lua ./darts_spec.lua
+
+real	0m0.007s
+user	0m0.004s
+sys	0m0.005s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.022s
+user	0m0.024s
+sys	0m0.011s
+
+===============================================================================
+
+
+===============================================================================
+

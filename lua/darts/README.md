@@ -44,3 +44,8 @@ The scoreboard image was created by [habere-et-dispertire][habere-et-dispertire]
 ### Based on
 
 Inspired by an exercise created by a professor Della Paolera in Argentina
+
+### My Solution
+
+- [my solution](./darts.lua)
+- [run-tests](./run-tests-lua.txt)
