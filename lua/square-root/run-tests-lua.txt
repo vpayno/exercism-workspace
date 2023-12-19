@@ -1,0 +1,95 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: luacheck --no-color ./square-root.lua
+Checking square-root.lua                          OK
+
+Total: 0 warnings / 0 errors in 1 file
+
+real	0m0.030s
+user	0m0.020s
+sys	0m0.010s
+
+===============================================================================
+
+Running: busted --coverage --lpath= --cpath= --output=gtest -Xoutput --plain
+[==========] Running tests from scanned files.
+[----------] Global test environment setup.
+[----------] Running tests from ./square-root_spec.lua
+[ RUN      ] ./square-root_spec.lua @ 4: square-root root of 1
+[       OK ] ./square-root_spec.lua @ 4: square-root root of 1 (0.51 ms)
+[ RUN      ] ./square-root_spec.lua @ 8: square-root root of 4
+[       OK ] ./square-root_spec.lua @ 8: square-root root of 4 (0.70 ms)
+[ RUN      ] ./square-root_spec.lua @ 12: square-root root of 25
+[       OK ] ./square-root_spec.lua @ 12: square-root root of 25 (0.50 ms)
+[ RUN      ] ./square-root_spec.lua @ 16: square-root root of 81
+[       OK ] ./square-root_spec.lua @ 16: square-root root of 81 (0.49 ms)
+[ RUN      ] ./square-root_spec.lua @ 20: square-root root of 196
+[       OK ] ./square-root_spec.lua @ 20: square-root root of 196 (0.55 ms)
+[ RUN      ] ./square-root_spec.lua @ 24: square-root root of 65025
+[       OK ] ./square-root_spec.lua @ 24: square-root root of 65025 (0.52 ms)
+[----------] 6 tests from ./square-root_spec.lua (16.93 ms total)
+
+[----------] Global test environment teardown.
+[==========] 6 tests from 1 test file ran. (18.52 ms total)
+[  PASSED  ] 6 tests.
+
+real	0m0.041s
+user	0m0.034s
+sys	0m0.007s
+
+===============================================================================
+
+Running: luacov .
+
+real	0m0.068s
+user	0m0.063s
+sys	0m0.005s
+
+===============================================================================
+
+Running: luacov-console .
+
+real	0m0.017s
+user	0m0.008s
+sys	0m0.009s
+
+Running: luacov-console --no-colored --summary .
+==============================================================================
+Summary
+==============================================================================
+
+File                 Hits Missed Coverage
+-----------------------------------------
+square-root.lua      4    0      100.00%
+square-root_spec.lua 14   0      100.00%
+-----------------------------------------
+Total                18   0      100.00%
+
+real	0m0.016s
+user	0m0.009s
+sys	0m0.008s
+
+===============================================================================
+
+Running: stylua ./square-root.lua ./square-root_spec.lua
+
+real	0m0.007s
+user	0m0.005s
+sys	0m0.002s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.020s
+user	0m0.024s
+sys	0m0.009s
+
+===============================================================================
+
+
+===============================================================================
+
