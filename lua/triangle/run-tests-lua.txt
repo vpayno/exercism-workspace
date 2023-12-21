@@ -1,0 +1,111 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: luacheck --no-color ./triangle.lua
+Checking triangle.lua                             OK
+
+Total: 0 warnings / 0 errors in 1 file
+
+real	0m0.040s
+user	0m0.033s
+sys	0m0.007s
+
+===============================================================================
+
+Running: busted --coverage --lpath= --cpath= --output=gtest -Xoutput --plain
+[==========] Running tests from scanned files.
+[----------] Global test environment setup.
+[----------] Running tests from ./triangle_spec.lua
+[ RUN      ] ./triangle_spec.lua @ 4: triangle equilateral triangles have equal sides
+[       OK ] ./triangle_spec.lua @ 4: triangle equilateral triangles have equal sides (0.64 ms)
+[ RUN      ] ./triangle_spec.lua @ 8: triangle larger equilateral triangles also have equal sides
+[       OK ] ./triangle_spec.lua @ 8: triangle larger equilateral triangles also have equal sides (0.55 ms)
+[ RUN      ] ./triangle_spec.lua @ 12: triangle isosceles triangles have last two sides equal
+[       OK ] ./triangle_spec.lua @ 12: triangle isosceles triangles have last two sides equal (0.51 ms)
+[ RUN      ] ./triangle_spec.lua @ 16: triangle isosceles trianges have first and last sides equal
+[       OK ] ./triangle_spec.lua @ 16: triangle isosceles trianges have first and last sides equal (0.52 ms)
+[ RUN      ] ./triangle_spec.lua @ 20: triangle isosceles triangles have two first sides equal
+[       OK ] ./triangle_spec.lua @ 20: triangle isosceles triangles have two first sides equal (0.63 ms)
+[ RUN      ] ./triangle_spec.lua @ 24: triangle isosceles triangles have in fact exactly two sides equal
+[       OK ] ./triangle_spec.lua @ 24: triangle isosceles triangles have in fact exactly two sides equal (0.52 ms)
+[ RUN      ] ./triangle_spec.lua @ 28: triangle scalene triangles have no equal sides
+[       OK ] ./triangle_spec.lua @ 28: triangle scalene triangles have no equal sides (0.51 ms)
+[ RUN      ] ./triangle_spec.lua @ 32: triangle scalene triangles have no equal sides at a larger scale too
+[       OK ] ./triangle_spec.lua @ 32: triangle scalene triangles have no equal sides at a larger scale too (0.81 ms)
+[ RUN      ] ./triangle_spec.lua @ 36: triangle scalene triangles have no equal sides in descending order either
+[       OK ] ./triangle_spec.lua @ 36: triangle scalene triangles have no equal sides in descending order either (0.54 ms)
+[ RUN      ] ./triangle_spec.lua @ 40: triangle very small triangles are legal
+[       OK ] ./triangle_spec.lua @ 40: triangle very small triangles are legal (0.55 ms)
+[ RUN      ] ./triangle_spec.lua @ 44: triangle test triangles with no size are illegal
+[       OK ] ./triangle_spec.lua @ 44: triangle test triangles with no size are illegal (0.92 ms)
+[ RUN      ] ./triangle_spec.lua @ 50: triangle triangles with negative sides are illegal
+[       OK ] ./triangle_spec.lua @ 50: triangle triangles with negative sides are illegal (0.55 ms)
+[ RUN      ] ./triangle_spec.lua @ 56: triangle triangles violating triangle inequality are illegal
+[       OK ] ./triangle_spec.lua @ 56: triangle triangles violating triangle inequality are illegal (0.66 ms)
+[ RUN      ] ./triangle_spec.lua @ 62: triangle triangles violating triangle inequality are illegal 2
+[       OK ] ./triangle_spec.lua @ 62: triangle triangles violating triangle inequality are illegal 2 (0.57 ms)
+[----------] 14 tests from ./triangle_spec.lua (36.07 ms total)
+
+[----------] Global test environment teardown.
+[==========] 14 tests from 1 test file ran. (37.51 ms total)
+[  PASSED  ] 14 tests.
+
+real	0m0.061s
+user	0m0.056s
+sys	0m0.005s
+
+===============================================================================
+
+Running: luacov .
+
+real	0m0.072s
+user	0m0.066s
+sys	0m0.006s
+
+===============================================================================
+
+Running: luacov-console .
+
+real	0m0.014s
+user	0m0.011s
+sys	0m0.004s
+
+Running: luacov-console --no-colored --summary .
+==============================================================================
+Summary
+==============================================================================
+
+File              Hits Missed Coverage
+--------------------------------------
+triangle.lua      18   2      90.00%
+triangle_spec.lua 38   0      100.00%
+--------------------------------------
+Total             56   2      96.55%
+
+real	0m0.015s
+user	0m0.010s
+sys	0m0.005s
+
+===============================================================================
+
+Running: stylua ./triangle.lua ./triangle_spec.lua
+
+real	0m0.015s
+user	0m0.013s
+sys	0m0.006s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.026s
+user	0m0.031s
+sys	0m0.012s
+
+===============================================================================
+
+
+===============================================================================
+

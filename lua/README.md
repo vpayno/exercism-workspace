@@ -21,3 +21,4 @@
 - [space-age](./space-age/README.md)
 - [gigasecond](./gigasecond/README.md)
 - [darts](./darts/README.md)
+- [triangle](./triangle/README.md)
