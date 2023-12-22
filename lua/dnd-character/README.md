@@ -44,3 +44,9 @@ One such language is [Troll][troll].
 ### Based on
 
 Simon Shine, Erik Schierboom - https://github.com/exercism/problem-specifications/issues/616#issuecomment-437358945
+
+### My Solution
+
+- [my solution](./assertions.lua
+./dnd-character.lua)
+- [run-tests](./run-tests-lua.txt)
