@@ -1,0 +1,112 @@
+==============================================================================
+queen-attack_spec.lua
+==============================================================================
+* local Queen = require("queen-attack")
+
+* describe("queen-attack", function()
+*     it("queen with a valid position", function()
+*         assert.has_no_error(function()
+*             Queen({ row = 2, column = 2 })
+          end)
+      end)
+
+*     it("queen must have a positive row", function()
+*         assert.has_error(function()
+*             Queen({ row = -2, column = 2 })
+          end)
+      end)
+
+*     it("queen must have row on board", function()
+*         assert.has_error(function()
+*             Queen({ row = 8, column = 4 })
+          end)
+      end)
+
+*     it("queen must have positive column", function()
+*         assert.has_error(function()
+*             Queen({ row = 2, column = -2 })
+          end)
+      end)
+
+*     it("queen must have column on board", function()
+*         assert.has_error(function()
+*             Queen({ row = 4, column = 8 })
+          end)
+      end)
+
+*     it("can not attack", function()
+*         local q1 = Queen({ row = 2, column = 4 })
+*         local q2 = Queen({ row = 6, column = 6 })
+*         assert.is_false(q1.can_attack(q2))
+      end)
+
+*     it("can attack on same row", function()
+*         local q1 = Queen({ row = 2, column = 4 })
+*         local q2 = Queen({ row = 2, column = 6 })
+*         assert.is_true(q1.can_attack(q2))
+      end)
+
+*     it("can attack on same column", function()
+*         local q1 = Queen({ row = 4, column = 5 })
+*         local q2 = Queen({ row = 2, column = 5 })
+*         assert.is_true(q1.can_attack(q2))
+      end)
+
+*     it("can attack on first diagonal", function()
+*         local q1 = Queen({ row = 2, column = 2 })
+*         local q2 = Queen({ row = 0, column = 4 })
+*         assert.is_true(q1.can_attack(q2))
+      end)
+
+*     it("can attack on second diagonal", function()
+*         local q1 = Queen({ row = 2, column = 2 })
+*         local q2 = Queen({ row = 3, column = 1 })
+*         assert.is_true(q1.can_attack(q2))
+      end)
+
+*     it("can attack on third diagonal", function()
+*         local q1 = Queen({ row = 2, column = 2 })
+*         local q2 = Queen({ row = 1, column = 1 })
+*         assert.is_true(q1.can_attack(q2))
+      end)
+
+*     it("can attack on fourth diagonal", function()
+*         local q1 = Queen({ row = 2, column = 2 })
+*         local q2 = Queen({ row = 5, column = 5 })
+*         assert.is_true(q1.can_attack(q2))
+      end)
+  end)
+
+==============================================================================
+queen-attack.lua
+==============================================================================
+  return function(pos)
+*     assert(pos.row >= 0 and pos.row < 8, "Invalid board row")
+*     assert(pos.column >= 0 and pos.column < 8, "Invalid board column")
+
+      local function _slope(p1, p2)
+*         return (p2.column - p1.column) / (p2.row - p1.row)
+      end
+
+*     return {
+*         row = pos.row,
+*         column = pos.column,
+*         can_attack = function(other_pos)
+*             local slope = math.abs(_slope(pos, other_pos))
+
+              -- same row or diagonal or same column
+*             return slope == 0.0 or slope == 1.0 or slope == math.huge
+          end,
+*     }
+  end
+
+==============================================================================
+Summary
+==============================================================================
+
+File                  Hits Missed Coverage
+------------------------------------------
+queen-attack.lua      10   0      100.00%
+queen-attack_spec.lua 45   0      100.00%
+------------------------------------------
+Total                 55   0      100.00%
