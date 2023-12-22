@@ -23,3 +23,4 @@
 - [darts](./darts/README.md)
 - [triangle](./triangle/README.md)
 - [dnd-character](./dnd-character/README.md)
+- [flatten-array](./flatten-array/README.md)

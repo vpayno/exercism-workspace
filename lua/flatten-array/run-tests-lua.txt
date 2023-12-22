@@ -1,0 +1,91 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: luacheck --no-color ./flatten-array.lua
+Checking flatten-array.lua                        OK
+
+Total: 0 warnings / 0 errors in 1 file
+
+real	0m0.028s
+user	0m0.019s
+sys	0m0.009s
+
+===============================================================================
+
+Running: busted --coverage --lpath= --cpath= --output=gtest -Xoutput --plain
+[==========] Running tests from scanned files.
+[----------] Global test environment setup.
+[----------] Running tests from ./flatten-array_spec.lua
+[ RUN      ] ./flatten-array_spec.lua @ 15: flatten-array should flatten arrays with a single level of nesting
+[       OK ] ./flatten-array_spec.lua @ 15: flatten-array should flatten arrays with a single level of nesting (0.87 ms)
+[ RUN      ] ./flatten-array_spec.lua @ 22: flatten-array should flatten deeply nested arrays
+[       OK ] ./flatten-array_spec.lua @ 22: flatten-array should flatten deeply nested arrays (1.80 ms)
+[ RUN      ] ./flatten-array_spec.lua @ 34: flatten-array should flatten arrays containing empty arrays
+[       OK ] ./flatten-array_spec.lua @ 34: flatten-array should flatten arrays containing empty arrays (0.89 ms)
+[ RUN      ] ./flatten-array_spec.lua @ 41: flatten-array should flatten arrays with no elements to an empty array
+[       OK ] ./flatten-array_spec.lua @ 41: flatten-array should flatten arrays with no elements to an empty array (0.64 ms)
+[----------] 4 tests from ./flatten-array_spec.lua (13.62 ms total)
+
+[----------] Global test environment teardown.
+[==========] 4 tests from 1 test file ran. (15.18 ms total)
+[  PASSED  ] 4 tests.
+
+real	0m0.035s
+user	0m0.026s
+sys	0m0.009s
+
+===============================================================================
+
+Running: luacov .
+
+real	0m0.065s
+user	0m0.056s
+sys	0m0.009s
+
+===============================================================================
+
+Running: luacov-console .
+
+real	0m0.017s
+user	0m0.014s
+sys	0m0.003s
+
+Running: luacov-console --no-colored --summary .
+==============================================================================
+Summary
+==============================================================================
+
+File                   Hits Missed Coverage
+-------------------------------------------
+flatten-array.lua      9    0      100.00%
+flatten-array_spec.lua 20   0      100.00%
+-------------------------------------------
+Total                  29   0      100.00%
+
+real	0m0.016s
+user	0m0.012s
+sys	0m0.004s
+
+===============================================================================
+
+Running: stylua ./flatten-array.lua ./flatten-array_spec.lua
+
+real	0m0.011s
+user	0m0.013s
+sys	0m0.003s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.021s
+user	0m0.019s
+sys	0m0.011s
+
+===============================================================================
+
+
+===============================================================================
+
