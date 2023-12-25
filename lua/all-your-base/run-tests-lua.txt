@@ -1,0 +1,115 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: luacheck --no-color ./all-your-base.lua
+Checking all-your-base.lua                        OK
+
+Total: 0 warnings / 0 errors in 1 file
+
+real	0m0.031s
+user	0m0.022s
+sys	0m0.009s
+
+===============================================================================
+
+Running: busted --coverage --lpath= --cpath= --output=gtest -Xoutput --plain
+[==========] Running tests from scanned files.
+[----------] Global test environment setup.
+[----------] Running tests from ./all-your-base_spec.lua
+[ RUN      ] ./all-your-base_spec.lua @ 4: all-your-base should convert a single binary digit to a single decimal digit
+[       OK ] ./all-your-base_spec.lua @ 4: all-your-base should convert a single binary digit to a single decimal digit (0.62 ms)
+[ RUN      ] ./all-your-base_spec.lua @ 8: all-your-base should convert multiple binary digits to a single decimal digit
+[       OK ] ./all-your-base_spec.lua @ 8: all-your-base should convert multiple binary digits to a single decimal digit (1.47 ms)
+[ RUN      ] ./all-your-base_spec.lua @ 12: all-your-base should convert a single decimal digit to binary
+[       OK ] ./all-your-base_spec.lua @ 12: all-your-base should convert a single decimal digit to binary (0.71 ms)
+[ RUN      ] ./all-your-base_spec.lua @ 16: all-your-base should convert binary to decimal
+[       OK ] ./all-your-base_spec.lua @ 16: all-your-base should convert binary to decimal (0.86 ms)
+[ RUN      ] ./all-your-base_spec.lua @ 20: all-your-base should convert decimal to binary
+[       OK ] ./all-your-base_spec.lua @ 20: all-your-base should convert decimal to binary (0.65 ms)
+[ RUN      ] ./all-your-base_spec.lua @ 24: all-your-base should convert trinary to hexadecimal
+[       OK ] ./all-your-base_spec.lua @ 24: all-your-base should convert trinary to hexadecimal (0.65 ms)
+[ RUN      ] ./all-your-base_spec.lua @ 28: all-your-base should convert hexadecimal to trinary
+[       OK ] ./all-your-base_spec.lua @ 28: all-your-base should convert hexadecimal to trinary (0.99 ms)
+[ RUN      ] ./all-your-base_spec.lua @ 32: all-your-base should convert between large bases
+[       OK ] ./all-your-base_spec.lua @ 32: all-your-base should convert between large bases (0.65 ms)
+[ RUN      ] ./all-your-base_spec.lua @ 36: all-your-base should convert no digits to 0
+[       OK ] ./all-your-base_spec.lua @ 36: all-your-base should convert no digits to 0 (0.65 ms)
+[ RUN      ] ./all-your-base_spec.lua @ 40: all-your-base should convert no digits to 0
+[       OK ] ./all-your-base_spec.lua @ 40: all-your-base should convert no digits to 0 (0.81 ms)
+[ RUN      ] ./all-your-base_spec.lua @ 44: all-your-base should convert multiple 0 digits to 0
+[       OK ] ./all-your-base_spec.lua @ 44: all-your-base should convert multiple 0 digits to 0 (0.63 ms)
+[ RUN      ] ./all-your-base_spec.lua @ 48: all-your-base should ignore leading zeros
+[       OK ] ./all-your-base_spec.lua @ 48: all-your-base should ignore leading zeros (0.72 ms)
+[ RUN      ] ./all-your-base_spec.lua @ 52: all-your-base should not allow negative digits
+[       OK ] ./all-your-base_spec.lua @ 52: all-your-base should not allow negative digits (0.49 ms)
+[ RUN      ] ./all-your-base_spec.lua @ 58: all-your-base should not allow digits that are out of range
+[       OK ] ./all-your-base_spec.lua @ 58: all-your-base should not allow digits that are out of range (0.54 ms)
+[ RUN      ] ./all-your-base_spec.lua @ 64: all-your-base should not allow an input base less than 2
+[       OK ] ./all-your-base_spec.lua @ 64: all-your-base should not allow an input base less than 2 (1.34 ms)
+[ RUN      ] ./all-your-base_spec.lua @ 78: all-your-base should not allow an output base less than 2
+[       OK ] ./all-your-base_spec.lua @ 78: all-your-base should not allow an output base less than 2 (1.00 ms)
+[----------] 16 tests from ./all-your-base_spec.lua (46.10 ms total)
+
+[----------] Global test environment teardown.
+[==========] 16 tests from 1 test file ran. (47.45 ms total)
+[  PASSED  ] 16 tests.
+
+real	0m0.070s
+user	0m0.064s
+sys	0m0.005s
+
+===============================================================================
+
+Running: luacov .
+
+real	0m0.080s
+user	0m0.068s
+sys	0m0.005s
+
+===============================================================================
+
+Running: luacov-console .
+
+real	0m0.017s
+user	0m0.013s
+sys	0m0.003s
+
+Running: luacov-console --no-colored --summary .
+==============================================================================
+Summary
+==============================================================================
+
+File                   Hits Missed Coverage
+-------------------------------------------
+all-your-base.lua      21   0      100.00%
+all-your-base_spec.lua 54   0      100.00%
+-------------------------------------------
+Total                  75   0      100.00%
+
+real	0m0.012s
+user	0m0.009s
+sys	0m0.004s
+
+===============================================================================
+
+Running: stylua ./all-your-base.lua ./all-your-base_spec.lua
+
+real	0m0.041s
+user	0m0.026s
+sys	0m0.005s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.040s
+user	0m0.025s
+sys	0m0.015s
+
+===============================================================================
+
+
+===============================================================================
+

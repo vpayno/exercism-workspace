@@ -1,0 +1,157 @@
+==============================================================================
+all-your-base_spec.lua
+==============================================================================
+* local all_your_base = require 'all-your-base'
+
+* describe('all-your-base', function()
+*   it('should convert a single binary digit to a single decimal digit', function()
+*     assert.are.same({ 1 }, all_your_base.convert({ 1 }, 2).to(10))
+    end)
+
+*   it('should convert multiple binary digits to a single decimal digit', function()
+*     assert.are.same({ 5 }, all_your_base.convert({ 1, 0, 1 }, 2).to(10))
+    end)
+
+*   it('should convert a single decimal digit to binary', function()
+*     assert.are.same({ 1, 0, 1 }, all_your_base.convert({ 5 }, 10).to(2))
+    end)
+
+*   it('should convert binary to decimal', function()
+*     assert.are.same({ 1, 0, 1, 0, 1, 0 }, all_your_base.convert({ 4, 2 }, 10).to(2))
+    end)
+
+*   it('should convert decimal to binary', function()
+*     assert.are.same({ 4, 2 }, all_your_base.convert({ 1, 0, 1, 0, 1, 0 }, 2).to(10))
+    end)
+
+*   it('should convert trinary to hexadecimal', function()
+*     assert.are.same({ 2, 10 }, all_your_base.convert({ 1, 1, 2, 0 }, 3).to(16))
+    end)
+
+*   it('should convert hexadecimal to trinary', function()
+*     assert.are.same({ 1, 1, 2, 0 }, all_your_base.convert({ 2, 10 }, 16).to(3))
+    end)
+
+*   it('should convert between large bases', function()
+*     assert.are.same({ 6, 10, 45 }, all_your_base.convert({ 3, 46, 60 }, 97).to(73))
+    end)
+
+*   it('should convert no digits to 0', function()
+*     assert.are.same({ 0 }, all_your_base.convert({ }, 2).to(10))
+    end)
+
+*   it('should convert no digits to 0', function()
+*     assert.are.same({ 0 }, all_your_base.convert({ }, 10).to(2))
+    end)
+
+*   it('should convert multiple 0 digits to 0', function()
+*     assert.are.same({ 0 }, all_your_base.convert({ 0, 0, 0 }, 10).to(2))
+    end)
+
+*   it('should ignore leading zeros', function()
+*     assert.are.same({ 4, 2 }, all_your_base.convert({ 0, 6, 0 }, 7).to(10))
+    end)
+
+*   it('should not allow negative digits', function()
+*     assert.has_error(function()
+*       all_your_base.convert({ 1, -1, 1, 0, 1, 0 }, 2).to(10)
+*     end, 'negative digits are not allowed')
+    end)
+
+*   it('should not allow digits that are out of range', function()
+*     assert.has_error(function()
+*       all_your_base.convert({ 1, 2, 1, 0, 1, 0 }, 2).to(10)
+*     end, 'digit out of range')
+    end)
+
+*   it('should not allow an input base less than 2', function()
+*     assert.has_error(function()
+*       all_your_base.convert({ 1, 0, 1, 0, 1, 0 }, -1).to(10)
+*     end, 'invalid input base')
+
+*     assert.has_error(function()
+*       all_your_base.convert({ 1, 0, 1, 0, 1, 0 }, 0).to(10)
+*     end, 'invalid input base')
+
+*     assert.has_error(function()
+*       all_your_base.convert({ 1, 0, 1, 0, 1, 0 }, 1).to(10)
+*     end, 'invalid input base')
+    end)
+
+*   it('should not allow an output base less than 2', function()
+*     assert.has_error(function()
+*       all_your_base.convert({ 1, 0, 1, 0, 1, 0 }, 2).to(-1)
+*     end, 'invalid output base')
+
+*     assert.has_error(function()
+*       all_your_base.convert({ 1, 0, 1, 0, 1, 0 }, 2).to(0)
+*     end, 'invalid output base')
+
+*     assert.has_error(function()
+*       all_your_base.convert({ 1, 0, 1, 0, 1, 0 }, 2).to(1)
+*     end, 'invalid output base')
+    end)
+  end)
+
+==============================================================================
+all-your-base.lua
+==============================================================================
+* local all_your_base = {}
+
+  local function to_base_10(input_base, input_digits)
+*     local base_ten = 0
+
+*     for _, digit in ipairs(input_digits) do
+*         assert(digit >= 0, 'negative digits are not allowed')
+*         assert(digit < input_base, 'digit out of range')
+
+*         base_ten = base_ten * input_base
+*         base_ten = base_ten + digit
+      end
+
+*     return base_ten
+  end
+
+  local function from_base_10(output_base, number)
+*     local output_digits = {}
+
+*     while number > 0 do
+*         local tmp = math.floor(number % output_base)
+
+*         table.insert(output_digits, 1, tmp)
+
+*         number = math.floor(number / output_base)
+      end
+
+*     if #output_digits == 0 then
+*         return {0}
+      else
+*         return output_digits
+      end
+  end
+
+  all_your_base.convert = function(from_digits, from_base)
+
+*     assert(from_base > 1, "invalid input base")
+
+      local function to(to_base)
+*         assert(to_base > 1, "invalid output base")
+
+*         return from_base_10(to_base, to_base_10(from_base, from_digits))
+      end
+
+*     return { to = to }
+  end
+
+* return all_your_base
+
+==============================================================================
+Summary
+==============================================================================
+
+File                   Hits Missed Coverage
+-------------------------------------------
+all-your-base.lua      21   0      100.00%
+all-your-base_spec.lua 54   0      100.00%
+-------------------------------------------
+Total                  75   0      100.00%
