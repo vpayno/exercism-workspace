@@ -1,11 +1,11 @@
 local TwoFer = {}
 
 function TwoFer.two_fer(name)
-    if #name == 0 then
-        name = "You"
-    end
+    name = name or "you"
 
-    return "One for " .. name .. ", one for me."
+    local response = "One for " .. name .. ", one for me."
+
+    return response
 end
 
 return TwoFer
