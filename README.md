@@ -22,7 +22,7 @@ Exercism Workspace
 |   September   |  Slimline          |  Awk          (5/5),  Bash\*  (5/5),  jq       (0/5),  Perl  (0/5)  |
 |   October     |  Object-Oriented   |  Ruby         (5/5),  Java  (0/5)  |
 |   November    |  Nibbly            |  WebAssembly  (5/5),  x86-64 Assembly  (0/5) |
-|   December    |  Diversions        |  Lua          (4/5),  Vimscript  (0/5)  |
+|   December    |  Diversions        |  Lua          (5/5),  Vimscript  (0/5)  |
 
 \* not completed in 2023
 

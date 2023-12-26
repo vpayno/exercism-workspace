@@ -1,0 +1,123 @@
+==============================================================================
+run-length-encoding_spec.lua
+==============================================================================
+* local rle = require('run-length-encoding')
+
+* describe('run-length-encoding', function()
+*   it('should encode simple strings', function()
+*     assert.equal('2A3B4C', rle.encode('AABBBCCCC'))
+    end)
+
+*   it('should encode strings with multi-digit run lengths', function()
+*     assert.equal('2A10B4C', rle.encode('AABBBBBBBBBBCCCC'))
+    end)
+
+*   it('should decode simple strings', function()
+*     assert.equal('AABBBCCCC', rle.decode('2A3B4C'))
+    end)
+
+*   it('should decode strings with multi-digit run lengths', function()
+*     assert.equal('AABBBBBBBBBBCCCC', rle.decode('2A10B4C'))
+    end)
+
+*   it('should not encode characters with a run length of 1', function()
+*     assert.equal('2AB4CD', rle.encode('AABCCCCD'))
+    end)
+
+*   it('should successfully decode characters with a run length of 1', function()
+*     assert.equal('AABCCCCD', rle.decode('2AB4CD'))
+    end)
+
+*   it('should decode an encoded string back to the original string', function()
+*     assert.equal('zzz ZZ  zZ', rle.decode(rle.encode('zzz ZZ  zZ')))
+    end)
+  end)
+
+==============================================================================
+run-length-encoding.lua
+==============================================================================
+  local function encode(plain_text)
+*     local buffer=""
+
+*     if #plain_text == 0 then
+*         return buffer
+      end
+
+*     local count=0
+*     local rune_current=""
+*     local rune_last=""
+
+*     for rune in plain_text:gmatch('.') do
+*         rune_current=rune -- so it survives loop termination
+
+*         if rune_last == rune_current then
+*             count = count +1
+          else
+*             if count <= 1 then
+*                 buffer=buffer..rune_last
+              else
+*                 buffer= buffer .. count .. rune_last
+              end
+
+*             rune_last=rune_current
+*             count=1
+          end
+      end
+
+*     if count <= 1 then
+*         buffer=buffer..rune_current
+      else
+*         buffer= buffer..count..rune_current
+      end
+
+*     return buffer
+  end
+
+  local function decode(cipher_text)
+*     local buffer = {}
+
+*     if #cipher_text == 0 then
+*         return table.concat(buffer)
+      end
+
+      local rune
+*     local count=-1
+
+*     for char in cipher_text:gmatch('.') do
+
+*         if string.match(char, '[ A-Za-z]') then
+*             rune=char
+
+*             count = math.max(count, 1)
+
+*             table.insert(buffer, rune:rep(count))
+*             count=-1
+
+          else
+*             if count > -1 then
+*                 count = count * 10
+*                 count = count + tonumber(char) or 1
+              else
+*                 count = tonumber(char) or 1
+              end
+          end
+      end
+
+*     return table.concat(buffer)
+  end
+
+* return {
+*   encode = encode,
+*   decode = decode,
+* }
+
+==============================================================================
+Summary
+==============================================================================
+
+File                         Hits Missed Coverage
+-------------------------------------------------
+run-length-encoding.lua      38   0      100.00%
+run-length-encoding_spec.lua 16   0      100.00%
+-------------------------------------------------
+Total                        54   0      100.00%

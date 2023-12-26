@@ -37,3 +37,8 @@ This way data to be encoded will never contain any numbers and numbers inside da
 ### Based on
 
 Wikipedia - https://en.wikipedia.org/wiki/Run-length_encoding
+
+### My Solution
+
+- [my solution](./run-length-encoding.lua)
+- [run-tests](./run-tests-lua.txt)

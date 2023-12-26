@@ -1,0 +1,97 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: luacheck --no-color ./run-length-encoding.lua
+Checking run-length-encoding.lua                  OK
+
+Total: 0 warnings / 0 errors in 1 file
+
+real	0m0.032s
+user	0m0.024s
+sys	0m0.009s
+
+===============================================================================
+
+Running: busted --coverage --lpath= --cpath= --output=gtest -Xoutput --plain
+[==========] Running tests from scanned files.
+[----------] Global test environment setup.
+[----------] Running tests from ./run-length-encoding_spec.lua
+[ RUN      ] ./run-length-encoding_spec.lua @ 4: run-length-encoding should encode simple strings
+[       OK ] ./run-length-encoding_spec.lua @ 4: run-length-encoding should encode simple strings (0.63 ms)
+[ RUN      ] ./run-length-encoding_spec.lua @ 8: run-length-encoding should encode strings with multi-digit run lengths
+[       OK ] ./run-length-encoding_spec.lua @ 8: run-length-encoding should encode strings with multi-digit run lengths (0.73 ms)
+[ RUN      ] ./run-length-encoding_spec.lua @ 12: run-length-encoding should decode simple strings
+[       OK ] ./run-length-encoding_spec.lua @ 12: run-length-encoding should decode simple strings (0.49 ms)
+[ RUN      ] ./run-length-encoding_spec.lua @ 16: run-length-encoding should decode strings with multi-digit run lengths
+[       OK ] ./run-length-encoding_spec.lua @ 16: run-length-encoding should decode strings with multi-digit run lengths (0.61 ms)
+[ RUN      ] ./run-length-encoding_spec.lua @ 20: run-length-encoding should not encode characters with a run length of 1
+[       OK ] ./run-length-encoding_spec.lua @ 20: run-length-encoding should not encode characters with a run length of 1 (0.50 ms)
+[ RUN      ] ./run-length-encoding_spec.lua @ 24: run-length-encoding should successfully decode characters with a run length of 1
+[       OK ] ./run-length-encoding_spec.lua @ 24: run-length-encoding should successfully decode characters with a run length of 1 (0.50 ms)
+[ RUN      ] ./run-length-encoding_spec.lua @ 28: run-length-encoding should decode an encoded string back to the original string
+[       OK ] ./run-length-encoding_spec.lua @ 28: run-length-encoding should decode an encoded string back to the original string (0.97 ms)
+[----------] 7 tests from ./run-length-encoding_spec.lua (20.50 ms total)
+
+[----------] Global test environment teardown.
+[==========] 7 tests from 1 test file ran. (22.03 ms total)
+[  PASSED  ] 7 tests.
+
+real	0m0.046s
+user	0m0.042s
+sys	0m0.004s
+
+===============================================================================
+
+Running: luacov .
+
+real	0m0.078s
+user	0m0.065s
+sys	0m0.007s
+
+===============================================================================
+
+Running: luacov-console .
+
+real	0m0.016s
+user	0m0.013s
+sys	0m0.003s
+
+Running: luacov-console --no-colored --summary .
+==============================================================================
+Summary
+==============================================================================
+
+File                         Hits Missed Coverage
+-------------------------------------------------
+run-length-encoding.lua      38   0      100.00%
+run-length-encoding_spec.lua 16   0      100.00%
+-------------------------------------------------
+Total                        54   0      100.00%
+
+real	0m0.013s
+user	0m0.010s
+sys	0m0.003s
+
+===============================================================================
+
+Running: stylua ./run-length-encoding.lua ./run-length-encoding_spec.lua
+
+real	0m0.008s
+user	0m0.005s
+sys	0m0.006s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.029s
+user	0m0.033s
+sys	0m0.011s
+
+===============================================================================
+
+
+===============================================================================
+
