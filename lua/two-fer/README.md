@@ -47,3 +47,8 @@ Here are some examples:
 ### Based on
 
 https://github.com/exercism/problem-specifications/issues/757
+
+### My Solution
+
+- [my solution](./two-fer.lua)
+- [run-tests](./run-tests-lua.txt)

@@ -1,0 +1,94 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: luacheck --no-color ./two-fer.lua
+Checking two-fer.lua                              OK
+
+Total: 0 warnings / 0 errors in 1 file
+
+real	0m0.029s
+user	0m0.021s
+sys	0m0.008s
+
+===============================================================================
+
+Running: busted --coverage --lpath= --cpath= --output=gtest -Xoutput --plain
+[==========] Running tests from scanned files.
+[----------] Global test environment setup.
+[----------] Running tests from ./two-fer_spec.lua
+[ RUN      ] ./two-fer_spec.lua @ 4: two-fer no name given
+./two-fer.lua:4: attempt to get length of local 'name' (a nil value)
+[  ERROR   ] ./two-fer_spec.lua @ 4: two-fer no name given (1.40 ms)
+[ RUN      ] ./two-fer_spec.lua @ 8: two-fer a name given
+[       OK ] ./two-fer_spec.lua @ 8: two-fer a name given (0.97 ms)
+[ RUN      ] ./two-fer_spec.lua @ 12: two-fer another name given
+[       OK ] ./two-fer_spec.lua @ 12: two-fer another name given (0.79 ms)
+[----------] 3 tests from ./two-fer_spec.lua (12.48 ms total)
+
+[----------] Global test environment teardown.
+[==========] 3 tests from 1 test file ran. (14.12 ms total)
+[  PASSED  ] 2 tests.
+[  ERROR   ] 1 error, listed below:
+[  ERROR   ] ./two-fer_spec.lua @ 4: two-fer no name given
+
+ 1 ERROR
+
+real	0m0.045s
+user	0m0.038s
+sys	0m0.007s
+
+===============================================================================
+
+Running: luacov .
+
+real	0m0.069s
+user	0m0.061s
+sys	0m0.007s
+
+===============================================================================
+
+Running: luacov-console .
+
+real	0m0.014s
+user	0m0.010s
+sys	0m0.004s
+
+Running: luacov-console --no-colored --summary .
+==============================================================================
+Summary
+==============================================================================
+
+File             Hits Missed Coverage
+-------------------------------------
+two-fer.lua      5    1      83.33%
+two-fer_spec.lua 8    0      100.00%
+-------------------------------------
+Total            13   1      92.86%
+
+real	0m0.013s
+user	0m0.011s
+sys	0m0.002s
+
+===============================================================================
+
+Running: stylua ./two-fer.lua ./two-fer_spec.lua
+
+real	0m0.006s
+user	0m0.001s
+sys	0m0.006s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.024s
+user	0m0.031s
+sys	0m0.014s
+
+===============================================================================
+
+
+===============================================================================
+

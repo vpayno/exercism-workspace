@@ -1,0 +1,46 @@
+==============================================================================
+two-fer_spec.lua
+==============================================================================
+* local TwoFer = require 'two-fer'
+
+* describe('two-fer', function()
+*   it('no name given', function()
+*     assert.equal('One for you, one for me.', TwoFer.two_fer())
+    end)
+
+*   it('a name given', function()
+*     assert.equal('One for Alice, one for me.', TwoFer.two_fer('Alice'))
+    end)
+
+*   it('another name given', function()
+*     assert.equal('One for Bob, one for me.', TwoFer.two_fer('Bob'))
+    end)
+  end)
+
+==============================================================================
+two-fer.lua
+==============================================================================
+* local TwoFer = {}
+
+* function TwoFer.two_fer(name)
+*     if #name == 0 then
+0         name="You"
+      end
+
+*     return "One for " ..name..", one for me."
+
+
+  end
+
+* return TwoFer
+
+==============================================================================
+Summary
+==============================================================================
+
+File             Hits Missed Coverage
+-------------------------------------
+two-fer.lua      5    1      83.33%
+two-fer_spec.lua 8    0      100.00%
+-------------------------------------
+Total            13   1      92.86%
