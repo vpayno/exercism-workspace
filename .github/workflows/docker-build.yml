@@ -205,6 +205,20 @@ jobs:
             printf "Testing entrypoint - gcc\n"
             docker run "${ORG_IMAGE}:latest" gcc --version
           } | tee -a "${GITHUB_STEP_SUMMARY}"
+      - name: Docker Start
+        run: |-
+          docker version
+          printf "\n"
+          service docker start
+          sleep 5s
+          service docker status
+      - name: Test Entrypoint - Docker
+        run: |-
+          {
+            ORG_IMAGE="${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}"
+            printf "Testing entrypoint - docker\n"
+            docker run "${ORG_IMAGE}:latest" docker version
+          } | tee -a "${GITHUB_STEP_SUMMARY}"
       - name: Test Entrypoint - Dagger
         run: |-
           {
@@ -214,13 +228,11 @@ jobs:
             printf "\n"
             docker run "${ORG_IMAGE}:latest" dagger run uptime
           } | tee -a "${GITHUB_STEP_SUMMARY}"
-      - name: Test Entrypoint - Docker
+      - name: Docker Stop
         run: |-
-          {
-            ORG_IMAGE="${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}"
-            printf "Testing entrypoint - docker\n"
-            docker run "${ORG_IMAGE}:latest" docker version
-          } | tee -a "${GITHUB_STEP_SUMMARY}"
+          service docker stop
+          sleep 5s
+          service docker status
       - name: Clean Up
         run: |-
           {
