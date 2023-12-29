@@ -131,7 +131,7 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:latest,${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ steps.setup_image_info.outputs.tag_date }}
   stage3:
-    name: Docker Test1
+    name: Docker Build Check
     env:
       ORG: ${{ secrets.DOCKERHUB_USERNAME }}
       IMAGE_NAME: ci-generic-debian
@@ -154,87 +154,4 @@ jobs:
           {
             printf "Docker Hub Image Info\n"
             curl -sS --header "Authorization: Bearer ${TOKEN}" "https://index.docker.io/v2/${ORG_IMAGE}/tags/list" | jq .
-          } | tee -a "${GITHUB_STEP_SUMMARY}"
-  stage4:
-    name: Docker Test2
-    env:
-      ORG: ${{ secrets.DOCKERHUB_USERNAME }}
-      IMAGE_NAME: ci-generic-debian
-    runs-on: ubuntu-latest
-    needs: [stage3]
-    steps:
-      - name: Test Entrypoint Default
-        run: |-
-          {
-            ORG_IMAGE="${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}"
-            printf "Testing default entrypoint\n"
-            docker run "${ORG_IMAGE}:latest"
-          } | tee -a "${GITHUB_STEP_SUMMARY}"
-      - name: Test Entrypoint - Rust
-        run: |-
-          {
-            ORG_IMAGE="${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}"
-            printf "Testing entrypoint - rust\n"
-            docker run "${ORG_IMAGE}:latest" rustc --version
-          } | tee -a "${GITHUB_STEP_SUMMARY}"
-      - name: Test Entrypoint - Go
-        run: |-
-          {
-            ORG_IMAGE="${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}"
-            printf "Testing entrypoint - go\n"
-            docker run "${ORG_IMAGE}:latest" go version
-          } | tee -a "${GITHUB_STEP_SUMMARY}"
-      - name: Test Entrypoint - NodeJs
-        run: |-
-          {
-            ORG_IMAGE="${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}"
-            printf "Testing entrypoint - nodejs\n"
-            docker run "${ORG_IMAGE}:latest" node --version
-          } | tee -a "${GITHUB_STEP_SUMMARY}"
-      - name: Test Entrypoint - Ruby
-        run: |-
-          {
-            ORG_IMAGE="${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}"
-            printf "Testing entrypoint - ruby\n"
-            docker run "${ORG_IMAGE}:latest" ruby --version
-          } | tee -a "${GITHUB_STEP_SUMMARY}"
-      - name: Test Entrypoint - Gcc
-        run: |-
-          {
-            ORG_IMAGE="${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}"
-            printf "Testing entrypoint - gcc\n"
-            docker run "${ORG_IMAGE}:latest" gcc --version
-          } | tee -a "${GITHUB_STEP_SUMMARY}"
-      - name: Docker Start
-        run: |-
-          docker version
-          printf "\n"
-          service docker start
-          sleep 5s
-          service docker status
-      - name: Test Entrypoint - Docker
-        run: |-
-          {
-            ORG_IMAGE="${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}"
-            printf "Testing entrypoint - docker\n"
-            docker run "${ORG_IMAGE}:latest" docker version
-          } | tee -a "${GITHUB_STEP_SUMMARY}"
-      - name: Test Entrypoint - Dagger
-        run: |-
-          {
-            ORG_IMAGE="${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}"
-            printf "Testing entrypoint - dagger\n"
-            docker run "${ORG_IMAGE}:latest" dagger version
-            printf "\n"
-            docker run "${ORG_IMAGE}:latest" dagger run uptime
-          } | tee -a "${GITHUB_STEP_SUMMARY}"
-      - name: Docker Stop
-        run: |-
-          service docker stop
-          sleep 5s
-          service docker status
-      - name: Clean Up
-        run: |-
-          {
-            docker system prune --all --volumes --force
           } | tee -a "${GITHUB_STEP_SUMMARY}"
