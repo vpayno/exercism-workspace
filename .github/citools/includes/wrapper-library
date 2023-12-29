@@ -5,6 +5,12 @@
 
 set -o pipefail
 
+# shared variables
+
+declare -xr LLVM_VER=16
+
+# helper functions
+
 md_code_tag() {
 	if [[ -n ${GITHUB_STEP_SUMMARY} ]]; then
 		printf "\`\`\`%s\n" "${1}"

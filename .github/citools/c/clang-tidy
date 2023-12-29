@@ -2,6 +2,9 @@
 
 shopt -s nullglob
 
-echo Running: clang-tidy-16 "${@}" ./*.c ./*.h
-time clang-tidy-16 "${@}" ./*.c ./*.h
+# shellcheck disable=SC1091
+source ../../.github/citools/includes/wrapper-library || exit
+
+echo Running: clang-tidy-"${LLVM_VER}" "${@}" ./*.c ./*.h
+time clang-tidy-"${LLVM_VER}" "${@}" ./*.c ./*.h
 printf "\n"

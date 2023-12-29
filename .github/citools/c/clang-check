@@ -2,6 +2,9 @@
 
 shopt -s nullglob
 
-echo clang-check-16 --analyze "${@}" ./*.c ./*.h
-time clang-check-16 --analyze "${@}" ./*.c ./*.h
+# shellcheck disable=SC1091
+source ../../.github/citools/includes/wrapper-library || exit
+
+echo clang-check-"${LLVM_VER}" --analyze "${@}" ./*.c ./*.h
+time clang-check-"${LLVM_VER}" --analyze "${@}" ./*.c ./*.h
 printf "\n"

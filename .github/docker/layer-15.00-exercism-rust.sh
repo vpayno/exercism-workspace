@@ -21,22 +21,22 @@ main() {
 
 	declare -a PACKAGES
 	PACKAGES=(
-		clang-16
-		clang-tidy-16
-		clang-tools-16
+		clang-"${LLVM_VER}"
+		clang-tidy-"${LLVM_VER}"
+		clang-tools-"${LLVM_VER}"
 		cmake
 		g++
 		gcovr
 		lcov
-		libllvm-16-ocaml-dev
+		libllvm-"${LLVM_VER}"-ocaml-dev
 		libllvm16
 		libssl-dev
-		lld-16
-		llvm-16
-		llvm-16-dev
-		llvm-16-doc
-		llvm-16-examples
-		llvm-16-runtime
+		lld-"${LLVM_VER}"
+		llvm-"${LLVM_VER}"
+		llvm-"${LLVM_VER}"-dev
+		llvm-"${LLVM_VER}"-doc
+		llvm-"${LLVM_VER}"-examples
+		llvm-"${LLVM_VER}"-runtime
 	)
 
 	declare -a CRATES
