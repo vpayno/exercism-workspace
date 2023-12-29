@@ -205,6 +205,15 @@ jobs:
             printf "Testing entrypoint - gcc\n"
             docker run "${ORG_IMAGE}:latest" gcc --version
           } | tee -a "${GITHUB_STEP_SUMMARY}"
+      - name: Test Entrypoint - Dagger
+        run: |-
+          {
+            ORG_IMAGE="${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}"
+            printf "Testing entrypoint - dagger\n"
+            docker run "${ORG_IMAGE}:latest" dagger version
+            printf "\n"
+            docker run "${ORG_IMAGE}:latest" dagger run uptime
+          } | tee -a "${GITHUB_STEP_SUMMARY}"
       - name: Test Entrypoint - Docker
         run: |-
           {
