@@ -103,3 +103,17 @@ jobs:
             printf "Testing entrypoint - dagger\n"
             docker run -v /var/run/docker.sock:/var/run/docker.sock "${ORG_IMAGE}:latest" dagger run uptime
           } |& tee -a "${GITHUB_STEP_SUMMARY}"
+  stage3:
+    name: Dagger Script Test
+    runs-on: ubuntu-latest
+    container:
+      image: vpayno/ci-generic-debian:latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+      - name: Test dagger shell cli
+        run: |-
+          {
+            printf "Testing dagger script\n"
+            .github/dagger/dagger-cli-test-ci-container.sh
+          } |& tee -a "${GITHUB_STEP_SUMMARY}"
