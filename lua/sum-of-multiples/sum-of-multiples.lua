@@ -36,9 +36,9 @@ return function(numbers)
             table.insert(unique, key)
         end
 
-        table.foreach(unique, function(key, value)
+        for _, value in ipairs(unique) do
             sum = sum + value
-        end)
+        end
 
         return sum
     end
