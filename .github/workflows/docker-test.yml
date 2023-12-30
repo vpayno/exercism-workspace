@@ -72,34 +72,42 @@ jobs:
             printf "Testing entrypoint - gcc\n"
             docker run "${ORG_IMAGE}:latest" gcc --version
           } | tee -a "${GITHUB_STEP_SUMMARY}"
-      - name: Docker Start
+      - name: Docker Version
         run: |-
           docker version
-          printf "\n"
-          service docker start
-          sleep 5s
-          service docker status
       - name: Test Entrypoint - Docker
         run: |-
           {
             ORG_IMAGE="${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}"
             printf "Testing entrypoint - docker\n"
-            docker run "${ORG_IMAGE}:latest" docker version
+            docker run -v /var/run/docker.sock:/var/run/docker.sock "${ORG_IMAGE}:latest" docker version
           } | tee -a "${GITHUB_STEP_SUMMARY}"
-      - name: Test Entrypoint - Dagger
+      - name: Clean Up
+        run: |-
+          {
+            docker system prune --all --volumes --force
+          } | tee -a "${GITHUB_STEP_SUMMARY}"
+  stage2:
+    name: Dagger Test
+    env:
+      ORG: ${{ secrets.DOCKERHUB_USERNAME }}
+      IMAGE_NAME: ci-generic-debian
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show dagger version
+        run: |-
+          {
+            ORG_IMAGE="${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}"
+            printf "dagger version\n"
+            docker run "${ORG_IMAGE}:latest" dagger version
+          } | tee -a "${GITHUB_STEP_SUMMARY}"
+      - name: Test dagger run
         run: |-
           {
             ORG_IMAGE="${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}"
             printf "Testing entrypoint - dagger\n"
-            docker run "${ORG_IMAGE}:latest" dagger version
-            printf "\n"
-            docker run "${ORG_IMAGE}:latest" dagger run uptime
+            docker run -v /var/run/docker.sock:/var/run/docker.sock "${ORG_IMAGE}:latest" dagger run uptime
           } | tee -a "${GITHUB_STEP_SUMMARY}"
-      - name: Docker Stop
-        run: |-
-          service docker stop
-          sleep 5s
-          service docker status
       - name: Clean Up
         run: |-
           {
