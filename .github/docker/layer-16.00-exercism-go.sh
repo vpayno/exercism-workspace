@@ -92,6 +92,8 @@ main() {
 	declare -a CRATES
 	CRATES=(
 		github.com/appliedgocode/goman@latest
+		github.com/axw/gocov/gocov@latest
+		github.com/BurntSushi/go-sumtype@latest
 		github.com/client9/misspell/cmd/misspell@latest
 		github.com/fzipp/gocyclo/cmd/gocyclo@latest
 		github.com/get-woke/woke@latest
@@ -114,6 +116,7 @@ main() {
 		github.com/securego/gosec/v2/cmd/gosec@latest
 		github.com/segmentio/golines@latest
 		github.com/sibprogrammer/xq@latest
+		github.com/t-yuki/gocover-cobertura@latest
 		golang.org/x/lint/golint@latest
 		golang.org/x/perf/cmd/benchstat@latest
 		golang.org/x/tools/cmd/cover@latest
