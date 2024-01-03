@@ -9,6 +9,20 @@ set -o pipefail
 
 declare -xr LLVM_VER=16
 
+if [[ -f /etc/os-release ]]; then
+	. /etc/os-release
+fi
+
+declare DISTRO_ID="${ID}" # debian
+if [[ -z ${ID} ]]; then
+	# shellcheck disable=SC2034
+	DISTRO_ID="distro_id_not_set"
+fi
+
+if [[ -z ${VERSION_CODENAME} ]]; then
+	VERSION_CODENAME="distro_release_not_set" # bookworm
+fi
+
 # helper functions
 
 md_code_tag() {
