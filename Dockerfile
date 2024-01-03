@@ -26,7 +26,7 @@ RUN bash .github/docker/layer-14.00-exercism-tools.sh ci-generic-debian && : 202
 
 RUN bash .github/docker/layer-15.00-exercism-rust.sh ci-generic-debian && : 20231103-000
 
-RUN bash .github/docker/layer-16.00-exercism-go.sh ci-generic-debian && : 20231103-000
+RUN bash .github/docker/layer-16.00-exercism-go.sh ci-generic-debian && : 20240102-000
 
 RUN bash .github/docker/layer-17.00-exercism-ruby.sh ci-generic-debian && : 20231103-000
 
