@@ -22,6 +22,8 @@ RUN bash .github/docker/layer-09.00-exercism-nodejs.sh ci-generic-debian && : 20
 
 RUN bash .github/docker/layer-10.00-exercism-gcc_clang_llvm.sh ci-generic-debian && : 20231103-000
 
+RUN bash .github/docker/layer-14.00-exercism-tools.sh ci-generic-debian && : 20240101-000
+
 RUN bash .github/docker/layer-15.00-exercism-rust.sh ci-generic-debian && : 20231103-000
 
 RUN bash .github/docker/layer-16.00-exercism-go.sh ci-generic-debian && : 20231103-000
