@@ -7,6 +7,27 @@ Exercism Workspace
 
 ## [12in23 Challenge Dashboard](https://exercism.org/challenges/12in23)
 
+9,021 (1.13%) participants (from 12in23 badge - complete 5 in 1 language) and ended with:
+
+- 280 participatns earning the Polyglot badge (12 languages with 5 exercises each)
+- 135 participants earning the Completed 12in23 Challenge badge (completed all 55 challenge exercises)
+
+Monthly participation:
+
+| Month                   | Completions | % of Users |
+| :---                    | :---        | :---       |
+| Functional February     | 2,374       | 0.3%       |
+| Mechanical March        | 2,231       | 0.28%      |
+| Analytical April        | 1,827       | 0.23%      |
+| Mindshifting May        | 729         | 0.1%       |
+| Summer of Sexps         | 471         | 0.06%      |
+| Jurassic July           | 653         | 0.09%      |
+| Appy August             | 1,868       | 0.24%      |
+| Slimline September      | 397         | 0.05%      |
+| Object-Oriented October | 1,192       | 0.15%      |
+| Nibbly November         | 253         | 0.04%      |
+| December Diversions     | 274         | 0.04%      |
+
 ### [Calendar](https://forum.exercism.org/t/new-12in23-badge-for-completing-all-the-things/4183)
 
 |   Month       |  Name              |  Languages           |
