@@ -27,3 +27,4 @@
 - [run-length-encoding](./run-length-encoding/README.md)
 - [two-fer](./two-fer/README.md)
 - [sum-of-multiples](./sum-of-multiples/README.md)
+- [grains](./grains/README.md)
