@@ -91,9 +91,10 @@ main() {
 
 	declare -a CRATES
 	CRATES=(
+		cuelang.org/go/cmd/cue@latest
+		github.com/BurntSushi/go-sumtype@latest
 		github.com/appliedgocode/goman@latest
 		github.com/axw/gocov/gocov@latest
-		github.com/BurntSushi/go-sumtype@latest
 		github.com/charmbracelet/confettysh@latest
 		github.com/charmbracelet/glow@latest
 		github.com/charmbracelet/gum@latest
