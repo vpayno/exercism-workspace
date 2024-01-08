@@ -113,6 +113,8 @@ main() {
 		github.com/govim/govim/cmd/govim@latest
 		github.com/k1LoW/octocov@latest
 		github.com/kisielk/errcheck@latest
+		github.com/maruel/panicparse/v2/cmd/pp@latest
+		github.com/maruel/panicparse/v2@latest
 		github.com/mgechev/revive@latest
 		github.com/pelletier/go-toml/v2/cmd/jsontoml@latest
 		github.com/pelletier/go-toml/v2/cmd/tomljson@latest
