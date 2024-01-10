@@ -87,7 +87,37 @@ main() {
 
 	declare -a PACKAGES
 	PACKAGES=(
+		ffmpeg # vhs
 	)
+
+	declare -a GH_REPOS
+	GH_REPOS=(
+		tsl0922/ttyd # vhs, no longer in Debian
+	)
+
+	declare -a DL_URLS
+
+	local repo
+	for repo in "${GH_REPOS[@]}"; do
+		local url
+		url="$(curl -sS https://api.github.com/repos/"${repo}"/releases/latest | jq -r --arg arch "$(arch)" '.assets[] | select(.browser_download_url | contains($arch)) | .browser_download_url')" || track_errors
+
+		DL_URLS+=("${url}")
+	done
+
+	local url
+	for url in "${DL_URLS[@]}"; do
+		local name="${url%%/releases/*}"
+		name="${name##*/}"
+
+		echo Running: curl -sS -L --output /usr/local/bin/"${name}" "${url}"
+		time curl -sS -L --output /usr/local/bin/"${name}" "${url}" || track_errors
+		printf "\n"
+
+		echo Running: chmod -v a+x /usr/local/bin/"${name}"
+		chmod -v a+x /usr/local/bin/"${name}" || track_errors
+		printf "\n"
+	done
 
 	declare -a CRATES
 	CRATES=(
