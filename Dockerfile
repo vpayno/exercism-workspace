@@ -8,7 +8,7 @@ COPY .github/docker /.github/docker
 
 COPY .github/citools/ /.github/citools/
 
-RUN sh .github/docker/layer-00.00-base-dependencies.sh ci-generic-debian && : 20231103-000
+RUN sh .github/docker/layer-00.00-base-dependencies.sh ci-generic-debian && : 20240109-000
 
 RUN bash .github/docker/layer-00.01-base-env_setup.sh ci-generic-debian && : 20231103-000
 
