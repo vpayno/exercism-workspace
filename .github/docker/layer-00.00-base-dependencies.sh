@@ -10,7 +10,7 @@
 main() {
 	layer_begin "${0}" "$@"
 
-	PACKAGES="acl apt-utils bash bsdextrautils coreutils curl jq moreutils nala sudo tmux tree util-linux vim-nox"
+	PACKAGES="acl apt-utils bash bsdextrautils coreutils curl jq moreutils nala sudo tmux tree util-linux vim-nox xq yq"
 
 	printf "Collecting apt installed packages:\n"
 	echo Running: apt list --installed \> "${HOME}"/apt-pkgs-start.txt
