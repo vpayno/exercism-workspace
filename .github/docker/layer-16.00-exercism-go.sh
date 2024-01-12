@@ -126,12 +126,14 @@ main() {
 		github.com/appliedgocode/goman@latest
 		github.com/axw/gocov/gocov@latest
 		github.com/charmbracelet/confettysh@latest
+		github.com/charmbracelet/git-lfs-transfer@latest
 		github.com/charmbracelet/glow@latest
 		github.com/charmbracelet/gum@latest
 		github.com/charmbracelet/mods@latest
 		github.com/charmbracelet/skate@latest
 		github.com/charmbracelet/soft-serve/cmd/soft@latest
 		github.com/charmbracelet/vhs@latest
+		github.com/charmbracelet/wishlist/cmd/wishlist@latest
 		github.com/client9/misspell/cmd/misspell@latest
 		github.com/fzipp/gocyclo/cmd/gocyclo@latest
 		github.com/get-woke/woke@latest
