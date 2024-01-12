@@ -45,7 +45,9 @@ main() {
 
 	declare url
 	for url in "${GO_PKGS[@]}"; do
+		echo Running: go install "${url}"
 		go install "${url}" || track_errors
+		printf "\n"
 	done
 
 	layer_end "${0}" "$@"
