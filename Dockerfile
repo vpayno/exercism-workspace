@@ -32,6 +32,8 @@ RUN bash .github/docker/layer-17.00-exercism-ruby.sh ci-generic-debian && : 2023
 
 RUN bash .github/docker/layer-25.00-tools-vscode.sh ci-generic-debian && : 20240102-000
 
+RUN bash .github/docker/layer-35.00-tools-tailscale.sh ci-generic-debian && : 20240111-000
+
 RUN bash .github/docker/layer-99.00-summary.sh ci-generic-debian && : 20231103-000
 
 # Copies your code file from your action repository to the filesystem path `/` of the container
