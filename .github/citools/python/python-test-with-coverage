@@ -1,0 +1,50 @@
+#!/bin/bash
+#
+# .github/citools/python/python-test-with-coverage
+#
+
+# shellcheck disable=SC1091
+source ../../.github/citools/includes/wrapper-library || exit
+
+declare -i retval=0
+
+main() {
+	printf "\nRunning Python Tests With Coverage\n\n"
+
+	show_tool_versions_python_short
+
+	print_ruler
+
+	run_command rm -rf ./coverage
+
+	print_ruler
+
+	run_command pytest --verbose --cov=. --cov-branch --cov-report={term-missing,xml:.coverage.xml} -p no:randomly || ((retval++))
+
+	print_ruler
+
+	echo Running: coverage report --show-missing
+	coverage report --show-missing
+
+	print_ruler
+
+	echo Running: coverage annotate
+	coverage annotate
+
+	print_ruler
+
+	local coverage_line
+	coverage_line="$(xq -q coverage -a line-rate .coverage.xml)"
+	printf "Line Coverage: %.1f%%\n" "$(bc <<<"scale=1; ${coverage_line}* 100")"
+
+	local coverage_branch
+	coverage_branch="$(xq -q coverage -a line-rate .coverage.xml)"
+	printf "Branch Coverage: %.1f%%\n" "$(bc <<<"scale=1; ${coverage_branch}* 100")"
+
+	print_ruler
+
+	echo Exit code: "${retval}"
+	return "${retval}"
+}
+
+time main "${@}"
