@@ -1,0 +1,26 @@
+#!/bin/bash
+#
+# .github/citools/python/python-lint-formatter
+#
+
+# shellcheck disable=SC1091
+source ../../.github/citools/includes/wrapper-library || exit
+
+declare -i retval=0
+
+main() {
+	printf "\nRunning Python Formatter\n\n"
+
+	show_tool_versions_python_short
+
+	print_ruler
+
+	run_command ruff .
+
+	print_ruler
+
+	echo Exit code: "${retval}"
+	return "${retval}"
+}
+
+time main "${@}"
