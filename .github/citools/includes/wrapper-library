@@ -207,30 +207,3 @@ show_tool_versions_node() {
 	# md_code_tag
 	printf "\n"
 } # show_tool_versions_node()
-
-show_tool_versions_python_short() {
-	# md_code_tag text
-	printf "Python versions:\n"
-	printf "\n"
-	python --version | paste /dev/null -
-	pyenv --version | paste /dev/null -
-	pip --version | paste /dev/null -
-	pdm --version | paste /dev/null -
-	# md_code_tag
-	printf "\n"
-} # show_tool_versions_python_short()
-
-show_tool_versions_python() {
-	show_tool_versions_python_short
-
-	if [[ -z ${GITHUB_ACTIONS} ]]; then
-		return
-	fi
-
-	# md_code_tag text
-	printf "Installed Python packages:\n"
-	printf "\n"
-	pip list | paste /dev/null -
-	# md_code_tag
-	printf "\n"
-} # show_tool_versions_python()
