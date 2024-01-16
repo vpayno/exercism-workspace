@@ -82,20 +82,20 @@ main() {
 
 		export PYENV_ROOT="/usr/local/pyenv"
 
-		if [[ ! \${PATH} =~ \${PYENV_ROOT}/bin ]]; then
+		if ! echo \${PATH} | grep -q \${PYENV_ROOT}/bin; then
 			export PATH="\${PYENV_ROOT}/bin:\${PATH}"
 		fi
 
 		if command -v pyenv 1>/dev/null 2>&1; then
-			if [[ ! \${PATH} =~ \${PYENV_ROOT}/shims ]]; then
+			if ! echo \${PATH} | grep -q \${PYENV_ROOT}/shims; then
 				eval "\$(pyenv init --path)"
 			fi
 
-			if [[ -z \${PYENV_SHELL} ]]; then
+			if [ -z \${PYENV_SHELL} ]; then
 				eval "\$(pyenv init -)"
 			fi
 
-			if [[ ! \${PATH} =~ \${PYENV_ROOT}/plugins/pyenv-virtualenv/shims ]]; then
+			if ! echo \${PATH} | grep -q \${PYENV_ROOT}/plugins/pyenv-virtualenv/shims; then
 				eval "\$(pyenv virtualenv-init -)"
 			fi
 		fi
