@@ -113,14 +113,14 @@ main() {
 
 	source /etc/profile.d/nodejs.sh || track_errors
 
-	printf "Adding Ruby paths to GITHUB_PATH...\n"
+	printf "Adding NodeJS paths to GITHUB_PATH...\n"
 	printf "%s\n" "/usr/local/nodenv/bin" "/usr/local/nodenv/shims" | tee -a "${GITHUB_PATH}"
 
 	echo Adding source /etc/profile.d/nodejs.sh to ~/.bashrc
 	echo '. /etc/profile.d/nodejs.sh' | tee -a "${HOME}/.bashrc" || track_errors
 	printf "\n"
 
-	printf "Setup NodeJs symlinks for github user:\n"
+	printf "Setup NodeJS symlinks for github user:\n"
 	cd "${HOME}" || track_errors
 	if [[ ! -d .nodenv ]]; then
 		ln -sv "/usr/local/nodenv" .nodenv || track_errors
