@@ -71,6 +71,13 @@ jobs:
             printf "Testing entrypoint - gcc\n"
             docker run "${ORG_IMAGE}:latest" gcc --version
           } | tee -a "${GITHUB_STEP_SUMMARY}"
+      - name: Test Entrypoint - Python
+        run: |-
+          {
+            ORG_IMAGE="${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}"
+            printf "Testing entrypoint - python\n"
+            docker run "${ORG_IMAGE}:latest" python --version
+          } | tee -a "${GITHUB_STEP_SUMMARY}"
       - name: Docker Version
         run: |-
           docker version
