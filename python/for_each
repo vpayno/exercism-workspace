@@ -14,11 +14,20 @@ time for d in ./*; do
 	printf "[pkg: %s]\n\n" "${pkg_name}"
 
 	echo "${@}"
-	time "${@}" || ((retval++))
+	if ! time "${@}"; then
+		((retval++))
+		printf "\n"
+		printf "Exit Code: %s\n" "FAILED"
+	else
+		printf "\n"
+		printf "Exit Code: %s\n" "SUCCESS"
+	fi
 
 	printf "\n"
 
 	cd - || break
 done
+printf "\n"
 
+printf "Error Count: %d\n" "${retval}"
 exit "${retval}"
