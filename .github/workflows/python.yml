@@ -87,25 +87,25 @@ jobs:
         run: |
           pip install --upgrade pylint
           cd ./python
-          ./for_each pylint --ignore-patterns '(__init__|.*_test).py' .
+          ./for_each pylint ./src
       - name: Analysing the code with ruff
         id: ruff
         run: |
           pip install --upgrade ruff
           cd ./python
-          ./for_each ruff check --ignore E501 --exclude ./*_test.py .
+          ./for_each ruff check --ignore E501 ./src
       - name: Analysing the code with pyright
         id: pyright
         run: |
           pip install --upgrade pyright
           cd ./python
-          ./for_each pyright --stats . || true
+          ./for_each pyright --stats ./src || true
       - name: Analysing the code with bandit
         id: bandit
         run: |
           pip install --upgrade bandit[toml]
           cd ./python
-          ./for_each bandit --verbose --recursive -n 3 . || true
+          ./for_each bandit --verbose --recursive ./src || true
       - name: Testing with pytest
         id: pytest-test-run
         run: |-
@@ -113,4 +113,4 @@ jobs:
           pip install --upgrade db-sqlite3 pysqlite3
           pip install --upgrade pytest coverage pytest-cov
           cd ./python
-          PYTHONPATH="." ./for_each pytest --verbose --cov=. --cov-branch --cov-report={term-missing,xml:.coverage.xml}
+          PYTHONPATH="./src" ./for_each pytest --verbose --cov=. --cov-branch --cov-report={term-missing,xml:.coverage.xml} ./test
