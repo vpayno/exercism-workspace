@@ -16,48 +16,42 @@ main() {
 
 	# https://github.com/pylint-dev/pylint
 
-	echo Running: pylint --ignore-patterns '(__init__|.*_test).py' .
-	time pylint --ignore-patterns '(__init__|.*_test).py' .
+	echo Running: pylint ./src
+	time pylint ./src
 
 	print_ruler
 
 	# https://github.com/charliermarsh/ruff
 
-	echo Running: ruff check --ignore E501 ./*py
-	time ruff check --ignore E501 ./*py
+	echo Running: ruff check --ignore E501 ./src
+	time ruff check --ignore E501 ./src
 
 	print_ruler
 
 	# https://github.com/microsoft/pyright
 
-	echo Running: pyright --stats .
-	time pyright --stats .
+	echo Running: pyright --stats ./src
+	time pyright --stats ./src
 
 	print_ruler
 
 	# https://github.com/PyCQA/bandit
 
-	echo Running: bandit --verbose --recursive .
-	time bandit --verbose --recursive .
+	echo Running: bandit --verbose --recursive ./src
+	time bandit --verbose --recursive ./src
 
 	print_ruler
 
 	# https://github.com/dosisod/refurb
 
-	echo Running: refurb .
-	time refurb .
+	echo Running: refurb ./src
+	time refurb ./src
 
 	print_ruler
 
-	for f in ./*[.]py; do
-		if [[ ${f} =~ _test.py || ${f} == ./__init__.py ]]; then
-			continue
-		fi
-
-		echo python -m doctest -v "${f}"
-		time python -m doctest -v "${f}"
-		printf "\n"
-	done
+	echo python -m doctest -v ./src/*/*py
+	time python -m doctest -v ./src/*/*py
+	printf "\n"
 
 	print_ruler
 
@@ -66,8 +60,8 @@ main() {
 	tail -v -n 1000 .coveragerc
 	printf "\n"
 
-	echo Running: pytest --verbose --cov=. --cov-branch --cov-report={term-missing,xml:.coverage.xml} -p no:randomly
-	time pytest --verbose --cov=. --cov-branch --cov-report={term-missing,xml:.coverage.xml} -p no:randomly
+	echo Running: PYTHONPATH="./src" pytest --verbose --cov=. --cov-branch --cov-report={term-missing,xml:.coverage.xml} -p no:randomly ./test
+	time { PYTHONPATH="./src" pytest --verbose --cov=. --cov-branch --cov-report={term-missing,xml:.coverage.xml} -p no:randomly ./test; }
 
 	print_ruler
 
@@ -87,8 +81,8 @@ main() {
 
 	# go install github.com/client9/misspell/cmd/misspell@latest
 
-	echo Running: misspell ./*py
-	time misspell ./*py
+	echo Running: misspell ./src/*/*py
+	time misspell ./src/*/*py
 
 	print_ruler
 
