@@ -47,14 +47,24 @@ git add ../README.md ./README.md
 git diff --cached ../README.md ./README.md
 printf "\n"
 
-[[ -d __init__.py ]] || touch __init__.py
+mkdir -pv "./src/${package_name//-/_}" ./test
+
+[[ -d src/${package_name//-/_}/__init__.py ]] || touch "src/${package_name//-/_}/__init__.py"
+[[ -d test/__init__.py ]] || touch test/__init__.py
+
+ln -svf ../"${package_name//-/_}"_test.py ./test/"${package_name//-/_}"_test.py
+ln -svf ../../"${package_name//-/_}".py src/"${package_name//-/_}"/
+
 [[ -f .coveragerc ]] || cp -v ../.coveragerc .
-git add __init__.py .coveragerc
+
+cat >pytest.ini <<EOF
+[pytest]
+pythonpath = .
+EOF
+
+git add ./src ./test .coveragerc pytest.ini
 printf "\n"
 
 cd ..
 
-mv -v "${project_dir}" "${project_dir//-/}"
-ln -sv "${project_dir//-/}" "${project_dir}"
-git add "./${project_dir//_/-}"
 printf "\n"
