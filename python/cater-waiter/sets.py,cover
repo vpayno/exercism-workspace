@@ -3,15 +3,11 @@
   
 > from typing import Dict, List, Set, Tuple
   
-> from sets_categories_data import (
->     ALCOHOLS,
->     KETO,
->     OMNIVORE,
->     PALEO,
->     SPECIAL_INGREDIENTS,
->     VEGAN,
->     VEGETARIAN,
-> )
+> try:
+>     from .sets_categories_data import ALCOHOLS, KETO, OMNIVORE, PALEO, SPECIAL_INGREDIENTS, VEGAN, VEGETARIAN
+  
+> except ImportError:
+>     from sets_categories_data import ALCOHOLS, KETO, OMNIVORE, PALEO, SPECIAL_INGREDIENTS, VEGAN, VEGETARIAN
   
   
 > def clean_ingredients(dish_name: str, dish_ingredients: List[str]) -> Tuple[str, Set[str]]:
