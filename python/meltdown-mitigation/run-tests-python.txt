@@ -1,0 +1,216 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: pylint ./src
+************* Module meltdown_mitigation.conditionals
+src/meltdown_mitigation/conditionals.py:7:0: C0301: Line too long (105/100) (line-too-long)
+src/meltdown_mitigation/conditionals.py:70:0: C0301: Line too long (112/100) (line-too-long)
+src/meltdown_mitigation/conditionals.py:84:0: C0301: Line too long (113/100) (line-too-long)
+
+------------------------------------------------------------------
+Your code has been rated at 8.64/10 (previous run: 7.50/10, +1.14)
+
+
+real	0m0.764s
+user	0m0.670s
+sys	0m0.090s
+
+===============================================================================
+
+Running: ruff check --ignore E501 ./src
+
+real	0m0.098s
+user	0m0.036s
+sys	0m0.067s
+
+===============================================================================
+
+Running: pyright --stats ./src
+Found 2 source files
+pyright 1.1.347
+0 errors, 0 warnings, 0 informations 
+Completed in 0.687sec
+
+Analysis stats
+Total files parsed and bound: 20
+Total files checked: 2
+
+Timing stats
+Find Source Files:    0sec
+Read Source Files:    0.01sec
+Tokenize:             0.06sec
+Parse:                0.04sec
+Resolve Imports:      0.07sec
+Bind:                 0.08sec
+Check:                0.1sec
+Detect Cycles:        0sec
+
+real	0m1.403s
+user	0m1.476s
+sys	0m0.219s
+
+===============================================================================
+
+Running: bandit --verbose --recursive ./src
+[main]	INFO	profile include tests: None
+[main]	INFO	profile exclude tests: None
+[main]	INFO	cli include tests: None
+[main]	INFO	cli exclude tests: None
+[main]	INFO	running on Python 3.12.1
+Run started:2024-01-17 16:10:29.387907
+Files in scope (2):
+	./src/meltdown_mitigation/__init__.py (score: {SEVERITY: 0, CONFIDENCE: 0})
+	./src/meltdown_mitigation/conditionals.py (score: {SEVERITY: 0, CONFIDENCE: 0})
+Files excluded (0):
+
+Test results:
+	No issues identified.
+
+Code scanned:
+	Total lines of code: 81
+	Total lines skipped (#nosec): 0
+	Total potential issues skipped due to specifically being disabled (e.g., #nosec BXXX): 0
+
+Run metrics:
+	Total issues (by severity):
+		Undefined: 0
+		Low: 0
+		Medium: 0
+		High: 0
+	Total issues (by confidence):
+		Undefined: 0
+		Low: 0
+		Medium: 0
+		High: 0
+Files skipped (0):
+
+real	0m0.317s
+user	0m0.255s
+sys	0m0.064s
+
+===============================================================================
+
+Running: refurb ./src
+[94msrc/meltdown_mitigation/conditionals.py[0m[90m:67:13[0m [33m[FURB126][0m[90m:[0m Replace [90m`[91mcase _: return x[90m`[0m with [90m`[92mreturn x[90m`[0m
+[94msrc/meltdown_mitigation/conditionals.py[0m[90m:107:13[0m [33m[FURB126][0m[90m:[0m Replace [90m`[91mcase _: return x[90m`[0m with [90m`[92mreturn x[90m`[0m
+
+Run `refurb --explain ERR` to further explain an error. Use `--quiet` to silence this message
+
+real	0m1.425s
+user	0m1.332s
+sys	0m0.095s
+
+===============================================================================
+
+python -m doctest -v ./src/meltdown_mitigation/conditionals.py ./src/meltdown_mitigation/__init__.py
+6 items had no tests:
+    conditionals
+    conditionals.fail_safe
+    conditionals.get_efficiency_rate
+    conditionals.get_energy_output
+    conditionals.is_criticality_balanced
+    conditionals.reactor_efficiency
+0 tests in 6 items.
+0 passed and 0 failed.
+Test passed.
+1 items had no tests:
+    __init__
+0 tests in 1 items.
+0 passed and 0 failed.
+Test passed.
+
+real	0m0.145s
+user	0m0.072s
+sys	0m0.068s
+
+
+===============================================================================
+
+==> .coveragerc <==
+[run]
+omit = __init__.py, *_test.py
+
+Running: PYTHONPATH=./src pytest --verbose --cov=. --cov-branch --cov-report=term-missing --cov-report=xml:.coverage.xml -p no:randomly ./test
+============================= test session starts ==============================
+platform linux -- Python 3.12.1, pytest-7.4.3, pluggy-1.3.0 -- /home/vpayno/.pyenv/versions/3.12.1/bin/python
+cachedir: .pytest_cache
+rootdir: /home/vpayno/git_vpayno/exercism-workspace/python/meltdown-mitigation
+configfile: pytest.ini
+plugins: anyio-4.2.0, libtmux-0.25.0, pylama-8.4.1, cov-4.1.0, datafiles-3.0.0, docker-2.0.1, subprocess-1.5.0, typeguard-4.1.5
+collecting ... collected 5 items
+
+test/conditionals_test.py::MeltdownMitigationTest::test_fail_safe PASSED [ 20%]
+test/conditionals_test.py::MeltdownMitigationTest::test_get_efficiency_rate PASSED [ 40%]
+test/conditionals_test.py::MeltdownMitigationTest::test_get_energy_output PASSED [ 60%]
+test/conditionals_test.py::MeltdownMitigationTest::test_is_criticality_balanced PASSED [ 80%]
+test/conditionals_test.py::MeltdownMitigationTest::test_reactor_efficiency PASSED [100%]
+
+---------- coverage: platform linux, python 3.12.1-final-0 -----------
+Name              Stmts   Miss Branch BrPart  Cover   Missing
+-------------------------------------------------------------
+conditionals.py      29      0     10      0   100%
+-------------------------------------------------------------
+TOTAL                29      0     10      0   100%
+Coverage XML written to file .coverage.xml
+
+
+============================== 5 passed in 0.07s ===============================
+
+real	0m1.000s
+user	0m0.867s
+sys	0m0.133s
+
+===============================================================================
+
+Running: coverage report --show-missing
+Name              Stmts   Miss Branch BrPart  Cover   Missing
+-------------------------------------------------------------
+conditionals.py      29      0     10      0   100%
+-------------------------------------------------------------
+TOTAL                29      0     10      0   100%
+
+real	0m0.185s
+user	0m0.123s
+sys	0m0.064s
+
+===============================================================================
+
+coverage annotate
+
+real	0m0.161s
+user	0m0.102s
+sys	0m0.061s
+
+tail -n 10000 ./*,cover | grep -E -C 3 '^> def |^! '
+  
+> def is_criticality_balanced(temperature: Union[int, float], neutrons_emitted: Union[int, float]) -> bool:
+>     """Verify criticality is balanced.
+--
+  
+> def get_efficiency_rate(
+>     voltage: Union[int, float], current: Union[int, float], theoretical_max_power: Union[int, float]
+--
+  
+> def reactor_efficiency(
+>     voltage: Union[int, float], current: Union[int, float], theoretical_max_power: Union[int, float]
+--
+  
+> def get_energy_output(temperature: Union[int, float], neutrons_produced_per_second: Union[int, float]) -> float:
+>     """Assess reactor energy output.
+--
+  
+> def fail_safe(
+>     temperature: Union[int, float], neutrons_produced_per_second: Union[int, float], threshold: Union[int, float]
+
+===============================================================================
+
+Running: misspell ./src/meltdown_mitigation/conditionals.py ./src/meltdown_mitigation/__init__.py
+
+real	0m0.023s
+user	0m0.029s
+sys	0m0.009s
+
+===============================================================================
+
