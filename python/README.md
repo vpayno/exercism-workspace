@@ -15,6 +15,7 @@
 - [hello-world](./hello-world/README.md)
 
 ## [Concepts](https://exercism.org/tracks/python/concepts)
+
 - [guidos-gorgeous-lasagna](./guidos-gorgeous-lasagna/README.md)
 - [currency-exchange](./currency-exchange/README.md)
 - [ghost-gobble-arcade-game](./ghost-gobble-arcade-game/README.md)
