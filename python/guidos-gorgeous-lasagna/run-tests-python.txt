@@ -1,0 +1,198 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: pylint ./src
+
+-------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 8.75/10, +1.25)
+
+
+real	0m0.415s
+user	0m0.349s
+sys	0m0.067s
+
+===============================================================================
+
+Running: ruff check --ignore E501 ./src
+
+real	0m0.091s
+user	0m0.039s
+sys	0m0.057s
+
+===============================================================================
+
+Running: pyright --stats ./src
+Found 2 source files
+pyright 1.1.347
+0 errors, 0 warnings, 0 informations 
+Completed in 0.501sec
+
+Analysis stats
+Total files parsed and bound: 20
+Total files checked: 2
+
+Timing stats
+Find Source Files:    0sec
+Read Source Files:    0sec
+Tokenize:             0.03sec
+Parse:                0.03sec
+Resolve Imports:      0.04sec
+Bind:                 0.04sec
+Check:                0.03sec
+Detect Cycles:        0sec
+
+real	0m1.330s
+user	0m1.046s
+sys	0m0.155s
+
+===============================================================================
+
+Running: bandit --verbose --recursive ./src
+[main]	INFO	profile include tests: None
+[main]	INFO	profile exclude tests: None
+[main]	INFO	cli include tests: None
+[main]	INFO	cli exclude tests: None
+[main]	INFO	running on Python 3.12.1
+Run started:2024-01-17 05:42:27.660965
+Files in scope (2):
+	./src/guidos_gorgeous_lasagna/__init__.py (score: {SEVERITY: 0, CONFIDENCE: 0})
+	./src/guidos_gorgeous_lasagna/lasagna.py (score: {SEVERITY: 0, CONFIDENCE: 0})
+Files excluded (0):
+
+Test results:
+	No issues identified.
+
+Code scanned:
+	Total lines of code: 33
+	Total lines skipped (#nosec): 0
+	Total potential issues skipped due to specifically being disabled (e.g., #nosec BXXX): 0
+
+Run metrics:
+	Total issues (by severity):
+		Undefined: 0
+		Low: 0
+		Medium: 0
+		High: 0
+	Total issues (by confidence):
+		Undefined: 0
+		Low: 0
+		Medium: 0
+		High: 0
+Files skipped (0):
+
+real	0m0.270s
+user	0m0.200s
+sys	0m0.072s
+
+===============================================================================
+
+Running: refurb ./src
+
+real	0m1.109s
+user	0m1.020s
+sys	0m0.091s
+
+===============================================================================
+
+python -m doctest -v ./src/guidos_gorgeous_lasagna/__init__.py ./src/guidos_gorgeous_lasagna/lasagna.py
+1 items had no tests:
+    __init__
+0 tests in 1 items.
+0 passed and 0 failed.
+Test passed.
+4 items had no tests:
+    lasagna
+    lasagna.bake_time_remaining
+    lasagna.elapsed_time_in_minutes
+    lasagna.preparation_time_in_minutes
+0 tests in 4 items.
+0 passed and 0 failed.
+Test passed.
+
+real	0m0.138s
+user	0m0.076s
+sys	0m0.064s
+
+
+===============================================================================
+
+==> .coveragerc <==
+[run]
+omit = __init__.py, *_test.py
+
+Running: PYTHONPATH=./src pytest --verbose --cov=. --cov-branch --cov-report=term-missing --cov-report=xml:.coverage.xml -p no:randomly ./test
+============================= test session starts ==============================
+platform linux -- Python 3.12.1, pytest-7.4.3, pluggy-1.3.0 -- /home/vpayno/.pyenv/versions/3.12.1/bin/python
+cachedir: .pytest_cache
+rootdir: /home/vpayno/git_vpayno/exercism-workspace/python/guidos-gorgeous-lasagna
+configfile: pytest.ini
+plugins: anyio-4.2.0, libtmux-0.25.0, pylama-8.4.1, cov-4.1.0, datafiles-3.0.0, docker-2.0.1, subprocess-1.5.0, typeguard-4.1.5
+collecting ... collected 5 items
+
+test/lasagna_test.py::LasagnaTest::test_EXPECTED_BAKE_TIME PASSED        [ 20%]
+test/lasagna_test.py::LasagnaTest::test_bake_time_remaining PASSED       [ 40%]
+test/lasagna_test.py::LasagnaTest::test_docstrings_were_written PASSED   [ 60%]
+test/lasagna_test.py::LasagnaTest::test_elapsed_time_in_minutes PASSED   [ 80%]
+test/lasagna_test.py::LasagnaTest::test_preparation_time_in_minutes PASSED [100%]
+
+---------- coverage: platform linux, python 3.12.1-final-0 -----------
+Name         Stmts   Miss Branch BrPart  Cover   Missing
+--------------------------------------------------------
+lasagna.py       8      0      0      0   100%
+--------------------------------------------------------
+TOTAL            8      0      0      0   100%
+Coverage XML written to file .coverage.xml
+
+
+============================== 5 passed in 0.06s ===============================
+
+real	0m0.909s
+user	0m0.773s
+sys	0m0.138s
+
+===============================================================================
+
+Running: coverage report --show-missing
+Name         Stmts   Miss Branch BrPart  Cover   Missing
+--------------------------------------------------------
+lasagna.py       8      0      0      0   100%
+--------------------------------------------------------
+TOTAL            8      0      0      0   100%
+
+real	0m0.171s
+user	0m0.104s
+sys	0m0.069s
+
+===============================================================================
+
+coverage annotate
+
+real	0m0.152s
+user	0m0.106s
+sys	0m0.048s
+
+tail -n 10000 ./*,cover | grep -E -C 3 '^> def |^! '
+  
+> def bake_time_remaining(elapsed_bake_time: int) -> int:
+>     """Calculate the bake time remaining.
+--
+  
+> def preparation_time_in_minutes(number_of_layers: int) -> int:
+>     """Calculate preparation time.
+--
+  
+> def elapsed_time_in_minutes(number_of_layers: int, actual_minutes_in_oven: int) -> int:
+>     """Calculate elapsed preparing and baking time.
+
+===============================================================================
+
+Running: misspell ./src/guidos_gorgeous_lasagna/__init__.py ./src/guidos_gorgeous_lasagna/lasagna.py
+
+real	0m0.023s
+user	0m0.020s
+sys	0m0.013s
+
+===============================================================================
+
