@@ -42,7 +42,6 @@ def largest_product(series: str, size: int) -> int:
         for n in list(word):
             product *= int(n)
 
-        if result < product:
-            result = product
+        result = max(result, product)
 
     return result

@@ -4,24 +4,22 @@ Running automated test file(s):
 ===============================================================================
 
 Running: pylint ./src
-************* Module largest_series_product.largest_series_product
-src/largest_series_product/largest_series_product.py:45:8: R1731: Consider using 'result = max(result, product)' instead of unnecessary if block (consider-using-max-builtin)
 
-------------------------------------------------------------------
-Your code has been rated at 9.63/10 (previous run: 9.63/10, +0.00)
+--------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
 
 
-real	0m0.936s
-user	0m0.838s
-sys	0m0.100s
+real	0m0.902s
+user	0m0.819s
+sys	0m0.085s
 
 ===============================================================================
 
 Running: ruff check --ignore E501 ./src
 
-real	0m0.092s
+real	0m0.101s
 user	0m0.034s
-sys	0m0.060s
+sys	0m0.072s
 
 ===============================================================================
 
@@ -29,7 +27,7 @@ Running: pyright --stats ./src
 Found 2 source files
 pyright 1.1.347
 0 errors, 0 warnings, 0 informations 
-Completed in 0.603sec
+Completed in 0.622sec
 
 Analysis stats
 Total files parsed and bound: 22
@@ -37,17 +35,17 @@ Total files checked: 2
 
 Timing stats
 Find Source Files:    0sec
-Read Source Files:    0sec
+Read Source Files:    0.01sec
 Tokenize:             0.04sec
-Parse:                0.04sec
+Parse:                0.05sec
 Resolve Imports:      0.05sec
 Bind:                 0.06sec
-Check:                0.08sec
+Check:                0.1sec
 Detect Cycles:        0sec
 
-real	0m1.306s
-user	0m1.270s
-sys	0m0.169s
+real	0m1.405s
+user	0m1.296s
+sys	0m0.157s
 
 ===============================================================================
 
@@ -57,7 +55,7 @@ Running: bandit --verbose --recursive ./src
 [main]	INFO	cli include tests: None
 [main]	INFO	cli exclude tests: None
 [main]	INFO	running on Python 3.12.1
-Run started:2024-01-17 05:49:30.979318
+Run started:2024-01-17 16:36:29.739883
 Files in scope (2):
 	./src/largest_series_product/__init__.py (score: {SEVERITY: 0, CONFIDENCE: 0})
 	./src/largest_series_product/largest_series_product.py (score: {SEVERITY: 0, CONFIDENCE: 0})
@@ -69,7 +67,7 @@ Test results:
 	No issues identified.
 
 Code scanned:
-	Total lines of code: 33
+	Total lines of code: 32
 	Total lines skipped (#nosec): 0
 	Total potential issues skipped due to specifically being disabled (e.g., #nosec BXXX): 0
 
@@ -86,17 +84,17 @@ Run metrics:
 		High: 0
 Files skipped (0):
 
-real	0m0.238s
-user	0m0.170s
-sys	0m0.071s
+real	0m0.294s
+user	0m0.224s
+sys	0m0.073s
 
 ===============================================================================
 
 Running: refurb ./src
 
-real	0m1.146s
-user	0m1.040s
-sys	0m0.108s
+real	0m1.106s
+user	0m1.016s
+sys	0m0.092s
 
 ===============================================================================
 
@@ -113,9 +111,9 @@ Test passed.
 0 passed and 0 failed.
 Test passed.
 
-real	0m0.137s
-user	0m0.072s
-sys	0m0.067s
+real	0m0.141s
+user	0m0.082s
+sys	0m0.062s
 
 
 ===============================================================================
@@ -151,38 +149,38 @@ test/largest_series_product_test.py::LargestSeriesProductTest::test_reports_zero
 ---------- coverage: platform linux, python 3.12.1-final-0 -----------
 Name                        Stmts   Miss Branch BrPart  Cover   Missing
 -----------------------------------------------------------------------
-largest_series_product.py      27      0     18      1    98%   33->40
+largest_series_product.py      26      0     16      1    98%   33->40
 -----------------------------------------------------------------------
-TOTAL                          27      0     18      1    98%
+TOTAL                          26      0     16      1    98%
 Coverage XML written to file .coverage.xml
 
 
 ============================== 14 passed in 0.08s ==============================
 
-real	0m0.866s
-user	0m0.751s
-sys	0m0.117s
+real	0m0.859s
+user	0m0.742s
+sys	0m0.119s
 
 ===============================================================================
 
 Running: coverage report --show-missing
 Name                        Stmts   Miss Branch BrPart  Cover   Missing
 -----------------------------------------------------------------------
-largest_series_product.py      27      0     18      1    98%   33->40
+largest_series_product.py      26      0     16      1    98%   33->40
 -----------------------------------------------------------------------
-TOTAL                          27      0     18      1    98%
+TOTAL                          26      0     16      1    98%
 
-real	0m0.169s
-user	0m0.107s
-sys	0m0.063s
+real	0m0.161s
+user	0m0.102s
+sys	0m0.061s
 
 ===============================================================================
 
 coverage annotate
 
-real	0m0.157s
-user	0m0.105s
-sys	0m0.055s
+real	0m0.165s
+user	0m0.097s
+sys	0m0.069s
 
 tail -n 10000 ./*,cover | grep -E -C 3 '^> def |^! '
   
@@ -193,9 +191,9 @@ tail -n 10000 ./*,cover | grep -E -C 3 '^> def |^! '
 
 Running: misspell ./src/largest_series_product/__init__.py ./src/largest_series_product/largest_series_product.py
 
-real	0m0.021s
-user	0m0.020s
-sys	0m0.011s
+real	0m0.019s
+user	0m0.015s
+sys	0m0.013s
 
 ===============================================================================
 
