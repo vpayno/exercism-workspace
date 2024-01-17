@@ -1,0 +1,201 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: pylint ./src
+
+--------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
+
+
+real	0m0.744s
+user	0m0.652s
+sys	0m0.094s
+
+===============================================================================
+
+Running: ruff check --ignore E501 ./src
+
+real	0m0.089s
+user	0m0.034s
+sys	0m0.058s
+
+===============================================================================
+
+Running: pyright --stats ./src
+Found 2 source files
+pyright 1.1.347
+0 errors, 0 warnings, 0 informations 
+Completed in 0.594sec
+
+Analysis stats
+Total files parsed and bound: 20
+Total files checked: 2
+
+Timing stats
+Find Source Files:    0sec
+Read Source Files:    0sec
+Tokenize:             0.04sec
+Parse:                0.03sec
+Resolve Imports:      0.04sec
+Bind:                 0.07sec
+Check:                0.09sec
+Detect Cycles:        0sec
+
+real	0m1.546s
+user	0m1.210s
+sys	0m0.184s
+
+===============================================================================
+
+Running: bandit --verbose --recursive ./src
+[main]	INFO	profile include tests: None
+[main]	INFO	profile exclude tests: None
+[main]	INFO	cli include tests: None
+[main]	INFO	cli exclude tests: None
+[main]	INFO	running on Python 3.12.1
+Run started:2024-01-17 16:06:32.408562
+Files in scope (2):
+	./src/sum_of_multiples/__init__.py (score: {SEVERITY: 0, CONFIDENCE: 0})
+	./src/sum_of_multiples/sum_of_multiples.py (score: {SEVERITY: 0, CONFIDENCE: 0})
+Files excluded (2):
+	./src/sum_of_multiples/__pycache__/__init__.cpython-312.pyc
+	./src/sum_of_multiples/__pycache__/sum_of_multiples.cpython-312.pyc
+
+Test results:
+	No issues identified.
+
+Code scanned:
+	Total lines of code: 17
+	Total lines skipped (#nosec): 0
+	Total potential issues skipped due to specifically being disabled (e.g., #nosec BXXX): 0
+
+Run metrics:
+	Total issues (by severity):
+		Undefined: 0
+		Low: 0
+		Medium: 0
+		High: 0
+	Total issues (by confidence):
+		Undefined: 0
+		Low: 0
+		Medium: 0
+		High: 0
+Files skipped (0):
+
+real	0m0.225s
+user	0m0.172s
+sys	0m0.055s
+
+===============================================================================
+
+Running: refurb ./src
+
+real	0m1.161s
+user	0m1.063s
+sys	0m0.100s
+
+===============================================================================
+
+python -m doctest -v ./src/sum_of_multiples/__init__.py ./src/sum_of_multiples/sum_of_multiples.py
+1 items had no tests:
+    __init__
+0 tests in 1 items.
+0 passed and 0 failed.
+Test passed.
+2 items had no tests:
+    sum_of_multiples
+    sum_of_multiples.sum_of_multiples
+0 tests in 2 items.
+0 passed and 0 failed.
+Test passed.
+
+real	0m0.140s
+user	0m0.076s
+sys	0m0.066s
+
+
+===============================================================================
+
+==> .coveragerc <==
+[run]
+omit = __init__.py, *_test.py
+
+Running: PYTHONPATH=./src pytest --verbose --cov=. --cov-branch --cov-report=term-missing --cov-report=xml:.coverage.xml -p no:randomly ./test
+============================= test session starts ==============================
+platform linux -- Python 3.12.1, pytest-7.4.3, pluggy-1.3.0 -- /home/vpayno/.pyenv/versions/3.12.1/bin/python
+cachedir: .pytest_cache
+rootdir: /home/vpayno/git_vpayno/exercism-workspace/python/sum-of-multiples
+configfile: pytest.ini
+plugins: anyio-4.2.0, libtmux-0.25.0, pylama-8.4.1, cov-4.1.0, datafiles-3.0.0, docker-2.0.1, subprocess-1.5.0, typeguard-4.1.5
+collecting ... collected 16 items
+
+test/sum_of_multiples_test.py::SumOfMultiplesTest::test_a_much_larger_limit PASSED [  6%]
+test/sum_of_multiples_test.py::SumOfMultiplesTest::test_all_numbers_are_multiples_of_1 PASSED [ 12%]
+test/sum_of_multiples_test.py::SumOfMultiplesTest::test_each_multiple_is_only_counted_once PASSED [ 18%]
+test/sum_of_multiples_test.py::SumOfMultiplesTest::test_factors_not_relatively_prime PASSED [ 25%]
+test/sum_of_multiples_test.py::SumOfMultiplesTest::test_more_than_one_factor_with_multiples_within_limit PASSED [ 31%]
+test/sum_of_multiples_test.py::SumOfMultiplesTest::test_more_than_one_multiple_within_limit PASSED [ 37%]
+test/sum_of_multiples_test.py::SumOfMultiplesTest::test_much_larger_factors PASSED [ 43%]
+test/sum_of_multiples_test.py::SumOfMultiplesTest::test_no_factors_means_an_empty_sum PASSED [ 50%]
+test/sum_of_multiples_test.py::SumOfMultiplesTest::test_no_multiples_within_limit PASSED [ 56%]
+test/sum_of_multiples_test.py::SumOfMultiplesTest::test_one_factor_has_multiples_within_limit PASSED [ 62%]
+test/sum_of_multiples_test.py::SumOfMultiplesTest::test_one_factor_is_a_multiple_of_another PASSED [ 68%]
+test/sum_of_multiples_test.py::SumOfMultiplesTest::test_solutions_using_include_exclude_must_extend_to_cardinality_greater_than_3 PASSED [ 75%]
+test/sum_of_multiples_test.py::SumOfMultiplesTest::test_some_pairs_of_factors_relatively_prime_and_some_not PASSED [ 81%]
+test/sum_of_multiples_test.py::SumOfMultiplesTest::test_the_factor_0_does_not_affect_the_sum_of_multiples_of_other_factors PASSED [ 87%]
+test/sum_of_multiples_test.py::SumOfMultiplesTest::test_the_only_multiple_of_0_is_0 PASSED [ 93%]
+test/sum_of_multiples_test.py::SumOfMultiplesTest::test_three_factors PASSED [100%]
+
+---------- coverage: platform linux, python 3.12.1-final-0 -----------
+Name                  Stmts   Miss Branch BrPart  Cover   Missing
+-----------------------------------------------------------------
+sum_of_multiples.py      11      0      6      0   100%
+-----------------------------------------------------------------
+TOTAL                    11      0      6      0   100%
+Coverage XML written to file .coverage.xml
+
+
+============================== 16 passed in 0.10s ==============================
+
+real	0m0.890s
+user	0m0.754s
+sys	0m0.132s
+
+===============================================================================
+
+Running: coverage report --show-missing
+Name                  Stmts   Miss Branch BrPart  Cover   Missing
+-----------------------------------------------------------------
+sum_of_multiples.py      11      0      6      0   100%
+-----------------------------------------------------------------
+TOTAL                    11      0      6      0   100%
+
+real	0m0.170s
+user	0m0.121s
+sys	0m0.047s
+
+===============================================================================
+
+coverage annotate
+
+real	0m0.149s
+user	0m0.093s
+sys	0m0.058s
+
+tail -n 10000 ./*,cover | grep -E -C 3 '^> def |^! '
+  
+> def sum_of_multiples(limit: int, divisors: List[int]) -> int:
+>     """Sum the unique multiples of a number
+
+===============================================================================
+
+Running: misspell ./src/sum_of_multiples/__init__.py ./src/sum_of_multiples/sum_of_multiples.py
+
+real	0m0.021s
+user	0m0.018s
+sys	0m0.012s
+
+===============================================================================
+

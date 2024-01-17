@@ -1,6 +1,6 @@
 import unittest
 
-from .sum_of_multiples import sum_of_multiples
+from sum_of_multiples import sum_of_multiples
 
 # Tests adapted from `problem-specifications//canonical-data.json`
 
