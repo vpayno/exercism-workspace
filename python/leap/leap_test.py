@@ -4,9 +4,7 @@
 
 import unittest
 
-from leap import (
-    leap_year,
-)
+from leap import leap_year
 
 
 class LeapTest(unittest.TestCase):

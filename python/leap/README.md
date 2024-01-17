@@ -51,3 +51,8 @@ Your task is to determine whether a given year is a leap year.
 ### Based on
 
 CodeRanch Cattle Drive, Assignment 3 - https://coderanch.com/t/718816/Leap
+
+### My Solution
+
+- [my solution](./leap.py)
+- [run-tests](./run-tests-python.txt)
