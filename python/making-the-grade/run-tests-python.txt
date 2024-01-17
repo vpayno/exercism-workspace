@@ -1,0 +1,218 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: pylint ./src
+************* Module making_the_grade.loops
+src/making_the_grade/loops.py:31:0: C0301: Line too long (105/100) (line-too-long)
+src/making_the_grade/loops.py:73:0: C0301: Line too long (116/100) (line-too-long)
+src/making_the_grade/loops.py:77:0: C0301: Line too long (111/100) (line-too-long)
+
+------------------------------------------------------------------
+Your code has been rated at 8.89/10 (previous run: 8.64/10, +0.25)
+
+
+real	0m0.753s
+user	0m0.672s
+sys	0m0.082s
+
+===============================================================================
+
+Running: ruff check --ignore E501 ./src
+
+real	0m0.096s
+user	0m0.042s
+sys	0m0.059s
+
+===============================================================================
+
+Running: pyright --stats ./src
+Found 2 source files
+pyright 1.1.347
+0 errors, 0 warnings, 0 informations 
+Completed in 0.609sec
+
+Analysis stats
+Total files parsed and bound: 20
+Total files checked: 2
+
+Timing stats
+Find Source Files:    0sec
+Read Source Files:    0.01sec
+Tokenize:             0.03sec
+Parse:                0.04sec
+Resolve Imports:      0.05sec
+Bind:                 0.04sec
+Check:                0.11sec
+Detect Cycles:        0sec
+
+real	0m1.337s
+user	0m1.235s
+sys	0m0.176s
+
+===============================================================================
+
+Running: bandit --verbose --recursive ./src
+[main]	INFO	profile include tests: None
+[main]	INFO	profile exclude tests: None
+[main]	INFO	cli include tests: None
+[main]	INFO	cli exclude tests: None
+[main]	INFO	running on Python 3.12.1
+Run started:2024-01-17 16:13:10.433854
+Files in scope (2):
+	./src/making_the_grade/__init__.py (score: {SEVERITY: 0, CONFIDENCE: 0})
+	./src/making_the_grade/loops.py (score: {SEVERITY: 0, CONFIDENCE: 0})
+Files excluded (0):
+
+Test results:
+	No issues identified.
+
+Code scanned:
+	Total lines of code: 60
+	Total lines skipped (#nosec): 0
+	Total potential issues skipped due to specifically being disabled (e.g., #nosec BXXX): 0
+
+Run metrics:
+	Total issues (by severity):
+		Undefined: 0
+		Low: 0
+		Medium: 0
+		High: 0
+	Total issues (by confidence):
+		Undefined: 0
+		Low: 0
+		Medium: 0
+		High: 0
+Files skipped (0):
+
+real	0m0.293s
+user	0m0.213s
+sys	0m0.082s
+
+===============================================================================
+
+Running: refurb ./src
+
+real	0m1.100s
+user	0m1.020s
+sys	0m0.082s
+
+===============================================================================
+
+python -m doctest -v ./src/making_the_grade/__init__.py ./src/making_the_grade/loops.py
+1 items had no tests:
+    __init__
+0 tests in 1 items.
+0 passed and 0 failed.
+Test passed.
+7 items had no tests:
+    loops
+    loops.above_threshold
+    loops.count_failed_students
+    loops.letter_grades
+    loops.perfect_score
+    loops.round_scores
+    loops.student_ranking
+0 tests in 7 items.
+0 passed and 0 failed.
+Test passed.
+
+real	0m0.105s
+user	0m0.072s
+sys	0m0.035s
+
+
+===============================================================================
+
+==> .coveragerc <==
+[run]
+omit = __init__.py, *_test.py
+
+Running: PYTHONPATH=./src pytest --verbose --cov=. --cov-branch --cov-report=term-missing --cov-report=xml:.coverage.xml -p no:randomly ./test
+============================= test session starts ==============================
+platform linux -- Python 3.12.1, pytest-7.4.3, pluggy-1.3.0 -- /home/vpayno/.pyenv/versions/3.12.1/bin/python
+cachedir: .pytest_cache
+rootdir: /home/vpayno/git_vpayno/exercism-workspace/python/making-the-grade
+configfile: pytest.ini
+plugins: anyio-4.2.0, libtmux-0.25.0, pylama-8.4.1, cov-4.1.0, datafiles-3.0.0, docker-2.0.1, subprocess-1.5.0, typeguard-4.1.5
+collecting ... collected 6 items
+
+test/loops_test.py::MakingTheGradeTest::test_above_threshold PASSED      [ 16%]
+test/loops_test.py::MakingTheGradeTest::test_count_failed_students PASSED [ 33%]
+test/loops_test.py::MakingTheGradeTest::test_letter_grades PASSED        [ 50%]
+test/loops_test.py::MakingTheGradeTest::test_perfect_score PASSED        [ 66%]
+test/loops_test.py::MakingTheGradeTest::test_round_scores PASSED         [ 83%]
+test/loops_test.py::MakingTheGradeTest::test_student_ranking PASSED      [100%]
+
+---------- coverage: platform linux, python 3.12.1-final-0 -----------
+Name       Stmts   Miss Branch BrPart  Cover   Missing
+------------------------------------------------------
+loops.py      27      0     10      0   100%
+------------------------------------------------------
+TOTAL         27      0     10      0   100%
+Coverage XML written to file .coverage.xml
+
+
+============================== 6 passed in 0.07s ===============================
+
+real	0m0.892s
+user	0m0.775s
+sys	0m0.118s
+
+===============================================================================
+
+Running: coverage report --show-missing
+Name       Stmts   Miss Branch BrPart  Cover   Missing
+------------------------------------------------------
+loops.py      27      0     10      0   100%
+------------------------------------------------------
+TOTAL         27      0     10      0   100%
+
+real	0m0.152s
+user	0m0.101s
+sys	0m0.052s
+
+===============================================================================
+
+coverage annotate
+
+real	0m0.150s
+user	0m0.104s
+sys	0m0.048s
+
+tail -n 10000 ./*,cover | grep -E -C 3 '^> def |^! '
+  
+> def round_scores(student_scores: List[int | float]) -> List[int]:
+>     """Round all provided student scores.
+--
+  
+> def count_failed_students(student_scores: List[int | float]) -> int:
+>     """Count the number of failing students out of the group provided.
+--
+  
+> def above_threshold(student_scores: List[int | float], threshold: int) -> List[int | float]:
+>     """Determine how many of the provided student scores were 'the best' based on the provided threshold.
+--
+  
+> def letter_grades(highest: int) -> List[int]:
+>     """Create a list of grade thresholds based on the provided highest grade.
+--
+  
+> def student_ranking(student_scores: List[int | float], student_names: List[str]) -> List[str]:
+>     """Organize the student's rank, name, and grade information in ascending order.
+--
+  
+> def perfect_score(student_info: List[List[Union[str, int]]]) -> List[Union[str, int]]:
+>     """Create a list that contains the name and grade of the first student to make a perfect score on the exam.
+
+===============================================================================
+
+Running: misspell ./src/making_the_grade/__init__.py ./src/making_the_grade/loops.py
+
+real	0m0.032s
+user	0m0.033s
+sys	0m0.018s
+
+===============================================================================
+
