@@ -31,20 +31,24 @@
 >         self.health: int = 3
   
 >     def hit(self) -> None:
+>         """Hits do health damage."""
 >         self.health -= 1
   
 >     def is_alive(self) -> bool:
+>         """The alien is alive as long as it's health isn't zero."""
 >         return self.health > 0
   
 >     def teleport(self, x_coordinate: int, y_coordinate: int) -> None:
+>         """Teleports the alien to a new set of coordinates."""
 >         self.x_coordinate = x_coordinate
 >         self.y_coordinate = y_coordinate
   
 >     def collision_detection(self, other: object) -> None:
->         pass
+>         """Aliens don't have car insurance so ignore collisions."""
   
   
 > def new_aliens_collection(positions: List[Tuple[int, int]]) -> List[Alien]:
+>     """Returns a new list of aliens"""
 >     return [Alien(*position) for position in positions]
   
   
