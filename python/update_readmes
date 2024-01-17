@@ -52,14 +52,27 @@ mkdir -pv "./src/${package_name//-/_}" ./test
 [[ -d src/${package_name//-/_}/__init__.py ]] || touch "src/${package_name//-/_}/__init__.py"
 [[ -d test/__init__.py ]] || touch test/__init__.py
 
-ln -svf ../"${package_name//-/_}"_test.py ./test/"${package_name//-/_}"_test.py
-ln -svf ../../"${package_name//-/_}".py src/"${package_name//-/_}"/
+declare -a SOLUTION_FILES
+mapfile -t SOLUTION_FILES < <(jq -r '.files.solution[]' .exercism/config.json)
+
+for f in "${SOLUTION_FILES[@]}"; do
+	ln -svf ../../"${f}" "src/${package_name//-/_}/"
+done
+
+declare -a TEST_FILES
+mapfile -t TEST_FILES < <(jq -r '.files.test[]' .exercism/config.json)
+
+for f in "${TEST_FILES[@]}"; do
+	ln -svf "../${f}" "./test/"
+done
 
 [[ -f .coveragerc ]] || cp -v ../.coveragerc .
 
 cat >pytest.ini <<EOF
 [pytest]
 pythonpath = .
+markers =
+    task: exercise task/step
 EOF
 
 git add ./src ./test .coveragerc pytest.ini
