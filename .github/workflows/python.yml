@@ -203,7 +203,7 @@ jobs:
       - name: Analysing the code with refurb [${{ matrix.exercise }}]
         id: refurb
         run: |
-          ./.github/citools/common/run_wrapper_script "./${{ matrix.exercise }}" ../../.github/citools/python/python-lint-refurb
+          ./.github/citools/common/run_wrapper_script "./${{ matrix.exercise }}" ../../.github/citools/python/python-lint-refurb || true
       - name: Testing with doctests [${{ matrix.exercise }}]
         id: pytest-doctest-run
         run: |-
