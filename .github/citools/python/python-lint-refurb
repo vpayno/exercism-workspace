@@ -1,0 +1,31 @@
+#!/bin/bash
+#
+# .github/citools/python/python-lint-refurb
+#
+
+# shellcheck disable=SC1091
+source ../../.github/citools/includes/wrapper-library || exit
+
+declare -i retval=0
+
+main() {
+	printf "\nRunning Python Lint - Refurb\n\n"
+
+	show_tool_versions_python_short
+
+	print_ruler
+
+	run_command refurb --version
+
+	print_ruler
+
+	# shellcheck disable=SC2048,SC2068,SC2086
+	run_command refurb ${@:-./src}
+
+	print_ruler
+
+	echo Exit code: "${retval}"
+	return "${retval}"
+}
+
+time main "${@}"

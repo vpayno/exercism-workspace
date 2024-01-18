@@ -19,17 +19,24 @@ main() {
 
 	print_ruler
 
-	run_command pytest --verbose --cov=. --cov-branch --cov-report={term-missing,xml:.coverage.xml} -p no:randomly || ((retval++))
+	run_command pytest --version
 
 	print_ruler
 
-	echo Running: coverage report --show-missing
-	coverage report --show-missing
+	export PYTHONPATH="./src"
+	printf "PYTHONPATH=\"%s\"\n" "${PYTHONPATH}"
 
 	print_ruler
 
-	echo Running: coverage annotate
-	coverage annotate
+	run_command pytest --verbose --cov=. --cov-branch --cov-report={term-missing,xml:.coverage.xml} -p no:randomly ./test || ((retval++))
+
+	print_ruler
+
+	run_command coverage report --show-missing
+
+	print_ruler
+
+	run_command coverage annotate
 
 	print_ruler
 

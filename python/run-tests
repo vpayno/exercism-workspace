@@ -16,63 +16,50 @@ main() {
 
 	# https://github.com/pylint-dev/pylint
 
-	echo Running: pylint ./src
-	time pylint ./src
+	echo Running: ../../.github/citools/python/python-lint-pylint
+	time ../../.github/citools/python/python-lint-pylint
 
 	print_ruler
 
 	# https://github.com/charliermarsh/ruff
 
-	echo Running: ruff check --ignore E501 ./src
-	time ruff check --ignore E501 ./src
+	echo Running: ../../.github/citools/python/python-lint-ruff
+	time ../../.github/citools/python/python-lint-ruff
 
 	print_ruler
 
 	# https://github.com/microsoft/pyright
 
-	echo Running: pyright --stats ./src
-	time pyright --stats ./src
+	echo Running: ../../.github/citools/python/python-lint-pyright
+	time ../../.github/citools/python/python-lint-pyright
 
 	print_ruler
 
 	# https://github.com/PyCQA/bandit
 
-	echo Running: bandit --verbose --recursive ./src
-	time bandit --verbose --recursive ./src
+	echo Running: ../../.github/citools/python/python-lint-bandit
+	time ../../.github/citools/python/python-lint-bandit
 
 	print_ruler
 
 	# https://github.com/dosisod/refurb
 
-	echo Running: refurb ./src
-	time refurb ./src
+	echo Running: ../../.github/citools/python/python-lint-refurb
+	time ../../.github/citools/python/python-lint-refurb
 
 	print_ruler
 
-	echo python -m doctest -v ./src/*/*py
-	time python -m doctest -v ./src/*/*py
-	printf "\n"
+	echo Running: ../../.github/citools/python/python-test-doctest
+	time ../../.github/citools/python/python-test-doctest
 
 	print_ruler
 
 	# https://github.com/pytest-dev/pytest
 
-	tail -v -n 1000 .coveragerc
-	printf "\n"
-
-	echo Running: PYTHONPATH="./src" pytest --verbose --cov=. --cov-branch --cov-report={term-missing,xml:.coverage.xml} -p no:randomly ./test
-	time { PYTHONPATH="./src" pytest --verbose --cov=. --cov-branch --cov-report={term-missing,xml:.coverage.xml} -p no:randomly ./test; }
+	echo Running: ../../.github/citools/python/python-test-with-coverage
+	time ../../.github/citools/python/python-test-with-coverage
 
 	print_ruler
-
-	echo Running: coverage report --show-missing
-	time coverage report --show-missing
-
-	print_ruler
-
-	echo coverage annotate
-	time coverage annotate
-	printf "\n"
 
 	echo tail -n 10000 './*,cover' '|' grep -E -C 3 "'^> def |^! '"
 	tail -n 10000 ./*,cover | grep -E -C 1 '^> def |^! '
