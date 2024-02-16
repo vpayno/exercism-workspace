@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+declare -a files
+
+mapfile -t files < <(jq -r '.files.solution[]' .exercism/config.json | sed -r -e 's/[.]h$/.hpp/g')
+
+echo Running: clang-tidy-17 --fix-errors "${files[@]}"
+time clang-tidy-17 --fix-errors "${files[@]}"
+printf "\n"
