@@ -1,4 +1,6 @@
 #include "atbash_cipher.hpp"
+#include <cctype>
+#include <string>
 
 namespace atbash_cipher {
 

@@ -1,9 +1,6 @@
 #if !defined(TRINARY_HPP)
 #define TRINARY_HPP
 
-#include <cmath>
-#include <numeric>
-#include <regex>
 #include <string>
 
 namespace trinary {

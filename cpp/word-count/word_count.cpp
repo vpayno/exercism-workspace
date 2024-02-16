@@ -1,6 +1,11 @@
 #include "word_count.hpp"
 
-#include <iostream>
+#include <algorithm>
+#include <cctype>
+#include <iterator>
+#include <map>
+#include <regex>
+#include <string>
 
 namespace word_count {
 

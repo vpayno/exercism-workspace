@@ -1,9 +1,6 @@
 #if !defined(SUM_OF_MULTIPLES_HPP)
 #define SUM_OF_MULTIPLES_HPP
 
-#include <algorithm>
-#include <numeric>
-#include <set>
 #include <vector>
 
 namespace sum_of_multiples {

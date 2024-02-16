@@ -1,4 +1,12 @@
 #include "crypto_square.hpp"
+#include <algorithm>
+#include <cctype>
+#include <cstddef>
+#include <functional>
+#include <iterator>
+#include <regex>
+#include <string>
+#include <utility>
 
 namespace crypto_square {
 

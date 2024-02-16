@@ -1,8 +1,6 @@
 #if !defined(SERIES_HPP)
 #define SERIES_HPP
 
-#include <iterator>
-#include <stdexcept>
 #include <string>
 #include <vector>
 

@@ -2,8 +2,6 @@
 #define NUCLEOTIDE_COUNT_HPP
 
 #include <map>
-#include <regex>
-#include <stdexcept>
 #include <string>
 
 namespace nucleotide_count {

@@ -1,7 +1,6 @@
+#include <cstddef>
 #if !defined(GRAINS_HPP)
 #define GRAINS_HPP
-
-#include <cmath>
 
 namespace grains {
 

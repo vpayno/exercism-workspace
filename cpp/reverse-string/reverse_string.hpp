@@ -1,7 +1,6 @@
 #if !defined(REVERSE_STRING_HPP)
 #define REVERSE_STRING_HPP
 
-#include <iterator>
 #include <string>
 
 namespace reverse_string {

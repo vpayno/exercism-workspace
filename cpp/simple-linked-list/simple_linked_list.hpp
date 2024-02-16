@@ -1,7 +1,6 @@
+#include <cstddef>
 #if !defined(SIMPLE_LINKED_LIST_HPP)
 #define SIMPLE_LINKED_LIST_HPP
-
-#include <stdexcept>
 
 namespace simple_linked_list {
 

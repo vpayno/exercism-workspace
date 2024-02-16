@@ -1,4 +1,6 @@
 #include "binary_search.hpp"
+#include <cstddef>
+#include <stdexcept>
 
 namespace binary_search {
 

@@ -1,8 +1,6 @@
 #if !defined(SCRABBLE_SCORE_HPP)
 #define SCRABBLE_SCORE_HPP
 
-#include <cctype>
-#include <regex>
 #include <string>
 
 namespace scrabble_score {

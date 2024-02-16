@@ -1,7 +1,6 @@
 #if !defined(SIEVE_HPP)
 #define SIEVE_HPP
 
-#include <cstddef>
 #include <vector>
 
 namespace sieve {

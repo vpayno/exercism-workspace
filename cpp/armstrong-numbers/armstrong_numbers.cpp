@@ -1,4 +1,5 @@
 #include "armstrong_numbers.hpp"
+#include <cmath>
 
 namespace armstrong_numbers {
 

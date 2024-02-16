@@ -1,8 +1,6 @@
 #if !defined(LARGEST_SERIES_PRODUCT_HPP)
 #define LARGEST_SERIES_PRODUCT_HPP
 
-#include <regex>
-#include <stdexcept>
 #include <string>
 
 namespace largest_series_product {

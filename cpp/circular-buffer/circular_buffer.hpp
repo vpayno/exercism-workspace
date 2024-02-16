@@ -1,9 +1,7 @@
+#include <cstddef>
 #if !defined(CIRCULAR_BUFFER_HPP)
 #define CIRCULAR_BUFFER_HPP
 
-#include <iostream>
-#include <sstream>
-#include <stdexcept>
 #include <string>
 #include <vector>
 

@@ -1,8 +1,6 @@
 #if !defined(COMPLEX_NUMBERS_HPP)
 #define COMPLEX_NUMBERS_HPP
 
-#include <cmath>
-
 namespace complex_numbers {
 
 struct Complex {

@@ -1,4 +1,5 @@
 #include "complex_numbers.hpp"
+#include <cmath>
 
 namespace complex_numbers {
 

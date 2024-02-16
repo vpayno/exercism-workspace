@@ -1,4 +1,7 @@
 #include "perfect_numbers.hpp"
+#include <numeric>
+#include <stdexcept>
+#include <vector>
 
 namespace perfect_numbers {
 

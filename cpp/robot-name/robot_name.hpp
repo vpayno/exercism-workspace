@@ -1,7 +1,6 @@
 #if !defined(ROBOT_NAME_HPP)
 #define ROBOT_NAME_HPP
 
-#include <algorithm>
 #include <set>
 #include <string>
 

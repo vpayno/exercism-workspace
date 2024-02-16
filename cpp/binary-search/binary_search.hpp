@@ -2,7 +2,6 @@
 #define BINARY_SEARCH_HPP
 
 #include <cstddef>
-#include <stdexcept>
 #include <vector>
 
 namespace binary_search {

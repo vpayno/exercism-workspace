@@ -1,4 +1,5 @@
 #include "etl.hpp"
+#include <cctype>
 
 namespace etl {
 

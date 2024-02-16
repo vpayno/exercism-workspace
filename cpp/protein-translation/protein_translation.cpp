@@ -1,4 +1,7 @@
 #include "protein_translation.hpp"
+#include <regex>
+#include <stdexcept>
+#include <string>
 
 namespace protein_translation {
 

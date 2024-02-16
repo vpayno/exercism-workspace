@@ -1,11 +1,6 @@
 #if !defined(PERFECT_NUMBERS_HPP)
 #define PERFECT_NUMBERS_HPP
 
-#include <algorithm>
-#include <numeric>
-#include <stdexcept>
-#include <vector>
-
 namespace perfect_numbers {
 
 enum kind {

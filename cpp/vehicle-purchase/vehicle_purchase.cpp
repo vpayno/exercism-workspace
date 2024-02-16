@@ -1,4 +1,6 @@
 #include "vehicle_purchase.hpp"
+#include <cmath>
+#include <string>
 
 namespace vehicle_purchase {
 

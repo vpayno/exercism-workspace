@@ -1,7 +1,7 @@
+#include <utility>
 #if !defined(SECRET_HANDSHAKE_HPP)
 #define SECRET_HANDSHAKE_HPP
 
-#include <algorithm>
 #include <map>
 #include <string>
 #include <vector>

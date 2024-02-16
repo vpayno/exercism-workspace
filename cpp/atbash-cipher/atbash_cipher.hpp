@@ -1,7 +1,6 @@
 #if !defined(ATBASH_CIPHER_HPP)
 #define ATBASH_CIPHER_HPP
 
-#include <algorithm>
 #include <string>
 
 namespace atbash_cipher {

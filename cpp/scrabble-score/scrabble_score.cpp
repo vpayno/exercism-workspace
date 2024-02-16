@@ -1,4 +1,7 @@
 #include "scrabble_score.hpp"
+#include <algorithm>
+#include <cctype>
+#include <regex>
 
 namespace scrabble_score {
 

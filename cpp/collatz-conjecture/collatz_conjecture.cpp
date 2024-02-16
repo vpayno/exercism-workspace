@@ -1,4 +1,5 @@
 #include "collatz_conjecture.hpp"
+#include <stdexcept>
 
 namespace collatz_conjecture {
 

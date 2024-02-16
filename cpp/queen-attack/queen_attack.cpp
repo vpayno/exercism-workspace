@@ -1,4 +1,11 @@
 #include "queen_attack.hpp"
+#include <cmath>
+#include <csignal>
+#include <cstdlib>
+#include <iostream>
+#include <ostream>
+#include <stdexcept>
+#include <string>
 
 namespace queen_attack {
 

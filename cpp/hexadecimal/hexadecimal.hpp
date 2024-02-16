@@ -1,9 +1,6 @@
 #if !defined(HEXADECIMAL_HPP)
 #define HEXADECIMAL_HPP
 
-#include <cmath>
-#include <numeric>
-#include <regex>
 #include <string>
 
 namespace hexadecimal {

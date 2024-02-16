@@ -1,6 +1,7 @@
 #include "acronym.hpp"
 
-#include <iostream>
+#include <cctype>
+#include <string>
 
 namespace acronym {
 

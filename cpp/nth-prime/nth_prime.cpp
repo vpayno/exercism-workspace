@@ -1,4 +1,7 @@
 #include "nth_prime.hpp"
+#include <cstddef>
+#include <stdexcept>
+#include <vector>
 
 namespace nth_prime {
 

@@ -1,8 +1,8 @@
+#include <utility>
 #if !defined(RNA_TRANSCRIPTION_HPP)
 #define RNA_TRANSCRIPTION_HPP
 
 #include <map>
-#include <regex>
 #include <string>
 
 namespace rna_transcription {

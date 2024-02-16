@@ -1,4 +1,6 @@
 #include "allergies.hpp"
+#include <numeric>
+#include <utility>
 
 namespace allergies {
 

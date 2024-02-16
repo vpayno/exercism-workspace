@@ -1,4 +1,7 @@
 #include "beer_song.hpp"
+#include <boost/format/format_fwd.hpp>
+#include <sstream>
+#include <string>
 
 namespace beer_song {
 

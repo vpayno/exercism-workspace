@@ -1,4 +1,8 @@
 #include "all_your_base.hpp"
+#include <algorithm>
+#include <numeric>
+#include <stdexcept>
+#include <vector>
 
 namespace all_your_base {
 

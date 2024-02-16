@@ -1,4 +1,9 @@
 #include "hexadecimal.hpp"
+#include <cctype>
+#include <cmath>
+#include <numeric>
+#include <regex>
+#include <string>
 
 namespace hexadecimal {
 

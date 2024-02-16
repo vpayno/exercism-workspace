@@ -1,7 +1,6 @@
 #if !defined(BINARY_SEARCH_TREE_HPP)
 #define BINARY_SEARCH_TREE_HPP
 #include <memory>
-#include <string>
 
 /*
  * binary_search_tree - declarations
@@ -11,13 +10,14 @@ namespace binary_search_tree {
 template <typename T> struct binary_tree {
   public:
     binary_tree(T data, binary_tree<T> *parent = nullptr);
-    binary_tree(binary_tree &&tree);          // move constructor
+    binary_tree(binary_tree &&tree) noexcept; // move constructor
     binary_tree(const binary_tree &tree_ref); // copy constructor
     ~binary_tree();
 
     using node_ptr_t = std::unique_ptr<binary_tree<T>>;
 
-    binary_tree &operator=(binary_tree &&tree_ref); // move assignment operator
+    binary_tree &
+    operator=(binary_tree &&tree_ref) noexcept;     // move assignment operator
     binary_tree &operator=(binary_tree rhs);        // copy assignment operator
     bool operator<(const binary_tree &rhs);
 
@@ -34,12 +34,13 @@ template <typename T> struct binary_tree {
       public:
         iterator(binary_tree<T> *tree_ptr = nullptr);
         iterator(const iterator &iter); // copy constructor
-        iterator(iterator &&iter);      // move constructor
+        iterator(iterator &&iter) noexcept; // move constructor
         ~iterator();
 
         iterator &operator=(binary_tree<T> *tree_ptr);
         iterator &operator=(const iterator &iter_ref); // copy assignment op
-        iterator &operator=(iterator &&iter_ref); // move assignment operator
+        iterator &
+        operator=(iterator &&iter_ref) noexcept; // move assignment operator
         bool operator==(const iterator &rhs) const;
         bool operator!=(const iterator &rhs) const;
         iterator &operator++();
@@ -82,7 +83,7 @@ binary_tree<T>::iterator::iterator(const iterator &iter)
 template <typename T> binary_tree<T>::iterator::~iterator() = default;
 
 template <typename T>
-binary_tree<T>::iterator::iterator(iterator &&iter)
+binary_tree<T>::iterator::iterator(iterator &&iter) noexcept
     : _tree_ptr(iter._tree_ptr) {}
 
 template <typename T>
@@ -105,7 +106,7 @@ binary_tree<T>::iterator::operator=(const iterator &iter_ref) {
 
 template <typename T>
 typename binary_tree<T>::iterator &
-binary_tree<T>::iterator::operator=(iterator &&iter_ref) {
+binary_tree<T>::iterator::operator=(iterator &&iter_ref) noexcept {
     (void)iter_ref;
 
     return *this;
@@ -161,7 +162,7 @@ binary_tree<T>::binary_tree(T data, binary_tree<T> *parent)
     : _data(data), _left(nullptr), _right(nullptr), _parent(parent) {}
 
 template <typename T>
-binary_tree<T>::binary_tree(binary_tree &&tree) // move constructor
+binary_tree<T>::binary_tree(binary_tree &&tree) noexcept // move constructor
     : _data(tree._data) {}
 
 template <typename T>
@@ -171,7 +172,7 @@ binary_tree<T>::binary_tree(const binary_tree &tree_ref) // copy constructor
 template <typename T> binary_tree<T>::~binary_tree() = default;
 
 template <typename T>
-binary_tree<T> &binary_tree<T>::operator=(binary_tree &&tree_ref) {
+binary_tree<T> &binary_tree<T>::operator=(binary_tree &&tree_ref) noexcept {
     (void)tree_ref;
 
     return *this;

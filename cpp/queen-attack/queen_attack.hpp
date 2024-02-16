@@ -1,10 +1,7 @@
+#include <utility>
 #if !defined(QUEEN_ATTACK_HPP)
 #define QUEEN_ATTACK_HPP
 
-#include <cmath>
-#include <csignal>
-#include <iostream>
-#include <stdexcept>
 #include <string>
 
 namespace queen_attack {

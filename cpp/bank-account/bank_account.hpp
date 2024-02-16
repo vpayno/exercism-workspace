@@ -2,7 +2,6 @@
 #define BANK_ACCOUNT_HPP
 
 #include <mutex>
-#include <stdexcept>
 #include <string>
 
 namespace Bankaccount {

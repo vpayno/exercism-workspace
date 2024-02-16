@@ -1,7 +1,6 @@
 #if !defined(NTH_PRIME_HPP)
 #define NTH_PRIME_HPP
 
-#include <stdexcept>
 #include <vector>
 
 namespace nth_prime {

@@ -1,9 +1,7 @@
 #if !defined(WORD_COUNT_HPP)
 #define WORD_COUNT_HPP
 
-#include <algorithm>
 #include <map>
-#include <regex>
 #include <string>
 
 namespace word_count {

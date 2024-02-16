@@ -1,4 +1,9 @@
 #include "luhn.hpp"
+#include <cctype>
+#include <iterator>
+#include <numeric>
+#include <string>
+#include <vector>
 
 namespace luhn {
 

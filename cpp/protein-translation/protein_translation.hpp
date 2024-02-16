@@ -1,8 +1,9 @@
+#include <cstddef>
+#include <utility>
 #if !defined(PROTEIN_TRANSLATION_HPP)
 #define PROTEIN_TRANSLATION_HPP
 
 #include <map>
-#include <regex>
 #include <string>
 #include <vector>
 

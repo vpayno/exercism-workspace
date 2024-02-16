@@ -1,7 +1,6 @@
+#include <string>
 #if !defined(CLOCK_HPP)
 #define CLOCK_HPP
-
-#include <boost/format.hpp>
 
 namespace date_independent {
 

@@ -1,4 +1,6 @@
 #include "clock.hpp"
+#include <boost/format/format_fwd.hpp>
+#include <string>
 
 namespace date_independent {
 

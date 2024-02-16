@@ -1,4 +1,9 @@
 #include "circular_buffer.hpp"
+#include <cstddef>
+#include <iostream>
+#include <ostream>
+#include <sstream>
+#include <stdexcept>
 
 template struct circular_buffer::circular_buffer<circular_buffer::number_t>;
 template struct circular_buffer::circular_buffer<circular_buffer::text_t>;

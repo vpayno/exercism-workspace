@@ -1,4 +1,7 @@
 #include "nucleotide_count.hpp"
+#include <regex>
+#include <stdexcept>
+#include <utility>
 
 namespace nucleotide_count {
 

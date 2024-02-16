@@ -1,4 +1,7 @@
 #include "food_chain.hpp"
+#include <ostream>
+#include <sstream>
+#include <string>
 
 namespace food_chain {
 

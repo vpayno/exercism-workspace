@@ -1,9 +1,6 @@
 #if !defined(ISOGRAM_HPP)
 #define ISOGRAM_HPP
 
-#include <algorithm>
-#include <cctype>
-#include <map>
 #include <string>
 
 namespace isogram {

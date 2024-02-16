@@ -1,4 +1,8 @@
 #include "meetup.hpp"
+#include <boost/current_function.hpp>
+#include <boost/date_time/gregorian/greg_date.hpp>
+#include <boost/date_time/gregorian/greg_weekday.hpp>
+#include <string>
 
 // this would be a perfect exercise to practice with Rust macros
 

@@ -1,4 +1,6 @@
 #include "simple_linked_list.hpp"
+#include <cstddef>
+#include <stdexcept>
 
 namespace simple_linked_list {
 

@@ -1,8 +1,6 @@
 #if !defined(ISBN_VERIFIER_HPP)
 #define ISBN_VERIFIER_HPP
 
-#include <numeric>
-#include <regex>
 #include <string>
 
 namespace isbn_verifier {

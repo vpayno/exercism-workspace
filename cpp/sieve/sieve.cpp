@@ -1,4 +1,6 @@
 #include "sieve.hpp"
+#include <cstddef>
+#include <vector>
 
 namespace sieve {
 

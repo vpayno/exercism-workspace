@@ -1,9 +1,8 @@
+#include <cstdint>
 #if !defined(SAY_HPP)
 #define SAY_HPP
 
 #include <map>
-#include <numeric>
-#include <stdexcept>
 #include <string>
 
 #include <boost/multiprecision/cpp_int.hpp>

@@ -1,7 +1,6 @@
 #if !defined(FOOD_CHAIN_HPP)
 #define FOOD_CHAIN_HPP
 
-#include <sstream>
 #include <string>
 #include <vector>
 

@@ -2,7 +2,6 @@
 #define ETL_HPP
 
 #include <map>
-#include <string>
 #include <vector>
 
 namespace etl {

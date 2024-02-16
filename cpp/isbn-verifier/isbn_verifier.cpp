@@ -1,4 +1,6 @@
 #include "isbn_verifier.hpp"
+#include <regex>
+#include <string>
 
 namespace isbn_verifier {
 

@@ -1,4 +1,9 @@
 #include "largest_series_product.hpp"
+#include <cstddef>
+#include <iterator>
+#include <regex>
+#include <stdexcept>
+#include <string>
 
 namespace largest_series_product {
 

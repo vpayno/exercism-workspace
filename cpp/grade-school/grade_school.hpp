@@ -1,7 +1,7 @@
+#include <utility>
 #if !defined(GRADE_SCHOOL_HPP)
 #define GRADE_SCHOOL_HPP
 
-#include <algorithm>
 #include <map>
 #include <string>
 #include <vector>

@@ -1,4 +1,9 @@
 #include "series.hpp"
+#include <cstddef>
+#include <iterator>
+#include <stdexcept>
+#include <string>
+#include <vector>
 
 namespace series {
 

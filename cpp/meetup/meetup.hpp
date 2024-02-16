@@ -1,7 +1,12 @@
+#include <boost/date_time/date_defs.hpp>
+#include <boost/date_time/gregorian/greg_date.hpp>
+#include <boost/date_time/gregorian/greg_day.hpp>
+#include <boost/date_time/gregorian/greg_month.hpp>
+#include <boost/date_time/gregorian/greg_year.hpp>
+#include <boost/date_time/gregorian/gregorian_types.hpp>
+#include <string>
 #if !defined(MEETUP_HPP)
 #define MEETUP_HPP
-
-#include <boost/date_time/gregorian/gregorian.hpp>
 
 namespace meetup {
 

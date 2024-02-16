@@ -1,4 +1,6 @@
 #include "bob.hpp"
+#include <regex>
+#include <string>
 
 namespace bob {
 

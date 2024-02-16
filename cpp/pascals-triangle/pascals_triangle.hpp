@@ -1,7 +1,6 @@
 #if !defined(PASCALS_TRIANGLE_HPP)
 #define PASCALS_TRIANGLE_HPP
 
-#include <string>
 #include <vector>
 
 namespace pascals_triangle {

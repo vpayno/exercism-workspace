@@ -1,4 +1,8 @@
 #include "trinary.hpp"
+#include <cmath>
+#include <numeric>
+#include <regex>
+#include <string>
 
 namespace trinary {
 

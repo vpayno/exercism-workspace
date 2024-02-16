@@ -1,4 +1,9 @@
 #include "isogram.hpp"
+#include <algorithm>
+#include <cctype>
+#include <iterator>
+#include <map>
+#include <string>
 
 namespace isogram {
 

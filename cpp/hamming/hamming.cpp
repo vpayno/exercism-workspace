@@ -1,4 +1,6 @@
 #include "hamming.hpp"
+#include <iterator>
+#include <stdexcept>
 
 namespace hamming {
 

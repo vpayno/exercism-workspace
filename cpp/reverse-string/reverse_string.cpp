@@ -1,4 +1,7 @@
 #include "reverse_string.hpp"
+#include <algorithm>
+#include <iterator>
+#include <string>
 
 namespace reverse_string {
 

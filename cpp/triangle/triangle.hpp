@@ -1,8 +1,6 @@
 #if !defined(TRIANGLE_HPP)
 #define TRIANGLE_HPP
 
-#include <stdexcept>
-
 namespace triangle {
 
 enum class flavor {

@@ -1,4 +1,5 @@
 #include "secret_handshake.hpp"
+#include <algorithm>
 
 namespace secret_handshake {
 

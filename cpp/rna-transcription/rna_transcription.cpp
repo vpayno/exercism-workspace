@@ -1,4 +1,5 @@
 #include "rna_transcription.hpp"
+#include <regex>
 
 namespace rna_transcription {
 

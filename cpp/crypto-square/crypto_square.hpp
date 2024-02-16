@@ -1,11 +1,8 @@
 #if !defined(CRYPTO_SQUARE_HPP)
 #define CRYPTO_SQUARE_HPP
 
-#include <algorithm>
-#include <regex>
 #include <sstream>
 #include <string>
-#include <utility>
 #include <vector>
 
 namespace crypto_square {

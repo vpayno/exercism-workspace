@@ -1,4 +1,5 @@
 #include "grade_school.hpp"
+#include <algorithm>
 
 namespace grade_school {
 

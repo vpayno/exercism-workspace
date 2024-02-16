@@ -1,6 +1,11 @@
 #include "pangram.hpp"
 
-#include <iostream>
+#include <algorithm>
+#include <cctype>
+#include <cstddef>
+#include <iterator>
+#include <map>
+#include <string>
 
 namespace pangram {
 

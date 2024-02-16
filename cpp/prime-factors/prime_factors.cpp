@@ -1,4 +1,5 @@
 #include "prime_factors.hpp"
+#include <vector>
 
 namespace prime_factors {
 

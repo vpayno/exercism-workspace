@@ -1,8 +1,6 @@
 #if !defined(PANGRAM_HPP)
 #define PANGRAM_HPP
 
-#include <algorithm>
-#include <map>
 #include <string>
 
 namespace pangram {

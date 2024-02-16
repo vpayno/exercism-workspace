@@ -1,6 +1,13 @@
 #include "phone_number.hpp"
 
+#include <algorithm>
+#include <cctype>
 #include <iostream>
+#include <iterator>
+#include <regex>
+#include <sstream>
+#include <stdexcept>
+#include <string>
 
 namespace phone_number {
 

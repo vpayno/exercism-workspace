@@ -1,7 +1,7 @@
+#include <cstddef>
 #if !defined(HAMMING_HPP)
 #define HAMMING_HPP
 
-#include <stdexcept>
 #include <string>
 
 namespace hamming {

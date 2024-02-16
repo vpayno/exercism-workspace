@@ -1,8 +1,6 @@
 #if !defined(DIFFERENCE_OF_SQUARES_HPP)
 #define DIFFERENCE_OF_SQUARES_HPP
 
-#include <cmath>
-
 namespace difference_of_squares {
 
 unsigned int sum_of_squares(unsigned int number);

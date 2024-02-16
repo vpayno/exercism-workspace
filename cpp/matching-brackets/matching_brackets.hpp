@@ -1,7 +1,6 @@
 #if !defined(MATCHING_BRACKETS_HPP)
 #define MATCHING_BRACKETS_HPP
 
-#include <stack>
 #include <string>
 
 namespace matching_brackets {

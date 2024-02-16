@@ -1,7 +1,6 @@
 #if !defined(BOB_HPP)
 #define BOB_HPP
 
-#include <regex>
 #include <string>
 
 namespace bob {

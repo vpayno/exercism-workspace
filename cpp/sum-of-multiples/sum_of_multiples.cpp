@@ -1,4 +1,7 @@
 #include "sum_of_multiples.hpp"
+#include <numeric>
+#include <set>
+#include <vector>
 
 namespace sum_of_multiples {
 

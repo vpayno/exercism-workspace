@@ -1,4 +1,5 @@
 #include "two_fer.hpp"
+#include <string>
 
 namespace two_fer {
 

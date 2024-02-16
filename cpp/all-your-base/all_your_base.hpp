@@ -1,10 +1,6 @@
 #if !defined(ALL_YOUR_BASE_HPP)
 #define ALL_YOUR_BASE_HPP
 
-#include <algorithm>
-#include <numeric>
-#include <stdexcept>
-#include <string>
 #include <vector>
 
 namespace all_your_base {

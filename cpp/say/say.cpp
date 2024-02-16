@@ -1,4 +1,8 @@
 #include "say.hpp"
+#include <cstdint>
+#include <stdexcept>
+#include <string>
+#include <utility>
 
 namespace say {
 

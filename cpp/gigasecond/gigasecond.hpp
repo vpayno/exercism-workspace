@@ -1,7 +1,7 @@
+#include <boost/date_time/posix_time/posix_time_duration.hpp>
+#include <boost/date_time/posix_time/ptime.hpp>
 #if !defined(GIGASECOND_HPP)
 #define GIGASECOND_HPP
-
-#include "boost/date_time/posix_time/posix_time.hpp"
 
 namespace gigasecond {
 

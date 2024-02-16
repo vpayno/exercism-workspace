@@ -1,3 +1,5 @@
+#include <cctype>
+#include <iterator>
 #if !defined(ANAGRAM_HPP)
 #define ANAGRAM_HPP
 

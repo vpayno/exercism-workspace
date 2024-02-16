@@ -1,9 +1,6 @@
 #if !defined(LUHN_HPP)
 #define LUHN_HPP
 
-#include <cctype>
-#include <iterator>
-#include <numeric>
 #include <string>
 #include <vector>
 

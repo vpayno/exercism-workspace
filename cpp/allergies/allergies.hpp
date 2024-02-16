@@ -2,7 +2,6 @@
 #define ALLERGIES_HPP
 
 #include <map>
-#include <numeric>
 #include <string>
 #include <unordered_set>
 

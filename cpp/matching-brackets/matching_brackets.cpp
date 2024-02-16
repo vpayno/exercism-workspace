@@ -1,4 +1,6 @@
 #include "matching_brackets.hpp"
+#include <stack>
+#include <string>
 
 namespace matching_brackets {
 

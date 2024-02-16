@@ -1,10 +1,8 @@
 #include <algorithm>
 #include <array>
 #include <cmath>
-#include <ios>
-#include <numeric>
+#include <iterator>
 #include <string>
-#include <string_view>
 #include <vector>
 
 using score_t = int;

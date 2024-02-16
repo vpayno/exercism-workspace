@@ -1,4 +1,6 @@
 #include "robot_name.hpp"
+#include <algorithm>
+#include <cstdlib>
 
 namespace robot_name {
 

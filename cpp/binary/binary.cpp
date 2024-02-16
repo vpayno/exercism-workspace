@@ -1,4 +1,8 @@
 #include "binary.h"
+#include <cmath>
+#include <numeric>
+#include <regex>
+#include <string>
 
 namespace binary {
 
