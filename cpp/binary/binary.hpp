@@ -1,5 +1,5 @@
-#if !defined(BINARY_H)
-#define BINARY_H
+#if !defined(BINARY_HPP)
+#define BINARY_HPP
 
 #include <cmath>
 #include <numeric>
@@ -13,4 +13,4 @@ bool is_valid_input(std::string binary);
 
 } // namespace binary
 
-#endif // BINARY_H
+#endif // BINARY_HPP

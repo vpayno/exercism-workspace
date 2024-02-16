@@ -6,9 +6,9 @@ Running automated test file(s):
 Running: make clean
 rm -rf ./build
 
-real	0m0.008s
-user	0m0.000s
-sys	0m0.008s
+real	0m0.013s
+user	0m0.003s
+sys	0m0.010s
 
 ===============================================================================
 
@@ -55,12 +55,16 @@ make[1]: Leaving directory '/home/vpayno/git_vpayno/exercism-workspace/cpp/binar
 
 === All Tests Passed ===
 
-find . -regextype posix-egrep -regex "^.*(tests-main|CompilerId).*[.](gcda|gcno)$" -print -delete
+find . -regextype posix-egrep -regex '^.*(tests-main|CompilerId).*[.](gcda|gcno)$' -print -delete
 ./build/CMakeFiles/3.22.2/CompilerIdCXX/CMakeCXXCompilerId.gcno
 ./build/CMakeFiles/binary.dir/test/tests-main.cpp.gcno
 ./build/CMakeFiles/binary.dir/test/tests-main.cpp.gcda
 
-find . -regextype posix-egrep -regex "^.*[.](gcda|gcno)16362"
+find . -regextype posix-egrep -regex '^.*[.](gcda|gcno)$'
+./build/CMakeFiles/binary.dir/binary_test.cpp.gcno
+./build/CMakeFiles/binary.dir/binary.cpp.gcno
+./build/CMakeFiles/binary.dir/binary.cpp.gcda
+./build/CMakeFiles/binary.dir/binary_test.cpp.gcda
 
 gcovr --print-summary
 ------------------------------------------------------------------------------
@@ -78,102 +82,82 @@ TOTAL                                         57      52    91%
 lines: 91.2% (52 out of 57)
 branches: 39.4% (71 out of 180)
 
-real	0m13.705s
-user	0m12.680s
-sys	0m0.977s
+real	0m9.834s
+user	0m9.109s
+sys	0m0.721s
 
 ===============================================================================
 
 cmake-format --in-place CMakeLists.txt
+WARNING config_util.py:307: The following configuration options were ignored:
+  max_subargs_per_line
 
-real	0m0.213s
-user	0m0.150s
-sys	0m0.066s
+real	0m0.185s
+user	0m0.131s
+sys	0m0.056s
 
 ===============================================================================
 
 cmake-lint CMakeLists.txt
+WARNING The following configuration options were ignored:
+  max_subargs_per_line
 CMakeLists.txt
 ==============
 CMakeLists.txt:15,06: [C0103] Invalid directory variable name "exercise_cpp" doesn't match `[A-Z][0-9A-Z_]+|_[0-9a-z_]+`
 CMakeLists.txt:17,06: [C0103] Invalid directory variable name "exercise_cpp" doesn't match `[A-Z][0-9A-Z_]+|_[0-9a-z_]+`
-CMakeLists.txt:61,70: [C0307] Bad indentation:
-                                               )
-  ^----BodyNode: 1:0->IfBlockNode: 59:0->BodyNode: 59:11->StatementNode: 60:2->TreeNode: 61:70
-
-CMakeLists.txt:66,02: [C0113] Missing COMMENT in statement which allows it
+CMakeLists.txt:61,02: [C0113] Missing COMMENT in statement which allows it
 
 Summary
 =======
 files scanned: 1
 found lint:
-  Convention: 4
+  Convention: 3
 
 
-real	0m0.416s
-user	0m0.320s
-sys	0m0.100s
+real	0m0.176s
+user	0m0.113s
+sys	0m0.065s
 
 ===============================================================================
 
-Running: clang-format-16 -style=file -i ./binary.cpp ./binary_test.cpp ./binary.h
+Running: clang-format-16 -style=file -i ./binary.cpp ./binary_test.cpp ./binary.hpp
 
-real	0m0.033s
-user	0m0.015s
-sys	0m0.018s
+real	0m0.018s
+user	0m0.008s
+sys	0m0.010s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-check
-clang-check-16 --analyze ./binary.cpp ./binary_test.cpp ./binary.h
-error: argument unused during compilation: '-stdlib=libstdc++' [-Werror,-Wunused-command-line-argument]
-error: invalid argument '-std=c++17' not allowed with 'C'
-/home/vpayno/git_vpayno/exercism-workspace/cpp/binary/binary.h:4:10: fatal error: 'cmath' file not found
-#include <cmath>
-         ^~~~~~~
-1 error generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/binary/binary.h.
+Running: clang-check-16 --analyze ./binary.cpp ./binary_test.cpp ./binary.hpp
 
-real	0m3.565s
-user	0m3.435s
-sys	0m0.130s
+real	0m3.026s
+user	0m2.946s
+sys	0m0.079s
 
 
-real	0m3.568s
-user	0m3.436s
-sys	0m0.133s
+real	0m3.029s
+user	0m2.947s
+sys	0m0.081s
 
 ===============================================================================
 
 Running: ../../.github/citools/cpp/clang-tidy | head -n 100
-40226 warnings generated.
-84427 warnings generated.
-84429 warnings and 3 errors generated.
-Error while processing /home/vpayno/git_vpayno/exercism-workspace/cpp/binary/binary.h.
-Suppressed 84432 warnings (84427 in non-user code, 5 NOLINT).
+40227 warnings generated.
+84428 warnings generated.
+123442 warnings generated.
+Suppressed 123447 warnings (123442 in non-user code, 5 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-Found compiler error(s).
 
-real	0m18.435s
-user	0m18.308s
-sys	0m0.124s
-Running: clang-tidy-16 ./binary.cpp ./binary_test.cpp ./binary.h
-error: invalid argument '-std=c++17' not allowed with 'C' [clang-diagnostic-error]
-error: argument unused during compilation: '-stdlib=libstdc++' [clang-diagnostic-unused-command-line-argument]
-/home/vpayno/git_vpayno/exercism-workspace/cpp/binary/binary.h:4:10: error: 'cmath' file not found [clang-diagnostic-error]
-#include <cmath>
-         ^~~~~~~
-/home/vpayno/git_vpayno/exercism-workspace/cpp/binary/binary.h:11:5: warning: variable 'convert' is non-const and globally accessible, consider making it const [cppcoreguidelines-avoid-non-const-global-variables]
-int convert(std::string binary);
-    ^
-/home/vpayno/git_vpayno/exercism-workspace/cpp/binary/binary.h:12:6: warning: variable 'is_valid_input' is non-const and globally accessible, consider making it const [cppcoreguidelines-avoid-non-const-global-variables]
-bool is_valid_input(std::string binary);
-     ^
+real	0m22.459s
+user	0m22.317s
+sys	0m0.131s
+Running: clang-tidy-16 ./binary.cpp ./binary_test.cpp ./binary.hpp
 
 
-real	0m18.437s
-user	0m18.310s
-sys	0m0.126s
+real	0m22.462s
+user	0m22.317s
+sys	0m0.135s
 
 ===============================================================================
 

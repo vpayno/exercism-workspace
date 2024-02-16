@@ -1,4 +1,4 @@
-#include "binary.h"
+#include "binary.hpp"
 #include <cmath>
 #include <numeric>
 #include <regex>
