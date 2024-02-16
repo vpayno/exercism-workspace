@@ -1,9 +1,6 @@
 #if !defined(BINARY_HPP)
 #define BINARY_HPP
 
-#include <cmath>
-#include <numeric>
-#include <regex>
 #include <string>
 
 namespace binary {
