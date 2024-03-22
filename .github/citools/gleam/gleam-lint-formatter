@@ -1,0 +1,26 @@
+#!/bin/bash
+#
+# .github/citools/gleam/gleam-lint-formatter
+#
+
+# shellcheck disable=SC1091
+source ../../.github/citools/includes/wrapper-library || exit
+
+declare -i retval=0
+
+main() {
+	printf "\nRunning Gleam Formatter\n\n"
+
+	show_tool_versions_gleam_short
+
+	print_ruler
+
+	run_command gleam format
+
+	print_ruler
+
+	echo Exit code: "${retval}"
+	return "${retval}"
+}
+
+time main "${@}"

@@ -234,3 +234,29 @@ show_tool_versions_python() {
 	# md_code_tag
 	printf "\n"
 } # show_tool_versions_python()
+
+show_tool_versions_gleam_short() {
+	# md_code_tag text
+	printf "Gleam versions:\n"
+	printf "\n"
+	gleam --version | paste /dev/null -
+	printf "\n" | erl | paste /dev/null -
+	rebar3 --version | paste /dev/null -
+	# md_code_tag
+	printf "\n"
+} # show_tool_versions_gleam_short()
+
+show_tool_versions_gleam() {
+	show_tool_versions_gleam_short
+
+	if [[ -z ${GITHUB_ACTIONS} ]]; then
+		return
+	fi
+
+	# md_code_tag text
+	printf "Installed Gleam packages:\n"
+	printf "\n"
+	printf "null\n"
+	# md_code_tag
+	printf "\n"
+} # show_tool_versions_gleam()

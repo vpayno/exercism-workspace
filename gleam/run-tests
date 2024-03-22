@@ -1,0 +1,36 @@
+#!/bin/bash
+
+print_ruler() {
+	printf "\n"
+	printf "=%.0s" {1..79}
+	printf "\n"
+	printf "\n"
+} # print_ruler()
+
+main() {
+	printf "Running automated test file(s):\n\n"
+
+	print_ruler
+
+	echo Running: ../../.github/citools/gleam/gleam-lint-formatter
+	time ../../.github/citools/gleam/gleam-lint-formatter
+
+	print_ruler
+
+	echo Running: ../../.github/citools/gleam/gleam-test
+	time ../../.github/citools/gleam/gleam-test
+
+	print_ruler
+
+	echo Running: misspell ./src/*.gleam
+	time misspell ./src/*.gleam
+
+	print_ruler
+
+	cd ..
+	pwd
+
+	print_ruler
+} # main()
+
+time main "$@" |& tee ./run-tests-gleam.txt

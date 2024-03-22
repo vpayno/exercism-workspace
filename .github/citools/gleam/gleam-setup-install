@@ -1,0 +1,152 @@
+#!/bin/bash
+#
+# .github/citools/gleam/gleam-setup-install
+#
+
+# shellcheck disable=SC1091
+source ../../.github/citools/includes/wrapper-library || exit
+
+declare -i retval=0
+
+main() {
+	printf "Gleam Installation\n\n"
+
+	print_ruler
+
+	if [[ ! -d ~/git_remote/erlang-otp ]]; then
+		echo Running: git clone https://github.com/erlang/otp ~/git_remote/erlang-otp
+		git clone https://github.com/erlang/otp ~/git_remote/erlang-otp || track_errors
+		printf "\n"
+
+		cd ~/git_remote/erlang-otp || track_errors
+	else
+		cd ~/git_remote/erlang-otp || track_errors
+
+		echo Updating repo:
+		git switch master
+		git pull
+		git remote prune origin
+		git gc --auto
+	fi
+
+	declare tag_ver
+	tag_ver="$(git tag | sort -V | grep -E '^OTP-[0-9]+\.' | grep -v -- 'rc[0-9]' | tail -n 1)"
+
+	echo Running: git switch --detach "${tag_ver}"
+	git switch --detach "${tag_ver}" || track_errors
+	printf "\n"
+
+	echo Running: ./configure --prefix="/usr/local/erlang"
+	time ./configure --prefix="/usr/local/erlang" || track_errors
+	printf "\n"
+
+	echo Running: make
+	time make || track_errors
+	printf "\n"
+
+	echo Running: make install
+	time make install || track_errors
+	printf "\n"
+
+	if ! grep -q erlang/bin /etc/profile.d/gleam.sh; then
+		cat >>/etc/profile.d/gleam.sh <<-EOF
+			export PATH="/usr/local/erlang/bin:\${PATH}"
+		EOF
+	fi
+
+	source /etc/profile.d/gleam.sh
+
+	print_ruler
+
+	if [[ ! -d ~/git_remote/rebar3 ]]; then
+		echo Running: git clone https://github.com/erlang/rebar3 ~/git_remote/rebar3
+		git clone https://github.com/erlang/rebar3 ~/git_remote/rebar3 || track_errors
+		printf "\n"
+
+		cd ~/git_remote/rebar3 || track_errors
+	else
+		cd ~/git_remote/rebar3 || track_errors
+
+		echo Updating repo:
+		git switch main
+		git pull
+		git remote prune origin
+		git gc --auto
+	fi
+
+	declare tag_ver
+	tag_ver="$(git tag | sort -V | grep -E '^[0-9]+\.' | grep -v -- 'rc[0-9]' | tail -n 1)"
+
+	echo Running: git switch --detach "${tag_ver}"
+	git switch --detach "${tag_ver}" || track_errors
+	printf "\n"
+
+	echo Running: ./bootstrap
+	time ./bootstrap || track_errors
+	printf "\n"
+
+	echo Running: ./rebar3 local install
+	time ./rebar3 local install || track_errors
+	printf "\n"
+
+	echo Running: mv "${HOME}/.cache/rebar3" /usr/local/rebar3
+	mv "${HOME}/.cache/rebar3" /usr/local/rebar3 || track_errors
+	printf "\n"
+
+	echo Running: ln -sv /usr/local/rebar3 "${HOME}/.cache/rebar3"
+	ln -sv /usr/local/rebar3 "${HOME}/.cache/rebar3"
+	printf "\n"
+
+	if ! grep -q rebar3/bin /etc/profile.d/gleam.sh; then
+		cat >>/etc/profile.d/gleam.sh <<-EOF
+			export PATH="/usr/local/rebar3/bin:\${PATH}"
+		EOF
+	fi
+
+	source /etc/profile.d/gleam.sh
+
+	print_ruler
+
+	if [[ ! -d ~/git_remote/gleam-lang ]]; then
+		echo Running: git clone https://github.com/gleam-lang/gleam ~/git_remote/gleam-lang
+		git clone https://github.com/gleam-lang/gleam ~/git_remote/gleam-lang || track_errors
+		printf "\n"
+
+		cd ~/git_remote/gleam-lang || track_errors
+	else
+		cd ~/git_remote/gleam-lang || track_errors
+
+		echo Updating repo:
+		git switch main
+		git pull
+		git remote prune origin
+		git gc --auto
+	fi
+
+	declare tag_ver
+	tag_ver="$(git tag | sort -V | grep -E '^v[0-9]+\.' | grep -v -- '-rc[0-9]' | tail -n 1)"
+
+	echo Running: git switch --detach "${tag_ver}"
+	git switch --detach "${tag_ver}" || track_errors
+	printf "\n"
+
+	echo Running: source /etc/profile.d/rust.sh
+	source /etc/profile.d/rust.sh
+	printf "\n"
+
+	# installs to cargo bin path
+	echo Running: make install
+	time make install || track_errors
+	printf "\n"
+
+	print_ruler
+
+	show_tool_versions_gleam_short
+
+	print_ruler
+
+	echo Exit code: "${retval}"
+	return "${retval}"
+}
+
+time main "${@}"

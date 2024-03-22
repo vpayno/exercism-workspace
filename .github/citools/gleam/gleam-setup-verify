@@ -1,0 +1,58 @@
+#!/bin/bash
+#
+# .github/citools/gleam/gleam-setup-verify
+#
+
+# shellcheck disable=SC1091
+source ../../.github/citools/includes/wrapper-library || exit
+
+declare -i retval=0
+
+declare -A gleam_cmds
+
+gleam_cmds=(
+	[erl]=$(
+		command -v erl >&/dev/null
+		echo "$?"
+	)
+	[rebar3]=$(
+		command -v rebar3 >&/dev/null
+		echo "$?"
+	)
+	[gleam]=$(
+		command -v gleam >&/dev/null
+		echo "$?"
+	)
+)
+
+main() {
+	printf "Verifying Gleam Installation\n\n"
+
+	print_ruler
+
+	printf "PATH=%s\n" "${PATH}"
+
+	print_ruler
+
+	for key in "${!gleam_cmds[@]}"; do
+		if [[ ${gleam_cmds[${key}]} -ne 0 ]]; then
+			printf "ERROR: command [%s] not found.\n" "${key}"
+			((retval++))
+		fi
+	done
+
+	if [[ ${retval} -ne 0 ]]; then
+		return "${retval}"
+	fi
+
+	print_ruler
+
+	show_tool_versions_gleam
+
+	print_ruler
+
+	echo Exit code: "${retval}"
+	return "${retval}"
+}
+
+time main "${@}"

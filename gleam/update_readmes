@@ -1,0 +1,72 @@
+#!/bin/bash
+
+shopt -s nullglob
+
+if [[ ! -d .exercism ]]; then
+	printf "ERROR: Run from inside a project directory.\n\n"
+	exit 1
+fi
+
+#declare package_name
+declare project_dir
+
+get_track_package_name() {
+	basename "${PWD}"
+} # get_track_package_name()
+
+#package_name="$(get_track_package_name)"
+project_dir="$(basename "${PWD}")"
+
+if ! grep -q ./"${project_dir}"/README.md ../README.md; then
+
+	cat >>../README.md <<EOF
+- [${project_dir}](./${project_dir}/README.md)
+EOF
+
+fi
+
+declare -a GLEAM_FILES
+mapfile -t GLEAM_FILES < <(jq -r '.files.solution[]' .exercism/config.json)
+
+if ! grep -q "My Solution" ./README.md; then
+
+	# Two empty spaces because the file is missing a trailing new line.
+	# shellcheck disable=SC2129
+	cat >>./README.md <<EOF
+
+
+### My Solution
+
+EOF
+
+	for f in "${GLEAM_FILES[@]}"; do
+		printf -- "- [%s](%s)\n" "${f##*/}" "./${f}"
+	done | tee -a ./README.md
+
+	cat >>./README.md <<EOF
+- [run-tests](./run-tests-gleam.txt)
+EOF
+
+fi
+
+# sed -r -i -e 's/xtest/test/g' ./*.spec.js
+# git add ./*.spec.js
+#
+# if [[ ! -f .prettierignore ]]; then
+# ln -sv ../.prettierignore .prettierignore
+# git add .prettierignore
+# printf "\n"
+# fi
+
+printf "\n"
+git add ../README.md ./README.md
+git diff --cached ../README.md ./README.md
+printf "\n"
+
+#sed -r -i -e 's/^(\s+)(skip)\b.*$/\1# \2/g' ./*_test.rb
+#git add ./*_test.rb
+#git diff --cached ./*_test.rb
+#printf "\n"
+
+git status ..
+printf "\n"
