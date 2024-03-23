@@ -30,7 +30,7 @@ RUN bash .github/docker/layer-16.00-exercism-go.sh ci-generic-debian && : 202401
 
 RUN bash .github/docker/layer-17.00-exercism-ruby.sh ci-generic-debian && : 20231103-000
 
-RUN bash .github/docker/layer-18.00-exercism-python.sh ci-generic-debian && : 20231116-000
+RUN bash .github/docker/layer-18.00-exercism-python.sh ci-generic-debian && : 20240322-000
 
 RUN bash .github/docker/layer-25.00-tools-vscode.sh ci-generic-debian && : 20240102-000
 
