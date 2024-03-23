@@ -192,10 +192,6 @@ jobs:
       - name: Checkout Repo [${{ matrix.exercise }}]
         id: checkout-repo
         uses: actions/checkout@v3
-      - name: Install Gleam Tools [${{ matrix.exercise }}]
-        id: install-gleam-tools
-        run: |-
-          ./.github/citools/common/run_wrapper_script "./${{ matrix.exercise }}" ../../.github/citools/gleam/gleam-setup-install
       - name: Config Gleam Tools [${{ matrix.exercise }}]
         id: config-gleam-tools
         run: |-
