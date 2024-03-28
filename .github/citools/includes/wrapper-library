@@ -260,3 +260,33 @@ show_tool_versions_gleam() {
 	# md_code_tag
 	printf "\n"
 } # show_tool_versions_gleam()
+
+show_tool_versions_r_short() {
+	# md_code_tag text
+	printf "R versions:\n"
+	printf "\n"
+	R --version | paste /dev/null -
+	printf "\n"
+	Rscript --version | paste /dev/null -
+	# md_code_tag
+	printf "\n"
+} # show_tool_versions_r_short()
+
+show_tool_versions_r() {
+	show_tool_versions_r_short
+
+	if [[ -z ${GITHUB_ACTIONS} ]]; then
+		return
+	fi
+
+	# md_code_tag text
+	printf "Installed R packages:\n"
+	printf "\n"
+	printf "null\n"
+	R --no-save <<-EOF
+		p <- available.packages()
+		p
+	EOF
+	# md_code_tag
+	printf "\n"
+} # show_tool_versions_r()

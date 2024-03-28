@@ -1,0 +1,33 @@
+#!/bin/bash
+#
+# .github/citools/r/r-test
+#
+
+# shellcheck disable=SC1091
+source ../../.github/citools/includes/wrapper-library || exit
+
+declare -i retval=0
+
+main() {
+	printf "\nRunning R Tests\n\n"
+
+	show_tool_versions_r_short
+
+	print_ruler
+
+	local -a test_files
+	local test_file
+
+	mapfile -t test_files < <(jq -r '.files.test[]' .exercism/config.json)
+
+	for test_file in "${test_files[@]}"; do
+		run_command Rscript "${test_file}" || ((retval++))
+	done
+
+	print_ruler
+
+	echo Exit code: "${retval}"
+	return "${retval}"
+}
+
+time main "${@}"

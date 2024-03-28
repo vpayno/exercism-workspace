@@ -1,0 +1,104 @@
+#!/bin/bash
+#
+# .github/citools/r/r-setup-install
+#
+
+# shellcheck disable=SC1091
+source ../../.github/citools/includes/wrapper-library || exit
+
+declare -i retval=0
+
+main() {
+	printf "R Installation\n\n"
+
+	print_ruler
+
+	echo Running: gpg --keyserver keyserver.ubuntu.com --recv-key '95C0FAF38DB3CCAD0C080A7BDC78B2DDEABC47B7'
+	gpg --keyserver keyserver.ubuntu.com --recv-key '95C0FAF38DB3CCAD0C080A7BDC78B2DDEABC47B7'
+	printf "\n"
+
+	echo Running: gpg --armor --export '95C0FAF38DB3CCAD0C080A7BDC78B2DDEABC47B7' | sudo tee /etc/apt/trusted.gpg.d/cran_debian_key.asc
+	gpg --armor --export '95C0FAF38DB3CCAD0C080A7BDC78B2DDEABC47B7' | sudo tee /etc/apt/trusted.gpg.d/cran_debian_key.asc
+	printf "\n"
+
+	echo Adding: deb http://cloud.r-project.org/bin/linux/debian bookworm-cran40/ to /etc/apt/sources.list.d/cran.list
+	printf "%s\n" "deb http://cloud.r-project.org/bin/linux/debian bookworm-cran40/" | sudo tee -a /etc/apt/sources.list.d/cran.list
+	printf "\n"
+
+	echo Running: sudo apt update
+	time sudo apt update
+	printf "\n"
+
+	echo Running: sudo apt install -y build-dep r-base r-base-dev r-base-core r-recommended
+	time sudo apt install -y build-dep r-base r-base-dev r-base-core r-recommended
+	printf "\n"
+
+	if ! grep -q R_LIBS_USER /etc/profile.d/r.sh; then
+		sudo tee /etc/profile.d/r.sh <<-EOF
+			export R_LIBS_USER="/usr/local/lib/R/site-library/"
+		EOF
+
+		mkdir -pv /usr/local/lib/R/site-library
+		chmod -v 0775 /usr/local/lib/R/site-library
+		chgrp -v -R adm /usr/local/lib/R/site-library
+		setfacl -RPdm g:adm:w /usr/local/lib/R/site-library
+	fi
+
+	source /etc/profile.d/python.sh
+	source /etc/profile.d/r.sh
+
+	print_ruler
+
+	echo Running: pyenv install anaconda3
+	time pyenv install anaconda3
+	printf "\n"
+
+	echo Creating: /usr/local/lib/R/.python-version
+	printf "%s\n" "anaconda3" | tee /usr/local/lib/R/.python-version
+	printf "\n"
+
+	print_ruler
+
+	tee /tmp/r-setup.rscript <<-EOF
+		setwd(system("pwd", intern = T) )
+
+		system("pyenv version", intern = T)
+		system("pyenv global anaconda3", intern = T)
+		system("pyenv version", intern = T)
+
+		install.packages("this.path")
+		install.packages("testthat")
+
+		install.packages("styler")
+		install.packages("lintr")
+		install.packages("languageserver")
+		# install.packages("nvimcom")
+
+		install.packages("tidyverse")
+		library(tidyverse)
+
+		system("pyenv version", intern = T)
+		system("bash -c 'pyenv global $(pyenv versions --bare | grep -E '^3[.]' | tail -n 1)'", intern = T)
+		system("pyenv version", intern = T)
+	EOF
+
+	echo Running: Rscript /tmp/r-setup.rscript
+	time Rscript /tmp/r-setup.rscript
+	printf "\n"
+
+	print_ruler
+
+	echo Running: pyenv global "$(pyenv versions --bare | grep -E '^3[.]' | tail -n 1)"
+	pyenv global "$(pyenv versions --bare | grep -E '^3[.]' | tail -n 1)"
+
+	print_ruler
+
+	show_tool_versions_r_short
+
+	print_ruler
+
+	echo Exit code: "${retval}"
+	return "${retval}"
+}
+
+time main "${@}"
