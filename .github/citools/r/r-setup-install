@@ -44,6 +44,7 @@ main() {
 		setfacl -RPdm g:adm:w /usr/local/lib/R/site-library
 	fi
 
+	source /etc/profile.d/python.sh
 	source /etc/profile.d/r.sh
 
 	print_ruler
@@ -67,6 +68,12 @@ main() {
 
 		install.packages("this.path")
 		install.packages("testthat")
+
+		install.packages("styler")
+		install.packages("lintr")
+		install.packages("languageserver")
+		# install.packages("nvimcom")
+
 		install.packages("tidyverse")
 		library(tidyverse)
 
