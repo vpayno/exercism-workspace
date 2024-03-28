@@ -94,6 +94,7 @@ Archived `#12in23` challenge notes to [README-2023.md](./README-2023.md)
 - [Ruby](ruby/README.md)
 - [WebAssembly](wasm/README.md)
 - [Gleam](gleam/README.md)
+- [R](r/README.md)
 
 ## Tools/Scripts
 
