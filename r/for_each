@@ -1,0 +1,24 @@
+#!/bin/bash
+
+declare -i retval=0
+declare pkg_name
+declare d
+
+time for d in ./*; do
+	[[ -d ${d} ]] || continue
+	cd "${d}" || continue
+	printf "[dir: %s]\n\n" "${PWD}"
+
+	pkg_name="$(basename "${PWD}")"
+
+	printf "[pkg: %s]\n\n" "${pkg_name}"
+
+	echo "${@}"
+	time "${@}" || ((retval++))
+
+	printf "\n"
+
+	cd - || break
+done
+
+exit "${retval}"
