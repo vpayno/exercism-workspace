@@ -1,0 +1,31 @@
+#!/bin/bash
+
+print_ruler() {
+	printf "\n"
+	printf "=%.0s" {1..79}
+	printf "\n"
+	printf "\n"
+} # print_ruler()
+
+main() {
+	printf "Running automated test file(s):\n\n"
+
+	print_ruler
+
+	echo Running: ../../.github/citools/r/r-test
+	time ../../.github/citools/r/r-test
+
+	print_ruler
+
+	echo Running: misspell ./*.R
+	time misspell ./*.R
+
+	print_ruler
+
+	cd ..
+	pwd
+
+	print_ruler
+} # main()
+
+time main "$@" |& tee ./run-tests-r.txt

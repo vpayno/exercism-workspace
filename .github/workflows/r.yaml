@@ -1,0 +1,214 @@
+---
+#
+# .github/workflows/r.yml
+#
+name: R Workflow 4.0
+on:  # yamllint disable-line rule:truthy
+  pull_request:
+  workflow_dispatch:
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  stage1:
+    name: Change Check
+    runs-on: 'ubuntu-latest'
+    outputs:
+      docs_changed: ${{ steps.check_file_changed.outputs.docs_changed }}
+      matrix_exercise: ${{ steps.check_file_changed.outputs.matrix_exercise }}
+      exercise_count: ${{ steps.check_file_changed.outputs.exercise_count }}
+    steps:
+      - name: Check GitHub Vars
+        id: github-vars-check
+        run: |-
+          {
+            printf "\`\`\`text\n"
+            printf "Runner environment info:\n"
+            set | grep -e ^CI -e ^GITHUB_ -e ^RUNNER_
+            printf "\`\`\`\n"
+          } | tee -a "${GITHUB_STEP_SUMMARY}"
+      - name: Check GitHub User
+        id: github-user-check
+        run: |-
+          # get user info for default gh container
+          {
+            printf "\`\`\`text\n"
+            printf "Container user info:\n"
+            who
+            printf "\n"
+            id
+            printf "\n"
+            printf "HOME: %s\n" "${HOME}"
+            printf "\n"
+            printf "SHELL: %s\n" "$(getent passwd "${USER}" | awk -F: '{print $NF}')"
+            printf "\`\`\`\n"
+          } | tee -a "${GITHUB_STEP_SUMMARY}"
+      - name: Checkout Repo
+        id: checkout-repo
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: ${{ github.ref }}
+          submodules: recursive
+      - name: Get Change List
+        id: check_file_changed
+        run: |-
+          {
+            printf "Workflow: %s\n\n" "${GITHUB_WORKFLOW}"
+            printf "Runner: name[%s] arch[%s]\n" "${RUNNER_NAME}" "${RUNNER_ARCH}"
+            printf "Repo: %s\n" "${GITHUB_REPOSITORY}"
+            printf "User: %s\n" "${GITHUB_TRIGGERING_ACTOR}"
+            printf "\n"
+          } | tee -a "${GITHUB_STEP_SUMMARY}"
+
+          # Diff HEAD with the previous commit then output to stdout.
+          GIT_DIFF="$(git diff --name-only HEAD^ HEAD | tee /tmp/changed_files.txt)"
+          {
+            printf "=== Which files changed? ===\n"
+            printf "\`\`\`text\n"
+            printf "%s\n" "${GIT_DIFF}"
+            printf "\`\`\`\n"
+          } | tee -a "${GITHUB_STEP_SUMMARY}"
+          HAS_WF_DIFF=false
+          HAS_EX_DIFF=false
+          if printf "%s\n" "${GIT_DIFF}" | grep -E '^(.github/workflows/r.yml|.github/citools/r/)$'; then
+            HAS_WF_DIFF=true
+          fi
+          if printf "%s\n" "${GIT_DIFF}" | grep -E '^r/.*[.]R$'; then
+            HAS_EX_DIFF=true
+          fi
+          printf "\n"
+          printf "=== Did WF/CI change without exercise changes? ===\n"
+          CI_FORCE_FULL=false
+          if ${HAS_WF_DIFF} && ! ${HAS_EX_DIFF}; then
+            CI_FORCE_FULL=true
+            printf "%s\n" "${CI_FORCE_FULL}"
+          fi
+          printf "\n"
+
+          # Get changed exercise list.
+          if [[ ${GITHUB_EVENT_NAME} == pull_request ]] && ! ${CI_FORCE_FULL}; then
+            printf "Generating pull request changed exercise list.\n"
+            grep -E '^r/[-a-z0-9]+./.*$' /tmp/changed_files.txt | cut -f1,2 -d/ | sort -Vu | tee /tmp/exercises.txt || true
+          else
+            printf "Generating complete exercise list.\n"
+            find ./r/ -type d -print | grep -v -E '^[.]/r/(|[.].*)$' | sed -r -e 's:[.]/(r/[-a-z0-9]+)/?.*$:\1:g' | sort -Vu | tee /tmp/exercises.txt
+            HAS_DIFF=true
+          fi
+          printf "\n"
+
+          # Check if the files are present in the changed file list (added, modified, deleted) then output to stdout.
+          HAS_DIFF="${HAS_DIFF:-false}"
+          printf "=== Which R files changed? ===\n"
+          if printf "%s\n" "${GIT_DIFF}" | grep -E '^(r/.*[.]R|.github/workflows/r.yml|.github/citools/r/)$'; then
+            HAS_DIFF=true
+            printf "%s\n" "${HAS_DIFF}"
+          fi
+          printf "\n"
+
+          # Did R files change?
+          printf "=== Did R files change? ===\n"
+          printf "%s\n" "${HAS_DIFF}"
+          printf "\n"
+
+          # Generate exercise job matrix from changed files list.
+          printf "=== Generating matrix exercise list. ===\n"
+          declare -i last=0
+          declare -i count=0
+          last=$(wc -l /tmp/exercises.txt | cut -f1 -d\ )
+          ((last -= 1)) || true
+          entries=""
+          while read -r line; do
+            if [[ ! ${count} -lt ${last} ]]; then
+              comma=""
+            else
+              comma=","
+            fi
+            printf -v entry "\"%s\"%s\n" "${line}" "${comma}"
+            ((count += 1))
+            entries+="${entry}"
+          done < <(sort -V /tmp/exercises.txt)
+          jq --sort-keys . >/tmp/exercises.json <<EOF
+            [ ${entries} ]
+          EOF
+          exercise_count="$(jq '. | length' /tmp/exercises.json)"
+          printf "%s=%s\n" "exercise_count" "${exercise_count}" | tee -a "${GITHUB_OUTPUT}"
+          matrix_exercise="$(jq --compact-output --sort-keys . /tmp/exercises.json)"
+          printf "%s=%s\n" "matrix_exercise" "${matrix_exercise}" | tee -a "${GITHUB_OUTPUT}"
+          printf "\n"
+          cat "${GITHUB_OUTPUT}"
+
+          # Don't run stage 2 if PR mode doesn't have testable changes.
+          if [[ ${GITHUB_EVENT_NAME} == pull_request ]] && [[ -z ${entries} ]]; then
+            printf "In PR mode with no testable changes, disabling stage 2.\n"
+            HAS_DIFF=false
+          fi
+
+          # Set the output named "docs_changed"
+          printf "%s=%s\n" "docs_changed" "${HAS_DIFF}" >> "${GITHUB_OUTPUT}"
+  check-matrix:
+    runs-on: ubuntu-latest
+    needs: stage1
+    steps:
+      - name: Install json2yaml
+        run: sudo npm install -g json2yaml
+      - name: Check matrix::exercises
+        run: |-
+          exercise_count='${{ needs.stage1.outputs.exercise_count }}'
+          matrix_exercise='${{ needs.stage1.outputs.matrix_exercise }}'
+          {
+            printf "\`\`\`text\n"
+            printf "exercise_count=%s\n" "${exercise_count}"
+            printf "matrix_exercise=%s\n" "${matrix_exercise}"
+            printf "\`\`\`\n"
+            printf "json:\n"
+            printf "\`\`\`text\n"
+            printf "%s" "${matrix_exercise}" | jq .
+            printf "\`\`\`\n"
+          } | tee -a "${GITHUB_STEP_SUMMARY}"
+          {
+            printf "yaml:\n"
+            printf "\`\`\`text\n"
+            printf "{ \"matrix\": { \"exercise\": %s } }" "${matrix_exercise}" | json2yaml
+            printf "\`\`\`\n"
+          } | tee -a "${GITHUB_STEP_SUMMARY}"
+  stage2:
+    name: R Checks
+    strategy:
+      matrix:
+        os: ["ubuntu-latest", "windows-latest", "macos-latest"]
+        exclude:
+          - os: "macos-latest"
+          - os: "windows-latest"
+        exercise: ${{fromJson(needs.stage1.outputs.matrix_exercise)}}
+    runs-on: "${{ matrix.os }}"
+    container:
+      image: vpayno/ci-generic-debian:latest
+    needs: [stage1]
+    if: needs.stage1.outputs.docs_changed == 'true'
+    steps:
+      - name: Checkout Repo [${{ matrix.exercise }}]
+        id: checkout-repo
+        uses: actions/checkout@v3
+      - name: Install Python Tools [${{ matrix.exercise }}]
+        id: install-python-tools
+        run: |-
+          ./.github/citools/common/run_wrapper_script "./${{ matrix.exercise }}" ../../.github/citools/python/python-setup-install
+      - name: Install R Tools [${{ matrix.exercise }}]
+        id: install-r-tools
+        run: |-
+          ./.github/citools/common/run_wrapper_script "./${{ matrix.exercise }}" ../../.github/citools/r/r-setup-install
+      - name: Config R Tools [${{ matrix.exercise }}]
+        id: config-r-tools
+        run: |-
+          ./.github/citools/common/run_wrapper_script "./${{ matrix.exercise }}" ../../.github/citools/r/r-setup-config
+      - name: Show R Version [${{ matrix.exercise }}]
+        id: r-version
+        run: |-
+          ./.github/citools/common/run_wrapper_script "./${{ matrix.exercise }}" ../../.github/citools/r/r-setup-verify
+      - name: Running R Tests [${{ matrix.exercise }}]
+        id: r-test
+        run: |-
+          ./.github/citools/common/run_wrapper_script "./${{ matrix.exercise }}" ../../.github/citools/r/r-test
