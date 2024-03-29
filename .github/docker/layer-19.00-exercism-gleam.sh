@@ -57,8 +57,8 @@ main() {
 	time setfacl -RPdm g:adm:w "${ERLANG_ROOT}" "${REBAR3_ROOT}" || track_errors
 	printf "\n"
 
-	echo Running: rm -rf "${HOME}/git_remote/*"
-	time rm -rf "${HOME}/git_remote/*"
+	echo Running: rm -rf "${HOME}/git_remote/"*
+	time rm -rf "${HOME}/git_remote/"*
 	printf "\n"
 
 	layer_end "${0}" "$@"
