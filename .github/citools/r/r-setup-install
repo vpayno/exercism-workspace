@@ -37,6 +37,7 @@ main() {
 		r-base-dev
 		r-base-core
 		r-recommended
+		gdebi-core
 	)
 
 	echo Running: sudo apt install -y "${debs[@]}"
@@ -101,6 +102,23 @@ main() {
 	echo Running: Rscript /tmp/r-setup.rscript
 	time Rscript /tmp/r-setup.rscript || track_errors
 	printf "\n"
+
+	print_ruler
+
+	echo Running: wget -c https://download2.rstudio.org/server/jammy/amd64/rstudio-server-2023.12.1-402-amd64.deb
+	time wget -c https://download2.rstudio.org/server/jammy/amd64/rstudio-server-2023.12.1-402-amd64.deb
+	printf "\n"
+
+	echo Running: sudo gdebi --non-interactive ./rstudio-server-2023.12.1-402-amd64.deb
+	time sudo gdebi --non-interactive ./rstudio-server-2023.12.1-402-amd64.deb
+	printf "\n"
+
+	echo Running: sudo apt-mark manual rstudio-server
+	time sudo apt-mark manual rstudio-server
+	printf "\n"
+
+	echo Running: rm -fv ./rstudio-server-2023.12.1-402-amd64.deb
+	rm -fv ./rstudio-server-2023.12.1-402-amd64.deb
 
 	print_ruler
 
