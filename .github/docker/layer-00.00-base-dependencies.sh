@@ -35,6 +35,11 @@ main() {
 	apt install -y ${PACKAGES} || exit
 	printf "\n"
 
+	echo apt-mark manual "${PACKAGES}"
+	# shellcheck disable=SC2086
+	apt-mark manual ${PACKAGES} || exit
+	printf "\n"
+
 	layer_end "${0}" "$@"
 }
 

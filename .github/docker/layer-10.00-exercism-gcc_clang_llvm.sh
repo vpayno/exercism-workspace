@@ -75,12 +75,16 @@ main() {
 	time curl -sS https://apt.llvm.org/llvm-snapshot.gpg.key | tee /etc/apt/trusted.gpg.d/apt.llvm.org.asc || track_errors
 	printf "\n"
 
-	echo Running: apt update
-	time apt update || track_errors
+	echo Running: sudo apt update
+	time sudo apt update || track_errors
 	printf "\n"
 
-	echo Running: apt install -y "${PACKAGES[@]}"
-	time apt install -y "${PACKAGES[@]}" || track_errors
+	echo Running: sudo apt install -y "${PACKAGES[@]}"
+	time sudo apt install -y "${PACKAGES[@]}" || track_errors
+	printf "\n"
+
+	echo Running: sudo apt-mark manual "${PACKAGES[@]}"
+	time sudo apt-mark manual "${PACKAGES[@]}" || track_errors
 	printf "\n"
 
 	layer_end "${0}" "$@"

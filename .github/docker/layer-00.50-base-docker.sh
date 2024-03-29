@@ -30,16 +30,20 @@ main() {
 		docker-compose-plugin
 	)
 
-	echo Running: apt update
-	time apt update || track_errors
+	echo Running: sudo apt update
+	time sudo apt update || track_errors
 	printf "\n"
 
-	echo Running: apt install -y "${DEPS[@]}"
-	time apt install -y "${DEPS[@]}" || track_errors
+	echo Running: sudo apt install -y "${DEPS[@]}"
+	time sudo apt install -y "${DEPS[@]}" || track_errors
 	printf "\n"
 
-	echo Running: install -m 0755 -d /etc/apt/keyrings
-	install -m 0755 -d /etc/apt/keyrings || track_errors
+	echo Running: sudo apt-mark manual "${DEPS[@]}"
+	time sudo apt-mark manual "${DEPS[@]}" || track_errors
+	printf "\n"
+
+	echo Running: sudo install -m 0755 -d /etc/apt/keyrings
+	sudo install -m 0755 -d /etc/apt/keyrings || track_errors
 	printf "\n"
 
 	echo Running: curl -fsSL https://download.docker.com/linux/debian/gpg \| sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
@@ -51,12 +55,16 @@ main() {
 	EOF
 	printf "\n"
 
-	echo Running: apt update
-	time apt update || track_errors
+	echo Running: sudo apt update
+	time sudo apt update || track_errors
 	printf "\n"
 
-	echo Running: apt install -y "${PACKAGES[@]}"
-	time apt install -y "${PACKAGES[@]}" || track_errors
+	echo Running: sudo apt install -y "${PACKAGES[@]}"
+	time sudo apt install -y "${PACKAGES[@]}" || track_errors
+	printf "\n"
+
+	echo Running: sudo apt-mark manual "${PACKAGES[@]}"
+	time sudo apt-mark manual "${PACKAGES[@]}" || track_errors
 	printf "\n"
 
 	layer_end "${0}" "$@"

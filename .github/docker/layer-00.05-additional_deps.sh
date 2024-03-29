@@ -38,6 +38,10 @@ main() {
 	time sudo apt install -y "${PACKAGES[@]}" || track_errors
 	printf "\n"
 
+	echo Running: sudo apt-mark manual "${PACKAGES[@]}"
+	time sudo apt-mark manual "${PACKAGES[@]}" || track_errors
+	printf "\n"
+
 	layer_end "${0}" "$@"
 
 	echo Running: return "${retval}"

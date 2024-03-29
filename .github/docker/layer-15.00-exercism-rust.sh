@@ -66,8 +66,16 @@ main() {
 		rustfmt
 	)
 
-	echo Running: apt install -y "${PACKAGES[@]}"
-	time apt install -y "${PACKAGES[@]}" || track_errors
+	echo Running: sudo apt update
+	time sudo apt update || track_errors
+	printf "\n"
+
+	echo Running: sudo apt install -y "${PACKAGES[@]}"
+	time sudo apt install -y "${PACKAGES[@]}" || track_errors
+	printf "\n"
+
+	echo Running: sudo apt-mark manual "${PACKAGES[@]}"
+	time sudo apt-mark manual "${PACKAGES[@]}" || track_errors
 	printf "\n"
 
 	tee /etc/profile.d/rust.sh <<-EOF

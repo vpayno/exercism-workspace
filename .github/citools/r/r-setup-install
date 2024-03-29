@@ -23,15 +23,31 @@ main() {
 
 	echo Adding: deb http://cloud.r-project.org/bin/linux/debian bookworm-cran40/ to /etc/apt/sources.list.d/cran.list
 	printf "%s\n" "deb http://cloud.r-project.org/bin/linux/debian bookworm-cran40/" | sudo tee -a /etc/apt/sources.list.d/cran.list
-	printf "\n"
+
+	print_ruler
 
 	echo Running: sudo apt update
 	time sudo apt update || track_errors
-	printf "\n"
 
-	echo Running: sudo apt install -y r-base r-base-dev r-base-core r-recommended
-	time sudo apt install -y r-base r-base-dev r-base-core r-recommended || track_errors
-	printf "\n"
+	print_ruler
+
+	local -a debs
+	debs=(
+		r-base
+		r-base-dev
+		r-base-core
+		r-recommended
+	)
+
+	echo Running: sudo apt install -y "${debs[@]}"
+	time sudo apt install -y "${debs[@]}" || track_errors
+
+	print_ruler
+
+	echo Running: sudo apt-mark manual "${debs[@]}"
+	time sudo apt-mark manual "${debs[@]}" || track_errors
+
+	print_ruler
 
 	if ! grep -q R_LIBS_USER /etc/profile.d/r.sh; then
 		sudo tee /etc/profile.d/r.sh <<-EOF

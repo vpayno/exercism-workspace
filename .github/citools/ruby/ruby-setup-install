@@ -51,6 +51,11 @@ main() {
 
 	print_ruler
 
+	echo Running: sudo apt-mark manual "${debs[@]}"
+	time sudo apt-mark manual "${debs[@]}" || track_errors
+
+	print_ruler
+
 	echo Running: curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer \| bash
 	time curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer | bash || track_errors
 

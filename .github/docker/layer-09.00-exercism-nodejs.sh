@@ -41,8 +41,12 @@ main() {
 	time apt update || track_errors
 	printf "\n"
 
-	echo Running: apt install -y "${PACKAGES[@]}"
-	time apt install -y "${PACKAGES[@]}" || track_errors
+	echo Running: sudo apt install -y "${PACKAGES[@]}"
+	time sudo apt install -y "${PACKAGES[@]}" || track_errors
+	printf "\n"
+
+	echo Running: sudo apt-mark manual "${PACKAGES[@]}"
+	time sudo apt-mark manual "${PACKAGES[@]}" || track_errors
 	printf "\n"
 
 	echo Running: curl -fsSL https://github.com/nodenv/nodenv-installer/raw/HEAD/bin/nodenv-installer \| bash

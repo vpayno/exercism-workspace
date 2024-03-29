@@ -48,8 +48,18 @@ main() {
 		zlib1g-dev
 	)
 
+	echo Running: sudo apt update
+	time sudo apt update || track_errors
+
+	print_ruler
+
 	echo Running: sudo apt install -y "${debs[@]}"
 	time sudo apt install -y "${debs[@]}" || track_errors
+
+	print_ruler
+
+	echo Running: sudo apt-mark manual "${debs[@]}"
+	time sudo apt-mark manual "${debs[@]}" || track_errors
 
 	print_ruler
 
