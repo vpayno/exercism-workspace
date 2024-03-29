@@ -56,5 +56,13 @@ layer_end() {
 	rm -rf /var/lib/apt/lists/* || exit
 	printf "\n"
 
+	echo Running: df -h
+	df -h
+	printf "\n"
+
+	echo Running: du -shc /* \| grep '[0-9][MGT]'
+	du -shc /* | grep '[0-9][MGT]'
+	printf "\n"
+
 	printf "=== %s:%s end ===\n\n" "${0}" "layer_end()"
 }
