@@ -192,14 +192,6 @@ jobs:
       - name: Checkout Repo [${{ matrix.exercise }}]
         id: checkout-repo
         uses: actions/checkout@v3
-      - name: Install Python Tools [${{ matrix.exercise }}]
-        id: install-python-tools
-        run: |-
-          ./.github/citools/common/run_wrapper_script "./${{ matrix.exercise }}" ../../.github/citools/python/python-setup-install
-      - name: Install R Tools [${{ matrix.exercise }}]
-        id: install-r-tools
-        run: |-
-          ./.github/citools/common/run_wrapper_script "./${{ matrix.exercise }}" ../../.github/citools/r/r-setup-install
       - name: Config R Tools [${{ matrix.exercise }}]
         id: config-r-tools
         run: |-

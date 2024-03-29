@@ -26,11 +26,11 @@ main() {
 	printf "\n"
 
 	echo Running: sudo apt update
-	time sudo apt update
+	time sudo apt update || track_errors
 	printf "\n"
 
-	echo Running: sudo apt install -y build-dep r-base r-base-dev r-base-core r-recommended
-	time sudo apt install -y build-dep r-base r-base-dev r-base-core r-recommended
+	echo Running: sudo apt install -y r-base r-base-dev r-base-core r-recommended
+	time sudo apt install -y r-base r-base-dev r-base-core r-recommended || track_errors
 	printf "\n"
 
 	if ! grep -q R_LIBS_USER /etc/profile.d/r.sh; then
@@ -50,7 +50,7 @@ main() {
 	print_ruler
 
 	echo Running: pyenv install anaconda3
-	time pyenv install anaconda3
+	time pyenv install anaconda3 || track_errors
 	printf "\n"
 
 	echo Creating: /usr/local/lib/R/.python-version
@@ -83,13 +83,23 @@ main() {
 	EOF
 
 	echo Running: Rscript /tmp/r-setup.rscript
-	time Rscript /tmp/r-setup.rscript
+	time Rscript /tmp/r-setup.rscript || track_errors
 	printf "\n"
 
 	print_ruler
 
 	echo Running: pyenv global "$(pyenv versions --bare | grep -E '^3[.]' | tail -n 1)"
-	pyenv global "$(pyenv versions --bare | grep -E '^3[.]' | tail -n 1)"
+	pyenv global "$(pyenv versions --bare | grep -E '^3[.]' | tail -n 1)" || track_errors
+
+	print_ruler
+
+	echo Running: du -shc /usr/local/pyenv/versions/anaconda3-*/pkgs
+	du -shc /usr/local/pyenv/versions/anaconda3-*/pkgs
+
+	print_ruler
+
+	echo Running: rm -rf /usr/local/pyenv/versions/anaconda3-*"/pkgs/*"
+	time rm -rf /usr/local/pyenv/versions/anaconda3-*/pkgs/*
 
 	print_ruler
 

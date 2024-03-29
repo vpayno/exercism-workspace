@@ -12,6 +12,8 @@ RUN sh .github/docker/layer-00.00-base-dependencies.sh ci-generic-debian && : 20
 
 RUN bash .github/docker/layer-00.01-base-env_setup.sh ci-generic-debian && : 20231103-000
 
+RUN bash .github/docker/layer-00.05-additional_deps.sh ci-generic-debian && : 20240329-000
+
 RUN bash .github/docker/layer-00.10-base-daggerio.sh ci-generic-debian && : 20231103-000
 
 RUN bash .github/docker/layer-00.50-base-docker.sh ci-generic-debian && : 20231228-000
@@ -33,6 +35,8 @@ RUN bash .github/docker/layer-17.00-exercism-ruby.sh ci-generic-debian && : 2023
 RUN bash .github/docker/layer-18.00-exercism-python.sh ci-generic-debian && : 20240322-000
 
 RUN bash .github/docker/layer-19.00-exercism-gleam.sh ci-generic-debian && : 20240322-000
+
+RUN bash .github/docker/layer-20.00-exercism-r.sh ci-generic-debian && : 20240328-000
 
 RUN bash .github/docker/layer-25.00-tools-vscode.sh ci-generic-debian && : 20240102-000
 
