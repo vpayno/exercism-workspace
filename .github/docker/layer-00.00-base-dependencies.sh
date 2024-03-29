@@ -17,19 +17,6 @@ main() {
 	apt list --installed >"${HOME}"/apt-pkgs-start.txt
 	printf "\n"
 
-	echo Running: apt remove -y "$(apt list --installed | grep -e xorg -e xserver -e qt | cut -f1 -d/)"
-	# shellcheck disable=SC2046
-	apt remove -y $(apt list --installed | grep -e xorg -e xserver -e qt | cut -f1 -d/) || exit
-	printf "\n"
-
-	echo Running: apt-get purge -y libx11.* libqt.*
-	apt-get purge -y libx11.* libqt.* || exit
-	printf "\n"
-
-	echo Running: apt-get remove -y x11-common
-	apt-get remove -y x11-common || exit
-	printf "\n"
-
 	echo apt install -y "${PACKAGES}"
 	# shellcheck disable=SC2086
 	apt install -y ${PACKAGES} || exit
