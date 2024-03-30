@@ -185,7 +185,7 @@ jobs:
         exercise: ${{fromJson(needs.stage1.outputs.matrix_exercise)}}
     runs-on: "${{ matrix.os }}"
     container:
-      image: vpayno/ci-generic-debian:latest
+      image: vpayno/ci-anaconda-debian:latest
     needs: [stage1]
     if: needs.stage1.outputs.docs_changed == 'true'
     steps:

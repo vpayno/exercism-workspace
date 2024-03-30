@@ -26,6 +26,30 @@ RUN bash .github/docker/layer-10.00-exercism-gcc_clang_llvm.sh ci-generic-debian
 
 RUN bash .github/docker/layer-14.00-exercism-tools.sh ci-generic-debian && : 20240101-000
 
+RUN bash .github/docker/layer-99.00-summary.sh ci-generic-debian && : 20231103-000
+
+# Copies your code file from your action repository to the filesystem path `/` of the container
+COPY .github/docker/entrypoint.sh /entrypoint.sh
+
+RUN rm -rvf /.github
+
+SHELL ["bash", "-c"]
+
+# app + args
+# Executes `entrypoint.sh` when the Docker container starts up
+ENTRYPOINT ["/entrypoint.sh"]
+
+# Extra args
+CMD []
+
+# =============================================================================
+
+From ci-generic-base As ci-generic-debian
+
+COPY .github/docker /.github/docker
+
+COPY .github/citools/ /.github/citools/
+
 RUN bash .github/docker/layer-15.00-exercism-rust.sh ci-generic-debian && : 20231103-000
 
 RUN bash .github/docker/layer-16.00-exercism-go.sh ci-generic-debian && : 20240111-000
@@ -35,6 +59,36 @@ RUN bash .github/docker/layer-17.00-exercism-ruby.sh ci-generic-debian && : 2023
 RUN bash .github/docker/layer-18.00-exercism-python.sh ci-generic-debian && : 20240322-000
 
 RUN bash .github/docker/layer-19.00-exercism-gleam.sh ci-generic-debian && : 20240322-000
+
+RUN bash .github/docker/layer-25.00-tools-vscode.sh ci-generic-debian && : 20240102-000
+
+RUN bash .github/docker/layer-35.00-tools-tailscale.sh ci-generic-debian && : 20240111-000
+
+RUN bash .github/docker/layer-99.00-summary.sh ci-generic-debian && : 20231103-000
+
+# Copies your code file from your action repository to the filesystem path `/` of the container
+COPY .github/docker/entrypoint.sh /entrypoint.sh
+
+RUN rm -rvf /.github
+
+SHELL ["bash", "-c"]
+
+# app + args
+# Executes `entrypoint.sh` when the Docker container starts up
+ENTRYPOINT ["/entrypoint.sh"]
+
+# Extra args
+CMD []
+
+# =============================================================================
+
+From ci-generic-base As ci-anaconda-debian
+
+COPY .github/docker /.github/docker
+
+COPY .github/citools/ /.github/citools/
+
+RUN bash .github/docker/layer-18.00-exercism-python.sh ci-generic-debian && : 20240322-000
 
 RUN bash .github/docker/layer-20.00-exercism-r.sh ci-generic-debian && : 20240328-000
 

@@ -38,17 +38,23 @@ main() {
 	time apt install -y "${PACKAGES[@]}" || track_errors
 	printf "\n"
 
-	declare -a GO_PKGS
-	GO_PKGS=(
-		golang.zx2c4.com/wireguard@latest
-	)
+	if command -v go >&/dev/null; then
+		declare -a GO_PKGS
+		GO_PKGS=(
+			golang.zx2c4.com/wireguard@latest
+		)
 
-	declare url
-	for url in "${GO_PKGS[@]}"; do
-		echo Running: go install "${url}"
-		go install "${url}" || track_errors
+		declare url
+		for url in "${GO_PKGS[@]}"; do
+			echo Running: go install "${url}"
+			go install "${url}" || track_errors
+			printf "\n"
+		done
+	else
 		printf "\n"
-	done
+		printf "Go not found, skipping installation of extra packages.\n"
+		printf "\n"
+	fi
 
 	layer_end "${0}" "$@"
 

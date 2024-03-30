@@ -30,6 +30,25 @@ main() {
 	time /.github/citools/r/r-setup-config || track_errors
 	printf "\n"
 
+	echo Running: pyenv global anaconda3
+	pyenv global anaconda3
+	printf "\n"
+
+	# this image only needs the anaconda3 installations
+	if [[ ${IMAGE_NAME:-} =~ ^ci-anaconda-.*$ ]]; then
+		cd "${PYENV_ROOT}"/versions/ || track_errors
+		for pv in ./3*; do
+			echo Running: pyenv uninstall "${pv}"
+			time pyenv uninstall "${pv}"
+			printf "\n"
+		done
+		cd - || track_errors
+
+		echo Running: pyenv versions
+		pyenv versions
+		printf "\n"
+	fi
+
 	echo Adding source /etc/profile.d/r.sh to ~/.bashrc and /etc/skel/.bashrc
 	echo '. /etc/profile.d/r.sh' | tee -a "${HOME}/.bashrc" | tee -a "${HOME}/.profile" | tee -a /etc/skel/.bashrc || track_errors
 	printf "\n"
