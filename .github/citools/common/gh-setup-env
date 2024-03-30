@@ -172,6 +172,14 @@ main() {
 
 	print_ruler
 
+	source /etc/profile.d/r.sh || track_errors
+
+	echo Adding source /etc/profile.d/r.sh to ~/.bashrc
+	echo '. /etc/profile.d/r.sh' | tee -a "${HOME}/.bashrc" || track_errors
+	printf "\n"
+
+	print_ruler
+
 	tail -n 1000 -v "${GITHUB_PATH}"
 
 	print_ruler
