@@ -28,55 +28,44 @@ jobs:
       ORG: ${{ secrets.DOCKERHUB_USERNAME }}
       IMAGE_NAME: ci-generic-debian
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        cmd:
+          - rustc --version
+          - go version
+          - node --version
+          - ruby --version
+          - gcc --version
+          - g++ --version
+          - python --version
     steps:
       - name: Test Entrypoint Default
         run: |-
           {
             ORG_IMAGE="${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}"
             printf "Testing default entrypoint\n"
+            printf "\n"
             docker run "${ORG_IMAGE}:latest"
+            printf "\n"
+            for c in $(docker ps -a | grep "${ORG_IMAGE}" | awk '{ print $1 }'); do
+              echo docker rm "${c}"
+              docker rm "${c}"
+              printf "\n"
+            done
           } | tee -a "${GITHUB_STEP_SUMMARY}"
-      - name: Test Entrypoint - Rust
+      - name: Test Entrypoint ${{ matrix.cmd }}
         run: |-
           {
             ORG_IMAGE="${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}"
-            printf "Testing entrypoint - rust\n"
-            docker run "${ORG_IMAGE}:latest" rustc --version
-          } | tee -a "${GITHUB_STEP_SUMMARY}"
-      - name: Test Entrypoint - Go
-        run: |-
-          {
-            ORG_IMAGE="${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}"
-            printf "Testing entrypoint - go\n"
-            docker run "${ORG_IMAGE}:latest" go version
-          } | tee -a "${GITHUB_STEP_SUMMARY}"
-      - name: Test Entrypoint - NodeJs
-        run: |-
-          {
-            ORG_IMAGE="${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}"
-            printf "Testing entrypoint - nodejs\n"
-            docker run "${ORG_IMAGE}:latest" node --version
-          } | tee -a "${GITHUB_STEP_SUMMARY}"
-      - name: Test Entrypoint - Ruby
-        run: |-
-          {
-            ORG_IMAGE="${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}"
-            printf "Testing entrypoint - ruby\n"
-            docker run "${ORG_IMAGE}:latest" ruby --version
-          } | tee -a "${GITHUB_STEP_SUMMARY}"
-      - name: Test Entrypoint - Gcc
-        run: |-
-          {
-            ORG_IMAGE="${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}"
-            printf "Testing entrypoint - gcc\n"
-            docker run "${ORG_IMAGE}:latest" gcc --version
-          } | tee -a "${GITHUB_STEP_SUMMARY}"
-      - name: Test Entrypoint - Python
-        run: |-
-          {
-            ORG_IMAGE="${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}"
-            printf "Testing entrypoint - python\n"
-            docker run "${ORG_IMAGE}:latest" python --version
+            printf "Testing ${{ matrix.cmd }} entrypoint\n"
+            printf "\n"
+            docker run "${ORG_IMAGE}:latest" ${{ matrix.cmd }}
+            printf "\n"
+            for c in $(docker ps -a | grep "${ORG_IMAGE}" | awk '{ print $1 }'); do
+              echo docker rm "${c}"
+              docker rm "${c}"
+              printf "\n"
+            done
           } | tee -a "${GITHUB_STEP_SUMMARY}"
       - name: Docker Version
         run: |-
@@ -86,7 +75,14 @@ jobs:
           {
             ORG_IMAGE="${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}"
             printf "Testing entrypoint - docker\n"
+            printf "\n"
             docker run -v /var/run/docker.sock:/var/run/docker.sock "${ORG_IMAGE}:latest" docker version
+            printf "\n"
+            for c in $(docker ps -a | grep "${ORG_IMAGE}" | awk '{ print $1 }'); do
+              echo docker rm "${c}"
+              docker rm "${c}"
+              printf "\n"
+            done
           } | tee -a "${GITHUB_STEP_SUMMARY}"
   stage2:
     name: Dagger Test
@@ -108,18 +104,4 @@ jobs:
             ORG_IMAGE="${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}"
             printf "Testing entrypoint - dagger\n"
             docker run -v /var/run/docker.sock:/var/run/docker.sock "${ORG_IMAGE}:latest" dagger run uptime
-          } |& tee -a "${GITHUB_STEP_SUMMARY}"
-  stage3:
-    name: Dagger Script Test
-    runs-on: ubuntu-latest
-    container:
-      image: vpayno/ci-generic-debian:latest
-    steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v3
-      - name: Test dagger shell cli
-        run: |-
-          {
-            printf "Testing dagger script\n"
-            .github/dagger/dagger-cli-test-ci-container.sh
           } |& tee -a "${GITHUB_STEP_SUMMARY}"
