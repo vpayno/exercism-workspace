@@ -22,8 +22,8 @@ defaults:
     shell: bash
 
 jobs:
-  stage1:
-    name: Docker Container Test
+  stage1a:
+    name: Docker Generic Container Test
     env:
       ORG: ${{ secrets.DOCKERHUB_USERNAME }}
       IMAGE_NAME: ci-generic-debian
@@ -84,17 +84,81 @@ jobs:
               printf "\n"
             done
           } | tee -a "${GITHUB_STEP_SUMMARY}"
+  stage1b:
+    name: Docker Anaconda Container Test
+    env:
+      ORG: ${{ secrets.DOCKERHUB_USERNAME }}
+      IMAGE_NAME: ci-anaconda-debian
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        cmd:
+          - gcc --version
+          - python --version
+          - R --version
+          - Rscript --version
+    steps:
+      - name: Test Entrypoint Default
+        run: |-
+          {
+            ORG_IMAGE="${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}"
+            printf "Testing default entrypoint\n"
+            printf "\n"
+            docker run "${ORG_IMAGE}:latest"
+            printf "\n"
+            for c in $(docker ps -a | grep "${ORG_IMAGE}" | awk '{ print $1 }'); do
+              echo docker rm "${c}"
+              docker rm "${c}"
+              printf "\n"
+            done
+          } | tee -a "${GITHUB_STEP_SUMMARY}"
+      - name: Test Entrypoint ${{ matrix.cmd }}
+        run: |-
+          {
+            ORG_IMAGE="${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}"
+            printf "Testing ${{ matrix.cmd }} entrypoint\n"
+            printf "\n"
+            docker run "${ORG_IMAGE}:latest" ${{ matrix.cmd }}
+            printf "\n"
+            for c in $(docker ps -a | grep "${ORG_IMAGE}" | awk '{ print $1 }'); do
+              echo docker rm "${c}"
+              docker rm "${c}"
+              printf "\n"
+            done
+          } | tee -a "${GITHUB_STEP_SUMMARY}"
+      - name: Docker Version
+        run: |-
+          docker version
+      - name: Test Entrypoint - Docker
+        run: |-
+          {
+            ORG_IMAGE="${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}"
+            printf "Testing entrypoint - docker\n"
+            printf "\n"
+            docker run -v /var/run/docker.sock:/var/run/docker.sock "${ORG_IMAGE}:latest" docker version
+            printf "\n"
+            for c in $(docker ps -a | grep "${ORG_IMAGE}" | awk '{ print $1 }'); do
+              echo docker rm "${c}"
+              docker rm "${c}"
+              printf "\n"
+            done
+          } | tee -a "${GITHUB_STEP_SUMMARY}"
   stage2:
     name: Dagger Test
     env:
       ORG: ${{ secrets.DOCKERHUB_USERNAME }}
-      IMAGE_NAME: ci-generic-debian
+    strategy:
+      matrix:
+        image:
+          - ci-generic-debian
+          - ci-anaconda-debian
     runs-on: ubuntu-latest
     steps:
       - name: Show dagger version
         run: |-
           {
-            ORG_IMAGE="${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}"
+            IMAGE_NAME="${{ matrix.image }}"
+            ORG_IMAGE="${{ secrets.DOCKERHUB_USERNAME }}/${IMAGE_NAME}"
             printf "dagger version\n"
             docker run "${ORG_IMAGE}:latest" dagger version
           } |& tee -a "${GITHUB_STEP_SUMMARY}"
