@@ -42,6 +42,7 @@ Archived `#12in23` challenge notes to [README-2023.md](./README-2023.md)
 ### CI Containers
 
 - [ci-generic-debian](https://hub.docker.com/r/vpayno/ci-generic-debian/tags)
+- [ci-anaconda-debian](https://hub.docker.com/r/vpayno/ci-anaconda-debian/tags)
 
 ### Workflow Versions
 
