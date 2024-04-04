@@ -37,3 +37,4 @@
 - [etl](./etl/README.md)
 - [saddle-points](./saddle-points/README.md)
 - [leap](./leap/README.md)
+- [mecha-munch-management](./mecha-munch-management/README.md)

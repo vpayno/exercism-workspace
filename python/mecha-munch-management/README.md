@@ -362,3 +362,8 @@ Where a store item count falls to 0, the count should be replaced by the message
 
 - @meatball133
 - @BethanyG
+
+### My Solution
+
+- [my solution](./dict_methods.py)
+- [run-tests](./run-tests-python.txt)
