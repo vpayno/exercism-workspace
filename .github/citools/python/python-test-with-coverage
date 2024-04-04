@@ -41,11 +41,11 @@ main() {
 	print_ruler
 
 	local coverage_line
-	coverage_line="$(xq -q coverage -a line-rate .coverage.xml)"
+	coverage_line="$("${GOBIN}/xq" -q coverage -a line-rate .coverage.xml)"
 	printf "Line Coverage: %.1f%%\n" "$(bc <<<"scale=1; ${coverage_line}* 100")"
 
 	local coverage_branch
-	coverage_branch="$(xq -q coverage -a line-rate .coverage.xml)"
+	coverage_branch="$("${GOBIN}/xq" -q coverage -a branch-rate .coverage.xml)"
 	printf "Branch Coverage: %.1f%%\n" "$(bc <<<"scale=1; ${coverage_branch}* 100")"
 
 	print_ruler
