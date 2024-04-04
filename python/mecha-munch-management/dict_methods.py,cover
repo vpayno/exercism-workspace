@@ -1,21 +1,19 @@
 > """Functions to manage a users shopping cart items."""
   
-  # mypy doesn't support type aliases yet, ignoring the following error:
-  # E: PEP 695 type aliases are not yet supported  [valid-type]
-  
-> type name_t = str  # type: ignore[valid-type]
-> type quantity_t = int  # type: ignore[valid-type]
-> type cart_t = dict[name_t, quantity_t]  # type: ignore[valid-type]
-> type items_t = list[name_t] | tuple[name_t]  # type: ignore[valid-type]
-> type recipes_t = dict[name_t, cart_t]  # type: ignore[valid-type]
-> type update_t = tuple[name_t, cart_t]  # type: ignore[valid-type]
-> type updates_t = list[update_t] | tuple[update_t]  # type: ignore[valid-type]
-> type refrigirate_t = bool  # type: ignore[valid-type]
-> type aisle_t = list[name_t | refrigirate_t]  # type: ignore[valid-type]
-> type aisle_map_t = dict[name_t, aisle_t]  # type: ignore[valid-type]
-> type inventory_entry_t = list[quantity_t | name_t | refrigirate_t]  # type: ignore[valid-type]
-> type fufillment_t = dict[name_t, inventory_entry_t]  # type: ignore[valid-type]
-> type message_t = str  # type: ignore[valid-type]
+  # runners are still using py 3.11, can't use 3.12 type definitions
+> name_t = str
+> quantity_t = int
+> cart_t = dict[name_t, quantity_t]
+> items_t = list[name_t] | tuple[name_t]
+> recipes_t = dict[name_t, cart_t]
+> update_t = tuple[name_t, cart_t]
+> updates_t = list[update_t] | tuple[update_t]
+> refrigirate_t = bool
+> aisle_t = list[name_t | refrigirate_t]
+> aisle_map_t = dict[name_t, aisle_t]
+> inventory_entry_t = list[quantity_t | name_t | refrigirate_t]
+> fufillment_t = dict[name_t, inventory_entry_t]
+> message_t = str
   
   
 > def add_item(current_cart: cart_t, items_to_add: items_t) -> cart_t:
