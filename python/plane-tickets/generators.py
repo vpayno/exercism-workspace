@@ -56,12 +56,9 @@ def generate_seats(quantity: QuantityT) -> Generator[SeatT, Any, Any]:
     Example: 3C, 3D, 4A, 4B
     """
 
-    letter: Generator[LetterT, Any, Any] = generate_seat_letters(quantity)
     row: RowT = 0
 
-    for _ in range(1, quantity + 1):
-        seat: SeatT = next(letter)
-
+    for seat in generate_seat_letters(quantity):
         if seat == "A":
             row += 1
 
