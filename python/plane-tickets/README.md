@@ -263,3 +263,8 @@ The function should then return a `generator` that yields a `ticket_number`.
 - @BethanyG
 - @kytrinyx
 - @meatball133
+
+### My Solution
+
+- [my solution](./generators.py)
+- [run-tests](./run-tests-python.txt)
