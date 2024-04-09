@@ -19,7 +19,7 @@ def convert(number: int) -> str:
     if number % 7 == 0:
         sounds.append("Plong")
 
-    if len(sounds) == 0:
+    if not sounds:
         sounds.append(f"{number}")
 
     return "".join(sounds)
