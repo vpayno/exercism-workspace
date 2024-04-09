@@ -20,9 +20,18 @@ main() {
 	print_ruler
 
 	# shellcheck disable=SC2048,SC2068,SC2086
-	run_command refurb ${@:-./src}
+	run_command refurb --quiet --ignore 183 ${@:-./src}
 
 	print_ruler
+
+	local -a codes
+	local code
+	# shellcheck disable=SC2048,SC2068,SC2086
+	mapfile -t codes < <(refurb --quiet --ignore 183 ${@:-./src} |& sed -r -e 's/^.*\[(FURB[0-9]+)\].*$/\1/g')
+	for code in "${codes[@]}"; do
+		run_command refurb --explain "${code}"
+		print_ruler
+	done
 
 	echo Exit code: "${retval}"
 	return "${retval}"
