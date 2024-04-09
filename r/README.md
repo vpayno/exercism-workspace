@@ -14,3 +14,4 @@
 ## [Exercises](https://exercism.org/tracks/r/exercises)
 
 - [raindrops](./raindrops/README.md)
+- [leap](./leap/README.md)
