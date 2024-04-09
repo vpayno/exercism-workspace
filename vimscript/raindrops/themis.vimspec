@@ -1,0 +1,70 @@
+" themis.vimspec
+
+let s:suite = themis#suite('thesis tests')
+let s:assert = themis#helper('assert')
+
+source *.vim
+
+let g:test_cases = {
+    \ '1': '1',
+    \ '2': '2',
+    \ '3': 'Pling',
+    \ '4': '4',
+    \ '5': 'Plang',
+    \ '6': 'Pling',
+    \ '7': 'Plong',
+    \ '8': '8',
+    \ '9': 'Pling',
+    \ '10': 'Plang',
+    \ '11': '11',
+    \ '12': 'Pling',
+    \ '13': '13',
+    \ '14': 'Plong',
+    \ '15': 'PlingPlang',
+    \ '16': '16',
+    \ '17': '17',
+    \ '18': 'Pling',
+    \ '19': '19',
+    \ '20': 'Plang',
+    \ '21': 'PlingPlong',
+    \ '22': '22',
+    \ '23': '23',
+    \ '24': 'Pling',
+    \ '25': 'Plang',
+    \ '26': '26',
+    \ '27': 'Pling',
+    \ '28': 'Plong',
+    \ '29': '29',
+    \ '30': 'PlingPlang',
+    \ '31': '31',
+    \ '32': '32',
+    \ '33': 'Pling',
+    \ '34': '34',
+    \ '35': 'PlangPlong',
+    \ '36': 'Pling',
+    \ '37': '37',
+    \ '38': '38',
+    \ '39': 'Pling',
+    \ '40': 'Plang',
+    \ '105': 'PlingPlangPlong',
+    \ '3125': 'Plang'
+    \ }
+
+" The function name(my_test_1) will be a test name.
+function s:suite.test_raindrops()
+    let l:number = 0
+    let l:sound = ''
+
+    for l:key in keys(g:test_cases)
+        let l:number = str2nr(l:key)
+        let l:sound = g:test_cases[l:key]
+
+	    let l:got = Raindrops(l:number)
+	    let l:want = l:sound
+
+	    " appending the number to the want/got values to make it easier to debug failures
+	    call s:assert.equals(l:number . ':' . l:want, l:number . ':' . l:got)
+	endfor
+endfunction
+
+" vim: ft=vim

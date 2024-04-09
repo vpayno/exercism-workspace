@@ -46,3 +46,11 @@ Most languages provide operators or functions for one (or both) of these.
 ### Based on
 
 A variation on FizzBuzz, a famous technical interview question that is intended to weed out potential candidates. That question is itself derived from Fizz Buzz, a popular children's game for teaching division. - https://en.wikipedia.org/wiki/Fizz_buzz
+
+### My Solution
+
+- [my solution](./raindrops.vim)
+- [vader tests](./raindrops.vader)
+- [themis tests](./themis.vimspec)
+- [themis profile](./profile.txt)
+- [run-tests output](./run-tests-vimscript.txt)

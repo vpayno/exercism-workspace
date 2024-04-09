@@ -14,5 +14,23 @@
 "   PlingPlang
 "
 function! Raindrops(number) abort
-  " your solution goes here
+  let l:sounds = ''
+
+  if a:number % 3 ==# 0
+      let l:sounds .= 'Pling'
+  endif
+
+  if a:number % 5 ==# 0
+      let l:sounds .= 'Plang'
+  endif
+
+  if a:number % 7 ==# 0
+      let l:sounds .= 'Plong'
+  endif
+
+  if empty(l:sounds)
+      let l:sounds = string(a:number)
+  endif
+
+  return l:sounds
 endfunction

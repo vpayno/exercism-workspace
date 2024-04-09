@@ -1,0 +1,78 @@
+SCRIPT  /home/vpayno/git_vpayno/exercism-workspace/vimscript/raindrops/raindrops.vim
+Sourced 1 time
+Total time:   0.000023105
+ Self time:   0.000023105
+
+count     total (s)      self (s)
+                            "
+                            " Convert a number to a string, the contents of which depend on the number's
+                            " factors.
+                            "
+                            "   - If the number has 3 as a factor, output 'Pling'.
+                            "   - If the number has 5 as a factor, output 'Plang'.
+                            "   - If the number has 7 as a factor, output 'Plong'.
+                            "   - If the number does not have 3, 5, or 7 as a factor, just pass
+                            "     the number's digits straight through.
+                            "
+                            " Example:
+                            "
+                            "   :echo Raindrops(15)
+                            "   PlingPlang
+                            "
+    1              0.000004749 function! Raindrops(number) abort
+                              let l:sounds = ''
+                            
+                              if a:number % 3 ==# 0
+                                  let l:sounds .= 'Pling'
+                              endif
+                            
+                              if a:number % 5 ==# 0
+                                  let l:sounds .= 'Plang'
+                              endif
+                            
+                              if a:number % 7 ==# 0
+                                  let l:sounds .= 'Plong'
+                              endif
+                            
+                              if empty(l:sounds)
+                                  let l:sounds = string(a:number)
+                              endif
+                            
+                              return l:sounds
+                            endfunction
+
+FUNCTION  Raindrops()
+    Defined: ~/git_vpayno/exercism-workspace/vimscript/raindrops/raindrops.vim:16
+Called 42 times
+Total time:   0.000382013
+ Self time:   0.000382013
+
+count     total (s)      self (s)
+   42                 0.000026441   let l:sounds = ''
+                                  
+   42                 0.000026593   if a:number % 3 ==# 0
+   14                 0.000012217       let l:sounds .= 'Pling'
+   42                 0.000011870   endif
+                                  
+   42                 0.000025211   if a:number % 5 ==# 0
+   10                 0.000009208       let l:sounds .= 'Plang'
+   42                 0.000011468   endif
+                                  
+   42                 0.000024666   if a:number % 7 ==# 0
+    6                 0.000005682       let l:sounds .= 'Plong'
+   42                 0.000011372   endif
+                                  
+   42                 0.000052702   if empty(l:sounds)
+   18                 0.000021295       let l:sounds = string(a:number)
+   42                 0.000011761   endif
+                                  
+   42                 0.000023869   return l:sounds
+
+FUNCTIONS SORTED ON TOTAL TIME
+count     total (s)      self (s)  function
+   42   0.000382013                Raindrops()
+
+FUNCTIONS SORTED ON SELF TIME
+count     total (s)      self (s)  function
+   42                 0.000382013  Raindrops()
+
