@@ -24,3 +24,4 @@
 - [assembly-line](./assembly-line/README.md)
 - [bird-count](./bird-count/README.md)
 - [regular-chatbot](./regular-chatbot/README.md)
+- [raindrops](./raindrops/README.md)
