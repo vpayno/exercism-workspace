@@ -1,0 +1,41 @@
+#!/bin/bash
+
+if [[ ! -d .exercism ]]; then
+	printf "ERROR: Run from inside a project directory.\n\n"
+	exit 1
+fi
+
+# declare package_name_snake
+
+get_track_package_name() {
+	# these are kebab-case
+	basename "${PWD}"
+} # get_track_package_name()
+
+kebab_case_to_pascal_case() {
+	printf "%s" "${@}" | sed -r -e 's/(^|[-])(\w)/\U\2/g'
+} # kebab_case_to_pascal_case()
+
+kebab_case_to_camel_case() {
+	printf "%s" "${@}" | sed -r -e 's/([-])(\w)/\U\2/g'
+} # kebab_case_to_camel_case()
+
+kebab_case_to_snake_case() {
+	printf "%s" "${@}" | sed -r -e 's/(\w)([-])(\w)/\1_\3/g'
+} # kebab_case_to_snake_case()
+
+# package_name_snake="$(kebab_case_to_snake_case "$(get_track_package_name)")"
+
+declare -a JQ_FILES
+
+mapfile -t JQ_FILES < <(jq -r '.files.solution[]' .exercism/config.json)
+JQ_FILES+=(./run-tests-*.txt)
+
+# mapfile -t JQ_FILES < <(
+#	find . -type f -name "*[.]go" | grep -v "_test[.]go"
+#	find . -type f -name "*_examples_test[.]go"
+#)
+
+echo Running: exercism submit "${JQ_FILES[@]}"
+time exercism submit "${JQ_FILES[@]}"
+printf "\n"
