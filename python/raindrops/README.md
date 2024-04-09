@@ -73,3 +73,8 @@ The built-in function [`divmod()`][divmod] will also give a remainder than match
 ### Based on
 
 A variation on FizzBuzz, a famous technical interview question that is intended to weed out potential candidates. That question is itself derived from Fizz Buzz, a popular children's game for teaching division. - https://en.wikipedia.org/wiki/Fizz_buzz
+
+### My Solution
+
+- [my solution](./raindrops.py)
+- [run-tests](./run-tests-python.txt)
