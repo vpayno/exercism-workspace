@@ -12,6 +12,6 @@ def reverse(text: str) -> str:
 
     rune: str
     for rune in text:
-        rtext = rune + rtext
+        rtext = f"{rune}{rtext}"
 
     return rtext
