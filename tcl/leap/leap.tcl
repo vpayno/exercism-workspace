@@ -1,5 +1,17 @@
 #!/usr/bin/env tclsh
 
 proc isLeapYear {year} {
-    throw {NOT_IMPLEMENTED} "Implement this procedure."
+    if { [expr $year % 400] == 0 } {
+        return true
+    }
+
+    if { [expr $year % 100] == 0 } {
+        return false
+    }
+
+    if { [expr $year % 4] == 0 } {
+        return true
+    }
+
+    return false
 }
