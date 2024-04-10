@@ -1,0 +1,63 @@
+SCRIPT  /home/vpayno/git_vpayno/exercism-workspace/vimscript/leap/leap.vim
+Sourced 1 time
+Total time:   0.000014876
+ Self time:   0.000014876
+
+count     total (s)      self (s)
+                            "
+                            " This function takes a year and returns 1 if it's a leap year
+                            " and 0 otherwise.
+                            "
+    1              0.000002322 function! LeapYear(year) abort
+                              " the tests want 0->false, 1->true
+                              let l:true = 1
+                              let l:false = 0
+                            
+                              if a:year % 400 ==# 0
+                                  return l:true
+                              endif
+                            
+                              if a:year % 100 ==# 0
+                                  return l:false
+                              endif
+                            
+                              if a:year % 4 ==# 0
+                                  return l:true
+                              endif
+                            
+                              return l:false
+                            endfunction
+
+FUNCTION  LeapYear()
+    Defined: ~/git_vpayno/exercism-workspace/vimscript/leap/leap.vim:5
+Called 5 times
+Total time:   0.000036833
+ Self time:   0.000036833
+
+count     total (s)      self (s)
+                                    " the tests want 0->false, 1->true
+    5                 0.000004532   let l:true = 1
+    5                 0.000004432   let l:false = 0
+                                  
+    5                 0.000004906   if a:year % 400 ==# 0
+    1                 0.000000720       return l:true
+    4                 0.000001581   endif
+                                  
+    4                 0.000003105   if a:year % 100 ==# 0
+    2                 0.000001574       return l:false
+    2                 0.000000666   endif
+                                  
+    2                 0.000001496   if a:year % 4 ==# 0
+    1                 0.000000686       return l:true
+    1                 0.000000338   endif
+                                  
+    1                 0.000000711   return l:false
+
+FUNCTIONS SORTED ON TOTAL TIME
+count     total (s)      self (s)  function
+    5   0.000036833                LeapYear()
+
+FUNCTIONS SORTED ON SELF TIME
+count     total (s)      self (s)  function
+    5                 0.000036833  LeapYear()
+

@@ -1,0 +1,33 @@
+" themis.vimspec
+
+let s:suite = themis#suite('thesis tests')
+let s:assert = themis#helper('assert')
+
+source *.vim
+
+let g:test_cases = {
+    \ '2015': 0,
+    \ '1996': 1,
+    \ '2100': 0,
+    \ '2000': 1,
+    \ '1800': 0
+    \ }
+
+" The function name(my_test_1) will be a test name.
+function s:suite.test_leapyear()
+    let l:year = 0
+    let l:result = 0
+
+    for l:key in keys(g:test_cases)
+        let l:year = str2nr(l:key)
+        let l:result = g:test_cases[l:key]
+
+	    let l:got = LeapYear(l:year)
+	    let l:want = l:result
+
+	    " appending the number to the want/got values to make it easier to debug failures
+	    call s:assert.equals(l:year . ':' . l:want, l:year . ':' . l:got)
+	endfor
+endfunction
+
+" vim: ft=vim
