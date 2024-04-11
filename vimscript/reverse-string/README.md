@@ -28,3 +28,11 @@ Some examples:
 ### Based on
 
 Introductory challenge to reverse an input string - https://medium.freecodecamp.org/how-to-reverse-a-string-in-javascript-in-3-different-ways-75e4763c68cb
+
+### My Solution
+
+- [my solution](./reverse_string.vim)
+- [vader tests](./reverse_string.vader)
+- [themis tests](./themis.vimspec)
+- [themis profile](./profile.txt)
+- [run-tests output](./run-tests-vimscript.txt)

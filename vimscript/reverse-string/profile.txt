@@ -1,0 +1,47 @@
+SCRIPT  /home/vpayno/git_vpayno/exercism-workspace/vimscript/reverse-string/reverse_string.vim
+Sourced 1 time
+Total time:   0.000013581
+ Self time:   0.000013581
+
+count     total (s)      self (s)
+                            "
+                            " Reverses the passed test
+                            "
+                            " Examples:
+                            "
+                            "   :echo Reverse('Exercism')
+                            "   msicrexE
+                            "
+    1              0.000002889 function! Reverse(text) abort
+                                let l:rtext = ''
+                            
+                                for s:item in split(a:text, '\zs')
+                                    let l:rtext = s:item . l:rtext
+                                endfor
+                            
+                                return l:rtext
+                            endfunction
+
+FUNCTION  Reverse()
+    Defined: ~/git_vpayno/exercism-workspace/vimscript/reverse-string/reverse_string.vim:9
+Called 6 times
+Total time:   0.000140630
+ Self time:   0.000140630
+
+count     total (s)      self (s)
+    6                 0.000026721     let l:rtext = ''
+                                  
+   40                 0.000046056     for s:item in split(a:text, '\zs')
+   34                 0.000035614         let l:rtext = s:item . l:rtext
+   40                 0.000014829     endfor
+                                  
+    6                 0.000004430     return l:rtext
+
+FUNCTIONS SORTED ON TOTAL TIME
+count     total (s)      self (s)  function
+    6   0.000140630                Reverse()
+
+FUNCTIONS SORTED ON SELF TIME
+count     total (s)      self (s)  function
+    6                 0.000140630  Reverse()
+

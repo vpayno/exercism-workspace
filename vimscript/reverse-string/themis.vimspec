@@ -1,0 +1,34 @@
+" themis.vimspec
+
+let s:suite = themis#suite('thesis tests')
+let s:assert = themis#helper('assert')
+
+source *.vim
+
+let g:test_cases = {
+    \ '': '',
+    \ 'robot': 'tobor',
+    \ 'Ramen': 'nemaR',
+    \ 'I''m hungry!': '!yrgnuh m''I',
+    \ 'racecar': 'racecar',
+    \ 'drawer': 'reward'
+    \ }
+
+" The function name(my_test_1) will be a test name.
+function s:suite.test_reverse_string()
+    let l:forward = 0
+    let l:backward = 0
+
+    for l:key in keys(g:test_cases)
+        let l:forward = l:key
+        let l:backward = g:test_cases[l:key]
+
+	    let l:got = Reverse(l:forward)
+	    let l:want = l:backward
+
+	    " appending the number to the want/got values to make it easier to debug failures
+	    call s:assert.equals(l:forward . ':' . l:want, l:forward . ':' . l:got)
+	endfor
+endfunction
+
+" vim: ft=vim
