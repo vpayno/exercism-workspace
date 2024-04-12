@@ -29,3 +29,8 @@ Some examples:
 ### Based on
 
 Introductory challenge to reverse an input string - https://medium.freecodecamp.org/how-to-reverse-a-string-in-javascript-in-3-different-ways-75e4763c68cb
+
+### My Solution
+
+- [reverse-string.R](./reverse-string.R)
+- [run-tests](./run-tests-r.txt)
