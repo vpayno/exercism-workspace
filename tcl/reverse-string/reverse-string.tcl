@@ -1,6 +1,5 @@
 proc reverse {text} {
-    set rlist [lreverse [split $text ""]]
-    set rtext [join $rlist ""]
+    set rtext [string reverse $text]
 
     return $rtext
 }
