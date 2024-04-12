@@ -1,3 +1,9 @@
-proc reverse {input} {
-    throw {NOT_IMPLEMENTED} "Implement this procedure."
+proc reverse {text} {
+    set rtext ""
+
+    foreach char [lreverse [split $text ""]] {
+        append rtext $char
+    }
+
+    return $rtext
 }

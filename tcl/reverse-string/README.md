@@ -37,3 +37,8 @@ Try to implement this yourself without using those "cheats".
 ### Based on
 
 Introductory challenge to reverse an input string - https://medium.freecodecamp.org/how-to-reverse-a-string-in-javascript-in-3-different-ways-75e4763c68cb
+
+### My Solution
+
+- [reverse-string.tcl](./reverse-string.tcl)
+- [run-tests](./run-tests-tcl.txt)
