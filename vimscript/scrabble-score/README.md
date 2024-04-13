@@ -57,3 +57,11 @@ And to total:
 ### Based on
 
 Inspired by the Extreme Startup game - https://github.com/rchatley/extreme_startup
+
+### My Solution
+
+- [my solution](./scrabble_score.vim)
+- [vader tests](./scrabble_score.vader)
+- [themis tests](./themis.vimspec)
+- [themis profile](./profile.txt)
+- [run-tests output](./run-tests-vimscript.txt)

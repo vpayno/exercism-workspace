@@ -1,0 +1,63 @@
+" themis.vimspec
+
+let s:suite = themis#suite('thesis tests')
+let s:assert = themis#helper('assert')
+
+source *.vim
+
+let g:test_cases = {
+    \ 'a': 1,
+    \ 'b': 3,
+    \ 'B': 3,
+    \ 'c': 3,
+    \ 'd': 2,
+    \ 'e': 1,
+    \ 'f': 4,
+    \ 'g': 2,
+    \ 'h': 4,
+    \ 'i': 1,
+    \ 'j': 8,
+    \ 'k': 5,
+    \ 'l': 1,
+    \ 'm': 3,
+    \ 'n': 1,
+    \ 'o': 1,
+    \ 'p': 3,
+    \ 'q': 10,
+    \ 'r': 1,
+    \ 's': 1,
+    \ 't': 1,
+    \ 'u': 1,
+    \ 'v': 4,
+    \ 'w': 4,
+    \ 'x': 8,
+    \ 'y': 4,
+    \ 'z': 10,
+    \ 'Z': 10,
+    \ 'at': 2,
+    \ 'zoo': 12,
+    \ 'street': 6,
+    \ 'quirky': 22,
+    \ 'OxyphenButazone': 41,
+    \ 'pinata': 8,
+    \ 'abcdefghijklmnopqrstuvwxyz': 87
+    \ }
+
+" The function name(my_test_1) will be a test name.
+function s:suite.test_to_roman()
+    let l:word = ''
+    let l:score = 0
+
+    for l:key in sort(keys(g:test_cases))
+        let l:word = l:key
+        let l:score = g:test_cases[l:key]
+
+	    let l:got = Score(l:word)
+	    let l:want = l:score
+
+	    " appending the number to the want/got values to make it easier to debug failures
+	    call s:assert.equals(l:word . ':' . l:want, l:word . ':' . l:got)
+	endfor
+endfunction
+
+" vim: ft=vim

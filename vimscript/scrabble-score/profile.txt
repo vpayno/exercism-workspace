@@ -1,0 +1,98 @@
+SCRIPT  /home/vpayno/git_vpayno/exercism-workspace/vimscript/scrabble-score/scrabble_score.vim
+Sourced 1 time
+Total time:   0.000019924
+ Self time:   0.000019924
+
+count     total (s)      self (s)
+                            "
+                            " Given a word, return the scrabble score for that word.
+                            "
+                            "    Letter                           Value
+                            "    A, E, I, O, U, L, N, R, S, T     1
+                            "    D, G                             2
+                            "    B, C, M, P                       3
+                            "    F, H, V, W, Y                    4
+                            "    K                                5
+                            "    J, X                             8
+                            "    Q, Z                             10
+                            "
+                            
+    1              0.000003358 function! ScoreLetter(letter) abort
+                              let l:letter2score = {
+                                \ 'a': 1,
+                                \ 'e': 1,
+                                \ 'i': 1,
+                                \ 'o': 1,
+                                \ 'u': 1,
+                                \ 'l': 1,
+                                \ 'n': 1,
+                                \ 'r': 1,
+                                \ 's': 1,
+                                \ 't': 1,
+                                \ 'd': 2,
+                                \ 'g': 2,
+                                \ 'b': 3,
+                                \ 'c': 3,
+                                \ 'm': 3,
+                                \ 'p': 3,
+                                \ 'f': 4,
+                                \ 'h': 4,
+                                \ 'v': 4,
+                                \ 'w': 4,
+                                \ 'y': 4,
+                                \ 'k': 5,
+                                \ 'j': 8,
+                                \ 'x': 8,
+                                \ 'q': 10,
+                                \ 'z': 10
+                                \ }
+                            
+                              return get(l:letter2score, a:letter, 0)
+                            endfunction
+                            
+    1              0.000000843 function! Score(word) abort
+                                let l:score = 0
+                            
+                                for letter in split(tolower(a:word), '\zs')
+                                    let l:score += ScoreLetter(letter)
+                                endfor
+                            
+                                return l:score
+                            endfunction
+
+FUNCTION  ScoreLetter()
+    Defined: ~/git_vpayno/exercism-workspace/vimscript/scrabble-score/scrabble_score.vim:14
+Called 92 times
+Total time:   0.000725346
+ Self time:   0.000725346
+
+count     total (s)      self (s)
+   92                 0.000590300   let l:letter2score = { 'a': 1, 'e': 1, 'i': 1, 'o': 1, 'u': 1, 'l': 1, 'n': 1, 'r': 1, 's': 1, 't': 1, 'd': 2, 'g': 2, 'b': 3, 'c': 3, 'm': 3, 'p': 3, 'f': 4, 'h': 4, 'v': 4, 'w': 4, 'y': 4, 'k': 5, 'j': 8, 'x': 8, 'q': 10, 'z': 10 }
+                                  
+   92                 0.000109088   return get(l:letter2score, a:letter, 0)
+
+FUNCTION  Score()
+    Defined: ~/git_vpayno/exercism-workspace/vimscript/scrabble-score/scrabble_score.vim:47
+Called 35 times
+Total time:   0.001176894
+ Self time:   0.000451548
+
+count     total (s)      self (s)
+   35                 0.000023283     let l:score = 0
+                                  
+  127                 0.000135234     for letter in split(tolower(a:word), '\zs')
+   92   0.000907963   0.000182617         let l:score += ScoreLetter(letter)
+  127                 0.000039641     endfor
+                                  
+   35                 0.000019063     return l:score
+
+FUNCTIONS SORTED ON TOTAL TIME
+count     total (s)      self (s)  function
+   35   0.001176894   0.000451548  Score()
+   92   0.000725346                ScoreLetter()
+
+FUNCTIONS SORTED ON SELF TIME
+count     total (s)      self (s)  function
+   92                 0.000725346  ScoreLetter()
+   35   0.001176894   0.000451548  Score()
+
