@@ -89,3 +89,8 @@ Make sure to check out our Deep Dive video at the end to explore the different a
 ### Based on
 
 The Roman Numeral Kata - https://codingdojo.org/kata/RomanNumerals/
+
+### My Solution
+
+- [roman-numerals.tcl](./roman-numerals.tcl)
+- [run-tests](./run-tests-tcl.txt)
