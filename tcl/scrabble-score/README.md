@@ -50,3 +50,8 @@ For example, the word "cabbage" is worth 14 points:
 ### Based on
 
 Inspired by the Extreme Startup game - https://github.com/rchatley/extreme_startup
+
+### My Solution
+
+- [scrabble-score.tcl](./scrabble-score.tcl)
+- [run-tests](./run-tests-tcl.txt)
