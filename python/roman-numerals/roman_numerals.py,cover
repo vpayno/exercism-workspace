@@ -2,15 +2,15 @@
   
 > from collections import OrderedDict
   
-> type modern_numeral_t = int  # type: ignore[valid-type]
-> type roman_numeral_t = str  # type: ignore[valid-type]
-> type map_d2r_t = OrderedDict[modern_numeral_t, roman_numeral_t]  # type: ignore[valid-type]
+> ModernNumeralT = int
+> RomanNumeralT = str
+> MapD2RT = OrderedDict[ModernNumeralT, RomanNumeralT]
   
   
-> def roman(number: modern_numeral_t) -> roman_numeral_t:
->     rn: roman_numeral_t = ""
+> def roman(number: ModernNumeralT) -> RomanNumeralT:
+>     rn: RomanNumeralT = ""
   
->     d2r: map_d2r_t = OrderedDict()
+>     d2r: MapD2RT = OrderedDict()
 >     d2r[1] = "I"
 >     d2r[4] = "IV"
 >     d2r[5] = "V"
