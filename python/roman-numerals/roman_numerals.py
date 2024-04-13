@@ -8,6 +8,12 @@ MapD2RT = OrderedDict[ModernNumeralT, RomanNumeralT]
 
 
 def roman(number: ModernNumeralT) -> RomanNumeralT:
+    """Convert a decimal number to a roman numeral.
+
+    :param number: integer
+    :return: string
+    """
+
     rn: RomanNumeralT = ""
 
     d2r: MapD2RT = OrderedDict()
