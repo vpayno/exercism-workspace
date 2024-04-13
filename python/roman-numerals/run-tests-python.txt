@@ -1,0 +1,513 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: ../../.github/citools/python/python-lint-pylint
+
+Running Python Lint - PyLint
+
+Python versions:
+
+	Python 3.12.1
+	pyenv 2.3.36-21-g7e550e31
+	pip 24.0 from /home/vpayno/.pyenv/versions/3.12.1/lib/python3.12/site-packages/pip (python 3.12)
+	PDM, version 2.13.2
+
+
+ ==============================================================================
+
+Running: pylint --version
+
+pylint 3.0.3
+astroid 3.0.2
+Python 3.12.1 (main, Dec 28 2023, 08:22:05) [GCC 10.2.1 20210110]
+
+real	0m0.221s
+user	0m0.162s
+sys	0m0.062s
+
+
+ ==============================================================================
+
+Running: pylint ./src
+
+************* Module roman_numerals.roman_numerals
+src/roman_numerals/roman_numerals.py:10:0: C0116: Missing function or method docstring (missing-function-docstring)
+
+------------------------------------------------------------------
+Your code has been rated at 9.60/10 (previous run: 9.62/10, -0.02)
+
+
+real	0m0.579s
+user	0m0.490s
+sys	0m0.091s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m1.712s
+user	0m1.296s
+sys	0m0.440s
+
+real	0m1.716s
+user	0m1.296s
+sys	0m0.444s
+
+===============================================================================
+
+Running: ../../.github/citools/python/python-lint-ruff
+
+Running Python Lint - Ruff
+
+Python versions:
+
+	Python 3.12.1
+	pyenv 2.3.36-21-g7e550e31
+	pip 24.0 from /home/vpayno/.pyenv/versions/3.12.1/lib/python3.12/site-packages/pip (python 3.12)
+	PDM, version 2.13.2
+
+
+ ==============================================================================
+
+Running: ruff --version
+
+ruff 0.3.5
+
+real	0m0.079s
+user	0m0.030s
+sys	0m0.051s
+
+
+ ==============================================================================
+
+Running: ruff check --ignore E501 ./src
+
+All checks passed!
+
+real	0m0.097s
+user	0m0.040s
+sys	0m0.061s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.096s
+user	0m0.727s
+sys	0m0.395s
+
+real	0m1.098s
+user	0m0.728s
+sys	0m0.396s
+
+===============================================================================
+
+Running: ../../.github/citools/python/python-lint-pyright
+
+Running Python Lint - PyRight
+
+Python versions:
+
+	Python 3.12.1
+	pyenv 2.3.36-21-g7e550e31
+	pip 24.0 from /home/vpayno/.pyenv/versions/3.12.1/lib/python3.12/site-packages/pip (python 3.12)
+	PDM, version 2.13.2
+
+
+ ==============================================================================
+
+Running: pyright --version
+
+pyright 1.1.358
+
+real	0m1.021s
+user	0m0.504s
+sys	0m0.132s
+
+
+ ==============================================================================
+
+Running: pyright --stats ./src
+
+Found 2 source files
+pyright 1.1.358
+0 errors, 0 warnings, 0 informations 
+Completed in 0.617sec
+
+Analysis stats
+Total files parsed and bound: 20
+Total files checked: 2
+
+Timing stats
+Find Source Files:    0sec
+Read Source Files:    0.01sec
+Tokenize:             0.05sec
+Parse:                0.05sec
+Resolve Imports:      0.05sec
+Bind:                 0.05sec
+Check:                0.09sec
+Detect Cycles:        0sec
+
+real	0m1.250s
+user	0m1.352s
+sys	0m0.177s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m3.209s
+user	0m2.501s
+sys	0m0.620s
+
+real	0m3.212s
+user	0m2.504s
+sys	0m0.620s
+
+===============================================================================
+
+Running: ../../.github/citools/python/python-lint-bandit
+
+Running Python Lint - Bandit
+
+Python versions:
+
+	Python 3.12.1
+	pyenv 2.3.36-21-g7e550e31
+	pip 24.0 from /home/vpayno/.pyenv/versions/3.12.1/lib/python3.12/site-packages/pip (python 3.12)
+	PDM, version 2.13.2
+
+
+ ==============================================================================
+
+Running: bandit --version
+
+bandit 1.7.7
+  python version = 3.12.1 (main, Dec 28 2023, 08:22:05) [GCC 10.2.1 20210110]
+
+real	0m0.269s
+user	0m0.215s
+sys	0m0.056s
+
+
+ ==============================================================================
+
+Running: bandit --verbose --recursive ./src
+
+[main]	INFO	profile include tests: None
+[main]	INFO	profile exclude tests: None
+[main]	INFO	cli include tests: None
+[main]	INFO	cli exclude tests: None
+[main]	INFO	running on Python 3.12.1
+Run started:2024-04-13 15:41:59.990562
+Files in scope (2):
+	./src/roman_numerals/__init__.py (score: {SEVERITY: 0, CONFIDENCE: 0})
+	./src/roman_numerals/roman_numerals.py (score: {SEVERITY: 0, CONFIDENCE: 0})
+Files excluded (2):
+	./src/roman_numerals/__pycache__/__init__.cpython-312.pyc
+	./src/roman_numerals/__pycache__/roman_numerals.cpython-312.pyc
+
+Test results:
+	No issues identified.
+
+Code scanned:
+	Total lines of code: 26
+	Total lines skipped (#nosec): 0
+	Total potential issues skipped due to specifically being disabled (e.g., #nosec BXXX): 0
+
+Run metrics:
+	Total issues (by severity):
+		Undefined: 0
+		Low: 0
+		Medium: 0
+		High: 0
+	Total issues (by confidence):
+		Undefined: 0
+		Low: 0
+		Medium: 0
+		High: 0
+Files skipped (0):
+
+real	0m0.240s
+user	0m0.160s
+sys	0m0.082s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.395s
+user	0m1.024s
+sys	0m0.391s
+
+real	0m1.397s
+user	0m1.026s
+sys	0m0.391s
+
+===============================================================================
+
+Running: ../../.github/citools/python/python-lint-refurb
+
+Running Python Lint - Refurb
+
+Python versions:
+
+	Python 3.12.1
+	pyenv 2.3.36-21-g7e550e31
+	pip 24.0 from /home/vpayno/.pyenv/versions/3.12.1/lib/python3.12/site-packages/pip (python 3.12)
+	PDM, version 2.13.2
+
+
+ ==============================================================================
+
+Running: refurb --version
+
+Refurb: v1.26.0
+Mypy: v1.9.0
+
+real	0m0.179s
+user	0m0.120s
+sys	0m0.061s
+
+
+ ==============================================================================
+
+Running: refurb --quiet --ignore 183 ./src
+
+
+real	0m1.133s
+user	0m1.037s
+sys	0m0.098s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m3.311s
+user	0m2.832s
+sys	0m0.502s
+
+real	0m3.313s
+user	0m2.833s
+sys	0m0.502s
+
+===============================================================================
+
+Running: ../../.github/citools/python/python-test-with-doctests
+
+Running Python DocTests
+
+Python versions:
+
+	Python 3.12.1
+	pyenv 2.3.36-21-g7e550e31
+	pip 24.0 from /home/vpayno/.pyenv/versions/3.12.1/lib/python3.12/site-packages/pip (python 3.12)
+	PDM, version 2.13.2
+
+
+ ==============================================================================
+
+PYTHONPATH="./src"
+
+ ==============================================================================
+
+Running: python -m doctest -v ./src/roman_numerals/__init__.py ./src/roman_numerals/roman_numerals.py
+
+1 items had no tests:
+    __init__
+0 tests in 1 items.
+0 passed and 0 failed.
+Test passed.
+2 items had no tests:
+    roman_numerals
+    roman_numerals.roman
+0 tests in 2 items.
+0 passed and 0 failed.
+Test passed.
+
+real	0m0.133s
+user	0m0.083s
+sys	0m0.053s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.041s
+user	0m0.725s
+sys	0m0.334s
+
+real	0m1.043s
+user	0m0.725s
+sys	0m0.336s
+
+===============================================================================
+
+Running: ../../.github/citools/python/python-test-with-coverage
+
+Running Python Tests With Coverage
+
+Python versions:
+
+	Python 3.12.1
+	pyenv 2.3.36-21-g7e550e31
+	pip 24.0 from /home/vpayno/.pyenv/versions/3.12.1/lib/python3.12/site-packages/pip (python 3.12)
+	PDM, version 2.13.2
+
+
+ ==============================================================================
+
+Running: rm -rf ./coverage
+
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.001s
+
+
+ ==============================================================================
+
+Running: pytest --version
+
+pytest 7.4.3
+
+real	0m0.771s
+user	0m0.842s
+sys	0m0.821s
+
+
+ ==============================================================================
+
+PYTHONPATH="./src"
+
+ ==============================================================================
+
+Running: pytest --verbose --cov=. --cov-branch --cov-report=term-missing --cov-report=xml:.coverage.xml -p no:randomly ./test
+
+============================= test session starts ==============================
+platform linux -- Python 3.12.1, pytest-7.4.3, pluggy-1.3.0 -- /home/vpayno/.pyenv/versions/3.12.1/bin/python
+cachedir: .pytest_cache
+hypothesis profile 'default' -> database=DirectoryBasedExampleDatabase(PosixPath('/home/vpayno/git_vpayno/exercism-workspace/python/roman-numerals/.hypothesis/examples'))
+rootdir: /home/vpayno/git_vpayno/exercism-workspace/python/roman-numerals
+configfile: pytest.ini
+plugins: anyio-4.2.0, libtmux-0.25.0, pylama-8.4.1, cov-4.1.0, datafiles-3.0.0, docker-2.0.1, subprocess-1.5.0, typeguard-4.1.5, hypothesis-6.98.17, snapshot-0.9.0
+collecting ... collected 26 items
+
+test/roman_numerals_test.py::RomanNumeralsTest::test_1024_is_mxxiv PASSED [  3%]
+test/roman_numerals_test.py::RomanNumeralsTest::test_141_is_cxli PASSED  [  7%]
+test/roman_numerals_test.py::RomanNumeralsTest::test_163_is_clxiii PASSED [ 11%]
+test/roman_numerals_test.py::RomanNumeralsTest::test_1666_is_mdclxvi PASSED [ 15%]
+test/roman_numerals_test.py::RomanNumeralsTest::test_166_is_clxvi PASSED [ 19%]
+test/roman_numerals_test.py::RomanNumeralsTest::test_16_is_xvi PASSED    [ 23%]
+test/roman_numerals_test.py::RomanNumeralsTest::test_1_is_i PASSED       [ 26%]
+test/roman_numerals_test.py::RomanNumeralsTest::test_27_is_xxvii PASSED  [ 30%]
+test/roman_numerals_test.py::RomanNumeralsTest::test_2_is_ii PASSED      [ 34%]
+test/roman_numerals_test.py::RomanNumeralsTest::test_3000_is_mmm PASSED  [ 38%]
+test/roman_numerals_test.py::RomanNumeralsTest::test_3001_is_mmmi PASSED [ 42%]
+test/roman_numerals_test.py::RomanNumeralsTest::test_3999_is_mmmcmxcix PASSED [ 46%]
+test/roman_numerals_test.py::RomanNumeralsTest::test_3_is_iii PASSED     [ 50%]
+test/roman_numerals_test.py::RomanNumeralsTest::test_402_is_cdii PASSED  [ 53%]
+test/roman_numerals_test.py::RomanNumeralsTest::test_48_is_xlviii PASSED [ 57%]
+test/roman_numerals_test.py::RomanNumeralsTest::test_49_is_xlix PASSED   [ 61%]
+test/roman_numerals_test.py::RomanNumeralsTest::test_4_is_iv PASSED      [ 65%]
+test/roman_numerals_test.py::RomanNumeralsTest::test_575_is_dlxxv PASSED [ 69%]
+test/roman_numerals_test.py::RomanNumeralsTest::test_59_is_lix PASSED    [ 73%]
+test/roman_numerals_test.py::RomanNumeralsTest::test_5_is_v PASSED       [ 76%]
+test/roman_numerals_test.py::RomanNumeralsTest::test_666_is_dclxvi PASSED [ 80%]
+test/roman_numerals_test.py::RomanNumeralsTest::test_66_is_lxvi PASSED   [ 84%]
+test/roman_numerals_test.py::RomanNumeralsTest::test_6_is_vi PASSED      [ 88%]
+test/roman_numerals_test.py::RomanNumeralsTest::test_911_is_cmxi PASSED  [ 92%]
+test/roman_numerals_test.py::RomanNumeralsTest::test_93_is_xciii PASSED  [ 96%]
+test/roman_numerals_test.py::RomanNumeralsTest::test_9_is_ix PASSED      [100%]
+
+=============================== warnings summary ===============================
+../../../../.pyenv/versions/3.12.1/lib/python3.12/site-packages/coverage/pytracer.py:164
+  /home/vpayno/.pyenv/versions/3.12.1/lib/python3.12/site-packages/coverage/pytracer.py:164: DeprecationWarning: currentThread() is deprecated, use current_thread() instead
+    self.thread = self.threading.currentThread()
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+
+---------- coverage: platform linux, python 3.12.1-final-0 -----------
+Name                Stmts   Miss Branch BrPart  Cover   Missing
+---------------------------------------------------------------
+roman_numerals.py      26      1      4      0    97%
+test/__init__.py        0      0      0      0   100%
+---------------------------------------------------------------
+TOTAL                  26      1      4      0    97%
+Coverage XML written to file .coverage.xml
+
+======================== 26 passed, 1 warning in 0.96s =========================
+
+real	0m1.803s
+user	0m1.682s
+sys	0m0.122s
+
+
+ ==============================================================================
+
+Running: coverage report --show-missing
+
+Name                Stmts   Miss Branch BrPart  Cover   Missing
+---------------------------------------------------------------
+roman_numerals.py      26      1      4      0    97%
+test/__init__.py        0      0      0      0   100%
+---------------------------------------------------------------
+TOTAL                  26      1      4      0    97%
+
+real	0m0.145s
+user	0m0.094s
+sys	0m0.053s
+
+
+ ==============================================================================
+
+Running: coverage annotate
+
+
+real	0m0.163s
+user	0m0.093s
+sys	0m0.073s
+
+
+ ==============================================================================
+
+Line Coverage: 96.2%
+Branch Coverage: 100.0%
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m3.836s
+user	0m3.387s
+sys	0m1.366s
+
+real	0m3.838s
+user	0m3.388s
+sys	0m1.367s
+
+===============================================================================
+
+tail -n 10000 ./*,cover | grep -E -C 3 '^> def |^! '
+  
+> def roman(number: modern_numeral_t) -> roman_numeral_t:
+>     rn: roman_numeral_t = ""
+
+===============================================================================
+
+Running: misspell ./src/roman_numerals/__init__.py ./src/roman_numerals/roman_numerals.py
+
+real	0m0.018s
+user	0m0.024s
+sys	0m0.008s
+
+===============================================================================
+
