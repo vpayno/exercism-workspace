@@ -1,0 +1,68 @@
+" themis.vimspec
+
+let s:suite = themis#suite('thesis tests')
+let s:assert = themis#helper('assert')
+
+source *.vim
+
+let g:test_cases = {
+    \ 1: 'I',
+    \ 2: 'II',
+    \ 3: 'III',
+    \ 4: 'IV',
+    \ 5: 'V',
+    \ 6: 'VI',
+    \ 7: 'VII',
+    \ 8: 'VIII',
+    \ 9: 'IX',
+    \ 10: 'X',
+    \ 11: 'XI',
+    \ 12: 'XII',
+    \ 13: 'XIII',
+    \ 14: 'XIV',
+    \ 15: 'XV',
+    \ 16: 'XVI',
+    \ 17: 'XVII',
+    \ 18: 'XVIII',
+    \ 19: 'XIX',
+    \ 20: 'XX',
+    \ 21: 'XXI',
+    \ 27: 'XXVII',
+    \ 48: 'XLVIII',
+    \ 49: 'XLIX',
+    \ 59: 'LIX',
+    \ 66: 'LXVI',
+    \ 93: 'XCIII',
+    \ 141: 'CXLI',
+    \ 163: 'CLXIII',
+    \ 166: 'CLXVI',
+    \ 402: 'CDII',
+    \ 575: 'DLXXV',
+    \ 666: 'DCLXVI',
+    \ 911: 'CMXI',
+    \ 1024: 'MXXIV',
+    \ 1666: 'MDCLXVI',
+    \ 3000: 'MMM',
+    \ 3999: 'MMMCMXCIX',
+    \ 1990: 'MCMXC',
+    \ 2008: 'MMVIII'
+    \ }
+
+" The function name(my_test_1) will be a test name.
+function s:suite.test_to_roman()
+    let l:number = 0
+    let l:roman = ''
+
+    for l:key in sort(keys(g:test_cases))
+        let l:number = l:key
+        let l:roman = g:test_cases[l:key]
+
+	    let l:got = ToRoman(l:number)
+	    let l:want = l:roman
+
+	    " appending the number to the want/got values to make it easier to debug failures
+	    call s:assert.equals(l:number . ':' . l:want, l:number . ':' . l:got)
+	endfor
+endfunction
+
+" vim: ft=vim
