@@ -12,13 +12,15 @@
 "   22
 "
 function! DifferenceOfSquares(number) abort
-  " your implementation goes here
+  return SquareOfSum(a:number) - SumOfSquares(a:number)
 endfunction
 
 function! SquareOfSum(number) abort
-  " your implementation goes here
+  let l:result = a:number * (a:number + 1) / 2
+
+  return l:result * l:result
 endfunction
 
 function! SumOfSquares(number) abort
-  " your implementation goes here
+  return a:number * (a:number + 1) * (2 * a:number + 1) / 6
 endfunction

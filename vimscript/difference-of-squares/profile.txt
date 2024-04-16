@@ -1,0 +1,74 @@
+SCRIPT  /home/vpayno/git_vpayno/exercism-workspace/vimscript/difference-of-squares/difference_of_squares.vim
+Sourced 1 time
+Total time:   0.000017730
+ Self time:   0.000017730
+
+count     total (s)      self (s)
+                            "
+                            " Find the difference between the square of the sum and the sum of the squares
+                            " of the first N natural numbers.
+                            "
+                            " Examples:
+                            "
+                            "   :echo SquareOfSum(3)
+                            "   36
+                            "   :echo SumOfSquares(3)
+                            "   14
+                            "   :echo DifferenceOfSquares(3)
+                            "   22
+                            "
+    1              0.000003921 function! DifferenceOfSquares(number) abort
+                              return SquareOfSum(a:number) - SumOfSquares(a:number)
+                            endfunction
+                            
+    1              0.000000749 function! SquareOfSum(number) abort
+                              let l:result = a:number * (a:number + 1) / 2
+                            
+                              return l:result * l:result
+                            endfunction
+                            
+    1              0.000000887 function! SumOfSquares(number) abort
+                              return a:number * (a:number + 1) * (2 * a:number + 1) / 6
+                            endfunction
+
+FUNCTION  SumOfSquares()
+    Defined: ~/git_vpayno/exercism-workspace/vimscript/difference-of-squares/difference_of_squares.vim:24
+Called 6 times
+Total time:   0.000010721
+ Self time:   0.000010721
+
+count     total (s)      self (s)
+    6                 0.000010011   return a:number * (a:number + 1) * (2 * a:number + 1) / 6
+
+FUNCTION  DifferenceOfSquares()
+    Defined: ~/git_vpayno/exercism-workspace/vimscript/difference-of-squares/difference_of_squares.vim:14
+Called 3 times
+Total time:   0.000024316
+ Self time:   0.000009151
+
+count     total (s)      self (s)
+    3   0.000023471   0.000008306   return SquareOfSum(a:number) - SumOfSquares(a:number)
+
+FUNCTION  SquareOfSum()
+    Defined: ~/git_vpayno/exercism-workspace/vimscript/difference-of-squares/difference_of_squares.vim:18
+Called 6 times
+Total time:   0.000018945
+ Self time:   0.000018945
+
+count     total (s)      self (s)
+    6                 0.000010624   let l:result = a:number * (a:number + 1) / 2
+                                  
+    6                 0.000005401   return l:result * l:result
+
+FUNCTIONS SORTED ON TOTAL TIME
+count     total (s)      self (s)  function
+    3   0.000024316   0.000009151  DifferenceOfSquares()
+    6   0.000018945                SquareOfSum()
+    6   0.000010721                SumOfSquares()
+
+FUNCTIONS SORTED ON SELF TIME
+count     total (s)      self (s)  function
+    6                 0.000018945  SquareOfSum()
+    6                 0.000010721  SumOfSquares()
+    3   0.000024316   0.000009151  DifferenceOfSquares()
+

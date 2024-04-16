@@ -1,0 +1,80 @@
+" themis.vimspec
+
+let s:suite = themis#suite('thesis tests')
+let s:assert = themis#helper('assert')
+
+source *.vim
+
+" SquareOfSum
+let g:test_cases1 = {
+    \ 1: 1,
+    \ 5: 225,
+    \ 100: 25502500
+    \ }
+
+" SumOfSquares
+let g:test_cases2 = {
+    \ 1: 1,
+    \ 5: 55,
+    \ 100: 338350
+    \ }
+
+" DifferenceOfSquares
+let g:test_cases3 = {
+    \ 1: 0,
+    \ 5: 170,
+    \ 100: 25164150
+    \ }
+
+" The function name(my_test_1) will be a test name.
+function s:suite.test_SquareOfSum()
+    let l:number = 0
+    let l:result = 0
+
+    for l:key in keys(g:test_cases1)
+        let l:number = l:key
+        let l:result = g:test_cases1[l:key]
+
+	    let l:got = SquareOfSum(l:number)
+	    let l:want = l:result
+
+	    " appending the number to the want/got values to make it easier to debug failures
+	    call s:assert.equals(l:number . ':' . l:want, l:number . ':' . l:got)
+	endfor
+endfunction
+
+" The function name(my_test_1) will be a test name.
+function s:suite.test_SumOfSquares()
+    let l:number = 0
+    let l:result = 0
+
+    for l:key in keys(g:test_cases2)
+        let l:number = l:key
+        let l:result = g:test_cases2[l:key]
+
+	    let l:got = SumOfSquares(l:number)
+	    let l:want = l:result
+
+	    " appending the number to the want/got values to make it easier to debug failures
+	    call s:assert.equals(l:number . ':' . l:want, l:number . ':' . l:got)
+	endfor
+endfunction
+
+" The function name(my_test_1) will be a test name.
+function s:suite.test_DifferenceOfSquares()
+    let l:number = 0
+    let l:result = 0
+
+    for l:key in keys(g:test_cases3)
+        let l:number = l:key
+        let l:result = g:test_cases3[l:key]
+
+	    let l:got = DifferenceOfSquares(l:number)
+	    let l:want = l:result
+
+	    " appending the number to the want/got values to make it easier to debug failures
+	    call s:assert.equals(l:number . ':' . l:want, l:number . ':' . l:got)
+	endfor
+endfunction
+
+" vim: ft=vim

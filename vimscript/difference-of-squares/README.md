@@ -32,3 +32,11 @@ Finding the best algorithm for the problem is a key skill in software engineerin
 ### Based on
 
 Problem 6 at Project Euler - https://projecteuler.net/problem=6
+
+### My Solution
+
+- [my solution](./difference_of_squares.vim)
+- [vader tests](./difference_of_squares.vader)
+- [themis tests](./themis.vimspec)
+- [themis profile](./profile.txt)
+- [run-tests output](./run-tests-vimscript.txt)

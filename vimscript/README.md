@@ -20,3 +20,4 @@
 - [reverse-string](./reverse-string/README.md)
 - [roman-numerals](./roman-numerals/README.md)
 - [scrabble-score](./scrabble-score/README.md)
+- [difference-of-squares](./difference-of-squares/README.md)
