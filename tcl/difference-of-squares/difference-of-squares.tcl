@@ -1,9 +1,9 @@
 proc squareOfSum {number} {
-    return [expr ($number * ($number + 1) / 2) ** 2]
+    return [expr {($number * ($number + 1) / 2) ** 2}]
 }
 
 proc sumOfSquares {number} {
-    return [expr ($number * ($number + 1) * (2 * $number + 1) / 6)]
+    return [expr {$number * ($number + 1) * (2 * $number + 1) / 6}]
 }
 
 proc differenceOfSquares {number} {
