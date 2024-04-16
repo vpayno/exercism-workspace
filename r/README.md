@@ -16,3 +16,4 @@
 - [raindrops](./raindrops/README.md)
 - [leap](./leap/README.md)
 - [reverse-string](./reverse-string/README.md)
+- [difference-of-squares](./difference-of-squares/README.md)

@@ -35,3 +35,8 @@ Finding the best algorithm for the problem is a key skill in software engineerin
 ### Based on
 
 Problem 6 at Project Euler - https://projecteuler.net/problem=6
+
+### My Solution
+
+- [difference-of-squares.R](./difference-of-squares.R)
+- [run-tests](./run-tests-r.txt)
