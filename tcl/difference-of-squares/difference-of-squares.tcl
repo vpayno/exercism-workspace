@@ -1,11 +1,14 @@
-proc squareOfSum {n} {
-    throw {NOT_IMPLEMENTED} "Implement this procedure."
+proc squareOfSum {number} {
+    return [expr ($number * ($number + 1) / 2) ** 2]
 }
 
-proc sumOfSquares {n} {
-    throw {NOT_IMPLEMENTED} "Implement this procedure."
+proc sumOfSquares {number} {
+    return [expr ($number * ($number + 1) * (2 * $number + 1) / 6)]
 }
 
-proc differenceOfSquares {n} {
-    throw {NOT_IMPLEMENTED} "Implement this procedure."
+proc differenceOfSquares {number} {
+    set square [squareOfSum $number]
+    set sum [sumOfSquares $number]
+
+    return [expr {$square - $sum}]
 }

@@ -31,3 +31,8 @@ Finding the best algorithm for the problem is a key skill in software engineerin
 ### Based on
 
 Problem 6 at Project Euler - https://projecteuler.net/problem=6
+
+### My Solution
+
+- [difference-of-squares.tcl](./difference-of-squares.tcl)
+- [run-tests](./run-tests-tcl.txt)
