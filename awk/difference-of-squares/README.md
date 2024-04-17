@@ -27,3 +27,10 @@ Finding the best algorithm for the problem is a key skill in software engineerin
 ### Based on
 
 Problem 6 at Project Euler - https://projecteuler.net/problem=6
+
+### My Solution
+
+- [my solution](./difference-of-squares.awk)
+- [awkunit tests](./difference-of-squares_test.awk)
+- [test cases](./test-cases.awk)
+- [run-tests](./run-tests-awk.txt)

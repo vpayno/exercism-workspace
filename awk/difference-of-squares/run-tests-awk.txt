@@ -1,0 +1,158 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+AWKLIBPATH=/usr/lib/x86_64-linux-gnu/gawk:../.lib
+
+/usr/lib/x86_64-linux-gnu/gawk
+filefuncs.so
+fnmatch.so
+fork.so
+inplace.so
+intdiv.so
+ordchr.so
+readdir.so
+readfile.so
+revoutput.so
+revtwoway.so
+rwarray.so
+time.so
+
+../.lib
+awkunit.awk
+awkunit.so
+
+gawk  --lint --file=./awkunit.awk < /dev/null > /dev/null
+gawk: ./awkunit.awk:3: warning: `load' is a gawk extension
+gawk: warning: function `assertEquals' defined but never called directly
+gawk: warning: function `assert' defined but never called directly
+gawk: ./awkunit.awk:26: warning: reference to uninitialized variable `_assert_exit'
+
+real	0m0.003s
+user	0m0.001s
+sys	0m0.002s
+
+gawk  --lint --file=./difference-of-squares.awk < /dev/null > /dev/null
+
+real	0m0.004s
+user	0m0.002s
+sys	0m0.002s
+
+gawk  --lint --file=./test-cases.awk < /dev/null > /dev/null
+
+real	0m0.003s
+user	0m0.001s
+sys	0m0.002s
+
+exit 0
+
+===============================================================================
+
+Running: bats ./test-difference-of-squares.bats
+1..9
+ok 1 square of sum 1
+ok 2 square of sum 5
+ok 3 square of sum 100
+ok 4 sum of squares 1
+ok 5 sum of squares 5
+ok 6 sum of squares 100
+ok 7 difference of squares 1
+ok 8 difference of squares 5
+ok 9 difference of squares 100
+
+real	0m0.351s
+user	0m0.210s
+sys	0m0.162s
+
+exit 0
+
+===============================================================================
+
+AWKLIBPATH=/usr/lib/x86_64-linux-gnu/gawk:../.lib
+
+/usr/lib/x86_64-linux-gnu/gawk
+filefuncs.so
+fnmatch.so
+fork.so
+inplace.so
+intdiv.so
+ordchr.so
+readdir.so
+readfile.so
+revoutput.so
+revtwoway.so
+rwarray.so
+time.so
+
+../.lib
+awkunit.awk
+awkunit.so
+
+Running: gawk  --file ./difference-of-squares_test.awk && printf \n%s\n Tests Passed! || printf \n%s\n Tests Failed!
+
+Running 0 tests...
+
+Running 8 test cases
+
+Test 1: [difference,1]
+     input -> [difference,1]
+    output -> [0]
+    result -> passed
+
+Test 2: [difference,100]
+     input -> [difference,100]
+    output -> [25164150]
+    result -> passed
+
+Test 3: [difference,5]
+     input -> [difference,5]
+    output -> [170]
+    result -> passed
+
+Test 4: [square_of_sum,1]
+     input -> [square_of_sum,1]
+    output -> [1]
+    result -> passed
+
+Test 5: [square_of_sum,100]
+     input -> [square_of_sum,100]
+    output -> [25502500]
+    result -> passed
+
+Test 6: [sum_of_squares,1]
+     input -> [sum_of_squares,1]
+    output -> [1]
+    result -> passed
+
+Test 7: [sum_of_squares,100]
+     input -> [sum_of_squares,100]
+    output -> [338350]
+    result -> passed
+
+Test 8: [sum_of_squares,5]
+     input -> [sum_of_squares,5]
+    output -> [55]
+    result -> passed
+
+
+8 out of 8 tests passed!
+
+real	0m0.009s
+user	0m0.005s
+sys	0m0.004s
+
+Tests Passed!
+
+exit 0
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.038s
+user	0m0.044s
+sys	0m0.014s
+
+===============================================================================
+
