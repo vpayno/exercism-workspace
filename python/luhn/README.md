@@ -98,3 +98,8 @@ Sum the digits
 ### Based on
 
 The Luhn Algorithm on Wikipedia - https://en.wikipedia.org/wiki/Luhn_algorithm
+
+### My Solution
+
+- [my solution](./luhn.py)
+- [run-tests](./run-tests-python.txt)

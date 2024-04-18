@@ -1,0 +1,764 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: ../../.github/citools/python/python-lint-pylint
+
+Running Python Lint - PyLint
+
+Python versions:
+
+	Python 3.12.1
+	pyenv 2.3.36-21-g7e550e31
+	pip 24.0 from /home/vpayno/.pyenv/versions/3.12.1/lib/python3.12/site-packages/pip (python 3.12)
+	PDM, version 2.13.2
+
+
+ ==============================================================================
+
+Running: pylint --version
+
+pylint 3.0.3
+astroid 3.0.2
+Python 3.12.1 (main, Dec 28 2023, 08:22:05) [GCC 10.2.1 20210110]
+
+real	0m0.231s
+user	0m0.162s
+sys	0m0.071s
+
+
+ ==============================================================================
+
+Running: pylint ./src
+
+
+--------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
+
+
+real	0m0.624s
+user	0m0.547s
+sys	0m0.080s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.805s
+user	0m1.361s
+sys	0m0.469s
+
+real	0m1.809s
+user	0m1.364s
+sys	0m0.470s
+
+===============================================================================
+
+Running: ../../.github/citools/python/python-lint-ruff
+
+Running Python Lint - Ruff
+
+Python versions:
+
+	Python 3.12.1
+	pyenv 2.3.36-21-g7e550e31
+	pip 24.0 from /home/vpayno/.pyenv/versions/3.12.1/lib/python3.12/site-packages/pip (python 3.12)
+	PDM, version 2.13.2
+
+
+ ==============================================================================
+
+Running: ruff --version
+
+ruff 0.3.5
+
+real	0m0.083s
+user	0m0.039s
+sys	0m0.048s
+
+
+ ==============================================================================
+
+Running: ruff check --ignore E501 ./src
+
+All checks passed!
+
+real	0m0.114s
+user	0m0.045s
+sys	0m0.073s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.107s
+user	0m0.738s
+sys	0m0.392s
+
+real	0m1.109s
+user	0m0.738s
+sys	0m0.395s
+
+===============================================================================
+
+Running: ../../.github/citools/python/python-lint-pyright
+
+Running Python Lint - PyRight
+
+Python versions:
+
+	Python 3.12.1
+	pyenv 2.3.36-21-g7e550e31
+	pip 24.0 from /home/vpayno/.pyenv/versions/3.12.1/lib/python3.12/site-packages/pip (python 3.12)
+	PDM, version 2.13.2
+
+
+ ==============================================================================
+
+Running: pyright --version
+
+pyright 1.1.359
+
+real	0m0.880s
+user	0m0.556s
+sys	0m0.113s
+
+
+ ==============================================================================
+
+Running: pyright --stats ./src
+
+Found 2 source files
+pyright 1.1.359
+0 errors, 0 warnings, 0 informations 
+Completed in 0.729sec
+
+Analysis stats
+Total files parsed and bound: 23
+Total files checked: 2
+
+Timing stats
+Find Source Files:    0sec
+Read Source Files:    0.01sec
+Tokenize:             0.05sec
+Parse:                0.07sec
+Resolve Imports:      0.06sec
+Bind:                 0.08sec
+Check:                0.13sec
+Detect Cycles:        0sec
+
+real	0m1.417s
+user	0m1.709s
+sys	0m0.198s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m3.213s
+user	0m2.902s
+sys	0m0.608s
+
+real	0m3.216s
+user	0m2.903s
+sys	0m0.610s
+
+===============================================================================
+
+Running: ../../.github/citools/python/python-lint-bandit
+
+Running Python Lint - Bandit
+
+Python versions:
+
+	Python 3.12.1
+	pyenv 2.3.36-21-g7e550e31
+	pip 24.0 from /home/vpayno/.pyenv/versions/3.12.1/lib/python3.12/site-packages/pip (python 3.12)
+	PDM, version 2.13.2
+
+
+ ==============================================================================
+
+Running: bandit --version
+
+bandit 1.7.7
+  python version = 3.12.1 (main, Dec 28 2023, 08:22:05) [GCC 10.2.1 20210110]
+
+real	0m0.284s
+user	0m0.211s
+sys	0m0.076s
+
+
+ ==============================================================================
+
+Running: bandit --verbose --recursive ./src
+
+[main]	INFO	profile include tests: None
+[main]	INFO	profile exclude tests: None
+[main]	INFO	cli include tests: None
+[main]	INFO	cli exclude tests: None
+[main]	INFO	running on Python 3.12.1
+Run started:2024-04-18 04:23:49.345884
+Files in scope (2):
+	./src/luhn/__init__.py (score: {SEVERITY: 0, CONFIDENCE: 0})
+	./src/luhn/luhn.py (score: {SEVERITY: 0, CONFIDENCE: 0})
+Files excluded (2):
+	./src/luhn/__pycache__/__init__.cpython-312.pyc
+	./src/luhn/__pycache__/luhn.cpython-312.pyc
+
+Test results:
+	No issues identified.
+
+Code scanned:
+	Total lines of code: 153
+	Total lines skipped (#nosec): 0
+	Total potential issues skipped due to specifically being disabled (e.g., #nosec BXXX): 0
+
+Run metrics:
+	Total issues (by severity):
+		Undefined: 0
+		Low: 0
+		Medium: 0
+		High: 0
+	Total issues (by confidence):
+		Undefined: 0
+		Low: 0
+		Medium: 0
+		High: 0
+Files skipped (0):
+
+real	0m0.248s
+user	0m0.173s
+sys	0m0.078s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.449s
+user	0m1.042s
+sys	0m0.430s
+
+real	0m1.451s
+user	0m1.044s
+sys	0m0.430s
+
+===============================================================================
+
+Running: ../../.github/citools/python/python-lint-refurb
+
+Running Python Lint - Refurb
+
+Python versions:
+
+	Python 3.12.1
+	pyenv 2.3.36-21-g7e550e31
+	pip 24.0 from /home/vpayno/.pyenv/versions/3.12.1/lib/python3.12/site-packages/pip (python 3.12)
+	PDM, version 2.13.2
+
+
+ ==============================================================================
+
+Running: refurb --version
+
+Refurb: v1.26.0
+Mypy: v1.9.0
+
+real	0m0.195s
+user	0m0.125s
+sys	0m0.073s
+
+
+ ==============================================================================
+
+Running: refurb --quiet --ignore 183 ./src
+
+
+real	0m1.265s
+user	0m1.164s
+sys	0m0.104s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m3.620s
+user	0m3.114s
+sys	0m0.532s
+
+real	0m3.623s
+user	0m3.115s
+sys	0m0.533s
+
+===============================================================================
+
+Running: ../../.github/citools/python/python-test-with-doctests
+
+Running Python DocTests
+
+Python versions:
+
+	Python 3.12.1
+	pyenv 2.3.36-21-g7e550e31
+	pip 24.0 from /home/vpayno/.pyenv/versions/3.12.1/lib/python3.12/site-packages/pip (python 3.12)
+	PDM, version 2.13.2
+
+
+ ==============================================================================
+
+PYTHONPATH="./src"
+
+ ==============================================================================
+
+Running: python -m doctest -v ./src/luhn/__init__.py ./src/luhn/luhn.py
+
+1 items had no tests:
+    __init__
+0 tests in 1 items.
+0 passed and 0 failed.
+Test passed.
+Trying:
+    l: Luhn = Luhn("055 444 285")
+Expecting nothing
+ok
+Trying:
+    l._Luhn__is_luhn_number()
+Expecting:
+    True
+ok
+Trying:
+    l: Luhn = Luhn("055 444 286")
+Expecting nothing
+ok
+Trying:
+    l._Luhn__is_luhn_number()
+Expecting:
+    False
+ok
+Trying:
+    digits: list[int] = l.code.extract_digits()
+Expecting nothing
+ok
+Trying:
+    digits
+Expecting:
+    [0, 5, 5, 4, 4, 4, 2, 8, 6]
+ok
+Trying:
+    numbers: list[int] = l._Luhn__step_one_and_two(digits)
+Expecting nothing
+ok
+Trying:
+    numbers
+Expecting:
+    [1, 5, 8, 4, 8, 2, 7, 6, 0]
+ok
+Trying:
+    digit_sum: int = sum(numbers)
+Expecting nothing
+ok
+Trying:
+    digit_sum
+Expecting:
+    41
+ok
+Trying:
+    l: Luhn = Luhn("234 567 891 234")
+Expecting nothing
+ok
+Trying:
+    l._Luhn__is_luhn_number()
+Expecting:
+    True
+ok
+Trying:
+    digits: list[int] = l.code.extract_digits()
+Expecting nothing
+ok
+Trying:
+    digits
+Expecting:
+    [2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4]
+ok
+Trying:
+    numbers: list[int] = l._Luhn__step_one_and_two(digits)
+Expecting nothing
+ok
+Trying:
+    numbers
+Expecting:
+    [4, 3, 8, 5, 3, 7, 7, 9, 2, 2, 6, 4]
+ok
+Trying:
+    digit_sum: int = sum(numbers)
+Expecting nothing
+ok
+Trying:
+    digit_sum
+Expecting:
+    60
+ok
+Trying:
+    l: Luhn = Luhn("0123456789")
+Expecting nothing
+ok
+Trying:
+    d: list[int] = l.code.extract_digits()
+Expecting nothing
+ok
+Trying:
+    d
+Expecting:
+    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+ok
+Trying:
+    l._Luhn__step_one_and_two(d)
+Expecting:
+    [0, 1, 4, 3, 8, 5, 3, 7, 7, 9]
+ok
+Trying:
+    l: Luhn = Luhn("59")
+Expecting nothing
+ok
+Trying:
+    d: list[int] = l.code.extract_digits()
+Expecting nothing
+ok
+Trying:
+    d
+Expecting:
+    [5, 9]
+ok
+Trying:
+    s = l._Luhn__step_one_and_two(d)
+Expecting nothing
+ok
+Trying:
+    s
+Expecting:
+    [1, 9]
+ok
+Trying:
+    sum(s)
+Expecting:
+    10
+ok
+Trying:
+    l: Luhn = Luhn(" 0")
+Expecting nothing
+ok
+Trying:
+    d: list[int] = l.code.extract_digits()
+Expecting nothing
+ok
+Trying:
+    d
+Expecting:
+    [0]
+ok
+Trying:
+    l._Luhn__step_one_and_two(d)
+Expecting:
+    [0]
+ok
+Trying:
+    sum(l._Luhn__step_one_and_two(d))
+Expecting:
+    0
+ok
+Trying:
+    l: Luhn = Luhn("234 567 891 234")
+Expecting nothing
+ok
+Trying:
+    d: list[int] = l.code.extract_digits()
+Expecting nothing
+ok
+Trying:
+    d
+Expecting:
+    [2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4]
+ok
+Trying:
+    l._Luhn__step_one_and_two(d)
+Expecting:
+    [4, 3, 8, 5, 3, 7, 7, 9, 2, 2, 6, 4]
+ok
+Trying:
+    sum(l._Luhn__step_one_and_two(d))
+Expecting:
+    57
+ok
+Trying:
+    l: Luhn = Luhn("055 444 285")
+Expecting nothing
+ok
+Trying:
+    l.valid()
+Expecting:
+    True
+ok
+Trying:
+    l: Luhn = Luhn("055 444 286")
+Expecting nothing
+ok
+Trying:
+    l.valid()
+Expecting:
+    False
+ok
+Trying:
+    l: Luhn = Luhn("234 567 891 234")
+Expecting nothing
+ok
+Trying:
+    l.valid()
+Expecting:
+    True
+ok
+Trying:
+    n: String = String("234 567 891 234")
+Expecting nothing
+ok
+Trying:
+    n == "0"
+Expecting:
+    False
+ok
+Trying:
+    len(n) == 0
+Expecting:
+    False
+ok
+Trying:
+    n == "0"
+Expecting:
+    False
+ok
+Trying:
+    n.match(r"^([0-9 ])+$")
+Expecting:
+    True
+ok
+Trying:
+    s: String = String("1234 5678")
+Expecting nothing
+ok
+Trying:
+    s.extract_digits()
+Expecting:
+    [1, 2, 3, 4, 5, 6, 7, 8]
+ok
+Trying:
+    s: String = String("1234 5678")
+Expecting nothing
+ok
+Trying:
+    s
+Expecting:
+    '1234 5678'
+ok
+Trying:
+    s.match(r"^[0-9 ]+$")
+Expecting:
+    True
+ok
+Trying:
+    s.match(r"^[a-z ]+$")
+Expecting:
+    False
+ok
+4 items had no tests:
+    luhn
+    luhn.Luhn
+    luhn.Luhn.__init__
+    luhn.String
+5 items passed all tests:
+  18 tests in luhn.Luhn._Luhn__is_luhn_number
+  20 tests in luhn.Luhn._Luhn__step_one_and_two
+  11 tests in luhn.Luhn.valid
+   2 tests in luhn.String.extract_digits
+   4 tests in luhn.String.match
+55 tests in 9 items.
+55 passed and 0 failed.
+Test passed.
+
+real	0m0.129s
+user	0m0.083s
+sys	0m0.048s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.067s
+user	0m0.748s
+sys	0m0.339s
+
+real	0m1.069s
+user	0m0.750s
+sys	0m0.339s
+
+===============================================================================
+
+Running: ../../.github/citools/python/python-test-with-coverage
+
+Running Python Tests With Coverage
+
+Python versions:
+
+	Python 3.12.1
+	pyenv 2.3.36-21-g7e550e31
+	pip 24.0 from /home/vpayno/.pyenv/versions/3.12.1/lib/python3.12/site-packages/pip (python 3.12)
+	PDM, version 2.13.2
+
+
+ ==============================================================================
+
+Running: rm -rf ./coverage
+
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.001s
+
+
+ ==============================================================================
+
+Running: pytest --version
+
+pytest 7.4.3
+
+real	0m0.819s
+user	0m0.863s
+sys	0m0.806s
+
+
+ ==============================================================================
+
+PYTHONPATH="./src"
+
+ ==============================================================================
+
+Running: pytest --verbose --cov=. --cov-branch --cov-report=term-missing --cov-report=xml:.coverage.xml -p no:randomly ./test
+
+============================= test session starts ==============================
+platform linux -- Python 3.12.1, pytest-7.4.3, pluggy-1.3.0 -- /home/vpayno/.pyenv/versions/3.12.1/bin/python
+cachedir: .pytest_cache
+hypothesis profile 'default' -> database=DirectoryBasedExampleDatabase(PosixPath('/home/vpayno/git_vpayno/exercism-workspace/python/luhn/.hypothesis/examples'))
+rootdir: /home/vpayno/git_vpayno/exercism-workspace/python/luhn
+configfile: pytest.ini
+plugins: anyio-4.2.0, libtmux-0.25.0, pylama-8.4.1, cov-4.1.0, datafiles-3.0.0, docker-2.0.1, subprocess-1.5.0, typeguard-4.1.5, hypothesis-6.98.17, snapshot-0.9.0
+collecting ... collected 23 items
+
+test/luhn_test.py::LuhnTest::test_a_simple_valid_sin_that_becomes_invalid_if_reversed PASSED [  4%]
+test/luhn_test.py::LuhnTest::test_a_simple_valid_sin_that_remains_valid_if_reversed PASSED [  8%]
+test/luhn_test.py::LuhnTest::test_a_single_zero_is_invalid PASSED        [ 13%]
+test/luhn_test.py::LuhnTest::test_a_valid_canadian_sin PASSED            [ 17%]
+test/luhn_test.py::LuhnTest::test_input_digit_9_is_correctly_converted_to_output_digit_9 PASSED [ 21%]
+test/luhn_test.py::LuhnTest::test_invalid_canadian_sin PASSED            [ 26%]
+test/luhn_test.py::LuhnTest::test_invalid_credit_card PASSED             [ 30%]
+test/luhn_test.py::LuhnTest::test_invalid_long_number_with_a_remainder_divisible_by_5 PASSED [ 34%]
+test/luhn_test.py::LuhnTest::test_invalid_long_number_with_an_even_remainder PASSED [ 39%]
+test/luhn_test.py::LuhnTest::test_is_valid_can_be_called_repeatedly PASSED [ 43%]
+test/luhn_test.py::LuhnTest::test_more_than_a_single_zero_is_valid PASSED [ 47%]
+test/luhn_test.py::LuhnTest::test_non_numeric_non_space_char_in_the_middle_with_a_sum_that_s_divisible_by_10_isn_t_allowed PASSED [ 52%]
+test/luhn_test.py::LuhnTest::test_single_digit_strings_can_not_be_valid PASSED [ 56%]
+test/luhn_test.py::LuhnTest::test_single_zero_with_space_is_invalid PASSED [ 60%]
+test/luhn_test.py::LuhnTest::test_using_ascii_value_for_doubled_non_digit_isn_t_allowed PASSED [ 65%]
+test/luhn_test.py::LuhnTest::test_using_ascii_value_for_non_doubled_non_digit_isn_t_allowed PASSED [ 69%]
+test/luhn_test.py::LuhnTest::test_valid_luhn_with_an_odd_number_of_digits_and_non_zero_first_digit PASSED [ 73%]
+test/luhn_test.py::LuhnTest::test_valid_number_with_an_even_number_of_digits PASSED [ 78%]
+test/luhn_test.py::LuhnTest::test_valid_number_with_an_odd_number_of_spaces PASSED [ 82%]
+test/luhn_test.py::LuhnTest::test_valid_strings_with_a_non_digit_added_at_the_end_become_invalid PASSED [ 86%]
+test/luhn_test.py::LuhnTest::test_valid_strings_with_punctuation_included_become_invalid PASSED [ 91%]
+test/luhn_test.py::LuhnTest::test_valid_strings_with_symbols_included_become_invalid PASSED [ 95%]
+test/luhn_test.py::LuhnTest::test_very_long_input_is_valid PASSED        [100%]
+
+=============================== warnings summary ===============================
+../../../../.pyenv/versions/3.12.1/lib/python3.12/site-packages/coverage/pytracer.py:164
+  /home/vpayno/.pyenv/versions/3.12.1/lib/python3.12/site-packages/coverage/pytracer.py:164: DeprecationWarning: currentThread() is deprecated, use current_thread() instead
+    self.thread = self.threading.currentThread()
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+
+---------- coverage: platform linux, python 3.12.1-final-0 -----------
+Name               Stmts   Miss Branch BrPart  Cover   Missing
+--------------------------------------------------------------
+luhn.py               38      1     10      1    96%   52->exit
+test/__init__.py       0      0      0      0   100%
+--------------------------------------------------------------
+TOTAL                 38      1     10      1    96%
+Coverage XML written to file .coverage.xml
+
+======================== 23 passed, 1 warning in 0.99s =========================
+
+real	0m1.895s
+user	0m1.749s
+sys	0m0.148s
+
+
+ ==============================================================================
+
+Running: coverage report --show-missing
+
+Name               Stmts   Miss Branch BrPart  Cover   Missing
+--------------------------------------------------------------
+luhn.py               38      1     10      1    96%   52->exit
+test/__init__.py       0      0      0      0   100%
+--------------------------------------------------------------
+TOTAL                 38      1     10      1    96%
+
+real	0m0.167s
+user	0m0.091s
+sys	0m0.079s
+
+
+ ==============================================================================
+
+Running: coverage annotate
+
+
+real	0m0.149s
+user	0m0.091s
+sys	0m0.061s
+
+
+ ==============================================================================
+
+Line Coverage: 97.4%
+Branch Coverage: 90.0%
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m3.971s
+user	0m3.466s
+sys	0m1.380s
+
+real	0m3.973s
+user	0m3.466s
+sys	0m1.382s
+
+===============================================================================
+
+tail -n 10000 ./*,cover | grep -E -C 3 '^> def |^! '
+
+===============================================================================
+
+Running: misspell ./src/luhn/__init__.py ./src/luhn/luhn.py
+
+real	0m0.019s
+user	0m0.017s
+sys	0m0.011s
+
+===============================================================================
+
