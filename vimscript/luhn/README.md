@@ -77,3 +77,11 @@ Sum the digits
 ### Based on
 
 The Luhn Algorithm on Wikipedia - https://en.wikipedia.org/wiki/Luhn_algorithm
+
+### My Solution
+
+- [my solution](./luhn.vim)
+- [vader tests](./luhn.vader)
+- [themis tests](./themis.vimspec)
+- [themis profile](./profile.txt)
+- [run-tests output](./run-tests-vimscript.txt)

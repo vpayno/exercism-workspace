@@ -1,0 +1,51 @@
+" themis.vimspec
+
+let s:suite = themis#suite('thesis tests')
+let s:assert = themis#helper('assert')
+
+source *.vim
+
+" IsValid
+let g:test_cases1 = {
+    \ '1': 0,
+    \ '0': 0,
+    \ '059': 1,
+    \ '59': 1,
+    \ '055 444 285': 1,
+    \ '055 444 286': 0,
+    \ '8273 1232 7352 0569': 0,
+    \ '1 2345 6789 1234 5678 9012': 0,
+    \ '1 2345 6789 1234 5678 9013': 0,
+    \ '095 245 88': 1,
+    \ '234 567 891 234': 1,
+    \ '059a': 0,
+    \ '055-444-285': 0,
+    \ '055# 444$ 285': 0,
+    \ ' 0': 0,
+    \ '0000 0': 1,
+    \ '091': 1,
+    \ '9999999999 9999999999 9999999999 9999999999': 1,
+    \ '109': 1,
+    \ '055b 444 285': 0,
+    \ ':9': 0,
+    \ '59%59': 0
+    \ }
+
+" The function name(my_test_1) will be a test name.
+function s:suite.test_IsValid()
+    let l:code = ''
+    let l:result = 0
+
+    for l:key in keys(g:test_cases1)
+        let l:code = l:key
+        let l:result = g:test_cases1[l:key]
+
+	    let l:got = IsValid(l:code)
+	    let l:want = l:result
+
+	    " appending the number to the want/got values to make it easier to debug failures
+	    call s:assert.equals(l:code . ':' . l:want, l:code . ':' . l:got)
+	endfor
+endfunction
+
+" vim: ft=vim

@@ -1,0 +1,141 @@
+SCRIPT  /home/vpayno/git_vpayno/exercism-workspace/vimscript/luhn/luhn.vim
+Sourced 1 time
+Total time:   0.000030747
+ Self time:   0.000030747
+
+count     total (s)      self (s)
+                            "
+                            " Given a number string, determine whether it's valid per the Luhn formula
+                            "
+                            " Example:
+                            "
+                            " :echo IsValid('055 444 285')
+                            " 1
+                            "
+    1              0.000004198 function! IsValid(code) abort
+                                " echom 'code: ' . a:code
+                            
+                                if a:code !~# '^[0-9 ]\+$'
+                                    " echom 'error: bad char'
+                                    return 0 " false
+                                endif
+                            
+                                let l:runes = split(a:code, '\zs')
+                                let l:digits1 = []
+                                let l:digits2 = []
+                            
+                                let l:i = 0
+                                let l:d = 0
+                            
+                                for l:d in l:runes
+                                    if l:d =~# '^[0-9]$'
+                                        let l:digits1 = [str2nr(l:d)] + l:digits1
+                                    endif
+                                endfor
+                            
+                                let l:sum = 0
+                                for l:d in l:digits1
+                                    let l:sum += l:d
+                                endfor
+                            
+                                if l:sum == 0 && len(l:digits1) <= 1
+                                    " echom 'error: single zero'
+                                    return 0 " v:false
+                                endif
+                            
+                                for l:d in l:digits1
+                                    if l:i % 2 != 0
+                                        let l:d *= 2
+                                        if l:d > 9
+                                            let l:d -= 9
+                                        endif
+                                        let l:digits2 += [d]
+                                    else
+                                        let l:digits2 += [d]
+                                    endif
+                            
+                                    let l:i += 1
+                                endfor
+                            
+                                let l:sum = 0
+                                for l:d in l:digits2
+                                    let l:sum += l:d
+                                endfor
+                            
+                                " echom 'l:digits1: ' . '[' . join(l:digits1, ',') . ']'
+                                " echom 'l:digits2: ' . '[' . join(l:digits2, ',') . ']'
+                                " echom 'sum: ' . (l:sum % 10)
+                            
+                                return (l:sum % 10 == 0)
+                            endfunction
+
+FUNCTION  IsValid()
+    Defined: ~/git_vpayno/exercism-workspace/vimscript/luhn/luhn.vim:9
+Called 22 times
+Total time:   0.002479889
+ Self time:   0.002479889
+
+count     total (s)      self (s)
+                                      " echom 'code: ' . a:code
+                                  
+   22                 0.000052372     if a:code !~# '^[0-9 ]\+$'
+                                          " echom 'error: bad char'
+    6                 0.000003083         return 0 " false
+   16                 0.000005123     endif
+                                  
+   16                 0.000082114     let l:runes = split(a:code, '\zs')
+   16                 0.000012205     let l:digits1 = []
+   16                 0.000010753     let l:digits2 = []
+                                  
+   16                 0.000009743     let l:i = 0
+   16                 0.000009019     let l:d = 0
+                                  
+  198                 0.000093582     for l:d in l:runes
+  182                 0.000204240         if l:d =~# '^[0-9]$'
+  155                 0.000252580             let l:digits1 = [str2nr(l:d)] + l:digits1
+  182                 0.000050147         endif
+  198                 0.000060283     endfor
+                                  
+   16                 0.000010577     let l:sum = 0
+  171                 0.000068055     for l:d in l:digits1
+  155                 0.000098376         let l:sum += l:d
+  171                 0.000045914     endfor
+                                  
+   16                 0.000019159     if l:sum == 0 && len(l:digits1) <= 1
+                                          " echom 'error: single zero'
+    2                 0.000001018         return 0 " v:false
+   14                 0.000004532     endif
+                                  
+  167                 0.000065631     for l:d in l:digits1
+  153                 0.000086848         if l:i % 2 != 0
+   72                 0.000043427             let l:d *= 2
+   72                 0.000036841             if l:d > 9
+   46                 0.000027077                 let l:d -= 9
+   72                 0.000019162             endif
+   72                 0.000057553             let l:digits2 += [d]
+   81                 0.000021837         else
+   81                 0.000067310             let l:digits2 += [d]
+  153                 0.000040013         endif
+                                  
+  153                 0.000086733         let l:i += 1
+  167                 0.000047921     endfor
+                                  
+   14                 0.000009026     let l:sum = 0
+  167                 0.000064870     for l:d in l:digits2
+  153                 0.000095598         let l:sum += l:d
+  167                 0.000044897     endfor
+                                  
+                                      " echom 'l:digits1: ' . '[' . join(l:digits1, ',') . ']'
+                                      " echom 'l:digits2: ' . '[' . join(l:digits2, ',') . ']'
+                                      " echom 'sum: ' . (l:sum % 10)
+                                  
+   14                 0.000011588     return (l:sum % 10 == 0)
+
+FUNCTIONS SORTED ON TOTAL TIME
+count     total (s)      self (s)  function
+   22   0.002479889                IsValid()
+
+FUNCTIONS SORTED ON SELF TIME
+count     total (s)      self (s)  function
+   22                 0.002479889  IsValid()
+
