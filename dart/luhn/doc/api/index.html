@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="generator" content="made with love by dartdoc 8.0.3">
+  <meta name="description" content="luhn API docs, for the Dart programming language.">
+  <title>luhn - Dart API docs</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="static-assets/github.css?v1">
+  <link rel="stylesheet" href="static-assets/styles.css?v1">
+  <link rel="icon" href="static-assets/favicon.png?v1">
+
+  
+</head>
+
+
+<body data-base-href="" data-using-base-href="false" class="light-theme">
+
+<div id="overlay-under-drawer"></div>
+
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li class="self-crumb">luhn package</li>
+  </ol>
+  <div class="self-name">luhn</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <div class="toggle" id="theme-button">
+    <label for="theme">
+      <input type="checkbox" id="theme" value="light-theme">
+      <span id="dark-theme-button" class="material-symbols-outlined">
+        brightness_4
+      </span>
+      <span id="light-theme-button" class="material-symbols-outlined">
+        brightness_5
+      </span>
+    </label>
+  </div>
+</header>
+<main>
+
+  <div id="dartdoc-main-content" class="main-content">
+      
+<section class="desc markdown">
+  <h1 id="luhn">Luhn</h1>
+<p>Welcome to Luhn on Exercism's Dart Track.
+If you need help running the tests or submitting your code, check out <code>HELP.md</code>.</p>
+<h2 id="instructions">Instructions</h2>
+<p>Given a number determine whether or not it is valid per the Luhn formula.</p>
+<p>The <a href="https://en.wikipedia.org/wiki/Luhn_algorithm">Luhn algorithm</a> is a simple checksum formula used to validate a variety of identification numbers, such as credit card numbers and Canadian Social Insurance Numbers.</p>
+<p>The task is to check if a given string is valid.</p>
+<h2 id="validating-a-number">Validating a Number</h2>
+<p>Strings of length 1 or less are not valid.
+Spaces are allowed in the input, but they should be stripped before checking.
+All other non-digit characters are disallowed.</p>
+<h3 id="example-1-valid-credit-card-number">Example 1: valid credit card number</h3>
+<pre class="language-text"><code class="language-text">4539 3195 0343 6467
+</code></pre>
+<p>The first step of the Luhn algorithm is to double every second digit, starting from the right.
+We will be doubling</p>
+<pre class="language-text"><code class="language-text">4_3_ 3_9_ 0_4_ 6_6_
+</code></pre>
+<p>If doubling the number results in a number greater than 9 then subtract 9 from the product.
+The results of our doubling:</p>
+<pre class="language-text"><code class="language-text">8569 6195 0383 3437
+</code></pre>
+<p>Then sum all of the digits:</p>
+<pre class="language-text"><code class="language-text">8+5+6+9+6+1+9+5+0+3+8+3+3+4+3+7 = 80
+</code></pre>
+<p>If the sum is evenly divisible by 10, then the number is valid.
+This number is valid!</p>
+<h3 id="example-2-invalid-credit-card-number">Example 2: invalid credit card number</h3>
+<pre class="language-text"><code class="language-text">8273 1232 7352 0569
+</code></pre>
+<p>Double the second digits, starting from the right</p>
+<pre class="language-text"><code class="language-text">7253 2262 5312 0539
+</code></pre>
+<p>Sum the digits</p>
+<pre class="language-text"><code class="language-text">7+2+5+3+2+2+6+2+5+3+1+2+0+5+3+9 = 57
+</code></pre>
+<p>57 is not evenly divisible by 10, so this number is not valid.</p>
+<h2 id="source">Source</h2>
+<h3 id="created-by">Created by</h3>
+<ul>
+<li>@amscotti</li>
+</ul>
+<h3 id="contributed-to-by">Contributed to by</h3>
+<ul>
+<li>@kytrinyx</li>
+</ul>
+<h3 id="based-on">Based on</h3>
+<p>The Luhn Algorithm on Wikipedia - <a href="https://en.wikipedia.org/wiki/Luhn_algorithm">https://en.wikipedia.org/wiki/Luhn_algorithm</a></p>
+<h3 id="my-solution">My Solution</h3>
+<ul>
+<li><a href="./lib/luhn.dart">my solution</a></li>
+<li><a href="./run-tests-dart.txt">run-tests</a></li>
+</ul>
+</section>
+
+
+      <section class="summary">
+          <h2>Libraries</h2>
+        <dl>
+          <dt id="luhn">
+  <span class="name"><a href="luhn/luhn-library.html">luhn</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+        </dl>
+      </section>
+
+  </div> <!-- /.main-content -->
+
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li class="self-crumb">luhn package</li>
+</ol>
+
+
+    <h5 class="hidden-xs"><span class="package-name">luhn</span> <span class="package-kind">package</span></h5>
+    <ol>
+      <li class="section-title">Libraries</li>
+      <li><a href="luhn/luhn-library.html">luhn</a></li>
+</ol>
+
+  </div>
+
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div>
+
+</main>
+
+<footer>
+  <span class="no-break">
+    luhn
+      0.0.0-unknown
+  </span>
+
+  
+</footer>
+
+
+
+<script src="static-assets/highlight.pack.js?v1"></script>
+<script src="static-assets/docs.dart.js"></script>
+
+
+
+</body>
+
+</html>
+

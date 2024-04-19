@@ -1,0 +1,417 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+dart pub global activate dart_style
+Package dart_style is currently active at version 2.3.6.
+Resolving dependencies...
+The package dart_style is already activated at newest available version.
+To recompile executables, first run `dart pub global deactivate dart_style`.
+Installed executables dartfmt and dartformat.
+Activated dart_style 2.3.6.
+
+real	0m0.578s
+user	0m0.745s
+sys	0m0.144s
+
+===============================================================================
+
+Running: dart analyze ./lib
+Analyzing lib...
+No issues found!
+
+real	0m0.240s
+user	0m0.285s
+sys	0m0.136s
+
+===============================================================================
+
+Running: dart analyze ./test
+Analyzing test...
+No issues found!
+
+real	0m0.324s
+user	0m0.375s
+sys	0m0.174s
+
+===============================================================================
+
+rm -rf ./coverage
+
+real	0m0.002s
+user	0m0.001s
+sys	0m0.001s
+
+===============================================================================
+
+Running: dart test --run-skipped --no-color .
+00:00 +0: loading ./test/luhn_test.dart                                                                                                                                                                00:00 +0: ./test/luhn_test.dart: Luhn single digit strings can not be valid                                                                                                                            00:00 +0: ./test/luhn_test.dart: Luhn single digit strings can not be valid                                                                                                                            
+code: 1
+filtered code: [1]
+digits: [1]
+reversed digits: [1]
+processed reversed digits: [1]
+sum: 1
+00:00 +1: ./test/luhn_test.dart: Luhn single digit strings can not be valid                                                                                                                            00:00 +1: ./test/luhn_test.dart: Luhn a single zero is invalid                                                                                                                                         00:00 +1: ./test/luhn_test.dart: Luhn a single zero is invalid                                                                                                                                         
+code: 0
+filtered code: [0]
+digits: [0]
+reversed digits: [0]
+ERROR: single zero
+00:00 +2: ./test/luhn_test.dart: Luhn a single zero is invalid                                                                                                                                         00:00 +2: ./test/luhn_test.dart: Luhn a simple valid SIN that remains valid if reversed                                                                                                                00:00 +2: ./test/luhn_test.dart: Luhn a simple valid SIN that remains valid if reversed                                                                                                                
+code: 059
+filtered code: [0, 5, 9]
+digits: [0, 5, 9]
+reversed digits: [9, 5, 0]
+processed reversed digits: [9, 1, 0]
+sum: 10
+00:00 +3: ./test/luhn_test.dart: Luhn a simple valid SIN that remains valid if reversed                                                                                                                00:00 +3: ./test/luhn_test.dart: Luhn a simple valid SIN that becomes invalid if reversed                                                                                                              00:00 +3: ./test/luhn_test.dart: Luhn a simple valid SIN that becomes invalid if reversed                                                                                                              
+code: 59
+filtered code: [5, 9]
+digits: [5, 9]
+reversed digits: [9, 5]
+processed reversed digits: [9, 1]
+sum: 10
+00:00 +4: ./test/luhn_test.dart: Luhn a simple valid SIN that becomes invalid if reversed                                                                                                              00:00 +4: ./test/luhn_test.dart: Luhn a valid Canadian SIN                                                                                                                                             00:00 +4: ./test/luhn_test.dart: Luhn a valid Canadian SIN                                                                                                                                             
+code: 055 444 285
+filtered code: [0, 5, 5, 4, 4, 4, 2, 8, 5]
+digits: [0, 5, 5, 4, 4, 4, 2, 8, 5]
+reversed digits: [5, 8, 2, 4, 4, 4, 5, 5, 0]
+processed reversed digits: [5, 7, 2, 8, 4, 8, 5, 1, 0]
+sum: 40
+00:00 +5: ./test/luhn_test.dart: Luhn a valid Canadian SIN                                                                                                                                             00:00 +5: ./test/luhn_test.dart: Luhn invalid Canadian SIN                                                                                                                                             00:00 +5: ./test/luhn_test.dart: Luhn invalid Canadian SIN                                                                                                                                             
+code: 055 444 286
+filtered code: [0, 5, 5, 4, 4, 4, 2, 8, 6]
+digits: [0, 5, 5, 4, 4, 4, 2, 8, 6]
+reversed digits: [6, 8, 2, 4, 4, 4, 5, 5, 0]
+processed reversed digits: [6, 7, 2, 8, 4, 8, 5, 1, 0]
+sum: 41
+00:00 +6: ./test/luhn_test.dart: Luhn invalid Canadian SIN                                                                                                                                             00:00 +6: ./test/luhn_test.dart: Luhn invalid credit card                                                                                                                                              00:00 +6: ./test/luhn_test.dart: Luhn invalid credit card                                                                                                                                              
+code: 8273 1232 7352 0569
+filtered code: [8, 2, 7, 3, 1, 2, 3, 2, 7, 3, 5, 2, 0, 5, 6, 9]
+digits: [8, 2, 7, 3, 1, 2, 3, 2, 7, 3, 5, 2, 0, 5, 6, 9]
+reversed digits: [9, 6, 5, 0, 2, 5, 3, 7, 2, 3, 2, 1, 3, 7, 2, 8]
+processed reversed digits: [9, 3, 5, 0, 2, 1, 3, 5, 2, 6, 2, 2, 3, 5, 2, 7]
+sum: 57
+00:00 +7: ./test/luhn_test.dart: Luhn invalid credit card                                                                                                                                              00:00 +7: ./test/luhn_test.dart: Luhn invalid long number with an even remainder                                                                                                                       00:00 +7: ./test/luhn_test.dart: Luhn invalid long number with an even remainder                                                                                                                       
+code: 1 2345 6789 1234 5678 9012
+filtered code: [1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2]
+digits: [1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2]
+reversed digits: [2, 1, 0, 9, 8, 7, 6, 5, 4, 3, 2, 1, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+processed reversed digits: [2, 2, 0, 9, 8, 5, 6, 1, 4, 6, 2, 2, 9, 7, 7, 3, 5, 8, 3, 4, 1]
+sum: 94
+00:00 +8: ./test/luhn_test.dart: Luhn invalid long number with an even remainder                                                                                                                       00:00 +8: ./test/luhn_test.dart: Luhn invalid long number with a remainder divisible by 5                                                                                                              00:00 +8: ./test/luhn_test.dart: Luhn invalid long number with a remainder divisible by 5                                                                                                              
+code: 1 2345 6789 1234 5678 9013
+filtered code: [1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 3]
+digits: [1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 3]
+reversed digits: [3, 1, 0, 9, 8, 7, 6, 5, 4, 3, 2, 1, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+processed reversed digits: [3, 2, 0, 9, 8, 5, 6, 1, 4, 6, 2, 2, 9, 7, 7, 3, 5, 8, 3, 4, 1]
+sum: 95
+00:00 +9: ./test/luhn_test.dart: Luhn invalid long number with a remainder divisible by 5                                                                                                              00:00 +9: ./test/luhn_test.dart: Luhn valid number with an even number of digits                                                                                                                       00:00 +9: ./test/luhn_test.dart: Luhn valid number with an even number of digits                                                                                                                       
+code: 095 245 88
+filtered code: [0, 9, 5, 2, 4, 5, 8, 8]
+digits: [0, 9, 5, 2, 4, 5, 8, 8]
+reversed digits: [8, 8, 5, 4, 2, 5, 9, 0]
+processed reversed digits: [8, 7, 5, 8, 2, 1, 9, 0]
+sum: 40
+00:00 +10: ./test/luhn_test.dart: Luhn valid number with an even number of digits                                                                                                                      00:00 +10: ./test/luhn_test.dart: Luhn valid number with an odd number of spaces                                                                                                                       00:00 +10: ./test/luhn_test.dart: Luhn valid number with an odd number of spaces                                                                                                                       
+code: 234 567 891 234
+filtered code: [2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4]
+digits: [2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4]
+reversed digits: [4, 3, 2, 1, 9, 8, 7, 6, 5, 4, 3, 2]
+processed reversed digits: [4, 6, 2, 2, 9, 7, 7, 3, 5, 8, 3, 4]
+sum: 60
+00:00 +11: ./test/luhn_test.dart: Luhn valid number with an odd number of spaces                                                                                                                       00:00 +11: ./test/luhn_test.dart: Luhn valid strings with a non-digit added at the end become invalid                                                                                                  00:00 +11: ./test/luhn_test.dart: Luhn valid strings with a non-digit added at the end become invalid                                                                                                  
+code: 059a
+ERROR: invalid characters
+00:00 +12: ./test/luhn_test.dart: Luhn valid strings with a non-digit added at the end become invalid                                                                                                  00:00 +12: ./test/luhn_test.dart: Luhn valid strings with punctuation included become invalid                                                                                                          00:00 +12: ./test/luhn_test.dart: Luhn valid strings with punctuation included become invalid                                                                                                          
+code: 055-444-285
+ERROR: invalid characters
+00:00 +13: ./test/luhn_test.dart: Luhn valid strings with punctuation included become invalid                                                                                                          00:00 +13: ./test/luhn_test.dart: Luhn valid strings with symbols included become invalid                                                                                                              00:00 +13: ./test/luhn_test.dart: Luhn valid strings with symbols included become invalid                                                                                                              
+code: 055# 444$ 285
+ERROR: invalid characters
+00:00 +14: ./test/luhn_test.dart: Luhn valid strings with symbols included become invalid                                                                                                              00:00 +14: ./test/luhn_test.dart: Luhn single zero with space is invalid                                                                                                                               00:00 +14: ./test/luhn_test.dart: Luhn single zero with space is invalid                                                                                                                               
+code:  0
+filtered code: [0]
+digits: [0]
+reversed digits: [0]
+ERROR: single zero
+00:00 +15: ./test/luhn_test.dart: Luhn single zero with space is invalid                                                                                                                               00:00 +15: ./test/luhn_test.dart: Luhn more than a single zero is valid                                                                                                                                00:00 +15: ./test/luhn_test.dart: Luhn more than a single zero is valid                                                                                                                                
+code: 0000 0
+filtered code: [0, 0, 0, 0, 0]
+digits: [0, 0, 0, 0, 0]
+reversed digits: [0, 0, 0, 0, 0]
+processed reversed digits: [0, 0, 0, 0, 0]
+sum: 0
+00:00 +16: ./test/luhn_test.dart: Luhn more than a single zero is valid                                                                                                                                00:00 +16: ./test/luhn_test.dart: Luhn input digit 9 is correctly converted to output digit 9                                                                                                          00:00 +16: ./test/luhn_test.dart: Luhn input digit 9 is correctly converted to output digit 9                                                                                                          
+code: 091
+filtered code: [0, 9, 1]
+digits: [0, 9, 1]
+reversed digits: [1, 9, 0]
+processed reversed digits: [1, 9, 0]
+sum: 10
+00:00 +17: ./test/luhn_test.dart: Luhn input digit 9 is correctly converted to output digit 9                                                                                                          00:00 +17: ./test/luhn_test.dart: Luhn very long input is valid                                                                                                                                        00:00 +17: ./test/luhn_test.dart: Luhn very long input is valid                                                                                                                                        
+code: 9999999999 9999999999 9999999999 9999999999
+filtered code: [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9]
+digits: [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9]
+reversed digits: [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9]
+processed reversed digits: [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9]
+sum: 360
+00:00 +18: ./test/luhn_test.dart: Luhn very long input is valid                                                                                                                                        00:00 +18: ./test/luhn_test.dart: Luhn valid luhn with an odd number of digits and non zero first digit                                                                                                00:00 +18: ./test/luhn_test.dart: Luhn valid luhn with an odd number of digits and non zero first digit                                                                                                
+code: 109
+filtered code: [1, 0, 9]
+digits: [1, 0, 9]
+reversed digits: [9, 0, 1]
+processed reversed digits: [9, 0, 1]
+sum: 10
+00:00 +19: ./test/luhn_test.dart: Luhn valid luhn with an odd number of digits and non zero first digit                                                                                                00:00 +19: ./test/luhn_test.dart: Luhn using ascii value for non-doubled non-digit isn't allowed                                                                                                       00:00 +19: ./test/luhn_test.dart: Luhn using ascii value for non-doubled non-digit isn't allowed                                                                                                       
+code: 055b 444 285
+ERROR: invalid characters
+00:00 +20: ./test/luhn_test.dart: Luhn using ascii value for non-doubled non-digit isn't allowed                                                                                                       00:00 +20: ./test/luhn_test.dart: Luhn using ascii value for doubled non-digit isn't allowed                                                                                                           00:00 +20: ./test/luhn_test.dart: Luhn using ascii value for doubled non-digit isn't allowed                                                                                                           
+code: :9
+ERROR: invalid characters
+00:00 +21: ./test/luhn_test.dart: Luhn using ascii value for doubled non-digit isn't allowed                                                                                                           00:00 +21: ./test/luhn_test.dart: Luhn non-numeric, non-space char in the middle with a sum that's divisible by 10 isn't allowed                                                                       00:00 +21: ./test/luhn_test.dart: Luhn non-numeric, non-space char in the middle with a sum that's divisible by 10 isn't allowed                                                                       
+code: 59%59
+ERROR: invalid characters
+00:00 +22: ./test/luhn_test.dart: Luhn non-numeric, non-space char in the middle with a sum that's divisible by 10 isn't allowed                                                                       00:00 +22: All tests passed!                                                                                                                                                                           
+
+real	0m0.747s
+user	0m0.879s
+sys	0m0.148s
+
+===============================================================================
+
+dart pub global activate coverage
+Package coverage is currently active at version 1.7.2.
+Resolving dependencies...
+The package coverage is already activated at newest available version.
+To recompile executables, first run `dart pub global deactivate coverage`.
+Installed executables collect_coverage, format_coverage and test_with_coverage.
+Activated coverage 1.7.2.
+
+real	0m0.483s
+user	0m0.566s
+sys	0m0.124s
+
+===============================================================================
+
+Running: dart pub global run coverage:test_with_coverage
+The Dart VM service is listening on http://127.0.0.1:8181/
+The Dart DevTools debugger and profiler is available at: http://127.0.0.1:8181/devtools?uri=ws://127.0.0.1:8181/ws
+00:00 [32m+0[0m: [1m[90mloading test/luhn_test.dart[0m[0m                                                                                                                                                                  00:00 [32m+0[0m: test/luhn_test.dart: Luhn single digit strings can not be valid[0m                                                                                                                              00:00 [32m+0[0m: test/luhn_test.dart: Luhn single digit strings can not be valid[0m                                                                                                                              
+code: 1
+filtered code: [1]
+digits: [1]
+reversed digits: [1]
+processed reversed digits: [1]
+sum: 1
+00:00 [32m+1[0m: test/luhn_test.dart: Luhn single digit strings can not be valid[0m                                                                                                                              00:00 [32m+1[0m: test/luhn_test.dart: Luhn a single zero is invalid[0m                                                                                                                                           00:00 [32m+1[0m[33m ~1[0m: test/luhn_test.dart: Luhn a single zero is invalid[0m                                                                                                                                        00:00 [32m+1[0m[33m ~1[0m: test/luhn_test.dart: Luhn a simple valid SIN that remains valid if reversed[0m                                                                                                               00:00 [32m+1[0m[33m ~2[0m: test/luhn_test.dart: Luhn a simple valid SIN that remains valid if reversed[0m                                                                                                               00:00 [32m+1[0m[33m ~2[0m: test/luhn_test.dart: Luhn a simple valid SIN that becomes invalid if reversed[0m                                                                                                             00:00 [32m+1[0m[33m ~3[0m: test/luhn_test.dart: Luhn a simple valid SIN that becomes invalid if reversed[0m                                                                                                             00:00 [32m+1[0m[33m ~3[0m: test/luhn_test.dart: Luhn a valid Canadian SIN[0m                                                                                                                                            00:00 [32m+1[0m[33m ~4[0m: test/luhn_test.dart: Luhn a valid Canadian SIN[0m                                                                                                                                            00:00 [32m+1[0m[33m ~4[0m: test/luhn_test.dart: Luhn invalid Canadian SIN[0m                                                                                                                                            00:00 [32m+1[0m[33m ~5[0m: test/luhn_test.dart: Luhn invalid Canadian SIN[0m                                                                                                                                            00:00 [32m+1[0m[33m ~5[0m: test/luhn_test.dart: Luhn invalid credit card[0m                                                                                                                                             00:00 [32m+1[0m[33m ~6[0m: test/luhn_test.dart: Luhn invalid credit card[0m                                                                                                                                             00:00 [32m+1[0m[33m ~6[0m: test/luhn_test.dart: Luhn invalid long number with an even remainder[0m                                                                                                                      00:00 [32m+1[0m[33m ~7[0m: test/luhn_test.dart: Luhn invalid long number with an even remainder[0m                                                                                                                      00:00 [32m+1[0m[33m ~7[0m: test/luhn_test.dart: Luhn invalid long number with a remainder divisible by 5[0m                                                                                                             00:00 [32m+1[0m[33m ~8[0m: test/luhn_test.dart: Luhn invalid long number with a remainder divisible by 5[0m                                                                                                             00:00 [32m+1[0m[33m ~8[0m: test/luhn_test.dart: Luhn valid number with an even number of digits[0m                                                                                                                      00:00 [32m+1[0m[33m ~9[0m: test/luhn_test.dart: Luhn valid number with an even number of digits[0m                                                                                                                      00:00 [32m+1[0m[33m ~9[0m: test/luhn_test.dart: Luhn valid number with an odd number of spaces[0m                                                                                                                       00:00 [32m+1[0m[33m ~10[0m: test/luhn_test.dart: Luhn valid number with an odd number of spaces[0m                                                                                                                      00:00 [32m+1[0m[33m ~10[0m: test/luhn_test.dart: Luhn valid strings with a non-digit added at the end become invalid[0m                                                                                                 00:00 [32m+1[0m[33m ~11[0m: test/luhn_test.dart: Luhn valid strings with a non-digit added at the end become invalid[0m                                                                                                 00:00 [32m+1[0m[33m ~11[0m: test/luhn_test.dart: Luhn valid strings with punctuation included become invalid[0m                                                                                                         00:00 [32m+1[0m[33m ~12[0m: test/luhn_test.dart: Luhn valid strings with punctuation included become invalid[0m                                                                                                         00:00 [32m+1[0m[33m ~12[0m: test/luhn_test.dart: Luhn valid strings with symbols included become invalid[0m                                                                                                             00:00 [32m+1[0m[33m ~13[0m: test/luhn_test.dart: Luhn valid strings with symbols included become invalid[0m                                                                                                             00:00 [32m+1[0m[33m ~13[0m: test/luhn_test.dart: Luhn single zero with space is invalid[0m                                                                                                                              00:00 [32m+1[0m[33m ~14[0m: test/luhn_test.dart: Luhn single zero with space is invalid[0m                                                                                                                              00:00 [32m+1[0m[33m ~14[0m: test/luhn_test.dart: Luhn more than a single zero is valid[0m                                                                                                                               00:00 [32m+1[0m[33m ~15[0m: test/luhn_test.dart: Luhn more than a single zero is valid[0m                                                                                                                               00:00 [32m+1[0m[33m ~15[0m: test/luhn_test.dart: Luhn input digit 9 is correctly converted to output digit 9[0m                                                                                                         00:00 [32m+1[0m[33m ~16[0m: test/luhn_test.dart: Luhn input digit 9 is correctly converted to output digit 9[0m                                                                                                         00:00 [32m+1[0m[33m ~16[0m: test/luhn_test.dart: Luhn very long input is valid[0m                                                                                                                                       00:00 [32m+1[0m[33m ~17[0m: test/luhn_test.dart: Luhn very long input is valid[0m                                                                                                                                       00:00 [32m+1[0m[33m ~17[0m: test/luhn_test.dart: Luhn valid luhn with an odd number of digits and non zero first digit[0m                                                                                               00:00 [32m+1[0m[33m ~18[0m: test/luhn_test.dart: Luhn valid luhn with an odd number of digits and non zero first digit[0m                                                                                               00:00 [32m+1[0m[33m ~18[0m: test/luhn_test.dart: Luhn using ascii value for non-doubled non-digit isn't allowed[0m                                                                                                      00:00 [32m+1[0m[33m ~19[0m: test/luhn_test.dart: Luhn using ascii value for non-doubled non-digit isn't allowed[0m                                                                                                      00:00 [32m+1[0m[33m ~19[0m: test/luhn_test.dart: Luhn using ascii value for doubled non-digit isn't allowed[0m                                                                                                          00:00 [32m+1[0m[33m ~20[0m: test/luhn_test.dart: Luhn using ascii value for doubled non-digit isn't allowed[0m                                                                                                          00:00 [32m+1[0m[33m ~20[0m: test/luhn_test.dart: Luhn non-numeric, non-space char in the middle with a sum that's divisible by 10 isn't allowed[0m                                                                      00:00 [32m+1[0m[33m ~21[0m: test/luhn_test.dart: Luhn non-numeric, non-space char in the middle with a sum that's divisible by 10 isn't allowed[0m                                                                      00:00 [32m+1[0m[33m ~21[0m: All tests passed![0m                                                                                                                                                                        
+
+real	0m1.454s
+user	0m1.663s
+sys	0m0.289s
+
+===============================================================================
+
+dart run test --run-skipped --no-color --coverage=./coverage
+00:00 +0: loading test/luhn_test.dart                                                                                                                                                                  00:00 +0: test/luhn_test.dart: Luhn single digit strings can not be valid                                                                                                                              00:00 +0: test/luhn_test.dart: Luhn single digit strings can not be valid                                                                                                                              
+code: 1
+filtered code: [1]
+digits: [1]
+reversed digits: [1]
+processed reversed digits: [1]
+sum: 1
+00:00 +1: test/luhn_test.dart: Luhn single digit strings can not be valid                                                                                                                              00:00 +1: test/luhn_test.dart: Luhn a single zero is invalid                                                                                                                                           00:00 +1: test/luhn_test.dart: Luhn a single zero is invalid                                                                                                                                           
+code: 0
+filtered code: [0]
+digits: [0]
+reversed digits: [0]
+ERROR: single zero
+00:00 +2: test/luhn_test.dart: Luhn a single zero is invalid                                                                                                                                           00:00 +2: test/luhn_test.dart: Luhn a simple valid SIN that remains valid if reversed                                                                                                                  00:00 +2: test/luhn_test.dart: Luhn a simple valid SIN that remains valid if reversed                                                                                                                  
+code: 059
+filtered code: [0, 5, 9]
+digits: [0, 5, 9]
+reversed digits: [9, 5, 0]
+processed reversed digits: [9, 1, 0]
+sum: 10
+00:00 +3: test/luhn_test.dart: Luhn a simple valid SIN that remains valid if reversed                                                                                                                  00:00 +3: test/luhn_test.dart: Luhn a simple valid SIN that becomes invalid if reversed                                                                                                                00:00 +3: test/luhn_test.dart: Luhn a simple valid SIN that becomes invalid if reversed                                                                                                                
+code: 59
+filtered code: [5, 9]
+digits: [5, 9]
+reversed digits: [9, 5]
+processed reversed digits: [9, 1]
+sum: 10
+00:00 +4: test/luhn_test.dart: Luhn a simple valid SIN that becomes invalid if reversed                                                                                                                00:00 +4: test/luhn_test.dart: Luhn a valid Canadian SIN                                                                                                                                               00:00 +4: test/luhn_test.dart: Luhn a valid Canadian SIN                                                                                                                                               
+code: 055 444 285
+filtered code: [0, 5, 5, 4, 4, 4, 2, 8, 5]
+digits: [0, 5, 5, 4, 4, 4, 2, 8, 5]
+reversed digits: [5, 8, 2, 4, 4, 4, 5, 5, 0]
+processed reversed digits: [5, 7, 2, 8, 4, 8, 5, 1, 0]
+sum: 40
+00:00 +5: test/luhn_test.dart: Luhn a valid Canadian SIN                                                                                                                                               00:00 +5: test/luhn_test.dart: Luhn invalid Canadian SIN                                                                                                                                               00:00 +5: test/luhn_test.dart: Luhn invalid Canadian SIN                                                                                                                                               
+code: 055 444 286
+filtered code: [0, 5, 5, 4, 4, 4, 2, 8, 6]
+digits: [0, 5, 5, 4, 4, 4, 2, 8, 6]
+reversed digits: [6, 8, 2, 4, 4, 4, 5, 5, 0]
+processed reversed digits: [6, 7, 2, 8, 4, 8, 5, 1, 0]
+sum: 41
+00:00 +6: test/luhn_test.dart: Luhn invalid Canadian SIN                                                                                                                                               00:00 +6: test/luhn_test.dart: Luhn invalid credit card                                                                                                                                                00:00 +6: test/luhn_test.dart: Luhn invalid credit card                                                                                                                                                
+code: 8273 1232 7352 0569
+filtered code: [8, 2, 7, 3, 1, 2, 3, 2, 7, 3, 5, 2, 0, 5, 6, 9]
+digits: [8, 2, 7, 3, 1, 2, 3, 2, 7, 3, 5, 2, 0, 5, 6, 9]
+reversed digits: [9, 6, 5, 0, 2, 5, 3, 7, 2, 3, 2, 1, 3, 7, 2, 8]
+processed reversed digits: [9, 3, 5, 0, 2, 1, 3, 5, 2, 6, 2, 2, 3, 5, 2, 7]
+sum: 57
+00:00 +7: test/luhn_test.dart: Luhn invalid credit card                                                                                                                                                00:00 +7: test/luhn_test.dart: Luhn invalid long number with an even remainder                                                                                                                         00:00 +7: test/luhn_test.dart: Luhn invalid long number with an even remainder                                                                                                                         
+code: 1 2345 6789 1234 5678 9012
+filtered code: [1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2]
+digits: [1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2]
+reversed digits: [2, 1, 0, 9, 8, 7, 6, 5, 4, 3, 2, 1, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+processed reversed digits: [2, 2, 0, 9, 8, 5, 6, 1, 4, 6, 2, 2, 9, 7, 7, 3, 5, 8, 3, 4, 1]
+sum: 94
+00:00 +8: test/luhn_test.dart: Luhn invalid long number with an even remainder                                                                                                                         00:00 +8: test/luhn_test.dart: Luhn invalid long number with a remainder divisible by 5                                                                                                                00:00 +8: test/luhn_test.dart: Luhn invalid long number with a remainder divisible by 5                                                                                                                
+code: 1 2345 6789 1234 5678 9013
+filtered code: [1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 3]
+digits: [1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 3]
+reversed digits: [3, 1, 0, 9, 8, 7, 6, 5, 4, 3, 2, 1, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+processed reversed digits: [3, 2, 0, 9, 8, 5, 6, 1, 4, 6, 2, 2, 9, 7, 7, 3, 5, 8, 3, 4, 1]
+sum: 95
+00:00 +9: test/luhn_test.dart: Luhn invalid long number with a remainder divisible by 5                                                                                                                00:00 +9: test/luhn_test.dart: Luhn valid number with an even number of digits                                                                                                                         00:00 +9: test/luhn_test.dart: Luhn valid number with an even number of digits                                                                                                                         
+code: 095 245 88
+filtered code: [0, 9, 5, 2, 4, 5, 8, 8]
+digits: [0, 9, 5, 2, 4, 5, 8, 8]
+reversed digits: [8, 8, 5, 4, 2, 5, 9, 0]
+processed reversed digits: [8, 7, 5, 8, 2, 1, 9, 0]
+sum: 40
+00:00 +10: test/luhn_test.dart: Luhn valid number with an even number of digits                                                                                                                        00:00 +10: test/luhn_test.dart: Luhn valid number with an odd number of spaces                                                                                                                         00:00 +10: test/luhn_test.dart: Luhn valid number with an odd number of spaces                                                                                                                         
+code: 234 567 891 234
+filtered code: [2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4]
+digits: [2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4]
+reversed digits: [4, 3, 2, 1, 9, 8, 7, 6, 5, 4, 3, 2]
+processed reversed digits: [4, 6, 2, 2, 9, 7, 7, 3, 5, 8, 3, 4]
+sum: 60
+00:00 +11: test/luhn_test.dart: Luhn valid number with an odd number of spaces                                                                                                                         00:00 +11: test/luhn_test.dart: Luhn valid strings with a non-digit added at the end become invalid                                                                                                    00:00 +11: test/luhn_test.dart: Luhn valid strings with a non-digit added at the end become invalid                                                                                                    
+code: 059a
+ERROR: invalid characters
+00:00 +12: test/luhn_test.dart: Luhn valid strings with a non-digit added at the end become invalid                                                                                                    00:00 +12: test/luhn_test.dart: Luhn valid strings with punctuation included become invalid                                                                                                            00:00 +12: test/luhn_test.dart: Luhn valid strings with punctuation included become invalid                                                                                                            
+code: 055-444-285
+ERROR: invalid characters
+00:00 +13: test/luhn_test.dart: Luhn valid strings with punctuation included become invalid                                                                                                            00:00 +13: test/luhn_test.dart: Luhn valid strings with symbols included become invalid                                                                                                                00:00 +13: test/luhn_test.dart: Luhn valid strings with symbols included become invalid                                                                                                                
+code: 055# 444$ 285
+ERROR: invalid characters
+00:00 +14: test/luhn_test.dart: Luhn valid strings with symbols included become invalid                                                                                                                00:00 +14: test/luhn_test.dart: Luhn single zero with space is invalid                                                                                                                                 00:00 +14: test/luhn_test.dart: Luhn single zero with space is invalid                                                                                                                                 
+code:  0
+filtered code: [0]
+digits: [0]
+reversed digits: [0]
+ERROR: single zero
+00:00 +15: test/luhn_test.dart: Luhn single zero with space is invalid                                                                                                                                 00:00 +15: test/luhn_test.dart: Luhn more than a single zero is valid                                                                                                                                  00:00 +15: test/luhn_test.dart: Luhn more than a single zero is valid                                                                                                                                  
+code: 0000 0
+filtered code: [0, 0, 0, 0, 0]
+digits: [0, 0, 0, 0, 0]
+reversed digits: [0, 0, 0, 0, 0]
+processed reversed digits: [0, 0, 0, 0, 0]
+sum: 0
+00:00 +16: test/luhn_test.dart: Luhn more than a single zero is valid                                                                                                                                  00:00 +16: test/luhn_test.dart: Luhn input digit 9 is correctly converted to output digit 9                                                                                                            00:00 +16: test/luhn_test.dart: Luhn input digit 9 is correctly converted to output digit 9                                                                                                            
+code: 091
+filtered code: [0, 9, 1]
+digits: [0, 9, 1]
+reversed digits: [1, 9, 0]
+processed reversed digits: [1, 9, 0]
+sum: 10
+00:00 +17: test/luhn_test.dart: Luhn input digit 9 is correctly converted to output digit 9                                                                                                            00:00 +17: test/luhn_test.dart: Luhn very long input is valid                                                                                                                                          00:00 +17: test/luhn_test.dart: Luhn very long input is valid                                                                                                                                          
+code: 9999999999 9999999999 9999999999 9999999999
+filtered code: [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9]
+digits: [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9]
+reversed digits: [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9]
+processed reversed digits: [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9]
+sum: 360
+00:00 +18: test/luhn_test.dart: Luhn very long input is valid                                                                                                                                          00:00 +18: test/luhn_test.dart: Luhn valid luhn with an odd number of digits and non zero first digit                                                                                                  00:00 +18: test/luhn_test.dart: Luhn valid luhn with an odd number of digits and non zero first digit                                                                                                  
+code: 109
+filtered code: [1, 0, 9]
+digits: [1, 0, 9]
+reversed digits: [9, 0, 1]
+processed reversed digits: [9, 0, 1]
+sum: 10
+00:00 +19: test/luhn_test.dart: Luhn valid luhn with an odd number of digits and non zero first digit                                                                                                  00:00 +19: test/luhn_test.dart: Luhn using ascii value for non-doubled non-digit isn't allowed                                                                                                         00:00 +19: test/luhn_test.dart: Luhn using ascii value for non-doubled non-digit isn't allowed                                                                                                         
+code: 055b 444 285
+ERROR: invalid characters
+00:00 +20: test/luhn_test.dart: Luhn using ascii value for non-doubled non-digit isn't allowed                                                                                                         00:00 +20: test/luhn_test.dart: Luhn using ascii value for doubled non-digit isn't allowed                                                                                                             00:00 +20: test/luhn_test.dart: Luhn using ascii value for doubled non-digit isn't allowed                                                                                                             
+code: :9
+ERROR: invalid characters
+00:00 +21: test/luhn_test.dart: Luhn using ascii value for doubled non-digit isn't allowed                                                                                                             00:00 +21: test/luhn_test.dart: Luhn non-numeric, non-space char in the middle with a sum that's divisible by 10 isn't allowed                                                                         00:00 +21: test/luhn_test.dart: Luhn non-numeric, non-space char in the middle with a sum that's divisible by 10 isn't allowed                                                                         
+code: 59%59
+ERROR: invalid characters
+00:00 +22: test/luhn_test.dart: Luhn non-numeric, non-space char in the middle with a sum that's divisible by 10 isn't allowed                                                                         00:01 +22: All tests passed!                                                                                                                                                                           
+
+real	0m1.410s
+user	0m1.537s
+sys	0m0.222s
+
+===============================================================================
+
+dart pub global run coverage:format_coverage --packages=.dart_tool/package_config.json --report-on=lib --lcov -o ./coverage/lcov.info -i ./coverage
+
+real	0m0.290s
+user	0m0.400s
+sys	0m0.082s
+
+===============================================================================
+
+Running: lcov --summary ./coverage/lcov.info
+Reading tracefile ./coverage/lcov.info
+Summary coverage rate:
+  lines......: 100.0% (22 of 22 lines)
+  functions..: no data found
+  branches...: no data found
+
+real	0m0.035s
+user	0m0.029s
+sys	0m0.006s
+
+===============================================================================
+
+genhtml -o ./coverage/report ./coverage/lcov.info
+Reading data file ./coverage/lcov.info
+Found 1 entries.
+Found common filename prefix "/home/vpayno/git_vpayno/exercism-workspace/dart/luhn"
+Writing .css and .png files.
+Generating output.
+Processing file lib/luhn.dart
+Writing directory view page.
+Overall coverage rate:
+  lines......: 100.0% (22 of 22 lines)
+  functions..: no data found
+
+real	0m0.041s
+user	0m0.031s
+sys	0m0.009s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.066s
+user	0m0.201s
+sys	0m0.024s
+
+===============================================================================
+
+Running: dart doc .
+Documenting luhn...
+Discovering libraries...
+Linking elements...
+Precaching local docs for 136787 elements...
+Initialized dartdoc with 45 libraries
+Generating docs for library luhn.dart from package:luhn/luhn.dart...
+Found 0 warnings and 0 errors.
+Documented 1 public library in 15.7 seconds
+Success! Docs generated into /home/vpayno/git_vpayno/exercism-workspace/dart/luhn/doc/api
+
+real	0m15.824s
+user	0m21.194s
+sys	0m1.508s
+
+===============================================================================
+
