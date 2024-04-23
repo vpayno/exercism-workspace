@@ -1,0 +1,507 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: ../../.github/citools/python/python-lint-pylint
+
+Running Python Lint - PyLint
+
+Python versions:
+
+	Python 3.12.1
+	pyenv 2.3.36-21-g7e550e31
+	pip 24.0 from /home/vpayno/.pyenv/versions/3.12.1/lib/python3.12/site-packages/pip (python 3.12)
+	PDM, version 2.15.0
+
+
+ ==============================================================================
+
+Running: pylint --version
+
+pylint 3.0.3
+astroid 3.0.2
+Python 3.12.1 (main, Dec 28 2023, 08:22:05) [GCC 10.2.1 20210110]
+
+real	0m0.264s
+user	0m0.188s
+sys	0m0.078s
+
+
+ ==============================================================================
+
+Running: pylint ./src
+
+
+--------------------------------------------------------------------
+Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
+
+
+real	0m0.537s
+user	0m0.445s
+sys	0m0.095s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.848s
+user	0m1.383s
+sys	0m0.480s
+
+real	0m1.850s
+user	0m1.384s
+sys	0m0.482s
+
+===============================================================================
+
+Running: ../../.github/citools/python/python-lint-ruff
+
+Running Python Lint - Ruff
+
+Python versions:
+
+	Python 3.12.1
+	pyenv 2.3.36-21-g7e550e31
+	pip 24.0 from /home/vpayno/.pyenv/versions/3.12.1/lib/python3.12/site-packages/pip (python 3.12)
+	PDM, version 2.15.0
+
+
+ ==============================================================================
+
+Running: ruff --version
+
+ruff 0.3.5
+
+real	0m0.114s
+user	0m0.047s
+sys	0m0.070s
+
+
+ ==============================================================================
+
+Running: ruff check --ignore E501 ./src
+
+All checks passed!
+
+real	0m0.139s
+user	0m0.056s
+sys	0m0.087s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.311s
+user	0m0.851s
+sys	0m0.485s
+
+real	0m1.313s
+user	0m0.854s
+sys	0m0.485s
+
+===============================================================================
+
+Running: ../../.github/citools/python/python-lint-pyright
+
+Running Python Lint - PyRight
+
+Python versions:
+
+	Python 3.12.1
+	pyenv 2.3.36-21-g7e550e31
+	pip 24.0 from /home/vpayno/.pyenv/versions/3.12.1/lib/python3.12/site-packages/pip (python 3.12)
+	PDM, version 2.15.0
+
+
+ ==============================================================================
+
+Running: pyright --version
+
+pyright 1.1.359
+
+real	0m0.764s
+user	0m0.588s
+sys	0m0.126s
+
+
+ ==============================================================================
+
+Running: pyright --stats ./src
+
+Found 2 source files
+pyright 1.1.359
+0 errors, 0 warnings, 0 informations 
+Completed in 0.615sec
+
+Analysis stats
+Total files parsed and bound: 20
+Total files checked: 2
+
+Timing stats
+Find Source Files:    0sec
+Read Source Files:    0.01sec
+Tokenize:             0.04sec
+Parse:                0.06sec
+Resolve Imports:      0.05sec
+Bind:                 0.05sec
+Check:                0.06sec
+Detect Cycles:        0sec
+
+real	0m1.381s
+user	0m1.359s
+sys	0m0.201s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m3.212s
+user	0m2.713s
+sys	0m0.643s
+
+real	0m3.216s
+user	0m2.714s
+sys	0m0.647s
+
+===============================================================================
+
+Running: ../../.github/citools/python/python-lint-bandit
+
+Running Python Lint - Bandit
+
+Python versions:
+
+	Python 3.12.1
+	pyenv 2.3.36-21-g7e550e31
+	pip 24.0 from /home/vpayno/.pyenv/versions/3.12.1/lib/python3.12/site-packages/pip (python 3.12)
+	PDM, version 2.15.0
+
+
+ ==============================================================================
+
+Running: bandit --version
+
+bandit 1.7.7
+  python version = 3.12.1 (main, Dec 28 2023, 08:22:05) [GCC 10.2.1 20210110]
+
+real	0m0.252s
+user	0m0.191s
+sys	0m0.062s
+
+
+ ==============================================================================
+
+Running: bandit --verbose --recursive ./src
+
+[main]	INFO	profile include tests: None
+[main]	INFO	profile exclude tests: None
+[main]	INFO	cli include tests: None
+[main]	INFO	cli exclude tests: None
+[main]	INFO	running on Python 3.12.1
+Run started:2024-04-23 03:06:48.331047
+Files in scope (2):
+	./src/pangram/__init__.py (score: {SEVERITY: 0, CONFIDENCE: 0})
+	./src/pangram/pangram.py (score: {SEVERITY: 0, CONFIDENCE: 0})
+Files excluded (2):
+	./src/pangram/__pycache__/__init__.cpython-312.pyc
+	./src/pangram/__pycache__/pangram.cpython-312.pyc
+
+Test results:
+	No issues identified.
+
+Code scanned:
+	Total lines of code: 13
+	Total lines skipped (#nosec): 0
+	Total potential issues skipped due to specifically being disabled (e.g., #nosec BXXX): 0
+
+Run metrics:
+	Total issues (by severity):
+		Undefined: 0
+		Low: 0
+		Medium: 0
+		High: 0
+	Total issues (by confidence):
+		Undefined: 0
+		Low: 0
+		Medium: 0
+		High: 0
+Files skipped (0):
+
+real	0m0.271s
+user	0m0.197s
+sys	0m0.075s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.551s
+user	0m1.156s
+sys	0m0.413s
+
+real	0m1.553s
+user	0m1.156s
+sys	0m0.415s
+
+===============================================================================
+
+Running: ../../.github/citools/python/python-lint-refurb
+
+Running Python Lint - Refurb
+
+Python versions:
+
+	Python 3.12.1
+	pyenv 2.3.36-21-g7e550e31
+	pip 24.0 from /home/vpayno/.pyenv/versions/3.12.1/lib/python3.12/site-packages/pip (python 3.12)
+	PDM, version 2.15.0
+
+
+ ==============================================================================
+
+Running: refurb --version
+
+Refurb: v1.26.0
+Mypy: v1.9.0
+
+real	0m0.227s
+user	0m0.151s
+sys	0m0.079s
+
+
+ ==============================================================================
+
+Running: refurb --quiet --ignore 183 ./src
+
+
+real	0m1.348s
+user	0m1.238s
+sys	0m0.112s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m4.039s
+user	0m3.466s
+sys	0m0.597s
+
+real	0m4.042s
+user	0m3.468s
+sys	0m0.599s
+
+===============================================================================
+
+Running: ../../.github/citools/python/python-test-with-doctests
+
+Running Python DocTests
+
+Python versions:
+
+	Python 3.12.1
+	pyenv 2.3.36-21-g7e550e31
+	pip 24.0 from /home/vpayno/.pyenv/versions/3.12.1/lib/python3.12/site-packages/pip (python 3.12)
+	PDM, version 2.15.0
+
+
+ ==============================================================================
+
+PYTHONPATH="./src"
+
+ ==============================================================================
+
+Running: python -m doctest -v ./src/pangram/__init__.py ./src/pangram/pangram.py
+
+1 items had no tests:
+    __init__
+0 tests in 1 items.
+0 passed and 0 failed.
+Test passed.
+Trying:
+    text: set[str] = " ABCDEFGHIJKLMNOPQRSTUVWXYZ[]^_`abcdefghijklmnopqrstuvwxyz"
+Expecting nothing
+ok
+Trying:
+    len(sorted({r for r in text.lower() if r.isalpha()}))
+Expecting:
+    26
+ok
+1 items had no tests:
+    pangram
+1 items passed all tests:
+   2 tests in pangram.is_pangram
+2 tests in 2 items.
+2 passed and 0 failed.
+Test passed.
+
+real	0m0.144s
+user	0m0.088s
+sys	0m0.058s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.219s
+user	0m0.855s
+sys	0m0.380s
+
+real	0m1.221s
+user	0m0.857s
+sys	0m0.380s
+
+===============================================================================
+
+Running: ../../.github/citools/python/python-test-with-coverage
+
+Running Python Tests With Coverage
+
+Python versions:
+
+	Python 3.12.1
+	pyenv 2.3.36-21-g7e550e31
+	pip 24.0 from /home/vpayno/.pyenv/versions/3.12.1/lib/python3.12/site-packages/pip (python 3.12)
+	PDM, version 2.15.0
+
+
+ ==============================================================================
+
+Running: rm -rf ./coverage
+
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.001s
+
+
+ ==============================================================================
+
+Running: pytest --version
+
+pytest 7.4.3
+
+real	0m0.977s
+user	0m1.034s
+sys	0m0.834s
+
+
+ ==============================================================================
+
+PYTHONPATH="./src"
+
+ ==============================================================================
+
+Running: pytest --verbose --cov=. --cov-branch --cov-report=term-missing --cov-report=xml:.coverage.xml -p no:randomly ./test
+
+============================= test session starts ==============================
+platform linux -- Python 3.12.1, pytest-7.4.3, pluggy-1.3.0 -- /home/vpayno/.pyenv/versions/3.12.1/bin/python
+cachedir: .pytest_cache
+hypothesis profile 'default' -> database=DirectoryBasedExampleDatabase(PosixPath('/home/vpayno/git_vpayno/exercism-workspace/python/pangram/.hypothesis/examples'))
+rootdir: /home/vpayno/git_vpayno/exercism-workspace/python/pangram
+configfile: pytest.ini
+plugins: anyio-4.2.0, libtmux-0.25.0, pylama-8.4.1, cov-4.1.0, datafiles-3.0.0, docker-2.0.1, subprocess-1.5.0, typeguard-4.1.5, hypothesis-6.98.17, snapshot-0.9.0
+collecting ... collected 12 items
+
+test/pangram_test.py::PangramTest::test_a_m_and_a_m_are_26_different_characters_but_not_a_pangram PASSED [  8%]
+test/pangram_test.py::PangramTest::test_empty_sentence PASSED            [ 16%]
+test/pangram_test.py::PangramTest::test_missing_letters_replaced_by_numbers PASSED [ 25%]
+test/pangram_test.py::PangramTest::test_missing_the_letter_h PASSED      [ 33%]
+test/pangram_test.py::PangramTest::test_missing_the_letter_x PASSED      [ 41%]
+test/pangram_test.py::PangramTest::test_mixed_case_and_punctuation PASSED [ 50%]
+test/pangram_test.py::PangramTest::test_only_lower_case PASSED           [ 58%]
+test/pangram_test.py::PangramTest::test_perfect_lower_case PASSED        [ 66%]
+test/pangram_test.py::PangramTest::test_sentence_without_lower_bound PASSED [ 75%]
+test/pangram_test.py::PangramTest::test_sentence_without_upper_bound PASSED [ 83%]
+test/pangram_test.py::PangramTest::test_with_numbers PASSED              [ 91%]
+test/pangram_test.py::PangramTest::test_with_underscores PASSED          [100%]
+
+=============================== warnings summary ===============================
+../../../../.pyenv/versions/3.12.1/lib/python3.12/site-packages/coverage/pytracer.py:164
+  /home/vpayno/.pyenv/versions/3.12.1/lib/python3.12/site-packages/coverage/pytracer.py:164: DeprecationWarning: currentThread() is deprecated, use current_thread() instead
+    self.thread = self.threading.currentThread()
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+
+---------- coverage: platform linux, python 3.12.1-final-0 -----------
+Name               Stmts   Miss Branch BrPart  Cover   Missing
+--------------------------------------------------------------
+pangram.py             6      1      4      1    80%   18->exit
+test/__init__.py       0      0      0      0   100%
+--------------------------------------------------------------
+TOTAL                  6      1      4      1    80%
+Coverage XML written to file .coverage.xml
+
+======================== 12 passed, 1 warning in 1.05s =========================
+
+real	0m2.106s
+user	0m1.949s
+sys	0m0.158s
+
+
+ ==============================================================================
+
+Running: coverage report --show-missing
+
+Name               Stmts   Miss Branch BrPart  Cover   Missing
+--------------------------------------------------------------
+pangram.py             6      1      4      1    80%   18->exit
+test/__init__.py       0      0      0      0   100%
+--------------------------------------------------------------
+TOTAL                  6      1      4      1    80%
+
+real	0m0.167s
+user	0m0.091s
+sys	0m0.078s
+
+
+ ==============================================================================
+
+Running: coverage annotate
+
+
+real	0m0.143s
+user	0m0.097s
+sys	0m0.049s
+
+
+ ==============================================================================
+
+Line Coverage: 83.3%
+Branch Coverage: 75.0%
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m4.420s
+user	0m3.908s
+sys	0m1.424s
+
+real	0m4.423s
+user	0m3.908s
+sys	0m1.426s
+
+===============================================================================
+
+tail -n 10000 ./*,cover | grep -E -C 3 '^> def |^! '
+  
+> def is_pangram(text: str) -> bool:
+>     """Is the input a pangram?
+
+===============================================================================
+
+Running: misspell ./src/pangram/__init__.py ./src/pangram/pangram.py
+
+real	0m0.021s
+user	0m0.019s
+sys	0m0.015s
+
+===============================================================================
+
