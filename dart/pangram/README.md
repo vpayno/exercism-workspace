@@ -42,3 +42,8 @@ For this exercise, a sentence is a pangram if it contains each of the 26 letters
 ### Based on
 
 Wikipedia - https://en.wikipedia.org/wiki/Pangram
+
+### My Solution
+
+- [my solution](./lib/pangram.dart)
+- [run-tests](./run-tests-dart.txt)

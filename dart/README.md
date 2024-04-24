@@ -25,3 +25,4 @@
 - [phone-number](./phone-number/README.md)
 - [acronym](./acronym/README.md)
 - [luhn](./luhn/README.md)
+- [pangram](./pangram/README.md)
