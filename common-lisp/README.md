@@ -365,3 +365,4 @@ Bye.
 - [difference-of-squares](./difference-of-squares/README.md)
 - [robot-name](./robot-name/README.md)
 - [matching-brackets](./matching-brackets/README.md)
+- [pangram](./pangram/README.md)

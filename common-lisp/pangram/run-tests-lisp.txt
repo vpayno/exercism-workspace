@@ -1,0 +1,71 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: clisp ./run-tests.lisp
+To load "fiveam":
+  Load 1 ASDF system:
+    fiveam
+; Loading "fiveam"
+
+
+Running test suite PANGRAM-SUITE
+ Running test A-M-AND-A-M-ARE-26-DIFFERENT-CHARACTERS-BUT-NOT-A-PANGRAM .
+ Running test CASE-INSENSITIVE .
+ Running test MIXED-CASE-AND-PUNCTUATION .
+ Running test MISSING-LETTERS-REPLACED-BY-NUMBERS .
+ Running test WITH-NUMBERS .
+ Running test WITH-UNDERSCORES .
+ Running test MISSING-THE-LETTER-H .
+ Running test MISSING-THE-LETTER-X .
+ Running test ONLY-LOWER-CASE .
+ Running test PERFECT-LOWER-CASE .
+ Running test EMPTY-SENTENCE .
+ Did 11 checks.
+    Pass: 11 (100%)
+    Skip: 0 ( 0%)
+    Fail: 0 ( 0%)
+
+
+real	0m1.898s
+user	0m1.792s
+sys	0m0.106s
+
+===============================================================================
+
+sblint -v ./pangram.lisp ./pangram-test.lisp ./run-tests.lisp
+[INFO] Lint file pangram.lisp
+pangram.lisp:9:17: simple-warning: undefined variable: PANGRAM::LCASE
+pangram.lisp:8:4: simple-warning: undefined variable: PANGRAM::LCASE
+pangram.lisp:14:7: simple-warning: undefined variable: PANGRAM::LCHARS
+pangram.lisp:9:4: simple-warning: undefined variable: PANGRAM::LCHARS
+
+real	0m0.444s
+user	0m0.389s
+sys	0m0.055s
+
+===============================================================================
+
+lisp-format -verbose -style=llvm -i ./pangram.lisp ./pangram-test.lisp ./run-tests.lisp
+Indenting region... 
+Indenting region...done
+Indenting region... 
+Indenting region...done
+Indenting region... 
+Indenting region...done
+
+real	0m0.135s
+user	0m0.096s
+sys	0m0.042s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.025s
+user	0m0.022s
+sys	0m0.010s
+
+===============================================================================
+
