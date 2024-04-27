@@ -71,3 +71,8 @@ Learn more about [protein translation on Wikipedia][protein-translation].
 ### Based on
 
 Tyler Long
+
+### My Solution
+
+- [my solution](./protein_translation.py)
+- [run-tests](./run-tests-python.txt)

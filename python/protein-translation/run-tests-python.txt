@@ -1,0 +1,544 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: ../../.github/citools/python/python-lint-pylint
+
+Running Python Lint - PyLint
+
+Python versions:
+
+	Python 3.12.1
+	pyenv 2.3.36-21-g7e550e31
+	pip 24.0 from /home/vpayno/.pyenv/versions/3.12.1/lib/python3.12/site-packages/pip (python 3.12)
+	PDM, version 2.15.0
+
+
+ ==============================================================================
+
+Running: pylint --version
+
+pylint 3.0.3
+astroid 3.0.2
+Python 3.12.1 (main, Dec 28 2023, 08:22:05) [GCC 10.2.1 20210110]
+
+real	0m0.231s
+user	0m0.166s
+sys	0m0.066s
+
+
+ ==============================================================================
+
+Running: pylint ./src
+
+************* Module protein_translation.protein_translation
+src/protein_translation/protein_translation.py:10:0: C0115: Missing class docstring (missing-class-docstring)
+src/protein_translation/protein_translation.py:11:4: C0103: Class constant name "Methionine" doesn't conform to UPPER_CASE naming style (invalid-name)
+src/protein_translation/protein_translation.py:12:4: C0103: Class constant name "Phenylalanine" doesn't conform to UPPER_CASE naming style (invalid-name)
+src/protein_translation/protein_translation.py:13:4: C0103: Class constant name "Leucine" doesn't conform to UPPER_CASE naming style (invalid-name)
+src/protein_translation/protein_translation.py:14:4: C0103: Class constant name "Serine" doesn't conform to UPPER_CASE naming style (invalid-name)
+src/protein_translation/protein_translation.py:15:4: C0103: Class constant name "Tyrosine" doesn't conform to UPPER_CASE naming style (invalid-name)
+src/protein_translation/protein_translation.py:16:4: C0103: Class constant name "Cysteine" doesn't conform to UPPER_CASE naming style (invalid-name)
+src/protein_translation/protein_translation.py:17:4: C0103: Class constant name "Tryptophan" doesn't conform to UPPER_CASE naming style (invalid-name)
+
+------------------------------------------------------------------
+Your code has been rated at 7.89/10 (previous run: 7.58/10, +0.32)
+
+
+real	0m0.602s
+user	0m0.543s
+sys	0m0.061s
+
+
+ ==============================================================================
+
+Exit code: -1
+
+real	0m1.779s
+user	0m1.377s
+sys	0m0.424s
+
+real	0m1.783s
+user	0m1.379s
+sys	0m0.425s
+
+===============================================================================
+
+Running: ../../.github/citools/python/python-lint-ruff
+
+Running Python Lint - Ruff
+
+Python versions:
+
+	Python 3.12.1
+	pyenv 2.3.36-21-g7e550e31
+	pip 24.0 from /home/vpayno/.pyenv/versions/3.12.1/lib/python3.12/site-packages/pip (python 3.12)
+	PDM, version 2.15.0
+
+
+ ==============================================================================
+
+Running: ruff --version
+
+ruff 0.3.5
+
+real	0m0.083s
+user	0m0.038s
+sys	0m0.047s
+
+
+ ==============================================================================
+
+Running: ruff check --ignore E501 ./src
+
+All checks passed!
+
+real	0m0.102s
+user	0m0.038s
+sys	0m0.067s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.067s
+user	0m0.720s
+sys	0m0.370s
+
+real	0m1.069s
+user	0m0.720s
+sys	0m0.371s
+
+===============================================================================
+
+Running: ../../.github/citools/python/python-lint-pyright
+
+Running Python Lint - PyRight
+
+Python versions:
+
+	Python 3.12.1
+	pyenv 2.3.36-21-g7e550e31
+	pip 24.0 from /home/vpayno/.pyenv/versions/3.12.1/lib/python3.12/site-packages/pip (python 3.12)
+	PDM, version 2.15.0
+
+
+ ==============================================================================
+
+Running: pyright --version
+
+pyright 1.1.360
+
+real	0m0.861s
+user	0m0.512s
+sys	0m0.103s
+
+
+ ==============================================================================
+
+Running: pyright --stats ./src
+
+Found 2 source files
+pyright 1.1.360
+0 errors, 0 warnings, 0 informations 
+Completed in 0.643sec
+
+Analysis stats
+Total files parsed and bound: 22
+Total files checked: 2
+
+Timing stats
+Find Source Files:    0sec
+Read Source Files:    0.01sec
+Tokenize:             0.04sec
+Parse:                0.05sec
+Resolve Imports:      0.06sec
+Bind:                 0.04sec
+Check:                0.12sec
+Detect Cycles:        0sec
+
+real	0m1.297s
+user	0m1.353s
+sys	0m0.182s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m3.075s
+user	0m2.514s
+sys	0m0.571s
+
+real	0m3.078s
+user	0m2.515s
+sys	0m0.574s
+
+===============================================================================
+
+Running: ../../.github/citools/python/python-lint-bandit
+
+Running Python Lint - Bandit
+
+Python versions:
+
+	Python 3.12.1
+	pyenv 2.3.36-21-g7e550e31
+	pip 24.0 from /home/vpayno/.pyenv/versions/3.12.1/lib/python3.12/site-packages/pip (python 3.12)
+	PDM, version 2.15.0
+
+
+ ==============================================================================
+
+Running: bandit --version
+
+bandit 1.7.7
+  python version = 3.12.1 (main, Dec 28 2023, 08:22:05) [GCC 10.2.1 20210110]
+
+real	0m0.277s
+user	0m0.212s
+sys	0m0.067s
+
+
+ ==============================================================================
+
+Running: bandit --verbose --recursive ./src
+
+[main]	INFO	profile include tests: None
+[main]	INFO	profile exclude tests: None
+[main]	INFO	cli include tests: None
+[main]	INFO	cli exclude tests: None
+[main]	INFO	running on Python 3.12.1
+Run started:2024-04-27 01:55:49.862342
+Files in scope (2):
+	./src/protein_translation/__init__.py (score: {SEVERITY: 0, CONFIDENCE: 0})
+	./src/protein_translation/protein_translation.py (score: {SEVERITY: 0, CONFIDENCE: 0})
+Files excluded (2):
+	./src/protein_translation/__pycache__/__init__.cpython-312.pyc
+	./src/protein_translation/__pycache__/protein_translation.cpython-312.pyc
+
+Test results:
+	No issues identified.
+
+Code scanned:
+	Total lines of code: 65
+	Total lines skipped (#nosec): 0
+	Total potential issues skipped due to specifically being disabled (e.g., #nosec BXXX): 0
+
+Run metrics:
+	Total issues (by severity):
+		Undefined: 0
+		Low: 0
+		Medium: 0
+		High: 0
+	Total issues (by confidence):
+		Undefined: 0
+		Low: 0
+		Medium: 0
+		High: 0
+Files skipped (0):
+
+real	0m0.232s
+user	0m0.164s
+sys	0m0.070s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.406s
+user	0m1.017s
+sys	0m0.409s
+
+real	0m1.408s
+user	0m1.018s
+sys	0m0.410s
+
+===============================================================================
+
+Running: ../../.github/citools/python/python-lint-refurb
+
+Running Python Lint - Refurb
+
+Python versions:
+
+	Python 3.12.1
+	pyenv 2.3.36-21-g7e550e31
+	pip 24.0 from /home/vpayno/.pyenv/versions/3.12.1/lib/python3.12/site-packages/pip (python 3.12)
+	PDM, version 2.15.0
+
+
+ ==============================================================================
+
+Running: refurb --version
+
+Refurb: v1.26.0
+Mypy: v1.9.0
+
+real	0m0.191s
+user	0m0.130s
+sys	0m0.064s
+
+
+ ==============================================================================
+
+Running: refurb --quiet --ignore 183 ./src
+
+
+real	0m1.301s
+user	0m1.210s
+sys	0m0.093s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m3.479s
+user	0m3.030s
+sys	0m0.473s
+
+real	0m3.481s
+user	0m3.030s
+sys	0m0.474s
+
+===============================================================================
+
+Running: ../../.github/citools/python/python-test-with-doctests
+
+Running Python DocTests
+
+Python versions:
+
+	Python 3.12.1
+	pyenv 2.3.36-21-g7e550e31
+	pip 24.0 from /home/vpayno/.pyenv/versions/3.12.1/lib/python3.12/site-packages/pip (python 3.12)
+	PDM, version 2.15.0
+
+
+ ==============================================================================
+
+PYTHONPATH="./src"
+
+ ==============================================================================
+
+Running: python -m doctest -v ./src/protein_translation/__init__.py ./src/protein_translation/protein_translation.py
+
+1 items had no tests:
+    __init__
+0 tests in 1 items.
+0 passed and 0 failed.
+Test passed.
+Trying:
+    re.match(r"(\w\w\w)", "AUGUUUUCU").groups()
+Expecting:
+    ('AUG',)
+ok
+Trying:
+    re.findall(r"(\w\w\w)", "AUGUUUUCU")
+Expecting:
+    ['AUG', 'UUU', 'UCU']
+ok
+2 items had no tests:
+    protein_translation
+    protein_translation.Proteins
+1 items passed all tests:
+   2 tests in protein_translation.proteins
+2 tests in 3 items.
+2 passed and 0 failed.
+Test passed.
+
+real	0m0.159s
+user	0m0.090s
+sys	0m0.072s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.057s
+user	0m0.711s
+sys	0m0.366s
+
+real	0m1.060s
+user	0m0.712s
+sys	0m0.367s
+
+===============================================================================
+
+Running: ../../.github/citools/python/python-test-with-coverage
+
+Running Python Tests With Coverage
+
+Python versions:
+
+	Python 3.12.1
+	pyenv 2.3.36-21-g7e550e31
+	pip 24.0 from /home/vpayno/.pyenv/versions/3.12.1/lib/python3.12/site-packages/pip (python 3.12)
+	PDM, version 2.15.0
+
+
+ ==============================================================================
+
+Running: rm -rf ./coverage
+
+
+real	0m0.001s
+user	0m0.000s
+sys	0m0.001s
+
+
+ ==============================================================================
+
+Running: pytest --version
+
+pytest 7.4.3
+
+real	0m0.809s
+user	0m0.856s
+sys	0m0.845s
+
+
+ ==============================================================================
+
+PYTHONPATH="./src"
+
+ ==============================================================================
+
+Running: pytest --verbose --cov=. --cov-branch --cov-report=term-missing --cov-report=xml:.coverage.xml -p no:randomly ./test
+
+============================= test session starts ==============================
+platform linux -- Python 3.12.1, pytest-7.4.3, pluggy-1.3.0 -- /home/vpayno/.pyenv/versions/3.12.1/bin/python
+cachedir: .pytest_cache
+hypothesis profile 'default' -> database=DirectoryBasedExampleDatabase(PosixPath('/home/vpayno/git_vpayno/exercism-workspace/python/protein-translation/.hypothesis/examples'))
+rootdir: /home/vpayno/git_vpayno/exercism-workspace/python/protein-translation
+configfile: pytest.ini
+plugins: anyio-4.2.0, libtmux-0.25.0, pylama-8.4.1, cov-4.1.0, datafiles-3.0.0, docker-2.0.1, subprocess-1.5.0, typeguard-4.1.5, hypothesis-6.98.17, snapshot-0.9.0
+collecting ... collected 25 items
+
+test/protein_translation_test.py::ProteinTranslationTest::test_cysteine_rna_sequence_1 PASSED [  4%]
+test/protein_translation_test.py::ProteinTranslationTest::test_cysteine_rna_sequence_2 PASSED [  8%]
+test/protein_translation_test.py::ProteinTranslationTest::test_leucine_rna_sequence_1 PASSED [ 12%]
+test/protein_translation_test.py::ProteinTranslationTest::test_leucine_rna_sequence_2 PASSED [ 16%]
+test/protein_translation_test.py::ProteinTranslationTest::test_methionine_rna_sequence PASSED [ 20%]
+test/protein_translation_test.py::ProteinTranslationTest::test_phenylalanine_rna_sequence_1 PASSED [ 24%]
+test/protein_translation_test.py::ProteinTranslationTest::test_phenylalanine_rna_sequence_2 PASSED [ 28%]
+test/protein_translation_test.py::ProteinTranslationTest::test_sequence_of_two_different_protein_codons_translates_into_proteins PASSED [ 32%]
+test/protein_translation_test.py::ProteinTranslationTest::test_sequence_of_two_protein_codons_translates_into_proteins PASSED [ 36%]
+test/protein_translation_test.py::ProteinTranslationTest::test_serine_rna_sequence_1 PASSED [ 40%]
+test/protein_translation_test.py::ProteinTranslationTest::test_serine_rna_sequence_2 PASSED [ 44%]
+test/protein_translation_test.py::ProteinTranslationTest::test_serine_rna_sequence_3 PASSED [ 48%]
+test/protein_translation_test.py::ProteinTranslationTest::test_serine_rna_sequence_4 PASSED [ 52%]
+test/protein_translation_test.py::ProteinTranslationTest::test_stop_codon_rna_sequence_1 PASSED [ 56%]
+test/protein_translation_test.py::ProteinTranslationTest::test_stop_codon_rna_sequence_2 PASSED [ 60%]
+test/protein_translation_test.py::ProteinTranslationTest::test_stop_codon_rna_sequence_3 PASSED [ 64%]
+test/protein_translation_test.py::ProteinTranslationTest::test_translate_rna_strand_into_correct_protein_list PASSED [ 68%]
+test/protein_translation_test.py::ProteinTranslationTest::test_translation_stops_if_stop_codon_at_beginning_of_sequence PASSED [ 72%]
+test/protein_translation_test.py::ProteinTranslationTest::test_translation_stops_if_stop_codon_at_end_of_three_codon_sequence PASSED [ 76%]
+test/protein_translation_test.py::ProteinTranslationTest::test_translation_stops_if_stop_codon_at_end_of_two_codon_sequence PASSED [ 80%]
+test/protein_translation_test.py::ProteinTranslationTest::test_translation_stops_if_stop_codon_in_middle_of_six_codon_sequence PASSED [ 84%]
+test/protein_translation_test.py::ProteinTranslationTest::test_translation_stops_if_stop_codon_in_middle_of_three_codon_sequence PASSED [ 88%]
+test/protein_translation_test.py::ProteinTranslationTest::test_tryptophan_rna_sequence PASSED [ 92%]
+test/protein_translation_test.py::ProteinTranslationTest::test_tyrosine_rna_sequence_1 PASSED [ 96%]
+test/protein_translation_test.py::ProteinTranslationTest::test_tyrosine_rna_sequence_2 PASSED [100%]
+
+=============================== warnings summary ===============================
+../../../../.pyenv/versions/3.12.1/lib/python3.12/site-packages/coverage/pytracer.py:164
+  /home/vpayno/.pyenv/versions/3.12.1/lib/python3.12/site-packages/coverage/pytracer.py:164: DeprecationWarning: currentThread() is deprecated, use current_thread() instead
+    self.thread = self.threading.currentThread()
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+
+---------- coverage: platform linux, python 3.12.1-final-0 -----------
+Name                     Stmts   Miss Branch BrPart  Cover   Missing
+--------------------------------------------------------------------
+protein_translation.py      38      4     10      3    85%   63, 66, 73, 62->63, 65->66, 72->73
+test/__init__.py             0      0      0      0   100%
+--------------------------------------------------------------------
+TOTAL                       38      4     10      3    85%
+Coverage XML written to file .coverage.xml
+
+======================== 25 passed, 1 warning in 0.97s =========================
+
+real	0m1.841s
+user	0m1.717s
+sys	0m0.126s
+
+
+ ==============================================================================
+
+Running: coverage report --show-missing
+
+Name                     Stmts   Miss Branch BrPart  Cover   Missing
+--------------------------------------------------------------------
+protein_translation.py      38      4     10      3    85%   63, 66, 73, 62->63, 65->66, 72->73
+test/__init__.py             0      0      0      0   100%
+--------------------------------------------------------------------
+TOTAL                       38      4     10      3    85%
+
+real	0m0.145s
+user	0m0.088s
+sys	0m0.059s
+
+
+ ==============================================================================
+
+Running: coverage annotate
+
+
+real	0m0.155s
+user	0m0.098s
+sys	0m0.059s
+
+
+ ==============================================================================
+
+Line Coverage: 89.5%
+Branch Coverage: 70.0%
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m4.041s
+user	0m3.515s
+sys	0m1.422s
+
+real	0m4.043s
+user	0m3.515s
+sys	0m1.423s
+
+===============================================================================
+
+tail -n 10000 ./*,cover | grep -E -C 3 '^> def |^! '
+  
+> def proteins(rna_sequence: RnaSequenceT) -> ProteinListT:
+>     r"""Translate RNA to Proteins.
+--
+>     if rna_sequence == "":
+!         return result
+  
+>     if len(rna_sequence) % K_CODON_LENGTH != 0:
+!         return result
+  
+--
+>     if codons is None:
+!         return result
+  
+!     codon: CodonSequenceT
+>     for codon in codons:
+
+===============================================================================
+
+Running: misspell ./src/protein_translation/__init__.py ./src/protein_translation/protein_translation.py
+
+real	0m0.019s
+user	0m0.023s
+sys	0m0.007s
+
+===============================================================================
+

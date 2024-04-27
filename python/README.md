@@ -46,3 +46,4 @@
 - [difference-of-squares](./difference-of-squares/README.md)
 - [luhn](./luhn/README.md)
 - [pangram](./pangram/README.md)
+- [protein-translation](./protein-translation/README.md)
