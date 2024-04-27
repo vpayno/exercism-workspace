@@ -25,27 +25,6 @@
 > CodonSequenceT = str
 > CodonListT = list[CodonSequenceT]
 > ProteinListT = list[ProteinNameT]
-> CodonToProteinT = dict[CodonSequenceT, Proteins]
-  
-> CodonToProtein: CodonToProteinT = {
->     "AUG": Proteins.METHIONINE,
->     "UUU": Proteins.PHENYLALANINE,
->     "UUC": Proteins.PHENYLALANINE,
->     "UUA": Proteins.LEUCINE,
->     "UUG": Proteins.LEUCINE,
->     "UCU": Proteins.SERINE,
->     "UCC": Proteins.SERINE,
->     "UCA": Proteins.SERINE,
->     "UCG": Proteins.SERINE,
->     "UAU": Proteins.TYROSINE,
->     "UAC": Proteins.TYROSINE,
->     "UGU": Proteins.CYSTEINE,
->     "UGC": Proteins.CYSTEINE,
->     "UGG": Proteins.TRYPTOPHAN,
->     "UAA": Proteins.STOP,
->     "UAG": Proteins.STOP,
->     "UGA": Proteins.STOP,
-> }
   
   
 > def proteins(rna_sequence: RnaSequenceT) -> ProteinListT:
@@ -59,30 +38,51 @@
 >     :param rna_sequence: sequence of RNA nucleotide sequences
 >     :return: list of proteins
 >     """
->     result: ProteinListT = []
+>     protein_list: ProteinListT = []
   
 >     if rna_sequence == "":
-!         return result
+!         return protein_list
   
 >     if len(rna_sequence) % K_CODON_LENGTH != 0:
-!         return result
+!         return protein_list
   
 >     rna_sequence = rna_sequence.upper()
   
 >     codons: CodonListT = re.findall(r"(\w\w\w)", rna_sequence)
   
 >     if codons is None:
-!         return result
+!         return protein_list
   
 !     codon: CodonSequenceT
 >     for codon in codons:
 >         print(f"codon: {codon}")
   
->         protein: Proteins = CodonToProtein.get(codon, Proteins.STOP)
+>         protein: Proteins
+  
+>         match codon:
+>             case "AUG":
+>                 protein = Proteins.METHIONINE
+>             case "UUU" | "UUC":
+>                 protein = Proteins.PHENYLALANINE
+>             case "UUA" | "UUG":
+>                 protein = Proteins.LEUCINE
+>             case "UCU" | "UCC" | "UCA" | "UCG":
+>                 protein = Proteins.SERINE
+>             case "UAU" | "UAC":
+>                 protein = Proteins.TYROSINE
+>             case "UGU" | "UGC":
+>                 protein = Proteins.CYSTEINE
+>             case "UGG":
+>                 protein = Proteins.TRYPTOPHAN
+>             case "UAA" | "UAG" | "UGA":
+>                 protein = Proteins.STOP
+!             case _:
+                  # or break
+!                 protein = Proteins.STOP
   
 >         if protein == Proteins.STOP:
 >             break
   
->         result.append(protein.name.title())
+>         protein_list.append(protein.name.title())
   
->     return result
+>     return protein_list
