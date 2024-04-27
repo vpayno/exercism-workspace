@@ -8,13 +8,13 @@ K_CODON_LENGTH: int = 3
 
 
 class Proteins(Enum):
-    Methionine = enum_auto()
-    Phenylalanine = enum_auto()
-    Leucine = enum_auto()
-    Serine = enum_auto()
-    Tyrosine = enum_auto()
-    Cysteine = enum_auto()
-    Tryptophan = enum_auto()
+    METHIONINE = enum_auto()
+    PHENYLALANINE = enum_auto()
+    LEUCINE = enum_auto()
+    SERINE = enum_auto()
+    TYROSINE = enum_auto()
+    CYSTEINE = enum_auto()
+    TRYPTOPHAN = enum_auto()
     STOP = enum_auto()
 
 
@@ -26,20 +26,20 @@ ProteinListT = list[ProteinNameT]
 CodonToProteinT = dict[CodonSequenceT, Proteins]
 
 CodonToProtein: CodonToProteinT = {
-    "AUG": Proteins.Methionine,
-    "UUU": Proteins.Phenylalanine,
-    "UUC": Proteins.Phenylalanine,
-    "UUA": Proteins.Leucine,
-    "UUG": Proteins.Leucine,
-    "UCU": Proteins.Serine,
-    "UCC": Proteins.Serine,
-    "UCA": Proteins.Serine,
-    "UCG": Proteins.Serine,
-    "UAU": Proteins.Tyrosine,
-    "UAC": Proteins.Tyrosine,
-    "UGU": Proteins.Cysteine,
-    "UGC": Proteins.Cysteine,
-    "UGG": Proteins.Tryptophan,
+    "AUG": Proteins.METHIONINE,
+    "UUU": Proteins.PHENYLALANINE,
+    "UUC": Proteins.PHENYLALANINE,
+    "UUA": Proteins.LEUCINE,
+    "UUG": Proteins.LEUCINE,
+    "UCU": Proteins.SERINE,
+    "UCC": Proteins.SERINE,
+    "UCA": Proteins.SERINE,
+    "UCG": Proteins.SERINE,
+    "UAU": Proteins.TYROSINE,
+    "UAC": Proteins.TYROSINE,
+    "UGU": Proteins.CYSTEINE,
+    "UGC": Proteins.CYSTEINE,
+    "UGG": Proteins.TRYPTOPHAN,
     "UAA": Proteins.STOP,
     "UAG": Proteins.STOP,
     "UGA": Proteins.STOP,
@@ -81,6 +81,6 @@ def proteins(rna_sequence: RnaSequenceT) -> ProteinListT:
         if protein == Proteins.STOP:
             break
 
-        result.append(protein.name)
+        result.append(protein.name.title())
 
     return result
