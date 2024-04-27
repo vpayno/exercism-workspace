@@ -1,0 +1,823 @@
+Running automated test file(s):
+
+
+===============================================================================
+
+Running: ../../.github/citools/rust/rust-lint-check --release
+
+Running Rust Cargo Check
+
+Rust versions:
+
+	rustc 1.77.2 (25ef9e3d8 2024-04-09)
+info: This is the version for the rustup toolchain manager, not the rustc compiler.
+info: The currently active `rustc` version is `rustc 1.77.2 (25ef9e3d8 2024-04-09)`
+	rustup 1.27.0 (bbb9276d2 2024-03-08)
+
+
+ ==============================================================================
+
+Running: cargo clean
+
+     Removed 1350 files, 43.7MiB total
+
+real	0m0.055s
+user	0m0.013s
+sys	0m0.041s
+
+
+ ==============================================================================
+
+Running: cargo check --future-incompat-report --release
+
+    Checking protein-translation v0.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/protein-translation)
+    Finished release [optimized] target(s) in 0.12s
+note: 0 dependencies had future-incompatible warnings
+
+real	0m0.134s
+user	0m0.027s
+sys	0m0.035s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.240s
+user	0m0.066s
+sys	0m0.103s
+
+real	0m0.244s
+user	0m0.068s
+sys	0m0.106s
+
+===============================================================================
+
+Running: ../../.github/citools/rust/rust-lint-clippy --release
+
+Running Rust Cargo Clippy
+
+Rust versions:
+
+	rustc 1.77.2 (25ef9e3d8 2024-04-09)
+info: This is the version for the rustup toolchain manager, not the rustc compiler.
+info: The currently active `rustc` version is `rustc 1.77.2 (25ef9e3d8 2024-04-09)`
+	rustup 1.27.0 (bbb9276d2 2024-03-08)
+
+
+ ==============================================================================
+
+Running: cargo clean
+
+     Removed 9 files, 6.5KiB total
+
+real	0m0.011s
+user	0m0.006s
+sys	0m0.004s
+
+
+ ==============================================================================
+
+Running: cargo clippy --release
+
+    Checking protein-translation v0.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/protein-translation)
+    Finished release [optimized] target(s) in 0.08s
+
+real	0m0.107s
+user	0m0.052s
+sys	0m0.056s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m0.164s
+user	0m0.089s
+sys	0m0.080s
+
+real	0m0.167s
+user	0m0.089s
+sys	0m0.082s
+
+===============================================================================
+
+Running: ../../.github/citools/rust/rust-lint-audit
+No deps found, skipping cargo audit.
+
+real	0m0.049s
+user	0m0.021s
+sys	0m0.028s
+
+real	0m0.051s
+user	0m0.023s
+sys	0m0.029s
+
+===============================================================================
+
+rm -fv ./*.profraw ./*.profdata
+
+===============================================================================
+
+Running: ../../.github/citools/rust/rust-test-with-tarpaulin
+
+Running Rust Tests With Tarpaulin
+
+Rust versions:
+
+	rustc 1.77.2 (25ef9e3d8 2024-04-09)
+info: This is the version for the rustup toolchain manager, not the rustc compiler.
+info: The currently active `rustc` version is `rustc 1.77.2 (25ef9e3d8 2024-04-09)`
+	rustup 1.27.0 (bbb9276d2 2024-03-08)
+
+
+ ==============================================================================
+
+Running: cargo clean
+
+     Removed 9 files, 6.7KiB total
+
+real	0m0.011s
+user	0m0.007s
+sys	0m0.004s
+
+
+ ==============================================================================
+
+Running: cargo test --all-features
+
+   Compiling protein-translation v0.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/protein-translation)
+    Finished test [unoptimized + debuginfo] target(s) in 0.51s
+     Running unittests src/lib.rs (/home/vpayno/git_vpayno/exercism-workspace/rust/target/debug/deps/protein_translation-26c02eb2cfcd3e69)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/protein-translation.rs (/home/vpayno/git_vpayno/exercism-workspace/rust/target/debug/deps/protein_translation-028959f9d5100f76)
+
+running 41 tests
+test arginine_agg ... ok
+test arginine_aga ... ok
+test arginine_cga ... ok
+test cysteine_rna_sequence_2 ... ok
+test cysteine_rna_sequence_1 ... ok
+test empty_is_invalid ... ok
+test cysteine_tgt ... ok
+test empty_rna_sequence_results_in_no_proteins ... ok
+test incomplete_rna_sequence_can_t_translate ... ok
+test incomplete_rna_sequence_can_translate_if_valid_until_a_stop_codon ... ok
+test isoleucine ... ok
+test leucine_rna_sequence_1 ... ok
+test leucine_rna_sequence_2 ... ok
+test methionine ... ok
+test methionine_rna_sequence ... ok
+test phenylalanine_rna_sequence_1 ... ok
+test phenylalanine_rna_sequence_2 ... ok
+test sequence_of_two_different_protein_codons_translates_into_proteins ... ok
+test sequence_of_two_protein_codons_translates_into_proteins ... ok
+test serine_rna_sequence_2 ... ok
+test serine_rna_sequence_1 ... ok
+test serine_rna_sequence_3 ... ok
+test serine_rna_sequence_4 ... ok
+test stop_codon_rna_sequence_1 ... ok
+test stop ... ok
+test stop_codon_rna_sequence_3 ... ok
+test stop_codon_rna_sequence_2 ... ok
+test too_short_is_invalid ... ok
+test translate_rna_strand_into_correct_protein_list ... ok
+test translation_stops_if_stop_codon_at_beginning_of_sequence ... ok
+test translation_stops_if_stop_codon_at_end_of_three_codon_sequence ... ok
+test too_long_is_invalid ... ok
+test translation_stops_if_stop_codon_at_end_of_two_codon_sequence ... ok
+test translation_stops_if_stop_codon_in_middle_of_six_codon_sequence ... ok
+test translation_stops_if_stop_codon_in_middle_of_three_codon_sequence ... ok
+test tryptophan_rna_sequence ... ok
+test tyrosine_rna_sequence_1 ... ok
+test valine ... ok
+test tyrosine_rna_sequence_2 ... ok
+test unknown_amino_acids_not_part_of_a_codon_can_t_translate ... ok
+test x_is_not_shorthand_so_is_invalid ... ok
+
+test result: ok. 41 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests protein-translation
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+real	0m0.541s
+user	0m0.951s
+sys	0m0.317s
+
+
+ ==============================================================================
+
+Running: cargo tarpaulin --release --timeout=300 --engine=llvm
+
+[2mApr 26 21:40:50.520[0m [32m INFO[0m cargo_tarpaulin::config: Creating config
+[2mApr 26 21:40:50.544[0m [32m INFO[0m cargo_tarpaulin: Running Tarpaulin
+[2mApr 26 21:40:50.544[0m [32m INFO[0m cargo_tarpaulin: Building project
+[2mApr 26 21:40:50.544[0m [32m INFO[0m cargo_tarpaulin::cargo: Cleaning project
+   Compiling protein-translation v0.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/protein-translation)
+    Finished release [optimized] target(s) in 0.84s
+[2mApr 26 21:40:51.443[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/target/release/deps/protein_translation-414a2a857a1d4a53
+[2mApr 26 21:40:51.443[0m [32m INFO[0m cargo_tarpaulin::process_handling: Setting LLVM_PROFILE_FILE
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+[2mApr 26 21:40:51.444[0m [32m INFO[0m cargo_tarpaulin::statemachine::instrumented: For binary: target/release/deps/protein_translation-414a2a857a1d4a53
+[2mApr 26 21:40:51.444[0m [32m INFO[0m cargo_tarpaulin::statemachine::instrumented: Generated: target/tarpaulin/profraws/protein_translation-414a2a857a1d4a53_10720472830422820432_0-11491.profraw
+[2mApr 26 21:40:51.444[0m [32m INFO[0m cargo_tarpaulin::statemachine::instrumented: Merging coverage reports
+[2mApr 26 21:40:51.444[0m [32m INFO[0m cargo_tarpaulin::statemachine::instrumented: Mapping coverage data to source
+[2mApr 26 21:40:51.450[0m [32m INFO[0m cargo_tarpaulin::process_handling: running /home/vpayno/git_vpayno/exercism-workspace/rust/target/release/deps/protein_translation-b9e98f0c4c804d44
+[2mApr 26 21:40:51.450[0m [32m INFO[0m cargo_tarpaulin::process_handling: Setting LLVM_PROFILE_FILE
+
+running 41 tests
+test arginine_aga ... ok
+test arginine_agg ... ok
+test arginine_cga ... ok
+test cysteine_rna_sequence_1 ... ok
+test cysteine_rna_sequence_2 ... ok
+test cysteine_tgt ... ok
+test empty_is_invalid ... ok
+test empty_rna_sequence_results_in_no_proteins ... ok
+test incomplete_rna_sequence_can_t_translate ... ok
+test incomplete_rna_sequence_can_translate_if_valid_until_a_stop_codon ... ok
+test isoleucine ... ok
+test leucine_rna_sequence_1 ... ok
+test leucine_rna_sequence_2 ... ok
+test methionine ... ok
+test methionine_rna_sequence ... ok
+test phenylalanine_rna_sequence_1 ... ok
+test phenylalanine_rna_sequence_2 ... ok
+test sequence_of_two_different_protein_codons_translates_into_proteins ... ok
+test sequence_of_two_protein_codons_translates_into_proteins ... ok
+test serine_rna_sequence_1 ... ok
+test serine_rna_sequence_2 ... ok
+test serine_rna_sequence_3 ... ok
+test serine_rna_sequence_4 ... ok
+test stop ... ok
+test stop_codon_rna_sequence_1 ... ok
+test stop_codon_rna_sequence_2 ... ok
+test stop_codon_rna_sequence_3 ... ok
+test too_long_is_invalid ... ok
+test too_short_is_invalid ... ok
+test translate_rna_strand_into_correct_protein_list ... ok
+test translation_stops_if_stop_codon_at_beginning_of_sequence ... ok
+test translation_stops_if_stop_codon_at_end_of_three_codon_sequence ... ok
+test translation_stops_if_stop_codon_at_end_of_two_codon_sequence ... ok
+test translation_stops_if_stop_codon_in_middle_of_six_codon_sequence ... ok
+test translation_stops_if_stop_codon_in_middle_of_three_codon_sequence ... ok
+test tryptophan_rna_sequence ... ok
+test tyrosine_rna_sequence_1 ... ok
+test tyrosine_rna_sequence_2 ... ok
+test unknown_amino_acids_not_part_of_a_codon_can_t_translate ... ok
+test valine ... ok
+test x_is_not_shorthand_so_is_invalid ... ok
+
+test result: ok. 41 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+[2mApr 26 21:40:51.455[0m [32m INFO[0m cargo_tarpaulin::statemachine::instrumented: For binary: target/release/deps/protein_translation-b9e98f0c4c804d44
+[2mApr 26 21:40:51.455[0m [32m INFO[0m cargo_tarpaulin::statemachine::instrumented: Generated: target/tarpaulin/profraws/protein_translation-b9e98f0c4c804d44_7038407579336639342_0-11492.profraw
+[2mApr 26 21:40:51.455[0m [32m INFO[0m cargo_tarpaulin::statemachine::instrumented: Merging coverage reports
+[2mApr 26 21:40:51.455[0m [32m INFO[0m cargo_tarpaulin::statemachine::instrumented: Mapping coverage data to source
+[2mApr 26 21:40:51.468[0m [32m INFO[0m cargo_tarpaulin::report: Coverage Results:
+|| Uncovered Lines:
+|| anagram/src/lib.rs: 4-5, 7-9, 11-14, 16, 19, 23, 25-26, 28-30, 33-34, 36-39, 41, 43, 47, 49, 52-54, 57, 60, 62
+|| luhn-from/src/lib.rs: 6, 8
+|| luhn-trait/src/lib.rs: 6-12
+|| simple-linked-list/src/lib.rs: 16, 28-29, 32-33, 36-39, 41-42, 45-49, 53-54, 58-60, 62-64, 67, 72-73, 75-76, 79, 97-99, 101-103, 107, 109
+|| space-age/src/lib.rs: 24-25
+|| triangle/src/lib.rs: 75-79, 84-85, 89-90, 94-95
+|| Tested/Total Lines:
+|| anagram/src/lib.rs: 0/33
+|| luhn-from/src/lib.rs: 0/2
+|| luhn-trait/src/lib.rs: 0/7
+|| protein-translation/src/lib.rs: 24/24
+|| protein-translation/tests/protein-translation.rs: 29/29
+|| simple-linked-list/src/lib.rs: 0/38
+|| space-age/src/lib.rs: 0/2
+|| triangle/src/lib.rs: 0/11
+|| 
+36.30% coverage, 53/146 lines covered
+
+real	0m0.972s
+user	0m1.025s
+sys	0m0.221s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.561s
+user	0m2.008s
+sys	0m0.555s
+
+real	0m1.563s
+user	0m2.010s
+sys	0m0.557s
+
+===============================================================================
+
+Running: ../../.github/citools/rust/rust-test-with-llvm-coverage
+
+Running Rust Tests With LLVM Coverage
+
+Rust versions:
+
+	rustc 1.77.2 (25ef9e3d8 2024-04-09)
+info: This is the version for the rustup toolchain manager, not the rustc compiler.
+info: The currently active `rustc` version is `rustc 1.77.2 (25ef9e3d8 2024-04-09)`
+	rustup 1.27.0 (bbb9276d2 2024-03-08)
+
+
+ ==============================================================================
+
+Running: cargo clean
+
+     Removed 159 files, 24.3MiB total
+
+real	0m0.017s
+user	0m0.008s
+sys	0m0.008s
+
+
+ ==============================================================================
+
+Running: cargo llvm-cov clean
+
+
+real	0m0.122s
+user	0m0.052s
+sys	0m0.075s
+
+
+ ==============================================================================
+
+Running: cargo test --all-features --doc
+
+   Compiling protein-translation v0.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/protein-translation)
+    Finished test [unoptimized + debuginfo] target(s) in 0.21s
+   Doc-tests protein-translation
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+real	0m0.234s
+user	0m0.336s
+sys	0m0.124s
+
+
+ ==============================================================================
+
+Running: cargo llvm-cov --no-clean --all-features
+
+   Compiling protein-translation v0.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/protein-translation)
+    Finished test [unoptimized + debuginfo] target(s) in 0.42s
+     Running unittests src/lib.rs (/home/vpayno/git_vpayno/exercism-workspace/rust/target/llvm-cov-target/debug/deps/protein_translation-30a64626872d92ea)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/protein-translation.rs (/home/vpayno/git_vpayno/exercism-workspace/rust/target/llvm-cov-target/debug/deps/protein_translation-011bff6cd55c0a58)
+
+running 41 tests
+test arginine_aga ... ok
+test arginine_agg ... ok
+test arginine_cga ... ok
+test cysteine_rna_sequence_1 ... ok
+test cysteine_rna_sequence_2 ... ok
+test cysteine_tgt ... ok
+test empty_is_invalid ... ok
+test empty_rna_sequence_results_in_no_proteins ... ok
+test incomplete_rna_sequence_can_t_translate ... ok
+test incomplete_rna_sequence_can_translate_if_valid_until_a_stop_codon ... ok
+test isoleucine ... ok
+test leucine_rna_sequence_1 ... ok
+test leucine_rna_sequence_2 ... ok
+test methionine ... ok
+test methionine_rna_sequence ... ok
+test phenylalanine_rna_sequence_1 ... ok
+test phenylalanine_rna_sequence_2 ... ok
+test sequence_of_two_different_protein_codons_translates_into_proteins ... ok
+test sequence_of_two_protein_codons_translates_into_proteins ... ok
+test serine_rna_sequence_1 ... ok
+test serine_rna_sequence_2 ... ok
+test serine_rna_sequence_3 ... ok
+test serine_rna_sequence_4 ... ok
+test stop ... ok
+test stop_codon_rna_sequence_1 ... ok
+test stop_codon_rna_sequence_2 ... ok
+test stop_codon_rna_sequence_3 ... ok
+test too_long_is_invalid ... ok
+test too_short_is_invalid ... ok
+test translate_rna_strand_into_correct_protein_list ... ok
+test translation_stops_if_stop_codon_at_beginning_of_sequence ... ok
+test translation_stops_if_stop_codon_at_end_of_three_codon_sequence ... ok
+test translation_stops_if_stop_codon_at_end_of_two_codon_sequence ... ok
+test translation_stops_if_stop_codon_in_middle_of_six_codon_sequence ... ok
+test translation_stops_if_stop_codon_in_middle_of_three_codon_sequence ... ok
+test tryptophan_rna_sequence ... ok
+test tyrosine_rna_sequence_1 ... ok
+test tyrosine_rna_sequence_2 ... ok
+test unknown_amino_acids_not_part_of_a_codon_can_t_translate ... ok
+test valine ... ok
+test x_is_not_shorthand_so_is_invalid ... ok
+
+test result: ok. 41 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+Filename                                                                           Regions    Missed Regions     Cover   Functions  Missed Functions  Executed       Lines      Missed Lines     Cover    Branches   Missed Branches     Cover
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+/home/vpayno/git_vpayno/exercism-workspace/rust/protein-translation/src/lib.rs           7                 0   100.00%           5                 0   100.00%          35                 0   100.00%           0                 0         -
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+TOTAL                                                                                    7                 0   100.00%           5                 0   100.00%          35                 0   100.00%           0                 0         -
+
+real	0m0.549s
+user	0m0.380s
+sys	0m0.212s
+
+
+ ==============================================================================
+
+Running: cargo llvm-cov report --lcov --output-path report.lcov
+
+
+    Finished report saved to report.lcov
+
+real	0m0.105s
+user	0m0.049s
+sys	0m0.058s
+
+    Finished test [unoptimized + debuginfo] target(s) in 0.01s
+     Running unittests src/lib.rs (/home/vpayno/git_vpayno/exercism-workspace/rust/target/llvm-cov-target/debug/deps/protein_translation-30a64626872d92ea)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/protein-translation.rs (/home/vpayno/git_vpayno/exercism-workspace/rust/target/llvm-cov-target/debug/deps/protein_translation-011bff6cd55c0a58)
+
+running 41 tests
+test arginine_aga ... ok
+test arginine_agg ... ok
+test arginine_cga ... ok
+test cysteine_rna_sequence_1 ... ok
+test cysteine_rna_sequence_2 ... ok
+test cysteine_tgt ... ok
+test empty_is_invalid ... ok
+test empty_rna_sequence_results_in_no_proteins ... ok
+test incomplete_rna_sequence_can_t_translate ... ok
+test incomplete_rna_sequence_can_translate_if_valid_until_a_stop_codon ... ok
+test isoleucine ... ok
+test leucine_rna_sequence_1 ... ok
+test leucine_rna_sequence_2 ... ok
+test methionine ... ok
+test methionine_rna_sequence ... ok
+test phenylalanine_rna_sequence_1 ... ok
+test phenylalanine_rna_sequence_2 ... ok
+test sequence_of_two_different_protein_codons_translates_into_proteins ... ok
+test sequence_of_two_protein_codons_translates_into_proteins ... ok
+test serine_rna_sequence_1 ... ok
+test serine_rna_sequence_2 ... ok
+test serine_rna_sequence_3 ... ok
+test serine_rna_sequence_4 ... ok
+test stop ... ok
+test stop_codon_rna_sequence_1 ... ok
+test stop_codon_rna_sequence_2 ... ok
+test stop_codon_rna_sequence_3 ... ok
+test too_long_is_invalid ... ok
+test too_short_is_invalid ... ok
+test translate_rna_strand_into_correct_protein_list ... ok
+test translation_stops_if_stop_codon_at_beginning_of_sequence ... ok
+test translation_stops_if_stop_codon_at_end_of_three_codon_sequence ... ok
+test translation_stops_if_stop_codon_at_end_of_two_codon_sequence ... ok
+test translation_stops_if_stop_codon_in_middle_of_six_codon_sequence ... ok
+test translation_stops_if_stop_codon_in_middle_of_three_codon_sequence ... ok
+test tryptophan_rna_sequence ... ok
+test tyrosine_rna_sequence_1 ... ok
+test tyrosine_rna_sequence_2 ... ok
+test unknown_amino_acids_not_part_of_a_codon_can_t_translate ... ok
+test valine ... ok
+test x_is_not_shorthand_so_is_invalid ... ok
+
+test result: ok. 41 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+
+real	0m0.152s
+user	0m0.066s
+sys	0m0.083s
+
+ ==============================================================================
+
+Running: cargo llvm-cov --no-clean --all-features --text --output-path=coverage-annotations.txt
+
+    Finished test [unoptimized + debuginfo] target(s) in 0.01s
+     Running unittests src/lib.rs (/home/vpayno/git_vpayno/exercism-workspace/rust/target/llvm-cov-target/debug/deps/protein_translation-30a64626872d92ea)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/protein-translation.rs (/home/vpayno/git_vpayno/exercism-workspace/rust/target/llvm-cov-target/debug/deps/protein_translation-011bff6cd55c0a58)
+
+running 41 tests
+test arginine_aga ... ok
+test arginine_agg ... ok
+test arginine_cga ... ok
+test cysteine_rna_sequence_1 ... ok
+test cysteine_rna_sequence_2 ... ok
+test cysteine_tgt ... ok
+test empty_is_invalid ... ok
+test empty_rna_sequence_results_in_no_proteins ... ok
+test incomplete_rna_sequence_can_t_translate ... ok
+test incomplete_rna_sequence_can_translate_if_valid_until_a_stop_codon ... ok
+test isoleucine ... ok
+test leucine_rna_sequence_1 ... ok
+test leucine_rna_sequence_2 ... ok
+test methionine ... ok
+test methionine_rna_sequence ... ok
+test phenylalanine_rna_sequence_1 ... ok
+test phenylalanine_rna_sequence_2 ... ok
+test sequence_of_two_different_protein_codons_translates_into_proteins ... ok
+test sequence_of_two_protein_codons_translates_into_proteins ... ok
+test serine_rna_sequence_1 ... ok
+test serine_rna_sequence_2 ... ok
+test serine_rna_sequence_3 ... ok
+test serine_rna_sequence_4 ... ok
+test stop ... ok
+test stop_codon_rna_sequence_1 ... ok
+test stop_codon_rna_sequence_2 ... ok
+test stop_codon_rna_sequence_3 ... ok
+test too_long_is_invalid ... ok
+test too_short_is_invalid ... ok
+test translate_rna_strand_into_correct_protein_list ... ok
+test translation_stops_if_stop_codon_at_beginning_of_sequence ... ok
+test translation_stops_if_stop_codon_at_end_of_three_codon_sequence ... ok
+test translation_stops_if_stop_codon_at_end_of_two_codon_sequence ... ok
+test translation_stops_if_stop_codon_in_middle_of_six_codon_sequence ... ok
+test translation_stops_if_stop_codon_in_middle_of_three_codon_sequence ... ok
+test tryptophan_rna_sequence ... ok
+test tyrosine_rna_sequence_1 ... ok
+test tyrosine_rna_sequence_2 ... ok
+test unknown_amino_acids_not_part_of_a_codon_can_t_translate ... ok
+test valine ... ok
+test x_is_not_shorthand_so_is_invalid ... ok
+
+test result: ok. 41 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+
+    Finished report saved to coverage-annotations.txt
+
+real	0m0.162s
+user	0m0.078s
+sys	0m0.083s
+
+
+ ==============================================================================
+
+Running: cargo llvm-cov clean
+
+
+real	0m0.100s
+user	0m0.051s
+sys	0m0.051s
+
+
+ ==============================================================================
+
+Running: lcov --list report.lcov
+
+Reading tracefile report.lcov
+            |Lines       |Functions  |Branches    
+Filename    |Rate     Num|Rate    Num|Rate     Num
+==================================================
+[/home/vpayno/git_vpayno/exercism-workspace/rust/protein-translation/src/]
+lib.rs      | 100%     33|50.0%    10|    -      0
+==================================================
+      Total:| 100%     33|50.0%    10|    -      0
+
+real	0m0.033s
+user	0m0.026s
+sys	0m0.008s
+
+
+Running: lcov --summary report.lcov
+
+Reading tracefile report.lcov
+Summary coverage rate:
+  lines......: 100.0% (33 of 33 lines)
+  functions..: 50.0% (5 of 10 functions)
+  branches...: no data found
+
+real	0m0.030s
+user	0m0.028s
+sys	0m0.002s
+
+
+ ==============================================================================
+
+Exit code: 0
+
+real	0m1.542s
+user	0m1.096s
+sys	0m0.724s
+
+real	0m1.544s
+user	0m1.098s
+sys	0m0.724s
+
+===============================================================================
+
+Running: misspell .
+
+real	0m0.020s
+user	0m0.027s
+sys	0m0.007s
+
+===============================================================================
+
+Running: cargo doc
+ Documenting protein-translation v0.1.0 (/home/vpayno/git_vpayno/exercism-workspace/rust/protein-translation)
+    Finished dev [unoptimized + debuginfo] target(s) in 0.16s
+   Generated /home/vpayno/git_vpayno/exercism-workspace/rust/target/doc/protein_translation/index.html
+
+real	0m0.172s
+user	0m0.136s
+sys	0m0.039s
+
+===============================================================================
+
+Running: cargo clean
+     Removed 127 files, 5.6MiB total
+
+real	0m0.013s
+user	0m0.006s
+sys	0m0.006s
+
+===============================================================================
+
+/home/vpayno/git_vpayno/exercism-workspace/rust
+
+===============================================================================
+
+
+===============================================================================
+
+Running: rust-analyzer -v lsif . > index.lsif
+Generating LSIF started...
+Generating LSIF finished in 5.644734028s
+
+real	0m5.936s
+user	0m5.667s
+sys	0m0.280s
+
+===============================================================================
+
+Running: rust-analyzer -v scip .
+Generating SCIP start...
+rust-analyzer: Loading metadata
+rust-analyzer: Loading building proc-macros: regex-syntax
+rust-analyzer: Loading building proc-macros: luhn
+rust-analyzer: Loading building proc-macros: deranged
+rust-analyzer: Loading building proc-macros: luhn-from
+rust-analyzer: Loading building proc-macros: unicode-segmentation
+rust-analyzer: Loading building proc-macros: time-core
+rust-analyzer: Loading building proc-macros: memchr
+rust-analyzer: Loading building proc-macros: protein-translation
+rust-analyzer: Loading building proc-macros: pythagorean_triplet
+rust-analyzer: Loading building proc-macros: raindrops
+rust-analyzer: Loading building proc-macros: assembly-line
+rust-analyzer: Loading building proc-macros: time
+rust-analyzer: Loading building proc-macros: anagram
+rust-analyzer: Loading building proc-macros: prime_factors
+rust-analyzer: Loading building proc-macros: aho-corasick
+rust-analyzer: Loading building proc-macros: bob
+rust-analyzer: Loading building proc-macros: hello-world
+rust-analyzer: Loading building proc-macros: reverse_string
+rust-analyzer: Loading building proc-macros: leap
+rust-analyzer: Loading building proc-macros: series
+rust-analyzer: Loading building proc-macros: triangle
+rust-analyzer: Loading building proc-macros: gigasecond
+rust-analyzer: Loading building proc-macros: regex-automata
+rust-analyzer: Loading building proc-macros: high-scores
+rust-analyzer: Loading building proc-macros: short_fibonacci
+rust-analyzer: Loading building proc-macros: pangram
+rust-analyzer: Loading building proc-macros: isogram
+rust-analyzer: Loading building proc-macros: regex
+rust-analyzer: Loading building proc-macros: luhn-trait
+rust-analyzer: Loading building proc-macros: semi_structured_logs
+rust-analyzer: Loading building proc-macros: difference-of-squares
+rust-analyzer: Loading building proc-macros: space-age
+rust-analyzer: Loading building proc-macros: etl
+rust-analyzer: Loading building proc-macros: collatz_conjecture
+rust-analyzer: Loading building proc-macros: simple_linked_list
+rust-analyzer: Loading building proc-macros: allergies
+rust-analyzer: Loading building proc-macros: sieve
+rust-analyzer: Loading building proc-macros: binary-search
+rust-analyzer: Loading building proc-macros: acronym
+rust-analyzer: Loading building proc-macros: health_statistics
+rust-analyzer: Loading building proc-macros: perfect_numbers
+rust-analyzer: Loading building proc-macros: armstrong_numbers
+rust-analyzer: Loading building proc-macros: roman-numerals
+rust-analyzer: Loading building proc-macros: lucians-luscious-lasagna
+rust-analyzer: Loading building proc-macros: secret-handshake
+rust-analyzer: Loading building proc-macros: perfect_numbers
+rust-analyzer: Loading building proc-macros: scrabble-score
+rust-analyzer: Loading building proc-macros: grains
+rust-analyzer: Loading building proc-macros: allyourbase
+rust-analyzer: Loading building proc-macros: armstrong_numbers
+rust-analyzer: Loading building proc-macros: roman-numerals
+rust-analyzer: Loading building proc-macros: lucians-luscious-lasagna
+rust-analyzer: Loading building proc-macros: health_statistics
+rust-analyzer: Loading building proc-macros: secret-handshake
+rust-analyzer: Loading building proc-macros: allyourbase
+rust-analyzer: Loading building proc-macros: grains
+rust-analyzer: Loading building proc-macros: scrabble-score
+rust-analyzer: Loading building proc-macros: sieve
+rust-analyzer: Loading building proc-macros: acronym
+rust-analyzer: Loading building proc-macros: binary-search
+rust-analyzer: Loading building proc-macros: simple_linked_list
+rust-analyzer: Loading building proc-macros: allergies
+rust-analyzer: Loading building proc-macros: semi_structured_logs
+rust-analyzer: Loading building proc-macros: collatz_conjecture
+rust-analyzer: Loading building proc-macros: etl
+rust-analyzer: Loading building proc-macros: difference-of-squares
+rust-analyzer: Loading building proc-macros: acronym
+rust-analyzer: Loading building proc-macros: space-age
+rust-analyzer: Loading building proc-macros: luhn-trait
+rust-analyzer: Loading building proc-macros: pangram
+rust-analyzer: Loading building proc-macros: isogram
+rust-analyzer: Loading building proc-macros: short_fibonacci
+rust-analyzer: Loading building proc-macros: high-scores
+rust-analyzer: Loading building proc-macros: triangle
+rust-analyzer: Loading building proc-macros: gigasecond
+rust-analyzer: Loading building proc-macros: series
+rust-analyzer: Loading building proc-macros: reverse_string
+rust-analyzer: Loading building proc-macros: leap
+rust-analyzer: Loading building proc-macros: bob
+rust-analyzer: Loading building proc-macros: gigasecond
+rust-analyzer: Loading building proc-macros: hello-world
+rust-analyzer: Loading building proc-macros: prime_factors
+rust-analyzer: Loading building proc-macros: anagram
+rust-analyzer: Loading building proc-macros: pythagorean_triplet
+rust-analyzer: Loading building proc-macros: raindrops
+rust-analyzer: Loading building proc-macros: assembly-line
+rust-analyzer: Loading building proc-macros: anagram
+rust-analyzer: Loading building proc-macros: luhn
+rust-analyzer: Loading building proc-macros: protein-translation
+rust-analyzer: Loading building proc-macros: reverse_string
+rust-analyzer: Loading building proc-macros: luhn-from
+rust-analyzer: Loading building proc-macros: luhn
+rust-analyzer: Loading building proc-macros: luhn
+rust-analyzer: Loading building proc-macros: lucians-luscious-lasagna
+rust-analyzer: Loading building proc-macros: scrabble-score
+rust-analyzer: Loading building proc-macros: bob
+rust-analyzer: Loading building proc-macros: roman-numerals
+rust-analyzer: Loading building proc-macros: luhn-from
+rust-analyzer: Loading building proc-macros: binary-search
+rust-analyzer: Loading building proc-macros: short_fibonacci
+rust-analyzer: Loading building proc-macros: pythagorean_triplet
+rust-analyzer: Loading building proc-macros: health_statistics
+rust-analyzer: Loading building proc-macros: luhn
+rust-analyzer: Loading building proc-macros: leap
+rust-analyzer: Loading building proc-macros: triangle
+rust-analyzer: Loading building proc-macros: collatz_conjecture
+rust-analyzer: Loading building proc-macros: protein-translation
+rust-analyzer: Loading building proc-macros: grains
+rust-analyzer: Loading building proc-macros: pangram
+rust-analyzer: Loading building proc-macros: high-scores
+rust-analyzer: Loading building proc-macros: simple_linked_list
+rust-analyzer: Loading building proc-macros: luhn-trait
+rust-analyzer: Loading building proc-macros: allergies
+rust-analyzer: Loading building proc-macros: perfect_numbers
+rust-analyzer: Loading building proc-macros: etl
+rust-analyzer: Loading building proc-macros: sieve
+rust-analyzer: Loading building proc-macros: prime_factors
+rust-analyzer: Loading building proc-macros: hello-world
+rust-analyzer: Loading building proc-macros: space-age
+rust-analyzer: Loading building proc-macros: difference-of-squares
+rust-analyzer: Loading building proc-macros: armstrong_numbers
+rust-analyzer: Loading building proc-macros: raindrops
+rust-analyzer: Loading building proc-macros: allyourbase
+rust-analyzer: Loading building proc-macros: series
+rust-analyzer: Loading building proc-macros: semi_structured_logs
+rust-analyzer: Loading building proc-macros: isogram
+rust-analyzer: Loading building proc-macros: assembly-line
+rust-analyzer: Loading building proc-macros: secret-handshake
+Generating SCIP finished 5.943087266s
+
+real	0m6.229s
+user	0m6.369s
+sys	0m1.231s
+
+===============================================================================
+

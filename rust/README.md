@@ -50,3 +50,4 @@
 - [etl](./etl/README.md)
 - [pythagorean-triplet](./pythagorean-triplet/README.md)
 - [prime-factors](./prime-factors/README.md)
+- [protein-translation](./protein-translation/README.md)

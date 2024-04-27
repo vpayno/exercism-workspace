@@ -1,0 +1,103 @@
+    1|       |pub struct CodonsInfo<'a> {
+    2|       |    codons: std::collections::HashMap<&'a str, &'a str>,
+    3|       |}
+    4|       |
+    5|       |const CODON_SIZE: usize = 3;
+    6|       |
+    7|       |impl<'a> CodonsInfo<'a> {
+    8|    162|    pub fn name_for(&self, codon: &str) -> Option<&'a str> {
+    9|    162|        /*
+   10|    162|        match codon {
+   11|    162|            "AUG" => Some("methionine"),
+   12|    162|            "UUU" | "UUC" => Some("phenylalanine"),
+   13|    162|            "UUA" | "UUG" => Some("leucine"),
+   14|    162|            "UCU" | "UCC" | "UCA" | "UCG" => Some("serine"),
+   15|    162|            "UAU" | "UAC" => Some("tyrosine"),
+   16|    162|            "UGU" | "UGC" => Some("cysteine"),
+   17|    162|            "UGG" => Some("tryptophan"),
+   18|    162|            "UAA" | "UAG" | "UGA" => Some("stop codon"),
+   19|    162|            _ => Some("stop codon"),
+   20|    162|        }
+   21|    162|        */
+   22|    162|
+   23|    162|        self.codons.get(codon).cloned()
+   24|    162|    }
+  ------------------
+  | <protein_translation::CodonsInfo>::name_for:
+  |    8|    162|    pub fn name_for(&self, codon: &str) -> Option<&'a str> {
+  |    9|    162|        /*
+  |   10|    162|        match codon {
+  |   11|    162|            "AUG" => Some("methionine"),
+  |   12|    162|            "UUU" | "UUC" => Some("phenylalanine"),
+  |   13|    162|            "UUA" | "UUG" => Some("leucine"),
+  |   14|    162|            "UCU" | "UCC" | "UCA" | "UCG" => Some("serine"),
+  |   15|    162|            "UAU" | "UAC" => Some("tyrosine"),
+  |   16|    162|            "UGU" | "UGC" => Some("cysteine"),
+  |   17|    162|            "UGG" => Some("tryptophan"),
+  |   18|    162|            "UAA" | "UAG" | "UGA" => Some("stop codon"),
+  |   19|    162|            _ => Some("stop codon"),
+  |   20|    162|        }
+  |   21|    162|        */
+  |   22|    162|
+  |   23|    162|        self.codons.get(codon).cloned()
+  |   24|    162|    }
+  ------------------
+  | Unexecuted instantiation: <protein_translation::CodonsInfo>::name_for
+  ------------------
+   25|       |
+   26|     87|    pub fn of_rna(&self, rna: &str) -> Option<Vec<&'a str>> {
+   27|     87|        // to byte slice, return 3 bytes, convert the bytes to string,
+   28|     87|        // convert codon to protein, return a vector of Options
+   29|     87|        rna.as_bytes()
+   30|     87|            .chunks(CODON_SIZE)
+   31|     87|            .map(std::str::from_utf8)
+   32|    126|            .map(|result_utf8| self.name_for(result_utf8.unwrap()))
+  ------------------
+  | <protein_translation::CodonsInfo>::of_rna::{closure#0}:
+  |   32|    126|            .map(|result_utf8| self.name_for(result_utf8.unwrap()))
+  ------------------
+  | Unexecuted instantiation: <protein_translation::CodonsInfo>::of_rna::{closure#0}
+  ------------------
+   33|    126|            .take_while(|&option_codon| option_codon != Some("stop codon"))
+  ------------------
+  | <protein_translation::CodonsInfo>::of_rna::{closure#1}:
+  |   33|    126|            .take_while(|&option_codon| option_codon != Some("stop codon"))
+  ------------------
+  | Unexecuted instantiation: <protein_translation::CodonsInfo>::of_rna::{closure#1}
+  ------------------
+   34|     87|            .collect()
+   35|     87|    }
+  ------------------
+  | <protein_translation::CodonsInfo>::of_rna:
+  |   26|     87|    pub fn of_rna(&self, rna: &str) -> Option<Vec<&'a str>> {
+  |   27|     87|        // to byte slice, return 3 bytes, convert the bytes to string,
+  |   28|     87|        // convert codon to protein, return a vector of Options
+  |   29|     87|        rna.as_bytes()
+  |   30|     87|            .chunks(CODON_SIZE)
+  |   31|     87|            .map(std::str::from_utf8)
+  |   32|     87|            .map(|result_utf8| self.name_for(result_utf8.unwrap()))
+  |   33|     87|            .take_while(|&option_codon| option_codon != Some("stop codon"))
+  |   34|     87|            .collect()
+  |   35|     87|    }
+  ------------------
+  | Unexecuted instantiation: <protein_translation::CodonsInfo>::of_rna
+  ------------------
+   36|       |}
+   37|       |
+   38|    123|pub fn parse<'a>(pairs: Vec<(&'a str, &'a str)>) -> CodonsInfo<'a> {
+   39|    123|    CodonsInfo {
+   40|    123|        // collect the key value pairs, copy them, convert them to a hashmap
+   41|    123|        codons: pairs.iter().cloned().collect(),
+   42|    123|    }
+   43|    123|}
+  ------------------
+  | protein_translation::parse:
+  |   38|    123|pub fn parse<'a>(pairs: Vec<(&'a str, &'a str)>) -> CodonsInfo<'a> {
+  |   39|    123|    CodonsInfo {
+  |   40|    123|        // collect the key value pairs, copy them, convert them to a hashmap
+  |   41|    123|        codons: pairs.iter().cloned().collect(),
+  |   42|    123|    }
+  |   43|    123|}
+  ------------------
+  | Unexecuted instantiation: protein_translation::parse
+  ------------------

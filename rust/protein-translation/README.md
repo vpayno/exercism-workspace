@@ -77,3 +77,8 @@ Learn more about [protein translation on Wikipedia][protein-translation].
 ### Based on
 
 Tyler Long
+
+### My Solution
+
+- [my solution](./src/lib.rs)
+- [run-tests](./run-tests-rust.txt)
