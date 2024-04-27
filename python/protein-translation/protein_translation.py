@@ -8,6 +8,8 @@ K_CODON_LENGTH: int = 3
 
 
 class Proteins(Enum):
+    """Protein Enum"""
+
     METHIONINE = enum_auto()
     PHENYLALANINE = enum_auto()
     LEUCINE = enum_auto()
