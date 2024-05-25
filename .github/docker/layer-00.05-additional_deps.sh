@@ -35,6 +35,7 @@ main() {
 		libjpeg-dev
 		libpng-dev
 		libtiff5-dev
+		wamerican-huge
 	)
 
 	echo Running: sudo apt install -y "${PACKAGES[@]}"
@@ -43,6 +44,14 @@ main() {
 
 	echo Running: sudo apt-mark manual "${PACKAGES[@]}"
 	time sudo apt-mark manual "${PACKAGES[@]}" || track_errors
+	printf "\n"
+
+	echo Running: sudo select-default-wordlist --show-choices
+	time sudo select-default-wordlist --show-choices
+	printf "\n"
+
+	echo Running: sudo select-default-wordlist --set-default=american-huge
+	time sudo select-default-wordlist --set-default=american-huge
 	printf "\n"
 
 	layer_end "${0}" "$@"
