@@ -62,7 +62,7 @@ main() {
 	declare -a COMPONENTS
 	COMPONENTS=(
 		clippy
-		llvm-tools-x86_64-unknown-linux-gnu
+		llvm-tools
 		rustfmt
 	)
 
