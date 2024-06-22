@@ -32,7 +32,6 @@ Archived `#12in23` challenge notes to [README-2023.md](./README-2023.md)
 [![Gleam Workflow](https://github.com/vpayno/exercism-workspace/actions/workflows/gleam.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/gleam.yml)
 [![R Workflow](https://github.com/vpayno/exercism-workspace/actions/workflows/r.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/r.yml)
 
-[![Git PR Checks](https://github.com/vpayno/exercism-workspace/actions/workflows/git-pr.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/git-pr.yml)
 [![Check Links](https://github.com/vpayno/exercism-workspace/actions/workflows/links.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/links.yml)
 [![woke (pr)](https://github.com/vpayno/exercism-workspace/actions/workflows/woke-pr.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/woke-pr.yml)
 [![Woke (push)](https://github.com/vpayno/exercism-workspace/actions/workflows/woke-push.yml/badge.svg)](https://github.com/vpayno/exercism-workspace/actions/workflows/woke-push.yml)
