@@ -44,7 +44,7 @@ main() {
 		libc++abi-"${LLVM_VER}"-dev
 		libc++-"${LLVM_VER}"-dev
 		libfuzzer-"${LLVM_VER}"-dev
-		libllvm16
+		libllvm"${LLVM_VER}"
 		libllvm-"${LLVM_VER}"-ocaml-dev
 		libssl-dev
 		libunwind-"${LLVM_VER}"-dev
@@ -60,7 +60,7 @@ main() {
 
 	# wget -q https://apt.llvm.org/llvm.sh
 	# chmod -v +x llvm.sh
-	# ./llvm.sh 16 all
+	# ./llvm.sh "${LLVM_VER}" all
 
 	echo Creating /etc/apt/sources.list.d/llvm.list
 	tee -a /etc/apt/sources.list.d/llvm.list <<-EOF

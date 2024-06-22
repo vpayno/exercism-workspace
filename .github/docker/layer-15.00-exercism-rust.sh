@@ -29,7 +29,7 @@ main() {
 		gcovr
 		lcov
 		libllvm-"${LLVM_VER}"-ocaml-dev
-		libllvm16
+		libllvm"${LLVM_VER}"
 		libssl-dev
 		lld-"${LLVM_VER}"
 		llvm-"${LLVM_VER}"

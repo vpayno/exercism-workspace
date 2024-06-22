@@ -66,6 +66,7 @@ jobs:
       - name: Install C Tools
         id: install-c-tools
         run: |
+          source .github/citools/includes/wrapper-library
           sudo tee -a /etc/apt/sources.list <<EOF
           # deb http://apt.llvm.org/jammy/ llvm-toolchain-jammy main
           # deb-src http://apt.llvm.org/jammy/ llvm-toolchain-jammy main
@@ -73,14 +74,14 @@ jobs:
           # deb-src http://apt.llvm.org/jammy/ llvm-toolchain-jammy-14 main
           # deb http://apt.llvm.org/jammy/ llvm-toolchain-jammy-15 main
           # deb-src http://apt.llvm.org/jammy/ llvm-toolchain-jammy-15 main
-          deb http://apt.llvm.org/jammy/ llvm-toolchain-jammy-16 main
-          deb-src http://apt.llvm.org/jammy/ llvm-toolchain-jammy-16 main
+          deb http://apt.llvm.org/jammy/ llvm-toolchain-jammy-"${LLVM_VER}" main
+          deb-src http://apt.llvm.org/jammy/ llvm-toolchain-jammy-"${LLVM_VER}" main
           EOF
           wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
           sudo apt update
-          # sudo apt install -y clang-16 lldb-16 lld-16
+          # sudo apt install -y clang-"${LLVM_VER}" lldb-"${LLVM_VER}" lld-"${LLVM_VER}"
           # sudo apt install -y libllvm-14-ocaml-dev libllvm14 llvm-14 llvm-14-dev llvm-14-doc llvm-14-examples llvm-14-runtime
-          sudo apt install -y gcc clang-16 clang-tools-16 clang-tidy-16
+          sudo apt install -y gcc clang-"${LLVM_VER}" clang-tools-"${LLVM_VER}" clang-tidy-"${LLVM_VER}"
           # sudo apt install -y libssl-dev
           # sudo apt install -y lcov
           sudo apt install -y make
@@ -93,12 +94,12 @@ jobs:
           pwd
           ls
       - name: Analysing the code with clang-check
-        id: clang-check-16
+        id: clang-check
         run: |
           cd ./c
           ./for_each ../../.github/citools/c/clang-check
-      - name: Analysing the code clang-tidy-16
-        id: clang-tidy-16
+      - name: Analysing the code clang-tidy
+        id: clang-tidy
         run: |
           cd ./c
           ./for_each ../../.github/citools/c/clang-tidy
