@@ -96,7 +96,7 @@ jobs:
           # Set the output named "docs_changed"
           printf "%s=%s\n" "docs_changed" "${HAS_DIFF}" >> "${GITHUB_OUTPUT}"
   stage2a:
-    name: Docker Build Base Image
+    name: Docker Build Base Image (debian+apt)
     strategy:
       matrix:
         os: ["ubuntu-latest"]
@@ -126,13 +126,13 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: .
-          file: ./Dockerfile
+          file: ./Dockerfile.debian+apt
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ matrix.image }}:latest,${{ secrets.DOCKERHUB_USERNAME }}/${{ matrix.image }}:${{ steps.setup_image_info.outputs.tag_date }}
           target: ${{ matrix.image }}
           cache-to: type=gha
   stage2b:
-    name: Docker Build CI Images
+    name: Docker Build CI Images (debian+apt)
     strategy:
       matrix:
         os: ["ubuntu-latest"]
@@ -163,7 +163,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: .
-          file: ./Dockerfile
+          file: ./Dockerfile.debian+apt
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ matrix.image }}:latest,${{ secrets.DOCKERHUB_USERNAME }}/${{ matrix.image }}:${{ steps.setup_image_info.outputs.tag_date }}
           target: ${{ matrix.image }}
