@@ -2,7 +2,7 @@
 # Dockerfile
 #
 
-From debian:bookworm-slim As ci-base-debian
+FROM debian:bookworm-slim AS ci-base-debian
 
 COPY .github/docker /.github/docker
 
@@ -44,7 +44,7 @@ CMD []
 
 # =============================================================================
 
-From ci-base-debian As ci-generic-debian
+FROM ci-base-debian AS ci-generic-debian
 
 COPY .github/docker /.github/docker
 
@@ -82,7 +82,7 @@ CMD []
 
 # =============================================================================
 
-From ci-base-debian As ci-anaconda-debian
+FROM ci-base-debian AS ci-anaconda-debian
 
 COPY .github/docker /.github/docker
 
