@@ -1,0 +1,132 @@
+# Dockerfile.Debian_with_Nix
+# Installing Nix on a Debian container
+
+FROM debian:bookworm-slim AS ci-base-debian-nix
+
+COPY .github/docker /.github/docker
+
+COPY .github/citools/ /.github/citools/
+
+RUN apt update -y
+
+RUN apt upgrade -y
+
+RUN apt install -y curl
+
+RUN curl --proto '=https' --tlsv1.3 -sSf -L https://install.determinate.systems/nix | sh -s -- install linux \
+  --extra-conf "sandbox = false" --init none --no-confirm || rustc --version
+
+COPY .nix.conf /etc/nix/nix.conf
+
+ENV PATH="${PATH}:/nix/var/nix/profiles/default/bin"
+
+RUN nix profile install nixpkgs#acl nixpkgs#bash nixpkgs#coreutils nixpkgs#curl nixpkgs#jq nixpkgs#neovim nixpkgs#sudo nixpkgs#tmux nixpkgs#tree nixpkgs#util-linux nixpkgs#vim nixpkgs#xq nixpkgs#yq-go nixpkgs#zx nixpkgs#zstd
+
+RUN nix profile install nixpkgs#less nixpkgs#wordlists
+
+RUN nix profile install nixpkgs#rustc nixpkgs#cargo
+
+RUN nix profile install nixpkgs#go
+
+RUN nix profile install nixpkgs#python312Full
+
+# Copies your code file from your action repository to the filesystem path `/` of the container
+COPY .github/docker/entrypoint.sh /entrypoint.sh
+
+RUN rm -rvf /.github
+
+SHELL ["bash", "-c"]
+
+# app + args
+# Executes `entrypoint.sh` when the Docker container starts up
+ENTRYPOINT ["/entrypoint.sh"]
+
+# Extra args
+CMD []
+
+# =============================================================================
+
+FROM ci-base-debian-nix AS ci-generic-debian-nix
+
+COPY .github/docker /.github/docker
+
+COPY .github/citools/ /.github/citools/
+
+RUN nix profile install nixpkgs#git nixpkgs#gitlint nixpkgs#git-crypt nixpkgs#git-extras nixpkgs#git-hub nixpkgs#glab
+
+RUN nix profile install nixpkgs#docker nixpkgs#docker-compose nixpkgs#docker-compose-language-service nixpkgs#docker-ls nixpkgs#docker-buildx
+
+RUN nix profile install nixpkgs#cuelsp github:dagger/nix#dagger
+
+RUN nix profile install nixpkgs#ccls nixpkgs#clang nixpkgs#clang-tools nixpkgs#cmake nixpkgs#gcovr nixpkgs#lcov nixpkgs#boost nixpkgs#gnumake nixpkgs#pkg-config nixpkgs#llvm nixpkgs#lldb
+
+RUN nix profile install nixpkgs#ansible-lint nixpkgs#bats nixpkgs#gitlint nixpkgs#pgformatter nixpkgs#shellcheck nixpkgs#python312Packages.sqlfmt nixpkgs#xmlformat nixpkgs#yamllint
+
+RUN nix profile install nixpkgs#bandit nixpkgs#black nixpkgs#flawfinder nixpkgs#proselint nixpkgs#pyright nixpkgs#ruff nixpkgs#ruff-lsp nixpkgs#pdm nixpkgs#refurb nixpkgs#tmuxp
+
+RUN nix profile install nixpkgs#python312Packages.pip nixpkgs#python312Packages.pylint nixpkgs#python312Packages.flynt nixpkgs#python312Packages.ipykernel nixpkgs#python312Packages.ipython nixpkgs#python312Packages.isort nixpkgs#python312Packages.itsdangerous nixpkgs#python312Packages.jsonschema nixpkgs#python312Packages.mccabe nixpkgs#python312Packages.mypy nixpkgs#python312Packages.mypy-extensions nixpkgs#python312Packages.pep8 nixpkgs#python312Packages.pep8-naming nixpkgs#python312Packages.pexpect nixpkgs#python312Packages.lcov-cobertura nixpkgs#python312Packages.pydocstyle
+
+RUN nix profile install nixpkgs#python312Packages.pyflakes nixpkgs#python312Packages.pylint-flask nixpkgs#python312Packages.pytest nixpkgs#python312Packages.pytest-cov nixpkgs#python312Packages.pytest-randomly nixpkgs#python312Packages.python-dateutil nixpkgs#python312Packages.python-lsp-black nixpkgs#python312Packages.python-lsp-jsonrpc nixpkgs#python312Packages.python-lsp-ruff nixpkgs#python312Packages.python-lsp-server nixpkgs#python312Packages.python-utils
+
+RUN nix profile install nixpkgs#python312Packages.toml nixpkgs#python312Packages.tomli nixpkgs#python312Packages.tomlkit nixpkgs#python312Packages.typeguard nixpkgs#python312Packages.typing-extensions nixpkgs#python312Packages.yamlfix nixpkgs#python312Packages.yamllint nixpkgs#python312Packages.yapf
+
+RUN nix profile install nixpkgs#nodePackages.cspell nixpkgs#eslint nixpkgs#json2yaml nixpkgs#markdownlint-cli nixpkgs#write-good nixpkgs#yarn nixpkgs#nodePackages.jsonlint
+
+RUN nix profile install nixpkgs#rustfmt nixpkgs#rust-analyzer nixpkgs#clippy nixpkgs#cargo-audit nixpkgs#cargo-cache nixpkgs#cargo-edit nixpkgs#cargo-fuzz nixpkgs#cargo-kcov nixpkgs#cargo-llvm-cov nixpkgs#cargo-tarpaulin nixpkgs#clippy-sarif nixpkgs#cargo-spellcheck nixpkgs#zellij nixpkgs#cargo-benchcmp
+
+RUN nix profile install nixpkgs#cue nixpkgs#gotools nixpkgs#gocover-cobertura nixpkgs#git-lfs-transfer nixpkgs#glow nixpkgs#gum nixpkgs#mods nixpkgs#skate nixpkgs#soft-serve nixpkgs#vhs nixpkgs#wishlist nixpkgs#codespell nixpkgs#gocyclo nixpkgs#go-critic nixpkgs#golangci-lint nixpkgs#yamlfmt nixpkgs#ineffassign nixpkgs#goreleaser nixpkgs#errcheck
+
+RUN nix profile install nixpkgs#panicparse nixpkgs#revive nixpkgs#go-toml nixpkgs#gotest nixpkgs#gotests nixpkgs#gotestfmt nixpkgs#reviewdog nixpkgs#actionlint nixpkgs#gosec nixpkgs#golines nixpkgs#xq nixpkgs#gocover-cobertura nixpkgs#golint nixpkgs#goperf nixpkgs#govulncheck nixpkgs#go-tools nixpkgs#gofumpt nixpkgs#shfmt
+
+# lower priority, conflicts with gotools
+RUN nix profile install nixpkgs#ruby --priority 6
+
+RUN nix profile install nixpkgs#rubyfmt nixpkgs#prism nixpkgs#rubyPackages.rspec nixpkgs#rubyPackages.rspec-core nixpkgs#rubyPackages.rspec-mocks nixpkgs#rubyPackages.rspec-support nixpkgs#rubyPackages.rspec-expectations
+
+RUN nix profile install nixpkgs#gleam nixpkgs#glas
+
+RUN nix profile install nixpkgs#openvscode-server
+
+RUN nix profile install nixpkgs#tailscale
+
+RUN apt-get clean && rm -rf /var/lib/apt/lists/ && nix-store --gc
+
+# Copies your code file from your action repository to the filesystem path `/` of the container
+COPY .github/docker/entrypoint.sh /entrypoint.sh
+
+RUN rm -rvf /.github
+
+SHELL ["bash", "-c"]
+
+# app + args
+# Executes `entrypoint.sh` when the Docker container starts up
+ENTRYPOINT ["/entrypoint.sh"]
+
+# Extra args
+CMD []
+
+# =============================================================================
+
+FROM ci-base-debian-nix AS ci-anaconda-debian-nix
+
+COPY .github/docker /.github/docker
+
+COPY .github/citools/ /.github/citools/
+
+RUN nix profile install nixpkgs#R nixpkgs#rstudio-server
+
+RUN nix profile install nixpkgs#rPackages.Anaconda
+
+# Copies your code file from your action repository to the filesystem path `/` of the container
+COPY .github/docker/entrypoint.sh /entrypoint.sh
+
+RUN rm -rvf /.github
+
+SHELL ["bash", "-c"]
+
+# app + args
+# Executes `entrypoint.sh` when the Docker container starts up
+ENTRYPOINT ["/entrypoint.sh"]
+
+# Extra args
+CMD []
