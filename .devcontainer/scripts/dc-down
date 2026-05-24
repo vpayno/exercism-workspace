@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+declare devcontainer_id
+
+devcontainer_id="$(docker ps --format 'json' | jq -r '. | select(.Labels | contains("exercism-workspace")) | select(.Image == "vpayno/ci-generic-debian:latest") | .ID')"
+
+# delete old container
+if [[ -n ${devcontainer_id} ]]; then
+	printf "Removing old container...\n"
+	docker rm -f "${devcontainer_id}"
+	printf "done.\n"
+fi
+printf "\n"
